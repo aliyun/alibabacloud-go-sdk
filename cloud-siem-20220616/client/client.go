@@ -530,107 +530,6 @@ func (s *AddDataSourceLogResponse) SetBody(v *AddDataSourceLogResponseBody) *Add
 	return s
 }
 
-type AddUserRequest struct {
-	// The ID of the cloud account.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 123XXXXXXXX
-	AddedUserId *int64 `json:"AddedUserId,omitempty" xml:"AddedUserId,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s AddUserRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddUserRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddUserRequest) SetAddedUserId(v int64) *AddUserRequest {
-	s.AddedUserId = &v
-	return s
-}
-
-func (s *AddUserRequest) SetRegionId(v string) *AddUserRequest {
-	s.RegionId = &v
-	return s
-}
-
-type AddUserResponseBody struct {
-	// Indicates whether the cloud account is added to the threat analysis feature.
-	//
-	// example:
-	//
-	// true
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s AddUserResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddUserResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddUserResponseBody) SetData(v bool) *AddUserResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *AddUserResponseBody) SetRequestId(v string) *AddUserResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type AddUserResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *AddUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s AddUserResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddUserResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddUserResponse) SetHeaders(v map[string]*string) *AddUserResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddUserResponse) SetStatusCode(v int32) *AddUserResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AddUserResponse) SetBody(v *AddUserResponseBody) *AddUserResponse {
-	s.Body = v
-	return s
-}
-
 type AddUserSourceLogConfigRequest struct {
 	// Specifies whether to add logs or delete added logs. Valid values:
 	//
@@ -884,335 +783,6 @@ func (s *AddUserSourceLogConfigResponse) SetStatusCode(v int32) *AddUserSourceLo
 }
 
 func (s *AddUserSourceLogConfigResponse) SetBody(v *AddUserSourceLogConfigResponseBody) *AddUserSourceLogConfigResponse {
-	s.Body = v
-	return s
-}
-
-type BatchJobSubmitRequest struct {
-	// The detail config of task.
-	//
-	// example:
-	//
-	// {{"autoSubmit":false,"configName":"test_builder","folderConfig":{"folderId":"rd-EUx7Qp","prodConfig":[{"allLogs":false,"allRegions":false,"logConfig":[{"logCode":"cloud_siem_rds_audit_log","logStorePattern":"vpc-test","projectPattern":"vpc-test"}],"prodCode":"rds","regions":["cn-shanghai"]},{"allLogs":true,"allRegions":true,"prodCode":"sas"}],"type":"folder"},"listenRdChange":false,"logConfigs":{"cloud_siem_rds_audit_log":{"logCode":"cloud_siem_rds_audit_log","logStorePattern":"vpc-test","projectPattern":"vpc-test"}}}}
-	JsonConfig *string `json:"JsonConfig,omitempty" xml:"JsonConfig,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s BatchJobSubmitRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchJobSubmitRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchJobSubmitRequest) SetJsonConfig(v string) *BatchJobSubmitRequest {
-	s.JsonConfig = &v
-	return s
-}
-
-func (s *BatchJobSubmitRequest) SetRegionId(v string) *BatchJobSubmitRequest {
-	s.RegionId = &v
-	return s
-}
-
-type BatchJobSubmitResponseBody struct {
-	// The HTTP status code.
-	//
-	// example:
-	//
-	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
-	Data *BatchJobSubmitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// example:
-	//
-	// ServerError
-	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The returned message.
-	//
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 5B0DFF6D-XXXX
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s BatchJobSubmitResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchJobSubmitResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BatchJobSubmitResponseBody) SetCode(v int32) *BatchJobSubmitResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBody) SetData(v *BatchJobSubmitResponseBodyData) *BatchJobSubmitResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBody) SetErrCode(v string) *BatchJobSubmitResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBody) SetMessage(v string) *BatchJobSubmitResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBody) SetRequestId(v string) *BatchJobSubmitResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBody) SetSuccess(v bool) *BatchJobSubmitResponseBody {
-	s.Success = &v
-	return s
-}
-
-type BatchJobSubmitResponseBodyData struct {
-	// The ID of the task configuration.
-	//
-	// example:
-	//
-	// xxxx_folder_xxxx
-	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The list of task configure.
-	ConfigList []*BatchJobSubmitResponseBodyDataConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
-	// The id of task.
-	//
-	// example:
-	//
-	// BATCH_JOB_XXXXXX
-	SubmitId *string `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
-	// The number of existing tasks that are created to add logs within the data source.
-	//
-	// example:
-	//
-	// 20
-	TaskCount *int32 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
-}
-
-func (s BatchJobSubmitResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchJobSubmitResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *BatchJobSubmitResponseBodyData) SetConfigId(v string) *BatchJobSubmitResponseBodyData {
-	s.ConfigId = &v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBodyData) SetConfigList(v []*BatchJobSubmitResponseBodyDataConfigList) *BatchJobSubmitResponseBodyData {
-	s.ConfigList = v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBodyData) SetSubmitId(v string) *BatchJobSubmitResponseBodyData {
-	s.SubmitId = &v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBodyData) SetTaskCount(v int32) *BatchJobSubmitResponseBodyData {
-	s.TaskCount = &v
-	return s
-}
-
-type BatchJobSubmitResponseBodyDataConfigList struct {
-	// The list of product.
-	ProductList []*BatchJobSubmitResponseBodyDataConfigListProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Repeated"`
-	// The account id of aliyun.
-	//
-	// example:
-	//
-	// 123xxxxxx
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s BatchJobSubmitResponseBodyDataConfigList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchJobSubmitResponseBodyDataConfigList) GoString() string {
-	return s.String()
-}
-
-func (s *BatchJobSubmitResponseBodyDataConfigList) SetProductList(v []*BatchJobSubmitResponseBodyDataConfigListProductList) *BatchJobSubmitResponseBodyDataConfigList {
-	s.ProductList = v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBodyDataConfigList) SetUserId(v int64) *BatchJobSubmitResponseBodyDataConfigList {
-	s.UserId = &v
-	return s
-}
-
-type BatchJobSubmitResponseBodyDataConfigListProductList struct {
-	// The list of log.
-	LogList []*BatchJobSubmitResponseBodyDataConfigListProductListLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
-	// The code of the product.
-	//
-	// example:
-	//
-	// sas
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-}
-
-func (s BatchJobSubmitResponseBodyDataConfigListProductList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchJobSubmitResponseBodyDataConfigListProductList) GoString() string {
-	return s.String()
-}
-
-func (s *BatchJobSubmitResponseBodyDataConfigListProductList) SetLogList(v []*BatchJobSubmitResponseBodyDataConfigListProductListLogList) *BatchJobSubmitResponseBodyDataConfigListProductList {
-	s.LogList = v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBodyDataConfigListProductList) SetProductCode(v string) *BatchJobSubmitResponseBodyDataConfigListProductList {
-	s.ProductCode = &v
-	return s
-}
-
-type BatchJobSubmitResponseBodyDataConfigListProductListLogList struct {
-	// The error code returned.
-	//
-	// example:
-	//
-	// ProjectLogstoreNotFound
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The log code.
-	//
-	// example:
-	//
-	// cloud_siem_cfw_flow
-	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	// The pattern of SLS log store name.
-	//
-	// example:
-	//
-	// vpc-test-logstore
-	LogStoreNamePattern *string `json:"LogStoreNamePattern,omitempty" xml:"LogStoreNamePattern,omitempty"`
-	// The code of product.
-	//
-	// example:
-	//
-	// sas
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The pattern of SLS project name.
-	//
-	// example:
-	//
-	// vpc-test-project
-	ProjectNamePattern *string `json:"ProjectNamePattern,omitempty" xml:"ProjectNamePattern,omitempty"`
-	// The ID of the region in which the instance resides.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-}
-
-func (s BatchJobSubmitResponseBodyDataConfigListProductListLogList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchJobSubmitResponseBodyDataConfigListProductListLogList) GoString() string {
-	return s.String()
-}
-
-func (s *BatchJobSubmitResponseBodyDataConfigListProductListLogList) SetErrorCode(v string) *BatchJobSubmitResponseBodyDataConfigListProductListLogList {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBodyDataConfigListProductListLogList) SetLogCode(v string) *BatchJobSubmitResponseBodyDataConfigListProductListLogList {
-	s.LogCode = &v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBodyDataConfigListProductListLogList) SetLogStoreNamePattern(v string) *BatchJobSubmitResponseBodyDataConfigListProductListLogList {
-	s.LogStoreNamePattern = &v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBodyDataConfigListProductListLogList) SetProductCode(v string) *BatchJobSubmitResponseBodyDataConfigListProductListLogList {
-	s.ProductCode = &v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBodyDataConfigListProductListLogList) SetProjectNamePattern(v string) *BatchJobSubmitResponseBodyDataConfigListProductListLogList {
-	s.ProjectNamePattern = &v
-	return s
-}
-
-func (s *BatchJobSubmitResponseBodyDataConfigListProductListLogList) SetRegionCode(v string) *BatchJobSubmitResponseBodyDataConfigListProductListLogList {
-	s.RegionCode = &v
-	return s
-}
-
-type BatchJobSubmitResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *BatchJobSubmitResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s BatchJobSubmitResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchJobSubmitResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchJobSubmitResponse) SetHeaders(v map[string]*string) *BatchJobSubmitResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchJobSubmitResponse) SetStatusCode(v int32) *BatchJobSubmitResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *BatchJobSubmitResponse) SetBody(v *BatchJobSubmitResponseBody) *BatchJobSubmitResponse {
 	s.Body = v
 	return s
 }
@@ -2397,111 +1967,6 @@ func (s *DeleteDataSourceLogResponse) SetStatusCode(v int32) *DeleteDataSourceLo
 }
 
 func (s *DeleteDataSourceLogResponse) SetBody(v *DeleteDataSourceLogResponseBody) *DeleteDataSourceLogResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteUserRequest struct {
-	// The ID of the Alibaba Cloud account.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 123XXXXXXXX
-	AddedUserId *int64 `json:"AddedUserId,omitempty" xml:"AddedUserId,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DeleteUserRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteUserRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteUserRequest) SetAddedUserId(v int64) *DeleteUserRequest {
-	s.AddedUserId = &v
-	return s
-}
-
-func (s *DeleteUserRequest) SetRegionId(v string) *DeleteUserRequest {
-	s.RegionId = &v
-	return s
-}
-
-type DeleteUserResponseBody struct {
-	// Indicates whether the Alibaba Cloud account is removed. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteUserResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteUserResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteUserResponseBody) SetData(v bool) *DeleteUserResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DeleteUserResponseBody) SetRequestId(v string) *DeleteUserResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteUserResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteUserResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteUserResponse) SetHeaders(v map[string]*string) *DeleteUserResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteUserResponse) SetStatusCode(v int32) *DeleteUserResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserResponse {
 	s.Body = v
 	return s
 }
@@ -4073,18 +3538,34 @@ func (s *DescribeAlertTypeResponse) SetBody(v *DescribeAlertTypeResponseBody) *D
 }
 
 type DescribeAlertsRequest struct {
+	// example:
+	//
+	// 异常连接-TFTP恶意扫描
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The title of the alert.
 	//
 	// example:
 	//
 	// Unusual Logon-login_common_account
 	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	// example:
+	//
+	// 异常连接-TFTP恶意扫描
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The UUID of the alert.
 	//
 	// example:
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	// example:
+	//
+	// 异常连接-TFTP恶意扫描
+	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
+	// example:
+	//
+	// 异常连接-TFTP恶意扫描
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
 	// The page number. Pages start from page 1.
 	//
 	// This parameter is required.
@@ -4099,6 +3580,14 @@ type DescribeAlertsRequest struct {
 	//
 	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 异常连接-TFTP恶意扫描
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// 异常连接-TFTP恶意扫描
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 	// Specifies whether an attack is defended. Valid values:
 	//
 	// 	- 0: detected.
@@ -4109,6 +3598,10 @@ type DescribeAlertsRequest struct {
 	//
 	// 1
 	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
+	// example:
+	//
+	// 176555323***
+	LabelType *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
 	// The risk level. The value is a JSON array. Valid values:
 	//
 	// 	- serious: high
@@ -4183,13 +3676,33 @@ func (s DescribeAlertsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAlertsRequest) SetAlertName(v string) *DescribeAlertsRequest {
+	s.AlertName = &v
+	return s
+}
+
 func (s *DescribeAlertsRequest) SetAlertTitle(v string) *DescribeAlertsRequest {
 	s.AlertTitle = &v
 	return s
 }
 
+func (s *DescribeAlertsRequest) SetAlertType(v string) *DescribeAlertsRequest {
+	s.AlertType = &v
+	return s
+}
+
 func (s *DescribeAlertsRequest) SetAlertUuid(v string) *DescribeAlertsRequest {
 	s.AlertUuid = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetAssetId(v string) *DescribeAlertsRequest {
+	s.AssetId = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetAssetName(v string) *DescribeAlertsRequest {
+	s.AssetName = &v
 	return s
 }
 
@@ -4203,8 +3716,23 @@ func (s *DescribeAlertsRequest) SetEndTime(v int64) *DescribeAlertsRequest {
 	return s
 }
 
+func (s *DescribeAlertsRequest) SetEntityId(v string) *DescribeAlertsRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetEntityName(v string) *DescribeAlertsRequest {
+	s.EntityName = &v
+	return s
+}
+
 func (s *DescribeAlertsRequest) SetIsDefend(v string) *DescribeAlertsRequest {
 	s.IsDefend = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetLabelType(v string) *DescribeAlertsRequest {
+	s.LabelType = &v
 	return s
 }
 
@@ -4547,7 +4075,9 @@ type DescribeAlertsResponseBodyDataResponseData struct {
 	// example:
 	//
 	// 2021-01-06 16:37:29
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EntityList    *string `json:"EntityList,omitempty" xml:"EntityList,omitempty"`
+	ExtendContent *string `json:"ExtendContent,omitempty" xml:"ExtendContent,omitempty"`
 	// The time when the alert was received.
 	//
 	// example:
@@ -4618,6 +4148,10 @@ type DescribeAlertsResponseBodyDataResponseData struct {
 	//
 	// 176555323***
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// example:
+	//
+	// 176555323***
+	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
 func (s DescribeAlertsResponseBodyDataResponseData) String() string {
@@ -4733,6 +4267,16 @@ func (s *DescribeAlertsResponseBodyDataResponseData) SetEndTime(v string) *Descr
 	return s
 }
 
+func (s *DescribeAlertsResponseBodyDataResponseData) SetEntityList(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.EntityList = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetExtendContent(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.ExtendContent = &v
+	return s
+}
+
 func (s *DescribeAlertsResponseBodyDataResponseData) SetGmtCreate(v string) *DescribeAlertsResponseBodyDataResponseData {
 	s.GmtCreate = &v
 	return s
@@ -4785,6 +4329,11 @@ func (s *DescribeAlertsResponseBodyDataResponseData) SetStartTime(v string) *Des
 
 func (s *DescribeAlertsResponseBodyDataResponseData) SetSubUserId(v int64) *DescribeAlertsResponseBodyDataResponseData {
 	s.SubUserId = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetSubUserName(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.SubUserName = &v
 	return s
 }
 
@@ -4868,6 +4417,10 @@ type DescribeAlertsCountRequest struct {
 	//
 	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// bySrcProd
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
 	// 	- cn-hangzhou: Your assets reside in regions in China.
@@ -4912,6 +4465,11 @@ func (s DescribeAlertsCountRequest) GoString() string {
 
 func (s *DescribeAlertsCountRequest) SetEndTime(v int64) *DescribeAlertsCountRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAlertsCountRequest) SetQueryType(v string) *DescribeAlertsCountRequest {
+	s.QueryType = &v
 	return s
 }
 
@@ -5011,7 +4569,8 @@ type DescribeAlertsCountResponseBodyData struct {
 	// example:
 	//
 	// 75
-	All *int64 `json:"All,omitempty" xml:"All,omitempty"`
+	All      *int64            `json:"All,omitempty" xml:"All,omitempty"`
+	CountMap map[string]*int64 `json:"CountMap,omitempty" xml:"CountMap,omitempty"`
 	// The number of high-risk alerts.
 	//
 	// example:
@@ -5048,6 +4607,11 @@ func (s DescribeAlertsCountResponseBodyData) GoString() string {
 
 func (s *DescribeAlertsCountResponseBodyData) SetAll(v int64) *DescribeAlertsCountResponseBodyData {
 	s.All = &v
+	return s
+}
+
+func (s *DescribeAlertsCountResponseBodyData) SetCountMap(v map[string]*int64) *DescribeAlertsCountResponseBodyData {
+	s.CountMap = v
 	return s
 }
 
@@ -5109,12 +4673,20 @@ type DescribeAlertsWithEntityRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 1577808000000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the entity.
 	//
 	// example:
 	//
 	// 123456789
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// 123456789
+	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
 	// The UUID of the event.
 	//
 	// example:
@@ -5161,6 +4733,10 @@ type DescribeAlertsWithEntityRequest struct {
 	//
 	// 577bbf90-a770-44a7-8154-586aa2d318fa
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
+	// example:
+	//
+	// 1577808000000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeAlertsWithEntityRequest) String() string {
@@ -5176,8 +4752,18 @@ func (s *DescribeAlertsWithEntityRequest) SetCurrentPage(v int32) *DescribeAlert
 	return s
 }
 
+func (s *DescribeAlertsWithEntityRequest) SetEndTime(v int64) *DescribeAlertsWithEntityRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *DescribeAlertsWithEntityRequest) SetEntityId(v int64) *DescribeAlertsWithEntityRequest {
 	s.EntityId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityRequest) SetEntityUuid(v string) *DescribeAlertsWithEntityRequest {
+	s.EntityUuid = &v
 	return s
 }
 
@@ -5208,6 +4794,11 @@ func (s *DescribeAlertsWithEntityRequest) SetRoleType(v int32) *DescribeAlertsWi
 
 func (s *DescribeAlertsWithEntityRequest) SetSophonTaskId(v string) *DescribeAlertsWithEntityRequest {
 	s.SophonTaskId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityRequest) SetStartTime(v int64) *DescribeAlertsWithEntityRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -5510,7 +5101,8 @@ type DescribeAlertsWithEntityResponseBodyDataResponseData struct {
 	// example:
 	//
 	// 2021-01-06 16:37:29
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EntityList *string `json:"EntityList,omitempty" xml:"EntityList,omitempty"`
 	// The time when the alert was received.
 	//
 	// example:
@@ -5581,6 +5173,10 @@ type DescribeAlertsWithEntityResponseBodyDataResponseData struct {
 	//
 	// 176555323***
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// example:
+	//
+	// 176555323***
+	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
 func (s DescribeAlertsWithEntityResponseBodyDataResponseData) String() string {
@@ -5696,6 +5292,11 @@ func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetEndTime(v stri
 	return s
 }
 
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetEntityList(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.EntityList = &v
+	return s
+}
+
 func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetGmtCreate(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
 	s.GmtCreate = &v
 	return s
@@ -5748,6 +5349,11 @@ func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetStartTime(v st
 
 func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetSubUserId(v int64) *DescribeAlertsWithEntityResponseBodyDataResponseData {
 	s.SubUserId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetSubUserName(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.SubUserName = &v
 	return s
 }
 
@@ -5825,12 +5431,28 @@ func (s *DescribeAlertsWithEntityResponse) SetBody(v *DescribeAlertsWithEntityRe
 }
 
 type DescribeAlertsWithEventRequest struct {
+	// example:
+	//
+	// 异常连接-TFTP恶意扫描
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The title of the alert.
 	//
 	// example:
 	//
 	// Scan-Try SNMP weak password
 	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	// example:
+	//
+	// 异常连接-TFTP恶意扫描
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// example:
+	//
+	// 异常连接-TFTP恶意扫描
+	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
+	// example:
+	//
+	// 异常连接-TFTP恶意扫描
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
 	// The page number. Pages start from page 1.
 	//
 	// This parameter is required.
@@ -5839,6 +5461,18 @@ type DescribeAlertsWithEventRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 1577808000000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 异常连接-TFTP恶意扫描
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// 异常连接-TFTP恶意扫描
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
 	// The ID of the event.
 	//
 	// example:
@@ -5907,6 +5541,10 @@ type DescribeAlertsWithEventRequest struct {
 	//
 	// sas
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 1577808000000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The ID of the account within which the alert is generated.
 	//
 	// example:
@@ -5923,13 +5561,48 @@ func (s DescribeAlertsWithEventRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAlertsWithEventRequest) SetAlertName(v string) *DescribeAlertsWithEventRequest {
+	s.AlertName = &v
+	return s
+}
+
 func (s *DescribeAlertsWithEventRequest) SetAlertTitle(v string) *DescribeAlertsWithEventRequest {
 	s.AlertTitle = &v
 	return s
 }
 
+func (s *DescribeAlertsWithEventRequest) SetAlertType(v string) *DescribeAlertsWithEventRequest {
+	s.AlertType = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetAssetId(v string) *DescribeAlertsWithEventRequest {
+	s.AssetId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetAssetName(v string) *DescribeAlertsWithEventRequest {
+	s.AssetName = &v
+	return s
+}
+
 func (s *DescribeAlertsWithEventRequest) SetCurrentPage(v int32) *DescribeAlertsWithEventRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetEndTime(v int64) *DescribeAlertsWithEventRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetEntityId(v string) *DescribeAlertsWithEventRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetEntityName(v string) *DescribeAlertsWithEventRequest {
+	s.EntityName = &v
 	return s
 }
 
@@ -5970,6 +5643,11 @@ func (s *DescribeAlertsWithEventRequest) SetRoleType(v int32) *DescribeAlertsWit
 
 func (s *DescribeAlertsWithEventRequest) SetSource(v string) *DescribeAlertsWithEventRequest {
 	s.Source = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetStartTime(v int64) *DescribeAlertsWithEventRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -6283,7 +5961,8 @@ type DescribeAlertsWithEventResponseBodyDataResponseData struct {
 	// example:
 	//
 	// [{&quot;entity_user_id&quot;:&quot;198921674491****&quot;,&quot;entity_account_id&quot;:&quot;N/A&quot;,&quot;entity_uuid&quot;:&quot;6245f979d5dd9ef8dd19bdc72228****&quot;,&quot;entity_type&quot;:&quot;host&quot;,&quot;entity_name&quot;:&quot;zhh-test-20240409&quot;,&quot;is_comprised&quot;:&quot;1&quot;,&quot;os_type&quot;:&quot;linux&quot;,&quot;entity_id&quot;:&quot;a88f44dd-b8d4-4ded-831c-77a4835****&quot;,&quot;host_uuid&quot;:&quot;a88f44dd-b8d4-4ded-831c-77a4835****&quot;,&quot;host_name&quot;:&quot;zhh-test-2024****&quot;}]
-	EntityList *string `json:"EntityList,omitempty" xml:"EntityList,omitempty"`
+	EntityList    *string `json:"EntityList,omitempty" xml:"EntityList,omitempty"`
+	ExtendContent *string `json:"ExtendContent,omitempty" xml:"ExtendContent,omitempty"`
 	// The time when the alert was received.
 	//
 	// example:
@@ -6354,6 +6033,10 @@ type DescribeAlertsWithEventResponseBodyDataResponseData struct {
 	//
 	// 176555323***
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// example:
+	//
+	// 176555323***
+	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
 }
 
 func (s DescribeAlertsWithEventResponseBodyDataResponseData) String() string {
@@ -6474,6 +6157,11 @@ func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetEntityList(v st
 	return s
 }
 
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetExtendContent(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.ExtendContent = &v
+	return s
+}
+
 func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetGmtCreate(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
 	s.GmtCreate = &v
 	return s
@@ -6526,6 +6214,11 @@ func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetStartTime(v str
 
 func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetSubUserId(v int64) *DescribeAlertsWithEventResponseBodyDataResponseData {
 	s.SubUserId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetSubUserName(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.SubUserName = &v
 	return s
 }
 
@@ -6598,466 +6291,6 @@ func (s *DescribeAlertsWithEventResponse) SetStatusCode(v int32) *DescribeAlerts
 }
 
 func (s *DescribeAlertsWithEventResponse) SetBody(v *DescribeAlertsWithEventResponseBody) *DescribeAlertsWithEventResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeAttackTimeLineRequest struct {
-	// The name of the asset.
-	//
-	// example:
-	//
-	// zsw-agentless-centos****
-	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	// The end of the time range to query. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1577808000000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the event.
-	//
-	// example:
-	//
-	// 85ea4241-798f-4684-a876-65d4f0c3****
-	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
-	//
-	// example:
-	//
-	// 113091674488****
-	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
-	//
-	// - 0: the current Alibaba Cloud account
-	//
-	// - 1: the global account
-	//
-	// example:
-	//
-	// 1
-	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The beginning of the time range to query. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1577803000000
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeAttackTimeLineRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAttackTimeLineRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAttackTimeLineRequest) SetAssetName(v string) *DescribeAttackTimeLineRequest {
-	s.AssetName = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineRequest) SetEndTime(v int64) *DescribeAttackTimeLineRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineRequest) SetIncidentUuid(v string) *DescribeAttackTimeLineRequest {
-	s.IncidentUuid = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineRequest) SetRegionId(v string) *DescribeAttackTimeLineRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineRequest) SetRoleFor(v int64) *DescribeAttackTimeLineRequest {
-	s.RoleFor = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineRequest) SetRoleType(v int32) *DescribeAttackTimeLineRequest {
-	s.RoleType = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineRequest) SetStartTime(v int64) *DescribeAttackTimeLineRequest {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeAttackTimeLineResponseBody struct {
-	// The HTTP status code.
-	//
-	// example:
-	//
-	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
-	//
-	// example:
-	//
-	// 123456
-	Data []*DescribeAttackTimeLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
-	//
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeAttackTimeLineResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAttackTimeLineResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAttackTimeLineResponseBody) SetCode(v int32) *DescribeAttackTimeLineResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBody) SetData(v []*DescribeAttackTimeLineResponseBodyData) *DescribeAttackTimeLineResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBody) SetMessage(v string) *DescribeAttackTimeLineResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBody) SetRequestId(v string) *DescribeAttackTimeLineResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBody) SetSuccess(v bool) *DescribeAttackTimeLineResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeAttackTimeLineResponseBodyData struct {
-	// The risk level. Valid values:
-	//
-	// 	- serious: high
-	//
-	// 	- suspicious: medium
-	//
-	// 	- remind: low
-	//
-	// example:
-	//
-	// remind
-	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
-	// The alert name in English.
-	//
-	// example:
-	//
-	// Try SNMP weak password
-	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	// The internal code of the alert name.
-	//
-	// example:
-	//
-	// security_event_config.event_name.webshell
-	AlertNameCode *string `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
-	// The alert name in English.
-	//
-	// example:
-	//
-	// Try SNMP weak password
-	AlertNameEn *string `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
-	// The source of the alert.
-	//
-	// example:
-	//
-	// sas
-	AlertSrcProd *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
-	// The sub-module of the alert source.
-	//
-	// example:
-	//
-	// waf
-	AlertSrcProdModule *string `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
-	// The time when the alert was triggered.
-	//
-	// example:
-	//
-	// 2021-01-06 16:37:29
-	AlertTime *int64 `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
-	// The title of the alert.
-	//
-	// example:
-	//
-	// Scan-Try SNMP weak password
-	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
-	// The alert title in English.
-	//
-	// example:
-	//
-	// Scan-Try SNMP weak password
-	AlertTitleEn *string `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
-	// The type of the alert.
-	//
-	// example:
-	//
-	// Scan
-	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The internal code of the alert type.
-	//
-	// example:
-	//
-	// security_event_config.event_name.webshellName
-	AlertTypeCode *string `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
-	// The alert type in English.
-	//
-	// example:
-	//
-	// Scan
-	AlertTypeEn *string `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
-	// The UUID of the alert
-	//
-	// example:
-	//
-	// sas_71e24437d2797ce8fc59692905a4****
-	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	// The logical ID of the asset.
-	//
-	// example:
-	//
-	// 0616caeb-acb8-45e0-8520-4ee5fbe251f0
-	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	// The details of the asset.
-	//
-	// example:
-	//
-	// [
-	//
-	//       {
-	//
-	//             "is_main_asset": "1",
-	//
-	//             "asset_name": "47.245.*",
-	//
-	//             "port": "22",
-	//
-	//             "ip": "47.245.*",
-	//
-	//             "asset_type": "ip",
-	//
-	//             "location": "ap-southeast-1",
-	//
-	//             "asset_id": "47.245.*",
-	//
-	//             "net_connect_dir": "in"
-	//
-	//       }
-	//
-	// ]
-	AssetList *string `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
-	// The name of the asset.
-	//
-	// example:
-	//
-	// zsw-agentless-centos****
-	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	// The tag of the ATT\\&CK attack.
-	//
-	// example:
-	//
-	// T1595.002 Vulnerability Scanning
-	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	// The cloud code. Valid values:
-	//
-	// 	- aliyun: Alibaba Cloud
-	//
-	// 	- qcloud: Tencent Cloud
-	//
-	// 	- hcloud: Huawei Cloud
-	//
-	// example:
-	//
-	// aliyun
-	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The UUID of the event.
-	//
-	// example:
-	//
-	// 85ea4241-798f-4684-a876-65d4f0c3****
-	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The time when the alert was recorded.
-	//
-	// example:
-	//
-	// 2021-01-06 16:37:29
-	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
-}
-
-func (s DescribeAttackTimeLineResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAttackTimeLineResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAlertLevel(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AlertLevel = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAlertName(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AlertName = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAlertNameCode(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AlertNameCode = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAlertNameEn(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AlertNameEn = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAlertSrcProd(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AlertSrcProd = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAlertSrcProdModule(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AlertSrcProdModule = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAlertTime(v int64) *DescribeAttackTimeLineResponseBodyData {
-	s.AlertTime = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAlertTitle(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AlertTitle = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAlertTitleEn(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AlertTitleEn = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAlertType(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AlertType = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAlertTypeCode(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AlertTypeCode = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAlertTypeEn(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AlertTypeEn = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAlertUuid(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AlertUuid = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAssetId(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AssetId = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAssetList(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AssetList = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAssetName(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AssetName = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetAttCk(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.AttCk = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetCloudCode(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.CloudCode = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetIncidentUuid(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.IncidentUuid = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponseBodyData) SetLogTime(v string) *DescribeAttackTimeLineResponseBodyData {
-	s.LogTime = &v
-	return s
-}
-
-type DescribeAttackTimeLineResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeAttackTimeLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeAttackTimeLineResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAttackTimeLineResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAttackTimeLineResponse) SetHeaders(v map[string]*string) *DescribeAttackTimeLineResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponse) SetStatusCode(v int32) *DescribeAttackTimeLineResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeAttackTimeLineResponse) SetBody(v *DescribeAttackTimeLineResponseBody) *DescribeAttackTimeLineResponse {
 	s.Body = v
 	return s
 }
@@ -7943,6 +7176,10 @@ func (s *DescribeAutomateResponseConfigPlayBooksResponse) SetBody(v *DescribeAut
 }
 
 type DescribeCloudSiemAssetsRequest struct {
+	// example:
+	//
+	// test123
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
 	// The type of the asset. Valid values:
 	//
 	// 	- ip
@@ -7961,6 +7198,10 @@ type DescribeCloudSiemAssetsRequest struct {
 	//
 	// ip
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// example:
+	//
+	// 123456-2222-3333-5555-3435345****
+	AssetUuid *string `json:"AssetUuid,omitempty" xml:"AssetUuid,omitempty"`
 	// The page number. Pages start from page 1.
 	//
 	// This parameter is required.
@@ -8019,8 +7260,18 @@ func (s DescribeCloudSiemAssetsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeCloudSiemAssetsRequest) SetAssetName(v string) *DescribeCloudSiemAssetsRequest {
+	s.AssetName = &v
+	return s
+}
+
 func (s *DescribeCloudSiemAssetsRequest) SetAssetType(v string) *DescribeCloudSiemAssetsRequest {
 	s.AssetType = &v
+	return s
+}
+
+func (s *DescribeCloudSiemAssetsRequest) SetAssetUuid(v string) *DescribeCloudSiemAssetsRequest {
+	s.AssetUuid = &v
 	return s
 }
 
@@ -8795,7 +8046,8 @@ type DescribeCloudSiemEventDetailResponseBodyData struct {
 	// example:
 	//
 	// ["T1595.002 Vulnerability Scanning"]
-	AttCkLabels []*string `json:"AttCkLabels,omitempty" xml:"AttCkLabels,omitempty" type:"Repeated"`
+	AttCkLabels []*string                                                  `json:"AttCkLabels,omitempty" xml:"AttCkLabels,omitempty" type:"Repeated"`
+	AttckStages []*DescribeCloudSiemEventDetailResponseBodyDataAttckStages `json:"AttckStages,omitempty" xml:"AttckStages,omitempty" type:"Repeated"`
 	// The source of the alert.
 	//
 	// example:
@@ -8844,6 +8096,7 @@ type DescribeCloudSiemEventDetailResponseBodyData struct {
 	//
 	// Multiple type of alerts, including Miner Network, Command line download and run malicious files, Backdoor Process, etc
 	IncidentNameEn *string `json:"IncidentNameEn,omitempty" xml:"IncidentNameEn,omitempty"`
+	IncidentType   *string `json:"IncidentType,omitempty" xml:"IncidentType,omitempty"`
 	// The UUID of the event.
 	//
 	// example:
@@ -8858,6 +8111,7 @@ type DescribeCloudSiemEventDetailResponseBodyData struct {
 	//
 	// dealed
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The status of the event. Valid values:
 	//
 	// 	- 0: not handled
@@ -8920,6 +8174,11 @@ func (s *DescribeCloudSiemEventDetailResponseBodyData) SetAttCkLabels(v []*strin
 	return s
 }
 
+func (s *DescribeCloudSiemEventDetailResponseBodyData) SetAttckStages(v []*DescribeCloudSiemEventDetailResponseBodyDataAttckStages) *DescribeCloudSiemEventDetailResponseBodyData {
+	s.AttckStages = v
+	return s
+}
+
 func (s *DescribeCloudSiemEventDetailResponseBodyData) SetDataSources(v []*string) *DescribeCloudSiemEventDetailResponseBodyData {
 	s.DataSources = v
 	return s
@@ -8960,6 +8219,11 @@ func (s *DescribeCloudSiemEventDetailResponseBodyData) SetIncidentNameEn(v strin
 	return s
 }
 
+func (s *DescribeCloudSiemEventDetailResponseBodyData) SetIncidentType(v string) *DescribeCloudSiemEventDetailResponseBodyData {
+	s.IncidentType = &v
+	return s
+}
+
 func (s *DescribeCloudSiemEventDetailResponseBodyData) SetIncidentUuid(v string) *DescribeCloudSiemEventDetailResponseBodyData {
 	s.IncidentUuid = &v
 	return s
@@ -8975,6 +8239,11 @@ func (s *DescribeCloudSiemEventDetailResponseBodyData) SetRemark(v string) *Desc
 	return s
 }
 
+func (s *DescribeCloudSiemEventDetailResponseBodyData) SetRuleId(v string) *DescribeCloudSiemEventDetailResponseBodyData {
+	s.RuleId = &v
+	return s
+}
+
 func (s *DescribeCloudSiemEventDetailResponseBodyData) SetStatus(v int32) *DescribeCloudSiemEventDetailResponseBodyData {
 	s.Status = &v
 	return s
@@ -8987,6 +8256,35 @@ func (s *DescribeCloudSiemEventDetailResponseBodyData) SetThreatLevel(v string) 
 
 func (s *DescribeCloudSiemEventDetailResponseBodyData) SetThreatScore(v float32) *DescribeCloudSiemEventDetailResponseBodyData {
 	s.ThreatScore = &v
+	return s
+}
+
+type DescribeCloudSiemEventDetailResponseBodyDataAttckStages struct {
+	AlertNum   *int32  `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
+	TacticId   *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
+	TacticName *string `json:"TacticName,omitempty" xml:"TacticName,omitempty"`
+}
+
+func (s DescribeCloudSiemEventDetailResponseBodyDataAttckStages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudSiemEventDetailResponseBodyDataAttckStages) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudSiemEventDetailResponseBodyDataAttckStages) SetAlertNum(v int32) *DescribeCloudSiemEventDetailResponseBodyDataAttckStages {
+	s.AlertNum = &v
+	return s
+}
+
+func (s *DescribeCloudSiemEventDetailResponseBodyDataAttckStages) SetTacticId(v string) *DescribeCloudSiemEventDetailResponseBodyDataAttckStages {
+	s.TacticId = &v
+	return s
+}
+
+func (s *DescribeCloudSiemEventDetailResponseBodyDataAttckStages) SetTacticName(v string) *DescribeCloudSiemEventDetailResponseBodyDataAttckStages {
+	s.TacticName = &v
 	return s
 }
 
@@ -9040,6 +8338,10 @@ type DescribeCloudSiemEventsRequest struct {
 	//
 	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 6c740667-80b2-476d-8924-2e706feb****
+	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
 	// The name of the event.
 	//
 	// example:
@@ -9160,6 +8462,11 @@ func (s *DescribeCloudSiemEventsRequest) SetCurrentPage(v int32) *DescribeCloudS
 
 func (s *DescribeCloudSiemEventsRequest) SetEndTime(v int64) *DescribeCloudSiemEventsRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeCloudSiemEventsRequest) SetEntityUuid(v string) *DescribeCloudSiemEventsRequest {
+	s.EntityUuid = &v
 	return s
 }
 
@@ -9381,7 +8688,8 @@ type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	// example:
 	//
 	// ["T1595.002 Vulnerability Scanning"]
-	AttCkLabels []*string `json:"AttCkLabels,omitempty" xml:"AttCkLabels,omitempty" type:"Repeated"`
+	AttCkLabels []*string                                                         `json:"AttCkLabels,omitempty" xml:"AttCkLabels,omitempty" type:"Repeated"`
+	AttckStages []*DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages `json:"AttckStages,omitempty" xml:"AttckStages,omitempty" type:"Repeated"`
 	// The sources of the alert.
 	//
 	// example:
@@ -9430,6 +8738,7 @@ type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	//
 	// Multiple type of alerts, including Miner Network, Command line download and run malicious files, Backdoor Process, etc
 	IncidentNameEn *string `json:"IncidentNameEn,omitempty" xml:"IncidentNameEn,omitempty"`
+	IncidentType   *string `json:"IncidentType,omitempty" xml:"IncidentType,omitempty"`
 	// The UUID of the event.
 	//
 	// example:
@@ -9448,6 +8757,7 @@ type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	//
 	// dealed
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The status of the event. Valid values:
 	//
 	// 	- 0: unhandled.
@@ -9510,6 +8820,11 @@ func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) SetAttCkLabels(v [
 	return s
 }
 
+func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) SetAttckStages(v []*DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages) *DescribeCloudSiemEventsResponseBodyDataResponseData {
+	s.AttckStages = v
+	return s
+}
+
 func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) SetDataSources(v []*string) *DescribeCloudSiemEventsResponseBodyDataResponseData {
 	s.DataSources = v
 	return s
@@ -9550,6 +8865,11 @@ func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) SetIncidentNameEn(
 	return s
 }
 
+func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) SetIncidentType(v string) *DescribeCloudSiemEventsResponseBodyDataResponseData {
+	s.IncidentType = &v
+	return s
+}
+
 func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) SetIncidentUuid(v string) *DescribeCloudSiemEventsResponseBodyDataResponseData {
 	s.IncidentUuid = &v
 	return s
@@ -9565,6 +8885,11 @@ func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) SetRemark(v string
 	return s
 }
 
+func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) SetRuleId(v string) *DescribeCloudSiemEventsResponseBodyDataResponseData {
+	s.RuleId = &v
+	return s
+}
+
 func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) SetStatus(v int32) *DescribeCloudSiemEventsResponseBodyDataResponseData {
 	s.Status = &v
 	return s
@@ -9577,6 +8902,35 @@ func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) SetThreatLevel(v s
 
 func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) SetThreatScore(v float32) *DescribeCloudSiemEventsResponseBodyDataResponseData {
 	s.ThreatScore = &v
+	return s
+}
+
+type DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages struct {
+	AlertNum   *int32  `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
+	TacticId   *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
+	TacticName *string `json:"TacticName,omitempty" xml:"TacticName,omitempty"`
+}
+
+func (s DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages) SetAlertNum(v int32) *DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages {
+	s.AlertNum = &v
+	return s
+}
+
+func (s *DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages) SetTacticId(v string) *DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages {
+	s.TacticId = &v
+	return s
+}
+
+func (s *DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages) SetTacticName(v string) *DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages {
+	s.TacticName = &v
 	return s
 }
 
@@ -9605,120 +8959,6 @@ func (s *DescribeCloudSiemEventsResponse) SetStatusCode(v int32) *DescribeCloudS
 }
 
 func (s *DescribeCloudSiemEventsResponse) SetBody(v *DescribeCloudSiemEventsResponseBody) *DescribeCloudSiemEventsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeCsImportedProdStatusByUserRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The code of the cloud service.
-	//
-	// example:
-	//
-	// sas
-	SourceLogProd *string `json:"SourceLogProd,omitempty" xml:"SourceLogProd,omitempty"`
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 123XXXXXX
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s DescribeCsImportedProdStatusByUserRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCsImportedProdStatusByUserRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCsImportedProdStatusByUserRequest) SetRegionId(v string) *DescribeCsImportedProdStatusByUserRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeCsImportedProdStatusByUserRequest) SetSourceLogProd(v string) *DescribeCsImportedProdStatusByUserRequest {
-	s.SourceLogProd = &v
-	return s
-}
-
-func (s *DescribeCsImportedProdStatusByUserRequest) SetUserId(v int64) *DescribeCsImportedProdStatusByUserRequest {
-	s.UserId = &v
-	return s
-}
-
-type DescribeCsImportedProdStatusByUserResponseBody struct {
-	// Indicates whether the cloud service is activated for the account. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeCsImportedProdStatusByUserResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCsImportedProdStatusByUserResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCsImportedProdStatusByUserResponseBody) SetData(v bool) *DescribeCsImportedProdStatusByUserResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DescribeCsImportedProdStatusByUserResponseBody) SetRequestId(v string) *DescribeCsImportedProdStatusByUserResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeCsImportedProdStatusByUserResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeCsImportedProdStatusByUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeCsImportedProdStatusByUserResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeCsImportedProdStatusByUserResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeCsImportedProdStatusByUserResponse) SetHeaders(v map[string]*string) *DescribeCsImportedProdStatusByUserResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeCsImportedProdStatusByUserResponse) SetStatusCode(v int32) *DescribeCsImportedProdStatusByUserResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeCsImportedProdStatusByUserResponse) SetBody(v *DescribeCsImportedProdStatusByUserResponseBody) *DescribeCsImportedProdStatusByUserResponse {
 	s.Body = v
 	return s
 }
@@ -11023,6 +10263,10 @@ type DescribeDisposeAndPlaybookRequest struct {
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
+	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
 	// The UUID of the event.
 	//
 	// example:
@@ -11078,6 +10322,11 @@ func (s *DescribeDisposeAndPlaybookRequest) SetCurrentPage(v int32) *DescribeDis
 
 func (s *DescribeDisposeAndPlaybookRequest) SetEntityType(v string) *DescribeDisposeAndPlaybookRequest {
 	s.EntityType = &v
+	return s
+}
+
+func (s *DescribeDisposeAndPlaybookRequest) SetEntityUuid(v string) *DescribeDisposeAndPlaybookRequest {
+	s.EntityUuid = &v
 	return s
 }
 
@@ -11270,6 +10519,10 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseData struct {
 	//
 	// {"file_path": "c:/www/leixi.jsp","file_hash": "aa0ca926ad948cd820e0a3d9a18c09d0","host_uuid": "efed2cf7-0b77-45d9-a97b-d2cf246bcbb3","malware_type": "${aliyun.siem.sas.alert_tag.webshell}","host_name": "launch-advisor-20230531"}
 	EntityInfo map[string]interface{} `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
+	// example:
+	//
+	// ip
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The key-value pairs each of which consists of opcode and oplevel.
 	//
 	// example:
@@ -11324,6 +10577,11 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) SetEntityInfo(v
 	return s
 }
 
+func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) SetEntityType(v string) *DescribeDisposeAndPlaybookResponseBodyDataResponseData {
+	s.EntityType = &v
+	return s
+}
+
 func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) SetOpcodeMap(v map[string]*string) *DescribeDisposeAndPlaybookResponseBodyDataResponseData {
 	s.OpcodeMap = v
 	return s
@@ -11345,6 +10603,7 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) SetScope(v []in
 }
 
 type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
+	Available *string `json:"Available,omitempty" xml:"Available,omitempty"`
 	// The playbook description.
 	//
 	// example:
@@ -11387,6 +10646,10 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
 	//
 	// {"opCode":"3"}
 	TaskConfig *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
+	// example:
+	//
+	// kill_process_isolate_file
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	// Indicates whether the playbook is intended for Web Application Firewall (WAF). Valid values:
 	//
 	// 	- true
@@ -11405,6 +10668,11 @@ func (s DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) Stri
 
 func (s DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) SetAvailable(v string) *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList {
+	s.Available = &v
+	return s
 }
 
 func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) SetDescription(v string) *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList {
@@ -11439,6 +10707,11 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) Set
 
 func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) SetTaskConfig(v string) *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList {
 	s.TaskConfig = &v
+	return s
+}
+
+func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) SetUuid(v string) *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList {
+	s.Uuid = &v
 	return s
 }
 
@@ -12695,384 +11968,6 @@ func (s *DescribeImportedLogCountResponse) SetBody(v *DescribeImportedLogCountRe
 	return s
 }
 
-type DescribeJobStatusRequest struct {
-	// The region where the service resides. Default value: cn-shanghai.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the collection task. The ID is the value of the submitId parameter in the response of the [BatchJobSubmit](https://next.api.aliyun.com/api/cloud-siem/2022-06-16/BatchSubmitJob?lang=JAVA\\&useCommon=true) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// xxxxx_folder_xxxxxx
-	SubmitId *string `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
-}
-
-func (s DescribeJobStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeJobStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeJobStatusRequest) SetRegionId(v string) *DescribeJobStatusRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeJobStatusRequest) SetSubmitId(v string) *DescribeJobStatusRequest {
-	s.SubmitId = &v
-	return s
-}
-
-type DescribeJobStatusResponseBody struct {
-	// The HTTP status code. If the request is successful, 200 is returned.
-	//
-	// example:
-	//
-	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
-	Data *DescribeJobStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. If the request is successful, the parameter is empty. If the request fails, an error code is returned.
-	//
-	// example:
-	//
-	// ServerError
-	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message. If the request is successful, the parameter is empty. If the request fails, the reason for the failure is returned.
-	//
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 5B0DFF6D-XXXX
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeJobStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeJobStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeJobStatusResponseBody) SetCode(v int32) *DescribeJobStatusResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBody) SetData(v *DescribeJobStatusResponseBodyData) *DescribeJobStatusResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBody) SetErrCode(v string) *DescribeJobStatusResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBody) SetMessage(v string) *DescribeJobStatusResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBody) SetRequestId(v string) *DescribeJobStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBody) SetSuccess(v bool) *DescribeJobStatusResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeJobStatusResponseBodyData struct {
-	// The ID of the task configuration.
-	//
-	// example:
-	//
-	// xxxx_folder_xxxx
-	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The list of failed tasks. The value contains the Alibaba Cloud account and service code of each failed task.
-	ErrTaskList []*DescribeJobStatusResponseBodyDataErrTaskList `json:"ErrTaskList,omitempty" xml:"ErrTaskList,omitempty" type:"Repeated"`
-	// The total number of tasks that fail.
-	//
-	// example:
-	//
-	// 8
-	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The total number of tasks that are complete.
-	//
-	// example:
-	//
-	// 52
-	FinishCount *int32 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
-	// The ID of the resource directory folder.
-	//
-	// example:
-	//
-	// fd-xxxxx
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The total number of collection tasks that are created.
-	//
-	// example:
-	//
-	// 60
-	TaskCount *int32 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
-	// The status of the submitted task.
-	//
-	// Valid values:
-	//
-	// 	- submit
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- finish
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// finish
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-}
-
-func (s DescribeJobStatusResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeJobStatusResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeJobStatusResponseBodyData) SetConfigId(v string) *DescribeJobStatusResponseBodyData {
-	s.ConfigId = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBodyData) SetErrTaskList(v []*DescribeJobStatusResponseBodyDataErrTaskList) *DescribeJobStatusResponseBodyData {
-	s.ErrTaskList = v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBodyData) SetFailedCount(v int32) *DescribeJobStatusResponseBodyData {
-	s.FailedCount = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBodyData) SetFinishCount(v int32) *DescribeJobStatusResponseBodyData {
-	s.FinishCount = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBodyData) SetFolderId(v string) *DescribeJobStatusResponseBodyData {
-	s.FolderId = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBodyData) SetTaskCount(v int32) *DescribeJobStatusResponseBodyData {
-	s.TaskCount = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBodyData) SetTaskStatus(v string) *DescribeJobStatusResponseBodyData {
-	s.TaskStatus = &v
-	return s
-}
-
-type DescribeJobStatusResponseBodyDataErrTaskList struct {
-	// The list of services in failed tasks.
-	ProductList []*DescribeJobStatusResponseBodyDataErrTaskListProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Repeated"`
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 123XXXXX
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s DescribeJobStatusResponseBodyDataErrTaskList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeJobStatusResponseBodyDataErrTaskList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeJobStatusResponseBodyDataErrTaskList) SetProductList(v []*DescribeJobStatusResponseBodyDataErrTaskListProductList) *DescribeJobStatusResponseBodyDataErrTaskList {
-	s.ProductList = v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBodyDataErrTaskList) SetUserId(v int64) *DescribeJobStatusResponseBodyDataErrTaskList {
-	s.UserId = &v
-	return s
-}
-
-type DescribeJobStatusResponseBodyDataErrTaskListProductList struct {
-	// The list of logs that fail to be collected.
-	LogList []*DescribeJobStatusResponseBodyDataErrTaskListProductListLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
-	// The code of the service.
-	//
-	// example:
-	//
-	// sas
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-}
-
-func (s DescribeJobStatusResponseBodyDataErrTaskListProductList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeJobStatusResponseBodyDataErrTaskListProductList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeJobStatusResponseBodyDataErrTaskListProductList) SetLogList(v []*DescribeJobStatusResponseBodyDataErrTaskListProductListLogList) *DescribeJobStatusResponseBodyDataErrTaskListProductList {
-	s.LogList = v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBodyDataErrTaskListProductList) SetProductCode(v string) *DescribeJobStatusResponseBodyDataErrTaskListProductList {
-	s.ProductCode = &v
-	return s
-}
-
-type DescribeJobStatusResponseBodyDataErrTaskListProductListLogList struct {
-	// The reason for the failure.
-	//
-	// example:
-	//
-	// ProjectLogStoreNotFound
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The code of the logs.
-	//
-	// example:
-	//
-	// cloud_siem_aegis_proc
-	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	// The pattern for the name of the Simple Log Service Logstore from which logs are collected.
-	//
-	// example:
-	//
-	// vpc_project_test
-	LogStoreNamePattern *string `json:"LogStoreNamePattern,omitempty" xml:"LogStoreNamePattern,omitempty"`
-	// The code of the service.
-	//
-	// example:
-	//
-	// sas
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The pattern for the name of the Simple Log Service project from which logs are collected.
-	//
-	// example:
-	//
-	// vpc-project-test
-	ProjectNamePattern *string `json:"ProjectNamePattern,omitempty" xml:"ProjectNamePattern,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-}
-
-func (s DescribeJobStatusResponseBodyDataErrTaskListProductListLogList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeJobStatusResponseBodyDataErrTaskListProductListLogList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeJobStatusResponseBodyDataErrTaskListProductListLogList) SetErrorCode(v string) *DescribeJobStatusResponseBodyDataErrTaskListProductListLogList {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBodyDataErrTaskListProductListLogList) SetLogCode(v string) *DescribeJobStatusResponseBodyDataErrTaskListProductListLogList {
-	s.LogCode = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBodyDataErrTaskListProductListLogList) SetLogStoreNamePattern(v string) *DescribeJobStatusResponseBodyDataErrTaskListProductListLogList {
-	s.LogStoreNamePattern = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBodyDataErrTaskListProductListLogList) SetProductCode(v string) *DescribeJobStatusResponseBodyDataErrTaskListProductListLogList {
-	s.ProductCode = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBodyDataErrTaskListProductListLogList) SetProjectNamePattern(v string) *DescribeJobStatusResponseBodyDataErrTaskListProductListLogList {
-	s.ProjectNamePattern = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponseBodyDataErrTaskListProductListLogList) SetRegionCode(v string) *DescribeJobStatusResponseBodyDataErrTaskListProductListLogList {
-	s.RegionCode = &v
-	return s
-}
-
-type DescribeJobStatusResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeJobStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeJobStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeJobStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeJobStatusResponse) SetHeaders(v map[string]*string) *DescribeJobStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeJobStatusResponse) SetStatusCode(v int32) *DescribeJobStatusResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeJobStatusResponse) SetBody(v *DescribeJobStatusResponseBody) *DescribeJobStatusResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeLogFieldsRequest struct {
 	// The log source of the rule.
 	//
@@ -13507,190 +12402,6 @@ func (s *DescribeLogSourceResponse) SetStatusCode(v int32) *DescribeLogSourceRes
 }
 
 func (s *DescribeLogSourceResponse) SetBody(v *DescribeLogSourceResponseBody) *DescribeLogSourceResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeLogStoreRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DescribeLogStoreRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLogStoreRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLogStoreRequest) SetRegionId(v string) *DescribeLogStoreRequest {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeLogStoreResponseBody struct {
-	// The response of the threat analysis feature.
-	Data *DescribeLogStoreResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 9B9CBCEE-9225-5069-BC7F-880938A2****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeLogStoreResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLogStoreResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLogStoreResponseBody) SetData(v *DescribeLogStoreResponseBodyData) *DescribeLogStoreResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeLogStoreResponseBody) SetRequestId(v string) *DescribeLogStoreResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeLogStoreResponseBodyData struct {
-	// Indicates whether the following time points are added after the log arrives: the time points when the public IP address of the client and the log arrive. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// false
-	AppendMeta *bool `json:"AppendMeta,omitempty" xml:"AppendMeta,omitempty"`
-	// Indicates whether the automatic sharding feature is enabled. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// false
-	AutoSplit *bool `json:"AutoSplit,omitempty" xml:"AutoSplit,omitempty"`
-	// Indicates whether the web tracking feature is enabled to collect user information from browsers, iOS applications, or Android applications. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// false
-	EnableTracking *bool `json:"EnableTracking,omitempty" xml:"EnableTracking,omitempty"`
-	// The name of the Logstore in Simple Log Service.
-	//
-	// example:
-	//
-	// cloud-siem
-	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The maximum number of shards that can be generated by using the automatic sharding feature.
-	//
-	// example:
-	//
-	// 64
-	MaxSplitShard *int32 `json:"MaxSplitShard,omitempty" xml:"MaxSplitShard,omitempty"`
-	// The number of shards in Log Service.
-	//
-	// example:
-	//
-	// 2
-	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
-	// The retention period of data. Unit: day.
-	//
-	// example:
-	//
-	// 180
-	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-}
-
-func (s DescribeLogStoreResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLogStoreResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLogStoreResponseBodyData) SetAppendMeta(v bool) *DescribeLogStoreResponseBodyData {
-	s.AppendMeta = &v
-	return s
-}
-
-func (s *DescribeLogStoreResponseBodyData) SetAutoSplit(v bool) *DescribeLogStoreResponseBodyData {
-	s.AutoSplit = &v
-	return s
-}
-
-func (s *DescribeLogStoreResponseBodyData) SetEnableTracking(v bool) *DescribeLogStoreResponseBodyData {
-	s.EnableTracking = &v
-	return s
-}
-
-func (s *DescribeLogStoreResponseBodyData) SetLogStoreName(v string) *DescribeLogStoreResponseBodyData {
-	s.LogStoreName = &v
-	return s
-}
-
-func (s *DescribeLogStoreResponseBodyData) SetMaxSplitShard(v int32) *DescribeLogStoreResponseBodyData {
-	s.MaxSplitShard = &v
-	return s
-}
-
-func (s *DescribeLogStoreResponseBodyData) SetShardCount(v int32) *DescribeLogStoreResponseBodyData {
-	s.ShardCount = &v
-	return s
-}
-
-func (s *DescribeLogStoreResponseBodyData) SetTtl(v int32) *DescribeLogStoreResponseBodyData {
-	s.Ttl = &v
-	return s
-}
-
-type DescribeLogStoreResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeLogStoreResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeLogStoreResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeLogStoreResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeLogStoreResponse) SetHeaders(v map[string]*string) *DescribeLogStoreResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeLogStoreResponse) SetStatusCode(v int32) *DescribeLogStoreResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeLogStoreResponse) SetBody(v *DescribeLogStoreResponseBody) *DescribeLogStoreResponse {
 	s.Body = v
 	return s
 }
@@ -15870,412 +14581,6 @@ func (s *DescribeWhiteRuleListResponse) SetBody(v *DescribeWhiteRuleListResponse
 	return s
 }
 
-type DoQuickFieldRequest struct {
-	// The time when the quick analysis starts. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1684376244
-	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	// The index field.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// alert_level
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The number of pages to return. Default value: 1.
-	//
-	// example:
-	//
-	// 1
-	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The sorting of the query and analysis results. By default, the results are sorted in descending order.
-	//
-	// example:
-	//
-	// true
-	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	// The number of entries per page. Default value: 10.
-	//
-	// example:
-	//
-	// 10
-	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The time when the quick analysis ends. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1684378090
-	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
-}
-
-func (s DoQuickFieldRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoQuickFieldRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DoQuickFieldRequest) SetFrom(v int32) *DoQuickFieldRequest {
-	s.From = &v
-	return s
-}
-
-func (s *DoQuickFieldRequest) SetIndex(v string) *DoQuickFieldRequest {
-	s.Index = &v
-	return s
-}
-
-func (s *DoQuickFieldRequest) SetPage(v int32) *DoQuickFieldRequest {
-	s.Page = &v
-	return s
-}
-
-func (s *DoQuickFieldRequest) SetRegionId(v string) *DoQuickFieldRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DoQuickFieldRequest) SetReverse(v bool) *DoQuickFieldRequest {
-	s.Reverse = &v
-	return s
-}
-
-func (s *DoQuickFieldRequest) SetSize(v int32) *DoQuickFieldRequest {
-	s.Size = &v
-	return s
-}
-
-func (s *DoQuickFieldRequest) SetTo(v int32) *DoQuickFieldRequest {
-	s.To = &v
-	return s
-}
-
-type DoQuickFieldResponseBody struct {
-	// The response of the quick analysis.
-	Data *DoQuickFieldResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 06735F17-1EDE-5212-81A3-8585368F****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DoQuickFieldResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoQuickFieldResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DoQuickFieldResponseBody) SetData(v *DoQuickFieldResponseBodyData) *DoQuickFieldResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DoQuickFieldResponseBody) SetRequestId(v string) *DoQuickFieldResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DoQuickFieldResponseBodyData struct {
-	// This parameter is deprecated.
-	//
-	// example:
-	//
-	// ""
-	AggQueryd *string `json:"AggQueryd,omitempty" xml:"AggQueryd,omitempty"`
-	// Indicates whether the quick analysis was successful. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	CompleteOrNot *bool `json:"CompleteOrNot,omitempty" xml:"CompleteOrNot,omitempty"`
-	// The number of entries returned.
-	//
-	// example:
-	//
-	// 10
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// This parameter is deprecated.
-	//
-	// example:
-	//
-	// true
-	HasSQL *bool `json:"HasSQL,omitempty" xml:"HasSQL,omitempty"`
-	// This parameter is deprecated.
-	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
-	// This parameter is deprecated.
-	//
-	// example:
-	//
-	// 0
-	Limited *int64 `json:"Limited,omitempty" xml:"Limited,omitempty"`
-	// The logs queried by using the quick analysis feature.
-	Logs []interface{} `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// This parameter is deprecated.
-	//
-	// example:
-	//
-	// ""
-	PQuery *string `json:"PQuery,omitempty" xml:"PQuery,omitempty"`
-	// The number of entries queried.
-	//
-	// example:
-	//
-	// 1000
-	ProcessedRows *int64 `json:"ProcessedRows,omitempty" xml:"ProcessedRows,omitempty"`
-	// This parameter is deprecated.
-	//
-	// example:
-	//
-	// 0
-	QueryMode *int32 `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
-	// This parameter is deprecated.
-	//
-	// example:
-	//
-	// 	- and alert_level : remind | with_pack_meta
-	WhereQuery *string `json:"WhereQuery,omitempty" xml:"WhereQuery,omitempty"`
-}
-
-func (s DoQuickFieldResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoQuickFieldResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DoQuickFieldResponseBodyData) SetAggQueryd(v string) *DoQuickFieldResponseBodyData {
-	s.AggQueryd = &v
-	return s
-}
-
-func (s *DoQuickFieldResponseBodyData) SetCompleteOrNot(v bool) *DoQuickFieldResponseBodyData {
-	s.CompleteOrNot = &v
-	return s
-}
-
-func (s *DoQuickFieldResponseBodyData) SetCount(v int32) *DoQuickFieldResponseBodyData {
-	s.Count = &v
-	return s
-}
-
-func (s *DoQuickFieldResponseBodyData) SetHasSQL(v bool) *DoQuickFieldResponseBodyData {
-	s.HasSQL = &v
-	return s
-}
-
-func (s *DoQuickFieldResponseBodyData) SetKeys(v []*string) *DoQuickFieldResponseBodyData {
-	s.Keys = v
-	return s
-}
-
-func (s *DoQuickFieldResponseBodyData) SetLimited(v int64) *DoQuickFieldResponseBodyData {
-	s.Limited = &v
-	return s
-}
-
-func (s *DoQuickFieldResponseBodyData) SetLogs(v []interface{}) *DoQuickFieldResponseBodyData {
-	s.Logs = v
-	return s
-}
-
-func (s *DoQuickFieldResponseBodyData) SetPQuery(v string) *DoQuickFieldResponseBodyData {
-	s.PQuery = &v
-	return s
-}
-
-func (s *DoQuickFieldResponseBodyData) SetProcessedRows(v int64) *DoQuickFieldResponseBodyData {
-	s.ProcessedRows = &v
-	return s
-}
-
-func (s *DoQuickFieldResponseBodyData) SetQueryMode(v int32) *DoQuickFieldResponseBodyData {
-	s.QueryMode = &v
-	return s
-}
-
-func (s *DoQuickFieldResponseBodyData) SetWhereQuery(v string) *DoQuickFieldResponseBodyData {
-	s.WhereQuery = &v
-	return s
-}
-
-type DoQuickFieldResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DoQuickFieldResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DoQuickFieldResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoQuickFieldResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DoQuickFieldResponse) SetHeaders(v map[string]*string) *DoQuickFieldResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DoQuickFieldResponse) SetStatusCode(v int32) *DoQuickFieldResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DoQuickFieldResponse) SetBody(v *DoQuickFieldResponseBody) *DoQuickFieldResponse {
-	s.Body = v
-	return s
-}
-
-type DoSelfDelegateRequest struct {
-	// The Alibaba Cloud account of an ordinary member of the threat analysis feature.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 104423523217****
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// Specifies whether to use a delegated administrator account. Valid values:
-	//
-	// 	- 1: use a delegated administrator account.
-	//
-	// 	- 0: do not use a delegated administrator account.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	DelegateOrNot *int32 `json:"DelegateOrNot,omitempty" xml:"DelegateOrNot,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DoSelfDelegateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoSelfDelegateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DoSelfDelegateRequest) SetAliUid(v int64) *DoSelfDelegateRequest {
-	s.AliUid = &v
-	return s
-}
-
-func (s *DoSelfDelegateRequest) SetDelegateOrNot(v int32) *DoSelfDelegateRequest {
-	s.DelegateOrNot = &v
-	return s
-}
-
-func (s *DoSelfDelegateRequest) SetRegionId(v string) *DoSelfDelegateRequest {
-	s.RegionId = &v
-	return s
-}
-
-type DoSelfDelegateResponseBody struct {
-	// Indicates whether a regular member is authorized. Valid values:
-	//
-	// 	- true: The member is authorized.
-	//
-	// 	- false: The authorization is canceled.
-	//
-	// example:
-	//
-	// true
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 9B9CBCEE-9225-5069-BC7F-880938A2****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DoSelfDelegateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoSelfDelegateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DoSelfDelegateResponseBody) SetData(v bool) *DoSelfDelegateResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DoSelfDelegateResponseBody) SetRequestId(v string) *DoSelfDelegateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DoSelfDelegateResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DoSelfDelegateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DoSelfDelegateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DoSelfDelegateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DoSelfDelegateResponse) SetHeaders(v map[string]*string) *DoSelfDelegateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DoSelfDelegateResponse) SetStatusCode(v int32) *DoSelfDelegateResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DoSelfDelegateResponse) SetBody(v *DoSelfDelegateResponseBody) *DoSelfDelegateResponse {
-	s.Body = v
-	return s
-}
-
 type EnableAccessForCloudSiemRequest struct {
 	// Whether import the log of SAS alert, the log of WAF alert, the log of CFW alert or not. Valid values:
 	//
@@ -16651,687 +14956,6 @@ func (s *GetCapacityResponse) SetStatusCode(v int32) *GetCapacityResponse {
 }
 
 func (s *GetCapacityResponse) SetBody(v *GetCapacityResponseBody) *GetCapacityResponse {
-	s.Body = v
-	return s
-}
-
-type GetHistogramsRequest struct {
-	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1409529600
-	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	// The SQL statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax and limits of search statements, see [Log search overview](https://help.aliyun.com/document_detail/29060.html).
-	//
-	// example:
-	//
-	// 	- and status: 401
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The end time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1409569200
-	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
-}
-
-func (s GetHistogramsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetHistogramsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetHistogramsRequest) SetFrom(v int32) *GetHistogramsRequest {
-	s.From = &v
-	return s
-}
-
-func (s *GetHistogramsRequest) SetQuery(v string) *GetHistogramsRequest {
-	s.Query = &v
-	return s
-}
-
-func (s *GetHistogramsRequest) SetRegionId(v string) *GetHistogramsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetHistogramsRequest) SetTo(v int32) *GetHistogramsRequest {
-	s.To = &v
-	return s
-}
-
-type GetHistogramsResponseBody struct {
-	// The data of the charts.
-	Data *GetHistogramsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 97A31C3A-3F9F-5866-8979-5159E3DC****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetHistogramsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetHistogramsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetHistogramsResponseBody) SetData(v *GetHistogramsResponseBodyData) *GetHistogramsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetHistogramsResponseBody) SetRequestId(v string) *GetHistogramsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetHistogramsResponseBodyData struct {
-	// The distribution of logs.
-	Histograms []*GetHistogramsResponseBodyDataHistograms `json:"Histograms,omitempty" xml:"Histograms,omitempty" type:"Repeated"`
-	// The name of the server.
-	//
-	// example:
-	//
-	// nginx
-	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	// The number of logs that are generated within the subinterval.
-	//
-	// example:
-	//
-	// 2
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s GetHistogramsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetHistogramsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetHistogramsResponseBodyData) SetHistograms(v []*GetHistogramsResponseBodyDataHistograms) *GetHistogramsResponseBodyData {
-	s.Histograms = v
-	return s
-}
-
-func (s *GetHistogramsResponseBodyData) SetServer(v string) *GetHistogramsResponseBodyData {
-	s.Server = &v
-	return s
-}
-
-func (s *GetHistogramsResponseBodyData) SetTotalCount(v int64) *GetHistogramsResponseBodyData {
-	s.TotalCount = &v
-	return s
-}
-
-type GetHistogramsResponseBodyDataHistograms struct {
-	// Indicates whether the query results within the subinterval is complete. Valid values:
-	//
-	// 	- true: The query is complete and the returned result is complete.
-	//
-	// 	- false: The query is complete but the returned result is incomplete. You must repeat the request to obtain the complete result.
-	//
-	// example:
-	//
-	// true
-	CompletedOrNot *bool `json:"CompletedOrNot,omitempty" xml:"CompletedOrNot,omitempty"`
-	// The number of logs within the subinterval.
-	//
-	// example:
-	//
-	// 100
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1409529600
-	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	// The end time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1409569200
-	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
-}
-
-func (s GetHistogramsResponseBodyDataHistograms) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetHistogramsResponseBodyDataHistograms) GoString() string {
-	return s.String()
-}
-
-func (s *GetHistogramsResponseBodyDataHistograms) SetCompletedOrNot(v bool) *GetHistogramsResponseBodyDataHistograms {
-	s.CompletedOrNot = &v
-	return s
-}
-
-func (s *GetHistogramsResponseBodyDataHistograms) SetCount(v int64) *GetHistogramsResponseBodyDataHistograms {
-	s.Count = &v
-	return s
-}
-
-func (s *GetHistogramsResponseBodyDataHistograms) SetFrom(v int32) *GetHistogramsResponseBodyDataHistograms {
-	s.From = &v
-	return s
-}
-
-func (s *GetHistogramsResponseBodyDataHistograms) SetTo(v int32) *GetHistogramsResponseBodyDataHistograms {
-	s.To = &v
-	return s
-}
-
-type GetHistogramsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetHistogramsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetHistogramsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetHistogramsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetHistogramsResponse) SetHeaders(v map[string]*string) *GetHistogramsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetHistogramsResponse) SetStatusCode(v int32) *GetHistogramsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetHistogramsResponse) SetBody(v *GetHistogramsResponseBody) *GetHistogramsResponse {
-	s.Body = v
-	return s
-}
-
-type GetLogsRequest struct {
-	// The time when the query starts. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1684377190
-	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	// The page number. Pages start from page 1.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// The number of entries per page. Valid values: 0 to 100.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The search statement or the analytic statement. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
-	//
-	// example:
-	//
-	// status: 401 | SELECT remote_addr,COUNT(*) as pv GROUP by remote_addr ORDER by pv desc limit 5
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to sort the results of the log query by time in minutes in descending order. Default value: true. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	ReverseOrNot *bool `json:"ReverseOrNot,omitempty" xml:"ReverseOrNot,omitempty"`
-	// The time when the query ends. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1684378326
-	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 2
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s GetLogsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLogsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetLogsRequest) SetFrom(v int32) *GetLogsRequest {
-	s.From = &v
-	return s
-}
-
-func (s *GetLogsRequest) SetPageIndex(v int32) *GetLogsRequest {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *GetLogsRequest) SetPageSize(v int32) *GetLogsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetLogsRequest) SetQuery(v string) *GetLogsRequest {
-	s.Query = &v
-	return s
-}
-
-func (s *GetLogsRequest) SetRegionId(v string) *GetLogsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetLogsRequest) SetReverseOrNot(v bool) *GetLogsRequest {
-	s.ReverseOrNot = &v
-	return s
-}
-
-func (s *GetLogsRequest) SetTo(v int32) *GetLogsRequest {
-	s.To = &v
-	return s
-}
-
-func (s *GetLogsRequest) SetTotal(v int64) *GetLogsRequest {
-	s.Total = &v
-	return s
-}
-
-type GetLogsResponseBody struct {
-	// The HTTP status code.
-	//
-	// example:
-	//
-	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The results of the log query.
-	//
-	// example:
-	//
-	// 123456
-	Data *GetLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
-	//
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 93A8B186-A5F1-5B20-9BCF-5605C5E9****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetLogsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLogsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetLogsResponseBody) SetCode(v int32) *GetLogsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetLogsResponseBody) SetData(v *GetLogsResponseBodyData) *GetLogsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetLogsResponseBody) SetMessage(v string) *GetLogsResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetLogsResponseBody) SetRequestId(v string) *GetLogsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetLogsResponseBody) SetSuccess(v bool) *GetLogsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetLogsResponseBodyData struct {
-	// The result on the current page.
-	PageInfo *GetLogsResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The content of the log.
-	ResponseData *GetLogsResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Struct"`
-}
-
-func (s GetLogsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLogsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetLogsResponseBodyData) SetPageInfo(v *GetLogsResponseBodyDataPageInfo) *GetLogsResponseBodyData {
-	s.PageInfo = v
-	return s
-}
-
-func (s *GetLogsResponseBodyData) SetResponseData(v *GetLogsResponseBodyDataResponseData) *GetLogsResponseBodyData {
-	s.ResponseData = v
-	return s
-}
-
-type GetLogsResponseBodyDataPageInfo struct {
-	// The page number. Pages start from page 1.
-	//
-	// example:
-	//
-	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of logs.
-	//
-	// example:
-	//
-	// 200
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s GetLogsResponseBodyDataPageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLogsResponseBodyDataPageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetLogsResponseBodyDataPageInfo) SetCurrentPage(v int32) *GetLogsResponseBodyDataPageInfo {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *GetLogsResponseBodyDataPageInfo) SetPageSize(v int32) *GetLogsResponseBodyDataPageInfo {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetLogsResponseBodyDataPageInfo) SetTotalCount(v int64) *GetLogsResponseBodyDataPageInfo {
-	s.TotalCount = &v
-	return s
-}
-
-type GetLogsResponseBodyDataResponseData struct {
-	// The status of the log query. Valid values:
-	//
-	// 	- true: The query is complete and the returned result is complete.
-	//
-	// 	- false: The query is complete but the returned result is incomplete. You must resend the request to obtain the complete result.
-	//
-	// example:
-	//
-	// true
-	CompleteOrNot *bool `json:"CompleteOrNot,omitempty" xml:"CompleteOrNot,omitempty"`
-	// The time period of the log query. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 28
-	Cost *int64 `json:"Cost,omitempty" xml:"Cost,omitempty"`
-	// The number of entries returned.
-	//
-	// example:
-	//
-	// 4
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Indicated whether an analytic statement is contained. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	HasSql *bool `json:"HasSql,omitempty" xml:"HasSql,omitempty"`
-	// The index fields of the logs.
-	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
-	// The raw data generated in the query.
-	Lines []interface{} `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Repeated"`
-}
-
-func (s GetLogsResponseBodyDataResponseData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLogsResponseBodyDataResponseData) GoString() string {
-	return s.String()
-}
-
-func (s *GetLogsResponseBodyDataResponseData) SetCompleteOrNot(v bool) *GetLogsResponseBodyDataResponseData {
-	s.CompleteOrNot = &v
-	return s
-}
-
-func (s *GetLogsResponseBodyDataResponseData) SetCost(v int64) *GetLogsResponseBodyDataResponseData {
-	s.Cost = &v
-	return s
-}
-
-func (s *GetLogsResponseBodyDataResponseData) SetCount(v int32) *GetLogsResponseBodyDataResponseData {
-	s.Count = &v
-	return s
-}
-
-func (s *GetLogsResponseBodyDataResponseData) SetHasSql(v bool) *GetLogsResponseBodyDataResponseData {
-	s.HasSql = &v
-	return s
-}
-
-func (s *GetLogsResponseBodyDataResponseData) SetKeys(v []*string) *GetLogsResponseBodyDataResponseData {
-	s.Keys = v
-	return s
-}
-
-func (s *GetLogsResponseBodyDataResponseData) SetLines(v []interface{}) *GetLogsResponseBodyDataResponseData {
-	s.Lines = v
-	return s
-}
-
-type GetLogsResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetLogsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLogsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetLogsResponse) SetHeaders(v map[string]*string) *GetLogsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetLogsResponse) SetStatusCode(v int32) *GetLogsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetLogsResponse) SetBody(v *GetLogsResponseBody) *GetLogsResponse {
-	s.Body = v
-	return s
-}
-
-type GetQuickQueryRequest struct {
-	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the saved search.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// display_login_ip_search
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-}
-
-func (s GetQuickQueryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetQuickQueryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetQuickQueryRequest) SetRegionId(v string) *GetQuickQueryRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetQuickQueryRequest) SetSearchName(v string) *GetQuickQueryRequest {
-	s.SearchName = &v
-	return s
-}
-
-type GetQuickQueryResponseBody struct {
-	// The query statement.
-	//
-	// example:
-	//
-	// status: 401 | SELECT remote_addr,COUNT(*) as pv GROUP by remote_addr ORDER by pv desc limit 5
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 27D27DCB-D76B-5064-8B3B-0900DEF7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetQuickQueryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetQuickQueryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetQuickQueryResponseBody) SetData(v string) *GetQuickQueryResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *GetQuickQueryResponseBody) SetRequestId(v string) *GetQuickQueryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetQuickQueryResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetQuickQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetQuickQueryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetQuickQueryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetQuickQueryResponse) SetHeaders(v map[string]*string) *GetQuickQueryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetQuickQueryResponse) SetStatusCode(v int32) *GetQuickQueryResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetQuickQueryResponse) SetBody(v *GetQuickQueryResponseBody) *GetQuickQueryResponse {
 	s.Body = v
 	return s
 }
@@ -20516,7 +18140,9 @@ type ListCustomizeRuleTestResultRequest struct {
 	// example:
 	//
 	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DetectionRuleId *string `json:"DetectionRuleId,omitempty" xml:"DetectionRuleId,omitempty"`
+	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the rule.
 	//
 	// example:
@@ -20556,7 +18182,9 @@ type ListCustomizeRuleTestResultRequest struct {
 	// example:
 	//
 	// 1
-	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	RoleType   *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	VerifyType *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
 }
 
 func (s ListCustomizeRuleTestResultRequest) String() string {
@@ -20569,6 +18197,16 @@ func (s ListCustomizeRuleTestResultRequest) GoString() string {
 
 func (s *ListCustomizeRuleTestResultRequest) SetCurrentPage(v int32) *ListCustomizeRuleTestResultRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCustomizeRuleTestResultRequest) SetDetectionRuleId(v string) *ListCustomizeRuleTestResultRequest {
+	s.DetectionRuleId = &v
+	return s
+}
+
+func (s *ListCustomizeRuleTestResultRequest) SetEndTime(v int64) *ListCustomizeRuleTestResultRequest {
+	s.EndTime = &v
 	return s
 }
 
@@ -20594,6 +18232,16 @@ func (s *ListCustomizeRuleTestResultRequest) SetRoleFor(v int64) *ListCustomizeR
 
 func (s *ListCustomizeRuleTestResultRequest) SetRoleType(v int32) *ListCustomizeRuleTestResultRequest {
 	s.RoleType = &v
+	return s
+}
+
+func (s *ListCustomizeRuleTestResultRequest) SetStartTime(v int64) *ListCustomizeRuleTestResultRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListCustomizeRuleTestResultRequest) SetVerifyType(v string) *ListCustomizeRuleTestResultRequest {
+	s.VerifyType = &v
 	return s
 }
 
@@ -20710,7 +18358,8 @@ type ListCustomizeRuleTestResultResponseBodyDataPageInfo struct {
 	// example:
 	//
 	// 100
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount    *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VerifiedCount *int64 `json:"VerifiedCount,omitempty" xml:"VerifiedCount,omitempty"`
 }
 
 func (s ListCustomizeRuleTestResultResponseBodyDataPageInfo) String() string {
@@ -20733,6 +18382,11 @@ func (s *ListCustomizeRuleTestResultResponseBodyDataPageInfo) SetPageSize(v int3
 
 func (s *ListCustomizeRuleTestResultResponseBodyDataPageInfo) SetTotalCount(v int64) *ListCustomizeRuleTestResultResponseBodyDataPageInfo {
 	s.TotalCount = &v
+	return s
+}
+
+func (s *ListCustomizeRuleTestResultResponseBodyDataPageInfo) SetVerifiedCount(v int64) *ListCustomizeRuleTestResultResponseBodyDataPageInfo {
+	s.VerifiedCount = &v
 	return s
 }
 
@@ -20836,7 +18490,8 @@ type ListCustomizeRuleTestResultResponseBodyDataResponseData struct {
 	// example:
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
-	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	VerifyType *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
 }
 
 func (s ListCustomizeRuleTestResultResponseBodyDataResponseData) String() string {
@@ -20919,6 +18574,11 @@ func (s *ListCustomizeRuleTestResultResponseBodyDataResponseData) SetSubUserId(v
 
 func (s *ListCustomizeRuleTestResultResponseBodyDataResponseData) SetUuid(v string) *ListCustomizeRuleTestResultResponseBodyDataResponseData {
 	s.Uuid = &v
+	return s
+}
+
+func (s *ListCustomizeRuleTestResultResponseBodyDataResponseData) SetVerifyType(v string) *ListCustomizeRuleTestResultResponseBodyDataResponseData {
+	s.VerifyType = &v
 	return s
 }
 
@@ -21875,7 +19535,8 @@ type ListDisposeStrategyRequest struct {
 	// example:
 	//
 	// ip
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	EntityType   *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The sort order. Valid values:
 	//
 	// 	- desc: descending order.
@@ -22006,6 +19667,11 @@ func (s *ListDisposeStrategyRequest) SetEntityIdentity(v string) *ListDisposeStr
 
 func (s *ListDisposeStrategyRequest) SetEntityType(v string) *ListDisposeStrategyRequest {
 	s.EntityType = &v
+	return s
+}
+
+func (s *ListDisposeStrategyRequest) SetIncidentUuid(v string) *ListDisposeStrategyRequest {
+	s.IncidentUuid = &v
 	return s
 }
 
@@ -22420,6 +20086,7 @@ type ListDisposeStrategyResponseBodyDataResponseData struct {
 	//
 	// }
 	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
+	TaskUrl   *string `json:"TaskUrl,omitempty" xml:"TaskUrl,omitempty"`
 }
 
 func (s ListDisposeStrategyResponseBodyDataResponseData) String() string {
@@ -22535,6 +20202,11 @@ func (s *ListDisposeStrategyResponseBodyDataResponseData) SetTaskParam(v string)
 	return s
 }
 
+func (s *ListDisposeStrategyResponseBodyDataResponseData) SetTaskUrl(v string) *ListDisposeStrategyResponseBodyDataResponseData {
+	s.TaskUrl = &v
+	return s
+}
+
 type ListDisposeStrategyResponse struct {
 	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -22560,6 +20232,423 @@ func (s *ListDisposeStrategyResponse) SetStatusCode(v int32) *ListDisposeStrateg
 }
 
 func (s *ListDisposeStrategyResponse) SetBody(v *ListDisposeStrategyResponseBody) *ListDisposeStrategyResponse {
+	s.Body = v
+	return s
+}
+
+type ListEntitiesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// host1****
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// example:
+	//
+	// ip
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// example:
+	//
+	// 6c740667-80b2-476d-8924-2e706feb****
+	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// example:
+	//
+	// 1
+	IsMalwareEntity *string `json:"IsMalwareEntity,omitempty" xml:"IsMalwareEntity,omitempty"`
+	// example:
+	//
+	// aliyun.siem.sas.alert_tag.miner_software
+	MalwareType *string `json:"MalwareType,omitempty" xml:"MalwareType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+}
+
+func (s ListEntitiesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesRequest) SetCurrentPage(v int32) *ListEntitiesRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListEntitiesRequest) SetEntityName(v string) *ListEntitiesRequest {
+	s.EntityName = &v
+	return s
+}
+
+func (s *ListEntitiesRequest) SetEntityType(v string) *ListEntitiesRequest {
+	s.EntityType = &v
+	return s
+}
+
+func (s *ListEntitiesRequest) SetEntityUuid(v string) *ListEntitiesRequest {
+	s.EntityUuid = &v
+	return s
+}
+
+func (s *ListEntitiesRequest) SetIncidentUuid(v string) *ListEntitiesRequest {
+	s.IncidentUuid = &v
+	return s
+}
+
+func (s *ListEntitiesRequest) SetIsMalwareEntity(v string) *ListEntitiesRequest {
+	s.IsMalwareEntity = &v
+	return s
+}
+
+func (s *ListEntitiesRequest) SetMalwareType(v string) *ListEntitiesRequest {
+	s.MalwareType = &v
+	return s
+}
+
+func (s *ListEntitiesRequest) SetPageSize(v int32) *ListEntitiesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEntitiesRequest) SetRegionId(v string) *ListEntitiesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListEntitiesRequest) SetRoleFor(v int64) *ListEntitiesRequest {
+	s.RoleFor = &v
+	return s
+}
+
+func (s *ListEntitiesRequest) SetRoleType(v int32) *ListEntitiesRequest {
+	s.RoleType = &v
+	return s
+}
+
+type ListEntitiesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 123456
+	Data *ListEntitiesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListEntitiesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesResponseBody) SetCode(v int32) *ListEntitiesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBody) SetData(v *ListEntitiesResponseBodyData) *ListEntitiesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEntitiesResponseBody) SetMessage(v string) *ListEntitiesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBody) SetRequestId(v string) *ListEntitiesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBody) SetSuccess(v bool) *ListEntitiesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEntitiesResponseBodyData struct {
+	PageInfo     *ListEntitiesResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	ResponseData []*ListEntitiesResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
+}
+
+func (s ListEntitiesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesResponseBodyData) SetPageInfo(v *ListEntitiesResponseBodyDataPageInfo) *ListEntitiesResponseBodyData {
+	s.PageInfo = v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyData) SetResponseData(v []*ListEntitiesResponseBodyDataResponseData) *ListEntitiesResponseBodyData {
+	s.ResponseData = v
+	return s
+}
+
+type ListEntitiesResponseBodyDataPageInfo struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListEntitiesResponseBodyDataPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesResponseBodyDataPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesResponseBodyDataPageInfo) SetCurrentPage(v int32) *ListEntitiesResponseBodyDataPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataPageInfo) SetPageSize(v int32) *ListEntitiesResponseBodyDataPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataPageInfo) SetTotalCount(v int64) *ListEntitiesResponseBodyDataPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListEntitiesResponseBodyDataResponseData struct {
+	// example:
+	//
+	// 1
+	AlertNum *int32 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
+	// example:
+	//
+	// sas_71e24437d2797ce8fc59692905a4****
+	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	// example:
+	//
+	// 123456789****
+	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// example:
+	//
+	// aliyun
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// example:
+	//
+	// 12345****
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// {"file_path": "c:/www/leixi.jsp","file_hash": "aa0ca926ad948cd820e0a3d9a18c****","host_uuid": "efed2cf7-0b77-45d9-a97b-d2cf246b****","malware_type": "${aliyun.siem.sas.alert_tag.webshell}","host_name": "launch-advisor-2023****"}
+	EntityInfo *string `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
+	// example:
+	//
+	// 123.123.123.123
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// example:
+	//
+	// ip
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// example:
+	//
+	// 8087b3e4aa6862852c100c8738cf****
+	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	// example:
+	//
+	// 1
+	EventNum *int32 `json:"EventNum,omitempty" xml:"EventNum,omitempty"`
+	// example:
+	//
+	// 2021-01-06 16:37:29
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2021-01-06 16:37:29
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 123456789***
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 85ea4241-798f-4684-a876-65d4f0c3****
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// example:
+	//
+	// aliyun.siem.sas.alert_tag.webshell
+	MalwareType *string `json:"MalwareType,omitempty" xml:"MalwareType,omitempty"`
+	// example:
+	//
+	// 113091674488****
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+}
+
+func (s ListEntitiesResponseBodyDataResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesResponseBodyDataResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetAlertNum(v int32) *ListEntitiesResponseBodyDataResponseData {
+	s.AlertNum = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetAlertUuid(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.AlertUuid = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetAliuid(v int64) *ListEntitiesResponseBodyDataResponseData {
+	s.Aliuid = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetCloudCode(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetEntityId(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.EntityId = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetEntityInfo(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.EntityInfo = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetEntityName(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.EntityName = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetEntityType(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.EntityType = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetEntityUuid(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.EntityUuid = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetEventNum(v int32) *ListEntitiesResponseBodyDataResponseData {
+	s.EventNum = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetGmtCreate(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetGmtModified(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetId(v int64) *ListEntitiesResponseBodyDataResponseData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetIncidentUuid(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.IncidentUuid = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetMalwareType(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.MalwareType = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetSubUserId(v int64) *ListEntitiesResponseBodyDataResponseData {
+	s.SubUserId = &v
+	return s
+}
+
+type ListEntitiesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEntitiesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesResponse) SetHeaders(v map[string]*string) *ListEntitiesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEntitiesResponse) SetStatusCode(v int32) *ListEntitiesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEntitiesResponse) SetBody(v *ListEntitiesResponseBody) *ListEntitiesResponse {
 	s.Body = v
 	return s
 }
@@ -22858,123 +20947,6 @@ func (s *ListImportedLogsByProdResponse) SetBody(v *ListImportedLogsByProdRespon
 	return s
 }
 
-type ListOperationRequest struct {
-	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s ListOperationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOperationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListOperationRequest) SetRegionId(v string) *ListOperationRequest {
-	s.RegionId = &v
-	return s
-}
-
-type ListOperationResponseBody struct {
-	// The response parameters.
-	Data *ListOperationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// CCEEE128-6607-503E-AAA6-C5E57D94****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListOperationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOperationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListOperationResponseBody) SetData(v *ListOperationResponseBodyData) *ListOperationResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListOperationResponseBody) SetRequestId(v string) *ListOperationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListOperationResponseBodyData struct {
-	// Indicates whether the user is an administrator. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	AdminOrNot *bool `json:"AdminOrNot,omitempty" xml:"AdminOrNot,omitempty"`
-	// The resources on which the permissions are granted.
-	OperationList []*string `json:"OperationList,omitempty" xml:"OperationList,omitempty" type:"Repeated"`
-}
-
-func (s ListOperationResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOperationResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListOperationResponseBodyData) SetAdminOrNot(v bool) *ListOperationResponseBodyData {
-	s.AdminOrNot = &v
-	return s
-}
-
-func (s *ListOperationResponseBodyData) SetOperationList(v []*string) *ListOperationResponseBodyData {
-	s.OperationList = v
-	return s
-}
-
-type ListOperationResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListOperationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListOperationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOperationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListOperationResponse) SetHeaders(v map[string]*string) *ListOperationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListOperationResponse) SetStatusCode(v int32) *ListOperationResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListOperationResponse) SetBody(v *ListOperationResponseBody) *ListOperationResponse {
-	s.Body = v
-	return s
-}
-
 type ListProjectLogStoresRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
@@ -23197,198 +21169,6 @@ func (s *ListProjectLogStoresResponse) SetBody(v *ListProjectLogStoresResponseBo
 	return s
 }
 
-type ListQuickQueryRequest struct {
-	// The line from which the query starts. Default value: 0.
-	//
-	// example:
-	//
-	// 0
-	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The number of entries per page. Valid values: 1 to 500.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 50
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s ListQuickQueryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListQuickQueryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListQuickQueryRequest) SetOffset(v int32) *ListQuickQueryRequest {
-	s.Offset = &v
-	return s
-}
-
-func (s *ListQuickQueryRequest) SetPageSize(v int32) *ListQuickQueryRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListQuickQueryRequest) SetRegionId(v string) *ListQuickQueryRequest {
-	s.RegionId = &v
-	return s
-}
-
-type ListQuickQueryResponseBody struct {
-	// The response parameters.
-	Data *ListQuickQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// F375A043-4F5B-55F2-A564-CC47FFC6****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListQuickQueryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListQuickQueryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListQuickQueryResponseBody) SetData(v *ListQuickQueryResponseBodyData) *ListQuickQueryResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListQuickQueryResponseBody) SetRequestId(v string) *ListQuickQueryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListQuickQueryResponseBodyData struct {
-	// The number of saved searches per page.
-	//
-	// example:
-	//
-	// 10
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The saved search.
-	QuickQueryList []*ListQuickQueryResponseBodyDataQuickQueryList `json:"QuickQueryList,omitempty" xml:"QuickQueryList,omitempty" type:"Repeated"`
-	// The total number of saved searches that meet the query conditions.
-	//
-	// example:
-	//
-	// 101
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s ListQuickQueryResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListQuickQueryResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListQuickQueryResponseBodyData) SetCount(v int32) *ListQuickQueryResponseBodyData {
-	s.Count = &v
-	return s
-}
-
-func (s *ListQuickQueryResponseBodyData) SetQuickQueryList(v []*ListQuickQueryResponseBodyDataQuickQueryList) *ListQuickQueryResponseBodyData {
-	s.QuickQueryList = v
-	return s
-}
-
-func (s *ListQuickQueryResponseBodyData) SetTotal(v int32) *ListQuickQueryResponseBodyData {
-	s.Total = &v
-	return s
-}
-
-type ListQuickQueryResponseBodyDataQuickQueryList struct {
-	// The alias of the saved search.
-	//
-	// example:
-	//
-	// no_1_created_search_used_for_dispaly_ip
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The query statement corresponding to the saved search.
-	//
-	// example:
-	//
-	// 	- and SamplerAddress:\\"172.18.1.1\\" and OutIf:\\"105\\"
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The name of the saved search.
-	//
-	// example:
-	//
-	// data_analysis
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-}
-
-func (s ListQuickQueryResponseBodyDataQuickQueryList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListQuickQueryResponseBodyDataQuickQueryList) GoString() string {
-	return s.String()
-}
-
-func (s *ListQuickQueryResponseBodyDataQuickQueryList) SetDisplayName(v string) *ListQuickQueryResponseBodyDataQuickQueryList {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *ListQuickQueryResponseBodyDataQuickQueryList) SetQuery(v string) *ListQuickQueryResponseBodyDataQuickQueryList {
-	s.Query = &v
-	return s
-}
-
-func (s *ListQuickQueryResponseBodyDataQuickQueryList) SetSearchName(v string) *ListQuickQueryResponseBodyDataQuickQueryList {
-	s.SearchName = &v
-	return s
-}
-
-type ListQuickQueryResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListQuickQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListQuickQueryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListQuickQueryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListQuickQueryResponse) SetHeaders(v map[string]*string) *ListQuickQueryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListQuickQueryResponse) SetStatusCode(v int32) *ListQuickQueryResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListQuickQueryResponse) SetBody(v *ListQuickQueryResponseBody) *ListQuickQueryResponse {
-	s.Body = v
-	return s
-}
-
 type ListRdUsersRequest struct {
 	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
 	//
@@ -23550,506 +21330,6 @@ func (s *ListRdUsersResponse) SetStatusCode(v int32) *ListRdUsersResponse {
 }
 
 func (s *ListRdUsersResponse) SetBody(v *ListRdUsersResponseBody) *ListRdUsersResponse {
-	s.Body = v
-	return s
-}
-
-type ListUserProdLogsRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 管理员切换成其他成员视角的用户ID。
-	//
-	// example:
-	//
-	// 113091674488****
-	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// 视图类型。
-	//
-	// - 0：当前阿里云账号视图。
-	//
-	// - 1：企业下所有账号的视图。
-	//
-	// example:
-	//
-	// 1
-	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The log code.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cloud_siem_aegis_proc
-	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
-	// The code of the cloud service.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// sas
-	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
-}
-
-func (s ListUserProdLogsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserProdLogsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserProdLogsRequest) SetRegionId(v string) *ListUserProdLogsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListUserProdLogsRequest) SetRoleFor(v int64) *ListUserProdLogsRequest {
-	s.RoleFor = &v
-	return s
-}
-
-func (s *ListUserProdLogsRequest) SetRoleType(v int32) *ListUserProdLogsRequest {
-	s.RoleType = &v
-	return s
-}
-
-func (s *ListUserProdLogsRequest) SetSourceLogCode(v string) *ListUserProdLogsRequest {
-	s.SourceLogCode = &v
-	return s
-}
-
-func (s *ListUserProdLogsRequest) SetSourceProdCode(v string) *ListUserProdLogsRequest {
-	s.SourceProdCode = &v
-	return s
-}
-
-type ListUserProdLogsResponseBody struct {
-	// The data returned.
-	Data []*ListUserProdLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListUserProdLogsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserProdLogsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserProdLogsResponseBody) SetData(v []*ListUserProdLogsResponseBodyData) *ListUserProdLogsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListUserProdLogsResponseBody) SetRequestId(v string) *ListUserProdLogsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListUserProdLogsResponseBodyData struct {
-	// The display details of the Logstore.
-	//
-	// example:
-	//
-	// cn-shanghai.siem-project.siem-logstore
-	DisplayLine *string `json:"DisplayLine,omitempty" xml:"DisplayLine,omitempty"`
-	// Indicates whether the details of the added log are returned. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	Displayed *bool `json:"Displayed,omitempty" xml:"Displayed,omitempty"`
-	// Indicates whether the log is added to the threat analysis feature. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	Imported *bool `json:"Imported,omitempty" xml:"Imported,omitempty"`
-	// Indicates whether the log is added to the threat analysis feature. Valid values:
-	//
-	// 	- 0: yes
-	//
-	// 	- 1: no
-	//
-	// example:
-	//
-	// 0
-	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
-	//
-	// example:
-	//
-	// 123XXXXXXXXX
-	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	// The log code.
-	//
-	// example:
-	//
-	// cloud_siem_aegis_proc
-	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
-	// The details of the Logstore. The value is a JSON string.
-	//
-	// example:
-	//
-	// {"project":"wafnew-project-1335759343513432-cn-hangzhou","logStore":"wafnew-logstore","regionCode":"cn-hangzhou","prodCode":"waf"}
-	SourceLogInfo *string `json:"SourceLogInfo,omitempty" xml:"SourceLogInfo,omitempty"`
-	// The code of the cloud service.
-	//
-	// example:
-	//
-	// sas
-	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
-	// The ID of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
-	//
-	// example:
-	//
-	// 123XXXXXXXX
-	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	// The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
-	//
-	// example:
-	//
-	// sas_account_xxx
-	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
-}
-
-func (s ListUserProdLogsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserProdLogsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserProdLogsResponseBodyData) SetDisplayLine(v string) *ListUserProdLogsResponseBodyData {
-	s.DisplayLine = &v
-	return s
-}
-
-func (s *ListUserProdLogsResponseBodyData) SetDisplayed(v bool) *ListUserProdLogsResponseBodyData {
-	s.Displayed = &v
-	return s
-}
-
-func (s *ListUserProdLogsResponseBodyData) SetImported(v bool) *ListUserProdLogsResponseBodyData {
-	s.Imported = &v
-	return s
-}
-
-func (s *ListUserProdLogsResponseBodyData) SetIsDeleted(v int32) *ListUserProdLogsResponseBodyData {
-	s.IsDeleted = &v
-	return s
-}
-
-func (s *ListUserProdLogsResponseBodyData) SetMainUserId(v int64) *ListUserProdLogsResponseBodyData {
-	s.MainUserId = &v
-	return s
-}
-
-func (s *ListUserProdLogsResponseBodyData) SetSourceLogCode(v string) *ListUserProdLogsResponseBodyData {
-	s.SourceLogCode = &v
-	return s
-}
-
-func (s *ListUserProdLogsResponseBodyData) SetSourceLogInfo(v string) *ListUserProdLogsResponseBodyData {
-	s.SourceLogInfo = &v
-	return s
-}
-
-func (s *ListUserProdLogsResponseBodyData) SetSourceProdCode(v string) *ListUserProdLogsResponseBodyData {
-	s.SourceProdCode = &v
-	return s
-}
-
-func (s *ListUserProdLogsResponseBodyData) SetSubUserId(v int64) *ListUserProdLogsResponseBodyData {
-	s.SubUserId = &v
-	return s
-}
-
-func (s *ListUserProdLogsResponseBodyData) SetSubUserName(v string) *ListUserProdLogsResponseBodyData {
-	s.SubUserName = &v
-	return s
-}
-
-type ListUserProdLogsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListUserProdLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListUserProdLogsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserProdLogsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserProdLogsResponse) SetHeaders(v map[string]*string) *ListUserProdLogsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListUserProdLogsResponse) SetStatusCode(v int32) *ListUserProdLogsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListUserProdLogsResponse) SetBody(v *ListUserProdLogsResponseBody) *ListUserProdLogsResponse {
-	s.Body = v
-	return s
-}
-
-type ListUsersByProdRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// 113091674488****
-	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// example:
-	//
-	// 1
-	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The code of the cloud service.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// sas
-	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
-}
-
-func (s ListUsersByProdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUsersByProdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListUsersByProdRequest) SetRegionId(v string) *ListUsersByProdRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListUsersByProdRequest) SetRoleFor(v int64) *ListUsersByProdRequest {
-	s.RoleFor = &v
-	return s
-}
-
-func (s *ListUsersByProdRequest) SetRoleType(v int32) *ListUsersByProdRequest {
-	s.RoleType = &v
-	return s
-}
-
-func (s *ListUsersByProdRequest) SetSourceProdCode(v string) *ListUsersByProdRequest {
-	s.SourceProdCode = &v
-	return s
-}
-
-type ListUsersByProdResponseBody struct {
-	// The data returned.
-	Data []*ListUsersByProdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListUsersByProdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUsersByProdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListUsersByProdResponseBody) SetData(v []*ListUsersByProdResponseBodyData) *ListUsersByProdResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListUsersByProdResponseBody) SetRequestId(v string) *ListUsersByProdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListUsersByProdResponseBodyData struct {
-	// The code of the cloud service provider. Valid values:
-	//
-	// 	- qcloud: Tencent Cloud.
-	//
-	// 	- aliyun: Alibaba Cloud.
-	//
-	// 	- hcloud: Huawei Cloud.
-	//
-	// example:
-	//
-	// hcloud
-	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// Indicates whether the log is added to the threat analysis feature.
-	//
-	// example:
-	//
-	// true
-	Imported *bool `json:"Imported,omitempty" xml:"Imported,omitempty"`
-	// The display log code. The value varies based on your console settings.
-	//
-	// example:
-	//
-	// ${siem.xxx.xxxxxxxxx}
-	LogMdsCode *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
-	//
-	// example:
-	//
-	// 123XXXXXXXXX
-	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	// The log code.
-	//
-	// example:
-	//
-	// cloud_siem_aegis_proc
-	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
-	// The log name.
-	//
-	// example:
-	//
-	// the process startup log
-	SourceLogName *string `json:"SourceLogName,omitempty" xml:"SourceLogName,omitempty"`
-	// The code of the cloud service.
-	//
-	// example:
-	//
-	// sas
-	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
-	// The ID of the Alibaba Cloud account for threat analysis.
-	//
-	// example:
-	//
-	// 123XXXXXXXX
-	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	// The display name of the Alibaba Cloud account for threat analysis.
-	//
-	// example:
-	//
-	// sas_account_xxx
-	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
-}
-
-func (s ListUsersByProdResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUsersByProdResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListUsersByProdResponseBodyData) SetCloudCode(v string) *ListUsersByProdResponseBodyData {
-	s.CloudCode = &v
-	return s
-}
-
-func (s *ListUsersByProdResponseBodyData) SetImported(v bool) *ListUsersByProdResponseBodyData {
-	s.Imported = &v
-	return s
-}
-
-func (s *ListUsersByProdResponseBodyData) SetLogMdsCode(v string) *ListUsersByProdResponseBodyData {
-	s.LogMdsCode = &v
-	return s
-}
-
-func (s *ListUsersByProdResponseBodyData) SetMainUserId(v int64) *ListUsersByProdResponseBodyData {
-	s.MainUserId = &v
-	return s
-}
-
-func (s *ListUsersByProdResponseBodyData) SetSourceLogCode(v string) *ListUsersByProdResponseBodyData {
-	s.SourceLogCode = &v
-	return s
-}
-
-func (s *ListUsersByProdResponseBodyData) SetSourceLogName(v string) *ListUsersByProdResponseBodyData {
-	s.SourceLogName = &v
-	return s
-}
-
-func (s *ListUsersByProdResponseBodyData) SetSourceProdCode(v string) *ListUsersByProdResponseBodyData {
-	s.SourceProdCode = &v
-	return s
-}
-
-func (s *ListUsersByProdResponseBodyData) SetSubUserId(v int64) *ListUsersByProdResponseBodyData {
-	s.SubUserId = &v
-	return s
-}
-
-func (s *ListUsersByProdResponseBodyData) SetSubUserName(v string) *ListUsersByProdResponseBodyData {
-	s.SubUserName = &v
-	return s
-}
-
-type ListUsersByProdResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListUsersByProdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListUsersByProdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUsersByProdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListUsersByProdResponse) SetHeaders(v map[string]*string) *ListUsersByProdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListUsersByProdResponse) SetStatusCode(v int32) *ListUsersByProdResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListUsersByProdResponse) SetBody(v *ListUsersByProdResponseBody) *ListUsersByProdResponse {
 	s.Body = v
 	return s
 }
@@ -26075,7 +23355,8 @@ type PostEventDisposeAndWhiteruleListRequest struct {
 	// example:
 	//
 	// 0
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
 }
 
 func (s PostEventDisposeAndWhiteruleListRequest) String() string {
@@ -26123,6 +23404,11 @@ func (s *PostEventDisposeAndWhiteruleListRequest) SetRoleType(v int32) *PostEven
 
 func (s *PostEventDisposeAndWhiteruleListRequest) SetStatus(v int32) *PostEventDisposeAndWhiteruleListRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *PostEventDisposeAndWhiteruleListRequest) SetThreatLevel(v string) *PostEventDisposeAndWhiteruleListRequest {
+	s.ThreatLevel = &v
 	return s
 }
 
@@ -26916,124 +24202,6 @@ func (s *RestoreCapacityResponse) SetBody(v *RestoreCapacityResponseBody) *Resto
 	return s
 }
 
-type SaveQuickQueryRequest struct {
-	// The name of the saved search.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// no_1_created_search_used_for_dispaly_ip
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The query statement.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 	- and dst_ip : "121.43.234.***"
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s SaveQuickQueryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SaveQuickQueryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SaveQuickQueryRequest) SetDisplayName(v string) *SaveQuickQueryRequest {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *SaveQuickQueryRequest) SetQuery(v string) *SaveQuickQueryRequest {
-	s.Query = &v
-	return s
-}
-
-func (s *SaveQuickQueryRequest) SetRegionId(v string) *SaveQuickQueryRequest {
-	s.RegionId = &v
-	return s
-}
-
-type SaveQuickQueryResponseBody struct {
-	// Indicates whether the query statement is saved as a saved search. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 06735F17-1EDE-5212-81A3-8585368F****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SaveQuickQueryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SaveQuickQueryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SaveQuickQueryResponseBody) SetData(v bool) *SaveQuickQueryResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *SaveQuickQueryResponseBody) SetRequestId(v string) *SaveQuickQueryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SaveQuickQueryResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SaveQuickQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SaveQuickQueryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SaveQuickQueryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SaveQuickQueryResponse) SetHeaders(v map[string]*string) *SaveQuickQueryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SaveQuickQueryResponse) SetStatusCode(v int32) *SaveQuickQueryResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SaveQuickQueryResponse) SetBody(v *SaveQuickQueryResponseBody) *SaveQuickQueryResponse {
-	s.Body = v
-	return s
-}
-
 type SetStorageRequest struct {
 	// The storage region of logs.
 	//
@@ -27176,108 +24344,6 @@ func (s *SetStorageResponse) SetStatusCode(v int32) *SetStorageResponse {
 }
 
 func (s *SetStorageResponse) SetBody(v *SetStorageResponseBody) *SetStorageResponse {
-	s.Body = v
-	return s
-}
-
-type ShowQuickAnalysisRequest struct {
-	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s ShowQuickAnalysisRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ShowQuickAnalysisRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ShowQuickAnalysisRequest) SetRegionId(v string) *ShowQuickAnalysisRequest {
-	s.RegionId = &v
-	return s
-}
-
-type ShowQuickAnalysisResponseBody struct {
-	// The index fields.
-	Data *ShowQuickAnalysisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 2A4FBD89-C29D-5973-B882-CB2D23F6****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ShowQuickAnalysisResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ShowQuickAnalysisResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ShowQuickAnalysisResponseBody) SetData(v *ShowQuickAnalysisResponseBodyData) *ShowQuickAnalysisResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ShowQuickAnalysisResponseBody) SetRequestId(v string) *ShowQuickAnalysisResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ShowQuickAnalysisResponseBodyData struct {
-	// The index fields of the logs.
-	IndexList []*string `json:"IndexList,omitempty" xml:"IndexList,omitempty" type:"Repeated"`
-}
-
-func (s ShowQuickAnalysisResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ShowQuickAnalysisResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ShowQuickAnalysisResponseBodyData) SetIndexList(v []*string) *ShowQuickAnalysisResponseBodyData {
-	s.IndexList = v
-	return s
-}
-
-type ShowQuickAnalysisResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ShowQuickAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ShowQuickAnalysisResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ShowQuickAnalysisResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ShowQuickAnalysisResponse) SetHeaders(v map[string]*string) *ShowQuickAnalysisResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ShowQuickAnalysisResponse) SetStatusCode(v int32) *ShowQuickAnalysisResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ShowQuickAnalysisResponse) SetBody(v *ShowQuickAnalysisResponseBody) *ShowQuickAnalysisResponse {
 	s.Body = v
 	return s
 }
@@ -27487,118 +24553,6 @@ func (s *SubmitImportLogTasksResponse) SetStatusCode(v int32) *SubmitImportLogTa
 }
 
 func (s *SubmitImportLogTasksResponse) SetBody(v *SubmitImportLogTasksResponseBody) *SubmitImportLogTasksResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitJobsRequest struct {
-	// The parameters of the logs that you want to add. The value is a JSON array, which contains the following parameters:\\
-	//
-	//
-	// 	- SourceProdCode: the code of the cloud service.
-	//
-	// 	- SourceLogCode: the code of the log.
-	//
-	// 	- Deleted: specifies whether to add the log. Valid values:
-	//
-	//     	- 0: yes
-	//
-	//     	- 1: no
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// [{"SourceLogCode":"cloud_siem_aegis_health_check","SourceProdCode":"sas","SubUserId":120xxxxxxx,"Deleted":0},{"SourceLogCode":"cloud_siem_aegis_health_check","SourceProdCode":"sas","SubUserId":121xxxxxxxx,"Deleted":0},{"SourceLogCode":"cloud_siem_aegis_health_check","SourceProdCode":"sas","SubUserId":122xxxxxxx,"Deleted":1}]
-	JsonParam *string `json:"JsonParam,omitempty" xml:"JsonParam,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
-	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
-	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s SubmitJobsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitJobsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitJobsRequest) SetJsonParam(v string) *SubmitJobsRequest {
-	s.JsonParam = &v
-	return s
-}
-
-func (s *SubmitJobsRequest) SetRegionId(v string) *SubmitJobsRequest {
-	s.RegionId = &v
-	return s
-}
-
-type SubmitJobsResponseBody struct {
-	// The total number of tasks.
-	//
-	// example:
-	//
-	// 5
-	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitJobsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitJobsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitJobsResponseBody) SetData(v int32) *SubmitJobsResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *SubmitJobsResponseBody) SetRequestId(v string) *SubmitJobsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitJobsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitJobsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitJobsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitJobsResponse) SetHeaders(v map[string]*string) *SubmitJobsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitJobsResponse) SetStatusCode(v int32) *SubmitJobsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitJobsResponse) SetBody(v *SubmitJobsResponseBody) *SubmitJobsResponse {
 	s.Body = v
 	return s
 }
@@ -28211,70 +25165,6 @@ func (client *Client) AddDataSourceLog(request *AddDataSourceLogRequest) (_resul
 
 // Summary:
 //
-// Adds a cloud account to the threat analysis feature for centralized management. After you add the account, you can use the account to perform operations that are supported by the threat analysis feature. For example, you can add logs of the account to the threat analysis feature.
-//
-// @param request - AddUserRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return AddUserResponse
-func (client *Client) AddUserWithOptions(request *AddUserRequest, runtime *util.RuntimeOptions) (_result *AddUserResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AddedUserId)) {
-		body["AddedUserId"] = request.AddedUserId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddUser"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AddUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a cloud account to the threat analysis feature for centralized management. After you add the account, you can use the account to perform operations that are supported by the threat analysis feature. For example, you can add logs of the account to the threat analysis feature.
-//
-// @param request - AddUserRequest
-//
-// @return AddUserResponse
-func (client *Client) AddUser(request *AddUserRequest) (_result *AddUserResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddUserResponse{}
-	_body, _err := client.AddUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Adds the logs of a cloud service within a cloud account to the threat analysis feature for alert and event anslysis.
 //
 // @param request - AddUserSourceLogConfigRequest
@@ -28350,70 +25240,6 @@ func (client *Client) AddUserSourceLogConfig(request *AddUserSourceLogConfigRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserSourceLogConfigResponse{}
 	_body, _err := client.AddUserSourceLogConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures log collection tasks based on resource directories.
-//
-// @param request - BatchJobSubmitRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return BatchJobSubmitResponse
-func (client *Client) BatchJobSubmitWithOptions(request *BatchJobSubmitRequest, runtime *util.RuntimeOptions) (_result *BatchJobSubmitResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JsonConfig)) {
-		body["JsonConfig"] = request.JsonConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("BatchJobSubmit"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &BatchJobSubmitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures log collection tasks based on resource directories.
-//
-// @param request - BatchJobSubmitRequest
-//
-// @return BatchJobSubmitResponse
-func (client *Client) BatchJobSubmit(request *BatchJobSubmitRequest) (_result *BatchJobSubmitResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BatchJobSubmitResponse{}
-	_body, _err := client.BatchJobSubmitWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28959,70 +25785,6 @@ func (client *Client) DeleteDataSourceLog(request *DeleteDataSourceLogRequest) (
 
 // Summary:
 //
-// Removes an Alibaba Cloud account that is added to the threat analysis feature for centralized management. You can add the account to the feature again if required.
-//
-// @param request - DeleteUserRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteUserResponse
-func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime *util.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AddedUserId)) {
-		body["AddedUserId"] = request.AddedUserId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteUser"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes an Alibaba Cloud account that is added to the threat analysis feature for centralized management. You can add the account to the feature again if required.
-//
-// @param request - DeleteUserRequest
-//
-// @return DeleteUserResponse
-func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUserResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteUserResponse{}
-	_body, _err := client.DeleteUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Deletes an alert whitelist rule with a specified ID.
 //
 // @param request - DeleteWhiteRuleListRequest
@@ -29540,12 +26302,28 @@ func (client *Client) DescribeAlertsWithOptions(request *DescribeAlertsRequest, 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertName)) {
+		body["AlertName"] = request.AlertName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AlertTitle)) {
 		body["AlertTitle"] = request.AlertTitle
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AlertType)) {
+		body["AlertType"] = request.AlertType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AlertUuid)) {
 		body["AlertUuid"] = request.AlertUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetId)) {
+		body["AssetId"] = request.AssetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetName)) {
+		body["AssetName"] = request.AssetName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
@@ -29556,8 +26334,20 @@ func (client *Client) DescribeAlertsWithOptions(request *DescribeAlertsRequest, 
 		body["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityName)) {
+		body["EntityName"] = request.EntityName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IsDefend)) {
 		body["IsDefend"] = request.IsDefend
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelType)) {
+		body["LabelType"] = request.LabelType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Level)) {
@@ -29652,6 +26442,10 @@ func (client *Client) DescribeAlertsCountWithOptions(request *DescribeAlertsCoun
 		body["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.QueryType)) {
+		body["QueryType"] = request.QueryType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
 	}
@@ -29728,8 +26522,16 @@ func (client *Client) DescribeAlertsWithEntityWithOptions(request *DescribeAlert
 		body["CurrentPage"] = request.CurrentPage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
 		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityUuid)) {
+		body["EntityUuid"] = request.EntityUuid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IncidentUuid)) {
@@ -29754,6 +26556,10 @@ func (client *Client) DescribeAlertsWithEntityWithOptions(request *DescribeAlert
 
 	if !tea.BoolValue(util.IsUnset(request.SophonTaskId)) {
 		body["SophonTaskId"] = request.SophonTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -29812,12 +26618,40 @@ func (client *Client) DescribeAlertsWithEventWithOptions(request *DescribeAlerts
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertName)) {
+		body["AlertName"] = request.AlertName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AlertTitle)) {
 		body["AlertTitle"] = request.AlertTitle
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AlertType)) {
+		body["AlertType"] = request.AlertType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetId)) {
+		body["AssetId"] = request.AssetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetName)) {
+		body["AssetName"] = request.AssetName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityName)) {
+		body["EntityName"] = request.EntityName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IncidentUuid)) {
@@ -29850,6 +26684,10 @@ func (client *Client) DescribeAlertsWithEventWithOptions(request *DescribeAlerts
 
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		body["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SubUserId)) {
@@ -29890,90 +26728,6 @@ func (client *Client) DescribeAlertsWithEvent(request *DescribeAlertsWithEventRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAlertsWithEventResponse{}
 	_body, _err := client.DescribeAlertsWithEventWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the timeline of the alerts that are associated with an event.
-//
-// @param request - DescribeAttackTimeLineRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeAttackTimeLineResponse
-func (client *Client) DescribeAttackTimeLineWithOptions(request *DescribeAttackTimeLineRequest, runtime *util.RuntimeOptions) (_result *DescribeAttackTimeLineResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AssetName)) {
-		body["AssetName"] = request.AssetName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		body["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IncidentUuid)) {
-		body["IncidentUuid"] = request.IncidentUuid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
-		body["RoleFor"] = request.RoleFor
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
-		body["RoleType"] = request.RoleType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		body["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeAttackTimeLine"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeAttackTimeLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the timeline of the alerts that are associated with an event.
-//
-// @param request - DescribeAttackTimeLineRequest
-//
-// @return DescribeAttackTimeLineResponse
-func (client *Client) DescribeAttackTimeLine(request *DescribeAttackTimeLineRequest) (_result *DescribeAttackTimeLineResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeAttackTimeLineResponse{}
-	_body, _err := client.DescribeAttackTimeLineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30272,8 +27026,16 @@ func (client *Client) DescribeCloudSiemAssetsWithOptions(request *DescribeCloudS
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetName)) {
+		body["AssetName"] = request.AssetName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AssetType)) {
 		body["AssetType"] = request.AssetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetUuid)) {
+		body["AssetUuid"] = request.AssetUuid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
@@ -30512,6 +27274,10 @@ func (client *Client) DescribeCloudSiemEventsWithOptions(request *DescribeCloudS
 		body["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EntityUuid)) {
+		body["EntityUuid"] = request.EntityUuid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EventName)) {
 		body["EventName"] = request.EventName
 	}
@@ -30590,74 +27356,6 @@ func (client *Client) DescribeCloudSiemEvents(request *DescribeCloudSiemEventsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudSiemEventsResponse{}
 	_body, _err := client.DescribeCloudSiemEventsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks whether an Alibaba Cloud service is activated for an Alibaba Cloud account.
-//
-// @param request - DescribeCsImportedProdStatusByUserRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeCsImportedProdStatusByUserResponse
-func (client *Client) DescribeCsImportedProdStatusByUserWithOptions(request *DescribeCsImportedProdStatusByUserRequest, runtime *util.RuntimeOptions) (_result *DescribeCsImportedProdStatusByUserResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceLogProd)) {
-		body["SourceLogProd"] = request.SourceLogProd
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		body["UserId"] = request.UserId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeCsImportedProdStatusByUser"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeCsImportedProdStatusByUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks whether an Alibaba Cloud service is activated for an Alibaba Cloud account.
-//
-// @param request - DescribeCsImportedProdStatusByUserRequest
-//
-// @return DescribeCsImportedProdStatusByUserResponse
-func (client *Client) DescribeCsImportedProdStatusByUser(request *DescribeCsImportedProdStatusByUserRequest) (_result *DescribeCsImportedProdStatusByUserResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeCsImportedProdStatusByUserResponse{}
-	_body, _err := client.DescribeCsImportedProdStatusByUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31038,6 +27736,10 @@ func (client *Client) DescribeDisposeAndPlaybookWithOptions(request *DescribeDis
 
 	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
 		body["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityUuid)) {
+		body["EntityUuid"] = request.EntityUuid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IncidentUuid)) {
@@ -31487,70 +28189,6 @@ func (client *Client) DescribeImportedLogCount(request *DescribeImportedLogCount
 
 // Summary:
 //
-// Queries the status of collection tasks by using the submitId parameter of the tasks.
-//
-// @param request - DescribeJobStatusRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeJobStatusResponse
-func (client *Client) DescribeJobStatusWithOptions(request *DescribeJobStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeJobStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SubmitId)) {
-		body["SubmitId"] = request.SubmitId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeJobStatus"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeJobStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of collection tasks by using the submitId parameter of the tasks.
-//
-// @param request - DescribeJobStatusRequest
-//
-// @return DescribeJobStatusResponse
-func (client *Client) DescribeJobStatus(request *DescribeJobStatusRequest) (_result *DescribeJobStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeJobStatusResponse{}
-	_body, _err := client.DescribeJobStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Queries the fields that can be configured for a custom rule.
 //
 // @param request - DescribeLogFieldsRequest
@@ -31690,66 +28328,6 @@ func (client *Client) DescribeLogSource(request *DescribeLogSourceRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLogSourceResponse{}
 	_body, _err := client.DescribeLogSourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a Logstore that is used in the threat analysis feature of Simple Log Service on the user side. The information may be the Logstore name or the time-to-live (TTL) period of data in the Logstore.
-//
-// @param request - DescribeLogStoreRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeLogStoreResponse
-func (client *Client) DescribeLogStoreWithOptions(request *DescribeLogStoreRequest, runtime *util.RuntimeOptions) (_result *DescribeLogStoreResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeLogStore"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeLogStoreResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a Logstore that is used in the threat analysis feature of Simple Log Service on the user side. The information may be the Logstore name or the time-to-live (TTL) period of data in the Logstore.
-//
-// @param request - DescribeLogStoreRequest
-//
-// @return DescribeLogStoreResponse
-func (client *Client) DescribeLogStore(request *DescribeLogStoreRequest) (_result *DescribeLogStoreResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeLogStoreResponse{}
-	_body, _err := client.DescribeLogStoreWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32387,158 +28965,6 @@ func (client *Client) DescribeWhiteRuleList(request *DescribeWhiteRuleListReques
 
 // Summary:
 //
-// Queries and analyzes the distribution of specific fields by using quick analysis.
-//
-// @param request - DoQuickFieldRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DoQuickFieldResponse
-func (client *Client) DoQuickFieldWithOptions(request *DoQuickFieldRequest, runtime *util.RuntimeOptions) (_result *DoQuickFieldResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.From)) {
-		body["From"] = request.From
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Index)) {
-		body["Index"] = request.Index
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Page)) {
-		body["Page"] = request.Page
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Reverse)) {
-		body["Reverse"] = request.Reverse
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Size)) {
-		body["Size"] = request.Size
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.To)) {
-		body["To"] = request.To
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DoQuickField"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DoQuickFieldResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries and analyzes the distribution of specific fields by using quick analysis.
-//
-// @param request - DoQuickFieldRequest
-//
-// @return DoQuickFieldResponse
-func (client *Client) DoQuickField(request *DoQuickFieldRequest) (_result *DoQuickFieldResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DoQuickFieldResponse{}
-	_body, _err := client.DoQuickFieldWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Grants permissions to or revokes permissions from a regular member on the threat analysis feature. This helps manage the authorization to view information such as log analysis and alerts.
-//
-// @param request - DoSelfDelegateRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DoSelfDelegateResponse
-func (client *Client) DoSelfDelegateWithOptions(request *DoSelfDelegateRequest, runtime *util.RuntimeOptions) (_result *DoSelfDelegateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
-		body["AliUid"] = request.AliUid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DelegateOrNot)) {
-		body["DelegateOrNot"] = request.DelegateOrNot
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DoSelfDelegate"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DoSelfDelegateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Grants permissions to or revokes permissions from a regular member on the threat analysis feature. This helps manage the authorization to view information such as log analysis and alerts.
-//
-// @param request - DoSelfDelegateRequest
-//
-// @return DoSelfDelegateResponse
-func (client *Client) DoSelfDelegate(request *DoSelfDelegateRequest) (_result *DoSelfDelegateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DoSelfDelegateResponse{}
-	_body, _err := client.DoSelfDelegateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Creates a service-linked role named AliyunServiceRoleForSasCloudSiem for the threat analysis feature. The feature can assume this role to access cloud services.
 //
 // @param request - EnableAccessForCloudSiemRequest
@@ -32671,7 +29097,7 @@ func (client *Client) EnableServiceForCloudSiem(request *EnableServiceForCloudSi
 
 // Summary:
 //
-// Queries the storage capacity usage of the threat analysis feature and the purchased storage capacity
+// # Queries the storage capacity usage of the threat analysis feature and the purchased storage capacity
 //
 // @param request - GetCapacityRequest
 //
@@ -32721,7 +29147,7 @@ func (client *Client) GetCapacityWithOptions(request *GetCapacityRequest, runtim
 
 // Summary:
 //
-// Queries the storage capacity usage of the threat analysis feature and the purchased storage capacity
+// # Queries the storage capacity usage of the threat analysis feature and the purchased storage capacity
 //
 // @param request - GetCapacityRequest
 //
@@ -32730,230 +29156,6 @@ func (client *Client) GetCapacity(request *GetCapacityRequest) (_result *GetCapa
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCapacityResponse{}
 	_body, _err := client.GetCapacityWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the results of of search statements that are displayed in histograms.
-//
-// @param request - GetHistogramsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetHistogramsResponse
-func (client *Client) GetHistogramsWithOptions(request *GetHistogramsRequest, runtime *util.RuntimeOptions) (_result *GetHistogramsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.From)) {
-		body["From"] = request.From
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Query)) {
-		body["Query"] = request.Query
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.To)) {
-		body["To"] = request.To
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetHistograms"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetHistogramsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the results of of search statements that are displayed in histograms.
-//
-// @param request - GetHistogramsRequest
-//
-// @return GetHistogramsResponse
-func (client *Client) GetHistograms(request *GetHistogramsRequest) (_result *GetHistogramsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetHistogramsResponse{}
-	_body, _err := client.GetHistogramsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the results of a log query by using SQL statements.
-//
-// @param request - GetLogsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetLogsResponse
-func (client *Client) GetLogsWithOptions(request *GetLogsRequest, runtime *util.RuntimeOptions) (_result *GetLogsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.From)) {
-		body["From"] = request.From
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
-		body["PageIndex"] = request.PageIndex
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		body["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Query)) {
-		body["Query"] = request.Query
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ReverseOrNot)) {
-		body["ReverseOrNot"] = request.ReverseOrNot
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.To)) {
-		body["To"] = request.To
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Total)) {
-		body["Total"] = request.Total
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetLogs"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the results of a log query by using SQL statements.
-//
-// @param request - GetLogsRequest
-//
-// @return GetLogsResponse
-func (client *Client) GetLogs(request *GetLogsRequest) (_result *GetLogsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetLogsResponse{}
-	_body, _err := client.GetLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a query statement that is saved as a saved search in log analysis by name.
-//
-// @param request - GetQuickQueryRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetQuickQueryResponse
-func (client *Client) GetQuickQueryWithOptions(request *GetQuickQueryRequest, runtime *util.RuntimeOptions) (_result *GetQuickQueryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SearchName)) {
-		body["SearchName"] = request.SearchName
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetQuickQuery"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetQuickQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a query statement that is saved as a saved search in log analysis by name.
-//
-// @param request - GetQuickQueryRequest
-//
-// @return GetQuickQueryResponse
-func (client *Client) GetQuickQuery(request *GetQuickQueryRequest) (_result *GetQuickQueryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetQuickQueryResponse{}
-	_body, _err := client.GetQuickQueryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33756,6 +29958,14 @@ func (client *Client) ListCustomizeRuleTestResultWithOptions(request *ListCustom
 		body["CurrentPage"] = request.CurrentPage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DetectionRuleId)) {
+		body["DetectionRuleId"] = request.DetectionRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		body["Id"] = request.Id
 	}
@@ -33774,6 +29984,14 @@ func (client *Client) ListCustomizeRuleTestResultWithOptions(request *ListCustom
 
 	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
 		body["RoleType"] = request.RoleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyType)) {
+		body["VerifyType"] = request.VerifyType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -34056,6 +30274,10 @@ func (client *Client) ListDisposeStrategyWithOptions(request *ListDisposeStrateg
 		body["EntityType"] = request.EntityType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IncidentUuid)) {
+		body["IncidentUuid"] = request.IncidentUuid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
 		body["Order"] = request.Order
 	}
@@ -34143,6 +30365,106 @@ func (client *Client) ListDisposeStrategy(request *ListDisposeStrategyRequest) (
 
 // Summary:
 //
+// 查询实体列表
+//
+// @param request - ListEntitiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEntitiesResponse
+func (client *Client) ListEntitiesWithOptions(request *ListEntitiesRequest, runtime *util.RuntimeOptions) (_result *ListEntitiesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityName)) {
+		body["EntityName"] = request.EntityName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		body["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityUuid)) {
+		body["EntityUuid"] = request.EntityUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncidentUuid)) {
+		body["IncidentUuid"] = request.IncidentUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsMalwareEntity)) {
+		body["IsMalwareEntity"] = request.IsMalwareEntity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MalwareType)) {
+		body["MalwareType"] = request.MalwareType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		body["RoleType"] = request.RoleType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEntities"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEntitiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实体列表
+//
+// @param request - ListEntitiesRequest
+//
+// @return ListEntitiesResponse
+func (client *Client) ListEntities(request *ListEntitiesRequest) (_result *ListEntitiesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEntitiesResponse{}
+	_body, _err := client.ListEntitiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of the logs in a cloud service that is added to the threat analysis feature.
 //
 // @param request - ListImportedLogsByProdRequest
@@ -34210,66 +30532,6 @@ func (client *Client) ListImportedLogsByProd(request *ListImportedLogsByProdRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListImportedLogsByProdResponse{}
 	_body, _err := client.ListImportedLogsByProdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the resource-related permissions granted to the current user. The threat analysis feature supports two types of identities: administrators and common members. An administrator is granted all permissions, and a common member is granted permissions to access only specific resources.
-//
-// @param request - ListOperationRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListOperationResponse
-func (client *Client) ListOperationWithOptions(request *ListOperationRequest, runtime *util.RuntimeOptions) (_result *ListOperationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListOperation"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListOperationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the resource-related permissions granted to the current user. The threat analysis feature supports two types of identities: administrators and common members. An administrator is granted all permissions, and a common member is granted permissions to access only specific resources.
-//
-// @param request - ListOperationRequest
-//
-// @return ListOperationResponse
-func (client *Client) ListOperation(request *ListOperationRequest) (_result *ListOperationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListOperationResponse{}
-	_body, _err := client.ListOperationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34351,74 +30613,6 @@ func (client *Client) ListProjectLogStores(request *ListProjectLogStoresRequest)
 
 // Summary:
 //
-// Queries the saved searches of the Logstore.
-//
-// @param request - ListQuickQueryRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListQuickQueryResponse
-func (client *Client) ListQuickQueryWithOptions(request *ListQuickQueryRequest, runtime *util.RuntimeOptions) (_result *ListQuickQueryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Offset)) {
-		body["Offset"] = request.Offset
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		body["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListQuickQuery"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListQuickQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the saved searches of the Logstore.
-//
-// @param request - ListQuickQueryRequest
-//
-// @return ListQuickQueryResponse
-func (client *Client) ListQuickQuery(request *ListQuickQueryRequest) (_result *ListQuickQueryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListQuickQueryResponse{}
-	_body, _err := client.ListQuickQueryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Queries a list of Alibaba Cloud accounts that are added to the threat analysis feature for centralized management. These accounts can be used to perform operations supported by the threat analysis feature, such as adding logs and handling events.
 //
 // @param request - ListRdUsersRequest
@@ -34470,154 +30664,6 @@ func (client *Client) ListRdUsers(request *ListRdUsersRequest) (_result *ListRdU
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRdUsersResponse{}
 	_body, _err := client.ListRdUsersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of logs that are added to the threat analysis feature by cloud service.
-//
-// @param request - ListUserProdLogsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListUserProdLogsResponse
-func (client *Client) ListUserProdLogsWithOptions(request *ListUserProdLogsRequest, runtime *util.RuntimeOptions) (_result *ListUserProdLogsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
-		body["RoleFor"] = request.RoleFor
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
-		body["RoleType"] = request.RoleType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceLogCode)) {
-		body["SourceLogCode"] = request.SourceLogCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceProdCode)) {
-		body["SourceProdCode"] = request.SourceProdCode
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListUserProdLogs"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListUserProdLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of logs that are added to the threat analysis feature by cloud service.
-//
-// @param request - ListUserProdLogsRequest
-//
-// @return ListUserProdLogsResponse
-func (client *Client) ListUserProdLogs(request *ListUserProdLogsRequest) (_result *ListUserProdLogsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListUserProdLogsResponse{}
-	_body, _err := client.ListUserProdLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of the logs that are added to the threat analysis feature by cloud service.
-//
-// @param request - ListUsersByProdRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListUsersByProdResponse
-func (client *Client) ListUsersByProdWithOptions(request *ListUsersByProdRequest, runtime *util.RuntimeOptions) (_result *ListUsersByProdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
-		body["RoleFor"] = request.RoleFor
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
-		body["RoleType"] = request.RoleType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceProdCode)) {
-		body["SourceProdCode"] = request.SourceProdCode
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListUsersByProd"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListUsersByProdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of the logs that are added to the threat analysis feature by cloud service.
-//
-// @param request - ListUsersByProdRequest
-//
-// @return ListUsersByProdResponse
-func (client *Client) ListUsersByProd(request *ListUsersByProdRequest) (_result *ListUsersByProdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListUsersByProdResponse{}
-	_body, _err := client.ListUsersByProdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35328,6 +31374,10 @@ func (client *Client) PostEventDisposeAndWhiteruleListWithOptions(request *PostE
 		body["Status"] = request.Status
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ThreatLevel)) {
+		body["ThreatLevel"] = request.ThreatLevel
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -35667,74 +31717,6 @@ func (client *Client) RestoreCapacity(request *RestoreCapacityRequest) (_result 
 
 // Summary:
 //
-// Saves a query statement in log analysis as a saved search. This helps save the time required to write the query statement.
-//
-// @param request - SaveQuickQueryRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return SaveQuickQueryResponse
-func (client *Client) SaveQuickQueryWithOptions(request *SaveQuickQueryRequest, runtime *util.RuntimeOptions) (_result *SaveQuickQueryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
-		body["DisplayName"] = request.DisplayName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Query)) {
-		body["Query"] = request.Query
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SaveQuickQuery"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SaveQuickQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Saves a query statement in log analysis as a saved search. This helps save the time required to write the query statement.
-//
-// @param request - SaveQuickQueryRequest
-//
-// @return SaveQuickQueryResponse
-func (client *Client) SaveQuickQuery(request *SaveQuickQueryRequest) (_result *SaveQuickQueryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SaveQuickQueryResponse{}
-	_body, _err := client.SaveQuickQueryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Configures the settings of log storage, such as the storage duration and storage region.
 //
 // @param request - SetStorageRequest
@@ -35802,66 +31784,6 @@ func (client *Client) SetStorage(request *SetStorageRequest) (_result *SetStorag
 	runtime := &util.RuntimeOptions{}
 	_result = &SetStorageResponse{}
 	_body, _err := client.SetStorageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures index fields to display in log analysis. The index fields can be used for quick analysis.
-//
-// @param request - ShowQuickAnalysisRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ShowQuickAnalysisResponse
-func (client *Client) ShowQuickAnalysisWithOptions(request *ShowQuickAnalysisRequest, runtime *util.RuntimeOptions) (_result *ShowQuickAnalysisResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ShowQuickAnalysis"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ShowQuickAnalysisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures index fields to display in log analysis. The index fields can be used for quick analysis.
-//
-// @param request - ShowQuickAnalysisRequest
-//
-// @return ShowQuickAnalysisResponse
-func (client *Client) ShowQuickAnalysis(request *ShowQuickAnalysisRequest) (_result *ShowQuickAnalysisResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ShowQuickAnalysisResponse{}
-	_body, _err := client.ShowQuickAnalysisWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35950,70 +31872,6 @@ func (client *Client) SubmitImportLogTasks(request *SubmitImportLogTasksRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitImportLogTasksResponse{}
 	_body, _err := client.SubmitImportLogTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits multiple tasks that add logs to the threat analysis feature at a time. After the logs are added, you can perform alert and event analysis.
-//
-// @param request - SubmitJobsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return SubmitJobsResponse
-func (client *Client) SubmitJobsWithOptions(request *SubmitJobsRequest, runtime *util.RuntimeOptions) (_result *SubmitJobsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JsonParam)) {
-		body["JsonParam"] = request.JsonParam
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitJobs"),
-		Version:     tea.String("2022-06-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SubmitJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits multiple tasks that add logs to the threat analysis feature at a time. After the logs are added, you can perform alert and event analysis.
-//
-// @param request - SubmitJobsRequest
-//
-// @return SubmitJobsResponse
-func (client *Client) SubmitJobs(request *SubmitJobsRequest) (_result *SubmitJobsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitJobsResponse{}
-	_body, _err := client.SubmitJobsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
