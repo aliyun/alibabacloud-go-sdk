@@ -7335,6 +7335,13 @@ func (s *QueryExtCodeSignResponse) SetBody(v *QueryExtCodeSignResponseBody) *Que
 }
 
 type QueryMobilesCardSupportRequest struct {
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// NORMAL
+	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	// The list of mobile phone numbers.
 	//
 	// This parameter is required.
@@ -7359,6 +7366,11 @@ func (s QueryMobilesCardSupportRequest) GoString() string {
 	return s.String()
 }
 
+func (s *QueryMobilesCardSupportRequest) SetEncryptType(v string) *QueryMobilesCardSupportRequest {
+	s.EncryptType = &v
+	return s
+}
+
 func (s *QueryMobilesCardSupportRequest) SetMobiles(v []map[string]interface{}) *QueryMobilesCardSupportRequest {
 	s.Mobiles = v
 	return s
@@ -7370,6 +7382,13 @@ func (s *QueryMobilesCardSupportRequest) SetTemplateCode(v string) *QueryMobiles
 }
 
 type QueryMobilesCardSupportShrinkRequest struct {
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// NORMAL
+	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	// The list of mobile phone numbers.
 	//
 	// This parameter is required.
@@ -7392,6 +7411,11 @@ func (s QueryMobilesCardSupportShrinkRequest) String() string {
 
 func (s QueryMobilesCardSupportShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryMobilesCardSupportShrinkRequest) SetEncryptType(v string) *QueryMobilesCardSupportShrinkRequest {
+	s.EncryptType = &v
+	return s
 }
 
 func (s *QueryMobilesCardSupportShrinkRequest) SetMobilesShrink(v string) *QueryMobilesCardSupportShrinkRequest {
@@ -18430,6 +18454,10 @@ func (client *Client) QueryMobilesCardSupportWithOptions(tmpReq *QueryMobilesCar
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncryptType)) {
+		query["EncryptType"] = request.EncryptType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MobilesShrink)) {
 		query["Mobiles"] = request.MobilesShrink
 	}
