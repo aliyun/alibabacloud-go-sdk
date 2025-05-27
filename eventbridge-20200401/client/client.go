@@ -10020,6 +10020,387 @@ func (s *DisableRuleResponse) SetBody(v *DisableRuleResponseBody) *DisableRuleRe
 	return s
 }
 
+type DiscoverEventSourceRequest struct {
+	SourceMySQLParameters *DiscoverEventSourceRequestSourceMySQLParameters `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty" type:"Struct"`
+}
+
+func (s DiscoverEventSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DiscoverEventSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DiscoverEventSourceRequest) SetSourceMySQLParameters(v *DiscoverEventSourceRequestSourceMySQLParameters) *DiscoverEventSourceRequest {
+	s.SourceMySQLParameters = v
+	return s
+}
+
+type DiscoverEventSourceRequestSourceMySQLParameters struct {
+	// example:
+	//
+	// database1
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// rm-xxx.mysql.rds.aliyuncs.com
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// example:
+	//
+	// 20
+	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// example:
+	//
+	// PrivateNetwork
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// example:
+	//
+	// 30
+	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// example:
+	//
+	// 1234xxx
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// sg-bp1ic0vsbwyv176e9inx
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// example:
+	//
+	// database1.table1
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// user1
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	// example:
+	//
+	// vsw-gw824tpaptxtlo256lqub
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// example:
+	//
+	// vpc-uf6hwiei8u5uil3bfahc1
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DiscoverEventSourceRequestSourceMySQLParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DiscoverEventSourceRequestSourceMySQLParameters) GoString() string {
+	return s.String()
+}
+
+func (s *DiscoverEventSourceRequestSourceMySQLParameters) SetDatabaseName(v string) *DiscoverEventSourceRequestSourceMySQLParameters {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DiscoverEventSourceRequestSourceMySQLParameters) SetHostName(v string) *DiscoverEventSourceRequestSourceMySQLParameters {
+	s.HostName = &v
+	return s
+}
+
+func (s *DiscoverEventSourceRequestSourceMySQLParameters) SetLimit(v string) *DiscoverEventSourceRequestSourceMySQLParameters {
+	s.Limit = &v
+	return s
+}
+
+func (s *DiscoverEventSourceRequestSourceMySQLParameters) SetNetworkType(v string) *DiscoverEventSourceRequestSourceMySQLParameters {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DiscoverEventSourceRequestSourceMySQLParameters) SetOffset(v string) *DiscoverEventSourceRequestSourceMySQLParameters {
+	s.Offset = &v
+	return s
+}
+
+func (s *DiscoverEventSourceRequestSourceMySQLParameters) SetPassword(v string) *DiscoverEventSourceRequestSourceMySQLParameters {
+	s.Password = &v
+	return s
+}
+
+func (s *DiscoverEventSourceRequestSourceMySQLParameters) SetPort(v int32) *DiscoverEventSourceRequestSourceMySQLParameters {
+	s.Port = &v
+	return s
+}
+
+func (s *DiscoverEventSourceRequestSourceMySQLParameters) SetRegionId(v string) *DiscoverEventSourceRequestSourceMySQLParameters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DiscoverEventSourceRequestSourceMySQLParameters) SetSecurityGroupId(v string) *DiscoverEventSourceRequestSourceMySQLParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DiscoverEventSourceRequestSourceMySQLParameters) SetTableName(v string) *DiscoverEventSourceRequestSourceMySQLParameters {
+	s.TableName = &v
+	return s
+}
+
+func (s *DiscoverEventSourceRequestSourceMySQLParameters) SetUser(v string) *DiscoverEventSourceRequestSourceMySQLParameters {
+	s.User = &v
+	return s
+}
+
+func (s *DiscoverEventSourceRequestSourceMySQLParameters) SetVSwitchIds(v string) *DiscoverEventSourceRequestSourceMySQLParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *DiscoverEventSourceRequestSourceMySQLParameters) SetVpcId(v string) *DiscoverEventSourceRequestSourceMySQLParameters {
+	s.VpcId = &v
+	return s
+}
+
+type DiscoverEventSourceShrinkRequest struct {
+	SourceMySQLParametersShrink *string `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty"`
+}
+
+func (s DiscoverEventSourceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DiscoverEventSourceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DiscoverEventSourceShrinkRequest) SetSourceMySQLParametersShrink(v string) *DiscoverEventSourceShrinkRequest {
+	s.SourceMySQLParametersShrink = &v
+	return s
+}
+
+type DiscoverEventSourceResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DiscoverEventSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// C7043799-F4DA-5290-9249-97C35987****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DiscoverEventSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DiscoverEventSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DiscoverEventSourceResponseBody) SetCode(v string) *DiscoverEventSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DiscoverEventSourceResponseBody) SetData(v *DiscoverEventSourceResponseBodyData) *DiscoverEventSourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DiscoverEventSourceResponseBody) SetMessage(v string) *DiscoverEventSourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DiscoverEventSourceResponseBody) SetRequestId(v string) *DiscoverEventSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DiscoverEventSourceResponseBody) SetSuccess(v bool) *DiscoverEventSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DiscoverEventSourceResponseBodyData struct {
+	SourceMySQLDiscovery *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery `json:"SourceMySQLDiscovery,omitempty" xml:"SourceMySQLDiscovery,omitempty" type:"Struct"`
+}
+
+func (s DiscoverEventSourceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DiscoverEventSourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DiscoverEventSourceResponseBodyData) SetSourceMySQLDiscovery(v *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) *DiscoverEventSourceResponseBodyData {
+	s.SourceMySQLDiscovery = v
+	return s
+}
+
+type DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery struct {
+	DatabaseNames []*string `json:"DatabaseNames,omitempty" xml:"DatabaseNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// [{\\"is_active\\":\\"1\\",\\"name\\":\\"0c0c5d1a-e844-44a8-902d-4f62cbcb0479\\",\\"id\\":\\"21\\"},{\\"is_active\\":\\"1\\",\\"name\\":\\"18ef033e-70bb-4795-8222-6cfb54f38f26\\",\\"id\\":\\"22\\"}]
+	SimpleData  *string                                                             `json:"SimpleData,omitempty" xml:"SimpleData,omitempty"`
+	TableNames  []*string                                                           `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
+	TableSchema *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema `json:"TableSchema,omitempty" xml:"TableSchema,omitempty" type:"Struct"`
+}
+
+func (s DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) GoString() string {
+	return s.String()
+}
+
+func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) SetDatabaseNames(v []*string) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery {
+	s.DatabaseNames = v
+	return s
+}
+
+func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) SetSimpleData(v string) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery {
+	s.SimpleData = &v
+	return s
+}
+
+func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) SetTableNames(v []*string) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery {
+	s.TableNames = v
+	return s
+}
+
+func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) SetTableSchema(v *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery {
+	s.TableSchema = v
+	return s
+}
+
+type DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema struct {
+	Columns []*DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// map
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema) SetColumns(v []*DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema {
+	s.Columns = v
+	return s
+}
+
+func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema) SetTableName(v string) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema {
+	s.TableName = &v
+	return s
+}
+
+type DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns struct {
+	// example:
+	//
+	// auto_increment
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// example:
+	//
+	// id
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// example:
+	//
+	// NO
+	IsNull *string `json:"IsNull,omitempty" xml:"IsNull,omitempty"`
+	// example:
+	//
+	// PRI
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// int
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns) GoString() string {
+	return s.String()
+}
+
+func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns) SetExtra(v string) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns {
+	s.Extra = &v
+	return s
+}
+
+func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns) SetField(v string) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns {
+	s.Field = &v
+	return s
+}
+
+func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns) SetIsNull(v string) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns {
+	s.IsNull = &v
+	return s
+}
+
+func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns) SetKey(v string) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns {
+	s.Key = &v
+	return s
+}
+
+func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns) SetType(v string) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchemaColumns {
+	s.Type = &v
+	return s
+}
+
+type DiscoverEventSourceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DiscoverEventSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DiscoverEventSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DiscoverEventSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DiscoverEventSourceResponse) SetHeaders(v map[string]*string) *DiscoverEventSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DiscoverEventSourceResponse) SetStatusCode(v int32) *DiscoverEventSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DiscoverEventSourceResponse) SetBody(v *DiscoverEventSourceResponseBody) *DiscoverEventSourceResponse {
+	s.Body = v
+	return s
+}
+
 type EnableRuleRequest struct {
 	// The name of the event bus.
 	//
@@ -27487,6 +27868,272 @@ func (s *TestEventPatternResponse) SetBody(v *TestEventPatternResponseBody) *Tes
 	return s
 }
 
+type TestEventSourceConfigRequest struct {
+	SourceMySQLParameters *TestEventSourceConfigRequestSourceMySQLParameters `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty" type:"Struct"`
+}
+
+func (s TestEventSourceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestEventSourceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TestEventSourceConfigRequest) SetSourceMySQLParameters(v *TestEventSourceConfigRequestSourceMySQLParameters) *TestEventSourceConfigRequest {
+	s.SourceMySQLParameters = v
+	return s
+}
+
+type TestEventSourceConfigRequestSourceMySQLParameters struct {
+	// example:
+	//
+	// database1
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// rm-bp1vxxx.mysql.rds.aliyuncs.com
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// example:
+	//
+	// PrivateNetwork
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// example:
+	//
+	// 1234xxx
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// sg-xxx
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// example:
+	//
+	// database1.table1
+	TableNames *string `json:"TableNames,omitempty" xml:"TableNames,omitempty"`
+	// example:
+	//
+	// user***
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	// example:
+	//
+	// vsw-bp1gb7xxx
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// VPC ID。
+	//
+	// example:
+	//
+	// vpc-xxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s TestEventSourceConfigRequestSourceMySQLParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestEventSourceConfigRequestSourceMySQLParameters) GoString() string {
+	return s.String()
+}
+
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetDatabaseName(v string) *TestEventSourceConfigRequestSourceMySQLParameters {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetHostName(v string) *TestEventSourceConfigRequestSourceMySQLParameters {
+	s.HostName = &v
+	return s
+}
+
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetNetworkType(v string) *TestEventSourceConfigRequestSourceMySQLParameters {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetPassword(v string) *TestEventSourceConfigRequestSourceMySQLParameters {
+	s.Password = &v
+	return s
+}
+
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetPort(v int32) *TestEventSourceConfigRequestSourceMySQLParameters {
+	s.Port = &v
+	return s
+}
+
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetRegionId(v string) *TestEventSourceConfigRequestSourceMySQLParameters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetSecurityGroupId(v string) *TestEventSourceConfigRequestSourceMySQLParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetTableNames(v string) *TestEventSourceConfigRequestSourceMySQLParameters {
+	s.TableNames = &v
+	return s
+}
+
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetUser(v string) *TestEventSourceConfigRequestSourceMySQLParameters {
+	s.User = &v
+	return s
+}
+
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetVSwitchIds(v string) *TestEventSourceConfigRequestSourceMySQLParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetVpcId(v string) *TestEventSourceConfigRequestSourceMySQLParameters {
+	s.VpcId = &v
+	return s
+}
+
+type TestEventSourceConfigShrinkRequest struct {
+	SourceMySQLParametersShrink *string `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty"`
+}
+
+func (s TestEventSourceConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestEventSourceConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TestEventSourceConfigShrinkRequest) SetSourceMySQLParametersShrink(v string) *TestEventSourceConfigShrinkRequest {
+	s.SourceMySQLParametersShrink = &v
+	return s
+}
+
+type TestEventSourceConfigResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*TestEventSourceConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// FF942675-F937-549C-A942-EB94FFE28DD3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s TestEventSourceConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestEventSourceConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TestEventSourceConfigResponseBody) SetCode(v string) *TestEventSourceConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TestEventSourceConfigResponseBody) SetData(v []*TestEventSourceConfigResponseBodyData) *TestEventSourceConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *TestEventSourceConfigResponseBody) SetMessage(v string) *TestEventSourceConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TestEventSourceConfigResponseBody) SetRequestId(v string) *TestEventSourceConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TestEventSourceConfigResponseBody) SetSuccess(v bool) *TestEventSourceConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TestEventSourceConfigResponseBodyData struct {
+	// example:
+	//
+	// CHECK_CONNECTION
+	CheckItem *string `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
+	// example:
+	//
+	// Connection established successfully.
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// true
+	IsSucceed *string `json:"IsSucceed,omitempty" xml:"IsSucceed,omitempty"`
+}
+
+func (s TestEventSourceConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestEventSourceConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *TestEventSourceConfigResponseBodyData) SetCheckItem(v string) *TestEventSourceConfigResponseBodyData {
+	s.CheckItem = &v
+	return s
+}
+
+func (s *TestEventSourceConfigResponseBodyData) SetErrorMsg(v string) *TestEventSourceConfigResponseBodyData {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *TestEventSourceConfigResponseBodyData) SetIsSucceed(v string) *TestEventSourceConfigResponseBodyData {
+	s.IsSucceed = &v
+	return s
+}
+
+type TestEventSourceConfigResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TestEventSourceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TestEventSourceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestEventSourceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TestEventSourceConfigResponse) SetHeaders(v map[string]*string) *TestEventSourceConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TestEventSourceConfigResponse) SetStatusCode(v int32) *TestEventSourceConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TestEventSourceConfigResponse) SetBody(v *TestEventSourceConfigResponseBody) *TestEventSourceConfigResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateApiDestinationRequest struct {
 	// The name of the API destination. The name must be 2 to 127 characters in length.
 	//
@@ -36543,6 +37190,72 @@ func (client *Client) DisableRule(request *DisableRuleRequest) (_result *Disable
 
 // Summary:
 //
+// 发现EventSource(例如：Mysql)的Schema和SimpleData
+//
+// @param tmpReq - DiscoverEventSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DiscoverEventSourceResponse
+func (client *Client) DiscoverEventSourceWithOptions(tmpReq *DiscoverEventSourceRequest, runtime *util.RuntimeOptions) (_result *DiscoverEventSourceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DiscoverEventSourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceMySQLParameters)) {
+		request.SourceMySQLParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceMySQLParameters, tea.String("SourceMySQLParameters"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceMySQLParametersShrink)) {
+		body["SourceMySQLParameters"] = request.SourceMySQLParametersShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DiscoverEventSource"),
+		Version:     tea.String("2020-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DiscoverEventSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发现EventSource(例如：Mysql)的Schema和SimpleData
+//
+// @param request - DiscoverEventSourceRequest
+//
+// @return DiscoverEventSourceResponse
+func (client *Client) DiscoverEventSource(request *DiscoverEventSourceRequest) (_result *DiscoverEventSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DiscoverEventSourceResponse{}
+	_body, _err := client.DiscoverEventSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables an event rule.
 //
 // Description:
@@ -38251,6 +38964,72 @@ func (client *Client) TestEventPattern(request *TestEventPatternRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &TestEventPatternResponse{}
 	_body, _err := client.TestEventPatternWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查EventSource配置是否可用
+//
+// @param tmpReq - TestEventSourceConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TestEventSourceConfigResponse
+func (client *Client) TestEventSourceConfigWithOptions(tmpReq *TestEventSourceConfigRequest, runtime *util.RuntimeOptions) (_result *TestEventSourceConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &TestEventSourceConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceMySQLParameters)) {
+		request.SourceMySQLParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceMySQLParameters, tea.String("SourceMySQLParameters"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceMySQLParametersShrink)) {
+		body["SourceMySQLParameters"] = request.SourceMySQLParametersShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TestEventSourceConfig"),
+		Version:     tea.String("2020-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TestEventSourceConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查EventSource配置是否可用
+//
+// @param request - TestEventSourceConfigRequest
+//
+// @return TestEventSourceConfigResponse
+func (client *Client) TestEventSourceConfig(request *TestEventSourceConfigRequest) (_result *TestEventSourceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TestEventSourceConfigResponse{}
+	_body, _err := client.TestEventSourceConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
