@@ -29223,6 +29223,7 @@ type RunDocSummaryRequest struct {
 	//
 	// 12345
 	DocId            *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	ModelName        *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	RecommendContent *string `json:"RecommendContent,omitempty" xml:"RecommendContent,omitempty"`
 	// This parameter is required.
@@ -29254,6 +29255,11 @@ func (s *RunDocSummaryRequest) SetCleanCache(v bool) *RunDocSummaryRequest {
 
 func (s *RunDocSummaryRequest) SetDocId(v string) *RunDocSummaryRequest {
 	s.DocId = &v
+	return s
+}
+
+func (s *RunDocSummaryRequest) SetModelName(v string) *RunDocSummaryRequest {
+	s.ModelName = &v
 	return s
 }
 
@@ -54707,6 +54713,10 @@ func (client *Client) RunDocSummaryWithOptions(request *RunDocSummaryRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.DocId)) {
 		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		body["ModelName"] = request.ModelName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Query)) {
