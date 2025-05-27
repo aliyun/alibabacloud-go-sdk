@@ -1083,6 +1083,7 @@ func (s *AnalyzeImageResponse) SetBody(v *AnalyzeImageResponseBody) *AnalyzeImag
 }
 
 type CreateTaskRequest struct {
+	CallBackUrl  *string                          `json:"callBackUrl,omitempty" xml:"callBackUrl,omitempty"`
 	CategoryTags []*CreateTaskRequestCategoryTags `json:"categoryTags,omitempty" xml:"categoryTags,omitempty" type:"Repeated"`
 	CustomPrompt *string                          `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
 	Dialogue     *CreateTaskRequestDialogue       `json:"dialogue,omitempty" xml:"dialogue,omitempty" type:"Struct"`
@@ -1114,6 +1115,11 @@ func (s CreateTaskRequest) String() string {
 
 func (s CreateTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTaskRequest) SetCallBackUrl(v string) *CreateTaskRequest {
+	s.CallBackUrl = &v
+	return s
 }
 
 func (s *CreateTaskRequest) SetCategoryTags(v []*CreateTaskRequestCategoryTags) *CreateTaskRequest {
@@ -3444,6 +3450,10 @@ func (client *Client) CreateTaskWithOptions(workspaceId *string, appId *string, 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallBackUrl)) {
+		body["callBackUrl"] = request.CallBackUrl
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CategoryTags)) {
 		body["categoryTags"] = request.CategoryTags
 	}
