@@ -12912,7 +12912,8 @@ type DescribeDBClustersRequest struct {
 	// example:
 	//
 	// Running
-	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	DBClusterStatus  *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	DBClusterVersion *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
 	// The version of the cluster. Set the value to **3.0**.
 	//
 	// example:
@@ -12981,6 +12982,11 @@ func (s *DescribeDBClustersRequest) SetDBClusterIds(v string) *DescribeDBCluster
 
 func (s *DescribeDBClustersRequest) SetDBClusterStatus(v string) *DescribeDBClustersRequest {
 	s.DBClusterStatus = &v
+	return s
+}
+
+func (s *DescribeDBClustersRequest) SetDBClusterVersion(v string) *DescribeDBClustersRequest {
+	s.DBClusterVersion = &v
 	return s
 }
 
@@ -18830,11 +18836,11 @@ type DescribeInclinedTablesRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// - 30；
+	// - 30
 	//
-	// - 50；
+	// - 50
 	//
-	// - 100；
+	// - 100
 	//
 	// Default value: 30.
 	//
@@ -42388,6 +42394,10 @@ func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersR
 
 	if !tea.BoolValue(util.IsUnset(request.DBClusterStatus)) {
 		query["DBClusterStatus"] = request.DBClusterStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterVersion)) {
+		query["DBClusterVersion"] = request.DBClusterVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DBVersion)) {
