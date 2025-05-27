@@ -8836,7 +8836,8 @@ type GetServiceProvisionsResponseBodyServiceProvisions struct {
 	// example:
 	//
 	// true
-	AutoEnableService *bool `json:"AutoEnableService,omitempty" xml:"AutoEnableService,omitempty"`
+	AutoEnableService   *bool                                                                   `json:"AutoEnableService,omitempty" xml:"AutoEnableService,omitempty"`
+	CommodityProvisions []*GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions `json:"CommodityProvisions,omitempty" xml:"CommodityProvisions,omitempty" type:"Repeated"`
 	// The URL that points to the activation page of the service.
 	//
 	// > This parameter is returned if Status is set to Disabled.
@@ -8890,6 +8891,11 @@ func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetAutoEnableService
 	return s
 }
 
+func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetCommodityProvisions(v []*GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions) *GetServiceProvisionsResponseBodyServiceProvisions {
+	s.CommodityProvisions = v
+	return s
+}
+
 func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetEnableURL(v string) *GetServiceProvisionsResponseBodyServiceProvisions {
 	s.EnableURL = &v
 	return s
@@ -8912,6 +8918,35 @@ func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetStatus(v string) 
 
 func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetStatusReason(v string) *GetServiceProvisionsResponseBodyServiceProvisions {
 	s.StatusReason = &v
+	return s
+}
+
+type GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions struct {
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	EnableURL     *string `json:"EnableURL,omitempty" xml:"EnableURL,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions) SetCommodityCode(v string) *GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions) SetEnableURL(v string) *GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions {
+	s.EnableURL = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions) SetStatus(v string) *GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions {
+	s.Status = &v
 	return s
 }
 
