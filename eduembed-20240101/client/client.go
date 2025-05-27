@@ -332,6 +332,439 @@ func (s *CreateLabSessionResponse) SetBody(v *CreateLabSessionResponseBody) *Cre
 	return s
 }
 
+type DescribeCourseRequest struct {
+	// This parameter is required.
+	CourseId *int64 `json:"CourseId,omitempty" xml:"CourseId,omitempty"`
+}
+
+func (s DescribeCourseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCourseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCourseRequest) SetCourseId(v int64) *DescribeCourseRequest {
+	s.CourseId = &v
+	return s
+}
+
+type DescribeCourseResponseBody struct {
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Course    *DescribeCourseResponseBodyCourse `json:"Course,omitempty" xml:"Course,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeCourseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCourseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCourseResponseBody) SetCode(v string) *DescribeCourseResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBody) SetCourse(v *DescribeCourseResponseBodyCourse) *DescribeCourseResponseBody {
+	s.Course = v
+	return s
+}
+
+func (s *DescribeCourseResponseBody) SetMessage(v string) *DescribeCourseResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBody) SetRequestId(v string) *DescribeCourseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBody) SetSuccess(v bool) *DescribeCourseResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeCourseResponseBodyCourse struct {
+	Category     *string                                     `json:"Category,omitempty" xml:"Category,omitempty"`
+	Chapters     []*DescribeCourseResponseBodyCourseChapters `json:"Chapters,omitempty" xml:"Chapters,omitempty" type:"Repeated"`
+	Id           *string                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	Introduction *string                                     `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	LessonNum    *int32                                      `json:"LessonNum,omitempty" xml:"LessonNum,omitempty"`
+	Lessons      []*DescribeCourseResponseBodyCourseLessons  `json:"Lessons,omitempty" xml:"Lessons,omitempty" type:"Repeated"`
+	PictureUrl   *string                                     `json:"PictureUrl,omitempty" xml:"PictureUrl,omitempty"`
+	Tags         *string                                     `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title        *string                                     `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s DescribeCourseResponseBodyCourse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCourseResponseBodyCourse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCourseResponseBodyCourse) SetCategory(v string) *DescribeCourseResponseBodyCourse {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourse) SetChapters(v []*DescribeCourseResponseBodyCourseChapters) *DescribeCourseResponseBodyCourse {
+	s.Chapters = v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourse) SetId(v string) *DescribeCourseResponseBodyCourse {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourse) SetIntroduction(v string) *DescribeCourseResponseBodyCourse {
+	s.Introduction = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourse) SetLessonNum(v int32) *DescribeCourseResponseBodyCourse {
+	s.LessonNum = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourse) SetLessons(v []*DescribeCourseResponseBodyCourseLessons) *DescribeCourseResponseBodyCourse {
+	s.Lessons = v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourse) SetPictureUrl(v string) *DescribeCourseResponseBodyCourse {
+	s.PictureUrl = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourse) SetTags(v string) *DescribeCourseResponseBodyCourse {
+	s.Tags = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourse) SetTitle(v string) *DescribeCourseResponseBodyCourse {
+	s.Title = &v
+	return s
+}
+
+type DescribeCourseResponseBodyCourseChapters struct {
+	Lessons []*DescribeCourseResponseBodyCourseChaptersLessons `json:"Lessons,omitempty" xml:"Lessons,omitempty" type:"Repeated"`
+	Number  *int32                                             `json:"Number,omitempty" xml:"Number,omitempty"`
+	Title   *string                                            `json:"Title,omitempty" xml:"Title,omitempty"`
+	Unit    []*DescribeCourseResponseBodyCourseChaptersUnit    `json:"Unit,omitempty" xml:"Unit,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCourseResponseBodyCourseChapters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCourseResponseBodyCourseChapters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCourseResponseBodyCourseChapters) SetLessons(v []*DescribeCourseResponseBodyCourseChaptersLessons) *DescribeCourseResponseBodyCourseChapters {
+	s.Lessons = v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourseChapters) SetNumber(v int32) *DescribeCourseResponseBodyCourseChapters {
+	s.Number = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourseChapters) SetTitle(v string) *DescribeCourseResponseBodyCourseChapters {
+	s.Title = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourseChapters) SetUnit(v []*DescribeCourseResponseBodyCourseChaptersUnit) *DescribeCourseResponseBodyCourseChapters {
+	s.Unit = v
+	return s
+}
+
+type DescribeCourseResponseBodyCourseChaptersLessons struct {
+	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCourseResponseBodyCourseChaptersLessons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCourseResponseBodyCourseChaptersLessons) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCourseResponseBodyCourseChaptersLessons) SetDuration(v int32) *DescribeCourseResponseBodyCourseChaptersLessons {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourseChaptersLessons) SetId(v int64) *DescribeCourseResponseBodyCourseChaptersLessons {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourseChaptersLessons) SetTitle(v string) *DescribeCourseResponseBodyCourseChaptersLessons {
+	s.Title = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourseChaptersLessons) SetType(v string) *DescribeCourseResponseBodyCourseChaptersLessons {
+	s.Type = &v
+	return s
+}
+
+type DescribeCourseResponseBodyCourseChaptersUnit struct {
+	Lessons []*DescribeCourseResponseBodyCourseChaptersUnitLessons `json:"Lessons,omitempty" xml:"Lessons,omitempty" type:"Repeated"`
+	Number  *int32                                                 `json:"Number,omitempty" xml:"Number,omitempty"`
+	Title   *string                                                `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s DescribeCourseResponseBodyCourseChaptersUnit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCourseResponseBodyCourseChaptersUnit) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCourseResponseBodyCourseChaptersUnit) SetLessons(v []*DescribeCourseResponseBodyCourseChaptersUnitLessons) *DescribeCourseResponseBodyCourseChaptersUnit {
+	s.Lessons = v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourseChaptersUnit) SetNumber(v int32) *DescribeCourseResponseBodyCourseChaptersUnit {
+	s.Number = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourseChaptersUnit) SetTitle(v string) *DescribeCourseResponseBodyCourseChaptersUnit {
+	s.Title = &v
+	return s
+}
+
+type DescribeCourseResponseBodyCourseChaptersUnitLessons struct {
+	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCourseResponseBodyCourseChaptersUnitLessons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCourseResponseBodyCourseChaptersUnitLessons) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCourseResponseBodyCourseChaptersUnitLessons) SetDuration(v int32) *DescribeCourseResponseBodyCourseChaptersUnitLessons {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourseChaptersUnitLessons) SetId(v int64) *DescribeCourseResponseBodyCourseChaptersUnitLessons {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourseChaptersUnitLessons) SetTitle(v string) *DescribeCourseResponseBodyCourseChaptersUnitLessons {
+	s.Title = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourseChaptersUnitLessons) SetType(v string) *DescribeCourseResponseBodyCourseChaptersUnitLessons {
+	s.Type = &v
+	return s
+}
+
+type DescribeCourseResponseBodyCourseLessons struct {
+	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCourseResponseBodyCourseLessons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCourseResponseBodyCourseLessons) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCourseResponseBodyCourseLessons) SetDuration(v int32) *DescribeCourseResponseBodyCourseLessons {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourseLessons) SetId(v int64) *DescribeCourseResponseBodyCourseLessons {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourseLessons) SetTitle(v string) *DescribeCourseResponseBodyCourseLessons {
+	s.Title = &v
+	return s
+}
+
+func (s *DescribeCourseResponseBodyCourseLessons) SetType(v string) *DescribeCourseResponseBodyCourseLessons {
+	s.Type = &v
+	return s
+}
+
+type DescribeCourseResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCourseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCourseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCourseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCourseResponse) SetHeaders(v map[string]*string) *DescribeCourseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCourseResponse) SetStatusCode(v int32) *DescribeCourseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCourseResponse) SetBody(v *DescribeCourseResponseBody) *DescribeCourseResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCourseLessonRequest struct {
+	// This parameter is required.
+	LessonId *int64 `json:"LessonId,omitempty" xml:"LessonId,omitempty"`
+}
+
+func (s DescribeCourseLessonRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCourseLessonRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCourseLessonRequest) SetLessonId(v int64) *DescribeCourseLessonRequest {
+	s.LessonId = &v
+	return s
+}
+
+type DescribeCourseLessonResponseBody struct {
+	Code         *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	CourseLesson *DescribeCourseLessonResponseBodyCourseLesson `json:"CourseLesson,omitempty" xml:"CourseLesson,omitempty" type:"Struct"`
+	Message      *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeCourseLessonResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCourseLessonResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCourseLessonResponseBody) SetCode(v string) *DescribeCourseLessonResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeCourseLessonResponseBody) SetCourseLesson(v *DescribeCourseLessonResponseBodyCourseLesson) *DescribeCourseLessonResponseBody {
+	s.CourseLesson = v
+	return s
+}
+
+func (s *DescribeCourseLessonResponseBody) SetMessage(v string) *DescribeCourseLessonResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeCourseLessonResponseBody) SetRequestId(v string) *DescribeCourseLessonResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCourseLessonResponseBody) SetSuccess(v bool) *DescribeCourseLessonResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeCourseLessonResponseBodyCourseLesson struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Url     *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s DescribeCourseLessonResponseBodyCourseLesson) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCourseLessonResponseBodyCourseLesson) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCourseLessonResponseBodyCourseLesson) SetContent(v string) *DescribeCourseLessonResponseBodyCourseLesson {
+	s.Content = &v
+	return s
+}
+
+func (s *DescribeCourseLessonResponseBodyCourseLesson) SetUrl(v string) *DescribeCourseLessonResponseBodyCourseLesson {
+	s.Url = &v
+	return s
+}
+
+type DescribeCourseLessonResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCourseLessonResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCourseLessonResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCourseLessonResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCourseLessonResponse) SetHeaders(v map[string]*string) *DescribeCourseLessonResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCourseLessonResponse) SetStatusCode(v int32) *DescribeCourseLessonResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCourseLessonResponse) SetBody(v *DescribeCourseLessonResponseBody) *DescribeCourseLessonResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeLabRequest struct {
 	// This parameter is required.
 	//
@@ -818,6 +1251,176 @@ func (s *DescribeLabSessionResponse) SetStatusCode(v int32) *DescribeLabSessionR
 }
 
 func (s *DescribeLabSessionResponse) SetBody(v *DescribeLabSessionResponseBody) *DescribeLabSessionResponse {
+	s.Body = v
+	return s
+}
+
+type ListCoursesRequest struct {
+	Id       []*int64 `json:"Id,omitempty" xml:"Id,omitempty" type:"Repeated"`
+	Page     *int64   `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize *int64   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListCoursesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCoursesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCoursesRequest) SetId(v []*int64) *ListCoursesRequest {
+	s.Id = v
+	return s
+}
+
+func (s *ListCoursesRequest) SetPage(v int64) *ListCoursesRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListCoursesRequest) SetPageSize(v int64) *ListCoursesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListCoursesResponseBody struct {
+	Code       *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Courses    []*ListCoursesResponseBodyCourses `json:"Courses,omitempty" xml:"Courses,omitempty" type:"Repeated"`
+	Message    *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Page       *int64                            `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize   *int64                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCoursesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCoursesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCoursesResponseBody) SetCode(v string) *ListCoursesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListCoursesResponseBody) SetCourses(v []*ListCoursesResponseBodyCourses) *ListCoursesResponseBody {
+	s.Courses = v
+	return s
+}
+
+func (s *ListCoursesResponseBody) SetMessage(v string) *ListCoursesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCoursesResponseBody) SetPage(v int64) *ListCoursesResponseBody {
+	s.Page = &v
+	return s
+}
+
+func (s *ListCoursesResponseBody) SetPageSize(v int64) *ListCoursesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCoursesResponseBody) SetRequestId(v string) *ListCoursesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCoursesResponseBody) SetSuccess(v bool) *ListCoursesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListCoursesResponseBody) SetTotalCount(v int64) *ListCoursesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCoursesResponseBodyCourses struct {
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	LessonNum    *int32  `json:"LessonNum,omitempty" xml:"LessonNum,omitempty"`
+	PictureUrl   *string `json:"PictureUrl,omitempty" xml:"PictureUrl,omitempty"`
+	Tags         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s ListCoursesResponseBodyCourses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCoursesResponseBodyCourses) GoString() string {
+	return s.String()
+}
+
+func (s *ListCoursesResponseBodyCourses) SetCategory(v string) *ListCoursesResponseBodyCourses {
+	s.Category = &v
+	return s
+}
+
+func (s *ListCoursesResponseBodyCourses) SetId(v string) *ListCoursesResponseBodyCourses {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCoursesResponseBodyCourses) SetIntroduction(v string) *ListCoursesResponseBodyCourses {
+	s.Introduction = &v
+	return s
+}
+
+func (s *ListCoursesResponseBodyCourses) SetLessonNum(v int32) *ListCoursesResponseBodyCourses {
+	s.LessonNum = &v
+	return s
+}
+
+func (s *ListCoursesResponseBodyCourses) SetPictureUrl(v string) *ListCoursesResponseBodyCourses {
+	s.PictureUrl = &v
+	return s
+}
+
+func (s *ListCoursesResponseBodyCourses) SetTags(v string) *ListCoursesResponseBodyCourses {
+	s.Tags = &v
+	return s
+}
+
+func (s *ListCoursesResponseBodyCourses) SetTitle(v string) *ListCoursesResponseBodyCourses {
+	s.Title = &v
+	return s
+}
+
+type ListCoursesResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCoursesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCoursesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCoursesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCoursesResponse) SetHeaders(v map[string]*string) *ListCoursesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCoursesResponse) SetStatusCode(v int32) *ListCoursesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCoursesResponse) SetBody(v *ListCoursesResponseBody) *ListCoursesResponse {
 	s.Body = v
 	return s
 }
@@ -1734,6 +2337,126 @@ func (client *Client) CreateLabSession(request *CreateLabSessionRequest) (_resul
 
 // Summary:
 //
+// 查看课程详情
+//
+// @param request - DescribeCourseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCourseResponse
+func (client *Client) DescribeCourseWithOptions(request *DescribeCourseRequest, runtime *util.RuntimeOptions) (_result *DescribeCourseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CourseId)) {
+		query["CourseId"] = request.CourseId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCourse"),
+		Version:     tea.String("2024-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCourseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看课程详情
+//
+// @param request - DescribeCourseRequest
+//
+// @return DescribeCourseResponse
+func (client *Client) DescribeCourse(request *DescribeCourseRequest) (_result *DescribeCourseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCourseResponse{}
+	_body, _err := client.DescribeCourseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看课程课时详情
+//
+// @param request - DescribeCourseLessonRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCourseLessonResponse
+func (client *Client) DescribeCourseLessonWithOptions(request *DescribeCourseLessonRequest, runtime *util.RuntimeOptions) (_result *DescribeCourseLessonResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LessonId)) {
+		query["LessonId"] = request.LessonId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCourseLesson"),
+		Version:     tea.String("2024-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCourseLessonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看课程课时详情
+//
+// @param request - DescribeCourseLessonRequest
+//
+// @return DescribeCourseLessonResponse
+func (client *Client) DescribeCourseLesson(request *DescribeCourseLessonRequest) (_result *DescribeCourseLessonResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCourseLessonResponse{}
+	_body, _err := client.DescribeCourseLessonWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看实验详情
 //
 // @param request - DescribeLabRequest
@@ -1893,6 +2616,74 @@ func (client *Client) DescribeLabSession(request *DescribeLabSessionRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLabSessionResponse{}
 	_body, _err := client.DescribeLabSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看课程列表
+//
+// @param request - ListCoursesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCoursesResponse
+func (client *Client) ListCoursesWithOptions(request *ListCoursesRequest, runtime *util.RuntimeOptions) (_result *ListCoursesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCourses"),
+		Version:     tea.String("2024-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCoursesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看课程列表
+//
+// @param request - ListCoursesRequest
+//
+// @return ListCoursesResponse
+func (client *Client) ListCourses(request *ListCoursesRequest) (_result *ListCoursesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCoursesResponse{}
+	_body, _err := client.ListCoursesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
