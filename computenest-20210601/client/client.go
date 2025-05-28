@@ -2745,7 +2745,8 @@ type GetServiceResponseBody struct {
 	// AI
 	Categories *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
 	// The information about the order placed in Alibaba Cloud Marketplace.
-	Commodity *GetServiceResponseBodyCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	Commodity          *GetServiceResponseBodyCommodity          `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	ComplianceMetadata *GetServiceResponseBodyComplianceMetadata `json:"ComplianceMetadata,omitempty" xml:"ComplianceMetadata,omitempty" type:"Struct"`
 	// Service deployment approach, Valid values：
 	//
 	// - NoWhere
@@ -3000,6 +3001,11 @@ func (s *GetServiceResponseBody) SetCategories(v string) *GetServiceResponseBody
 
 func (s *GetServiceResponseBody) SetCommodity(v *GetServiceResponseBodyCommodity) *GetServiceResponseBody {
 	s.Commodity = v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetComplianceMetadata(v *GetServiceResponseBodyComplianceMetadata) *GetServiceResponseBody {
+	s.ComplianceMetadata = v
 	return s
 }
 
@@ -3417,6 +3423,23 @@ func (s *GetServiceResponseBodyCommoditySpecifications) SetName(v string) *GetSe
 
 func (s *GetServiceResponseBodyCommoditySpecifications) SetTimes(v []*string) *GetServiceResponseBodyCommoditySpecifications {
 	s.Times = v
+	return s
+}
+
+type GetServiceResponseBodyComplianceMetadata struct {
+	CompliancePacks []*string `json:"CompliancePacks,omitempty" xml:"CompliancePacks,omitempty" type:"Repeated"`
+}
+
+func (s GetServiceResponseBodyComplianceMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyComplianceMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyComplianceMetadata) SetCompliancePacks(v []*string) *GetServiceResponseBodyComplianceMetadata {
+	s.CompliancePacks = v
 	return s
 }
 
