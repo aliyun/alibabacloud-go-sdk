@@ -1,3 +1,57 @@
+2025-05-28 Version: v3.1.0
+- Support API CopyDataCache.
+- Support API CreateDataCache.
+- Support API DeleteDataCache.
+- Support API DescribeDataCaches.
+- Support API ListTagResources.
+- Support API TagResources.
+- Support API UntagResources.
+- Support API UpdateDataCache.
+- Update API CommitContainer: add request parameters AcrRegistryInfo.ArnService.
+- Update API CommitContainer: add request parameters AcrRegistryInfo.ArnUser.
+- Update API CreateContainerGroup: add request parameters ComputeCategory.
+- Update API CreateContainerGroup: add request parameters CpuArchitecture.
+- Update API CreateContainerGroup: add request parameters DataCacheBucket.
+- Update API CreateContainerGroup: add request parameters DataCacheBurstingEnabled.
+- Update API CreateContainerGroup: add request parameters DataCachePL.
+- Update API CreateContainerGroup: add request parameters DataCacheProvisionedIops.
+- Update API CreateContainerGroup: add request parameters DryRun.
+- Update API CreateContainerGroup: add request parameters FixedIp.
+- Update API CreateContainerGroup: add request parameters FixedIpRetainHour.
+- Update API CreateContainerGroup: add request parameters GpuDriverVersion.
+- Update API CreateContainerGroup: add request parameters OsType.
+- Update API CreateContainerGroup: add request parameters PrivateIpAddress.
+- Update API CreateContainerGroup: add request parameters AcrRegistryInfo.$.ArnService.
+- Update API CreateContainerGroup: add request parameters AcrRegistryInfo.$.ArnUser.
+- Update API CreateContainerGroup: add request parameters Container.$.EnvironmentVarHide.
+- Update API CreateContainerGroup: add request parameters Container.$.SecurityContextPrivileged.
+- Update API CreateContainerGroup: add request parameters Container.$.SecurityContextRunAsGroup.
+- Update API CreateContainerGroup: add request parameters Container.$.SecurityContextRunAsNonRoot.
+- Update API CreateImageCache: add request parameters OsType.
+- Update API CreateImageCache: add request parameters AcrRegistryInfo.$.ArnService.
+- Update API CreateImageCache: add request parameters AcrRegistryInfo.$.ArnUser.
+- Update API DeleteContainerGroup: add request parameters Force.
+- Update API DescribeCommitContainerTask: add response parameters Body.CommitTasks.$.TaskCreationTime.
+- Update API DescribeCommitContainerTask: add response parameters Body.CommitTasks.$.TaskFinishedTime.
+- Update API DescribeContainerGroupEvents: add response parameters Body.Data.$.Annotations.
+- Update API DescribeContainerGroupEvents: add response parameters Body.Data.$.Name.
+- Update API DescribeContainerGroupEvents: add response parameters Body.Data.$.Namespace.
+- Update API DescribeContainerGroupEvents: add response parameters Body.Data.$.uuid.
+- Update API DescribeContainerGroupPrice: add request parameters ComputeCategory.
+- Update API DescribeContainerGroupStatus: add response parameters Body.Data.$.Annotations.
+- Update API DescribeContainerGroups: add request parameters ComputeCategory.
+- Update API DescribeContainerGroups: add request parameters SecurityGroupId.
+- Update API DescribeContainerGroups: add response parameters Body.ContainerGroups.$.ComputeCategory.
+- Update API DescribeContainerGroups: add response parameters Body.ContainerGroups.$.DnsPolicy.
+- Update API DescribeContainerGroups: add response parameters Body.ContainerGroups.$.Containers.$.VolumeMounts.$.SubPath.
+- Update API DescribeContainerGroups: add response parameters Body.ContainerGroups.$.Volumes.$.EmptyDirVolumeMedium.
+- Update API DescribeContainerGroups: add response parameters Body.ContainerGroups.$.Volumes.$.EmptyDirVolumeSizeLimit.
+- Update API DescribeImageCaches: add request parameters ImageFullMatch.
+- Update API DescribeImageCaches: add request parameters ImageMatchCountRequest.
+- Update API DescribeImageCaches: add response parameters Body.ImageCaches.$.Events.$.Reason.
+- Update API DescribeRegions: add response parameters Body.Regions.$.UnavailableZones.
+
+
 2023-05-05 Version: v3.0.3
 - Spot commit imc expired.
 
