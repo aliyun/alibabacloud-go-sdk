@@ -411,6 +411,431 @@ func (s *CancelFundAccountLowAvailableAmountAlarmResponse) SetBody(v *CancelFund
 	return s
 }
 
+type CreateCostCenterRequest struct {
+	// This parameter is required.
+	CostCenterEntityList []*CreateCostCenterRequestCostCenterEntityList `json:"CostCenterEntityList,omitempty" xml:"CostCenterEntityList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2084210001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+}
+
+func (s CreateCostCenterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCostCenterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCostCenterRequest) SetCostCenterEntityList(v []*CreateCostCenterRequestCostCenterEntityList) *CreateCostCenterRequest {
+	s.CostCenterEntityList = v
+	return s
+}
+
+func (s *CreateCostCenterRequest) SetNbid(v string) *CreateCostCenterRequest {
+	s.Nbid = &v
+	return s
+}
+
+type CreateCostCenterRequestCostCenterEntityList struct {
+	// This parameter is required.
+	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1314839403940987
+	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -1
+	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
+}
+
+func (s CreateCostCenterRequestCostCenterEntityList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCostCenterRequestCostCenterEntityList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCostCenterRequestCostCenterEntityList) SetCostCenterName(v string) *CreateCostCenterRequestCostCenterEntityList {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *CreateCostCenterRequestCostCenterEntityList) SetOwnerAccountId(v int64) *CreateCostCenterRequestCostCenterEntityList {
+	s.OwnerAccountId = &v
+	return s
+}
+
+func (s *CreateCostCenterRequestCostCenterEntityList) SetParentCostCenterId(v int64) *CreateCostCenterRequestCostCenterEntityList {
+	s.ParentCostCenterId = &v
+	return s
+}
+
+type CreateCostCenterShrinkRequest struct {
+	// This parameter is required.
+	CostCenterEntityListShrink *string `json:"CostCenterEntityList,omitempty" xml:"CostCenterEntityList,omitempty"`
+	// example:
+	//
+	// 2084210001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+}
+
+func (s CreateCostCenterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCostCenterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCostCenterShrinkRequest) SetCostCenterEntityListShrink(v string) *CreateCostCenterShrinkRequest {
+	s.CostCenterEntityListShrink = &v
+	return s
+}
+
+func (s *CreateCostCenterShrinkRequest) SetNbid(v string) *CreateCostCenterShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+type CreateCostCenterResponseBody struct {
+	CostCenterDtoList []*CreateCostCenterResponseBodyCostCenterDtoList `json:"CostCenterDtoList,omitempty" xml:"CostCenterDtoList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// C1BD134E-D914-6AE0-1901-AEB2A99FA205
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCostCenterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCostCenterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCostCenterResponseBody) SetCostCenterDtoList(v []*CreateCostCenterResponseBodyCostCenterDtoList) *CreateCostCenterResponseBody {
+	s.CostCenterDtoList = v
+	return s
+}
+
+func (s *CreateCostCenterResponseBody) SetMetadata(v interface{}) *CreateCostCenterResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *CreateCostCenterResponseBody) SetRequestId(v string) *CreateCostCenterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCostCenterResponseBodyCostCenterDtoList struct {
+	// example:
+	//
+	// 485938
+	CostCenterId   *int64  `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
+	// example:
+	//
+	// 1314839403940987
+	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// example:
+	//
+	// -1
+	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
+}
+
+func (s CreateCostCenterResponseBodyCostCenterDtoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCostCenterResponseBodyCostCenterDtoList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCostCenterResponseBodyCostCenterDtoList) SetCostCenterId(v int64) *CreateCostCenterResponseBodyCostCenterDtoList {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *CreateCostCenterResponseBodyCostCenterDtoList) SetCostCenterName(v string) *CreateCostCenterResponseBodyCostCenterDtoList {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *CreateCostCenterResponseBodyCostCenterDtoList) SetOwnerAccountId(v int64) *CreateCostCenterResponseBodyCostCenterDtoList {
+	s.OwnerAccountId = &v
+	return s
+}
+
+func (s *CreateCostCenterResponseBodyCostCenterDtoList) SetParentCostCenterId(v int64) *CreateCostCenterResponseBodyCostCenterDtoList {
+	s.ParentCostCenterId = &v
+	return s
+}
+
+type CreateCostCenterResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCostCenterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCostCenterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCostCenterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCostCenterResponse) SetHeaders(v map[string]*string) *CreateCostCenterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCostCenterResponse) SetStatusCode(v int32) *CreateCostCenterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCostCenterResponse) SetBody(v *CreateCostCenterResponseBody) *CreateCostCenterResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFundAccountPayRelationRequest struct {
+	// This parameter is required.
+	EcIdAccountIds []*CreateFundAccountPayRelationRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12332112
+	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+}
+
+func (s CreateFundAccountPayRelationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFundAccountPayRelationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFundAccountPayRelationRequest) SetEcIdAccountIds(v []*CreateFundAccountPayRelationRequestEcIdAccountIds) *CreateFundAccountPayRelationRequest {
+	s.EcIdAccountIds = v
+	return s
+}
+
+func (s *CreateFundAccountPayRelationRequest) SetFundAccountId(v string) *CreateFundAccountPayRelationRequest {
+	s.FundAccountId = &v
+	return s
+}
+
+func (s *CreateFundAccountPayRelationRequest) SetNbid(v string) *CreateFundAccountPayRelationRequest {
+	s.Nbid = &v
+	return s
+}
+
+type CreateFundAccountPayRelationRequestEcIdAccountIds struct {
+	// This parameter is required.
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1501603440974415
+	EcId *string `json:"EcId,omitempty" xml:"EcId,omitempty"`
+}
+
+func (s CreateFundAccountPayRelationRequestEcIdAccountIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFundAccountPayRelationRequestEcIdAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFundAccountPayRelationRequestEcIdAccountIds) SetAccountIds(v []*int64) *CreateFundAccountPayRelationRequestEcIdAccountIds {
+	s.AccountIds = v
+	return s
+}
+
+func (s *CreateFundAccountPayRelationRequestEcIdAccountIds) SetEcId(v string) *CreateFundAccountPayRelationRequestEcIdAccountIds {
+	s.EcId = &v
+	return s
+}
+
+type CreateFundAccountPayRelationShrinkRequest struct {
+	// This parameter is required.
+	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12332112
+	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+}
+
+func (s CreateFundAccountPayRelationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFundAccountPayRelationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFundAccountPayRelationShrinkRequest) SetEcIdAccountIdsShrink(v string) *CreateFundAccountPayRelationShrinkRequest {
+	s.EcIdAccountIdsShrink = &v
+	return s
+}
+
+func (s *CreateFundAccountPayRelationShrinkRequest) SetFundAccountId(v string) *CreateFundAccountPayRelationShrinkRequest {
+	s.FundAccountId = &v
+	return s
+}
+
+func (s *CreateFundAccountPayRelationShrinkRequest) SetNbid(v string) *CreateFundAccountPayRelationShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+type CreateFundAccountPayRelationResponseBody struct {
+	Data []*CreateFundAccountPayRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateFundAccountPayRelationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFundAccountPayRelationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFundAccountPayRelationResponseBody) SetData(v []*CreateFundAccountPayRelationResponseBodyData) *CreateFundAccountPayRelationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateFundAccountPayRelationResponseBody) SetMetadata(v interface{}) *CreateFundAccountPayRelationResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *CreateFundAccountPayRelationResponseBody) SetRequestId(v string) *CreateFundAccountPayRelationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateFundAccountPayRelationResponseBodyData struct {
+	// example:
+	//
+	// 1501603440974415
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 12332112
+	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// example:
+	//
+	// Success
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// Successful
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+}
+
+func (s CreateFundAccountPayRelationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFundAccountPayRelationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFundAccountPayRelationResponseBodyData) SetAccountId(v string) *CreateFundAccountPayRelationResponseBodyData {
+	s.AccountId = &v
+	return s
+}
+
+func (s *CreateFundAccountPayRelationResponseBodyData) SetAccountName(v string) *CreateFundAccountPayRelationResponseBodyData {
+	s.AccountName = &v
+	return s
+}
+
+func (s *CreateFundAccountPayRelationResponseBodyData) SetFundAccountId(v string) *CreateFundAccountPayRelationResponseBodyData {
+	s.FundAccountId = &v
+	return s
+}
+
+func (s *CreateFundAccountPayRelationResponseBodyData) SetResultCode(v string) *CreateFundAccountPayRelationResponseBodyData {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *CreateFundAccountPayRelationResponseBodyData) SetResultMessage(v string) *CreateFundAccountPayRelationResponseBodyData {
+	s.ResultMessage = &v
+	return s
+}
+
+type CreateFundAccountPayRelationResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFundAccountPayRelationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateFundAccountPayRelationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFundAccountPayRelationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFundAccountPayRelationResponse) SetHeaders(v map[string]*string) *CreateFundAccountPayRelationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFundAccountPayRelationResponse) SetStatusCode(v int32) *CreateFundAccountPayRelationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFundAccountPayRelationResponse) SetBody(v *CreateFundAccountPayRelationResponseBody) *CreateFundAccountPayRelationResponse {
+	s.Body = v
+	return s
+}
+
 type CreateFundAccountTransferRequest struct {
 	// This parameter is required.
 	//
@@ -557,6 +982,363 @@ func (s *CreateFundAccountTransferResponse) SetBody(v *CreateFundAccountTransfer
 	return s
 }
 
+type CreateReportDefinitionRequest struct {
+	// example:
+	//
+	// 2025-05
+	BeginBillingCycle *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
+	// example:
+	//
+	// project
+	McProject *string `json:"McProject,omitempty" xml:"McProject,omitempty"`
+	// example:
+	//
+	// table
+	McTableName *string `json:"McTableName,omitempty" xml:"McTableName,omitempty"`
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// example:
+	//
+	// sh-bill
+	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// example:
+	//
+	// 1234567812345678
+	OssBucketOwnerAccountId *int64 `json:"OssBucketOwnerAccountId,omitempty" xml:"OssBucketOwnerAccountId,omitempty"`
+	// example:
+	//
+	// bill/
+	OssBucketPath *string `json:"OssBucketPath,omitempty" xml:"OssBucketPath,omitempty"`
+	// example:
+	//
+	// OSS
+	ReportSourceType *string `json:"ReportSourceType,omitempty" xml:"ReportSourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BillingItemDetailForBillingPeriod
+	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+}
+
+func (s CreateReportDefinitionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateReportDefinitionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateReportDefinitionRequest) SetBeginBillingCycle(v string) *CreateReportDefinitionRequest {
+	s.BeginBillingCycle = &v
+	return s
+}
+
+func (s *CreateReportDefinitionRequest) SetMcProject(v string) *CreateReportDefinitionRequest {
+	s.McProject = &v
+	return s
+}
+
+func (s *CreateReportDefinitionRequest) SetMcTableName(v string) *CreateReportDefinitionRequest {
+	s.McTableName = &v
+	return s
+}
+
+func (s *CreateReportDefinitionRequest) SetNbid(v string) *CreateReportDefinitionRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *CreateReportDefinitionRequest) SetOssBucketName(v string) *CreateReportDefinitionRequest {
+	s.OssBucketName = &v
+	return s
+}
+
+func (s *CreateReportDefinitionRequest) SetOssBucketOwnerAccountId(v int64) *CreateReportDefinitionRequest {
+	s.OssBucketOwnerAccountId = &v
+	return s
+}
+
+func (s *CreateReportDefinitionRequest) SetOssBucketPath(v string) *CreateReportDefinitionRequest {
+	s.OssBucketPath = &v
+	return s
+}
+
+func (s *CreateReportDefinitionRequest) SetReportSourceType(v string) *CreateReportDefinitionRequest {
+	s.ReportSourceType = &v
+	return s
+}
+
+func (s *CreateReportDefinitionRequest) SetReportType(v string) *CreateReportDefinitionRequest {
+	s.ReportType = &v
+	return s
+}
+
+type CreateReportDefinitionResponseBody struct {
+	// example:
+	//
+	// 2025-05
+	BeginBillingCycle *string     `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
+	Metadata          interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// sh-bill
+	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// example:
+	//
+	// 1234567812345678
+	OssBucketOwnerAccountId *int64 `json:"OssBucketOwnerAccountId,omitempty" xml:"OssBucketOwnerAccountId,omitempty"`
+	// example:
+	//
+	// bill/
+	OssBucketPath *string `json:"OssBucketPath,omitempty" xml:"OssBucketPath,omitempty"`
+	// example:
+	//
+	// OSS
+	ReportSourceName *string `json:"ReportSourceName,omitempty" xml:"ReportSourceName,omitempty"`
+	// example:
+	//
+	// OSS
+	ReportSourceType *string `json:"ReportSourceType,omitempty" xml:"ReportSourceType,omitempty"`
+	// example:
+	//
+	// 123123
+	ReportTaskId *int64 `json:"ReportTaskId,omitempty" xml:"ReportTaskId,omitempty"`
+	// example:
+	//
+	// BillingItemDetailForBillingPeriod
+	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// example:
+	//
+	// 340CAB45-0637-5875-9BE4-EFD5750F6BA5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2025-05-21 10:36:31
+	SubscribeCreateTime *string `json:"SubscribeCreateTime,omitempty" xml:"SubscribeCreateTime,omitempty"`
+}
+
+func (s CreateReportDefinitionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateReportDefinitionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateReportDefinitionResponseBody) SetBeginBillingCycle(v string) *CreateReportDefinitionResponseBody {
+	s.BeginBillingCycle = &v
+	return s
+}
+
+func (s *CreateReportDefinitionResponseBody) SetMetadata(v interface{}) *CreateReportDefinitionResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *CreateReportDefinitionResponseBody) SetOssBucketName(v string) *CreateReportDefinitionResponseBody {
+	s.OssBucketName = &v
+	return s
+}
+
+func (s *CreateReportDefinitionResponseBody) SetOssBucketOwnerAccountId(v int64) *CreateReportDefinitionResponseBody {
+	s.OssBucketOwnerAccountId = &v
+	return s
+}
+
+func (s *CreateReportDefinitionResponseBody) SetOssBucketPath(v string) *CreateReportDefinitionResponseBody {
+	s.OssBucketPath = &v
+	return s
+}
+
+func (s *CreateReportDefinitionResponseBody) SetReportSourceName(v string) *CreateReportDefinitionResponseBody {
+	s.ReportSourceName = &v
+	return s
+}
+
+func (s *CreateReportDefinitionResponseBody) SetReportSourceType(v string) *CreateReportDefinitionResponseBody {
+	s.ReportSourceType = &v
+	return s
+}
+
+func (s *CreateReportDefinitionResponseBody) SetReportTaskId(v int64) *CreateReportDefinitionResponseBody {
+	s.ReportTaskId = &v
+	return s
+}
+
+func (s *CreateReportDefinitionResponseBody) SetReportType(v string) *CreateReportDefinitionResponseBody {
+	s.ReportType = &v
+	return s
+}
+
+func (s *CreateReportDefinitionResponseBody) SetRequestId(v string) *CreateReportDefinitionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateReportDefinitionResponseBody) SetSubscribeCreateTime(v string) *CreateReportDefinitionResponseBody {
+	s.SubscribeCreateTime = &v
+	return s
+}
+
+type CreateReportDefinitionResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateReportDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateReportDefinitionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateReportDefinitionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateReportDefinitionResponse) SetHeaders(v map[string]*string) *CreateReportDefinitionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateReportDefinitionResponse) SetStatusCode(v int32) *CreateReportDefinitionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateReportDefinitionResponse) SetBody(v *CreateReportDefinitionResponseBody) *CreateReportDefinitionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCostCenterRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 485938
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1314839403940987
+	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+}
+
+func (s DeleteCostCenterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCostCenterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCostCenterRequest) SetCostCenterId(v int64) *DeleteCostCenterRequest {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *DeleteCostCenterRequest) SetNbid(v string) *DeleteCostCenterRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *DeleteCostCenterRequest) SetOwnerAccountId(v int64) *DeleteCostCenterRequest {
+	s.OwnerAccountId = &v
+	return s
+}
+
+type DeleteCostCenterResponseBody struct {
+	// example:
+	//
+	// 485938
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// example:
+	//
+	// True
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 1314839403940987
+	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// example:
+	//
+	// C1BD134E-D914-6AE0-1901-AEB2A99FA205
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCostCenterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCostCenterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCostCenterResponseBody) SetCostCenterId(v int64) *DeleteCostCenterResponseBody {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *DeleteCostCenterResponseBody) SetIsSuccess(v bool) *DeleteCostCenterResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *DeleteCostCenterResponseBody) SetMetadata(v interface{}) *DeleteCostCenterResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *DeleteCostCenterResponseBody) SetOwnerAccountId(v int64) *DeleteCostCenterResponseBody {
+	s.OwnerAccountId = &v
+	return s
+}
+
+func (s *DeleteCostCenterResponseBody) SetRequestId(v string) *DeleteCostCenterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCostCenterResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCostCenterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCostCenterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCostCenterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCostCenterResponse) SetHeaders(v map[string]*string) *DeleteCostCenterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCostCenterResponse) SetStatusCode(v int32) *DeleteCostCenterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCostCenterResponse) SetBody(v *DeleteCostCenterResponseBody) *DeleteCostCenterResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteCouponDeductTagRequest struct {
 	CouponId       *string                                       `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
 	EcIdAccountIds []*DeleteCouponDeductTagRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
@@ -699,6 +1481,104 @@ func (s *DeleteCouponDeductTagResponse) SetStatusCode(v int32) *DeleteCouponDedu
 }
 
 func (s *DeleteCouponDeductTagResponse) SetBody(v *DeleteCouponDeductTagResponseBody) *DeleteCouponDeductTagResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteReportDefinitionRequest struct {
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123123
+	ReportTaskId *int64 `json:"ReportTaskId,omitempty" xml:"ReportTaskId,omitempty"`
+}
+
+func (s DeleteReportDefinitionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteReportDefinitionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteReportDefinitionRequest) SetNbid(v string) *DeleteReportDefinitionRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *DeleteReportDefinitionRequest) SetReportTaskId(v int64) *DeleteReportDefinitionRequest {
+	s.ReportTaskId = &v
+	return s
+}
+
+type DeleteReportDefinitionResponseBody struct {
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteReportDefinitionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteReportDefinitionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteReportDefinitionResponseBody) SetData(v bool) *DeleteReportDefinitionResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteReportDefinitionResponseBody) SetMetadata(v interface{}) *DeleteReportDefinitionResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *DeleteReportDefinitionResponseBody) SetRequestId(v string) *DeleteReportDefinitionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteReportDefinitionResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteReportDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteReportDefinitionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteReportDefinitionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteReportDefinitionResponse) SetHeaders(v map[string]*string) *DeleteReportDefinitionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteReportDefinitionResponse) SetStatusCode(v int32) *DeleteReportDefinitionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteReportDefinitionResponse) SetBody(v *DeleteReportDefinitionResponseBody) *DeleteReportDefinitionResponse {
 	s.Body = v
 	return s
 }
@@ -4872,6 +5752,1105 @@ func (s *ListFundAccountPayRelationResponse) SetBody(v *ListFundAccountPayRelati
 	return s
 }
 
+type ListReportDefinitionsRequest struct {
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+}
+
+func (s ListReportDefinitionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReportDefinitionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListReportDefinitionsRequest) SetNbid(v string) *ListReportDefinitionsRequest {
+	s.Nbid = &v
+	return s
+}
+
+type ListReportDefinitionsResponseBody struct {
+	Metadata          interface{}                                           `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	ReportDefinitions []*ListReportDefinitionsResponseBodyReportDefinitions `json:"ReportDefinitions,omitempty" xml:"ReportDefinitions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListReportDefinitionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReportDefinitionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListReportDefinitionsResponseBody) SetMetadata(v interface{}) *ListReportDefinitionsResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *ListReportDefinitionsResponseBody) SetReportDefinitions(v []*ListReportDefinitionsResponseBodyReportDefinitions) *ListReportDefinitionsResponseBody {
+	s.ReportDefinitions = v
+	return s
+}
+
+func (s *ListReportDefinitionsResponseBody) SetRequestId(v string) *ListReportDefinitionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListReportDefinitionsResponseBodyReportDefinitions struct {
+	// example:
+	//
+	// 2025-05
+	BeginBillingCycle *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
+	// example:
+	//
+	// oss-bill
+	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// example:
+	//
+	// 1234567812345678
+	OssBucketOwnerAccountId *int64 `json:"OssBucketOwnerAccountId,omitempty" xml:"OssBucketOwnerAccountId,omitempty"`
+	// example:
+	//
+	// bill/
+	OssBucketPath *string `json:"OssBucketPath,omitempty" xml:"OssBucketPath,omitempty"`
+	// example:
+	//
+	// OSS
+	ReportSourceName *string `json:"ReportSourceName,omitempty" xml:"ReportSourceName,omitempty"`
+	// example:
+	//
+	// OSS
+	ReportSourceType *string `json:"ReportSourceType,omitempty" xml:"ReportSourceType,omitempty"`
+	// example:
+	//
+	// 123321
+	ReportTaskId *int64 `json:"ReportTaskId,omitempty" xml:"ReportTaskId,omitempty"`
+	// example:
+	//
+	// BillingItemDetailForBillingPeriod
+	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// example:
+	//
+	// 2025-05-21 10:36:31
+	SubscribeCreateTime *string `json:"SubscribeCreateTime,omitempty" xml:"SubscribeCreateTime,omitempty"`
+}
+
+func (s ListReportDefinitionsResponseBodyReportDefinitions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReportDefinitionsResponseBodyReportDefinitions) GoString() string {
+	return s.String()
+}
+
+func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetBeginBillingCycle(v string) *ListReportDefinitionsResponseBodyReportDefinitions {
+	s.BeginBillingCycle = &v
+	return s
+}
+
+func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetOssBucketName(v string) *ListReportDefinitionsResponseBodyReportDefinitions {
+	s.OssBucketName = &v
+	return s
+}
+
+func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetOssBucketOwnerAccountId(v int64) *ListReportDefinitionsResponseBodyReportDefinitions {
+	s.OssBucketOwnerAccountId = &v
+	return s
+}
+
+func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetOssBucketPath(v string) *ListReportDefinitionsResponseBodyReportDefinitions {
+	s.OssBucketPath = &v
+	return s
+}
+
+func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetReportSourceName(v string) *ListReportDefinitionsResponseBodyReportDefinitions {
+	s.ReportSourceName = &v
+	return s
+}
+
+func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetReportSourceType(v string) *ListReportDefinitionsResponseBodyReportDefinitions {
+	s.ReportSourceType = &v
+	return s
+}
+
+func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetReportTaskId(v int64) *ListReportDefinitionsResponseBodyReportDefinitions {
+	s.ReportTaskId = &v
+	return s
+}
+
+func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetReportType(v string) *ListReportDefinitionsResponseBodyReportDefinitions {
+	s.ReportType = &v
+	return s
+}
+
+func (s *ListReportDefinitionsResponseBodyReportDefinitions) SetSubscribeCreateTime(v string) *ListReportDefinitionsResponseBodyReportDefinitions {
+	s.SubscribeCreateTime = &v
+	return s
+}
+
+type ListReportDefinitionsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListReportDefinitionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListReportDefinitionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReportDefinitionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListReportDefinitionsResponse) SetHeaders(v map[string]*string) *ListReportDefinitionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListReportDefinitionsResponse) SetStatusCode(v int32) *ListReportDefinitionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListReportDefinitionsResponse) SetBody(v *ListReportDefinitionsResponseBody) *ListReportDefinitionsResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyCostCenterRequest struct {
+	// This parameter is required.
+	CostCenterEntityList []*ModifyCostCenterRequestCostCenterEntityList `json:"CostCenterEntityList,omitempty" xml:"CostCenterEntityList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+}
+
+func (s ModifyCostCenterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCostCenterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCostCenterRequest) SetCostCenterEntityList(v []*ModifyCostCenterRequestCostCenterEntityList) *ModifyCostCenterRequest {
+	s.CostCenterEntityList = v
+	return s
+}
+
+func (s *ModifyCostCenterRequest) SetNbid(v string) *ModifyCostCenterRequest {
+	s.Nbid = &v
+	return s
+}
+
+type ModifyCostCenterRequestCostCenterEntityList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 485938
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// This parameter is required.
+	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1314839403940987
+	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+}
+
+func (s ModifyCostCenterRequestCostCenterEntityList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCostCenterRequestCostCenterEntityList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCostCenterRequestCostCenterEntityList) SetCostCenterId(v int64) *ModifyCostCenterRequestCostCenterEntityList {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *ModifyCostCenterRequestCostCenterEntityList) SetCostCenterName(v string) *ModifyCostCenterRequestCostCenterEntityList {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *ModifyCostCenterRequestCostCenterEntityList) SetOwnerAccountId(v int64) *ModifyCostCenterRequestCostCenterEntityList {
+	s.OwnerAccountId = &v
+	return s
+}
+
+type ModifyCostCenterShrinkRequest struct {
+	// This parameter is required.
+	CostCenterEntityListShrink *string `json:"CostCenterEntityList,omitempty" xml:"CostCenterEntityList,omitempty"`
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+}
+
+func (s ModifyCostCenterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCostCenterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCostCenterShrinkRequest) SetCostCenterEntityListShrink(v string) *ModifyCostCenterShrinkRequest {
+	s.CostCenterEntityListShrink = &v
+	return s
+}
+
+func (s *ModifyCostCenterShrinkRequest) SetNbid(v string) *ModifyCostCenterShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+type ModifyCostCenterResponseBody struct {
+	CostCenterOperateDto []*ModifyCostCenterResponseBodyCostCenterOperateDto `json:"CostCenterOperateDto,omitempty" xml:"CostCenterOperateDto,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyCostCenterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCostCenterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCostCenterResponseBody) SetCostCenterOperateDto(v []*ModifyCostCenterResponseBodyCostCenterOperateDto) *ModifyCostCenterResponseBody {
+	s.CostCenterOperateDto = v
+	return s
+}
+
+func (s *ModifyCostCenterResponseBody) SetMetadata(v interface{}) *ModifyCostCenterResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *ModifyCostCenterResponseBody) SetRequestId(v string) *ModifyCostCenterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyCostCenterResponseBodyCostCenterOperateDto struct {
+	// example:
+	//
+	// 485938
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// example:
+	//
+	// True
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// example:
+	//
+	// 1314839403940987
+	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+}
+
+func (s ModifyCostCenterResponseBodyCostCenterOperateDto) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCostCenterResponseBodyCostCenterOperateDto) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCostCenterResponseBodyCostCenterOperateDto) SetCostCenterId(v int64) *ModifyCostCenterResponseBodyCostCenterOperateDto {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *ModifyCostCenterResponseBodyCostCenterOperateDto) SetIsSuccess(v bool) *ModifyCostCenterResponseBodyCostCenterOperateDto {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ModifyCostCenterResponseBodyCostCenterOperateDto) SetOwnerAccountId(v int64) *ModifyCostCenterResponseBodyCostCenterOperateDto {
+	s.OwnerAccountId = &v
+	return s
+}
+
+type ModifyCostCenterResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCostCenterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyCostCenterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCostCenterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCostCenterResponse) SetHeaders(v map[string]*string) *ModifyCostCenterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCostCenterResponse) SetStatusCode(v int32) *ModifyCostCenterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCostCenterResponse) SetBody(v *ModifyCostCenterResponseBody) *ModifyCostCenterResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCostCenterRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage    *int32                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EcIdAccountIds []*QueryCostCenterRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1314839403940987
+	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -1
+	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
+}
+
+func (s QueryCostCenterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCostCenterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCostCenterRequest) SetCurrentPage(v int32) *QueryCostCenterRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryCostCenterRequest) SetEcIdAccountIds(v []*QueryCostCenterRequestEcIdAccountIds) *QueryCostCenterRequest {
+	s.EcIdAccountIds = v
+	return s
+}
+
+func (s *QueryCostCenterRequest) SetNbid(v string) *QueryCostCenterRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *QueryCostCenterRequest) SetOwnerAccountId(v int64) *QueryCostCenterRequest {
+	s.OwnerAccountId = &v
+	return s
+}
+
+func (s *QueryCostCenterRequest) SetPageSize(v int32) *QueryCostCenterRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryCostCenterRequest) SetParentCostCenterId(v int64) *QueryCostCenterRequest {
+	s.ParentCostCenterId = &v
+	return s
+}
+
+type QueryCostCenterRequestEcIdAccountIds struct {
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1004064243473974
+	EcId *string `json:"EcId,omitempty" xml:"EcId,omitempty"`
+}
+
+func (s QueryCostCenterRequestEcIdAccountIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCostCenterRequestEcIdAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCostCenterRequestEcIdAccountIds) SetAccountIds(v []*int64) *QueryCostCenterRequestEcIdAccountIds {
+	s.AccountIds = v
+	return s
+}
+
+func (s *QueryCostCenterRequestEcIdAccountIds) SetEcId(v string) *QueryCostCenterRequestEcIdAccountIds {
+	s.EcId = &v
+	return s
+}
+
+type QueryCostCenterShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage          *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1314839403940987
+	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -1
+	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
+}
+
+func (s QueryCostCenterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCostCenterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCostCenterShrinkRequest) SetCurrentPage(v int32) *QueryCostCenterShrinkRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryCostCenterShrinkRequest) SetEcIdAccountIdsShrink(v string) *QueryCostCenterShrinkRequest {
+	s.EcIdAccountIdsShrink = &v
+	return s
+}
+
+func (s *QueryCostCenterShrinkRequest) SetNbid(v string) *QueryCostCenterShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *QueryCostCenterShrinkRequest) SetOwnerAccountId(v int64) *QueryCostCenterShrinkRequest {
+	s.OwnerAccountId = &v
+	return s
+}
+
+func (s *QueryCostCenterShrinkRequest) SetPageSize(v int32) *QueryCostCenterShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryCostCenterShrinkRequest) SetParentCostCenterId(v int64) *QueryCostCenterShrinkRequest {
+	s.ParentCostCenterId = &v
+	return s
+}
+
+type QueryCostCenterResponseBody struct {
+	CostCenterDtoList []*QueryCostCenterResponseBodyCostCenterDtoList `json:"CostCenterDtoList,omitempty" xml:"CostCenterDtoList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 30
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryCostCenterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCostCenterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCostCenterResponseBody) SetCostCenterDtoList(v []*QueryCostCenterResponseBodyCostCenterDtoList) *QueryCostCenterResponseBody {
+	s.CostCenterDtoList = v
+	return s
+}
+
+func (s *QueryCostCenterResponseBody) SetCurrentPage(v int32) *QueryCostCenterResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryCostCenterResponseBody) SetMetadata(v interface{}) *QueryCostCenterResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *QueryCostCenterResponseBody) SetPageSize(v int32) *QueryCostCenterResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryCostCenterResponseBody) SetRequestId(v string) *QueryCostCenterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCostCenterResponseBody) SetTotalCount(v int32) *QueryCostCenterResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryCostCenterResponseBodyCostCenterDtoList struct {
+	// example:
+	//
+	// 15945703968#
+	CostCenterCode *string `json:"CostCenterCode,omitempty" xml:"CostCenterCode,omitempty"`
+	// example:
+	//
+	// 485938
+	CostCenterId   *int64  `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
+	// example:
+	//
+	// loose
+	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// example:
+	//
+	// 1314839403940987
+	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// example:
+	//
+	// -1
+	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
+	// example:
+	//
+	// 485996
+	PrevCostCenterId *int64 `json:"PrevCostCenterId,omitempty" xml:"PrevCostCenterId,omitempty"`
+}
+
+func (s QueryCostCenterResponseBodyCostCenterDtoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCostCenterResponseBodyCostCenterDtoList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCostCenterResponseBodyCostCenterDtoList) SetCostCenterCode(v string) *QueryCostCenterResponseBodyCostCenterDtoList {
+	s.CostCenterCode = &v
+	return s
+}
+
+func (s *QueryCostCenterResponseBodyCostCenterDtoList) SetCostCenterId(v int64) *QueryCostCenterResponseBodyCostCenterDtoList {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *QueryCostCenterResponseBodyCostCenterDtoList) SetCostCenterName(v string) *QueryCostCenterResponseBodyCostCenterDtoList {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *QueryCostCenterResponseBodyCostCenterDtoList) SetLevel(v int32) *QueryCostCenterResponseBodyCostCenterDtoList {
+	s.Level = &v
+	return s
+}
+
+func (s *QueryCostCenterResponseBodyCostCenterDtoList) SetOwnerAccountId(v int64) *QueryCostCenterResponseBodyCostCenterDtoList {
+	s.OwnerAccountId = &v
+	return s
+}
+
+func (s *QueryCostCenterResponseBodyCostCenterDtoList) SetParentCostCenterId(v int64) *QueryCostCenterResponseBodyCostCenterDtoList {
+	s.ParentCostCenterId = &v
+	return s
+}
+
+func (s *QueryCostCenterResponseBodyCostCenterDtoList) SetPrevCostCenterId(v int64) *QueryCostCenterResponseBodyCostCenterDtoList {
+	s.PrevCostCenterId = &v
+	return s
+}
+
+type QueryCostCenterResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCostCenterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryCostCenterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCostCenterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCostCenterResponse) SetHeaders(v map[string]*string) *QueryCostCenterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCostCenterResponse) SetStatusCode(v int32) *QueryCostCenterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCostCenterResponse) SetBody(v *QueryCostCenterResponseBody) *QueryCostCenterResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCostCenterResourceRequest struct {
+	// example:
+	//
+	// 123456
+	CostCenterId   *int64                                          `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	EcIdAccountIds []*QueryCostCenterResourceRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// example:
+	//
+	// CAESEgoQCg4KCmd
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1234567812345678
+	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+}
+
+func (s QueryCostCenterResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCostCenterResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCostCenterResourceRequest) SetCostCenterId(v int64) *QueryCostCenterResourceRequest {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceRequest) SetEcIdAccountIds(v []*QueryCostCenterResourceRequestEcIdAccountIds) *QueryCostCenterResourceRequest {
+	s.EcIdAccountIds = v
+	return s
+}
+
+func (s *QueryCostCenterResourceRequest) SetMaxResults(v int32) *QueryCostCenterResourceRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceRequest) SetNbid(v string) *QueryCostCenterResourceRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceRequest) SetNextToken(v string) *QueryCostCenterResourceRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceRequest) SetOwnerAccountId(v int64) *QueryCostCenterResourceRequest {
+	s.OwnerAccountId = &v
+	return s
+}
+
+type QueryCostCenterResourceRequestEcIdAccountIds struct {
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1501603440974415
+	EcId *string `json:"EcId,omitempty" xml:"EcId,omitempty"`
+}
+
+func (s QueryCostCenterResourceRequestEcIdAccountIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCostCenterResourceRequestEcIdAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCostCenterResourceRequestEcIdAccountIds) SetAccountIds(v []*int64) *QueryCostCenterResourceRequestEcIdAccountIds {
+	s.AccountIds = v
+	return s
+}
+
+func (s *QueryCostCenterResourceRequestEcIdAccountIds) SetEcId(v string) *QueryCostCenterResourceRequestEcIdAccountIds {
+	s.EcId = &v
+	return s
+}
+
+type QueryCostCenterResourceResponseBody struct {
+	CostCenterResourceDtoList []*QueryCostCenterResourceResponseBodyCostCenterResourceDtoList `json:"CostCenterResourceDtoList,omitempty" xml:"CostCenterResourceDtoList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6MTB9
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2000
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryCostCenterResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCostCenterResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCostCenterResourceResponseBody) SetCostCenterResourceDtoList(v []*QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) *QueryCostCenterResourceResponseBody {
+	s.CostCenterResourceDtoList = v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBody) SetMaxResults(v int32) *QueryCostCenterResourceResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBody) SetMetadata(v interface{}) *QueryCostCenterResourceResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBody) SetNextToken(v string) *QueryCostCenterResourceResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBody) SetRequestId(v string) *QueryCostCenterResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBody) SetTotalCount(v int32) *QueryCostCenterResourceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
+	// example:
+	//
+	// test
+	ApportionItemCode *string `json:"ApportionItemCode,omitempty" xml:"ApportionItemCode,omitempty"`
+	// example:
+	//
+	// test
+	ApportionItemName *string `json:"ApportionItemName,omitempty" xml:"ApportionItemName,omitempty"`
+	// example:
+	//
+	// otsbag
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
+	// example:
+	//
+	// code
+	CostCenterCode *string `json:"CostCenterCode,omitempty" xml:"CostCenterCode,omitempty"`
+	// example:
+	//
+	// 2025-05-18 12:12:25
+	CostCenterCreateTime *string `json:"CostCenterCreateTime,omitempty" xml:"CostCenterCreateTime,omitempty"`
+	// example:
+	//
+	// 123456
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// example:
+	//
+	// test
+	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
+	// example:
+	//
+	// 2025-05-18 16:12:25
+	CostCenterUpdateTime *string `json:"CostCenterUpdateTime,omitempty" xml:"CostCenterUpdateTime,omitempty"`
+	// example:
+	//
+	// 1234567812345678
+	OwnerAccountId   *int64  `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	OwnerAccountName *string `json:"OwnerAccountName,omitempty" xml:"OwnerAccountName,omitempty"`
+	// example:
+	//
+	// 123456
+	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
+	// example:
+	//
+	// rds
+	PipCode       *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	PipName       *string `json:"PipName,omitempty" xml:"PipName,omitempty"`
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// example:
+	//
+	// OSSBAG-cn-v0h1s4hma018
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// testResource
+	ResourceNick *string `json:"ResourceNick,omitempty" xml:"ResourceNick,omitempty"`
+	// example:
+	//
+	// MANUAL_ALLOCATE
+	ResourceSource *string `json:"ResourceSource,omitempty" xml:"ResourceSource,omitempty"`
+	// example:
+	//
+	// tag
+	ResourceTag *string `json:"ResourceTag,omitempty" xml:"ResourceTag,omitempty"`
+	// example:
+	//
+	// FPT_ossbag_absolute_Storage_bj
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// 2025-05-18 16:12:25
+	ResourceUpdateTime *string `json:"ResourceUpdateTime,omitempty" xml:"ResourceUpdateTime,omitempty"`
+	// example:
+	//
+	// 1234567812345678
+	ResourceUserId *int64 `json:"ResourceUserId,omitempty" xml:"ResourceUserId,omitempty"`
+	// example:
+	//
+	// test@test.aliyun.com
+	ResourceUserName *string `json:"ResourceUserName,omitempty" xml:"ResourceUserName,omitempty"`
+	// example:
+	//
+	// -1
+	RootCostCenterId *int64 `json:"RootCostCenterId,omitempty" xml:"RootCostCenterId,omitempty"`
+}
+
+func (s QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetApportionItemCode(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.ApportionItemCode = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetApportionItemName(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.ApportionItemName = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetCommodityCode(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetCommodityName(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.CommodityName = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetCostCenterCode(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.CostCenterCode = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetCostCenterCreateTime(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.CostCenterCreateTime = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetCostCenterId(v int64) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetCostCenterName(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetCostCenterUpdateTime(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.CostCenterUpdateTime = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetOwnerAccountId(v int64) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.OwnerAccountId = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetOwnerAccountName(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.OwnerAccountName = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetParentCostCenterId(v int64) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.ParentCostCenterId = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetPipCode(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.PipCode = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetPipName(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.PipName = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetResourceGroup(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetResourceId(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetResourceNick(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.ResourceNick = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetResourceSource(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.ResourceSource = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetResourceTag(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.ResourceTag = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetResourceType(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetResourceUpdateTime(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.ResourceUpdateTime = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetResourceUserId(v int64) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.ResourceUserId = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetResourceUserName(v string) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.ResourceUserName = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList) SetRootCostCenterId(v int64) *QueryCostCenterResourceResponseBodyCostCenterResourceDtoList {
+	s.RootCostCenterId = &v
+	return s
+}
+
+type QueryCostCenterResourceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCostCenterResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryCostCenterResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCostCenterResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCostCenterResourceResponse) SetHeaders(v map[string]*string) *QueryCostCenterResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponse) SetStatusCode(v int32) *QueryCostCenterResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCostCenterResourceResponse) SetBody(v *QueryCostCenterResourceResponseBody) *QueryCostCenterResourceResponse {
+	s.Body = v
+	return s
+}
+
 type SetFundAccountCreditAmountRequest struct {
 	// This parameter is required.
 	//
@@ -5493,6 +7472,152 @@ func (client *Client) CancelFundAccountLowAvailableAmountAlarm(request *CancelFu
 
 // Summary:
 //
+// 创建财务单元
+//
+// @param tmpReq - CreateCostCenterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCostCenterResponse
+func (client *Client) CreateCostCenterWithOptions(tmpReq *CreateCostCenterRequest, runtime *util.RuntimeOptions) (_result *CreateCostCenterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateCostCenterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CostCenterEntityList)) {
+		request.CostCenterEntityListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CostCenterEntityList, tea.String("CostCenterEntityList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CostCenterEntityListShrink)) {
+		query["CostCenterEntityList"] = request.CostCenterEntityListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCostCenter"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCostCenterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建财务单元
+//
+// @param request - CreateCostCenterRequest
+//
+// @return CreateCostCenterResponse
+func (client *Client) CreateCostCenter(request *CreateCostCenterRequest) (_result *CreateCostCenterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCostCenterResponse{}
+	_body, _err := client.CreateCostCenterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建资金账户付款关系
+//
+// @param tmpReq - CreateFundAccountPayRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFundAccountPayRelationResponse
+func (client *Client) CreateFundAccountPayRelationWithOptions(tmpReq *CreateFundAccountPayRelationRequest, runtime *util.RuntimeOptions) (_result *CreateFundAccountPayRelationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateFundAccountPayRelationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EcIdAccountIds)) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, tea.String("EcIdAccountIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EcIdAccountIdsShrink)) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FundAccountId)) {
+		body["FundAccountId"] = request.FundAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFundAccountPayRelation"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFundAccountPayRelationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建资金账户付款关系
+//
+// @param request - CreateFundAccountPayRelationRequest
+//
+// @return CreateFundAccountPayRelationResponse
+func (client *Client) CreateFundAccountPayRelation(request *CreateFundAccountPayRelationRequest) (_result *CreateFundAccountPayRelationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFundAccountPayRelationResponse{}
+	_body, _err := client.CreateFundAccountPayRelationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建资金账户划拨/回收
 //
 // @param request - CreateFundAccountTransferRequest
@@ -5577,6 +7702,168 @@ func (client *Client) CreateFundAccountTransfer(request *CreateFundAccountTransf
 
 // Summary:
 //
+// 创建账单订阅
+//
+// @param request - CreateReportDefinitionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateReportDefinitionResponse
+func (client *Client) CreateReportDefinitionWithOptions(request *CreateReportDefinitionRequest, runtime *util.RuntimeOptions) (_result *CreateReportDefinitionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginBillingCycle)) {
+		query["BeginBillingCycle"] = request.BeginBillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketName)) {
+		query["OssBucketName"] = request.OssBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketOwnerAccountId)) {
+		query["OssBucketOwnerAccountId"] = request.OssBucketOwnerAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketPath)) {
+		query["OssBucketPath"] = request.OssBucketPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportType)) {
+		query["ReportType"] = request.ReportType
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.McProject)) {
+		body["McProject"] = request.McProject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.McTableName)) {
+		body["McTableName"] = request.McTableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportSourceType)) {
+		body["ReportSourceType"] = request.ReportSourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateReportDefinition"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateReportDefinitionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建账单订阅
+//
+// @param request - CreateReportDefinitionRequest
+//
+// @return CreateReportDefinitionResponse
+func (client *Client) CreateReportDefinition(request *CreateReportDefinitionRequest) (_result *CreateReportDefinitionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateReportDefinitionResponse{}
+	_body, _err := client.CreateReportDefinitionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除财务单元
+//
+// @param request - DeleteCostCenterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCostCenterResponse
+func (client *Client) DeleteCostCenterWithOptions(request *DeleteCostCenterRequest, runtime *util.RuntimeOptions) (_result *DeleteCostCenterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CostCenterId)) {
+		query["CostCenterId"] = request.CostCenterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccountId)) {
+		query["OwnerAccountId"] = request.OwnerAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCostCenter"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCostCenterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除财务单元
+//
+// @param request - DeleteCostCenterRequest
+//
+// @return DeleteCostCenterResponse
+func (client *Client) DeleteCostCenter(request *DeleteCostCenterRequest) (_result *DeleteCostCenterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCostCenterResponse{}
+	_body, _err := client.DeleteCostCenterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除优惠券的抵扣标签
 //
 // @param tmpReq - DeleteCouponDeductTagRequest
@@ -5650,6 +7937,70 @@ func (client *Client) DeleteCouponDeductTag(request *DeleteCouponDeductTagReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCouponDeductTagResponse{}
 	_body, _err := client.DeleteCouponDeductTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消账单订阅
+//
+// @param request - DeleteReportDefinitionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteReportDefinitionResponse
+func (client *Client) DeleteReportDefinitionWithOptions(request *DeleteReportDefinitionRequest, runtime *util.RuntimeOptions) (_result *DeleteReportDefinitionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportTaskId)) {
+		query["ReportTaskId"] = request.ReportTaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteReportDefinition"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteReportDefinitionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消账单订阅
+//
+// @param request - DeleteReportDefinitionRequest
+//
+// @return DeleteReportDefinitionResponse
+func (client *Client) DeleteReportDefinition(request *DeleteReportDefinitionRequest) (_result *DeleteReportDefinitionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteReportDefinitionResponse{}
+	_body, _err := client.DeleteReportDefinitionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6784,6 +9135,304 @@ func (client *Client) ListFundAccountPayRelation(request *ListFundAccountPayRela
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFundAccountPayRelationResponse{}
 	_body, _err := client.ListFundAccountPayRelationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看已订阅的报告列表
+//
+// @param request - ListReportDefinitionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListReportDefinitionsResponse
+func (client *Client) ListReportDefinitionsWithOptions(request *ListReportDefinitionsRequest, runtime *util.RuntimeOptions) (_result *ListReportDefinitionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListReportDefinitions"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListReportDefinitionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看已订阅的报告列表
+//
+// @param request - ListReportDefinitionsRequest
+//
+// @return ListReportDefinitionsResponse
+func (client *Client) ListReportDefinitions(request *ListReportDefinitionsRequest) (_result *ListReportDefinitionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListReportDefinitionsResponse{}
+	_body, _err := client.ListReportDefinitionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改财务单元
+//
+// @param tmpReq - ModifyCostCenterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCostCenterResponse
+func (client *Client) ModifyCostCenterWithOptions(tmpReq *ModifyCostCenterRequest, runtime *util.RuntimeOptions) (_result *ModifyCostCenterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyCostCenterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CostCenterEntityList)) {
+		request.CostCenterEntityListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CostCenterEntityList, tea.String("CostCenterEntityList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CostCenterEntityListShrink)) {
+		query["CostCenterEntityList"] = request.CostCenterEntityListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCostCenter"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyCostCenterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改财务单元
+//
+// @param request - ModifyCostCenterRequest
+//
+// @return ModifyCostCenterResponse
+func (client *Client) ModifyCostCenter(request *ModifyCostCenterRequest) (_result *ModifyCostCenterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCostCenterResponse{}
+	_body, _err := client.ModifyCostCenterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询财务单元
+//
+// @param tmpReq - QueryCostCenterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCostCenterResponse
+func (client *Client) QueryCostCenterWithOptions(tmpReq *QueryCostCenterRequest, runtime *util.RuntimeOptions) (_result *QueryCostCenterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryCostCenterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EcIdAccountIds)) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, tea.String("EcIdAccountIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcIdAccountIdsShrink)) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccountId)) {
+		query["OwnerAccountId"] = request.OwnerAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentCostCenterId)) {
+		query["ParentCostCenterId"] = request.ParentCostCenterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCostCenter"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCostCenterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询财务单元
+//
+// @param request - QueryCostCenterRequest
+//
+// @return QueryCostCenterResponse
+func (client *Client) QueryCostCenter(request *QueryCostCenterRequest) (_result *QueryCostCenterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCostCenterResponse{}
+	_body, _err := client.QueryCostCenterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询财务单元下资源信息
+//
+// @param request - QueryCostCenterResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCostCenterResourceResponse
+func (client *Client) QueryCostCenterResourceWithOptions(request *QueryCostCenterResourceRequest, runtime *util.RuntimeOptions) (_result *QueryCostCenterResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EcIdAccountIds)) {
+		query["EcIdAccountIds"] = request.EcIdAccountIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CostCenterId)) {
+		body["CostCenterId"] = request.CostCenterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccountId)) {
+		body["OwnerAccountId"] = request.OwnerAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCostCenterResource"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCostCenterResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询财务单元下资源信息
+//
+// @param request - QueryCostCenterResourceRequest
+//
+// @return QueryCostCenterResourceResponse
+func (client *Client) QueryCostCenterResource(request *QueryCostCenterResourceRequest) (_result *QueryCostCenterResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCostCenterResourceResponse{}
+	_body, _err := client.QueryCostCenterResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
