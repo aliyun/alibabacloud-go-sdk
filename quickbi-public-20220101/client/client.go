@@ -421,8 +421,23 @@ func (s *AddShareReportResponse) SetBody(v *AddShareReportResponseBody) *AddShar
 }
 
 type AddUserRequest struct {
+	// Aliyun account ID.
+	//
+	// 	Warning: For versions of Quick BI released after December 31, 2024, AccountId will be a required parameter. Please modify your API before this date.
+	//
+	// <props="china">Published only on the China site
+	//
+	// example:
+	//
+	// 191476xxxxx23754
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// Deprecated
+	//
+	// Aliyun account name.
+	//
+	// - Note: If it is a sub-account, the format should be \\"primary account: sub-account\\". For example: master_test@aliyun.com:subaccount
+	//
+	// - Format check: Maximum length of 50 characters.
 	//
 	// example:
 	//
@@ -430,7 +445,13 @@ type AddUserRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// Deprecated
 	//
-	// Add organization members.
+	// Whether to assign the organization administrator role. Value range:
+	//
+	// - true: Yes
+	//
+	// - false: No
+	//
+	// <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIds is provided.</notice>
 	//
 	// if can be null:
 	// false
@@ -441,13 +462,50 @@ type AddUserRequest struct {
 	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
 	// Deprecated
 	//
+	// Whether to assign the organization permission administrator role. Value range:
+	//
+	// - true: Yes
+	//
+	// - false: No
+	//
+	// <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIds is provided.</notice>
+	//
 	// example:
 	//
 	// true
 	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	// Aliyun account nickname.
+	//
+	// - Format check: Maximum length of 50 characters.
+	//
+	// - Special format validation: Chinese and English characters, numbers, _ \\ / | () ] [
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ddd
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	RoleIds  *string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty"`
+	// Preset or custom organization role IDs bound to the user, separated by commas, with a maximum of 3. Value range:
+	//
+	// - Organization Administrator (preset role): 111111111
+	//
+	// - Permission Administrator (preset role): 111111112
+	//
+	// - Regular User (preset role): 111111113
+	//
+	// example:
+	//
+	// 111111111,456
+	RoleIds *string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty"`
+	// The user type of the organization member. Value range:
+	//
+	// - 1: Developer
+	//
+	// - 2: Visitor
+	//
+	// - 3: Analyst
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -500,11 +558,20 @@ func (s *AddUserRequest) SetUserType(v int32) *AddUserRequest {
 }
 
 type AddUserResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *AddUserResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns detailed information about the newly added Aliyun user.
+	Result *AddUserResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -535,24 +602,58 @@ func (s *AddUserResponseBody) SetSuccess(v bool) *AddUserResponseBody {
 }
 
 type AddUserResponseBodyResult struct {
+	// Aliyun account.
+	//
 	// example:
 	//
 	// xxxxxx@163.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Whether the organization administrator role is assigned. Value range:
+	//
+	// - true: Yes
+	//
+	// - false: No
+	//
+	// <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIdList is provided.</notice>
+	//
 	// example:
 	//
 	// true
 	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
+	// Whether the permission administrator role is assigned. Value range:
+	//
+	// - true: Yes
+	//
+	// - false: No
+	//
+	// <notice>This parameter is deprecated and not recommended for use. It is invalid when RoleIdList is provided.</notice>
+	//
 	// example:
 	//
 	// true
-	AuthAdminUser *bool    `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
-	NickName      *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	RoleIdList    []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
+	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	// Aliyun account nickname.
+	//
+	// example:
+	//
+	// ddd
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// List of organization role IDs bound to the user.
+	RoleIdList []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
+	// UserID in Quick BI.
+	//
 	// example:
 	//
 	// b5d8fd9348cc4327****afb604
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// User type of the organization member. Value range:
+	//
+	// - 1: Developer
+	//
+	// - 2: Visitor
+	//
+	// - 3: Analyst
+	//
 	// example:
 	//
 	// 1
@@ -632,11 +733,7 @@ func (s *AddUserResponse) SetBody(v *AddUserResponseBody) *AddUserResponse {
 }
 
 type AddUserGroupMemberRequest struct {
-	// The result of adding members to a user group is returned. Valid values:
-	//
-	// 	- true: The task is added.
-	//
-	// 	- false: The tag failed to be added.
+	// The ID of the user group.
 	//
 	// This parameter is required.
 	//
@@ -644,11 +741,7 @@ type AddUserGroupMemberRequest struct {
 	//
 	// 555c4cd****
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
-	//
-	// 	- true: The request was successful.
-	//
-	// 	- false: The request failed.
+	// The ID of the Quick BI user. Separate multiple IDs with commas (,). Example: abc,efg. You can enter a maximum of 1000 entries.
 	//
 	// This parameter is required.
 	//
@@ -677,14 +770,28 @@ func (s *AddUserGroupMemberRequest) SetUserIdList(v string) *AddUserGroupMemberR
 }
 
 type AddUserGroupMemberResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// B6141A5A-A9EF-5F16-BF34-EFB9C1CCE4F3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of adding members to a user group is returned. Valid values:
+	//
+	// 	- true: The task is added.
+	//
+	// 	- false: The tag failed to be added.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -862,8 +969,23 @@ func (s *AddUserGroupMembersResponse) SetBody(v *AddUserGroupMembersResponseBody
 }
 
 type AddUserTagMetaRequest struct {
+	// Tag description. Format check: maximum length of 255 characters.
+	//
+	// example:
+	//
+	// test
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
+	// Tag name. Format check:
+	//
+	// - Maximum length of 50 characters.
+	//
+	// - Only Chinese, English, numbers, and /\\|[]() symbols are allowed.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -886,14 +1008,24 @@ func (s *AddUserTagMetaRequest) SetTagName(v string) *AddUserTagMetaRequest {
 }
 
 type AddUserTagMetaResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns the ID of the successfully added tag.
+	//
 	// example:
 	//
 	// 0822a7d9-****-****-****-f20163ab9b0d
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Value range:
+	//
+	// - true: The request succeeded
+	//
+	// - false: The request failed
+	//
 	// example:
 	//
 	// true
@@ -953,18 +1085,32 @@ func (s *AddUserTagMetaResponse) SetBody(v *AddUserTagMetaResponseBody) *AddUser
 }
 
 type AddUserToWorkspaceRequest struct {
+	// The preset space role ID. Value range:
+	//
+	// - 25: Space Administrator
+	//
+	// - 26: Space Developer
+	//
+	// - 27: Space Analyst
+	//
+	// - 30: Space Viewer
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 25
 	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The ID of the Quick BI user to be added.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -997,14 +1143,28 @@ func (s *AddUserToWorkspaceRequest) SetWorkspaceId(v string) *AddUserToWorkspace
 }
 
 type AddUserToWorkspaceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns the result of the interface execution. Value range:
+	//
+	// - true: Execution successful
+	//
+	// - false: Execution failed
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Value range:
+	//
+	// - true: Request successful
+	//
+	// - false: Request failed
+	//
 	// example:
 	//
 	// true
@@ -1064,18 +1224,34 @@ func (s *AddUserToWorkspaceResponse) SetBody(v *AddUserToWorkspaceResponseBody) 
 }
 
 type AddWorkspaceUsersRequest struct {
+	// Preset space role ID. Value range:
+	//
+	// - 25: Space Administrator
+	//
+	// - 26: Space Developer
+	//
+	// - 27: Space Analyst
+	//
+	// - 30: Space Viewer
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 25
 	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// User ID. This is the UserID for Quick BI, not the Alibaba Cloud UID.
+	//
+	// - Supports batch parameters, with user IDs separated by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
 	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+	// Workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1108,11 +1284,20 @@ func (s *AddWorkspaceUsersRequest) SetWorkspaceId(v string) *AddWorkspaceUsersRe
 }
 
 type AddWorkspaceUsersResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 7AAB95D7-2E11-4FE2-94BC-858E4FC0C976
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *AddWorkspaceUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns the result of the API execution.
+	Result *AddWorkspaceUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Value range:
+	//
+	// - true: The request was successful. There may be cases where some members are added successfully and others fail. For the reasons of failure, refer to the FailureDetail in the response.
+	//
+	// - false: The request failed, and no data will be persisted.
+	//
 	// example:
 	//
 	// true
@@ -1143,18 +1328,26 @@ func (s *AddWorkspaceUsersResponseBody) SetSuccess(v bool) *AddWorkspaceUsersRes
 }
 
 type AddWorkspaceUsersResponseBodyResult struct {
+	// Number of users that failed to be added.
+	//
 	// example:
 	//
 	// 2
 	Failure *int32 `json:"Failure,omitempty" xml:"Failure,omitempty"`
+	// Reasons for the failures.
+	//
 	// example:
 	//
 	// {"2046274934845893" : "AE0150010001: This user already exists.", "1213444447906552" : "AE0150010001: This user already exists."}
 	FailureDetail map[string]interface{} `json:"FailureDetail,omitempty" xml:"FailureDetail,omitempty"`
+	// Number of users that were added successfully.
+	//
 	// example:
 	//
 	// 1
 	Success *int32 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of users being added.
+	//
 	// example:
 	//
 	// 3
@@ -1219,6 +1412,8 @@ func (s *AddWorkspaceUsersResponse) SetBody(v *AddWorkspaceUsersResponseBody) *A
 }
 
 type AllotDatasetAccelerationTaskRequest struct {
+	// The dataset ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1241,14 +1436,28 @@ func (s *AllotDatasetAccelerationTaskRequest) SetCubeId(v string) *AllotDatasetA
 }
 
 type AllotDatasetAccelerationTaskResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the IP address whitelist is updated. Valid values:
+	//
+	// 	- true: The task is triggered.
+	//
+	// 	- false: The task fails to be triggered.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -1676,22 +1885,38 @@ func (s *BatchAddFeishuUsersResponse) SetBody(v *BatchAddFeishuUsersResponseBody
 }
 
 type CancelAuthorizationMenuRequest struct {
+	// The ID of the data portal.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0d173abb53e84c8ca7495429163b****
 	DataPortalId *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
+	// The leaf node menu IDs of the data portal.
+	//
+	// - Supports batch parameters, with IDs separated by commas (,). The maximum number for batch modification is 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 54kqgoa****,pg1n135****
 	MenuIds *string `json:"MenuIds,omitempty" xml:"MenuIds,omitempty"`
+	// List of user group IDs.
+	//
+	// - Supports batch parameters, with IDs separated by commas (,). The maximum number for batch modification is 200.
+	//
+	// - UserGroupIds and UserIds cannot both be empty.
+	//
 	// example:
 	//
 	// 34fd141d-4598-4093-8c33-8e066dcb****,3d2c23d4-2b41-4af8-a1f5-f6390f32****
 	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
+	// List of user IDs. These are Quick BI UserIDs, not Alibaba Cloud UIDs.
+	//
+	// - Supports batch parameters, with IDs separated by commas (,). The maximum number for batch modification is 200.
+	//
 	// example:
 	//
 	// 204627493484****,121344444790****
@@ -1727,14 +1952,24 @@ func (s *CancelAuthorizationMenuRequest) SetUserIds(v string) *CancelAuthorizati
 }
 
 type CancelAuthorizationMenuResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of menus successfully unauthorized.
+	//
 	// example:
 	//
 	// 2
 	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -2055,7 +2290,7 @@ func (s *CancelReportShareResponse) SetBody(v *CancelReportShareResponseBody) *C
 }
 
 type ChangeVisibilityModelRequest struct {
-	// The number of menus that are successfully modified.
+	// The ID of the BI portal.
 	//
 	// This parameter is required.
 	//
@@ -2063,11 +2298,11 @@ type ChangeVisibilityModelRequest struct {
 	//
 	// 0d173abb53e84c8ca7495429163b****
 	DataPortalId *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// The menu ID of the BI portal leaf node.
 	//
-	// 	- true: The request was successful.
+	// 	- The directory menu cannot be authorized.
 	//
-	// 	- false: The request failed.
+	// 	- You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 100.
 	//
 	// This parameter is required.
 	//
@@ -2075,6 +2310,12 @@ type ChangeVisibilityModelRequest struct {
 	//
 	// 54kqgoa****,pg1n135****
 	MenuIds *string `json:"MenuIds,omitempty" xml:"MenuIds,omitempty"`
+	// Whether only authorization is visible. Valid values:
+	//
+	// 	- true: Only the authorization is visible.
+	//
+	// 	- false: Both are visible.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2107,14 +2348,24 @@ func (s *ChangeVisibilityModelRequest) SetShowOnlyWithAccess(v bool) *ChangeVisi
 }
 
 type ChangeVisibilityModelResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of menus that are successfully modified.
+	//
 	// example:
 	//
 	// 2
 	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -2298,13 +2549,13 @@ type CreateTicketRequest struct {
 	//
 	// - If the user is an Alibaba Cloud primary account **wangwu**, the format is **[Primary Account]**, for example, **wangwu**.
 	//
-	// - If the user is a RAM account **zhangsan**@aliyun.cn, the format is **[Primary Account: Sub-account]**, for example, **wangwu:zhangsan**.
+	// - If the user is a RAM account **zhangsan**@aliyun.cn**, the format is **[Primary Account: Sub-Account]**, for example, **wangwu:zhangsan**.
 	//
 	// > Only one of UserId and AccountName needs to be filled in. If neither is filled in, it will default to binding the report\\"s Owner, and the report will be accessed with that user\\"s identity. If you need to configure row-level permissions, please refer to [Row-Level Permissions](https://help.aliyun.com/document_detail/322783.html).
 	//
 	// example:
 	//
-	// test user
+	// test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// Deprecated
 	//
@@ -2330,7 +2581,7 @@ type CreateTicketRequest struct {
 	AccountType *int32 `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// Component ID. This is the ID of a component within the above-mentioned dashboard; other types of works do not support this.
 	//
-	// Refer to the [QueryWorksBloodRelationship](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryWorksBloodRelationship?spm=a2c4g.11186623.0.0.15615d7aWVvWAl&params={}&lang=JAVA&tab=DOC&sdkStyle=old) API for obtaining the component ID.
+	// Refer to [QueryWorksBloodRelationship](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryWorksBloodRelationship?spm=a2c4g.11186623.0.0.15615d7aWVvWAl&params={}&lang=JAVA&tab=DOC&sdkStyle=old) for the API to get the component ID.
 	//
 	// example:
 	//
@@ -2370,7 +2621,7 @@ type CreateTicketRequest struct {
 	TicketNum *int32 `json:"TicketNum,omitempty" xml:"TicketNum,omitempty"`
 	// Quick BI\\"s UserId, which is not your Alibaba Cloud account ID.
 	//
-	// You can call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=a2c4g.11186623.0.0.15615d7aWVvWAl&params={}&tab=DOC&sdkStyle=old) API to obtain the UserId. An example of a UserId is fe67f61a35a94b7da1a34ba174a7****.
+	// You can call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=a2c4g.11186623.0.0.15615d7aWVvWAl&params={}&tab=DOC&sdkStyle=old) interface to obtain the UserId. An example of a UserId is fe67f61a35a94b7da1a34ba174a7****.
 	//
 	// > Only one of UserId and AccountName needs to be filled in. If neither is filled in, it will default to binding the report\\"s Owner, and the report will be accessed with that user\\"s identity. If you need to configure row-level permissions, please refer to [Row-Level Permissions](https://help.aliyun.com/document_detail/322783.html).
 	//
@@ -2386,7 +2637,7 @@ type CreateTicketRequest struct {
 	//
 	// example:
 	//
-	// Three-party embedding
+	// test
 	WatermarkParam *string `json:"WatermarkParam,omitempty" xml:"WatermarkParam,omitempty"`
 	// The ID of the report to be embedded. Currently supports dashboards, spreadsheets, data screens, self-service data retrieval, ad-hoc analysis, and data entry.
 	//
@@ -2464,11 +2715,11 @@ type CreateTicketResponseBody struct {
 	//
 	// ccd3428c-****-****-a608-26bae29dffee
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// 是否请求成功。取值范围：
+	// Indicates whether the request was successful. Value range:
 	//
-	// - true：请求成功
+	// - true: Request succeeded
 	//
-	// - false：请求失败
+	// - false: Request failed
 	//
 	// example:
 	//
@@ -2529,28 +2780,77 @@ func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicke
 }
 
 type CreateTicket4CopilotRequest struct {
+	// User\\"s account name.
+	//
+	// <notice	Note: Only one of userId and accountName needs to be filled in. If neither is provided, it will default to the report owner, and the report will be accessed with that user\\"s identity.</notice>
+	//
+	// example:
+	//
+	// Test user
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// User\\"s account type:
+	//
+	// - 1: Alibaba Cloud Primary Account
+	//
+	// - 3: QuickBI Self-built Account
+	//
+	// - 4: DingTalk
+	//
+	// - 5: Alibaba Cloud RAM Account
+	//
+	// - 6: Third-party Account (SAML, OAuth, etc.)
+	//
+	// - 9: WeCom
+	//
+	// - 10: Feishu
+	//
+	// <notice	Note: If accountName is not empty, then accountType must also be provided.</notice>
+	//
 	// example:
 	//
 	// 1
 	AccountType *int32 `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// ID of the Smart Q module to be embedded.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ccd3428c-dd23-460c-a608-26bae29dffee
+	// ccd3*********ae29dffee
 	CopilotId *string `json:"CopilotId,omitempty" xml:"CopilotId,omitempty"`
+	// Expiration time.
+	//
+	// - Unit: minutes, maximum 240 (4 hours).
+	//
+	// - Default: 240.
+	//
 	// example:
 	//
 	// 200
 	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Range of ticket quantity:
+	//
+	// - Default value is 1.
+	//
+	// - Recommended value is 1.
+	//
+	// - Maximum value is 99999.
+	//
+	// Each time a ticket is used, the ticket count decreases by 1.
+	//
 	// example:
 	//
 	// 1
 	TicketNum *int32 `json:"TicketNum,omitempty" xml:"TicketNum,omitempty"`
+	// Quick BI\\"s UserId.
+	//
+	// - You can obtain this by calling [3.1.7 Get User Details Based on Third-Party Account] or other relevant APIs.
+	//
+	// <notice	Note: Only one of userId and accountName needs to be filled in. If neither is provided, it will default to the report owner, and the report will be accessed with that user\\"s identity.</notice>
+	//
 	// example:
 	//
-	// 9c-asdawf-casxcasd-asdasd
+	// 9c-asd*****asd-asdasd
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -2593,14 +2893,24 @@ func (s *CreateTicket4CopilotRequest) SetUserId(v string) *CreateTicket4CopilotR
 }
 
 type CreateTicket4CopilotResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
-	// D787E1A3-A93C-424A-B626-C2B05DF8D885
+	// D787************05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// ID of the Smart Q module to be embedded.
+	//
 	// example:
 	//
 	// f5eeb52e-d9c2-4a8b-80e3-47ab55c2****
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request succeeded
+	//
+	// - false: The request failed
+	//
 	// example:
 	//
 	// true
@@ -2811,6 +3121,106 @@ func (s *CreateUserGroupResponse) SetBody(v *CreateUserGroupResponseBody) *Creat
 	return s
 }
 
+type DataInterpretationRequest struct {
+	// This parameter is required.
+	Data                *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ModelCode           *string `json:"ModelCode,omitempty" xml:"ModelCode,omitempty"`
+	PromptForceOverride *bool   `json:"PromptForceOverride,omitempty" xml:"PromptForceOverride,omitempty"`
+	UserPrompt          *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
+	UserQuestion        *string `json:"UserQuestion,omitempty" xml:"UserQuestion,omitempty"`
+}
+
+func (s DataInterpretationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataInterpretationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DataInterpretationRequest) SetData(v string) *DataInterpretationRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *DataInterpretationRequest) SetModelCode(v string) *DataInterpretationRequest {
+	s.ModelCode = &v
+	return s
+}
+
+func (s *DataInterpretationRequest) SetPromptForceOverride(v bool) *DataInterpretationRequest {
+	s.PromptForceOverride = &v
+	return s
+}
+
+func (s *DataInterpretationRequest) SetUserPrompt(v string) *DataInterpretationRequest {
+	s.UserPrompt = &v
+	return s
+}
+
+func (s *DataInterpretationRequest) SetUserQuestion(v string) *DataInterpretationRequest {
+	s.UserQuestion = &v
+	return s
+}
+
+type DataInterpretationResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DataInterpretationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataInterpretationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DataInterpretationResponseBody) SetRequestId(v string) *DataInterpretationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DataInterpretationResponseBody) SetResult(v string) *DataInterpretationResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *DataInterpretationResponseBody) SetSuccess(v bool) *DataInterpretationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DataInterpretationResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DataInterpretationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DataInterpretationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataInterpretationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DataInterpretationResponse) SetHeaders(v map[string]*string) *DataInterpretationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DataInterpretationResponse) SetStatusCode(v int32) *DataInterpretationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DataInterpretationResponse) SetBody(v *DataInterpretationResponseBody) *DataInterpretationResponse {
+	s.Body = v
+	return s
+}
+
 type DataSetBloodRequest struct {
 	// List of dataset IDs, separated by English commas.
 	//
@@ -2988,6 +3398,8 @@ func (s *DataSetBloodResponse) SetBody(v *DataSetBloodResponseBody) *DataSetBloo
 }
 
 type DataSourceBloodRequest struct {
+	// Data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3010,11 +3422,20 @@ func (s *DataSourceBloodRequest) SetDataSourceId(v string) *DataSourceBloodReque
 }
 
 type DataSourceBloodResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 46e537a5****,3dadsu****
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Array of dataset IDs.
+	Result []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful
+	//
+	// - false: The request failed
+	//
 	// example:
 	//
 	// true
@@ -3385,7 +3806,7 @@ func (s *DeleteDataLevelRuleConfigResponse) SetBody(v *DeleteDataLevelRuleConfig
 }
 
 type DeleteTicketRequest struct {
-	// Deletes a specified ticket from an embedded report.
+	// The value of the third-party embedded ticket, which is the `accessTicket` in the URL.
 	//
 	// This parameter is required.
 	//
@@ -3409,14 +3830,28 @@ func (s *DeleteTicketRequest) SetTicket(v string) *DeleteTicketRequest {
 }
 
 type DeleteTicketResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the deletion was successful. Possible values:
+	//
+	// - true: The request was successful
+	//
+	// - false: The request failed
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful
+	//
+	// - false: The request failed
+	//
 	// example:
 	//
 	// true
@@ -3476,11 +3911,19 @@ func (s *DeleteTicketResponse) SetBody(v *DeleteTicketResponseBody) *DeleteTicke
 }
 
 type DeleteUserRequest struct {
+	// The ID of the successor. If not empty, the report resources in the workspace of the deleted user will be transferred to the successor; otherwise, they will be transferred to the space owner.
+	//
+	// - The successor cannot be an organization visitor
+	//
+	// - The permissions of the successor in the workspace must not be less than those of the deleted user, with management permissions > development permissions > sharing permissions > viewing permissions
+	//
+	// - If the successor is not in the workspace, they will be automatically added to the workspace
+	//
 	// example:
 	//
 	// f5****afccd9e434a274
 	TransferUserId *string `json:"TransferUserId,omitempty" xml:"TransferUserId,omitempty"`
-	// Deletes a user from a specified organization.
+	// The ID of the user to be deleted. This user ID is the Quick BI UserID, not the Alibaba Cloud UID.
 	//
 	// This parameter is required.
 	//
@@ -3509,14 +3952,26 @@ func (s *DeleteUserRequest) SetUserId(v string) *DeleteUserRequest {
 }
 
 type DeleteUserResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// DC4E1E63-B337-44F8-8C22-6F00DF67E2C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns the execution result of the interface. Possible values:
+	//
+	// - true: Execution succeeded
+	//
+	// - false: Execution failed
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful - false: The request failed
+	//
 	// example:
 	//
 	// true
@@ -3576,12 +4031,16 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 }
 
 type DeleteUserFromWorkspaceRequest struct {
+	// The ID of the user to be deleted. Note that this UserID is for Quick BI, not the Alibaba Cloud UID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3609,14 +4068,26 @@ func (s *DeleteUserFromWorkspaceRequest) SetWorkspaceId(v string) *DeleteUserFro
 }
 
 type DeleteUserFromWorkspaceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DC4E1E63-B337-44F8-8C22-6F00DF67E2C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns the result of the API execution. Possible values:
+	//
+	// - true: Execution succeeded
+	//
+	// - false: Execution failed
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Value range:
+	//
+	// - true: The request succeeded - false: The request failed
+	//
 	// example:
 	//
 	// true
@@ -4589,13 +5060,13 @@ func (s *GetMailTaskStatusResponse) SetBody(v *GetMailTaskStatusResponseBody) *G
 }
 
 type GetUserGroupInfoRequest struct {
-	// The ID of the user group.
+	// Keyword of the user group name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// The user group modifier. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 }
 
@@ -4613,11 +5084,20 @@ func (s *GetUserGroupInfoRequest) SetKeyword(v string) *GetUserGroupInfoRequest 
 }
 
 type GetUserGroupInfoResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// D7980306-1F08-5A88-9FE7-ECB8B9C4C0F5
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*GetUserGroupInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// User group information.
+	Result []*GetUserGroupInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -4648,32 +5128,55 @@ func (s *GetUserGroupInfoResponseBody) SetSuccess(v bool) *GetUserGroupInfoRespo
 }
 
 type GetUserGroupInfoResponseBodyResult struct {
+	// Creation time of the user group.
+	//
 	// example:
 	//
 	// 2021-03-15 17:13:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator of the sub-user group. This is the UserID in Quick BI, not the UID in Alibaba Cloud.
+	//
 	// example:
 	//
 	// 46e5374665ba4b679ee22e2a2927****
-	CreateUser     *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Directory level of the user group.
 	IdentifiedPath *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
+	// Last modified time of the user group.
+	//
 	// example:
 	//
 	// 2021-03-15 20:36:40
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// Modifier of the user group. This is the UserID in Quick BI, not the UID in Alibaba Cloud.
+	//
 	// example:
 	//
 	// 46e5374665ba4b679ee22e2a2927****
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// Parent user group ID.
+	//
 	// example:
 	//
 	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****
 	ParentUsergroupId *string `json:"ParentUsergroupId,omitempty" xml:"ParentUsergroupId,omitempty"`
-	UsergroupDesc     *string `json:"UsergroupDesc,omitempty" xml:"UsergroupDesc,omitempty"`
+	// Description of the user group.
+	//
+	// example:
+	//
+	// test
+	UsergroupDesc *string `json:"UsergroupDesc,omitempty" xml:"UsergroupDesc,omitempty"`
+	// User group ID.
+	//
 	// example:
 	//
 	// 34fd141d-4598-4093-8c33-8e066dcb****
-	UsergroupId   *string `json:"UsergroupId,omitempty" xml:"UsergroupId,omitempty"`
+	UsergroupId *string `json:"UsergroupId,omitempty" xml:"UsergroupId,omitempty"`
+	// Name of the user group.
+	//
+	// example:
+	//
+	// test
 	UsergroupName *string `json:"UsergroupName,omitempty" xml:"UsergroupName,omitempty"`
 }
 
@@ -4764,7 +5267,7 @@ type GetWorksEmbedListRequest struct {
 	//
 	// example:
 	//
-	// test dataset
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// Page number (defaults to 1 if empty)
 	//
@@ -4782,15 +5285,15 @@ type GetWorksEmbedListRequest struct {
 	//
 	// - page, Dashboard
 	//
-	// - screen, Visualization Screen
+	// - screen, Data Screen
 	//
-	// - report, Workbooks
+	// - report, Spreadsheet
 	//
-	// - ANALYSIS, Ad Hoc Analysis
+	// - ANALYSIS, Ad-hoc Analysis
 	//
-	// - dashboardOfflineQuery, Downloads
+	// - dashboardOfflineQuery, Self-service Data Retrieval
 	//
-	// - dataForm, Forms
+	// - dataForm, Data Entry Form
 	//
 	// example:
 	//
@@ -5429,6 +5932,7 @@ func (s *ListByUserGroupIdResponseBody) SetSuccess(v bool) *ListByUserGroupIdRes
 }
 
 type ListByUserGroupIdResponseBodyResult struct {
+	// List of failed user groups.
 	FailedUserGroupIds []*string `json:"FailedUserGroupIds,omitempty" xml:"FailedUserGroupIds,omitempty" type:"Repeated"`
 	// The details of the user group that was queried.
 	UserGroupModels []*ListByUserGroupIdResponseBodyResultUserGroupModels `json:"UserGroupModels,omitempty" xml:"UserGroupModels,omitempty" type:"Repeated"`
@@ -5872,12 +6376,20 @@ func (s *ListCubeDataLevelPermissionConfigResponse) SetBody(v *ListCubeDataLevel
 }
 
 type ListDataLevelPermissionWhiteListRequest struct {
+	// Dataset ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3d5db23c-e4f2-49dd-a883-92285b48e14a
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// Type of row and column permission that the whitelist belongs to:
+	//
+	// - ROW_LEVEL: Row-level permission
+	//
+	// - COLUMN_LEVEL: Column-level permission
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5905,11 +6417,20 @@ func (s *ListDataLevelPermissionWhiteListRequest) SetRuleType(v string) *ListDat
 }
 
 type ListDataLevelPermissionWhiteListResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ListDataLevelPermissionWhiteListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whitelist for the specified row-level permission type.
+	Result *ListDataLevelPermissionWhiteListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: Request succeeded
+	//
+	// - false: Request failed
+	//
 	// example:
 	//
 	// true
@@ -5940,14 +6461,23 @@ func (s *ListDataLevelPermissionWhiteListResponseBody) SetSuccess(v bool) *ListD
 }
 
 type ListDataLevelPermissionWhiteListResponseBodyResult struct {
+	// Dataset ID.
+	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// Type of dataset row and column permissions. Possible values:
+	//
+	// - ROW_LEVEL: Row-level permission
+	//
+	// - COLUMN_LEVEL: Column-level permission
+	//
 	// example:
 	//
 	// ROW_LEVEL
-	RuleType   *string                                                       `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// Whitelist information.
 	UsersModel *ListDataLevelPermissionWhiteListResponseBodyResultUsersModel `json:"UsersModel,omitempty" xml:"UsersModel,omitempty" type:"Struct"`
 }
 
@@ -5975,8 +6505,10 @@ func (s *ListDataLevelPermissionWhiteListResponseBodyResult) SetUsersModel(v *Li
 }
 
 type ListDataLevelPermissionWhiteListResponseBodyResultUsersModel struct {
+	// UserGroups.
 	UserGroups []*string `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
-	Users      []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// Users.
+	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s ListDataLevelPermissionWhiteListResponseBodyResultUsersModel) String() string {
@@ -6230,15 +6762,36 @@ func (s *ListDataSourceResponse) SetBody(v *ListDataSourceResponseBody) *ListDat
 }
 
 type ListFavoriteReportsRequest struct {
+	// Keyword of the work name.
+	//
+	// example:
+	//
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Number of rows in the work list to be queried:
+	//
+	// Default value: 10
+	//
+	// Maximum value: 9999
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Type of the work to be queried (leave blank to query all types). Value range:
+	//
+	// - DATAPRODUCT: Data Portal
+	//
+	// - PAGE: Dashboard
+	//
+	// - REPORT: Spreadsheet
+	//
 	// example:
 	//
 	// PAGE
 	TreeType *string `json:"TreeType,omitempty" xml:"TreeType,omitempty"`
+	// The UserID of the user in Quick BI to be queried.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6276,11 +6829,20 @@ func (s *ListFavoriteReportsRequest) SetUserId(v string) *ListFavoriteReportsReq
 }
 
 type ListFavoriteReportsResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ListFavoriteReportsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns the query result.
+	Result *ListFavoriteReportsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -6311,19 +6873,28 @@ func (s *ListFavoriteReportsResponseBody) SetSuccess(v bool) *ListFavoriteReport
 }
 
 type ListFavoriteReportsResponseBodyResult struct {
+	// List of works queried.
 	Data []*ListFavoriteReportsResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of rows per page set when requesting the interface.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of rows.
+	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -6364,49 +6935,103 @@ func (s *ListFavoriteReportsResponseBodyResult) SetTotalPages(v int32) *ListFavo
 }
 
 type ListFavoriteReportsResponseBodyResultData struct {
+	// Indicates whether the user has favorited the work.
+	//
 	// example:
 	//
 	// true
-	Favorite     *bool   `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
+	Favorite *bool `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
+	// The timestamp when the work was favorited.
+	//
+	// example:
+	//
+	// 1640088615000
 	FavoriteDate *string `json:"FavoriteDate,omitempty" xml:"FavoriteDate,omitempty"`
+	// Timestamp of the work creation.
+	//
 	// example:
 	//
 	// 1640088615000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Timestamp of the work modification.
+	//
 	// example:
 	//
 	// 1640595729000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the user has edit permission for the work.
+	//
 	// example:
 	//
 	// true
 	HasEditAuth *bool `json:"HasEditAuth,omitempty" xml:"HasEditAuth,omitempty"`
+	// Check if the user has the permission to view the work.
+	//
 	// example:
 	//
 	// true
-	HasViewAuth *bool   `json:"HasViewAuth,omitempty" xml:"HasViewAuth,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerName   *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	HasViewAuth *bool `json:"HasViewAuth,omitempty" xml:"HasViewAuth,omitempty"`
+	// Name of the work.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Alibaba Cloud account name of the work owner.
+	//
+	// example:
+	//
+	// test
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// UserID of the work owner.
+	//
 	// example:
 	//
 	// 1365*****238860
 	OwnerNum *string `json:"OwnerNum,omitempty" xml:"OwnerNum,omitempty"`
+	// Publication status of the work. Value range:
+	//
+	// - 0: Not published
+	//
+	// - 1: Published
+	//
+	// - 2: Saved with modifications, not published
+	//
+	// - 3: Offline
+	//
 	// example:
 	//
 	// 1
 	PublishStatus *int32 `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	// Work ID.
+	//
 	// example:
 	//
 	// 977c7698-****-****-****-44b7304d20fc
 	TreeId *string `json:"TreeId,omitempty" xml:"TreeId,omitempty"`
+	// Type of the work. Value range:
+	//
+	// - DATAPRODUCT: Data Portal
+	//
+	// - PAGE: Dashboard
+	//
+	// - REPORT: Spreadsheet
+	//
 	// example:
 	//
 	// PAGE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the workspace to which the work belongs.
+	//
 	// example:
 	//
 	// 523793cb-****-****-****-aa71c65ffa39
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace to which the work belongs.
+	//
+	// example:
+	//
+	// test
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -6866,7 +7491,7 @@ type ListOrganizationRolesResponseBodyResultAuthConfigList struct {
 	//
 	// - organization_ask: Organization identification code (AK/SK)
 	//
-	// - developer_openapi: Open API
+	// - developer_openapi: OpenAPI
 	//
 	// - data_service: Data service
 	//
@@ -7247,23 +7872,52 @@ func (s *ListPortalMenusResponse) SetBody(v *ListPortalMenusResponseBody) *ListP
 }
 
 type ListRecentViewReportsRequest struct {
+	// Keyword of the name of the work.
+	//
+	// example:
+	//
+	// Financial Statements
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The number of days to query data in the last few days. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	OffsetDay *int32 `json:"OffsetDay,omitempty" xml:"OffsetDay,omitempty"`
+	// Query the number of rows in the work list:
+	//
+	// 	- Default value: 10.
+	//
+	// 	- Maximum value: 9999
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query mode. Valid values:
+	//
+	// 	- 1: Sort by number of visits
+	//
+	// 	- 2: Sort by Last Access Time
+	//
 	// example:
 	//
 	// 1
 	QueryMode *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
+	// Query the type of the work (fill in the blank to query all types). Valid values:
+	//
+	// 	- DATAPRODUCT: BI portal
+	//
+	// 	- PAGE: Dashboard
+	//
+	// 	- REPORT: workbook
+	//
 	// example:
 	//
 	// PAGE
 	TreeType *string `json:"TreeType,omitempty" xml:"TreeType,omitempty"`
+	// The UserID of the user in the Quick BI.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7311,11 +7965,20 @@ func (s *ListRecentViewReportsRequest) SetUserId(v string) *ListRecentViewReport
 }
 
 type ListRecentViewReportsResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ListRecentViewReportsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The query results are returned.
+	Result *ListRecentViewReportsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -7346,23 +8009,38 @@ func (s *ListRecentViewReportsResponseBody) SetSuccess(v bool) *ListRecentViewRe
 }
 
 type ListRecentViewReportsResponseBodyResult struct {
+	// Attention
+	//
 	// example:
 	//
-	// 当前API返回的分页参数如TotalNum等即将下线，如有使用请及时修改
-	Attention *string                                        `json:"Attention,omitempty" xml:"Attention,omitempty"`
-	Data      []*ListRecentViewReportsResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// test
+	Attention *string `json:"Attention,omitempty" xml:"Attention,omitempty"`
+	// The list of queried works.
+	Data []*ListRecentViewReportsResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries returned per page.
+	//
+	// 	- Default value: 10.
+	//
+	// 	- Maximum of 100 articles
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of rows in the table.
+	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 1
@@ -7408,56 +8086,109 @@ func (s *ListRecentViewReportsResponseBodyResult) SetTotalPages(v int32) *ListRe
 }
 
 type ListRecentViewReportsResponseBodyResultData struct {
+	// Queries whether the user has collected the work.
+	//
 	// example:
 	//
 	// true
 	Favorite *bool `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
+	// The timestamp when the work was created.
+	//
 	// example:
 	//
 	// 1496651577000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The timestamp when the work was modified.
+	//
 	// example:
 	//
 	// 1640595729000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The query user has the editing rights of the work.
+	//
 	// example:
 	//
 	// true
 	HasEditAuth *bool `json:"HasEditAuth,omitempty" xml:"HasEditAuth,omitempty"`
+	// The query user has the permission to view the work.
+	//
 	// example:
 	//
 	// true
 	HasViewAuth *bool `json:"HasViewAuth,omitempty" xml:"HasViewAuth,omitempty"`
+	// The timestamp when the work was last accessed.
+	//
 	// example:
 	//
 	// 1642067498000
 	LatestViewTime *string `json:"LatestViewTime,omitempty" xml:"LatestViewTime,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerName      *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The name of the work.
+	//
+	// example:
+	//
+	// Test report
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account name of the work owner.
+	//
+	// example:
+	//
+	// test
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The UserID of the work owner.
+	//
 	// example:
 	//
 	// 1365*****238860
 	OwnerNum *string `json:"OwnerNum,omitempty" xml:"OwnerNum,omitempty"`
+	// The publication status of the work. Valid values:
+	//
+	// 	- 0: unpublished
+	//
+	// 	- 1: published
+	//
+	// 	- 2: modified and saved but not published.
+	//
+	// 	- 3: unpublished
+	//
 	// example:
 	//
 	// 1
 	PublishStatus *int32 `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	// The ID of the work.
+	//
 	// example:
 	//
 	// 977c7698-****-****-****-44b7304d20fc
 	TreeId *string `json:"TreeId,omitempty" xml:"TreeId,omitempty"`
+	// The type of the work. Valid values:
+	//
+	// 	- DATAPRODUCT: BI portal
+	//
+	// 	- PAGE: Dashboard
+	//
+	// 	- REPORT: workbook
+	//
 	// example:
 	//
 	// PAGE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The number of times the work was accessed.
+	//
 	// example:
 	//
 	// 7
 	ViewCount *int64 `json:"ViewCount,omitempty" xml:"ViewCount,omitempty"`
+	// The ID of the workspace to which the work belongs.
+	//
 	// example:
 	//
 	// 523793cb-****-****-****-aa71c65ffa39
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace to which the work belongs.
+	//
+	// example:
+	//
+	// Test Workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -7574,15 +8305,36 @@ func (s *ListRecentViewReportsResponse) SetBody(v *ListRecentViewReportsResponse
 }
 
 type ListSharedReportsRequest struct {
+	// Keyword of the name of the work.
+	//
+	// example:
+	//
+	// Test report
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Query the number of rows in the work list:
+	//
+	// 	- Default value: 10.
+	//
+	// 	- Maximum value: 9999
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Query the type of the work (fill in the blank to query all types). Valid values:
+	//
+	// 	- DATAPRODUCT: BI portal
+	//
+	// 	- PAGE: Dashboard
+	//
+	// 	- REPORT: workbook
+	//
 	// example:
 	//
 	// PAGE
 	TreeType *string `json:"TreeType,omitempty" xml:"TreeType,omitempty"`
+	// The UserID of the user to be queried in the Quick BI.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7620,11 +8372,20 @@ func (s *ListSharedReportsRequest) SetUserId(v string) *ListSharedReportsRequest
 }
 
 type ListSharedReportsResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ListSharedReportsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The query results are returned.
+	Result *ListSharedReportsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -7655,19 +8416,28 @@ func (s *ListSharedReportsResponseBody) SetSuccess(v bool) *ListSharedReportsRes
 }
 
 type ListSharedReportsResponseBodyResult struct {
+	// The list of queried works.
 	Data []*ListSharedReportsResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of rows per page set when the interface is requested.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of rows in the table.
+	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 1
@@ -7708,48 +8478,97 @@ func (s *ListSharedReportsResponseBodyResult) SetTotalPages(v int32) *ListShared
 }
 
 type ListSharedReportsResponseBodyResultData struct {
+	// Queries whether the user has collected the work.
+	//
 	// example:
 	//
 	// true
 	Favorite *bool `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
+	// The timestamp when the work was created.
+	//
 	// example:
 	//
 	// 1640088615000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The timestamp when the work was modified.
+	//
 	// example:
 	//
 	// 1644373980000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The query user has the editing rights of the work.
+	//
 	// example:
 	//
 	// true
 	HasEditAuth *bool `json:"HasEditAuth,omitempty" xml:"HasEditAuth,omitempty"`
+	// The query user has the permission to view the work.
+	//
 	// example:
 	//
 	// true
-	HasViewAuth *bool   `json:"HasViewAuth,omitempty" xml:"HasViewAuth,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerName   *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	HasViewAuth *bool `json:"HasViewAuth,omitempty" xml:"HasViewAuth,omitempty"`
+	// The name of the work.
+	//
+	// example:
+	//
+	// Test report
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account name of the work owner.
+	//
+	// example:
+	//
+	// test account
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The UserID of the work owner.
+	//
 	// example:
 	//
 	// 1365*****238860
 	OwnerNum *string `json:"OwnerNum,omitempty" xml:"OwnerNum,omitempty"`
+	// The publication status of the work. Valid values:
+	//
+	// 	- 0: unpublished
+	//
+	// 	- 1: published
+	//
+	// 	- 2: modified and saved but not published.
+	//
+	// 	- 3: unpublished
+	//
 	// example:
 	//
 	// 1
 	PublishStatus *int32 `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	// The ID of the work.
+	//
 	// example:
 	//
 	// 977c7698-****-****-****-44b7304d20fc
 	TreeId *string `json:"TreeId,omitempty" xml:"TreeId,omitempty"`
+	// The type of the work. Valid values:
+	//
+	// 	- DATAPRODUCT: BI portal
+	//
+	// 	- PAGE: Dashboard
+	//
+	// 	- REPORT: workbook
+	//
 	// example:
 	//
 	// PAGE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the workspace to which the work belongs.
+	//
 	// example:
 	//
 	// gfidm145-****-****-9426-8f93be23****
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace to which the work belongs.
+	//
+	// example:
+	//
+	// Test Workspace
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -7856,7 +8675,7 @@ func (s *ListSharedReportsResponse) SetBody(v *ListSharedReportsResponseBody) *L
 }
 
 type ListUserGroupsByUserIdRequest struct {
-	// The ID of the user group.
+	// The ID of the user. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
 	//
 	// This parameter is required.
 	//
@@ -7880,12 +8699,19 @@ func (s *ListUserGroupsByUserIdRequest) SetUserId(v string) *ListUserGroupsByUse
 }
 
 type ListUserGroupsByUserIdResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// E2440604-3059-561A-AD68-DEDBC870EB2B
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListUserGroupsByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The user group modifier. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the group.
+	Result []*ListUserGroupsByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
 	//
 	// example:
 	//
@@ -7917,32 +8743,55 @@ func (s *ListUserGroupsByUserIdResponseBody) SetSuccess(v bool) *ListUserGroupsB
 }
 
 type ListUserGroupsByUserIdResponseBodyResult struct {
+	// The time when the user group was created.
+	//
 	// example:
 	//
 	// 2021-03-15 17:13:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The user group creator. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
+	//
 	// example:
 	//
 	// 46e5374665ba4b679ee22e2a2927****
-	CreateUser     *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Directory level of the user group.
 	IdentifiedPath *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
+	// The time when the user group was last modified.
+	//
 	// example:
 	//
 	// 2021-03-15 20:36:40
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The user group modifier. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
+	//
 	// example:
 	//
 	// 46e5374665ba4b679ee22e2a2927****
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The ID of the user group.
+	//
 	// example:
 	//
 	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****
 	ParentUsergroupId *string `json:"ParentUsergroupId,omitempty" xml:"ParentUsergroupId,omitempty"`
-	UsergroupDesc     *string `json:"UsergroupDesc,omitempty" xml:"UsergroupDesc,omitempty"`
+	// The description of the user group.
+	//
+	// example:
+	//
+	// Description
+	UsergroupDesc *string `json:"UsergroupDesc,omitempty" xml:"UsergroupDesc,omitempty"`
+	// The ID of the user group.
+	//
 	// example:
 	//
 	// 34fd141d-4598-4093-8c33-8e066dcb****
-	UsergroupId   *string `json:"UsergroupId,omitempty" xml:"UsergroupId,omitempty"`
+	UsergroupId *string `json:"UsergroupId,omitempty" xml:"UsergroupId,omitempty"`
+	// The name of the user group.
+	//
+	// example:
+	//
+	// Test user group
 	UsergroupName *string `json:"UsergroupName,omitempty" xml:"UsergroupName,omitempty"`
 }
 
@@ -8033,7 +8882,7 @@ type ListWorkspaceRoleUsersRequest struct {
 	//
 	// example:
 	//
-	// 测试pop用户
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// Current page number for pagination:
 	//
@@ -8073,7 +8922,7 @@ type ListWorkspaceRoleUsersRequest struct {
 	//
 	// 25
 	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// Workspace ID.
+	// The ID of the workspace. This parameter is optional. If you do not set this parameter, the roles of all workspaces are returned.
 	//
 	// example:
 	//
@@ -8123,11 +8972,11 @@ type ListWorkspaceRoleUsersResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Returns the list of users under the specified workspace role.
 	Result *ListWorkspaceRoleUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// 是否请求成功。取值范围：
+	// Indicates whether the request was successful. Possible values:
 	//
-	// - true：请求成功
+	// - true: The request was successful.
 	//
-	// - false：请求失败
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -8752,13 +9601,24 @@ func (s *ModifyApiDatasourceParametersResponse) SetBody(v *ModifyApiDatasourcePa
 }
 
 type ModifyCopilotEmbedConfigRequest struct {
+	// Agent nickname.
+	//
+	// example:
+	//
+	// smartq
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// Embedding ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccd3428c-dd2xxxxxxxxxxxxdffee
 	CopilotId *string `json:"CopilotId,omitempty" xml:"CopilotId,omitempty"`
+	// Data range.
+	//
+	// 	Notice: The parameter type is jsonString, and only one switch between analysis themes and query resources can be effective. When the all-select switch is true, it takes precedence. It is recommended to pass only one parameter, with other notes
+	//
 	// example:
 	//
 	// Map<String,Object> data=new HashMap<>();
@@ -8772,7 +9632,12 @@ type ModifyCopilotEmbedConfigRequest struct {
 	//         //data.put("llmCubes",Lists.newArrayList("33333","44444"));
 	//
 	//         request.setDataRange(JSON.toJSONString(data));
-	DataRange  *string `json:"DataRange,omitempty" xml:"DataRange,omitempty"`
+	DataRange *string `json:"DataRange,omitempty" xml:"DataRange,omitempty"`
+	// Module name.
+	//
+	// example:
+	//
+	// smartq
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 
@@ -8805,14 +9670,28 @@ func (s *ModifyCopilotEmbedConfigRequest) SetModuleName(v string) *ModifyCopilot
 }
 
 type ModifyCopilotEmbedConfigResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
-	// 4BAA4694-CC27-555F-B15A-688AA9289FEE
+	// 4BAA469******A9289FEE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns the result of the API execution. Possible values:
+	//
+	// - true: Execution succeeded
+	//
+	// - false: Execution failed
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful
+	//
+	// - false: The request failed
+	//
 	// example:
 	//
 	// true
@@ -9278,36 +10157,58 @@ func (s *QueryApprovalInfoResponse) SetBody(v *QueryApprovalInfoResponseBody) *Q
 }
 
 type QueryAuditLogRequest struct {
+	// End date of the query, format ("yyyyMMdd").
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1715856218001
+	// 20240604
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Log type:
+	//
+	// - dataView - Access
+	//
+	// - function - Operation
+	//
+	// - permission - Permission
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// function
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// Operator\\"s user ID.
+	//
 	// example:
 	//
 	// 95296e95-ca89-4c7d-8af9-dedf0ad0***
 	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
+	// Permission/Access/Operation type, empty - default all;
+	//
+	// Refer to the audit log code values, send multiple values separated by English commas.
+	//
 	// example:
 	//
 	// MODIFY
 	OperatorTypes *string `json:"OperatorTypes,omitempty" xml:"OperatorTypes,omitempty"`
+	// Resource type, refer to the work type.
+	//
 	// example:
 	//
 	// cube
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Start date of the query, format ("yyyyMMdd"), cannot be earlier than 90 days from the current time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1715856218001
+	// 20240504
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Workspace ID, the ID of the workspace to which the logs to be queried belong.
+	//
 	// example:
 	//
 	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
@@ -9358,11 +10259,20 @@ func (s *QueryAuditLogRequest) SetWorkspaceId(v string) *QueryAuditLogRequest {
 }
 
 type QueryAuditLogResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 78C1AA2D-9201-599E-A0BA-6FC462E57A95
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QueryAuditLogResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Array of logs.
+	Result []*QueryAuditLogResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request succeeded
+	//
+	// - false: The request failed
+	//
 	// example:
 	//
 	// true
@@ -9393,31 +10303,50 @@ func (s *QueryAuditLogResponseBody) SetSuccess(v bool) *QueryAuditLogResponseBod
 }
 
 type QueryAuditLogResponseBodyResult struct {
+	// Log time.
+	//
 	// example:
 	//
 	// 2024-04-16 13:17:39
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Operator account.
+	//
 	// example:
 	//
 	// wukaibis
 	OperatorAccountName *string `json:"OperatorAccountName,omitempty" xml:"OperatorAccountName,omitempty"`
+	// Operator\\"s nickname.
+	//
 	// example:
 	//
 	// buc_344078
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// Operation type.
+	//
 	// example:
 	//
 	// CREATE
 	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	// Target ID.
+	//
 	// example:
 	//
 	// 1113***************8500
-	TargetId   *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// Target name.
+	//
+	// example:
+	//
+	// test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// Target type.
+	//
 	// example:
 	//
 	// USER
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// Workspace ID.
+	//
 	// example:
 	//
 	// 87c6b145-090c-43e1-9426-8f93be23****
@@ -9613,8 +10542,9 @@ type QueryComponentPerformanceResponseBody struct {
 	// example:
 	//
 	// BCE45E6D-9304-4F94-86BB-5A772B1615FF
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QueryComponentPerformanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result returned.
+	Result []*QueryComponentPerformanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// 	- true: The request was successful.
@@ -9670,6 +10600,10 @@ type QueryComponentPerformanceResponseBodyResult struct {
 	// 0696083a-ca72-4d89-8e7a-c017910e0***
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
 	// The name of the add-on.
+	//
+	// example:
+	//
+	// test
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
 	// The average query duration associated with the SQL pattern.
 	//
@@ -9786,6 +10720,10 @@ type QueryComponentPerformanceResponseBodyResult struct {
 	// 89713491-cb4f-4579-b889-e82c35f1****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The name of the group.
+	//
+	// example:
+	//
+	// test
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -9947,6 +10885,8 @@ func (s *QueryComponentPerformanceResponse) SetBody(v *QueryComponentPerformance
 }
 
 type QueryCopilotEmbedConfigRequest struct {
+	// Name of the embedded configuration module, supports fuzzy search.
+	//
 	// example:
 	//
 	// 06-ELive
@@ -9967,11 +10907,20 @@ func (s *QueryCopilotEmbedConfigRequest) SetKeyword(v string) *QueryCopilotEmbed
 }
 
 type QueryCopilotEmbedConfigResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 1FC71085-D5FD-08E0-813A-4D4BD1031BC5
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QueryCopilotEmbedConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of embedded configurations.
+	Result []*QueryCopilotEmbedConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -10002,22 +10951,46 @@ func (s *QueryCopilotEmbedConfigResponseBody) SetSuccess(v bool) *QueryCopilotEm
 }
 
 type QueryCopilotEmbedConfigResponseBodyResult struct {
+	// Robot\\"s nickname.
+	//
+	// example:
+	//
+	// little Q
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// Embedding ID.
+	//
 	// example:
 	//
 	// 9c079710-ddbe-48b3-b495-7c83c8d57cc4
 	CopilotId *string `json:"CopilotId,omitempty" xml:"CopilotId,omitempty"`
+	// ID of the creator.
+	//
 	// example:
 	//
 	// qweqw12312423521
-	CreateUser     *string                                             `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	CreateUserName *string                                             `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	DataRange      *QueryCopilotEmbedConfigResponseBodyResultDataRange `json:"DataRange,omitempty" xml:"DataRange,omitempty" type:"Struct"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Nickname of the creator.
+	//
+	// example:
+	//
+	// zhangsan
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// Data range (analysis themes and question resources).
+	DataRange *QueryCopilotEmbedConfigResponseBodyResultDataRange `json:"DataRange,omitempty" xml:"DataRange,omitempty" type:"Struct"`
+	// ID of the modifier.
+	//
 	// example:
 	//
 	// asda1231231dfs
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// Module name.
+	//
+	// example:
+	//
+	// little Q
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// Name of the embedded module.
+	//
 	// example:
 	//
 	// 0327
@@ -10073,16 +11046,22 @@ func (s *QueryCopilotEmbedConfigResponseBodyResult) SetShowName(v string) *Query
 }
 
 type QueryCopilotEmbedConfigResponseBodyResultDataRange struct {
+	// Whether all question resources are selected.
+	//
 	// example:
 	//
 	// true/false
 	AllCube *bool `json:"AllCube,omitempty" xml:"AllCube,omitempty"`
+	// Whether all analysis themes are selected.
+	//
 	// example:
 	//
 	// true/false
-	AllTheme *bool     `json:"AllTheme,omitempty" xml:"AllTheme,omitempty"`
+	AllTheme *bool `json:"AllTheme,omitempty" xml:"AllTheme,omitempty"`
+	// Collection of question resource IDs.
 	LlmCubes []*string `json:"LlmCubes,omitempty" xml:"LlmCubes,omitempty" type:"Repeated"`
-	Themes   []*string `json:"Themes,omitempty" xml:"Themes,omitempty" type:"Repeated"`
+	// Collection of analysis theme IDs.
+	Themes []*string `json:"Themes,omitempty" xml:"Themes,omitempty" type:"Repeated"`
 }
 
 func (s QueryCopilotEmbedConfigResponseBodyResultDataRange) String() string {
@@ -10172,8 +11151,9 @@ type QueryCubeOptimizationResponseBody struct {
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QueryCubeOptimizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The query results are returned.
+	Result []*QueryCubeOptimizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// 	- true: The request was successful.
@@ -10516,28 +11496,54 @@ func (s *QueryCubeOptimizationResponse) SetBody(v *QueryCubeOptimizationResponse
 }
 
 type QueryCubePerformanceRequest struct {
+	// The average duration (minutes).
+	//
 	// example:
 	//
 	// 1
 	CostTimeAvgMin *int32 `json:"CostTimeAvgMin,omitempty" xml:"CostTimeAvgMin,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// The current page number of the workspace member list:
+	//
+	// 	- Pages start from page 1.
+	//
+	// 	- Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of rows per page in a paged query.
+	//
+	// 	- Default value: 10.
+	//
+	// 	- Maximum value: 1,000.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query type. Valid values:
+	//
+	// 	- **lastDay**: Yesterday
+	//
+	// 	- **sevenDays**: Within seven days
+	//
+	// 	- **thirtyDays**: Within 30 days
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sevenDays
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10585,11 +11591,20 @@ func (s *QueryCubePerformanceRequest) SetWorkspaceId(v string) *QueryCubePerform
 }
 
 type QueryCubePerformanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 685072a0-1fd5-40ef-ae6b-cf94e79e718f
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QueryCubePerformanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Array of report objects
+	Result []*QueryCubePerformanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -10620,86 +11635,131 @@ func (s *QueryCubePerformanceResponseBody) SetSuccess(v bool) *QueryCubePerforma
 }
 
 type QueryCubePerformanceResponseBodyResult struct {
+	// The average duration of cache hits.
+	//
 	// example:
 	//
 	// 1
 	CacheCostTimeAvg *float64 `json:"CacheCostTimeAvg,omitempty" xml:"CacheCostTimeAvg,omitempty"`
+	// The number of cache hits.
+	//
 	// example:
 	//
 	// 1
 	CacheQueryCount *int32 `json:"CacheQueryCount,omitempty" xml:"CacheQueryCount,omitempty"`
+	// The average query duration associated with the SQL pattern.
+	//
 	// example:
 	//
 	// 1
 	CostTimeAvg *float64 `json:"CostTimeAvg,omitempty" xml:"CostTimeAvg,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// The name of the dataset.
+	//
 	// example:
 	//
 	// test
 	CubeName *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
+	// The number of queries.
+	//
 	// example:
 	//
 	// 50
 	QueryCount *int32 `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	// The average number of queries.
+	//
 	// example:
 	//
 	// 1
 	QueryCountAvg *float64 `json:"QueryCountAvg,omitempty" xml:"QueryCountAvg,omitempty"`
+	// The percentage of the number of queries that exceed the 5S.
+	//
 	// example:
 	//
 	// 1.0
 	QueryOverFivePercentNum *float64 `json:"QueryOverFivePercentNum,omitempty" xml:"QueryOverFivePercentNum,omitempty"`
+	// Query the proportion of more than 5S.
+	//
 	// example:
 	//
 	// 1.0
 	QueryOverFiveSecPercent *string `json:"QueryOverFiveSecPercent,omitempty" xml:"QueryOverFiveSecPercent,omitempty"`
+	// The percentage of queries that exceed 10s.
+	//
 	// example:
 	//
 	// 1.0
 	QueryOverTenSecPercent *string `json:"QueryOverTenSecPercent,omitempty" xml:"QueryOverTenSecPercent,omitempty"`
+	// The percentage of queries that exceed 10s.
+	//
 	// example:
 	//
 	// 1.0
 	QueryOverTenSecPercentNum *float64 `json:"QueryOverTenSecPercentNum,omitempty" xml:"QueryOverTenSecPercentNum,omitempty"`
+	// The number of times that the chart query times out.
+	//
 	// example:
 	//
 	// 1
 	QueryTimeoutCount *int32 `json:"QueryTimeoutCount,omitempty" xml:"QueryTimeoutCount,omitempty"`
+	// The percentage of timeout times for chart queries.
+	//
 	// example:
 	//
 	// 1
 	QueryTimeoutCountPercent *float64 `json:"QueryTimeoutCountPercent,omitempty" xml:"QueryTimeoutCountPercent,omitempty"`
+	// The average time consumed by the Quick engine query.
+	//
 	// example:
 	//
 	// 1
 	QuickIndexCostTimeAvg *float64 `json:"QuickIndexCostTimeAvg,omitempty" xml:"QuickIndexCostTimeAvg,omitempty"`
+	// The number of times that the Quick engine is hit.
+	//
 	// example:
 	//
 	// 1
 	QuickIndexQueryCount *int32 `json:"QuickIndexQueryCount,omitempty" xml:"QuickIndexQueryCount,omitempty"`
+	// The proportion of duplicate queries.
+	//
 	// example:
 	//
 	// 0.3
 	RepeatQueryPercent *string `json:"RepeatQueryPercent,omitempty" xml:"RepeatQueryPercent,omitempty"`
+	// The number of duplicate queries.
+	//
 	// example:
 	//
 	// 1
 	RepeatQueryPercentNum *float64 `json:"RepeatQueryPercentNum,omitempty" xml:"RepeatQueryPercentNum,omitempty"`
+	// The number of times the query is repeated.
+	//
 	// example:
 	//
 	// 1
 	RepeatSqlQueryCount *int32 `json:"RepeatSqlQueryCount,omitempty" xml:"RepeatSqlQueryCount,omitempty"`
+	// The proportion of duplicate queries.
+	//
 	// example:
 	//
 	// 1
 	RepeatSqlQueryPercent *string `json:"RepeatSqlQueryPercent,omitempty" xml:"RepeatSqlQueryPercent,omitempty"`
+	// The ID of the workspace to which the work belongs.
+	//
 	// example:
 	//
 	// 87c6b145-090c-43e1-9426-8f93be23****
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the group.
+	//
+	// example:
+	//
+	// taascontainerprod
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -10884,7 +11944,7 @@ type QueryDataRequest struct {
 	//
 	// example:
 	//
-	// { "area": ["华东", "华北"],  "shopping_date": "2019Q1",  }
+	// test
 	Conditions *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
 	// A list of return parameter names, in a List-type string.
 	//
@@ -10991,7 +12051,7 @@ type QueryDataResponseBodyResult struct {
 	//
 	// example:
 	//
-	// SELECT COMPANY_T_1_.`area` AS D_AREA_2_, COMPANY_T_1_.`city` AS D_CITY_3_, SUM(COMPANY_T_1_.`profit_amt`) AS D_PROFIT_4_ FROM `quickbi_test`.`company_sales_record_copy` AS COMPANY_T_1_ WHERE COMPANY_T_1_.`area` LIKE \\"%华东%\\" GROUP BY COMPANY_T_1_.`area`, COMPANY_T_1_.`city` HAVING SUM(COMPANY_T_1_.`order_amt`) > 1 LIMIT 0, 10
+	// test
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
 	// The results of the query.
 	Values []map[string]interface{} `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -11053,17 +12113,7 @@ type QueryDataResponseBodyResultHeaders struct {
 	//
 	// Specific physical field name
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	// 字段的数据类型。一般有：
-	//
-	// - number：数值
-	//
-	// - string：字符串
-	//
-	// - date：日期
-	//
-	// - time：时间
-	//
-	// - datetime：日期时间
+	// The keyword of the sensitive field type.
 	//
 	// example:
 	//
@@ -11167,7 +12217,18 @@ func (s *QueryDataResponse) SetBody(v *QueryDataResponseBody) *QueryDataResponse
 }
 
 type QueryDataRangeRequest struct {
+	// Name, for fuzzy search.
+	//
+	// example:
+	//
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Data range type:
+	//
+	// - llmCube: LlmCube resource.
+	//
+	// - llmCubeTheme: Analysis theme.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11195,11 +12256,20 @@ func (s *QueryDataRangeRequest) SetType(v string) *QueryDataRangeRequest {
 }
 
 type QueryDataRangeResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
-	// D787E1A3-A93C-424A-B626-C2B05DF8D885
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryDataRangeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// D787E1A3-A93C-****-B626-C2B05DF8D885
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Data range object.
+	Result *QueryDataRangeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -11230,8 +12300,10 @@ func (s *QueryDataRangeResponseBody) SetSuccess(v bool) *QueryDataRangeResponseB
 }
 
 type QueryDataRangeResponseBodyResult struct {
+	// Array of LlmCube resources.
 	ApiCopilotLlmCubeModels []*QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels `json:"ApiCopilotLlmCubeModels,omitempty" xml:"ApiCopilotLlmCubeModels,omitempty" type:"Repeated"`
-	ApiCopilotThemeModels   []*QueryDataRangeResponseBodyResultApiCopilotThemeModels   `json:"ApiCopilotThemeModels,omitempty" xml:"ApiCopilotThemeModels,omitempty" type:"Repeated"`
+	// Array of analysis themes.
+	ApiCopilotThemeModels []*QueryDataRangeResponseBodyResultApiCopilotThemeModels `json:"ApiCopilotThemeModels,omitempty" xml:"ApiCopilotThemeModels,omitempty" type:"Repeated"`
 }
 
 func (s QueryDataRangeResponseBodyResult) String() string {
@@ -11253,8 +12325,20 @@ func (s *QueryDataRangeResponseBodyResult) SetApiCopilotThemeModels(v []*QueryDa
 }
 
 type QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels struct {
-	Alias      *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// Alias of the LlmCube resource.
+	//
+	// example:
+	//
+	// test
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// Nickname of the creator.
+	//
+	// example:
+	//
+	// zhuge
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// LlmCube resource ID.
+	//
 	// example:
 	//
 	// sdasdafas23342342342
@@ -11285,12 +12369,25 @@ func (s *QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels) SetLlmCubeId(v
 }
 
 type QueryDataRangeResponseBodyResultApiCopilotThemeModels struct {
+	// Array of LlmCube resources.
 	ApiCopilotLlmCubeModels []*QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels `json:"ApiCopilotLlmCubeModels,omitempty" xml:"ApiCopilotLlmCubeModels,omitempty" type:"Repeated"`
-	CreateUser              *string                                                                         `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Nickname of the creator.
+	//
+	// example:
+	//
+	// zhuge
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Analysis theme ID.
+	//
 	// example:
 	//
 	// 36631232342312312
-	ThemeId   *string `json:"ThemeId,omitempty" xml:"ThemeId,omitempty"`
+	ThemeId *string `json:"ThemeId,omitempty" xml:"ThemeId,omitempty"`
+	// Nickname of the analysis theme.
+	//
+	// example:
+	//
+	// test theme
 	ThemeName *string `json:"ThemeName,omitempty" xml:"ThemeName,omitempty"`
 }
 
@@ -11323,8 +12420,20 @@ func (s *QueryDataRangeResponseBodyResultApiCopilotThemeModels) SetThemeName(v s
 }
 
 type QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels struct {
-	Alias      *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// Alias of the LLM cube resource.
+	//
+	// example:
+	//
+	// test
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// Nickname of the creator.
+	//
+	// example:
+	//
+	// zhuge
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// LlmCube resource ID.
+	//
 	// example:
 	//
 	// 1231242231asdasda
@@ -11652,7 +12761,7 @@ type QueryDataServiceListRequest struct {
 	//
 	// example:
 	//
-	// 测试sql
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Page number. Default value: **1**.
 	//
@@ -12825,6 +13934,9 @@ type QueryDatasetInfoResponseBodyResultDimensionList struct {
 	//
 	// example_expression
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// if can be null:
+	// true
+	ExpressionV2 *string `json:"ExpressionV2,omitempty" xml:"ExpressionV2,omitempty"`
 	// Expression for a calculated dimension; valid only for calculated dimensions.
 	//
 	// example:
@@ -12892,6 +14004,11 @@ func (s *QueryDatasetInfoResponseBodyResultDimensionList) SetDimensionType(v str
 
 func (s *QueryDatasetInfoResponseBodyResultDimensionList) SetExpression(v string) *QueryDatasetInfoResponseBodyResultDimensionList {
 	s.Expression = &v
+	return s
+}
+
+func (s *QueryDatasetInfoResponseBodyResultDimensionList) SetExpressionV2(v string) *QueryDatasetInfoResponseBodyResultDimensionList {
+	s.ExpressionV2 = &v
 	return s
 }
 
@@ -13005,6 +14122,9 @@ type QueryDatasetInfoResponseBodyResultMeasureList struct {
 	//
 	// example_expression
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// if can be null:
+	// true
+	ExpressionV2 *string `json:"ExpressionV2,omitempty" xml:"ExpressionV2,omitempty"`
 	// The type of the measure. Valid values:
 	//
 	// 	- standard_measure: General Metrics
@@ -13059,6 +14179,11 @@ func (s *QueryDatasetInfoResponseBodyResultMeasureList) SetDataType(v string) *Q
 
 func (s *QueryDatasetInfoResponseBodyResultMeasureList) SetExpression(v string) *QueryDatasetInfoResponseBodyResultMeasureList {
 	s.Expression = &v
+	return s
+}
+
+func (s *QueryDatasetInfoResponseBodyResultMeasureList) SetExpressionV2(v string) *QueryDatasetInfoResponseBodyResultMeasureList {
+	s.ExpressionV2 = &v
 	return s
 }
 
@@ -13589,6 +14714,8 @@ func (s *QueryDatasetListResponse) SetBody(v *QueryDatasetListResponseBody) *Que
 }
 
 type QueryDatasetSmartqStatusRequest struct {
+	// Dataset ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13611,14 +14738,28 @@ func (s *QueryDatasetSmartqStatusRequest) SetCubeId(v string) *QueryDatasetSmart
 }
 
 type QueryDatasetSmartqStatusResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Result of the API execution. Possible values:
+	//
+	// - true: Request succeeded
+	//
+	// - false: Request failed
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// 是否请求成功。取值范围：
+	//
+	// - true：请求成功
+	//
+	// - false：请求失败
+	//
 	// example:
 	//
 	// true
@@ -13802,11 +14943,14 @@ func (s *QueryDatasetSwitchInfoResponse) SetBody(v *QueryDatasetSwitchInfoRespon
 }
 
 type QueryEmbeddedInfoResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryEmbeddedInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The embedded information of the reports under the organization.
+	Result *QueryEmbeddedInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request is successful. Valid values:
 	//
 	// 	- true: The request was successful.
@@ -13843,11 +14987,16 @@ func (s *QueryEmbeddedInfoResponseBody) SetSuccess(v bool) *QueryEmbeddedInfoRes
 }
 
 type QueryEmbeddedInfoResponseBodyResult struct {
+	// Embed the statistics of the work.
 	Detail *QueryEmbeddedInfoResponseBodyResultDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
+	// The number of reports that are currently embedded.
+	//
 	// example:
 	//
 	// 3
 	EmbeddedCount *int32 `json:"EmbeddedCount,omitempty" xml:"EmbeddedCount,omitempty"`
+	// The maximum number of reports that can be embedded.
+	//
 	// example:
 	//
 	// 100
@@ -13878,14 +15027,20 @@ func (s *QueryEmbeddedInfoResponseBodyResult) SetMaxCount(v int32) *QueryEmbedde
 }
 
 type QueryEmbeddedInfoResponseBodyResultDetail struct {
+	// The number of embedded self-service fetching.
+	//
 	// example:
 	//
 	// 1
 	DashboardOfflineQuery *int32 `json:"DashboardOfflineQuery,omitempty" xml:"DashboardOfflineQuery,omitempty"`
+	// The number of embedded dashboards.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of embedded spreadsheets.
+	//
 	// example:
 	//
 	// 1
@@ -14050,6 +15205,8 @@ func (s *QueryEmbeddedStatusResponse) SetBody(v *QueryEmbeddedStatusResponseBody
 }
 
 type QueryLlmCubeWithThemeListByUserIdRequest struct {
+	// User ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14072,11 +15229,20 @@ func (s *QueryLlmCubeWithThemeListByUserIdRequest) SetUserId(v string) *QueryLlm
 }
 
 type QueryLlmCubeWithThemeListByUserIdResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 2EE822B***************F-F5B42DDADC12
-	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryLlmCubeWithThemeListByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of datasets and analysis themes.
+	Result *QueryLlmCubeWithThemeListByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful
+	//
+	// - false: The request failed
+	//
 	// example:
 	//
 	// true
@@ -14107,7 +15273,17 @@ func (s *QueryLlmCubeWithThemeListByUserIdResponseBody) SetSuccess(v bool) *Quer
 }
 
 type QueryLlmCubeWithThemeListByUserIdResponseBodyResult struct {
-	CubeIds  map[string]*string `json:"CubeIds,omitempty" xml:"CubeIds,omitempty"`
+	// Dataset map.
+	//
+	// - key - Dataset ID
+	//
+	// - value - Dataset name
+	CubeIds map[string]*string `json:"CubeIds,omitempty" xml:"CubeIds,omitempty"`
+	// Analysis theme map.
+	//
+	// - key - Analysis theme ID
+	//
+	// - value - Analysis theme name
 	ThemeIds map[string]*string `json:"ThemeIds,omitempty" xml:"ThemeIds,omitempty"`
 }
 
@@ -14310,7 +15486,7 @@ type QueryOrganizationRoleConfigResponseBodyResultAuthConfigList struct {
 	//
 	// - organization_ask: Organization Access Key/Secret (AK/SK)
 	//
-	// - developer_openapi: Open API
+	// - developer_openapi: OpenAPI
 	//
 	// - data_service: Data Service
 	//
@@ -14375,15 +15551,34 @@ func (s *QueryOrganizationRoleConfigResponse) SetBody(v *QueryOrganizationRoleCo
 }
 
 type QueryOrganizationWorkspaceListRequest struct {
+	// Keyword for the workspace name.
+	//
+	// example:
+	//
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Current page number of the workspace list:
+	//
+	// - Starting value: 1
+	//
+	// - Default value: 1
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of rows per page in a paginated query:
+	//
+	// - Default value: 10
+	//
+	// - Maximum value: 1000
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// User ID in Quick BI.
+	//
 	// example:
 	//
 	// fe67f61a35a94b7da1a34ba174a7****
@@ -14419,11 +15614,20 @@ func (s *QueryOrganizationWorkspaceListRequest) SetUserId(v string) *QueryOrgani
 }
 
 type QueryOrganizationWorkspaceListResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryOrganizationWorkspaceListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns the paginated result of the workspace list, with detailed information about the workspaces stored in the Data parameter.
+	Result *QueryOrganizationWorkspaceListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: Request succeeded
+	//
+	// - false: Request failed
+	//
 	// example:
 	//
 	// true
@@ -14454,19 +15658,28 @@ func (s *QueryOrganizationWorkspaceListResponseBody) SetSuccess(v bool) *QueryOr
 }
 
 type QueryOrganizationWorkspaceListResponseBodyResult struct {
+	// List of workspaces.
 	Data []*QueryOrganizationWorkspaceListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of rows per page as set in the request.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of rows.
+	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -14507,55 +15720,97 @@ func (s *QueryOrganizationWorkspaceListResponseBodyResult) SetTotalPages(v int32
 }
 
 type QueryOrganizationWorkspaceListResponseBodyResultData struct {
+	// Whether the work can be made public. Value range:
+	//
+	// - true: Public
+	//
+	// - false: Not public
+	//
 	// example:
 	//
 	// true
 	AllowPublishOperation *bool `json:"AllowPublishOperation,omitempty" xml:"AllowPublishOperation,omitempty"`
+	// Indicates whether the work can be authorized for sharing. Possible values:
+	//
+	// - true: Authorized
+	//
+	// - false: Not authorized
+	//
 	// example:
 	//
 	// true
 	AllowShareOperation *bool `json:"AllowShareOperation,omitempty" xml:"AllowShareOperation,omitempty"`
+	// Creation time of the workspace.
+	//
 	// example:
 	//
 	// 2020-11-10 17:51:07
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Quick BI user ID of the creator.
+	//
 	// example:
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Aliyun account name of the creator.
+	//
 	// example:
 	//
 	// pop****@aliyun.com
 	CreateUserAccountName *string `json:"CreateUserAccountName,omitempty" xml:"CreateUserAccountName,omitempty"`
+	// Last modified time of the workspace.
+	//
 	// example:
 	//
 	// 2020-11-10 17:51:07
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// ID of the Quick BI user who modified the workspace.
+	//
 	// example:
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// Aliyun account name of the modifier.
+	//
 	// example:
 	//
 	// pop****@aliyun.com
 	ModifyUserAccountName *string `json:"ModifyUserAccountName,omitempty" xml:"ModifyUserAccountName,omitempty"`
+	// ID of the organization to which the workspace belongs.
+	//
 	// example:
 	//
 	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// Quick BI user ID of the workspace owner.
+	//
 	// example:
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// Aliyun account name of the workspace owner.
+	//
 	// example:
 	//
 	// pop****@aliyun.com
-	OwnerAccountName     *string `json:"OwnerAccountName,omitempty" xml:"OwnerAccountName,omitempty"`
+	OwnerAccountName *string `json:"OwnerAccountName,omitempty" xml:"OwnerAccountName,omitempty"`
+	// Workspace description.
+	//
+	// example:
+	//
+	// test
 	WorkspaceDescription *string `json:"WorkspaceDescription,omitempty" xml:"WorkspaceDescription,omitempty"`
+	// Workspace ID.
+	//
 	// example:
 	//
 	// 7350a155-0e94-4c6c-8620-57bbec38****
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// Name of the workspace.
+	//
+	// example:
+	//
+	// test
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -14746,14 +16001,17 @@ type QueryReadableResourcesListByUserIdResponseBodyResult struct {
 	// example:
 	//
 	// Description
-	Description *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	Directory   *QueryReadableResourcesListByUserIdResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The directory structure in which the work is located.
+	Directory *QueryReadableResourcesListByUserIdResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 	// The name of the Alibaba Cloud account to which the modifier belongs.
 	//
 	// example:
 	//
 	// Li Si
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
+	// The timestamp of the modification time in milliseconds.
+	//
 	// example:
 	//
 	// 1611023338000
@@ -14813,6 +16071,10 @@ type QueryReadableResourcesListByUserIdResponseBodyResult struct {
 	// 1
 	ThirdPartAuthFlag *int32 `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
 	// The name of the work.
+	//
+	// example:
+	//
+	// Company Region Table
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
 	// The type of the work. Valid values:
 	//
@@ -14932,15 +16194,29 @@ func (s *QueryReadableResourcesListByUserIdResponseBodyResult) SetWorkspaceName(
 }
 
 type QueryReadableResourcesListByUserIdResponseBodyResultDirectory struct {
+	// The ID of the directory.
+	//
 	// example:
 	//
 	// e4276ea5-b232-4fb1-8f0f-efcee4a2****
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the directory.
+	//
+	// example:
+	//
+	// Test directory
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The hierarchical structure of the directory ID, which is separated with \\"/\\".
+	//
 	// example:
 	//
 	// e4276ea5-b232-4fb1-8f0f-efcee4a2****
-	PathId   *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	// The hierarchical structure of the directory name, which is separated with \\"/\\".
+	//
+	// example:
+	//
+	// Test directory
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -15113,8 +16389,9 @@ type QueryReportPerformanceResponseBody struct {
 	// example:
 	//
 	// 1FC71085-D5FD-08E0-813A-4D4BD1031BC5
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QueryReportPerformanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned results.
+	Result []*QueryReportPerformanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// 	- true: The request was successful.
@@ -15290,6 +16567,10 @@ type QueryReportPerformanceResponseBodyResult struct {
 	// ab46ed33-6278-4ef7-8013-8c1335f266ee
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The name of the group.
+	//
+	// example:
+	//
+	// test
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -15451,21 +16732,7 @@ func (s *QueryReportPerformanceResponse) SetBody(v *QueryReportPerformanceRespon
 }
 
 type QueryShareListRequest struct {
-	// The type of work being shared. Valid values:
-	//
-	// 	- product: BI portal
-	//
-	// 	- dashboard: dashboard
-	//
-	// 	- worksheet: workbook
-	//
-	// 	- dashboardOfflineQuery: self-service data retrieval
-	//
-	// 	- Analysis: Ad hoc analysis
-	//
-	// 	- DATAFORM
-	//
-	// 	- SCREEN: Data dashboard
+	// The ID of the work. The works include data portal, dashboard, spreadsheet, self-service data retrieval, ad-hoc analysis, data entry, and data screen.
 	//
 	// This parameter is required.
 	//
@@ -15489,11 +16756,20 @@ func (s *QueryShareListRequest) SetReportId(v string) *QueryShareListRequest {
 }
 
 type QueryShareListResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DC4E1E63-B337-44F8-8C22-6F00DF67E2C3
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QueryShareListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns the list of objects to which the work has been shared.
+	Result []*QueryShareListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -15524,34 +16800,81 @@ func (s *QueryShareListResponseBody) SetSuccess(v bool) *QueryShareListResponseB
 }
 
 type QueryShareListResponseBodyResult struct {
+	// Sharing permissions. Possible values:
+	//
+	// - 1: View only
+	//
+	// - 3: View and export
+	//
 	// example:
 	//
 	// 3
 	AuthPoint *int32 `json:"AuthPoint,omitempty" xml:"AuthPoint,omitempty"`
+	// The timestamp in milliseconds indicating the expiration time of the authorization.
+	//
 	// example:
 	//
 	// 1640102400000
 	ExpireDate *int64 `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The ID of the work.
+	//
 	// example:
 	//
 	// 6b407e50-e774-406b-9956-da2425c2****
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// The ID of the sharing configuration.
+	//
 	// example:
 	//
 	// 0ab9659e-29cf-47d7-a364-3a91553b****
 	ShareId *string `json:"ShareId,omitempty" xml:"ShareId,omitempty"`
+	// The ID of the sharing target, which could be a user ID or a group ID in Quick BI.
+	//
+	// - When ShareToType=2 (all members within an organization), ShareToId is the organization ID.
+	//
 	// example:
 	//
 	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
-	ShareToId   *string `json:"ShareToId,omitempty" xml:"ShareToId,omitempty"`
+	ShareToId *string `json:"ShareToId,omitempty" xml:"ShareToId,omitempty"`
+	// The name of the sharing target.
+	//
+	// example:
+	//
+	// test
 	ShareToName *string `json:"ShareToName,omitempty" xml:"ShareToName,omitempty"`
+	// The type of sharing. Possible values:
+	//
+	// - 0: User
+	//
+	// - 1: Group
+	//
+	// - 2: Organization
+	//
+	// - 3: Space
+	//
 	// example:
 	//
 	// 0
 	ShareToType *int32 `json:"ShareToType,omitempty" xml:"ShareToType,omitempty"`
+	// The type of the shared work. The value range includes:
+	//
+	// - dataProduct: Data Portal
+	//
+	// - dashboard: Dashboard
+	//
+	// - report: Spreadsheet
+	//
+	// - dashboardOfflineQuery: Self-service Data Extraction
+	//
+	// - ANALYSIS: Ad-hoc Analysis
+	//
+	// - DATAFORM: Data Entry
+	//
+	// - SCREEN: Data Visualization Screen
+	//
 	// example:
 	//
-	// product
+	// dashboard
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 }
 
@@ -15987,12 +17310,16 @@ func (s *QuerySharesToUserListResponse) SetBody(v *QuerySharesToUserListResponse
 }
 
 type QuerySmartqPermissionByCubeIdRequest struct {
+	// Dataset ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// User ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16020,11 +17347,20 @@ func (s *QuerySmartqPermissionByCubeIdRequest) SetUserId(v string) *QuerySmartqP
 }
 
 type QuerySmartqPermissionByCubeIdResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 617277******************ABA47E31
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QuerySmartqPermissionByCubeIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Basic information of the dataset.
+	Result *QuerySmartqPermissionByCubeIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -16055,15 +17391,20 @@ func (s *QuerySmartqPermissionByCubeIdResponseBody) SetSuccess(v bool) *QuerySma
 }
 
 type QuerySmartqPermissionByCubeIdResponseBodyResult struct {
+	// Dataset ID.
+	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// Dataset name.
+	//
 	// example:
 	//
 	// test
-	CubeName    *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
-	HasPerssion *bool   `json:"HasPerssion,omitempty" xml:"HasPerssion,omitempty"`
+	CubeName *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
+	// Whether the current user has permission for the smart question. Note: \\"HasPerssion\\" seems to be a typo, it should probably be \\"HasPermission\\".
+	HasPerssion *bool `json:"HasPerssion,omitempty" xml:"HasPerssion,omitempty"`
 }
 
 func (s QuerySmartqPermissionByCubeIdResponseBodyResult) String() string {
@@ -16119,7 +17460,7 @@ func (s *QuerySmartqPermissionByCubeIdResponse) SetBody(v *QuerySmartqPermission
 }
 
 type QueryTicketInfoRequest struct {
-	// Obtains the details of a specified ticket for a report that is not embedded in the report.
+	// The value of the bill.
 	//
 	// This parameter is required.
 	//
@@ -16143,11 +17484,20 @@ func (s *QueryTicketInfoRequest) SetTicket(v string) *QueryTicketInfoRequest {
 }
 
 type QueryTicketInfoResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryTicketInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the generated ticket.
+	Result *QueryTicketInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -16178,40 +17528,68 @@ func (s *QueryTicketInfoResponseBody) SetSuccess(v bool) *QueryTicketInfoRespons
 }
 
 type QueryTicketInfoResponseBodyResult struct {
+	// Notes.
+	//
 	// example:
 	//
 	// a27a9aec-****-****-bd40-1a21ea41d7c5
 	AccessTicket *string `json:"AccessTicket,omitempty" xml:"AccessTicket,omitempty"`
+	// The ID of the component in the report.
+	//
 	// example:
 	//
 	// sfdgsds-****-****-a608-mghdgd
-	CmptId      *string `json:"CmptId,omitempty" xml:"CmptId,omitempty"`
+	CmptId *string `json:"CmptId,omitempty" xml:"CmptId,omitempty"`
+	// Global parameters.
+	//
+	// example:
+	//
+	// [&{quot;paramKey\\&quot;:\\&quot;price\\&quot;,\\&quot;joinType\\&quot;and\\&quot;,\\&quot;conditionList\\&quot;:[{\\&quot; operation\\&quot;\\&quot;\\&quot;\\&quot;\\&quot;\\&quot;\\&quot;value ;& quot;\\&quot;\\&quot;\\&quot;\\&quot;\\&quot;\\&quot;\\&quot;\\&quot;\\&quot product_type\\&quot;,\\&quot;joinType\\&quot;:\\&quot;and ";,& quot;conditionList\\&quot;, the conditions must be:[{\\&quot;operate" ;:& quot;in\\&quot;,\\&quot;value\\&quot;, the conditions must be:[\\&quot; office supplies\\&quot;,\\&quot; furniture products\\&quot;]}]}]\\n
 	GlobalParam *string `json:"GlobalParam,omitempty" xml:"GlobalParam,omitempty"`
+	// Expiration time of the note.
+	//
 	// example:
 	//
 	// 2022-01-30 03:03:49
 	InvalidTime *string `json:"InvalidTime,omitempty" xml:"InvalidTime,omitempty"`
+	// The maximum number of supported bills.
+	//
 	// example:
 	//
 	// 9999
 	MaxTicketNum *int32 `json:"MaxTicketNum,omitempty" xml:"MaxTicketNum,omitempty"`
+	// The ID of the organization.
+	//
 	// example:
 	//
 	// 2fe4fbd8-****-****-b3e1-e92c7af083ea
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// The registration time of the ticket.
+	//
 	// example:
 	//
 	// 2022-01-09 22:23:49
 	RegisterTime *string `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
+	// The number of bills that have been consumed.
+	//
 	// example:
 	//
 	// 47
 	UsedTicketNum *int32 `json:"UsedTicketNum,omitempty" xml:"UsedTicketNum,omitempty"`
+	// The user ID of the Quick BI.
+	//
 	// example:
 	//
 	// 974e50**********9033f46
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Set the watermarking parameters.
+	//
+	// example:
+	//
+	// Tripartite embedding of Ticket
 	WatermarkParam *string `json:"WatermarkParam,omitempty" xml:"WatermarkParam,omitempty"`
+	// The ID of the operations report.
+	//
 	// example:
 	//
 	// ccd3428c-****-****-a608-26bae29dffee
@@ -16518,7 +17896,14 @@ func (s *QueryUserGroupListByParentIdResponse) SetBody(v *QueryUserGroupListByPa
 }
 
 type QueryUserGroupMemberRequest struct {
+	// Keyword for the username or nickname of the user group member.
+	//
+	// example:
+	//
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// User group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16546,11 +17931,20 @@ func (s *QueryUserGroupMemberRequest) SetUserGroupId(v string) *QueryUserGroupMe
 }
 
 type QueryUserGroupMemberResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 48C930FF-DFCF-5986-902B-E24C202E2443
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QueryUserGroupMemberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the request for the user group member list.
+	Result []*QueryUserGroupMemberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -16581,19 +17975,39 @@ func (s *QueryUserGroupMemberResponseBody) SetSuccess(v bool) *QueryUserGroupMem
 }
 
 type QueryUserGroupMemberResponseBodyResult struct {
+	// ID of the user group or the user group member.
+	//
 	// example:
 	//
 	// 3d2c23d4-2b41-4af8-a1f5-f6390f32****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether it is a user group. Possible values:
+	//
+	// - true: It is a user group.
+	//
+	// - false: It is a user.
+	//
 	// example:
 	//
 	// true
-	IsUserGroup *bool   `json:"IsUserGroup,omitempty" xml:"IsUserGroup,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	IsUserGroup *bool `json:"IsUserGroup,omitempty" xml:"IsUserGroup,omitempty"`
+	// Name or nickname of the user group or its member.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// ID of the parent user group.
+	//
 	// example:
 	//
 	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****
-	ParentUserGroupId   *string `json:"ParentUserGroupId,omitempty" xml:"ParentUserGroupId,omitempty"`
+	ParentUserGroupId *string `json:"ParentUserGroupId,omitempty" xml:"ParentUserGroupId,omitempty"`
+	// Name of the parent user group.
+	//
+	// example:
+	//
+	// test
 	ParentUserGroupName *string `json:"ParentUserGroupName,omitempty" xml:"ParentUserGroupName,omitempty"`
 }
 
@@ -17138,11 +18552,28 @@ func (s *QueryUserInfoByUserIdResponse) SetBody(v *QueryUserInfoByUserIdResponse
 }
 
 type QueryUserListRequest struct {
+	// The keyword of the username or nickname of the organization member.
+	//
+	// example:
+	//
+	// Test user
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Current page number for organization member list:
+	//
+	// 	- Pages start from page 1.
+	//
+	// 	- Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of rows per page in a paged query.
+	//
+	// 	- Default value: 10.
+	//
+	// 	- Maximum value: 1,000.
+	//
 	// example:
 	//
 	// 10
@@ -17173,11 +18604,20 @@ func (s *QueryUserListRequest) SetPageSize(v int32) *QueryUserListRequest {
 }
 
 type QueryUserListResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryUserListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pagination result of the user list is returned. The detailed information list of organization members is stored in the response parameter Data.
+	Result *QueryUserListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -17208,19 +18648,28 @@ func (s *QueryUserListResponseBody) SetSuccess(v bool) *QueryUserListResponseBod
 }
 
 type QueryUserListResponseBodyResult struct {
+	// Returns the list of requested users.
 	Data []*QueryUserListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of rows per page set when the interface is requested.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of rows in the table.
+	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 1
@@ -17261,28 +18710,82 @@ func (s *QueryUserListResponseBodyResult) SetTotalPages(v int32) *QueryUserListR
 }
 
 type QueryUserListResponseBodyResultData struct {
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 1355********
-	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The name of the Alibaba Cloud account that corresponds to the member.
+	//
+	// example:
+	//
+	// Test user
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Indicates whether the organization administrator. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
+	// Indicate whether the RAM user is a permission administrator. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	AuthAdminUser *bool    `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
-	IsDeleted     *bool    `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	JoinedDate    *int64   `json:"JoinedDate,omitempty" xml:"JoinedDate,omitempty"`
-	LastLoginTime *int64   `json:"LastLoginTime,omitempty" xml:"LastLoginTime,omitempty"`
-	NickName      *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	RoleIdList    []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
+	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	// User status:
+	//
+	// - Active - false
+	//
+	// - Inactive - true
+	//
+	// example:
+	//
+	// false
+	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	// Join Date
+	//
+	// example:
+	//
+	// 1718691704000
+	JoinedDate *int64 `json:"JoinedDate,omitempty" xml:"JoinedDate,omitempty"`
+	// Last login time.
+	//
+	// example:
+	//
+	// 1718761320681
+	LastLoginTime *int64 `json:"LastLoginTime,omitempty" xml:"LastLoginTime,omitempty"`
+	// The nickname of the organization member.
+	//
+	// example:
+	//
+	// Test user
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// List of organization role IDs bound to the user.
+	RoleIdList []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
+	// The UserID in the Quick BI.
+	//
 	// example:
 	//
 	// fe67f61a35a94b7da1a34ba174a7****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The role type of the organization member. Valid values:
+	//
+	// 	- 1 : developer
+	//
+	// 	- 2 : visitors
+	//
+	// 	- 3 : Analyst
+	//
 	// example:
 	//
 	// 1
@@ -17382,12 +18885,16 @@ func (s *QueryUserListResponse) SetBody(v *QueryUserListResponseBody) *QueryUser
 }
 
 type QueryUserRoleInfoInWorkspaceRequest struct {
+	// Quick BI user ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f5698bedeb384b1986afccd9e434****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17415,11 +18922,20 @@ func (s *QueryUserRoleInfoInWorkspaceRequest) SetWorkspaceId(v string) *QueryUse
 }
 
 type QueryUserRoleInfoInWorkspaceResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryUserRoleInfoInWorkspaceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Preset space role information of the user.
+	Result *QueryUserRoleInfoInWorkspaceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request succeeded.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -17450,14 +18966,31 @@ func (s *QueryUserRoleInfoInWorkspaceResponseBody) SetSuccess(v bool) *QueryUser
 }
 
 type QueryUserRoleInfoInWorkspaceResponseBodyResult struct {
+	// Preset role code.
+	//
 	// example:
 	//
 	// role_workspace_admin
 	RoleCode *string `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
+	// Preset role ID. Possible values:
+	//
+	// - 25: Space Administrator
+	//
+	// - 26: Space Developer
+	//
+	// - 27: Space Analyst
+	//
+	// - 30: Space Viewer
+	//
 	// example:
 	//
 	// 25
-	RoleId   *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// Preset role name.
+	//
+	// example:
+	//
+	// test
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -17772,6 +19305,8 @@ func (s *QueryUserTagValueListResponse) SetBody(v *QueryUserTagValueListResponse
 }
 
 type QueryWorksRequest struct {
+	// Report ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17794,11 +19329,20 @@ func (s *QueryWorksRequest) SetWorksId(v string) *QueryWorksRequest {
 }
 
 type QueryWorksResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryWorksResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the work.
+	Result *QueryWorksResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -17829,49 +19373,137 @@ func (s *QueryWorksResponseBody) SetSuccess(v bool) *QueryWorksResponseBody {
 }
 
 type QueryWorksResponseBodyResult struct {
+	// Third-party embedding status. Valid values:
+	//
+	// 	- 0: The embed service is not enabled.
+	//
+	// 	- 1: Embed is enabled.
+	//
 	// example:
 	//
 	// 0
-	Auth3rdFlag *int32                                 `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
-	Description *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Directory   *QueryWorksResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	Auth3rdFlag *int32 `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
+	// Remarks on the work.
+	//
+	// example:
+	//
+	// Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The directory to which the work belongs.
+	Directory *QueryWorksResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	// The timestamp of the creation of the work in milliseconds.
+	//
 	// example:
 	//
 	// 1496651577000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The timestamp of the modification of the work in milliseconds.
+	//
 	// example:
 	//
 	// 1496651577000
-	GmtModify  *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	// The Alibaba Cloud account name of the person who modified the work.
+	//
+	// example:
+	//
+	// Tom
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
+	// The user ID of the work owner in the Quick BI.
+	//
 	// example:
 	//
 	// 9187a612aa474e2a8ac1414d5529****
-	OwnerId           *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	OwnerName         *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	PublicFlag        *bool   `json:"PublicFlag,omitempty" xml:"PublicFlag,omitempty"`
-	PublicInvalidTime *int64  `json:"PublicInvalidTime,omitempty" xml:"PublicInvalidTime,omitempty"`
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The Alibaba Cloud account name of the work owner.
+	//
+	// example:
+	//
+	// Tom
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// Is it public
+	//
+	// example:
+	//
+	// true
+	PublicFlag *bool `json:"PublicFlag,omitempty" xml:"PublicFlag,omitempty"`
+	// Deadline for the public release of the report
+	//
+	// example:
+	//
+	// 1721366354000
+	PublicInvalidTime *int64 `json:"PublicInvalidTime,omitempty" xml:"PublicInvalidTime,omitempty"`
+	// Security policies for collaborative authorization of works. Valid values:
+	//
+	// 	- 0: private
+	//
+	// 	- 12: Authorize specified members
+	//
+	// 	- 1 or 11: Authorize all workspace members
+	//
+	// >
+	//
+	// 	- If you use legacy permissions, the return value is 1.
+	//
+	// 	- If you use the new permissions, the return value is 11.
+	//
 	// example:
 	//
 	// 0
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	// The status of the report. Valid values:
+	//
+	// 	- 0: unpublished
+	//
+	// 	- 1: published
+	//
+	// 	- 2: modified but not published
+	//
+	// 	- 3: unpublished
+	//
 	// example:
 	//
 	// 0
-	Status   *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the work.
+	//
+	// example:
+	//
+	// Test report
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
+	// Queries the types of works. Fill in the blanks to query all types. Valid values:
+	//
+	// 	- DATAPRODUCT: BI portal
+	//
+	// 	- PAGE: Dashboard
+	//
+	// 	- FULLPAGE: full-screen dashboards
+	//
+	// 	- REPORT: workbook
+	//
+	// 	- dashboardOfflineQuery: self-service data retrieval
+	//
 	// example:
 	//
 	// PAGE
 	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
+	// The ID of the work.
+	//
 	// example:
 	//
 	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+	// The ID of the workspace to which the work belongs.
+	//
 	// example:
 	//
 	// 87c6b145-090c-43e1-9426-8f93be23****
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace to which the work belongs.
+	//
+	// example:
+	//
+	// Test Space
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -17969,15 +19601,29 @@ func (s *QueryWorksResponseBodyResult) SetWorkspaceName(v string) *QueryWorksRes
 }
 
 type QueryWorksResponseBodyResultDirectory struct {
+	// The ID of the directory.
+	//
 	// example:
 	//
 	// 83d37ba6-d909-48a2-a517-f4d05c3a****
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the directory.
+	//
+	// example:
+	//
+	// Test directory
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The hierarchical structure of the directory ID to which the directory belongs. Separate the hierarchical structure with a /.
+	//
 	// example:
 	//
 	// 83d37ba6-d909-48a2-a517-f4d05c3a****
-	PathId   *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	// The hierarchical structure of the directory to which the directory belongs. Separate the hierarchical structure with a (/).
+	//
+	// example:
+	//
+	// Test directory
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -18039,7 +19685,7 @@ func (s *QueryWorksResponse) SetBody(v *QueryWorksResponseBody) *QueryWorksRespo
 }
 
 type QueryWorksBloodRelationshipRequest struct {
-	// Obtains the kinship of a data work, including the datasets referenced by each component and query field information. Currently, only supported data works include dashboards, workbooks, and self-service data retrieval.
+	// The ID of the data work.
 	//
 	// This parameter is required.
 	//
@@ -18063,19 +19709,19 @@ func (s *QueryWorksBloodRelationshipRequest) SetWorksId(v string) *QueryWorksBlo
 }
 
 type QueryWorksBloodRelationshipResponseBody struct {
-	// Indicates whether the request is successful. Valid values:
-	//
-	// 	- true: The request was successful.
-	//
-	// 	- false: The request failed.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
+	// List of work blood information.
 	Result []*QueryWorksBloodRelationshipResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The response.
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
 	//
 	// example:
 	//
@@ -18107,38 +19753,43 @@ func (s *QueryWorksBloodRelationshipResponseBody) SetSuccess(v bool) *QueryWorks
 }
 
 type QueryWorksBloodRelationshipResponseBodyResult struct {
-	// List of work blood information.
+	// The ID of the component that you want to modify.
 	//
 	// example:
 	//
 	// 0696083a-ca72-4d89-8e7a-c017910e0***
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
-	// The ID of the component that you want to modify.
+	// The name of the component.
 	//
 	// example:
 	//
-	// The name of the component.
-	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
 	// Line
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// The type of the image component.
 	//
 	// example:
 	//
 	// 3
-	ComponentType       *int32  `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	ComponentType *int32 `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	// Chinese name of the component type
+	//
+	// example:
+	//
+	// ddd
 	ComponentTypeCnName *string `json:"ComponentTypeCnName,omitempty" xml:"ComponentTypeCnName,omitempty"`
-	// The type of the image component.
+	// The name of the component type.
 	//
 	// example:
 	//
 	// LINE
 	ComponentTypeName *string `json:"ComponentTypeName,omitempty" xml:"ComponentTypeName,omitempty"`
-	// Column (Measure)
+	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
 	//
 	// example:
 	//
 	// dc78a4ed-880d-452e-b017-90cfc10c83e5_company_sales_record
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The name of the component type.
+	// A list of query parameter reference columns.
 	QueryParams []*QueryWorksBloodRelationshipResponseBodyResultQueryParams `json:"QueryParams,omitempty" xml:"QueryParams,omitempty" type:"Repeated"`
 }
 
@@ -18186,33 +19837,24 @@ func (s *QueryWorksBloodRelationshipResponseBodyResult) SetQueryParams(v []*Quer
 }
 
 type QueryWorksBloodRelationshipResponseBodyResultQueryParams struct {
-	// Indices whether the metric. Valid values:
-	//
-	// true false
+	// The ID of the owning location.
 	//
 	// example:
 	//
 	// area_column
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	// The ID of the owning location.
+	// The name of the owning location.
 	//
 	// example:
 	//
-	// The name of the owning location.
+	// Column (Measure)
 	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
-	// The globally unique PathId.
+	// The display name of the field.
 	//
 	// example:
 	//
 	// order_number
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	// The display name of the field.
-	//
-	// example:
-	//
-	// number
-	DataType   *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The type of the field. Valid values:
 	//
 	// 	- string: string type
@@ -18237,15 +19879,29 @@ type QueryWorksBloodRelationshipResponseBodyResultQueryParams struct {
 	//
 	// example:
 	//
+	// number
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// Calculate field expression.
+	//
+	// example:
+	//
+	// BI_DATEADD([date], 100, \\"day\\")
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// Indices whether the metric. Valid values:
+	//
+	// true false
+	//
+	// example:
+	//
 	// true
 	IsMeasure *bool `json:"IsMeasure,omitempty" xml:"IsMeasure,omitempty"`
-	// The unique ID of the field.
+	// The globally unique PathId.
 	//
 	// example:
 	//
 	// schema7d1944eb-443e-48c6-8123-bf45a99e7e74.dc78a4ed-880d-452e-b017-90cfc10c83e5_company_sales_record.[Ndc78a4_order_level].[Ndc78a4_order_level].[Ndc78a4_order_level]
 	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
-	// A list of query parameter reference columns.
+	// The unique ID of the field.
 	//
 	// example:
 	//
@@ -18331,31 +19987,55 @@ func (s *QueryWorksBloodRelationshipResponse) SetBody(v *QueryWorksBloodRelation
 }
 
 type QueryWorksByOrganizationRequest struct {
-	// The page number of the returned page.
+	// Page number.
+	//
+	// - Default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of rows per page set when the interface is requested.
+	// Number of items per page.
+	//
+	// - Default value is 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Returns a list of all works in the organization that meet the requested criteria.
+	// The status of the work to query. Possible values:
+	//
+	// - 0: Unpublished
+	//
+	// - 1: Published
+	//
+	// - 2: Modified but not published
+	//
+	// - 3: Offline
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of pages returned.
+	// Third-party embedding status. Possible values:
+	//
+	// - 0: Embedding not enabled
+	//
+	// - 1: Embedding enabled
 	//
 	// example:
 	//
 	// 1
 	ThirdPartAuthFlag *int32 `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
-	// The ID of the request.
+	// The type of work to query. Leave blank to query all types. Possible values:
+	//
+	// - DATAPRODUCT: Data Portal
+	//
+	// - PAGE: Dashboard
+	//
+	// - REPORT: Spreadsheet
+	//
+	// - dashboardOfflineQuery: Self-service Data Retrieval
 	//
 	// example:
 	//
@@ -18397,23 +20077,19 @@ func (s *QueryWorksByOrganizationRequest) SetWorksType(v string) *QueryWorksByOr
 }
 
 type QueryWorksByOrganizationResponseBody struct {
-	// The details of the list of works.
+	// Request ID.
 	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the report. Valid values:
-	//
-	// 	- 0: unpublished
-	//
-	// 	- 1: published
-	//
-	// 	- 2: modified but not published
-	//
-	// 	- 3: unpublished
+	// Returns a list of all works under the organization that meet the request criteria.
 	Result *QueryWorksByOrganizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The total number of rows in the table.
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: Request succeeded
+	//
+	// - false: Request failed
 	//
 	// example:
 	//
@@ -18445,39 +20121,27 @@ func (s *QueryWorksByOrganizationResponseBody) SetSuccess(v bool) *QueryWorksByO
 }
 
 type QueryWorksByOrganizationResponseBodyResult struct {
-	// The Alibaba Cloud account name of the work owner.
+	// Details of the work list.
 	Data []*QueryWorksByOrganizationResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The timestamp of the modification of the work in milliseconds.
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The ID of the work.
+	// The number of rows per page set when requesting the interface.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the work. Valid values:
-	//
-	// 	- DATAPRODUCT: BI portal
-	//
-	// 	- PAGE: Dashboard
-	//
-	// 	- FULLPAGE: full-screen dashboards
-	//
-	// 	- REPORT: workbook
+	// Total number of rows.
 	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	// Third-party embedding status. Valid values:
-	//
-	// 	- 0: The embed service is not enabled.
-	//
-	// 	- 1: Embed is enabled.
+	// Total number of pages.
 	//
 	// example:
 	//
@@ -18519,105 +20183,133 @@ func (s *QueryWorksByOrganizationResponseBodyResult) SetTotalPages(v int32) *Que
 }
 
 type QueryWorksByOrganizationResponseBodyResultData struct {
-	// The name of the workspace to which the work belongs.
+	// Third-party embedding status. Possible values:
+	//
+	// - 0: Embedding not enabled
+	//
+	// - 1: Embedding enabled
 	//
 	// example:
 	//
 	// 1
 	Auth3rdFlag *int32 `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
-	// The hierarchical structure of the directory ID to which the directory belongs. Separate the hierarchical structure with a /.
+	// Notes for the work.
 	//
 	// example:
 	//
-	// The hierarchical structure of the directory to which the directory belongs. Separate the hierarchical structure with a (/).
+	// Attention
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the directory.
+	// Directory to which the work belongs.
 	Directory *QueryWorksByOrganizationResponseBodyResultDataDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	// Test directory
+	// Timestamp (in milliseconds) when the work was created.
 	//
 	// example:
 	//
 	// 1496651577000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Test Workspace
+	// 作品修改的毫秒级时间戳。
 	//
 	// example:
 	//
 	// 1572334870000
 	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// Description
+	// 作品修改者的阿里云账户名。
 	//
 	// example:
 	//
-	// The name of the work.
+	// test
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
-	// Security policies for collaborative authorization of works. Valid values:
-	//
-	// 	- 0: private
-	//
-	// 	- 12: Authorize specified members
-	//
-	// 	- 1 or 11: Authorize all workspace members
-	//
-	// >
-	//
-	// 	- If you use legacy permissions, the return value is 1.
-	//
-	// 	- If you use the new permissions, the return value is 11.
+	// The UserID of the work\\"s owner in Quick BI.
 	//
 	// example:
 	//
-	// Remarks on the work.
+	// test
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The Alibaba Cloud account name of the person who modified the work.
+	// The Alibaba Cloud account name of the work\\"s owner.
 	//
 	// example:
 	//
-	// Tom
-	OwnerName         *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	PublicFlag        *bool   `json:"PublicFlag,omitempty" xml:"PublicFlag,omitempty"`
-	PublicInvalidTime *int64  `json:"PublicInvalidTime,omitempty" xml:"PublicInvalidTime,omitempty"`
-	// The directory to which the work belongs.
+	// test
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// Whether it is public
+	//
+	// example:
+	//
+	// true
+	PublicFlag *bool `json:"PublicFlag,omitempty" xml:"PublicFlag,omitempty"`
+	// The expiration date for the report to be made public
+	//
+	// example:
+	//
+	// 1721366354000
+	PublicInvalidTime *int64 `json:"PublicInvalidTime,omitempty" xml:"PublicInvalidTime,omitempty"`
+	// The security policy for collaborative authorization of the work. Values:
+	//
+	// - 0: Private
+	//
+	// - 12: Authorize specific members
+	//
+	// - 1 or 11: Authorize all space members
+	//
+	// >- If you are using the old version of permissions, the returned value is 1.
+	//
+	// >- If you are using the new version of permissions, the returned value is 11.
 	//
 	// example:
 	//
 	// 1
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	// Li Si
+	// The status of the report. Value range:
+	//
+	// - 0: Unpublished
+	//
+	// - 1: Published
+	//
+	// - 2: Modified but not published
+	//
+	// - 3: Offline
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Test directory
+	// The name of the work.
 	//
 	// example:
 	//
-	// The name of the directory.
+	// test
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
-	// The name of the workspace to which the work belongs.
+	// The type of the work. Value range:
+	//
+	// - DATAPRODUCT: Data portal
+	//
+	// - PAGE: Dashboard
+	//
+	// - REPORT: Spreadsheet
+	//
+	// - dashboardOfflineQuery: Self-service data retrieval
 	//
 	// example:
 	//
 	// PAGE
 	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
-	// The user ID of the work owner in the Quick BI.
+	// The ID of the work.
 	//
 	// example:
 	//
 	// 897ce25e-****-****-af84-d13c5610****
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
-	// Test report
-	//
-	// example:
-	//
-	// The timestamp of the creation of the work in milliseconds.
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The ID of the workspace to which the work belongs.
 	//
 	// example:
 	//
-	// The name of the Alibaba Cloud account that modified the work.
+	// test
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace to which the work belongs.
+	//
+	// example:
+	//
+	// test
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -18715,15 +20407,29 @@ func (s *QueryWorksByOrganizationResponseBodyResultData) SetWorkspaceName(v stri
 }
 
 type QueryWorksByOrganizationResponseBodyResultDataDirectory struct {
+	// ID of the directory to which it belongs.
+	//
 	// example:
 	//
 	// 83d37ba6-d909-48a2-a517-f4d05c3a****
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Name of the directory to which it belongs.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Hierarchical structure of the directory ID, separated by『/』.
+	//
 	// example:
 	//
 	// 83d37ba6-d909-48a2-a517-f4d05c3a****
-	PathId   *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	// Hierarchical structure of the directory name, separated by『/』.
+	//
+	// example:
+	//
+	// Attention
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -19041,9 +20747,19 @@ type QueryWorksByWorkspaceResponseBodyResultData struct {
 	// example:
 	//
 	// Li Si
-	OwnerName         *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	PublicFlag        *bool   `json:"PublicFlag,omitempty" xml:"PublicFlag,omitempty"`
-	PublicInvalidTime *int64  `json:"PublicInvalidTime,omitempty" xml:"PublicInvalidTime,omitempty"`
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// Is it public
+	//
+	// example:
+	//
+	// true
+	PublicFlag *bool `json:"PublicFlag,omitempty" xml:"PublicFlag,omitempty"`
+	// Deadline for the public release of the report
+	//
+	// example:
+	//
+	// 1721366354000
+	PublicInvalidTime *int64 `json:"PublicInvalidTime,omitempty" xml:"PublicInvalidTime,omitempty"`
 	// Security policies for collaborative authorization of works. Valid values:
 	//
 	// 	- 0: private
@@ -19216,10 +20932,17 @@ func (s *QueryWorksByWorkspaceResponseBodyResultData) SetWorkspaceName(v string)
 }
 
 type QueryWorksByWorkspaceResponseBodyResultDataDirectory struct {
+	// The ID of the directory.
+	//
 	// example:
 	//
 	// 83d37ba6-d909-48a2-a517-f4d05c3a****
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the directory.
+	//
+	// example:
+	//
+	// The name of the directory.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The hierarchical structure of the directory ID to which the directory belongs. Separate the hierarchical structure with a /.
 	//
@@ -19335,11 +21058,11 @@ type QueryWorkspaceRoleConfigResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Returns the query result of the interface.
 	Result *QueryWorkspaceRoleConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// 是否请求成功。取值范围：
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true：请求成功
+	// 	- true: The request was successful.
 	//
-	// - false：请求失败
+	// 	- false: The request failed.
 	//
 	// example:
 	//
@@ -19514,15 +21237,34 @@ func (s *QueryWorkspaceRoleConfigResponse) SetBody(v *QueryWorkspaceRoleConfigRe
 }
 
 type QueryWorkspaceUserListRequest struct {
+	// Keyword for the username of the workspace member.
+	//
+	// example:
+	//
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Current page number of the workspace member list:
+	//
+	// - Starting value: 1
+	//
+	// - Default value: 1
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of rows per page in a paginated query:
+	//
+	// - Default value: 10
+	//
+	// - Maximum value: 1000
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -19560,11 +21302,20 @@ func (s *QueryWorkspaceUserListRequest) SetWorkspaceId(v string) *QueryWorkspace
 }
 
 type QueryWorkspaceUserListResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryWorkspaceUserListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns the paginated result of the member list, with detailed information about the members stored in the Data parameter of the response.
+	Result *QueryWorkspaceUserListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -19595,19 +21346,28 @@ func (s *QueryWorkspaceUserListResponseBody) SetSuccess(v bool) *QueryWorkspaceU
 }
 
 type QueryWorkspaceUserListResponseBodyResult struct {
+	// Information about the workspace members.
 	Data []*QueryWorkspaceUserListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of rows per page as set in the request.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of rows.
+	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -19648,16 +21408,28 @@ func (s *QueryWorkspaceUserListResponseBodyResult) SetTotalPages(v int32) *Query
 }
 
 type QueryWorkspaceUserListResponseBodyResultData struct {
+	// Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 16020915****8429
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Alibaba Cloud account name.
+	//
 	// example:
 	//
 	// pop****@aliyunid.test
-	AccountName *string                                           `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	NickName    *string                                           `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	Role        *QueryWorkspaceUserListResponseBodyResultDataRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Nickname.
+	//
+	// example:
+	//
+	// test
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// Preset role information for the workspace member.
+	Role *QueryWorkspaceUserListResponseBodyResultDataRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
+	// Quick BI user ID.
+	//
 	// example:
 	//
 	// de4bc5f9429141cc8091cdd1c15b****
@@ -19698,14 +21470,31 @@ func (s *QueryWorkspaceUserListResponseBodyResultData) SetUserId(v string) *Quer
 }
 
 type QueryWorkspaceUserListResponseBodyResultDataRole struct {
+	// Code corresponding to the preset role.
+	//
 	// example:
 	//
 	// role_workspace_admin
 	RoleCode *string `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
+	// Preset role ID. Possible values:
+	//
+	// - 25: Workspace Administrator
+	//
+	// - 26: Workspace Developer
+	//
+	// - 27: Workspace Analyst
+	//
+	// - 30: Workspace Viewer
+	//
 	// example:
 	//
 	// 25
-	RoleId   *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// Name of the preset role.
+	//
+	// example:
+	//
+	// test
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -19897,7 +21686,7 @@ func (s *ResultCallbackResponse) SetBody(v *ResultCallbackResponseBody) *ResultC
 }
 
 type SaveFavoritesRequest struct {
-	// The user ID of the collection. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+	// The user ID of the person who favorites the work. This user ID is the UserID of Quick BI, not the UID of Alibaba Cloud.
 	//
 	// This parameter is required.
 	//
@@ -19905,7 +21694,7 @@ type SaveFavoritesRequest struct {
 	//
 	// 121344444790****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the collection.
+	// The ID of the work being favorited.
 	//
 	// This parameter is required.
 	//
@@ -19934,27 +21723,27 @@ func (s *SaveFavoritesRequest) SetWorksId(v string) *SaveFavoritesRequest {
 }
 
 type SaveFavoritesResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The execution result of the interface is returned. Valid values:
+	// Returns the result of the interface execution. Possible values:
 	//
-	// 	- true: The request was successful.
+	// - true: Execution successful
 	//
-	// 	- false: The request fails.
+	// - false: Execution failed
 	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Possible values:
 	//
-	// 	- true: The request was successful.
+	// - true: Request successful
 	//
-	// 	- false: The request failed.
+	// - false: Request failed
 	//
 	// example:
 	//
@@ -20313,12 +22102,18 @@ func (s *SetDataLevelPermissionWhiteListResponse) SetBody(v *SetDataLevelPermiss
 }
 
 type SmartqAuthTransferRequest struct {
+	// Source user ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ASDHASD*************12EASDA
 	OriginUserId *string `json:"OriginUserId,omitempty" xml:"OriginUserId,omitempty"`
+	// Target user ID array, separated by English commas.
+	//
+	// 	Warning: The number of user IDs cannot exceed 100.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -20346,14 +22141,28 @@ func (s *SmartqAuthTransferRequest) SetTargetUserIds(v string) *SmartqAuthTransf
 }
 
 type SmartqAuthTransferResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// D787E1*****************5DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// API execution result. Possible values:
+	//
+	// - true: Request succeeded
+	//
+	// - false: Request failed
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Possible values:
+	//
+	// - true: Request succeeded
+	//
+	// - false: Request failed
+	//
 	// example:
 	//
 	// true
@@ -20413,24 +22222,43 @@ func (s *SmartqAuthTransferResponse) SetBody(v *SmartqAuthTransferResponseBody) 
 }
 
 type SmartqAuthorizeRequest struct {
+	CubeIds *string `json:"CubeIds,omitempty" xml:"CubeIds,omitempty"`
+	// Expiration time, with a default of seven days.
+	//
+	// Format: 2099-12-31
+	//
 	// example:
 	//
 	// 2099-12-31
 	ExpireDay *string `json:"ExpireDay,omitempty" xml:"ExpireDay,omitempty"`
+	// Array of analysis theme IDs, separated by English commas.
+	//
 	// example:
 	//
 	// wasdasd*******1235235sd,ASDAS*********ASDAW123
 	LlmCubeThemes *string `json:"LlmCubeThemes,omitempty" xml:"LlmCubeThemes,omitempty"`
+	// Array of Q&A resource IDs, separated by English commas.
+	//
 	// example:
 	//
 	// wasdasd*******1235235sd,ASDAS*********ASDAW123
 	LlmCubes *string `json:"LlmCubes,omitempty" xml:"LlmCubes,omitempty"`
+	// Operation type. The values are as follows:
+	//
+	// - 0: Add authorization
+	//
+	// - 1: Remove authorization
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	OperationType *int32 `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// Array of user IDs, separated by English commas.
+	//
+	// 	Notice: The number of user IDs per request 	- (number of Q&A resources + number of analysis themes) cannot exceed 100.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -20445,6 +22273,11 @@ func (s SmartqAuthorizeRequest) String() string {
 
 func (s SmartqAuthorizeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SmartqAuthorizeRequest) SetCubeIds(v string) *SmartqAuthorizeRequest {
+	s.CubeIds = &v
+	return s
 }
 
 func (s *SmartqAuthorizeRequest) SetExpireDay(v string) *SmartqAuthorizeRequest {
@@ -20473,11 +22306,20 @@ func (s *SmartqAuthorizeRequest) SetUserIds(v string) *SmartqAuthorizeRequest {
 }
 
 type SmartqAuthorizeResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 617277C****************ABA47E31
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*SmartqAuthorizeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Array of failed user information.
+	Result []*SmartqAuthorizeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. The value range is as follows:
+	//
+	// - true: Request succeeded
+	//
+	// - false: Request failed
+	//
 	// example:
 	//
 	// true
@@ -20508,18 +22350,26 @@ func (s *SmartqAuthorizeResponseBody) SetSuccess(v bool) *SmartqAuthorizeRespons
 }
 
 type SmartqAuthorizeResponseBodyResult struct {
+	// Reason for failure.
+	//
 	// example:
 	//
 	// INVALID_FILE_FORMAT
 	DetailMessage *string `json:"DetailMessage,omitempty" xml:"DetailMessage,omitempty"`
+	// Q&A resource ID.
+	//
 	// example:
 	//
 	// 617277C****************ABA47E31
 	LlmCube *string `json:"LlmCube,omitempty" xml:"LlmCube,omitempty"`
+	// Analysis theme ID.
+	//
 	// example:
 	//
 	// 617277C****************ABA47E31
 	LlmCubeTheme *string `json:"LlmCubeTheme,omitempty" xml:"LlmCubeTheme,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// 617277C****************ABA47E31
@@ -20584,17 +22434,29 @@ func (s *SmartqAuthorizeResponse) SetBody(v *SmartqAuthorizeResponseBody) *Smart
 }
 
 type SmartqQueryAbilityRequest struct {
+	// Dataset ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// User ID.
+	//
+	// 	Notice: If this field is not filled, the data will be queried by default as the organization owner.
+	//
 	// example:
 	//
 	// 7c7223ae-****-3c744528014b
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Question text.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// This year\\"s sales data
 	UserQuestion *string `json:"UserQuestion,omitempty" xml:"UserQuestion,omitempty"`
 }
 
@@ -20622,11 +22484,16 @@ func (s *SmartqQueryAbilityRequest) SetUserQuestion(v string) *SmartqQueryAbilit
 }
 
 type SmartqQueryAbilityResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// D787E1A3-A************2B05DF8D885
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *SmartqQueryAbilityResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result.
+	Result *SmartqQueryAbilityResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Whether the operation was successful.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -20659,13 +22526,31 @@ func (s *SmartqQueryAbilityResponseBody) SetSuccess(v bool) *SmartqQueryAbilityR
 }
 
 type SmartqQueryAbilityResponseBodyResult struct {
+	// Suggested chart type.
+	//
+	// example:
+	//
+	// NEW_TABLE
 	ChartType *string `json:"ChartType,omitempty" xml:"ChartType,omitempty"`
+	// Summary information.
+	//
 	// if can be null:
 	// true
-	ConclusionText *string                                         `json:"ConclusionText,omitempty" xml:"ConclusionText,omitempty"`
-	LogicSql       *string                                         `json:"LogicSql,omitempty" xml:"LogicSql,omitempty"`
-	MetaType       []*SmartqQueryAbilityResponseBodyResultMetaType `json:"MetaType,omitempty" xml:"MetaType,omitempty" type:"Repeated"`
-	Values         []*SmartqQueryAbilityResponseBodyResultValues   `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// Schedule
+	ConclusionText *string `json:"ConclusionText,omitempty" xml:"ConclusionText,omitempty"`
+	// Visualized logical SQL.
+	//
+	// example:
+	//
+	// select 	- ****
+	LogicSql *string `json:"LogicSql,omitempty" xml:"LogicSql,omitempty"`
+	// List of column tuple types.
+	MetaType []*SmartqQueryAbilityResponseBodyResultMetaType `json:"MetaType,omitempty" xml:"MetaType,omitempty" type:"Repeated"`
+	// Array of data value lists.
+	Values []*SmartqQueryAbilityResponseBodyResultValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s SmartqQueryAbilityResponseBodyResult) String() string {
@@ -20702,10 +22587,17 @@ func (s *SmartqQueryAbilityResponseBodyResult) SetValues(v []*SmartqQueryAbility
 }
 
 type SmartqQueryAbilityResponseBodyResultMetaType struct {
+	// Column tuple name.
+	//
 	// example:
 	//
 	// Polar***STPS
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// if can be null:
+	// true
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Column tuple type.
+	//
 	// example:
 	//
 	// string
@@ -20725,12 +22617,19 @@ func (s *SmartqQueryAbilityResponseBodyResultMetaType) SetKey(v string) *SmartqQ
 	return s
 }
 
+func (s *SmartqQueryAbilityResponseBodyResultMetaType) SetType(v string) *SmartqQueryAbilityResponseBodyResultMetaType {
+	s.Type = &v
+	return s
+}
+
 func (s *SmartqQueryAbilityResponseBodyResultMetaType) SetValue(v string) *SmartqQueryAbilityResponseBodyResultMetaType {
 	s.Value = &v
 	return s
 }
 
 type SmartqQueryAbilityResponseBodyResultValues struct {
+	// Data values for each row.
+	//
 	// if can be null:
 	// true
 	Row []*string `json:"Row,omitempty" xml:"Row,omitempty" type:"Repeated"`
@@ -20892,12 +22791,22 @@ func (s *UpdateDataLevelPermissionStatusResponse) SetBody(v *UpdateDataLevelPerm
 }
 
 type UpdateEmbeddedStatusRequest struct {
+	// Whether to enable the embedding feature for the work. Valid values:
+	//
+	// 	- true: enables embedding.
+	//
+	// 	- false: disables embedding.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	ThirdPartAuthFlag *bool `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
+	// The ID of the work.
+	//
+	// 	- Batch modification is supported. Separate multiple values with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -20925,14 +22834,24 @@ func (s *UpdateEmbeddedStatusRequest) SetWorksId(v string) *UpdateEmbeddedStatus
 }
 
 type UpdateEmbeddedStatusResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
-	// D787E1A3-A93C-424A-B626-C2B05DF8D885
+	// D78*********DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of works that are opened or closed.
+	//
 	// example:
 	//
 	// 1
 	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -20992,12 +22911,18 @@ func (s *UpdateEmbeddedStatusResponse) SetBody(v *UpdateEmbeddedStatusResponseBo
 }
 
 type UpdateTicketNumRequest struct {
+	// The value of the third-party embedded ticket, that is, the accessTicket value in the URL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 040e6f79d33444838***83c7206c070
 	Ticket *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
+	// The number of bills.
+	//
+	// 	- Valid values: 1 to 99998. Recommended value: 1.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21025,14 +22950,28 @@ func (s *UpdateTicketNumRequest) SetTicketNum(v int32) *UpdateTicketNumRequest {
 }
 
 type UpdateTicketNumResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the update is successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -21115,7 +23054,16 @@ type UpdateUserRequest struct {
 	//
 	// true
 	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
-	IsDeleted     *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	// User status:
+	//
+	// 	- **false**: Active
+	//
+	//  	- **true**: Inactive
+	//
+	// example:
+	//
+	// false
+	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
 	// The nickname of the account.
 	//
 	// 	- Format check: The value can be up to 50 characters in length.
@@ -21126,7 +23074,12 @@ type UpdateUserRequest struct {
 	//
 	// Xiao Zhang
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	RoleIds  *string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty"`
+	// The IDs of the preset or custom organization roles bound to the user, separated by English commas \\",\\", with a maximum of 3. The value range is as follows: - Organization Administrator (preset role): 111111111 - Permission Administrator (preset role): 111111112 - Regular User (preset role): 111111113
+	//
+	// example:
+	//
+	// 111111111,456
+	RoleIds *string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty"`
 	// The ID of the user to be updated. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
 	//
 	// This parameter is required.
@@ -21135,7 +23088,7 @@ type UpdateUserRequest struct {
 	//
 	// fe67f61a35a94b7da1a34ba174a7****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The role type of the organization member. Valid values:
+	// The type of user who is a member of the organization. Valid values:
 	//
 	// 	- 1 : developer
 	//
@@ -21681,17 +23634,38 @@ func (s *UpdateUserTagValueResponse) SetBody(v *UpdateUserTagValueResponseBody) 
 type UpdateWorkspaceUserRoleRequest struct {
 	// Deprecated
 	//
+	// Preset workspace role ID, existing roles will be overwritten. Value range:
+	//
+	// - 25: Workspace Administrator
+	//
+	// - 26: Workspace Developer
+	//
+	// - 27: Workspace Analyst
+	//
+	// - 30: Workspace Viewer
+	//
 	// example:
 	//
 	// 25
-	RoleId  *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// Multiple workspace role IDs, separated by commas. If this value is provided, it takes precedence.
+	//
+	// 	Notice: roleId and roleIds cannot both be empty
+	//
+	// example:
+	//
+	// 25,26
 	RoleIds *string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty"`
+	// Quick BI user ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f5698bedeb384b1986afccd9e434****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21729,14 +23703,28 @@ func (s *UpdateWorkspaceUserRoleRequest) SetWorkspaceId(v string) *UpdateWorkspa
 }
 
 type UpdateWorkspaceUserRoleResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns the result of the interface execution. Value range:
+	//
+	// - true: Execution successful
+	//
+	// - false: Execution failed
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Value range:
+	//
+	// - true: Request successful
+	//
+	// - false: Request failed
+	//
 	// example:
 	//
 	// true
@@ -21796,18 +23784,34 @@ func (s *UpdateWorkspaceUserRoleResponse) SetBody(v *UpdateWorkspaceUserRoleResp
 }
 
 type UpdateWorkspaceUsersRoleRequest struct {
+	// Preset space role ID, existing roles will be overwritten. Value range:
+	//
+	// - 25: Space Administrator
+	//
+	// - 26: Space Developer
+	//
+	// - 27: Space Analyst
+	//
+	// - 30: Space Viewer
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 25
 	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// User ID. This is the UserID for Quick BI, not the UID for Alibaba Cloud.
+	//
+	// - Supports batch parameters, separate user IDs with a comma (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 136516262323****,124498444445****
 	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+	// Workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21840,11 +23844,20 @@ func (s *UpdateWorkspaceUsersRoleRequest) SetWorkspaceId(v string) *UpdateWorksp
 }
 
 type UpdateWorkspaceUsersRoleResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 7AAB95D7-2E11-4FE2-94BC-858E4FC0C976
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *UpdateWorkspaceUsersRoleResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns the result of the interface execution.
+	Result *UpdateWorkspaceUsersRoleResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Value range:
+	//
+	// - true: The request was successful, some members may have been updated successfully while others failed, refer to FailureDetail in the response for reasons of failure
+	//
+	// - false: The request failed, no data will be persisted
+	//
 	// example:
 	//
 	// true
@@ -21875,15 +23888,22 @@ func (s *UpdateWorkspaceUsersRoleResponseBody) SetSuccess(v bool) *UpdateWorkspa
 }
 
 type UpdateWorkspaceUsersRoleResponseBodyResult struct {
+	// Number of users that failed to update.
+	//
 	// example:
 	//
 	// 0
-	Failure       *int32                 `json:"Failure,omitempty" xml:"Failure,omitempty"`
+	Failure *int32 `json:"Failure,omitempty" xml:"Failure,omitempty"`
+	// Reasons for the update failures.
 	FailureDetail map[string]interface{} `json:"FailureDetail,omitempty" xml:"FailureDetail,omitempty"`
+	// Number of users that were updated successfully.
+	//
 	// example:
 	//
 	// 2
 	Success *int32 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Modify the total number of users.
+	//
 	// example:
 	//
 	// 2
@@ -22136,24 +24156,13 @@ func (client *Client) AddDataLevelPermissionRuleUsersWithOptions(request *AddDat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddDataLevelPermissionRuleUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddDataLevelPermissionRuleUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddDataLevelPermissionRuleUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -22231,24 +24240,13 @@ func (client *Client) AddDataLevelPermissionWhiteListWithOptions(request *AddDat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddDataLevelPermissionWhiteListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddDataLevelPermissionWhiteListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddDataLevelPermissionWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -22322,24 +24320,13 @@ func (client *Client) AddShareReportWithOptions(request *AddShareReportRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddShareReportResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddShareReportResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddShareReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -22362,7 +24349,7 @@ func (client *Client) AddShareReport(request *AddShareReportRequest) (_result *A
 
 // Summary:
 //
-// auditing
+// Add an organization member.
 //
 // @param request - AddUserRequest
 //
@@ -22419,29 +24406,18 @@ func (client *Client) AddUserWithOptions(request *AddUserRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// auditing
+// Add an organization member.
 //
 // @param request - AddUserRequest
 //
@@ -22459,7 +24435,7 @@ func (client *Client) AddUser(request *AddUserRequest) (_result *AddUserResponse
 
 // Summary:
 //
-// The ID of the request.
+// Adds an organization member to a specified user group.
 //
 // @param request - AddUserGroupMemberRequest
 //
@@ -22494,29 +24470,18 @@ func (client *Client) AddUserGroupMemberWithOptions(request *AddUserGroupMemberR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddUserGroupMemberResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddUserGroupMemberResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddUserGroupMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// The ID of the request.
+// Adds an organization member to a specified user group.
 //
 // @param request - AddUserGroupMemberRequest
 //
@@ -22569,24 +24534,13 @@ func (client *Client) AddUserGroupMembersWithOptions(request *AddUserGroupMember
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddUserGroupMembersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddUserGroupMembersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddUserGroupMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -22609,7 +24563,7 @@ func (client *Client) AddUserGroupMembers(request *AddUserGroupMembersRequest) (
 
 // Summary:
 //
-// Add the metadata of an organization member tag.
+// Add organization member tag metadata.
 //
 // @param request - AddUserTagMetaRequest
 //
@@ -22644,29 +24598,18 @@ func (client *Client) AddUserTagMetaWithOptions(request *AddUserTagMetaRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddUserTagMetaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddUserTagMetaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddUserTagMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Add the metadata of an organization member tag.
+// Add organization member tag metadata.
 //
 // @param request - AddUserTagMetaRequest
 //
@@ -22684,7 +24627,7 @@ func (client *Client) AddUserTagMeta(request *AddUserTagMetaRequest) (_result *A
 
 // Summary:
 //
-// 添加成员到指定工作空间。
+// Add a member to the specified workspace.
 //
 // @param request - AddUserToWorkspaceRequest
 //
@@ -22723,29 +24666,18 @@ func (client *Client) AddUserToWorkspaceWithOptions(request *AddUserToWorkspaceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddUserToWorkspaceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddUserToWorkspaceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddUserToWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 添加成员到指定工作空间。
+// Add a member to the specified workspace.
 //
 // @param request - AddUserToWorkspaceRequest
 //
@@ -22763,7 +24695,7 @@ func (client *Client) AddUserToWorkspace(request *AddUserToWorkspaceRequest) (_r
 
 // Summary:
 //
-// 批量添加成员到工作空间。
+// Batch add members to the workspace.
 //
 // @param request - AddWorkspaceUsersRequest
 //
@@ -22802,29 +24734,18 @@ func (client *Client) AddWorkspaceUsersWithOptions(request *AddWorkspaceUsersReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddWorkspaceUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddWorkspaceUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddWorkspaceUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 批量添加成员到工作空间。
+// Batch add members to the workspace.
 //
 // @param request - AddWorkspaceUsersRequest
 //
@@ -22842,7 +24763,7 @@ func (client *Client) AddWorkspaceUsers(request *AddWorkspaceUsersRequest) (_res
 
 // Summary:
 //
-// 触发数据集抽取加速。
+// Trigger the collection acceleration of the Quick engine for datasets.
 //
 // @param request - AllotDatasetAccelerationTaskRequest
 //
@@ -22873,29 +24794,18 @@ func (client *Client) AllotDatasetAccelerationTaskWithOptions(request *AllotData
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AllotDatasetAccelerationTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AllotDatasetAccelerationTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AllotDatasetAccelerationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 触发数据集抽取加速。
+// Trigger the collection acceleration of the Quick engine for datasets.
 //
 // @param request - AllotDatasetAccelerationTaskRequest
 //
@@ -22960,24 +24870,13 @@ func (client *Client) AuthorizeMenuWithOptions(request *AuthorizeMenuRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AuthorizeMenuResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AuthorizeMenuResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AuthorizeMenuResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -23050,24 +24949,13 @@ func (client *Client) BatchAddFeishuUsersWithOptions(request *BatchAddFeishuUser
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchAddFeishuUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchAddFeishuUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchAddFeishuUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Deprecated: OpenAPI BatchAddFeishuUsers is deprecated
@@ -23093,7 +24981,7 @@ func (client *Client) BatchAddFeishuUsers(request *BatchAddFeishuUsersRequest) (
 
 // Summary:
 //
-// 根据门户菜单ID，取消指定用户、用户组的授权记录。
+// Cancel the authorization records for specified users and user groups based on the portal menu ID.
 //
 // @param request - CancelAuthorizationMenuRequest
 //
@@ -23136,29 +25024,18 @@ func (client *Client) CancelAuthorizationMenuWithOptions(request *CancelAuthoriz
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CancelAuthorizationMenuResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CancelAuthorizationMenuResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CancelAuthorizationMenuResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 根据门户菜单ID，取消指定用户、用户组的授权记录。
+// Cancel the authorization records for specified users and user groups based on the portal menu ID.
 //
 // @param request - CancelAuthorizationMenuRequest
 //
@@ -23211,24 +25088,13 @@ func (client *Client) CancelCollectionWithOptions(request *CancelCollectionReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CancelCollectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CancelCollectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CancelCollectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -23290,24 +25156,13 @@ func (client *Client) CancelReportShareWithOptions(request *CancelReportShareReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CancelReportShareResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CancelReportShareResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CancelReportShareResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -23330,7 +25185,7 @@ func (client *Client) CancelReportShare(request *CancelReportShareRequest) (_res
 
 // Summary:
 //
-// The ID of the request.
+// Modifies the visibility mode of the BI portal menu and whether the menu is only authorized to be visible.
 //
 // @param request - ChangeVisibilityModelRequest
 //
@@ -23369,29 +25224,18 @@ func (client *Client) ChangeVisibilityModelWithOptions(request *ChangeVisibility
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ChangeVisibilityModelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ChangeVisibilityModelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ChangeVisibilityModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// The ID of the request.
+// Modifies the visibility mode of the BI portal menu and whether the menu is only authorized to be visible.
 //
 // @param request - ChangeVisibilityModelRequest
 //
@@ -23444,24 +25288,13 @@ func (client *Client) CheckReadableWithOptions(request *CheckReadableRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CheckReadableResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CheckReadableResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CheckReadableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -23484,11 +25317,11 @@ func (client *Client) CheckReadable(request *CheckReadableRequest) (_result *Che
 
 // Summary:
 //
-// Generates a ticket for third-party embedding.
+// Generate a ticket for third-party embedding.
 //
 // Description:
 //
-// For detailed usage, please refer to the [Report Embedding Data Permission Control and Parameter Passing Security Enhancement Solution](https://help.aliyun.com/document_detail/391291.html).
+// For detailed usage, please refer to [Report Embedding Data Permission Control and Parameter Passing Security Enhancement Solution](https://help.aliyun.com/document_detail/391291.html).
 //
 // @param request - CreateTicketRequest
 //
@@ -23551,33 +25384,22 @@ func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateTicketResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateTicketResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Generates a ticket for third-party embedding.
+// Generate a ticket for third-party embedding.
 //
 // Description:
 //
-// For detailed usage, please refer to the [Report Embedding Data Permission Control and Parameter Passing Security Enhancement Solution](https://help.aliyun.com/document_detail/391291.html).
+// For detailed usage, please refer to [Report Embedding Data Permission Control and Parameter Passing Security Enhancement Solution](https://help.aliyun.com/document_detail/391291.html).
 //
 // @param request - CreateTicketRequest
 //
@@ -23595,7 +25417,7 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 
 // Summary:
 //
-// 生成智能小Q嵌入ticket。
+// Generate an embedding ticket for Smart Q.
 //
 // @param request - CreateTicket4CopilotRequest
 //
@@ -23646,29 +25468,18 @@ func (client *Client) CreateTicket4CopilotWithOptions(request *CreateTicket4Copi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateTicket4CopilotResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateTicket4CopilotResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateTicket4CopilotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 生成智能小Q嵌入ticket。
+// Generate an embedding ticket for Smart Q.
 //
 // @param request - CreateTicket4CopilotRequest
 //
@@ -23729,24 +25540,13 @@ func (client *Client) CreateUserGroupWithOptions(request *CreateUserGroupRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateUserGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateUserGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateUserGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -23760,6 +25560,82 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUserGroupResponse{}
 	_body, _err := client.CreateUserGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据解读开放接口
+//
+// @param request - DataInterpretationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DataInterpretationResponse
+func (client *Client) DataInterpretationWithOptions(request *DataInterpretationRequest, runtime *util.RuntimeOptions) (_result *DataInterpretationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelCode)) {
+		query["ModelCode"] = request.ModelCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PromptForceOverride)) {
+		query["PromptForceOverride"] = request.PromptForceOverride
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrompt)) {
+		query["UserPrompt"] = request.UserPrompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserQuestion)) {
+		query["UserQuestion"] = request.UserQuestion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DataInterpretation"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DataInterpretationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据解读开放接口
+//
+// @param request - DataInterpretationRequest
+//
+// @return DataInterpretationResponse
+func (client *Client) DataInterpretation(request *DataInterpretationRequest) (_result *DataInterpretationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DataInterpretationResponse{}
+	_body, _err := client.DataInterpretationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23808,24 +25684,13 @@ func (client *Client) DataSetBloodWithOptions(request *DataSetBloodRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DataSetBloodResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DataSetBloodResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DataSetBloodResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -23848,7 +25713,7 @@ func (client *Client) DataSetBlood(request *DataSetBloodRequest) (_result *DataS
 
 // Summary:
 //
-// 查询引用指定数据源下的数据集信息。
+// # Query dataset information under the specified data source
 //
 // @param request - DataSourceBloodRequest
 //
@@ -23879,29 +25744,18 @@ func (client *Client) DataSourceBloodWithOptions(request *DataSourceBloodRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DataSourceBloodResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DataSourceBloodResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DataSourceBloodResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查询引用指定数据源下的数据集信息。
+// # Query dataset information under the specified data source
 //
 // @param request - DataSourceBloodRequest
 //
@@ -23954,24 +25808,13 @@ func (client *Client) DelayTicketExpireTimeWithOptions(request *DelayTicketExpir
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DelayTicketExpireTimeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DelayTicketExpireTimeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DelayTicketExpireTimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -24029,24 +25872,13 @@ func (client *Client) DeleteDataLevelPermissionRuleUsersWithOptions(request *Del
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDataLevelPermissionRuleUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDataLevelPermissionRuleUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDataLevelPermissionRuleUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -24112,24 +25944,13 @@ func (client *Client) DeleteDataLevelRuleConfigWithOptions(request *DeleteDataLe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDataLevelRuleConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDataLevelRuleConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDataLevelRuleConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -24156,7 +25977,7 @@ func (client *Client) DeleteDataLevelRuleConfig(request *DeleteDataLevelRuleConf
 
 // Summary:
 //
-// Deletes a specified ticket from an embedded report.
+// # Delete Third-Party Embedded Ticket
 //
 // @param request - DeleteTicketRequest
 //
@@ -24187,29 +26008,18 @@ func (client *Client) DeleteTicketWithOptions(request *DeleteTicketRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteTicketResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteTicketResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Deletes a specified ticket from an embedded report.
+// # Delete Third-Party Embedded Ticket
 //
 // @param request - DeleteTicketRequest
 //
@@ -24227,7 +26037,7 @@ func (client *Client) DeleteTicket(request *DeleteTicketRequest) (_result *Delet
 
 // Summary:
 //
-// auditing
+// Delete the specified organization user.
 //
 // @param request - DeleteUserRequest
 //
@@ -24262,29 +26072,18 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// auditing
+// Delete the specified organization user.
 //
 // @param request - DeleteUserRequest
 //
@@ -24302,7 +26101,7 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 
 // Summary:
 //
-// 删除指定工作空间的成员。
+// Delete a member from the specified workspace.
 //
 // @param request - DeleteUserFromWorkspaceRequest
 //
@@ -24337,29 +26136,18 @@ func (client *Client) DeleteUserFromWorkspaceWithOptions(request *DeleteUserFrom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteUserFromWorkspaceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteUserFromWorkspaceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteUserFromWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 删除指定工作空间的成员。
+// Delete a member from the specified workspace.
 //
 // @param request - DeleteUserFromWorkspaceRequest
 //
@@ -24408,24 +26196,13 @@ func (client *Client) DeleteUserGroupWithOptions(request *DeleteUserGroupRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteUserGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteUserGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteUserGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -24483,24 +26260,13 @@ func (client *Client) DeleteUserGroupMemberWithOptions(request *DeleteUserGroupM
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteUserGroupMemberResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteUserGroupMemberResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteUserGroupMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -24558,24 +26324,13 @@ func (client *Client) DeleteUserGroupMembersWithOptions(request *DeleteUserGroup
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteUserGroupMembersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteUserGroupMembersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteUserGroupMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -24629,24 +26384,13 @@ func (client *Client) DeleteUserTagMetaWithOptions(request *DeleteUserTagMetaReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteUserTagMetaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteUserTagMetaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteUserTagMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -24700,24 +26444,13 @@ func (client *Client) GetDataSourceConnectionInfoWithOptions(request *GetDataSou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDataSourceConnectionInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDataSourceConnectionInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDataSourceConnectionInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -24775,24 +26508,13 @@ func (client *Client) GetMailTaskStatusWithOptions(request *GetMailTaskStatusReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMailTaskStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMailTaskStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMailTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -24815,7 +26537,7 @@ func (client *Client) GetMailTaskStatus(request *GetMailTaskStatusRequest) (_res
 
 // Summary:
 //
-// # Test description
+// Search for user group information based on the keyword of the user group name.
 //
 // @param request - GetUserGroupInfoRequest
 //
@@ -24846,29 +26568,18 @@ func (client *Client) GetUserGroupInfoWithOptions(request *GetUserGroupInfoReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetUserGroupInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetUserGroupInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetUserGroupInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// # Test description
+// Search for user group information based on the keyword of the user group name.
 //
 // @param request - GetUserGroupInfoRequest
 //
@@ -24933,24 +26644,13 @@ func (client *Client) GetWorksEmbedListWithOptions(request *GetWorksEmbedListReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetWorksEmbedListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetWorksEmbedListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetWorksEmbedListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -25020,24 +26720,13 @@ func (client *Client) ListApiDatasourceWithOptions(request *ListApiDatasourceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListApiDatasourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListApiDatasourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListApiDatasourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -25095,24 +26784,13 @@ func (client *Client) ListByUserGroupIdWithOptions(request *ListByUserGroupIdReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListByUserGroupIdResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListByUserGroupIdResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListByUserGroupIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -25166,24 +26844,13 @@ func (client *Client) ListCollectionsWithOptions(request *ListCollectionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListCollectionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListCollectionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListCollectionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -25245,24 +26912,13 @@ func (client *Client) ListCubeDataLevelPermissionConfigWithOptions(request *List
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListCubeDataLevelPermissionConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListCubeDataLevelPermissionConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListCubeDataLevelPermissionConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -25289,7 +26945,11 @@ func (client *Client) ListCubeDataLevelPermissionConfig(request *ListCubeDataLev
 
 // Summary:
 //
-// 根据行列权限种类，获取数据集行列权限的白名单列表。
+// Retrieve the whitelist for dataset row and column permissions based on the type of permission.
+//
+// Description:
+//
+// > This API only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. To migrate to the new row and column permission model, follow these steps: In Organization Management -> Security Configuration -> Upgrade Row and Column Permissions, click **One-Click Upgrade*	- to upgrade to the new row-level permissions.
 //
 // @param request - ListDataLevelPermissionWhiteListRequest
 //
@@ -25324,29 +26984,22 @@ func (client *Client) ListDataLevelPermissionWhiteListWithOptions(request *ListD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDataLevelPermissionWhiteListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDataLevelPermissionWhiteListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDataLevelPermissionWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 根据行列权限种类，获取数据集行列权限的白名单列表。
+// Retrieve the whitelist for dataset row and column permissions based on the type of permission.
+//
+// Description:
+//
+// > This API only supports the new row and column permission model of Quick BI. If you are still using the old row and column permissions, please migrate to the new row and column permission model before calling this interface. To migrate to the new row and column permission model, follow these steps: In Organization Management -> Security Configuration -> Upgrade Row and Column Permissions, click **One-Click Upgrade*	- to upgrade to the new row-level permissions.
 //
 // @param request - ListDataLevelPermissionWhiteListRequest
 //
@@ -25399,24 +27052,13 @@ func (client *Client) ListDataSourceWithOptions(request *ListDataSourceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDataSourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDataSourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -25439,7 +27081,7 @@ func (client *Client) ListDataSource(request *ListDataSourceRequest) (_result *L
 
 // Summary:
 //
-// 获取指定用户在首页看板中展示的收藏作品列表。
+// # Overview
 //
 // @param request - ListFavoriteReportsRequest
 //
@@ -25482,29 +27124,18 @@ func (client *Client) ListFavoriteReportsWithOptions(request *ListFavoriteReport
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListFavoriteReportsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListFavoriteReportsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListFavoriteReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取指定用户在首页看板中展示的收藏作品列表。
+// # Overview
 //
 // @param request - ListFavoriteReportsRequest
 //
@@ -25565,24 +27196,13 @@ func (client *Client) ListOrganizationRoleUsersWithOptions(request *ListOrganiza
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListOrganizationRoleUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListOrganizationRoleUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListOrganizationRoleUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -25625,24 +27245,13 @@ func (client *Client) ListOrganizationRolesWithOptions(runtime *util.RuntimeOpti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListOrganizationRolesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListOrganizationRolesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListOrganizationRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -25694,24 +27303,13 @@ func (client *Client) ListPortalMenuAuthorizationWithOptions(request *ListPortal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListPortalMenuAuthorizationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListPortalMenuAuthorizationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListPortalMenuAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -25769,24 +27367,13 @@ func (client *Client) ListPortalMenusWithOptions(request *ListPortalMenusRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListPortalMenusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListPortalMenusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListPortalMenusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -25809,7 +27396,7 @@ func (client *Client) ListPortalMenus(request *ListPortalMenusRequest) (_result 
 
 // Summary:
 //
-// 获取首页看板常看和足迹列表。
+// You can call this operation to obtain a list of the most frequently viewed and footsteps displayed in the homepage dashboard for a specified user.
 //
 // @param request - ListRecentViewReportsRequest
 //
@@ -25860,29 +27447,18 @@ func (client *Client) ListRecentViewReportsWithOptions(request *ListRecentViewRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListRecentViewReportsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListRecentViewReportsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListRecentViewReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取首页看板常看和足迹列表。
+// You can call this operation to obtain a list of the most frequently viewed and footsteps displayed in the homepage dashboard for a specified user.
 //
 // @param request - ListRecentViewReportsRequest
 //
@@ -25900,7 +27476,7 @@ func (client *Client) ListRecentViewReports(request *ListRecentViewReportsReques
 
 // Summary:
 //
-// 获取指定用户在首页看板中展示的被授权的作品列表。
+// You can this operation to obtain the list of authorized works displayed on the homepage of a specified user.
 //
 // @param request - ListSharedReportsRequest
 //
@@ -25943,29 +27519,18 @@ func (client *Client) ListSharedReportsWithOptions(request *ListSharedReportsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListSharedReportsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListSharedReportsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListSharedReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取指定用户在首页看板中展示的被授权的作品列表。
+// You can this operation to obtain the list of authorized works displayed on the homepage of a specified user.
 //
 // @param request - ListSharedReportsRequest
 //
@@ -25983,7 +27548,7 @@ func (client *Client) ListSharedReports(request *ListSharedReportsRequest) (_res
 
 // Summary:
 //
-// # Description
+// Queries all user groups to which a user belongs based on the user ID.
 //
 // @param request - ListUserGroupsByUserIdRequest
 //
@@ -26014,29 +27579,18 @@ func (client *Client) ListUserGroupsByUserIdWithOptions(request *ListUserGroupsB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListUserGroupsByUserIdResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListUserGroupsByUserIdResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListUserGroupsByUserIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// # Description
+// Queries all user groups to which a user belongs based on the user ID.
 //
 // @param request - ListUserGroupsByUserIdRequest
 //
@@ -26101,24 +27655,13 @@ func (client *Client) ListWorkspaceRoleUsersWithOptions(request *ListWorkspaceRo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListWorkspaceRoleUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListWorkspaceRoleUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListWorkspaceRoleUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26172,24 +27715,13 @@ func (client *Client) ListWorkspaceRolesWithOptions(request *ListWorkspaceRolesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListWorkspaceRolesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListWorkspaceRolesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListWorkspaceRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26243,24 +27775,13 @@ func (client *Client) ManualRunMailTaskWithOptions(request *ManualRunMailTaskReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ManualRunMailTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ManualRunMailTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ManualRunMailTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26326,24 +27847,13 @@ func (client *Client) ModifyApiDatasourceParametersWithOptions(request *ModifyAp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyApiDatasourceParametersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyApiDatasourceParametersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyApiDatasourceParametersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26370,7 +27880,7 @@ func (client *Client) ModifyApiDatasourceParameters(request *ModifyApiDatasource
 
 // Summary:
 //
-// 修改智能问数嵌入配置。
+// # Modify Intelligent Query Embedding Configuration
 //
 // @param request - ModifyCopilotEmbedConfigRequest
 //
@@ -26413,29 +27923,18 @@ func (client *Client) ModifyCopilotEmbedConfigWithOptions(request *ModifyCopilot
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyCopilotEmbedConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyCopilotEmbedConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyCopilotEmbedConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 修改智能问数嵌入配置。
+// # Modify Intelligent Query Embedding Configuration
 //
 // @param request - ModifyCopilotEmbedConfigRequest
 //
@@ -26496,24 +27995,13 @@ func (client *Client) QueryApprovalInfoWithOptions(request *QueryApprovalInfoReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryApprovalInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryApprovalInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryApprovalInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26536,7 +28024,7 @@ func (client *Client) QueryApprovalInfo(request *QueryApprovalInfoRequest) (_res
 
 // Summary:
 //
-// 查询审计日志信息。
+// Query audit log information.
 //
 // @param request - QueryAuditLogRequest
 //
@@ -26591,29 +28079,18 @@ func (client *Client) QueryAuditLogWithOptions(request *QueryAuditLogRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryAuditLogResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryAuditLogResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryAuditLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查询审计日志信息。
+// Query audit log information.
 //
 // @param request - QueryAuditLogRequest
 //
@@ -26686,24 +28163,13 @@ func (client *Client) QueryComponentPerformanceWithOptions(request *QueryCompone
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryComponentPerformanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryComponentPerformanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryComponentPerformanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26726,7 +28192,7 @@ func (client *Client) QueryComponentPerformance(request *QueryComponentPerforman
 
 // Summary:
 //
-// 获取开通小Q嵌入的配置列表。
+// # Get the List of Configurations for Activating XiaoQ Embedding
 //
 // @param request - QueryCopilotEmbedConfigRequest
 //
@@ -26757,29 +28223,18 @@ func (client *Client) QueryCopilotEmbedConfigWithOptions(request *QueryCopilotEm
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryCopilotEmbedConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryCopilotEmbedConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryCopilotEmbedConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取开通小Q嵌入的配置列表。
+// # Get the List of Configurations for Activating XiaoQ Embedding
 //
 // @param request - QueryCopilotEmbedConfigRequest
 //
@@ -26828,24 +28283,13 @@ func (client *Client) QueryCubeOptimizationWithOptions(request *QueryCubeOptimiz
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryCubeOptimizationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryCubeOptimizationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryCubeOptimizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26868,7 +28312,7 @@ func (client *Client) QueryCubeOptimization(request *QueryCubeOptimizationReques
 
 // Summary:
 //
-// 查询数据集性能。
+// Queries the performance logs of a dataset.
 //
 // @param request - QueryCubePerformanceRequest
 //
@@ -26919,29 +28363,18 @@ func (client *Client) QueryCubePerformanceWithOptions(request *QueryCubePerforma
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryCubePerformanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryCubePerformanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryCubePerformanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查询数据集性能。
+// Queries the performance logs of a dataset.
 //
 // @param request - QueryCubePerformanceRequest
 //
@@ -27016,24 +28449,13 @@ func (client *Client) QueryDataWithOptions(request *QueryDataRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27070,7 +28492,7 @@ func (client *Client) QueryData(request *QueryDataRequest) (_result *QueryDataRe
 
 // Summary:
 //
-// 获取数据范围目录列表。
+// # Get Data Range Catalog List
 //
 // @param request - QueryDataRangeRequest
 //
@@ -27105,29 +28527,18 @@ func (client *Client) QueryDataRangeWithOptions(request *QueryDataRangeRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryDataRangeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryDataRangeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryDataRangeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取数据范围目录列表。
+// # Get Data Range Catalog List
 //
 // @param request - QueryDataRangeRequest
 //
@@ -27201,24 +28612,13 @@ func (client *Client) QueryDataServiceWithOptions(request *QueryDataServiceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryDataServiceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryDataServiceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryDataServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Deprecated: OpenAPI QueryDataService is deprecated, please use quickbi-public::2022-01-01::QueryData instead.
@@ -27301,24 +28701,13 @@ func (client *Client) QueryDataServiceListWithOptions(request *QueryDataServiceL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryDataServiceListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryDataServiceListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryDataServiceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27376,24 +28765,13 @@ func (client *Client) QueryDatasetDetailInfoWithOptions(request *QueryDatasetDet
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryDatasetDetailInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryDatasetDetailInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryDatasetDetailInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27455,24 +28833,13 @@ func (client *Client) QueryDatasetInfoWithOptions(request *QueryDatasetInfoReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryDatasetInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryDatasetInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryDatasetInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27550,24 +28917,13 @@ func (client *Client) QueryDatasetListWithOptions(request *QueryDatasetListReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryDatasetListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryDatasetListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryDatasetListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27590,7 +28946,7 @@ func (client *Client) QueryDatasetList(request *QueryDatasetListRequest) (_resul
 
 // Summary:
 //
-// 查看数据集是否开通智能问数
+// # Check if the Dataset has Enabled Smart Query
 //
 // @param request - QueryDatasetSmartqStatusRequest
 //
@@ -27621,29 +28977,18 @@ func (client *Client) QueryDatasetSmartqStatusWithOptions(request *QueryDatasetS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryDatasetSmartqStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryDatasetSmartqStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryDatasetSmartqStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查看数据集是否开通智能问数
+// # Check if the Dataset has Enabled Smart Query
 //
 // @param request - QueryDatasetSmartqStatusRequest
 //
@@ -27692,24 +29037,13 @@ func (client *Client) QueryDatasetSwitchInfoWithOptions(request *QueryDatasetSwi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryDatasetSwitchInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryDatasetSwitchInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryDatasetSwitchInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27732,7 +29066,7 @@ func (client *Client) QueryDatasetSwitchInfo(request *QueryDatasetSwitchInfoRequ
 
 // Summary:
 //
-// The number of reports that are currently embedded.
+// Obtain the embedding configuration in the organization, including the maximum number of embeddings and the number of embeddings.
 //
 // @param request - QueryEmbeddedInfoRequest
 //
@@ -27752,29 +29086,18 @@ func (client *Client) QueryEmbeddedInfoWithOptions(runtime *util.RuntimeOptions)
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryEmbeddedInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryEmbeddedInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryEmbeddedInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// The number of reports that are currently embedded.
+// Obtain the embedding configuration in the organization, including the maximum number of embeddings and the number of embeddings.
 //
 // @return QueryEmbeddedInfoResponse
 func (client *Client) QueryEmbeddedInfo() (_result *QueryEmbeddedInfoResponse, _err error) {
@@ -27821,24 +29144,13 @@ func (client *Client) QueryEmbeddedStatusWithOptions(request *QueryEmbeddedStatu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryEmbeddedStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryEmbeddedStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryEmbeddedStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27861,7 +29173,7 @@ func (client *Client) QueryEmbeddedStatus(request *QueryEmbeddedStatusRequest) (
 
 // Summary:
 //
-// 查看用户有哪些数据集和分析主题的问数授权
+// # Check which datasets and analysis themes the user has question authorization for
 //
 // @param request - QueryLlmCubeWithThemeListByUserIdRequest
 //
@@ -27892,29 +29204,18 @@ func (client *Client) QueryLlmCubeWithThemeListByUserIdWithOptions(request *Quer
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryLlmCubeWithThemeListByUserIdResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryLlmCubeWithThemeListByUserIdResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryLlmCubeWithThemeListByUserIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查看用户有哪些数据集和分析主题的问数授权
+// # Check which datasets and analysis themes the user has question authorization for
 //
 // @param request - QueryLlmCubeWithThemeListByUserIdRequest
 //
@@ -27932,7 +29233,7 @@ func (client *Client) QueryLlmCubeWithThemeListByUserId(request *QueryLlmCubeWit
 
 // Summary:
 //
-// # Retrieve Configuration Information for a Specified Organization Role
+// Gets the configuration of the specified organization role.
 //
 // @param request - QueryOrganizationRoleConfigRequest
 //
@@ -27963,29 +29264,18 @@ func (client *Client) QueryOrganizationRoleConfigWithOptions(request *QueryOrgan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryOrganizationRoleConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryOrganizationRoleConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryOrganizationRoleConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// # Retrieve Configuration Information for a Specified Organization Role
+// Gets the configuration of the specified organization role.
 //
 // @param request - QueryOrganizationRoleConfigRequest
 //
@@ -28003,7 +29293,7 @@ func (client *Client) QueryOrganizationRoleConfig(request *QueryOrganizationRole
 
 // Summary:
 //
-// 获取当前组织下的工作空间列表信息。
+// Retrieve the list of workspaces under the current organization.
 //
 // @param request - QueryOrganizationWorkspaceListRequest
 //
@@ -28046,29 +29336,18 @@ func (client *Client) QueryOrganizationWorkspaceListWithOptions(request *QueryOr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryOrganizationWorkspaceListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryOrganizationWorkspaceListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryOrganizationWorkspaceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取当前组织下的工作空间列表信息。
+// Retrieve the list of workspaces under the current organization.
 //
 // @param request - QueryOrganizationWorkspaceListRequest
 //
@@ -28086,7 +29365,7 @@ func (client *Client) QueryOrganizationWorkspaceList(request *QueryOrganizationW
 
 // Summary:
 //
-// The Alibaba Cloud account name of the owner.
+// Queries the list of works that a user has the permission to view, including the statements that are authorized to share in a space.
 //
 // @param request - QueryReadableResourcesListByUserIdRequest
 //
@@ -28117,29 +29396,18 @@ func (client *Client) QueryReadableResourcesListByUserIdWithOptions(request *Que
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryReadableResourcesListByUserIdResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryReadableResourcesListByUserIdResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryReadableResourcesListByUserIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// The Alibaba Cloud account name of the owner.
+// Queries the list of works that a user has the permission to view, including the statements that are authorized to share in a space.
 //
 // @param request - QueryReadableResourcesListByUserIdRequest
 //
@@ -28212,24 +29480,13 @@ func (client *Client) QueryReportPerformanceWithOptions(request *QueryReportPerf
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryReportPerformanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryReportPerformanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryReportPerformanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28252,7 +29509,7 @@ func (client *Client) QueryReportPerformance(request *QueryReportPerformanceRequ
 
 // Summary:
 //
-// # Xiao Zhang
+// Query the list of objects to which a work has been shared, returning only the sharing configurations that are still within their validity period.
 //
 // @param request - QueryShareListRequest
 //
@@ -28283,29 +29540,18 @@ func (client *Client) QueryShareListWithOptions(request *QueryShareListRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryShareListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryShareListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryShareListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// # Xiao Zhang
+// Query the list of objects to which a work has been shared, returning only the sharing configurations that are still within their validity period.
 //
 // @param request - QueryShareListRequest
 //
@@ -28354,24 +29600,13 @@ func (client *Client) QuerySharesToUserListWithOptions(request *QuerySharesToUse
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QuerySharesToUserListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QuerySharesToUserListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QuerySharesToUserListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28394,7 +29629,7 @@ func (client *Client) QuerySharesToUserList(request *QuerySharesToUserListReques
 
 // Summary:
 //
-// 查看用户是否有某个智能问数数据集权限
+// # Check if a user has permission for a specific smart question dataset
 //
 // @param request - QuerySmartqPermissionByCubeIdRequest
 //
@@ -28429,29 +29664,18 @@ func (client *Client) QuerySmartqPermissionByCubeIdWithOptions(request *QuerySma
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QuerySmartqPermissionByCubeIdResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QuerySmartqPermissionByCubeIdResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QuerySmartqPermissionByCubeIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查看用户是否有某个智能问数数据集权限
+// # Check if a user has permission for a specific smart question dataset
 //
 // @param request - QuerySmartqPermissionByCubeIdRequest
 //
@@ -28469,7 +29693,7 @@ func (client *Client) QuerySmartqPermissionByCubeId(request *QuerySmartqPermissi
 
 // Summary:
 //
-// auditing
+// Obtains the details of a specified ticket for a report that is not embedded in the report.
 //
 // @param request - QueryTicketInfoRequest
 //
@@ -28500,29 +29724,18 @@ func (client *Client) QueryTicketInfoWithOptions(request *QueryTicketInfoRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryTicketInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryTicketInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryTicketInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// auditing
+// Obtains the details of a specified ticket for a report that is not embedded in the report.
 //
 // @param request - QueryTicketInfoRequest
 //
@@ -28571,24 +29784,13 @@ func (client *Client) QueryUserGroupListByParentIdWithOptions(request *QueryUser
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryUserGroupListByParentIdResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryUserGroupListByParentIdResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryUserGroupListByParentIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28611,7 +29813,7 @@ func (client *Client) QueryUserGroupListByParentId(request *QueryUserGroupListBy
 
 // Summary:
 //
-// 获取用户组下的成员列表信息。
+// Retrieve the list of members under a user group.
 //
 // @param request - QueryUserGroupMemberRequest
 //
@@ -28646,29 +29848,18 @@ func (client *Client) QueryUserGroupMemberWithOptions(request *QueryUserGroupMem
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryUserGroupMemberResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryUserGroupMemberResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryUserGroupMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取用户组下的成员列表信息。
+// Retrieve the list of members under a user group.
 //
 // @param request - QueryUserGroupMemberRequest
 //
@@ -28721,24 +29912,13 @@ func (client *Client) QueryUserInfoByAccountWithOptions(request *QueryUserInfoBy
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryUserInfoByAccountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryUserInfoByAccountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryUserInfoByAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28792,24 +29972,13 @@ func (client *Client) QueryUserInfoByUserIdWithOptions(request *QueryUserInfoByU
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryUserInfoByUserIdResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryUserInfoByUserIdResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryUserInfoByUserIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28832,7 +30001,7 @@ func (client *Client) QueryUserInfoByUserId(request *QueryUserInfoByUserIdReques
 
 // Summary:
 //
-// 查询组织成员列表信息。
+// Queries the members of an organization.
 //
 // @param request - QueryUserListRequest
 //
@@ -28859,29 +30028,18 @@ func (client *Client) QueryUserListWithOptions(request *QueryUserListRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryUserListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryUserListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryUserListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查询组织成员列表信息。
+// Queries the members of an organization.
 //
 // @param request - QueryUserListRequest
 //
@@ -28899,7 +30057,7 @@ func (client *Client) QueryUserList(request *QueryUserListRequest) (_result *Que
 
 // Summary:
 //
-// 获取指定工作空间成员的预置空间角色信息。
+// Get the preset workspace role information for a specified workspace member.
 //
 // @param request - QueryUserRoleInfoInWorkspaceRequest
 //
@@ -28934,29 +30092,18 @@ func (client *Client) QueryUserRoleInfoInWorkspaceWithOptions(request *QueryUser
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryUserRoleInfoInWorkspaceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryUserRoleInfoInWorkspaceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryUserRoleInfoInWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取指定工作空间成员的预置空间角色信息。
+// Get the preset workspace role information for a specified workspace member.
 //
 // @param request - QueryUserRoleInfoInWorkspaceRequest
 //
@@ -28994,24 +30141,13 @@ func (client *Client) QueryUserTagMetaListWithOptions(runtime *util.RuntimeOptio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryUserTagMetaListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryUserTagMetaListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryUserTagMetaListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29059,24 +30195,13 @@ func (client *Client) QueryUserTagValueListWithOptions(request *QueryUserTagValu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryUserTagValueListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryUserTagValueListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryUserTagValueListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29099,7 +30224,7 @@ func (client *Client) QueryUserTagValueList(request *QueryUserTagValueListReques
 
 // Summary:
 //
-// 获取报表详情
+// Queries information about a specified data work.
 //
 // @param request - QueryWorksRequest
 //
@@ -29130,29 +30255,18 @@ func (client *Client) QueryWorksWithOptions(request *QueryWorksRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryWorksResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryWorksResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryWorksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取报表详情
+// Queries information about a specified data work.
 //
 // @param request - QueryWorksRequest
 //
@@ -29170,7 +30284,7 @@ func (client *Client) QueryWorks(request *QueryWorksRequest) (_result *QueryWork
 
 // Summary:
 //
-// abcd****
+// Obtains the kinship of a data work, including the datasets referenced by each component and query field information. Currently, only supported data works include dashboards, workbooks, and self-service data retrieval.
 //
 // @param request - QueryWorksBloodRelationshipRequest
 //
@@ -29201,29 +30315,18 @@ func (client *Client) QueryWorksBloodRelationshipWithOptions(request *QueryWorks
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryWorksBloodRelationshipResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryWorksBloodRelationshipResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryWorksBloodRelationshipResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// abcd****
+// Obtains the kinship of a data work, including the datasets referenced by each component and query field information. Currently, only supported data works include dashboards, workbooks, and self-service data retrieval.
 //
 // @param request - QueryWorksBloodRelationshipRequest
 //
@@ -29241,7 +30344,7 @@ func (client *Client) QueryWorksBloodRelationship(request *QueryWorksBloodRelati
 
 // Summary:
 //
-// The total number of rows in the table.
+// Query all works under the entire organization, with the option to specify the type of work.
 //
 // @param request - QueryWorksByOrganizationRequest
 //
@@ -29288,29 +30391,18 @@ func (client *Client) QueryWorksByOrganizationWithOptions(request *QueryWorksByO
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryWorksByOrganizationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryWorksByOrganizationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryWorksByOrganizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// The total number of rows in the table.
+// Query all works under the entire organization, with the option to specify the type of work.
 //
 // @param request - QueryWorksByOrganizationRequest
 //
@@ -29328,7 +30420,7 @@ func (client *Client) QueryWorksByOrganization(request *QueryWorksByOrganization
 
 // Summary:
 //
-// The name of the directory.
+// Queries all works in a workspace under an organization. You can specify the type of work.
 //
 // @param request - QueryWorksByWorkspaceRequest
 //
@@ -29379,29 +30471,18 @@ func (client *Client) QueryWorksByWorkspaceWithOptions(request *QueryWorksByWork
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryWorksByWorkspaceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryWorksByWorkspaceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryWorksByWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// The name of the directory.
+// Queries all works in a workspace under an organization. You can specify the type of work.
 //
 // @param request - QueryWorksByWorkspaceRequest
 //
@@ -29450,24 +30531,13 @@ func (client *Client) QueryWorkspaceRoleConfigWithOptions(request *QueryWorkspac
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryWorkspaceRoleConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryWorkspaceRoleConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryWorkspaceRoleConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29490,7 +30560,7 @@ func (client *Client) QueryWorkspaceRoleConfig(request *QueryWorkspaceRoleConfig
 
 // Summary:
 //
-// 查询指定工作空间下的成员列表信息。
+// Query the list of members under a specified workspace.
 //
 // @param request - QueryWorkspaceUserListRequest
 //
@@ -29533,29 +30603,18 @@ func (client *Client) QueryWorkspaceUserListWithOptions(request *QueryWorkspaceU
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryWorkspaceUserListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryWorkspaceUserListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryWorkspaceUserListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查询指定工作空间下的成员列表信息。
+// Query the list of members under a specified workspace.
 //
 // @param request - QueryWorkspaceUserListRequest
 //
@@ -29612,24 +30671,13 @@ func (client *Client) ResultCallbackWithOptions(request *ResultCallbackRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResultCallbackResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ResultCallbackResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ResultCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29652,7 +30700,7 @@ func (client *Client) ResultCallback(request *ResultCallbackRequest) (_result *R
 
 // Summary:
 //
-// Add the user\\"s collection data works.
+// Add a user\\"s favorite work
 //
 // @param request - SaveFavoritesRequest
 //
@@ -29687,29 +30735,18 @@ func (client *Client) SaveFavoritesWithOptions(request *SaveFavoritesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SaveFavoritesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SaveFavoritesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SaveFavoritesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Add the user\\"s collection data works.
+// Add a user\\"s favorite work
 //
 // @param request - SaveFavoritesRequest
 //
@@ -29766,24 +30803,13 @@ func (client *Client) SetDataLevelPermissionExtraConfigWithOptions(request *SetD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetDataLevelPermissionExtraConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetDataLevelPermissionExtraConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetDataLevelPermissionExtraConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29837,24 +30863,13 @@ func (client *Client) SetDataLevelPermissionRuleConfigWithOptions(request *SetDa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetDataLevelPermissionRuleConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetDataLevelPermissionRuleConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetDataLevelPermissionRuleConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29912,24 +30927,13 @@ func (client *Client) SetDataLevelPermissionWhiteListWithOptions(request *SetDat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetDataLevelPermissionWhiteListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetDataLevelPermissionWhiteListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetDataLevelPermissionWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29956,7 +30960,7 @@ func (client *Client) SetDataLevelPermissionWhiteList(request *SetDataLevelPermi
 
 // Summary:
 //
-// 将指定用户的问数权限同步给其他用户
+// # Synchronize the question count permissions of a specified user to other users
 //
 // @param request - SmartqAuthTransferRequest
 //
@@ -29991,29 +30995,18 @@ func (client *Client) SmartqAuthTransferWithOptions(request *SmartqAuthTransferR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SmartqAuthTransferResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SmartqAuthTransferResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SmartqAuthTransferResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 将指定用户的问数权限同步给其他用户
+// # Synchronize the question count permissions of a specified user to other users
 //
 // @param request - SmartqAuthTransferRequest
 //
@@ -30031,7 +31024,11 @@ func (client *Client) SmartqAuthTransfer(request *SmartqAuthTransferRequest) (_r
 
 // Summary:
 //
-// 批量管理智能问数的授权
+// Batch Management of Smart Q\\&A Authorizations
+//
+// Description:
+//
+// Used for batch management of smart Q&A authorizations. Repeatedly adding an authorization will be treated as a new addition; repeatedly deleting an authorization will be skipped by default and will not be recorded in the audit log.
 //
 // @param request - SmartqAuthorizeRequest
 //
@@ -30044,6 +31041,10 @@ func (client *Client) SmartqAuthorizeWithOptions(request *SmartqAuthorizeRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CubeIds)) {
+		query["CubeIds"] = request.CubeIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExpireDay)) {
 		query["ExpireDay"] = request.ExpireDay
 	}
@@ -30078,29 +31079,22 @@ func (client *Client) SmartqAuthorizeWithOptions(request *SmartqAuthorizeRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SmartqAuthorizeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SmartqAuthorizeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SmartqAuthorizeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 批量管理智能问数的授权
+// Batch Management of Smart Q\\&A Authorizations
+//
+// Description:
+//
+// Used for batch management of smart Q&A authorizations. Repeatedly adding an authorization will be treated as a new addition; repeatedly deleting an authorization will be skipped by default and will not be recorded in the audit log.
 //
 // @param request - SmartqAuthorizeRequest
 //
@@ -30118,7 +31112,11 @@ func (client *Client) SmartqAuthorize(request *SmartqAuthorizeRequest) (_result 
 
 // Summary:
 //
-// 问数能力开放
+// # Query Capability Open
+//
+// Description:
+//
+// Special Note: When a user is authorized to call this API, it is assumed that the user has the permission to query the corresponding data by passing in the userId as that user.
 //
 // @param request - SmartqQueryAbilityRequest
 //
@@ -30157,29 +31155,22 @@ func (client *Client) SmartqQueryAbilityWithOptions(request *SmartqQueryAbilityR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SmartqQueryAbilityResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SmartqQueryAbilityResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SmartqQueryAbilityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 问数能力开放
+// # Query Capability Open
+//
+// Description:
+//
+// Special Note: When a user is authorized to call this API, it is assumed that the user has the permission to query the corresponding data by passing in the userId as that user.
 //
 // @param request - SmartqQueryAbilityRequest
 //
@@ -30248,24 +31239,13 @@ func (client *Client) UpdateDataLevelPermissionStatusWithOptions(request *Update
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateDataLevelPermissionStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateDataLevelPermissionStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateDataLevelPermissionStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30300,7 +31280,7 @@ func (client *Client) UpdateDataLevelPermissionStatus(request *UpdateDataLevelPe
 
 // Summary:
 //
-// The ID of the request.
+// Change the embedding status of a report, turn on embedding, or turn off embedding.
 //
 // @param request - UpdateEmbeddedStatusRequest
 //
@@ -30335,29 +31315,18 @@ func (client *Client) UpdateEmbeddedStatusWithOptions(request *UpdateEmbeddedSta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateEmbeddedStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateEmbeddedStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateEmbeddedStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// The ID of the request.
+// Change the embedding status of a report, turn on embedding, or turn off embedding.
 //
 // @param request - UpdateEmbeddedStatusRequest
 //
@@ -30375,7 +31344,7 @@ func (client *Client) UpdateEmbeddedStatus(request *UpdateEmbeddedStatusRequest)
 
 // Summary:
 //
-// 更新三方嵌入ticket的票据数量
+// Update the ticket quantity on the specified ticket used for the exemption embedded report.
 //
 // @param request - UpdateTicketNumRequest
 //
@@ -30410,29 +31379,18 @@ func (client *Client) UpdateTicketNumWithOptions(request *UpdateTicketNumRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateTicketNumResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateTicketNumResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateTicketNumResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 更新三方嵌入ticket的票据数量
+// Update the ticket quantity on the specified ticket used for the exemption embedded report.
 //
 // @param request - UpdateTicketNumRequest
 //
@@ -30505,24 +31463,13 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30584,24 +31531,13 @@ func (client *Client) UpdateUserGroupWithOptions(request *UpdateUserGroupRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateUserGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateUserGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateUserGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30663,24 +31599,13 @@ func (client *Client) UpdateUserTagMetaWithOptions(request *UpdateUserTagMetaReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateUserTagMetaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateUserTagMetaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateUserTagMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30742,24 +31667,13 @@ func (client *Client) UpdateUserTagValueWithOptions(request *UpdateUserTagValueR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateUserTagValueResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateUserTagValueResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateUserTagValueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30782,7 +31696,7 @@ func (client *Client) UpdateUserTagValue(request *UpdateUserTagValueRequest) (_r
 
 // Summary:
 //
-// 修改工作空间下指定成员的角色，已有的角色会被覆盖
+// Modify the role of a specified member under the workspace, existing roles will be overwritten.
 //
 // @param request - UpdateWorkspaceUserRoleRequest
 //
@@ -30825,29 +31739,18 @@ func (client *Client) UpdateWorkspaceUserRoleWithOptions(request *UpdateWorkspac
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateWorkspaceUserRoleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateWorkspaceUserRoleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateWorkspaceUserRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 修改工作空间下指定成员的角色，已有的角色会被覆盖
+// Modify the role of a specified member under the workspace, existing roles will be overwritten.
 //
 // @param request - UpdateWorkspaceUserRoleRequest
 //
@@ -30865,7 +31768,7 @@ func (client *Client) UpdateWorkspaceUserRole(request *UpdateWorkspaceUserRoleRe
 
 // Summary:
 //
-// 批量更新工作空间成员的角色信息，已有角色会被覆盖
+// # Batch update the role information of workspace members, existing roles will be overwritten
 //
 // @param request - UpdateWorkspaceUsersRoleRequest
 //
@@ -30904,29 +31807,18 @@ func (client *Client) UpdateWorkspaceUsersRoleWithOptions(request *UpdateWorkspa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateWorkspaceUsersRoleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateWorkspaceUsersRoleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateWorkspaceUsersRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 批量更新工作空间成员的角色信息，已有角色会被覆盖
+// # Batch update the role information of workspace members, existing roles will be overwritten
 //
 // @param request - UpdateWorkspaceUsersRoleRequest
 //
@@ -30975,24 +31867,13 @@ func (client *Client) WithdrawAllUserGroupsWithOptions(request *WithdrawAllUserG
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &WithdrawAllUserGroupsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &WithdrawAllUserGroupsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &WithdrawAllUserGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
