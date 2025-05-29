@@ -4243,7 +4243,10 @@ func (s *RunHotTopicChatResponseBodyPayload) SetUsage(v *RunHotTopicChatResponse
 
 type RunHotTopicChatResponseBodyPayloadOutput struct {
 	Articles          []*RunHotTopicChatResponseBodyPayloadOutputArticles          `json:"articles,omitempty" xml:"articles,omitempty" type:"Repeated"`
+	Category          *string                                                      `json:"category,omitempty" xml:"category,omitempty"`
 	HotTopicSummaries []*RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries `json:"hotTopicSummaries,omitempty" xml:"hotTopicSummaries,omitempty" type:"Repeated"`
+	Keyword           *string                                                      `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	Location          *string                                                      `json:"location,omitempty" xml:"location,omitempty"`
 	MultimodalMedias  []*RunHotTopicChatResponseBodyPayloadOutputMultimodalMedias  `json:"multimodalMedias,omitempty" xml:"multimodalMedias,omitempty" type:"Repeated"`
 	RecommendQueries  []*string                                                    `json:"recommendQueries,omitempty" xml:"recommendQueries,omitempty" type:"Repeated"`
 	SearchQuery       *string                                                      `json:"searchQuery,omitempty" xml:"searchQuery,omitempty"`
@@ -4266,8 +4269,23 @@ func (s *RunHotTopicChatResponseBodyPayloadOutput) SetArticles(v []*RunHotTopicC
 	return s
 }
 
+func (s *RunHotTopicChatResponseBodyPayloadOutput) SetCategory(v string) *RunHotTopicChatResponseBodyPayloadOutput {
+	s.Category = &v
+	return s
+}
+
 func (s *RunHotTopicChatResponseBodyPayloadOutput) SetHotTopicSummaries(v []*RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) *RunHotTopicChatResponseBodyPayloadOutput {
 	s.HotTopicSummaries = v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutput) SetKeyword(v string) *RunHotTopicChatResponseBodyPayloadOutput {
+	s.Keyword = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutput) SetLocation(v string) *RunHotTopicChatResponseBodyPayloadOutput {
+	s.Location = &v
 	return s
 }
 
@@ -4388,10 +4406,12 @@ type RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries struct {
 	HotValue *float64                                                           `json:"hotValue,omitempty" xml:"hotValue,omitempty"`
 	Images   []*RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
 	News     []*RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews   `json:"news,omitempty" xml:"news,omitempty" type:"Repeated"`
+	PubTime  *string                                                            `json:"pubTime,omitempty" xml:"pubTime,omitempty"`
 	// example:
 	//
 	// xxx
 	TextSummary *string `json:"textSummary,omitempty" xml:"textSummary,omitempty"`
+	Url         *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) String() string {
@@ -4437,8 +4457,18 @@ func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetNews(v []
 	return s
 }
 
+func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetPubTime(v string) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries {
+	s.PubTime = &v
+	return s
+}
+
 func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetTextSummary(v string) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries {
 	s.TextSummary = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetUrl(v string) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries {
+	s.Url = &v
 	return s
 }
 
