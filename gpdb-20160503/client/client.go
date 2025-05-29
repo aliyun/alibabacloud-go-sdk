@@ -2527,7 +2527,8 @@ type CreateDBInstanceRequest struct {
 	// example:
 	//
 	// 1111111111
-	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupId         *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	CacheStorageSize *string `json:"CacheStorageSize,omitempty" xml:"CacheStorageSize,omitempty"`
 	// Idempotence check. For more information, see [How to Ensure Idempotence](https://help.aliyun.com/document_detail/327176.html).
 	//
 	// example:
@@ -3004,6 +3005,11 @@ func (s *CreateDBInstanceRequest) SetAINodeSpecInfos(v []*CreateDBInstanceReques
 
 func (s *CreateDBInstanceRequest) SetBackupId(v string) *CreateDBInstanceRequest {
 	s.BackupId = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetCacheStorageSize(v string) *CreateDBInstanceRequest {
+	s.CacheStorageSize = &v
 	return s
 }
 
@@ -12588,6 +12594,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 100.0%
 	AvailabilityValue *string `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
+	CacheStorageSize  *string `json:"CacheStorageSize,omitempty" xml:"CacheStorageSize,omitempty"`
 	// Access mode, with the following values:
 	//
 	// - **Performance**: Standard access mode.
@@ -13104,6 +13111,11 @@ func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GoStrin
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetAvailabilityValue(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.AvailabilityValue = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetCacheStorageSize(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.CacheStorageSize = &v
 	return s
 }
 
@@ -41421,7 +41433,8 @@ type QueryContentRequest struct {
 	// example:
 	//
 	// 10
-	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	TopK          *int32  `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	UrlExpiration *string `json:"UrlExpiration,omitempty" xml:"UrlExpiration,omitempty"`
 	// Whether to use full-text retrieval (dual recall). Default is false, which means only vector retrieval is used.
 	//
 	// example:
@@ -41530,6 +41543,11 @@ func (s *QueryContentRequest) SetRerankFactor(v float64) *QueryContentRequest {
 
 func (s *QueryContentRequest) SetTopK(v int32) *QueryContentRequest {
 	s.TopK = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetUrlExpiration(v string) *QueryContentRequest {
+	s.UrlExpiration = &v
 	return s
 }
 
@@ -41714,7 +41732,8 @@ type QueryContentAdvanceRequest struct {
 	// example:
 	//
 	// 10
-	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	TopK          *int32  `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	UrlExpiration *string `json:"UrlExpiration,omitempty" xml:"UrlExpiration,omitempty"`
 	// Whether to use full-text retrieval (dual recall). Default is false, which means only vector retrieval is used.
 	//
 	// example:
@@ -41823,6 +41842,11 @@ func (s *QueryContentAdvanceRequest) SetRerankFactor(v float64) *QueryContentAdv
 
 func (s *QueryContentAdvanceRequest) SetTopK(v int32) *QueryContentAdvanceRequest {
 	s.TopK = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetUrlExpiration(v string) *QueryContentAdvanceRequest {
+	s.UrlExpiration = &v
 	return s
 }
 
@@ -42007,7 +42031,8 @@ type QueryContentShrinkRequest struct {
 	// example:
 	//
 	// 10
-	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	TopK          *int32  `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	UrlExpiration *string `json:"UrlExpiration,omitempty" xml:"UrlExpiration,omitempty"`
 	// Whether to use full-text retrieval (dual recall). Default is false, which means only vector retrieval is used.
 	//
 	// example:
@@ -42116,6 +42141,11 @@ func (s *QueryContentShrinkRequest) SetRerankFactor(v float64) *QueryContentShri
 
 func (s *QueryContentShrinkRequest) SetTopK(v int32) *QueryContentShrinkRequest {
 	s.TopK = &v
+	return s
+}
+
+func (s *QueryContentShrinkRequest) SetUrlExpiration(v string) *QueryContentShrinkRequest {
+	s.UrlExpiration = &v
 	return s
 }
 
@@ -44277,6 +44307,7 @@ type TextEmbeddingRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Dimension    *int32    `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	Input        []*string `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -44301,6 +44332,11 @@ func (s TextEmbeddingRequest) GoString() string {
 
 func (s *TextEmbeddingRequest) SetDBInstanceId(v string) *TextEmbeddingRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *TextEmbeddingRequest) SetDimension(v int32) *TextEmbeddingRequest {
+	s.Dimension = &v
 	return s
 }
 
@@ -44331,6 +44367,7 @@ type TextEmbeddingShrinkRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Dimension    *int32  `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	InputShrink  *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	// example:
 	//
@@ -44355,6 +44392,11 @@ func (s TextEmbeddingShrinkRequest) GoString() string {
 
 func (s *TextEmbeddingShrinkRequest) SetDBInstanceId(v string) *TextEmbeddingShrinkRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *TextEmbeddingShrinkRequest) SetDimension(v int32) *TextEmbeddingShrinkRequest {
+	s.Dimension = &v
 	return s
 }
 
@@ -45514,6 +45556,7 @@ func (s *UpdateDBInstancePlanResponse) SetBody(v *UpdateDBInstancePlanResponseBo
 }
 
 type UpgradeDBInstanceRequest struct {
+	CacheStorageSize *string `json:"CacheStorageSize,omitempty" xml:"CacheStorageSize,omitempty"`
 	// This parameter is no longer used.
 	//
 	// example:
@@ -45600,7 +45643,8 @@ type UpgradeDBInstanceRequest struct {
 	// example:
 	//
 	// cloud_essd
-	SegStorageType *string `json:"SegStorageType,omitempty" xml:"SegStorageType,omitempty"`
+	SegStorageType     *string `json:"SegStorageType,omitempty" xml:"SegStorageType,omitempty"`
+	ServerlessResource *string `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
 	// The storage capacity of each compute node. Unit: GB. Valid values: 50 to 6000, in 50 increments.
 	//
 	// >  This parameter is available only for instances in elastic storage mode.
@@ -45641,6 +45685,11 @@ func (s UpgradeDBInstanceRequest) String() string {
 
 func (s UpgradeDBInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpgradeDBInstanceRequest) SetCacheStorageSize(v string) *UpgradeDBInstanceRequest {
+	s.CacheStorageSize = &v
+	return s
 }
 
 func (s *UpgradeDBInstanceRequest) SetDBInstanceClass(v string) *UpgradeDBInstanceRequest {
@@ -45700,6 +45749,11 @@ func (s *UpgradeDBInstanceRequest) SetSegNodeNum(v string) *UpgradeDBInstanceReq
 
 func (s *UpgradeDBInstanceRequest) SetSegStorageType(v string) *UpgradeDBInstanceRequest {
 	s.SegStorageType = &v
+	return s
+}
+
+func (s *UpgradeDBInstanceRequest) SetServerlessResource(v string) *UpgradeDBInstanceRequest {
+	s.ServerlessResource = &v
 	return s
 }
 
@@ -46924,7 +46978,8 @@ type UpsertChunksRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ShouldReplaceFile *bool   `json:"ShouldReplaceFile,omitempty" xml:"ShouldReplaceFile,omitempty"`
 	// List of split documents.
 	TextChunks []*UpsertChunksRequestTextChunks `json:"TextChunks,omitempty" xml:"TextChunks,omitempty" type:"Repeated"`
 }
@@ -46972,6 +47027,11 @@ func (s *UpsertChunksRequest) SetRegionId(v string) *UpsertChunksRequest {
 	return s
 }
 
+func (s *UpsertChunksRequest) SetShouldReplaceFile(v bool) *UpsertChunksRequest {
+	s.ShouldReplaceFile = &v
+	return s
+}
+
 func (s *UpsertChunksRequest) SetTextChunks(v []*UpsertChunksRequestTextChunks) *UpsertChunksRequest {
 	s.TextChunks = v
 	return s
@@ -46986,6 +47046,8 @@ type UpsertChunksRequestTextChunks struct {
 	//
 	// Cloud-native data warehouse AnalyticDB PostgreSQL Edition provides a simple, fast, and cost-effective PB-level cloud data warehouse solution.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Filter  *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Metadata.
 	//
 	// example:
@@ -47004,6 +47066,16 @@ func (s UpsertChunksRequestTextChunks) GoString() string {
 
 func (s *UpsertChunksRequestTextChunks) SetContent(v string) *UpsertChunksRequestTextChunks {
 	s.Content = &v
+	return s
+}
+
+func (s *UpsertChunksRequestTextChunks) SetFilter(v string) *UpsertChunksRequestTextChunks {
+	s.Filter = &v
+	return s
+}
+
+func (s *UpsertChunksRequestTextChunks) SetId(v string) *UpsertChunksRequestTextChunks {
+	s.Id = &v
 	return s
 }
 
@@ -47067,7 +47139,8 @@ type UpsertChunksShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ShouldReplaceFile *bool   `json:"ShouldReplaceFile,omitempty" xml:"ShouldReplaceFile,omitempty"`
 	// List of split documents.
 	TextChunksShrink *string `json:"TextChunks,omitempty" xml:"TextChunks,omitempty"`
 }
@@ -47112,6 +47185,11 @@ func (s *UpsertChunksShrinkRequest) SetOwnerId(v int64) *UpsertChunksShrinkReque
 
 func (s *UpsertChunksShrinkRequest) SetRegionId(v string) *UpsertChunksShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpsertChunksShrinkRequest) SetShouldReplaceFile(v bool) *UpsertChunksShrinkRequest {
+	s.ShouldReplaceFile = &v
 	return s
 }
 
@@ -49075,6 +49153,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
 		query["BackupId"] = request.BackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CacheStorageSize)) {
+		query["CacheStorageSize"] = request.CacheStorageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
@@ -62927,6 +63009,10 @@ func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runti
 		query["TopK"] = request.TopK
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UrlExpiration)) {
+		query["UrlExpiration"] = request.UrlExpiration
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UseFullTextRetrieval)) {
 		query["UseFullTextRetrieval"] = request.UseFullTextRetrieval
 	}
@@ -64056,6 +64142,10 @@ func (client *Client) TextEmbeddingWithOptions(tmpReq *TextEmbeddingRequest, run
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Dimension)) {
+		query["Dimension"] = request.Dimension
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
 	}
@@ -64596,6 +64686,10 @@ func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CacheStorageSize)) {
+		query["CacheStorageSize"] = request.CacheStorageSize
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceClass)) {
 		query["DBInstanceClass"] = request.DBInstanceClass
 	}
@@ -64642,6 +64736,10 @@ func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceReq
 
 	if !tea.BoolValue(util.IsUnset(request.SegStorageType)) {
 		query["SegStorageType"] = request.SegStorageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerlessResource)) {
+		query["ServerlessResource"] = request.ServerlessResource
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
@@ -65185,6 +65283,10 @@ func (client *Client) UpsertChunksWithOptions(tmpReq *UpsertChunksRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShouldReplaceFile)) {
+		query["ShouldReplaceFile"] = request.ShouldReplaceFile
 	}
 
 	body := map[string]interface{}{}
