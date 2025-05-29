@@ -5511,7 +5511,8 @@ type CreateHttpApiRouteRequest struct {
 	// env-cpqnr6tlhtgubcv***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
 	// The rule for matching the route.
-	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	Match          *HttpRouteMatch                          `json:"match,omitempty" xml:"match,omitempty"`
+	McpRouteConfig *CreateHttpApiRouteRequestMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
 	// The route name.
 	//
 	// example:
@@ -5555,6 +5556,11 @@ func (s *CreateHttpApiRouteRequest) SetEnvironmentId(v string) *CreateHttpApiRou
 
 func (s *CreateHttpApiRouteRequest) SetMatch(v *HttpRouteMatch) *CreateHttpApiRouteRequest {
 	s.Match = v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequest) SetMcpRouteConfig(v *CreateHttpApiRouteRequestMcpRouteConfig) *CreateHttpApiRouteRequest {
+	s.McpRouteConfig = v
 	return s
 }
 
@@ -5667,6 +5673,29 @@ func (s *CreateHttpApiRouteRequestBackendConfigServices) SetVersion(v string) *C
 
 func (s *CreateHttpApiRouteRequestBackendConfigServices) SetWeight(v int32) *CreateHttpApiRouteRequestBackendConfigServices {
 	s.Weight = &v
+	return s
+}
+
+type CreateHttpApiRouteRequestMcpRouteConfig struct {
+	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
+	Protocol       *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+}
+
+func (s CreateHttpApiRouteRequestMcpRouteConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpApiRouteRequestMcpRouteConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpApiRouteRequestMcpRouteConfig) SetExposedUriPath(v string) *CreateHttpApiRouteRequestMcpRouteConfig {
+	s.ExposedUriPath = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequestMcpRouteConfig) SetProtocol(v string) *CreateHttpApiRouteRequestMcpRouteConfig {
+	s.Protocol = &v
 	return s
 }
 
@@ -10577,6 +10606,7 @@ func (s *GetTraceConfigResponse) SetBody(v *GetTraceConfigResponseBody) *GetTrac
 }
 
 type ImportHttpApiRequest struct {
+	// The deployment configuration.
 	DeployConfigs *HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty"`
 	// The API description, which cannot exceed 255 bytes in length. If you do not specify a description, a description is extracted from the definition file.
 	//
@@ -10589,7 +10619,8 @@ type ImportHttpApiRequest struct {
 	// example:
 	//
 	// false
-	DryRun     *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The MCP route ID.
 	McpRouteId *string `json:"mcpRouteId,omitempty" xml:"mcpRouteId,omitempty"`
 	// The API name. If you do not specify a name, a name is extracted from the definition file. If a name and a versioning configuration already exist, the existing API definition is updated based on the strategy field.
 	//
@@ -10609,7 +10640,7 @@ type ImportHttpApiRequest struct {
 	//
 	// b3BlbmFwaTogMy4wLjAKaW5mbzoKICAgIHRpdGxlOiBkZW1vCiAgICBkZXNjcmlwdGlvbjogdGhpc2lzZGVtbwogICAgdmVyc2lvbjogIiIKcGF0aHM6CiAgICAvdXNlci97dXNlcklkfToKICAgICAgICBnZXQ6CiAgICAgICAgICAgIHN1bW1hcnk6IOiOt+WPlueUqOaIt+S/oeaBrwogICAgICAgICAgICBkZXNjcmlwdGlvbjog6I635Y+W55So5oi35L+h5oGvCiAgICAgICAgICAgIG9wZXJhdGlvbklkOiBHZXRVc2VySW5mbwogICAgICAgICAgICByZXNwb25zZXM6CiAgICAgICAgICAgICAgICAiMjAwIjoKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjog5oiQ5YqfCiAgICAgICAgICAgICAgICAgICAgY29udGVudDoKICAgICAgICAgICAgICAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjtjaGFyc2V0PXV0Zi04OgogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2NoZW1hOiBudWxsCnNlcnZlcnM6CiAgICAtIHVybDogaHR0cDovL2FwaS5leGFtcGxlLmNvbS92MQo=
 	SpecContentBase64 *string `json:"specContentBase64,omitempty" xml:"specContentBase64,omitempty"`
-	// The download URL of the API definition file. You can download the file over the Internet or by using an Object Storage Service (OSS) internal download URL that belongs to the current region. You must obtain the required permissions to download the file. For OSS URLs that are not publicly readable, refer to https://help.aliyun.com/zh/oss/user-guide/how-to-obtain-the-url-of-a-single-object-or-the-urls-of-multiple-objects to specify URLs that provide download permissions. Currently, only OSS URLs are supported.
+	// The download URL of the API definition file. You can download the file over the Internet or by using an Object Storage Service (OSS) internal download URL that belongs to the current region. You must obtain the required permissions to download the file. For OSS URLs that are not publicly readable, refer to [Download objects using presigned URLs](https://help.aliyun.com/document_detail/39607.html) to specify URLs that provide download permissions. Currently, only OSS URLs are supported.
 	//
 	// example:
 	//
@@ -10623,7 +10654,7 @@ type ImportHttpApiRequest struct {
 	//
 	// 	- SpecFirst: The file takes precedence. New APIs are created and existing ones are updated. APIs not included in the file remain unchanged.
 	//
-	// 	- ExistFirst (default): The existing APIs take precedence. New APIs are created but existing ones remain unchanged.
+	// 	- ExistFirst (default): The existing APIs take precedence. New APIs are created but existing ones remain unchanged. If this parameter is not specified, the ExistFirst policy takes effect.
 	//
 	// example:
 	//
@@ -10635,7 +10666,7 @@ type ImportHttpApiRequest struct {
 	//
 	// api-xxxx
 	TargetHttpApiId *string `json:"targetHttpApiId,omitempty" xml:"targetHttpApiId,omitempty"`
-	// Version configuration.
+	// The API versioning configuration. If versioning is enabled for an API and the version and name of an API to be imported are the same as those of the existing API, the existing API is updated by this import. If versioning is not enabled for an API and the name of an API to be imported are the same as that of the existing API, the existing API is updated by this import.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
 }
 
@@ -16690,6 +16721,10 @@ func (client *Client) CreateHttpApiRouteWithOptions(httpApiId *string, request *
 
 	if !tea.BoolValue(util.IsUnset(request.Match)) {
 		body["match"] = request.Match
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.McpRouteConfig)) {
+		body["mcpRouteConfig"] = request.McpRouteConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
