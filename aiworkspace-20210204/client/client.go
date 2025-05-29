@@ -10769,6 +10769,7 @@ func (s *GetMemberRequest) SetUserId(v string) *GetMemberRequest {
 }
 
 type GetMemberResponseBody struct {
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The display name of the member.
 	//
 	// example:
@@ -10815,6 +10816,11 @@ func (s GetMemberResponseBody) String() string {
 
 func (s GetMemberResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetMemberResponseBody) SetAccountType(v string) *GetMemberResponseBody {
+	s.AccountType = &v
+	return s
 }
 
 func (s *GetMemberResponseBody) SetDisplayName(v string) *GetMemberResponseBody {
@@ -15342,6 +15348,7 @@ func (s *ListMembersResponseBody) SetTotalCount(v int64) *ListMembersResponseBod
 
 type ListMembersResponseBodyMembers struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The display name of the member.
 	//
 	// example:
@@ -15386,6 +15393,11 @@ func (s ListMembersResponseBodyMembers) GoString() string {
 
 func (s *ListMembersResponseBodyMembers) SetAccountName(v string) *ListMembersResponseBodyMembers {
 	s.AccountName = &v
+	return s
+}
+
+func (s *ListMembersResponseBodyMembers) SetAccountType(v string) *ListMembersResponseBodyMembers {
+	s.AccountType = &v
 	return s
 }
 
