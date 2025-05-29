@@ -11919,6 +11919,16 @@ type ListArtifactsResponseBodyArtifacts struct {
 	//
 	// Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Permission fields are applicable to container image artifact and Helm Chart artifact They can only change from Automatic to Public. Options:
+	//
+	// - Public
+	//
+	// - Automatic
+	//
+	// example:
+	//
+	// Public
+	PermissionType *string `json:"PermissionType,omitempty" xml:"PermissionType,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -11987,6 +11997,11 @@ func (s *ListArtifactsResponseBodyArtifacts) SetMaxVersion(v string) *ListArtifa
 
 func (s *ListArtifactsResponseBodyArtifacts) SetName(v string) *ListArtifactsResponseBodyArtifacts {
 	s.Name = &v
+	return s
+}
+
+func (s *ListArtifactsResponseBodyArtifacts) SetPermissionType(v string) *ListArtifactsResponseBodyArtifacts {
+	s.PermissionType = &v
 	return s
 }
 
@@ -22323,7 +22338,8 @@ type UpdateServiceInstanceAttributeRequestLicenseData struct {
 	// example:
 	//
 	// {"Test"}
-	CustomData   *string                                                       `json:"CustomData,omitempty" xml:"CustomData,omitempty"`
+	CustomData *string `json:"CustomData,omitempty" xml:"CustomData,omitempty"`
+	// Mock response info.
 	ResponseInfo *UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo `json:"ResponseInfo,omitempty" xml:"ResponseInfo,omitempty" type:"Struct"`
 }
 
@@ -22346,9 +22362,24 @@ func (s *UpdateServiceInstanceAttributeRequestLicenseData) SetResponseInfo(v *Up
 }
 
 type UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo struct {
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	UpdateResponse *bool   `json:"UpdateResponse,omitempty" xml:"UpdateResponse,omitempty"`
+	// Mock error code.
+	//
+	// example:
+	//
+	// EntityNotExist.Service
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Mock error message.
+	//
+	// example:
+	//
+	// The provided parameter "ServiceId" is invalid.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// if you want mock response, please open this option.
+	//
+	// example:
+	//
+	// true
+	UpdateResponse *bool `json:"UpdateResponse,omitempty" xml:"UpdateResponse,omitempty"`
 }
 
 func (s UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo) String() string {
