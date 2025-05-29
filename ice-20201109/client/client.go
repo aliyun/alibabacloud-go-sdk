@@ -9,10 +9,552 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AIAgentConfig struct {
+	AsrConfig                *AIAgentConfigAsrConfig           `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	AvatarConfig             *AIAgentConfigAvatarConfig        `json:"AvatarConfig,omitempty" xml:"AvatarConfig,omitempty" type:"Struct"`
+	AvatarUrl                *string                           `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	AvatarUrlType            *string                           `json:"AvatarUrlType,omitempty" xml:"AvatarUrlType,omitempty"`
+	EnableIntelligentSegment *bool                             `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
+	EnablePushToTalk         *bool                             `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
+	ExperimentalConfig       *string                           `json:"ExperimentalConfig,omitempty" xml:"ExperimentalConfig,omitempty"`
+	GracefulShutdown         *bool                             `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
+	Greeting                 *string                           `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	InterruptConfig          *AIAgentConfigInterruptConfig     `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
+	LlmConfig                *AIAgentConfigLlmConfig           `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
+	MaxIdleTime              *int32                            `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	TtsConfig                *AIAgentConfigTtsConfig           `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
+	TurnDetectionConfig      *AIAgentConfigTurnDetectionConfig `json:"TurnDetectionConfig,omitempty" xml:"TurnDetectionConfig,omitempty" type:"Struct"`
+	UserOfflineTimeout       *int32                            `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	UserOnlineTimeout        *int32                            `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	VoiceprintConfig         *AIAgentConfigVoiceprintConfig    `json:"VoiceprintConfig,omitempty" xml:"VoiceprintConfig,omitempty" type:"Struct"`
+	Volume                   *int64                            `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	WakeUpQuery              *string                           `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
+	WorkflowOverrideParams   *string                           `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
+}
+
+func (s AIAgentConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfig) SetAsrConfig(v *AIAgentConfigAsrConfig) *AIAgentConfig {
+	s.AsrConfig = v
+	return s
+}
+
+func (s *AIAgentConfig) SetAvatarConfig(v *AIAgentConfigAvatarConfig) *AIAgentConfig {
+	s.AvatarConfig = v
+	return s
+}
+
+func (s *AIAgentConfig) SetAvatarUrl(v string) *AIAgentConfig {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *AIAgentConfig) SetAvatarUrlType(v string) *AIAgentConfig {
+	s.AvatarUrlType = &v
+	return s
+}
+
+func (s *AIAgentConfig) SetEnableIntelligentSegment(v bool) *AIAgentConfig {
+	s.EnableIntelligentSegment = &v
+	return s
+}
+
+func (s *AIAgentConfig) SetEnablePushToTalk(v bool) *AIAgentConfig {
+	s.EnablePushToTalk = &v
+	return s
+}
+
+func (s *AIAgentConfig) SetExperimentalConfig(v string) *AIAgentConfig {
+	s.ExperimentalConfig = &v
+	return s
+}
+
+func (s *AIAgentConfig) SetGracefulShutdown(v bool) *AIAgentConfig {
+	s.GracefulShutdown = &v
+	return s
+}
+
+func (s *AIAgentConfig) SetGreeting(v string) *AIAgentConfig {
+	s.Greeting = &v
+	return s
+}
+
+func (s *AIAgentConfig) SetInterruptConfig(v *AIAgentConfigInterruptConfig) *AIAgentConfig {
+	s.InterruptConfig = v
+	return s
+}
+
+func (s *AIAgentConfig) SetLlmConfig(v *AIAgentConfigLlmConfig) *AIAgentConfig {
+	s.LlmConfig = v
+	return s
+}
+
+func (s *AIAgentConfig) SetMaxIdleTime(v int32) *AIAgentConfig {
+	s.MaxIdleTime = &v
+	return s
+}
+
+func (s *AIAgentConfig) SetTtsConfig(v *AIAgentConfigTtsConfig) *AIAgentConfig {
+	s.TtsConfig = v
+	return s
+}
+
+func (s *AIAgentConfig) SetTurnDetectionConfig(v *AIAgentConfigTurnDetectionConfig) *AIAgentConfig {
+	s.TurnDetectionConfig = v
+	return s
+}
+
+func (s *AIAgentConfig) SetUserOfflineTimeout(v int32) *AIAgentConfig {
+	s.UserOfflineTimeout = &v
+	return s
+}
+
+func (s *AIAgentConfig) SetUserOnlineTimeout(v int32) *AIAgentConfig {
+	s.UserOnlineTimeout = &v
+	return s
+}
+
+func (s *AIAgentConfig) SetVoiceprintConfig(v *AIAgentConfigVoiceprintConfig) *AIAgentConfig {
+	s.VoiceprintConfig = v
+	return s
+}
+
+func (s *AIAgentConfig) SetVolume(v int64) *AIAgentConfig {
+	s.Volume = &v
+	return s
+}
+
+func (s *AIAgentConfig) SetWakeUpQuery(v string) *AIAgentConfig {
+	s.WakeUpQuery = &v
+	return s
+}
+
+func (s *AIAgentConfig) SetWorkflowOverrideParams(v string) *AIAgentConfig {
+	s.WorkflowOverrideParams = &v
+	return s
+}
+
+type AIAgentConfigAsrConfig struct {
+	AsrHotWords   []*string `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
+	AsrLanguageId *string   `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
+	AsrMaxSilence *int32    `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	VadLevel      *int32    `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
+}
+
+func (s AIAgentConfigAsrConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigAsrConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigAsrConfig) SetAsrHotWords(v []*string) *AIAgentConfigAsrConfig {
+	s.AsrHotWords = v
+	return s
+}
+
+func (s *AIAgentConfigAsrConfig) SetAsrLanguageId(v string) *AIAgentConfigAsrConfig {
+	s.AsrLanguageId = &v
+	return s
+}
+
+func (s *AIAgentConfigAsrConfig) SetAsrMaxSilence(v int32) *AIAgentConfigAsrConfig {
+	s.AsrMaxSilence = &v
+	return s
+}
+
+func (s *AIAgentConfigAsrConfig) SetVadLevel(v int32) *AIAgentConfigAsrConfig {
+	s.VadLevel = &v
+	return s
+}
+
+type AIAgentConfigAvatarConfig struct {
+	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+}
+
+func (s AIAgentConfigAvatarConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigAvatarConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigAvatarConfig) SetAvatarId(v string) *AIAgentConfigAvatarConfig {
+	s.AvatarId = &v
+	return s
+}
+
+type AIAgentConfigInterruptConfig struct {
+	EnableVoiceInterrupt *bool     `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	InterruptWords       []*string `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
+}
+
+func (s AIAgentConfigInterruptConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigInterruptConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigInterruptConfig) SetEnableVoiceInterrupt(v bool) *AIAgentConfigInterruptConfig {
+	s.EnableVoiceInterrupt = &v
+	return s
+}
+
+func (s *AIAgentConfigInterruptConfig) SetInterruptWords(v []*string) *AIAgentConfigInterruptConfig {
+	s.InterruptWords = v
+	return s
+}
+
+type AIAgentConfigLlmConfig struct {
+	BailianAppParams *string                             `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	LlmHistory       []*AIAgentConfigLlmConfigLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
+	LlmHistoryLimit  *int32                              `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
+	LlmSystemPrompt  *string                             `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
+}
+
+func (s AIAgentConfigLlmConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigLlmConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigLlmConfig) SetBailianAppParams(v string) *AIAgentConfigLlmConfig {
+	s.BailianAppParams = &v
+	return s
+}
+
+func (s *AIAgentConfigLlmConfig) SetLlmHistory(v []*AIAgentConfigLlmConfigLlmHistory) *AIAgentConfigLlmConfig {
+	s.LlmHistory = v
+	return s
+}
+
+func (s *AIAgentConfigLlmConfig) SetLlmHistoryLimit(v int32) *AIAgentConfigLlmConfig {
+	s.LlmHistoryLimit = &v
+	return s
+}
+
+func (s *AIAgentConfigLlmConfig) SetLlmSystemPrompt(v string) *AIAgentConfigLlmConfig {
+	s.LlmSystemPrompt = &v
+	return s
+}
+
+type AIAgentConfigLlmConfigLlmHistory struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Role    *string `json:"Role,omitempty" xml:"Role,omitempty"`
+}
+
+func (s AIAgentConfigLlmConfigLlmHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigLlmConfigLlmHistory) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigLlmConfigLlmHistory) SetContent(v string) *AIAgentConfigLlmConfigLlmHistory {
+	s.Content = &v
+	return s
+}
+
+func (s *AIAgentConfigLlmConfigLlmHistory) SetRole(v string) *AIAgentConfigLlmConfigLlmHistory {
+	s.Role = &v
+	return s
+}
+
+type AIAgentConfigTtsConfig struct {
+	VoiceId     *string   `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceIdList []*string `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
+}
+
+func (s AIAgentConfigTtsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigTtsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigTtsConfig) SetVoiceId(v string) *AIAgentConfigTtsConfig {
+	s.VoiceId = &v
+	return s
+}
+
+func (s *AIAgentConfigTtsConfig) SetVoiceIdList(v []*string) *AIAgentConfigTtsConfig {
+	s.VoiceIdList = v
+	return s
+}
+
+type AIAgentConfigTurnDetectionConfig struct {
+	TurnEndWords []*string `json:"TurnEndWords,omitempty" xml:"TurnEndWords,omitempty" type:"Repeated"`
+}
+
+func (s AIAgentConfigTurnDetectionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigTurnDetectionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigTurnDetectionConfig) SetTurnEndWords(v []*string) *AIAgentConfigTurnDetectionConfig {
+	s.TurnEndWords = v
+	return s
+}
+
+type AIAgentConfigVoiceprintConfig struct {
+	UseVoiceprint *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	VoiceprintId  *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
+}
+
+func (s AIAgentConfigVoiceprintConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigVoiceprintConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigVoiceprintConfig) SetUseVoiceprint(v bool) *AIAgentConfigVoiceprintConfig {
+	s.UseVoiceprint = &v
+	return s
+}
+
+func (s *AIAgentConfigVoiceprintConfig) SetVoiceprintId(v string) *AIAgentConfigVoiceprintConfig {
+	s.VoiceprintId = &v
+	return s
+}
+
+type AIAgentOutboundCallConfig struct {
+	AsrConfig                *AIAgentOutboundCallConfigAsrConfig           `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	EnableIntelligentSegment *bool                                         `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
+	Greeting                 *string                                       `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	InterruptConfig          *AIAgentOutboundCallConfigInterruptConfig     `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
+	LlmConfig                *AIAgentOutboundCallConfigLlmConfig           `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
+	TtsConfig                *AIAgentOutboundCallConfigTtsConfig           `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
+	TurnDetectionConfig      *AIAgentOutboundCallConfigTurnDetectionConfig `json:"TurnDetectionConfig,omitempty" xml:"TurnDetectionConfig,omitempty" type:"Struct"`
+}
+
+func (s AIAgentOutboundCallConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfig) SetAsrConfig(v *AIAgentOutboundCallConfigAsrConfig) *AIAgentOutboundCallConfig {
+	s.AsrConfig = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfig) SetEnableIntelligentSegment(v bool) *AIAgentOutboundCallConfig {
+	s.EnableIntelligentSegment = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfig) SetGreeting(v string) *AIAgentOutboundCallConfig {
+	s.Greeting = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfig) SetInterruptConfig(v *AIAgentOutboundCallConfigInterruptConfig) *AIAgentOutboundCallConfig {
+	s.InterruptConfig = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfig) SetLlmConfig(v *AIAgentOutboundCallConfigLlmConfig) *AIAgentOutboundCallConfig {
+	s.LlmConfig = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfig) SetTtsConfig(v *AIAgentOutboundCallConfigTtsConfig) *AIAgentOutboundCallConfig {
+	s.TtsConfig = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfig) SetTurnDetectionConfig(v *AIAgentOutboundCallConfigTurnDetectionConfig) *AIAgentOutboundCallConfig {
+	s.TurnDetectionConfig = v
+	return s
+}
+
+type AIAgentOutboundCallConfigAsrConfig struct {
+	AsrHotWords   []*string `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
+	AsrLanguageId *string   `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
+	AsrMaxSilence *int32    `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	VadLevel      *int32    `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
+}
+
+func (s AIAgentOutboundCallConfigAsrConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigAsrConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigAsrConfig) SetAsrHotWords(v []*string) *AIAgentOutboundCallConfigAsrConfig {
+	s.AsrHotWords = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAsrConfig) SetAsrLanguageId(v string) *AIAgentOutboundCallConfigAsrConfig {
+	s.AsrLanguageId = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAsrConfig) SetAsrMaxSilence(v int32) *AIAgentOutboundCallConfigAsrConfig {
+	s.AsrMaxSilence = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAsrConfig) SetVadLevel(v int32) *AIAgentOutboundCallConfigAsrConfig {
+	s.VadLevel = &v
+	return s
+}
+
+type AIAgentOutboundCallConfigInterruptConfig struct {
+	EnableVoiceInterrupt *bool     `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	InterruptWords       []*string `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
+}
+
+func (s AIAgentOutboundCallConfigInterruptConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigInterruptConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigInterruptConfig) SetEnableVoiceInterrupt(v bool) *AIAgentOutboundCallConfigInterruptConfig {
+	s.EnableVoiceInterrupt = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigInterruptConfig) SetInterruptWords(v []*string) *AIAgentOutboundCallConfigInterruptConfig {
+	s.InterruptWords = v
+	return s
+}
+
+type AIAgentOutboundCallConfigLlmConfig struct {
+	BailianAppParams *string                                         `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	LlmHistory       []*AIAgentOutboundCallConfigLlmConfigLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
+	LlmHistoryLimit  *int32                                          `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
+	LlmSystemPrompt  *string                                         `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
+}
+
+func (s AIAgentOutboundCallConfigLlmConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigLlmConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigLlmConfig) SetBailianAppParams(v string) *AIAgentOutboundCallConfigLlmConfig {
+	s.BailianAppParams = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigLlmConfig) SetLlmHistory(v []*AIAgentOutboundCallConfigLlmConfigLlmHistory) *AIAgentOutboundCallConfigLlmConfig {
+	s.LlmHistory = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigLlmConfig) SetLlmHistoryLimit(v int32) *AIAgentOutboundCallConfigLlmConfig {
+	s.LlmHistoryLimit = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigLlmConfig) SetLlmSystemPrompt(v string) *AIAgentOutboundCallConfigLlmConfig {
+	s.LlmSystemPrompt = &v
+	return s
+}
+
+type AIAgentOutboundCallConfigLlmConfigLlmHistory struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Role    *string `json:"Role,omitempty" xml:"Role,omitempty"`
+}
+
+func (s AIAgentOutboundCallConfigLlmConfigLlmHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigLlmConfigLlmHistory) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigLlmConfigLlmHistory) SetContent(v string) *AIAgentOutboundCallConfigLlmConfigLlmHistory {
+	s.Content = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigLlmConfigLlmHistory) SetRole(v string) *AIAgentOutboundCallConfigLlmConfigLlmHistory {
+	s.Role = &v
+	return s
+}
+
+type AIAgentOutboundCallConfigTtsConfig struct {
+	VoiceId     *string   `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceIdList []*string `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
+}
+
+func (s AIAgentOutboundCallConfigTtsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigTtsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigTtsConfig) SetVoiceId(v string) *AIAgentOutboundCallConfigTtsConfig {
+	s.VoiceId = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigTtsConfig) SetVoiceIdList(v []*string) *AIAgentOutboundCallConfigTtsConfig {
+	s.VoiceIdList = v
+	return s
+}
+
+type AIAgentOutboundCallConfigTurnDetectionConfig struct {
+	TurnEndWords []*string `json:"TurnEndWords,omitempty" xml:"TurnEndWords,omitempty" type:"Repeated"`
+}
+
+func (s AIAgentOutboundCallConfigTurnDetectionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigTurnDetectionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigTurnDetectionConfig) SetTurnEndWords(v []*string) *AIAgentOutboundCallConfigTurnDetectionConfig {
+	s.TurnEndWords = v
+	return s
+}
+
 type AIAgentRuntimeConfig struct {
+	AgentUserId *string `json:"AgentUserId,omitempty" xml:"AgentUserId,omitempty"`
+	AuthToken   *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	// Deprecated
 	AvatarChat3D *AIAgentRuntimeConfigAvatarChat3D `json:"AvatarChat3D,omitempty" xml:"AvatarChat3D,omitempty" type:"Struct"`
-	VisionChat   *AIAgentRuntimeConfigVisionChat   `json:"VisionChat,omitempty" xml:"VisionChat,omitempty" type:"Struct"`
-	VoiceChat    *AIAgentRuntimeConfigVoiceChat    `json:"VoiceChat,omitempty" xml:"VoiceChat,omitempty" type:"Struct"`
+	ChannelId    *string                           `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Deprecated
+	VisionChat *AIAgentRuntimeConfigVisionChat `json:"VisionChat,omitempty" xml:"VisionChat,omitempty" type:"Struct"`
+	// Deprecated
+	VoiceChat *AIAgentRuntimeConfigVoiceChat `json:"VoiceChat,omitempty" xml:"VoiceChat,omitempty" type:"Struct"`
 }
 
 func (s AIAgentRuntimeConfig) String() string {
@@ -23,8 +565,23 @@ func (s AIAgentRuntimeConfig) GoString() string {
 	return s.String()
 }
 
+func (s *AIAgentRuntimeConfig) SetAgentUserId(v string) *AIAgentRuntimeConfig {
+	s.AgentUserId = &v
+	return s
+}
+
+func (s *AIAgentRuntimeConfig) SetAuthToken(v string) *AIAgentRuntimeConfig {
+	s.AuthToken = &v
+	return s
+}
+
 func (s *AIAgentRuntimeConfig) SetAvatarChat3D(v *AIAgentRuntimeConfigAvatarChat3D) *AIAgentRuntimeConfig {
 	s.AvatarChat3D = v
+	return s
+}
+
+func (s *AIAgentRuntimeConfig) SetChannelId(v string) *AIAgentRuntimeConfig {
+	s.ChannelId = &v
 	return s
 }
 
@@ -155,10 +712,12 @@ func (s *AIAgentTemplateConfig) SetVoiceChat(v *AIAgentTemplateConfigVoiceChat) 
 }
 
 type AIAgentTemplateConfigAvatarChat3D struct {
+	AsrHotWords              []*string                                      `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
 	AsrLanguageId            *string                                        `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
 	AsrMaxSilence            *int32                                         `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
 	AvatarId                 *string                                        `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
 	BailianAppParams         *string                                        `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	CharBreak                *bool                                          `json:"CharBreak,omitempty" xml:"CharBreak,omitempty"`
 	EnableIntelligentSegment *bool                                          `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
 	EnablePushToTalk         *bool                                          `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
 	EnableVoiceInterrupt     *bool                                          `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
@@ -189,6 +748,11 @@ func (s AIAgentTemplateConfigAvatarChat3D) GoString() string {
 	return s.String()
 }
 
+func (s *AIAgentTemplateConfigAvatarChat3D) SetAsrHotWords(v []*string) *AIAgentTemplateConfigAvatarChat3D {
+	s.AsrHotWords = v
+	return s
+}
+
 func (s *AIAgentTemplateConfigAvatarChat3D) SetAsrLanguageId(v string) *AIAgentTemplateConfigAvatarChat3D {
 	s.AsrLanguageId = &v
 	return s
@@ -206,6 +770,11 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetAvatarId(v string) *AIAgentTempla
 
 func (s *AIAgentTemplateConfigAvatarChat3D) SetBailianAppParams(v string) *AIAgentTemplateConfigAvatarChat3D {
 	s.BailianAppParams = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetCharBreak(v bool) *AIAgentTemplateConfigAvatarChat3D {
+	s.CharBreak = &v
 	return s
 }
 
@@ -333,9 +902,11 @@ func (s *AIAgentTemplateConfigAvatarChat3DLlmHistory) SetRole(v string) *AIAgent
 }
 
 type AIAgentTemplateConfigVisionChat struct {
+	AsrHotWords              []*string                                    `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
 	AsrLanguageId            *string                                      `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
 	AsrMaxSilence            *int32                                       `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
 	BailianAppParams         *string                                      `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	CharBreak                *bool                                        `json:"CharBreak,omitempty" xml:"CharBreak,omitempty"`
 	EnableIntelligentSegment *bool                                        `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
 	EnablePushToTalk         *bool                                        `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
 	EnableVoiceInterrupt     *bool                                        `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
@@ -366,6 +937,11 @@ func (s AIAgentTemplateConfigVisionChat) GoString() string {
 	return s.String()
 }
 
+func (s *AIAgentTemplateConfigVisionChat) SetAsrHotWords(v []*string) *AIAgentTemplateConfigVisionChat {
+	s.AsrHotWords = v
+	return s
+}
+
 func (s *AIAgentTemplateConfigVisionChat) SetAsrLanguageId(v string) *AIAgentTemplateConfigVisionChat {
 	s.AsrLanguageId = &v
 	return s
@@ -378,6 +954,11 @@ func (s *AIAgentTemplateConfigVisionChat) SetAsrMaxSilence(v int32) *AIAgentTemp
 
 func (s *AIAgentTemplateConfigVisionChat) SetBailianAppParams(v string) *AIAgentTemplateConfigVisionChat {
 	s.BailianAppParams = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetCharBreak(v bool) *AIAgentTemplateConfigVisionChat {
+	s.CharBreak = &v
 	return s
 }
 
@@ -505,11 +1086,13 @@ func (s *AIAgentTemplateConfigVisionChatLlmHistory) SetRole(v string) *AIAgentTe
 }
 
 type AIAgentTemplateConfigVoiceChat struct {
+	AsrHotWords              []*string                                   `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
 	AsrLanguageId            *string                                     `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
 	AsrMaxSilence            *int32                                      `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
 	AvatarUrl                *string                                     `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
 	AvatarUrlType            *string                                     `json:"AvatarUrlType,omitempty" xml:"AvatarUrlType,omitempty"`
 	BailianAppParams         *string                                     `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	CharBreak                *bool                                       `json:"CharBreak,omitempty" xml:"CharBreak,omitempty"`
 	EnableIntelligentSegment *bool                                       `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
 	EnablePushToTalk         *bool                                       `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
 	EnableVoiceInterrupt     *bool                                       `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
@@ -540,6 +1123,11 @@ func (s AIAgentTemplateConfigVoiceChat) GoString() string {
 	return s.String()
 }
 
+func (s *AIAgentTemplateConfigVoiceChat) SetAsrHotWords(v []*string) *AIAgentTemplateConfigVoiceChat {
+	s.AsrHotWords = v
+	return s
+}
+
 func (s *AIAgentTemplateConfigVoiceChat) SetAsrLanguageId(v string) *AIAgentTemplateConfigVoiceChat {
 	s.AsrLanguageId = &v
 	return s
@@ -562,6 +1150,11 @@ func (s *AIAgentTemplateConfigVoiceChat) SetAvatarUrlType(v string) *AIAgentTemp
 
 func (s *AIAgentTemplateConfigVoiceChat) SetBailianAppParams(v string) *AIAgentTemplateConfigVoiceChat {
 	s.BailianAppParams = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetCharBreak(v bool) *AIAgentTemplateConfigVoiceChat {
+	s.CharBreak = &v
 	return s
 }
 
@@ -3217,6 +3810,8 @@ func (s *AddAdInsertionResponseBodyConfigCdnConfig) SetContentSegmentUrlPrefix(v
 }
 
 type AddAdInsertionResponseBodyConfigManifestEndpointConfig struct {
+	// DASH清单播放端点前缀
+	DashPrefix *string `json:"DashPrefix,omitempty" xml:"DashPrefix,omitempty"`
 	// The prefix of the playback endpoint for HLS manifests.
 	HlsPrefix *string `json:"HlsPrefix,omitempty" xml:"HlsPrefix,omitempty"`
 }
@@ -3227,6 +3822,11 @@ func (s AddAdInsertionResponseBodyConfigManifestEndpointConfig) String() string 
 
 func (s AddAdInsertionResponseBodyConfigManifestEndpointConfig) GoString() string {
 	return s.String()
+}
+
+func (s *AddAdInsertionResponseBodyConfigManifestEndpointConfig) SetDashPrefix(v string) *AddAdInsertionResponseBodyConfigManifestEndpointConfig {
+	s.DashPrefix = &v
+	return s
 }
 
 func (s *AddAdInsertionResponseBodyConfigManifestEndpointConfig) SetHlsPrefix(v string) *AddAdInsertionResponseBodyConfigManifestEndpointConfig {
@@ -8242,7 +8842,8 @@ type CreateLivePackageOriginEndpointRequest struct {
 	// example:
 	//
 	// 192.168.1.0/24,10.0.0.1/24
-	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	IpWhitelist         *string              `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	LivePackagingConfig *LivePackagingConfig `json:"LivePackagingConfig,omitempty" xml:"LivePackagingConfig,omitempty"`
 	// The playlist name. Default value: manifest.
 	//
 	// example:
@@ -8313,6 +8914,11 @@ func (s *CreateLivePackageOriginEndpointRequest) SetIpWhitelist(v string) *Creat
 	return s
 }
 
+func (s *CreateLivePackageOriginEndpointRequest) SetLivePackagingConfig(v *LivePackagingConfig) *CreateLivePackageOriginEndpointRequest {
+	s.LivePackagingConfig = v
+	return s
+}
+
 func (s *CreateLivePackageOriginEndpointRequest) SetManifestName(v string) *CreateLivePackageOriginEndpointRequest {
 	s.ManifestName = &v
 	return s
@@ -8324,6 +8930,148 @@ func (s *CreateLivePackageOriginEndpointRequest) SetProtocol(v string) *CreateLi
 }
 
 func (s *CreateLivePackageOriginEndpointRequest) SetTimeshiftVision(v int32) *CreateLivePackageOriginEndpointRequest {
+	s.TimeshiftVision = &v
+	return s
+}
+
+type CreateLivePackageOriginEndpointShrinkRequest struct {
+	// The authorization code. It can be up to 200 characters in length. You must configure AuthorizationCode, IpWhitelist, or both. Format: [A-Za-z0-9-_.]+
+	//
+	// example:
+	//
+	// AbcDef123
+	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
+	// The channel name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// channel-1
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// ****0311a423d11a5f7dee713535****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The endpoint description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The origin endpoint name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// endpoint-1
+	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	// The channel group name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// channel-group-1
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The IP address blacklist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,).
+	//
+	// example:
+	//
+	// 103.21.222.1/32,192.168.100.0/24
+	IpBlacklist *string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
+	// The IP address whitelist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,). You must configure AuthorizationCode, IpWhitelist, or both.
+	//
+	// example:
+	//
+	// 192.168.1.0/24,10.0.0.1/24
+	IpWhitelist               *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	LivePackagingConfigShrink *string `json:"LivePackagingConfig,omitempty" xml:"LivePackagingConfig,omitempty"`
+	// The playlist name. Default value: manifest.
+	//
+	// example:
+	//
+	// manifest
+	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
+	// The distribution protocol.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HLS
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The number of days that time-shifted content is available. Maximum value: 30. Default value: 0, which indicates that time shifting is not supported.
+	//
+	// example:
+	//
+	// 1
+	TimeshiftVision *int32 `json:"TimeshiftVision,omitempty" xml:"TimeshiftVision,omitempty"`
+}
+
+func (s CreateLivePackageOriginEndpointShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLivePackageOriginEndpointShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLivePackageOriginEndpointShrinkRequest) SetAuthorizationCode(v string) *CreateLivePackageOriginEndpointShrinkRequest {
+	s.AuthorizationCode = &v
+	return s
+}
+
+func (s *CreateLivePackageOriginEndpointShrinkRequest) SetChannelName(v string) *CreateLivePackageOriginEndpointShrinkRequest {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *CreateLivePackageOriginEndpointShrinkRequest) SetClientToken(v string) *CreateLivePackageOriginEndpointShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateLivePackageOriginEndpointShrinkRequest) SetDescription(v string) *CreateLivePackageOriginEndpointShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateLivePackageOriginEndpointShrinkRequest) SetEndpointName(v string) *CreateLivePackageOriginEndpointShrinkRequest {
+	s.EndpointName = &v
+	return s
+}
+
+func (s *CreateLivePackageOriginEndpointShrinkRequest) SetGroupName(v string) *CreateLivePackageOriginEndpointShrinkRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateLivePackageOriginEndpointShrinkRequest) SetIpBlacklist(v string) *CreateLivePackageOriginEndpointShrinkRequest {
+	s.IpBlacklist = &v
+	return s
+}
+
+func (s *CreateLivePackageOriginEndpointShrinkRequest) SetIpWhitelist(v string) *CreateLivePackageOriginEndpointShrinkRequest {
+	s.IpWhitelist = &v
+	return s
+}
+
+func (s *CreateLivePackageOriginEndpointShrinkRequest) SetLivePackagingConfigShrink(v string) *CreateLivePackageOriginEndpointShrinkRequest {
+	s.LivePackagingConfigShrink = &v
+	return s
+}
+
+func (s *CreateLivePackageOriginEndpointShrinkRequest) SetManifestName(v string) *CreateLivePackageOriginEndpointShrinkRequest {
+	s.ManifestName = &v
+	return s
+}
+
+func (s *CreateLivePackageOriginEndpointShrinkRequest) SetProtocol(v string) *CreateLivePackageOriginEndpointShrinkRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateLivePackageOriginEndpointShrinkRequest) SetTimeshiftVision(v int32) *CreateLivePackageOriginEndpointShrinkRequest {
 	s.TimeshiftVision = &v
 	return s
 }
@@ -8413,7 +9161,8 @@ type CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
-	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	LastModified        *string              `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	LivePackagingConfig *LivePackagingConfig `json:"LivePackagingConfig,omitempty" xml:"LivePackagingConfig,omitempty"`
 	// The playlist name.
 	//
 	// example:
@@ -8489,6 +9238,11 @@ func (s *CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint) S
 
 func (s *CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint) SetLastModified(v string) *CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint {
 	s.LastModified = &v
+	return s
+}
+
+func (s *CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint) SetLivePackagingConfig(v *LivePackagingConfig) *CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint {
+	s.LivePackagingConfig = v
 	return s
 }
 
@@ -16571,6 +17325,7 @@ func (s *DescribeAIAgentInstanceResponseBody) SetRequestId(v string) *DescribeAI
 }
 
 type DescribeAIAgentInstanceResponseBodyInstance struct {
+	AgentConfig *AIAgentConfig `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
 	// The URL of the call log file.
 	//
 	// example:
@@ -16590,6 +17345,8 @@ type DescribeAIAgentInstanceResponseBodyInstance struct {
 	//
 	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Deprecated
+	//
 	// The template configurations of the AI agent.
 	//
 	// example:
@@ -16610,6 +17367,11 @@ func (s DescribeAIAgentInstanceResponseBodyInstance) String() string {
 
 func (s DescribeAIAgentInstanceResponseBodyInstance) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAIAgentInstanceResponseBodyInstance) SetAgentConfig(v *AIAgentConfig) *DescribeAIAgentInstanceResponseBodyInstance {
+	s.AgentConfig = v
+	return s
 }
 
 func (s *DescribeAIAgentInstanceResponseBodyInstance) SetCallLogUrl(v string) *DescribeAIAgentInstanceResponseBodyInstance {
@@ -18481,6 +19243,7 @@ type GenerateAIAgentCallRequest struct {
 	//
 	// 39f8e0bc005e4f309379701645f4****
 	AIAgentId      *string                                   `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	AgentConfig    *AIAgentConfig                            `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
 	ChatSyncConfig *GenerateAIAgentCallRequestChatSyncConfig `json:"ChatSyncConfig,omitempty" xml:"ChatSyncConfig,omitempty" type:"Struct"`
 	// The time when the token expires. Unit: seconds. Default value: 3600. Valid values: 0 to 604800.
 	//
@@ -18492,6 +19255,8 @@ type GenerateAIAgentCallRequest struct {
 	//
 	// fw1gr0bc005e4f309379701645f4****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Deprecated
+	//
 	// The template configurations of the AI agent. The specified configurations are merged with the template configurations that are specified in the console. If you do not specify this parameter, the system uses the default configurations for an AI agent created in the console.
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// example:
@@ -18516,6 +19281,11 @@ func (s GenerateAIAgentCallRequest) GoString() string {
 
 func (s *GenerateAIAgentCallRequest) SetAIAgentId(v string) *GenerateAIAgentCallRequest {
 	s.AIAgentId = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallRequest) SetAgentConfig(v *AIAgentConfig) *GenerateAIAgentCallRequest {
+	s.AgentConfig = v
 	return s
 }
 
@@ -18587,6 +19357,7 @@ type GenerateAIAgentCallShrinkRequest struct {
 	//
 	// 39f8e0bc005e4f309379701645f4****
 	AIAgentId            *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	AgentConfigShrink    *string `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
 	ChatSyncConfigShrink *string `json:"ChatSyncConfig,omitempty" xml:"ChatSyncConfig,omitempty"`
 	// The time when the token expires. Unit: seconds. Default value: 3600. Valid values: 0 to 604800.
 	//
@@ -18598,6 +19369,8 @@ type GenerateAIAgentCallShrinkRequest struct {
 	//
 	// fw1gr0bc005e4f309379701645f4****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Deprecated
+	//
 	// The template configurations of the AI agent. The specified configurations are merged with the template configurations that are specified in the console. If you do not specify this parameter, the system uses the default configurations for an AI agent created in the console.
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// example:
@@ -18622,6 +19395,11 @@ func (s GenerateAIAgentCallShrinkRequest) GoString() string {
 
 func (s *GenerateAIAgentCallShrinkRequest) SetAIAgentId(v string) *GenerateAIAgentCallShrinkRequest {
 	s.AIAgentId = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallShrinkRequest) SetAgentConfigShrink(v string) *GenerateAIAgentCallShrinkRequest {
+	s.AgentConfigShrink = &v
 	return s
 }
 
@@ -19245,6 +20023,8 @@ func (s *GetAdInsertionResponseBodyConfigCdnConfig) SetContentSegmentUrlPrefix(v
 }
 
 type GetAdInsertionResponseBodyConfigManifestEndpointConfig struct {
+	// DASH清单播放端点前缀
+	DashPrefix *string `json:"DashPrefix,omitempty" xml:"DashPrefix,omitempty"`
 	// The playback endpoint prefix for accessing HLS manifests.
 	HlsPrefix *string `json:"HlsPrefix,omitempty" xml:"HlsPrefix,omitempty"`
 }
@@ -19255,6 +20035,11 @@ func (s GetAdInsertionResponseBodyConfigManifestEndpointConfig) String() string 
 
 func (s GetAdInsertionResponseBodyConfigManifestEndpointConfig) GoString() string {
 	return s.String()
+}
+
+func (s *GetAdInsertionResponseBodyConfigManifestEndpointConfig) SetDashPrefix(v string) *GetAdInsertionResponseBodyConfigManifestEndpointConfig {
+	s.DashPrefix = &v
+	return s
 }
 
 func (s *GetAdInsertionResponseBodyConfigManifestEndpointConfig) SetHlsPrefix(v string) *GetAdInsertionResponseBodyConfigManifestEndpointConfig {
@@ -24173,7 +24958,8 @@ type GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct {
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
-	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	LastModified        *string              `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	LivePackagingConfig *LivePackagingConfig `json:"LivePackagingConfig,omitempty" xml:"LivePackagingConfig,omitempty"`
 	// The playlist name.
 	//
 	// example:
@@ -24249,6 +25035,11 @@ func (s *GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint) SetI
 
 func (s *GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint) SetLastModified(v string) *GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint {
 	s.LastModified = &v
+	return s
+}
+
+func (s *GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint) SetLivePackagingConfig(v *LivePackagingConfig) *GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint {
+	s.LivePackagingConfig = v
 	return s
 }
 
@@ -41161,6 +41952,7 @@ func (s *ListAIAgentInstanceResponseBody) SetRequestId(v string) *ListAIAgentIns
 }
 
 type ListAIAgentInstanceResponseBodyInstances struct {
+	AgentConfig *AIAgentConfig `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
 	// The URL of the call log file for the AI agent. The structure of the file is CallLog in the JSON format.
 	//
 	// example:
@@ -41183,6 +41975,8 @@ type ListAIAgentInstanceResponseBodyInstances struct {
 	//
 	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Deprecated
+	//
 	// The template configurations of the AI agent.
 	//
 	// example:
@@ -41203,6 +41997,11 @@ func (s ListAIAgentInstanceResponseBodyInstances) String() string {
 
 func (s ListAIAgentInstanceResponseBodyInstances) GoString() string {
 	return s.String()
+}
+
+func (s *ListAIAgentInstanceResponseBodyInstances) SetAgentConfig(v *AIAgentConfig) *ListAIAgentInstanceResponseBodyInstances {
+	s.AgentConfig = v
+	return s
 }
 
 func (s *ListAIAgentInstanceResponseBodyInstances) SetCallLogUrl(v string) *ListAIAgentInstanceResponseBodyInstances {
@@ -41255,6 +42054,146 @@ func (s *ListAIAgentInstanceResponse) SetStatusCode(v int32) *ListAIAgentInstanc
 }
 
 func (s *ListAIAgentInstanceResponse) SetBody(v *ListAIAgentInstanceResponseBody) *ListAIAgentInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ListAIAgentPhoneNumberRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListAIAgentPhoneNumberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAIAgentPhoneNumberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAIAgentPhoneNumberRequest) SetPageNumber(v int64) *ListAIAgentPhoneNumberRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAIAgentPhoneNumberRequest) SetPageSize(v int64) *ListAIAgentPhoneNumberRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListAIAgentPhoneNumberResponseBody struct {
+	Data []*ListAIAgentPhoneNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ************16-412C-B127-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 186
+	TotalNumber *int32 `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
+}
+
+func (s ListAIAgentPhoneNumberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAIAgentPhoneNumberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAIAgentPhoneNumberResponseBody) SetData(v []*ListAIAgentPhoneNumberResponseBodyData) *ListAIAgentPhoneNumberResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAIAgentPhoneNumberResponseBody) SetPageNumber(v int32) *ListAIAgentPhoneNumberResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAIAgentPhoneNumberResponseBody) SetPageSize(v int32) *ListAIAgentPhoneNumberResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAIAgentPhoneNumberResponseBody) SetRequestId(v string) *ListAIAgentPhoneNumberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAIAgentPhoneNumberResponseBody) SetTotalNumber(v int32) *ListAIAgentPhoneNumberResponseBody {
+	s.TotalNumber = &v
+	return s
+}
+
+type ListAIAgentPhoneNumberResponseBodyData struct {
+	// example:
+	//
+	// 132*****683
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListAIAgentPhoneNumberResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAIAgentPhoneNumberResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAIAgentPhoneNumberResponseBodyData) SetPhoneNumber(v string) *ListAIAgentPhoneNumberResponseBodyData {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *ListAIAgentPhoneNumberResponseBodyData) SetStatus(v int32) *ListAIAgentPhoneNumberResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type ListAIAgentPhoneNumberResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAIAgentPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAIAgentPhoneNumberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAIAgentPhoneNumberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAIAgentPhoneNumberResponse) SetHeaders(v map[string]*string) *ListAIAgentPhoneNumberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAIAgentPhoneNumberResponse) SetStatusCode(v int32) *ListAIAgentPhoneNumberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAIAgentPhoneNumberResponse) SetBody(v *ListAIAgentPhoneNumberResponseBody) *ListAIAgentPhoneNumberResponse {
 	s.Body = v
 	return s
 }
@@ -41597,6 +42536,8 @@ func (s *ListAdInsertionsResponseBodyConfigsCdnConfig) SetContentSegmentUrlPrefi
 }
 
 type ListAdInsertionsResponseBodyConfigsManifestEndpointConfig struct {
+	// DASH清单播放端点前缀
+	DashPrefix *string `json:"DashPrefix,omitempty" xml:"DashPrefix,omitempty"`
 	// The prefix of the playback endpoint for HLS manifests.
 	HlsPrefix *string `json:"HlsPrefix,omitempty" xml:"HlsPrefix,omitempty"`
 }
@@ -41607,6 +42548,11 @@ func (s ListAdInsertionsResponseBodyConfigsManifestEndpointConfig) String() stri
 
 func (s ListAdInsertionsResponseBodyConfigsManifestEndpointConfig) GoString() string {
 	return s.String()
+}
+
+func (s *ListAdInsertionsResponseBodyConfigsManifestEndpointConfig) SetDashPrefix(v string) *ListAdInsertionsResponseBodyConfigsManifestEndpointConfig {
+	s.DashPrefix = &v
+	return s
 }
 
 func (s *ListAdInsertionsResponseBodyConfigsManifestEndpointConfig) SetHlsPrefix(v string) *ListAdInsertionsResponseBodyConfigsManifestEndpointConfig {
@@ -70139,7 +71085,8 @@ type StartAIAgentInstanceRequest struct {
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
-	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	AIAgentId   *string        `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	AgentConfig *AIAgentConfig `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
 	// 同步聊天记录配置。
 	ChatSyncConfig *StartAIAgentInstanceRequestChatSyncConfig `json:"ChatSyncConfig,omitempty" xml:"ChatSyncConfig,omitempty" type:"Struct"`
 	// This parameter is required.
@@ -70147,7 +71094,8 @@ type StartAIAgentInstanceRequest struct {
 	// example:
 	//
 	// f213fbc005e4f309379701645f4****
-	SessionId      *string                `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Deprecated
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// example:
 	//
@@ -70165,6 +71113,11 @@ func (s StartAIAgentInstanceRequest) GoString() string {
 
 func (s *StartAIAgentInstanceRequest) SetAIAgentId(v string) *StartAIAgentInstanceRequest {
 	s.AIAgentId = &v
+	return s
+}
+
+func (s *StartAIAgentInstanceRequest) SetAgentConfig(v *AIAgentConfig) *StartAIAgentInstanceRequest {
+	s.AgentConfig = v
 	return s
 }
 
@@ -70234,7 +71187,8 @@ type StartAIAgentInstanceShrinkRequest struct {
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
-	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	AIAgentId         *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	AgentConfigShrink *string `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
 	// 同步聊天记录配置。
 	ChatSyncConfigShrink *string `json:"ChatSyncConfig,omitempty" xml:"ChatSyncConfig,omitempty"`
 	// This parameter is required.
@@ -70242,7 +71196,8 @@ type StartAIAgentInstanceShrinkRequest struct {
 	// example:
 	//
 	// f213fbc005e4f309379701645f4****
-	SessionId            *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Deprecated
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// example:
 	//
@@ -70260,6 +71215,11 @@ func (s StartAIAgentInstanceShrinkRequest) GoString() string {
 
 func (s *StartAIAgentInstanceShrinkRequest) SetAIAgentId(v string) *StartAIAgentInstanceShrinkRequest {
 	s.AIAgentId = &v
+	return s
+}
+
+func (s *StartAIAgentInstanceShrinkRequest) SetAgentConfigShrink(v string) *StartAIAgentInstanceShrinkRequest {
+	s.AgentConfigShrink = &v
 	return s
 }
 
@@ -70342,6 +71302,194 @@ func (s *StartAIAgentInstanceResponse) SetStatusCode(v int32) *StartAIAgentInsta
 }
 
 func (s *StartAIAgentInstanceResponse) SetBody(v *StartAIAgentInstanceResponseBody) *StartAIAgentInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type StartAIAgentOutboundCallRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ***********e4f309379701645f4****
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 173*****533
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 183*****333
+	CallerNumber *string                    `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
+	Config       *AIAgentOutboundCallConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// f213fbc005e4f309379701645f4****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s StartAIAgentOutboundCallRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAIAgentOutboundCallRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartAIAgentOutboundCallRequest) SetAIAgentId(v string) *StartAIAgentOutboundCallRequest {
+	s.AIAgentId = &v
+	return s
+}
+
+func (s *StartAIAgentOutboundCallRequest) SetCalledNumber(v string) *StartAIAgentOutboundCallRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *StartAIAgentOutboundCallRequest) SetCallerNumber(v string) *StartAIAgentOutboundCallRequest {
+	s.CallerNumber = &v
+	return s
+}
+
+func (s *StartAIAgentOutboundCallRequest) SetConfig(v *AIAgentOutboundCallConfig) *StartAIAgentOutboundCallRequest {
+	s.Config = v
+	return s
+}
+
+func (s *StartAIAgentOutboundCallRequest) SetSessionId(v string) *StartAIAgentOutboundCallRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *StartAIAgentOutboundCallRequest) SetUserData(v string) *StartAIAgentOutboundCallRequest {
+	s.UserData = &v
+	return s
+}
+
+type StartAIAgentOutboundCallShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ***********e4f309379701645f4****
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 173*****533
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 183*****333
+	CallerNumber *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
+	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// f213fbc005e4f309379701645f4****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s StartAIAgentOutboundCallShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAIAgentOutboundCallShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartAIAgentOutboundCallShrinkRequest) SetAIAgentId(v string) *StartAIAgentOutboundCallShrinkRequest {
+	s.AIAgentId = &v
+	return s
+}
+
+func (s *StartAIAgentOutboundCallShrinkRequest) SetCalledNumber(v string) *StartAIAgentOutboundCallShrinkRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *StartAIAgentOutboundCallShrinkRequest) SetCallerNumber(v string) *StartAIAgentOutboundCallShrinkRequest {
+	s.CallerNumber = &v
+	return s
+}
+
+func (s *StartAIAgentOutboundCallShrinkRequest) SetConfigShrink(v string) *StartAIAgentOutboundCallShrinkRequest {
+	s.ConfigShrink = &v
+	return s
+}
+
+func (s *StartAIAgentOutboundCallShrinkRequest) SetSessionId(v string) *StartAIAgentOutboundCallShrinkRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *StartAIAgentOutboundCallShrinkRequest) SetUserData(v string) *StartAIAgentOutboundCallShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type StartAIAgentOutboundCallResponseBody struct {
+	// example:
+	//
+	// *********296014bb58670940*********
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// ***********-4417-BDB2************
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartAIAgentOutboundCallResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAIAgentOutboundCallResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartAIAgentOutboundCallResponseBody) SetInstanceId(v string) *StartAIAgentOutboundCallResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StartAIAgentOutboundCallResponseBody) SetRequestId(v string) *StartAIAgentOutboundCallResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartAIAgentOutboundCallResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartAIAgentOutboundCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartAIAgentOutboundCallResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAIAgentOutboundCallResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartAIAgentOutboundCallResponse) SetHeaders(v map[string]*string) *StartAIAgentOutboundCallResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartAIAgentOutboundCallResponse) SetStatusCode(v int32) *StartAIAgentOutboundCallResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartAIAgentOutboundCallResponse) SetBody(v *StartAIAgentOutboundCallResponseBody) *StartAIAgentOutboundCallResponse {
 	s.Body = v
 	return s
 }
@@ -71191,6 +72339,286 @@ func (s *StopRtcRobotInstanceResponse) SetStatusCode(v int32) *StopRtcRobotInsta
 }
 
 func (s *StopRtcRobotInstanceResponse) SetBody(v *StopRtcRobotInstanceResponseBody) *StopRtcRobotInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitAIAgentVideoAuditTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// *******3b3d94abda22******
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// example:
+	//
+	// 3000
+	AuditInterval *int32 `json:"AuditInterval,omitempty" xml:"AuditInterval,omitempty"`
+	// example:
+	//
+	// {"Url":"https://yourcallback","Token":"yourtoken"}
+	CallbackConfig *SubmitAIAgentVideoAuditTaskRequestCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
+	// This parameter is required.
+	CapturePolicies []*SubmitAIAgentVideoAuditTaskRequestCapturePolicies `json:"CapturePolicies,omitempty" xml:"CapturePolicies,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Input    *SubmitAIAgentVideoAuditTaskRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	UserData *string                                  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitAIAgentVideoAuditTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAIAgentVideoAuditTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAIAgentVideoAuditTaskRequest) SetAIAgentId(v string) *SubmitAIAgentVideoAuditTaskRequest {
+	s.AIAgentId = &v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskRequest) SetAuditInterval(v int32) *SubmitAIAgentVideoAuditTaskRequest {
+	s.AuditInterval = &v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskRequest) SetCallbackConfig(v *SubmitAIAgentVideoAuditTaskRequestCallbackConfig) *SubmitAIAgentVideoAuditTaskRequest {
+	s.CallbackConfig = v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskRequest) SetCapturePolicies(v []*SubmitAIAgentVideoAuditTaskRequestCapturePolicies) *SubmitAIAgentVideoAuditTaskRequest {
+	s.CapturePolicies = v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskRequest) SetInput(v *SubmitAIAgentVideoAuditTaskRequestInput) *SubmitAIAgentVideoAuditTaskRequest {
+	s.Input = v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskRequest) SetUserData(v string) *SubmitAIAgentVideoAuditTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitAIAgentVideoAuditTaskRequestCallbackConfig struct {
+	// example:
+	//
+	// Bearer Token
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// https://yourcallback
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s SubmitAIAgentVideoAuditTaskRequestCallbackConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAIAgentVideoAuditTaskRequestCallbackConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAIAgentVideoAuditTaskRequestCallbackConfig) SetToken(v string) *SubmitAIAgentVideoAuditTaskRequestCallbackConfig {
+	s.Token = &v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskRequestCallbackConfig) SetUrl(v string) *SubmitAIAgentVideoAuditTaskRequestCallbackConfig {
+	s.Url = &v
+	return s
+}
+
+type SubmitAIAgentVideoAuditTaskRequestCapturePolicies struct {
+	// example:
+	//
+	// 10
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 2
+	FrameCount *int32  `json:"FrameCount,omitempty" xml:"FrameCount,omitempty"`
+	Prompt     *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// 0
+	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s SubmitAIAgentVideoAuditTaskRequestCapturePolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAIAgentVideoAuditTaskRequestCapturePolicies) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAIAgentVideoAuditTaskRequestCapturePolicies) SetDuration(v int32) *SubmitAIAgentVideoAuditTaskRequestCapturePolicies {
+	s.Duration = &v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskRequestCapturePolicies) SetFrameCount(v int32) *SubmitAIAgentVideoAuditTaskRequestCapturePolicies {
+	s.FrameCount = &v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskRequestCapturePolicies) SetPrompt(v string) *SubmitAIAgentVideoAuditTaskRequestCapturePolicies {
+	s.Prompt = &v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskRequestCapturePolicies) SetStartTime(v int32) *SubmitAIAgentVideoAuditTaskRequestCapturePolicies {
+	s.StartTime = &v
+	return s
+}
+
+type SubmitAIAgentVideoAuditTaskRequestInput struct {
+	// example:
+	//
+	// http://my-bucket.cn-shanghai.aliyuncs.com/object-id.mp4
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitAIAgentVideoAuditTaskRequestInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAIAgentVideoAuditTaskRequestInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAIAgentVideoAuditTaskRequestInput) SetMedia(v string) *SubmitAIAgentVideoAuditTaskRequestInput {
+	s.Media = &v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskRequestInput) SetType(v string) *SubmitAIAgentVideoAuditTaskRequestInput {
+	s.Type = &v
+	return s
+}
+
+type SubmitAIAgentVideoAuditTaskShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// *******3b3d94abda22******
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// example:
+	//
+	// 3000
+	AuditInterval *int32 `json:"AuditInterval,omitempty" xml:"AuditInterval,omitempty"`
+	// example:
+	//
+	// {"Url":"https://yourcallback","Token":"yourtoken"}
+	CallbackConfigShrink *string `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty"`
+	// This parameter is required.
+	CapturePoliciesShrink *string `json:"CapturePolicies,omitempty" xml:"CapturePolicies,omitempty"`
+	// This parameter is required.
+	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitAIAgentVideoAuditTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAIAgentVideoAuditTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAIAgentVideoAuditTaskShrinkRequest) SetAIAgentId(v string) *SubmitAIAgentVideoAuditTaskShrinkRequest {
+	s.AIAgentId = &v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskShrinkRequest) SetAuditInterval(v int32) *SubmitAIAgentVideoAuditTaskShrinkRequest {
+	s.AuditInterval = &v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskShrinkRequest) SetCallbackConfigShrink(v string) *SubmitAIAgentVideoAuditTaskShrinkRequest {
+	s.CallbackConfigShrink = &v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskShrinkRequest) SetCapturePoliciesShrink(v string) *SubmitAIAgentVideoAuditTaskShrinkRequest {
+	s.CapturePoliciesShrink = &v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskShrinkRequest) SetInputShrink(v string) *SubmitAIAgentVideoAuditTaskShrinkRequest {
+	s.InputShrink = &v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskShrinkRequest) SetUserData(v string) *SubmitAIAgentVideoAuditTaskShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitAIAgentVideoAuditTaskResponseBody struct {
+	// example:
+	//
+	// **********fb04483915d4f2**********
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// **********-586A-AC29-742247******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitAIAgentVideoAuditTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAIAgentVideoAuditTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAIAgentVideoAuditTaskResponseBody) SetJobId(v string) *SubmitAIAgentVideoAuditTaskResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskResponseBody) SetRequestId(v string) *SubmitAIAgentVideoAuditTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitAIAgentVideoAuditTaskResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitAIAgentVideoAuditTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitAIAgentVideoAuditTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAIAgentVideoAuditTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAIAgentVideoAuditTaskResponse) SetHeaders(v map[string]*string) *SubmitAIAgentVideoAuditTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskResponse) SetStatusCode(v int32) *SubmitAIAgentVideoAuditTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitAIAgentVideoAuditTaskResponse) SetBody(v *SubmitAIAgentVideoAuditTaskResponseBody) *SubmitAIAgentVideoAuditTaskResponse {
 	s.Body = v
 	return s
 }
@@ -87595,6 +89023,7 @@ func (s *TakeoverAIAgentCallResponse) SetBody(v *TakeoverAIAgentCallResponseBody
 }
 
 type UpdateAIAgentInstanceRequest struct {
+	AgentConfig *AIAgentConfig `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
 	// The ID of the AI agent that you want to update.
 	//
 	// This parameter is required.
@@ -87603,6 +89032,8 @@ type UpdateAIAgentInstanceRequest struct {
 	//
 	// 39f8e0bc005e4f309379701645f4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Deprecated
+	//
 	// The template configurations of the AI agent. The configurations are merged with the template configurations that are used to start the AI agent. For more information, see the definition of TemplateConfig.
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// example:
@@ -87617,6 +89048,11 @@ func (s UpdateAIAgentInstanceRequest) String() string {
 
 func (s UpdateAIAgentInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateAIAgentInstanceRequest) SetAgentConfig(v *AIAgentConfig) *UpdateAIAgentInstanceRequest {
+	s.AgentConfig = v
+	return s
 }
 
 func (s *UpdateAIAgentInstanceRequest) SetInstanceId(v string) *UpdateAIAgentInstanceRequest {
@@ -87635,6 +89071,7 @@ func (s *UpdateAIAgentInstanceRequest) SetUserData(v string) *UpdateAIAgentInsta
 }
 
 type UpdateAIAgentInstanceShrinkRequest struct {
+	AgentConfigShrink *string `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
 	// The ID of the AI agent that you want to update.
 	//
 	// This parameter is required.
@@ -87643,6 +89080,8 @@ type UpdateAIAgentInstanceShrinkRequest struct {
 	//
 	// 39f8e0bc005e4f309379701645f4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Deprecated
+	//
 	// The template configurations of the AI agent. The configurations are merged with the template configurations that are used to start the AI agent. For more information, see the definition of TemplateConfig.
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// example:
@@ -87657,6 +89096,11 @@ func (s UpdateAIAgentInstanceShrinkRequest) String() string {
 
 func (s UpdateAIAgentInstanceShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateAIAgentInstanceShrinkRequest) SetAgentConfigShrink(v string) *UpdateAIAgentInstanceShrinkRequest {
+	s.AgentConfigShrink = &v
+	return s
 }
 
 func (s *UpdateAIAgentInstanceShrinkRequest) SetInstanceId(v string) *UpdateAIAgentInstanceShrinkRequest {
@@ -88034,6 +89478,8 @@ func (s *UpdateAdInsertionResponseBodyConfigCdnConfig) SetContentSegmentUrlPrefi
 }
 
 type UpdateAdInsertionResponseBodyConfigManifestEndpointConfig struct {
+	// DASH清单播放端点前缀
+	DashPrefix *string `json:"DashPrefix,omitempty" xml:"DashPrefix,omitempty"`
 	// The prefix of the playback endpoint for HLS manifests.
 	HlsPrefix *string `json:"HlsPrefix,omitempty" xml:"HlsPrefix,omitempty"`
 }
@@ -88044,6 +89490,11 @@ func (s UpdateAdInsertionResponseBodyConfigManifestEndpointConfig) String() stri
 
 func (s UpdateAdInsertionResponseBodyConfigManifestEndpointConfig) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateAdInsertionResponseBodyConfigManifestEndpointConfig) SetDashPrefix(v string) *UpdateAdInsertionResponseBodyConfigManifestEndpointConfig {
+	s.DashPrefix = &v
+	return s
 }
 
 func (s *UpdateAdInsertionResponseBodyConfigManifestEndpointConfig) SetHlsPrefix(v string) *UpdateAdInsertionResponseBodyConfigManifestEndpointConfig {
@@ -89546,7 +90997,8 @@ type UpdateLivePackageOriginEndpointRequest struct {
 	// example:
 	//
 	// 192.168.1.0/24,10.0.0.1
-	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	IpWhitelist         *string              `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	LivePackagingConfig *LivePackagingConfig `json:"LivePackagingConfig,omitempty" xml:"LivePackagingConfig,omitempty"`
 	// The playlist name. Default value: manifest.
 	//
 	// example:
@@ -89612,6 +91064,11 @@ func (s *UpdateLivePackageOriginEndpointRequest) SetIpWhitelist(v string) *Updat
 	return s
 }
 
+func (s *UpdateLivePackageOriginEndpointRequest) SetLivePackagingConfig(v *LivePackagingConfig) *UpdateLivePackageOriginEndpointRequest {
+	s.LivePackagingConfig = v
+	return s
+}
+
 func (s *UpdateLivePackageOriginEndpointRequest) SetManifestName(v string) *UpdateLivePackageOriginEndpointRequest {
 	s.ManifestName = &v
 	return s
@@ -89623,6 +91080,137 @@ func (s *UpdateLivePackageOriginEndpointRequest) SetProtocol(v string) *UpdateLi
 }
 
 func (s *UpdateLivePackageOriginEndpointRequest) SetTimeshiftVision(v int32) *UpdateLivePackageOriginEndpointRequest {
+	s.TimeshiftVision = &v
+	return s
+}
+
+type UpdateLivePackageOriginEndpointShrinkRequest struct {
+	// The authorization code. It can be up to 200 characters in length. You must configure AuthorizationCode, IpWhitelist, or both. Format: [A-Za-z0-9-_.]+
+	//
+	// example:
+	//
+	// Abc123Def456
+	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
+	// The channel name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// channel-1
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The endpoint description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The origin endpoint name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// endpoint-1
+	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	// The channel group name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// channel-group-1
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The IP address blacklist. It supports subnet masks. Separate multiple IP addresses with commas (,).
+	//
+	// example:
+	//
+	// 103.0.0.0/8
+	IpBlacklist *string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
+	// The IP address whitelist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,). You must configure AuthorizationCode, IpWhitelist, or both.
+	//
+	// example:
+	//
+	// 192.168.1.0/24,10.0.0.1
+	IpWhitelist               *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	LivePackagingConfigShrink *string `json:"LivePackagingConfig,omitempty" xml:"LivePackagingConfig,omitempty"`
+	// The playlist name. Default value: manifest.
+	//
+	// example:
+	//
+	// manifest
+	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
+	// The protocol. Only HLS is supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HLS
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The number of days that time-shifted content is available. Maximum value: 30.
+	//
+	// example:
+	//
+	// 5
+	TimeshiftVision *int32 `json:"TimeshiftVision,omitempty" xml:"TimeshiftVision,omitempty"`
+}
+
+func (s UpdateLivePackageOriginEndpointShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLivePackageOriginEndpointShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLivePackageOriginEndpointShrinkRequest) SetAuthorizationCode(v string) *UpdateLivePackageOriginEndpointShrinkRequest {
+	s.AuthorizationCode = &v
+	return s
+}
+
+func (s *UpdateLivePackageOriginEndpointShrinkRequest) SetChannelName(v string) *UpdateLivePackageOriginEndpointShrinkRequest {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *UpdateLivePackageOriginEndpointShrinkRequest) SetDescription(v string) *UpdateLivePackageOriginEndpointShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateLivePackageOriginEndpointShrinkRequest) SetEndpointName(v string) *UpdateLivePackageOriginEndpointShrinkRequest {
+	s.EndpointName = &v
+	return s
+}
+
+func (s *UpdateLivePackageOriginEndpointShrinkRequest) SetGroupName(v string) *UpdateLivePackageOriginEndpointShrinkRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateLivePackageOriginEndpointShrinkRequest) SetIpBlacklist(v string) *UpdateLivePackageOriginEndpointShrinkRequest {
+	s.IpBlacklist = &v
+	return s
+}
+
+func (s *UpdateLivePackageOriginEndpointShrinkRequest) SetIpWhitelist(v string) *UpdateLivePackageOriginEndpointShrinkRequest {
+	s.IpWhitelist = &v
+	return s
+}
+
+func (s *UpdateLivePackageOriginEndpointShrinkRequest) SetLivePackagingConfigShrink(v string) *UpdateLivePackageOriginEndpointShrinkRequest {
+	s.LivePackagingConfigShrink = &v
+	return s
+}
+
+func (s *UpdateLivePackageOriginEndpointShrinkRequest) SetManifestName(v string) *UpdateLivePackageOriginEndpointShrinkRequest {
+	s.ManifestName = &v
+	return s
+}
+
+func (s *UpdateLivePackageOriginEndpointShrinkRequest) SetProtocol(v string) *UpdateLivePackageOriginEndpointShrinkRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateLivePackageOriginEndpointShrinkRequest) SetTimeshiftVision(v int32) *UpdateLivePackageOriginEndpointShrinkRequest {
 	s.TimeshiftVision = &v
 	return s
 }
@@ -89712,7 +91300,8 @@ type UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
-	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	LastModified        *string              `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	LivePackagingConfig *LivePackagingConfig `json:"LivePackagingConfig,omitempty" xml:"LivePackagingConfig,omitempty"`
 	// The playlist name. Default value: manifest.
 	//
 	// example:
@@ -89788,6 +91377,11 @@ func (s *UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint) S
 
 func (s *UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint) SetLastModified(v string) *UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint {
 	s.LastModified = &v
+	return s
+}
+
+func (s *UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint) SetLivePackagingConfig(v *LivePackagingConfig) *UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint {
+	s.LivePackagingConfig = v
 	return s
 }
 
@@ -96364,16 +97958,22 @@ func (client *Client) CreateLivePackageChannelGroup(request *CreateLivePackageCh
 //
 // This API operation is mainly used to configure origin settings, security policies including the IP address blacklist and whitelist and authorization code, and time shifting settings for channels. Before you create an origin endpoint, you must create a live package channel group and channel. After you create the endpoint, the endpoint URL and other configuration details are returned.
 //
-// @param request - CreateLivePackageOriginEndpointRequest
+// @param tmpReq - CreateLivePackageOriginEndpointRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLivePackageOriginEndpointResponse
-func (client *Client) CreateLivePackageOriginEndpointWithOptions(request *CreateLivePackageOriginEndpointRequest, runtime *util.RuntimeOptions) (_result *CreateLivePackageOriginEndpointResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateLivePackageOriginEndpointWithOptions(tmpReq *CreateLivePackageOriginEndpointRequest, runtime *util.RuntimeOptions) (_result *CreateLivePackageOriginEndpointResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateLivePackageOriginEndpointShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LivePackagingConfig)) {
+		request.LivePackagingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LivePackagingConfig, tea.String("LivePackagingConfig"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
@@ -96406,6 +98006,10 @@ func (client *Client) CreateLivePackageOriginEndpointWithOptions(request *Create
 
 	if !tea.BoolValue(util.IsUnset(request.IpWhitelist)) {
 		body["IpWhitelist"] = request.IpWhitelist
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LivePackagingConfigShrink)) {
+		body["LivePackagingConfig"] = request.LivePackagingConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ManifestName)) {
@@ -101480,6 +103084,10 @@ func (client *Client) GenerateAIAgentCallWithOptions(tmpReq *GenerateAIAgentCall
 	}
 	request := &GenerateAIAgentCallShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AgentConfig)) {
+		request.AgentConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgentConfig, tea.String("AgentConfig"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ChatSyncConfig)) {
 		request.ChatSyncConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChatSyncConfig, tea.String("ChatSyncConfig"), tea.String("json"))
 	}
@@ -101491,6 +103099,10 @@ func (client *Client) GenerateAIAgentCallWithOptions(tmpReq *GenerateAIAgentCall
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AIAgentId)) {
 		query["AIAgentId"] = request.AIAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AgentConfigShrink)) {
+		query["AgentConfig"] = request.AgentConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ChatSyncConfigShrink)) {
@@ -105951,6 +107563,70 @@ func (client *Client) ListAIAgentInstance(request *ListAIAgentInstanceRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAIAgentInstanceResponse{}
 	_body, _err := client.ListAIAgentInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 罗列用户电话资源接口
+//
+// @param request - ListAIAgentPhoneNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAIAgentPhoneNumberResponse
+func (client *Client) ListAIAgentPhoneNumberWithOptions(request *ListAIAgentPhoneNumberRequest, runtime *util.RuntimeOptions) (_result *ListAIAgentPhoneNumberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAIAgentPhoneNumber"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAIAgentPhoneNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 罗列用户电话资源接口
+//
+// @param request - ListAIAgentPhoneNumberRequest
+//
+// @return ListAIAgentPhoneNumberResponse
+func (client *Client) ListAIAgentPhoneNumber(request *ListAIAgentPhoneNumberRequest) (_result *ListAIAgentPhoneNumberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAIAgentPhoneNumberResponse{}
+	_body, _err := client.ListAIAgentPhoneNumberWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -112866,6 +114542,10 @@ func (client *Client) StartAIAgentInstanceWithOptions(tmpReq *StartAIAgentInstan
 	}
 	request := &StartAIAgentInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AgentConfig)) {
+		request.AgentConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgentConfig, tea.String("AgentConfig"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ChatSyncConfig)) {
 		request.ChatSyncConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChatSyncConfig, tea.String("ChatSyncConfig"), tea.String("json"))
 	}
@@ -112881,6 +114561,10 @@ func (client *Client) StartAIAgentInstanceWithOptions(tmpReq *StartAIAgentInstan
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AIAgentId)) {
 		query["AIAgentId"] = request.AIAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AgentConfigShrink)) {
+		query["AgentConfig"] = request.AgentConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ChatSyncConfigShrink)) {
@@ -112941,6 +114625,92 @@ func (client *Client) StartAIAgentInstance(request *StartAIAgentInstanceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &StartAIAgentInstanceResponse{}
 	_body, _err := client.StartAIAgentInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+//
+// @param tmpReq - StartAIAgentOutboundCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartAIAgentOutboundCallResponse
+func (client *Client) StartAIAgentOutboundCallWithOptions(tmpReq *StartAIAgentOutboundCallRequest, runtime *util.RuntimeOptions) (_result *StartAIAgentOutboundCallResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StartAIAgentOutboundCallShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Config)) {
+		request.ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Config, tea.String("Config"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AIAgentId)) {
+		query["AIAgentId"] = request.AIAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallerNumber)) {
+		query["CallerNumber"] = request.CallerNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigShrink)) {
+		query["Config"] = request.ConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartAIAgentOutboundCall"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartAIAgentOutboundCallResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+//
+// @param request - StartAIAgentOutboundCallRequest
+//
+// @return StartAIAgentOutboundCallResponse
+func (client *Client) StartAIAgentOutboundCall(request *StartAIAgentOutboundCallRequest) (_result *StartAIAgentOutboundCallResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartAIAgentOutboundCallResponse{}
+	_body, _err := client.StartAIAgentOutboundCallWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -113511,6 +115281,100 @@ func (client *Client) StopRtcRobotInstance(request *StopRtcRobotInstanceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &StopRtcRobotInstanceResponse{}
 	_body, _err := client.StopRtcRobotInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交视频送审任务
+//
+// @param tmpReq - SubmitAIAgentVideoAuditTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitAIAgentVideoAuditTaskResponse
+func (client *Client) SubmitAIAgentVideoAuditTaskWithOptions(tmpReq *SubmitAIAgentVideoAuditTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitAIAgentVideoAuditTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitAIAgentVideoAuditTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CallbackConfig)) {
+		request.CallbackConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallbackConfig, tea.String("CallbackConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CapturePolicies)) {
+		request.CapturePoliciesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CapturePolicies, tea.String("CapturePolicies"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AIAgentId)) {
+		query["AIAgentId"] = request.AIAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuditInterval)) {
+		query["AuditInterval"] = request.AuditInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackConfigShrink)) {
+		query["CallbackConfig"] = request.CallbackConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CapturePoliciesShrink)) {
+		query["CapturePolicies"] = request.CapturePoliciesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
+		query["Input"] = request.InputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitAIAgentVideoAuditTask"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitAIAgentVideoAuditTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交视频送审任务
+//
+// @param request - SubmitAIAgentVideoAuditTaskRequest
+//
+// @return SubmitAIAgentVideoAuditTaskResponse
+func (client *Client) SubmitAIAgentVideoAuditTask(request *SubmitAIAgentVideoAuditTaskRequest) (_result *SubmitAIAgentVideoAuditTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitAIAgentVideoAuditTaskResponse{}
+	_body, _err := client.SubmitAIAgentVideoAuditTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -117006,11 +118870,19 @@ func (client *Client) UpdateAIAgentInstanceWithOptions(tmpReq *UpdateAIAgentInst
 	}
 	request := &UpdateAIAgentInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AgentConfig)) {
+		request.AgentConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgentConfig, tea.String("AgentConfig"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.TemplateConfig)) {
 		request.TemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TemplateConfig, tea.String("TemplateConfig"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentConfigShrink)) {
+		query["AgentConfig"] = request.AgentConfigShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -117878,16 +119750,22 @@ func (client *Client) UpdateLivePackageChannelGroup(request *UpdateLivePackageCh
 //
 // You can call this operation to modify the origin protocol, set the number of days that time-shifted content is available, define playlist names, and configure the IP address blacklist and whitelist, allowing for fine-grained control over streaming media distribution. Some parameters are required. You must configure IpWhitelist, AuthorizationCode, or both.
 //
-// @param request - UpdateLivePackageOriginEndpointRequest
+// @param tmpReq - UpdateLivePackageOriginEndpointRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLivePackageOriginEndpointResponse
-func (client *Client) UpdateLivePackageOriginEndpointWithOptions(request *UpdateLivePackageOriginEndpointRequest, runtime *util.RuntimeOptions) (_result *UpdateLivePackageOriginEndpointResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateLivePackageOriginEndpointWithOptions(tmpReq *UpdateLivePackageOriginEndpointRequest, runtime *util.RuntimeOptions) (_result *UpdateLivePackageOriginEndpointResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateLivePackageOriginEndpointShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LivePackagingConfig)) {
+		request.LivePackagingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LivePackagingConfig, tea.String("LivePackagingConfig"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AuthorizationCode)) {
 		body["AuthorizationCode"] = request.AuthorizationCode
@@ -117915,6 +119793,10 @@ func (client *Client) UpdateLivePackageOriginEndpointWithOptions(request *Update
 
 	if !tea.BoolValue(util.IsUnset(request.IpWhitelist)) {
 		body["IpWhitelist"] = request.IpWhitelist
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LivePackagingConfigShrink)) {
+		body["LivePackagingConfig"] = request.LivePackagingConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ManifestName)) {
