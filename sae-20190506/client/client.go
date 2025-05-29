@@ -5179,6 +5179,10 @@ func (s *PolicyItem) SetValue(v string) *PolicyItem {
 }
 
 type PriceEstimateFeature struct {
+	// example:
+	//
+	// 1
+	AppCount *int64 `json:"AppCount,omitempty" xml:"AppCount,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -5292,6 +5296,11 @@ func (s PriceEstimateFeature) String() string {
 
 func (s PriceEstimateFeature) GoString() string {
 	return s.String()
+}
+
+func (s *PriceEstimateFeature) SetAppCount(v int64) *PriceEstimateFeature {
+	s.AppCount = &v
+	return s
 }
 
 func (s *PriceEstimateFeature) SetAppType(v string) *PriceEstimateFeature {
@@ -19927,7 +19936,9 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// [{"name":"TEST_ENV_KEY","value":"TEST_ENV_VAR"}]
-	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	Envs     *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	GpuCount *string `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	GpuType  *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
 	// example:
 	//
 	// 10
@@ -20516,6 +20527,16 @@ func (s *DescribeApplicationConfigResponseBodyData) SetEnableNewArms(v bool) *De
 
 func (s *DescribeApplicationConfigResponseBodyData) SetEnvs(v string) *DescribeApplicationConfigResponseBodyData {
 	s.Envs = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetGpuCount(v string) *DescribeApplicationConfigResponseBodyData {
+	s.GpuCount = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetGpuType(v string) *DescribeApplicationConfigResponseBodyData {
+	s.GpuType = &v
 	return s
 }
 
