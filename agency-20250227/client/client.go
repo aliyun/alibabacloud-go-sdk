@@ -2039,7 +2039,8 @@ type GetSubPartnerOrderListResponseBodyData struct {
 	// example:
 	//
 	// 2024-07-07 07:52:22
-	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	CreatedAt              *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	CustomerClassification *string `json:"CustomerClassification,omitempty" xml:"CustomerClassification,omitempty"`
 	// example:
 	//
 	// 0
@@ -2108,6 +2109,11 @@ func (s *GetSubPartnerOrderListResponseBodyData) SetAmountDue(v float64) *GetSub
 
 func (s *GetSubPartnerOrderListResponseBodyData) SetCreatedAt(v string) *GetSubPartnerOrderListResponseBodyData {
 	s.CreatedAt = &v
+	return s
+}
+
+func (s *GetSubPartnerOrderListResponseBodyData) SetCustomerClassification(v string) *GetSubPartnerOrderListResponseBodyData {
+	s.CustomerClassification = &v
 	return s
 }
 
