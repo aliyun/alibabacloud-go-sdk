@@ -6175,6 +6175,7 @@ func (s *CreateClusterNodePoolRequestManagement) SetUpgradeConfig(v *CreateClust
 }
 
 type CreateClusterNodePoolRequestManagementAutoRepairPolicy struct {
+	ApprovalRequired *bool `json:"approval_required,omitempty" xml:"approval_required,omitempty"`
 	// Specifies whether to allow node restart. This parameter takes effect only when `auto_repair` is set to true. Valid values:
 	//
 	// 	- `true`: allows node restart.
@@ -6195,6 +6196,11 @@ func (s CreateClusterNodePoolRequestManagementAutoRepairPolicy) String() string 
 
 func (s CreateClusterNodePoolRequestManagementAutoRepairPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestManagementAutoRepairPolicy) SetApprovalRequired(v bool) *CreateClusterNodePoolRequestManagementAutoRepairPolicy {
+	s.ApprovalRequired = &v
+	return s
 }
 
 func (s *CreateClusterNodePoolRequestManagementAutoRepairPolicy) SetRestartNode(v bool) *CreateClusterNodePoolRequestManagementAutoRepairPolicy {
@@ -11614,6 +11620,7 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagement) SetUpgradeConfig(v
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy struct {
+	ApprovalRequired *bool `json:"approval_required,omitempty" xml:"approval_required,omitempty"`
 	// Whether to allow restarting nodes.
 	//
 	// example:
@@ -11628,6 +11635,11 @@ func (s DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy) Str
 
 func (s DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy) SetApprovalRequired(v bool) *DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy {
+	s.ApprovalRequired = &v
+	return s
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy) SetRestartNode(v bool) *DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy {
@@ -13307,6 +13319,7 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagement) SetUpgradeConf
 }
 
 type DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy struct {
+	ApprovalRequired *bool `json:"approval_required,omitempty" xml:"approval_required,omitempty"`
 	// Specifies whether to allow node restart. This parameter takes effect only when `auto_repair=true` is specified.
 	//
 	// 	- `true`: allows node restart.
@@ -13325,6 +13338,11 @@ func (s DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy)
 
 func (s DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy) SetApprovalRequired(v bool) *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy {
+	s.ApprovalRequired = &v
+	return s
 }
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy) SetRestartNode(v bool) *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoRepairPolicy {
@@ -27291,6 +27309,7 @@ func (s *ModifyClusterNodePoolRequestManagement) SetUpgradeConfig(v *ModifyClust
 }
 
 type ModifyClusterNodePoolRequestManagementAutoRepairPolicy struct {
+	ApprovalRequired *bool `json:"approval_required,omitempty" xml:"approval_required,omitempty"`
 	// Specifies whether ACK is allowed to automatically restart nodes after repairing the nodes. Valid values:
 	//
 	// 	- `true`: yes.
@@ -27309,6 +27328,11 @@ func (s ModifyClusterNodePoolRequestManagementAutoRepairPolicy) String() string 
 
 func (s ModifyClusterNodePoolRequestManagementAutoRepairPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyClusterNodePoolRequestManagementAutoRepairPolicy) SetApprovalRequired(v bool) *ModifyClusterNodePoolRequestManagementAutoRepairPolicy {
+	s.ApprovalRequired = &v
+	return s
 }
 
 func (s *ModifyClusterNodePoolRequestManagementAutoRepairPolicy) SetRestartNode(v bool) *ModifyClusterNodePoolRequestManagementAutoRepairPolicy {
