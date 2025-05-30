@@ -4911,7 +4911,8 @@ type GetServiceInstanceResponseBodyService struct {
 	// example:
 	//
 	// ros
-	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	DeployType        *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	OperationMetadata *string `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
 	// The time when the service version was published.
 	//
 	// example:
@@ -5079,6 +5080,11 @@ func (s *GetServiceInstanceResponseBodyService) SetDeployMetadata(v string) *Get
 
 func (s *GetServiceInstanceResponseBodyService) SetDeployType(v string) *GetServiceInstanceResponseBodyService {
 	s.DeployType = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBodyService) SetOperationMetadata(v string) *GetServiceInstanceResponseBodyService {
+	s.OperationMetadata = &v
 	return s
 }
 
