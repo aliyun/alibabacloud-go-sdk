@@ -5422,7 +5422,8 @@ func (s *RunMarketingInformationWritingResponseBodyPayload) SetUsage(v *RunMarke
 }
 
 type RunMarketingInformationWritingResponseBodyPayloadOutput struct {
-	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	ReasonContent *string `json:"reasonContent,omitempty" xml:"reasonContent,omitempty"`
+	Text          *string `json:"text,omitempty" xml:"text,omitempty"`
 }
 
 func (s RunMarketingInformationWritingResponseBodyPayloadOutput) String() string {
@@ -5431,6 +5432,11 @@ func (s RunMarketingInformationWritingResponseBodyPayloadOutput) String() string
 
 func (s RunMarketingInformationWritingResponseBodyPayloadOutput) GoString() string {
 	return s.String()
+}
+
+func (s *RunMarketingInformationWritingResponseBodyPayloadOutput) SetReasonContent(v string) *RunMarketingInformationWritingResponseBodyPayloadOutput {
+	s.ReasonContent = &v
+	return s
 }
 
 func (s *RunMarketingInformationWritingResponseBodyPayloadOutput) SetText(v string) *RunMarketingInformationWritingResponseBodyPayloadOutput {
