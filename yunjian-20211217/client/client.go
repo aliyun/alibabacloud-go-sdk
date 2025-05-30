@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,7 +11,12 @@ import (
 
 type CreateDemandPlanHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	YunUserId     *string            `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 262940
+	YunUserId *string `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
 }
 
 func (s CreateDemandPlanHeaders) String() string {
@@ -36,13 +38,35 @@ func (s *CreateDemandPlanHeaders) SetYunUserId(v string) *CreateDemandPlanHeader
 }
 
 type CreateDemandPlanRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1065737167271819
 	AccountId   *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
-	Period      *string `json:"period,omitempty" xml:"period,omitempty"`
-	Source      *string `json:"source,omitempty" xml:"source,omitempty"`
-	Type        *string `json:"type,omitempty" xml:"type,omitempty"`
-	UserId      *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// This parameter is required.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FY2022
+	Period    *string `json:"period,omitempty" xml:"period,omitempty"`
+	Source    *string `json:"source,omitempty" xml:"source,omitempty"`
+	TargetCid *int64  `json:"targetCid,omitempty" xml:"targetCid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// URGENT
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 262940
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s CreateDemandPlanRequest) String() string {
@@ -78,6 +102,11 @@ func (s *CreateDemandPlanRequest) SetSource(v string) *CreateDemandPlanRequest {
 	return s
 }
 
+func (s *CreateDemandPlanRequest) SetTargetCid(v int64) *CreateDemandPlanRequest {
+	s.TargetCid = &v
+	return s
+}
+
 func (s *CreateDemandPlanRequest) SetType(v string) *CreateDemandPlanRequest {
 	s.Type = &v
 	return s
@@ -90,12 +119,30 @@ func (s *CreateDemandPlanRequest) SetUserId(v string) *CreateDemandPlanRequest {
 
 type CreateDemandPlanResponseBody struct {
 	// code
-	Code    *int64  `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *int64  `json:"data,omitempty" xml:"data,omitempty"`
+	//
+	// example:
+	//
+	// 0
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 111223
+	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// msg
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 	// traceId
+	//
+	// example:
+	//
+	// 1e2b798516402440016572132e1459
 	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -133,9 +180,9 @@ func (s *CreateDemandPlanResponseBody) SetTraceId(v string) *CreateDemandPlanRes
 }
 
 type CreateDemandPlanResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDemandPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDemandPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDemandPlanResponse) String() string {
@@ -163,7 +210,8 @@ func (s *CreateDemandPlanResponse) SetBody(v *CreateDemandPlanResponseBody) *Cre
 
 type CreateDemandPlanV2Headers struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	YunUserId     *string            `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
+	// This parameter is required.
+	YunUserId *string `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
 }
 
 func (s CreateDemandPlanV2Headers) String() string {
@@ -185,12 +233,17 @@ func (s *CreateDemandPlanV2Headers) SetYunUserId(v string) *CreateDemandPlanV2He
 }
 
 type CreateDemandPlanV2Request struct {
+	// This parameter is required.
 	AccountId   *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
 	ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
-	Type        *string `json:"type,omitempty" xml:"type,omitempty"`
-	UserId      *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	TargetCid   *int64  `json:"targetCid,omitempty" xml:"targetCid,omitempty"`
+	// This parameter is required.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// This parameter is required.
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s CreateDemandPlanV2Request) String() string {
@@ -218,6 +271,11 @@ func (s *CreateDemandPlanV2Request) SetName(v string) *CreateDemandPlanV2Request
 
 func (s *CreateDemandPlanV2Request) SetProductType(v string) *CreateDemandPlanV2Request {
 	s.ProductType = &v
+	return s
+}
+
+func (s *CreateDemandPlanV2Request) SetTargetCid(v int64) *CreateDemandPlanV2Request {
+	s.TargetCid = &v
 	return s
 }
 
@@ -273,9 +331,9 @@ func (s *CreateDemandPlanV2ResponseBody) SetTraceId(v string) *CreateDemandPlanV
 }
 
 type CreateDemandPlanV2Response struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDemandPlanV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDemandPlanV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDemandPlanV2Response) String() string {
@@ -303,7 +361,12 @@ func (s *CreateDemandPlanV2Response) SetBody(v *CreateDemandPlanV2ResponseBody) 
 
 type DeleteUrgentDemandItemHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	YunUserId     *string            `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111222
+	YunUserId *string `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
 }
 
 func (s DeleteUrgentDemandItemHeaders) String() string {
@@ -325,7 +388,17 @@ func (s *DeleteUrgentDemandItemHeaders) SetYunUserId(v string) *DeleteUrgentDema
 }
 
 type DeleteUrgentDemandItemRequest struct {
-	Id       *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111222
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111222
 	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
 }
 
@@ -348,10 +421,25 @@ func (s *DeleteUrgentDemandItemRequest) SetModifier(v string) *DeleteUrgentDeman
 }
 
 type DeleteUrgentDemandItemResponseBody struct {
-	Code    *int64  `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *int64  `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 1
+	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// msg
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 212cf01016405759151137225e83cd
 	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -389,9 +477,9 @@ func (s *DeleteUrgentDemandItemResponseBody) SetTraceId(v string) *DeleteUrgentD
 }
 
 type DeleteUrgentDemandItemResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUrgentDemandItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUrgentDemandItemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUrgentDemandItemResponse) String() string {
@@ -419,7 +507,12 @@ func (s *DeleteUrgentDemandItemResponse) SetBody(v *DeleteUrgentDemandItemRespon
 
 type DeleteUrgentDemandPlanHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	YunUserId     *string            `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111222
+	YunUserId *string `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
 }
 
 func (s DeleteUrgentDemandPlanHeaders) String() string {
@@ -441,7 +534,17 @@ func (s *DeleteUrgentDemandPlanHeaders) SetYunUserId(v string) *DeleteUrgentDema
 }
 
 type DeleteUrgentDemandPlanRequest struct {
-	Id       *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111111
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 222111
 	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
 }
 
@@ -464,10 +567,25 @@ func (s *DeleteUrgentDemandPlanRequest) SetModifier(v string) *DeleteUrgentDeman
 }
 
 type DeleteUrgentDemandPlanResponseBody struct {
-	Code    *int64  `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *int64  `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 1
+	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// msg
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 212cf01016405759151137225e83cd
 	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -505,9 +623,9 @@ func (s *DeleteUrgentDemandPlanResponseBody) SetTraceId(v string) *DeleteUrgentD
 }
 
 type DeleteUrgentDemandPlanResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUrgentDemandPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUrgentDemandPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUrgentDemandPlanResponse) String() string {
@@ -535,7 +653,8 @@ func (s *DeleteUrgentDemandPlanResponse) SetBody(v *DeleteUrgentDemandPlanRespon
 
 type DeliveryItemDetailSynHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	YunUserId     *string            `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
+	// This parameter is required.
+	YunUserId *string `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
 }
 
 func (s DeliveryItemDetailSynHeaders) String() string {
@@ -693,10 +812,25 @@ func (s *DeliveryItemDetailSynRequestDeliveryItemDetailDTOS) SetTotalOrderId(v i
 }
 
 type DeliveryItemDetailSynResponseBody struct {
-	Code    *int64  `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// msg
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 212cf01016405759151137225e83cd
 	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -734,9 +868,9 @@ func (s *DeliveryItemDetailSynResponseBody) SetTraceId(v string) *DeliveryItemDe
 }
 
 type DeliveryItemDetailSynResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeliveryItemDetailSynResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeliveryItemDetailSynResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeliveryItemDetailSynResponse) String() string {
@@ -764,7 +898,12 @@ func (s *DeliveryItemDetailSynResponse) SetBody(v *DeliveryItemDetailSynResponse
 
 type GetUrgentDemandItemListHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	YunUserId     *string            `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111222
+	YunUserId *string `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
 }
 
 func (s GetUrgentDemandItemListHeaders) String() string {
@@ -786,13 +925,22 @@ func (s *GetUrgentDemandItemListHeaders) SetYunUserId(v string) *GetUrgentDemand
 }
 
 type GetUrgentDemandItemListRequest struct {
-	CommodityCode     *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	// example:
+	//
+	// ecs/yundisk
 	CommodityTypeCode *string `json:"commodityTypeCode,omitempty" xml:"commodityTypeCode,omitempty"`
-	Current           *int64  `json:"current,omitempty" xml:"current,omitempty"`
-	PlanId            *int64  `json:"planId,omitempty" xml:"planId,omitempty"`
-	Region            *string `json:"region,omitempty" xml:"region,omitempty"`
-	Size              *int64  `json:"size,omitempty" xml:"size,omitempty"`
-	Zone              *string `json:"zone,omitempty" xml:"zone,omitempty"`
+	// example:
+	//
+	// 1
+	Current *int64  `json:"current,omitempty" xml:"current,omitempty"`
+	PlanId  *int64  `json:"planId,omitempty" xml:"planId,omitempty"`
+	Region  *string `json:"region,omitempty" xml:"region,omitempty"`
+	// example:
+	//
+	// 10
+	Size *int64  `json:"size,omitempty" xml:"size,omitempty"`
+	Zone *string `json:"zone,omitempty" xml:"zone,omitempty"`
 }
 
 func (s GetUrgentDemandItemListRequest) String() string {
@@ -1052,12 +1200,30 @@ func (s *GetUrgentDemandItemListResponseBodyDataRecords) SetUrgentDemandEcsReque
 }
 
 type GetUrgentDemandItemListResponseBodyDataRecordsUrgentDemandEbsRequest struct {
-	CommodityCode     *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	CommodityNum      *int64  `json:"commodityNum,omitempty" xml:"commodityNum,omitempty"`
+	// example:
+	//
+	// cloud_essd
+	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	// example:
+	//
+	// 1
+	CommodityNum *int64 `json:"commodityNum,omitempty" xml:"commodityNum,omitempty"`
+	// example:
+	//
+	// yundisk
 	CommodityTypeCode *string `json:"commodityTypeCode,omitempty" xml:"commodityTypeCode,omitempty"`
-	DataDiskSize      *int64  `json:"dataDiskSize,omitempty" xml:"dataDiskSize,omitempty"`
-	ItemId            *int64  `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	PerformanceLevel  *int64  `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+	// example:
+	//
+	// 1
+	DataDiskSize *int64 `json:"dataDiskSize,omitempty" xml:"dataDiskSize,omitempty"`
+	// example:
+	//
+	// 111222
+	ItemId *int64 `json:"itemId,omitempty" xml:"itemId,omitempty"`
+	// example:
+	//
+	// 1
+	PerformanceLevel *int64 `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
 }
 
 func (s GetUrgentDemandItemListResponseBodyDataRecordsUrgentDemandEbsRequest) String() string {
@@ -1140,9 +1306,9 @@ func (s *GetUrgentDemandItemListResponseBodyDataRecordsUrgentDemandEcsRequest) S
 }
 
 type GetUrgentDemandItemListResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUrgentDemandItemListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUrgentDemandItemListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUrgentDemandItemListResponse) String() string {
@@ -1170,7 +1336,12 @@ func (s *GetUrgentDemandItemListResponse) SetBody(v *GetUrgentDemandItemListResp
 
 type GetUrgentDemandPlanDetailHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	YunUserId     *string            `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 262940
+	YunUserId *string `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
 }
 
 func (s GetUrgentDemandPlanDetailHeaders) String() string {
@@ -1192,6 +1363,11 @@ func (s *GetUrgentDemandPlanDetailHeaders) SetYunUserId(v string) *GetUrgentDema
 }
 
 type GetUrgentDemandPlanDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111223
 	PlanId *string `json:"planId,omitempty" xml:"planId,omitempty"`
 }
 
@@ -1210,13 +1386,28 @@ func (s *GetUrgentDemandPlanDetailRequest) SetPlanId(v string) *GetUrgentDemandP
 
 type GetUrgentDemandPlanDetailResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// 0
 	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
 	// body
-	Data    *GetUrgentDemandPlanDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message *string                                    `json:"message,omitempty" xml:"message,omitempty"`
+	Data *GetUrgentDemandPlanDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// msg
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 	// traceId
+	//
+	// example:
+	//
+	// 1e2b798516402440016572132e1459
 	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -1254,24 +1445,66 @@ func (s *GetUrgentDemandPlanDetailResponseBody) SetTraceId(v string) *GetUrgentD
 }
 
 type GetUrgentDemandPlanDetailResponseBodyData struct {
-	AccountDept           *string                `json:"accountDept,omitempty" xml:"accountDept,omitempty"`
-	AccountId             *string                `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	AccountName           *string                `json:"accountName,omitempty" xml:"accountName,omitempty"`
-	ApprovalUrl           *string                `json:"approvalUrl,omitempty" xml:"approvalUrl,omitempty"`
+	AccountDept *string `json:"accountDept,omitempty" xml:"accountDept,omitempty"`
+	// example:
+	//
+	// 1065737167271819
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// example:
+	//
+	// larus_prd
+	AccountName *string `json:"accountName,omitempty" xml:"accountName,omitempty"`
+	// example:
+	//
+	// https://xxxxx
+	ApprovalUrl *string `json:"approvalUrl,omitempty" xml:"approvalUrl,omitempty"`
+	// example:
+	//
+	// {}
 	BpmSubstate           map[string]interface{} `json:"bpmSubstate,omitempty" xml:"bpmSubstate,omitempty"`
 	CommodityTypeCodeList []*string              `json:"commodityTypeCodeList,omitempty" xml:"commodityTypeCodeList,omitempty" type:"Repeated"`
-	Creator               *string                `json:"creator,omitempty" xml:"creator,omitempty"`
-	CreatorName           *string                `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	Description           *string                `json:"description,omitempty" xml:"description,omitempty"`
-	DetailType            *string                `json:"detailType,omitempty" xml:"detailType,omitempty"`
-	GmtCreate             *string                `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	GmtModified           *string                `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Modifier              *string                `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	ModifierName          *string                `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
-	PlanId                *int64                 `json:"planId,omitempty" xml:"planId,omitempty"`
-	PlanName              *string                `json:"planName,omitempty" xml:"planName,omitempty"`
-	Status                *int64                 `json:"status,omitempty" xml:"status,omitempty"`
-	YunzhiProductName     *string                `json:"yunzhiProductName,omitempty" xml:"yunzhiProductName,omitempty"`
+	// example:
+	//
+	// 262940
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// xxx
+	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	// example:
+	//
+	// xxx
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// URGENT
+	DetailType *string `json:"detailType,omitempty" xml:"detailType,omitempty"`
+	// example:
+	//
+	// 2021-12-17 16:53:21
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 2021-12-17 16:53:21
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// 262940
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// example:
+	//
+	// xx
+	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
+	// example:
+	//
+	// 11223
+	PlanId   *int64  `json:"planId,omitempty" xml:"planId,omitempty"`
+	PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
+	// example:
+	//
+	// 220
+	Status            *int64  `json:"status,omitempty" xml:"status,omitempty"`
+	YunzhiProductName *string `json:"yunzhiProductName,omitempty" xml:"yunzhiProductName,omitempty"`
 }
 
 func (s GetUrgentDemandPlanDetailResponseBodyData) String() string {
@@ -1373,9 +1606,9 @@ func (s *GetUrgentDemandPlanDetailResponseBodyData) SetYunzhiProductName(v strin
 }
 
 type GetUrgentDemandPlanDetailResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUrgentDemandPlanDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUrgentDemandPlanDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUrgentDemandPlanDetailResponse) String() string {
@@ -1403,7 +1636,12 @@ func (s *GetUrgentDemandPlanDetailResponse) SetBody(v *GetUrgentDemandPlanDetail
 
 type GetUrgentDemandPlanListHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	YunUserId     *string            `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111222
+	YunUserId *string `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
 }
 
 func (s GetUrgentDemandPlanListHeaders) String() string {
@@ -1425,11 +1663,36 @@ func (s *GetUrgentDemandPlanListHeaders) SetYunUserId(v string) *GetUrgentDemand
 }
 
 type GetUrgentDemandPlanListRequest struct {
-	Current  *int64  `json:"current,omitempty" xml:"current,omitempty"`
-	Period   *string `json:"period,omitempty" xml:"period,omitempty"`
-	PlanType *int64  `json:"planType,omitempty" xml:"planType,omitempty"`
-	Size     *int64  `json:"size,omitempty" xml:"size,omitempty"`
-	UserId   *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FY2022
+	Period *string `json:"period,omitempty" xml:"period,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	PlanType *int64 `json:"planType,omitempty" xml:"planType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111222
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s GetUrgentDemandPlanListRequest) String() string {
@@ -1466,11 +1729,23 @@ func (s *GetUrgentDemandPlanListRequest) SetUserId(v string) *GetUrgentDemandPla
 }
 
 type GetUrgentDemandPlanListResponseBody struct {
-	Code    *int64                                   `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *GetUrgentDemandPlanListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message *string                                  `json:"message,omitempty" xml:"message,omitempty"`
-	Success *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64                                   `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetUrgentDemandPlanListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// msg
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2127968716405850615204514e9332
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s GetUrgentDemandPlanListResponseBody) String() string {
@@ -1507,11 +1782,23 @@ func (s *GetUrgentDemandPlanListResponseBody) SetTraceId(v string) *GetUrgentDem
 }
 
 type GetUrgentDemandPlanListResponseBodyData struct {
-	Current *int64                                            `json:"current,omitempty" xml:"current,omitempty"`
+	// example:
+	//
+	// 1
+	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
+	// example:
+	//
+	// 2
 	Pages   *int64                                            `json:"pages,omitempty" xml:"pages,omitempty"`
 	Records []*GetUrgentDemandPlanListResponseBodyDataRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
-	Size    *int64                                            `json:"size,omitempty" xml:"size,omitempty"`
-	Total   *int64                                            `json:"total,omitempty" xml:"total,omitempty"`
+	// example:
+	//
+	// 10
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// example:
+	//
+	// 15
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s GetUrgentDemandPlanListResponseBodyData) String() string {
@@ -1548,16 +1835,49 @@ func (s *GetUrgentDemandPlanListResponseBodyData) SetTotal(v int64) *GetUrgentDe
 }
 
 type GetUrgentDemandPlanListResponseBodyDataRecords struct {
-	AccountId    *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	AccountName  *string `json:"accountName,omitempty" xml:"accountName,omitempty"`
-	AccountType  *string `json:"accountType,omitempty" xml:"accountType,omitempty"`
-	ApprovalUrl  *string `json:"approvalUrl,omitempty" xml:"approvalUrl,omitempty"`
-	Creator      *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	CreatorName  *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
-	GmtCreate    *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	GmtModified  *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	Modifier     *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// example:
+	//
+	// 1705524002740212
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// example:
+	//
+	// xxxx
+	AccountName *string `json:"accountName,omitempty" xml:"accountName,omitempty"`
+	// example:
+	//
+	// ALIYUN
+	AccountType *string `json:"accountType,omitempty" xml:"accountType,omitempty"`
+	// example:
+	//
+	// https://xxx
+	ApprovalUrl *string `json:"approvalUrl,omitempty" xml:"approvalUrl,omitempty"`
+	// example:
+	//
+	// 1111
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// xxxx
+	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	// example:
+	//
+	// xxxx
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 2021-12-20 10:29:50
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 2021-12-20 10:29:50
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// xxxx
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// example:
+	//
+	// xxxx
 	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
 	PlanId       *int64  `json:"planId,omitempty" xml:"planId,omitempty"`
 	PlanName     *string `json:"planName,omitempty" xml:"planName,omitempty"`
@@ -1643,9 +1963,9 @@ func (s *GetUrgentDemandPlanListResponseBodyDataRecords) SetStatus(v int64) *Get
 }
 
 type GetUrgentDemandPlanListResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUrgentDemandPlanListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUrgentDemandPlanListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUrgentDemandPlanListResponse) String() string {
@@ -1673,7 +1993,8 @@ func (s *GetUrgentDemandPlanListResponse) SetBody(v *GetUrgentDemandPlanListResp
 
 type PushResourcePlanHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	YunUserId     *string            `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
+	// This parameter is required.
+	YunUserId *string `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
 }
 
 func (s PushResourcePlanHeaders) String() string {
@@ -1757,6 +2078,7 @@ type PushResourcePlanRequestMethodList struct {
 	DataList         []*PushResourcePlanRequestMethodListDataList `json:"dataList,omitempty" xml:"dataList,omitempty" type:"Repeated"`
 	DenamdCount      *int64                                       `json:"denamdCount,omitempty" xml:"denamdCount,omitempty"`
 	GapCnt           *int64                                       `json:"gapCnt,omitempty" xml:"gapCnt,omitempty"`
+	PromiseDate      *string                                      `json:"promiseDate,omitempty" xml:"promiseDate,omitempty"`
 	Region           *string                                      `json:"region,omitempty" xml:"region,omitempty"`
 	ResourceMethodId *int64                                       `json:"resourceMethodId,omitempty" xml:"resourceMethodId,omitempty"`
 	RoomCode         *string                                      `json:"roomCode,omitempty" xml:"roomCode,omitempty"`
@@ -1815,6 +2137,11 @@ func (s *PushResourcePlanRequestMethodList) SetGapCnt(v int64) *PushResourcePlan
 	return s
 }
 
+func (s *PushResourcePlanRequestMethodList) SetPromiseDate(v string) *PushResourcePlanRequestMethodList {
+	s.PromiseDate = &v
+	return s
+}
+
 func (s *PushResourcePlanRequestMethodList) SetRegion(v string) *PushResourcePlanRequestMethodList {
 	s.Region = &v
 	return s
@@ -1840,8 +2167,10 @@ type PushResourcePlanRequestMethodListDataList struct {
 	SafeZone        *string `json:"safeZone,omitempty" xml:"safeZone,omitempty"`
 	Scenario        *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
 	SupplyAmount    *int64  `json:"supplyAmount,omitempty" xml:"supplyAmount,omitempty"`
-	SupplyDate      *string `json:"supplyDate,omitempty" xml:"supplyDate,omitempty"`
-	SupplyType      *int64  `json:"supplyType,omitempty" xml:"supplyType,omitempty"`
+	// This parameter is required.
+	SupplyDate     *string `json:"supplyDate,omitempty" xml:"supplyDate,omitempty"`
+	SupplyType     *int64  `json:"supplyType,omitempty" xml:"supplyType,omitempty"`
+	SupplyVmAmount *int32  `json:"supplyVmAmount,omitempty" xml:"supplyVmAmount,omitempty"`
 }
 
 func (s PushResourcePlanRequestMethodListDataList) String() string {
@@ -1907,6 +2236,11 @@ func (s *PushResourcePlanRequestMethodListDataList) SetSupplyType(v int64) *Push
 	return s
 }
 
+func (s *PushResourcePlanRequestMethodListDataList) SetSupplyVmAmount(v int32) *PushResourcePlanRequestMethodListDataList {
+	s.SupplyVmAmount = &v
+	return s
+}
+
 type PushResourcePlanResponseBody struct {
 	Code    *int64  `json:"code,omitempty" xml:"code,omitempty"`
 	Data    *bool   `json:"data,omitempty" xml:"data,omitempty"`
@@ -1949,9 +2283,9 @@ func (s *PushResourcePlanResponseBody) SetTraceId(v string) *PushResourcePlanRes
 }
 
 type PushResourcePlanResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PushResourcePlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PushResourcePlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PushResourcePlanResponse) String() string {
@@ -2001,9 +2335,9 @@ func (s *QueryDeliveredSupplyItemsRequest) SetCommodityTypeCode(v string) *Query
 }
 
 type QueryDeliveredSupplyItemsResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       []*QueryDeliveredSupplyItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []*QueryDeliveredSupplyItemsResponseBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s QueryDeliveredSupplyItemsResponse) String() string {
@@ -2182,9 +2516,9 @@ func (s *QueryPeriodBudgetBillResponseBodyPeriodBudgetBillDTOS) SetMonth(v strin
 }
 
 type QueryPeriodBudgetBillResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryPeriodBudgetBillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryPeriodBudgetBillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryPeriodBudgetBillResponse) String() string {
@@ -2212,7 +2546,12 @@ func (s *QueryPeriodBudgetBillResponse) SetBody(v *QueryPeriodBudgetBillResponse
 
 type SaveUrgentDemandItemHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	YunUserId     *string            `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111222
+	YunUserId *string `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
 }
 
 func (s SaveUrgentDemandItemHeaders) String() string {
@@ -2234,19 +2573,52 @@ func (s *SaveUrgentDemandItemHeaders) SetYunUserId(v string) *SaveUrgentDemandIt
 }
 
 type SaveUrgentDemandItemRequest struct {
-	AccountId              *string                                            `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	Creator                *string                                            `json:"creator,omitempty" xml:"creator,omitempty"`
-	EffectTime             *string                                            `json:"effectTime,omitempty" xml:"effectTime,omitempty"`
-	Modifier               *string                                            `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	NetworkType            *string                                            `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	PayDuration            *string                                            `json:"payDuration,omitempty" xml:"payDuration,omitempty"`
-	PayDurationUnit        *string                                            `json:"payDurationUnit,omitempty" xml:"payDurationUnit,omitempty"`
-	PayType                *string                                            `json:"payType,omitempty" xml:"payType,omitempty"`
-	PlanId                 *int64                                             `json:"planId,omitempty" xml:"planId,omitempty"`
+	// example:
+	//
+	// 12321312
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// example:
+	//
+	// 111222
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// 2021-12-27 00:00:00
+	EffectTime *string `json:"effectTime,omitempty" xml:"effectTime,omitempty"`
+	// example:
+	//
+	// 111222
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// example:
+	//
+	// 网络类型 vpc（私有网络）/classic（经典网络）
+	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
+	// example:
+	//
+	// 10
+	PayDuration *string `json:"payDuration,omitempty" xml:"payDuration,omitempty"`
+	// example:
+	//
+	// 购买时长单位(month(月)，week(周)，day(天))
+	PayDurationUnit *string `json:"payDurationUnit,omitempty" xml:"payDurationUnit,omitempty"`
+	// example:
+	//
+	// 付费类型 prepay(预付费)/postpay（后付费）
+	PayType *string `json:"payType,omitempty" xml:"payType,omitempty"`
+	// example:
+	//
+	// 111222
+	PlanId *int64 `json:"planId,omitempty" xml:"planId,omitempty"`
+	// example:
+	//
+	// cn-beijing
 	Region                 *string                                            `json:"region,omitempty" xml:"region,omitempty"`
 	UrgentDemandEbsRequest *SaveUrgentDemandItemRequestUrgentDemandEbsRequest `json:"urgentDemandEbsRequest,omitempty" xml:"urgentDemandEbsRequest,omitempty" type:"Struct"`
 	UrgentDemandEcsRequest *SaveUrgentDemandItemRequestUrgentDemandEcsRequest `json:"urgentDemandEcsRequest,omitempty" xml:"urgentDemandEcsRequest,omitempty" type:"Struct"`
-	Zone                   *string                                            `json:"zone,omitempty" xml:"zone,omitempty"`
+	// example:
+	//
+	// cn-beijing-a
+	Zone *string `json:"zone,omitempty" xml:"zone,omitempty"`
 }
 
 func (s SaveUrgentDemandItemRequest) String() string {
@@ -2323,11 +2695,26 @@ func (s *SaveUrgentDemandItemRequest) SetZone(v string) *SaveUrgentDemandItemReq
 }
 
 type SaveUrgentDemandItemRequestUrgentDemandEbsRequest struct {
-	CommodityCode     *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	CommodityNum      *int64  `json:"commodityNum,omitempty" xml:"commodityNum,omitempty"`
+	// example:
+	//
+	// cloud_essd
+	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	// example:
+	//
+	// 1
+	CommodityNum *int64 `json:"commodityNum,omitempty" xml:"commodityNum,omitempty"`
+	// example:
+	//
+	// yundisk
 	CommodityTypeCode *string `json:"commodityTypeCode,omitempty" xml:"commodityTypeCode,omitempty"`
-	ItemId            *int64  `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	PerformanceLevel  *int64  `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+	// example:
+	//
+	// 111222
+	ItemId *int64 `json:"itemId,omitempty" xml:"itemId,omitempty"`
+	// example:
+	//
+	// 1
+	PerformanceLevel *int64 `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
 }
 
 func (s SaveUrgentDemandItemRequestUrgentDemandEbsRequest) String() string {
@@ -2364,11 +2751,26 @@ func (s *SaveUrgentDemandItemRequestUrgentDemandEbsRequest) SetPerformanceLevel(
 }
 
 type SaveUrgentDemandItemRequestUrgentDemandEcsRequest struct {
-	CommodityCode     *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	CommodityNum      *int64  `json:"commodityNum,omitempty" xml:"commodityNum,omitempty"`
+	// example:
+	//
+	// ecs.sn2ne.6xlarge
+	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
+	// example:
+	//
+	// 2
+	CommodityNum *int64 `json:"commodityNum,omitempty" xml:"commodityNum,omitempty"`
+	// example:
+	//
+	// ecs
 	CommodityTypeCode *string `json:"commodityTypeCode,omitempty" xml:"commodityTypeCode,omitempty"`
-	ItemId            *int64  `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	VCpuCount         *int64  `json:"vCpuCount,omitempty" xml:"vCpuCount,omitempty"`
+	// example:
+	//
+	// 111222
+	ItemId *int64 `json:"itemId,omitempty" xml:"itemId,omitempty"`
+	// example:
+	//
+	// 2
+	VCpuCount *int64 `json:"vCpuCount,omitempty" xml:"vCpuCount,omitempty"`
 }
 
 func (s SaveUrgentDemandItemRequestUrgentDemandEcsRequest) String() string {
@@ -2405,11 +2807,23 @@ func (s *SaveUrgentDemandItemRequestUrgentDemandEcsRequest) SetVCpuCount(v int64
 }
 
 type SaveUrgentDemandItemResponseBody struct {
-	Code    *int64   `json:"code,omitempty" xml:"code,omitempty"`
-	Data    []*int64 `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Message *string  `json:"message,omitempty" xml:"message,omitempty"`
-	Success *bool    `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId *string  `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64   `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*int64 `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// msg
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2107d95616405752026995105e83b0
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s SaveUrgentDemandItemResponseBody) String() string {
@@ -2446,9 +2860,9 @@ func (s *SaveUrgentDemandItemResponseBody) SetTraceId(v string) *SaveUrgentDeman
 }
 
 type SaveUrgentDemandItemResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveUrgentDemandItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveUrgentDemandItemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveUrgentDemandItemResponse) String() string {
@@ -2476,7 +2890,12 @@ func (s *SaveUrgentDemandItemResponse) SetBody(v *SaveUrgentDemandItemResponseBo
 
 type SubmitUrgentDemandPlanHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	YunUserId     *string            `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 262940
+	YunUserId *string `json:"Yun-User-Id,omitempty" xml:"Yun-User-Id,omitempty"`
 }
 
 func (s SubmitUrgentDemandPlanHeaders) String() string {
@@ -2498,7 +2917,17 @@ func (s *SubmitUrgentDemandPlanHeaders) SetYunUserId(v string) *SubmitUrgentDema
 }
 
 type SubmitUrgentDemandPlanRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111223
 	PlanId *string `json:"planId,omitempty" xml:"planId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 262940
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -2522,12 +2951,30 @@ func (s *SubmitUrgentDemandPlanRequest) SetUserId(v string) *SubmitUrgentDemandP
 
 type SubmitUrgentDemandPlanResponseBody struct {
 	// code
-	Code    *int64  `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	//
+	// example:
+	//
+	// 0
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// msg
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 	// traceId
+	//
+	// example:
+	//
+	// 1e2b798516402440016572132e1459
 	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -2565,9 +3012,9 @@ func (s *SubmitUrgentDemandPlanResponseBody) SetTraceId(v string) *SubmitUrgentD
 }
 
 type SubmitUrgentDemandPlanResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitUrgentDemandPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitUrgentDemandPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitUrgentDemandPlanResponse) String() string {
@@ -2589,6 +3036,99 @@ func (s *SubmitUrgentDemandPlanResponse) SetStatusCode(v int32) *SubmitUrgentDem
 }
 
 func (s *SubmitUrgentDemandPlanResponse) SetBody(v *SubmitUrgentDemandPlanResponseBody) *SubmitUrgentDemandPlanResponse {
+	s.Body = v
+	return s
+}
+
+type AcceptFulfillmentDecisionRequest struct {
+	DecisionConclusion *string `json:"DecisionConclusion,omitempty" xml:"DecisionConclusion,omitempty"`
+	DecisionType       *string `json:"DecisionType,omitempty" xml:"DecisionType,omitempty"`
+	OrderId            *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s AcceptFulfillmentDecisionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AcceptFulfillmentDecisionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AcceptFulfillmentDecisionRequest) SetDecisionConclusion(v string) *AcceptFulfillmentDecisionRequest {
+	s.DecisionConclusion = &v
+	return s
+}
+
+func (s *AcceptFulfillmentDecisionRequest) SetDecisionType(v string) *AcceptFulfillmentDecisionRequest {
+	s.DecisionType = &v
+	return s
+}
+
+func (s *AcceptFulfillmentDecisionRequest) SetOrderId(v string) *AcceptFulfillmentDecisionRequest {
+	s.OrderId = &v
+	return s
+}
+
+type AcceptFulfillmentDecisionResponseBody struct {
+	Data         *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AcceptFulfillmentDecisionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AcceptFulfillmentDecisionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AcceptFulfillmentDecisionResponseBody) SetData(v bool) *AcceptFulfillmentDecisionResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AcceptFulfillmentDecisionResponseBody) SetErrorCode(v string) *AcceptFulfillmentDecisionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AcceptFulfillmentDecisionResponseBody) SetErrorMessage(v string) *AcceptFulfillmentDecisionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AcceptFulfillmentDecisionResponseBody) SetSuccess(v bool) *AcceptFulfillmentDecisionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AcceptFulfillmentDecisionResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AcceptFulfillmentDecisionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AcceptFulfillmentDecisionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AcceptFulfillmentDecisionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AcceptFulfillmentDecisionResponse) SetHeaders(v map[string]*string) *AcceptFulfillmentDecisionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AcceptFulfillmentDecisionResponse) SetStatusCode(v int32) *AcceptFulfillmentDecisionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AcceptFulfillmentDecisionResponse) SetBody(v *AcceptFulfillmentDecisionResponseBody) *AcceptFulfillmentDecisionResponse {
 	s.Body = v
 	return s
 }
@@ -2640,6 +3180,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - CreateDemandPlanRequest
+//
+// @param headers - CreateDemandPlanHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDemandPlanResponse
 func (client *Client) CreateDemandPlanWithOptions(request *CreateDemandPlanRequest, headers *CreateDemandPlanHeaders, runtime *util.RuntimeOptions) (_result *CreateDemandPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2669,6 +3216,10 @@ func (client *Client) CreateDemandPlanWithOptions(request *CreateDemandPlanReque
 
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		body["source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetCid)) {
+		body["targetCid"] = request.TargetCid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -2709,6 +3260,9 @@ func (client *Client) CreateDemandPlanWithOptions(request *CreateDemandPlanReque
 	return _result, _err
 }
 
+// @param request - CreateDemandPlanRequest
+//
+// @return CreateDemandPlanResponse
 func (client *Client) CreateDemandPlan(request *CreateDemandPlanRequest) (_result *CreateDemandPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateDemandPlanHeaders{}
@@ -2721,6 +3275,17 @@ func (client *Client) CreateDemandPlan(request *CreateDemandPlanRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建plan2.0版本
+//
+// @param request - CreateDemandPlanV2Request
+//
+// @param headers - CreateDemandPlanV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDemandPlanV2Response
 func (client *Client) CreateDemandPlanV2WithOptions(request *CreateDemandPlanV2Request, headers *CreateDemandPlanV2Headers, runtime *util.RuntimeOptions) (_result *CreateDemandPlanV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2746,6 +3311,10 @@ func (client *Client) CreateDemandPlanV2WithOptions(request *CreateDemandPlanV2R
 
 	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
 		body["productType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetCid)) {
+		body["targetCid"] = request.TargetCid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -2786,6 +3355,13 @@ func (client *Client) CreateDemandPlanV2WithOptions(request *CreateDemandPlanV2R
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建plan2.0版本
+//
+// @param request - CreateDemandPlanV2Request
+//
+// @return CreateDemandPlanV2Response
 func (client *Client) CreateDemandPlanV2(request *CreateDemandPlanV2Request) (_result *CreateDemandPlanV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateDemandPlanV2Headers{}
@@ -2798,6 +3374,17 @@ func (client *Client) CreateDemandPlanV2(request *CreateDemandPlanV2Request) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 紧急需求单ite 删除
+//
+// @param request - DeleteUrgentDemandItemRequest
+//
+// @param headers - DeleteUrgentDemandItemHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUrgentDemandItemResponse
 func (client *Client) DeleteUrgentDemandItemWithOptions(request *DeleteUrgentDemandItemRequest, headers *DeleteUrgentDemandItemHeaders, runtime *util.RuntimeOptions) (_result *DeleteUrgentDemandItemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2845,6 +3432,13 @@ func (client *Client) DeleteUrgentDemandItemWithOptions(request *DeleteUrgentDem
 	return _result, _err
 }
 
+// Summary:
+//
+// 紧急需求单ite 删除
+//
+// @param request - DeleteUrgentDemandItemRequest
+//
+// @return DeleteUrgentDemandItemResponse
 func (client *Client) DeleteUrgentDemandItem(request *DeleteUrgentDemandItemRequest) (_result *DeleteUrgentDemandItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteUrgentDemandItemHeaders{}
@@ -2857,6 +3451,17 @@ func (client *Client) DeleteUrgentDemandItem(request *DeleteUrgentDemandItemRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 紧急需求单plan删除
+//
+// @param request - DeleteUrgentDemandPlanRequest
+//
+// @param headers - DeleteUrgentDemandPlanHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUrgentDemandPlanResponse
 func (client *Client) DeleteUrgentDemandPlanWithOptions(request *DeleteUrgentDemandPlanRequest, headers *DeleteUrgentDemandPlanHeaders, runtime *util.RuntimeOptions) (_result *DeleteUrgentDemandPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2904,6 +3509,13 @@ func (client *Client) DeleteUrgentDemandPlanWithOptions(request *DeleteUrgentDem
 	return _result, _err
 }
 
+// Summary:
+//
+// 紧急需求单plan删除
+//
+// @param request - DeleteUrgentDemandPlanRequest
+//
+// @return DeleteUrgentDemandPlanResponse
 func (client *Client) DeleteUrgentDemandPlan(request *DeleteUrgentDemandPlanRequest) (_result *DeleteUrgentDemandPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteUrgentDemandPlanHeaders{}
@@ -2916,6 +3528,17 @@ func (client *Client) DeleteUrgentDemandPlan(request *DeleteUrgentDemandPlanRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 交付信息同步
+//
+// @param request - DeliveryItemDetailSynRequest
+//
+// @param headers - DeliveryItemDetailSynHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeliveryItemDetailSynResponse
 func (client *Client) DeliveryItemDetailSynWithOptions(request *DeliveryItemDetailSynRequest, headers *DeliveryItemDetailSynHeaders, runtime *util.RuntimeOptions) (_result *DeliveryItemDetailSynResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2971,6 +3594,13 @@ func (client *Client) DeliveryItemDetailSynWithOptions(request *DeliveryItemDeta
 	return _result, _err
 }
 
+// Summary:
+//
+// 交付信息同步
+//
+// @param request - DeliveryItemDetailSynRequest
+//
+// @return DeliveryItemDetailSynResponse
 func (client *Client) DeliveryItemDetailSyn(request *DeliveryItemDetailSynRequest) (_result *DeliveryItemDetailSynResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeliveryItemDetailSynHeaders{}
@@ -2983,6 +3613,17 @@ func (client *Client) DeliveryItemDetailSyn(request *DeliveryItemDetailSynReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询报备单中报备项列表
+//
+// @param request - GetUrgentDemandItemListRequest
+//
+// @param headers - GetUrgentDemandItemListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUrgentDemandItemListResponse
 func (client *Client) GetUrgentDemandItemListWithOptions(request *GetUrgentDemandItemListRequest, headers *GetUrgentDemandItemListHeaders, runtime *util.RuntimeOptions) (_result *GetUrgentDemandItemListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3050,6 +3691,13 @@ func (client *Client) GetUrgentDemandItemListWithOptions(request *GetUrgentDeman
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询报备单中报备项列表
+//
+// @param request - GetUrgentDemandItemListRequest
+//
+// @return GetUrgentDemandItemListResponse
 func (client *Client) GetUrgentDemandItemList(request *GetUrgentDemandItemListRequest) (_result *GetUrgentDemandItemListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetUrgentDemandItemListHeaders{}
@@ -3062,6 +3710,17 @@ func (client *Client) GetUrgentDemandItemList(request *GetUrgentDemandItemListRe
 	return _result, _err
 }
 
+// Summary:
+//
+// getUrgentDemandPlanDetail
+//
+// @param request - GetUrgentDemandPlanDetailRequest
+//
+// @param headers - GetUrgentDemandPlanDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUrgentDemandPlanDetailResponse
 func (client *Client) GetUrgentDemandPlanDetailWithOptions(request *GetUrgentDemandPlanDetailRequest, headers *GetUrgentDemandPlanDetailHeaders, runtime *util.RuntimeOptions) (_result *GetUrgentDemandPlanDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3105,6 +3764,13 @@ func (client *Client) GetUrgentDemandPlanDetailWithOptions(request *GetUrgentDem
 	return _result, _err
 }
 
+// Summary:
+//
+// getUrgentDemandPlanDetail
+//
+// @param request - GetUrgentDemandPlanDetailRequest
+//
+// @return GetUrgentDemandPlanDetailResponse
 func (client *Client) GetUrgentDemandPlanDetail(request *GetUrgentDemandPlanDetailRequest) (_result *GetUrgentDemandPlanDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetUrgentDemandPlanDetailHeaders{}
@@ -3117,6 +3783,17 @@ func (client *Client) GetUrgentDemandPlanDetail(request *GetUrgentDemandPlanDeta
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询报备单列表
+//
+// @param request - GetUrgentDemandPlanListRequest
+//
+// @param headers - GetUrgentDemandPlanListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUrgentDemandPlanListResponse
 func (client *Client) GetUrgentDemandPlanListWithOptions(request *GetUrgentDemandPlanListRequest, headers *GetUrgentDemandPlanListHeaders, runtime *util.RuntimeOptions) (_result *GetUrgentDemandPlanListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3176,6 +3853,13 @@ func (client *Client) GetUrgentDemandPlanListWithOptions(request *GetUrgentDeman
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询报备单列表
+//
+// @param request - GetUrgentDemandPlanListRequest
+//
+// @return GetUrgentDemandPlanListResponse
 func (client *Client) GetUrgentDemandPlanList(request *GetUrgentDemandPlanListRequest) (_result *GetUrgentDemandPlanListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetUrgentDemandPlanListHeaders{}
@@ -3188,6 +3872,17 @@ func (client *Client) GetUrgentDemandPlanList(request *GetUrgentDemandPlanListRe
 	return _result, _err
 }
 
+// Summary:
+//
+// ecs资源方案
+//
+// @param request - PushResourcePlanRequest
+//
+// @param headers - PushResourcePlanHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushResourcePlanResponse
 func (client *Client) PushResourcePlanWithOptions(request *PushResourcePlanRequest, headers *PushResourcePlanHeaders, runtime *util.RuntimeOptions) (_result *PushResourcePlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3255,6 +3950,13 @@ func (client *Client) PushResourcePlanWithOptions(request *PushResourcePlanReque
 	return _result, _err
 }
 
+// Summary:
+//
+// ecs资源方案
+//
+// @param request - PushResourcePlanRequest
+//
+// @return PushResourcePlanResponse
 func (client *Client) PushResourcePlan(request *PushResourcePlanRequest) (_result *PushResourcePlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &PushResourcePlanHeaders{}
@@ -3267,6 +3969,17 @@ func (client *Client) PushResourcePlan(request *PushResourcePlanRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询accountId下所有存在交付状态（包括部分）的报备数据, 以及开通数据情况
+//
+// @param request - QueryDeliveredSupplyItemsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDeliveredSupplyItemsResponse
 func (client *Client) QueryDeliveredSupplyItemsWithOptions(request *QueryDeliveredSupplyItemsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryDeliveredSupplyItemsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3305,6 +4018,13 @@ func (client *Client) QueryDeliveredSupplyItemsWithOptions(request *QueryDeliver
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询accountId下所有存在交付状态（包括部分）的报备数据, 以及开通数据情况
+//
+// @param request - QueryDeliveredSupplyItemsRequest
+//
+// @return QueryDeliveredSupplyItemsResponse
 func (client *Client) QueryDeliveredSupplyItems(request *QueryDeliveredSupplyItemsRequest) (_result *QueryDeliveredSupplyItemsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3317,6 +4037,17 @@ func (client *Client) QueryDeliveredSupplyItems(request *QueryDeliveredSupplyIte
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询账单预算数据
+//
+// @param request - QueryPeriodBudgetBillRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPeriodBudgetBillResponse
 func (client *Client) QueryPeriodBudgetBillWithOptions(request *QueryPeriodBudgetBillRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryPeriodBudgetBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3359,6 +4090,13 @@ func (client *Client) QueryPeriodBudgetBillWithOptions(request *QueryPeriodBudge
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询账单预算数据
+//
+// @param request - QueryPeriodBudgetBillRequest
+//
+// @return QueryPeriodBudgetBillResponse
 func (client *Client) QueryPeriodBudgetBill(request *QueryPeriodBudgetBillRequest) (_result *QueryPeriodBudgetBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3371,6 +4109,17 @@ func (client *Client) QueryPeriodBudgetBill(request *QueryPeriodBudgetBillReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 紧急需求单item新增
+//
+// @param request - SaveUrgentDemandItemRequest
+//
+// @param headers - SaveUrgentDemandItemHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveUrgentDemandItemResponse
 func (client *Client) SaveUrgentDemandItemWithOptions(request *SaveUrgentDemandItemRequest, headers *SaveUrgentDemandItemHeaders, runtime *util.RuntimeOptions) (_result *SaveUrgentDemandItemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3462,6 +4211,13 @@ func (client *Client) SaveUrgentDemandItemWithOptions(request *SaveUrgentDemandI
 	return _result, _err
 }
 
+// Summary:
+//
+// 紧急需求单item新增
+//
+// @param request - SaveUrgentDemandItemRequest
+//
+// @return SaveUrgentDemandItemResponse
 func (client *Client) SaveUrgentDemandItem(request *SaveUrgentDemandItemRequest) (_result *SaveUrgentDemandItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SaveUrgentDemandItemHeaders{}
@@ -3474,6 +4230,17 @@ func (client *Client) SaveUrgentDemandItem(request *SaveUrgentDemandItemRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// submitUrgentDemandPlan
+//
+// @param request - SubmitUrgentDemandPlanRequest
+//
+// @param headers - SubmitUrgentDemandPlanHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitUrgentDemandPlanResponse
 func (client *Client) SubmitUrgentDemandPlanWithOptions(request *SubmitUrgentDemandPlanRequest, headers *SubmitUrgentDemandPlanHeaders, runtime *util.RuntimeOptions) (_result *SubmitUrgentDemandPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3521,11 +4288,90 @@ func (client *Client) SubmitUrgentDemandPlanWithOptions(request *SubmitUrgentDem
 	return _result, _err
 }
 
+// Summary:
+//
+// submitUrgentDemandPlan
+//
+// @param request - SubmitUrgentDemandPlanRequest
+//
+// @return SubmitUrgentDemandPlanResponse
 func (client *Client) SubmitUrgentDemandPlan(request *SubmitUrgentDemandPlanRequest) (_result *SubmitUrgentDemandPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SubmitUrgentDemandPlanHeaders{}
 	_result = &SubmitUrgentDemandPlanResponse{}
 	_body, _err := client.SubmitUrgentDemandPlanWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 云产品交付决策反馈回调
+//
+// @param request - AcceptFulfillmentDecisionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AcceptFulfillmentDecisionResponse
+func (client *Client) AcceptFulfillmentDecisionWithOptions(request *AcceptFulfillmentDecisionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AcceptFulfillmentDecisionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DecisionConclusion)) {
+		body["DecisionConclusion"] = request.DecisionConclusion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DecisionType)) {
+		body["DecisionType"] = request.DecisionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		body["OrderId"] = request.OrderId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("acceptFulfillmentDecision"),
+		Version:     tea.String("2021-12-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/acceptFulfillmentDecision"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AcceptFulfillmentDecisionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 云产品交付决策反馈回调
+//
+// @param request - AcceptFulfillmentDecisionRequest
+//
+// @return AcceptFulfillmentDecisionResponse
+func (client *Client) AcceptFulfillmentDecision(request *AcceptFulfillmentDecisionRequest) (_result *AcceptFulfillmentDecisionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AcceptFulfillmentDecisionResponse{}
+	_body, _err := client.AcceptFulfillmentDecisionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
