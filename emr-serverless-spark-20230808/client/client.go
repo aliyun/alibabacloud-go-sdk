@@ -4697,12 +4697,6 @@ type GetTemplateRequest struct {
 	TemplateBizId *string `json:"templateBizId,omitempty" xml:"templateBizId,omitempty"`
 	// The template type.
 	//
-	// Valid values:
-	//
-	// 	- TASK
-	//
-	// 	- SESSION
-	//
 	// example:
 	//
 	// TASK
@@ -4733,7 +4727,7 @@ func (s *GetTemplateRequest) SetTemplateType(v string) *GetTemplateRequest {
 }
 
 type GetTemplateResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *Template `json:"data,omitempty" xml:"data,omitempty"`
 	// 	- If the value of success was false, an error code was returned.
 	//
