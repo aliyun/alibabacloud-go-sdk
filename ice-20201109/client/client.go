@@ -1992,6 +1992,47 @@ func (s *ChannelAssemblySourceLocation) SetState(v int32) *ChannelAssemblySource
 	return s
 }
 
+type Hotword struct {
+	// example:
+	//
+	// en
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// hello
+	Text                    *string                `json:"Text,omitempty" xml:"Text,omitempty"`
+	TranspositionResultList []*TranspositionResult `json:"TranspositionResultList,omitempty" xml:"TranspositionResultList,omitempty" type:"Repeated"`
+	Weight                  *int32                 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s Hotword) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Hotword) GoString() string {
+	return s.String()
+}
+
+func (s *Hotword) SetLanguage(v string) *Hotword {
+	s.Language = &v
+	return s
+}
+
+func (s *Hotword) SetText(v string) *Hotword {
+	s.Text = &v
+	return s
+}
+
+func (s *Hotword) SetTranspositionResultList(v []*TranspositionResult) *Hotword {
+	s.TranspositionResultList = v
+	return s
+}
+
+func (s *Hotword) SetWeight(v int32) *Hotword {
+	s.Weight = &v
+	return s
+}
+
 type LicenseInstanceAppDTO struct {
 	AppId            *string                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	BeginOn          *string                                `json:"BeginOn,omitempty" xml:"BeginOn,omitempty"`
@@ -3230,6 +3271,35 @@ func (s *SourceLocation) SetSourceLocationName(v string) *SourceLocation {
 
 func (s *SourceLocation) SetState(v int32) *SourceLocation {
 	s.State = &v
+	return s
+}
+
+type TranspositionResult struct {
+	// example:
+	//
+	// zh
+	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
+	// example:
+	//
+	// 你好
+	TranslatedText *string `json:"TranslatedText,omitempty" xml:"TranslatedText,omitempty"`
+}
+
+func (s TranspositionResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TranspositionResult) GoString() string {
+	return s.String()
+}
+
+func (s *TranspositionResult) SetTargetLanguage(v string) *TranspositionResult {
+	s.TargetLanguage = &v
+	return s
+}
+
+func (s *TranspositionResult) SetTranslatedText(v string) *TranspositionResult {
+	s.TranslatedText = &v
 	return s
 }
 
@@ -8317,6 +8387,164 @@ func (s *CreateEditingProjectResponse) SetStatusCode(v int32) *CreateEditingProj
 }
 
 func (s *CreateEditingProjectResponse) SetBody(v *CreateEditingProjectResponseBody) *CreateEditingProjectResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHotwordLibraryRequest struct {
+	// example:
+	//
+	// 存放名人的词库
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	Hotwords []*Hotword `json:"Hotwords,omitempty" xml:"Hotwords,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_hotwords
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ASR
+	UsageScenario *string `json:"UsageScenario,omitempty" xml:"UsageScenario,omitempty"`
+}
+
+func (s CreateHotwordLibraryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotwordLibraryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotwordLibraryRequest) SetDescription(v string) *CreateHotwordLibraryRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateHotwordLibraryRequest) SetHotwords(v []*Hotword) *CreateHotwordLibraryRequest {
+	s.Hotwords = v
+	return s
+}
+
+func (s *CreateHotwordLibraryRequest) SetName(v string) *CreateHotwordLibraryRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateHotwordLibraryRequest) SetUsageScenario(v string) *CreateHotwordLibraryRequest {
+	s.UsageScenario = &v
+	return s
+}
+
+type CreateHotwordLibraryShrinkRequest struct {
+	// example:
+	//
+	// 存放名人的词库
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	HotwordsShrink *string `json:"Hotwords,omitempty" xml:"Hotwords,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my_hotwords
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ASR
+	UsageScenario *string `json:"UsageScenario,omitempty" xml:"UsageScenario,omitempty"`
+}
+
+func (s CreateHotwordLibraryShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotwordLibraryShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotwordLibraryShrinkRequest) SetDescription(v string) *CreateHotwordLibraryShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateHotwordLibraryShrinkRequest) SetHotwordsShrink(v string) *CreateHotwordLibraryShrinkRequest {
+	s.HotwordsShrink = &v
+	return s
+}
+
+func (s *CreateHotwordLibraryShrinkRequest) SetName(v string) *CreateHotwordLibraryShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateHotwordLibraryShrinkRequest) SetUsageScenario(v string) *CreateHotwordLibraryShrinkRequest {
+	s.UsageScenario = &v
+	return s
+}
+
+type CreateHotwordLibraryResponseBody struct {
+	// example:
+	//
+	// ****96e8864746a0b6f3****
+	HotwordLibraryId *string `json:"HotwordLibraryId,omitempty" xml:"HotwordLibraryId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 13cbb83e-043c-4728-ac35-*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateHotwordLibraryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotwordLibraryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotwordLibraryResponseBody) SetHotwordLibraryId(v string) *CreateHotwordLibraryResponseBody {
+	s.HotwordLibraryId = &v
+	return s
+}
+
+func (s *CreateHotwordLibraryResponseBody) SetRequestId(v string) *CreateHotwordLibraryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateHotwordLibraryResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHotwordLibraryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateHotwordLibraryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHotwordLibraryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHotwordLibraryResponse) SetHeaders(v map[string]*string) *CreateHotwordLibraryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHotwordLibraryResponse) SetStatusCode(v int32) *CreateHotwordLibraryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHotwordLibraryResponse) SetBody(v *CreateHotwordLibraryResponseBody) *CreateHotwordLibraryResponse {
 	s.Body = v
 	return s
 }
@@ -14556,6 +14784,83 @@ func (s *DeleteEditingProjectsResponse) SetStatusCode(v int32) *DeleteEditingPro
 }
 
 func (s *DeleteEditingProjectsResponse) SetBody(v *DeleteEditingProjectsResponseBody) *DeleteEditingProjectsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHotwordLibraryRequest struct {
+	// example:
+	//
+	// ****cdb3e74639973036bc84****
+	HotwordLibraryId *string `json:"HotwordLibraryId,omitempty" xml:"HotwordLibraryId,omitempty"`
+}
+
+func (s DeleteHotwordLibraryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotwordLibraryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotwordLibraryRequest) SetHotwordLibraryId(v string) *DeleteHotwordLibraryRequest {
+	s.HotwordLibraryId = &v
+	return s
+}
+
+type DeleteHotwordLibraryResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// ****83B7-7F87-4792-BFE9-63CD2137****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteHotwordLibraryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotwordLibraryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotwordLibraryResponseBody) SetRequestId(v string) *DeleteHotwordLibraryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteHotwordLibraryResponseBody) SetSuccess(v bool) *DeleteHotwordLibraryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteHotwordLibraryResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHotwordLibraryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteHotwordLibraryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHotwordLibraryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHotwordLibraryResponse) SetHeaders(v map[string]*string) *DeleteHotwordLibraryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHotwordLibraryResponse) SetStatusCode(v int32) *DeleteHotwordLibraryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHotwordLibraryResponse) SetBody(v *DeleteHotwordLibraryResponseBody) *DeleteHotwordLibraryResponse {
 	s.Body = v
 	return s
 }
@@ -23908,6 +24213,130 @@ func (s *GetEventCallbackResponse) SetStatusCode(v int32) *GetEventCallbackRespo
 }
 
 func (s *GetEventCallbackResponse) SetBody(v *GetEventCallbackResponseBody) *GetEventCallbackResponse {
+	s.Body = v
+	return s
+}
+
+type GetHotwordLibraryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ****96e8864746a0b6f3****
+	HotwordLibraryId *string `json:"HotwordLibraryId,omitempty" xml:"HotwordLibraryId,omitempty"`
+}
+
+func (s GetHotwordLibraryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotwordLibraryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotwordLibraryRequest) SetHotwordLibraryId(v string) *GetHotwordLibraryRequest {
+	s.HotwordLibraryId = &v
+	return s
+}
+
+type GetHotwordLibraryResponseBody struct {
+	// example:
+	//
+	// 2020-12-23T13:33:49Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// 热词库描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// ****05512043f49f697f7425****
+	HotwordLibraryId *string    `json:"HotwordLibraryId,omitempty" xml:"HotwordLibraryId,omitempty"`
+	Hotwords         []*Hotword `json:"Hotwords,omitempty" xml:"Hotwords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 热词库名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ****12e8864746a0a398****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ASR
+	UsageScenario *string `json:"UsageScenario,omitempty" xml:"UsageScenario,omitempty"`
+}
+
+func (s GetHotwordLibraryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotwordLibraryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotwordLibraryResponseBody) SetCreationTime(v string) *GetHotwordLibraryResponseBody {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *GetHotwordLibraryResponseBody) SetDescription(v string) *GetHotwordLibraryResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetHotwordLibraryResponseBody) SetHotwordLibraryId(v string) *GetHotwordLibraryResponseBody {
+	s.HotwordLibraryId = &v
+	return s
+}
+
+func (s *GetHotwordLibraryResponseBody) SetHotwords(v []*Hotword) *GetHotwordLibraryResponseBody {
+	s.Hotwords = v
+	return s
+}
+
+func (s *GetHotwordLibraryResponseBody) SetName(v string) *GetHotwordLibraryResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetHotwordLibraryResponseBody) SetRequestId(v string) *GetHotwordLibraryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetHotwordLibraryResponseBody) SetUsageScenario(v string) *GetHotwordLibraryResponseBody {
+	s.UsageScenario = &v
+	return s
+}
+
+type GetHotwordLibraryResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHotwordLibraryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetHotwordLibraryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHotwordLibraryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHotwordLibraryResponse) SetHeaders(v map[string]*string) *GetHotwordLibraryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHotwordLibraryResponse) SetStatusCode(v int32) *GetHotwordLibraryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHotwordLibraryResponse) SetBody(v *GetHotwordLibraryResponseBody) *GetHotwordLibraryResponse {
 	s.Body = v
 	return s
 }
@@ -46521,6 +46950,242 @@ func (s *ListEditingProjectsResponse) SetStatusCode(v int32) *ListEditingProject
 }
 
 func (s *ListEditingProjectsResponse) SetBody(v *ListEditingProjectsResponseBody) *ListEditingProjectsResponse {
+	s.Body = v
+	return s
+}
+
+type ListHotwordLibrariesRequest struct {
+	// example:
+	//
+	// 2020-12-26T04:11:10Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 热词库使用名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ****73f33c91-d59383e8280b****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// CreationTime:Desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 2020-12-26T04:11:10Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// ASR
+	UsageScenario *string `json:"UsageScenario,omitempty" xml:"UsageScenario,omitempty"`
+}
+
+func (s ListHotwordLibrariesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotwordLibrariesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotwordLibrariesRequest) SetEndTime(v string) *ListHotwordLibrariesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesRequest) SetMaxResults(v int32) *ListHotwordLibrariesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesRequest) SetName(v string) *ListHotwordLibrariesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesRequest) SetNextToken(v string) *ListHotwordLibrariesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesRequest) SetPageNo(v int64) *ListHotwordLibrariesRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesRequest) SetPageSize(v int64) *ListHotwordLibrariesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesRequest) SetSortBy(v string) *ListHotwordLibrariesRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesRequest) SetStartTime(v string) *ListHotwordLibrariesRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesRequest) SetUsageScenario(v string) *ListHotwordLibrariesRequest {
+	s.UsageScenario = &v
+	return s
+}
+
+type ListHotwordLibrariesResponseBody struct {
+	HotwordLibraryList []*ListHotwordLibrariesResponseBodyHotwordLibraryList `json:"HotwordLibraryList,omitempty" xml:"HotwordLibraryList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// CBB6BC61D08
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// ****9262E3DA-07FA-4862-FCBB6BC61D08*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListHotwordLibrariesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotwordLibrariesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotwordLibrariesResponseBody) SetHotwordLibraryList(v []*ListHotwordLibrariesResponseBodyHotwordLibraryList) *ListHotwordLibrariesResponseBody {
+	s.HotwordLibraryList = v
+	return s
+}
+
+func (s *ListHotwordLibrariesResponseBody) SetMaxResults(v int32) *ListHotwordLibrariesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesResponseBody) SetNextToken(v string) *ListHotwordLibrariesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesResponseBody) SetRequestId(v string) *ListHotwordLibrariesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesResponseBody) SetTotalCount(v int32) *ListHotwordLibrariesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListHotwordLibrariesResponseBodyHotwordLibraryList struct {
+	// example:
+	//
+	// 2017-01-11T12:00:00Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// a93b91141c0f422fa114af203f8b****
+	HotwordLibraryId *string `json:"HotwordLibraryId,omitempty" xml:"HotwordLibraryId,omitempty"`
+	// example:
+	//
+	// 2017-01-11T12:00:00Z
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// my_hotwords
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ASR
+	UsageScenario *string `json:"UsageScenario,omitempty" xml:"UsageScenario,omitempty"`
+}
+
+func (s ListHotwordLibrariesResponseBodyHotwordLibraryList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotwordLibrariesResponseBodyHotwordLibraryList) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotwordLibrariesResponseBodyHotwordLibraryList) SetCreationTime(v string) *ListHotwordLibrariesResponseBodyHotwordLibraryList {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesResponseBodyHotwordLibraryList) SetDescription(v string) *ListHotwordLibrariesResponseBodyHotwordLibraryList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesResponseBodyHotwordLibraryList) SetHotwordLibraryId(v string) *ListHotwordLibrariesResponseBodyHotwordLibraryList {
+	s.HotwordLibraryId = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesResponseBodyHotwordLibraryList) SetModifiedTime(v string) *ListHotwordLibrariesResponseBodyHotwordLibraryList {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesResponseBodyHotwordLibraryList) SetName(v string) *ListHotwordLibrariesResponseBodyHotwordLibraryList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesResponseBodyHotwordLibraryList) SetUsageScenario(v string) *ListHotwordLibrariesResponseBodyHotwordLibraryList {
+	s.UsageScenario = &v
+	return s
+}
+
+type ListHotwordLibrariesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHotwordLibrariesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListHotwordLibrariesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHotwordLibrariesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHotwordLibrariesResponse) SetHeaders(v map[string]*string) *ListHotwordLibrariesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHotwordLibrariesResponse) SetStatusCode(v int32) *ListHotwordLibrariesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHotwordLibrariesResponse) SetBody(v *ListHotwordLibrariesResponseBody) *ListHotwordLibrariesResponse {
 	s.Body = v
 	return s
 }
@@ -90337,6 +91002,156 @@ func (s *UpdateEditingProjectResponse) SetBody(v *UpdateEditingProjectResponseBo
 	return s
 }
 
+type UpdateHotwordLibraryRequest struct {
+	// example:
+	//
+	// 存放名人的词库
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// *a0052ff71efbfd4e7e6c66*
+	HotwordLibraryId *string    `json:"HotwordLibraryId,omitempty" xml:"HotwordLibraryId,omitempty"`
+	Hotwords         []*Hotword `json:"Hotwords,omitempty" xml:"Hotwords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// my_hotwords
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateHotwordLibraryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotwordLibraryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotwordLibraryRequest) SetDescription(v string) *UpdateHotwordLibraryRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateHotwordLibraryRequest) SetHotwordLibraryId(v string) *UpdateHotwordLibraryRequest {
+	s.HotwordLibraryId = &v
+	return s
+}
+
+func (s *UpdateHotwordLibraryRequest) SetHotwords(v []*Hotword) *UpdateHotwordLibraryRequest {
+	s.Hotwords = v
+	return s
+}
+
+func (s *UpdateHotwordLibraryRequest) SetName(v string) *UpdateHotwordLibraryRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateHotwordLibraryShrinkRequest struct {
+	// example:
+	//
+	// 存放名人的词库
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// *a0052ff71efbfd4e7e6c66*
+	HotwordLibraryId *string `json:"HotwordLibraryId,omitempty" xml:"HotwordLibraryId,omitempty"`
+	HotwordsShrink   *string `json:"Hotwords,omitempty" xml:"Hotwords,omitempty"`
+	// example:
+	//
+	// my_hotwords
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateHotwordLibraryShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotwordLibraryShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotwordLibraryShrinkRequest) SetDescription(v string) *UpdateHotwordLibraryShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateHotwordLibraryShrinkRequest) SetHotwordLibraryId(v string) *UpdateHotwordLibraryShrinkRequest {
+	s.HotwordLibraryId = &v
+	return s
+}
+
+func (s *UpdateHotwordLibraryShrinkRequest) SetHotwordsShrink(v string) *UpdateHotwordLibraryShrinkRequest {
+	s.HotwordsShrink = &v
+	return s
+}
+
+func (s *UpdateHotwordLibraryShrinkRequest) SetName(v string) *UpdateHotwordLibraryShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateHotwordLibraryResponseBody struct {
+	// example:
+	//
+	// *3B-0E1A-586A-AC29-742247*
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ****96e8864746a0b6f3****
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateHotwordLibraryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotwordLibraryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotwordLibraryResponseBody) SetRequestId(v string) *UpdateHotwordLibraryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateHotwordLibraryResponseBody) SetSuccess(v string) *UpdateHotwordLibraryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateHotwordLibraryResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateHotwordLibraryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateHotwordLibraryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHotwordLibraryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHotwordLibraryResponse) SetHeaders(v map[string]*string) *UpdateHotwordLibraryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHotwordLibraryResponse) SetStatusCode(v int32) *UpdateHotwordLibraryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHotwordLibraryResponse) SetBody(v *UpdateHotwordLibraryResponseBody) *UpdateHotwordLibraryResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateLivePackageChannelRequest struct {
 	// The channel name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//
@@ -97750,6 +98565,84 @@ func (client *Client) CreateEditingProject(request *CreateEditingProjectRequest)
 
 // Summary:
 //
+// 创建热词库
+//
+// @param tmpReq - CreateHotwordLibraryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHotwordLibraryResponse
+func (client *Client) CreateHotwordLibraryWithOptions(tmpReq *CreateHotwordLibraryRequest, runtime *util.RuntimeOptions) (_result *CreateHotwordLibraryResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateHotwordLibraryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Hotwords)) {
+		request.HotwordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Hotwords, tea.String("Hotwords"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotwordsShrink)) {
+		query["Hotwords"] = request.HotwordsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsageScenario)) {
+		query["UsageScenario"] = request.UsageScenario
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHotwordLibrary"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHotwordLibraryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建热词库
+//
+// @param request - CreateHotwordLibraryRequest
+//
+// @return CreateHotwordLibraryResponse
+func (client *Client) CreateHotwordLibrary(request *CreateHotwordLibraryRequest) (_result *CreateHotwordLibraryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHotwordLibraryResponse{}
+	_body, _err := client.CreateHotwordLibraryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a live package channel.
 //
 // Description:
@@ -100303,6 +101196,66 @@ func (client *Client) DeleteEditingProjects(request *DeleteEditingProjectsReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEditingProjectsResponse{}
 	_body, _err := client.DeleteEditingProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除热词词库
+//
+// @param request - DeleteHotwordLibraryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHotwordLibraryResponse
+func (client *Client) DeleteHotwordLibraryWithOptions(request *DeleteHotwordLibraryRequest, runtime *util.RuntimeOptions) (_result *DeleteHotwordLibraryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotwordLibraryId)) {
+		query["HotwordLibraryId"] = request.HotwordLibraryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHotwordLibrary"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHotwordLibraryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除热词词库
+//
+// @param request - DeleteHotwordLibraryRequest
+//
+// @return DeleteHotwordLibraryResponse
+func (client *Client) DeleteHotwordLibrary(request *DeleteHotwordLibraryRequest) (_result *DeleteHotwordLibraryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHotwordLibraryResponse{}
+	_body, _err := client.DeleteHotwordLibraryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -104363,6 +105316,66 @@ func (client *Client) GetEventCallback() (_result *GetEventCallbackResponse, _er
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEventCallbackResponse{}
 	_body, _err := client.GetEventCallbackWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询热词词库
+//
+// @param request - GetHotwordLibraryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotwordLibraryResponse
+func (client *Client) GetHotwordLibraryWithOptions(request *GetHotwordLibraryRequest, runtime *util.RuntimeOptions) (_result *GetHotwordLibraryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HotwordLibraryId)) {
+		query["HotwordLibraryId"] = request.HotwordLibraryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHotwordLibrary"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHotwordLibraryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询热词词库
+//
+// @param request - GetHotwordLibraryRequest
+//
+// @return GetHotwordLibraryResponse
+func (client *Client) GetHotwordLibrary(request *GetHotwordLibraryRequest) (_result *GetHotwordLibraryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetHotwordLibraryResponse{}
+	_body, _err := client.GetHotwordLibraryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -108823,6 +109836,98 @@ func (client *Client) ListEditingProjects(request *ListEditingProjectsRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEditingProjectsResponse{}
 	_body, _err := client.ListEditingProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有热词库的列表
+//
+// @param request - ListHotwordLibrariesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotwordLibrariesResponse
+func (client *Client) ListHotwordLibrariesWithOptions(request *ListHotwordLibrariesRequest, runtime *util.RuntimeOptions) (_result *ListHotwordLibrariesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsageScenario)) {
+		query["UsageScenario"] = request.UsageScenario
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHotwordLibraries"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHotwordLibrariesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有热词库的列表
+//
+// @param request - ListHotwordLibrariesRequest
+//
+// @return ListHotwordLibrariesResponse
+func (client *Client) ListHotwordLibraries(request *ListHotwordLibrariesRequest) (_result *ListHotwordLibrariesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHotwordLibrariesResponse{}
+	_body, _err := client.ListHotwordLibrariesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -119485,6 +120590,84 @@ func (client *Client) UpdateEditingProject(request *UpdateEditingProjectRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateEditingProjectResponse{}
 	_body, _err := client.UpdateEditingProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新热词库
+//
+// @param tmpReq - UpdateHotwordLibraryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHotwordLibraryResponse
+func (client *Client) UpdateHotwordLibraryWithOptions(tmpReq *UpdateHotwordLibraryRequest, runtime *util.RuntimeOptions) (_result *UpdateHotwordLibraryResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateHotwordLibraryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Hotwords)) {
+		request.HotwordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Hotwords, tea.String("Hotwords"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotwordLibraryId)) {
+		query["HotwordLibraryId"] = request.HotwordLibraryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotwordsShrink)) {
+		query["Hotwords"] = request.HotwordsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHotwordLibrary"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateHotwordLibraryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新热词库
+//
+// @param request - UpdateHotwordLibraryRequest
+//
+// @return UpdateHotwordLibraryResponse
+func (client *Client) UpdateHotwordLibrary(request *UpdateHotwordLibraryRequest) (_result *UpdateHotwordLibraryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateHotwordLibraryResponse{}
+	_body, _err := client.UpdateHotwordLibraryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
