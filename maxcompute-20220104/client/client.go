@@ -2808,7 +2808,7 @@ func (s *GetComputeQuotaScheduleResponse) SetBody(v *GetComputeQuotaScheduleResp
 }
 
 type GetJobInfoResponseBody struct {
-	// The returned data.
+	// The returned result.
 	Data *GetJobInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -2880,25 +2880,25 @@ func (s *GetJobInfoResponseBody) SetRequestId(v string) *GetJobInfoResponseBody 
 }
 
 type GetJobInfoResponseBodyData struct {
-	// CPU usage of the job at the snapshot time. Unit: Core.
+	// The amount of resources consumed by the job. This parameter is returned only for jobs that are complete.Unit: 100\\*Core\\*s.
 	//
 	// example:
 	//
 	// 10
 	CuUsage *int64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
-	// The time when the job was finished.
+	// The end time of the job.
 	//
 	// example:
 	//
 	// 1672112913
 	EndAtTime *int64 `json:"endAtTime,omitempty" xml:"endAtTime,omitempty"`
-	// The ID of the upstream node.
+	// The ID of the ancestor node.
 	//
 	// example:
 	//
 	// node_4
 	ExtNodeId *string `json:"extNodeId,omitempty" xml:"extNodeId,omitempty"`
-	// The account ID of the task owner.
+	// The Alibaba Cloud account ID of the task owner.
 	//
 	// example:
 	//
@@ -2910,25 +2910,25 @@ type GetJobInfoResponseBodyData struct {
 	//
 	// platform_3
 	ExtPlantFrom *string `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
-	// The amount of scanned data for the job. Unit: byte.
+	// The amount of data scanned by the job.
 	//
 	// example:
 	//
 	// 1234
 	InputBytes *float64 `json:"inputBytes,omitempty" xml:"inputBytes,omitempty"`
-	// The instance ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// 20230410****60gg
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The account that commits the job.
+	// The owner of the job.
 	//
 	// example:
 	//
 	// ALIYUN$7632***@aliyun.com
 	JobOwner *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
-	// The list of sub-status of the job.
+	// The substatuses of the job lifecycle.
 	JobSubStatusList []*GetJobInfoResponseBodyDataJobSubStatusList `json:"jobSubStatusList,omitempty" xml:"jobSubStatusList,omitempty" type:"Repeated"`
 	// The type of the job.
 	//
@@ -2936,7 +2936,7 @@ type GetJobInfoResponseBodyData struct {
 	//
 	// SQL
 	JobType *string `json:"jobType,omitempty" xml:"jobType,omitempty"`
-	// Memory usage of the job at the snapshot time. Unit: MB.
+	// The number of memory consumed by the job. This parameter is returned only for jobs that are complete.Unit: MB\\*s.
 	//
 	// example:
 	//
@@ -2948,19 +2948,19 @@ type GetJobInfoResponseBodyData struct {
 	//
 	// 1
 	Priority *int64 `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The name of the project.
+	// The project name.
 	//
 	// example:
 	//
 	// dp_cdm_prod
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The nickname of the computing Quota used by the job.
+	// The nickname of the computing quota that is used by the job.
 	//
 	// example:
 	//
 	// os_bigdata
 	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
-	// The type of the quota.
+	// The quota type.
 	//
 	// example:
 	//
@@ -2972,35 +2972,33 @@ type GetJobInfoResponseBodyData struct {
 	//
 	// cn-shanghai
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The start time of the job.
-	//
-	// > The time when the job received the first batch of computing resources.
+	// The start time, which is the time when the job received the first batch of computing resources. For jobs that run for a short period of time or do not consume computing resources, such as the jobs that involve DDL statements, the job submission time is used instead.
 	//
 	// example:
 	//
 	// 1672112113
 	RunningAtTime *int64 `json:"runningAtTime,omitempty" xml:"runningAtTime,omitempty"`
-	// The running duration, which is the duration from the runningAtTime to the snapshotTime of the job. Unit: seconds (s).
+	// The execution duration, which is the duration from the start time to the end time of the job.
 	//
 	// example:
 	//
 	// 800
 	RunningTime *int64 `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
-	// The intelligent diagnostics results.
+	// The intelligent diagnostics result.
 	SceneResults []*GetJobInfoResponseBodyDataSceneResults `json:"sceneResults,omitempty" xml:"sceneResults,omitempty" type:"Repeated"`
-	// The signature of the SQL job.
+	// The signature of the SQL job. You can use the signature to find the instances on which each time an SQL statement is executed.
 	//
 	// example:
 	//
 	// 20c1efb4a7caca1865f4aa784bb500efae74af04
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
-	// The status of the job.
+	// The job status.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the job was committed.
+	// The time when the job was submitted.
 	//
 	// example:
 	//
@@ -3012,13 +3010,13 @@ type GetJobInfoResponseBodyData struct {
 	//
 	// 4784****5249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The interval from the time when the job was submitted to the snapshotTime .Unit: seconds (s).
+	// The total duration from the time a job is submitted to the time the job is terminated.
 	//
 	// example:
 	//
 	// 900
 	TotalTime *int64 `json:"totalTime,omitempty" xml:"totalTime,omitempty"`
-	// The duration from the time the job is submitted to the time the job starts to run. Unit: seconds (s).
+	// The wait time, which is the duration from the time the job is submitted to the time the job starts to run.
 	//
 	// example:
 	//
@@ -3160,19 +3158,19 @@ func (s *GetJobInfoResponseBodyData) SetWaitingTime(v int64) *GetJobInfoResponse
 }
 
 type GetJobInfoResponseBodyDataJobSubStatusList struct {
-	// The code of the sub-status.
+	// The encoding of the substatus.
 	//
 	// example:
 	//
 	// 1010
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
-	// The description of the sub-status.
+	// The description of the substatus.
 	//
 	// example:
 	//
 	// Waiting for scheduling
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The start time of the sub-status.
+	// The start time of the substatus.
 	//
 	// example:
 	//
@@ -13596,7 +13594,7 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	//
 	// 0.48
 	CuSnapshot *float64 `json:"cuSnapshot,omitempty" xml:"cuSnapshot,omitempty"`
-	// The total number of used compute units (CUs).
+	// The amount of resources consumed by the job. This parameter is returned only for jobs that are complete.Unit: 100\\*Core\\*s.
 	//
 	// example:
 	//
@@ -13656,7 +13654,7 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	//
 	// 0.42
 	MemorySnapshot *float64 `json:"memorySnapshot,omitempty" xml:"memorySnapshot,omitempty"`
-	// The total memory usage.
+	// The number of memory consumed by the job. This parameter is returned only for jobs that are complete.Unit: MB\\*s.
 	//
 	// example:
 	//
@@ -28688,6 +28686,10 @@ func (client *Client) CreateComputeQuotaPlan(nickname *string, request *CreateCo
 	return _result, _err
 }
 
+// Summary:
+//
+// # CreateMmsDataSource
+//
 // @param request - CreateMmsDataSourceRequest
 //
 // @param headers - map
@@ -28741,6 +28743,10 @@ func (client *Client) CreateMmsDataSourceWithOptions(request *CreateMmsDataSourc
 	return _result, _err
 }
 
+// Summary:
+//
+// # CreateMmsDataSource
+//
 // @param request - CreateMmsDataSourceRequest
 //
 // @return CreateMmsDataSourceResponse
@@ -29298,6 +29304,10 @@ func (client *Client) DeleteMmsDataSource(sourceId *string) (_result *DeleteMmsD
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除迁移计划
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -29327,6 +29337,10 @@ func (client *Client) DeleteMmsJobWithOptions(sourceId *string, jobId *string, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除迁移计划
+//
 // @return DeleteMmsJobResponse
 func (client *Client) DeleteMmsJob(sourceId *string, jobId *string) (_result *DeleteMmsJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -29574,7 +29588,7 @@ func (client *Client) GetComputeQuotaSchedule(nickname *string, request *GetComp
 
 // Summary:
 //
-// Get basic information about a single job.
+// Queries the basic information about a job.
 //
 // @param headers - map
 //
@@ -29607,7 +29621,7 @@ func (client *Client) GetJobInfoWithOptions(instanceId *string, headers map[stri
 
 // Summary:
 //
-// Get basic information about a single job.
+// Queries the basic information about a job.
 //
 // @return GetJobInfoResponse
 func (client *Client) GetJobInfo(instanceId *string) (_result *GetJobInfoResponse, _err error) {
@@ -29712,6 +29726,10 @@ func (client *Client) GetJobResourceUsage(request *GetJobResourceUsageRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetMmsAsyncTask
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -29741,6 +29759,10 @@ func (client *Client) GetMmsAsyncTaskWithOptions(sourceId *string, asyncTaskId *
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetMmsAsyncTask
+//
 // @return GetMmsAsyncTaskResponse
 func (client *Client) GetMmsAsyncTask(sourceId *string, asyncTaskId *string) (_result *GetMmsAsyncTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -29754,6 +29776,10 @@ func (client *Client) GetMmsAsyncTask(sourceId *string, asyncTaskId *string) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据源
+//
 // @param request - GetMmsDataSourceRequest
 //
 // @param headers - map
@@ -29799,6 +29825,10 @@ func (client *Client) GetMmsDataSourceWithOptions(sourceId *string, request *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据源
+//
 // @param request - GetMmsDataSourceRequest
 //
 // @return GetMmsDataSourceResponse
@@ -29814,6 +29844,10 @@ func (client *Client) GetMmsDataSource(sourceId *string, request *GetMmsDataSour
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetMmsDb
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -29843,6 +29877,10 @@ func (client *Client) GetMmsDbWithOptions(sourceId *string, dbId *string, header
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetMmsDb
+//
 // @return GetMmsDbResponse
 func (client *Client) GetMmsDb(sourceId *string, dbId *string) (_result *GetMmsDbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -29856,6 +29894,10 @@ func (client *Client) GetMmsDb(sourceId *string, dbId *string) (_result *GetMmsD
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetMmsFetchMetadataJob
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -29885,6 +29927,10 @@ func (client *Client) GetMmsFetchMetadataJobWithOptions(sourceId *string, scanId
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetMmsFetchMetadataJob
+//
 // @return GetMmsFetchMetadataJobResponse
 func (client *Client) GetMmsFetchMetadataJob(sourceId *string, scanId *string) (_result *GetMmsFetchMetadataJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -29898,6 +29944,10 @@ func (client *Client) GetMmsFetchMetadataJob(sourceId *string, scanId *string) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取迁移计划
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -29927,6 +29977,10 @@ func (client *Client) GetMmsJobWithOptions(sourceId *string, jobId *string, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取迁移计划
+//
 // @return GetMmsJobResponse
 func (client *Client) GetMmsJob(sourceId *string, jobId *string) (_result *GetMmsJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -29940,6 +29994,10 @@ func (client *Client) GetMmsJob(sourceId *string, jobId *string) (_result *GetMm
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetMmsPartition
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -29969,6 +30027,10 @@ func (client *Client) GetMmsPartitionWithOptions(sourceId *string, partitionId *
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetMmsPartition
+//
 // @return GetMmsPartitionResponse
 func (client *Client) GetMmsPartition(sourceId *string, partitionId *string) (_result *GetMmsPartitionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -29982,6 +30044,10 @@ func (client *Client) GetMmsPartition(sourceId *string, partitionId *string) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetMmsTable
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -30011,6 +30077,10 @@ func (client *Client) GetMmsTableWithOptions(sourceId *string, tableId *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetMmsTable
+//
 // @return GetMmsTableResponse
 func (client *Client) GetMmsTable(sourceId *string, tableId *string) (_result *GetMmsTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -30024,6 +30094,10 @@ func (client *Client) GetMmsTable(sourceId *string, tableId *string) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetMmsTask
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -30053,6 +30127,10 @@ func (client *Client) GetMmsTaskWithOptions(sourceId *string, taskId *string, he
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetMmsTask
+//
 // @return GetMmsTaskResponse
 func (client *Client) GetMmsTask(sourceId *string, taskId *string) (_result *GetMmsTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -31569,6 +31647,10 @@ func (client *Client) ListJobSnapshotInfos(request *ListJobSnapshotInfosRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// # ListMmsDataSources
+//
 // @param request - ListMmsDataSourcesRequest
 //
 // @param headers - map
@@ -31626,6 +31708,10 @@ func (client *Client) ListMmsDataSourcesWithOptions(request *ListMmsDataSourcesR
 	return _result, _err
 }
 
+// Summary:
+//
+// # ListMmsDataSources
+//
 // @param request - ListMmsDataSourcesRequest
 //
 // @return ListMmsDataSourcesResponse
@@ -31727,6 +31813,10 @@ func (client *Client) ListMmsDbs(sourceId *string, request *ListMmsDbsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// # ListMmsJobs
+//
 // @param request - ListMmsJobsRequest
 //
 // @param headers - map
@@ -31804,6 +31894,10 @@ func (client *Client) ListMmsJobsWithOptions(sourceId *string, request *ListMmsJ
 	return _result, _err
 }
 
+// Summary:
+//
+// # ListMmsJobs
+//
 // @param request - ListMmsJobsRequest
 //
 // @return ListMmsJobsResponse
@@ -31819,6 +31913,10 @@ func (client *Client) ListMmsJobs(sourceId *string, request *ListMmsJobsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取元数据-分区
+//
 // @param tmpReq - ListMmsPartitionsRequest
 //
 // @param headers - map
@@ -31906,6 +32004,10 @@ func (client *Client) ListMmsPartitionsWithOptions(sourceId *string, tmpReq *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取元数据-分区
+//
 // @param request - ListMmsPartitionsRequest
 //
 // @return ListMmsPartitionsResponse
@@ -31921,6 +32023,10 @@ func (client *Client) ListMmsPartitions(sourceId *string, request *ListMmsPartit
 	return _result, _err
 }
 
+// Summary:
+//
+// # ListMmsTables
+//
 // @param tmpReq - ListMmsTablesRequest
 //
 // @param headers - map
@@ -32012,6 +32118,10 @@ func (client *Client) ListMmsTablesWithOptions(sourceId *string, tmpReq *ListMms
 	return _result, _err
 }
 
+// Summary:
+//
+// # ListMmsTables
+//
 // @param request - ListMmsTablesRequest
 //
 // @return ListMmsTablesResponse
@@ -32027,6 +32137,10 @@ func (client *Client) ListMmsTables(sourceId *string, request *ListMmsTablesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// # ListMmsTaskLogs
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -32056,6 +32170,10 @@ func (client *Client) ListMmsTaskLogsWithOptions(sourceId *string, taskId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// # ListMmsTaskLogs
+//
 // @return ListMmsTaskLogsResponse
 func (client *Client) ListMmsTaskLogs(sourceId *string, taskId *string) (_result *ListMmsTaskLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -32069,6 +32187,10 @@ func (client *Client) ListMmsTaskLogs(sourceId *string, taskId *string) (_result
 	return _result, _err
 }
 
+// Summary:
+//
+// # ListMmsTasks
+//
 // @param request - ListMmsTasksRequest
 //
 // @param headers - map
@@ -32150,6 +32272,10 @@ func (client *Client) ListMmsTasksWithOptions(sourceId *string, request *ListMms
 	return _result, _err
 }
 
+// Summary:
+//
+// # ListMmsTasks
+//
 // @param request - ListMmsTasksRequest
 //
 // @return ListMmsTasksResponse
@@ -33391,6 +33517,10 @@ func (client *Client) QueryTunnelMetricDetail(metric *string, request *QueryTunn
 	return _result, _err
 }
 
+// Summary:
+//
+// # RetryMmsJob
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -33420,6 +33550,10 @@ func (client *Client) RetryMmsJobWithOptions(sourceId *string, jobId *string, he
 	return _result, _err
 }
 
+// Summary:
+//
+// # RetryMmsJob
+//
 // @return RetryMmsJobResponse
 func (client *Client) RetryMmsJob(sourceId *string, jobId *string) (_result *RetryMmsJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -33433,6 +33567,10 @@ func (client *Client) RetryMmsJob(sourceId *string, jobId *string) (_result *Ret
 	return _result, _err
 }
 
+// Summary:
+//
+// # StartMmsJob
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -33462,6 +33600,10 @@ func (client *Client) StartMmsJobWithOptions(sourceId *string, jobId *string, he
 	return _result, _err
 }
 
+// Summary:
+//
+// # StartMmsJob
+//
 // @return StartMmsJobResponse
 func (client *Client) StartMmsJob(sourceId *string, jobId *string) (_result *StartMmsJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -33475,6 +33617,10 @@ func (client *Client) StartMmsJob(sourceId *string, jobId *string) (_result *Sta
 	return _result, _err
 }
 
+// Summary:
+//
+// # StopMmsJob
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -33504,6 +33650,10 @@ func (client *Client) StopMmsJobWithOptions(sourceId *string, jobId *string, hea
 	return _result, _err
 }
 
+// Summary:
+//
+// # StopMmsJob
+//
 // @return StopMmsJobResponse
 func (client *Client) StopMmsJob(sourceId *string, jobId *string) (_result *StopMmsJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
