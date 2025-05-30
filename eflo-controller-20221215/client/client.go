@@ -1039,7 +1039,8 @@ type CreateClusterRequestNodeGroups struct {
 	// example:
 	//
 	// sc-key
-	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	KeyPairName   *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
 	// Machine type
 	//
 	// example:
@@ -1096,6 +1097,11 @@ func (s *CreateClusterRequestNodeGroups) SetImageId(v string) *CreateClusterRequ
 
 func (s *CreateClusterRequestNodeGroups) SetKeyPairName(v string) *CreateClusterRequestNodeGroups {
 	s.KeyPairName = &v
+	return s
+}
+
+func (s *CreateClusterRequestNodeGroups) SetLoginPassword(v string) *CreateClusterRequestNodeGroups {
+	s.LoginPassword = &v
 	return s
 }
 
@@ -2500,7 +2506,8 @@ type CreateNodeGroupRequestNodeGroup struct {
 	// example:
 	//
 	// test-keypair
-	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	KeyPairName   *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
 	// Machine type
 	//
 	// This parameter is required.
@@ -2562,6 +2569,11 @@ func (s *CreateNodeGroupRequestNodeGroup) SetImageId(v string) *CreateNodeGroupR
 
 func (s *CreateNodeGroupRequestNodeGroup) SetKeyPairName(v string) *CreateNodeGroupRequestNodeGroup {
 	s.KeyPairName = &v
+	return s
+}
+
+func (s *CreateNodeGroupRequestNodeGroup) SetLoginPassword(v string) *CreateNodeGroupRequestNodeGroup {
+	s.LoginPassword = &v
 	return s
 }
 
@@ -3315,7 +3327,7 @@ func (s *DeleteVscResponse) SetBody(v *DeleteVscResponseBody) *DeleteVscResponse
 }
 
 type DescribeClusterRequest struct {
-	// Cluster ID.
+	// 集群id。
 	//
 	// This parameter is required.
 	//
@@ -3339,101 +3351,101 @@ func (s *DescribeClusterRequest) SetClusterId(v string) *DescribeClusterRequest 
 }
 
 type DescribeClusterResponseBody struct {
-	// Cluster Description
+	// 集群描述
 	//
 	// example:
 	//
-	// Default cluster
+	// 测试集群
 	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
-	// Cluster ID
+	// 集群id
 	//
 	// example:
 	//
 	// i116913051662373010974
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Cluster Name
+	// 集群名称
 	//
 	// example:
 	//
 	// Eflo-YJ-Test-Cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// Cluster Type
+	// 集群类型
 	//
 	// example:
 	//
 	// AckEdgePro
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// Component Information
+	// 组件信息
 	Components []*DescribeClusterResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// Type of IP in the compute network
+	// 计算网络的IP类型
 	//
 	// example:
 	//
 	// IPv4
 	ComputingIpVersion *string `json:"ComputingIpVersion,omitempty" xml:"ComputingIpVersion,omitempty"`
-	// Creation Time
+	// 创建时间
 	//
 	// example:
 	//
 	// 2022-06-08T07:05:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Cluster Number
+	// 集群编号
 	//
 	// example:
 	//
 	// A2
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	// Network Information
+	// 网络信息
 	Networks *DescribeClusterResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Struct"`
-	// Number of Nodes
+	// 节点数
 	//
 	// example:
 	//
 	// 2
 	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// Number of Node Groups
+	// 节点组数量
 	//
 	// example:
 	//
 	// 2
 	NodeGroupCount *int64 `json:"NodeGroupCount,omitempty" xml:"NodeGroupCount,omitempty"`
-	// Open Eni Jumbo Frame
+	// 网络接口巨帧
 	//
 	// example:
 	//
-	// close
+	// unsupported
 	OpenEniJumboFrame *string `json:"OpenEniJumboFrame,omitempty" xml:"OpenEniJumboFrame,omitempty"`
-	// Cluster State
+	// 集群状态
 	//
 	// example:
 	//
 	// running
 	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
-	// Request ID.
+	// 请求id。
 	//
 	// example:
 	//
 	// 887FA855-89F4-5DB3-B305-C5879EC480E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Resource Group ID
+	// 资源组id
 	//
 	// example:
 	//
 	// rg-aek2k3rqlvv6ytq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Task ID
+	// 任务id
 	//
 	// example:
 	//
 	// i152609221670466904596
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Update Time
+	// 更新时间
 	//
 	// example:
 	//
 	// 2022-08-23T06:36:17.000Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// VPC ID
+	// 专有网络ID
 	//
 	// example:
 	//
@@ -3540,13 +3552,13 @@ func (s *DescribeClusterResponseBody) SetVpcId(v string) *DescribeClusterRespons
 }
 
 type DescribeClusterResponseBodyComponents struct {
-	// Component ID
+	// 组件id
 	//
 	// example:
 	//
 	// i149549021660892626529
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
-	// Component Type
+	// 组件类型
 	//
 	// example:
 	//
@@ -3573,6 +3585,11 @@ func (s *DescribeClusterResponseBodyComponents) SetComponentType(v string) *Desc
 }
 
 type DescribeClusterResponseBodyNetworks struct {
+	// 集群网段id
+	//
+	// example:
+	//
+	// vpd-iqd7xunc
 	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
 }
 
@@ -4183,7 +4200,7 @@ type DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode s
 	//
 	// example:
 	//
-	// NodeNotExists：
+	// NodeNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// Details of the reason for command delivery failure or execution failure, possible values:
 	//
@@ -7532,6 +7549,10 @@ type ListClusterNodesResponseBodyNodes struct {
 	// 1762185600000
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// whether or not support file system mount
+	//
+	// example:
+	//
+	// False
 	FileSystemMountEnabled *bool `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
 	// Hostname
 	//
@@ -13208,7 +13229,7 @@ type UpdateNodeGroupRequest struct {
 	//
 	// True
 	FileSystemMountEnabled *bool `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
-	// 节点组的默认镜像id，如果不设置，那么就不会改变。
+	// The default image ID of a node group remains unchanged if not explicitly set.
 	//
 	// example:
 	//
@@ -13220,6 +13241,8 @@ type UpdateNodeGroupRequest struct {
 	//
 	// sc-key
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// 节点组内机器的登录密码
+	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
 	// Node group name
 	//
 	// example:
@@ -13264,6 +13287,11 @@ func (s *UpdateNodeGroupRequest) SetImageId(v string) *UpdateNodeGroupRequest {
 
 func (s *UpdateNodeGroupRequest) SetKeyPairName(v string) *UpdateNodeGroupRequest {
 	s.KeyPairName = &v
+	return s
+}
+
+func (s *UpdateNodeGroupRequest) SetLoginPassword(v string) *UpdateNodeGroupRequest {
+	s.LoginPassword = &v
 	return s
 }
 
@@ -14359,7 +14387,7 @@ func (client *Client) DeleteVsc(request *DeleteVscRequest) (_result *DeleteVscRe
 
 // Summary:
 //
-// # Cluster Details
+// 查询灵骏集群详情。
 //
 // @param request - DescribeClusterRequest
 //
@@ -14401,7 +14429,7 @@ func (client *Client) DescribeClusterWithOptions(request *DescribeClusterRequest
 
 // Summary:
 //
-// # Cluster Details
+// 查询灵骏集群详情。
 //
 // @param request - DescribeClusterRequest
 //
@@ -16757,6 +16785,10 @@ func (client *Client) UpdateNodeGroupWithOptions(request *UpdateNodeGroupRequest
 
 	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
 		body["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginPassword)) {
+		body["LoginPassword"] = request.LoginPassword
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NewNodeGroupName)) {
