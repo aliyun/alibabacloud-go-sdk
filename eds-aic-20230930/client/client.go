@@ -646,12 +646,15 @@ type BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels struct {
 	//
 	// aig-1uzb6heg797z3****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceId      *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	ErrorCode          *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The ID of the cloud phone instance.
 	//
 	// example:
 	//
 	// acp-ajxvwo1u0hqvd****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PersistentAppInstanceId *string `json:"PersistentAppInstanceId,omitempty" xml:"PersistentAppInstanceId,omitempty"`
 	// The ID of the task.
 	//
 	// example:
@@ -685,8 +688,23 @@ func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) SetApp
 	return s
 }
 
+func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) SetAppInstanceId(v string) *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels {
+	s.AppInstanceId = &v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) SetErrorCode(v string) *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels {
+	s.ErrorCode = &v
+	return s
+}
+
 func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) SetInstanceId(v string) *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) SetPersistentAppInstanceId(v string) *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels {
+	s.PersistentAppInstanceId = &v
 	return s
 }
 
@@ -5105,7 +5123,9 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// connect
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
 	// The tags.
-	Tags []*DescribeAndroidInstancesResponseBodyInstanceModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Tags      []*DescribeAndroidInstancesResponseBodyInstanceModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VSwitchId *string                                                  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId    *string                                                  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAndroidInstancesResponseBodyInstanceModel) String() string {
@@ -5293,6 +5313,16 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetSessionStatus(v s
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetTags(v []*DescribeAndroidInstancesResponseBodyInstanceModelTags) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.Tags = v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetVSwitchId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetZoneId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.ZoneId = &v
 	return s
 }
 
@@ -6538,7 +6568,8 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	// example:
 	//
 	// cn-hangzhou+dir-5mwr9azebliva****
-	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	NetworkId    *string                                                     `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	NetworkInfos []*DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos `json:"NetworkInfos,omitempty" xml:"NetworkInfos,omitempty" type:"Repeated"`
 	// The matrix ID.
 	//
 	// example:
@@ -6649,6 +6680,11 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetNetworkId(v string) *D
 	return s
 }
 
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetNetworkInfos(v []*DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.NetworkInfos = v
+	return s
+}
+
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetNodeId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
 	s.NodeId = &v
 	return s
@@ -6695,6 +6731,29 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetStatus(v string) *Desc
 }
 
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetVSwitchId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.VSwitchId = &v
+	return s
+}
+
+type DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos struct {
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos) SetNetworkId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos) SetVSwitchId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos {
 	s.VSwitchId = &v
 	return s
 }
@@ -12179,6 +12238,7 @@ type ResetAndroidInstancesInGroupRequest struct {
 	// The IDs of the cloud phone instances.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
 	SaleMode           *string   `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	SettingResetType   *int32    `json:"SettingResetType,omitempty" xml:"SettingResetType,omitempty"`
 }
 
 func (s ResetAndroidInstancesInGroupRequest) String() string {
@@ -12196,6 +12256,11 @@ func (s *ResetAndroidInstancesInGroupRequest) SetAndroidInstanceIds(v []*string)
 
 func (s *ResetAndroidInstancesInGroupRequest) SetSaleMode(v string) *ResetAndroidInstancesInGroupRequest {
 	s.SaleMode = &v
+	return s
+}
+
+func (s *ResetAndroidInstancesInGroupRequest) SetSettingResetType(v int32) *ResetAndroidInstancesInGroupRequest {
+	s.SettingResetType = &v
 	return s
 }
 
@@ -17908,6 +17973,10 @@ func (client *Client) ResetAndroidInstancesInGroupWithOptions(request *ResetAndr
 
 	if !tea.BoolValue(util.IsUnset(request.SaleMode)) {
 		query["SaleMode"] = request.SaleMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SettingResetType)) {
+		query["SettingResetType"] = request.SettingResetType
 	}
 
 	req := &openapi.OpenApiRequest{
