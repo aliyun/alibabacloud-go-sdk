@@ -99,6 +99,76 @@ func (s *DisposalContent) SetProhibitActions(v []*string) *DisposalContent {
 	return s
 }
 
+type OpenStructSaseUserSimple struct {
+	Departments []*OpenStructSaseUserSimpleDepartments `json:"Departments,omitempty" xml:"Departments,omitempty" type:"Repeated"`
+	Email       *string                                `json:"Email,omitempty" xml:"Email,omitempty"`
+	IdpConfigId *string                                `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
+	SaseUserId  *string                                `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	Telephone   *string                                `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	Username    *string                                `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s OpenStructSaseUserSimple) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenStructSaseUserSimple) GoString() string {
+	return s.String()
+}
+
+func (s *OpenStructSaseUserSimple) SetDepartments(v []*OpenStructSaseUserSimpleDepartments) *OpenStructSaseUserSimple {
+	s.Departments = v
+	return s
+}
+
+func (s *OpenStructSaseUserSimple) SetEmail(v string) *OpenStructSaseUserSimple {
+	s.Email = &v
+	return s
+}
+
+func (s *OpenStructSaseUserSimple) SetIdpConfigId(v string) *OpenStructSaseUserSimple {
+	s.IdpConfigId = &v
+	return s
+}
+
+func (s *OpenStructSaseUserSimple) SetSaseUserId(v string) *OpenStructSaseUserSimple {
+	s.SaseUserId = &v
+	return s
+}
+
+func (s *OpenStructSaseUserSimple) SetTelephone(v string) *OpenStructSaseUserSimple {
+	s.Telephone = &v
+	return s
+}
+
+func (s *OpenStructSaseUserSimple) SetUsername(v string) *OpenStructSaseUserSimple {
+	s.Username = &v
+	return s
+}
+
+type OpenStructSaseUserSimpleDepartments struct {
+	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s OpenStructSaseUserSimpleDepartments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenStructSaseUserSimpleDepartments) GoString() string {
+	return s.String()
+}
+
+func (s *OpenStructSaseUserSimpleDepartments) SetDepartmentId(v string) *OpenStructSaseUserSimpleDepartments {
+	s.DepartmentId = &v
+	return s
+}
+
+func (s *OpenStructSaseUserSimpleDepartments) SetName(v string) *OpenStructSaseUserSimpleDepartments {
+	s.Name = &v
+	return s
+}
+
 type PAL7Config struct {
 	BypassConfig *PAL7ConfigBypassConfig `json:"BypassConfig,omitempty" xml:"BypassConfig,omitempty" type:"Struct"`
 	CertId       *string                 `json:"CertId,omitempty" xml:"CertId,omitempty"`
@@ -427,6 +497,29 @@ func (s *RecoveryContent) SetAuthReportInterval(v *AuthReportInterval) *Recovery
 
 func (s *RecoveryContent) SetRecoveryActions(v []*string) *RecoveryContent {
 	s.RecoveryActions = v
+	return s
+}
+
+type RiskSceneConfig struct {
+	DetectChannel []*string `json:"DetectChannel,omitempty" xml:"DetectChannel,omitempty" type:"Repeated"`
+	OfficeChannel []*string `json:"OfficeChannel,omitempty" xml:"OfficeChannel,omitempty" type:"Repeated"`
+}
+
+func (s RiskSceneConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RiskSceneConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RiskSceneConfig) SetDetectChannel(v []*string) *RiskSceneConfig {
+	s.DetectChannel = v
+	return s
+}
+
+func (s *RiskSceneConfig) SetOfficeChannel(v []*string) *RiskSceneConfig {
+	s.OfficeChannel = v
 	return s
 }
 
@@ -1659,6 +1752,138 @@ func (s *CreateDynamicRouteResponse) SetBody(v *CreateDynamicRouteResponseBody) 
 	return s
 }
 
+type CreateEnterpriseAcceleratePolicyRequest struct {
+	// example:
+	//
+	// whitelist
+	AccelerationType *string `json:"AccelerationType,omitempty" xml:"AccelerationType,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 99
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 1
+	ShowInClient *int32 `json:"ShowInClient,omitempty" xml:"ShowInClient,omitempty"`
+	// example:
+	//
+	// 12.34.56.XX
+	UpstreamHost *string `json:"UpstreamHost,omitempty" xml:"UpstreamHost,omitempty"`
+	// example:
+	//
+	// 1000
+	UpstreamPort *int32 `json:"UpstreamPort,omitempty" xml:"UpstreamPort,omitempty"`
+	// example:
+	//
+	// ga
+	UpstreamType       *string `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
+	UserAttributeGroup *string `json:"UserAttributeGroup,omitempty" xml:"UserAttributeGroup,omitempty"`
+}
+
+func (s CreateEnterpriseAcceleratePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnterpriseAcceleratePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnterpriseAcceleratePolicyRequest) SetAccelerationType(v string) *CreateEnterpriseAcceleratePolicyRequest {
+	s.AccelerationType = &v
+	return s
+}
+
+func (s *CreateEnterpriseAcceleratePolicyRequest) SetDescription(v string) *CreateEnterpriseAcceleratePolicyRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateEnterpriseAcceleratePolicyRequest) SetName(v string) *CreateEnterpriseAcceleratePolicyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateEnterpriseAcceleratePolicyRequest) SetPriority(v string) *CreateEnterpriseAcceleratePolicyRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateEnterpriseAcceleratePolicyRequest) SetShowInClient(v int32) *CreateEnterpriseAcceleratePolicyRequest {
+	s.ShowInClient = &v
+	return s
+}
+
+func (s *CreateEnterpriseAcceleratePolicyRequest) SetUpstreamHost(v string) *CreateEnterpriseAcceleratePolicyRequest {
+	s.UpstreamHost = &v
+	return s
+}
+
+func (s *CreateEnterpriseAcceleratePolicyRequest) SetUpstreamPort(v int32) *CreateEnterpriseAcceleratePolicyRequest {
+	s.UpstreamPort = &v
+	return s
+}
+
+func (s *CreateEnterpriseAcceleratePolicyRequest) SetUpstreamType(v string) *CreateEnterpriseAcceleratePolicyRequest {
+	s.UpstreamType = &v
+	return s
+}
+
+func (s *CreateEnterpriseAcceleratePolicyRequest) SetUserAttributeGroup(v string) *CreateEnterpriseAcceleratePolicyRequest {
+	s.UserAttributeGroup = &v
+	return s
+}
+
+type CreateEnterpriseAcceleratePolicyResponseBody struct {
+	// example:
+	//
+	// 2CABFEBB-0CE7-575E-833A-266F75D46713
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateEnterpriseAcceleratePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnterpriseAcceleratePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnterpriseAcceleratePolicyResponseBody) SetRequestId(v string) *CreateEnterpriseAcceleratePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateEnterpriseAcceleratePolicyResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEnterpriseAcceleratePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateEnterpriseAcceleratePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnterpriseAcceleratePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnterpriseAcceleratePolicyResponse) SetHeaders(v map[string]*string) *CreateEnterpriseAcceleratePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEnterpriseAcceleratePolicyResponse) SetStatusCode(v int32) *CreateEnterpriseAcceleratePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEnterpriseAcceleratePolicyResponse) SetBody(v *CreateEnterpriseAcceleratePolicyResponseBody) *CreateEnterpriseAcceleratePolicyResponse {
+	s.Body = v
+	return s
+}
+
 type CreateIdpDepartmentRequest struct {
 	// This parameter is required.
 	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
@@ -1747,33 +1972,75 @@ func (s *CreateIdpDepartmentResponse) SetBody(v *CreateIdpDepartmentResponseBody
 }
 
 type CreatePrivateAccessApplicationRequest struct {
+	// The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
+	//
 	// This parameter is required.
-	Addresses                    []*string   `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	BrowserAccessStatus          *string     `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
-	Description                  *string     `json:"Description,omitempty" xml:"Description,omitempty"`
-	L7Config                     *PAL7Config `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
-	L7ProxyDomainAutomaticPrefix *string     `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
-	L7ProxyDomainCustom          *string     `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
+	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// Specifies whether to allow access from a browser. Default value: **Disabled**. Valid values:
+	//
+	// 	- **Enabled**
+	//
+	// 	- **Disabled**
+	//
+	// example:
+	//
+	// Disabled
+	BrowserAccessStatus *string `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
+	// The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The browser access mode parameter. The parameter specifies the configurations of Layer 7 applications.
+	L7Config *PAL7Config `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
+	// The browser access mode parameter. The parameter specifies the prefix of the domain name that the proxy gateway uses. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
+	//
+	// example:
+	//
+	// app-sample
+	L7ProxyDomainAutomaticPrefix *string `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
+	// The browser access mode parameter. The parameter specifies the custom domain name of the proxy gateway. Enter a valid domain name.
+	//
+	// example:
+	//
+	// app1.example.com
+	L7ProxyDomainCustom *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
+	// The name of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// private_access_application_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
+	//
 	// This parameter is required.
 	PortRanges []*CreatePrivateAccessApplicationRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// The protocol that is used by the office application. Valid values:
+	//
+	// 	- **All**
+	//
+	// 	- **TCP**
+	//
+	// 	- **UDP**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// All
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The status of the office application. Valid values:
+	//
+	// 	- **Enabled**
+	//
+	// 	- **Disabled**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Enabled
-	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The IDs of the tags for the office applications. You can add up to six custom tags to an office application.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
@@ -1841,12 +2108,16 @@ func (s *CreatePrivateAccessApplicationRequest) SetTagIds(v []*string) *CreatePr
 }
 
 type CreatePrivateAccessApplicationRequestPortRanges struct {
+	// The start port. The start port must be less than or equal to the end port.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// The end port. The end port must be greater than or equal to the start port.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1874,33 +2145,75 @@ func (s *CreatePrivateAccessApplicationRequestPortRanges) SetEnd(v int32) *Creat
 }
 
 type CreatePrivateAccessApplicationShrinkRequest struct {
+	// The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
+	//
 	// This parameter is required.
-	Addresses                    []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	BrowserAccessStatus          *string   `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
-	Description                  *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	L7ConfigShrink               *string   `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
-	L7ProxyDomainAutomaticPrefix *string   `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
-	L7ProxyDomainCustom          *string   `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
+	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// Specifies whether to allow access from a browser. Default value: **Disabled**. Valid values:
+	//
+	// 	- **Enabled**
+	//
+	// 	- **Disabled**
+	//
+	// example:
+	//
+	// Disabled
+	BrowserAccessStatus *string `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
+	// The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The browser access mode parameter. The parameter specifies the configurations of Layer 7 applications.
+	L7ConfigShrink *string `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
+	// The browser access mode parameter. The parameter specifies the prefix of the domain name that the proxy gateway uses. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
+	//
+	// example:
+	//
+	// app-sample
+	L7ProxyDomainAutomaticPrefix *string `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
+	// The browser access mode parameter. The parameter specifies the custom domain name of the proxy gateway. Enter a valid domain name.
+	//
+	// example:
+	//
+	// app1.example.com
+	L7ProxyDomainCustom *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
+	// The name of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// private_access_application_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
+	//
 	// This parameter is required.
 	PortRanges []*CreatePrivateAccessApplicationShrinkRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// The protocol that is used by the office application. Valid values:
+	//
+	// 	- **All**
+	//
+	// 	- **TCP**
+	//
+	// 	- **UDP**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// All
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The status of the office application. Valid values:
+	//
+	// 	- **Enabled**
+	//
+	// 	- **Disabled**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Enabled
-	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The IDs of the tags for the office applications. You can add up to six custom tags to an office application.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
@@ -1968,12 +2281,16 @@ func (s *CreatePrivateAccessApplicationShrinkRequest) SetTagIds(v []*string) *Cr
 }
 
 type CreatePrivateAccessApplicationShrinkRequestPortRanges struct {
+	// The start port. The start port must be less than or equal to the end port.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// The end port. The end port must be greater than or equal to the start port.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2001,10 +2318,14 @@ func (s *CreatePrivateAccessApplicationShrinkRequestPortRanges) SetEnd(v int32) 
 }
 
 type CreatePrivateAccessApplicationResponseBody struct {
+	// The ID of the office application.
+	//
 	// example:
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
@@ -3773,35 +4094,86 @@ func (s *CreateWmEmbedTaskResponse) SetBody(v *CreateWmEmbedTaskResponseBody) *C
 }
 
 type CreateWmExtractTaskRequest struct {
+	// The CSV watermark control parameter. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
 	CsvControl *CreateWmExtractTaskRequestCsvControl `json:"CsvControl,omitempty" xml:"CsvControl,omitempty" type:"Struct"`
+	// The document watermark parameter that specifies whether the file to be extracted is a screenshot of a document with a background watermark added. The system determines whether to use the extraction logic for document background watermarks based on whether the file to be extracted is an image file. By default, you do not need to configure this parameter. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	DocumentIsCapture *bool `json:"DocumentIsCapture,omitempty" xml:"DocumentIsCapture,omitempty"`
+	// The URL used to download the file to be extracted. The URL must be accessible over the Internet.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://example.com/test-****.pdf
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The name of the file to be extracted. The system needs to check the file type based on the file name extension.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-****.pdf
 	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// The watermark parameter for videos that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	VideoIsLong *bool `json:"VideoIsLong,omitempty" xml:"VideoIsLong,omitempty"`
+	// The watermark parameter for long videos that specifies the video speed factor. The value can be a floating-point number or a string. Default value: 1. This parameter indicates the speed at which a watermark is added or the time-stretching rate for videos after a watermark is added.
+	//
 	// example:
 	//
 	// 1
 	VideoSpeed *string `json:"VideoSpeed,omitempty" xml:"VideoSpeed,omitempty"`
+	// The watermark information size. Default value: 32. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. For example, if a 40-bit watermark is used for watermark embedding, you must set this parameter to 40 for watermark extraction.
+	//
 	// example:
 	//
 	// 32
 	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
+	// The watermark type. Valid values:
+	//
+	// 	- **PureWebappInvisible**: web page watermark
+	//
+	// 	- **PureAppInvisible**: app watermark
+	//
+	// 	- **PureScreenInvisible**: screen watermark
+	//
+	// 	- **PureDocument**: document watermark
+	//
+	// 	- **PureImage**: image watermark
+	//
+	// 	- **PureAudio**: audio watermark
+	//
+	// 	- **PureVideo**: video watermark
+	//
+	// 	- **AigcWebappInvisible**: artificial intelligence generated content (AIGC)-based webpage watermark
+	//
+	// 	- **AigcAppInvisible**: AIGC-based app watermark
+	//
+	// 	- **AigcScreenInvisible**: AIGC-based screen watermark
+	//
+	// 	- **AigcDocument**: AIGC-based document watermark
+	//
+	// 	- **AigcImage**: AIGC-based image watermark
+	//
+	// 	- **AigcAudio**: AIGC-based audio watermark
+	//
+	// 	- **AigcVideo**: AIGC-based video watermark
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3859,12 +4231,42 @@ func (s *CreateWmExtractTaskRequest) SetWmType(v string) *CreateWmExtractTaskReq
 }
 
 type CreateWmExtractTaskRequestCsvControl struct {
-	EmbedBitsNumberInEachTime *int64  `json:"EmbedBitsNumberInEachTime,omitempty" xml:"EmbedBitsNumberInEachTime,omitempty"`
-	EmbedColumn               *int64  `json:"EmbedColumn,omitempty" xml:"EmbedColumn,omitempty"`
-	EmbedPrecision            *int64  `json:"EmbedPrecision,omitempty" xml:"EmbedPrecision,omitempty"`
-	EmbedTimePosition         *string `json:"EmbedTimePosition,omitempty" xml:"EmbedTimePosition,omitempty"`
-	Method                    *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	TimeFormat                *string `json:"TimeFormat,omitempty" xml:"TimeFormat,omitempty"`
+	// The timestamp watermark parameter that specifies how much information a single timestamp holds. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
+	//
+	// example:
+	//
+	// 1
+	EmbedBitsNumberInEachTime *int64 `json:"EmbedBitsNumberInEachTime,omitempty" xml:"EmbedBitsNumberInEachTime,omitempty"`
+	// The lossy embedding control parameter that specifies columns to be modified You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
+	//
+	// example:
+	//
+	// 1
+	EmbedColumn *int64 `json:"EmbedColumn,omitempty" xml:"EmbedColumn,omitempty"`
+	// The lossy embedding control parameter that specifies the modification precision. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
+	//
+	// example:
+	//
+	// 0
+	EmbedPrecision *int64 `json:"EmbedPrecision,omitempty" xml:"EmbedPrecision,omitempty"`
+	// The timestamp watermark parameter that specifies the embedding position of the timestamp watermarks. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
+	//
+	// example:
+	//
+	// Min
+	EmbedTimePosition *string `json:"EmbedTimePosition,omitempty" xml:"EmbedTimePosition,omitempty"`
+	// The CSV watermark embedding method. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
+	//
+	// example:
+	//
+	// lossless_row_shift_embed
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The timestamp watermark parameter that specifies the timestamp format. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
+	//
+	// example:
+	//
+	// Year-Mon-Day Hour:Min:Sec.MilSec
+	TimeFormat *string `json:"TimeFormat,omitempty" xml:"TimeFormat,omitempty"`
 }
 
 func (s CreateWmExtractTaskRequestCsvControl) String() string {
@@ -3906,35 +4308,86 @@ func (s *CreateWmExtractTaskRequestCsvControl) SetTimeFormat(v string) *CreateWm
 }
 
 type CreateWmExtractTaskShrinkRequest struct {
+	// The CSV watermark control parameter. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. Otherwise, the extraction fails.
 	CsvControlShrink *string `json:"CsvControl,omitempty" xml:"CsvControl,omitempty"`
+	// The document watermark parameter that specifies whether the file to be extracted is a screenshot of a document with a background watermark added. The system determines whether to use the extraction logic for document background watermarks based on whether the file to be extracted is an image file. By default, you do not need to configure this parameter. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	DocumentIsCapture *bool `json:"DocumentIsCapture,omitempty" xml:"DocumentIsCapture,omitempty"`
+	// The URL used to download the file to be extracted. The URL must be accessible over the Internet.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://example.com/test-****.pdf
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The name of the file to be extracted. The system needs to check the file type based on the file name extension.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-****.pdf
 	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// The watermark parameter for videos that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	VideoIsLong *bool `json:"VideoIsLong,omitempty" xml:"VideoIsLong,omitempty"`
+	// The watermark parameter for long videos that specifies the video speed factor. The value can be a floating-point number or a string. Default value: 1. This parameter indicates the speed at which a watermark is added or the time-stretching rate for videos after a watermark is added.
+	//
 	// example:
 	//
 	// 1
 	VideoSpeed *string `json:"VideoSpeed,omitempty" xml:"VideoSpeed,omitempty"`
+	// The watermark information size. Default value: 32. You must keep the value of this parameter consistent for watermark embedding and watermark extraction. For example, if a 40-bit watermark is used for watermark embedding, you must set this parameter to 40 for watermark extraction.
+	//
 	// example:
 	//
 	// 32
 	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
+	// The watermark type. Valid values:
+	//
+	// 	- **PureWebappInvisible**: web page watermark
+	//
+	// 	- **PureAppInvisible**: app watermark
+	//
+	// 	- **PureScreenInvisible**: screen watermark
+	//
+	// 	- **PureDocument**: document watermark
+	//
+	// 	- **PureImage**: image watermark
+	//
+	// 	- **PureAudio**: audio watermark
+	//
+	// 	- **PureVideo**: video watermark
+	//
+	// 	- **AigcWebappInvisible**: artificial intelligence generated content (AIGC)-based webpage watermark
+	//
+	// 	- **AigcAppInvisible**: AIGC-based app watermark
+	//
+	// 	- **AigcScreenInvisible**: AIGC-based screen watermark
+	//
+	// 	- **AigcDocument**: AIGC-based document watermark
+	//
+	// 	- **AigcImage**: AIGC-based image watermark
+	//
+	// 	- **AigcAudio**: AIGC-based audio watermark
+	//
+	// 	- **AigcVideo**: AIGC-based video watermark
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3992,7 +4445,10 @@ func (s *CreateWmExtractTaskShrinkRequest) SetWmType(v string) *CreateWmExtractT
 }
 
 type CreateWmExtractTaskResponseBody struct {
+	// The information about the watermark extraction task.
 	Data *CreateWmExtractTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D6707286-A50E-57B1-B2CF-EFAC59E850D8
@@ -4018,6 +4474,8 @@ func (s *CreateWmExtractTaskResponseBody) SetRequestId(v string) *CreateWmExtrac
 }
 
 type CreateWmExtractTaskResponseBodyData struct {
+	// The task ID. You can use task IDs to query task results.
+	//
 	// example:
 	//
 	// wmt-9648c22d2eb2cb57bb855dcae7898464********
@@ -4470,6 +4928,72 @@ func (s *DeleteIdpDepartmentResponse) SetStatusCode(v int32) *DeleteIdpDepartmen
 }
 
 func (s *DeleteIdpDepartmentResponse) SetBody(v *DeleteIdpDepartmentResponseBody) *DeleteIdpDepartmentResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteOtpConfigRequest struct {
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s DeleteOtpConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOtpConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOtpConfigRequest) SetUsername(v string) *DeleteOtpConfigRequest {
+	s.Username = &v
+	return s
+}
+
+type DeleteOtpConfigResponseBody struct {
+	// example:
+	//
+	// 54A4055A-343D-583E-9EAC-D12231148A68
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteOtpConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOtpConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOtpConfigResponseBody) SetRequestId(v string) *DeleteOtpConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteOtpConfigResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteOtpConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteOtpConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOtpConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOtpConfigResponse) SetHeaders(v map[string]*string) *DeleteOtpConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteOtpConfigResponse) SetStatusCode(v int32) *DeleteOtpConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteOtpConfigResponse) SetBody(v *DeleteOtpConfigResponseBody) *DeleteOtpConfigResponse {
 	s.Body = v
 	return s
 }
@@ -7143,6 +7667,12 @@ func (s *GetIdpConfigResponse) SetBody(v *GetIdpConfigResponseBody) *GetIdpConfi
 }
 
 type GetPrivateAccessApplicationRequest struct {
+	// The ID of the office application. You can obtain the value by calling the following operations:
+	//
+	// 	- [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries office applications.
+	//
+	// 	- [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an office application.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7165,7 +7695,10 @@ func (s *GetPrivateAccessApplicationRequest) SetApplicationId(v string) *GetPriv
 }
 
 type GetPrivateAccessApplicationResponseBody struct {
+	// The office application.
 	Application *GetPrivateAccessApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 3ACC5EDC-2B7D-5032-8C58-D7615D66C1D4
@@ -7191,35 +7724,81 @@ func (s *GetPrivateAccessApplicationResponseBody) SetRequestId(v string) *GetPri
 }
 
 type GetPrivateAccessApplicationResponseBodyApplication struct {
+	// The addresses of the office applications.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// The ID of the office application.
+	//
 	// example:
 	//
 	// pa-application-e12860ef6c48****
-	ApplicationId       *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	BrowserAccessStatus *string   `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
-	ConnectorIds        []*string `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The browser access mode. Valid values:
+	//
+	// 	- **Enabled**
+	//
+	// 	- **Disabled**
+	//
+	// example:
+	//
+	// Enabled
+	BrowserAccessStatus *string `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
+	// The IDs of connectors.
+	ConnectorIds []*string `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
+	// The creation time of the office application.
+	//
 	// example:
 	//
 	// 2022-08-30 16:50:32
-	CreateTime             *string     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description            *string     `json:"Description,omitempty" xml:"Description,omitempty"`
-	L7Config               *PAL7Config `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
-	L7ProxyDomainAutomatic *string     `json:"L7ProxyDomainAutomatic,omitempty" xml:"L7ProxyDomainAutomatic,omitempty"`
-	L7ProxyDomainCustom    *string     `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the office application.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The browser access mode parameter. The parameter indicates the configurations of Layer 7 applications.
+	L7Config *PAL7Config `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
+	// The browser access mode parameter. The parameter indicates the domain name that the proxy gateway uses.
+	//
+	// example:
+	//
+	// app.example.com
+	L7ProxyDomainAutomatic *string `json:"L7ProxyDomainAutomatic,omitempty" xml:"L7ProxyDomainAutomatic,omitempty"`
+	// The browser access mode parameter. The parameter indicates the custom domain name of the proxy gateway.
+	//
+	// example:
+	//
+	// app.example.com
+	L7ProxyDomainCustom *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
+	// The name of the office application.
+	//
 	// example:
 	//
 	// private_access_application_name
-	Name       *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyIds  []*string                                                       `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of the private access policies.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The port ranges of the office applications. Multiple port ranges cannot be duplicated or overlapped.
 	PortRanges []*GetPrivateAccessApplicationResponseBodyApplicationPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// The protocol that is used by the office application. Valid values:
+	//
+	// 	- **All**
+	//
+	// 	- **TCP**
+	//
+	// 	- **UDP**
+	//
 	// example:
 	//
 	// All
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The status of the office application. Valid values:
+	//
+	// 	- **Enabled**
+	//
+	// 	- **Disabled**
+	//
 	// example:
 	//
 	// Enabled
-	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The IDs of the tags for the office applications.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
@@ -7307,10 +7886,14 @@ func (s *GetPrivateAccessApplicationResponseBodyApplication) SetTagIds(v []*stri
 }
 
 type GetPrivateAccessApplicationResponseBodyApplicationPortRanges struct {
+	// The start port.
+	//
 	// example:
 	//
 	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// The end port.
+	//
 	// example:
 	//
 	// 81
@@ -7953,7 +8536,8 @@ type GetUserDeviceResponseBodyDevice struct {
 	// example:
 	//
 	// 48:9e:XX:XX:02:80
-	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Mac                 *string   `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	MatchDeviceGroupIds []*string `json:"MatchDeviceGroupIds,omitempty" xml:"MatchDeviceGroupIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 16
@@ -8087,6 +8671,11 @@ func (s *GetUserDeviceResponseBodyDevice) SetInnerIP(v string) *GetUserDeviceRes
 
 func (s *GetUserDeviceResponseBodyDevice) SetMac(v string) *GetUserDeviceResponseBodyDevice {
 	s.Mac = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetMatchDeviceGroupIds(v []*string) *GetUserDeviceResponseBodyDevice {
+	s.MatchDeviceGroupIds = v
 	return s
 }
 
@@ -16523,6 +17112,7 @@ type ListUserDevicesRequest struct {
 	//
 	// Company
 	DeviceBelong   *string   `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
+	DeviceGroupId  *string   `json:"DeviceGroupId,omitempty" xml:"DeviceGroupId,omitempty"`
 	DeviceStatuses []*string `json:"DeviceStatuses,omitempty" xml:"DeviceStatuses,omitempty" type:"Repeated"`
 	DeviceTags     []*string `json:"DeviceTags,omitempty" xml:"DeviceTags,omitempty" type:"Repeated"`
 	DeviceTypes    []*string `json:"DeviceTypes,omitempty" xml:"DeviceTypes,omitempty" type:"Repeated"`
@@ -16588,6 +17178,11 @@ func (s *ListUserDevicesRequest) SetDepartment(v string) *ListUserDevicesRequest
 
 func (s *ListUserDevicesRequest) SetDeviceBelong(v string) *ListUserDevicesRequest {
 	s.DeviceBelong = &v
+	return s
+}
+
+func (s *ListUserDevicesRequest) SetDeviceGroupId(v string) *ListUserDevicesRequest {
+	s.DeviceGroupId = &v
 	return s
 }
 
@@ -16772,7 +17367,8 @@ type ListUserDevicesResponseBodyDevices struct {
 	// example:
 	//
 	// 00:16:XX:XX:7c:46
-	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	Mac                 *string   `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	MatchDeviceGroupIds []*string `json:"MatchDeviceGroupIds,omitempty" xml:"MatchDeviceGroupIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 16
@@ -16901,6 +17497,11 @@ func (s *ListUserDevicesResponseBodyDevices) SetInnerIP(v string) *ListUserDevic
 
 func (s *ListUserDevicesResponseBodyDevices) SetMac(v string) *ListUserDevicesResponseBodyDevices {
 	s.Mac = &v
+	return s
+}
+
+func (s *ListUserDevicesResponseBodyDevices) SetMatchDeviceGroupIds(v []*string) *ListUserDevicesResponseBodyDevices {
+	s.MatchDeviceGroupIds = v
 	return s
 }
 
@@ -20452,34 +21053,83 @@ func (s *UpdateNacUserCertStatusResponse) SetBody(v *UpdateNacUserCertStatusResp
 }
 
 type UpdatePrivateAccessApplicationRequest struct {
+	// The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// The ID of the office application. You can obtain the value by calling the following operations:
+	//
+	// 	- [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries office applications.
+	//
+	// 	- [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an office application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+	//
 	// if can be null:
 	// true
-	Description                  *string     `json:"Description,omitempty" xml:"Description,omitempty"`
-	L7Config                     *PAL7Config `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
-	L7ProxyDomainAutomaticPrefix *string     `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
-	L7ProxyDomainCustom          *string     `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The browser access mode parameter. The parameter specifies the configurations of Layer 7 applications.
+	L7Config *PAL7Config `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
+	// The browser access mode parameter. The parameter specifies the prefix of the domain name that the proxy gateway uses. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
+	//
+	// example:
+	//
+	// app1-xxx
+	L7ProxyDomainAutomaticPrefix *string `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
+	// The browser access mode parameter. The parameter specifies the custom domain name of the proxy gateway.
+	//
+	// example:
+	//
+	// app1.example.com
+	L7ProxyDomainCustom *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
 	// Deprecated
+	//
+	// 浏览器访问模式参数：私有代理域名。
+	//
+	// example:
+	//
+	// app1.example.com
 	L7ProxyDomainPrivate *string `json:"L7ProxyDomainPrivate,omitempty" xml:"L7ProxyDomainPrivate,omitempty"`
+	// The modification type of the office application. Valid values:
+	//
+	// 	- **Cover**: uses the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters to overwrite the original addresses, port ranges, and tag IDs. This is the default value.
+	//
+	// 	- **Append**: adds the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters respectively to the original addresses, port ranges, and tag IDs.
+	//
 	// example:
 	//
 	// Cover
-	ModifyType *string                                            `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	// The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
 	PortRanges []*UpdatePrivateAccessApplicationRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// The protocol that is used by the office application. Valid values:
+	//
+	// 	- **All**
+	//
+	// 	- **TCP**
+	//
+	// 	- **UDP**
+	//
 	// example:
 	//
 	// All
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The status of the office application. Valid values:
+	//
+	// 	- **Enabled**
+	//
+	// 	- **Disabled**
+	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The IDs of the tags for the office applications. You can add up to six custom tags to an office application.
+	//
 	// if can be null:
 	// true
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
@@ -20554,10 +21204,14 @@ func (s *UpdatePrivateAccessApplicationRequest) SetTagIds(v []*string) *UpdatePr
 }
 
 type UpdatePrivateAccessApplicationRequestPortRanges struct {
+	// The start port. The start port must be less than or equal to the end port.
+	//
 	// example:
 	//
 	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// The end port. The end port must be greater than or equal to the start port.
+	//
 	// example:
 	//
 	// 81
@@ -20583,34 +21237,83 @@ func (s *UpdatePrivateAccessApplicationRequestPortRanges) SetEnd(v int32) *Updat
 }
 
 type UpdatePrivateAccessApplicationShrinkRequest struct {
+	// The addresses of the office applications. You can enter up to 1,000 addresses of office applications.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// The ID of the office application. You can obtain the value by calling the following operations:
+	//
+	// 	- [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): queries office applications.
+	//
+	// 	- [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an office application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The description of the office application. The value must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+	//
 	// if can be null:
 	// true
-	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	L7ConfigShrink               *string `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The browser access mode parameter. The parameter specifies the configurations of Layer 7 applications.
+	L7ConfigShrink *string `json:"L7Config,omitempty" xml:"L7Config,omitempty"`
+	// The browser access mode parameter. The parameter specifies the prefix of the domain name that the proxy gateway uses. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
+	//
+	// example:
+	//
+	// app1-xxx
 	L7ProxyDomainAutomaticPrefix *string `json:"L7ProxyDomainAutomaticPrefix,omitempty" xml:"L7ProxyDomainAutomaticPrefix,omitempty"`
-	L7ProxyDomainCustom          *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
+	// The browser access mode parameter. The parameter specifies the custom domain name of the proxy gateway.
+	//
+	// example:
+	//
+	// app1.example.com
+	L7ProxyDomainCustom *string `json:"L7ProxyDomainCustom,omitempty" xml:"L7ProxyDomainCustom,omitempty"`
 	// Deprecated
+	//
+	// 浏览器访问模式参数：私有代理域名。
+	//
+	// example:
+	//
+	// app1.example.com
 	L7ProxyDomainPrivate *string `json:"L7ProxyDomainPrivate,omitempty" xml:"L7ProxyDomainPrivate,omitempty"`
+	// The modification type of the office application. Valid values:
+	//
+	// 	- **Cover**: uses the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters to overwrite the original addresses, port ranges, and tag IDs. This is the default value.
+	//
+	// 	- **Append**: adds the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters respectively to the original addresses, port ranges, and tag IDs.
+	//
 	// example:
 	//
 	// Cover
-	ModifyType *string                                                  `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	// The port ranges of the office applications. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicated or overlapped.
 	PortRanges []*UpdatePrivateAccessApplicationShrinkRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
+	// The protocol that is used by the office application. Valid values:
+	//
+	// 	- **All**
+	//
+	// 	- **TCP**
+	//
+	// 	- **UDP**
+	//
 	// example:
 	//
 	// All
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The status of the office application. Valid values:
+	//
+	// 	- **Enabled**
+	//
+	// 	- **Disabled**
+	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The IDs of the tags for the office applications. You can add up to six custom tags to an office application.
+	//
 	// if can be null:
 	// true
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
@@ -20685,10 +21388,14 @@ func (s *UpdatePrivateAccessApplicationShrinkRequest) SetTagIds(v []*string) *Up
 }
 
 type UpdatePrivateAccessApplicationShrinkRequestPortRanges struct {
+	// The start port. The start port must be less than or equal to the end port.
+	//
 	// example:
 	//
 	// 80
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// The end port. The end port must be greater than or equal to the start port.
+	//
 	// example:
 	//
 	// 81
@@ -20714,6 +21421,8 @@ func (s *UpdatePrivateAccessApplicationShrinkRequestPortRanges) SetEnd(v int32) 
 }
 
 type UpdatePrivateAccessApplicationResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// FD724DBC-CD76-5235-BF76-59C51B73296D
@@ -23050,6 +23759,98 @@ func (client *Client) CreateDynamicRoute(request *CreateDynamicRouteRequest) (_r
 
 // Summary:
 //
+// 创建加速策略
+//
+// @param request - CreateEnterpriseAcceleratePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEnterpriseAcceleratePolicyResponse
+func (client *Client) CreateEnterpriseAcceleratePolicyWithOptions(request *CreateEnterpriseAcceleratePolicyRequest, runtime *util.RuntimeOptions) (_result *CreateEnterpriseAcceleratePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccelerationType)) {
+		body["AccelerationType"] = request.AccelerationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowInClient)) {
+		body["ShowInClient"] = request.ShowInClient
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpstreamHost)) {
+		body["UpstreamHost"] = request.UpstreamHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpstreamPort)) {
+		body["UpstreamPort"] = request.UpstreamPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpstreamType)) {
+		body["UpstreamType"] = request.UpstreamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAttributeGroup)) {
+		body["UserAttributeGroup"] = request.UserAttributeGroup
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEnterpriseAcceleratePolicy"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEnterpriseAcceleratePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建加速策略
+//
+// @param request - CreateEnterpriseAcceleratePolicyRequest
+//
+// @return CreateEnterpriseAcceleratePolicyResponse
+func (client *Client) CreateEnterpriseAcceleratePolicy(request *CreateEnterpriseAcceleratePolicyRequest) (_result *CreateEnterpriseAcceleratePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEnterpriseAcceleratePolicyResponse{}
+	_body, _err := client.CreateEnterpriseAcceleratePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建自定义身份源部门
 //
 // @param request - CreateIdpDepartmentRequest
@@ -23114,7 +23915,11 @@ func (client *Client) CreateIdpDepartment(request *CreateIdpDepartmentRequest) (
 
 // Summary:
 //
-// 创建内网访问应用
+// Creates an office application within the current Alibaba Cloud account.
+//
+// Description:
+//
+// By default, you can create a maximum of 500 office applications.
 //
 // @param tmpReq - CreatePrivateAccessApplicationRequest
 //
@@ -23205,7 +24010,11 @@ func (client *Client) CreatePrivateAccessApplicationWithOptions(tmpReq *CreatePr
 
 // Summary:
 //
-// 创建内网访问应用
+// Creates an office application within the current Alibaba Cloud account.
+//
+// Description:
+//
+// By default, you can create a maximum of 500 office applications.
 //
 // @param request - CreatePrivateAccessApplicationRequest
 //
@@ -23790,7 +24599,7 @@ func (client *Client) CreateWmEmbedTask(request *CreateWmEmbedTaskRequest) (_res
 
 // Summary:
 //
-// 创建文件水印提取任务
+// Creates a digital watermark extraction task.
 //
 // @param tmpReq - CreateWmExtractTaskRequest
 //
@@ -23868,7 +24677,7 @@ func (client *Client) CreateWmExtractTaskWithOptions(tmpReq *CreateWmExtractTask
 
 // Summary:
 //
-// 创建文件水印提取任务
+// Creates a digital watermark extraction task.
 //
 // @param request - CreateWmExtractTaskRequest
 //
@@ -24192,6 +25001,66 @@ func (client *Client) DeleteIdpDepartment(request *DeleteIdpDepartmentRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteIdpDepartmentResponse{}
 	_body, _err := client.DeleteIdpDepartmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteOtpConfig
+//
+// @param request - DeleteOtpConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOtpConfigResponse
+func (client *Client) DeleteOtpConfigWithOptions(request *DeleteOtpConfigRequest, runtime *util.RuntimeOptions) (_result *DeleteOtpConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		body["Username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteOtpConfig"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteOtpConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteOtpConfig
+//
+// @param request - DeleteOtpConfigRequest
+//
+// @return DeleteOtpConfigResponse
+func (client *Client) DeleteOtpConfig(request *DeleteOtpConfigRequest) (_result *DeleteOtpConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteOtpConfigResponse{}
+	_body, _err := client.DeleteOtpConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25254,7 +26123,7 @@ func (client *Client) GetIdpConfig(request *GetIdpConfigRequest) (_result *GetId
 
 // Summary:
 //
-// 查询内网访问应用详情
+// Queries the details of the office applications that belong to the current Alibaba Cloud account.
 //
 // @param request - GetPrivateAccessApplicationRequest
 //
@@ -25292,7 +26161,7 @@ func (client *Client) GetPrivateAccessApplicationWithOptions(request *GetPrivate
 
 // Summary:
 //
-// 查询内网访问应用详情
+// Queries the details of the office applications that belong to the current Alibaba Cloud account.
 //
 // @param request - GetPrivateAccessApplicationRequest
 //
@@ -28678,7 +29547,7 @@ func (client *Client) UpdateNacUserCertStatus(request *UpdateNacUserCertStatusRe
 
 // Summary:
 //
-// 修改内网访问应用
+// Modifies the office applications of the current Alibaba Cloud account.
 //
 // @param tmpReq - UpdatePrivateAccessApplicationRequest
 //
@@ -28773,7 +29642,7 @@ func (client *Client) UpdatePrivateAccessApplicationWithOptions(tmpReq *UpdatePr
 
 // Summary:
 //
-// 修改内网访问应用
+// Modifies the office applications of the current Alibaba Cloud account.
 //
 // @param request - UpdatePrivateAccessApplicationRequest
 //
