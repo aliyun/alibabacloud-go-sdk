@@ -5830,6 +5830,7 @@ type CreateCustomScenePolicyRequest struct {
 	//
 	// 7096621098****
 	Objects *string `json:"Objects,omitempty" xml:"Objects,omitempty"`
+	SiteIds *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
 	// The time when the policy takes effect.
 	//
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -5875,6 +5876,11 @@ func (s *CreateCustomScenePolicyRequest) SetObjects(v string) *CreateCustomScene
 	return s
 }
 
+func (s *CreateCustomScenePolicyRequest) SetSiteIds(v string) *CreateCustomScenePolicyRequest {
+	s.SiteIds = &v
+	return s
+}
+
 func (s *CreateCustomScenePolicyRequest) SetStartTime(v string) *CreateCustomScenePolicyRequest {
 	s.StartTime = &v
 	return s
@@ -5914,6 +5920,7 @@ type CreateCustomScenePolicyResponseBody struct {
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SiteIds   *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
 	// The time when the policy takes effect.
 	//
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -5960,6 +5967,11 @@ func (s *CreateCustomScenePolicyResponseBody) SetPolicyId(v int64) *CreateCustom
 
 func (s *CreateCustomScenePolicyResponseBody) SetRequestId(v string) *CreateCustomScenePolicyResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCustomScenePolicyResponseBody) SetSiteIds(v string) *CreateCustomScenePolicyResponseBody {
+	s.SiteIds = &v
 	return s
 }
 
@@ -7716,7 +7728,10 @@ type CreateHttpsApplicationConfigurationRequest struct {
 	// example:
 	//
 	// 301
-	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	HttpsForceCode    *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	HttpsNoSniDeny    *string `json:"HttpsNoSniDeny,omitempty" xml:"HttpsNoSniDeny,omitempty"`
+	HttpsSniVerify    *string `json:"HttpsSniVerify,omitempty" xml:"HttpsSniVerify,omitempty"`
+	HttpsSniWhitelist *string `json:"HttpsSniWhitelist,omitempty" xml:"HttpsSniWhitelist,omitempty"`
 	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
 	//
 	// - Match all incoming requests: Set the value to true
@@ -7815,6 +7830,21 @@ func (s *CreateHttpsApplicationConfigurationRequest) SetHttpsForce(v string) *Cr
 
 func (s *CreateHttpsApplicationConfigurationRequest) SetHttpsForceCode(v string) *CreateHttpsApplicationConfigurationRequest {
 	s.HttpsForceCode = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetHttpsNoSniDeny(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.HttpsNoSniDeny = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetHttpsSniVerify(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.HttpsSniVerify = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetHttpsSniWhitelist(v string) *CreateHttpsApplicationConfigurationRequest {
+	s.HttpsSniWhitelist = &v
 	return s
 }
 
@@ -20653,7 +20683,8 @@ type DescribeCustomScenePoliciesResponseBodyDataModule struct {
 	// example:
 	//
 	// 1234****
-	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyId *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	SiteIds  *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
 	// The time when the policy takes effect.
 	//
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -20711,6 +20742,11 @@ func (s *DescribeCustomScenePoliciesResponseBodyDataModule) SetObjects(v []*stri
 
 func (s *DescribeCustomScenePoliciesResponseBodyDataModule) SetPolicyId(v int64) *DescribeCustomScenePoliciesResponseBodyDataModule {
 	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeCustomScenePoliciesResponseBodyDataModule) SetSiteIds(v string) *DescribeCustomScenePoliciesResponseBodyDataModule {
+	s.SiteIds = &v
 	return s
 }
 
@@ -29539,7 +29575,10 @@ type GetHttpsApplicationConfigurationResponseBody struct {
 	// example:
 	//
 	// 301
-	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	HttpsForceCode    *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	HttpsNoSniDeny    *string `json:"HttpsNoSniDeny,omitempty" xml:"HttpsNoSniDeny,omitempty"`
+	HttpsSniVerify    *string `json:"HttpsSniVerify,omitempty" xml:"HttpsSniVerify,omitempty"`
+	HttpsSniWhitelist *string `json:"HttpsSniWhitelist,omitempty" xml:"HttpsSniWhitelist,omitempty"`
 	// Request ID.
 	//
 	// example:
@@ -29651,6 +29690,21 @@ func (s *GetHttpsApplicationConfigurationResponseBody) SetHttpsForce(v string) *
 
 func (s *GetHttpsApplicationConfigurationResponseBody) SetHttpsForceCode(v string) *GetHttpsApplicationConfigurationResponseBody {
 	s.HttpsForceCode = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetHttpsNoSniDeny(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.HttpsNoSniDeny = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetHttpsSniVerify(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.HttpsSniVerify = &v
+	return s
+}
+
+func (s *GetHttpsApplicationConfigurationResponseBody) SetHttpsSniWhitelist(v string) *GetHttpsApplicationConfigurationResponseBody {
+	s.HttpsSniWhitelist = &v
 	return s
 }
 
@@ -45276,7 +45330,10 @@ type ListHttpsApplicationConfigurationsResponseBodyConfigs struct {
 	// example:
 	//
 	// 301
-	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	HttpsForceCode    *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	HttpsNoSniDeny    *string `json:"HttpsNoSniDeny,omitempty" xml:"HttpsNoSniDeny,omitempty"`
+	HttpsSniVerify    *string `json:"HttpsSniVerify,omitempty" xml:"HttpsSniVerify,omitempty"`
+	HttpsSniWhitelist *string `json:"HttpsSniWhitelist,omitempty" xml:"HttpsSniWhitelist,omitempty"`
 	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
 	//
 	// - Match all incoming requests: Set the value to true.
@@ -45382,6 +45439,21 @@ func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetHttpsForce(v 
 
 func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetHttpsForceCode(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
 	s.HttpsForceCode = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetHttpsNoSniDeny(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.HttpsNoSniDeny = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetHttpsSniVerify(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.HttpsSniVerify = &v
+	return s
+}
+
+func (s *ListHttpsApplicationConfigurationsResponseBodyConfigs) SetHttpsSniWhitelist(v string) *ListHttpsApplicationConfigurationsResponseBodyConfigs {
+	s.HttpsSniWhitelist = &v
 	return s
 }
 
@@ -63587,8 +63659,6 @@ type UpdateCustomScenePolicyRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The IDs of the websites that you want to associate with the policy. Separate multiple IDs with commas (,).
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 123456****
@@ -63600,7 +63670,8 @@ type UpdateCustomScenePolicyRequest struct {
 	// example:
 	//
 	// 1
-	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyId *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	SiteIds  *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
 	// The time when the policy takes effect.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -63651,6 +63722,11 @@ func (s *UpdateCustomScenePolicyRequest) SetPolicyId(v int64) *UpdateCustomScene
 	return s
 }
 
+func (s *UpdateCustomScenePolicyRequest) SetSiteIds(v string) *UpdateCustomScenePolicyRequest {
+	s.SiteIds = &v
+	return s
+}
+
 func (s *UpdateCustomScenePolicyRequest) SetStartTime(v string) *UpdateCustomScenePolicyRequest {
 	s.StartTime = &v
 	return s
@@ -63690,6 +63766,7 @@ type UpdateCustomScenePolicyResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SiteIds   *string `json:"SiteIds,omitempty" xml:"SiteIds,omitempty"`
 	// The time when the policy takes effect.
 	//
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -63738,6 +63815,11 @@ func (s *UpdateCustomScenePolicyResponseBody) SetPolicyId(v int64) *UpdateCustom
 
 func (s *UpdateCustomScenePolicyResponseBody) SetRequestId(v string) *UpdateCustomScenePolicyResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCustomScenePolicyResponseBody) SetSiteIds(v string) *UpdateCustomScenePolicyResponseBody {
+	s.SiteIds = &v
 	return s
 }
 
@@ -64943,7 +65025,10 @@ type UpdateHttpsApplicationConfigurationRequest struct {
 	// example:
 	//
 	// 301
-	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	HttpsForceCode    *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	HttpsNoSniDeny    *string `json:"HttpsNoSniDeny,omitempty" xml:"HttpsNoSniDeny,omitempty"`
+	HttpsSniVerify    *string `json:"HttpsSniVerify,omitempty" xml:"HttpsSniVerify,omitempty"`
+	HttpsSniWhitelist *string `json:"HttpsSniWhitelist,omitempty" xml:"HttpsSniWhitelist,omitempty"`
 	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
 	//
 	// - Match all incoming requests: Set the value to true
@@ -65041,6 +65126,21 @@ func (s *UpdateHttpsApplicationConfigurationRequest) SetHttpsForce(v string) *Up
 
 func (s *UpdateHttpsApplicationConfigurationRequest) SetHttpsForceCode(v string) *UpdateHttpsApplicationConfigurationRequest {
 	s.HttpsForceCode = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetHttpsNoSniDeny(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.HttpsNoSniDeny = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetHttpsSniVerify(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.HttpsSniVerify = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetHttpsSniWhitelist(v string) *UpdateHttpsApplicationConfigurationRequest {
+	s.HttpsSniWhitelist = &v
 	return s
 }
 
@@ -75315,6 +75415,10 @@ func (client *Client) CreateCustomScenePolicyWithOptions(request *CreateCustomSc
 		query["Objects"] = request.Objects
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SiteIds)) {
+		query["SiteIds"] = request.SiteIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -75855,6 +75959,18 @@ func (client *Client) CreateHttpsApplicationConfigurationWithOptions(request *Cr
 
 	if !tea.BoolValue(util.IsUnset(request.HttpsForceCode)) {
 		query["HttpsForceCode"] = request.HttpsForceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsNoSniDeny)) {
+		query["HttpsNoSniDeny"] = request.HttpsNoSniDeny
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsSniVerify)) {
+		query["HttpsSniVerify"] = request.HttpsSniVerify
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsSniWhitelist)) {
+		query["HttpsSniWhitelist"] = request.HttpsSniWhitelist
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Rule)) {
@@ -92825,6 +92941,10 @@ func (client *Client) UpdateCustomScenePolicyWithOptions(request *UpdateCustomSc
 		query["PolicyId"] = request.PolicyId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SiteIds)) {
+		query["SiteIds"] = request.SiteIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -93325,6 +93445,18 @@ func (client *Client) UpdateHttpsApplicationConfigurationWithOptions(request *Up
 
 	if !tea.BoolValue(util.IsUnset(request.HttpsForceCode)) {
 		query["HttpsForceCode"] = request.HttpsForceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsNoSniDeny)) {
+		query["HttpsNoSniDeny"] = request.HttpsNoSniDeny
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsSniVerify)) {
+		query["HttpsSniVerify"] = request.HttpsSniVerify
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsSniWhitelist)) {
+		query["HttpsSniWhitelist"] = request.HttpsSniWhitelist
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Rule)) {
