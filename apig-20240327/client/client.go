@@ -13368,7 +13368,8 @@ type ListPluginsRequest struct {
 	// example:
 	//
 	// AI
-	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	GatewayType             *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	IncludeBuiltinAiGateway *bool   `json:"includeBuiltinAiGateway,omitempty" xml:"includeBuiltinAiGateway,omitempty"`
 	// example:
 	//
 	// 1
@@ -13416,6 +13417,11 @@ func (s *ListPluginsRequest) SetGatewayId(v string) *ListPluginsRequest {
 
 func (s *ListPluginsRequest) SetGatewayType(v string) *ListPluginsRequest {
 	s.GatewayType = &v
+	return s
+}
+
+func (s *ListPluginsRequest) SetIncludeBuiltinAiGateway(v bool) *ListPluginsRequest {
+	s.IncludeBuiltinAiGateway = &v
 	return s
 }
 
@@ -19279,6 +19285,10 @@ func (client *Client) ListPluginsWithOptions(request *ListPluginsRequest, header
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayType)) {
 		query["gatewayType"] = request.GatewayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeBuiltinAiGateway)) {
+		query["includeBuiltinAiGateway"] = request.IncludeBuiltinAiGateway
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
