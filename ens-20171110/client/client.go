@@ -1734,7 +1734,8 @@ type AttachInstanceSDGRequest struct {
 	// The IDs of the instances.
 	//
 	// This parameter is required.
-	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	InstanceIds []*string                        `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	LoadOpt     *AttachInstanceSDGRequestLoadOpt `json:"LoadOpt,omitempty" xml:"LoadOpt,omitempty" type:"Struct"`
 	// The ID of the SDG.
 	//
 	// This parameter is required.
@@ -1758,8 +1759,48 @@ func (s *AttachInstanceSDGRequest) SetInstanceIds(v []*string) *AttachInstanceSD
 	return s
 }
 
+func (s *AttachInstanceSDGRequest) SetLoadOpt(v *AttachInstanceSDGRequestLoadOpt) *AttachInstanceSDGRequest {
+	s.LoadOpt = v
+	return s
+}
+
 func (s *AttachInstanceSDGRequest) SetSDGId(v string) *AttachInstanceSDGRequest {
 	s.SDGId = &v
+	return s
+}
+
+type AttachInstanceSDGRequestLoadOpt struct {
+	BlockRwSplit     *bool  `json:"BlockRwSplit,omitempty" xml:"BlockRwSplit,omitempty"`
+	BlockRwSplitSize *int32 `json:"BlockRwSplitSize,omitempty" xml:"BlockRwSplitSize,omitempty"`
+	Cache            *bool  `json:"Cache,omitempty" xml:"Cache,omitempty"`
+	CacheSize        *int32 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+}
+
+func (s AttachInstanceSDGRequestLoadOpt) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachInstanceSDGRequestLoadOpt) GoString() string {
+	return s.String()
+}
+
+func (s *AttachInstanceSDGRequestLoadOpt) SetBlockRwSplit(v bool) *AttachInstanceSDGRequestLoadOpt {
+	s.BlockRwSplit = &v
+	return s
+}
+
+func (s *AttachInstanceSDGRequestLoadOpt) SetBlockRwSplitSize(v int32) *AttachInstanceSDGRequestLoadOpt {
+	s.BlockRwSplitSize = &v
+	return s
+}
+
+func (s *AttachInstanceSDGRequestLoadOpt) SetCache(v bool) *AttachInstanceSDGRequestLoadOpt {
+	s.Cache = &v
+	return s
+}
+
+func (s *AttachInstanceSDGRequestLoadOpt) SetCacheSize(v int32) *AttachInstanceSDGRequestLoadOpt {
+	s.CacheSize = &v
 	return s
 }
 
@@ -1768,6 +1809,7 @@ type AttachInstanceSDGShrinkRequest struct {
 	//
 	// This parameter is required.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	LoadOptShrink     *string `json:"LoadOpt,omitempty" xml:"LoadOpt,omitempty"`
 	// The ID of the SDG.
 	//
 	// This parameter is required.
@@ -1788,6 +1830,11 @@ func (s AttachInstanceSDGShrinkRequest) GoString() string {
 
 func (s *AttachInstanceSDGShrinkRequest) SetInstanceIdsShrink(v string) *AttachInstanceSDGShrinkRequest {
 	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *AttachInstanceSDGShrinkRequest) SetLoadOptShrink(v string) *AttachInstanceSDGShrinkRequest {
+	s.LoadOptShrink = &v
 	return s
 }
 
@@ -28085,6 +28132,8 @@ func (s *DescribeInstanceSDGStatusResponseBody) SetTotalCount(v string) *Describ
 }
 
 type DescribeInstanceSDGStatusResponseBodyDeploymentStatus struct {
+	BlockRwSplitSize *int32 `json:"BlockRwSplitSize,omitempty" xml:"BlockRwSplitSize,omitempty"`
+	CacheSize        *int32 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
 	// The ID of the edge node.
 	//
 	// example:
@@ -28135,6 +28184,16 @@ func (s DescribeInstanceSDGStatusResponseBodyDeploymentStatus) String() string {
 
 func (s DescribeInstanceSDGStatusResponseBodyDeploymentStatus) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceSDGStatusResponseBodyDeploymentStatus) SetBlockRwSplitSize(v int32) *DescribeInstanceSDGStatusResponseBodyDeploymentStatus {
+	s.BlockRwSplitSize = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusResponseBodyDeploymentStatus) SetCacheSize(v int32) *DescribeInstanceSDGStatusResponseBodyDeploymentStatus {
+	s.CacheSize = &v
+	return s
 }
 
 func (s *DescribeInstanceSDGStatusResponseBodyDeploymentStatus) SetEnsRegionId(v string) *DescribeInstanceSDGStatusResponseBodyDeploymentStatus {
@@ -40958,6 +41017,8 @@ func (s *DescribeSDGDeploymentStatusResponseBody) SetTotalCount(v int64) *Descri
 }
 
 type DescribeSDGDeploymentStatusResponseBodyDeploymentStatus struct {
+	BlockRwSplitSize *int32 `json:"BlockRwSplitSize,omitempty" xml:"BlockRwSplitSize,omitempty"`
+	CacheSize        *int32 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
 	// The ID of the AIC instance.
 	//
 	// example:
@@ -41016,6 +41077,16 @@ func (s DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) String() string
 
 func (s DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) SetBlockRwSplitSize(v int32) *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus {
+	s.BlockRwSplitSize = &v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) SetCacheSize(v int32) *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus {
+	s.CacheSize = &v
+	return s
 }
 
 func (s *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) SetInstanceId(v string) *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus {
@@ -63409,9 +63480,17 @@ func (client *Client) AttachInstanceSDGWithOptions(tmpReq *AttachInstanceSDGRequ
 		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.LoadOpt)) {
+		request.LoadOptShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LoadOpt, tea.String("LoadOpt"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
 		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadOptShrink)) {
+		query["LoadOpt"] = request.LoadOptShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SDGId)) {
