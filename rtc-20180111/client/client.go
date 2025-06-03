@@ -1207,6 +1207,195 @@ func (s *CreateAutoLiveStreamRuleResponse) SetBody(v *CreateAutoLiveStreamRuleRe
 	return s
 }
 
+type CreateCloudNotePhrasesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	Phrase *CreateCloudNotePhrasesRequestPhrase `json:"Phrase,omitempty" xml:"Phrase,omitempty" type:"Struct"`
+}
+
+func (s CreateCloudNotePhrasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudNotePhrasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudNotePhrasesRequest) SetAppId(v string) *CreateCloudNotePhrasesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateCloudNotePhrasesRequest) SetPhrase(v *CreateCloudNotePhrasesRequestPhrase) *CreateCloudNotePhrasesRequest {
+	s.Phrase = v
+	return s
+}
+
+type CreateCloudNotePhrasesRequestPhrase struct {
+	// example:
+	//
+	// 水果描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 水果
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	WordWeights []*CreateCloudNotePhrasesRequestPhraseWordWeights `json:"WordWeights,omitempty" xml:"WordWeights,omitempty" type:"Repeated"`
+}
+
+func (s CreateCloudNotePhrasesRequestPhrase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudNotePhrasesRequestPhrase) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudNotePhrasesRequestPhrase) SetDescription(v string) *CreateCloudNotePhrasesRequestPhrase {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateCloudNotePhrasesRequestPhrase) SetName(v string) *CreateCloudNotePhrasesRequestPhrase {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCloudNotePhrasesRequestPhrase) SetWordWeights(v []*CreateCloudNotePhrasesRequestPhraseWordWeights) *CreateCloudNotePhrasesRequestPhrase {
+	s.WordWeights = v
+	return s
+}
+
+type CreateCloudNotePhrasesRequestPhraseWordWeights struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 苹果
+	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
+}
+
+func (s CreateCloudNotePhrasesRequestPhraseWordWeights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudNotePhrasesRequestPhraseWordWeights) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudNotePhrasesRequestPhraseWordWeights) SetWeight(v int32) *CreateCloudNotePhrasesRequestPhraseWordWeights {
+	s.Weight = &v
+	return s
+}
+
+func (s *CreateCloudNotePhrasesRequestPhraseWordWeights) SetWord(v string) *CreateCloudNotePhrasesRequestPhraseWordWeights {
+	s.Word = &v
+	return s
+}
+
+type CreateCloudNotePhrasesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	PhraseShrink *string `json:"Phrase,omitempty" xml:"Phrase,omitempty"`
+}
+
+func (s CreateCloudNotePhrasesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudNotePhrasesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudNotePhrasesShrinkRequest) SetAppId(v string) *CreateCloudNotePhrasesShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateCloudNotePhrasesShrinkRequest) SetPhraseShrink(v string) *CreateCloudNotePhrasesShrinkRequest {
+	s.PhraseShrink = &v
+	return s
+}
+
+type CreateCloudNotePhrasesResponseBody struct {
+	// example:
+	//
+	// 21088b2617489486958531017d0b19
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCloudNotePhrasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudNotePhrasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudNotePhrasesResponseBody) SetId(v string) *CreateCloudNotePhrasesResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateCloudNotePhrasesResponseBody) SetRequestId(v string) *CreateCloudNotePhrasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCloudNotePhrasesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCloudNotePhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCloudNotePhrasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudNotePhrasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudNotePhrasesResponse) SetHeaders(v map[string]*string) *CreateCloudNotePhrasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCloudNotePhrasesResponse) SetStatusCode(v int32) *CreateCloudNotePhrasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCloudNotePhrasesResponse) SetBody(v *CreateCloudNotePhrasesResponseBody) *CreateCloudNotePhrasesResponse {
+	s.Body = v
+	return s
+}
+
 type CreateEventSubscribeRequest struct {
 	// This parameter is required.
 	//
@@ -2148,6 +2337,146 @@ func (s *DeleteChannelResponse) SetStatusCode(v int32) *DeleteChannelResponse {
 }
 
 func (s *DeleteChannelResponse) SetBody(v *DeleteChannelResponseBody) *DeleteChannelResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCloudNotePhrasesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	Phrase *DeleteCloudNotePhrasesRequestPhrase `json:"Phrase,omitempty" xml:"Phrase,omitempty" type:"Struct"`
+}
+
+func (s DeleteCloudNotePhrasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudNotePhrasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudNotePhrasesRequest) SetAppId(v string) *DeleteCloudNotePhrasesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteCloudNotePhrasesRequest) SetPhrase(v *DeleteCloudNotePhrasesRequestPhrase) *DeleteCloudNotePhrasesRequest {
+	s.Phrase = v
+	return s
+}
+
+type DeleteCloudNotePhrasesRequestPhrase struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1qasw23ezcsrfsawq
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteCloudNotePhrasesRequestPhrase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudNotePhrasesRequestPhrase) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudNotePhrasesRequestPhrase) SetId(v string) *DeleteCloudNotePhrasesRequestPhrase {
+	s.Id = &v
+	return s
+}
+
+type DeleteCloudNotePhrasesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	PhraseShrink *string `json:"Phrase,omitempty" xml:"Phrase,omitempty"`
+}
+
+func (s DeleteCloudNotePhrasesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudNotePhrasesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudNotePhrasesShrinkRequest) SetAppId(v string) *DeleteCloudNotePhrasesShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteCloudNotePhrasesShrinkRequest) SetPhraseShrink(v string) *DeleteCloudNotePhrasesShrinkRequest {
+	s.PhraseShrink = &v
+	return s
+}
+
+type DeleteCloudNotePhrasesResponseBody struct {
+	// example:
+	//
+	// 21088b2617489486958531017d0b19
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCloudNotePhrasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudNotePhrasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudNotePhrasesResponseBody) SetId(v string) *DeleteCloudNotePhrasesResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteCloudNotePhrasesResponseBody) SetRequestId(v string) *DeleteCloudNotePhrasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCloudNotePhrasesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCloudNotePhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCloudNotePhrasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudNotePhrasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudNotePhrasesResponse) SetHeaders(v map[string]*string) *DeleteCloudNotePhrasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCloudNotePhrasesResponse) SetStatusCode(v int32) *DeleteCloudNotePhrasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCloudNotePhrasesResponse) SetBody(v *DeleteCloudNotePhrasesResponseBody) *DeleteCloudNotePhrasesResponse {
 	s.Body = v
 	return s
 }
@@ -7393,6 +7722,285 @@ func (s *DescribeChannelsResponse) SetBody(v *DescribeChannelsResponseBody) *Des
 	return s
 }
 
+type DescribeCloudNotePhrasesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId     *string                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Condition *DescribeCloudNotePhrasesRequestCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeCloudNotePhrasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudNotePhrasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudNotePhrasesRequest) SetAppId(v string) *DescribeCloudNotePhrasesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesRequest) SetCondition(v *DescribeCloudNotePhrasesRequestCondition) *DescribeCloudNotePhrasesRequest {
+	s.Condition = v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesRequest) SetPageNum(v int32) *DescribeCloudNotePhrasesRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesRequest) SetPageSize(v int32) *DescribeCloudNotePhrasesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeCloudNotePhrasesRequestCondition struct {
+	// example:
+	//
+	// ac7N****112121
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeCloudNotePhrasesRequestCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudNotePhrasesRequestCondition) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudNotePhrasesRequestCondition) SetId(v string) *DescribeCloudNotePhrasesRequestCondition {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesRequestCondition) SetName(v string) *DescribeCloudNotePhrasesRequestCondition {
+	s.Name = &v
+	return s
+}
+
+type DescribeCloudNotePhrasesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ConditionShrink *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeCloudNotePhrasesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudNotePhrasesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudNotePhrasesShrinkRequest) SetAppId(v string) *DescribeCloudNotePhrasesShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesShrinkRequest) SetConditionShrink(v string) *DescribeCloudNotePhrasesShrinkRequest {
+	s.ConditionShrink = &v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesShrinkRequest) SetPageNum(v int32) *DescribeCloudNotePhrasesShrinkRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesShrinkRequest) SetPageSize(v int32) *DescribeCloudNotePhrasesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeCloudNotePhrasesResponseBody struct {
+	Phrases []*DescribeCloudNotePhrasesResponseBodyPhrases `json:"Phrases,omitempty" xml:"Phrases,omitempty" type:"Repeated"`
+	// Id of the request。
+	//
+	// example:
+	//
+	// 3A26E1E3-3CBB-599E-AD68-CB78F5A42FA1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s DescribeCloudNotePhrasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudNotePhrasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudNotePhrasesResponseBody) SetPhrases(v []*DescribeCloudNotePhrasesResponseBodyPhrases) *DescribeCloudNotePhrasesResponseBody {
+	s.Phrases = v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesResponseBody) SetRequestId(v string) *DescribeCloudNotePhrasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesResponseBody) SetTotalNum(v int64) *DescribeCloudNotePhrasesResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesResponseBody) SetTotalPage(v int64) *DescribeCloudNotePhrasesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type DescribeCloudNotePhrasesResponseBodyPhrases struct {
+	// example:
+	//
+	// 2025-03-04T06:22:15Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 水果描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1qweadca332121212
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 水果
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	WordWeights []*DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights `json:"WordWeights,omitempty" xml:"WordWeights,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudNotePhrasesResponseBodyPhrases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudNotePhrasesResponseBodyPhrases) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudNotePhrasesResponseBodyPhrases) SetCreateTime(v string) *DescribeCloudNotePhrasesResponseBodyPhrases {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesResponseBodyPhrases) SetDescription(v string) *DescribeCloudNotePhrasesResponseBodyPhrases {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesResponseBodyPhrases) SetId(v string) *DescribeCloudNotePhrasesResponseBodyPhrases {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesResponseBodyPhrases) SetName(v string) *DescribeCloudNotePhrasesResponseBodyPhrases {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesResponseBodyPhrases) SetWordWeights(v []*DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights) *DescribeCloudNotePhrasesResponseBodyPhrases {
+	s.WordWeights = v
+	return s
+}
+
+type DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights struct {
+	// example:
+	//
+	// 0
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// example:
+	//
+	// 苹果
+	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
+}
+
+func (s DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights) SetWeight(v int32) *DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights {
+	s.Weight = &v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights) SetWord(v string) *DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights {
+	s.Word = &v
+	return s
+}
+
+type DescribeCloudNotePhrasesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudNotePhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudNotePhrasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudNotePhrasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudNotePhrasesResponse) SetHeaders(v map[string]*string) *DescribeCloudNotePhrasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesResponse) SetStatusCode(v int32) *DescribeCloudNotePhrasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudNotePhrasesResponse) SetBody(v *DescribeCloudNotePhrasesResponseBody) *DescribeCloudNotePhrasesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCloudNotesRequest struct {
 	// APP ID。
 	//
@@ -7751,6 +8359,110 @@ func (s *DescribeCloudNotesResponse) SetStatusCode(v int32) *DescribeCloudNotesR
 }
 
 func (s *DescribeCloudNotesResponse) SetBody(v *DescribeCloudNotesResponseBody) *DescribeCloudNotesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCloudRecordStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1qaz***x
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testChannel
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// taskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DescribeCloudRecordStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudRecordStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudRecordStatusRequest) SetAppId(v string) *DescribeCloudRecordStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeCloudRecordStatusRequest) SetChannelId(v string) *DescribeCloudRecordStatusRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeCloudRecordStatusRequest) SetTaskId(v string) *DescribeCloudRecordStatusRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DescribeCloudRecordStatusResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeCloudRecordStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudRecordStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudRecordStatusResponseBody) SetRequestId(v string) *DescribeCloudRecordStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCloudRecordStatusResponseBody) SetStatus(v int32) *DescribeCloudRecordStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeCloudRecordStatusResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudRecordStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudRecordStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudRecordStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudRecordStatusResponse) SetHeaders(v map[string]*string) *DescribeCloudRecordStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudRecordStatusResponse) SetStatusCode(v int32) *DescribeCloudRecordStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudRecordStatusResponse) SetBody(v *DescribeCloudRecordStatusResponseBody) *DescribeCloudRecordStatusResponse {
 	s.Body = v
 	return s
 }
@@ -15841,6 +16553,206 @@ func (s *ModifyCallbackMetaResponse) SetBody(v *ModifyCallbackMetaResponseBody) 
 	return s
 }
 
+type ModifyCloudNotePhrasesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	Phrase *ModifyCloudNotePhrasesRequestPhrase `json:"Phrase,omitempty" xml:"Phrase,omitempty" type:"Struct"`
+}
+
+func (s ModifyCloudNotePhrasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudNotePhrasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudNotePhrasesRequest) SetAppId(v string) *ModifyCloudNotePhrasesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyCloudNotePhrasesRequest) SetPhrase(v *ModifyCloudNotePhrasesRequestPhrase) *ModifyCloudNotePhrasesRequest {
+	s.Phrase = v
+	return s
+}
+
+type ModifyCloudNotePhrasesRequestPhrase struct {
+	// example:
+	//
+	// 水果描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1qasw23ezcsrfsawq
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 水果
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	WordWeights []*ModifyCloudNotePhrasesRequestPhraseWordWeights `json:"WordWeights,omitempty" xml:"WordWeights,omitempty" type:"Repeated"`
+}
+
+func (s ModifyCloudNotePhrasesRequestPhrase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudNotePhrasesRequestPhrase) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudNotePhrasesRequestPhrase) SetDescription(v string) *ModifyCloudNotePhrasesRequestPhrase {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyCloudNotePhrasesRequestPhrase) SetId(v string) *ModifyCloudNotePhrasesRequestPhrase {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyCloudNotePhrasesRequestPhrase) SetName(v string) *ModifyCloudNotePhrasesRequestPhrase {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyCloudNotePhrasesRequestPhrase) SetWordWeights(v []*ModifyCloudNotePhrasesRequestPhraseWordWeights) *ModifyCloudNotePhrasesRequestPhrase {
+	s.WordWeights = v
+	return s
+}
+
+type ModifyCloudNotePhrasesRequestPhraseWordWeights struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 苹果
+	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
+}
+
+func (s ModifyCloudNotePhrasesRequestPhraseWordWeights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudNotePhrasesRequestPhraseWordWeights) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudNotePhrasesRequestPhraseWordWeights) SetWeight(v int32) *ModifyCloudNotePhrasesRequestPhraseWordWeights {
+	s.Weight = &v
+	return s
+}
+
+func (s *ModifyCloudNotePhrasesRequestPhraseWordWeights) SetWord(v string) *ModifyCloudNotePhrasesRequestPhraseWordWeights {
+	s.Word = &v
+	return s
+}
+
+type ModifyCloudNotePhrasesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	PhraseShrink *string `json:"Phrase,omitempty" xml:"Phrase,omitempty"`
+}
+
+func (s ModifyCloudNotePhrasesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudNotePhrasesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudNotePhrasesShrinkRequest) SetAppId(v string) *ModifyCloudNotePhrasesShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyCloudNotePhrasesShrinkRequest) SetPhraseShrink(v string) *ModifyCloudNotePhrasesShrinkRequest {
+	s.PhraseShrink = &v
+	return s
+}
+
+type ModifyCloudNotePhrasesResponseBody struct {
+	// example:
+	//
+	// 21088b2617489486958531017d0b19
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyCloudNotePhrasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudNotePhrasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudNotePhrasesResponseBody) SetId(v string) *ModifyCloudNotePhrasesResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyCloudNotePhrasesResponseBody) SetRequestId(v string) *ModifyCloudNotePhrasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyCloudNotePhrasesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCloudNotePhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyCloudNotePhrasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudNotePhrasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudNotePhrasesResponse) SetHeaders(v map[string]*string) *ModifyCloudNotePhrasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCloudNotePhrasesResponse) SetStatusCode(v int32) *ModifyCloudNotePhrasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCloudNotePhrasesResponse) SetBody(v *ModifyCloudNotePhrasesResponseBody) *ModifyCloudNotePhrasesResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyMPULayoutRequest struct {
 	// This parameter is required.
 	//
@@ -16937,8 +17849,12 @@ func (s *StartCloudNoteRequestTextPolish) SetEnabled(v bool) *StartCloudNoteRequ
 }
 
 type StartCloudNoteRequestTranscription struct {
-	DiarizationEnabled *bool  `json:"DiarizationEnabled,omitempty" xml:"DiarizationEnabled,omitempty"`
-	SpeakerCount       *int32 `json:"SpeakerCount,omitempty" xml:"SpeakerCount,omitempty"`
+	DiarizationEnabled *bool `json:"DiarizationEnabled,omitempty" xml:"DiarizationEnabled,omitempty"`
+	// example:
+	//
+	// b401a5da78e94xxxxc3129425c78b6a5
+	PhraseId     *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+	SpeakerCount *int32  `json:"SpeakerCount,omitempty" xml:"SpeakerCount,omitempty"`
 	// example:
 	//
 	// 1
@@ -16955,6 +17871,11 @@ func (s StartCloudNoteRequestTranscription) GoString() string {
 
 func (s *StartCloudNoteRequestTranscription) SetDiarizationEnabled(v bool) *StartCloudNoteRequestTranscription {
 	s.DiarizationEnabled = &v
+	return s
+}
+
+func (s *StartCloudNoteRequestTranscription) SetPhraseId(v string) *StartCloudNoteRequestTranscription {
+	s.PhraseId = &v
 	return s
 }
 
@@ -17220,6 +18141,7 @@ type StartCloudRecordRequest struct {
 	// eo85****
 	AppId       *string                               `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Backgrounds []*StartCloudRecordRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	BgColor     *StartCloudRecordRequestBgColor       `json:"BgColor,omitempty" xml:"BgColor,omitempty" type:"Struct"`
 	// channelName
 	//
 	// This parameter is required.
@@ -17243,7 +18165,8 @@ type StartCloudRecordRequest struct {
 	// storageConfig
 	//
 	// This parameter is required.
-	StorageConfig *StartCloudRecordRequestStorageConfig `json:"StorageConfig,omitempty" xml:"StorageConfig,omitempty" type:"Struct"`
+	StorageConfig           *StartCloudRecordRequestStorageConfig `json:"StorageConfig,omitempty" xml:"StorageConfig,omitempty" type:"Struct"`
+	SubHighResolutionStream *bool                                 `json:"SubHighResolutionStream,omitempty" xml:"SubHighResolutionStream,omitempty"`
 	// taskId
 	//
 	// example:
@@ -17276,6 +18199,11 @@ func (s *StartCloudRecordRequest) SetAppId(v string) *StartCloudRecordRequest {
 
 func (s *StartCloudRecordRequest) SetBackgrounds(v []*StartCloudRecordRequestBackgrounds) *StartCloudRecordRequest {
 	s.Backgrounds = v
+	return s
+}
+
+func (s *StartCloudRecordRequest) SetBgColor(v *StartCloudRecordRequestBgColor) *StartCloudRecordRequest {
+	s.BgColor = v
 	return s
 }
 
@@ -17326,6 +18254,11 @@ func (s *StartCloudRecordRequest) SetShowDefaultBackgroundOnMute(v bool) *StartC
 
 func (s *StartCloudRecordRequest) SetStorageConfig(v *StartCloudRecordRequestStorageConfig) *StartCloudRecordRequest {
 	s.StorageConfig = v
+	return s
+}
+
+func (s *StartCloudRecordRequest) SetSubHighResolutionStream(v bool) *StartCloudRecordRequest {
+	s.SubHighResolutionStream = &v
 	return s
 }
 
@@ -17434,6 +18367,44 @@ func (s *StartCloudRecordRequestBackgrounds) SetX(v float64) *StartCloudRecordRe
 
 func (s *StartCloudRecordRequestBackgrounds) SetY(v float64) *StartCloudRecordRequestBackgrounds {
 	s.Y = &v
+	return s
+}
+
+type StartCloudRecordRequestBgColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartCloudRecordRequestBgColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestBgColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestBgColor) SetB(v int32) *StartCloudRecordRequestBgColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestBgColor) SetG(v int32) *StartCloudRecordRequestBgColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestBgColor) SetR(v int32) *StartCloudRecordRequestBgColor {
+	s.R = &v
 	return s
 }
 
@@ -18585,6 +19556,7 @@ type StartCloudRecordShrinkRequest struct {
 	// eo85****
 	AppId       *string                                     `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Backgrounds []*StartCloudRecordShrinkRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	BgColor     *StartCloudRecordShrinkRequestBgColor       `json:"BgColor,omitempty" xml:"BgColor,omitempty" type:"Struct"`
 	// channelName
 	//
 	// This parameter is required.
@@ -18608,7 +19580,8 @@ type StartCloudRecordShrinkRequest struct {
 	// storageConfig
 	//
 	// This parameter is required.
-	StorageConfig *StartCloudRecordShrinkRequestStorageConfig `json:"StorageConfig,omitempty" xml:"StorageConfig,omitempty" type:"Struct"`
+	StorageConfig           *StartCloudRecordShrinkRequestStorageConfig `json:"StorageConfig,omitempty" xml:"StorageConfig,omitempty" type:"Struct"`
+	SubHighResolutionStream *bool                                       `json:"SubHighResolutionStream,omitempty" xml:"SubHighResolutionStream,omitempty"`
 	// taskId
 	//
 	// example:
@@ -18641,6 +19614,11 @@ func (s *StartCloudRecordShrinkRequest) SetAppId(v string) *StartCloudRecordShri
 
 func (s *StartCloudRecordShrinkRequest) SetBackgrounds(v []*StartCloudRecordShrinkRequestBackgrounds) *StartCloudRecordShrinkRequest {
 	s.Backgrounds = v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequest) SetBgColor(v *StartCloudRecordShrinkRequestBgColor) *StartCloudRecordShrinkRequest {
+	s.BgColor = v
 	return s
 }
 
@@ -18691,6 +19669,11 @@ func (s *StartCloudRecordShrinkRequest) SetShowDefaultBackgroundOnMute(v bool) *
 
 func (s *StartCloudRecordShrinkRequest) SetStorageConfig(v *StartCloudRecordShrinkRequestStorageConfig) *StartCloudRecordShrinkRequest {
 	s.StorageConfig = v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequest) SetSubHighResolutionStream(v bool) *StartCloudRecordShrinkRequest {
+	s.SubHighResolutionStream = &v
 	return s
 }
 
@@ -18799,6 +19782,44 @@ func (s *StartCloudRecordShrinkRequestBackgrounds) SetX(v float64) *StartCloudRe
 
 func (s *StartCloudRecordShrinkRequestBackgrounds) SetY(v float64) *StartCloudRecordShrinkRequestBackgrounds {
 	s.Y = &v
+	return s
+}
+
+type StartCloudRecordShrinkRequestBgColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartCloudRecordShrinkRequestBgColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordShrinkRequestBgColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordShrinkRequestBgColor) SetB(v int32) *StartCloudRecordShrinkRequestBgColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequestBgColor) SetG(v int32) *StartCloudRecordShrinkRequestBgColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequestBgColor) SetR(v int32) *StartCloudRecordShrinkRequestBgColor {
+	s.R = &v
 	return s
 }
 
@@ -21285,6 +22306,7 @@ type StartStreamingOutRequest struct {
 	// eo85****
 	AppId       *string                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Backgrounds []*StartStreamingOutRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	BgColor     *StartStreamingOutRequestBgColor       `json:"BgColor,omitempty" xml:"BgColor,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -21307,6 +22329,7 @@ type StartStreamingOutRequest struct {
 	//
 	// 30
 	StartWithoutChannelWaitTime *int32 `json:"StartWithoutChannelWaitTime,omitempty" xml:"StartWithoutChannelWaitTime,omitempty"`
+	SubHighResolutionStream     *bool  `json:"SubHighResolutionStream,omitempty" xml:"SubHighResolutionStream,omitempty"`
 	// example:
 	//
 	// 123
@@ -21341,6 +22364,11 @@ func (s *StartStreamingOutRequest) SetAppId(v string) *StartStreamingOutRequest 
 
 func (s *StartStreamingOutRequest) SetBackgrounds(v []*StartStreamingOutRequestBackgrounds) *StartStreamingOutRequest {
 	s.Backgrounds = v
+	return s
+}
+
+func (s *StartStreamingOutRequest) SetBgColor(v *StartStreamingOutRequestBgColor) *StartStreamingOutRequest {
+	s.BgColor = v
 	return s
 }
 
@@ -21396,6 +22424,11 @@ func (s *StartStreamingOutRequest) SetStartWithoutChannel(v bool) *StartStreamin
 
 func (s *StartStreamingOutRequest) SetStartWithoutChannelWaitTime(v int32) *StartStreamingOutRequest {
 	s.StartWithoutChannelWaitTime = &v
+	return s
+}
+
+func (s *StartStreamingOutRequest) SetSubHighResolutionStream(v bool) *StartStreamingOutRequest {
+	s.SubHighResolutionStream = &v
 	return s
 }
 
@@ -21509,6 +22542,44 @@ func (s *StartStreamingOutRequestBackgrounds) SetX(v float64) *StartStreamingOut
 
 func (s *StartStreamingOutRequestBackgrounds) SetY(v float64) *StartStreamingOutRequestBackgrounds {
 	s.Y = &v
+	return s
+}
+
+type StartStreamingOutRequestBgColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartStreamingOutRequestBgColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestBgColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestBgColor) SetB(v int32) *StartStreamingOutRequestBgColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestBgColor) SetG(v int32) *StartStreamingOutRequestBgColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestBgColor) SetR(v int32) *StartStreamingOutRequestBgColor {
+	s.R = &v
 	return s
 }
 
@@ -22571,6 +23642,7 @@ type StartStreamingOutShrinkRequest struct {
 	// eo85****
 	AppId       *string                                      `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Backgrounds []*StartStreamingOutShrinkRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	BgColor     *StartStreamingOutShrinkRequestBgColor       `json:"BgColor,omitempty" xml:"BgColor,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -22593,6 +23665,7 @@ type StartStreamingOutShrinkRequest struct {
 	//
 	// 30
 	StartWithoutChannelWaitTime *int32 `json:"StartWithoutChannelWaitTime,omitempty" xml:"StartWithoutChannelWaitTime,omitempty"`
+	SubHighResolutionStream     *bool  `json:"SubHighResolutionStream,omitempty" xml:"SubHighResolutionStream,omitempty"`
 	// example:
 	//
 	// 123
@@ -22627,6 +23700,11 @@ func (s *StartStreamingOutShrinkRequest) SetAppId(v string) *StartStreamingOutSh
 
 func (s *StartStreamingOutShrinkRequest) SetBackgrounds(v []*StartStreamingOutShrinkRequestBackgrounds) *StartStreamingOutShrinkRequest {
 	s.Backgrounds = v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequest) SetBgColor(v *StartStreamingOutShrinkRequestBgColor) *StartStreamingOutShrinkRequest {
+	s.BgColor = v
 	return s
 }
 
@@ -22682,6 +23760,11 @@ func (s *StartStreamingOutShrinkRequest) SetStartWithoutChannel(v bool) *StartSt
 
 func (s *StartStreamingOutShrinkRequest) SetStartWithoutChannelWaitTime(v int32) *StartStreamingOutShrinkRequest {
 	s.StartWithoutChannelWaitTime = &v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequest) SetSubHighResolutionStream(v bool) *StartStreamingOutShrinkRequest {
+	s.SubHighResolutionStream = &v
 	return s
 }
 
@@ -22795,6 +23878,44 @@ func (s *StartStreamingOutShrinkRequestBackgrounds) SetX(v float64) *StartStream
 
 func (s *StartStreamingOutShrinkRequestBackgrounds) SetY(v float64) *StartStreamingOutShrinkRequestBackgrounds {
 	s.Y = &v
+	return s
+}
+
+type StartStreamingOutShrinkRequestBgColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartStreamingOutShrinkRequestBgColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutShrinkRequestBgColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutShrinkRequestBgColor) SetB(v int32) *StartStreamingOutShrinkRequestBgColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequestBgColor) SetG(v int32) *StartStreamingOutShrinkRequestBgColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequestBgColor) SetR(v int32) *StartStreamingOutShrinkRequestBgColor {
+	s.R = &v
 	return s
 }
 
@@ -28762,16 +29883,22 @@ type UpdateStreamingOutRequest struct {
 	// eo85****
 	AppId       *string                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Backgrounds []*UpdateStreamingOutRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	BgColor     *UpdateStreamingOutRequestBgColor       `json:"BgColor,omitempty" xml:"BgColor,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
-	ChannelId            *string                                        `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ClockWidgets         []*UpdateStreamingOutRequestClockWidgets       `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	ChannelId    *string                                  `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ClockWidgets []*UpdateStreamingOutRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	CropMode             *int32                                         `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
 	Images               []*UpdateStreamingOutRequestImages             `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	LayoutSpecifiedUsers *UpdateStreamingOutRequestLayoutSpecifiedUsers `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty" type:"Struct"`
 	Panes                []*UpdateStreamingOutRequestPanes              `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	RegionColor          *UpdateStreamingOutRequestRegionColor          `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -28805,6 +29932,11 @@ func (s *UpdateStreamingOutRequest) SetBackgrounds(v []*UpdateStreamingOutReques
 	return s
 }
 
+func (s *UpdateStreamingOutRequest) SetBgColor(v *UpdateStreamingOutRequestBgColor) *UpdateStreamingOutRequest {
+	s.BgColor = v
+	return s
+}
+
 func (s *UpdateStreamingOutRequest) SetChannelId(v string) *UpdateStreamingOutRequest {
 	s.ChannelId = &v
 	return s
@@ -28812,6 +29944,11 @@ func (s *UpdateStreamingOutRequest) SetChannelId(v string) *UpdateStreamingOutRe
 
 func (s *UpdateStreamingOutRequest) SetClockWidgets(v []*UpdateStreamingOutRequestClockWidgets) *UpdateStreamingOutRequest {
 	s.ClockWidgets = v
+	return s
+}
+
+func (s *UpdateStreamingOutRequest) SetCropMode(v int32) *UpdateStreamingOutRequest {
+	s.CropMode = &v
 	return s
 }
 
@@ -28827,6 +29964,11 @@ func (s *UpdateStreamingOutRequest) SetLayoutSpecifiedUsers(v *UpdateStreamingOu
 
 func (s *UpdateStreamingOutRequest) SetPanes(v []*UpdateStreamingOutRequestPanes) *UpdateStreamingOutRequest {
 	s.Panes = v
+	return s
+}
+
+func (s *UpdateStreamingOutRequest) SetRegionColor(v *UpdateStreamingOutRequestRegionColor) *UpdateStreamingOutRequest {
+	s.RegionColor = v
 	return s
 }
 
@@ -28935,6 +30077,44 @@ func (s *UpdateStreamingOutRequestBackgrounds) SetX(v float64) *UpdateStreamingO
 
 func (s *UpdateStreamingOutRequestBackgrounds) SetY(v float64) *UpdateStreamingOutRequestBackgrounds {
 	s.Y = &v
+	return s
+}
+
+type UpdateStreamingOutRequestBgColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestBgColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestBgColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestBgColor) SetB(v int32) *UpdateStreamingOutRequestBgColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestBgColor) SetG(v int32) *UpdateStreamingOutRequestBgColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestBgColor) SetR(v int32) *UpdateStreamingOutRequestBgColor {
+	s.R = &v
 	return s
 }
 
@@ -29757,6 +30937,44 @@ func (s *UpdateStreamingOutRequestPanesWhiteboard) SetWhiteboardId(v string) *Up
 	return s
 }
 
+type UpdateStreamingOutRequestRegionColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestRegionColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestRegionColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestRegionColor) SetB(v int32) *UpdateStreamingOutRequestRegionColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestRegionColor) SetG(v int32) *UpdateStreamingOutRequestRegionColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestRegionColor) SetR(v int32) *UpdateStreamingOutRequestRegionColor {
+	s.R = &v
+	return s
+}
+
 type UpdateStreamingOutRequestTexts struct {
 	// example:
 	//
@@ -29957,16 +31175,22 @@ type UpdateStreamingOutShrinkRequest struct {
 	// eo85****
 	AppId       *string                                       `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Backgrounds []*UpdateStreamingOutShrinkRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	BgColor     *UpdateStreamingOutShrinkRequestBgColor       `json:"BgColor,omitempty" xml:"BgColor,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
-	ChannelId                  *string                                        `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ClockWidgets               []*UpdateStreamingOutShrinkRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
-	Images                     []*UpdateStreamingOutShrinkRequestImages       `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	LayoutSpecifiedUsersShrink *string                                        `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty"`
-	Panes                      []*UpdateStreamingOutShrinkRequestPanes        `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	ChannelId    *string                                        `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ClockWidgets []*UpdateStreamingOutShrinkRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	CropMode                   *int32                                      `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	Images                     []*UpdateStreamingOutShrinkRequestImages    `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	LayoutSpecifiedUsersShrink *string                                     `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty"`
+	Panes                      []*UpdateStreamingOutShrinkRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	RegionColor                *UpdateStreamingOutShrinkRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -30000,6 +31224,11 @@ func (s *UpdateStreamingOutShrinkRequest) SetBackgrounds(v []*UpdateStreamingOut
 	return s
 }
 
+func (s *UpdateStreamingOutShrinkRequest) SetBgColor(v *UpdateStreamingOutShrinkRequestBgColor) *UpdateStreamingOutShrinkRequest {
+	s.BgColor = v
+	return s
+}
+
 func (s *UpdateStreamingOutShrinkRequest) SetChannelId(v string) *UpdateStreamingOutShrinkRequest {
 	s.ChannelId = &v
 	return s
@@ -30007,6 +31236,11 @@ func (s *UpdateStreamingOutShrinkRequest) SetChannelId(v string) *UpdateStreamin
 
 func (s *UpdateStreamingOutShrinkRequest) SetClockWidgets(v []*UpdateStreamingOutShrinkRequestClockWidgets) *UpdateStreamingOutShrinkRequest {
 	s.ClockWidgets = v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequest) SetCropMode(v int32) *UpdateStreamingOutShrinkRequest {
+	s.CropMode = &v
 	return s
 }
 
@@ -30022,6 +31256,11 @@ func (s *UpdateStreamingOutShrinkRequest) SetLayoutSpecifiedUsersShrink(v string
 
 func (s *UpdateStreamingOutShrinkRequest) SetPanes(v []*UpdateStreamingOutShrinkRequestPanes) *UpdateStreamingOutShrinkRequest {
 	s.Panes = v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequest) SetRegionColor(v *UpdateStreamingOutShrinkRequestRegionColor) *UpdateStreamingOutShrinkRequest {
+	s.RegionColor = v
 	return s
 }
 
@@ -30130,6 +31369,44 @@ func (s *UpdateStreamingOutShrinkRequestBackgrounds) SetX(v float64) *UpdateStre
 
 func (s *UpdateStreamingOutShrinkRequestBackgrounds) SetY(v float64) *UpdateStreamingOutShrinkRequestBackgrounds {
 	s.Y = &v
+	return s
+}
+
+type UpdateStreamingOutShrinkRequestBgColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateStreamingOutShrinkRequestBgColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutShrinkRequestBgColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutShrinkRequestBgColor) SetB(v int32) *UpdateStreamingOutShrinkRequestBgColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequestBgColor) SetG(v int32) *UpdateStreamingOutShrinkRequestBgColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequestBgColor) SetR(v int32) *UpdateStreamingOutShrinkRequestBgColor {
+	s.R = &v
 	return s
 }
 
@@ -30927,6 +32204,44 @@ func (s *UpdateStreamingOutShrinkRequestPanesWhiteboard) SetWhiteboardId(v strin
 	return s
 }
 
+type UpdateStreamingOutShrinkRequestRegionColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateStreamingOutShrinkRequestRegionColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutShrinkRequestRegionColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutShrinkRequestRegionColor) SetB(v int32) *UpdateStreamingOutShrinkRequestRegionColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequestRegionColor) SetG(v int32) *UpdateStreamingOutShrinkRequestRegionColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequestRegionColor) SetR(v int32) *UpdateStreamingOutShrinkRequestRegionColor {
+	s.R = &v
+	return s
+}
+
 type UpdateStreamingOutShrinkRequestTexts struct {
 	// example:
 	//
@@ -31646,6 +32961,76 @@ func (client *Client) CreateAutoLiveStreamRule(request *CreateAutoLiveStreamRule
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加纪要热词表
+//
+// @param tmpReq - CreateCloudNotePhrasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudNotePhrasesResponse
+func (client *Client) CreateCloudNotePhrasesWithOptions(tmpReq *CreateCloudNotePhrasesRequest, runtime *util.RuntimeOptions) (_result *CreateCloudNotePhrasesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateCloudNotePhrasesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Phrase)) {
+		request.PhraseShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Phrase, tea.String("Phrase"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhraseShrink)) {
+		query["Phrase"] = request.PhraseShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCloudNotePhrases"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCloudNotePhrasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 增加纪要热词表
+//
+// @param request - CreateCloudNotePhrasesRequest
+//
+// @return CreateCloudNotePhrasesResponse
+func (client *Client) CreateCloudNotePhrases(request *CreateCloudNotePhrasesRequest) (_result *CreateCloudNotePhrasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCloudNotePhrasesResponse{}
+	_body, _err := client.CreateCloudNotePhrasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - CreateEventSubscribeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -32129,6 +33514,76 @@ func (client *Client) DeleteChannel(request *DeleteChannelRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteChannelResponse{}
 	_body, _err := client.DeleteChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除纪要热词表
+//
+// @param tmpReq - DeleteCloudNotePhrasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudNotePhrasesResponse
+func (client *Client) DeleteCloudNotePhrasesWithOptions(tmpReq *DeleteCloudNotePhrasesRequest, runtime *util.RuntimeOptions) (_result *DeleteCloudNotePhrasesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteCloudNotePhrasesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Phrase)) {
+		request.PhraseShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Phrase, tea.String("Phrase"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhraseShrink)) {
+		query["Phrase"] = request.PhraseShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCloudNotePhrases"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCloudNotePhrasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除纪要热词表
+//
+// @param request - DeleteCloudNotePhrasesRequest
+//
+// @return DeleteCloudNotePhrasesResponse
+func (client *Client) DeleteCloudNotePhrases(request *DeleteCloudNotePhrasesRequest) (_result *DeleteCloudNotePhrasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCloudNotePhrasesResponse{}
+	_body, _err := client.DeleteCloudNotePhrasesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34053,6 +35508,84 @@ func (client *Client) DescribeChannels(request *DescribeChannelsRequest) (_resul
 
 // Summary:
 //
+// 纪要热词列表
+//
+// @param tmpReq - DescribeCloudNotePhrasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudNotePhrasesResponse
+func (client *Client) DescribeCloudNotePhrasesWithOptions(tmpReq *DescribeCloudNotePhrasesRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudNotePhrasesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeCloudNotePhrasesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Condition)) {
+		request.ConditionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Condition, tea.String("Condition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConditionShrink)) {
+		query["Condition"] = request.ConditionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudNotePhrases"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudNotePhrasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 纪要热词列表
+//
+// @param request - DescribeCloudNotePhrasesRequest
+//
+// @return DescribeCloudNotePhrasesResponse
+func (client *Client) DescribeCloudNotePhrases(request *DescribeCloudNotePhrasesRequest) (_result *DescribeCloudNotePhrasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudNotePhrasesResponse{}
+	_body, _err := client.DescribeCloudNotePhrasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 纪要列表
 //
 // @param tmpReq - DescribeCloudNotesRequest
@@ -34106,6 +35639,74 @@ func (client *Client) DescribeCloudNotes(request *DescribeCloudNotesRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudNotesResponse{}
 	_body, _err := client.DescribeCloudNotesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询录制任务状态
+//
+// @param request - DescribeCloudRecordStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudRecordStatusResponse
+func (client *Client) DescribeCloudRecordStatusWithOptions(request *DescribeCloudRecordStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudRecordStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudRecordStatus"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudRecordStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询录制任务状态
+//
+// @param request - DescribeCloudRecordStatusRequest
+//
+// @return DescribeCloudRecordStatusResponse
+func (client *Client) DescribeCloudRecordStatus(request *DescribeCloudRecordStatusRequest) (_result *DescribeCloudRecordStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudRecordStatusResponse{}
+	_body, _err := client.DescribeCloudRecordStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36817,6 +38418,76 @@ func (client *Client) ModifyCallbackMeta(request *ModifyCallbackMetaRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新纪要热词表
+//
+// @param tmpReq - ModifyCloudNotePhrasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCloudNotePhrasesResponse
+func (client *Client) ModifyCloudNotePhrasesWithOptions(tmpReq *ModifyCloudNotePhrasesRequest, runtime *util.RuntimeOptions) (_result *ModifyCloudNotePhrasesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyCloudNotePhrasesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Phrase)) {
+		request.PhraseShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Phrase, tea.String("Phrase"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhraseShrink)) {
+		query["Phrase"] = request.PhraseShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCloudNotePhrases"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyCloudNotePhrasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新纪要热词表
+//
+// @param request - ModifyCloudNotePhrasesRequest
+//
+// @return ModifyCloudNotePhrasesResponse
+func (client *Client) ModifyCloudNotePhrases(request *ModifyCloudNotePhrasesRequest) (_result *ModifyCloudNotePhrasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCloudNotePhrasesResponse{}
+	_body, _err := client.ModifyCloudNotePhrasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - ModifyMPULayoutRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -37266,6 +38937,10 @@ func (client *Client) StartCloudRecordWithOptions(tmpReq *StartCloudRecordReques
 		query["Backgrounds"] = request.Backgrounds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BgColor)) {
+		query["BgColor"] = request.BgColor
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
 		query["ChannelId"] = request.ChannelId
 	}
@@ -37304,6 +38979,10 @@ func (client *Client) StartCloudRecordWithOptions(tmpReq *StartCloudRecordReques
 
 	if !tea.BoolValue(util.IsUnset(request.StorageConfig)) {
 		query["StorageConfig"] = request.StorageConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubHighResolutionStream)) {
+		query["SubHighResolutionStream"] = request.SubHighResolutionStream
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
@@ -37689,6 +39368,10 @@ func (client *Client) StartStreamingOutWithOptions(tmpReq *StartStreamingOutRequ
 		query["Backgrounds"] = request.Backgrounds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BgColor)) {
+		query["BgColor"] = request.BgColor
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
 		query["ChannelId"] = request.ChannelId
 	}
@@ -37731,6 +39414,10 @@ func (client *Client) StartStreamingOutWithOptions(tmpReq *StartStreamingOutRequ
 
 	if !tea.BoolValue(util.IsUnset(request.StartWithoutChannelWaitTime)) {
 		query["StartWithoutChannelWaitTime"] = request.StartWithoutChannelWaitTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubHighResolutionStream)) {
+		query["SubHighResolutionStream"] = request.SubHighResolutionStream
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
@@ -38843,12 +40530,20 @@ func (client *Client) UpdateStreamingOutWithOptions(tmpReq *UpdateStreamingOutRe
 		query["Backgrounds"] = request.Backgrounds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BgColor)) {
+		query["BgColor"] = request.BgColor
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
 		query["ChannelId"] = request.ChannelId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClockWidgets)) {
 		query["ClockWidgets"] = request.ClockWidgets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CropMode)) {
+		query["CropMode"] = request.CropMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Images)) {
@@ -38861,6 +40556,10 @@ func (client *Client) UpdateStreamingOutWithOptions(tmpReq *UpdateStreamingOutRe
 
 	if !tea.BoolValue(util.IsUnset(request.Panes)) {
 		query["Panes"] = request.Panes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionColor)) {
+		query["RegionColor"] = request.RegionColor
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
