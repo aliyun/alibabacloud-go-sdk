@@ -24117,13 +24117,15 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	// example:
 	//
 	// pg-53iyi2aar0nd6c8qj
-	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PolicyGroupId     *string   `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PolicyGroupIdList []*string `json:"PolicyGroupIdList,omitempty" xml:"PolicyGroupIdList,omitempty" type:"Repeated"`
 	// The name of the applied policy.
 	//
 	// example:
 	//
 	// test-policy
-	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	PolicyGroupName     *string   `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	PolicyGroupNameList []*string `json:"PolicyGroupNameList,omitempty" xml:"PolicyGroupNameList,omitempty" type:"Repeated"`
 	// The protocol type.
 	//
 	// Valid values:
@@ -24437,8 +24439,18 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetPolicyGroupId(v stri
 	return s
 }
 
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetPolicyGroupIdList(v []*string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.PolicyGroupIdList = v
+	return s
+}
+
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetPolicyGroupName(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.PolicyGroupName = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetPolicyGroupNameList(v []*string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.PolicyGroupNameList = v
 	return s
 }
 
