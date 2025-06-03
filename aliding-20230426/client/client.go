@@ -11905,25 +11905,19 @@ type CreateMessageRequest struct {
 	// assistantId1
 	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 你好！
-	Content []*CreateMessageRequestContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
-	// example:
-	//
-	// {}
-	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	Messages []*CreateMessageRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// example:
 	//
 	// assistantId
 	OriginalAssistantId *string `json:"originalAssistantId,omitempty" xml:"originalAssistantId,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
-	// user
-	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// agentKey1
+	SourceIdOfOriginalAssistantId *string `json:"sourceIdOfOriginalAssistantId,omitempty" xml:"sourceIdOfOriginalAssistantId,omitempty"`
+	// example:
+	//
+	// 1
+	SourceTypeOfOriginalAssistantId *string `json:"sourceTypeOfOriginalAssistantId,omitempty" xml:"sourceTypeOfOriginalAssistantId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -11945,13 +11939,8 @@ func (s *CreateMessageRequest) SetAssistantId(v string) *CreateMessageRequest {
 	return s
 }
 
-func (s *CreateMessageRequest) SetContent(v []*CreateMessageRequestContent) *CreateMessageRequest {
-	s.Content = v
-	return s
-}
-
-func (s *CreateMessageRequest) SetMetadata(v map[string]interface{}) *CreateMessageRequest {
-	s.Metadata = v
+func (s *CreateMessageRequest) SetMessages(v []*CreateMessageRequestMessages) *CreateMessageRequest {
+	s.Messages = v
 	return s
 }
 
@@ -11960,8 +11949,13 @@ func (s *CreateMessageRequest) SetOriginalAssistantId(v string) *CreateMessageRe
 	return s
 }
 
-func (s *CreateMessageRequest) SetRole(v string) *CreateMessageRequest {
-	s.Role = &v
+func (s *CreateMessageRequest) SetSourceIdOfOriginalAssistantId(v string) *CreateMessageRequest {
+	s.SourceIdOfOriginalAssistantId = &v
+	return s
+}
+
+func (s *CreateMessageRequest) SetSourceTypeOfOriginalAssistantId(v string) *CreateMessageRequest {
+	s.SourceTypeOfOriginalAssistantId = &v
 	return s
 }
 
@@ -11970,101 +11964,145 @@ func (s *CreateMessageRequest) SetThreadId(v string) *CreateMessageRequest {
 	return s
 }
 
-type CreateMessageRequestContent struct {
-	CardCallback *CreateMessageRequestContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
-	DingCard     *CreateMessageRequestContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
-	ImageUrl     *CreateMessageRequestContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
-	Markdown     *CreateMessageRequestContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
-	Text         *CreateMessageRequestContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+type CreateMessageRequestMessages struct {
+	Content *CreateMessageRequestMessagesContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	// example:
+	//
+	// 这是一张小猫钓鱼图
+	ContentDesc *string `json:"contentDesc,omitempty" xml:"contentDesc,omitempty"`
+	// example:
+	//
+	// 1642448000000
+	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s CreateMessageRequestMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestMessages) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestMessages) SetContent(v *CreateMessageRequestMessagesContent) *CreateMessageRequestMessages {
+	s.Content = v
+	return s
+}
+
+func (s *CreateMessageRequestMessages) SetContentDesc(v string) *CreateMessageRequestMessages {
+	s.ContentDesc = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessages) SetCreateAt(v int64) *CreateMessageRequestMessages {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessages) SetRole(v string) *CreateMessageRequestMessages {
+	s.Role = &v
+	return s
+}
+
+type CreateMessageRequestMessagesContent struct {
+	CardCallback *CreateMessageRequestMessagesContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *CreateMessageRequestMessagesContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	DingNormalCard *CreateMessageRequestMessagesContentDingNormalCard `json:"dingNormalCard,omitempty" xml:"dingNormalCard,omitempty" type:"Struct"`
+	Markdown       *CreateMessageRequestMessagesContentMarkdown       `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	StructView     *CreateMessageRequestMessagesContentStructView     `json:"structView,omitempty" xml:"structView,omitempty" type:"Struct"`
+	Text           *CreateMessageRequestMessagesContentText           `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// text
+	// 枚举字段，可为：text,markdown,cardCallback,dingCard,agentArtifact,dingNormalCard
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
-func (s CreateMessageRequestContent) String() string {
+func (s CreateMessageRequestMessagesContent) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateMessageRequestContent) GoString() string {
+func (s CreateMessageRequestMessagesContent) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMessageRequestContent) SetCardCallback(v *CreateMessageRequestContentCardCallback) *CreateMessageRequestContent {
+func (s *CreateMessageRequestMessagesContent) SetCardCallback(v *CreateMessageRequestMessagesContentCardCallback) *CreateMessageRequestMessagesContent {
 	s.CardCallback = v
 	return s
 }
 
-func (s *CreateMessageRequestContent) SetDingCard(v *CreateMessageRequestContentDingCard) *CreateMessageRequestContent {
+func (s *CreateMessageRequestMessagesContent) SetDingCard(v *CreateMessageRequestMessagesContentDingCard) *CreateMessageRequestMessagesContent {
 	s.DingCard = v
 	return s
 }
 
-func (s *CreateMessageRequestContent) SetImageUrl(v *CreateMessageRequestContentImageUrl) *CreateMessageRequestContent {
-	s.ImageUrl = v
+func (s *CreateMessageRequestMessagesContent) SetDingNormalCard(v *CreateMessageRequestMessagesContentDingNormalCard) *CreateMessageRequestMessagesContent {
+	s.DingNormalCard = v
 	return s
 }
 
-func (s *CreateMessageRequestContent) SetMarkdown(v *CreateMessageRequestContentMarkdown) *CreateMessageRequestContent {
+func (s *CreateMessageRequestMessagesContent) SetMarkdown(v *CreateMessageRequestMessagesContentMarkdown) *CreateMessageRequestMessagesContent {
 	s.Markdown = v
 	return s
 }
 
-func (s *CreateMessageRequestContent) SetText(v *CreateMessageRequestContentText) *CreateMessageRequestContent {
+func (s *CreateMessageRequestMessagesContent) SetStructView(v *CreateMessageRequestMessagesContentStructView) *CreateMessageRequestMessagesContent {
+	s.StructView = v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContent) SetText(v *CreateMessageRequestMessagesContentText) *CreateMessageRequestMessagesContent {
 	s.Text = v
 	return s
 }
 
-func (s *CreateMessageRequestContent) SetType(v string) *CreateMessageRequestContent {
+func (s *CreateMessageRequestMessagesContent) SetType(v string) *CreateMessageRequestMessagesContent {
 	s.Type = &v
 	return s
 }
 
-type CreateMessageRequestContentCardCallback struct {
+type CreateMessageRequestMessagesContentCardCallback struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
-	// templateId123
-	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// example:
-	//
-	// 012345
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// aliding_messageId123
+	RelatedMessageId *string `json:"relatedMessageId,omitempty" xml:"relatedMessageId,omitempty"`
 }
 
-func (s CreateMessageRequestContentCardCallback) String() string {
+func (s CreateMessageRequestMessagesContentCardCallback) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateMessageRequestContentCardCallback) GoString() string {
+func (s CreateMessageRequestMessagesContentCardCallback) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMessageRequestContentCardCallback) SetContent(v string) *CreateMessageRequestContentCardCallback {
+func (s *CreateMessageRequestMessagesContentCardCallback) SetContent(v string) *CreateMessageRequestMessagesContentCardCallback {
 	s.Content = &v
 	return s
 }
 
-func (s *CreateMessageRequestContentCardCallback) SetTemplateId(v string) *CreateMessageRequestContentCardCallback {
-	s.TemplateId = &v
+func (s *CreateMessageRequestMessagesContentCardCallback) SetRelatedMessageId(v string) *CreateMessageRequestMessagesContentCardCallback {
+	s.RelatedMessageId = &v
 	return s
 }
 
-func (s *CreateMessageRequestContentCardCallback) SetUserId(v string) *CreateMessageRequestContentCardCallback {
-	s.UserId = &v
-	return s
-}
-
-type CreateMessageRequestContentDingCard struct {
-	// example:
-	//
-	// 卡片描述
-	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
+type CreateMessageRequestMessagesContentDingCard struct {
 	// example:
 	//
 	// {}
@@ -12085,75 +12123,216 @@ type CreateMessageRequestContentDingCard struct {
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
 }
 
-func (s CreateMessageRequestContentDingCard) String() string {
+func (s CreateMessageRequestMessagesContentDingCard) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateMessageRequestContentDingCard) GoString() string {
+func (s CreateMessageRequestMessagesContentDingCard) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMessageRequestContentDingCard) SetCardDesc(v string) *CreateMessageRequestContentDingCard {
-	s.CardDesc = &v
-	return s
-}
-
-func (s *CreateMessageRequestContentDingCard) SetContent(v string) *CreateMessageRequestContentDingCard {
+func (s *CreateMessageRequestMessagesContentDingCard) SetContent(v string) *CreateMessageRequestMessagesContentDingCard {
 	s.Content = &v
 	return s
 }
 
-func (s *CreateMessageRequestContentDingCard) SetContentType(v string) *CreateMessageRequestContentDingCard {
+func (s *CreateMessageRequestMessagesContentDingCard) SetContentType(v string) *CreateMessageRequestMessagesContentDingCard {
 	s.ContentType = &v
 	return s
 }
 
-func (s *CreateMessageRequestContentDingCard) SetFinished(v bool) *CreateMessageRequestContentDingCard {
+func (s *CreateMessageRequestMessagesContentDingCard) SetFinished(v bool) *CreateMessageRequestMessagesContentDingCard {
 	s.Finished = &v
 	return s
 }
 
-func (s *CreateMessageRequestContentDingCard) SetTemplateId(v string) *CreateMessageRequestContentDingCard {
+func (s *CreateMessageRequestMessagesContentDingCard) SetTemplateId(v string) *CreateMessageRequestMessagesContentDingCard {
 	s.TemplateId = &v
 	return s
 }
 
-type CreateMessageRequestContentImageUrl struct {
+type CreateMessageRequestMessagesContentDingNormalCard struct {
 	// example:
 	//
-	// auto
-	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
+	// {}
+	CardData *CreateMessageRequestMessagesContentDingNormalCardCardData `json:"cardData,omitempty" xml:"cardData,omitempty" type:"Struct"`
 	// example:
 	//
-	// https://img.alicdn.com/1234.png
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	// templateId1
+	CardTemplateId *string `json:"cardTemplateId,omitempty" xml:"cardTemplateId,omitempty"`
+	// example:
+	//
+	// {}
+	CardUpdateOptions *CreateMessageRequestMessagesContentDingNormalCardCardUpdateOptions `json:"cardUpdateOptions,omitempty" xml:"cardUpdateOptions,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	DynamicDataSourceConfigs []*CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs `json:"dynamicDataSourceConfigs,omitempty" xml:"dynamicDataSourceConfigs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	PrivateData map[string]map[string]interface{} `json:"privateData,omitempty" xml:"privateData,omitempty"`
 }
 
-func (s CreateMessageRequestContentImageUrl) String() string {
+func (s CreateMessageRequestMessagesContentDingNormalCard) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateMessageRequestContentImageUrl) GoString() string {
+func (s CreateMessageRequestMessagesContentDingNormalCard) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMessageRequestContentImageUrl) SetDetail(v string) *CreateMessageRequestContentImageUrl {
-	s.Detail = &v
+func (s *CreateMessageRequestMessagesContentDingNormalCard) SetCardData(v *CreateMessageRequestMessagesContentDingNormalCardCardData) *CreateMessageRequestMessagesContentDingNormalCard {
+	s.CardData = v
 	return s
 }
 
-func (s *CreateMessageRequestContentImageUrl) SetImageDesc(v string) *CreateMessageRequestContentImageUrl {
-	s.ImageDesc = &v
+func (s *CreateMessageRequestMessagesContentDingNormalCard) SetCardTemplateId(v string) *CreateMessageRequestMessagesContentDingNormalCard {
+	s.CardTemplateId = &v
 	return s
 }
 
-func (s *CreateMessageRequestContentImageUrl) SetUrl(v string) *CreateMessageRequestContentImageUrl {
-	s.Url = &v
+func (s *CreateMessageRequestMessagesContentDingNormalCard) SetCardUpdateOptions(v *CreateMessageRequestMessagesContentDingNormalCardCardUpdateOptions) *CreateMessageRequestMessagesContentDingNormalCard {
+	s.CardUpdateOptions = v
 	return s
 }
 
-type CreateMessageRequestContentMarkdown struct {
+func (s *CreateMessageRequestMessagesContentDingNormalCard) SetDynamicDataSourceConfigs(v []*CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) *CreateMessageRequestMessagesContentDingNormalCard {
+	s.DynamicDataSourceConfigs = v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentDingNormalCard) SetPrivateData(v map[string]map[string]interface{}) *CreateMessageRequestMessagesContentDingNormalCard {
+	s.PrivateData = v
+	return s
+}
+
+type CreateMessageRequestMessagesContentDingNormalCardCardData struct {
+	// example:
+	//
+	// {}
+	CardParamMap map[string]interface{} `json:"cardParamMap,omitempty" xml:"cardParamMap,omitempty"`
+}
+
+func (s CreateMessageRequestMessagesContentDingNormalCardCardData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestMessagesContentDingNormalCardCardData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestMessagesContentDingNormalCardCardData) SetCardParamMap(v map[string]interface{}) *CreateMessageRequestMessagesContentDingNormalCardCardData {
+	s.CardParamMap = v
+	return s
+}
+
+type CreateMessageRequestMessagesContentDingNormalCardCardUpdateOptions struct {
+	// example:
+	//
+	// {}
+	UpdateCardDataByKey *bool `json:"updateCardDataByKey,omitempty" xml:"updateCardDataByKey,omitempty"`
+	// example:
+	//
+	// {}
+	UpdatePrivateDataByKey *bool `json:"updatePrivateDataByKey,omitempty" xml:"updatePrivateDataByKey,omitempty"`
+}
+
+func (s CreateMessageRequestMessagesContentDingNormalCardCardUpdateOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestMessagesContentDingNormalCardCardUpdateOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestMessagesContentDingNormalCardCardUpdateOptions) SetUpdateCardDataByKey(v bool) *CreateMessageRequestMessagesContentDingNormalCardCardUpdateOptions {
+	s.UpdateCardDataByKey = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentDingNormalCardCardUpdateOptions) SetUpdatePrivateDataByKey(v bool) *CreateMessageRequestMessagesContentDingNormalCardCardUpdateOptions {
+	s.UpdatePrivateDataByKey = &v
+	return s
+}
+
+type CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs struct {
+	// example:
+	//
+	// {}
+	ConstParams map[string]interface{} `json:"constParams,omitempty" xml:"constParams,omitempty"`
+	// example:
+	//
+	// dynamicDataSourceId1
+	DynamicDataSourceId *string `json:"dynamicDataSourceId,omitempty" xml:"dynamicDataSourceId,omitempty"`
+	// example:
+	//
+	// {}
+	PullConfig *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig `json:"pullConfig,omitempty" xml:"pullConfig,omitempty" type:"Struct"`
+}
+
+func (s CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) SetConstParams(v map[string]interface{}) *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.ConstParams = v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) SetDynamicDataSourceId(v string) *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.DynamicDataSourceId = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) SetPullConfig(v *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.PullConfig = v
+	return s
+}
+
+type CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig struct {
+	// example:
+	//
+	// 3
+	Interval *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
+	// example:
+	//
+	// NONE
+	PullStrategy *string `json:"pullStrategy,omitempty" xml:"pullStrategy,omitempty"`
+	// example:
+	//
+	// SECONDS
+	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+}
+
+func (s CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetInterval(v int32) *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetPullStrategy(v string) *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.PullStrategy = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetTimeUnit(v string) *CreateMessageRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.TimeUnit = &v
+	return s
+}
+
+type CreateMessageRequestMessagesContentMarkdown struct {
 	// example:
 	//
 	// 1. markdown内容
@@ -12162,72 +12341,350 @@ type CreateMessageRequestContentMarkdown struct {
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s CreateMessageRequestContentMarkdown) String() string {
+func (s CreateMessageRequestMessagesContentMarkdown) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateMessageRequestContentMarkdown) GoString() string {
+func (s CreateMessageRequestMessagesContentMarkdown) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMessageRequestContentMarkdown) SetValue(v string) *CreateMessageRequestContentMarkdown {
+func (s *CreateMessageRequestMessagesContentMarkdown) SetValue(v string) *CreateMessageRequestMessagesContentMarkdown {
 	s.Value = &v
 	return s
 }
 
-type CreateMessageRequestContentText struct {
+type CreateMessageRequestMessagesContentStructView struct {
+	Parts []*CreateMessageRequestMessagesContentStructViewParts `json:"parts,omitempty" xml:"parts,omitempty" type:"Repeated"`
+}
+
+func (s CreateMessageRequestMessagesContentStructView) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestMessagesContentStructView) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestMessagesContentStructView) SetParts(v []*CreateMessageRequestMessagesContentStructViewParts) *CreateMessageRequestMessagesContentStructView {
+	s.Parts = v
+	return s
+}
+
+type CreateMessageRequestMessagesContentStructViewParts struct {
+	Append *bool `json:"append,omitempty" xml:"append,omitempty"`
+	// example:
+	//
+	// {}
+	DataPart *CreateMessageRequestMessagesContentStructViewPartsDataPart `json:"dataPart,omitempty" xml:"dataPart,omitempty" type:"Struct"`
+	Finish   *bool                                                       `json:"finish,omitempty" xml:"finish,omitempty"`
+	// example:
+	//
+	// 这是正文内容部分
+	PartDesc *string `json:"partDesc,omitempty" xml:"partDesc,omitempty"`
+	// example:
+	//
+	// artifactId123
+	PartId *string `json:"partId,omitempty" xml:"partId,omitempty"`
+	// example:
+	//
+	// {}
+	ReasonPart *CreateMessageRequestMessagesContentStructViewPartsReasonPart `json:"reasonPart,omitempty" xml:"reasonPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	RecommendPart *CreateMessageRequestMessagesContentStructViewPartsRecommendPart `json:"recommendPart,omitempty" xml:"recommendPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	ReferencePart *CreateMessageRequestMessagesContentStructViewPartsReferencePart `json:"referencePart,omitempty" xml:"referencePart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	TextPart *CreateMessageRequestMessagesContentStructViewPartsTextPart `json:"textPart,omitempty" xml:"textPart,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// textPart
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateMessageRequestMessagesContentStructViewParts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestMessagesContentStructViewParts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewParts) SetAppend(v bool) *CreateMessageRequestMessagesContentStructViewParts {
+	s.Append = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewParts) SetDataPart(v *CreateMessageRequestMessagesContentStructViewPartsDataPart) *CreateMessageRequestMessagesContentStructViewParts {
+	s.DataPart = v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewParts) SetFinish(v bool) *CreateMessageRequestMessagesContentStructViewParts {
+	s.Finish = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewParts) SetPartDesc(v string) *CreateMessageRequestMessagesContentStructViewParts {
+	s.PartDesc = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewParts) SetPartId(v string) *CreateMessageRequestMessagesContentStructViewParts {
+	s.PartId = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewParts) SetReasonPart(v *CreateMessageRequestMessagesContentStructViewPartsReasonPart) *CreateMessageRequestMessagesContentStructViewParts {
+	s.ReasonPart = v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewParts) SetRecommendPart(v *CreateMessageRequestMessagesContentStructViewPartsRecommendPart) *CreateMessageRequestMessagesContentStructViewParts {
+	s.RecommendPart = v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewParts) SetReferencePart(v *CreateMessageRequestMessagesContentStructViewPartsReferencePart) *CreateMessageRequestMessagesContentStructViewParts {
+	s.ReferencePart = v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewParts) SetTextPart(v *CreateMessageRequestMessagesContentStructViewPartsTextPart) *CreateMessageRequestMessagesContentStructViewParts {
+	s.TextPart = v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewParts) SetType(v string) *CreateMessageRequestMessagesContentStructViewParts {
+	s.Type = &v
+	return s
+}
+
+type CreateMessageRequestMessagesContentStructViewPartsDataPart struct {
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s CreateMessageRequestMessagesContentStructViewPartsDataPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestMessagesContentStructViewPartsDataPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsDataPart) SetData(v interface{}) *CreateMessageRequestMessagesContentStructViewPartsDataPart {
+	s.Data = v
+	return s
+}
+
+type CreateMessageRequestMessagesContentStructViewPartsReasonPart struct {
+	// example:
+	//
+	// 123123
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+}
+
+func (s CreateMessageRequestMessagesContentStructViewPartsReasonPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestMessagesContentStructViewPartsReasonPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsReasonPart) SetReason(v string) *CreateMessageRequestMessagesContentStructViewPartsReasonPart {
+	s.Reason = &v
+	return s
+}
+
+type CreateMessageRequestMessagesContentStructViewPartsRecommendPart struct {
+	Recommends []*CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends `json:"recommends,omitempty" xml:"recommends,omitempty" type:"Repeated"`
+}
+
+func (s CreateMessageRequestMessagesContentStructViewPartsRecommendPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestMessagesContentStructViewPartsRecommendPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsRecommendPart) SetRecommends(v []*CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends) *CreateMessageRequestMessagesContentStructViewPartsRecommendPart {
+	s.Recommends = v
+	return s
+}
+
+type CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends struct {
+	MobileUrl *string `json:"mobileUrl,omitempty" xml:"mobileUrl,omitempty"`
+	Text      *string `json:"text,omitempty" xml:"text,omitempty"`
+	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends) SetMobileUrl(v string) *CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends {
+	s.MobileUrl = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends) SetText(v string) *CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends {
+	s.Text = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends) SetUrl(v string) *CreateMessageRequestMessagesContentStructViewPartsRecommendPartRecommends {
+	s.Url = &v
+	return s
+}
+
+type CreateMessageRequestMessagesContentStructViewPartsReferencePart struct {
+	References []*CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences `json:"references,omitempty" xml:"references,omitempty" type:"Repeated"`
+}
+
+func (s CreateMessageRequestMessagesContentStructViewPartsReferencePart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestMessagesContentStructViewPartsReferencePart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsReferencePart) SetReferences(v []*CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences) *CreateMessageRequestMessagesContentStructViewPartsReferencePart {
+	s.References = v
+	return s
+}
+
+type CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences struct {
+	// example:
+	//
+	// 0
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// example:
+	//
+	// mcp是....
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// ata
+	SourceCode *string `json:"sourceCode,omitempty" xml:"sourceCode,omitempty"`
+	SourceIcon *string `json:"sourceIcon,omitempty" xml:"sourceIcon,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// 《mcp原理介绍》
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// https://taobao.com
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences) SetIndex(v string) *CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Index = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences) SetName(v string) *CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences) SetSourceCode(v string) *CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.SourceCode = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences) SetSourceIcon(v string) *CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.SourceIcon = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences) SetSummary(v string) *CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Summary = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences) SetTitle(v string) *CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences) SetUrl(v string) *CreateMessageRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Url = &v
+	return s
+}
+
+type CreateMessageRequestMessagesContentStructViewPartsTextPart struct {
+	// example:
+	//
+	// 123123
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s CreateMessageRequestMessagesContentStructViewPartsTextPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestMessagesContentStructViewPartsTextPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestMessagesContentStructViewPartsTextPart) SetText(v string) *CreateMessageRequestMessagesContentStructViewPartsTextPart {
+	s.Text = &v
+	return s
+}
+
+type CreateMessageRequestMessagesContentText struct {
 	// example:
 	//
 	// 你好！
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s CreateMessageRequestContentText) String() string {
+func (s CreateMessageRequestMessagesContentText) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateMessageRequestContentText) GoString() string {
+func (s CreateMessageRequestMessagesContentText) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMessageRequestContentText) SetValue(v string) *CreateMessageRequestContentText {
+func (s *CreateMessageRequestMessagesContentText) SetValue(v string) *CreateMessageRequestMessagesContentText {
 	s.Value = &v
 	return s
 }
 
 type CreateMessageResponseBody struct {
-	// example:
-	//
-	// {}
-	Content []*CreateMessageResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1642448000000
-	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
-	// example:
-	//
-	// messageId123
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// {}
-	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// example:
-	//
-	// thread.message
-	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+	Messages []*CreateMessageResponseBodyMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// user
-	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// example:
-	//
-	// threadId123
-	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
 }
 
 func (s CreateMessageResponseBody) String() string {
@@ -12238,28 +12695,8 @@ func (s CreateMessageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMessageResponseBody) SetContent(v []*CreateMessageResponseBodyContent) *CreateMessageResponseBody {
-	s.Content = v
-	return s
-}
-
-func (s *CreateMessageResponseBody) SetCreateAt(v int64) *CreateMessageResponseBody {
-	s.CreateAt = &v
-	return s
-}
-
-func (s *CreateMessageResponseBody) SetId(v string) *CreateMessageResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *CreateMessageResponseBody) SetMetadata(v map[string]interface{}) *CreateMessageResponseBody {
-	s.Metadata = v
-	return s
-}
-
-func (s *CreateMessageResponseBody) SetObject(v string) *CreateMessageResponseBody {
-	s.Object = &v
+func (s *CreateMessageResponseBody) SetMessages(v []*CreateMessageResponseBodyMessages) *CreateMessageResponseBody {
+	s.Messages = v
 	return s
 }
 
@@ -12268,113 +12705,174 @@ func (s *CreateMessageResponseBody) SetRequestId(v string) *CreateMessageRespons
 	return s
 }
 
-func (s *CreateMessageResponseBody) SetRole(v string) *CreateMessageResponseBody {
+type CreateMessageResponseBodyMessages struct {
+	Content *CreateMessageResponseBodyMessagesContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	// example:
+	//
+	// 这是一张小猫钓鱼图
+	ContentDesc *string `json:"contentDesc,omitempty" xml:"contentDesc,omitempty"`
+	// example:
+	//
+	// 1642448000000
+	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	// example:
+	//
+	// messageId1
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// runId1
+	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// example:
+	//
+	// threadId1
+	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+}
+
+func (s CreateMessageResponseBodyMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyMessages) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyMessages) SetContent(v *CreateMessageResponseBodyMessagesContent) *CreateMessageResponseBodyMessages {
+	s.Content = v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessages) SetContentDesc(v string) *CreateMessageResponseBodyMessages {
+	s.ContentDesc = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessages) SetCreateAt(v int64) *CreateMessageResponseBodyMessages {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessages) SetId(v string) *CreateMessageResponseBodyMessages {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessages) SetRole(v string) *CreateMessageResponseBodyMessages {
 	s.Role = &v
 	return s
 }
 
-func (s *CreateMessageResponseBody) SetThreadId(v string) *CreateMessageResponseBody {
+func (s *CreateMessageResponseBodyMessages) SetRunId(v string) *CreateMessageResponseBodyMessages {
+	s.RunId = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessages) SetThreadId(v string) *CreateMessageResponseBodyMessages {
 	s.ThreadId = &v
 	return s
 }
 
-type CreateMessageResponseBodyContent struct {
-	CardCallback *CreateMessageResponseBodyContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
-	DingCard     *CreateMessageResponseBodyContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
-	ImageUrl     *CreateMessageResponseBodyContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
-	Markdown     *CreateMessageResponseBodyContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
-	Text         *CreateMessageResponseBodyContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+type CreateMessageResponseBodyMessagesContent struct {
+	CardCallback *CreateMessageResponseBodyMessagesContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *CreateMessageResponseBodyMessagesContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
 	// example:
 	//
-	// text
+	// {}
+	DingNormalCard *CreateMessageResponseBodyMessagesContentDingNormalCard `json:"dingNormalCard,omitempty" xml:"dingNormalCard,omitempty" type:"Struct"`
+	Markdown       *CreateMessageResponseBodyMessagesContentMarkdown       `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	StructView     *CreateMessageResponseBodyMessagesContentStructView     `json:"structView,omitempty" xml:"structView,omitempty" type:"Struct"`
+	Text           *CreateMessageResponseBodyMessagesContentText           `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 枚举字段，可为：text,markdown,cardCallback,dingCard,agentArtifact,dingNormalCard
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
-func (s CreateMessageResponseBodyContent) String() string {
+func (s CreateMessageResponseBodyMessagesContent) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateMessageResponseBodyContent) GoString() string {
+func (s CreateMessageResponseBodyMessagesContent) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMessageResponseBodyContent) SetCardCallback(v *CreateMessageResponseBodyContentCardCallback) *CreateMessageResponseBodyContent {
+func (s *CreateMessageResponseBodyMessagesContent) SetCardCallback(v *CreateMessageResponseBodyMessagesContentCardCallback) *CreateMessageResponseBodyMessagesContent {
 	s.CardCallback = v
 	return s
 }
 
-func (s *CreateMessageResponseBodyContent) SetDingCard(v *CreateMessageResponseBodyContentDingCard) *CreateMessageResponseBodyContent {
+func (s *CreateMessageResponseBodyMessagesContent) SetDingCard(v *CreateMessageResponseBodyMessagesContentDingCard) *CreateMessageResponseBodyMessagesContent {
 	s.DingCard = v
 	return s
 }
 
-func (s *CreateMessageResponseBodyContent) SetImageUrl(v *CreateMessageResponseBodyContentImageUrl) *CreateMessageResponseBodyContent {
-	s.ImageUrl = v
+func (s *CreateMessageResponseBodyMessagesContent) SetDingNormalCard(v *CreateMessageResponseBodyMessagesContentDingNormalCard) *CreateMessageResponseBodyMessagesContent {
+	s.DingNormalCard = v
 	return s
 }
 
-func (s *CreateMessageResponseBodyContent) SetMarkdown(v *CreateMessageResponseBodyContentMarkdown) *CreateMessageResponseBodyContent {
+func (s *CreateMessageResponseBodyMessagesContent) SetMarkdown(v *CreateMessageResponseBodyMessagesContentMarkdown) *CreateMessageResponseBodyMessagesContent {
 	s.Markdown = v
 	return s
 }
 
-func (s *CreateMessageResponseBodyContent) SetText(v *CreateMessageResponseBodyContentText) *CreateMessageResponseBodyContent {
+func (s *CreateMessageResponseBodyMessagesContent) SetStructView(v *CreateMessageResponseBodyMessagesContentStructView) *CreateMessageResponseBodyMessagesContent {
+	s.StructView = v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContent) SetText(v *CreateMessageResponseBodyMessagesContentText) *CreateMessageResponseBodyMessagesContent {
 	s.Text = v
 	return s
 }
 
-func (s *CreateMessageResponseBodyContent) SetType(v string) *CreateMessageResponseBodyContent {
+func (s *CreateMessageResponseBodyMessagesContent) SetType(v string) *CreateMessageResponseBodyMessagesContent {
 	s.Type = &v
 	return s
 }
 
-type CreateMessageResponseBodyContentCardCallback struct {
+type CreateMessageResponseBodyMessagesContentCardCallback struct {
 	// example:
 	//
 	// {}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// example:
 	//
-	// templateId123
-	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// example:
-	//
-	// 012345
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// aliding_messageId123
+	RelatedMessageId *string `json:"relatedMessageId,omitempty" xml:"relatedMessageId,omitempty"`
 }
 
-func (s CreateMessageResponseBodyContentCardCallback) String() string {
+func (s CreateMessageResponseBodyMessagesContentCardCallback) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateMessageResponseBodyContentCardCallback) GoString() string {
+func (s CreateMessageResponseBodyMessagesContentCardCallback) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMessageResponseBodyContentCardCallback) SetContent(v string) *CreateMessageResponseBodyContentCardCallback {
+func (s *CreateMessageResponseBodyMessagesContentCardCallback) SetContent(v string) *CreateMessageResponseBodyMessagesContentCardCallback {
 	s.Content = &v
 	return s
 }
 
-func (s *CreateMessageResponseBodyContentCardCallback) SetTemplateId(v string) *CreateMessageResponseBodyContentCardCallback {
-	s.TemplateId = &v
+func (s *CreateMessageResponseBodyMessagesContentCardCallback) SetRelatedMessageId(v string) *CreateMessageResponseBodyMessagesContentCardCallback {
+	s.RelatedMessageId = &v
 	return s
 }
 
-func (s *CreateMessageResponseBodyContentCardCallback) SetUserId(v string) *CreateMessageResponseBodyContentCardCallback {
-	s.UserId = &v
-	return s
-}
-
-type CreateMessageResponseBodyContentDingCard struct {
-	// example:
-	//
-	// 卡片描述
-	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
+type CreateMessageResponseBodyMessagesContentDingCard struct {
 	// example:
 	//
 	// {}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// basic_card_schema
@@ -12389,75 +12887,216 @@ type CreateMessageResponseBodyContentDingCard struct {
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
 }
 
-func (s CreateMessageResponseBodyContentDingCard) String() string {
+func (s CreateMessageResponseBodyMessagesContentDingCard) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateMessageResponseBodyContentDingCard) GoString() string {
+func (s CreateMessageResponseBodyMessagesContentDingCard) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMessageResponseBodyContentDingCard) SetCardDesc(v string) *CreateMessageResponseBodyContentDingCard {
-	s.CardDesc = &v
-	return s
-}
-
-func (s *CreateMessageResponseBodyContentDingCard) SetContent(v string) *CreateMessageResponseBodyContentDingCard {
+func (s *CreateMessageResponseBodyMessagesContentDingCard) SetContent(v string) *CreateMessageResponseBodyMessagesContentDingCard {
 	s.Content = &v
 	return s
 }
 
-func (s *CreateMessageResponseBodyContentDingCard) SetContentType(v string) *CreateMessageResponseBodyContentDingCard {
+func (s *CreateMessageResponseBodyMessagesContentDingCard) SetContentType(v string) *CreateMessageResponseBodyMessagesContentDingCard {
 	s.ContentType = &v
 	return s
 }
 
-func (s *CreateMessageResponseBodyContentDingCard) SetFinished(v bool) *CreateMessageResponseBodyContentDingCard {
+func (s *CreateMessageResponseBodyMessagesContentDingCard) SetFinished(v bool) *CreateMessageResponseBodyMessagesContentDingCard {
 	s.Finished = &v
 	return s
 }
 
-func (s *CreateMessageResponseBodyContentDingCard) SetTemplateId(v string) *CreateMessageResponseBodyContentDingCard {
+func (s *CreateMessageResponseBodyMessagesContentDingCard) SetTemplateId(v string) *CreateMessageResponseBodyMessagesContentDingCard {
 	s.TemplateId = &v
 	return s
 }
 
-type CreateMessageResponseBodyContentImageUrl struct {
+type CreateMessageResponseBodyMessagesContentDingNormalCard struct {
 	// example:
 	//
-	// auto
-	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
+	// {}
+	CardData *CreateMessageResponseBodyMessagesContentDingNormalCardCardData `json:"cardData,omitempty" xml:"cardData,omitempty" type:"Struct"`
 	// example:
 	//
-	// https://img.alicdn.com/1234.png
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	// templateId1
+	CardTemplateId *string `json:"cardTemplateId,omitempty" xml:"cardTemplateId,omitempty"`
+	// example:
+	//
+	// {}
+	CardUpdateOptions *CreateMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions `json:"cardUpdateOptions,omitempty" xml:"cardUpdateOptions,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	DynamicDataSourceConfigs []*CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs `json:"dynamicDataSourceConfigs,omitempty" xml:"dynamicDataSourceConfigs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	PrivateData map[string]map[string]interface{} `json:"privateData,omitempty" xml:"privateData,omitempty"`
 }
 
-func (s CreateMessageResponseBodyContentImageUrl) String() string {
+func (s CreateMessageResponseBodyMessagesContentDingNormalCard) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateMessageResponseBodyContentImageUrl) GoString() string {
+func (s CreateMessageResponseBodyMessagesContentDingNormalCard) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMessageResponseBodyContentImageUrl) SetDetail(v string) *CreateMessageResponseBodyContentImageUrl {
-	s.Detail = &v
+func (s *CreateMessageResponseBodyMessagesContentDingNormalCard) SetCardData(v *CreateMessageResponseBodyMessagesContentDingNormalCardCardData) *CreateMessageResponseBodyMessagesContentDingNormalCard {
+	s.CardData = v
 	return s
 }
 
-func (s *CreateMessageResponseBodyContentImageUrl) SetImageDesc(v string) *CreateMessageResponseBodyContentImageUrl {
-	s.ImageDesc = &v
+func (s *CreateMessageResponseBodyMessagesContentDingNormalCard) SetCardTemplateId(v string) *CreateMessageResponseBodyMessagesContentDingNormalCard {
+	s.CardTemplateId = &v
 	return s
 }
 
-func (s *CreateMessageResponseBodyContentImageUrl) SetUrl(v string) *CreateMessageResponseBodyContentImageUrl {
-	s.Url = &v
+func (s *CreateMessageResponseBodyMessagesContentDingNormalCard) SetCardUpdateOptions(v *CreateMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions) *CreateMessageResponseBodyMessagesContentDingNormalCard {
+	s.CardUpdateOptions = v
 	return s
 }
 
-type CreateMessageResponseBodyContentMarkdown struct {
+func (s *CreateMessageResponseBodyMessagesContentDingNormalCard) SetDynamicDataSourceConfigs(v []*CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) *CreateMessageResponseBodyMessagesContentDingNormalCard {
+	s.DynamicDataSourceConfigs = v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentDingNormalCard) SetPrivateData(v map[string]map[string]interface{}) *CreateMessageResponseBodyMessagesContentDingNormalCard {
+	s.PrivateData = v
+	return s
+}
+
+type CreateMessageResponseBodyMessagesContentDingNormalCardCardData struct {
+	// example:
+	//
+	// {}
+	CardParamMap map[string]interface{} `json:"cardParamMap,omitempty" xml:"cardParamMap,omitempty"`
+}
+
+func (s CreateMessageResponseBodyMessagesContentDingNormalCardCardData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyMessagesContentDingNormalCardCardData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyMessagesContentDingNormalCardCardData) SetCardParamMap(v map[string]interface{}) *CreateMessageResponseBodyMessagesContentDingNormalCardCardData {
+	s.CardParamMap = v
+	return s
+}
+
+type CreateMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions struct {
+	// example:
+	//
+	// {}
+	UpdateCardDataByKey *bool `json:"updateCardDataByKey,omitempty" xml:"updateCardDataByKey,omitempty"`
+	// example:
+	//
+	// {}
+	UpdatePrivateDataByKey *bool `json:"updatePrivateDataByKey,omitempty" xml:"updatePrivateDataByKey,omitempty"`
+}
+
+func (s CreateMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions) SetUpdateCardDataByKey(v bool) *CreateMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions {
+	s.UpdateCardDataByKey = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions) SetUpdatePrivateDataByKey(v bool) *CreateMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions {
+	s.UpdatePrivateDataByKey = &v
+	return s
+}
+
+type CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs struct {
+	// example:
+	//
+	// {}
+	ConstParams map[string]interface{} `json:"constParams,omitempty" xml:"constParams,omitempty"`
+	// example:
+	//
+	// dynamicDataSourceId1
+	DynamicDataSourceId *string `json:"dynamicDataSourceId,omitempty" xml:"dynamicDataSourceId,omitempty"`
+	// example:
+	//
+	// {}
+	PullConfig *CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig `json:"pullConfig,omitempty" xml:"pullConfig,omitempty" type:"Struct"`
+}
+
+func (s CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) SetConstParams(v map[string]interface{}) *CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.ConstParams = v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) SetDynamicDataSourceId(v string) *CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.DynamicDataSourceId = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) SetPullConfig(v *CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) *CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.PullConfig = v
+	return s
+}
+
+type CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig struct {
+	// example:
+	//
+	// 3
+	Interval *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
+	// example:
+	//
+	// NONE
+	PullStrategy *string `json:"pullStrategy,omitempty" xml:"pullStrategy,omitempty"`
+	// example:
+	//
+	// SECONDS
+	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+}
+
+func (s CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetInterval(v int32) *CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetPullStrategy(v string) *CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.PullStrategy = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetTimeUnit(v string) *CreateMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.TimeUnit = &v
+	return s
+}
+
+type CreateMessageResponseBodyMessagesContentMarkdown struct {
 	// example:
 	//
 	// 1. markdown内容
@@ -12466,35 +13105,340 @@ type CreateMessageResponseBodyContentMarkdown struct {
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s CreateMessageResponseBodyContentMarkdown) String() string {
+func (s CreateMessageResponseBodyMessagesContentMarkdown) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateMessageResponseBodyContentMarkdown) GoString() string {
+func (s CreateMessageResponseBodyMessagesContentMarkdown) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMessageResponseBodyContentMarkdown) SetValue(v string) *CreateMessageResponseBodyContentMarkdown {
+func (s *CreateMessageResponseBodyMessagesContentMarkdown) SetValue(v string) *CreateMessageResponseBodyMessagesContentMarkdown {
 	s.Value = &v
 	return s
 }
 
-type CreateMessageResponseBodyContentText struct {
+type CreateMessageResponseBodyMessagesContentStructView struct {
+	Parts []*CreateMessageResponseBodyMessagesContentStructViewParts `json:"parts,omitempty" xml:"parts,omitempty" type:"Repeated"`
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructView) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructView) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructView) SetParts(v []*CreateMessageResponseBodyMessagesContentStructViewParts) *CreateMessageResponseBodyMessagesContentStructView {
+	s.Parts = v
+	return s
+}
+
+type CreateMessageResponseBodyMessagesContentStructViewParts struct {
+	Append *bool `json:"append,omitempty" xml:"append,omitempty"`
+	// example:
+	//
+	// {}
+	DataPart *CreateMessageResponseBodyMessagesContentStructViewPartsDataPart `json:"dataPart,omitempty" xml:"dataPart,omitempty" type:"Struct"`
+	Finish   *bool                                                            `json:"finish,omitempty" xml:"finish,omitempty"`
+	// example:
+	//
+	// 这是正文内容部分
+	PartDesc *string `json:"partDesc,omitempty" xml:"partDesc,omitempty"`
+	// example:
+	//
+	// artifactId123
+	PartId *string `json:"partId,omitempty" xml:"partId,omitempty"`
+	// example:
+	//
+	// {}
+	ReasonPart *CreateMessageResponseBodyMessagesContentStructViewPartsReasonPart `json:"reasonPart,omitempty" xml:"reasonPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	RecommendPart *CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPart `json:"recommendPart,omitempty" xml:"recommendPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	ReferencePart *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePart `json:"referencePart,omitempty" xml:"referencePart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	TextPart *CreateMessageResponseBodyMessagesContentStructViewPartsTextPart `json:"textPart,omitempty" xml:"textPart,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// textPart
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewParts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewParts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewParts) SetAppend(v bool) *CreateMessageResponseBodyMessagesContentStructViewParts {
+	s.Append = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewParts) SetDataPart(v *CreateMessageResponseBodyMessagesContentStructViewPartsDataPart) *CreateMessageResponseBodyMessagesContentStructViewParts {
+	s.DataPart = v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewParts) SetFinish(v bool) *CreateMessageResponseBodyMessagesContentStructViewParts {
+	s.Finish = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewParts) SetPartDesc(v string) *CreateMessageResponseBodyMessagesContentStructViewParts {
+	s.PartDesc = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewParts) SetPartId(v string) *CreateMessageResponseBodyMessagesContentStructViewParts {
+	s.PartId = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewParts) SetReasonPart(v *CreateMessageResponseBodyMessagesContentStructViewPartsReasonPart) *CreateMessageResponseBodyMessagesContentStructViewParts {
+	s.ReasonPart = v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewParts) SetRecommendPart(v *CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPart) *CreateMessageResponseBodyMessagesContentStructViewParts {
+	s.RecommendPart = v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewParts) SetReferencePart(v *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePart) *CreateMessageResponseBodyMessagesContentStructViewParts {
+	s.ReferencePart = v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewParts) SetTextPart(v *CreateMessageResponseBodyMessagesContentStructViewPartsTextPart) *CreateMessageResponseBodyMessagesContentStructViewParts {
+	s.TextPart = v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewParts) SetType(v string) *CreateMessageResponseBodyMessagesContentStructViewParts {
+	s.Type = &v
+	return s
+}
+
+type CreateMessageResponseBodyMessagesContentStructViewPartsDataPart struct {
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewPartsDataPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewPartsDataPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsDataPart) SetData(v interface{}) *CreateMessageResponseBodyMessagesContentStructViewPartsDataPart {
+	s.Data = v
+	return s
+}
+
+type CreateMessageResponseBodyMessagesContentStructViewPartsReasonPart struct {
+	// example:
+	//
+	// 123123
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewPartsReasonPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewPartsReasonPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsReasonPart) SetReason(v string) *CreateMessageResponseBodyMessagesContentStructViewPartsReasonPart {
+	s.Reason = &v
+	return s
+}
+
+type CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPart struct {
+	Recommends []*CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends `json:"recommends,omitempty" xml:"recommends,omitempty" type:"Repeated"`
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPart) SetRecommends(v []*CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) *CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPart {
+	s.Recommends = v
+	return s
+}
+
+type CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends struct {
+	MobileUrl *string `json:"mobileUrl,omitempty" xml:"mobileUrl,omitempty"`
+	Text      *string `json:"text,omitempty" xml:"text,omitempty"`
+	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) SetMobileUrl(v string) *CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends {
+	s.MobileUrl = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) SetText(v string) *CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends {
+	s.Text = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) SetUrl(v string) *CreateMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends {
+	s.Url = &v
+	return s
+}
+
+type CreateMessageResponseBodyMessagesContentStructViewPartsReferencePart struct {
+	References []*CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences `json:"references,omitempty" xml:"references,omitempty" type:"Repeated"`
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewPartsReferencePart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewPartsReferencePart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePart) SetReferences(v []*CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePart {
+	s.References = v
+	return s
+}
+
+type CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences struct {
+	// example:
+	//
+	// 0
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// example:
+	//
+	// mcp是....
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// ata
+	SourceCode *string `json:"sourceCode,omitempty" xml:"sourceCode,omitempty"`
+	SourceIcon *string `json:"sourceIcon,omitempty" xml:"sourceIcon,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// 《mcp原理介绍》
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// https://taobao.com
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetIndex(v string) *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Index = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetName(v string) *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetSourceCode(v string) *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.SourceCode = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetSourceIcon(v string) *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.SourceIcon = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetSummary(v string) *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Summary = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetTitle(v string) *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetUrl(v string) *CreateMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Url = &v
+	return s
+}
+
+type CreateMessageResponseBodyMessagesContentStructViewPartsTextPart struct {
+	// example:
+	//
+	// 123123
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewPartsTextPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyMessagesContentStructViewPartsTextPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyMessagesContentStructViewPartsTextPart) SetText(v string) *CreateMessageResponseBodyMessagesContentStructViewPartsTextPart {
+	s.Text = &v
+	return s
+}
+
+type CreateMessageResponseBodyMessagesContentText struct {
 	// example:
 	//
 	// 你好！
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s CreateMessageResponseBodyContentText) String() string {
+func (s CreateMessageResponseBodyMessagesContentText) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateMessageResponseBodyContentText) GoString() string {
+func (s CreateMessageResponseBodyMessagesContentText) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMessageResponseBodyContentText) SetValue(v string) *CreateMessageResponseBodyContentText {
+func (s *CreateMessageResponseBodyMessagesContentText) SetValue(v string) *CreateMessageResponseBodyMessagesContentText {
 	s.Value = &v
 	return s
 }
@@ -14126,16 +15070,16 @@ type CreateRunRequest struct {
 	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
 	// example:
 	//
-	// 你是一个聪明的小助理
-	Instructions *string `json:"instructions,omitempty" xml:"instructions,omitempty"`
-	// example:
-	//
-	// {}
-	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// example:
-	//
 	// assistantId
 	OriginalAssistantId *string `json:"originalAssistantId,omitempty" xml:"originalAssistantId,omitempty"`
+	// example:
+	//
+	// agentKey1
+	SourceIdOfOriginalAssistantId *string `json:"sourceIdOfOriginalAssistantId,omitempty" xml:"sourceIdOfOriginalAssistantId,omitempty"`
+	// example:
+	//
+	// 1
+	SourceTypeOfOriginalAssistantId *string `json:"sourceTypeOfOriginalAssistantId,omitempty" xml:"sourceTypeOfOriginalAssistantId,omitempty"`
 	// example:
 	//
 	// false
@@ -14161,18 +15105,18 @@ func (s *CreateRunRequest) SetAssistantId(v string) *CreateRunRequest {
 	return s
 }
 
-func (s *CreateRunRequest) SetInstructions(v string) *CreateRunRequest {
-	s.Instructions = &v
-	return s
-}
-
-func (s *CreateRunRequest) SetMetadata(v map[string]interface{}) *CreateRunRequest {
-	s.Metadata = v
-	return s
-}
-
 func (s *CreateRunRequest) SetOriginalAssistantId(v string) *CreateRunRequest {
 	s.OriginalAssistantId = &v
+	return s
+}
+
+func (s *CreateRunRequest) SetSourceIdOfOriginalAssistantId(v string) *CreateRunRequest {
+	s.SourceIdOfOriginalAssistantId = &v
+	return s
+}
+
+func (s *CreateRunRequest) SetSourceTypeOfOriginalAssistantId(v string) *CreateRunRequest {
+	s.SourceTypeOfOriginalAssistantId = &v
 	return s
 }
 
@@ -14187,67 +15131,12 @@ func (s *CreateRunRequest) SetThreadId(v string) *CreateRunRequest {
 }
 
 type CreateRunResponseBody struct {
-	// example:
-	//
-	// 1642448000000
-	CancelledAt *int64 `json:"cancelledAt,omitempty" xml:"cancelledAt,omitempty"`
-	// example:
-	//
-	// 1642448000000
-	CompletedAt *int64 `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
-	// example:
-	//
-	// {}
-	Content *CreateRunResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1642448000000
-	CreateAt *int64                     `json:"createAt,omitempty" xml:"createAt,omitempty"`
-	Data     *CreateRunResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// example:
-	//
-	// {}
-	Delta *CreateRunResponseBodyDelta `json:"delta,omitempty" xml:"delta,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1642448000000
-	ExpiresAt *int64 `json:"expiresAt,omitempty" xml:"expiresAt,omitempty"`
-	// example:
-	//
-	// 1642448000000
-	FailedAt *int64 `json:"failedAt,omitempty" xml:"failedAt,omitempty"`
-	// example:
-	//
-	// runId123
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// errorMsg
-	LastErrorMsg *string `json:"lastErrorMsg,omitempty" xml:"lastErrorMsg,omitempty"`
-	// example:
-	//
-	// {}
-	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// example:
-	//
-	// thread.run
-	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+	Messages []*CreateRunResponseBodyMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 1642448000000
-	StartedAt *int64 `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
-	// example:
-	//
-	// running
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// threadId123
-	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+	RequestId *string                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Run       *CreateRunResponseBodyRun `json:"run,omitempty" xml:"run,omitempty" type:"Struct"`
 }
 
 func (s CreateRunResponseBody) String() string {
@@ -14258,63 +15147,8 @@ func (s CreateRunResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRunResponseBody) SetCancelledAt(v int64) *CreateRunResponseBody {
-	s.CancelledAt = &v
-	return s
-}
-
-func (s *CreateRunResponseBody) SetCompletedAt(v int64) *CreateRunResponseBody {
-	s.CompletedAt = &v
-	return s
-}
-
-func (s *CreateRunResponseBody) SetContent(v *CreateRunResponseBodyContent) *CreateRunResponseBody {
-	s.Content = v
-	return s
-}
-
-func (s *CreateRunResponseBody) SetCreateAt(v int64) *CreateRunResponseBody {
-	s.CreateAt = &v
-	return s
-}
-
-func (s *CreateRunResponseBody) SetData(v *CreateRunResponseBodyData) *CreateRunResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateRunResponseBody) SetDelta(v *CreateRunResponseBodyDelta) *CreateRunResponseBody {
-	s.Delta = v
-	return s
-}
-
-func (s *CreateRunResponseBody) SetExpiresAt(v int64) *CreateRunResponseBody {
-	s.ExpiresAt = &v
-	return s
-}
-
-func (s *CreateRunResponseBody) SetFailedAt(v int64) *CreateRunResponseBody {
-	s.FailedAt = &v
-	return s
-}
-
-func (s *CreateRunResponseBody) SetId(v string) *CreateRunResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *CreateRunResponseBody) SetLastErrorMsg(v string) *CreateRunResponseBody {
-	s.LastErrorMsg = &v
-	return s
-}
-
-func (s *CreateRunResponseBody) SetMetadata(v map[string]interface{}) *CreateRunResponseBody {
-	s.Metadata = v
-	return s
-}
-
-func (s *CreateRunResponseBody) SetObject(v string) *CreateRunResponseBody {
-	s.Object = &v
+func (s *CreateRunResponseBody) SetMessages(v []*CreateRunResponseBodyMessages) *CreateRunResponseBody {
+	s.Messages = v
 	return s
 }
 
@@ -14323,598 +15157,179 @@ func (s *CreateRunResponseBody) SetRequestId(v string) *CreateRunResponseBody {
 	return s
 }
 
-func (s *CreateRunResponseBody) SetStartedAt(v int64) *CreateRunResponseBody {
-	s.StartedAt = &v
+func (s *CreateRunResponseBody) SetRun(v *CreateRunResponseBodyRun) *CreateRunResponseBody {
+	s.Run = v
 	return s
 }
 
-func (s *CreateRunResponseBody) SetStatus(v string) *CreateRunResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *CreateRunResponseBody) SetThreadId(v string) *CreateRunResponseBody {
-	s.ThreadId = &v
-	return s
-}
-
-type CreateRunResponseBodyContent struct {
-	CardCallback *CreateRunResponseBodyContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
-	DingCard     *CreateRunResponseBodyContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
-	ImageUrl     *CreateRunResponseBodyContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
-	Markdown     *CreateRunResponseBodyContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
-	Text         *CreateRunResponseBodyContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+type CreateRunResponseBodyMessages struct {
+	Content *CreateRunResponseBodyMessagesContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
 	// example:
 	//
-	// text
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// 这是一张小猫钓鱼图
+	ContentDesc *string `json:"contentDesc,omitempty" xml:"contentDesc,omitempty"`
+	// example:
+	//
+	// 1642448000000
+	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	// example:
+	//
+	// messageId1
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// runId1
+	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// example:
+	//
+	// threadId1
+	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
 }
 
-func (s CreateRunResponseBodyContent) String() string {
+func (s CreateRunResponseBodyMessages) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateRunResponseBodyContent) GoString() string {
+func (s CreateRunResponseBodyMessages) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRunResponseBodyContent) SetCardCallback(v *CreateRunResponseBodyContentCardCallback) *CreateRunResponseBodyContent {
-	s.CardCallback = v
-	return s
-}
-
-func (s *CreateRunResponseBodyContent) SetDingCard(v *CreateRunResponseBodyContentDingCard) *CreateRunResponseBodyContent {
-	s.DingCard = v
-	return s
-}
-
-func (s *CreateRunResponseBodyContent) SetImageUrl(v *CreateRunResponseBodyContentImageUrl) *CreateRunResponseBodyContent {
-	s.ImageUrl = v
-	return s
-}
-
-func (s *CreateRunResponseBodyContent) SetMarkdown(v *CreateRunResponseBodyContentMarkdown) *CreateRunResponseBodyContent {
-	s.Markdown = v
-	return s
-}
-
-func (s *CreateRunResponseBodyContent) SetText(v *CreateRunResponseBodyContentText) *CreateRunResponseBodyContent {
-	s.Text = v
-	return s
-}
-
-func (s *CreateRunResponseBodyContent) SetType(v string) *CreateRunResponseBodyContent {
-	s.Type = &v
-	return s
-}
-
-type CreateRunResponseBodyContentCardCallback struct {
-	// example:
-	//
-	// {}
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// templateId123
-	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// example:
-	//
-	// 012345
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-}
-
-func (s CreateRunResponseBodyContentCardCallback) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRunResponseBodyContentCardCallback) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRunResponseBodyContentCardCallback) SetContent(v string) *CreateRunResponseBodyContentCardCallback {
-	s.Content = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyContentCardCallback) SetTemplateId(v string) *CreateRunResponseBodyContentCardCallback {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyContentCardCallback) SetUserId(v string) *CreateRunResponseBodyContentCardCallback {
-	s.UserId = &v
-	return s
-}
-
-type CreateRunResponseBodyContentDingCard struct {
-	// example:
-	//
-	// 卡片描述
-	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
-	// example:
-	//
-	// {}
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// basic_card_schema
-	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// example:
-	//
-	// true
-	Finished *bool `json:"finished,omitempty" xml:"finished,omitempty"`
-	// example:
-	//
-	// templateId123
-	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-}
-
-func (s CreateRunResponseBodyContentDingCard) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRunResponseBodyContentDingCard) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRunResponseBodyContentDingCard) SetCardDesc(v string) *CreateRunResponseBodyContentDingCard {
-	s.CardDesc = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyContentDingCard) SetContent(v string) *CreateRunResponseBodyContentDingCard {
-	s.Content = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyContentDingCard) SetContentType(v string) *CreateRunResponseBodyContentDingCard {
-	s.ContentType = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyContentDingCard) SetFinished(v bool) *CreateRunResponseBodyContentDingCard {
-	s.Finished = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyContentDingCard) SetTemplateId(v string) *CreateRunResponseBodyContentDingCard {
-	s.TemplateId = &v
-	return s
-}
-
-type CreateRunResponseBodyContentImageUrl struct {
-	// example:
-	//
-	// auto
-	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
-	// example:
-	//
-	// https://img.alicdn.com/1234.png
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
-}
-
-func (s CreateRunResponseBodyContentImageUrl) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRunResponseBodyContentImageUrl) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRunResponseBodyContentImageUrl) SetDetail(v string) *CreateRunResponseBodyContentImageUrl {
-	s.Detail = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyContentImageUrl) SetImageDesc(v string) *CreateRunResponseBodyContentImageUrl {
-	s.ImageDesc = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyContentImageUrl) SetUrl(v string) *CreateRunResponseBodyContentImageUrl {
-	s.Url = &v
-	return s
-}
-
-type CreateRunResponseBodyContentMarkdown struct {
-	// example:
-	//
-	// 1. markdown内容
-	//
-	// 2. markdown内容
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s CreateRunResponseBodyContentMarkdown) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRunResponseBodyContentMarkdown) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRunResponseBodyContentMarkdown) SetValue(v string) *CreateRunResponseBodyContentMarkdown {
-	s.Value = &v
-	return s
-}
-
-type CreateRunResponseBodyContentText struct {
-	// example:
-	//
-	// 你好！
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s CreateRunResponseBodyContentText) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRunResponseBodyContentText) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRunResponseBodyContentText) SetValue(v string) *CreateRunResponseBodyContentText {
-	s.Value = &v
-	return s
-}
-
-type CreateRunResponseBodyData struct {
-	Content  []*CreateRunResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
-	CreateAt *int64                              `json:"createAt,omitempty" xml:"createAt,omitempty"`
-	Id       *string                             `json:"id,omitempty" xml:"id,omitempty"`
-	Metadata map[string]interface{}              `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	Object   *string                             `json:"object,omitempty" xml:"object,omitempty"`
-	Role     *string                             `json:"role,omitempty" xml:"role,omitempty"`
-	RunId    *string                             `json:"runId,omitempty" xml:"runId,omitempty"`
-	ThreadId *string                             `json:"threadId,omitempty" xml:"threadId,omitempty"`
-}
-
-func (s CreateRunResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRunResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRunResponseBodyData) SetContent(v []*CreateRunResponseBodyDataContent) *CreateRunResponseBodyData {
+func (s *CreateRunResponseBodyMessages) SetContent(v *CreateRunResponseBodyMessagesContent) *CreateRunResponseBodyMessages {
 	s.Content = v
 	return s
 }
 
-func (s *CreateRunResponseBodyData) SetCreateAt(v int64) *CreateRunResponseBodyData {
+func (s *CreateRunResponseBodyMessages) SetContentDesc(v string) *CreateRunResponseBodyMessages {
+	s.ContentDesc = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessages) SetCreateAt(v int64) *CreateRunResponseBodyMessages {
 	s.CreateAt = &v
 	return s
 }
 
-func (s *CreateRunResponseBodyData) SetId(v string) *CreateRunResponseBodyData {
+func (s *CreateRunResponseBodyMessages) SetId(v string) *CreateRunResponseBodyMessages {
 	s.Id = &v
 	return s
 }
 
-func (s *CreateRunResponseBodyData) SetMetadata(v map[string]interface{}) *CreateRunResponseBodyData {
-	s.Metadata = v
-	return s
-}
-
-func (s *CreateRunResponseBodyData) SetObject(v string) *CreateRunResponseBodyData {
-	s.Object = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyData) SetRole(v string) *CreateRunResponseBodyData {
+func (s *CreateRunResponseBodyMessages) SetRole(v string) *CreateRunResponseBodyMessages {
 	s.Role = &v
 	return s
 }
 
-func (s *CreateRunResponseBodyData) SetRunId(v string) *CreateRunResponseBodyData {
+func (s *CreateRunResponseBodyMessages) SetRunId(v string) *CreateRunResponseBodyMessages {
 	s.RunId = &v
 	return s
 }
 
-func (s *CreateRunResponseBodyData) SetThreadId(v string) *CreateRunResponseBodyData {
+func (s *CreateRunResponseBodyMessages) SetThreadId(v string) *CreateRunResponseBodyMessages {
 	s.ThreadId = &v
 	return s
 }
 
-type CreateRunResponseBodyDataContent struct {
-	CardCallback *CreateRunResponseBodyDataContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
-	DingCard     *CreateRunResponseBodyDataContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
-	ImageUrl     *CreateRunResponseBodyDataContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
-	Markdown     *CreateRunResponseBodyDataContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
-	Text         *CreateRunResponseBodyDataContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
-	Type         *string                                       `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s CreateRunResponseBodyDataContent) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRunResponseBodyDataContent) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRunResponseBodyDataContent) SetCardCallback(v *CreateRunResponseBodyDataContentCardCallback) *CreateRunResponseBodyDataContent {
-	s.CardCallback = v
-	return s
-}
-
-func (s *CreateRunResponseBodyDataContent) SetDingCard(v *CreateRunResponseBodyDataContentDingCard) *CreateRunResponseBodyDataContent {
-	s.DingCard = v
-	return s
-}
-
-func (s *CreateRunResponseBodyDataContent) SetImageUrl(v *CreateRunResponseBodyDataContentImageUrl) *CreateRunResponseBodyDataContent {
-	s.ImageUrl = v
-	return s
-}
-
-func (s *CreateRunResponseBodyDataContent) SetMarkdown(v *CreateRunResponseBodyDataContentMarkdown) *CreateRunResponseBodyDataContent {
-	s.Markdown = v
-	return s
-}
-
-func (s *CreateRunResponseBodyDataContent) SetText(v *CreateRunResponseBodyDataContentText) *CreateRunResponseBodyDataContent {
-	s.Text = v
-	return s
-}
-
-func (s *CreateRunResponseBodyDataContent) SetType(v string) *CreateRunResponseBodyDataContent {
-	s.Type = &v
-	return s
-}
-
-type CreateRunResponseBodyDataContentCardCallback struct {
-	Content    *string `json:"content,omitempty" xml:"content,omitempty"`
-	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	UserId     *string `json:"userId,omitempty" xml:"userId,omitempty"`
-}
-
-func (s CreateRunResponseBodyDataContentCardCallback) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRunResponseBodyDataContentCardCallback) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRunResponseBodyDataContentCardCallback) SetContent(v string) *CreateRunResponseBodyDataContentCardCallback {
-	s.Content = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyDataContentCardCallback) SetTemplateId(v string) *CreateRunResponseBodyDataContentCardCallback {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyDataContentCardCallback) SetUserId(v string) *CreateRunResponseBodyDataContentCardCallback {
-	s.UserId = &v
-	return s
-}
-
-type CreateRunResponseBodyDataContentDingCard struct {
-	CardDesc    *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
-	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
-	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	Finished    *bool   `json:"finished,omitempty" xml:"finished,omitempty"`
-	TemplateId  *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-}
-
-func (s CreateRunResponseBodyDataContentDingCard) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRunResponseBodyDataContentDingCard) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRunResponseBodyDataContentDingCard) SetCardDesc(v string) *CreateRunResponseBodyDataContentDingCard {
-	s.CardDesc = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyDataContentDingCard) SetContent(v string) *CreateRunResponseBodyDataContentDingCard {
-	s.Content = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyDataContentDingCard) SetContentType(v string) *CreateRunResponseBodyDataContentDingCard {
-	s.ContentType = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyDataContentDingCard) SetFinished(v bool) *CreateRunResponseBodyDataContentDingCard {
-	s.Finished = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyDataContentDingCard) SetTemplateId(v string) *CreateRunResponseBodyDataContentDingCard {
-	s.TemplateId = &v
-	return s
-}
-
-type CreateRunResponseBodyDataContentImageUrl struct {
-	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
-	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
-}
-
-func (s CreateRunResponseBodyDataContentImageUrl) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRunResponseBodyDataContentImageUrl) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRunResponseBodyDataContentImageUrl) SetDetail(v string) *CreateRunResponseBodyDataContentImageUrl {
-	s.Detail = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyDataContentImageUrl) SetImageDesc(v string) *CreateRunResponseBodyDataContentImageUrl {
-	s.ImageDesc = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyDataContentImageUrl) SetUrl(v string) *CreateRunResponseBodyDataContentImageUrl {
-	s.Url = &v
-	return s
-}
-
-type CreateRunResponseBodyDataContentMarkdown struct {
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s CreateRunResponseBodyDataContentMarkdown) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRunResponseBodyDataContentMarkdown) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRunResponseBodyDataContentMarkdown) SetValue(v string) *CreateRunResponseBodyDataContentMarkdown {
-	s.Value = &v
-	return s
-}
-
-type CreateRunResponseBodyDataContentText struct {
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s CreateRunResponseBodyDataContentText) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRunResponseBodyDataContentText) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRunResponseBodyDataContentText) SetValue(v string) *CreateRunResponseBodyDataContentText {
-	s.Value = &v
-	return s
-}
-
-type CreateRunResponseBodyDelta struct {
+type CreateRunResponseBodyMessagesContent struct {
+	CardCallback *CreateRunResponseBodyMessagesContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *CreateRunResponseBodyMessagesContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
 	// example:
 	//
 	// {}
-	Content *CreateRunResponseBodyDeltaContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
-}
-
-func (s CreateRunResponseBodyDelta) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRunResponseBodyDelta) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRunResponseBodyDelta) SetContent(v *CreateRunResponseBodyDeltaContent) *CreateRunResponseBodyDelta {
-	s.Content = v
-	return s
-}
-
-type CreateRunResponseBodyDeltaContent struct {
-	CardCallback *CreateRunResponseBodyDeltaContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
-	DingCard     *CreateRunResponseBodyDeltaContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
-	ImageUrl     *CreateRunResponseBodyDeltaContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
-	Markdown     *CreateRunResponseBodyDeltaContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
-	Text         *CreateRunResponseBodyDeltaContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+	DingNormalCard *CreateRunResponseBodyMessagesContentDingNormalCard `json:"dingNormalCard,omitempty" xml:"dingNormalCard,omitempty" type:"Struct"`
+	Markdown       *CreateRunResponseBodyMessagesContentMarkdown       `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	StructView     *CreateRunResponseBodyMessagesContentStructView     `json:"structView,omitempty" xml:"structView,omitempty" type:"Struct"`
+	Text           *CreateRunResponseBodyMessagesContentText           `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
-	// text
+	// 枚举字段，可为：text,markdown,cardCallback,dingCard,agentArtifact,dingNormalCard
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
-func (s CreateRunResponseBodyDeltaContent) String() string {
+func (s CreateRunResponseBodyMessagesContent) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateRunResponseBodyDeltaContent) GoString() string {
+func (s CreateRunResponseBodyMessagesContent) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRunResponseBodyDeltaContent) SetCardCallback(v *CreateRunResponseBodyDeltaContentCardCallback) *CreateRunResponseBodyDeltaContent {
+func (s *CreateRunResponseBodyMessagesContent) SetCardCallback(v *CreateRunResponseBodyMessagesContentCardCallback) *CreateRunResponseBodyMessagesContent {
 	s.CardCallback = v
 	return s
 }
 
-func (s *CreateRunResponseBodyDeltaContent) SetDingCard(v *CreateRunResponseBodyDeltaContentDingCard) *CreateRunResponseBodyDeltaContent {
+func (s *CreateRunResponseBodyMessagesContent) SetDingCard(v *CreateRunResponseBodyMessagesContentDingCard) *CreateRunResponseBodyMessagesContent {
 	s.DingCard = v
 	return s
 }
 
-func (s *CreateRunResponseBodyDeltaContent) SetImageUrl(v *CreateRunResponseBodyDeltaContentImageUrl) *CreateRunResponseBodyDeltaContent {
-	s.ImageUrl = v
+func (s *CreateRunResponseBodyMessagesContent) SetDingNormalCard(v *CreateRunResponseBodyMessagesContentDingNormalCard) *CreateRunResponseBodyMessagesContent {
+	s.DingNormalCard = v
 	return s
 }
 
-func (s *CreateRunResponseBodyDeltaContent) SetMarkdown(v *CreateRunResponseBodyDeltaContentMarkdown) *CreateRunResponseBodyDeltaContent {
+func (s *CreateRunResponseBodyMessagesContent) SetMarkdown(v *CreateRunResponseBodyMessagesContentMarkdown) *CreateRunResponseBodyMessagesContent {
 	s.Markdown = v
 	return s
 }
 
-func (s *CreateRunResponseBodyDeltaContent) SetText(v *CreateRunResponseBodyDeltaContentText) *CreateRunResponseBodyDeltaContent {
+func (s *CreateRunResponseBodyMessagesContent) SetStructView(v *CreateRunResponseBodyMessagesContentStructView) *CreateRunResponseBodyMessagesContent {
+	s.StructView = v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContent) SetText(v *CreateRunResponseBodyMessagesContentText) *CreateRunResponseBodyMessagesContent {
 	s.Text = v
 	return s
 }
 
-func (s *CreateRunResponseBodyDeltaContent) SetType(v string) *CreateRunResponseBodyDeltaContent {
+func (s *CreateRunResponseBodyMessagesContent) SetType(v string) *CreateRunResponseBodyMessagesContent {
 	s.Type = &v
 	return s
 }
 
-type CreateRunResponseBodyDeltaContentCardCallback struct {
+type CreateRunResponseBodyMessagesContentCardCallback struct {
 	// example:
 	//
 	// {}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// example:
 	//
-	// templateId123
-	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// example:
-	//
-	// 012345
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// aliding_messageId123
+	RelatedMessageId *string `json:"relatedMessageId,omitempty" xml:"relatedMessageId,omitempty"`
 }
 
-func (s CreateRunResponseBodyDeltaContentCardCallback) String() string {
+func (s CreateRunResponseBodyMessagesContentCardCallback) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateRunResponseBodyDeltaContentCardCallback) GoString() string {
+func (s CreateRunResponseBodyMessagesContentCardCallback) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRunResponseBodyDeltaContentCardCallback) SetContent(v string) *CreateRunResponseBodyDeltaContentCardCallback {
+func (s *CreateRunResponseBodyMessagesContentCardCallback) SetContent(v string) *CreateRunResponseBodyMessagesContentCardCallback {
 	s.Content = &v
 	return s
 }
 
-func (s *CreateRunResponseBodyDeltaContentCardCallback) SetTemplateId(v string) *CreateRunResponseBodyDeltaContentCardCallback {
-	s.TemplateId = &v
+func (s *CreateRunResponseBodyMessagesContentCardCallback) SetRelatedMessageId(v string) *CreateRunResponseBodyMessagesContentCardCallback {
+	s.RelatedMessageId = &v
 	return s
 }
 
-func (s *CreateRunResponseBodyDeltaContentCardCallback) SetUserId(v string) *CreateRunResponseBodyDeltaContentCardCallback {
-	s.UserId = &v
-	return s
-}
-
-type CreateRunResponseBodyDeltaContentDingCard struct {
-	// example:
-	//
-	// 卡片描述
-	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
+type CreateRunResponseBodyMessagesContentDingCard struct {
 	// example:
 	//
 	// {}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// basic_card_schema
@@ -14929,75 +15344,213 @@ type CreateRunResponseBodyDeltaContentDingCard struct {
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
 }
 
-func (s CreateRunResponseBodyDeltaContentDingCard) String() string {
+func (s CreateRunResponseBodyMessagesContentDingCard) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateRunResponseBodyDeltaContentDingCard) GoString() string {
+func (s CreateRunResponseBodyMessagesContentDingCard) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRunResponseBodyDeltaContentDingCard) SetCardDesc(v string) *CreateRunResponseBodyDeltaContentDingCard {
-	s.CardDesc = &v
-	return s
-}
-
-func (s *CreateRunResponseBodyDeltaContentDingCard) SetContent(v string) *CreateRunResponseBodyDeltaContentDingCard {
+func (s *CreateRunResponseBodyMessagesContentDingCard) SetContent(v string) *CreateRunResponseBodyMessagesContentDingCard {
 	s.Content = &v
 	return s
 }
 
-func (s *CreateRunResponseBodyDeltaContentDingCard) SetContentType(v string) *CreateRunResponseBodyDeltaContentDingCard {
+func (s *CreateRunResponseBodyMessagesContentDingCard) SetContentType(v string) *CreateRunResponseBodyMessagesContentDingCard {
 	s.ContentType = &v
 	return s
 }
 
-func (s *CreateRunResponseBodyDeltaContentDingCard) SetFinished(v bool) *CreateRunResponseBodyDeltaContentDingCard {
+func (s *CreateRunResponseBodyMessagesContentDingCard) SetFinished(v bool) *CreateRunResponseBodyMessagesContentDingCard {
 	s.Finished = &v
 	return s
 }
 
-func (s *CreateRunResponseBodyDeltaContentDingCard) SetTemplateId(v string) *CreateRunResponseBodyDeltaContentDingCard {
+func (s *CreateRunResponseBodyMessagesContentDingCard) SetTemplateId(v string) *CreateRunResponseBodyMessagesContentDingCard {
 	s.TemplateId = &v
 	return s
 }
 
-type CreateRunResponseBodyDeltaContentImageUrl struct {
+type CreateRunResponseBodyMessagesContentDingNormalCard struct {
 	// example:
 	//
-	// auto
-	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
+	// {}
+	CardData *CreateRunResponseBodyMessagesContentDingNormalCardCardData `json:"cardData,omitempty" xml:"cardData,omitempty" type:"Struct"`
 	// example:
 	//
-	// https://img.alicdn.com/1234.png
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	// templateId1
+	CardTemplateId *string `json:"cardTemplateId,omitempty" xml:"cardTemplateId,omitempty"`
+	// example:
+	//
+	// {}
+	CardUpdateOptions *CreateRunResponseBodyMessagesContentDingNormalCardCardUpdateOptions `json:"cardUpdateOptions,omitempty" xml:"cardUpdateOptions,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	DynamicDataSourceConfigs []*CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs `json:"dynamicDataSourceConfigs,omitempty" xml:"dynamicDataSourceConfigs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	PrivateData map[string]map[string]interface{} `json:"privateData,omitempty" xml:"privateData,omitempty"`
 }
 
-func (s CreateRunResponseBodyDeltaContentImageUrl) String() string {
+func (s CreateRunResponseBodyMessagesContentDingNormalCard) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateRunResponseBodyDeltaContentImageUrl) GoString() string {
+func (s CreateRunResponseBodyMessagesContentDingNormalCard) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRunResponseBodyDeltaContentImageUrl) SetDetail(v string) *CreateRunResponseBodyDeltaContentImageUrl {
-	s.Detail = &v
+func (s *CreateRunResponseBodyMessagesContentDingNormalCard) SetCardData(v *CreateRunResponseBodyMessagesContentDingNormalCardCardData) *CreateRunResponseBodyMessagesContentDingNormalCard {
+	s.CardData = v
 	return s
 }
 
-func (s *CreateRunResponseBodyDeltaContentImageUrl) SetImageDesc(v string) *CreateRunResponseBodyDeltaContentImageUrl {
-	s.ImageDesc = &v
+func (s *CreateRunResponseBodyMessagesContentDingNormalCard) SetCardTemplateId(v string) *CreateRunResponseBodyMessagesContentDingNormalCard {
+	s.CardTemplateId = &v
 	return s
 }
 
-func (s *CreateRunResponseBodyDeltaContentImageUrl) SetUrl(v string) *CreateRunResponseBodyDeltaContentImageUrl {
-	s.Url = &v
+func (s *CreateRunResponseBodyMessagesContentDingNormalCard) SetCardUpdateOptions(v *CreateRunResponseBodyMessagesContentDingNormalCardCardUpdateOptions) *CreateRunResponseBodyMessagesContentDingNormalCard {
+	s.CardUpdateOptions = v
 	return s
 }
 
-type CreateRunResponseBodyDeltaContentMarkdown struct {
+func (s *CreateRunResponseBodyMessagesContentDingNormalCard) SetDynamicDataSourceConfigs(v []*CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) *CreateRunResponseBodyMessagesContentDingNormalCard {
+	s.DynamicDataSourceConfigs = v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentDingNormalCard) SetPrivateData(v map[string]map[string]interface{}) *CreateRunResponseBodyMessagesContentDingNormalCard {
+	s.PrivateData = v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentDingNormalCardCardData struct {
+	CardParamMap interface{} `json:"cardParamMap,omitempty" xml:"cardParamMap,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentDingNormalCardCardData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentDingNormalCardCardData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentDingNormalCardCardData) SetCardParamMap(v interface{}) *CreateRunResponseBodyMessagesContentDingNormalCardCardData {
+	s.CardParamMap = v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentDingNormalCardCardUpdateOptions struct {
+	// example:
+	//
+	// {}
+	UpdateCardDataByKey *bool `json:"updateCardDataByKey,omitempty" xml:"updateCardDataByKey,omitempty"`
+	// example:
+	//
+	// {}
+	UpdatePrivateDataByKey *bool `json:"updatePrivateDataByKey,omitempty" xml:"updatePrivateDataByKey,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentDingNormalCardCardUpdateOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentDingNormalCardCardUpdateOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentDingNormalCardCardUpdateOptions) SetUpdateCardDataByKey(v bool) *CreateRunResponseBodyMessagesContentDingNormalCardCardUpdateOptions {
+	s.UpdateCardDataByKey = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentDingNormalCardCardUpdateOptions) SetUpdatePrivateDataByKey(v bool) *CreateRunResponseBodyMessagesContentDingNormalCardCardUpdateOptions {
+	s.UpdatePrivateDataByKey = &v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs struct {
+	// example:
+	//
+	// {}
+	ConstParams map[string]interface{} `json:"constParams,omitempty" xml:"constParams,omitempty"`
+	// example:
+	//
+	// dynamicDataSourceId1
+	DynamicDataSourceId *string `json:"dynamicDataSourceId,omitempty" xml:"dynamicDataSourceId,omitempty"`
+	// example:
+	//
+	// {}
+	PullConfig *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig `json:"pullConfig,omitempty" xml:"pullConfig,omitempty" type:"Struct"`
+}
+
+func (s CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) SetConstParams(v map[string]interface{}) *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.ConstParams = v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) SetDynamicDataSourceId(v string) *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.DynamicDataSourceId = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) SetPullConfig(v *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.PullConfig = v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig struct {
+	// example:
+	//
+	// 3
+	Interval *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
+	// example:
+	//
+	// NONE
+	PullStrategy *string `json:"pullStrategy,omitempty" xml:"pullStrategy,omitempty"`
+	// example:
+	//
+	// SECONDS
+	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetInterval(v int32) *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetPullStrategy(v string) *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.PullStrategy = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetTimeUnit(v string) *CreateRunResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.TimeUnit = &v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentMarkdown struct {
 	// example:
 	//
 	// 1. markdown内容
@@ -15006,36 +15559,412 @@ type CreateRunResponseBodyDeltaContentMarkdown struct {
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s CreateRunResponseBodyDeltaContentMarkdown) String() string {
+func (s CreateRunResponseBodyMessagesContentMarkdown) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateRunResponseBodyDeltaContentMarkdown) GoString() string {
+func (s CreateRunResponseBodyMessagesContentMarkdown) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRunResponseBodyDeltaContentMarkdown) SetValue(v string) *CreateRunResponseBodyDeltaContentMarkdown {
+func (s *CreateRunResponseBodyMessagesContentMarkdown) SetValue(v string) *CreateRunResponseBodyMessagesContentMarkdown {
 	s.Value = &v
 	return s
 }
 
-type CreateRunResponseBodyDeltaContentText struct {
+type CreateRunResponseBodyMessagesContentStructView struct {
+	Parts []*CreateRunResponseBodyMessagesContentStructViewParts `json:"parts,omitempty" xml:"parts,omitempty" type:"Repeated"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructView) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructView) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructView) SetParts(v []*CreateRunResponseBodyMessagesContentStructViewParts) *CreateRunResponseBodyMessagesContentStructView {
+	s.Parts = v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructViewParts struct {
+	Append *bool `json:"append,omitempty" xml:"append,omitempty"`
+	// example:
+	//
+	// {}
+	DataPart *CreateRunResponseBodyMessagesContentStructViewPartsDataPart `json:"dataPart,omitempty" xml:"dataPart,omitempty" type:"Struct"`
+	Finish   *bool                                                        `json:"finish,omitempty" xml:"finish,omitempty"`
+	// example:
+	//
+	// 这是正文内容部分
+	PartDesc *string `json:"partDesc,omitempty" xml:"partDesc,omitempty"`
+	// example:
+	//
+	// artifactId123
+	PartId *string `json:"partId,omitempty" xml:"partId,omitempty"`
+	// example:
+	//
+	// {}
+	ReasonPart *CreateRunResponseBodyMessagesContentStructViewPartsReasonPart `json:"reasonPart,omitempty" xml:"reasonPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	RecommendPart *CreateRunResponseBodyMessagesContentStructViewPartsRecommendPart `json:"recommendPart,omitempty" xml:"recommendPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	ReferencePart *CreateRunResponseBodyMessagesContentStructViewPartsReferencePart `json:"referencePart,omitempty" xml:"referencePart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	TextPart *CreateRunResponseBodyMessagesContentStructViewPartsTextPart `json:"textPart,omitempty" xml:"textPart,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// textPart
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewParts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewParts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewParts) SetAppend(v bool) *CreateRunResponseBodyMessagesContentStructViewParts {
+	s.Append = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewParts) SetDataPart(v *CreateRunResponseBodyMessagesContentStructViewPartsDataPart) *CreateRunResponseBodyMessagesContentStructViewParts {
+	s.DataPart = v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewParts) SetFinish(v bool) *CreateRunResponseBodyMessagesContentStructViewParts {
+	s.Finish = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewParts) SetPartDesc(v string) *CreateRunResponseBodyMessagesContentStructViewParts {
+	s.PartDesc = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewParts) SetPartId(v string) *CreateRunResponseBodyMessagesContentStructViewParts {
+	s.PartId = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewParts) SetReasonPart(v *CreateRunResponseBodyMessagesContentStructViewPartsReasonPart) *CreateRunResponseBodyMessagesContentStructViewParts {
+	s.ReasonPart = v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewParts) SetRecommendPart(v *CreateRunResponseBodyMessagesContentStructViewPartsRecommendPart) *CreateRunResponseBodyMessagesContentStructViewParts {
+	s.RecommendPart = v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewParts) SetReferencePart(v *CreateRunResponseBodyMessagesContentStructViewPartsReferencePart) *CreateRunResponseBodyMessagesContentStructViewParts {
+	s.ReferencePart = v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewParts) SetTextPart(v *CreateRunResponseBodyMessagesContentStructViewPartsTextPart) *CreateRunResponseBodyMessagesContentStructViewParts {
+	s.TextPart = v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewParts) SetType(v string) *CreateRunResponseBodyMessagesContentStructViewParts {
+	s.Type = &v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructViewPartsDataPart struct {
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewPartsDataPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewPartsDataPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsDataPart) SetData(v interface{}) *CreateRunResponseBodyMessagesContentStructViewPartsDataPart {
+	s.Data = v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructViewPartsReasonPart struct {
+	// example:
+	//
+	// 123123
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewPartsReasonPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewPartsReasonPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsReasonPart) SetReason(v string) *CreateRunResponseBodyMessagesContentStructViewPartsReasonPart {
+	s.Reason = &v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructViewPartsRecommendPart struct {
+	Recommends []*CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends `json:"recommends,omitempty" xml:"recommends,omitempty" type:"Repeated"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewPartsRecommendPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewPartsRecommendPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsRecommendPart) SetRecommends(v []*CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) *CreateRunResponseBodyMessagesContentStructViewPartsRecommendPart {
+	s.Recommends = v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends struct {
+	MobileUrl *string `json:"mobileUrl,omitempty" xml:"mobileUrl,omitempty"`
+	Text      *string `json:"text,omitempty" xml:"text,omitempty"`
+	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) SetMobileUrl(v string) *CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends {
+	s.MobileUrl = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) SetText(v string) *CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends {
+	s.Text = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) SetUrl(v string) *CreateRunResponseBodyMessagesContentStructViewPartsRecommendPartRecommends {
+	s.Url = &v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructViewPartsReferencePart struct {
+	References []*CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences `json:"references,omitempty" xml:"references,omitempty" type:"Repeated"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewPartsReferencePart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewPartsReferencePart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsReferencePart) SetReferences(v []*CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences) *CreateRunResponseBodyMessagesContentStructViewPartsReferencePart {
+	s.References = v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences struct {
+	// example:
+	//
+	// 0
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// example:
+	//
+	// mcp是....
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// ata
+	SourceCode *string `json:"sourceCode,omitempty" xml:"sourceCode,omitempty"`
+	SourceIcon *string `json:"sourceIcon,omitempty" xml:"sourceIcon,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// 《mcp原理介绍》
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// https://taobao.com
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetIndex(v string) *CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Index = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetName(v string) *CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetSourceCode(v string) *CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.SourceCode = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetSourceIcon(v string) *CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.SourceIcon = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetSummary(v string) *CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Summary = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetTitle(v string) *CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetUrl(v string) *CreateRunResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Url = &v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructViewPartsTextPart struct {
+	// example:
+	//
+	// 123123
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewPartsTextPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructViewPartsTextPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructViewPartsTextPart) SetText(v string) *CreateRunResponseBodyMessagesContentStructViewPartsTextPart {
+	s.Text = &v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentText struct {
 	// example:
 	//
 	// 你好！
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s CreateRunResponseBodyDeltaContentText) String() string {
+func (s CreateRunResponseBodyMessagesContentText) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateRunResponseBodyDeltaContentText) GoString() string {
+func (s CreateRunResponseBodyMessagesContentText) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRunResponseBodyDeltaContentText) SetValue(v string) *CreateRunResponseBodyDeltaContentText {
+func (s *CreateRunResponseBodyMessagesContentText) SetValue(v string) *CreateRunResponseBodyMessagesContentText {
 	s.Value = &v
+	return s
+}
+
+type CreateRunResponseBodyRun struct {
+	CancelledAt  *int64  `json:"cancelledAt,omitempty" xml:"cancelledAt,omitempty"`
+	CompletedAt  *int64  `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
+	CreateAt     *int64  `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	ExpiresAt    *int64  `json:"expiresAt,omitempty" xml:"expiresAt,omitempty"`
+	FailedAt     *int64  `json:"failedAt,omitempty" xml:"failedAt,omitempty"`
+	Id           *string `json:"id,omitempty" xml:"id,omitempty"`
+	LastErrorMsg *string `json:"lastErrorMsg,omitempty" xml:"lastErrorMsg,omitempty"`
+	StartedAt    *int64  `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+	Status       *string `json:"status,omitempty" xml:"status,omitempty"`
+	ThreadId     *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+}
+
+func (s CreateRunResponseBodyRun) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyRun) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyRun) SetCancelledAt(v int64) *CreateRunResponseBodyRun {
+	s.CancelledAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyRun) SetCompletedAt(v int64) *CreateRunResponseBodyRun {
+	s.CompletedAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyRun) SetCreateAt(v int64) *CreateRunResponseBodyRun {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyRun) SetExpiresAt(v int64) *CreateRunResponseBodyRun {
+	s.ExpiresAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyRun) SetFailedAt(v int64) *CreateRunResponseBodyRun {
+	s.FailedAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyRun) SetId(v string) *CreateRunResponseBodyRun {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyRun) SetLastErrorMsg(v string) *CreateRunResponseBodyRun {
+	s.LastErrorMsg = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyRun) SetStartedAt(v int64) *CreateRunResponseBodyRun {
+	s.StartedAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyRun) SetStatus(v string) *CreateRunResponseBodyRun {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyRun) SetThreadId(v string) *CreateRunResponseBodyRun {
+	s.ThreadId = &v
 	return s
 }
 
@@ -17019,12 +17948,13 @@ type CreateThreadRequest struct {
 	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
 	// example:
 	//
-	// {}
-	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// example:
-	//
 	// assistantId
 	OriginalAssistantId *string `json:"originalAssistantId,omitempty" xml:"originalAssistantId,omitempty"`
+	// example:
+	//
+	// agentKey1
+	SourceIdOfOriginalAssistantId   *string `json:"sourceIdOfOriginalAssistantId,omitempty" xml:"sourceIdOfOriginalAssistantId,omitempty"`
+	SourceTypeOfOriginalAssistantId *int32  `json:"sourceTypeOfOriginalAssistantId,omitempty" xml:"sourceTypeOfOriginalAssistantId,omitempty"`
 }
 
 func (s CreateThreadRequest) String() string {
@@ -17040,37 +17970,27 @@ func (s *CreateThreadRequest) SetAssistantId(v string) *CreateThreadRequest {
 	return s
 }
 
-func (s *CreateThreadRequest) SetMetadata(v map[string]interface{}) *CreateThreadRequest {
-	s.Metadata = v
+func (s *CreateThreadRequest) SetOriginalAssistantId(v string) *CreateThreadRequest {
+	s.OriginalAssistantId = &v
 	return s
 }
 
-func (s *CreateThreadRequest) SetOriginalAssistantId(v string) *CreateThreadRequest {
-	s.OriginalAssistantId = &v
+func (s *CreateThreadRequest) SetSourceIdOfOriginalAssistantId(v string) *CreateThreadRequest {
+	s.SourceIdOfOriginalAssistantId = &v
+	return s
+}
+
+func (s *CreateThreadRequest) SetSourceTypeOfOriginalAssistantId(v int32) *CreateThreadRequest {
+	s.SourceTypeOfOriginalAssistantId = &v
 	return s
 }
 
 type CreateThreadResponseBody struct {
 	// example:
 	//
-	// 1642448000000
-	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
-	// example:
-	//
-	// threadId123
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// {}
-	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// example:
-	//
-	// thread
-	Object *string `json:"object,omitempty" xml:"object,omitempty"`
-	// example:
-	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Thread    *CreateThreadResponseBodyThread `json:"thread,omitempty" xml:"thread,omitempty" type:"Struct"`
 }
 
 func (s CreateThreadResponseBody) String() string {
@@ -17081,28 +18001,36 @@ func (s CreateThreadResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateThreadResponseBody) SetCreateAt(v int64) *CreateThreadResponseBody {
+func (s *CreateThreadResponseBody) SetRequestId(v string) *CreateThreadResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateThreadResponseBody) SetThread(v *CreateThreadResponseBodyThread) *CreateThreadResponseBody {
+	s.Thread = v
+	return s
+}
+
+type CreateThreadResponseBodyThread struct {
+	CreateAt *int64  `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	Id       *string `json:"id,omitempty" xml:"id,omitempty"`
+}
+
+func (s CreateThreadResponseBodyThread) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateThreadResponseBodyThread) GoString() string {
+	return s.String()
+}
+
+func (s *CreateThreadResponseBodyThread) SetCreateAt(v int64) *CreateThreadResponseBodyThread {
 	s.CreateAt = &v
 	return s
 }
 
-func (s *CreateThreadResponseBody) SetId(v string) *CreateThreadResponseBody {
+func (s *CreateThreadResponseBodyThread) SetId(v string) *CreateThreadResponseBodyThread {
 	s.Id = &v
-	return s
-}
-
-func (s *CreateThreadResponseBody) SetMetadata(v map[string]interface{}) *CreateThreadResponseBody {
-	s.Metadata = v
-	return s
-}
-
-func (s *CreateThreadResponseBody) SetObject(v string) *CreateThreadResponseBody {
-	s.Object = &v
-	return s
-}
-
-func (s *CreateThreadResponseBody) SetRequestId(v string) *CreateThreadResponseBody {
-	s.RequestId = &v
 	return s
 }
 
@@ -25758,19 +26686,7 @@ type GetAssistantCapabilityRequest struct {
 	// assistantId1
 	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// []
-	Content []*GetAssistantCapabilityRequestContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
-	// example:
-	//
-	// id1
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// {}
-	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	Messages []*GetAssistantCapabilityRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// example:
 	//
 	// originalAssistantId1
@@ -25779,6 +26695,14 @@ type GetAssistantCapabilityRequest struct {
 	//
 	// cfp
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// example:
+	//
+	// agentKey1
+	SourceIdOfOriginalAssistantId *string `json:"sourceIdOfOriginalAssistantId,omitempty" xml:"sourceIdOfOriginalAssistantId,omitempty"`
+	// example:
+	//
+	// 1
+	SourceTypeOfOriginalAssistantId *string `json:"sourceTypeOfOriginalAssistantId,omitempty" xml:"sourceTypeOfOriginalAssistantId,omitempty"`
 	// example:
 	//
 	// threadId
@@ -25802,18 +26726,8 @@ func (s *GetAssistantCapabilityRequest) SetAssistantId(v string) *GetAssistantCa
 	return s
 }
 
-func (s *GetAssistantCapabilityRequest) SetContent(v []*GetAssistantCapabilityRequestContent) *GetAssistantCapabilityRequest {
-	s.Content = v
-	return s
-}
-
-func (s *GetAssistantCapabilityRequest) SetId(v string) *GetAssistantCapabilityRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *GetAssistantCapabilityRequest) SetMetadata(v map[string]interface{}) *GetAssistantCapabilityRequest {
-	s.Metadata = v
+func (s *GetAssistantCapabilityRequest) SetMessages(v []*GetAssistantCapabilityRequestMessages) *GetAssistantCapabilityRequest {
+	s.Messages = v
 	return s
 }
 
@@ -25827,6 +26741,16 @@ func (s *GetAssistantCapabilityRequest) SetProtocol(v string) *GetAssistantCapab
 	return s
 }
 
+func (s *GetAssistantCapabilityRequest) SetSourceIdOfOriginalAssistantId(v string) *GetAssistantCapabilityRequest {
+	s.SourceIdOfOriginalAssistantId = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequest) SetSourceTypeOfOriginalAssistantId(v string) *GetAssistantCapabilityRequest {
+	s.SourceTypeOfOriginalAssistantId = &v
+	return s
+}
+
 func (s *GetAssistantCapabilityRequest) SetThreadId(v string) *GetAssistantCapabilityRequest {
 	s.ThreadId = &v
 	return s
@@ -25837,101 +26761,145 @@ func (s *GetAssistantCapabilityRequest) SetTimeout(v int32) *GetAssistantCapabil
 	return s
 }
 
-type GetAssistantCapabilityRequestContent struct {
-	CardCallback *GetAssistantCapabilityRequestContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
-	DingCard     *GetAssistantCapabilityRequestContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
-	ImageUrl     *GetAssistantCapabilityRequestContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
-	Markdown     *GetAssistantCapabilityRequestContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
-	Text         *GetAssistantCapabilityRequestContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+type GetAssistantCapabilityRequestMessages struct {
+	Content *GetAssistantCapabilityRequestMessagesContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	// example:
+	//
+	// 这是一张小猫钓鱼图
+	ContentDesc *string `json:"contentDesc,omitempty" xml:"contentDesc,omitempty"`
+	// example:
+	//
+	// 1642448000000
+	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestMessages) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestMessages) SetContent(v *GetAssistantCapabilityRequestMessagesContent) *GetAssistantCapabilityRequestMessages {
+	s.Content = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessages) SetContentDesc(v string) *GetAssistantCapabilityRequestMessages {
+	s.ContentDesc = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessages) SetCreateAt(v int64) *GetAssistantCapabilityRequestMessages {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessages) SetRole(v string) *GetAssistantCapabilityRequestMessages {
+	s.Role = &v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContent struct {
+	CardCallback *GetAssistantCapabilityRequestMessagesContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *GetAssistantCapabilityRequestMessagesContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	DingNormalCard *GetAssistantCapabilityRequestMessagesContentDingNormalCard `json:"dingNormalCard,omitempty" xml:"dingNormalCard,omitempty" type:"Struct"`
+	Markdown       *GetAssistantCapabilityRequestMessagesContentMarkdown       `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	StructView     *GetAssistantCapabilityRequestMessagesContentStructView     `json:"structView,omitempty" xml:"structView,omitempty" type:"Struct"`
+	Text           *GetAssistantCapabilityRequestMessagesContentText           `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// text
+	// 枚举字段，可为：text,markdown,cardCallback,dingCard,agentArtifact,dingNormalCard
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
-func (s GetAssistantCapabilityRequestContent) String() string {
+func (s GetAssistantCapabilityRequestMessagesContent) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAssistantCapabilityRequestContent) GoString() string {
+func (s GetAssistantCapabilityRequestMessagesContent) GoString() string {
 	return s.String()
 }
 
-func (s *GetAssistantCapabilityRequestContent) SetCardCallback(v *GetAssistantCapabilityRequestContentCardCallback) *GetAssistantCapabilityRequestContent {
+func (s *GetAssistantCapabilityRequestMessagesContent) SetCardCallback(v *GetAssistantCapabilityRequestMessagesContentCardCallback) *GetAssistantCapabilityRequestMessagesContent {
 	s.CardCallback = v
 	return s
 }
 
-func (s *GetAssistantCapabilityRequestContent) SetDingCard(v *GetAssistantCapabilityRequestContentDingCard) *GetAssistantCapabilityRequestContent {
+func (s *GetAssistantCapabilityRequestMessagesContent) SetDingCard(v *GetAssistantCapabilityRequestMessagesContentDingCard) *GetAssistantCapabilityRequestMessagesContent {
 	s.DingCard = v
 	return s
 }
 
-func (s *GetAssistantCapabilityRequestContent) SetImageUrl(v *GetAssistantCapabilityRequestContentImageUrl) *GetAssistantCapabilityRequestContent {
-	s.ImageUrl = v
+func (s *GetAssistantCapabilityRequestMessagesContent) SetDingNormalCard(v *GetAssistantCapabilityRequestMessagesContentDingNormalCard) *GetAssistantCapabilityRequestMessagesContent {
+	s.DingNormalCard = v
 	return s
 }
 
-func (s *GetAssistantCapabilityRequestContent) SetMarkdown(v *GetAssistantCapabilityRequestContentMarkdown) *GetAssistantCapabilityRequestContent {
+func (s *GetAssistantCapabilityRequestMessagesContent) SetMarkdown(v *GetAssistantCapabilityRequestMessagesContentMarkdown) *GetAssistantCapabilityRequestMessagesContent {
 	s.Markdown = v
 	return s
 }
 
-func (s *GetAssistantCapabilityRequestContent) SetText(v *GetAssistantCapabilityRequestContentText) *GetAssistantCapabilityRequestContent {
+func (s *GetAssistantCapabilityRequestMessagesContent) SetStructView(v *GetAssistantCapabilityRequestMessagesContentStructView) *GetAssistantCapabilityRequestMessagesContent {
+	s.StructView = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContent) SetText(v *GetAssistantCapabilityRequestMessagesContentText) *GetAssistantCapabilityRequestMessagesContent {
 	s.Text = v
 	return s
 }
 
-func (s *GetAssistantCapabilityRequestContent) SetType(v string) *GetAssistantCapabilityRequestContent {
+func (s *GetAssistantCapabilityRequestMessagesContent) SetType(v string) *GetAssistantCapabilityRequestMessagesContent {
 	s.Type = &v
 	return s
 }
 
-type GetAssistantCapabilityRequestContentCardCallback struct {
+type GetAssistantCapabilityRequestMessagesContentCardCallback struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
-	// templateId123
-	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// example:
-	//
-	// 012345
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// aliding_messageId123
+	RelatedMessageId *string `json:"relatedMessageId,omitempty" xml:"relatedMessageId,omitempty"`
 }
 
-func (s GetAssistantCapabilityRequestContentCardCallback) String() string {
+func (s GetAssistantCapabilityRequestMessagesContentCardCallback) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAssistantCapabilityRequestContentCardCallback) GoString() string {
+func (s GetAssistantCapabilityRequestMessagesContentCardCallback) GoString() string {
 	return s.String()
 }
 
-func (s *GetAssistantCapabilityRequestContentCardCallback) SetContent(v string) *GetAssistantCapabilityRequestContentCardCallback {
+func (s *GetAssistantCapabilityRequestMessagesContentCardCallback) SetContent(v string) *GetAssistantCapabilityRequestMessagesContentCardCallback {
 	s.Content = &v
 	return s
 }
 
-func (s *GetAssistantCapabilityRequestContentCardCallback) SetTemplateId(v string) *GetAssistantCapabilityRequestContentCardCallback {
-	s.TemplateId = &v
+func (s *GetAssistantCapabilityRequestMessagesContentCardCallback) SetRelatedMessageId(v string) *GetAssistantCapabilityRequestMessagesContentCardCallback {
+	s.RelatedMessageId = &v
 	return s
 }
 
-func (s *GetAssistantCapabilityRequestContentCardCallback) SetUserId(v string) *GetAssistantCapabilityRequestContentCardCallback {
-	s.UserId = &v
-	return s
-}
-
-type GetAssistantCapabilityRequestContentDingCard struct {
-	// example:
-	//
-	// 卡片描述
-	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
+type GetAssistantCapabilityRequestMessagesContentDingCard struct {
 	// example:
 	//
 	// {}
@@ -25952,78 +26920,213 @@ type GetAssistantCapabilityRequestContentDingCard struct {
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
 }
 
-func (s GetAssistantCapabilityRequestContentDingCard) String() string {
+func (s GetAssistantCapabilityRequestMessagesContentDingCard) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAssistantCapabilityRequestContentDingCard) GoString() string {
+func (s GetAssistantCapabilityRequestMessagesContentDingCard) GoString() string {
 	return s.String()
 }
 
-func (s *GetAssistantCapabilityRequestContentDingCard) SetCardDesc(v string) *GetAssistantCapabilityRequestContentDingCard {
-	s.CardDesc = &v
-	return s
-}
-
-func (s *GetAssistantCapabilityRequestContentDingCard) SetContent(v string) *GetAssistantCapabilityRequestContentDingCard {
+func (s *GetAssistantCapabilityRequestMessagesContentDingCard) SetContent(v string) *GetAssistantCapabilityRequestMessagesContentDingCard {
 	s.Content = &v
 	return s
 }
 
-func (s *GetAssistantCapabilityRequestContentDingCard) SetContentType(v string) *GetAssistantCapabilityRequestContentDingCard {
+func (s *GetAssistantCapabilityRequestMessagesContentDingCard) SetContentType(v string) *GetAssistantCapabilityRequestMessagesContentDingCard {
 	s.ContentType = &v
 	return s
 }
 
-func (s *GetAssistantCapabilityRequestContentDingCard) SetFinished(v bool) *GetAssistantCapabilityRequestContentDingCard {
+func (s *GetAssistantCapabilityRequestMessagesContentDingCard) SetFinished(v bool) *GetAssistantCapabilityRequestMessagesContentDingCard {
 	s.Finished = &v
 	return s
 }
 
-func (s *GetAssistantCapabilityRequestContentDingCard) SetTemplateId(v string) *GetAssistantCapabilityRequestContentDingCard {
+func (s *GetAssistantCapabilityRequestMessagesContentDingCard) SetTemplateId(v string) *GetAssistantCapabilityRequestMessagesContentDingCard {
 	s.TemplateId = &v
 	return s
 }
 
-type GetAssistantCapabilityRequestContentImageUrl struct {
+type GetAssistantCapabilityRequestMessagesContentDingNormalCard struct {
 	// example:
 	//
-	// auto
-	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
+	// {}
+	CardData *GetAssistantCapabilityRequestMessagesContentDingNormalCardCardData `json:"cardData,omitempty" xml:"cardData,omitempty" type:"Struct"`
 	// example:
 	//
-	// 这是一张小猫钓鱼图
-	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
+	// templateId1
+	CardTemplateId *string `json:"cardTemplateId,omitempty" xml:"cardTemplateId,omitempty"`
 	// example:
 	//
-	// https://img.alicdn.com/1234.png
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	// {}
+	CardUpdateOptions *GetAssistantCapabilityRequestMessagesContentDingNormalCardCardUpdateOptions `json:"cardUpdateOptions,omitempty" xml:"cardUpdateOptions,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	DynamicDataSourceConfigs []*GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs `json:"dynamicDataSourceConfigs,omitempty" xml:"dynamicDataSourceConfigs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	PrivateData map[string]interface{} `json:"privateData,omitempty" xml:"privateData,omitempty"`
 }
 
-func (s GetAssistantCapabilityRequestContentImageUrl) String() string {
+func (s GetAssistantCapabilityRequestMessagesContentDingNormalCard) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAssistantCapabilityRequestContentImageUrl) GoString() string {
+func (s GetAssistantCapabilityRequestMessagesContentDingNormalCard) GoString() string {
 	return s.String()
 }
 
-func (s *GetAssistantCapabilityRequestContentImageUrl) SetDetail(v string) *GetAssistantCapabilityRequestContentImageUrl {
-	s.Detail = &v
+func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCard) SetCardData(v *GetAssistantCapabilityRequestMessagesContentDingNormalCardCardData) *GetAssistantCapabilityRequestMessagesContentDingNormalCard {
+	s.CardData = v
 	return s
 }
 
-func (s *GetAssistantCapabilityRequestContentImageUrl) SetImageDesc(v string) *GetAssistantCapabilityRequestContentImageUrl {
-	s.ImageDesc = &v
+func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCard) SetCardTemplateId(v string) *GetAssistantCapabilityRequestMessagesContentDingNormalCard {
+	s.CardTemplateId = &v
 	return s
 }
 
-func (s *GetAssistantCapabilityRequestContentImageUrl) SetUrl(v string) *GetAssistantCapabilityRequestContentImageUrl {
-	s.Url = &v
+func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCard) SetCardUpdateOptions(v *GetAssistantCapabilityRequestMessagesContentDingNormalCardCardUpdateOptions) *GetAssistantCapabilityRequestMessagesContentDingNormalCard {
+	s.CardUpdateOptions = v
 	return s
 }
 
-type GetAssistantCapabilityRequestContentMarkdown struct {
+func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCard) SetDynamicDataSourceConfigs(v []*GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) *GetAssistantCapabilityRequestMessagesContentDingNormalCard {
+	s.DynamicDataSourceConfigs = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCard) SetPrivateData(v map[string]interface{}) *GetAssistantCapabilityRequestMessagesContentDingNormalCard {
+	s.PrivateData = v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContentDingNormalCardCardData struct {
+	CardParamMap interface{} `json:"cardParamMap,omitempty" xml:"cardParamMap,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentDingNormalCardCardData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentDingNormalCardCardData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCardCardData) SetCardParamMap(v interface{}) *GetAssistantCapabilityRequestMessagesContentDingNormalCardCardData {
+	s.CardParamMap = v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContentDingNormalCardCardUpdateOptions struct {
+	// example:
+	//
+	// {}
+	UpdateCardDataByKey *bool `json:"updateCardDataByKey,omitempty" xml:"updateCardDataByKey,omitempty"`
+	// example:
+	//
+	// {}
+	UpdatePrivateDataByKey *bool `json:"updatePrivateDataByKey,omitempty" xml:"updatePrivateDataByKey,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentDingNormalCardCardUpdateOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentDingNormalCardCardUpdateOptions) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCardCardUpdateOptions) SetUpdateCardDataByKey(v bool) *GetAssistantCapabilityRequestMessagesContentDingNormalCardCardUpdateOptions {
+	s.UpdateCardDataByKey = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCardCardUpdateOptions) SetUpdatePrivateDataByKey(v bool) *GetAssistantCapabilityRequestMessagesContentDingNormalCardCardUpdateOptions {
+	s.UpdatePrivateDataByKey = &v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs struct {
+	// example:
+	//
+	// {}
+	ConstParams map[string]interface{} `json:"constParams,omitempty" xml:"constParams,omitempty"`
+	// example:
+	//
+	// dynamicDataSourceId1
+	DynamicDataSourceId *string `json:"dynamicDataSourceId,omitempty" xml:"dynamicDataSourceId,omitempty"`
+	// example:
+	//
+	// {}
+	PullConfig *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig `json:"pullConfig,omitempty" xml:"pullConfig,omitempty" type:"Struct"`
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) SetConstParams(v map[string]interface{}) *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.ConstParams = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) SetDynamicDataSourceId(v string) *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.DynamicDataSourceId = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) SetPullConfig(v *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.PullConfig = v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig struct {
+	// example:
+	//
+	// 3
+	Interval *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
+	// example:
+	//
+	// NONE
+	PullStrategy *string `json:"pullStrategy,omitempty" xml:"pullStrategy,omitempty"`
+	// example:
+	//
+	// SECONDS
+	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetInterval(v int32) *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.Interval = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetPullStrategy(v string) *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.PullStrategy = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetTimeUnit(v string) *GetAssistantCapabilityRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.TimeUnit = &v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContentMarkdown struct {
 	// example:
 	//
 	// 1. markdown内容
@@ -26032,35 +27135,340 @@ type GetAssistantCapabilityRequestContentMarkdown struct {
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s GetAssistantCapabilityRequestContentMarkdown) String() string {
+func (s GetAssistantCapabilityRequestMessagesContentMarkdown) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAssistantCapabilityRequestContentMarkdown) GoString() string {
+func (s GetAssistantCapabilityRequestMessagesContentMarkdown) GoString() string {
 	return s.String()
 }
 
-func (s *GetAssistantCapabilityRequestContentMarkdown) SetValue(v string) *GetAssistantCapabilityRequestContentMarkdown {
+func (s *GetAssistantCapabilityRequestMessagesContentMarkdown) SetValue(v string) *GetAssistantCapabilityRequestMessagesContentMarkdown {
 	s.Value = &v
 	return s
 }
 
-type GetAssistantCapabilityRequestContentText struct {
+type GetAssistantCapabilityRequestMessagesContentStructView struct {
+	Parts []*GetAssistantCapabilityRequestMessagesContentStructViewParts `json:"parts,omitempty" xml:"parts,omitempty" type:"Repeated"`
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructView) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructView) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructView) SetParts(v []*GetAssistantCapabilityRequestMessagesContentStructViewParts) *GetAssistantCapabilityRequestMessagesContentStructView {
+	s.Parts = v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContentStructViewParts struct {
+	Append *bool `json:"append,omitempty" xml:"append,omitempty"`
+	// example:
+	//
+	// {}
+	DataPart *GetAssistantCapabilityRequestMessagesContentStructViewPartsDataPart `json:"dataPart,omitempty" xml:"dataPart,omitempty" type:"Struct"`
+	Finish   *bool                                                                `json:"finish,omitempty" xml:"finish,omitempty"`
+	// example:
+	//
+	// 这是正文内容部分
+	PartDesc *string `json:"partDesc,omitempty" xml:"partDesc,omitempty"`
+	// example:
+	//
+	// artifactId123
+	PartId *string `json:"partId,omitempty" xml:"partId,omitempty"`
+	// example:
+	//
+	// {}
+	ReasonPart *GetAssistantCapabilityRequestMessagesContentStructViewPartsReasonPart `json:"reasonPart,omitempty" xml:"reasonPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	RecommendPart *GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPart `json:"recommendPart,omitempty" xml:"recommendPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	ReferencePart *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePart `json:"referencePart,omitempty" xml:"referencePart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	TextPart *GetAssistantCapabilityRequestMessagesContentStructViewPartsTextPart `json:"textPart,omitempty" xml:"textPart,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// textPart
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewParts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewParts) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewParts) SetAppend(v bool) *GetAssistantCapabilityRequestMessagesContentStructViewParts {
+	s.Append = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewParts) SetDataPart(v *GetAssistantCapabilityRequestMessagesContentStructViewPartsDataPart) *GetAssistantCapabilityRequestMessagesContentStructViewParts {
+	s.DataPart = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewParts) SetFinish(v bool) *GetAssistantCapabilityRequestMessagesContentStructViewParts {
+	s.Finish = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewParts) SetPartDesc(v string) *GetAssistantCapabilityRequestMessagesContentStructViewParts {
+	s.PartDesc = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewParts) SetPartId(v string) *GetAssistantCapabilityRequestMessagesContentStructViewParts {
+	s.PartId = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewParts) SetReasonPart(v *GetAssistantCapabilityRequestMessagesContentStructViewPartsReasonPart) *GetAssistantCapabilityRequestMessagesContentStructViewParts {
+	s.ReasonPart = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewParts) SetRecommendPart(v *GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPart) *GetAssistantCapabilityRequestMessagesContentStructViewParts {
+	s.RecommendPart = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewParts) SetReferencePart(v *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePart) *GetAssistantCapabilityRequestMessagesContentStructViewParts {
+	s.ReferencePart = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewParts) SetTextPart(v *GetAssistantCapabilityRequestMessagesContentStructViewPartsTextPart) *GetAssistantCapabilityRequestMessagesContentStructViewParts {
+	s.TextPart = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewParts) SetType(v string) *GetAssistantCapabilityRequestMessagesContentStructViewParts {
+	s.Type = &v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContentStructViewPartsDataPart struct {
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewPartsDataPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewPartsDataPart) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsDataPart) SetData(v interface{}) *GetAssistantCapabilityRequestMessagesContentStructViewPartsDataPart {
+	s.Data = v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContentStructViewPartsReasonPart struct {
+	// example:
+	//
+	// 123123
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewPartsReasonPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewPartsReasonPart) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsReasonPart) SetReason(v string) *GetAssistantCapabilityRequestMessagesContentStructViewPartsReasonPart {
+	s.Reason = &v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPart struct {
+	Recommends []*GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends `json:"recommends,omitempty" xml:"recommends,omitempty" type:"Repeated"`
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPart) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPart) SetRecommends(v []*GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends) *GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPart {
+	s.Recommends = v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends struct {
+	MobileUrl *string `json:"mobileUrl,omitempty" xml:"mobileUrl,omitempty"`
+	Text      *string `json:"text,omitempty" xml:"text,omitempty"`
+	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends) SetMobileUrl(v string) *GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends {
+	s.MobileUrl = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends) SetText(v string) *GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends {
+	s.Text = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends) SetUrl(v string) *GetAssistantCapabilityRequestMessagesContentStructViewPartsRecommendPartRecommends {
+	s.Url = &v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePart struct {
+	References []*GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences `json:"references,omitempty" xml:"references,omitempty" type:"Repeated"`
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePart) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePart) SetReferences(v []*GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences) *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePart {
+	s.References = v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences struct {
+	// example:
+	//
+	// 0
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// example:
+	//
+	// mcp是....
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// ata
+	SourceCode *string `json:"sourceCode,omitempty" xml:"sourceCode,omitempty"`
+	SourceIcon *string `json:"sourceIcon,omitempty" xml:"sourceIcon,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// 《mcp原理介绍》
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// https://taobao.com
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences) SetIndex(v string) *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Index = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences) SetName(v string) *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences) SetSourceCode(v string) *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.SourceCode = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences) SetSourceIcon(v string) *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.SourceIcon = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences) SetSummary(v string) *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Summary = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences) SetTitle(v string) *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Title = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences) SetUrl(v string) *GetAssistantCapabilityRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Url = &v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContentStructViewPartsTextPart struct {
+	// example:
+	//
+	// 123123
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewPartsTextPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestMessagesContentStructViewPartsTextPart) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestMessagesContentStructViewPartsTextPart) SetText(v string) *GetAssistantCapabilityRequestMessagesContentStructViewPartsTextPart {
+	s.Text = &v
+	return s
+}
+
+type GetAssistantCapabilityRequestMessagesContentText struct {
 	// example:
 	//
 	// 你好！
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s GetAssistantCapabilityRequestContentText) String() string {
+func (s GetAssistantCapabilityRequestMessagesContentText) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetAssistantCapabilityRequestContentText) GoString() string {
+func (s GetAssistantCapabilityRequestMessagesContentText) GoString() string {
 	return s.String()
 }
 
-func (s *GetAssistantCapabilityRequestContentText) SetValue(v string) *GetAssistantCapabilityRequestContentText {
+func (s *GetAssistantCapabilityRequestMessagesContentText) SetValue(v string) *GetAssistantCapabilityRequestMessagesContentText {
 	s.Value = &v
 	return s
 }
@@ -26078,14 +27486,6 @@ type GetAssistantCapabilityResponseBody struct {
 	//
 	// {}
 	CapabilityAssessment *GetAssistantCapabilityResponseBodyCapabilityAssessment `json:"capabilityAssessment,omitempty" xml:"capabilityAssessment,omitempty" type:"Struct"`
-	// example:
-	//
-	// id1
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// {}
-	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// example:
 	//
 	// requestId
@@ -26112,16 +27512,6 @@ func (s *GetAssistantCapabilityResponseBody) SetCanHandle(v bool) *GetAssistantC
 
 func (s *GetAssistantCapabilityResponseBody) SetCapabilityAssessment(v *GetAssistantCapabilityResponseBodyCapabilityAssessment) *GetAssistantCapabilityResponseBody {
 	s.CapabilityAssessment = v
-	return s
-}
-
-func (s *GetAssistantCapabilityResponseBody) SetId(v string) *GetAssistantCapabilityResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *GetAssistantCapabilityResponseBody) SetMetadata(v map[string]interface{}) *GetAssistantCapabilityResponseBody {
-	s.Metadata = v
 	return s
 }
 
@@ -26170,10 +27560,6 @@ type GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList struct
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// example:
 	//
-	// {}
-	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// example:
-	//
 	// 能力名称
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
@@ -26193,11 +27579,6 @@ func (s *GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList) S
 
 func (s *GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList) SetDescription(v string) *GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList {
 	s.Description = &v
-	return s
-}
-
-func (s *GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList) SetMetadata(v map[string]interface{}) *GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList {
-	s.Metadata = v
 	return s
 }
 
@@ -49855,29 +51236,23 @@ type InvokeAssistantRequest struct {
 	// assistantId1
 	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
 	// This parameter is required.
-	//
+	Messages []*InvokeAssistantRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// example:
 	//
-	// [
-	//
-	//     {
-	//
-	//         "type": "text",
-	//
-	//         "text": "你好"
-	//
-	//     }
-	//
-	// ]
-	Content []*InvokeAssistantRequestContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
-	// example:
-	//
-	// []
-	History []*InvokeAssistantRequestHistory `json:"history,omitempty" xml:"history,omitempty" type:"Repeated"`
+	// assistantId2
+	OriginalAssistantId *string `json:"originalAssistantId,omitempty" xml:"originalAssistantId,omitempty"`
 	// example:
 	//
 	// sessionId1
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// agentKey1
+	SourceIdOfOriginalAssistantId *string `json:"sourceIdOfOriginalAssistantId,omitempty" xml:"sourceIdOfOriginalAssistantId,omitempty"`
+	// example:
+	//
+	// 1
+	SourceTypeOfOriginalAssistantId *string `json:"sourceTypeOfOriginalAssistantId,omitempty" xml:"sourceTypeOfOriginalAssistantId,omitempty"`
 	// example:
 	//
 	// false
@@ -49897,13 +51272,13 @@ func (s *InvokeAssistantRequest) SetAssistantId(v string) *InvokeAssistantReques
 	return s
 }
 
-func (s *InvokeAssistantRequest) SetContent(v []*InvokeAssistantRequestContent) *InvokeAssistantRequest {
-	s.Content = v
+func (s *InvokeAssistantRequest) SetMessages(v []*InvokeAssistantRequestMessages) *InvokeAssistantRequest {
+	s.Messages = v
 	return s
 }
 
-func (s *InvokeAssistantRequest) SetHistory(v []*InvokeAssistantRequestHistory) *InvokeAssistantRequest {
-	s.History = v
+func (s *InvokeAssistantRequest) SetOriginalAssistantId(v string) *InvokeAssistantRequest {
+	s.OriginalAssistantId = &v
 	return s
 }
 
@@ -49912,357 +51287,160 @@ func (s *InvokeAssistantRequest) SetSessionId(v string) *InvokeAssistantRequest 
 	return s
 }
 
+func (s *InvokeAssistantRequest) SetSourceIdOfOriginalAssistantId(v string) *InvokeAssistantRequest {
+	s.SourceIdOfOriginalAssistantId = &v
+	return s
+}
+
+func (s *InvokeAssistantRequest) SetSourceTypeOfOriginalAssistantId(v string) *InvokeAssistantRequest {
+	s.SourceTypeOfOriginalAssistantId = &v
+	return s
+}
+
 func (s *InvokeAssistantRequest) SetStream(v bool) *InvokeAssistantRequest {
 	s.Stream = &v
 	return s
 }
 
-type InvokeAssistantRequestContent struct {
-	CardCallback *InvokeAssistantRequestContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
-	DingCard     *InvokeAssistantRequestContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
-	ImageUrl     *InvokeAssistantRequestContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
-	Markdown     *InvokeAssistantRequestContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
-	Text         *InvokeAssistantRequestContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
-	// This parameter is required.
-	//
+type InvokeAssistantRequestMessages struct {
+	Content *InvokeAssistantRequestMessagesContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
 	// example:
 	//
-	// text
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s InvokeAssistantRequestContent) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InvokeAssistantRequestContent) GoString() string {
-	return s.String()
-}
-
-func (s *InvokeAssistantRequestContent) SetCardCallback(v *InvokeAssistantRequestContentCardCallback) *InvokeAssistantRequestContent {
-	s.CardCallback = v
-	return s
-}
-
-func (s *InvokeAssistantRequestContent) SetDingCard(v *InvokeAssistantRequestContentDingCard) *InvokeAssistantRequestContent {
-	s.DingCard = v
-	return s
-}
-
-func (s *InvokeAssistantRequestContent) SetImageUrl(v *InvokeAssistantRequestContentImageUrl) *InvokeAssistantRequestContent {
-	s.ImageUrl = v
-	return s
-}
-
-func (s *InvokeAssistantRequestContent) SetMarkdown(v *InvokeAssistantRequestContentMarkdown) *InvokeAssistantRequestContent {
-	s.Markdown = v
-	return s
-}
-
-func (s *InvokeAssistantRequestContent) SetText(v *InvokeAssistantRequestContentText) *InvokeAssistantRequestContent {
-	s.Text = v
-	return s
-}
-
-func (s *InvokeAssistantRequestContent) SetType(v string) *InvokeAssistantRequestContent {
-	s.Type = &v
-	return s
-}
-
-type InvokeAssistantRequestContentCardCallback struct {
+	// 这是一张小猫钓鱼图
+	ContentDesc *string `json:"contentDesc,omitempty" xml:"contentDesc,omitempty"`
 	// example:
 	//
-	// {}
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// templateId123
-	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// example:
-	//
-	// 012345
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-}
-
-func (s InvokeAssistantRequestContentCardCallback) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InvokeAssistantRequestContentCardCallback) GoString() string {
-	return s.String()
-}
-
-func (s *InvokeAssistantRequestContentCardCallback) SetContent(v string) *InvokeAssistantRequestContentCardCallback {
-	s.Content = &v
-	return s
-}
-
-func (s *InvokeAssistantRequestContentCardCallback) SetTemplateId(v string) *InvokeAssistantRequestContentCardCallback {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *InvokeAssistantRequestContentCardCallback) SetUserId(v string) *InvokeAssistantRequestContentCardCallback {
-	s.UserId = &v
-	return s
-}
-
-type InvokeAssistantRequestContentDingCard struct {
-	// example:
-	//
-	// 卡片描述
-	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
-	// example:
-	//
-	// {}
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// basic_card_schema
-	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// example:
-	//
-	// true
-	Finished *bool `json:"finished,omitempty" xml:"finished,omitempty"`
-	// example:
-	//
-	// templateId123
-	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-}
-
-func (s InvokeAssistantRequestContentDingCard) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InvokeAssistantRequestContentDingCard) GoString() string {
-	return s.String()
-}
-
-func (s *InvokeAssistantRequestContentDingCard) SetCardDesc(v string) *InvokeAssistantRequestContentDingCard {
-	s.CardDesc = &v
-	return s
-}
-
-func (s *InvokeAssistantRequestContentDingCard) SetContent(v string) *InvokeAssistantRequestContentDingCard {
-	s.Content = &v
-	return s
-}
-
-func (s *InvokeAssistantRequestContentDingCard) SetContentType(v string) *InvokeAssistantRequestContentDingCard {
-	s.ContentType = &v
-	return s
-}
-
-func (s *InvokeAssistantRequestContentDingCard) SetFinished(v bool) *InvokeAssistantRequestContentDingCard {
-	s.Finished = &v
-	return s
-}
-
-func (s *InvokeAssistantRequestContentDingCard) SetTemplateId(v string) *InvokeAssistantRequestContentDingCard {
-	s.TemplateId = &v
-	return s
-}
-
-type InvokeAssistantRequestContentImageUrl struct {
-	// example:
-	//
-	// auto
-	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
-	// example:
-	//
-	// https://img.alicdn.com/1234.png
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
-}
-
-func (s InvokeAssistantRequestContentImageUrl) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InvokeAssistantRequestContentImageUrl) GoString() string {
-	return s.String()
-}
-
-func (s *InvokeAssistantRequestContentImageUrl) SetDetail(v string) *InvokeAssistantRequestContentImageUrl {
-	s.Detail = &v
-	return s
-}
-
-func (s *InvokeAssistantRequestContentImageUrl) SetImageDesc(v string) *InvokeAssistantRequestContentImageUrl {
-	s.ImageDesc = &v
-	return s
-}
-
-func (s *InvokeAssistantRequestContentImageUrl) SetUrl(v string) *InvokeAssistantRequestContentImageUrl {
-	s.Url = &v
-	return s
-}
-
-type InvokeAssistantRequestContentMarkdown struct {
-	// example:
-	//
-	// 1. markdown内容
-	//
-	// 2. markdown内容
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s InvokeAssistantRequestContentMarkdown) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InvokeAssistantRequestContentMarkdown) GoString() string {
-	return s.String()
-}
-
-func (s *InvokeAssistantRequestContentMarkdown) SetValue(v string) *InvokeAssistantRequestContentMarkdown {
-	s.Value = &v
-	return s
-}
-
-type InvokeAssistantRequestContentText struct {
-	// example:
-	//
-	// 你好！
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s InvokeAssistantRequestContentText) String() string {
-	return tea.Prettify(s)
-}
-
-func (s InvokeAssistantRequestContentText) GoString() string {
-	return s.String()
-}
-
-func (s *InvokeAssistantRequestContentText) SetValue(v string) *InvokeAssistantRequestContentText {
-	s.Value = &v
-	return s
-}
-
-type InvokeAssistantRequestHistory struct {
-	Content []*InvokeAssistantRequestHistoryContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
+	// 1642448000000
+	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
 	// example:
 	//
 	// user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 
-func (s InvokeAssistantRequestHistory) String() string {
+func (s InvokeAssistantRequestMessages) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InvokeAssistantRequestHistory) GoString() string {
+func (s InvokeAssistantRequestMessages) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeAssistantRequestHistory) SetContent(v []*InvokeAssistantRequestHistoryContent) *InvokeAssistantRequestHistory {
+func (s *InvokeAssistantRequestMessages) SetContent(v *InvokeAssistantRequestMessagesContent) *InvokeAssistantRequestMessages {
 	s.Content = v
 	return s
 }
 
-func (s *InvokeAssistantRequestHistory) SetRole(v string) *InvokeAssistantRequestHistory {
+func (s *InvokeAssistantRequestMessages) SetContentDesc(v string) *InvokeAssistantRequestMessages {
+	s.ContentDesc = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessages) SetCreateAt(v int64) *InvokeAssistantRequestMessages {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessages) SetRole(v string) *InvokeAssistantRequestMessages {
 	s.Role = &v
 	return s
 }
 
-type InvokeAssistantRequestHistoryContent struct {
-	CardCallback *InvokeAssistantRequestHistoryContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
-	DingCard     *InvokeAssistantRequestHistoryContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
-	ImageUrl     *InvokeAssistantRequestHistoryContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
-	Markdown     *InvokeAssistantRequestHistoryContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
-	Text         *InvokeAssistantRequestHistoryContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+type InvokeAssistantRequestMessagesContent struct {
+	CardCallback *InvokeAssistantRequestMessagesContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *InvokeAssistantRequestMessagesContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	DingNormalCard *InvokeAssistantRequestMessagesContentDingNormalCard `json:"dingNormalCard,omitempty" xml:"dingNormalCard,omitempty" type:"Struct"`
+	Markdown       *InvokeAssistantRequestMessagesContentMarkdown       `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	StructView     *InvokeAssistantRequestMessagesContentStructView     `json:"structView,omitempty" xml:"structView,omitempty" type:"Struct"`
+	Text           *InvokeAssistantRequestMessagesContentText           `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// text
+	// 枚举字段，可为：text,markdown,cardCallback,dingCard,agentArtifact,dingNormalCard
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
-func (s InvokeAssistantRequestHistoryContent) String() string {
+func (s InvokeAssistantRequestMessagesContent) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InvokeAssistantRequestHistoryContent) GoString() string {
+func (s InvokeAssistantRequestMessagesContent) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeAssistantRequestHistoryContent) SetCardCallback(v *InvokeAssistantRequestHistoryContentCardCallback) *InvokeAssistantRequestHistoryContent {
+func (s *InvokeAssistantRequestMessagesContent) SetCardCallback(v *InvokeAssistantRequestMessagesContentCardCallback) *InvokeAssistantRequestMessagesContent {
 	s.CardCallback = v
 	return s
 }
 
-func (s *InvokeAssistantRequestHistoryContent) SetDingCard(v *InvokeAssistantRequestHistoryContentDingCard) *InvokeAssistantRequestHistoryContent {
+func (s *InvokeAssistantRequestMessagesContent) SetDingCard(v *InvokeAssistantRequestMessagesContentDingCard) *InvokeAssistantRequestMessagesContent {
 	s.DingCard = v
 	return s
 }
 
-func (s *InvokeAssistantRequestHistoryContent) SetImageUrl(v *InvokeAssistantRequestHistoryContentImageUrl) *InvokeAssistantRequestHistoryContent {
-	s.ImageUrl = v
+func (s *InvokeAssistantRequestMessagesContent) SetDingNormalCard(v *InvokeAssistantRequestMessagesContentDingNormalCard) *InvokeAssistantRequestMessagesContent {
+	s.DingNormalCard = v
 	return s
 }
 
-func (s *InvokeAssistantRequestHistoryContent) SetMarkdown(v *InvokeAssistantRequestHistoryContentMarkdown) *InvokeAssistantRequestHistoryContent {
+func (s *InvokeAssistantRequestMessagesContent) SetMarkdown(v *InvokeAssistantRequestMessagesContentMarkdown) *InvokeAssistantRequestMessagesContent {
 	s.Markdown = v
 	return s
 }
 
-func (s *InvokeAssistantRequestHistoryContent) SetText(v *InvokeAssistantRequestHistoryContentText) *InvokeAssistantRequestHistoryContent {
+func (s *InvokeAssistantRequestMessagesContent) SetStructView(v *InvokeAssistantRequestMessagesContentStructView) *InvokeAssistantRequestMessagesContent {
+	s.StructView = v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContent) SetText(v *InvokeAssistantRequestMessagesContentText) *InvokeAssistantRequestMessagesContent {
 	s.Text = v
 	return s
 }
 
-func (s *InvokeAssistantRequestHistoryContent) SetType(v string) *InvokeAssistantRequestHistoryContent {
+func (s *InvokeAssistantRequestMessagesContent) SetType(v string) *InvokeAssistantRequestMessagesContent {
 	s.Type = &v
 	return s
 }
 
-type InvokeAssistantRequestHistoryContentCardCallback struct {
+type InvokeAssistantRequestMessagesContentCardCallback struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
-	// templateId123
-	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// example:
-	//
-	// 012345
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// aliding_messageId123
+	RelatedMessageId *string `json:"relatedMessageId,omitempty" xml:"relatedMessageId,omitempty"`
 }
 
-func (s InvokeAssistantRequestHistoryContentCardCallback) String() string {
+func (s InvokeAssistantRequestMessagesContentCardCallback) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InvokeAssistantRequestHistoryContentCardCallback) GoString() string {
+func (s InvokeAssistantRequestMessagesContentCardCallback) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeAssistantRequestHistoryContentCardCallback) SetContent(v string) *InvokeAssistantRequestHistoryContentCardCallback {
+func (s *InvokeAssistantRequestMessagesContentCardCallback) SetContent(v string) *InvokeAssistantRequestMessagesContentCardCallback {
 	s.Content = &v
 	return s
 }
 
-func (s *InvokeAssistantRequestHistoryContentCardCallback) SetTemplateId(v string) *InvokeAssistantRequestHistoryContentCardCallback {
-	s.TemplateId = &v
+func (s *InvokeAssistantRequestMessagesContentCardCallback) SetRelatedMessageId(v string) *InvokeAssistantRequestMessagesContentCardCallback {
+	s.RelatedMessageId = &v
 	return s
 }
 
-func (s *InvokeAssistantRequestHistoryContentCardCallback) SetUserId(v string) *InvokeAssistantRequestHistoryContentCardCallback {
-	s.UserId = &v
-	return s
-}
-
-type InvokeAssistantRequestHistoryContentDingCard struct {
-	// example:
-	//
-	// 卡片描述
-	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
+type InvokeAssistantRequestMessagesContentDingCard struct {
 	// example:
 	//
 	// {}
@@ -50283,75 +51461,216 @@ type InvokeAssistantRequestHistoryContentDingCard struct {
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
 }
 
-func (s InvokeAssistantRequestHistoryContentDingCard) String() string {
+func (s InvokeAssistantRequestMessagesContentDingCard) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InvokeAssistantRequestHistoryContentDingCard) GoString() string {
+func (s InvokeAssistantRequestMessagesContentDingCard) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeAssistantRequestHistoryContentDingCard) SetCardDesc(v string) *InvokeAssistantRequestHistoryContentDingCard {
-	s.CardDesc = &v
-	return s
-}
-
-func (s *InvokeAssistantRequestHistoryContentDingCard) SetContent(v string) *InvokeAssistantRequestHistoryContentDingCard {
+func (s *InvokeAssistantRequestMessagesContentDingCard) SetContent(v string) *InvokeAssistantRequestMessagesContentDingCard {
 	s.Content = &v
 	return s
 }
 
-func (s *InvokeAssistantRequestHistoryContentDingCard) SetContentType(v string) *InvokeAssistantRequestHistoryContentDingCard {
+func (s *InvokeAssistantRequestMessagesContentDingCard) SetContentType(v string) *InvokeAssistantRequestMessagesContentDingCard {
 	s.ContentType = &v
 	return s
 }
 
-func (s *InvokeAssistantRequestHistoryContentDingCard) SetFinished(v bool) *InvokeAssistantRequestHistoryContentDingCard {
+func (s *InvokeAssistantRequestMessagesContentDingCard) SetFinished(v bool) *InvokeAssistantRequestMessagesContentDingCard {
 	s.Finished = &v
 	return s
 }
 
-func (s *InvokeAssistantRequestHistoryContentDingCard) SetTemplateId(v string) *InvokeAssistantRequestHistoryContentDingCard {
+func (s *InvokeAssistantRequestMessagesContentDingCard) SetTemplateId(v string) *InvokeAssistantRequestMessagesContentDingCard {
 	s.TemplateId = &v
 	return s
 }
 
-type InvokeAssistantRequestHistoryContentImageUrl struct {
+type InvokeAssistantRequestMessagesContentDingNormalCard struct {
 	// example:
 	//
-	// auto
-	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
+	// {}
+	CardData *InvokeAssistantRequestMessagesContentDingNormalCardCardData `json:"cardData,omitempty" xml:"cardData,omitempty" type:"Struct"`
 	// example:
 	//
-	// https://img.alicdn.com/1234.png
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	// templateId1
+	CardTemplateId *string `json:"cardTemplateId,omitempty" xml:"cardTemplateId,omitempty"`
+	// example:
+	//
+	// {}
+	CardUpdateOptions *InvokeAssistantRequestMessagesContentDingNormalCardCardUpdateOptions `json:"cardUpdateOptions,omitempty" xml:"cardUpdateOptions,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	DynamicDataSourceConfigs []*InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs `json:"dynamicDataSourceConfigs,omitempty" xml:"dynamicDataSourceConfigs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	PrivateData map[string]map[string]interface{} `json:"privateData,omitempty" xml:"privateData,omitempty"`
 }
 
-func (s InvokeAssistantRequestHistoryContentImageUrl) String() string {
+func (s InvokeAssistantRequestMessagesContentDingNormalCard) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InvokeAssistantRequestHistoryContentImageUrl) GoString() string {
+func (s InvokeAssistantRequestMessagesContentDingNormalCard) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeAssistantRequestHistoryContentImageUrl) SetDetail(v string) *InvokeAssistantRequestHistoryContentImageUrl {
-	s.Detail = &v
+func (s *InvokeAssistantRequestMessagesContentDingNormalCard) SetCardData(v *InvokeAssistantRequestMessagesContentDingNormalCardCardData) *InvokeAssistantRequestMessagesContentDingNormalCard {
+	s.CardData = v
 	return s
 }
 
-func (s *InvokeAssistantRequestHistoryContentImageUrl) SetImageDesc(v string) *InvokeAssistantRequestHistoryContentImageUrl {
-	s.ImageDesc = &v
+func (s *InvokeAssistantRequestMessagesContentDingNormalCard) SetCardTemplateId(v string) *InvokeAssistantRequestMessagesContentDingNormalCard {
+	s.CardTemplateId = &v
 	return s
 }
 
-func (s *InvokeAssistantRequestHistoryContentImageUrl) SetUrl(v string) *InvokeAssistantRequestHistoryContentImageUrl {
-	s.Url = &v
+func (s *InvokeAssistantRequestMessagesContentDingNormalCard) SetCardUpdateOptions(v *InvokeAssistantRequestMessagesContentDingNormalCardCardUpdateOptions) *InvokeAssistantRequestMessagesContentDingNormalCard {
+	s.CardUpdateOptions = v
 	return s
 }
 
-type InvokeAssistantRequestHistoryContentMarkdown struct {
+func (s *InvokeAssistantRequestMessagesContentDingNormalCard) SetDynamicDataSourceConfigs(v []*InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) *InvokeAssistantRequestMessagesContentDingNormalCard {
+	s.DynamicDataSourceConfigs = v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentDingNormalCard) SetPrivateData(v map[string]map[string]interface{}) *InvokeAssistantRequestMessagesContentDingNormalCard {
+	s.PrivateData = v
+	return s
+}
+
+type InvokeAssistantRequestMessagesContentDingNormalCardCardData struct {
+	// example:
+	//
+	// {}
+	CardParamMap map[string]interface{} `json:"cardParamMap,omitempty" xml:"cardParamMap,omitempty"`
+}
+
+func (s InvokeAssistantRequestMessagesContentDingNormalCardCardData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentDingNormalCardCardData) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentDingNormalCardCardData) SetCardParamMap(v map[string]interface{}) *InvokeAssistantRequestMessagesContentDingNormalCardCardData {
+	s.CardParamMap = v
+	return s
+}
+
+type InvokeAssistantRequestMessagesContentDingNormalCardCardUpdateOptions struct {
+	// example:
+	//
+	// {}
+	UpdateCardDataByKey *bool `json:"updateCardDataByKey,omitempty" xml:"updateCardDataByKey,omitempty"`
+	// example:
+	//
+	// {}
+	UpdatePrivateDataByKey *bool `json:"updatePrivateDataByKey,omitempty" xml:"updatePrivateDataByKey,omitempty"`
+}
+
+func (s InvokeAssistantRequestMessagesContentDingNormalCardCardUpdateOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentDingNormalCardCardUpdateOptions) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentDingNormalCardCardUpdateOptions) SetUpdateCardDataByKey(v bool) *InvokeAssistantRequestMessagesContentDingNormalCardCardUpdateOptions {
+	s.UpdateCardDataByKey = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentDingNormalCardCardUpdateOptions) SetUpdatePrivateDataByKey(v bool) *InvokeAssistantRequestMessagesContentDingNormalCardCardUpdateOptions {
+	s.UpdatePrivateDataByKey = &v
+	return s
+}
+
+type InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs struct {
+	// example:
+	//
+	// {}
+	ConstParams map[string]interface{} `json:"constParams,omitempty" xml:"constParams,omitempty"`
+	// example:
+	//
+	// dynamicDataSourceId1
+	DynamicDataSourceId *string `json:"dynamicDataSourceId,omitempty" xml:"dynamicDataSourceId,omitempty"`
+	// example:
+	//
+	// {}
+	PullConfig *InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig `json:"pullConfig,omitempty" xml:"pullConfig,omitempty" type:"Struct"`
+}
+
+func (s InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) SetConstParams(v map[string]interface{}) *InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.ConstParams = v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) SetDynamicDataSourceId(v string) *InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.DynamicDataSourceId = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs) SetPullConfig(v *InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) *InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.PullConfig = v
+	return s
+}
+
+type InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig struct {
+	// example:
+	//
+	// 3
+	Interval *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
+	// example:
+	//
+	// NONE
+	PullStrategy *string `json:"pullStrategy,omitempty" xml:"pullStrategy,omitempty"`
+	// example:
+	//
+	// SECONDS
+	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+}
+
+func (s InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetInterval(v int32) *InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.Interval = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetPullStrategy(v string) *InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.PullStrategy = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetTimeUnit(v string) *InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.TimeUnit = &v
+	return s
+}
+
+type InvokeAssistantRequestMessagesContentMarkdown struct {
 	// example:
 	//
 	// 1. markdown内容
@@ -50360,44 +51679,346 @@ type InvokeAssistantRequestHistoryContentMarkdown struct {
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s InvokeAssistantRequestHistoryContentMarkdown) String() string {
+func (s InvokeAssistantRequestMessagesContentMarkdown) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InvokeAssistantRequestHistoryContentMarkdown) GoString() string {
+func (s InvokeAssistantRequestMessagesContentMarkdown) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeAssistantRequestHistoryContentMarkdown) SetValue(v string) *InvokeAssistantRequestHistoryContentMarkdown {
+func (s *InvokeAssistantRequestMessagesContentMarkdown) SetValue(v string) *InvokeAssistantRequestMessagesContentMarkdown {
 	s.Value = &v
 	return s
 }
 
-type InvokeAssistantRequestHistoryContentText struct {
+type InvokeAssistantRequestMessagesContentStructView struct {
+	Parts []*InvokeAssistantRequestMessagesContentStructViewParts `json:"parts,omitempty" xml:"parts,omitempty" type:"Repeated"`
+}
+
+func (s InvokeAssistantRequestMessagesContentStructView) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentStructView) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructView) SetParts(v []*InvokeAssistantRequestMessagesContentStructViewParts) *InvokeAssistantRequestMessagesContentStructView {
+	s.Parts = v
+	return s
+}
+
+type InvokeAssistantRequestMessagesContentStructViewParts struct {
+	Append *bool `json:"append,omitempty" xml:"append,omitempty"`
+	// example:
+	//
+	// {}
+	DataPart *InvokeAssistantRequestMessagesContentStructViewPartsDataPart `json:"dataPart,omitempty" xml:"dataPart,omitempty" type:"Struct"`
+	Finish   *bool                                                         `json:"finish,omitempty" xml:"finish,omitempty"`
+	// example:
+	//
+	// 这是正文内容部分
+	PartDesc *string `json:"partDesc,omitempty" xml:"partDesc,omitempty"`
+	// example:
+	//
+	// artifactId123
+	PartId *string `json:"partId,omitempty" xml:"partId,omitempty"`
+	// example:
+	//
+	// {}
+	ReasonPart *InvokeAssistantRequestMessagesContentStructViewPartsReasonPart `json:"reasonPart,omitempty" xml:"reasonPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	RecommendPart *InvokeAssistantRequestMessagesContentStructViewPartsRecommendPart `json:"recommendPart,omitempty" xml:"recommendPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	ReferencePart *InvokeAssistantRequestMessagesContentStructViewPartsReferencePart `json:"referencePart,omitempty" xml:"referencePart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	TextPart *InvokeAssistantRequestMessagesContentStructViewPartsTextPart `json:"textPart,omitempty" xml:"textPart,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// textPart
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewParts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewParts) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewParts) SetAppend(v bool) *InvokeAssistantRequestMessagesContentStructViewParts {
+	s.Append = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewParts) SetDataPart(v *InvokeAssistantRequestMessagesContentStructViewPartsDataPart) *InvokeAssistantRequestMessagesContentStructViewParts {
+	s.DataPart = v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewParts) SetFinish(v bool) *InvokeAssistantRequestMessagesContentStructViewParts {
+	s.Finish = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewParts) SetPartDesc(v string) *InvokeAssistantRequestMessagesContentStructViewParts {
+	s.PartDesc = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewParts) SetPartId(v string) *InvokeAssistantRequestMessagesContentStructViewParts {
+	s.PartId = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewParts) SetReasonPart(v *InvokeAssistantRequestMessagesContentStructViewPartsReasonPart) *InvokeAssistantRequestMessagesContentStructViewParts {
+	s.ReasonPart = v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewParts) SetRecommendPart(v *InvokeAssistantRequestMessagesContentStructViewPartsRecommendPart) *InvokeAssistantRequestMessagesContentStructViewParts {
+	s.RecommendPart = v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewParts) SetReferencePart(v *InvokeAssistantRequestMessagesContentStructViewPartsReferencePart) *InvokeAssistantRequestMessagesContentStructViewParts {
+	s.ReferencePart = v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewParts) SetTextPart(v *InvokeAssistantRequestMessagesContentStructViewPartsTextPart) *InvokeAssistantRequestMessagesContentStructViewParts {
+	s.TextPart = v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewParts) SetType(v string) *InvokeAssistantRequestMessagesContentStructViewParts {
+	s.Type = &v
+	return s
+}
+
+type InvokeAssistantRequestMessagesContentStructViewPartsDataPart struct {
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewPartsDataPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewPartsDataPart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsDataPart) SetData(v interface{}) *InvokeAssistantRequestMessagesContentStructViewPartsDataPart {
+	s.Data = v
+	return s
+}
+
+type InvokeAssistantRequestMessagesContentStructViewPartsReasonPart struct {
+	// example:
+	//
+	// 123123
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewPartsReasonPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewPartsReasonPart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsReasonPart) SetReason(v string) *InvokeAssistantRequestMessagesContentStructViewPartsReasonPart {
+	s.Reason = &v
+	return s
+}
+
+type InvokeAssistantRequestMessagesContentStructViewPartsRecommendPart struct {
+	Recommends []*InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends `json:"recommends,omitempty" xml:"recommends,omitempty" type:"Repeated"`
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewPartsRecommendPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewPartsRecommendPart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsRecommendPart) SetRecommends(v []*InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends) *InvokeAssistantRequestMessagesContentStructViewPartsRecommendPart {
+	s.Recommends = v
+	return s
+}
+
+type InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends struct {
+	MobileUrl *string `json:"mobileUrl,omitempty" xml:"mobileUrl,omitempty"`
+	Text      *string `json:"text,omitempty" xml:"text,omitempty"`
+	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends) SetMobileUrl(v string) *InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends {
+	s.MobileUrl = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends) SetText(v string) *InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends {
+	s.Text = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends) SetUrl(v string) *InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends {
+	s.Url = &v
+	return s
+}
+
+type InvokeAssistantRequestMessagesContentStructViewPartsReferencePart struct {
+	References []*InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences `json:"references,omitempty" xml:"references,omitempty" type:"Repeated"`
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewPartsReferencePart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewPartsReferencePart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsReferencePart) SetReferences(v []*InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences) *InvokeAssistantRequestMessagesContentStructViewPartsReferencePart {
+	s.References = v
+	return s
+}
+
+type InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences struct {
+	// example:
+	//
+	// 0
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// example:
+	//
+	// mcp是....
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// ata
+	SourceCode *string `json:"sourceCode,omitempty" xml:"sourceCode,omitempty"`
+	SourceIcon *string `json:"sourceIcon,omitempty" xml:"sourceIcon,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// 《mcp原理介绍》
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// https://taobao.com
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences) SetIndex(v string) *InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Index = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences) SetName(v string) *InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Name = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences) SetSourceCode(v string) *InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.SourceCode = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences) SetSourceIcon(v string) *InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.SourceIcon = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences) SetSummary(v string) *InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Summary = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences) SetTitle(v string) *InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Title = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences) SetUrl(v string) *InvokeAssistantRequestMessagesContentStructViewPartsReferencePartReferences {
+	s.Url = &v
+	return s
+}
+
+type InvokeAssistantRequestMessagesContentStructViewPartsTextPart struct {
+	// example:
+	//
+	// 123123
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewPartsTextPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentStructViewPartsTextPart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentStructViewPartsTextPart) SetText(v string) *InvokeAssistantRequestMessagesContentStructViewPartsTextPart {
+	s.Text = &v
+	return s
+}
+
+type InvokeAssistantRequestMessagesContentText struct {
 	// example:
 	//
 	// 你好！
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s InvokeAssistantRequestHistoryContentText) String() string {
+func (s InvokeAssistantRequestMessagesContentText) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InvokeAssistantRequestHistoryContentText) GoString() string {
+func (s InvokeAssistantRequestMessagesContentText) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeAssistantRequestHistoryContentText) SetValue(v string) *InvokeAssistantRequestHistoryContentText {
+func (s *InvokeAssistantRequestMessagesContentText) SetValue(v string) *InvokeAssistantRequestMessagesContentText {
 	s.Value = &v
 	return s
 }
 
 type InvokeAssistantResponseBody struct {
-	// example:
-	//
-	// []
-	Content []*InvokeAssistantResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
+	Messages []*InvokeAssistantResponseBodyMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -50420,8 +52041,8 @@ func (s InvokeAssistantResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeAssistantResponseBody) SetContent(v []*InvokeAssistantResponseBodyContent) *InvokeAssistantResponseBody {
-	s.Content = v
+func (s *InvokeAssistantResponseBody) SetMessages(v []*InvokeAssistantResponseBodyMessages) *InvokeAssistantResponseBody {
+	s.Messages = v
 	return s
 }
 
@@ -50440,103 +52061,147 @@ func (s *InvokeAssistantResponseBody) SetStreamEnd(v bool) *InvokeAssistantRespo
 	return s
 }
 
-type InvokeAssistantResponseBodyContent struct {
-	CardCallback *InvokeAssistantResponseBodyContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
-	DingCard     *InvokeAssistantResponseBodyContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
-	ImageUrl     *InvokeAssistantResponseBodyContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
-	Markdown     *InvokeAssistantResponseBodyContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
-	Text         *InvokeAssistantResponseBodyContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+type InvokeAssistantResponseBodyMessages struct {
+	Content *InvokeAssistantResponseBodyMessagesContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
 	// example:
 	//
-	// text
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// 这是一张小猫钓鱼图
+	ContentDesc *string `json:"contentDesc,omitempty" xml:"contentDesc,omitempty"`
+	// example:
+	//
+	// 1642448000000
+	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 }
 
-func (s InvokeAssistantResponseBodyContent) String() string {
+func (s InvokeAssistantResponseBodyMessages) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InvokeAssistantResponseBodyContent) GoString() string {
+func (s InvokeAssistantResponseBodyMessages) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeAssistantResponseBodyContent) SetCardCallback(v *InvokeAssistantResponseBodyContentCardCallback) *InvokeAssistantResponseBodyContent {
+func (s *InvokeAssistantResponseBodyMessages) SetContent(v *InvokeAssistantResponseBodyMessagesContent) *InvokeAssistantResponseBodyMessages {
+	s.Content = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessages) SetContentDesc(v string) *InvokeAssistantResponseBodyMessages {
+	s.ContentDesc = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessages) SetCreateAt(v int64) *InvokeAssistantResponseBodyMessages {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessages) SetRole(v string) *InvokeAssistantResponseBodyMessages {
+	s.Role = &v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContent struct {
+	CardCallback *InvokeAssistantResponseBodyMessagesContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *InvokeAssistantResponseBodyMessagesContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	DingNormalCard *InvokeAssistantResponseBodyMessagesContentDingNormalCard `json:"dingNormalCard,omitempty" xml:"dingNormalCard,omitempty" type:"Struct"`
+	Markdown       *InvokeAssistantResponseBodyMessagesContentMarkdown       `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	StructView     *InvokeAssistantResponseBodyMessagesContentStructView     `json:"structView,omitempty" xml:"structView,omitempty" type:"Struct"`
+	Text           *InvokeAssistantResponseBodyMessagesContentText           `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 枚举字段，可为：text,markdown,cardCallback,dingCard,agentArtifact,dingNormalCard
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContent) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContent) SetCardCallback(v *InvokeAssistantResponseBodyMessagesContentCardCallback) *InvokeAssistantResponseBodyMessagesContent {
 	s.CardCallback = v
 	return s
 }
 
-func (s *InvokeAssistantResponseBodyContent) SetDingCard(v *InvokeAssistantResponseBodyContentDingCard) *InvokeAssistantResponseBodyContent {
+func (s *InvokeAssistantResponseBodyMessagesContent) SetDingCard(v *InvokeAssistantResponseBodyMessagesContentDingCard) *InvokeAssistantResponseBodyMessagesContent {
 	s.DingCard = v
 	return s
 }
 
-func (s *InvokeAssistantResponseBodyContent) SetImageUrl(v *InvokeAssistantResponseBodyContentImageUrl) *InvokeAssistantResponseBodyContent {
-	s.ImageUrl = v
+func (s *InvokeAssistantResponseBodyMessagesContent) SetDingNormalCard(v *InvokeAssistantResponseBodyMessagesContentDingNormalCard) *InvokeAssistantResponseBodyMessagesContent {
+	s.DingNormalCard = v
 	return s
 }
 
-func (s *InvokeAssistantResponseBodyContent) SetMarkdown(v *InvokeAssistantResponseBodyContentMarkdown) *InvokeAssistantResponseBodyContent {
+func (s *InvokeAssistantResponseBodyMessagesContent) SetMarkdown(v *InvokeAssistantResponseBodyMessagesContentMarkdown) *InvokeAssistantResponseBodyMessagesContent {
 	s.Markdown = v
 	return s
 }
 
-func (s *InvokeAssistantResponseBodyContent) SetText(v *InvokeAssistantResponseBodyContentText) *InvokeAssistantResponseBodyContent {
+func (s *InvokeAssistantResponseBodyMessagesContent) SetStructView(v *InvokeAssistantResponseBodyMessagesContentStructView) *InvokeAssistantResponseBodyMessagesContent {
+	s.StructView = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContent) SetText(v *InvokeAssistantResponseBodyMessagesContentText) *InvokeAssistantResponseBodyMessagesContent {
 	s.Text = v
 	return s
 }
 
-func (s *InvokeAssistantResponseBodyContent) SetType(v string) *InvokeAssistantResponseBodyContent {
+func (s *InvokeAssistantResponseBodyMessagesContent) SetType(v string) *InvokeAssistantResponseBodyMessagesContent {
 	s.Type = &v
 	return s
 }
 
-type InvokeAssistantResponseBodyContentCardCallback struct {
+type InvokeAssistantResponseBodyMessagesContentCardCallback struct {
 	// example:
 	//
 	// {}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// example:
 	//
-	// templateId123
-	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// example:
-	//
-	// 012345
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// aliding_messageId123
+	RelatedMessageId *string `json:"relatedMessageId,omitempty" xml:"relatedMessageId,omitempty"`
 }
 
-func (s InvokeAssistantResponseBodyContentCardCallback) String() string {
+func (s InvokeAssistantResponseBodyMessagesContentCardCallback) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InvokeAssistantResponseBodyContentCardCallback) GoString() string {
+func (s InvokeAssistantResponseBodyMessagesContentCardCallback) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeAssistantResponseBodyContentCardCallback) SetContent(v string) *InvokeAssistantResponseBodyContentCardCallback {
+func (s *InvokeAssistantResponseBodyMessagesContentCardCallback) SetContent(v string) *InvokeAssistantResponseBodyMessagesContentCardCallback {
 	s.Content = &v
 	return s
 }
 
-func (s *InvokeAssistantResponseBodyContentCardCallback) SetTemplateId(v string) *InvokeAssistantResponseBodyContentCardCallback {
-	s.TemplateId = &v
+func (s *InvokeAssistantResponseBodyMessagesContentCardCallback) SetRelatedMessageId(v string) *InvokeAssistantResponseBodyMessagesContentCardCallback {
+	s.RelatedMessageId = &v
 	return s
 }
 
-func (s *InvokeAssistantResponseBodyContentCardCallback) SetUserId(v string) *InvokeAssistantResponseBodyContentCardCallback {
-	s.UserId = &v
-	return s
-}
-
-type InvokeAssistantResponseBodyContentDingCard struct {
-	// example:
-	//
-	// 卡片描述
-	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
+type InvokeAssistantResponseBodyMessagesContentDingCard struct {
 	// example:
 	//
 	// {}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// basic_card_schema
@@ -50551,75 +52216,216 @@ type InvokeAssistantResponseBodyContentDingCard struct {
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
 }
 
-func (s InvokeAssistantResponseBodyContentDingCard) String() string {
+func (s InvokeAssistantResponseBodyMessagesContentDingCard) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InvokeAssistantResponseBodyContentDingCard) GoString() string {
+func (s InvokeAssistantResponseBodyMessagesContentDingCard) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeAssistantResponseBodyContentDingCard) SetCardDesc(v string) *InvokeAssistantResponseBodyContentDingCard {
-	s.CardDesc = &v
-	return s
-}
-
-func (s *InvokeAssistantResponseBodyContentDingCard) SetContent(v string) *InvokeAssistantResponseBodyContentDingCard {
+func (s *InvokeAssistantResponseBodyMessagesContentDingCard) SetContent(v string) *InvokeAssistantResponseBodyMessagesContentDingCard {
 	s.Content = &v
 	return s
 }
 
-func (s *InvokeAssistantResponseBodyContentDingCard) SetContentType(v string) *InvokeAssistantResponseBodyContentDingCard {
+func (s *InvokeAssistantResponseBodyMessagesContentDingCard) SetContentType(v string) *InvokeAssistantResponseBodyMessagesContentDingCard {
 	s.ContentType = &v
 	return s
 }
 
-func (s *InvokeAssistantResponseBodyContentDingCard) SetFinished(v bool) *InvokeAssistantResponseBodyContentDingCard {
+func (s *InvokeAssistantResponseBodyMessagesContentDingCard) SetFinished(v bool) *InvokeAssistantResponseBodyMessagesContentDingCard {
 	s.Finished = &v
 	return s
 }
 
-func (s *InvokeAssistantResponseBodyContentDingCard) SetTemplateId(v string) *InvokeAssistantResponseBodyContentDingCard {
+func (s *InvokeAssistantResponseBodyMessagesContentDingCard) SetTemplateId(v string) *InvokeAssistantResponseBodyMessagesContentDingCard {
 	s.TemplateId = &v
 	return s
 }
 
-type InvokeAssistantResponseBodyContentImageUrl struct {
+type InvokeAssistantResponseBodyMessagesContentDingNormalCard struct {
 	// example:
 	//
-	// auto
-	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
+	// {}
+	CardData *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData `json:"cardData,omitempty" xml:"cardData,omitempty" type:"Struct"`
 	// example:
 	//
-	// https://img.alicdn.com/1234.png
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	// templateId1
+	CardTemplateId *string `json:"cardTemplateId,omitempty" xml:"cardTemplateId,omitempty"`
+	// example:
+	//
+	// {}
+	CardUpdateOptions *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardUpdateOptions `json:"cardUpdateOptions,omitempty" xml:"cardUpdateOptions,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	DynamicDataSourceConfigs []*InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs `json:"dynamicDataSourceConfigs,omitempty" xml:"dynamicDataSourceConfigs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	PrivateData map[string]map[string]interface{} `json:"privateData,omitempty" xml:"privateData,omitempty"`
 }
 
-func (s InvokeAssistantResponseBodyContentImageUrl) String() string {
+func (s InvokeAssistantResponseBodyMessagesContentDingNormalCard) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InvokeAssistantResponseBodyContentImageUrl) GoString() string {
+func (s InvokeAssistantResponseBodyMessagesContentDingNormalCard) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeAssistantResponseBodyContentImageUrl) SetDetail(v string) *InvokeAssistantResponseBodyContentImageUrl {
-	s.Detail = &v
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCard) SetCardData(v *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData) *InvokeAssistantResponseBodyMessagesContentDingNormalCard {
+	s.CardData = v
 	return s
 }
 
-func (s *InvokeAssistantResponseBodyContentImageUrl) SetImageDesc(v string) *InvokeAssistantResponseBodyContentImageUrl {
-	s.ImageDesc = &v
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCard) SetCardTemplateId(v string) *InvokeAssistantResponseBodyMessagesContentDingNormalCard {
+	s.CardTemplateId = &v
 	return s
 }
 
-func (s *InvokeAssistantResponseBodyContentImageUrl) SetUrl(v string) *InvokeAssistantResponseBodyContentImageUrl {
-	s.Url = &v
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCard) SetCardUpdateOptions(v *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardUpdateOptions) *InvokeAssistantResponseBodyMessagesContentDingNormalCard {
+	s.CardUpdateOptions = v
 	return s
 }
 
-type InvokeAssistantResponseBodyContentMarkdown struct {
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCard) SetDynamicDataSourceConfigs(v []*InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) *InvokeAssistantResponseBodyMessagesContentDingNormalCard {
+	s.DynamicDataSourceConfigs = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCard) SetPrivateData(v map[string]map[string]interface{}) *InvokeAssistantResponseBodyMessagesContentDingNormalCard {
+	s.PrivateData = v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData struct {
+	// example:
+	//
+	// {}
+	CardParamMap map[string]interface{} `json:"cardParamMap,omitempty" xml:"cardParamMap,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData) SetCardParamMap(v map[string]interface{}) *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardData {
+	s.CardParamMap = v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContentDingNormalCardCardUpdateOptions struct {
+	// example:
+	//
+	// {}
+	UpdateCardDataByKey *bool `json:"updateCardDataByKey,omitempty" xml:"updateCardDataByKey,omitempty"`
+	// example:
+	//
+	// {}
+	UpdatePrivateDataByKey *bool `json:"updatePrivateDataByKey,omitempty" xml:"updatePrivateDataByKey,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentDingNormalCardCardUpdateOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentDingNormalCardCardUpdateOptions) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardUpdateOptions) SetUpdateCardDataByKey(v bool) *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardUpdateOptions {
+	s.UpdateCardDataByKey = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardUpdateOptions) SetUpdatePrivateDataByKey(v bool) *InvokeAssistantResponseBodyMessagesContentDingNormalCardCardUpdateOptions {
+	s.UpdatePrivateDataByKey = &v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs struct {
+	// example:
+	//
+	// {}
+	ConstParams map[string]interface{} `json:"constParams,omitempty" xml:"constParams,omitempty"`
+	// example:
+	//
+	// dynamicDataSourceId1
+	DynamicDataSourceId *string `json:"dynamicDataSourceId,omitempty" xml:"dynamicDataSourceId,omitempty"`
+	// example:
+	//
+	// {}
+	PullConfig *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig `json:"pullConfig,omitempty" xml:"pullConfig,omitempty" type:"Struct"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) SetConstParams(v map[string]interface{}) *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.ConstParams = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) SetDynamicDataSourceId(v string) *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.DynamicDataSourceId = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) SetPullConfig(v *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.PullConfig = v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig struct {
+	// example:
+	//
+	// 3
+	Interval *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
+	// example:
+	//
+	// NONE
+	PullStrategy *string `json:"pullStrategy,omitempty" xml:"pullStrategy,omitempty"`
+	// example:
+	//
+	// SECONDS
+	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetInterval(v int32) *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.Interval = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetPullStrategy(v string) *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.PullStrategy = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetTimeUnit(v string) *InvokeAssistantResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.TimeUnit = &v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContentMarkdown struct {
 	// example:
 	//
 	// 1. markdown内容
@@ -50628,35 +52434,340 @@ type InvokeAssistantResponseBodyContentMarkdown struct {
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s InvokeAssistantResponseBodyContentMarkdown) String() string {
+func (s InvokeAssistantResponseBodyMessagesContentMarkdown) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InvokeAssistantResponseBodyContentMarkdown) GoString() string {
+func (s InvokeAssistantResponseBodyMessagesContentMarkdown) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeAssistantResponseBodyContentMarkdown) SetValue(v string) *InvokeAssistantResponseBodyContentMarkdown {
+func (s *InvokeAssistantResponseBodyMessagesContentMarkdown) SetValue(v string) *InvokeAssistantResponseBodyMessagesContentMarkdown {
 	s.Value = &v
 	return s
 }
 
-type InvokeAssistantResponseBodyContentText struct {
+type InvokeAssistantResponseBodyMessagesContentStructView struct {
+	Parts []*InvokeAssistantResponseBodyMessagesContentStructViewParts `json:"parts,omitempty" xml:"parts,omitempty" type:"Repeated"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructView) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructView) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructView) SetParts(v []*InvokeAssistantResponseBodyMessagesContentStructViewParts) *InvokeAssistantResponseBodyMessagesContentStructView {
+	s.Parts = v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructViewParts struct {
+	Append *bool `json:"append,omitempty" xml:"append,omitempty"`
+	// example:
+	//
+	// {}
+	DataPart *InvokeAssistantResponseBodyMessagesContentStructViewPartsDataPart `json:"dataPart,omitempty" xml:"dataPart,omitempty" type:"Struct"`
+	Finish   *bool                                                              `json:"finish,omitempty" xml:"finish,omitempty"`
+	// example:
+	//
+	// 这是正文内容部分
+	PartDesc *string `json:"partDesc,omitempty" xml:"partDesc,omitempty"`
+	// example:
+	//
+	// artifactId123
+	PartId *string `json:"partId,omitempty" xml:"partId,omitempty"`
+	// example:
+	//
+	// {}
+	ReasonPart *InvokeAssistantResponseBodyMessagesContentStructViewPartsReasonPart `json:"reasonPart,omitempty" xml:"reasonPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	RecommendPart *InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPart `json:"recommendPart,omitempty" xml:"recommendPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	ReferencePart *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePart `json:"referencePart,omitempty" xml:"referencePart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	TextPart *InvokeAssistantResponseBodyMessagesContentStructViewPartsTextPart `json:"textPart,omitempty" xml:"textPart,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// textPart
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewParts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewParts) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewParts) SetAppend(v bool) *InvokeAssistantResponseBodyMessagesContentStructViewParts {
+	s.Append = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewParts) SetDataPart(v *InvokeAssistantResponseBodyMessagesContentStructViewPartsDataPart) *InvokeAssistantResponseBodyMessagesContentStructViewParts {
+	s.DataPart = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewParts) SetFinish(v bool) *InvokeAssistantResponseBodyMessagesContentStructViewParts {
+	s.Finish = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewParts) SetPartDesc(v string) *InvokeAssistantResponseBodyMessagesContentStructViewParts {
+	s.PartDesc = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewParts) SetPartId(v string) *InvokeAssistantResponseBodyMessagesContentStructViewParts {
+	s.PartId = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewParts) SetReasonPart(v *InvokeAssistantResponseBodyMessagesContentStructViewPartsReasonPart) *InvokeAssistantResponseBodyMessagesContentStructViewParts {
+	s.ReasonPart = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewParts) SetRecommendPart(v *InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPart) *InvokeAssistantResponseBodyMessagesContentStructViewParts {
+	s.RecommendPart = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewParts) SetReferencePart(v *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePart) *InvokeAssistantResponseBodyMessagesContentStructViewParts {
+	s.ReferencePart = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewParts) SetTextPart(v *InvokeAssistantResponseBodyMessagesContentStructViewPartsTextPart) *InvokeAssistantResponseBodyMessagesContentStructViewParts {
+	s.TextPart = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewParts) SetType(v string) *InvokeAssistantResponseBodyMessagesContentStructViewParts {
+	s.Type = &v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructViewPartsDataPart struct {
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewPartsDataPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewPartsDataPart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsDataPart) SetData(v interface{}) *InvokeAssistantResponseBodyMessagesContentStructViewPartsDataPart {
+	s.Data = v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructViewPartsReasonPart struct {
+	// example:
+	//
+	// 123123
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewPartsReasonPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewPartsReasonPart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsReasonPart) SetReason(v string) *InvokeAssistantResponseBodyMessagesContentStructViewPartsReasonPart {
+	s.Reason = &v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPart struct {
+	Recommends []*InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends `json:"recommends,omitempty" xml:"recommends,omitempty" type:"Repeated"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPart) SetRecommends(v []*InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) *InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPart {
+	s.Recommends = v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends struct {
+	MobileUrl *string `json:"mobileUrl,omitempty" xml:"mobileUrl,omitempty"`
+	Text      *string `json:"text,omitempty" xml:"text,omitempty"`
+	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) SetMobileUrl(v string) *InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends {
+	s.MobileUrl = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) SetText(v string) *InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends {
+	s.Text = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) SetUrl(v string) *InvokeAssistantResponseBodyMessagesContentStructViewPartsRecommendPartRecommends {
+	s.Url = &v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePart struct {
+	References []*InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences `json:"references,omitempty" xml:"references,omitempty" type:"Repeated"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePart) SetReferences(v []*InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences) *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePart {
+	s.References = v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences struct {
+	// example:
+	//
+	// 0
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// example:
+	//
+	// mcp是....
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// ata
+	SourceCode *string `json:"sourceCode,omitempty" xml:"sourceCode,omitempty"`
+	SourceIcon *string `json:"sourceIcon,omitempty" xml:"sourceIcon,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// 《mcp原理介绍》
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// https://taobao.com
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetIndex(v string) *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Index = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetName(v string) *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Name = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetSourceCode(v string) *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.SourceCode = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetSourceIcon(v string) *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.SourceIcon = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetSummary(v string) *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Summary = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetTitle(v string) *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Title = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetUrl(v string) *InvokeAssistantResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Url = &v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContentStructViewPartsTextPart struct {
+	// example:
+	//
+	// 123123
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewPartsTextPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentStructViewPartsTextPart) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentStructViewPartsTextPart) SetText(v string) *InvokeAssistantResponseBodyMessagesContentStructViewPartsTextPart {
+	s.Text = &v
+	return s
+}
+
+type InvokeAssistantResponseBodyMessagesContentText struct {
 	// example:
 	//
 	// 你好！
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s InvokeAssistantResponseBodyContentText) String() string {
+func (s InvokeAssistantResponseBodyMessagesContentText) String() string {
 	return tea.Prettify(s)
 }
 
-func (s InvokeAssistantResponseBodyContentText) GoString() string {
+func (s InvokeAssistantResponseBodyMessagesContentText) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeAssistantResponseBodyContentText) SetValue(v string) *InvokeAssistantResponseBodyContentText {
+func (s *InvokeAssistantResponseBodyMessagesContentText) SetValue(v string) *InvokeAssistantResponseBodyMessagesContentText {
 	s.Value = &v
 	return s
 }
@@ -54469,12 +56580,20 @@ type ListMessageRequest struct {
 	Order *string `json:"order,omitempty" xml:"order,omitempty"`
 	// example:
 	//
-	// assistantId
-	OriginalAssistantid *string `json:"originalAssistantid,omitempty" xml:"originalAssistantid,omitempty"`
+	// assistantId2
+	OriginalAssistantId *string `json:"originalAssistantId,omitempty" xml:"originalAssistantId,omitempty"`
 	// example:
 	//
 	// runId123
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// example:
+	//
+	// agentKey1
+	SourceIdOfOriginalAssistantId *string `json:"sourceIdOfOriginalAssistantId,omitempty" xml:"sourceIdOfOriginalAssistantId,omitempty"`
+	// example:
+	//
+	// 1
+	SourceTypeOfOriginalAssistantId *string `json:"sourceTypeOfOriginalAssistantId,omitempty" xml:"sourceTypeOfOriginalAssistantId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -54506,13 +56625,23 @@ func (s *ListMessageRequest) SetOrder(v string) *ListMessageRequest {
 	return s
 }
 
-func (s *ListMessageRequest) SetOriginalAssistantid(v string) *ListMessageRequest {
-	s.OriginalAssistantid = &v
+func (s *ListMessageRequest) SetOriginalAssistantId(v string) *ListMessageRequest {
+	s.OriginalAssistantId = &v
 	return s
 }
 
 func (s *ListMessageRequest) SetRunId(v string) *ListMessageRequest {
 	s.RunId = &v
+	return s
+}
+
+func (s *ListMessageRequest) SetSourceIdOfOriginalAssistantId(v string) *ListMessageRequest {
+	s.SourceIdOfOriginalAssistantId = &v
+	return s
+}
+
+func (s *ListMessageRequest) SetSourceTypeOfOriginalAssistantId(v string) *ListMessageRequest {
+	s.SourceTypeOfOriginalAssistantId = &v
 	return s
 }
 
@@ -54522,14 +56651,7 @@ func (s *ListMessageRequest) SetThreadId(v string) *ListMessageRequest {
 }
 
 type ListMessageResponseBody struct {
-	// example:
-	//
-	// []
-	Data []*ListMessageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// example:
-	//
-	// list
-	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+	Messages []*ListMessageResponseBodyMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -54544,13 +56666,8 @@ func (s ListMessageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListMessageResponseBody) SetData(v []*ListMessageResponseBodyData) *ListMessageResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListMessageResponseBody) SetObject(v string) *ListMessageResponseBody {
-	s.Object = &v
+func (s *ListMessageResponseBody) SetMessages(v []*ListMessageResponseBodyMessages) *ListMessageResponseBody {
+	s.Messages = v
 	return s
 }
 
@@ -54559,186 +56676,174 @@ func (s *ListMessageResponseBody) SetRequestId(v string) *ListMessageResponseBod
 	return s
 }
 
-type ListMessageResponseBodyData struct {
+type ListMessageResponseBodyMessages struct {
+	Content *ListMessageResponseBodyMessagesContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
 	// example:
 	//
-	// []
-	Content []*ListMessageResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
+	// 这是一张小猫钓鱼图
+	ContentDesc *string `json:"contentDesc,omitempty" xml:"contentDesc,omitempty"`
 	// example:
 	//
 	// 1642448000000
 	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
 	// example:
 	//
-	// messageId123
+	// messageId1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// {}
-	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// example:
-	//
-	// thread.message
-	Object *string `json:"object,omitempty" xml:"object,omitempty"`
 	// example:
 	//
 	// user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
 	// example:
 	//
-	// runId123
+	// runId1
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
 	// example:
 	//
-	// threadId123
+	// threadId1
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
 }
 
-func (s ListMessageResponseBodyData) String() string {
+func (s ListMessageResponseBodyMessages) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListMessageResponseBodyData) GoString() string {
+func (s ListMessageResponseBodyMessages) GoString() string {
 	return s.String()
 }
 
-func (s *ListMessageResponseBodyData) SetContent(v []*ListMessageResponseBodyDataContent) *ListMessageResponseBodyData {
+func (s *ListMessageResponseBodyMessages) SetContent(v *ListMessageResponseBodyMessagesContent) *ListMessageResponseBodyMessages {
 	s.Content = v
 	return s
 }
 
-func (s *ListMessageResponseBodyData) SetCreateAt(v int64) *ListMessageResponseBodyData {
+func (s *ListMessageResponseBodyMessages) SetContentDesc(v string) *ListMessageResponseBodyMessages {
+	s.ContentDesc = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessages) SetCreateAt(v int64) *ListMessageResponseBodyMessages {
 	s.CreateAt = &v
 	return s
 }
 
-func (s *ListMessageResponseBodyData) SetId(v string) *ListMessageResponseBodyData {
+func (s *ListMessageResponseBodyMessages) SetId(v string) *ListMessageResponseBodyMessages {
 	s.Id = &v
 	return s
 }
 
-func (s *ListMessageResponseBodyData) SetMetadata(v map[string]interface{}) *ListMessageResponseBodyData {
-	s.Metadata = v
-	return s
-}
-
-func (s *ListMessageResponseBodyData) SetObject(v string) *ListMessageResponseBodyData {
-	s.Object = &v
-	return s
-}
-
-func (s *ListMessageResponseBodyData) SetRole(v string) *ListMessageResponseBodyData {
+func (s *ListMessageResponseBodyMessages) SetRole(v string) *ListMessageResponseBodyMessages {
 	s.Role = &v
 	return s
 }
 
-func (s *ListMessageResponseBodyData) SetRunId(v string) *ListMessageResponseBodyData {
+func (s *ListMessageResponseBodyMessages) SetRunId(v string) *ListMessageResponseBodyMessages {
 	s.RunId = &v
 	return s
 }
 
-func (s *ListMessageResponseBodyData) SetThreadId(v string) *ListMessageResponseBodyData {
+func (s *ListMessageResponseBodyMessages) SetThreadId(v string) *ListMessageResponseBodyMessages {
 	s.ThreadId = &v
 	return s
 }
 
-type ListMessageResponseBodyDataContent struct {
-	CardCallback *ListMessageResponseBodyDataContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
-	DingCard     *ListMessageResponseBodyDataContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
-	ImageUrl     *ListMessageResponseBodyDataContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
-	Markdown     *ListMessageResponseBodyDataContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
-	Text         *ListMessageResponseBodyDataContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+type ListMessageResponseBodyMessagesContent struct {
+	CardCallback *ListMessageResponseBodyMessagesContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *ListMessageResponseBodyMessagesContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
 	// example:
 	//
-	// text
+	// {}
+	DingNormalCard *ListMessageResponseBodyMessagesContentDingNormalCard `json:"dingNormalCard,omitempty" xml:"dingNormalCard,omitempty" type:"Struct"`
+	Markdown       *ListMessageResponseBodyMessagesContentMarkdown       `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	StructView     *ListMessageResponseBodyMessagesContentStructView     `json:"structView,omitempty" xml:"structView,omitempty" type:"Struct"`
+	Text           *ListMessageResponseBodyMessagesContentText           `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 枚举字段，可为：text,markdown,cardCallback,dingCard,agentArtifact,dingNormalCard
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
-func (s ListMessageResponseBodyDataContent) String() string {
+func (s ListMessageResponseBodyMessagesContent) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListMessageResponseBodyDataContent) GoString() string {
+func (s ListMessageResponseBodyMessagesContent) GoString() string {
 	return s.String()
 }
 
-func (s *ListMessageResponseBodyDataContent) SetCardCallback(v *ListMessageResponseBodyDataContentCardCallback) *ListMessageResponseBodyDataContent {
+func (s *ListMessageResponseBodyMessagesContent) SetCardCallback(v *ListMessageResponseBodyMessagesContentCardCallback) *ListMessageResponseBodyMessagesContent {
 	s.CardCallback = v
 	return s
 }
 
-func (s *ListMessageResponseBodyDataContent) SetDingCard(v *ListMessageResponseBodyDataContentDingCard) *ListMessageResponseBodyDataContent {
+func (s *ListMessageResponseBodyMessagesContent) SetDingCard(v *ListMessageResponseBodyMessagesContentDingCard) *ListMessageResponseBodyMessagesContent {
 	s.DingCard = v
 	return s
 }
 
-func (s *ListMessageResponseBodyDataContent) SetImageUrl(v *ListMessageResponseBodyDataContentImageUrl) *ListMessageResponseBodyDataContent {
-	s.ImageUrl = v
+func (s *ListMessageResponseBodyMessagesContent) SetDingNormalCard(v *ListMessageResponseBodyMessagesContentDingNormalCard) *ListMessageResponseBodyMessagesContent {
+	s.DingNormalCard = v
 	return s
 }
 
-func (s *ListMessageResponseBodyDataContent) SetMarkdown(v *ListMessageResponseBodyDataContentMarkdown) *ListMessageResponseBodyDataContent {
+func (s *ListMessageResponseBodyMessagesContent) SetMarkdown(v *ListMessageResponseBodyMessagesContentMarkdown) *ListMessageResponseBodyMessagesContent {
 	s.Markdown = v
 	return s
 }
 
-func (s *ListMessageResponseBodyDataContent) SetText(v *ListMessageResponseBodyDataContentText) *ListMessageResponseBodyDataContent {
+func (s *ListMessageResponseBodyMessagesContent) SetStructView(v *ListMessageResponseBodyMessagesContentStructView) *ListMessageResponseBodyMessagesContent {
+	s.StructView = v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContent) SetText(v *ListMessageResponseBodyMessagesContentText) *ListMessageResponseBodyMessagesContent {
 	s.Text = v
 	return s
 }
 
-func (s *ListMessageResponseBodyDataContent) SetType(v string) *ListMessageResponseBodyDataContent {
+func (s *ListMessageResponseBodyMessagesContent) SetType(v string) *ListMessageResponseBodyMessagesContent {
 	s.Type = &v
 	return s
 }
 
-type ListMessageResponseBodyDataContentCardCallback struct {
+type ListMessageResponseBodyMessagesContentCardCallback struct {
 	// example:
 	//
 	// {}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// example:
 	//
-	// templateId123
-	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// example:
-	//
-	// 012345
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// aliding_messageId123
+	RelatedMessageId *string `json:"relatedMessageId,omitempty" xml:"relatedMessageId,omitempty"`
 }
 
-func (s ListMessageResponseBodyDataContentCardCallback) String() string {
+func (s ListMessageResponseBodyMessagesContentCardCallback) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListMessageResponseBodyDataContentCardCallback) GoString() string {
+func (s ListMessageResponseBodyMessagesContentCardCallback) GoString() string {
 	return s.String()
 }
 
-func (s *ListMessageResponseBodyDataContentCardCallback) SetContent(v string) *ListMessageResponseBodyDataContentCardCallback {
+func (s *ListMessageResponseBodyMessagesContentCardCallback) SetContent(v string) *ListMessageResponseBodyMessagesContentCardCallback {
 	s.Content = &v
 	return s
 }
 
-func (s *ListMessageResponseBodyDataContentCardCallback) SetTemplateId(v string) *ListMessageResponseBodyDataContentCardCallback {
-	s.TemplateId = &v
+func (s *ListMessageResponseBodyMessagesContentCardCallback) SetRelatedMessageId(v string) *ListMessageResponseBodyMessagesContentCardCallback {
+	s.RelatedMessageId = &v
 	return s
 }
 
-func (s *ListMessageResponseBodyDataContentCardCallback) SetUserId(v string) *ListMessageResponseBodyDataContentCardCallback {
-	s.UserId = &v
-	return s
-}
-
-type ListMessageResponseBodyDataContentDingCard struct {
-	// example:
-	//
-	// 卡片描述
-	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
+type ListMessageResponseBodyMessagesContentDingCard struct {
 	// example:
 	//
 	// {}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// basic_card_schema
@@ -54753,75 +56858,216 @@ type ListMessageResponseBodyDataContentDingCard struct {
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
 }
 
-func (s ListMessageResponseBodyDataContentDingCard) String() string {
+func (s ListMessageResponseBodyMessagesContentDingCard) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListMessageResponseBodyDataContentDingCard) GoString() string {
+func (s ListMessageResponseBodyMessagesContentDingCard) GoString() string {
 	return s.String()
 }
 
-func (s *ListMessageResponseBodyDataContentDingCard) SetCardDesc(v string) *ListMessageResponseBodyDataContentDingCard {
-	s.CardDesc = &v
-	return s
-}
-
-func (s *ListMessageResponseBodyDataContentDingCard) SetContent(v string) *ListMessageResponseBodyDataContentDingCard {
+func (s *ListMessageResponseBodyMessagesContentDingCard) SetContent(v string) *ListMessageResponseBodyMessagesContentDingCard {
 	s.Content = &v
 	return s
 }
 
-func (s *ListMessageResponseBodyDataContentDingCard) SetContentType(v string) *ListMessageResponseBodyDataContentDingCard {
+func (s *ListMessageResponseBodyMessagesContentDingCard) SetContentType(v string) *ListMessageResponseBodyMessagesContentDingCard {
 	s.ContentType = &v
 	return s
 }
 
-func (s *ListMessageResponseBodyDataContentDingCard) SetFinished(v bool) *ListMessageResponseBodyDataContentDingCard {
+func (s *ListMessageResponseBodyMessagesContentDingCard) SetFinished(v bool) *ListMessageResponseBodyMessagesContentDingCard {
 	s.Finished = &v
 	return s
 }
 
-func (s *ListMessageResponseBodyDataContentDingCard) SetTemplateId(v string) *ListMessageResponseBodyDataContentDingCard {
+func (s *ListMessageResponseBodyMessagesContentDingCard) SetTemplateId(v string) *ListMessageResponseBodyMessagesContentDingCard {
 	s.TemplateId = &v
 	return s
 }
 
-type ListMessageResponseBodyDataContentImageUrl struct {
+type ListMessageResponseBodyMessagesContentDingNormalCard struct {
 	// example:
 	//
-	// auto
-	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
+	// {}
+	CardData *ListMessageResponseBodyMessagesContentDingNormalCardCardData `json:"cardData,omitempty" xml:"cardData,omitempty" type:"Struct"`
 	// example:
 	//
-	// https://img.alicdn.com/1234.png
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	// templateId1
+	CardTemplateId *string `json:"cardTemplateId,omitempty" xml:"cardTemplateId,omitempty"`
+	// example:
+	//
+	// {}
+	CardUpdateOptions *ListMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions `json:"cardUpdateOptions,omitempty" xml:"cardUpdateOptions,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	DynamicDataSourceConfigs []*ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs `json:"dynamicDataSourceConfigs,omitempty" xml:"dynamicDataSourceConfigs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	PrivateData map[string]map[string]interface{} `json:"privateData,omitempty" xml:"privateData,omitempty"`
 }
 
-func (s ListMessageResponseBodyDataContentImageUrl) String() string {
+func (s ListMessageResponseBodyMessagesContentDingNormalCard) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListMessageResponseBodyDataContentImageUrl) GoString() string {
+func (s ListMessageResponseBodyMessagesContentDingNormalCard) GoString() string {
 	return s.String()
 }
 
-func (s *ListMessageResponseBodyDataContentImageUrl) SetDetail(v string) *ListMessageResponseBodyDataContentImageUrl {
-	s.Detail = &v
+func (s *ListMessageResponseBodyMessagesContentDingNormalCard) SetCardData(v *ListMessageResponseBodyMessagesContentDingNormalCardCardData) *ListMessageResponseBodyMessagesContentDingNormalCard {
+	s.CardData = v
 	return s
 }
 
-func (s *ListMessageResponseBodyDataContentImageUrl) SetImageDesc(v string) *ListMessageResponseBodyDataContentImageUrl {
-	s.ImageDesc = &v
+func (s *ListMessageResponseBodyMessagesContentDingNormalCard) SetCardTemplateId(v string) *ListMessageResponseBodyMessagesContentDingNormalCard {
+	s.CardTemplateId = &v
 	return s
 }
 
-func (s *ListMessageResponseBodyDataContentImageUrl) SetUrl(v string) *ListMessageResponseBodyDataContentImageUrl {
-	s.Url = &v
+func (s *ListMessageResponseBodyMessagesContentDingNormalCard) SetCardUpdateOptions(v *ListMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions) *ListMessageResponseBodyMessagesContentDingNormalCard {
+	s.CardUpdateOptions = v
 	return s
 }
 
-type ListMessageResponseBodyDataContentMarkdown struct {
+func (s *ListMessageResponseBodyMessagesContentDingNormalCard) SetDynamicDataSourceConfigs(v []*ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) *ListMessageResponseBodyMessagesContentDingNormalCard {
+	s.DynamicDataSourceConfigs = v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentDingNormalCard) SetPrivateData(v map[string]map[string]interface{}) *ListMessageResponseBodyMessagesContentDingNormalCard {
+	s.PrivateData = v
+	return s
+}
+
+type ListMessageResponseBodyMessagesContentDingNormalCardCardData struct {
+	// example:
+	//
+	// {}
+	CardParamMap map[string]interface{} `json:"cardParamMap,omitempty" xml:"cardParamMap,omitempty"`
+}
+
+func (s ListMessageResponseBodyMessagesContentDingNormalCardCardData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyMessagesContentDingNormalCardCardData) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyMessagesContentDingNormalCardCardData) SetCardParamMap(v map[string]interface{}) *ListMessageResponseBodyMessagesContentDingNormalCardCardData {
+	s.CardParamMap = v
+	return s
+}
+
+type ListMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions struct {
+	// example:
+	//
+	// {}
+	UpdateCardDataByKey *bool `json:"updateCardDataByKey,omitempty" xml:"updateCardDataByKey,omitempty"`
+	// example:
+	//
+	// {}
+	UpdatePrivateDataByKey *bool `json:"updatePrivateDataByKey,omitempty" xml:"updatePrivateDataByKey,omitempty"`
+}
+
+func (s ListMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions) SetUpdateCardDataByKey(v bool) *ListMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions {
+	s.UpdateCardDataByKey = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions) SetUpdatePrivateDataByKey(v bool) *ListMessageResponseBodyMessagesContentDingNormalCardCardUpdateOptions {
+	s.UpdatePrivateDataByKey = &v
+	return s
+}
+
+type ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs struct {
+	// example:
+	//
+	// {}
+	ConstParams map[string]interface{} `json:"constParams,omitempty" xml:"constParams,omitempty"`
+	// example:
+	//
+	// dynamicDataSourceId1
+	DynamicDataSourceId *string `json:"dynamicDataSourceId,omitempty" xml:"dynamicDataSourceId,omitempty"`
+	// example:
+	//
+	// {}
+	PullConfig *ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig `json:"pullConfig,omitempty" xml:"pullConfig,omitempty" type:"Struct"`
+}
+
+func (s ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) SetConstParams(v map[string]interface{}) *ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.ConstParams = v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) SetDynamicDataSourceId(v string) *ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.DynamicDataSourceId = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs) SetPullConfig(v *ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) *ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigs {
+	s.PullConfig = v
+	return s
+}
+
+type ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig struct {
+	// example:
+	//
+	// 3
+	Interval *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
+	// example:
+	//
+	// NONE
+	PullStrategy *string `json:"pullStrategy,omitempty" xml:"pullStrategy,omitempty"`
+	// example:
+	//
+	// SECONDS
+	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
+}
+
+func (s ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetInterval(v int32) *ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.Interval = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetPullStrategy(v string) *ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.PullStrategy = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig) SetTimeUnit(v string) *ListMessageResponseBodyMessagesContentDingNormalCardDynamicDataSourceConfigsPullConfig {
+	s.TimeUnit = &v
+	return s
+}
+
+type ListMessageResponseBodyMessagesContentMarkdown struct {
 	// example:
 	//
 	// 1. markdown内容
@@ -54830,35 +57076,340 @@ type ListMessageResponseBodyDataContentMarkdown struct {
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s ListMessageResponseBodyDataContentMarkdown) String() string {
+func (s ListMessageResponseBodyMessagesContentMarkdown) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListMessageResponseBodyDataContentMarkdown) GoString() string {
+func (s ListMessageResponseBodyMessagesContentMarkdown) GoString() string {
 	return s.String()
 }
 
-func (s *ListMessageResponseBodyDataContentMarkdown) SetValue(v string) *ListMessageResponseBodyDataContentMarkdown {
+func (s *ListMessageResponseBodyMessagesContentMarkdown) SetValue(v string) *ListMessageResponseBodyMessagesContentMarkdown {
 	s.Value = &v
 	return s
 }
 
-type ListMessageResponseBodyDataContentText struct {
+type ListMessageResponseBodyMessagesContentStructView struct {
+	Parts []*ListMessageResponseBodyMessagesContentStructViewParts `json:"parts,omitempty" xml:"parts,omitempty" type:"Repeated"`
+}
+
+func (s ListMessageResponseBodyMessagesContentStructView) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyMessagesContentStructView) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructView) SetParts(v []*ListMessageResponseBodyMessagesContentStructViewParts) *ListMessageResponseBodyMessagesContentStructView {
+	s.Parts = v
+	return s
+}
+
+type ListMessageResponseBodyMessagesContentStructViewParts struct {
+	Append *bool `json:"append,omitempty" xml:"append,omitempty"`
+	// example:
+	//
+	// {}
+	DataPart *ListMessageResponseBodyMessagesContentStructViewPartsDataPart `json:"dataPart,omitempty" xml:"dataPart,omitempty" type:"Struct"`
+	Finish   *bool                                                          `json:"finish,omitempty" xml:"finish,omitempty"`
+	// example:
+	//
+	// 这是正文内容部分
+	PartDesc *string `json:"partDesc,omitempty" xml:"partDesc,omitempty"`
+	// example:
+	//
+	// artifactId123
+	PartId *string `json:"partId,omitempty" xml:"partId,omitempty"`
+	// example:
+	//
+	// {}
+	ReasonPart *ListMessageResponseBodyMessagesContentStructViewPartsReasonPart `json:"reasonPart,omitempty" xml:"reasonPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	RecommendPart *ListMessageResponseBodyMessagesContentStructViewPartsRecommendPart `json:"recommendPart,omitempty" xml:"recommendPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	ReferencePart *ListMessageResponseBodyMessagesContentStructViewPartsReferencePart `json:"referencePart,omitempty" xml:"referencePart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	TextPart *ListMessageResponseBodyMessagesContentStructViewPartsTextPart `json:"textPart,omitempty" xml:"textPart,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// textPart
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewParts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewParts) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewParts) SetAppend(v bool) *ListMessageResponseBodyMessagesContentStructViewParts {
+	s.Append = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewParts) SetDataPart(v *ListMessageResponseBodyMessagesContentStructViewPartsDataPart) *ListMessageResponseBodyMessagesContentStructViewParts {
+	s.DataPart = v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewParts) SetFinish(v bool) *ListMessageResponseBodyMessagesContentStructViewParts {
+	s.Finish = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewParts) SetPartDesc(v string) *ListMessageResponseBodyMessagesContentStructViewParts {
+	s.PartDesc = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewParts) SetPartId(v string) *ListMessageResponseBodyMessagesContentStructViewParts {
+	s.PartId = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewParts) SetReasonPart(v *ListMessageResponseBodyMessagesContentStructViewPartsReasonPart) *ListMessageResponseBodyMessagesContentStructViewParts {
+	s.ReasonPart = v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewParts) SetRecommendPart(v *ListMessageResponseBodyMessagesContentStructViewPartsRecommendPart) *ListMessageResponseBodyMessagesContentStructViewParts {
+	s.RecommendPart = v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewParts) SetReferencePart(v *ListMessageResponseBodyMessagesContentStructViewPartsReferencePart) *ListMessageResponseBodyMessagesContentStructViewParts {
+	s.ReferencePart = v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewParts) SetTextPart(v *ListMessageResponseBodyMessagesContentStructViewPartsTextPart) *ListMessageResponseBodyMessagesContentStructViewParts {
+	s.TextPart = v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewParts) SetType(v string) *ListMessageResponseBodyMessagesContentStructViewParts {
+	s.Type = &v
+	return s
+}
+
+type ListMessageResponseBodyMessagesContentStructViewPartsDataPart struct {
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewPartsDataPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewPartsDataPart) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsDataPart) SetData(v interface{}) *ListMessageResponseBodyMessagesContentStructViewPartsDataPart {
+	s.Data = v
+	return s
+}
+
+type ListMessageResponseBodyMessagesContentStructViewPartsReasonPart struct {
+	// example:
+	//
+	// 123123
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewPartsReasonPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewPartsReasonPart) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsReasonPart) SetReason(v string) *ListMessageResponseBodyMessagesContentStructViewPartsReasonPart {
+	s.Reason = &v
+	return s
+}
+
+type ListMessageResponseBodyMessagesContentStructViewPartsRecommendPart struct {
+	Recommends []*ListMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends `json:"recommends,omitempty" xml:"recommends,omitempty" type:"Repeated"`
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewPartsRecommendPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewPartsRecommendPart) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsRecommendPart) SetRecommends(v []*ListMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) *ListMessageResponseBodyMessagesContentStructViewPartsRecommendPart {
+	s.Recommends = v
+	return s
+}
+
+type ListMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends struct {
+	MobileUrl *string `json:"mobileUrl,omitempty" xml:"mobileUrl,omitempty"`
+	Text      *string `json:"text,omitempty" xml:"text,omitempty"`
+	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) SetMobileUrl(v string) *ListMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends {
+	s.MobileUrl = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) SetText(v string) *ListMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends {
+	s.Text = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends) SetUrl(v string) *ListMessageResponseBodyMessagesContentStructViewPartsRecommendPartRecommends {
+	s.Url = &v
+	return s
+}
+
+type ListMessageResponseBodyMessagesContentStructViewPartsReferencePart struct {
+	References []*ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences `json:"references,omitempty" xml:"references,omitempty" type:"Repeated"`
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewPartsReferencePart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewPartsReferencePart) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsReferencePart) SetReferences(v []*ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) *ListMessageResponseBodyMessagesContentStructViewPartsReferencePart {
+	s.References = v
+	return s
+}
+
+type ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences struct {
+	// example:
+	//
+	// 0
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// example:
+	//
+	// mcp是....
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// ata
+	SourceCode *string `json:"sourceCode,omitempty" xml:"sourceCode,omitempty"`
+	SourceIcon *string `json:"sourceIcon,omitempty" xml:"sourceIcon,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// 《mcp原理介绍》
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// https://taobao.com
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetIndex(v string) *ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Index = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetName(v string) *ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetSourceCode(v string) *ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.SourceCode = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetSourceIcon(v string) *ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.SourceIcon = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetSummary(v string) *ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Summary = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetTitle(v string) *ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Title = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences) SetUrl(v string) *ListMessageResponseBodyMessagesContentStructViewPartsReferencePartReferences {
+	s.Url = &v
+	return s
+}
+
+type ListMessageResponseBodyMessagesContentStructViewPartsTextPart struct {
+	// example:
+	//
+	// 123123
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewPartsTextPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyMessagesContentStructViewPartsTextPart) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyMessagesContentStructViewPartsTextPart) SetText(v string) *ListMessageResponseBodyMessagesContentStructViewPartsTextPart {
+	s.Text = &v
+	return s
+}
+
+type ListMessageResponseBodyMessagesContentText struct {
 	// example:
 	//
 	// 你好！
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s ListMessageResponseBodyDataContentText) String() string {
+func (s ListMessageResponseBodyMessagesContentText) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListMessageResponseBodyDataContentText) GoString() string {
+func (s ListMessageResponseBodyMessagesContentText) GoString() string {
 	return s.String()
 }
 
-func (s *ListMessageResponseBodyDataContentText) SetValue(v string) *ListMessageResponseBodyDataContentText {
+func (s *ListMessageResponseBodyMessagesContentText) SetValue(v string) *ListMessageResponseBodyMessagesContentText {
 	s.Value = &v
 	return s
 }
@@ -71262,12 +73813,14 @@ type RetrieveRunRequest struct {
 	//
 	// runId123
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
-	// threadId123
-	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+	// agentKey1
+	SourceIdOfOriginalAssistantId *string `json:"sourceIdOfOriginalAssistantId,omitempty" xml:"sourceIdOfOriginalAssistantId,omitempty"`
+	// example:
+	//
+	// 1
+	SourceTypeOfOriginalAssistantId *string `json:"sourceTypeOfOriginalAssistantId,omitempty" xml:"sourceTypeOfOriginalAssistantId,omitempty"`
 }
 
 func (s RetrieveRunRequest) String() string {
@@ -71293,64 +73846,22 @@ func (s *RetrieveRunRequest) SetRunId(v string) *RetrieveRunRequest {
 	return s
 }
 
-func (s *RetrieveRunRequest) SetThreadId(v string) *RetrieveRunRequest {
-	s.ThreadId = &v
+func (s *RetrieveRunRequest) SetSourceIdOfOriginalAssistantId(v string) *RetrieveRunRequest {
+	s.SourceIdOfOriginalAssistantId = &v
+	return s
+}
+
+func (s *RetrieveRunRequest) SetSourceTypeOfOriginalAssistantId(v string) *RetrieveRunRequest {
+	s.SourceTypeOfOriginalAssistantId = &v
 	return s
 }
 
 type RetrieveRunResponseBody struct {
 	// example:
 	//
-	// 1642448000000
-	CancelledAt *int64 `json:"cancelledAt,omitempty" xml:"cancelledAt,omitempty"`
-	// example:
-	//
-	// 1642448000000
-	CompletedAt *int64 `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
-	// example:
-	//
-	// 1642448000000
-	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
-	// example:
-	//
-	// 1642448000000
-	ExpiresAt *int64 `json:"expiresAt,omitempty" xml:"expiresAt,omitempty"`
-	// example:
-	//
-	// 1642448000000
-	FailedAt *int64 `json:"failedAt,omitempty" xml:"failedAt,omitempty"`
-	// example:
-	//
-	// runId123
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// errorMsg
-	LastErrorMsg *string `json:"lastErrorMsg,omitempty" xml:"lastErrorMsg,omitempty"`
-	// example:
-	//
-	// {}
-	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// example:
-	//
-	// thread.run
-	Object *string `json:"object,omitempty" xml:"object,omitempty"`
-	// example:
-	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 1642448000000
-	StartedAt *int64 `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
-	// example:
-	//
-	// running
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// threadId123
-	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+	RequestId *string                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Run       *RetrieveRunResponseBodyRun `json:"run,omitempty" xml:"run,omitempty" type:"Struct"`
 }
 
 func (s RetrieveRunResponseBody) String() string {
@@ -71361,67 +73872,83 @@ func (s RetrieveRunResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RetrieveRunResponseBody) SetCancelledAt(v int64) *RetrieveRunResponseBody {
-	s.CancelledAt = &v
-	return s
-}
-
-func (s *RetrieveRunResponseBody) SetCompletedAt(v int64) *RetrieveRunResponseBody {
-	s.CompletedAt = &v
-	return s
-}
-
-func (s *RetrieveRunResponseBody) SetCreateAt(v int64) *RetrieveRunResponseBody {
-	s.CreateAt = &v
-	return s
-}
-
-func (s *RetrieveRunResponseBody) SetExpiresAt(v int64) *RetrieveRunResponseBody {
-	s.ExpiresAt = &v
-	return s
-}
-
-func (s *RetrieveRunResponseBody) SetFailedAt(v int64) *RetrieveRunResponseBody {
-	s.FailedAt = &v
-	return s
-}
-
-func (s *RetrieveRunResponseBody) SetId(v string) *RetrieveRunResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *RetrieveRunResponseBody) SetLastErrorMsg(v string) *RetrieveRunResponseBody {
-	s.LastErrorMsg = &v
-	return s
-}
-
-func (s *RetrieveRunResponseBody) SetMetadata(v map[string]interface{}) *RetrieveRunResponseBody {
-	s.Metadata = v
-	return s
-}
-
-func (s *RetrieveRunResponseBody) SetObject(v string) *RetrieveRunResponseBody {
-	s.Object = &v
-	return s
-}
-
 func (s *RetrieveRunResponseBody) SetRequestId(v string) *RetrieveRunResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *RetrieveRunResponseBody) SetStartedAt(v int64) *RetrieveRunResponseBody {
+func (s *RetrieveRunResponseBody) SetRun(v *RetrieveRunResponseBodyRun) *RetrieveRunResponseBody {
+	s.Run = v
+	return s
+}
+
+type RetrieveRunResponseBodyRun struct {
+	CancelledAt  *int64  `json:"cancelledAt,omitempty" xml:"cancelledAt,omitempty"`
+	CompletedAt  *int64  `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
+	CreateAt     *int64  `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	ExpiresAt    *int64  `json:"expiresAt,omitempty" xml:"expiresAt,omitempty"`
+	FailedAt     *int64  `json:"failedAt,omitempty" xml:"failedAt,omitempty"`
+	Id           *string `json:"id,omitempty" xml:"id,omitempty"`
+	LastErrorMsg *string `json:"lastErrorMsg,omitempty" xml:"lastErrorMsg,omitempty"`
+	StartedAt    *int64  `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+	Status       *string `json:"status,omitempty" xml:"status,omitempty"`
+	ThreadId     *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+}
+
+func (s RetrieveRunResponseBodyRun) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetrieveRunResponseBodyRun) GoString() string {
+	return s.String()
+}
+
+func (s *RetrieveRunResponseBodyRun) SetCancelledAt(v int64) *RetrieveRunResponseBodyRun {
+	s.CancelledAt = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBodyRun) SetCompletedAt(v int64) *RetrieveRunResponseBodyRun {
+	s.CompletedAt = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBodyRun) SetCreateAt(v int64) *RetrieveRunResponseBodyRun {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBodyRun) SetExpiresAt(v int64) *RetrieveRunResponseBodyRun {
+	s.ExpiresAt = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBodyRun) SetFailedAt(v int64) *RetrieveRunResponseBodyRun {
+	s.FailedAt = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBodyRun) SetId(v string) *RetrieveRunResponseBodyRun {
+	s.Id = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBodyRun) SetLastErrorMsg(v string) *RetrieveRunResponseBodyRun {
+	s.LastErrorMsg = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBodyRun) SetStartedAt(v int64) *RetrieveRunResponseBodyRun {
 	s.StartedAt = &v
 	return s
 }
 
-func (s *RetrieveRunResponseBody) SetStatus(v string) *RetrieveRunResponseBody {
+func (s *RetrieveRunResponseBodyRun) SetStatus(v string) *RetrieveRunResponseBodyRun {
 	s.Status = &v
 	return s
 }
 
-func (s *RetrieveRunResponseBody) SetThreadId(v string) *RetrieveRunResponseBody {
+func (s *RetrieveRunResponseBodyRun) SetThreadId(v string) *RetrieveRunResponseBodyRun {
 	s.ThreadId = &v
 	return s
 }
@@ -89823,20 +92350,20 @@ func (client *Client) CreateMessageWithOptions(request *CreateMessageRequest, he
 		body["assistantId"] = request.AssistantId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Content)) {
-		body["content"] = request.Content
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Metadata)) {
-		body["metadata"] = request.Metadata
+	if !tea.BoolValue(util.IsUnset(request.Messages)) {
+		body["messages"] = request.Messages
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OriginalAssistantId)) {
 		body["originalAssistantId"] = request.OriginalAssistantId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Role)) {
-		body["role"] = request.Role
+	if !tea.BoolValue(util.IsUnset(request.SourceIdOfOriginalAssistantId)) {
+		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTypeOfOriginalAssistantId)) {
+		body["sourceTypeOfOriginalAssistantId"] = request.SourceTypeOfOriginalAssistantId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ThreadId)) {
@@ -90487,16 +93014,16 @@ func (client *Client) CreateRunWithOptions(request *CreateRunRequest, headers *C
 		body["assistantId"] = request.AssistantId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Instructions)) {
-		body["instructions"] = request.Instructions
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Metadata)) {
-		body["metadata"] = request.Metadata
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.OriginalAssistantId)) {
 		body["originalAssistantId"] = request.OriginalAssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIdOfOriginalAssistantId)) {
+		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTypeOfOriginalAssistantId)) {
+		body["sourceTypeOfOriginalAssistantId"] = request.SourceTypeOfOriginalAssistantId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Stream)) {
@@ -91252,12 +93779,16 @@ func (client *Client) CreateThreadWithOptions(request *CreateThreadRequest, head
 		body["assistantId"] = request.AssistantId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Metadata)) {
-		body["metadata"] = request.Metadata
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.OriginalAssistantId)) {
 		body["originalAssistantId"] = request.OriginalAssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIdOfOriginalAssistantId)) {
+		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTypeOfOriginalAssistantId)) {
+		body["sourceTypeOfOriginalAssistantId"] = request.SourceTypeOfOriginalAssistantId
 	}
 
 	realHeaders := make(map[string]*string)
@@ -94578,16 +97109,8 @@ func (client *Client) GetAssistantCapabilityWithOptions(request *GetAssistantCap
 		body["assistantId"] = request.AssistantId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Content)) {
-		body["content"] = request.Content
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		body["id"] = request.Id
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Metadata)) {
-		body["metadata"] = request.Metadata
+	if !tea.BoolValue(util.IsUnset(request.Messages)) {
+		body["messages"] = request.Messages
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OriginalAssistantId)) {
@@ -94596,6 +97119,14 @@ func (client *Client) GetAssistantCapabilityWithOptions(request *GetAssistantCap
 
 	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
 		body["protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIdOfOriginalAssistantId)) {
+		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTypeOfOriginalAssistantId)) {
+		body["sourceTypeOfOriginalAssistantId"] = request.SourceTypeOfOriginalAssistantId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ThreadId)) {
@@ -101054,16 +103585,24 @@ func (client *Client) InvokeAssistantWithOptions(request *InvokeAssistantRequest
 		body["assistantId"] = request.AssistantId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Content)) {
-		body["content"] = request.Content
+	if !tea.BoolValue(util.IsUnset(request.Messages)) {
+		body["messages"] = request.Messages
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.History)) {
-		body["history"] = request.History
+	if !tea.BoolValue(util.IsUnset(request.OriginalAssistantId)) {
+		body["originalAssistantId"] = request.OriginalAssistantId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
 		body["sessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIdOfOriginalAssistantId)) {
+		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTypeOfOriginalAssistantId)) {
+		body["sourceTypeOfOriginalAssistantId"] = request.SourceTypeOfOriginalAssistantId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Stream)) {
@@ -101941,12 +104480,20 @@ func (client *Client) ListMessageWithOptions(request *ListMessageRequest, header
 		body["order"] = request.Order
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OriginalAssistantid)) {
-		body["originalAssistantid"] = request.OriginalAssistantid
+	if !tea.BoolValue(util.IsUnset(request.OriginalAssistantId)) {
+		body["originalAssistantId"] = request.OriginalAssistantId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RunId)) {
 		body["runId"] = request.RunId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIdOfOriginalAssistantId)) {
+		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTypeOfOriginalAssistantId)) {
+		body["sourceTypeOfOriginalAssistantId"] = request.SourceTypeOfOriginalAssistantId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ThreadId)) {
@@ -106233,8 +108780,12 @@ func (client *Client) RetrieveRunWithOptions(request *RetrieveRunRequest, header
 		body["runId"] = request.RunId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ThreadId)) {
-		body["threadId"] = request.ThreadId
+	if !tea.BoolValue(util.IsUnset(request.SourceIdOfOriginalAssistantId)) {
+		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTypeOfOriginalAssistantId)) {
+		body["sourceTypeOfOriginalAssistantId"] = request.SourceTypeOfOriginalAssistantId
 	}
 
 	realHeaders := make(map[string]*string)
