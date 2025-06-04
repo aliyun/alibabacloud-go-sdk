@@ -369,6 +369,10 @@ type Dataset struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
+	// BASIC
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// example:
+	//
 	// 2021-01-30T12:51:33.028Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	// example:
@@ -467,6 +471,11 @@ func (s *Dataset) SetDatasetId(v string) *Dataset {
 
 func (s *Dataset) SetDescription(v string) *Dataset {
 	s.Description = &v
+	return s
+}
+
+func (s *Dataset) SetEdition(v string) *Dataset {
+	s.Edition = &v
 	return s
 }
 
@@ -3244,26 +3253,62 @@ func (s *CreateCodeSourceResponse) SetBody(v *CreateCodeSourceResponseBody) *Cre
 }
 
 type CreateConnectionRequest struct {
+	// The accessibility of the workspace. Valid values:
+	//
+	// 	- PRIVATE: The workspace is accessible only to you and the administrator of the workspace. This is the default value.
+	//
+	// 	- PUBLIC: The workspace is accessible to all users in the workspace.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The connection configurations, in key-value pairs. The key varies based on the connection type. For more information, see the supplementary notes below the request parameters.
+	//
 	// This parameter is required.
 	Configs map[string]*string `json:"Configs,omitempty" xml:"Configs,omitempty"`
+	// The connection name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// llm-connection
 	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	// The connection type. Valid values:
+	//
+	// 	- DashScopeConnection: Alibaba Cloud Model Studio connection
+	//
+	// 	- OpenLLMConnection: open source model connection
+	//
+	// 	- MilvusConnection: Milvus connection
+	//
+	// 	- OpenSearchConnection: OpenSearch connection
+	//
+	// 	- LindormConnection: Lindorm connection
+	//
+	// 	- ElasticsearchConnection: Elasticsearch connection
+	//
+	// 	- HologresConnection: Hologres connection
+	//
+	// 	- RDSConnection: RDS connection
+	//
+	// 	- CustomConnection: custom connection
+	//
 	// example:
 	//
 	// DashScopeConnection
-	ConnectionType *string                              `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	Description    *string                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	Models         []*CreateConnectionRequestModels     `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
-	ResourceMeta   *CreateConnectionRequestResourceMeta `json:"ResourceMeta,omitempty" xml:"ResourceMeta,omitempty" type:"Struct"`
-	Secrets        map[string]*string                   `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
+	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	// The connection description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The models, which apply to model service connections.
+	Models []*CreateConnectionRequestModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	// The instance resource information of the connection, which applies to database connections.
+	ResourceMeta *CreateConnectionRequestResourceMeta `json:"ResourceMeta,omitempty" xml:"ResourceMeta,omitempty" type:"Struct"`
+	// The configuration to be encrypted. Examples: the database logon account and password and the key of the model service.
+	Secrets map[string]*string `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 123**45
@@ -3324,15 +3369,32 @@ func (s *CreateConnectionRequest) SetWorkspaceId(v string) *CreateConnectionRequ
 }
 
 type CreateConnectionRequestModels struct {
+	// The display name of the model.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The model identifier.
+	//
 	// example:
 	//
 	// model_001
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The model type. Valid values:
+	//
+	// 	- LLM
+	//
+	// 	- Embedding
+	//
+	// 	- ReRank
+	//
 	// example:
 	//
 	// LLM
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// Specifies whether a tool can be called by using ToolCall. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -3368,10 +3430,13 @@ func (s *CreateConnectionRequestModels) SetToolCall(v bool) *CreateConnectionReq
 }
 
 type CreateConnectionRequestResourceMeta struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// ld-uf69****9nqjjes
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -3394,10 +3459,14 @@ func (s *CreateConnectionRequestResourceMeta) SetInstanceName(v string) *CreateC
 }
 
 type CreateConnectionResponseBody struct {
+	// The connection ID.
+	//
 	// example:
 	//
 	// conn-pai9m***mi47
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -3504,6 +3573,7 @@ type CreateDatasetRequest struct {
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The description of the dataset. Descriptions are used to differentiate datasets.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Edition     *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The dataset configurations to be imported to a storage, such as OSS, NAS, or Cloud Parallel File Storage (CPFS).
 	//
 	// **OSS**
@@ -3752,6 +3822,11 @@ func (s *CreateDatasetRequest) SetDataType(v string) *CreateDatasetRequest {
 
 func (s *CreateDatasetRequest) SetDescription(v string) *CreateDatasetRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetEdition(v string) *CreateDatasetRequest {
+	s.Edition = &v
 	return s
 }
 
@@ -8569,6 +8644,12 @@ func (s *GetConfigResponse) SetBody(v *GetConfigResponseBody) *GetConfigResponse
 }
 
 type GetConnectionRequest struct {
+	// The encryption settings. Valid values:
+	//
+	// 	- PlainText
+	//
+	// 	- Secret
+	//
 	// example:
 	//
 	// PlainText
@@ -8589,40 +8670,84 @@ func (s *GetConnectionRequest) SetEncryptOption(v string) *GetConnectionRequest 
 }
 
 type GetConnectionResponseBody struct {
+	// The resource accessibility. Valid values:
+	//
+	// 	- PUBLIC: All members in the workspace can access the workspace.
+	//
+	// 	- PRIVATE: Only the creator can access the workspace.
+	//
 	// example:
 	//
 	// PRIVATE
-	Accessibility *string            `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Configs       map[string]*string `json:"Configs,omitempty" xml:"Configs,omitempty"`
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The connection configuration.
+	Configs map[string]*string `json:"Configs,omitempty" xml:"Configs,omitempty"`
+	// The connection ID.
+	//
 	// example:
 	//
 	// conn-pai9m***mi47
-	ConnectionId   *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// The connection name.
 	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	// The type of the connection. Valid values:
+	//
+	// 	- DashScopeConnection: Alibaba Cloud Model Studio connection.
+	//
+	// 	- OpenLLMConnection: Open source model connection.
+	//
+	// 	- MilvusConnection: Milvus connection.
+	//
+	// 	- OpenSearchConnection: OpenSearch connection.
+	//
+	// 	- LindormConnection: Lindorm connection.
+	//
+	// 	- ElasticsearchConnection: Elasticsearch connection.
+	//
+	// 	- HologresConnection: Hologres connection.
+	//
+	// 	- RDSConnection: RDS connection.
+	//
+	// 	- CustomConnection: Custom connection.
+	//
 	// example:
 	//
 	// OpenSearchConnection
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	// The creator of the connection.
+	//
 	// example:
 	//
 	// 28632***898231
-	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The connection description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the connection is created, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2025-03-07T07:54:56Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the connection is modified, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2025-03-07T07:54:56Z
-	GmtModifiedTime *string                            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Models          []*GetConnectionResponseBodyModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The models, which apply to model service connections.
+	Models []*GetConnectionResponseBodyModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
-	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The instance resource information of the connection, which applies to database connections.
 	ResourceMeta *GetConnectionResponseBodyResourceMeta `json:"ResourceMeta,omitempty" xml:"ResourceMeta,omitempty" type:"Struct"`
-	Secrets      map[string]*string                     `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
+	// The encrypted configuration, in key-value pairs. Examples: the database logon password and the key of the model connection.
+	Secrets map[string]*string `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 11**43
@@ -8708,15 +8833,32 @@ func (s *GetConnectionResponseBody) SetWorkspaceId(v string) *GetConnectionRespo
 }
 
 type GetConnectionResponseBodyModels struct {
+	// The display name of the model.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The model identifier.
+	//
 	// example:
 	//
 	// model_001
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The model type. Valid values:
+	//
+	// 	- LLM
+	//
+	// 	- Embedding
+	//
+	// 	- ReRank
+	//
 	// example:
 	//
 	// LLM
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// Indicates whether a tool can be called by using ToolCall. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -8752,10 +8894,13 @@ func (s *GetConnectionResponseBodyModels) SetToolCall(v bool) *GetConnectionResp
 }
 
 type GetConnectionResponseBodyResourceMeta struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// ld-2vc1***v1zaqgzol
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -8851,6 +8996,7 @@ type GetDatasetResponseBody struct {
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Edition     *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The creation time.
 	//
 	// example:
@@ -9108,6 +9254,11 @@ func (s *GetDatasetResponseBody) SetDatasetId(v string) *GetDatasetResponseBody 
 
 func (s *GetDatasetResponseBody) SetDescription(v string) *GetDatasetResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetEdition(v string) *GetDatasetResponseBody {
+	s.Edition = &v
 	return s
 }
 
@@ -19799,7 +19950,8 @@ func (s *UpdateConnectionResponse) SetBody(v *UpdateConnectionResponseBody) *Upd
 type UpdateDatasetRequest struct {
 	// The description of the dataset.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of role names in the workspace that have read and write permissions on the mounted database. The names start with PAI are basic role names and the names start with role- are custom role names. If the list contains asterisks (\\*), all roles have read and write permissions.
+	Edition     *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// The list of role names in the workspace that have read and write permissions on the mounted database. The names starting with PAI are basic role names, and the names starting with role- are custom role names. If the list contains asterisks (\\*), all roles have read and write permissions.
 	//
 	// 	- If you set the value to ["PAI.AlgoOperator", "role-hiuwpd01ncrokkgp21"], the account of the specified role is granted the read and write permissions.
 	//
@@ -19813,7 +19965,7 @@ type UpdateDatasetRequest struct {
 	//
 	// myName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The extended field, which is a JSON string. When you use the dataset in Deep Learning Containers (DLC), you can configure the mountPath field to specify the default mount path of the dataset.
+	// The extended field, which is a JSON string. When you use the dataset in Deep Learning Containers (DLC), you can set mountPath to specify the default mount path of the dataset.
 	//
 	// example:
 	//
@@ -19835,6 +19987,11 @@ func (s UpdateDatasetRequest) GoString() string {
 
 func (s *UpdateDatasetRequest) SetDescription(v string) *UpdateDatasetRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetEdition(v string) *UpdateDatasetRequest {
+	s.Edition = &v
 	return s
 }
 
@@ -21802,7 +21959,7 @@ func (client *Client) CreateCodeSource(request *CreateCodeSourceRequest) (_resul
 
 // Summary:
 //
-// 创建连接
+// Creates a connection. This API is used to connect Platform for AI (PAI) to customer models and databases in LangStudio and multimodal dataset search scenarios.
 //
 // @param request - CreateConnectionRequest
 //
@@ -21879,7 +22036,7 @@ func (client *Client) CreateConnectionWithOptions(request *CreateConnectionReque
 
 // Summary:
 //
-// 创建连接
+// Creates a connection. This API is used to connect Platform for AI (PAI) to customer models and databases in LangStudio and multimodal dataset search scenarios.
 //
 // @param request - CreateConnectionRequest
 //
@@ -21935,6 +22092,10 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Edition)) {
+		body["Edition"] = request.Edition
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImportInfo)) {
@@ -24732,7 +24893,7 @@ func (client *Client) GetConfig(WorkspaceId *string, request *GetConfigRequest) 
 
 // Summary:
 //
-// 获取连接
+// Obtains the connection details.
 //
 // @param request - GetConnectionRequest
 //
@@ -24777,7 +24938,7 @@ func (client *Client) GetConnectionWithOptions(ConnectionId *string, request *Ge
 
 // Summary:
 //
-// 获取连接
+// Obtains the connection details.
 //
 // @param request - GetConnectionRequest
 //
@@ -28789,6 +28950,10 @@ func (client *Client) UpdateDatasetWithOptions(DatasetId *string, request *Updat
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Edition)) {
+		body["Edition"] = request.Edition
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MountAccessReadWriteRoleIdList)) {
