@@ -2407,6 +2407,7 @@ type CreateFeatureConsistencyCheckJobConfigRequest struct {
 	PredictWorkerCount  *int32  `json:"PredictWorkerCount,omitempty" xml:"PredictWorkerCount,omitempty"`
 	PredictWorkerCpu    *int32  `json:"PredictWorkerCpu,omitempty" xml:"PredictWorkerCpu,omitempty"`
 	PredictWorkerMemory *int32  `json:"PredictWorkerMemory,omitempty" xml:"PredictWorkerMemory,omitempty"`
+	ResourceConfig      *string `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -2618,6 +2619,11 @@ func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetPredictWorkerCpu(v in
 
 func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetPredictWorkerMemory(v int32) *CreateFeatureConsistencyCheckJobConfigRequest {
 	s.PredictWorkerMemory = &v
+	return s
+}
+
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetResourceConfig(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.ResourceConfig = &v
 	return s
 }
 
@@ -7517,7 +7523,8 @@ type GetFeatureConsistencyCheckJobConfigResponseBody struct {
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceConfig *string `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
 	// example:
 	//
 	// 0.89
@@ -7769,6 +7776,11 @@ func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetPredictWorkerMemory
 
 func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetRequestId(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetResourceConfig(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
+	s.ResourceConfig = &v
 	return s
 }
 
@@ -12267,6 +12279,7 @@ type ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCon
 	PredictWorkerCount  *int32  `json:"PredictWorkerCount,omitempty" xml:"PredictWorkerCount,omitempty"`
 	PredictWorkerCpu    *int32  `json:"PredictWorkerCpu,omitempty" xml:"PredictWorkerCpu,omitempty"`
 	PredictWorkerMemory *int32  `json:"PredictWorkerMemory,omitempty" xml:"PredictWorkerMemory,omitempty"`
+	ResourceConfig      *string `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
 	// example:
 	//
 	// 0.89
@@ -12518,6 +12531,11 @@ func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyChec
 
 func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetPredictWorkerMemory(v int32) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
 	s.PredictWorkerMemory = &v
+	return s
+}
+
+func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetResourceConfig(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
+	s.ResourceConfig = &v
 	return s
 }
 
@@ -19201,6 +19219,7 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	PredictWorkerCount  *int32  `json:"PredictWorkerCount,omitempty" xml:"PredictWorkerCount,omitempty"`
 	PredictWorkerCpu    *int32  `json:"PredictWorkerCpu,omitempty" xml:"PredictWorkerCpu,omitempty"`
 	PredictWorkerMemory *int32  `json:"PredictWorkerMemory,omitempty" xml:"PredictWorkerMemory,omitempty"`
+	ResourceConfig      *string `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -19421,6 +19440,11 @@ func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetPredictWorkerCpu(v in
 
 func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetPredictWorkerMemory(v int32) *UpdateFeatureConsistencyCheckJobConfigRequest {
 	s.PredictWorkerMemory = &v
+	return s
+}
+
+func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetResourceConfig(v string) *UpdateFeatureConsistencyCheckJobConfigRequest {
+	s.ResourceConfig = &v
 	return s
 }
 
@@ -22859,6 +22883,10 @@ func (client *Client) CreateFeatureConsistencyCheckJobConfigWithOptions(request 
 
 	if !tea.BoolValue(util.IsUnset(request.PredictWorkerMemory)) {
 		body["PredictWorkerMemory"] = request.PredictWorkerMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceConfig)) {
+		body["ResourceConfig"] = request.ResourceConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SampleRate)) {
@@ -30883,6 +30911,10 @@ func (client *Client) UpdateFeatureConsistencyCheckJobConfigWithOptions(FeatureC
 
 	if !tea.BoolValue(util.IsUnset(request.PredictWorkerMemory)) {
 		body["PredictWorkerMemory"] = request.PredictWorkerMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceConfig)) {
+		body["ResourceConfig"] = request.ResourceConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SampleRate)) {
