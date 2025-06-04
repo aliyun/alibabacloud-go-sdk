@@ -2807,6 +2807,7 @@ type CopySnapshotRequest struct {
 	//
 	// testSnapshotName
 	DestinationSnapshotName *string `json:"DestinationSnapshotName,omitempty" xml:"DestinationSnapshotName,omitempty"`
+	InstanceBillingCycle    *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
 	// The ID of the source snapshot.
 	//
 	// This parameter is required.
@@ -2840,6 +2841,11 @@ func (s *CopySnapshotRequest) SetDestinationSnapshotName(v string) *CopySnapshot
 	return s
 }
 
+func (s *CopySnapshotRequest) SetInstanceBillingCycle(v string) *CopySnapshotRequest {
+	s.InstanceBillingCycle = &v
+	return s
+}
+
 func (s *CopySnapshotRequest) SetSnapshotId(v string) *CopySnapshotRequest {
 	s.SnapshotId = &v
 	return s
@@ -2862,6 +2868,7 @@ type CopySnapshotShrinkRequest struct {
 	//
 	// testSnapshotName
 	DestinationSnapshotName *string `json:"DestinationSnapshotName,omitempty" xml:"DestinationSnapshotName,omitempty"`
+	InstanceBillingCycle    *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
 	// The ID of the source snapshot.
 	//
 	// This parameter is required.
@@ -2892,6 +2899,11 @@ func (s *CopySnapshotShrinkRequest) SetDestinationSnapshotDescription(v string) 
 
 func (s *CopySnapshotShrinkRequest) SetDestinationSnapshotName(v string) *CopySnapshotShrinkRequest {
 	s.DestinationSnapshotName = &v
+	return s
+}
+
+func (s *CopySnapshotShrinkRequest) SetInstanceBillingCycle(v string) *CopySnapshotShrinkRequest {
+	s.InstanceBillingCycle = &v
 	return s
 }
 
@@ -63971,6 +63983,10 @@ func (client *Client) CopySnapshotWithOptions(tmpReq *CopySnapshotRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.DestinationSnapshotName)) {
 		query["DestinationSnapshotName"] = request.DestinationSnapshotName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceBillingCycle)) {
+		query["InstanceBillingCycle"] = request.InstanceBillingCycle
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
