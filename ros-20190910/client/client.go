@@ -1000,6 +1000,7 @@ type CreateChangeSetRequest struct {
 	// oss://ros/stack-policy/demo
 	StackPolicyURL *string                       `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
 	Tags           []*CreateChangeSetRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TaintResources []*string                     `json:"TaintResources,omitempty" xml:"TaintResources,omitempty" type:"Repeated"`
 	TemplateBody   *string                       `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The template ID. This parameter applies to shared templates and private templates.
 	//
@@ -1176,6 +1177,11 @@ func (s *CreateChangeSetRequest) SetStackPolicyURL(v string) *CreateChangeSetReq
 
 func (s *CreateChangeSetRequest) SetTags(v []*CreateChangeSetRequestTags) *CreateChangeSetRequest {
 	s.Tags = v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetTaintResources(v []*string) *CreateChangeSetRequest {
+	s.TaintResources = v
 	return s
 }
 
@@ -22259,8 +22265,9 @@ type PreviewStackRequest struct {
 	// example:
 	//
 	// oss://ros-stack-policy/demo
-	StackPolicyURL *string `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
-	TemplateBody   *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	StackPolicyURL *string   `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
+	TaintResources []*string `json:"TaintResources,omitempty" xml:"TaintResources,omitempty" type:"Repeated"`
+	TemplateBody   *string   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The template ID. This parameter applies to shared and private templates.
 	//
 	// > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
@@ -22368,6 +22375,11 @@ func (s *PreviewStackRequest) SetStackPolicyBody(v string) *PreviewStackRequest 
 
 func (s *PreviewStackRequest) SetStackPolicyURL(v string) *PreviewStackRequest {
 	s.StackPolicyURL = &v
+	return s
+}
+
+func (s *PreviewStackRequest) SetTaintResources(v []*string) *PreviewStackRequest {
+	s.TaintResources = v
 	return s
 }
 
@@ -24204,8 +24216,9 @@ type UpdateStackRequest struct {
 	// oss://ros-stack-policy/demo
 	StackPolicyURL *string `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
 	// The value of tag N that you want to add to the template.
-	Tags         []*UpdateStackRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TemplateBody *string                   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	Tags           []*UpdateStackRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TaintResources []*string                 `json:"TaintResources,omitempty" xml:"TaintResources,omitempty" type:"Repeated"`
+	TemplateBody   *string                   `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The ID of the template. This parameter applies to shared templates and private templates.
 	//
 	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
@@ -24337,6 +24350,11 @@ func (s *UpdateStackRequest) SetStackPolicyURL(v string) *UpdateStackRequest {
 
 func (s *UpdateStackRequest) SetTags(v []*UpdateStackRequestTags) *UpdateStackRequest {
 	s.Tags = v
+	return s
+}
+
+func (s *UpdateStackRequest) SetTaintResources(v []*string) *UpdateStackRequest {
+	s.TaintResources = v
 	return s
 }
 
@@ -27754,6 +27772,10 @@ func (client *Client) CreateChangeSetWithOptions(request *CreateChangeSetRequest
 
 	if !tea.BoolValue(util.IsUnset(request.Tags)) {
 		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaintResources)) {
+		query["TaintResources"] = request.TaintResources
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
@@ -33778,6 +33800,10 @@ func (client *Client) PreviewStackWithOptions(request *PreviewStackRequest, runt
 		query["StackPolicyURL"] = request.StackPolicyURL
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TaintResources)) {
+		query["TaintResources"] = request.TaintResources
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
@@ -34658,6 +34684,10 @@ func (client *Client) UpdateStackWithOptions(request *UpdateStackRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.Tags)) {
 		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaintResources)) {
+		query["TaintResources"] = request.TaintResources
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
