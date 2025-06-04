@@ -1298,8 +1298,6 @@ type CreateIndexRequest struct {
 	//
 	// >  If you want to create an empty knowledge base, you can use an empty category. Set this parameter to DATA_CENTER_CATEGORY. And specify the ID of an empty category for the `CategoryIds` parameter.
 	//
-	// This parameter is required.
-	//
 	// if can be null:
 	// false
 	//
@@ -1730,8 +1728,6 @@ type CreateIndexShrinkRequest struct {
 	// >  If this parameter is set to DATA_CENTER_CATEGORY, you must specify the `CategoryIds` parameter. If this parameter is set to DATA_CENTER_FILE, you must specify the `DocumentIds` parameter.
 	//
 	// >  If you want to create an empty knowledge base, you can use an empty category. Set this parameter to DATA_CENTER_CATEGORY. And specify the ID of an empty category for the `CategoryIds` parameter.
-	//
-	// This parameter is required.
 	//
 	// if can be null:
 	// false
@@ -4896,6 +4892,7 @@ type ListIndexDocumentsRequest struct {
 	//
 	// FINISH
 	DocumentStatus *string `json:"DocumentStatus,omitempty" xml:"DocumentStatus,omitempty"`
+	EnableNameLike *string `json:"EnableNameLike,omitempty" xml:"EnableNameLike,omitempty"`
 	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
 	//
 	// This parameter is required.
@@ -4933,6 +4930,11 @@ func (s *ListIndexDocumentsRequest) SetDocumentName(v string) *ListIndexDocument
 
 func (s *ListIndexDocumentsRequest) SetDocumentStatus(v string) *ListIndexDocumentsRequest {
 	s.DocumentStatus = &v
+	return s
+}
+
+func (s *ListIndexDocumentsRequest) SetEnableNameLike(v string) *ListIndexDocumentsRequest {
+	s.EnableNameLike = &v
 	return s
 }
 
@@ -10764,6 +10766,10 @@ func (client *Client) ListIndexDocumentsWithOptions(WorkspaceId *string, request
 
 	if !tea.BoolValue(util.IsUnset(request.DocumentStatus)) {
 		query["DocumentStatus"] = request.DocumentStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableNameLike)) {
+		query["EnableNameLike"] = request.EnableNameLike
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
