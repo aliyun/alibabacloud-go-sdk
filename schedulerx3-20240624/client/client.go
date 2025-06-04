@@ -499,8 +499,6 @@ type CreateJobRequest struct {
 	//
 	// 1
 	ExecutorBlockStrategy *int32 `json:"ExecutorBlockStrategy,omitempty" xml:"ExecutorBlockStrategy,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// testJobVoidHandler
@@ -538,7 +536,8 @@ type CreateJobRequest struct {
 	// example:
 	//
 	// 1
-	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	RouteStrategy *int32  `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	Script        *string `json:"Script,omitempty" xml:"Script,omitempty"`
 	// example:
 	//
 	// 1701310327000
@@ -653,6 +652,11 @@ func (s *CreateJobRequest) SetPriority(v int32) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetRouteStrategy(v int32) *CreateJobRequest {
 	s.RouteStrategy = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetScript(v string) *CreateJobRequest {
+	s.Script = &v
 	return s
 }
 
@@ -823,8 +827,6 @@ type CreateJobShrinkRequest struct {
 	//
 	// 1
 	ExecutorBlockStrategy *int32 `json:"ExecutorBlockStrategy,omitempty" xml:"ExecutorBlockStrategy,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// testJobVoidHandler
@@ -862,7 +864,8 @@ type CreateJobShrinkRequest struct {
 	// example:
 	//
 	// 1
-	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	RouteStrategy *int32  `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	Script        *string `json:"Script,omitempty" xml:"Script,omitempty"`
 	// example:
 	//
 	// 1701310327000
@@ -977,6 +980,11 @@ func (s *CreateJobShrinkRequest) SetPriority(v int32) *CreateJobShrinkRequest {
 
 func (s *CreateJobShrinkRequest) SetRouteStrategy(v int32) *CreateJobShrinkRequest {
 	s.RouteStrategy = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetScript(v string) *CreateJobShrinkRequest {
+	s.Script = &v
 	return s
 }
 
@@ -2120,6 +2128,314 @@ func (s *GetDesigateInfoResponse) SetStatusCode(v int32) *GetDesigateInfoRespons
 }
 
 func (s *GetDesigateInfoResponse) SetBody(v *GetDesigateInfoResponseBody) *GetDesigateInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetJobExecutionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-app
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxljob-b6ec1xxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1310630367761285120
+	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+	MseSessionId   *string `json:"MseSessionId,omitempty" xml:"MseSessionId,omitempty"`
+}
+
+func (s GetJobExecutionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobExecutionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobExecutionRequest) SetAppName(v string) *GetJobExecutionRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetJobExecutionRequest) SetClusterId(v string) *GetJobExecutionRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetJobExecutionRequest) SetJobExecutionId(v string) *GetJobExecutionRequest {
+	s.JobExecutionId = &v
+	return s
+}
+
+func (s *GetJobExecutionRequest) SetMseSessionId(v string) *GetJobExecutionRequest {
+	s.MseSessionId = &v
+	return s
+}
+
+type GetJobExecutionResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// -
+	Data *GetJobExecutionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Parameter error: content is null.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 39938688-0BAB-5AD8-BF02-F4910FAC7589
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetJobExecutionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobExecutionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobExecutionResponseBody) SetCode(v int32) *GetJobExecutionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBody) SetData(v *GetJobExecutionResponseBodyData) *GetJobExecutionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetJobExecutionResponseBody) SetMessage(v string) *GetJobExecutionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBody) SetRequestId(v string) *GetJobExecutionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBody) SetSuccess(v bool) *GetJobExecutionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetJobExecutionResponseBodyData struct {
+	// example:
+	//
+	// test-app
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 1
+	Attempt  *int32  `json:"Attempt,omitempty" xml:"Attempt,omitempty"`
+	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 2024-10-29 15:56:36
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// {\\"Status\\": \\"NORMAL\\", \\"ActiveCount\\": 4, \\"UnavailableCount\\": 0, \\"ExpectedCount\\": 4, \\"RiskCount\\": 0}
+	Executor *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	// example:
+	//
+	// 1310630367761285120
+	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+	// example:
+	//
+	// 74
+	JobId   *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// xxljob
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// example:
+	//
+	// /home/avatar/system/services/biz/payment/crontab/monitorpayment.php
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// []
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 1
+	RouteStrategy *int32  `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	ScheduleTime  *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// example:
+	//
+	// 172.3.27.76
+	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// example:
+	//
+	// 2025-03-11T00:06:10Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 4
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	// example:
+	//
+	// timer_schedule
+	TriggerType *int32 `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s GetJobExecutionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobExecutionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobExecutionResponseBodyData) SetAppName(v string) *GetJobExecutionResponseBodyData {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetAttempt(v int32) *GetJobExecutionResponseBodyData {
+	s.Attempt = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetDataTime(v string) *GetJobExecutionResponseBodyData {
+	s.DataTime = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetDuration(v int64) *GetJobExecutionResponseBodyData {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetEndTime(v string) *GetJobExecutionResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetExecutor(v string) *GetJobExecutionResponseBodyData {
+	s.Executor = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetJobExecutionId(v string) *GetJobExecutionResponseBodyData {
+	s.JobExecutionId = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetJobId(v int64) *GetJobExecutionResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetJobName(v string) *GetJobExecutionResponseBodyData {
+	s.JobName = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetJobType(v string) *GetJobExecutionResponseBodyData {
+	s.JobType = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetParameters(v string) *GetJobExecutionResponseBodyData {
+	s.Parameters = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetResult(v string) *GetJobExecutionResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetRouteStrategy(v int32) *GetJobExecutionResponseBodyData {
+	s.RouteStrategy = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetScheduleTime(v string) *GetJobExecutionResponseBodyData {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetServerIp(v string) *GetJobExecutionResponseBodyData {
+	s.ServerIp = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetStartTime(v string) *GetJobExecutionResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetStatus(v int32) *GetJobExecutionResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetTimeType(v int32) *GetJobExecutionResponseBodyData {
+	s.TimeType = &v
+	return s
+}
+
+func (s *GetJobExecutionResponseBodyData) SetTriggerType(v int32) *GetJobExecutionResponseBodyData {
+	s.TriggerType = &v
+	return s
+}
+
+type GetJobExecutionResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobExecutionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetJobExecutionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobExecutionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobExecutionResponse) SetHeaders(v map[string]*string) *GetJobExecutionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetJobExecutionResponse) SetStatusCode(v int32) *GetJobExecutionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetJobExecutionResponse) SetBody(v *GetJobExecutionResponseBody) *GetJobExecutionResponse {
 	s.Body = v
 	return s
 }
@@ -5296,7 +5612,8 @@ type ListJobsResponseBodyDataRecords struct {
 	// example:
 	//
 	// 1
-	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	RouteStrategy *int32  `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	Script        *string `json:"Script,omitempty" xml:"Script,omitempty"`
 	// example:
 	//
 	// 1
@@ -5444,6 +5761,11 @@ func (s *ListJobsResponseBodyDataRecords) SetPriority(v int32) *ListJobsResponse
 
 func (s *ListJobsResponseBodyDataRecords) SetRouteStrategy(v int32) *ListJobsResponseBodyDataRecords {
 	s.RouteStrategy = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataRecords) SetScript(v string) *ListJobsResponseBodyDataRecords {
+	s.Script = &v
 	return s
 }
 
@@ -7931,7 +8253,8 @@ type UpdateJobRequest struct {
 	// example:
 	//
 	// 1
-	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	RouteStrategy *int32  `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	Script        *string `json:"Script,omitempty" xml:"Script,omitempty"`
 	// example:
 	//
 	// 1716902187
@@ -8040,6 +8363,11 @@ func (s *UpdateJobRequest) SetPriority(v int32) *UpdateJobRequest {
 
 func (s *UpdateJobRequest) SetRouteStrategy(v int32) *UpdateJobRequest {
 	s.RouteStrategy = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetScript(v string) *UpdateJobRequest {
+	s.Script = &v
 	return s
 }
 
@@ -8240,7 +8568,8 @@ type UpdateJobShrinkRequest struct {
 	// example:
 	//
 	// 1
-	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	RouteStrategy *int32  `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
+	Script        *string `json:"Script,omitempty" xml:"Script,omitempty"`
 	// example:
 	//
 	// 1716902187
@@ -8349,6 +8678,11 @@ func (s *UpdateJobShrinkRequest) SetPriority(v int32) *UpdateJobShrinkRequest {
 
 func (s *UpdateJobShrinkRequest) SetRouteStrategy(v int32) *UpdateJobShrinkRequest {
 	s.RouteStrategy = &v
+	return s
+}
+
+func (s *UpdateJobShrinkRequest) SetScript(v string) *UpdateJobShrinkRequest {
+	s.Script = &v
 	return s
 }
 
@@ -8748,6 +9082,10 @@ func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *ut
 
 	if !tea.BoolValue(util.IsUnset(request.RouteStrategy)) {
 		body["RouteStrategy"] = request.RouteStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Script)) {
+		body["Script"] = request.Script
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -9192,6 +9530,78 @@ func (client *Client) GetDesigateInfo(request *GetDesigateInfoRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDesigateInfoResponse{}
 	_body, _err := client.GetDesigateInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务执行的详细信息
+//
+// @param request - GetJobExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobExecutionResponse
+func (client *Client) GetJobExecutionWithOptions(request *GetJobExecutionRequest, runtime *util.RuntimeOptions) (_result *GetJobExecutionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobExecutionId)) {
+		query["JobExecutionId"] = request.JobExecutionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MseSessionId)) {
+		query["MseSessionId"] = request.MseSessionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobExecution"),
+		Version:     tea.String("2024-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetJobExecutionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务执行的详细信息
+//
+// @param request - GetJobExecutionRequest
+//
+// @return GetJobExecutionResponse
+func (client *Client) GetJobExecution(request *GetJobExecutionRequest) (_result *GetJobExecutionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetJobExecutionResponse{}
+	_body, _err := client.GetJobExecutionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9839,6 +10249,10 @@ func (client *Client) ListJobExecutions(request *ListJobExecutionsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务列表
+//
 // @param request - ListJobsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9873,6 +10287,10 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务列表
+//
 // @param request - ListJobsRequest
 //
 // @return ListJobsResponse
@@ -10934,6 +11352,10 @@ func (client *Client) UpdateJobWithOptions(tmpReq *UpdateJobRequest, runtime *ut
 
 	if !tea.BoolValue(util.IsUnset(request.RouteStrategy)) {
 		body["RouteStrategy"] = request.RouteStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Script)) {
+		body["Script"] = request.Script
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
