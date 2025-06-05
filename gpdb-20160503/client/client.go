@@ -36195,6 +36195,180 @@ func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) 
 	return s
 }
 
+type ModifyCollectionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"operations":[
+	//
+	// {"operator":"add","newMetaType":"int","newMetaName":"ext1"},
+	//
+	// {"operator":"replace","oldMetaName":"ext2","newMetaName":"ext3"},
+	//
+	// {"operator":"replace","newMetaType":"bigint","oldMetaName":"ext4"},
+	//
+	// {"operator":"replace","newMetaType":"int","oldMetaName":"ext5","newMetaName":"ext6"}
+	//
+	// ]}
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testpassword
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// gp-ws-*****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ModifyCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCollectionRequest) SetCollection(v string) *ModifyCollectionRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *ModifyCollectionRequest) SetDBInstanceId(v string) *ModifyCollectionRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyCollectionRequest) SetMetadata(v string) *ModifyCollectionRequest {
+	s.Metadata = &v
+	return s
+}
+
+func (s *ModifyCollectionRequest) SetNamespace(v string) *ModifyCollectionRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ModifyCollectionRequest) SetNamespacePassword(v string) *ModifyCollectionRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *ModifyCollectionRequest) SetOwnerId(v int64) *ModifyCollectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyCollectionRequest) SetRegionId(v string) *ModifyCollectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyCollectionRequest) SetWorkspaceId(v string) *ModifyCollectionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ModifyCollectionResponseBody struct {
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// {"title":"text","content":"text","response":"int"}
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ModifyCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCollectionResponseBody) SetMessage(v string) *ModifyCollectionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyCollectionResponseBody) SetMetadata(v string) *ModifyCollectionResponseBody {
+	s.Metadata = &v
+	return s
+}
+
+func (s *ModifyCollectionResponseBody) SetRequestId(v string) *ModifyCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyCollectionResponseBody) SetStatus(v string) *ModifyCollectionResponseBody {
+	s.Status = &v
+	return s
+}
+
+type ModifyCollectionResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCollectionResponse) SetHeaders(v map[string]*string) *ModifyCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCollectionResponse) SetStatusCode(v int32) *ModifyCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCollectionResponse) SetBody(v *ModifyCollectionResponseBody) *ModifyCollectionResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDBInstanceConfigRequest struct {
 	// The description of the instance.
 	//
@@ -60729,6 +60903,94 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBackupPolicyResponse{}
 	_body, _err := client.ModifyBackupPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Collection
+//
+// @param request - ModifyCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCollectionResponse
+func (client *Client) ModifyCollectionWithOptions(request *ModifyCollectionRequest, runtime *util.RuntimeOptions) (_result *ModifyCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metadata)) {
+		query["Metadata"] = request.Metadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCollection"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyCollectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Collection
+//
+// @param request - ModifyCollectionRequest
+//
+// @return ModifyCollectionResponse
+func (client *Client) ModifyCollection(request *ModifyCollectionRequest) (_result *ModifyCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCollectionResponse{}
+	_body, _err := client.ModifyCollectionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
