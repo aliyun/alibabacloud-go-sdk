@@ -4008,6 +4008,166 @@ func (s *AssignTicketResponse) SetBody(v *AssignTicketResponseBody) *AssignTicke
 	return s
 }
 
+type AuthorizeSkillHeaders struct {
+	CommonHeaders  map[string]*string                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *AuthorizeSkillHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s AuthorizeSkillHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeSkillHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeSkillHeaders) SetCommonHeaders(v map[string]*string) *AuthorizeSkillHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AuthorizeSkillHeaders) SetAccountContext(v *AuthorizeSkillHeadersAccountContext) *AuthorizeSkillHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type AuthorizeSkillHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s AuthorizeSkillHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeSkillHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeSkillHeadersAccountContext) SetAccountId(v string) *AuthorizeSkillHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type AuthorizeSkillShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s AuthorizeSkillShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeSkillShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeSkillShrinkHeaders) SetCommonHeaders(v map[string]*string) *AuthorizeSkillShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AuthorizeSkillShrinkHeaders) SetAccountContextShrink(v string) *AuthorizeSkillShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type AuthorizeSkillRequest struct {
+	PermissionCodes []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
+}
+
+func (s AuthorizeSkillRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeSkillRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeSkillRequest) SetPermissionCodes(v []*string) *AuthorizeSkillRequest {
+	s.PermissionCodes = v
+	return s
+}
+
+type AuthorizeSkillShrinkRequest struct {
+	PermissionCodesShrink *string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty"`
+}
+
+func (s AuthorizeSkillShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeSkillShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeSkillShrinkRequest) SetPermissionCodesShrink(v string) *AuthorizeSkillShrinkRequest {
+	s.PermissionCodesShrink = &v
+	return s
+}
+
+type AuthorizeSkillResponseBody struct {
+	// example:
+	//
+	// {}
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// A348BA5D-FFD4-57E4-9450-23A14D72F331
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AuthorizeSkillResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeSkillResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeSkillResponseBody) SetData(v interface{}) *AuthorizeSkillResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AuthorizeSkillResponseBody) SetRequestId(v string) *AuthorizeSkillResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AuthorizeSkillResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AuthorizeSkillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AuthorizeSkillResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeSkillResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeSkillResponse) SetHeaders(v map[string]*string) *AuthorizeSkillResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AuthorizeSkillResponse) SetStatusCode(v int32) *AuthorizeSkillResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AuthorizeSkillResponse) SetBody(v *AuthorizeSkillResponseBody) *AuthorizeSkillResponse {
+	s.Body = v
+	return s
+}
+
 type BatchGetFormDataByIdListHeaders struct {
 	CommonHeaders  map[string]*string                             `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *BatchGetFormDataByIdListHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -52874,10 +53034,13 @@ type InvokeSkillRequest struct {
 	//
 	// {}
 	Params map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// a1d033dd-xxxx-49cf-b49b-2068081bb551
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	Stream  *bool   `json:"Stream,omitempty" xml:"Stream,omitempty"`
 }
 
 func (s InvokeSkillRequest) String() string {
@@ -52898,15 +53061,23 @@ func (s *InvokeSkillRequest) SetSkillId(v string) *InvokeSkillRequest {
 	return s
 }
 
+func (s *InvokeSkillRequest) SetStream(v bool) *InvokeSkillRequest {
+	s.Stream = &v
+	return s
+}
+
 type InvokeSkillShrinkRequest struct {
 	// example:
 	//
 	// {}
 	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// a1d033dd-xxxx-49cf-b49b-2068081bb551
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	Stream  *bool   `json:"Stream,omitempty" xml:"Stream,omitempty"`
 }
 
 func (s InvokeSkillShrinkRequest) String() string {
@@ -52927,17 +53098,26 @@ func (s *InvokeSkillShrinkRequest) SetSkillId(v string) *InvokeSkillShrinkReques
 	return s
 }
 
+func (s *InvokeSkillShrinkRequest) SetStream(v bool) *InvokeSkillShrinkRequest {
+	s.Stream = &v
+	return s
+}
+
 type InvokeSkillResponseBody struct {
+	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string     `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// if can be null:
+	// false
+	Finished *bool       `json:"Finished,omitempty" xml:"Finished,omitempty"`
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// RequestId
 	//
 	// example:
 	//
 	// 2715B4D3-A3FB-5FC7-AFA0-4471687B1EC6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// {}
-	Data map[string]interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InvokeSkillResponseBody) String() string {
@@ -52948,13 +53128,38 @@ func (s InvokeSkillResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *InvokeSkillResponseBody) SetData(v interface{}) *InvokeSkillResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *InvokeSkillResponseBody) SetErrorCode(v string) *InvokeSkillResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *InvokeSkillResponseBody) SetErrorMsg(v string) *InvokeSkillResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *InvokeSkillResponseBody) SetFinished(v bool) *InvokeSkillResponseBody {
+	s.Finished = &v
+	return s
+}
+
+func (s *InvokeSkillResponseBody) SetMetadata(v interface{}) *InvokeSkillResponseBody {
+	s.Metadata = v
+	return s
+}
+
 func (s *InvokeSkillResponseBody) SetRequestId(v string) *InvokeSkillResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *InvokeSkillResponseBody) SetData(v map[string]interface{}) *InvokeSkillResponseBody {
-	s.Data = v
+func (s *InvokeSkillResponseBody) SetSuccess(v bool) *InvokeSkillResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -59479,6 +59684,152 @@ func (s *ListReportResponse) SetStatusCode(v int32) *ListReportResponse {
 }
 
 func (s *ListReportResponse) SetBody(v *ListReportResponseBody) *ListReportResponse {
+	s.Body = v
+	return s
+}
+
+type ListSkillHeaders struct {
+	CommonHeaders  map[string]*string              `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *ListSkillHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s ListSkillHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSkillHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListSkillHeaders) SetCommonHeaders(v map[string]*string) *ListSkillHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListSkillHeaders) SetAccountContext(v *ListSkillHeadersAccountContext) *ListSkillHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type ListSkillHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s ListSkillHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSkillHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListSkillHeadersAccountContext) SetAccountId(v string) *ListSkillHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type ListSkillShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s ListSkillShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSkillShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListSkillShrinkHeaders) SetCommonHeaders(v map[string]*string) *ListSkillShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListSkillShrinkHeaders) SetAccountContextShrink(v string) *ListSkillShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type ListSkillRequest struct {
+	// example:
+	//
+	// qweq-1231-jbarr-9940-asdf
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+}
+
+func (s ListSkillRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSkillRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSkillRequest) SetGroupId(v string) *ListSkillRequest {
+	s.GroupId = &v
+	return s
+}
+
+type ListSkillResponseBody struct {
+	// example:
+	//
+	// {}
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 2715B4D3-A3FB-5FC7-AFA0-4471687B1EC6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListSkillResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSkillResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSkillResponseBody) SetData(v interface{}) *ListSkillResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSkillResponseBody) SetRequestId(v string) *ListSkillResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListSkillResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSkillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSkillResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSkillResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSkillResponse) SetHeaders(v map[string]*string) *ListSkillResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSkillResponse) SetStatusCode(v int32) *ListSkillResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSkillResponse) SetBody(v *ListSkillResponseBody) *ListSkillResponse {
 	s.Body = v
 	return s
 }
@@ -90173,6 +90524,91 @@ func (client *Client) AssignTicket(request *AssignTicketRequest) (_result *Assig
 
 // Summary:
 //
+// 校验AI技能调用权限
+//
+// @param tmpReq - AuthorizeSkillRequest
+//
+// @param tmpHeader - AuthorizeSkillHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeSkillResponse
+func (client *Client) AuthorizeSkillWithOptions(tmpReq *AuthorizeSkillRequest, tmpHeader *AuthorizeSkillHeaders, runtime *util.RuntimeOptions) (_result *AuthorizeSkillResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AuthorizeSkillShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &AuthorizeSkillShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.PermissionCodes)) {
+		request.PermissionCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PermissionCodes, tea.String("PermissionCodes"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PermissionCodesShrink)) {
+		body["PermissionCodes"] = request.PermissionCodesShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AuthorizeSkill"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ai/v1/skill/authorizeSkill"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AuthorizeSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验AI技能调用权限
+//
+// @param request - AuthorizeSkillRequest
+//
+// @return AuthorizeSkillResponse
+func (client *Client) AuthorizeSkill(request *AuthorizeSkillRequest) (_result *AuthorizeSkillResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AuthorizeSkillHeaders{}
+	_result = &AuthorizeSkillResponse{}
+	_body, _err := client.AuthorizeSkillWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量获取表单实例数据
 //
 // @param tmpReq - BatchGetFormDataByIdListRequest
@@ -103698,6 +104134,10 @@ func (client *Client) InvokeSkillWithOptions(tmpReq *InvokeSkillRequest, tmpHead
 		body["SkillId"] = request.SkillId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Stream)) {
+		body["Stream"] = request.Stream
+	}
+
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -105056,6 +105496,85 @@ func (client *Client) ListReport(request *ListReportRequest) (_result *ListRepor
 	headers := &ListReportHeaders{}
 	_result = &ListReportResponse{}
 	_body, _err := client.ListReportWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出AI技能
+//
+// @param request - ListSkillRequest
+//
+// @param tmpHeader - ListSkillHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSkillResponse
+func (client *Client) ListSkillWithOptions(request *ListSkillRequest, tmpHeader *ListSkillHeaders, runtime *util.RuntimeOptions) (_result *ListSkillResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &ListSkillShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["groupId"] = request.GroupId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSkill"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ai/v1/skill/listSkill"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出AI技能
+//
+// @param request - ListSkillRequest
+//
+// @return ListSkillResponse
+func (client *Client) ListSkill(request *ListSkillRequest) (_result *ListSkillResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListSkillHeaders{}
+	_result = &ListSkillResponse{}
+	_body, _err := client.ListSkillWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
