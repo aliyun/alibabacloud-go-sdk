@@ -12760,7 +12760,8 @@ type DescribeSqlLogStatisticResponseBodyData struct {
 	// example:
 	//
 	// 1712568564928
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Timestamp    *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	TotalSqlSize *int64 `json:"TotalSqlSize,omitempty" xml:"TotalSqlSize,omitempty"`
 }
 
 func (s DescribeSqlLogStatisticResponseBodyData) String() string {
@@ -12798,6 +12799,11 @@ func (s *DescribeSqlLogStatisticResponseBodyData) SetImportSqlSize(v int64) *Des
 
 func (s *DescribeSqlLogStatisticResponseBodyData) SetTimestamp(v int64) *DescribeSqlLogStatisticResponseBodyData {
 	s.Timestamp = &v
+	return s
+}
+
+func (s *DescribeSqlLogStatisticResponseBodyData) SetTotalSqlSize(v int64) *DescribeSqlLogStatisticResponseBodyData {
+	s.TotalSqlSize = &v
 	return s
 }
 
@@ -13835,7 +13841,8 @@ type DescribeSqlLogTasksResponseBodyDataList struct {
 	// false
 	Expire *bool `json:"Expire,omitempty" xml:"Expire,omitempty"`
 	// The filter parameters.
-	Filters []*DescribeSqlLogTasksResponseBodyDataListFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	Filters     []*DescribeSqlLogTasksResponseBodyDataListFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	InnerResult *string                                           `json:"InnerResult,omitempty" xml:"InnerResult,omitempty"`
 	// The ID of the database instance.
 	//
 	// example:
@@ -13949,6 +13956,11 @@ func (s *DescribeSqlLogTasksResponseBodyDataList) SetExpire(v bool) *DescribeSql
 
 func (s *DescribeSqlLogTasksResponseBodyDataList) SetFilters(v []*DescribeSqlLogTasksResponseBodyDataListFilters) *DescribeSqlLogTasksResponseBodyDataList {
 	s.Filters = v
+	return s
+}
+
+func (s *DescribeSqlLogTasksResponseBodyDataList) SetInnerResult(v string) *DescribeSqlLogTasksResponseBodyDataList {
+	s.InnerResult = &v
 	return s
 }
 
