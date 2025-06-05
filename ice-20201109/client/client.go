@@ -12059,6 +12059,392 @@ func (s *CreateProgramResponse) SetBody(v *CreateProgramResponseBody) *CreatePro
 	return s
 }
 
+type CreateRecognitionEntityRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// landmark
+	Algorithm  *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	EntityInfo *string `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
+	// This parameter is required.
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// *************24b47865c6**************
+	LibId                *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateRecognitionEntityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecognitionEntityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecognitionEntityRequest) SetAlgorithm(v string) *CreateRecognitionEntityRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateRecognitionEntityRequest) SetEntityInfo(v string) *CreateRecognitionEntityRequest {
+	s.EntityInfo = &v
+	return s
+}
+
+func (s *CreateRecognitionEntityRequest) SetEntityName(v string) *CreateRecognitionEntityRequest {
+	s.EntityName = &v
+	return s
+}
+
+func (s *CreateRecognitionEntityRequest) SetLibId(v string) *CreateRecognitionEntityRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *CreateRecognitionEntityRequest) SetOwnerAccount(v string) *CreateRecognitionEntityRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateRecognitionEntityRequest) SetOwnerId(v int64) *CreateRecognitionEntityRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateRecognitionEntityRequest) SetResourceOwnerAccount(v string) *CreateRecognitionEntityRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateRecognitionEntityRequest) SetResourceOwnerId(v int64) *CreateRecognitionEntityRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateRecognitionEntityResponseBody struct {
+	// example:
+	//
+	// **************544cb84754************
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateRecognitionEntityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecognitionEntityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecognitionEntityResponseBody) SetEntityId(v string) *CreateRecognitionEntityResponseBody {
+	s.EntityId = &v
+	return s
+}
+
+func (s *CreateRecognitionEntityResponseBody) SetRequestId(v string) *CreateRecognitionEntityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRecognitionEntityResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRecognitionEntityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRecognitionEntityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecognitionEntityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecognitionEntityResponse) SetHeaders(v map[string]*string) *CreateRecognitionEntityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRecognitionEntityResponse) SetStatusCode(v int32) *CreateRecognitionEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRecognitionEntityResponse) SetBody(v *CreateRecognitionEntityResponseBody) *CreateRecognitionEntityResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRecognitionLibRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// landmark
+	Algorithm      *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	LibDescription *string `json:"LibDescription,omitempty" xml:"LibDescription,omitempty"`
+	// This parameter is required.
+	LibName              *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateRecognitionLibRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecognitionLibRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecognitionLibRequest) SetAlgorithm(v string) *CreateRecognitionLibRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateRecognitionLibRequest) SetLibDescription(v string) *CreateRecognitionLibRequest {
+	s.LibDescription = &v
+	return s
+}
+
+func (s *CreateRecognitionLibRequest) SetLibName(v string) *CreateRecognitionLibRequest {
+	s.LibName = &v
+	return s
+}
+
+func (s *CreateRecognitionLibRequest) SetOwnerAccount(v string) *CreateRecognitionLibRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateRecognitionLibRequest) SetOwnerId(v int64) *CreateRecognitionLibRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateRecognitionLibRequest) SetResourceOwnerAccount(v string) *CreateRecognitionLibRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateRecognitionLibRequest) SetResourceOwnerId(v int64) *CreateRecognitionLibRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateRecognitionLibResponseBody struct {
+	// example:
+	//
+	// *************24b47865c6**************
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateRecognitionLibResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecognitionLibResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecognitionLibResponseBody) SetLibId(v string) *CreateRecognitionLibResponseBody {
+	s.LibId = &v
+	return s
+}
+
+func (s *CreateRecognitionLibResponseBody) SetRequestId(v string) *CreateRecognitionLibResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRecognitionLibResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRecognitionLibResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRecognitionLibResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecognitionLibResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecognitionLibResponse) SetHeaders(v map[string]*string) *CreateRecognitionLibResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRecognitionLibResponse) SetStatusCode(v int32) *CreateRecognitionLibResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRecognitionLibResponse) SetBody(v *CreateRecognitionLibResponseBody) *CreateRecognitionLibResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRecognitionSampleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// landmark
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// **************544cb84754************
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// https://example.com/sample.png
+	ImageUrl    *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	LabelPrompt *string `json:"LabelPrompt,omitempty" xml:"LabelPrompt,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// *************24b47865c6**************
+	LibId                *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateRecognitionSampleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecognitionSampleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecognitionSampleRequest) SetAlgorithm(v string) *CreateRecognitionSampleRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *CreateRecognitionSampleRequest) SetEntityId(v string) *CreateRecognitionSampleRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *CreateRecognitionSampleRequest) SetImageUrl(v string) *CreateRecognitionSampleRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CreateRecognitionSampleRequest) SetLabelPrompt(v string) *CreateRecognitionSampleRequest {
+	s.LabelPrompt = &v
+	return s
+}
+
+func (s *CreateRecognitionSampleRequest) SetLibId(v string) *CreateRecognitionSampleRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *CreateRecognitionSampleRequest) SetOwnerAccount(v string) *CreateRecognitionSampleRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateRecognitionSampleRequest) SetOwnerId(v int64) *CreateRecognitionSampleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateRecognitionSampleRequest) SetResourceOwnerAccount(v string) *CreateRecognitionSampleRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateRecognitionSampleRequest) SetResourceOwnerId(v int64) *CreateRecognitionSampleRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateRecognitionSampleResponseBody struct {
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// **************4d2ba728e2f**************
+	SampleId *string `json:"SampleId,omitempty" xml:"SampleId,omitempty"`
+}
+
+func (s CreateRecognitionSampleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecognitionSampleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecognitionSampleResponseBody) SetRequestId(v string) *CreateRecognitionSampleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRecognitionSampleResponseBody) SetSampleId(v string) *CreateRecognitionSampleResponseBody {
+	s.SampleId = &v
+	return s
+}
+
+type CreateRecognitionSampleResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRecognitionSampleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRecognitionSampleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRecognitionSampleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRecognitionSampleResponse) SetHeaders(v map[string]*string) *CreateRecognitionSampleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRecognitionSampleResponse) SetStatusCode(v int32) *CreateRecognitionSampleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRecognitionSampleResponse) SetBody(v *CreateRecognitionSampleResponseBody) *CreateRecognitionSampleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSearchIndexRequest struct {
 	// example:
 	//
@@ -16979,6 +17365,357 @@ func (s *DeleteProgramResponse) SetStatusCode(v int32) *DeleteProgramResponse {
 }
 
 func (s *DeleteProgramResponse) SetBody(v *DeleteProgramResponseBody) *DeleteProgramResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRecognitionEntityRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// landmark
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// **************544cb84754************
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// *************24b47865c6**************
+	LibId                *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteRecognitionEntityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRecognitionEntityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRecognitionEntityRequest) SetAlgorithm(v string) *DeleteRecognitionEntityRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *DeleteRecognitionEntityRequest) SetEntityId(v string) *DeleteRecognitionEntityRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *DeleteRecognitionEntityRequest) SetLibId(v string) *DeleteRecognitionEntityRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *DeleteRecognitionEntityRequest) SetOwnerAccount(v string) *DeleteRecognitionEntityRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteRecognitionEntityRequest) SetOwnerId(v int64) *DeleteRecognitionEntityRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteRecognitionEntityRequest) SetResourceOwnerAccount(v string) *DeleteRecognitionEntityRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteRecognitionEntityRequest) SetResourceOwnerId(v int64) *DeleteRecognitionEntityRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteRecognitionEntityResponseBody struct {
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRecognitionEntityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRecognitionEntityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRecognitionEntityResponseBody) SetRequestId(v string) *DeleteRecognitionEntityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRecognitionEntityResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRecognitionEntityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRecognitionEntityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRecognitionEntityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRecognitionEntityResponse) SetHeaders(v map[string]*string) *DeleteRecognitionEntityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRecognitionEntityResponse) SetStatusCode(v int32) *DeleteRecognitionEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRecognitionEntityResponse) SetBody(v *DeleteRecognitionEntityResponseBody) *DeleteRecognitionEntityResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRecognitionLibRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// landmark
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// *************24b47865c6**************
+	LibId                *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteRecognitionLibRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRecognitionLibRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRecognitionLibRequest) SetAlgorithm(v string) *DeleteRecognitionLibRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *DeleteRecognitionLibRequest) SetLibId(v string) *DeleteRecognitionLibRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *DeleteRecognitionLibRequest) SetOwnerAccount(v string) *DeleteRecognitionLibRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteRecognitionLibRequest) SetOwnerId(v int64) *DeleteRecognitionLibRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteRecognitionLibRequest) SetResourceOwnerAccount(v string) *DeleteRecognitionLibRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteRecognitionLibRequest) SetResourceOwnerId(v int64) *DeleteRecognitionLibRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteRecognitionLibResponseBody struct {
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRecognitionLibResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRecognitionLibResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRecognitionLibResponseBody) SetRequestId(v string) *DeleteRecognitionLibResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRecognitionLibResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRecognitionLibResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRecognitionLibResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRecognitionLibResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRecognitionLibResponse) SetHeaders(v map[string]*string) *DeleteRecognitionLibResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRecognitionLibResponse) SetStatusCode(v int32) *DeleteRecognitionLibResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRecognitionLibResponse) SetBody(v *DeleteRecognitionLibResponseBody) *DeleteRecognitionLibResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRecognitionSampleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// landmark
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// **************544cb84754************
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// *************24b47865c6**************
+	LibId                *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// **************4d2ba728e2f**************
+	SampleId *string `json:"SampleId,omitempty" xml:"SampleId,omitempty"`
+}
+
+func (s DeleteRecognitionSampleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRecognitionSampleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRecognitionSampleRequest) SetAlgorithm(v string) *DeleteRecognitionSampleRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *DeleteRecognitionSampleRequest) SetEntityId(v string) *DeleteRecognitionSampleRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *DeleteRecognitionSampleRequest) SetLibId(v string) *DeleteRecognitionSampleRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *DeleteRecognitionSampleRequest) SetOwnerAccount(v string) *DeleteRecognitionSampleRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteRecognitionSampleRequest) SetOwnerId(v int64) *DeleteRecognitionSampleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteRecognitionSampleRequest) SetResourceOwnerAccount(v string) *DeleteRecognitionSampleRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteRecognitionSampleRequest) SetResourceOwnerId(v int64) *DeleteRecognitionSampleRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteRecognitionSampleRequest) SetSampleId(v string) *DeleteRecognitionSampleRequest {
+	s.SampleId = &v
+	return s
+}
+
+type DeleteRecognitionSampleResponseBody struct {
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRecognitionSampleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRecognitionSampleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRecognitionSampleResponseBody) SetRequestId(v string) *DeleteRecognitionSampleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRecognitionSampleResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRecognitionSampleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRecognitionSampleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRecognitionSampleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRecognitionSampleResponse) SetHeaders(v map[string]*string) *DeleteRecognitionSampleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRecognitionSampleResponse) SetStatusCode(v int32) *DeleteRecognitionSampleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRecognitionSampleResponse) SetBody(v *DeleteRecognitionSampleResponseBody) *DeleteRecognitionSampleResponse {
 	s.Body = v
 	return s
 }
@@ -55963,6 +56700,636 @@ func (s *ListPublicMediaBasicInfosResponse) SetStatusCode(v int32) *ListPublicMe
 }
 
 func (s *ListPublicMediaBasicInfosResponse) SetBody(v *ListPublicMediaBasicInfosResponseBody) *ListPublicMediaBasicInfosResponse {
+	s.Body = v
+	return s
+}
+
+type ListRecognitionEntitiesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// landmark
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1965304870001
+	LibId        *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListRecognitionEntitiesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionEntitiesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionEntitiesRequest) SetAlgorithm(v string) *ListRecognitionEntitiesRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListRecognitionEntitiesRequest) SetLibId(v string) *ListRecognitionEntitiesRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *ListRecognitionEntitiesRequest) SetOwnerAccount(v string) *ListRecognitionEntitiesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListRecognitionEntitiesRequest) SetOwnerId(v int64) *ListRecognitionEntitiesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListRecognitionEntitiesRequest) SetPageNumber(v int32) *ListRecognitionEntitiesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRecognitionEntitiesRequest) SetPageSize(v int32) *ListRecognitionEntitiesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRecognitionEntitiesRequest) SetResourceOwnerAccount(v string) *ListRecognitionEntitiesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListRecognitionEntitiesRequest) SetResourceOwnerId(v int64) *ListRecognitionEntitiesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListRecognitionEntitiesResponseBody struct {
+	Entities *ListRecognitionEntitiesResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListRecognitionEntitiesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionEntitiesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionEntitiesResponseBody) SetEntities(v *ListRecognitionEntitiesResponseBodyEntities) *ListRecognitionEntitiesResponseBody {
+	s.Entities = v
+	return s
+}
+
+func (s *ListRecognitionEntitiesResponseBody) SetPageNumber(v int32) *ListRecognitionEntitiesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRecognitionEntitiesResponseBody) SetPageSize(v int32) *ListRecognitionEntitiesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRecognitionEntitiesResponseBody) SetRequestId(v string) *ListRecognitionEntitiesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRecognitionEntitiesResponseBody) SetTotalCount(v int64) *ListRecognitionEntitiesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListRecognitionEntitiesResponseBodyEntities struct {
+	Entity []*ListRecognitionEntitiesResponseBodyEntitiesEntity `json:"Entity,omitempty" xml:"Entity,omitempty" type:"Repeated"`
+}
+
+func (s ListRecognitionEntitiesResponseBodyEntities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionEntitiesResponseBodyEntities) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionEntitiesResponseBodyEntities) SetEntity(v []*ListRecognitionEntitiesResponseBodyEntitiesEntity) *ListRecognitionEntitiesResponseBodyEntities {
+	s.Entity = v
+	return s
+}
+
+type ListRecognitionEntitiesResponseBodyEntitiesEntity struct {
+	// example:
+	//
+	// **************544cb84754************
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// example:
+	//
+	// {}
+	EntityInfo *string `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+}
+
+func (s ListRecognitionEntitiesResponseBodyEntitiesEntity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionEntitiesResponseBodyEntitiesEntity) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionEntitiesResponseBodyEntitiesEntity) SetEntityId(v string) *ListRecognitionEntitiesResponseBodyEntitiesEntity {
+	s.EntityId = &v
+	return s
+}
+
+func (s *ListRecognitionEntitiesResponseBodyEntitiesEntity) SetEntityInfo(v string) *ListRecognitionEntitiesResponseBodyEntitiesEntity {
+	s.EntityInfo = &v
+	return s
+}
+
+func (s *ListRecognitionEntitiesResponseBodyEntitiesEntity) SetEntityName(v string) *ListRecognitionEntitiesResponseBodyEntitiesEntity {
+	s.EntityName = &v
+	return s
+}
+
+type ListRecognitionEntitiesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRecognitionEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRecognitionEntitiesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionEntitiesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionEntitiesResponse) SetHeaders(v map[string]*string) *ListRecognitionEntitiesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRecognitionEntitiesResponse) SetStatusCode(v int32) *ListRecognitionEntitiesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRecognitionEntitiesResponse) SetBody(v *ListRecognitionEntitiesResponseBody) *ListRecognitionEntitiesResponse {
+	s.Body = v
+	return s
+}
+
+type ListRecognitionLibsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// landmark
+	Algorithm    *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListRecognitionLibsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionLibsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionLibsRequest) SetAlgorithm(v string) *ListRecognitionLibsRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListRecognitionLibsRequest) SetOwnerAccount(v string) *ListRecognitionLibsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListRecognitionLibsRequest) SetOwnerId(v int64) *ListRecognitionLibsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListRecognitionLibsRequest) SetPageNumber(v int32) *ListRecognitionLibsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRecognitionLibsRequest) SetPageSize(v int32) *ListRecognitionLibsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRecognitionLibsRequest) SetResourceOwnerAccount(v string) *ListRecognitionLibsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListRecognitionLibsRequest) SetResourceOwnerId(v int64) *ListRecognitionLibsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListRecognitionLibsResponseBody struct {
+	Libs *ListRecognitionLibsResponseBodyLibs `json:"Libs,omitempty" xml:"Libs,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 180
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListRecognitionLibsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionLibsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionLibsResponseBody) SetLibs(v *ListRecognitionLibsResponseBodyLibs) *ListRecognitionLibsResponseBody {
+	s.Libs = v
+	return s
+}
+
+func (s *ListRecognitionLibsResponseBody) SetPageNumber(v int32) *ListRecognitionLibsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRecognitionLibsResponseBody) SetPageSize(v int32) *ListRecognitionLibsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRecognitionLibsResponseBody) SetRequestId(v string) *ListRecognitionLibsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRecognitionLibsResponseBody) SetTotalCount(v int64) *ListRecognitionLibsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListRecognitionLibsResponseBodyLibs struct {
+	Lib []*ListRecognitionLibsResponseBodyLibsLib `json:"Lib,omitempty" xml:"Lib,omitempty" type:"Repeated"`
+}
+
+func (s ListRecognitionLibsResponseBodyLibs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionLibsResponseBodyLibs) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionLibsResponseBodyLibs) SetLib(v []*ListRecognitionLibsResponseBodyLibsLib) *ListRecognitionLibsResponseBodyLibs {
+	s.Lib = v
+	return s
+}
+
+type ListRecognitionLibsResponseBodyLibsLib struct {
+	LibDescription *string `json:"LibDescription,omitempty" xml:"LibDescription,omitempty"`
+	// example:
+	//
+	// *************24b47865c6**************
+	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+}
+
+func (s ListRecognitionLibsResponseBodyLibsLib) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionLibsResponseBodyLibsLib) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionLibsResponseBodyLibsLib) SetLibDescription(v string) *ListRecognitionLibsResponseBodyLibsLib {
+	s.LibDescription = &v
+	return s
+}
+
+func (s *ListRecognitionLibsResponseBodyLibsLib) SetLibId(v string) *ListRecognitionLibsResponseBodyLibsLib {
+	s.LibId = &v
+	return s
+}
+
+func (s *ListRecognitionLibsResponseBodyLibsLib) SetLibName(v string) *ListRecognitionLibsResponseBodyLibsLib {
+	s.LibName = &v
+	return s
+}
+
+type ListRecognitionLibsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRecognitionLibsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRecognitionLibsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionLibsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionLibsResponse) SetHeaders(v map[string]*string) *ListRecognitionLibsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRecognitionLibsResponse) SetStatusCode(v int32) *ListRecognitionLibsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRecognitionLibsResponse) SetBody(v *ListRecognitionLibsResponseBody) *ListRecognitionLibsResponse {
+	s.Body = v
+	return s
+}
+
+type ListRecognitionSamplesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// landmark
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e6b985c05174412dbc77c92496b7373b
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxxxxxxxx
+	LibId        *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListRecognitionSamplesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionSamplesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionSamplesRequest) SetAlgorithm(v string) *ListRecognitionSamplesRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesRequest) SetEntityId(v string) *ListRecognitionSamplesRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesRequest) SetLibId(v string) *ListRecognitionSamplesRequest {
+	s.LibId = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesRequest) SetOwnerAccount(v string) *ListRecognitionSamplesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesRequest) SetOwnerId(v int64) *ListRecognitionSamplesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesRequest) SetPageNumber(v int32) *ListRecognitionSamplesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesRequest) SetPageSize(v int32) *ListRecognitionSamplesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesRequest) SetResourceOwnerAccount(v string) *ListRecognitionSamplesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesRequest) SetResourceOwnerId(v int64) *ListRecognitionSamplesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListRecognitionSamplesResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// xxx-xxxx-xxxxx-xxxx
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Samples   *ListRecognitionSamplesResponseBodySamples `json:"Samples,omitempty" xml:"Samples,omitempty" type:"Struct"`
+	// example:
+	//
+	// 5
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListRecognitionSamplesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionSamplesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionSamplesResponseBody) SetPageNumber(v int32) *ListRecognitionSamplesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesResponseBody) SetPageSize(v int32) *ListRecognitionSamplesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesResponseBody) SetRequestId(v string) *ListRecognitionSamplesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesResponseBody) SetSamples(v *ListRecognitionSamplesResponseBodySamples) *ListRecognitionSamplesResponseBody {
+	s.Samples = v
+	return s
+}
+
+func (s *ListRecognitionSamplesResponseBody) SetTotalCount(v int64) *ListRecognitionSamplesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListRecognitionSamplesResponseBodySamples struct {
+	Sample []*ListRecognitionSamplesResponseBodySamplesSample `json:"Sample,omitempty" xml:"Sample,omitempty" type:"Repeated"`
+}
+
+func (s ListRecognitionSamplesResponseBodySamples) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionSamplesResponseBodySamples) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionSamplesResponseBodySamples) SetSample(v []*ListRecognitionSamplesResponseBodySamplesSample) *ListRecognitionSamplesResponseBodySamples {
+	s.Sample = v
+	return s
+}
+
+type ListRecognitionSamplesResponseBodySamplesSample struct {
+	// example:
+	//
+	// https://example.com/sample.png
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// xxxxxxxxxxxxx
+	SampleId *string `json:"SampleId,omitempty" xml:"SampleId,omitempty"`
+}
+
+func (s ListRecognitionSamplesResponseBodySamplesSample) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionSamplesResponseBodySamplesSample) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionSamplesResponseBodySamplesSample) SetImageUrl(v string) *ListRecognitionSamplesResponseBodySamplesSample {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesResponseBodySamplesSample) SetSampleId(v string) *ListRecognitionSamplesResponseBodySamplesSample {
+	s.SampleId = &v
+	return s
+}
+
+type ListRecognitionSamplesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRecognitionSamplesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRecognitionSamplesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecognitionSamplesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecognitionSamplesResponse) SetHeaders(v map[string]*string) *ListRecognitionSamplesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRecognitionSamplesResponse) SetStatusCode(v int32) *ListRecognitionSamplesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRecognitionSamplesResponse) SetBody(v *ListRecognitionSamplesResponseBody) *ListRecognitionSamplesResponse {
 	s.Body = v
 	return s
 }
@@ -99705,6 +101072,270 @@ func (client *Client) CreateProgram(request *CreateProgramRequest) (_result *Cre
 
 // Summary:
 //
+// 创建自定义实体
+//
+// @param request - CreateRecognitionEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRecognitionEntityResponse
+func (client *Client) CreateRecognitionEntityWithOptions(request *CreateRecognitionEntityRequest, runtime *util.RuntimeOptions) (_result *CreateRecognitionEntityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityInfo)) {
+		query["EntityInfo"] = request.EntityInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityName)) {
+		query["EntityName"] = request.EntityName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibId)) {
+		query["LibId"] = request.LibId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRecognitionEntity"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRecognitionEntityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义实体
+//
+// @param request - CreateRecognitionEntityRequest
+//
+// @return CreateRecognitionEntityResponse
+func (client *Client) CreateRecognitionEntity(request *CreateRecognitionEntityRequest) (_result *CreateRecognitionEntityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRecognitionEntityResponse{}
+	_body, _err := client.CreateRecognitionEntityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义库。
+//
+// @param request - CreateRecognitionLibRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRecognitionLibResponse
+func (client *Client) CreateRecognitionLibWithOptions(request *CreateRecognitionLibRequest, runtime *util.RuntimeOptions) (_result *CreateRecognitionLibResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibDescription)) {
+		query["LibDescription"] = request.LibDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibName)) {
+		query["LibName"] = request.LibName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRecognitionLib"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRecognitionLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义库。
+//
+// @param request - CreateRecognitionLibRequest
+//
+// @return CreateRecognitionLibResponse
+func (client *Client) CreateRecognitionLib(request *CreateRecognitionLibRequest) (_result *CreateRecognitionLibResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRecognitionLibResponse{}
+	_body, _err := client.CreateRecognitionLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 注册自定义实体照片
+//
+// @param request - CreateRecognitionSampleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRecognitionSampleResponse
+func (client *Client) CreateRecognitionSampleWithOptions(request *CreateRecognitionSampleRequest, runtime *util.RuntimeOptions) (_result *CreateRecognitionSampleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelPrompt)) {
+		query["LabelPrompt"] = request.LabelPrompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibId)) {
+		query["LibId"] = request.LibId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRecognitionSample"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRecognitionSampleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 注册自定义实体照片
+//
+// @param request - CreateRecognitionSampleRequest
+//
+// @return CreateRecognitionSampleResponse
+func (client *Client) CreateRecognitionSample(request *CreateRecognitionSampleRequest) (_result *CreateRecognitionSampleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRecognitionSampleResponse{}
+	_body, _err := client.CreateRecognitionSampleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建搜索索引
 //
 // Description:
@@ -102722,6 +104353,258 @@ func (client *Client) DeleteProgram(request *DeleteProgramRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteProgramResponse{}
 	_body, _err := client.DeleteProgramWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义库实体
+//
+// @param request - DeleteRecognitionEntityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRecognitionEntityResponse
+func (client *Client) DeleteRecognitionEntityWithOptions(request *DeleteRecognitionEntityRequest, runtime *util.RuntimeOptions) (_result *DeleteRecognitionEntityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibId)) {
+		query["LibId"] = request.LibId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRecognitionEntity"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRecognitionEntityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义库实体
+//
+// @param request - DeleteRecognitionEntityRequest
+//
+// @return DeleteRecognitionEntityResponse
+func (client *Client) DeleteRecognitionEntity(request *DeleteRecognitionEntityRequest) (_result *DeleteRecognitionEntityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRecognitionEntityResponse{}
+	_body, _err := client.DeleteRecognitionEntityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义库
+//
+// @param request - DeleteRecognitionLibRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRecognitionLibResponse
+func (client *Client) DeleteRecognitionLibWithOptions(request *DeleteRecognitionLibRequest, runtime *util.RuntimeOptions) (_result *DeleteRecognitionLibResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibId)) {
+		query["LibId"] = request.LibId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRecognitionLib"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRecognitionLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义库
+//
+// @param request - DeleteRecognitionLibRequest
+//
+// @return DeleteRecognitionLibResponse
+func (client *Client) DeleteRecognitionLib(request *DeleteRecognitionLibRequest) (_result *DeleteRecognitionLibResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRecognitionLibResponse{}
+	_body, _err := client.DeleteRecognitionLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义实体照片
+//
+// @param request - DeleteRecognitionSampleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRecognitionSampleResponse
+func (client *Client) DeleteRecognitionSampleWithOptions(request *DeleteRecognitionSampleRequest, runtime *util.RuntimeOptions) (_result *DeleteRecognitionSampleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibId)) {
+		query["LibId"] = request.LibId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SampleId)) {
+		query["SampleId"] = request.SampleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRecognitionSample"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRecognitionSampleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义实体照片
+//
+// @param request - DeleteRecognitionSampleRequest
+//
+// @return DeleteRecognitionSampleResponse
+func (client *Client) DeleteRecognitionSample(request *DeleteRecognitionSampleRequest) (_result *DeleteRecognitionSampleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRecognitionSampleResponse{}
+	_body, _err := client.DeleteRecognitionSampleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -111640,6 +113523,270 @@ func (client *Client) ListPublicMediaBasicInfos(request *ListPublicMediaBasicInf
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPublicMediaBasicInfosResponse{}
 	_body, _err := client.ListPublicMediaBasicInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义库下实体列表
+//
+// @param request - ListRecognitionEntitiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRecognitionEntitiesResponse
+func (client *Client) ListRecognitionEntitiesWithOptions(request *ListRecognitionEntitiesRequest, runtime *util.RuntimeOptions) (_result *ListRecognitionEntitiesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibId)) {
+		query["LibId"] = request.LibId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRecognitionEntities"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRecognitionEntitiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义库下实体列表
+//
+// @param request - ListRecognitionEntitiesRequest
+//
+// @return ListRecognitionEntitiesResponse
+func (client *Client) ListRecognitionEntities(request *ListRecognitionEntitiesRequest) (_result *ListRecognitionEntitiesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRecognitionEntitiesResponse{}
+	_body, _err := client.ListRecognitionEntitiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义库列表
+//
+// @param request - ListRecognitionLibsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRecognitionLibsResponse
+func (client *Client) ListRecognitionLibsWithOptions(request *ListRecognitionLibsRequest, runtime *util.RuntimeOptions) (_result *ListRecognitionLibsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRecognitionLibs"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRecognitionLibsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义库列表
+//
+// @param request - ListRecognitionLibsRequest
+//
+// @return ListRecognitionLibsResponse
+func (client *Client) ListRecognitionLibs(request *ListRecognitionLibsRequest) (_result *ListRecognitionLibsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRecognitionLibsResponse{}
+	_body, _err := client.ListRecognitionLibsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义库实体的图片列表
+//
+// @param request - ListRecognitionSamplesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRecognitionSamplesResponse
+func (client *Client) ListRecognitionSamplesWithOptions(request *ListRecognitionSamplesRequest, runtime *util.RuntimeOptions) (_result *ListRecognitionSamplesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibId)) {
+		query["LibId"] = request.LibId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRecognitionSamples"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRecognitionSamplesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义库实体的图片列表
+//
+// @param request - ListRecognitionSamplesRequest
+//
+// @return ListRecognitionSamplesResponse
+func (client *Client) ListRecognitionSamples(request *ListRecognitionSamplesRequest) (_result *ListRecognitionSamplesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRecognitionSamplesResponse{}
+	_body, _err := client.ListRecognitionSamplesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
