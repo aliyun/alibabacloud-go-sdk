@@ -15927,7 +15927,8 @@ type ListAutomateResponseConfigsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResponseRuleType *string `json:"ResponseRuleType,omitempty" xml:"ResponseRuleType,omitempty"`
 	// The ID of the account that you switch from the management account.
 	//
 	// example:
@@ -16008,6 +16009,11 @@ func (s *ListAutomateResponseConfigsRequest) SetPlaybookUuid(v string) *ListAuto
 
 func (s *ListAutomateResponseConfigsRequest) SetRegionId(v string) *ListAutomateResponseConfigsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListAutomateResponseConfigsRequest) SetResponseRuleType(v string) *ListAutomateResponseConfigsRequest {
+	s.ResponseRuleType = &v
 	return s
 }
 
@@ -16255,7 +16261,8 @@ type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
 	// example:
 	//
 	// 123
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ResponseRuleType *string `json:"ResponseRuleType,omitempty" xml:"ResponseRuleType,omitempty"`
 	// The name of the automated response rule.
 	//
 	// example:
@@ -16330,6 +16337,11 @@ func (s *ListAutomateResponseConfigsResponseBodyDataResponseData) SetGmtModified
 
 func (s *ListAutomateResponseConfigsResponseBodyDataResponseData) SetId(v int64) *ListAutomateResponseConfigsResponseBodyDataResponseData {
 	s.Id = &v
+	return s
+}
+
+func (s *ListAutomateResponseConfigsResponseBodyDataResponseData) SetResponseRuleType(v string) *ListAutomateResponseConfigsResponseBodyDataResponseData {
+	s.ResponseRuleType = &v
 	return s
 }
 
@@ -29492,6 +29504,10 @@ func (client *Client) ListAutomateResponseConfigsWithOptions(request *ListAutoma
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseRuleType)) {
+		body["ResponseRuleType"] = request.ResponseRuleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RoleFor)) {
