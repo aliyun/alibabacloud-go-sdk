@@ -850,7 +850,8 @@ type CreateContainerGroupRequest struct {
 	// example:
 	//
 	// true
-	Ipv6GatewayBandwidthEnable *bool `json:"Ipv6GatewayBandwidthEnable,omitempty" xml:"Ipv6GatewayBandwidthEnable,omitempty"`
+	Ipv6GatewayBandwidthEnable *bool  `json:"Ipv6GatewayBandwidthEnable,omitempty" xml:"Ipv6GatewayBandwidthEnable,omitempty"`
+	MaxPendingMinute           *int32 `json:"MaxPendingMinute,omitempty" xml:"MaxPendingMinute,omitempty"`
 	// The memory size that you want to allocate to the instance. Unit: GiB.
 	//
 	// example:
@@ -1249,6 +1250,11 @@ func (s *CreateContainerGroupRequest) SetIpv6GatewayBandwidth(v string) *CreateC
 
 func (s *CreateContainerGroupRequest) SetIpv6GatewayBandwidthEnable(v bool) *CreateContainerGroupRequest {
 	s.Ipv6GatewayBandwidthEnable = &v
+	return s
+}
+
+func (s *CreateContainerGroupRequest) SetMaxPendingMinute(v int32) *CreateContainerGroupRequest {
+	s.MaxPendingMinute = &v
 	return s
 }
 
@@ -19760,6 +19766,10 @@ func (client *Client) CreateContainerGroupWithOptions(request *CreateContainerGr
 
 	if !tea.BoolValue(util.IsUnset(request.Ipv6GatewayBandwidthEnable)) {
 		query["Ipv6GatewayBandwidthEnable"] = request.Ipv6GatewayBandwidthEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxPendingMinute)) {
+		query["MaxPendingMinute"] = request.MaxPendingMinute
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Memory)) {

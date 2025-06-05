@@ -1,3 +1,7 @@
+2025-06-05 Version: v3.1.1
+- Update API CreateContainerGroup: add request parameters MaxPendingMinute.
+
+
 2025-05-28 Version: v3.1.0
 - Support API CopyDataCache.
 - Support API CreateDataCache.
