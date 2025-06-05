@@ -10837,6 +10837,7 @@ type GetPropertiesResponseBodyData struct {
 	ConsoleConfig           *GetPropertiesResponseBodyDataConsoleConfig           `json:"ConsoleConfig,omitempty" xml:"ConsoleConfig,omitempty" type:"Struct"`
 	GeneralConfigMap        map[string]interface{}                                `json:"GeneralConfigMap,omitempty" xml:"GeneralConfigMap,omitempty"`
 	IntelligentSearchConfig *GetPropertiesResponseBodyDataIntelligentSearchConfig `json:"IntelligentSearchConfig,omitempty" xml:"IntelligentSearchConfig,omitempty" type:"Struct"`
+	MiaosouConfig           *GetPropertiesResponseBodyDataMiaosouConfig           `json:"MiaosouConfig,omitempty" xml:"MiaosouConfig,omitempty" type:"Struct"`
 	SearchSourceList        []*GetPropertiesResponseBodyDataSearchSourceList      `json:"SearchSourceList,omitempty" xml:"SearchSourceList,omitempty" type:"Repeated"`
 	SearchSources           []*GetPropertiesResponseBodyDataSearchSources         `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
 	// example:
@@ -10873,6 +10874,11 @@ func (s *GetPropertiesResponseBodyData) SetGeneralConfigMap(v map[string]interfa
 
 func (s *GetPropertiesResponseBodyData) SetIntelligentSearchConfig(v *GetPropertiesResponseBodyDataIntelligentSearchConfig) *GetPropertiesResponseBodyData {
 	s.IntelligentSearchConfig = v
+	return s
+}
+
+func (s *GetPropertiesResponseBodyData) SetMiaosouConfig(v *GetPropertiesResponseBodyDataMiaosouConfig) *GetPropertiesResponseBodyData {
+	s.MiaosouConfig = v
 	return s
 }
 
@@ -11125,6 +11131,70 @@ func (s *GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources) SetD
 
 func (s *GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources) SetName(v string) *GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources {
 	s.Name = &v
+	return s
+}
+
+type GetPropertiesResponseBodyDataMiaosouConfig struct {
+	// example:
+	//
+	// 1
+	MaxDocSize *int64                                                  `json:"MaxDocSize,omitempty" xml:"MaxDocSize,omitempty"`
+	ModelInfos []*GetPropertiesResponseBodyDataMiaosouConfigModelInfos `json:"ModelInfos,omitempty" xml:"ModelInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	UseDocSize *int64 `json:"UseDocSize,omitempty" xml:"UseDocSize,omitempty"`
+}
+
+func (s GetPropertiesResponseBodyDataMiaosouConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPropertiesResponseBodyDataMiaosouConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetPropertiesResponseBodyDataMiaosouConfig) SetMaxDocSize(v int64) *GetPropertiesResponseBodyDataMiaosouConfig {
+	s.MaxDocSize = &v
+	return s
+}
+
+func (s *GetPropertiesResponseBodyDataMiaosouConfig) SetModelInfos(v []*GetPropertiesResponseBodyDataMiaosouConfigModelInfos) *GetPropertiesResponseBodyDataMiaosouConfig {
+	s.ModelInfos = v
+	return s
+}
+
+func (s *GetPropertiesResponseBodyDataMiaosouConfig) SetUseDocSize(v int64) *GetPropertiesResponseBodyDataMiaosouConfig {
+	s.UseDocSize = &v
+	return s
+}
+
+type GetPropertiesResponseBodyDataMiaosouConfigModelInfos struct {
+	// example:
+	//
+	// quanmiao-max
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// example:
+	//
+	// 全妙-Max
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+}
+
+func (s GetPropertiesResponseBodyDataMiaosouConfigModelInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPropertiesResponseBodyDataMiaosouConfigModelInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetPropertiesResponseBodyDataMiaosouConfigModelInfos) SetModelId(v string) *GetPropertiesResponseBodyDataMiaosouConfigModelInfos {
+	s.ModelId = &v
+	return s
+}
+
+func (s *GetPropertiesResponseBodyDataMiaosouConfigModelInfos) SetModelName(v string) *GetPropertiesResponseBodyDataMiaosouConfigModelInfos {
+	s.ModelName = &v
 	return s
 }
 
@@ -31837,6 +31907,7 @@ func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectio
 }
 
 type RunSearchGenerationRequestChatConfig struct {
+	EnableThinking *bool `json:"EnableThinking,omitempty" xml:"EnableThinking,omitempty"`
 	// example:
 	//
 	// concise
@@ -31855,6 +31926,11 @@ func (s RunSearchGenerationRequestChatConfig) String() string {
 
 func (s RunSearchGenerationRequestChatConfig) GoString() string {
 	return s.String()
+}
+
+func (s *RunSearchGenerationRequestChatConfig) SetEnableThinking(v bool) *RunSearchGenerationRequestChatConfig {
+	s.EnableThinking = &v
+	return s
 }
 
 func (s *RunSearchGenerationRequestChatConfig) SetGenerateLevel(v string) *RunSearchGenerationRequestChatConfig {
