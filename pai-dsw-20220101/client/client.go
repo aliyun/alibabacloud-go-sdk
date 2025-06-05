@@ -190,7 +190,7 @@ type CredentialConfigConfigsRolesUserInfo struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// example:
 	//
-	// S
+	// sub
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -815,7 +815,8 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// {\\"foo\\": \\"bar\\"}
-	Labels []*CreateInstanceRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Labels       []*CreateInstanceRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	OversoldType *string                        `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
 	// The priority based on which resources are allocated to instances. Valid values: 1 to 9.
 	//
 	// 	- 1: the lowest priority.
@@ -953,6 +954,11 @@ func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest
 
 func (s *CreateInstanceRequest) SetLabels(v []*CreateInstanceRequestLabels) *CreateInstanceRequest {
 	s.Labels = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetOversoldType(v string) *CreateInstanceRequest {
+	s.OversoldType = &v
 	return s
 }
 
@@ -5938,7 +5944,8 @@ type ListEcsSpecsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The field by which the query results are sorted. Set the value to gmtCreate.
 	//
 	// example:
@@ -5972,6 +5979,11 @@ func (s *ListEcsSpecsRequest) SetPageNumber(v int64) *ListEcsSpecsRequest {
 
 func (s *ListEcsSpecsRequest) SetPageSize(v int64) *ListEcsSpecsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListEcsSpecsRequest) SetResourceType(v string) *ListEcsSpecsRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -9149,6 +9161,7 @@ type UpdateInstanceRequest struct {
 	//
 	// training_data
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	OversoldType *string `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
 	// The priority based on which resources are allocated to instances. Valid values: 1 to 9.
 	//
 	// 	- 1: the lowest priority.
@@ -9287,6 +9300,11 @@ func (s *UpdateInstanceRequest) SetImageUrl(v string) *UpdateInstanceRequest {
 
 func (s *UpdateInstanceRequest) SetInstanceName(v string) *UpdateInstanceRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetOversoldType(v string) *UpdateInstanceRequest {
+	s.OversoldType = &v
 	return s
 }
 
@@ -10108,6 +10126,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Labels)) {
 		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OversoldType)) {
+		body["OversoldType"] = request.OversoldType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Priority)) {
@@ -11370,6 +11392,10 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
 		query["SortBy"] = request.SortBy
 	}
@@ -11932,6 +11958,10 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OversoldType)) {
+		body["OversoldType"] = request.OversoldType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Priority)) {
