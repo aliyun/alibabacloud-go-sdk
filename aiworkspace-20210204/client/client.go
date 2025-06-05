@@ -8526,7 +8526,9 @@ type GetConfigResponseBody struct {
 	// example:
 	//
 	// oss://***
-	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	ConfigValue     *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	// The tags of the configuration item.
 	Labels []*GetConfigResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The request ID.
@@ -8563,6 +8565,16 @@ func (s *GetConfigResponseBody) SetConfigKey(v string) *GetConfigResponseBody {
 
 func (s *GetConfigResponseBody) SetConfigValue(v string) *GetConfigResponseBody {
 	s.ConfigValue = &v
+	return s
+}
+
+func (s *GetConfigResponseBody) SetGmtCreateTime(v string) *GetConfigResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetConfigResponseBody) SetGmtModifiedTime(v string) *GetConfigResponseBody {
+	s.GmtModifiedTime = &v
 	return s
 }
 
@@ -12533,7 +12545,9 @@ type ListConfigsResponseBodyConfigs struct {
 	// example:
 	//
 	// oss://***
-	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	ConfigValue     *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	// The tags of the configuration item.
 	Labels []*ListConfigsResponseBodyConfigsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
@@ -12553,6 +12567,16 @@ func (s *ListConfigsResponseBodyConfigs) SetConfigKey(v string) *ListConfigsResp
 
 func (s *ListConfigsResponseBodyConfigs) SetConfigValue(v string) *ListConfigsResponseBodyConfigs {
 	s.ConfigValue = &v
+	return s
+}
+
+func (s *ListConfigsResponseBodyConfigs) SetGmtCreateTime(v string) *ListConfigsResponseBodyConfigs {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListConfigsResponseBodyConfigs) SetGmtModifiedTime(v string) *ListConfigsResponseBodyConfigs {
+	s.GmtModifiedTime = &v
 	return s
 }
 
