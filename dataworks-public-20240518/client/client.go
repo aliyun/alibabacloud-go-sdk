@@ -46246,6 +46246,7 @@ func (s *ListFoldersResponse) SetBody(v *ListFoldersResponseBody) *ListFoldersRe
 }
 
 type ListFunctionsRequest struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the owner of the UDF. This parameter specifies a filter condition.
 	//
 	// example:
@@ -46302,6 +46303,11 @@ func (s ListFunctionsRequest) String() string {
 
 func (s ListFunctionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListFunctionsRequest) SetName(v string) *ListFunctionsRequest {
+	s.Name = &v
+	return s
 }
 
 func (s *ListFunctionsRequest) SetOwner(v string) *ListFunctionsRequest {
@@ -48930,7 +48936,8 @@ type ListNodesRequest struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	ContainerId *int64 `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	ContainerId *int64  `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -49003,6 +49010,11 @@ func (s ListNodesRequest) GoString() string {
 
 func (s *ListNodesRequest) SetContainerId(v int64) *ListNodesRequest {
 	s.ContainerId = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetName(v string) *ListNodesRequest {
+	s.Name = &v
 	return s
 }
 
@@ -52826,6 +52838,7 @@ func (s *ListResourceGroupsResponse) SetBody(v *ListResourceGroupsResponseBody) 
 }
 
 type ListResourcesRequest struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the Alibaba Cloud account used by the workspace administrator. You can log on to the Alibaba Cloud Management Console and view the ID on the Security Settings page.
 	//
 	// example:
@@ -52878,6 +52891,11 @@ func (s ListResourcesRequest) String() string {
 
 func (s ListResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListResourcesRequest) SetName(v string) *ListResourcesRequest {
+	s.Name = &v
+	return s
 }
 
 func (s *ListResourcesRequest) SetOwner(v string) *ListResourcesRequest {
@@ -58987,6 +59005,7 @@ func (s *ListUpstreamTasksResponse) SetBody(v *ListUpstreamTasksResponseBody) *L
 }
 
 type ListWorkflowDefinitionsRequest struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the Alibaba Cloud account used by the workspace administrator. You can log on to the Alibaba Cloud Management Console and view the ID on the Security Settings page.
 	//
 	// example:
@@ -59035,6 +59054,11 @@ func (s ListWorkflowDefinitionsRequest) String() string {
 
 func (s ListWorkflowDefinitionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListWorkflowDefinitionsRequest) SetName(v string) *ListWorkflowDefinitionsRequest {
+	s.Name = &v
+	return s
 }
 
 func (s *ListWorkflowDefinitionsRequest) SetOwner(v string) *ListWorkflowDefinitionsRequest {
