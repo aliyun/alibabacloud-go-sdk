@@ -12464,6 +12464,370 @@ func (s *GetRulesCountListResponse) SetBody(v *GetRulesCountListResponseBody) *G
 	return s
 }
 
+type GetSchemeTaskConfigRequest struct {
+	// example:
+	//
+	// 12345
+	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// example:
+	//
+	// {"sourceDataType":3,"id":588}
+	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
+}
+
+func (s GetSchemeTaskConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSchemeTaskConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSchemeTaskConfigRequest) SetBaseMeAgentId(v int64) *GetSchemeTaskConfigRequest {
+	s.BaseMeAgentId = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigRequest) SetJsonStr(v string) *GetSchemeTaskConfigRequest {
+	s.JsonStr = &v
+	return s
+}
+
+type GetSchemeTaskConfigResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetSchemeTaskConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 3CEA0495-341B-4482-9AD9-8191EF4***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSchemeTaskConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSchemeTaskConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSchemeTaskConfigResponseBody) SetCode(v string) *GetSchemeTaskConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBody) SetData(v *GetSchemeTaskConfigResponseBodyData) *GetSchemeTaskConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBody) SetHttpStatusCode(v string) *GetSchemeTaskConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBody) SetMessage(v string) *GetSchemeTaskConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBody) SetRequestId(v string) *GetSchemeTaskConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBody) SetSuccess(v string) *GetSchemeTaskConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSchemeTaskConfigResponseBodyData struct {
+	AsrTaskPriority *int32                                         `json:"AsrTaskPriority,omitempty" xml:"AsrTaskPriority,omitempty"`
+	AssignType      *int32                                         `json:"AssignType,omitempty" xml:"AssignType,omitempty"`
+	DataConfig      *GetSchemeTaskConfigResponseBodyDataDataConfig `json:"DataConfig,omitempty" xml:"DataConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3
+	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ManualReview        *int32  `json:"ManualReview,omitempty" xml:"ManualReview,omitempty"`
+	ModeCustomizationId *string `json:"ModeCustomizationId,omitempty" xml:"ModeCustomizationId,omitempty"`
+	ModelName           *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// example:
+	//
+	// test
+	Name         *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	SchemeIdList []*int64                                         `json:"SchemeIdList,omitempty" xml:"SchemeIdList,omitempty" type:"Repeated"`
+	SchemeList   []*GetSchemeTaskConfigResponseBodyDataSchemeList `json:"SchemeList,omitempty" xml:"SchemeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 123
+	SchemeTaskConfigId *int64 `json:"SchemeTaskConfigId,omitempty" xml:"SchemeTaskConfigId,omitempty"`
+	// example:
+	//
+	// 1
+	SourceDataType *string `json:"SourceDataType,omitempty" xml:"SourceDataType,omitempty"`
+	// example:
+	//
+	// 1
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetSchemeTaskConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSchemeTaskConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSchemeTaskConfigResponseBodyData) SetAsrTaskPriority(v int32) *GetSchemeTaskConfigResponseBodyData {
+	s.AsrTaskPriority = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyData) SetAssignType(v int32) *GetSchemeTaskConfigResponseBodyData {
+	s.AssignType = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyData) SetDataConfig(v *GetSchemeTaskConfigResponseBodyDataDataConfig) *GetSchemeTaskConfigResponseBodyData {
+	s.DataConfig = v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyData) SetId(v int64) *GetSchemeTaskConfigResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyData) SetManualReview(v int32) *GetSchemeTaskConfigResponseBodyData {
+	s.ManualReview = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyData) SetModeCustomizationId(v string) *GetSchemeTaskConfigResponseBodyData {
+	s.ModeCustomizationId = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyData) SetModelName(v string) *GetSchemeTaskConfigResponseBodyData {
+	s.ModelName = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyData) SetName(v string) *GetSchemeTaskConfigResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyData) SetSchemeIdList(v []*int64) *GetSchemeTaskConfigResponseBodyData {
+	s.SchemeIdList = v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyData) SetSchemeList(v []*GetSchemeTaskConfigResponseBodyDataSchemeList) *GetSchemeTaskConfigResponseBodyData {
+	s.SchemeList = v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyData) SetSchemeTaskConfigId(v int64) *GetSchemeTaskConfigResponseBodyData {
+	s.SchemeTaskConfigId = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyData) SetSourceDataType(v string) *GetSchemeTaskConfigResponseBodyData {
+	s.SourceDataType = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyData) SetStatus(v string) *GetSchemeTaskConfigResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetSchemeTaskConfigResponseBodyDataDataConfig struct {
+	AssignConfigs []*GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigs `json:"AssignConfigs,omitempty" xml:"AssignConfigs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// []
+	DataSets *string `json:"DataSets,omitempty" xml:"DataSets,omitempty"`
+	// example:
+	//
+	// 0
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// {}
+	ResultParam *string `json:"ResultParam,omitempty" xml:"ResultParam,omitempty"`
+}
+
+func (s GetSchemeTaskConfigResponseBodyDataDataConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSchemeTaskConfigResponseBodyDataDataConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetSchemeTaskConfigResponseBodyDataDataConfig) SetAssignConfigs(v []*GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigs) *GetSchemeTaskConfigResponseBodyDataDataConfig {
+	s.AssignConfigs = v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyDataDataConfig) SetDataSets(v string) *GetSchemeTaskConfigResponseBodyDataDataConfig {
+	s.DataSets = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyDataDataConfig) SetIndex(v int64) *GetSchemeTaskConfigResponseBodyDataDataConfig {
+	s.Index = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyDataDataConfig) SetResultParam(v string) *GetSchemeTaskConfigResponseBodyDataDataConfig {
+	s.ResultParam = &v
+	return s
+}
+
+type GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigs struct {
+	AssignConfigContests []*GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests `json:"AssignConfigContests,omitempty" xml:"AssignConfigContests,omitempty" type:"Repeated"`
+}
+
+func (s GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigs) SetAssignConfigContests(v []*GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests) *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigs {
+	s.AssignConfigContests = v
+	return s
+}
+
+type GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests struct {
+	// example:
+	//
+	// 3
+	DataType   *int32        `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	ListObject []interface{} `json:"ListObject,omitempty" xml:"ListObject,omitempty" type:"Repeated"`
+	// example:
+	//
+	// callStartTime
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 4
+	Symbol *int32 `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
+	// example:
+	//
+	// {\\"start\\":\\"2022-09-01 00:00:00\\",\\"end\\":\\"2022-09-30 00:00:00\\"}
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests) GoString() string {
+	return s.String()
+}
+
+func (s *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests) SetDataType(v int32) *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests) SetListObject(v []interface{}) *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests {
+	s.ListObject = v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests) SetName(v string) *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests) SetSymbol(v int32) *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests {
+	s.Symbol = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests) SetValue(v string) *GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests {
+	s.Value = &v
+	return s
+}
+
+type GetSchemeTaskConfigResponseBodyDataSchemeList struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 158
+	SchemeId *int64 `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
+}
+
+func (s GetSchemeTaskConfigResponseBodyDataSchemeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSchemeTaskConfigResponseBodyDataSchemeList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSchemeTaskConfigResponseBodyDataSchemeList) SetName(v string) *GetSchemeTaskConfigResponseBodyDataSchemeList {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponseBodyDataSchemeList) SetSchemeId(v int64) *GetSchemeTaskConfigResponseBodyDataSchemeList {
+	s.SchemeId = &v
+	return s
+}
+
+type GetSchemeTaskConfigResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSchemeTaskConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSchemeTaskConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSchemeTaskConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSchemeTaskConfigResponse) SetHeaders(v map[string]*string) *GetSchemeTaskConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponse) SetStatusCode(v int32) *GetSchemeTaskConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSchemeTaskConfigResponse) SetBody(v *GetSchemeTaskConfigResponseBody) *GetSchemeTaskConfigResponse {
+	s.Body = v
+	return s
+}
+
 type GetScoreInfoRequest struct {
 	// baseMeAgentId
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
@@ -25341,11 +25705,14 @@ func (client *Client) CreateSchemeTaskConfig(request *CreateSchemeTaskConfigRequ
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateSkillGroupConfig is deprecated
+//
 // @param request - CreateSkillGroupConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSkillGroupConfigResponse
+// Deprecated
 func (client *Client) CreateSkillGroupConfigWithOptions(request *CreateSkillGroupConfigRequest, runtime *util.RuntimeOptions) (_result *CreateSkillGroupConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25383,9 +25750,12 @@ func (client *Client) CreateSkillGroupConfigWithOptions(request *CreateSkillGrou
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateSkillGroupConfig is deprecated
+//
 // @param request - CreateSkillGroupConfigRequest
 //
 // @return CreateSkillGroupConfigResponse
+// Deprecated
 func (client *Client) CreateSkillGroupConfig(request *CreateSkillGroupConfigRequest) (_result *CreateSkillGroupConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSkillGroupConfigResponse{}
@@ -26257,11 +26627,14 @@ func (client *Client) DeleteSchemeTaskConfig(request *DeleteSchemeTaskConfigRequ
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteSkillGroupConfig is deprecated
+//
 // @param request - DeleteSkillGroupConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSkillGroupConfigResponse
+// Deprecated
 func (client *Client) DeleteSkillGroupConfigWithOptions(request *DeleteSkillGroupConfigRequest, runtime *util.RuntimeOptions) (_result *DeleteSkillGroupConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26299,9 +26672,12 @@ func (client *Client) DeleteSkillGroupConfigWithOptions(request *DeleteSkillGrou
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteSkillGroupConfig is deprecated
+//
 // @param request - DeleteSkillGroupConfigRequest
 //
 // @return DeleteSkillGroupConfigResponse
+// Deprecated
 func (client *Client) DeleteSkillGroupConfig(request *DeleteSkillGroupConfigRequest) (_result *DeleteSkillGroupConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSkillGroupConfigResponse{}
@@ -27427,6 +27803,70 @@ func (client *Client) GetRulesCountList(request *GetRulesCountListRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取质检任务配置详情
+//
+// @param request - GetSchemeTaskConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSchemeTaskConfigResponse
+func (client *Client) GetSchemeTaskConfigWithOptions(request *GetSchemeTaskConfigRequest, runtime *util.RuntimeOptions) (_result *GetSchemeTaskConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseMeAgentId)) {
+		query["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JsonStr)) {
+		query["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSchemeTaskConfig"),
+		Version:     tea.String("2019-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSchemeTaskConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质检任务配置详情
+//
+// @param request - GetSchemeTaskConfigRequest
+//
+// @return GetSchemeTaskConfigResponse
+func (client *Client) GetSchemeTaskConfig(request *GetSchemeTaskConfigRequest) (_result *GetSchemeTaskConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSchemeTaskConfigResponse{}
+	_body, _err := client.GetSchemeTaskConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Deprecated: OpenAPI GetScoreInfo is deprecated
 //
 // @param request - GetScoreInfoRequest
@@ -27489,11 +27929,14 @@ func (client *Client) GetScoreInfo(request *GetScoreInfoRequest) (_result *GetSc
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetSkillGroupConfig is deprecated
+//
 // @param request - GetSkillGroupConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSkillGroupConfigResponse
+// Deprecated
 func (client *Client) GetSkillGroupConfigWithOptions(request *GetSkillGroupConfigRequest, runtime *util.RuntimeOptions) (_result *GetSkillGroupConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27531,9 +27974,12 @@ func (client *Client) GetSkillGroupConfigWithOptions(request *GetSkillGroupConfi
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetSkillGroupConfig is deprecated
+//
 // @param request - GetSkillGroupConfigRequest
 //
 // @return GetSkillGroupConfigResponse
+// Deprecated
 func (client *Client) GetSkillGroupConfig(request *GetSkillGroupConfigRequest) (_result *GetSkillGroupConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSkillGroupConfigResponse{}
@@ -28401,11 +28847,14 @@ func (client *Client) ListSessionGroup(request *ListSessionGroupRequest) (_resul
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListSkillGroupConfig is deprecated
+//
 // @param request - ListSkillGroupConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSkillGroupConfigResponse
+// Deprecated
 func (client *Client) ListSkillGroupConfigWithOptions(request *ListSkillGroupConfigRequest, runtime *util.RuntimeOptions) (_result *ListSkillGroupConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28443,9 +28892,12 @@ func (client *Client) ListSkillGroupConfigWithOptions(request *ListSkillGroupCon
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListSkillGroupConfig is deprecated
+//
 // @param request - ListSkillGroupConfigRequest
 //
 // @return ListSkillGroupConfigResponse
+// Deprecated
 func (client *Client) ListSkillGroupConfig(request *ListSkillGroupConfigRequest) (_result *ListSkillGroupConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSkillGroupConfigResponse{}
@@ -29821,11 +30273,14 @@ func (client *Client) UpdateSchemeTaskConfig(request *UpdateSchemeTaskConfigRequ
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateSkillGroupConfig is deprecated
+//
 // @param request - UpdateSkillGroupConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSkillGroupConfigResponse
+// Deprecated
 func (client *Client) UpdateSkillGroupConfigWithOptions(request *UpdateSkillGroupConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateSkillGroupConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29863,9 +30318,12 @@ func (client *Client) UpdateSkillGroupConfigWithOptions(request *UpdateSkillGrou
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateSkillGroupConfig is deprecated
+//
 // @param request - UpdateSkillGroupConfigRequest
 //
 // @return UpdateSkillGroupConfigResponse
+// Deprecated
 func (client *Client) UpdateSkillGroupConfig(request *UpdateSkillGroupConfigRequest) (_result *UpdateSkillGroupConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSkillGroupConfigResponse{}
