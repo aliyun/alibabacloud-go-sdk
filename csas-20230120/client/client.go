@@ -39,10 +39,11 @@ type DisposalContent struct {
 	AlertContentEn *string `json:"AlertContentEn,omitempty" xml:"AlertContentEn,omitempty"`
 	// if can be null:
 	// true
-	AlertTitle      *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
-	AlertTitleEn    *string `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
-	NoticeContent   *string `json:"NoticeContent,omitempty" xml:"NoticeContent,omitempty"`
-	NoticeContentEn *string `json:"NoticeContentEn,omitempty" xml:"NoticeContentEn,omitempty"`
+	AlertTitle           *string   `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	AlertTitleEn         *string   `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
+	NacDemotionPolicyIds []*string `json:"NacDemotionPolicyIds,omitempty" xml:"NacDemotionPolicyIds,omitempty" type:"Repeated"`
+	NoticeContent        *string   `json:"NoticeContent,omitempty" xml:"NoticeContent,omitempty"`
+	NoticeContentEn      *string   `json:"NoticeContentEn,omitempty" xml:"NoticeContentEn,omitempty"`
 	// This parameter is required.
 	//
 	// if can be null:
@@ -76,6 +77,11 @@ func (s *DisposalContent) SetAlertTitle(v string) *DisposalContent {
 
 func (s *DisposalContent) SetAlertTitleEn(v string) *DisposalContent {
 	s.AlertTitleEn = &v
+	return s
+}
+
+func (s *DisposalContent) SetNacDemotionPolicyIds(v []*string) *DisposalContent {
+	s.NacDemotionPolicyIds = v
 	return s
 }
 
@@ -1880,6 +1886,81 @@ func (s *CreateEnterpriseAcceleratePolicyResponse) SetStatusCode(v int32) *Creat
 }
 
 func (s *CreateEnterpriseAcceleratePolicyResponse) SetBody(v *CreateEnterpriseAcceleratePolicyResponseBody) *CreateEnterpriseAcceleratePolicyResponse {
+	s.Body = v
+	return s
+}
+
+type CreateEnterpriseAccelerateTargetRequest struct {
+	// example:
+	//
+	// eap-eec34d4b12fcca61
+	EapId  *string   `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	Target []*string `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`
+}
+
+func (s CreateEnterpriseAccelerateTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnterpriseAccelerateTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnterpriseAccelerateTargetRequest) SetEapId(v string) *CreateEnterpriseAccelerateTargetRequest {
+	s.EapId = &v
+	return s
+}
+
+func (s *CreateEnterpriseAccelerateTargetRequest) SetTarget(v []*string) *CreateEnterpriseAccelerateTargetRequest {
+	s.Target = v
+	return s
+}
+
+type CreateEnterpriseAccelerateTargetResponseBody struct {
+	// example:
+	//
+	// D1AE33DD-0D46-59CD-8340-92BEA2BDD0F1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateEnterpriseAccelerateTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnterpriseAccelerateTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnterpriseAccelerateTargetResponseBody) SetRequestId(v string) *CreateEnterpriseAccelerateTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateEnterpriseAccelerateTargetResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEnterpriseAccelerateTargetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateEnterpriseAccelerateTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnterpriseAccelerateTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnterpriseAccelerateTargetResponse) SetHeaders(v map[string]*string) *CreateEnterpriseAccelerateTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEnterpriseAccelerateTargetResponse) SetStatusCode(v int32) *CreateEnterpriseAccelerateTargetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEnterpriseAccelerateTargetResponse) SetBody(v *CreateEnterpriseAccelerateTargetResponseBody) *CreateEnterpriseAccelerateTargetResponse {
 	s.Body = v
 	return s
 }
@@ -4121,7 +4202,8 @@ type CreateWmExtractTaskRequest struct {
 	// example:
 	//
 	// test-****.pdf
-	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	Filename      *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	IsClientEmbed *bool   `json:"IsClientEmbed,omitempty" xml:"IsClientEmbed,omitempty"`
 	// The watermark parameter for videos that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
 	//
 	// 	- **true**
@@ -4207,6 +4289,11 @@ func (s *CreateWmExtractTaskRequest) SetFileUrl(v string) *CreateWmExtractTaskRe
 
 func (s *CreateWmExtractTaskRequest) SetFilename(v string) *CreateWmExtractTaskRequest {
 	s.Filename = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskRequest) SetIsClientEmbed(v bool) *CreateWmExtractTaskRequest {
+	s.IsClientEmbed = &v
 	return s
 }
 
@@ -4335,7 +4422,8 @@ type CreateWmExtractTaskShrinkRequest struct {
 	// example:
 	//
 	// test-****.pdf
-	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	Filename      *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	IsClientEmbed *bool   `json:"IsClientEmbed,omitempty" xml:"IsClientEmbed,omitempty"`
 	// The watermark parameter for videos that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
 	//
 	// 	- **true**
@@ -4421,6 +4509,11 @@ func (s *CreateWmExtractTaskShrinkRequest) SetFileUrl(v string) *CreateWmExtract
 
 func (s *CreateWmExtractTaskShrinkRequest) SetFilename(v string) *CreateWmExtractTaskShrinkRequest {
 	s.Filename = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskShrinkRequest) SetIsClientEmbed(v bool) *CreateWmExtractTaskShrinkRequest {
+	s.IsClientEmbed = &v
 	return s
 }
 
@@ -4846,6 +4939,150 @@ func (s *DeleteDynamicRouteResponse) SetStatusCode(v int32) *DeleteDynamicRouteR
 }
 
 func (s *DeleteDynamicRouteResponse) SetBody(v *DeleteDynamicRouteResponseBody) *DeleteDynamicRouteResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEnterpriseAcceleratePolicyRequest struct {
+	// example:
+	//
+	// eap-6edfb9d722ef8429
+	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+}
+
+func (s DeleteEnterpriseAcceleratePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnterpriseAcceleratePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnterpriseAcceleratePolicyRequest) SetEapId(v string) *DeleteEnterpriseAcceleratePolicyRequest {
+	s.EapId = &v
+	return s
+}
+
+type DeleteEnterpriseAcceleratePolicyResponseBody struct {
+	// example:
+	//
+	// 2CABFEBB-0CE7-575E-833A-266F75D46713
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEnterpriseAcceleratePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnterpriseAcceleratePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnterpriseAcceleratePolicyResponseBody) SetRequestId(v string) *DeleteEnterpriseAcceleratePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEnterpriseAcceleratePolicyResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEnterpriseAcceleratePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteEnterpriseAcceleratePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnterpriseAcceleratePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnterpriseAcceleratePolicyResponse) SetHeaders(v map[string]*string) *DeleteEnterpriseAcceleratePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnterpriseAcceleratePolicyResponse) SetStatusCode(v int32) *DeleteEnterpriseAcceleratePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEnterpriseAcceleratePolicyResponse) SetBody(v *DeleteEnterpriseAcceleratePolicyResponseBody) *DeleteEnterpriseAcceleratePolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEnterpriseAccelerateTargetRequest struct {
+	// example:
+	//
+	// eap-ed1f0e392a28a4e6
+	EapId  *string   `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	Target []*string `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`
+}
+
+func (s DeleteEnterpriseAccelerateTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnterpriseAccelerateTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnterpriseAccelerateTargetRequest) SetEapId(v string) *DeleteEnterpriseAccelerateTargetRequest {
+	s.EapId = &v
+	return s
+}
+
+func (s *DeleteEnterpriseAccelerateTargetRequest) SetTarget(v []*string) *DeleteEnterpriseAccelerateTargetRequest {
+	s.Target = v
+	return s
+}
+
+type DeleteEnterpriseAccelerateTargetResponseBody struct {
+	// example:
+	//
+	// 655CE28F-2C0C-5801-A31E-C16BF54BD225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEnterpriseAccelerateTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnterpriseAccelerateTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnterpriseAccelerateTargetResponseBody) SetRequestId(v string) *DeleteEnterpriseAccelerateTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEnterpriseAccelerateTargetResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEnterpriseAccelerateTargetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteEnterpriseAccelerateTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnterpriseAccelerateTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnterpriseAccelerateTargetResponse) SetHeaders(v map[string]*string) *DeleteEnterpriseAccelerateTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnterpriseAccelerateTargetResponse) SetStatusCode(v int32) *DeleteEnterpriseAccelerateTargetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEnterpriseAccelerateTargetResponse) SetBody(v *DeleteEnterpriseAccelerateTargetResponseBody) *DeleteEnterpriseAccelerateTargetResponse {
 	s.Body = v
 	return s
 }
@@ -5615,6 +5852,144 @@ func (s *DetachPolicy2ApprovalProcessResponse) SetStatusCode(v int32) *DetachPol
 }
 
 func (s *DetachPolicy2ApprovalProcessResponse) SetBody(v *DetachPolicy2ApprovalProcessResponseBody) *DetachPolicy2ApprovalProcessResponse {
+	s.Body = v
+	return s
+}
+
+type DisableEnterpriseAcceleratePolicyRequest struct {
+	// example:
+	//
+	// eap-d50b45aa7dc04aef
+	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+}
+
+func (s DisableEnterpriseAcceleratePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableEnterpriseAcceleratePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableEnterpriseAcceleratePolicyRequest) SetEapId(v string) *DisableEnterpriseAcceleratePolicyRequest {
+	s.EapId = &v
+	return s
+}
+
+type DisableEnterpriseAcceleratePolicyResponseBody struct {
+	// example:
+	//
+	// E4C3E4CA-87CC-5EF6-91DD-D400A812EB43
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableEnterpriseAcceleratePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableEnterpriseAcceleratePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableEnterpriseAcceleratePolicyResponseBody) SetRequestId(v string) *DisableEnterpriseAcceleratePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableEnterpriseAcceleratePolicyResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableEnterpriseAcceleratePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DisableEnterpriseAcceleratePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableEnterpriseAcceleratePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableEnterpriseAcceleratePolicyResponse) SetHeaders(v map[string]*string) *DisableEnterpriseAcceleratePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableEnterpriseAcceleratePolicyResponse) SetStatusCode(v int32) *DisableEnterpriseAcceleratePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableEnterpriseAcceleratePolicyResponse) SetBody(v *DisableEnterpriseAcceleratePolicyResponseBody) *DisableEnterpriseAcceleratePolicyResponse {
+	s.Body = v
+	return s
+}
+
+type EnableEnterpriseAcceleratePolicyRequest struct {
+	// example:
+	//
+	// eap-530da9f7110441fb
+	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+}
+
+func (s EnableEnterpriseAcceleratePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableEnterpriseAcceleratePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableEnterpriseAcceleratePolicyRequest) SetEapId(v string) *EnableEnterpriseAcceleratePolicyRequest {
+	s.EapId = &v
+	return s
+}
+
+type EnableEnterpriseAcceleratePolicyResponseBody struct {
+	// example:
+	//
+	// 09D9F396-29C5-5F0F-9C12-83308062CA2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableEnterpriseAcceleratePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableEnterpriseAcceleratePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableEnterpriseAcceleratePolicyResponseBody) SetRequestId(v string) *EnableEnterpriseAcceleratePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableEnterpriseAcceleratePolicyResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableEnterpriseAcceleratePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableEnterpriseAcceleratePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableEnterpriseAcceleratePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableEnterpriseAcceleratePolicyResponse) SetHeaders(v map[string]*string) *EnableEnterpriseAcceleratePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableEnterpriseAcceleratePolicyResponse) SetStatusCode(v int32) *EnableEnterpriseAcceleratePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableEnterpriseAcceleratePolicyResponse) SetBody(v *EnableEnterpriseAcceleratePolicyResponseBody) *EnableEnterpriseAcceleratePolicyResponse {
 	s.Body = v
 	return s
 }
@@ -9282,6 +9657,97 @@ func (s *GetWmExtractTaskResponse) SetBody(v *GetWmExtractTaskResponseBody) *Get
 	return s
 }
 
+type ImportEnterpriseAccelerateTargetsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eap-6457339b546c4cfb
+	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://filename.xlsx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s ImportEnterpriseAccelerateTargetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportEnterpriseAccelerateTargetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportEnterpriseAccelerateTargetsRequest) SetEapId(v string) *ImportEnterpriseAccelerateTargetsRequest {
+	s.EapId = &v
+	return s
+}
+
+func (s *ImportEnterpriseAccelerateTargetsRequest) SetFileUrl(v string) *ImportEnterpriseAccelerateTargetsRequest {
+	s.FileUrl = &v
+	return s
+}
+
+type ImportEnterpriseAccelerateTargetsResponseBody struct {
+	// example:
+	//
+	// 1648723859058501
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 305508BD-8A31-5E15-86CE-52D57967C45E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImportEnterpriseAccelerateTargetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportEnterpriseAccelerateTargetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportEnterpriseAccelerateTargetsResponseBody) SetData(v string) *ImportEnterpriseAccelerateTargetsResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ImportEnterpriseAccelerateTargetsResponseBody) SetRequestId(v string) *ImportEnterpriseAccelerateTargetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ImportEnterpriseAccelerateTargetsResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportEnterpriseAccelerateTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ImportEnterpriseAccelerateTargetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportEnterpriseAccelerateTargetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportEnterpriseAccelerateTargetsResponse) SetHeaders(v map[string]*string) *ImportEnterpriseAccelerateTargetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportEnterpriseAccelerateTargetsResponse) SetStatusCode(v int32) *ImportEnterpriseAccelerateTargetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportEnterpriseAccelerateTargetsResponse) SetBody(v *ImportEnterpriseAccelerateTargetsResponseBody) *ImportEnterpriseAccelerateTargetsResponse {
+	s.Body = v
+	return s
+}
+
 type ListApplicationsForPrivateAccessPolicyRequest struct {
 	// This parameter is required.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
@@ -11728,43 +12194,84 @@ func (s *ListConnectorsResponse) SetBody(v *ListConnectorsResponseBody) *ListCon
 }
 
 type ListDynamicDisposalProcessesRequest struct {
+	// The page number to display in the paginated query. Range: 1~10000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DevTag      *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Terminal device ID.
+	//
+	// example:
+	//
+	// E7798391-2554-FE83-E0B7-045DDED629A8
+	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
+	// Disposal action.
+	//
+	// - **ztna_connect**: Prohibit connection to the zero-trust intranet.
+	//
+	// - **nac_connect**: Prohibit connection to the office network access.
+	//
+	// - **none**: No disposal action.
+	//
 	// example:
 	//
 	// none
 	DisposalAction *string `json:"DisposalAction,omitempty" xml:"DisposalAction,omitempty"`
+	// Disposal process ID.
+	//
 	// example:
 	//
 	// dp-xxxxxxxx
 	DisposalProcessId *string `json:"DisposalProcessId,omitempty" xml:"DisposalProcessId,omitempty"`
+	// The end time for querying dynamic disposal processes. Format: Unix timestamp (in seconds).
+	//
 	// example:
 	//
 	// 1743143296
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of items per page in the paginated query. Range: 1~1000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Recovery type.
+	//
+	// - **auto**: Automatic recovery.
+	//
+	// - **console**: Console recovery.
+	//
+	// - **auth**: Recovery by authentication and reporting.
+	//
 	// example:
 	//
 	// auto
 	RecoveryType *string `json:"RecoveryType,omitempty" xml:"RecoveryType,omitempty"`
+	// The start time for querying dynamic disposal processes. Format: Unix timestamp (in seconds).
+	//
 	// example:
 	//
 	// 1743143296
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Disposal status. Values:
+	//
+	// - **disposal**: In the disposal state.
+	//
+	// - **finished**: Already automatically recovered.
+	//
+	// - **recovery**: Recovered by authentication and reporting or console recovery.
+	//
 	// example:
 	//
 	// disposal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Username.
+	//
 	// example:
 	//
 	// xiaoming
@@ -11830,11 +12337,16 @@ func (s *ListDynamicDisposalProcessesRequest) SetUserName(v string) *ListDynamic
 }
 
 type ListDynamicDisposalProcessesResponseBody struct {
+	// List of disposal processes.
 	DisposalProcesses []*ListDynamicDisposalProcessesResponseBodyDisposalProcesses `json:"DisposalProcesses,omitempty" xml:"DisposalProcesses,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of dynamic disposal processes.
+	//
 	// example:
 	//
 	// 1
@@ -11865,35 +12377,68 @@ func (s *ListDynamicDisposalProcessesResponseBody) SetTotalNum(v int32) *ListDyn
 }
 
 type ListDynamicDisposalProcessesResponseBodyDisposalProcesses struct {
+	// User\\"s department.
+	//
+	// example:
+	//
+	// IT
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// Device ID.
+	//
 	// example:
 	//
 	// FD7554AD-4CDE-6359-6B49-4FE950606C2C
-	DevTag           *string                                                                    `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
-	DeviceBasicInfo  *ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceBasicInfo  `json:"DeviceBasicInfo,omitempty" xml:"DeviceBasicInfo,omitempty" type:"Struct"`
+	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
+	// Basic device information.
+	DeviceBasicInfo *ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceBasicInfo `json:"DeviceBasicInfo,omitempty" xml:"DeviceBasicInfo,omitempty" type:"Struct"`
+	// 设备状态信息。
 	DeviceStatusInfo *ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceStatusInfo `json:"DeviceStatusInfo,omitempty" xml:"DeviceStatusInfo,omitempty" type:"Struct"`
-	DisposalActions  []*string                                                                  `json:"DisposalActions,omitempty" xml:"DisposalActions,omitempty" type:"Repeated"`
+	// List of disposal actions.
+	DisposalActions []*string `json:"DisposalActions,omitempty" xml:"DisposalActions,omitempty" type:"Repeated"`
+	// Disposal process ID.
+	//
 	// example:
 	//
 	// dp-xxxxxxxx
 	DisposalProcessId *string `json:"DisposalProcessId,omitempty" xml:"DisposalProcessId,omitempty"`
+	// Disposal time, in seconds since the epoch.
+	//
 	// example:
 	//
 	// 1743059249
 	DisposalTime *string `json:"DisposalTime,omitempty" xml:"DisposalTime,omitempty"`
+	// Dynamic policy ID.
+	//
 	// example:
 	//
 	// dynamic-policy-xxxxxxxx
-	DynamicPolicyId   *string `json:"DynamicPolicyId,omitempty" xml:"DynamicPolicyId,omitempty"`
+	DynamicPolicyId *string `json:"DynamicPolicyId,omitempty" xml:"DynamicPolicyId,omitempty"`
+	// Dynamic policy name.
+	//
+	// example:
+	//
+	// 动态策略1
 	DynamicPolicyName *string `json:"DynamicPolicyName,omitempty" xml:"DynamicPolicyName,omitempty"`
+	// Terminal device name. Length: 1~128 characters, supporting Chinese and uppercase/lowercase English letters, and can include numbers, half-width periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), slashes (/), at (@) symbols, and spaces. Entering an underscore (_) alone will additionally query all terminal devices with 4-byte UTF-8 characters in their names.
+	//
 	// example:
 	//
 	// WANGCHENCHENNBB
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Recovery type.
+	//
+	// - **auto**：Automatic recovery.
+	//
+	// - **console**：Console recovery.
+	//
+	// - **auth**：Certification and reporting recovery.
+	//
 	// example:
 	//
 	// auto
 	RecoveryType *string `json:"RecoveryType,omitempty" xml:"RecoveryType,omitempty"`
+	// Rule content.
+	//
 	// example:
 	//
 	// {
@@ -11926,14 +12471,26 @@ type ListDynamicDisposalProcessesResponseBodyDisposalProcesses struct {
 	//
 	// }
 	RuleContent interface{} `json:"RuleContent,omitempty" xml:"RuleContent,omitempty"`
+	// SASE用户ID。
+	//
 	// example:
 	//
 	// asdqwedg-xzczvzdaf-asfafs
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// Disposal status. Values:
+	//
+	// - **disposal**: In the disposal state.
+	//
+	// - **finished**: Already automatically recovered.
+	//
+	// - **recovery**: Recovered by authentication and reporting or console recovery.
+	//
 	// example:
 	//
 	// disposal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Username.
+	//
 	// example:
 	//
 	// xiaoming
@@ -12024,13 +12581,65 @@ func (s *ListDynamicDisposalProcessesResponseBodyDisposalProcesses) SetUserName(
 }
 
 type ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceBasicInfo struct {
-	Cpu       *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	DevTag    *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
-	DevType   *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
-	Disk      *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	Hostname  *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	Mac       *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	Memory    *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// CPU model.
+	//
+	// example:
+	//
+	// Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz
+	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// Device ID.
+	//
+	// example:
+	//
+	// A84D0AF0-1ACC-02B8-6A07-FC898F71BE09
+	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
+	// Device operating system type. Values:
+	//
+	// - **Windows**：Windows system.
+	//
+	// - **macOS**：macOS system.
+	//
+	// - **Linux**：Linux system.
+	//
+	// - **Android**：Android system.
+	//
+	// - **iOS**：iOS system.
+	//
+	// - **Windows_Wuying**：Wuying cloud desktop system.
+	//
+	// example:
+	//
+	// windows
+	DevType *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
+	// Device disk model.
+	//
+	// example:
+	//
+	// KXG6AZNV512G TOSHIBA
+	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	// Device name.
+	//
+	// example:
+	//
+	// DESKTOP-ERLV3AK
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Device MAC address.
+	//
+	// example:
+	//
+	// CE:3B:**:**:FD:FB
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// Device memory capacity. Unit: GB.
+	//
+	// example:
+	//
+	// 2
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// Operating system version
+	//
+	// example:
+	//
+	// 1
 	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
 }
 
@@ -12083,18 +12692,92 @@ func (s *ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceBasicInf
 }
 
 type ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceStatusInfo struct {
-	AppVersion  *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	Department  *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	DlpStatus   *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
-	InternetIp  *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	LaStatus    *string `json:"LaStatus,omitempty" xml:"LaStatus,omitempty"`
+	// Client version.
+	//
+	// example:
+	//
+	// 4.5.1
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// Department to which the user belongs.
+	//
+	// example:
+	//
+	// IT运维部
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// Office data protection status. Values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
+	// - **Unprovisioned**: Not configured.
+	//
+	// - **Unauthorized**: Unauthorized.
+	//
+	// example:
+	//
+	// enabled
+	DlpStatus *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
+	// Public IP address.
+	//
+	// example:
+	//
+	// 120.26.XX.XX
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// Internet behavior management enablement status.
+	//
+	// example:
+	//
+	// enabled
+	LaStatus *string `json:"LaStatus,omitempty" xml:"LaStatus,omitempty"`
+	// Login status.
+	//
+	// example:
+	//
+	// online
 	LoginStatus *string `json:"LoginStatus,omitempty" xml:"LoginStatus,omitempty"`
-	NacStatus   *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
-	PrivateIp   *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	SaseUserId  *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	Username    *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	Workshop    *string `json:"Workshop,omitempty" xml:"Workshop,omitempty"`
-	ZtnaStatus  *string `json:"ZtnaStatus,omitempty" xml:"ZtnaStatus,omitempty"`
+	// Network access control status. Values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
+	// - **Unprovisioned**: Not configured.
+	//
+	// example:
+	//
+	// enabled
+	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
+	// Private IP address.
+	//
+	// example:
+	//
+	// 172.20.XX.XX
+	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	// Unique ID of the SASE user.
+	//
+	// example:
+	//
+	// su_dfsdfsdgasgsgag
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// Username.
+	//
+	// example:
+	//
+	// test
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// Identified office area name.
+	//
+	// example:
+	//
+	// office
+	Workshop *string `json:"Workshop,omitempty" xml:"Workshop,omitempty"`
+	// ZTNA enablement status.
+	//
+	// example:
+	//
+	// enabled
+	ZtnaStatus *string `json:"ZtnaStatus,omitempty" xml:"ZtnaStatus,omitempty"`
 }
 
 func (s ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceStatusInfo) String() string {
@@ -12515,6 +13198,560 @@ func (s *ListDynamicRoutesResponse) SetStatusCode(v int32) *ListDynamicRoutesRes
 }
 
 func (s *ListDynamicRoutesResponse) SetBody(v *ListDynamicRoutesResponseBody) *ListDynamicRoutesResponse {
+	s.Body = v
+	return s
+}
+
+type ListEnterpriseAccelerateLogsRequest struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Department  *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	DstAddr     *string `json:"DstAddr,omitempty" xml:"DstAddr,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1748422694
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1748419094
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Username  *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListEnterpriseAccelerateLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnterpriseAccelerateLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnterpriseAccelerateLogsRequest) SetCurrentPage(v int32) *ListEnterpriseAccelerateLogsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsRequest) SetDepartment(v string) *ListEnterpriseAccelerateLogsRequest {
+	s.Department = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsRequest) SetDstAddr(v string) *ListEnterpriseAccelerateLogsRequest {
+	s.DstAddr = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsRequest) SetEndTime(v int64) *ListEnterpriseAccelerateLogsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsRequest) SetPageSize(v int32) *ListEnterpriseAccelerateLogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsRequest) SetSearchMode(v string) *ListEnterpriseAccelerateLogsRequest {
+	s.SearchMode = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsRequest) SetStartTime(v int64) *ListEnterpriseAccelerateLogsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsRequest) SetUsername(v string) *ListEnterpriseAccelerateLogsRequest {
+	s.Username = &v
+	return s
+}
+
+type ListEnterpriseAccelerateLogsResponseBody struct {
+	Logs []*ListEnterpriseAccelerateLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 43F07A6A-294D-56FB-85EB-6AD00C5B60FF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 120
+	TotalNumber *int32 `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
+}
+
+func (s ListEnterpriseAccelerateLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnterpriseAccelerateLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnterpriseAccelerateLogsResponseBody) SetLogs(v []*ListEnterpriseAccelerateLogsResponseBodyLogs) *ListEnterpriseAccelerateLogsResponseBody {
+	s.Logs = v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsResponseBody) SetRequestId(v string) *ListEnterpriseAccelerateLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsResponseBody) SetTotalNumber(v int32) *ListEnterpriseAccelerateLogsResponseBody {
+	s.TotalNumber = &v
+	return s
+}
+
+type ListEnterpriseAccelerateLogsResponseBodyLogs struct {
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// example:
+	//
+	// windows
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// www.bing.com:443
+	DstAddr *string `json:"DstAddr,omitempty" xml:"DstAddr,omitempty"`
+	// example:
+	//
+	// 12299
+	InBytes *string `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// example:
+	//
+	// 2603
+	OutBytes   *string `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// example:
+	//
+	// 8.222.179.xxx:10015
+	ProxyAddr *string `json:"ProxyAddr,omitempty" xml:"ProxyAddr,omitempty"`
+	// example:
+	//
+	// 1748422797
+	UnixTime *string `json:"UnixTime,omitempty" xml:"UnixTime,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListEnterpriseAccelerateLogsResponseBodyLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnterpriseAccelerateLogsResponseBodyLogs) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnterpriseAccelerateLogsResponseBodyLogs) SetDepartment(v string) *ListEnterpriseAccelerateLogsResponseBodyLogs {
+	s.Department = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsResponseBodyLogs) SetDeviceType(v string) *ListEnterpriseAccelerateLogsResponseBodyLogs {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsResponseBodyLogs) SetDstAddr(v string) *ListEnterpriseAccelerateLogsResponseBodyLogs {
+	s.DstAddr = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsResponseBodyLogs) SetInBytes(v string) *ListEnterpriseAccelerateLogsResponseBodyLogs {
+	s.InBytes = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsResponseBodyLogs) SetOutBytes(v string) *ListEnterpriseAccelerateLogsResponseBodyLogs {
+	s.OutBytes = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsResponseBodyLogs) SetPolicyName(v string) *ListEnterpriseAccelerateLogsResponseBodyLogs {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsResponseBodyLogs) SetProxyAddr(v string) *ListEnterpriseAccelerateLogsResponseBodyLogs {
+	s.ProxyAddr = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsResponseBodyLogs) SetUnixTime(v string) *ListEnterpriseAccelerateLogsResponseBodyLogs {
+	s.UnixTime = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsResponseBodyLogs) SetUsername(v string) *ListEnterpriseAccelerateLogsResponseBodyLogs {
+	s.Username = &v
+	return s
+}
+
+type ListEnterpriseAccelerateLogsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEnterpriseAccelerateLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEnterpriseAccelerateLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnterpriseAccelerateLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnterpriseAccelerateLogsResponse) SetHeaders(v map[string]*string) *ListEnterpriseAccelerateLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsResponse) SetStatusCode(v int32) *ListEnterpriseAccelerateLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateLogsResponse) SetBody(v *ListEnterpriseAccelerateLogsResponseBody) *ListEnterpriseAccelerateLogsResponse {
+	s.Body = v
+	return s
+}
+
+type ListEnterpriseAcceleratePoliciesRequest struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListEnterpriseAcceleratePoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnterpriseAcceleratePoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnterpriseAcceleratePoliciesRequest) SetCurrentPage(v int32) *ListEnterpriseAcceleratePoliciesRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesRequest) SetName(v string) *ListEnterpriseAcceleratePoliciesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesRequest) SetPageSize(v int32) *ListEnterpriseAcceleratePoliciesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListEnterpriseAcceleratePoliciesResponseBody struct {
+	Policies []*ListEnterpriseAcceleratePoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// example:
+	//
+	// DB0471D0-C05C-556D-9F40-0325D890036F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListEnterpriseAcceleratePoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnterpriseAcceleratePoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBody) SetPolicies(v []*ListEnterpriseAcceleratePoliciesResponseBodyPolicies) *ListEnterpriseAcceleratePoliciesResponseBody {
+	s.Policies = v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBody) SetRequestId(v string) *ListEnterpriseAcceleratePoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBody) SetTotal(v int32) *ListEnterpriseAcceleratePoliciesResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListEnterpriseAcceleratePoliciesResponseBodyPolicies struct {
+	// example:
+	//
+	// whitelist
+	AccelerationType *string `json:"AccelerationType,omitempty" xml:"AccelerationType,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// eap-eec34d4b12fcca61
+	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	// example:
+	//
+	// 0
+	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 0
+	OnTls *int32 `json:"OnTls,omitempty" xml:"OnTls,omitempty"`
+	// example:
+	//
+	// 99
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 1
+	ShowInClient *int32 `json:"ShowInClient,omitempty" xml:"ShowInClient,omitempty"`
+	// example:
+	//
+	// 12.34.56.XX
+	UpstreamHost *string `json:"UpstreamHost,omitempty" xml:"UpstreamHost,omitempty"`
+	// example:
+	//
+	// 1000
+	UpstreamPort *int32 `json:"UpstreamPort,omitempty" xml:"UpstreamPort,omitempty"`
+	// example:
+	//
+	// connector
+	UpstreamType       *string `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
+	UserAttributeGroup *string `json:"UserAttributeGroup,omitempty" xml:"UserAttributeGroup,omitempty"`
+}
+
+func (s ListEnterpriseAcceleratePoliciesResponseBodyPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnterpriseAcceleratePoliciesResponseBodyPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBodyPolicies) SetAccelerationType(v string) *ListEnterpriseAcceleratePoliciesResponseBodyPolicies {
+	s.AccelerationType = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBodyPolicies) SetDescription(v string) *ListEnterpriseAcceleratePoliciesResponseBodyPolicies {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBodyPolicies) SetEapId(v string) *ListEnterpriseAcceleratePoliciesResponseBodyPolicies {
+	s.EapId = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBodyPolicies) SetEnabled(v int32) *ListEnterpriseAcceleratePoliciesResponseBodyPolicies {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBodyPolicies) SetName(v string) *ListEnterpriseAcceleratePoliciesResponseBodyPolicies {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBodyPolicies) SetOnTls(v int32) *ListEnterpriseAcceleratePoliciesResponseBodyPolicies {
+	s.OnTls = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBodyPolicies) SetPriority(v int32) *ListEnterpriseAcceleratePoliciesResponseBodyPolicies {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBodyPolicies) SetShowInClient(v int32) *ListEnterpriseAcceleratePoliciesResponseBodyPolicies {
+	s.ShowInClient = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBodyPolicies) SetUpstreamHost(v string) *ListEnterpriseAcceleratePoliciesResponseBodyPolicies {
+	s.UpstreamHost = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBodyPolicies) SetUpstreamPort(v int32) *ListEnterpriseAcceleratePoliciesResponseBodyPolicies {
+	s.UpstreamPort = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBodyPolicies) SetUpstreamType(v string) *ListEnterpriseAcceleratePoliciesResponseBodyPolicies {
+	s.UpstreamType = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponseBodyPolicies) SetUserAttributeGroup(v string) *ListEnterpriseAcceleratePoliciesResponseBodyPolicies {
+	s.UserAttributeGroup = &v
+	return s
+}
+
+type ListEnterpriseAcceleratePoliciesResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEnterpriseAcceleratePoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEnterpriseAcceleratePoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnterpriseAcceleratePoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponse) SetHeaders(v map[string]*string) *ListEnterpriseAcceleratePoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponse) SetStatusCode(v int32) *ListEnterpriseAcceleratePoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEnterpriseAcceleratePoliciesResponse) SetBody(v *ListEnterpriseAcceleratePoliciesResponseBody) *ListEnterpriseAcceleratePoliciesResponse {
+	s.Body = v
+	return s
+}
+
+type ListEnterpriseAccelerateTargetsRequest struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// eap-424ba3f47660425c
+	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// googleapis.com
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+}
+
+func (s ListEnterpriseAccelerateTargetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnterpriseAccelerateTargetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnterpriseAccelerateTargetsRequest) SetCurrentPage(v int64) *ListEnterpriseAccelerateTargetsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateTargetsRequest) SetEapId(v string) *ListEnterpriseAccelerateTargetsRequest {
+	s.EapId = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateTargetsRequest) SetPageSize(v int64) *ListEnterpriseAccelerateTargetsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateTargetsRequest) SetTarget(v string) *ListEnterpriseAccelerateTargetsRequest {
+	s.Target = &v
+	return s
+}
+
+type ListEnterpriseAccelerateTargetsResponseBody struct {
+	// example:
+	//
+	// eap-7fed37a757a0de24
+	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	// example:
+	//
+	// 529F755E-2E75-52EC-9C2E-6293FB8BF986
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Targets   []*string `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 103
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListEnterpriseAccelerateTargetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnterpriseAccelerateTargetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnterpriseAccelerateTargetsResponseBody) SetEapId(v string) *ListEnterpriseAccelerateTargetsResponseBody {
+	s.EapId = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateTargetsResponseBody) SetRequestId(v string) *ListEnterpriseAccelerateTargetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateTargetsResponseBody) SetTargets(v []*string) *ListEnterpriseAccelerateTargetsResponseBody {
+	s.Targets = v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateTargetsResponseBody) SetTotal(v int32) *ListEnterpriseAccelerateTargetsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListEnterpriseAccelerateTargetsResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEnterpriseAccelerateTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEnterpriseAccelerateTargetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnterpriseAccelerateTargetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnterpriseAccelerateTargetsResponse) SetHeaders(v map[string]*string) *ListEnterpriseAccelerateTargetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateTargetsResponse) SetStatusCode(v int32) *ListEnterpriseAccelerateTargetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEnterpriseAccelerateTargetsResponse) SetBody(v *ListEnterpriseAccelerateTargetsResponseBody) *ListEnterpriseAccelerateTargetsResponse {
 	s.Body = v
 	return s
 }
@@ -18776,6 +20013,156 @@ func (s *LookupWmInfoMappingResponse) SetBody(v *LookupWmInfoMappingResponseBody
 	return s
 }
 
+type ModifyEnterpriseAcceleratePolicyRequest struct {
+	// example:
+	//
+	// whiltelist
+	AccelerationType *string `json:"AccelerationType,omitempty" xml:"AccelerationType,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// eap-ce153a7165c8feea
+	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 0
+	OnTls *int32 `json:"OnTls,omitempty" xml:"OnTls,omitempty"`
+	// example:
+	//
+	// 999
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 0
+	ShowInClient *int32 `json:"ShowInClient,omitempty" xml:"ShowInClient,omitempty"`
+	// example:
+	//
+	// 12.34.56.XX
+	UpstreamHost *string `json:"UpstreamHost,omitempty" xml:"UpstreamHost,omitempty"`
+	// example:
+	//
+	// 1000
+	UpstreamPort *int32 `json:"UpstreamPort,omitempty" xml:"UpstreamPort,omitempty"`
+	// example:
+	//
+	// ga
+	UpstreamType       *string `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
+	UserAttributeGroup *string `json:"UserAttributeGroup,omitempty" xml:"UserAttributeGroup,omitempty"`
+}
+
+func (s ModifyEnterpriseAcceleratePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyEnterpriseAcceleratePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyRequest) SetAccelerationType(v string) *ModifyEnterpriseAcceleratePolicyRequest {
+	s.AccelerationType = &v
+	return s
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyRequest) SetDescription(v string) *ModifyEnterpriseAcceleratePolicyRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyRequest) SetEapId(v string) *ModifyEnterpriseAcceleratePolicyRequest {
+	s.EapId = &v
+	return s
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyRequest) SetName(v string) *ModifyEnterpriseAcceleratePolicyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyRequest) SetOnTls(v int32) *ModifyEnterpriseAcceleratePolicyRequest {
+	s.OnTls = &v
+	return s
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyRequest) SetPriority(v int32) *ModifyEnterpriseAcceleratePolicyRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyRequest) SetShowInClient(v int32) *ModifyEnterpriseAcceleratePolicyRequest {
+	s.ShowInClient = &v
+	return s
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyRequest) SetUpstreamHost(v string) *ModifyEnterpriseAcceleratePolicyRequest {
+	s.UpstreamHost = &v
+	return s
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyRequest) SetUpstreamPort(v int32) *ModifyEnterpriseAcceleratePolicyRequest {
+	s.UpstreamPort = &v
+	return s
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyRequest) SetUpstreamType(v string) *ModifyEnterpriseAcceleratePolicyRequest {
+	s.UpstreamType = &v
+	return s
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyRequest) SetUserAttributeGroup(v string) *ModifyEnterpriseAcceleratePolicyRequest {
+	s.UserAttributeGroup = &v
+	return s
+}
+
+type ModifyEnterpriseAcceleratePolicyResponseBody struct {
+	// example:
+	//
+	// 2CABFEBB-0CE7-575E-833A-266F75D46713
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyEnterpriseAcceleratePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyEnterpriseAcceleratePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyResponseBody) SetRequestId(v string) *ModifyEnterpriseAcceleratePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyEnterpriseAcceleratePolicyResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyEnterpriseAcceleratePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyEnterpriseAcceleratePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyEnterpriseAcceleratePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyResponse) SetHeaders(v map[string]*string) *ModifyEnterpriseAcceleratePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyResponse) SetStatusCode(v int32) *ModifyEnterpriseAcceleratePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyEnterpriseAcceleratePolicyResponse) SetBody(v *ModifyEnterpriseAcceleratePolicyResponseBody) *ModifyEnterpriseAcceleratePolicyResponse {
+	s.Body = v
+	return s
+}
+
 type RevokeUserSessionRequest struct {
 	// This parameter is required.
 	//
@@ -23851,6 +25238,73 @@ func (client *Client) CreateEnterpriseAcceleratePolicy(request *CreateEnterprise
 
 // Summary:
 //
+// 创建加速对象
+//
+// @param request - CreateEnterpriseAccelerateTargetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEnterpriseAccelerateTargetResponse
+func (client *Client) CreateEnterpriseAccelerateTargetWithOptions(request *CreateEnterpriseAccelerateTargetRequest, runtime *util.RuntimeOptions) (_result *CreateEnterpriseAccelerateTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EapId)) {
+		body["EapId"] = request.EapId
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		bodyFlat["Target"] = request.Target
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEnterpriseAccelerateTarget"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEnterpriseAccelerateTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建加速对象
+//
+// @param request - CreateEnterpriseAccelerateTargetRequest
+//
+// @return CreateEnterpriseAccelerateTargetResponse
+func (client *Client) CreateEnterpriseAccelerateTarget(request *CreateEnterpriseAccelerateTargetRequest) (_result *CreateEnterpriseAccelerateTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEnterpriseAccelerateTargetResponse{}
+	_body, _err := client.CreateEnterpriseAccelerateTargetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建自定义身份源部门
 //
 // @param request - CreateIdpDepartmentRequest
@@ -24622,6 +26076,10 @@ func (client *Client) CreateWmExtractTaskWithOptions(tmpReq *CreateWmExtractTask
 		query["CsvControl"] = request.CsvControlShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsClientEmbed)) {
+		query["IsClientEmbed"] = request.IsClientEmbed
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DocumentIsCapture)) {
 		body["DocumentIsCapture"] = request.DocumentIsCapture
@@ -24937,6 +26395,133 @@ func (client *Client) DeleteDynamicRoute(request *DeleteDynamicRouteRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDynamicRouteResponse{}
 	_body, _err := client.DeleteDynamicRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除加速策略
+//
+// @param request - DeleteEnterpriseAcceleratePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEnterpriseAcceleratePolicyResponse
+func (client *Client) DeleteEnterpriseAcceleratePolicyWithOptions(request *DeleteEnterpriseAcceleratePolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteEnterpriseAcceleratePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EapId)) {
+		body["EapId"] = request.EapId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEnterpriseAcceleratePolicy"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEnterpriseAcceleratePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除加速策略
+//
+// @param request - DeleteEnterpriseAcceleratePolicyRequest
+//
+// @return DeleteEnterpriseAcceleratePolicyResponse
+func (client *Client) DeleteEnterpriseAcceleratePolicy(request *DeleteEnterpriseAcceleratePolicyRequest) (_result *DeleteEnterpriseAcceleratePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEnterpriseAcceleratePolicyResponse{}
+	_body, _err := client.DeleteEnterpriseAcceleratePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除加速对象
+//
+// @param request - DeleteEnterpriseAccelerateTargetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEnterpriseAccelerateTargetResponse
+func (client *Client) DeleteEnterpriseAccelerateTargetWithOptions(request *DeleteEnterpriseAccelerateTargetRequest, runtime *util.RuntimeOptions) (_result *DeleteEnterpriseAccelerateTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EapId)) {
+		body["EapId"] = request.EapId
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		bodyFlat["Target"] = request.Target
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEnterpriseAccelerateTarget"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEnterpriseAccelerateTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除加速对象
+//
+// @param request - DeleteEnterpriseAccelerateTargetRequest
+//
+// @return DeleteEnterpriseAccelerateTargetResponse
+func (client *Client) DeleteEnterpriseAccelerateTarget(request *DeleteEnterpriseAccelerateTargetRequest) (_result *DeleteEnterpriseAccelerateTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEnterpriseAccelerateTargetResponse{}
+	_body, _err := client.DeleteEnterpriseAccelerateTargetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25565,6 +27150,126 @@ func (client *Client) DetachPolicy2ApprovalProcess(request *DetachPolicy2Approva
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachPolicy2ApprovalProcessResponse{}
 	_body, _err := client.DetachPolicy2ApprovalProcessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用加速策略
+//
+// @param request - DisableEnterpriseAcceleratePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableEnterpriseAcceleratePolicyResponse
+func (client *Client) DisableEnterpriseAcceleratePolicyWithOptions(request *DisableEnterpriseAcceleratePolicyRequest, runtime *util.RuntimeOptions) (_result *DisableEnterpriseAcceleratePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EapId)) {
+		body["EapId"] = request.EapId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableEnterpriseAcceleratePolicy"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableEnterpriseAcceleratePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用加速策略
+//
+// @param request - DisableEnterpriseAcceleratePolicyRequest
+//
+// @return DisableEnterpriseAcceleratePolicyResponse
+func (client *Client) DisableEnterpriseAcceleratePolicy(request *DisableEnterpriseAcceleratePolicyRequest) (_result *DisableEnterpriseAcceleratePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableEnterpriseAcceleratePolicyResponse{}
+	_body, _err := client.DisableEnterpriseAcceleratePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用加速策略
+//
+// @param request - EnableEnterpriseAcceleratePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableEnterpriseAcceleratePolicyResponse
+func (client *Client) EnableEnterpriseAcceleratePolicyWithOptions(request *EnableEnterpriseAcceleratePolicyRequest, runtime *util.RuntimeOptions) (_result *EnableEnterpriseAcceleratePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EapId)) {
+		body["EapId"] = request.EapId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableEnterpriseAcceleratePolicy"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableEnterpriseAcceleratePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用加速策略
+//
+// @param request - EnableEnterpriseAcceleratePolicyRequest
+//
+// @return EnableEnterpriseAcceleratePolicyResponse
+func (client *Client) EnableEnterpriseAcceleratePolicy(request *EnableEnterpriseAcceleratePolicyRequest) (_result *EnableEnterpriseAcceleratePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableEnterpriseAcceleratePolicyResponse{}
+	_body, _err := client.EnableEnterpriseAcceleratePolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26515,6 +28220,70 @@ func (client *Client) GetWmExtractTask(request *GetWmExtractTaskRequest) (_resul
 
 // Summary:
 //
+// 批量导入加速对象异步任务
+//
+// @param request - ImportEnterpriseAccelerateTargetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportEnterpriseAccelerateTargetsResponse
+func (client *Client) ImportEnterpriseAccelerateTargetsWithOptions(request *ImportEnterpriseAccelerateTargetsRequest, runtime *util.RuntimeOptions) (_result *ImportEnterpriseAccelerateTargetsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EapId)) {
+		body["EapId"] = request.EapId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		body["FileUrl"] = request.FileUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportEnterpriseAccelerateTargets"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportEnterpriseAccelerateTargetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量导入加速对象异步任务
+//
+// @param request - ImportEnterpriseAccelerateTargetsRequest
+//
+// @return ImportEnterpriseAccelerateTargetsResponse
+func (client *Client) ImportEnterpriseAccelerateTargets(request *ImportEnterpriseAccelerateTargetsRequest) (_result *ImportEnterpriseAccelerateTargetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportEnterpriseAccelerateTargetsResponse{}
+	_body, _err := client.ImportEnterpriseAccelerateTargetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量查询内网访问策略的应用
 //
 // @param request - ListApplicationsForPrivateAccessPolicyRequest
@@ -27019,7 +28788,7 @@ func (client *Client) ListConnectors(request *ListConnectorsRequest) (_result *L
 
 // Summary:
 //
-// 批量查询动态策略处置流程
+// # Batch Query Dynamic Policy Disposal Processes
 //
 // @param request - ListDynamicDisposalProcessesRequest
 //
@@ -27057,7 +28826,7 @@ func (client *Client) ListDynamicDisposalProcessesWithOptions(request *ListDynam
 
 // Summary:
 //
-// 批量查询动态策略处置流程
+// # Batch Query Dynamic Policy Disposal Processes
 //
 // @param request - ListDynamicDisposalProcessesRequest
 //
@@ -27169,6 +28938,174 @@ func (client *Client) ListDynamicRoutes(request *ListDynamicRoutesRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDynamicRoutesResponse{}
 	_body, _err := client.ListDynamicRoutesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询加速策略日志列表
+//
+// @param request - ListEnterpriseAccelerateLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnterpriseAccelerateLogsResponse
+func (client *Client) ListEnterpriseAccelerateLogsWithOptions(request *ListEnterpriseAccelerateLogsRequest, runtime *util.RuntimeOptions) (_result *ListEnterpriseAccelerateLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnterpriseAccelerateLogs"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnterpriseAccelerateLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询加速策略日志列表
+//
+// @param request - ListEnterpriseAccelerateLogsRequest
+//
+// @return ListEnterpriseAccelerateLogsResponse
+func (client *Client) ListEnterpriseAccelerateLogs(request *ListEnterpriseAccelerateLogsRequest) (_result *ListEnterpriseAccelerateLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEnterpriseAccelerateLogsResponse{}
+	_body, _err := client.ListEnterpriseAccelerateLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询加速策略列表
+//
+// @param request - ListEnterpriseAcceleratePoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnterpriseAcceleratePoliciesResponse
+func (client *Client) ListEnterpriseAcceleratePoliciesWithOptions(request *ListEnterpriseAcceleratePoliciesRequest, runtime *util.RuntimeOptions) (_result *ListEnterpriseAcceleratePoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnterpriseAcceleratePolicies"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnterpriseAcceleratePoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询加速策略列表
+//
+// @param request - ListEnterpriseAcceleratePoliciesRequest
+//
+// @return ListEnterpriseAcceleratePoliciesResponse
+func (client *Client) ListEnterpriseAcceleratePolicies(request *ListEnterpriseAcceleratePoliciesRequest) (_result *ListEnterpriseAcceleratePoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEnterpriseAcceleratePoliciesResponse{}
+	_body, _err := client.ListEnterpriseAcceleratePoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询加速对象列表
+//
+// @param request - ListEnterpriseAccelerateTargetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnterpriseAccelerateTargetsResponse
+func (client *Client) ListEnterpriseAccelerateTargetsWithOptions(request *ListEnterpriseAccelerateTargetsRequest, runtime *util.RuntimeOptions) (_result *ListEnterpriseAccelerateTargetsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnterpriseAccelerateTargets"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnterpriseAccelerateTargetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询加速对象列表
+//
+// @param request - ListEnterpriseAccelerateTargetsRequest
+//
+// @return ListEnterpriseAccelerateTargetsResponse
+func (client *Client) ListEnterpriseAccelerateTargets(request *ListEnterpriseAccelerateTargetsRequest) (_result *ListEnterpriseAccelerateTargetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEnterpriseAccelerateTargetsResponse{}
+	_body, _err := client.ListEnterpriseAccelerateTargetsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28713,6 +30650,106 @@ func (client *Client) LookupWmInfoMapping(request *LookupWmInfoMappingRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &LookupWmInfoMappingResponse{}
 	_body, _err := client.LookupWmInfoMappingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改加速策略
+//
+// @param request - ModifyEnterpriseAcceleratePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyEnterpriseAcceleratePolicyResponse
+func (client *Client) ModifyEnterpriseAcceleratePolicyWithOptions(request *ModifyEnterpriseAcceleratePolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyEnterpriseAcceleratePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccelerationType)) {
+		body["AccelerationType"] = request.AccelerationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EapId)) {
+		body["EapId"] = request.EapId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OnTls)) {
+		body["OnTls"] = request.OnTls
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowInClient)) {
+		body["ShowInClient"] = request.ShowInClient
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpstreamHost)) {
+		body["UpstreamHost"] = request.UpstreamHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpstreamPort)) {
+		body["UpstreamPort"] = request.UpstreamPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpstreamType)) {
+		body["UpstreamType"] = request.UpstreamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAttributeGroup)) {
+		body["UserAttributeGroup"] = request.UserAttributeGroup
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyEnterpriseAcceleratePolicy"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyEnterpriseAcceleratePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改加速策略
+//
+// @param request - ModifyEnterpriseAcceleratePolicyRequest
+//
+// @return ModifyEnterpriseAcceleratePolicyResponse
+func (client *Client) ModifyEnterpriseAcceleratePolicy(request *ModifyEnterpriseAcceleratePolicyRequest) (_result *ModifyEnterpriseAcceleratePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyEnterpriseAcceleratePolicyResponse{}
+	_body, _err := client.ModifyEnterpriseAcceleratePolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
