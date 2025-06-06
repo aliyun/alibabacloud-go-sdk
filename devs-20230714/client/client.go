@@ -652,7 +652,11 @@ func (s *ContextSchema) SetType(v string) *ContextSchema {
 type DefaultBuilderConfig struct {
 	Cache     *BuildCacheConfig `json:"cache,omitempty" xml:"cache,omitempty"`
 	Languages []*string         `json:"languages,omitempty" xml:"languages,omitempty" type:"Repeated"`
-	Steps     []interface{}     `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ./src
+	RootPath *string       `json:"rootPath,omitempty" xml:"rootPath,omitempty"`
+	Steps    []interface{} `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
 }
 
 func (s DefaultBuilderConfig) String() string {
@@ -670,6 +674,11 @@ func (s *DefaultBuilderConfig) SetCache(v *BuildCacheConfig) *DefaultBuilderConf
 
 func (s *DefaultBuilderConfig) SetLanguages(v []*string) *DefaultBuilderConfig {
 	s.Languages = v
+	return s
+}
+
+func (s *DefaultBuilderConfig) SetRootPath(v string) *DefaultBuilderConfig {
+	s.RootPath = &v
 	return s
 }
 
@@ -757,6 +766,7 @@ func (s *DeployCustomContainerAsyncOutput) SetSuccess(v bool) *DeployCustomConta
 
 type DeployCustomContainerInput struct {
 	AccountID             *string                                          `json:"accountID,omitempty" xml:"accountID,omitempty"`
+	AsyncInvokeConfig     *DeployCustomContainerInputAsyncInvokeConfig     `json:"asyncInvokeConfig,omitempty" xml:"asyncInvokeConfig,omitempty" type:"Struct"`
 	ConcurrencyConfig     *DeployCustomContainerInputConcurrencyConfig     `json:"concurrencyConfig,omitempty" xml:"concurrencyConfig,omitempty" type:"Struct"`
 	Cpu                   *float32                                         `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	CustomContainerConfig *DeployCustomContainerInputCustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty" type:"Struct"`
@@ -773,6 +783,7 @@ type DeployCustomContainerInput struct {
 	Name            *string                                    `json:"name,omitempty" xml:"name,omitempty"`
 	NasConfig       *DeployCustomContainerInputNasConfig       `json:"nasConfig,omitempty" xml:"nasConfig,omitempty" type:"Struct"`
 	OriginalName    *string                                    `json:"originalName,omitempty" xml:"originalName,omitempty"`
+	OssMountConfig  *DeployCustomContainerInputOssMountConfig  `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty" type:"Struct"`
 	ProjectName     *string                                    `json:"projectName,omitempty" xml:"projectName,omitempty"`
 	ProvisionConfig *DeployCustomContainerInputProvisionConfig `json:"provisionConfig,omitempty" xml:"provisionConfig,omitempty" type:"Struct"`
 	Region          *string                                    `json:"region,omitempty" xml:"region,omitempty"`
@@ -794,6 +805,11 @@ func (s DeployCustomContainerInput) GoString() string {
 
 func (s *DeployCustomContainerInput) SetAccountID(v string) *DeployCustomContainerInput {
 	s.AccountID = &v
+	return s
+}
+
+func (s *DeployCustomContainerInput) SetAsyncInvokeConfig(v *DeployCustomContainerInputAsyncInvokeConfig) *DeployCustomContainerInput {
+	s.AsyncInvokeConfig = v
 	return s
 }
 
@@ -872,6 +888,11 @@ func (s *DeployCustomContainerInput) SetOriginalName(v string) *DeployCustomCont
 	return s
 }
 
+func (s *DeployCustomContainerInput) SetOssMountConfig(v *DeployCustomContainerInputOssMountConfig) *DeployCustomContainerInput {
+	s.OssMountConfig = v
+	return s
+}
+
 func (s *DeployCustomContainerInput) SetProjectName(v string) *DeployCustomContainerInput {
 	s.ProjectName = &v
 	return s
@@ -912,6 +933,98 @@ func (s *DeployCustomContainerInput) SetVpcConfig(v *DeployCustomContainerInputV
 	return s
 }
 
+type DeployCustomContainerInputAsyncInvokeConfig struct {
+	AsyncTask                 *bool                                                         `json:"asyncTask,omitempty" xml:"asyncTask,omitempty"`
+	DestinationConfig         *DeployCustomContainerInputAsyncInvokeConfigDestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty" type:"Struct"`
+	MaxAsyncEventAgeInSeconds *int64                                                        `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
+	MaxAsyncRetryAttempts     *int64                                                        `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
+}
+
+func (s DeployCustomContainerInputAsyncInvokeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployCustomContainerInputAsyncInvokeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeployCustomContainerInputAsyncInvokeConfig) SetAsyncTask(v bool) *DeployCustomContainerInputAsyncInvokeConfig {
+	s.AsyncTask = &v
+	return s
+}
+
+func (s *DeployCustomContainerInputAsyncInvokeConfig) SetDestinationConfig(v *DeployCustomContainerInputAsyncInvokeConfigDestinationConfig) *DeployCustomContainerInputAsyncInvokeConfig {
+	s.DestinationConfig = v
+	return s
+}
+
+func (s *DeployCustomContainerInputAsyncInvokeConfig) SetMaxAsyncEventAgeInSeconds(v int64) *DeployCustomContainerInputAsyncInvokeConfig {
+	s.MaxAsyncEventAgeInSeconds = &v
+	return s
+}
+
+func (s *DeployCustomContainerInputAsyncInvokeConfig) SetMaxAsyncRetryAttempts(v int64) *DeployCustomContainerInputAsyncInvokeConfig {
+	s.MaxAsyncRetryAttempts = &v
+	return s
+}
+
+type DeployCustomContainerInputAsyncInvokeConfigDestinationConfig struct {
+	OnFailure *DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnFailure `json:"onFailure,omitempty" xml:"onFailure,omitempty" type:"Struct"`
+	OnSuccess *DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnSuccess `json:"onSuccess,omitempty" xml:"onSuccess,omitempty" type:"Struct"`
+}
+
+func (s DeployCustomContainerInputAsyncInvokeConfigDestinationConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployCustomContainerInputAsyncInvokeConfigDestinationConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeployCustomContainerInputAsyncInvokeConfigDestinationConfig) SetOnFailure(v *DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnFailure) *DeployCustomContainerInputAsyncInvokeConfigDestinationConfig {
+	s.OnFailure = v
+	return s
+}
+
+func (s *DeployCustomContainerInputAsyncInvokeConfigDestinationConfig) SetOnSuccess(v *DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnSuccess) *DeployCustomContainerInputAsyncInvokeConfigDestinationConfig {
+	s.OnSuccess = v
+	return s
+}
+
+type DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnFailure struct {
+	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
+}
+
+func (s DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnFailure) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnFailure) GoString() string {
+	return s.String()
+}
+
+func (s *DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnFailure) SetDestination(v string) *DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnFailure {
+	s.Destination = &v
+	return s
+}
+
+type DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnSuccess struct {
+	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
+}
+
+func (s DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnSuccess) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnSuccess) GoString() string {
+	return s.String()
+}
+
+func (s *DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnSuccess) SetDestination(v string) *DeployCustomContainerInputAsyncInvokeConfigDestinationConfigOnSuccess {
+	s.Destination = &v
+	return s
+}
+
 type DeployCustomContainerInputConcurrencyConfig struct {
 	ReservedConcurrency *int32 `json:"reservedConcurrency,omitempty" xml:"reservedConcurrency,omitempty"`
 }
@@ -937,6 +1050,7 @@ type DeployCustomContainerInputCustomContainerConfig struct {
 	InstanceConcurrency     *int32                                                                  `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	InstanceLifecycleConfig *DeployCustomContainerInputCustomContainerConfigInstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty" type:"Struct"`
 	Port                    *int32                                                                  `json:"port,omitempty" xml:"port,omitempty"`
+	Role                    *string                                                                 `json:"role,omitempty" xml:"role,omitempty"`
 }
 
 func (s DeployCustomContainerInputCustomContainerConfig) String() string {
@@ -979,6 +1093,11 @@ func (s *DeployCustomContainerInputCustomContainerConfig) SetInstanceLifecycleCo
 
 func (s *DeployCustomContainerInputCustomContainerConfig) SetPort(v int32) *DeployCustomContainerInputCustomContainerConfig {
 	s.Port = &v
+	return s
+}
+
+func (s *DeployCustomContainerInputCustomContainerConfig) SetRole(v string) *DeployCustomContainerInputCustomContainerConfig {
+	s.Role = &v
 	return s
 }
 
@@ -1145,9 +1264,10 @@ func (s *DeployCustomContainerInputHttpTrigger) SetTriggerConfig(v *DeployCustom
 }
 
 type DeployCustomContainerInputHttpTriggerTriggerConfig struct {
-	AuthType          *string   `json:"authType,omitempty" xml:"authType,omitempty"`
-	DsableURLInternet *bool     `json:"dsableURLInternet,omitempty" xml:"dsableURLInternet,omitempty"`
-	Methods           []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+	AuthType           *string   `json:"authType,omitempty" xml:"authType,omitempty"`
+	DisableURLInternet *bool     `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
+	DsableURLInternet  *bool     `json:"dsableURLInternet,omitempty" xml:"dsableURLInternet,omitempty"`
+	Methods            []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
 }
 
 func (s DeployCustomContainerInputHttpTriggerTriggerConfig) String() string {
@@ -1160,6 +1280,11 @@ func (s DeployCustomContainerInputHttpTriggerTriggerConfig) GoString() string {
 
 func (s *DeployCustomContainerInputHttpTriggerTriggerConfig) SetAuthType(v string) *DeployCustomContainerInputHttpTriggerTriggerConfig {
 	s.AuthType = &v
+	return s
+}
+
+func (s *DeployCustomContainerInputHttpTriggerTriggerConfig) SetDisableURLInternet(v bool) *DeployCustomContainerInputHttpTriggerTriggerConfig {
+	s.DisableURLInternet = &v
 	return s
 }
 
@@ -1227,6 +1352,7 @@ type DeployCustomContainerInputModelConfig struct {
 	SrcOssBucket               *string        `json:"srcOssBucket,omitempty" xml:"srcOssBucket,omitempty"`
 	SrcOssPath                 *string        `json:"srcOssPath,omitempty" xml:"srcOssPath,omitempty"`
 	SrcOssRegion               *string        `json:"srcOssRegion,omitempty" xml:"srcOssRegion,omitempty"`
+	SyncStrategy               *string        `json:"syncStrategy,omitempty" xml:"syncStrategy,omitempty"`
 }
 
 func (s DeployCustomContainerInputModelConfig) String() string {
@@ -1287,6 +1413,11 @@ func (s *DeployCustomContainerInputModelConfig) SetSrcOssRegion(v string) *Deplo
 	return s
 }
 
+func (s *DeployCustomContainerInputModelConfig) SetSyncStrategy(v string) *DeployCustomContainerInputModelConfig {
+	s.SyncStrategy = &v
+	return s
+}
+
 type DeployCustomContainerInputNasConfig struct {
 	GroupId     *int64    `json:"groupId,omitempty" xml:"groupId,omitempty"`
 	MountPoints []*string `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
@@ -1313,6 +1444,64 @@ func (s *DeployCustomContainerInputNasConfig) SetMountPoints(v []*string) *Deplo
 
 func (s *DeployCustomContainerInputNasConfig) SetUserId(v int64) *DeployCustomContainerInputNasConfig {
 	s.UserId = &v
+	return s
+}
+
+type DeployCustomContainerInputOssMountConfig struct {
+	MountPoints []*DeployCustomContainerInputOssMountConfigMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
+}
+
+func (s DeployCustomContainerInputOssMountConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployCustomContainerInputOssMountConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeployCustomContainerInputOssMountConfig) SetMountPoints(v []*DeployCustomContainerInputOssMountConfigMountPoints) *DeployCustomContainerInputOssMountConfig {
+	s.MountPoints = v
+	return s
+}
+
+type DeployCustomContainerInputOssMountConfigMountPoints struct {
+	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
+	Endpoint   *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	ReadOnly   *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+}
+
+func (s DeployCustomContainerInputOssMountConfigMountPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployCustomContainerInputOssMountConfigMountPoints) GoString() string {
+	return s.String()
+}
+
+func (s *DeployCustomContainerInputOssMountConfigMountPoints) SetBucketName(v string) *DeployCustomContainerInputOssMountConfigMountPoints {
+	s.BucketName = &v
+	return s
+}
+
+func (s *DeployCustomContainerInputOssMountConfigMountPoints) SetBucketPath(v string) *DeployCustomContainerInputOssMountConfigMountPoints {
+	s.BucketPath = &v
+	return s
+}
+
+func (s *DeployCustomContainerInputOssMountConfigMountPoints) SetEndpoint(v string) *DeployCustomContainerInputOssMountConfigMountPoints {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *DeployCustomContainerInputOssMountConfigMountPoints) SetMountDir(v string) *DeployCustomContainerInputOssMountConfigMountPoints {
+	s.MountDir = &v
+	return s
+}
+
+func (s *DeployCustomContainerInputOssMountConfigMountPoints) SetReadOnly(v bool) *DeployCustomContainerInputOssMountConfigMountPoints {
+	s.ReadOnly = &v
 	return s
 }
 
@@ -1814,9 +2003,10 @@ func (s *DeployHuggingFaceModelInputHttpTrigger) SetTriggerConfig(v *DeployHuggi
 }
 
 type DeployHuggingFaceModelInputHttpTriggerTriggerConfig struct {
-	AuthType          *string   `json:"authType,omitempty" xml:"authType,omitempty"`
-	DsableURLInternet *bool     `json:"dsableURLInternet,omitempty" xml:"dsableURLInternet,omitempty"`
-	Methods           []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+	AuthType           *string   `json:"authType,omitempty" xml:"authType,omitempty"`
+	DisableURLInternet *bool     `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
+	DsableURLInternet  *bool     `json:"dsableURLInternet,omitempty" xml:"dsableURLInternet,omitempty"`
+	Methods            []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
 }
 
 func (s DeployHuggingFaceModelInputHttpTriggerTriggerConfig) String() string {
@@ -1829,6 +2019,11 @@ func (s DeployHuggingFaceModelInputHttpTriggerTriggerConfig) GoString() string {
 
 func (s *DeployHuggingFaceModelInputHttpTriggerTriggerConfig) SetAuthType(v string) *DeployHuggingFaceModelInputHttpTriggerTriggerConfig {
 	s.AuthType = &v
+	return s
+}
+
+func (s *DeployHuggingFaceModelInputHttpTriggerTriggerConfig) SetDisableURLInternet(v bool) *DeployHuggingFaceModelInputHttpTriggerTriggerConfig {
+	s.DisableURLInternet = &v
 	return s
 }
 
@@ -1897,6 +2092,7 @@ type DeployHuggingFaceModelInputModelConfig struct {
 	SrcOssBucket               *string        `json:"srcOssBucket,omitempty" xml:"srcOssBucket,omitempty"`
 	SrcOssPath                 *string        `json:"srcOssPath,omitempty" xml:"srcOssPath,omitempty"`
 	SrcOssRegion               *string        `json:"srcOssRegion,omitempty" xml:"srcOssRegion,omitempty"`
+	SyncStrategy               *string        `json:"syncStrategy,omitempty" xml:"syncStrategy,omitempty"`
 }
 
 func (s DeployHuggingFaceModelInputModelConfig) String() string {
@@ -1959,6 +2155,11 @@ func (s *DeployHuggingFaceModelInputModelConfig) SetSrcOssPath(v string) *Deploy
 
 func (s *DeployHuggingFaceModelInputModelConfig) SetSrcOssRegion(v string) *DeployHuggingFaceModelInputModelConfig {
 	s.SrcOssRegion = &v
+	return s
+}
+
+func (s *DeployHuggingFaceModelInputModelConfig) SetSyncStrategy(v string) *DeployHuggingFaceModelInputModelConfig {
+	s.SyncStrategy = &v
 	return s
 }
 
@@ -2489,9 +2690,10 @@ func (s *DeployModelScopeModelInputHttpTrigger) SetTriggerConfig(v *DeployModelS
 }
 
 type DeployModelScopeModelInputHttpTriggerTriggerConfig struct {
-	AuthType          *string   `json:"authType,omitempty" xml:"authType,omitempty"`
-	DsableURLInternet *bool     `json:"dsableURLInternet,omitempty" xml:"dsableURLInternet,omitempty"`
-	Methods           []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+	AuthType           *string   `json:"authType,omitempty" xml:"authType,omitempty"`
+	DisableURLInternet *bool     `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
+	DsableURLInternet  *bool     `json:"dsableURLInternet,omitempty" xml:"dsableURLInternet,omitempty"`
+	Methods            []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
 }
 
 func (s DeployModelScopeModelInputHttpTriggerTriggerConfig) String() string {
@@ -2504,6 +2706,11 @@ func (s DeployModelScopeModelInputHttpTriggerTriggerConfig) GoString() string {
 
 func (s *DeployModelScopeModelInputHttpTriggerTriggerConfig) SetAuthType(v string) *DeployModelScopeModelInputHttpTriggerTriggerConfig {
 	s.AuthType = &v
+	return s
+}
+
+func (s *DeployModelScopeModelInputHttpTriggerTriggerConfig) SetDisableURLInternet(v bool) *DeployModelScopeModelInputHttpTriggerTriggerConfig {
+	s.DisableURLInternet = &v
 	return s
 }
 
@@ -2571,6 +2778,7 @@ type DeployModelScopeModelInputModelConfig struct {
 	SrcOssBucket               *string        `json:"srcOssBucket,omitempty" xml:"srcOssBucket,omitempty"`
 	SrcOssPath                 *string        `json:"srcOssPath,omitempty" xml:"srcOssPath,omitempty"`
 	SrcOssRegion               *string        `json:"srcOssRegion,omitempty" xml:"srcOssRegion,omitempty"`
+	SyncStrategy               *string        `json:"syncStrategy,omitempty" xml:"syncStrategy,omitempty"`
 }
 
 func (s DeployModelScopeModelInputModelConfig) String() string {
@@ -2628,6 +2836,11 @@ func (s *DeployModelScopeModelInputModelConfig) SetSrcOssPath(v string) *DeployM
 
 func (s *DeployModelScopeModelInputModelConfig) SetSrcOssRegion(v string) *DeployModelScopeModelInputModelConfig {
 	s.SrcOssRegion = &v
+	return s
+}
+
+func (s *DeployModelScopeModelInputModelConfig) SetSyncStrategy(v string) *DeployModelScopeModelInputModelConfig {
+	s.SyncStrategy = &v
 	return s
 }
 
@@ -3135,9 +3348,10 @@ func (s *DeployOllamaModelInputHttpTrigger) SetTriggerConfig(v *DeployOllamaMode
 }
 
 type DeployOllamaModelInputHttpTriggerTriggerConfig struct {
-	AuthType          *string   `json:"authType,omitempty" xml:"authType,omitempty"`
-	DsableURLInternet *bool     `json:"dsableURLInternet,omitempty" xml:"dsableURLInternet,omitempty"`
-	Methods           []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+	AuthType           *string   `json:"authType,omitempty" xml:"authType,omitempty"`
+	DisableURLInternet *bool     `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
+	DsableURLInternet  *bool     `json:"dsableURLInternet,omitempty" xml:"dsableURLInternet,omitempty"`
+	Methods            []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
 }
 
 func (s DeployOllamaModelInputHttpTriggerTriggerConfig) String() string {
@@ -3150,6 +3364,11 @@ func (s DeployOllamaModelInputHttpTriggerTriggerConfig) GoString() string {
 
 func (s *DeployOllamaModelInputHttpTriggerTriggerConfig) SetAuthType(v string) *DeployOllamaModelInputHttpTriggerTriggerConfig {
 	s.AuthType = &v
+	return s
+}
+
+func (s *DeployOllamaModelInputHttpTriggerTriggerConfig) SetDisableURLInternet(v bool) *DeployOllamaModelInputHttpTriggerTriggerConfig {
+	s.DisableURLInternet = &v
 	return s
 }
 
@@ -3218,6 +3437,7 @@ type DeployOllamaModelInputModelConfig struct {
 	SrcOssBucket               *string        `json:"srcOssBucket,omitempty" xml:"srcOssBucket,omitempty"`
 	SrcOssPath                 *string        `json:"srcOssPath,omitempty" xml:"srcOssPath,omitempty"`
 	SrcOssRegion               *string        `json:"srcOssRegion,omitempty" xml:"srcOssRegion,omitempty"`
+	SyncStrategy               *string        `json:"syncStrategy,omitempty" xml:"syncStrategy,omitempty"`
 }
 
 func (s DeployOllamaModelInputModelConfig) String() string {
@@ -3280,6 +3500,11 @@ func (s *DeployOllamaModelInputModelConfig) SetSrcOssPath(v string) *DeployOllam
 
 func (s *DeployOllamaModelInputModelConfig) SetSrcOssRegion(v string) *DeployOllamaModelInputModelConfig {
 	s.SrcOssRegion = &v
+	return s
+}
+
+func (s *DeployOllamaModelInputModelConfig) SetSyncStrategy(v string) *DeployOllamaModelInputModelConfig {
+	s.SyncStrategy = &v
 	return s
 }
 
@@ -3679,6 +3904,770 @@ func (s *DeployOllamaModelOutputData) SetUrlIntranet(v string) *DeployOllamaMode
 	return s
 }
 
+type DeploySGLangModelAsyncOutput struct {
+	Data    *string `json:"data,omitempty" xml:"data,omitempty"`
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	// This parameter is required.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeploySGLangModelAsyncOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelAsyncOutput) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelAsyncOutput) SetData(v string) *DeploySGLangModelAsyncOutput {
+	s.Data = &v
+	return s
+}
+
+func (s *DeploySGLangModelAsyncOutput) SetErrCode(v string) *DeploySGLangModelAsyncOutput {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DeploySGLangModelAsyncOutput) SetErrMsg(v string) *DeploySGLangModelAsyncOutput {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *DeploySGLangModelAsyncOutput) SetRequestId(v string) *DeploySGLangModelAsyncOutput {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeploySGLangModelAsyncOutput) SetSuccess(v bool) *DeploySGLangModelAsyncOutput {
+	s.Success = &v
+	return s
+}
+
+type DeploySGLangModelInput struct {
+	AccountID            *string                                  `json:"accountID,omitempty" xml:"accountID,omitempty"`
+	ConcurrencyConfig    *DeploySGLangModelInputConcurrencyConfig `json:"concurrencyConfig,omitempty" xml:"concurrencyConfig,omitempty" type:"Struct"`
+	Cpu                  *float32                                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	Description          *string                                  `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize             *int32                                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnvName              *string                                  `json:"envName,omitempty" xml:"envName,omitempty"`
+	EnvironmentVariables map[string]interface{}                   `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	GpuConfig            *DeploySGLangModelInputGpuConfig         `json:"gpuConfig,omitempty" xml:"gpuConfig,omitempty" type:"Struct"`
+	HttpTrigger          *DeploySGLangModelInputHttpTrigger       `json:"httpTrigger,omitempty" xml:"httpTrigger,omitempty" type:"Struct"`
+	ImageName            *string                                  `json:"imageName,omitempty" xml:"imageName,omitempty"`
+	InstanceConcurrency  *int32                                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
+	LogConfig            *DeploySGLangModelInputLogConfig         `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
+	MemorySize           *int32                                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	ModelConfig          *DeploySGLangModelInputModelConfig       `json:"modelConfig,omitempty" xml:"modelConfig,omitempty" type:"Struct"`
+	// This parameter is required.
+	Name            *string                                `json:"name,omitempty" xml:"name,omitempty"`
+	NasConfig       *DeploySGLangModelInputNasConfig       `json:"nasConfig,omitempty" xml:"nasConfig,omitempty" type:"Struct"`
+	OriginalName    *string                                `json:"originalName,omitempty" xml:"originalName,omitempty"`
+	ProjectName     *string                                `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	ProvisionConfig *DeploySGLangModelInputProvisionConfig `json:"provisionConfig,omitempty" xml:"provisionConfig,omitempty" type:"Struct"`
+	Region          *string                                `json:"region,omitempty" xml:"region,omitempty"`
+	ReportStatusURL *string                                `json:"reportStatusURL,omitempty" xml:"reportStatusURL,omitempty"`
+	// This parameter is required.
+	Role      *string                          `json:"role,omitempty" xml:"role,omitempty"`
+	Timeout   *int32                           `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	TraceId   *string                          `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	VpcConfig *DeploySGLangModelInputVpcConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty" type:"Struct"`
+}
+
+func (s DeploySGLangModelInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelInput) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelInput) SetAccountID(v string) *DeploySGLangModelInput {
+	s.AccountID = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetConcurrencyConfig(v *DeploySGLangModelInputConcurrencyConfig) *DeploySGLangModelInput {
+	s.ConcurrencyConfig = v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetCpu(v float32) *DeploySGLangModelInput {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetDescription(v string) *DeploySGLangModelInput {
+	s.Description = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetDiskSize(v int32) *DeploySGLangModelInput {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetEnvName(v string) *DeploySGLangModelInput {
+	s.EnvName = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetEnvironmentVariables(v map[string]interface{}) *DeploySGLangModelInput {
+	s.EnvironmentVariables = v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetGpuConfig(v *DeploySGLangModelInputGpuConfig) *DeploySGLangModelInput {
+	s.GpuConfig = v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetHttpTrigger(v *DeploySGLangModelInputHttpTrigger) *DeploySGLangModelInput {
+	s.HttpTrigger = v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetImageName(v string) *DeploySGLangModelInput {
+	s.ImageName = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetInstanceConcurrency(v int32) *DeploySGLangModelInput {
+	s.InstanceConcurrency = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetLogConfig(v *DeploySGLangModelInputLogConfig) *DeploySGLangModelInput {
+	s.LogConfig = v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetMemorySize(v int32) *DeploySGLangModelInput {
+	s.MemorySize = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetModelConfig(v *DeploySGLangModelInputModelConfig) *DeploySGLangModelInput {
+	s.ModelConfig = v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetName(v string) *DeploySGLangModelInput {
+	s.Name = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetNasConfig(v *DeploySGLangModelInputNasConfig) *DeploySGLangModelInput {
+	s.NasConfig = v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetOriginalName(v string) *DeploySGLangModelInput {
+	s.OriginalName = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetProjectName(v string) *DeploySGLangModelInput {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetProvisionConfig(v *DeploySGLangModelInputProvisionConfig) *DeploySGLangModelInput {
+	s.ProvisionConfig = v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetRegion(v string) *DeploySGLangModelInput {
+	s.Region = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetReportStatusURL(v string) *DeploySGLangModelInput {
+	s.ReportStatusURL = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetRole(v string) *DeploySGLangModelInput {
+	s.Role = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetTimeout(v int32) *DeploySGLangModelInput {
+	s.Timeout = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetTraceId(v string) *DeploySGLangModelInput {
+	s.TraceId = &v
+	return s
+}
+
+func (s *DeploySGLangModelInput) SetVpcConfig(v *DeploySGLangModelInputVpcConfig) *DeploySGLangModelInput {
+	s.VpcConfig = v
+	return s
+}
+
+type DeploySGLangModelInputConcurrencyConfig struct {
+	ReservedConcurrency *int32 `json:"reservedConcurrency,omitempty" xml:"reservedConcurrency,omitempty"`
+}
+
+func (s DeploySGLangModelInputConcurrencyConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelInputConcurrencyConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelInputConcurrencyConfig) SetReservedConcurrency(v int32) *DeploySGLangModelInputConcurrencyConfig {
+	s.ReservedConcurrency = &v
+	return s
+}
+
+type DeploySGLangModelInputGpuConfig struct {
+	GpuMemorySize *int32  `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
+	GpuType       *string `json:"gpuType,omitempty" xml:"gpuType,omitempty"`
+}
+
+func (s DeploySGLangModelInputGpuConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelInputGpuConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelInputGpuConfig) SetGpuMemorySize(v int32) *DeploySGLangModelInputGpuConfig {
+	s.GpuMemorySize = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputGpuConfig) SetGpuType(v string) *DeploySGLangModelInputGpuConfig {
+	s.GpuType = &v
+	return s
+}
+
+type DeploySGLangModelInputHttpTrigger struct {
+	Qualifier     *string                                         `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	TriggerConfig *DeploySGLangModelInputHttpTriggerTriggerConfig `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Struct"`
+}
+
+func (s DeploySGLangModelInputHttpTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelInputHttpTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelInputHttpTrigger) SetQualifier(v string) *DeploySGLangModelInputHttpTrigger {
+	s.Qualifier = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputHttpTrigger) SetTriggerConfig(v *DeploySGLangModelInputHttpTriggerTriggerConfig) *DeploySGLangModelInputHttpTrigger {
+	s.TriggerConfig = v
+	return s
+}
+
+type DeploySGLangModelInputHttpTriggerTriggerConfig struct {
+	AuthType           *string   `json:"authType,omitempty" xml:"authType,omitempty"`
+	DisableURLInternet *bool     `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
+	DsableURLInternet  *bool     `json:"dsableURLInternet,omitempty" xml:"dsableURLInternet,omitempty"`
+	Methods            []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+}
+
+func (s DeploySGLangModelInputHttpTriggerTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelInputHttpTriggerTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelInputHttpTriggerTriggerConfig) SetAuthType(v string) *DeploySGLangModelInputHttpTriggerTriggerConfig {
+	s.AuthType = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputHttpTriggerTriggerConfig) SetDisableURLInternet(v bool) *DeploySGLangModelInputHttpTriggerTriggerConfig {
+	s.DisableURLInternet = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputHttpTriggerTriggerConfig) SetDsableURLInternet(v bool) *DeploySGLangModelInputHttpTriggerTriggerConfig {
+	s.DsableURLInternet = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputHttpTriggerTriggerConfig) SetMethods(v []*string) *DeploySGLangModelInputHttpTriggerTriggerConfig {
+	s.Methods = v
+	return s
+}
+
+type DeploySGLangModelInputLogConfig struct {
+	EnableInstanceMetrics *bool   `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
+	EnableRequestMetrics  *bool   `json:"enableRequestMetrics,omitempty" xml:"enableRequestMetrics,omitempty"`
+	LogBeginRule          *string `json:"logBeginRule,omitempty" xml:"logBeginRule,omitempty"`
+	Logstore              *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Project               *string `json:"project,omitempty" xml:"project,omitempty"`
+}
+
+func (s DeploySGLangModelInputLogConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelInputLogConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelInputLogConfig) SetEnableInstanceMetrics(v bool) *DeploySGLangModelInputLogConfig {
+	s.EnableInstanceMetrics = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputLogConfig) SetEnableRequestMetrics(v bool) *DeploySGLangModelInputLogConfig {
+	s.EnableRequestMetrics = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputLogConfig) SetLogBeginRule(v string) *DeploySGLangModelInputLogConfig {
+	s.LogBeginRule = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputLogConfig) SetLogstore(v string) *DeploySGLangModelInputLogConfig {
+	s.Logstore = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputLogConfig) SetProject(v string) *DeploySGLangModelInputLogConfig {
+	s.Project = &v
+	return s
+}
+
+type DeploySGLangModelInputModelConfig struct {
+	FmkSGLangConfig *DeploySGLangModelInputModelConfigFmkSGLangConfig `json:"fmkSGLangConfig,omitempty" xml:"fmkSGLangConfig,omitempty" type:"Struct"`
+	Framework       *string                                           `json:"framework,omitempty" xml:"framework,omitempty"`
+	// if can be null:
+	// true
+	MultiModelConfig           []*ModelConfig `json:"multiModelConfig,omitempty" xml:"multiModelConfig,omitempty" type:"Repeated"`
+	Prefix                     *string        `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	SourceType                 *string        `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	SrcModelScopeModelID       *string        `json:"srcModelScopeModelID,omitempty" xml:"srcModelScopeModelID,omitempty"`
+	SrcModelScopeModelRevision *string        `json:"srcModelScopeModelRevision,omitempty" xml:"srcModelScopeModelRevision,omitempty"`
+	SrcModelScopeToken         *string        `json:"srcModelScopeToken,omitempty" xml:"srcModelScopeToken,omitempty"`
+	SrcOssBucket               *string        `json:"srcOssBucket,omitempty" xml:"srcOssBucket,omitempty"`
+	SrcOssPath                 *string        `json:"srcOssPath,omitempty" xml:"srcOssPath,omitempty"`
+	SrcOssRegion               *string        `json:"srcOssRegion,omitempty" xml:"srcOssRegion,omitempty"`
+	SyncStrategy               *string        `json:"syncStrategy,omitempty" xml:"syncStrategy,omitempty"`
+}
+
+func (s DeploySGLangModelInputModelConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelInputModelConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelInputModelConfig) SetFmkSGLangConfig(v *DeploySGLangModelInputModelConfigFmkSGLangConfig) *DeploySGLangModelInputModelConfig {
+	s.FmkSGLangConfig = v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfig) SetFramework(v string) *DeploySGLangModelInputModelConfig {
+	s.Framework = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfig) SetMultiModelConfig(v []*ModelConfig) *DeploySGLangModelInputModelConfig {
+	s.MultiModelConfig = v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfig) SetPrefix(v string) *DeploySGLangModelInputModelConfig {
+	s.Prefix = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfig) SetSourceType(v string) *DeploySGLangModelInputModelConfig {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfig) SetSrcModelScopeModelID(v string) *DeploySGLangModelInputModelConfig {
+	s.SrcModelScopeModelID = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfig) SetSrcModelScopeModelRevision(v string) *DeploySGLangModelInputModelConfig {
+	s.SrcModelScopeModelRevision = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfig) SetSrcModelScopeToken(v string) *DeploySGLangModelInputModelConfig {
+	s.SrcModelScopeToken = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfig) SetSrcOssBucket(v string) *DeploySGLangModelInputModelConfig {
+	s.SrcOssBucket = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfig) SetSrcOssPath(v string) *DeploySGLangModelInputModelConfig {
+	s.SrcOssPath = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfig) SetSrcOssRegion(v string) *DeploySGLangModelInputModelConfig {
+	s.SrcOssRegion = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfig) SetSyncStrategy(v string) *DeploySGLangModelInputModelConfig {
+	s.SyncStrategy = &v
+	return s
+}
+
+type DeploySGLangModelInputModelConfigFmkSGLangConfig struct {
+	ApiKey             *string  `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	ChatTemplate       *string  `json:"chatTemplate,omitempty" xml:"chatTemplate,omitempty"`
+	Dtype              *string  `json:"dtype,omitempty" xml:"dtype,omitempty"`
+	FullTextPostfix    *string  `json:"fullTextPostfix,omitempty" xml:"fullTextPostfix,omitempty"`
+	LoadFormat         *string  `json:"loadFormat,omitempty" xml:"loadFormat,omitempty"`
+	MaxRunningRequests *int32   `json:"maxRunningRequests,omitempty" xml:"maxRunningRequests,omitempty"`
+	MaxTotalTokens     *int32   `json:"maxTotalTokens,omitempty" xml:"maxTotalTokens,omitempty"`
+	MemFractionStatic  *float32 `json:"memFractionStatic,omitempty" xml:"memFractionStatic,omitempty"`
+	Quantization       *string  `json:"quantization,omitempty" xml:"quantization,omitempty"`
+	ServedModelName    *string  `json:"servedModelName,omitempty" xml:"servedModelName,omitempty"`
+}
+
+func (s DeploySGLangModelInputModelConfigFmkSGLangConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelInputModelConfigFmkSGLangConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelInputModelConfigFmkSGLangConfig) SetApiKey(v string) *DeploySGLangModelInputModelConfigFmkSGLangConfig {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfigFmkSGLangConfig) SetChatTemplate(v string) *DeploySGLangModelInputModelConfigFmkSGLangConfig {
+	s.ChatTemplate = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfigFmkSGLangConfig) SetDtype(v string) *DeploySGLangModelInputModelConfigFmkSGLangConfig {
+	s.Dtype = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfigFmkSGLangConfig) SetFullTextPostfix(v string) *DeploySGLangModelInputModelConfigFmkSGLangConfig {
+	s.FullTextPostfix = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfigFmkSGLangConfig) SetLoadFormat(v string) *DeploySGLangModelInputModelConfigFmkSGLangConfig {
+	s.LoadFormat = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfigFmkSGLangConfig) SetMaxRunningRequests(v int32) *DeploySGLangModelInputModelConfigFmkSGLangConfig {
+	s.MaxRunningRequests = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfigFmkSGLangConfig) SetMaxTotalTokens(v int32) *DeploySGLangModelInputModelConfigFmkSGLangConfig {
+	s.MaxTotalTokens = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfigFmkSGLangConfig) SetMemFractionStatic(v float32) *DeploySGLangModelInputModelConfigFmkSGLangConfig {
+	s.MemFractionStatic = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfigFmkSGLangConfig) SetQuantization(v string) *DeploySGLangModelInputModelConfigFmkSGLangConfig {
+	s.Quantization = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputModelConfigFmkSGLangConfig) SetServedModelName(v string) *DeploySGLangModelInputModelConfigFmkSGLangConfig {
+	s.ServedModelName = &v
+	return s
+}
+
+type DeploySGLangModelInputNasConfig struct {
+	GroupId     *int32                                        `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	MountPoints []*DeploySGLangModelInputNasConfigMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
+	UserId      *int32                                        `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s DeploySGLangModelInputNasConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelInputNasConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelInputNasConfig) SetGroupId(v int32) *DeploySGLangModelInputNasConfig {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputNasConfig) SetMountPoints(v []*DeploySGLangModelInputNasConfigMountPoints) *DeploySGLangModelInputNasConfig {
+	s.MountPoints = v
+	return s
+}
+
+func (s *DeploySGLangModelInputNasConfig) SetUserId(v int32) *DeploySGLangModelInputNasConfig {
+	s.UserId = &v
+	return s
+}
+
+type DeploySGLangModelInputNasConfigMountPoints struct {
+	EnableTLS  *bool   `json:"enableTLS,omitempty" xml:"enableTLS,omitempty"`
+	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	ServerAddr *string `json:"serverAddr,omitempty" xml:"serverAddr,omitempty"`
+}
+
+func (s DeploySGLangModelInputNasConfigMountPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelInputNasConfigMountPoints) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelInputNasConfigMountPoints) SetEnableTLS(v bool) *DeploySGLangModelInputNasConfigMountPoints {
+	s.EnableTLS = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputNasConfigMountPoints) SetMountDir(v string) *DeploySGLangModelInputNasConfigMountPoints {
+	s.MountDir = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputNasConfigMountPoints) SetServerAddr(v string) *DeploySGLangModelInputNasConfigMountPoints {
+	s.ServerAddr = &v
+	return s
+}
+
+type DeploySGLangModelInputProvisionConfig struct {
+	AlwaysAllocateGPU *bool                                                    `json:"alwaysAllocateGPU,omitempty" xml:"alwaysAllocateGPU,omitempty"`
+	ScheduledActions  []*DeploySGLangModelInputProvisionConfigScheduledActions `json:"scheduledActions,omitempty" xml:"scheduledActions,omitempty" type:"Repeated"`
+	Target            *int32                                                   `json:"target,omitempty" xml:"target,omitempty"`
+}
+
+func (s DeploySGLangModelInputProvisionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelInputProvisionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelInputProvisionConfig) SetAlwaysAllocateGPU(v bool) *DeploySGLangModelInputProvisionConfig {
+	s.AlwaysAllocateGPU = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputProvisionConfig) SetScheduledActions(v []*DeploySGLangModelInputProvisionConfigScheduledActions) *DeploySGLangModelInputProvisionConfig {
+	s.ScheduledActions = v
+	return s
+}
+
+func (s *DeploySGLangModelInputProvisionConfig) SetTarget(v int32) *DeploySGLangModelInputProvisionConfig {
+	s.Target = &v
+	return s
+}
+
+type DeploySGLangModelInputProvisionConfigScheduledActions struct {
+	EndTime            *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
+	ScheduleExpression *string `json:"scheduleExpression,omitempty" xml:"scheduleExpression,omitempty"`
+	StartTime          *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Target             *int32  `json:"target,omitempty" xml:"target,omitempty"`
+	TimeZone           *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+}
+
+func (s DeploySGLangModelInputProvisionConfigScheduledActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelInputProvisionConfigScheduledActions) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelInputProvisionConfigScheduledActions) SetEndTime(v string) *DeploySGLangModelInputProvisionConfigScheduledActions {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputProvisionConfigScheduledActions) SetName(v string) *DeploySGLangModelInputProvisionConfigScheduledActions {
+	s.Name = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputProvisionConfigScheduledActions) SetScheduleExpression(v string) *DeploySGLangModelInputProvisionConfigScheduledActions {
+	s.ScheduleExpression = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputProvisionConfigScheduledActions) SetStartTime(v string) *DeploySGLangModelInputProvisionConfigScheduledActions {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputProvisionConfigScheduledActions) SetTarget(v int32) *DeploySGLangModelInputProvisionConfigScheduledActions {
+	s.Target = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputProvisionConfigScheduledActions) SetTimeZone(v string) *DeploySGLangModelInputProvisionConfigScheduledActions {
+	s.TimeZone = &v
+	return s
+}
+
+type DeploySGLangModelInputVpcConfig struct {
+	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	VSwitchIds      []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
+	VpcId           *string   `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s DeploySGLangModelInputVpcConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelInputVpcConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelInputVpcConfig) SetSecurityGroupId(v string) *DeploySGLangModelInputVpcConfig {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DeploySGLangModelInputVpcConfig) SetVSwitchIds(v []*string) *DeploySGLangModelInputVpcConfig {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *DeploySGLangModelInputVpcConfig) SetVpcId(v string) *DeploySGLangModelInputVpcConfig {
+	s.VpcId = &v
+	return s
+}
+
+type DeploySGLangModelOutput struct {
+	Data    *DeploySGLangModelOutputData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrCode *string                      `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg  *string                      `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	// This parameter is required.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeploySGLangModelOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelOutput) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelOutput) SetData(v *DeploySGLangModelOutputData) *DeploySGLangModelOutput {
+	s.Data = v
+	return s
+}
+
+func (s *DeploySGLangModelOutput) SetErrCode(v string) *DeploySGLangModelOutput {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DeploySGLangModelOutput) SetErrMsg(v string) *DeploySGLangModelOutput {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *DeploySGLangModelOutput) SetRequestId(v string) *DeploySGLangModelOutput {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeploySGLangModelOutput) SetSuccess(v bool) *DeploySGLangModelOutput {
+	s.Success = &v
+	return s
+}
+
+type DeploySGLangModelOutputData struct {
+	DeploymentTaskID *string `json:"deploymentTaskID,omitempty" xml:"deploymentTaskID,omitempty"`
+	ErrorMessage     *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Finished         *bool   `json:"finished,omitempty" xml:"finished,omitempty"`
+	ModelName        *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	ServiceName      *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	TraceID          *string `json:"traceID,omitempty" xml:"traceID,omitempty"`
+	UrlInternet      *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	UrlIntranet      *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
+}
+
+func (s DeploySGLangModelOutputData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySGLangModelOutputData) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySGLangModelOutputData) SetDeploymentTaskID(v string) *DeploySGLangModelOutputData {
+	s.DeploymentTaskID = &v
+	return s
+}
+
+func (s *DeploySGLangModelOutputData) SetErrorMessage(v string) *DeploySGLangModelOutputData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeploySGLangModelOutputData) SetFinished(v bool) *DeploySGLangModelOutputData {
+	s.Finished = &v
+	return s
+}
+
+func (s *DeploySGLangModelOutputData) SetModelName(v string) *DeploySGLangModelOutputData {
+	s.ModelName = &v
+	return s
+}
+
+func (s *DeploySGLangModelOutputData) SetServiceName(v string) *DeploySGLangModelOutputData {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *DeploySGLangModelOutputData) SetTraceID(v string) *DeploySGLangModelOutputData {
+	s.TraceID = &v
+	return s
+}
+
+func (s *DeploySGLangModelOutputData) SetUrlInternet(v string) *DeploySGLangModelOutputData {
+	s.UrlInternet = &v
+	return s
+}
+
+func (s *DeploySGLangModelOutputData) SetUrlIntranet(v string) *DeploySGLangModelOutputData {
+	s.UrlIntranet = &v
+	return s
+}
+
 type DeployTensorRtModelAsyncOutput struct {
 	Data    *string `json:"data,omitempty" xml:"data,omitempty"`
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
@@ -3948,9 +4937,10 @@ func (s *DeployTensorRtModelInputHttpTrigger) SetTriggerConfig(v *DeployTensorRt
 }
 
 type DeployTensorRtModelInputHttpTriggerTriggerConfig struct {
-	AuthType          *string   `json:"authType,omitempty" xml:"authType,omitempty"`
-	DsableURLInternet *bool     `json:"dsableURLInternet,omitempty" xml:"dsableURLInternet,omitempty"`
-	Methods           []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+	AuthType           *string   `json:"authType,omitempty" xml:"authType,omitempty"`
+	DisableURLInternet *bool     `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
+	DsableURLInternet  *bool     `json:"dsableURLInternet,omitempty" xml:"dsableURLInternet,omitempty"`
+	Methods            []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
 }
 
 func (s DeployTensorRtModelInputHttpTriggerTriggerConfig) String() string {
@@ -3963,6 +4953,11 @@ func (s DeployTensorRtModelInputHttpTriggerTriggerConfig) GoString() string {
 
 func (s *DeployTensorRtModelInputHttpTriggerTriggerConfig) SetAuthType(v string) *DeployTensorRtModelInputHttpTriggerTriggerConfig {
 	s.AuthType = &v
+	return s
+}
+
+func (s *DeployTensorRtModelInputHttpTriggerTriggerConfig) SetDisableURLInternet(v bool) *DeployTensorRtModelInputHttpTriggerTriggerConfig {
+	s.DisableURLInternet = &v
 	return s
 }
 
@@ -4030,6 +5025,7 @@ type DeployTensorRtModelInputModelConfig struct {
 	SrcOssBucket               *string        `json:"srcOssBucket,omitempty" xml:"srcOssBucket,omitempty"`
 	SrcOssPath                 *string        `json:"srcOssPath,omitempty" xml:"srcOssPath,omitempty"`
 	SrcOssRegion               *string        `json:"srcOssRegion,omitempty" xml:"srcOssRegion,omitempty"`
+	SyncStrategy               *string        `json:"syncStrategy,omitempty" xml:"syncStrategy,omitempty"`
 }
 
 func (s DeployTensorRtModelInputModelConfig) String() string {
@@ -4087,6 +5083,11 @@ func (s *DeployTensorRtModelInputModelConfig) SetSrcOssPath(v string) *DeployTen
 
 func (s *DeployTensorRtModelInputModelConfig) SetSrcOssRegion(v string) *DeployTensorRtModelInputModelConfig {
 	s.SrcOssRegion = &v
+	return s
+}
+
+func (s *DeployTensorRtModelInputModelConfig) SetSyncStrategy(v string) *DeployTensorRtModelInputModelConfig {
+	s.SyncStrategy = &v
 	return s
 }
 
@@ -4617,9 +5618,10 @@ func (s *DeployVllmModelInputHttpTrigger) SetTriggerConfig(v *DeployVllmModelInp
 }
 
 type DeployVllmModelInputHttpTriggerTriggerConfig struct {
-	AuthType          *string   `json:"authType,omitempty" xml:"authType,omitempty"`
-	DsableURLInternet *bool     `json:"dsableURLInternet,omitempty" xml:"dsableURLInternet,omitempty"`
-	Methods           []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+	AuthType           *string   `json:"authType,omitempty" xml:"authType,omitempty"`
+	DisableURLInternet *bool     `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
+	DsableURLInternet  *bool     `json:"dsableURLInternet,omitempty" xml:"dsableURLInternet,omitempty"`
+	Methods            []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
 }
 
 func (s DeployVllmModelInputHttpTriggerTriggerConfig) String() string {
@@ -4632,6 +5634,11 @@ func (s DeployVllmModelInputHttpTriggerTriggerConfig) GoString() string {
 
 func (s *DeployVllmModelInputHttpTriggerTriggerConfig) SetAuthType(v string) *DeployVllmModelInputHttpTriggerTriggerConfig {
 	s.AuthType = &v
+	return s
+}
+
+func (s *DeployVllmModelInputHttpTriggerTriggerConfig) SetDisableURLInternet(v bool) *DeployVllmModelInputHttpTriggerTriggerConfig {
+	s.DisableURLInternet = &v
 	return s
 }
 
@@ -4700,6 +5707,7 @@ type DeployVllmModelInputModelConfig struct {
 	SrcOssBucket               *string        `json:"srcOssBucket,omitempty" xml:"srcOssBucket,omitempty"`
 	SrcOssPath                 *string        `json:"srcOssPath,omitempty" xml:"srcOssPath,omitempty"`
 	SrcOssRegion               *string        `json:"srcOssRegion,omitempty" xml:"srcOssRegion,omitempty"`
+	SyncStrategy               *string        `json:"syncStrategy,omitempty" xml:"syncStrategy,omitempty"`
 }
 
 func (s DeployVllmModelInputModelConfig) String() string {
@@ -4762,6 +5770,11 @@ func (s *DeployVllmModelInputModelConfig) SetSrcOssPath(v string) *DeployVllmMod
 
 func (s *DeployVllmModelInputModelConfig) SetSrcOssRegion(v string) *DeployVllmModelInputModelConfig {
 	s.SrcOssRegion = &v
+	return s
+}
+
+func (s *DeployVllmModelInputModelConfig) SetSyncStrategy(v string) *DeployVllmModelInputModelConfig {
+	s.SyncStrategy = &v
 	return s
 }
 
@@ -5907,6 +6920,64 @@ func (s *Installation) SetStage(v string) *Installation {
 	return s
 }
 
+type MCPInstallationConfig struct {
+	McpServers *MCPServerInstallationConfig `json:"mcpServers,omitempty" xml:"mcpServers,omitempty"`
+}
+
+func (s MCPInstallationConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MCPInstallationConfig) GoString() string {
+	return s.String()
+}
+
+func (s *MCPInstallationConfig) SetMcpServers(v *MCPServerInstallationConfig) *MCPInstallationConfig {
+	s.McpServers = v
+	return s
+}
+
+type MCPServerInstallationConfig struct {
+	Args          *string            `json:"args,omitempty" xml:"args,omitempty"`
+	Command       *string            `json:"command,omitempty" xml:"command,omitempty"`
+	Env           map[string]*string `json:"env,omitempty" xml:"env,omitempty"`
+	TransportType *string            `json:"transportType,omitempty" xml:"transportType,omitempty"`
+	Url           *string            `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s MCPServerInstallationConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MCPServerInstallationConfig) GoString() string {
+	return s.String()
+}
+
+func (s *MCPServerInstallationConfig) SetArgs(v string) *MCPServerInstallationConfig {
+	s.Args = &v
+	return s
+}
+
+func (s *MCPServerInstallationConfig) SetCommand(v string) *MCPServerInstallationConfig {
+	s.Command = &v
+	return s
+}
+
+func (s *MCPServerInstallationConfig) SetEnv(v map[string]*string) *MCPServerInstallationConfig {
+	s.Env = v
+	return s
+}
+
+func (s *MCPServerInstallationConfig) SetTransportType(v string) *MCPServerInstallationConfig {
+	s.TransportType = &v
+	return s
+}
+
+func (s *MCPServerInstallationConfig) SetUrl(v string) *MCPServerInstallationConfig {
+	s.Url = &v
+	return s
+}
+
 type ModelAsyncTask struct {
 	ErrCode      *string     `json:"errCode,omitempty" xml:"errCode,omitempty"`
 	ErrMsg       *string     `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
@@ -6284,14 +7355,28 @@ func (s *ModelProviderSpec) SetSchema(v *ModelProviderSchema) *ModelProviderSpec
 }
 
 type ModelTask struct {
-	ErrMsg     *string  `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
-	FileSize   *float64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	FinishTime *float64 `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
-	Finished   *bool    `json:"finished,omitempty" xml:"finished,omitempty"`
-	StartTime  *float64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status     *string  `json:"status,omitempty" xml:"status,omitempty"`
-	TaskId     *string  `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	CurrentBytes *string     `json:"currentBytes,omitempty" xml:"currentBytes,omitempty"`
+	ErrCode      *string     `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMsg       *string     `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	Extra        interface{} `json:"extra,omitempty" xml:"extra,omitempty"`
+	// Deprecated
+	FileSize *float64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// Deprecated
+	FinishTime   *float64    `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
+	Finished     *bool       `json:"finished,omitempty" xml:"finished,omitempty"`
+	FinishedTime *float64    `json:"finishedTime,omitempty" xml:"finishedTime,omitempty"`
+	Id           *string     `json:"id,omitempty" xml:"id,omitempty"`
+	Params       *string     `json:"params,omitempty" xml:"params,omitempty"`
+	Result       interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	Speed        *string     `json:"speed,omitempty" xml:"speed,omitempty"`
+	StartTime    *float64    `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Status       *string     `json:"status,omitempty" xml:"status,omitempty"`
+	TaskId       *string     `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskType     *string     `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	// Deprecated
 	Total      *float32 `json:"total,omitempty" xml:"total,omitempty"`
+	TotalBytes *string  `json:"totalBytes,omitempty" xml:"totalBytes,omitempty"`
+	UpdateTime *float64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ModelTask) String() string {
@@ -6302,8 +7387,23 @@ func (s ModelTask) GoString() string {
 	return s.String()
 }
 
+func (s *ModelTask) SetCurrentBytes(v string) *ModelTask {
+	s.CurrentBytes = &v
+	return s
+}
+
+func (s *ModelTask) SetErrCode(v string) *ModelTask {
+	s.ErrCode = &v
+	return s
+}
+
 func (s *ModelTask) SetErrMsg(v string) *ModelTask {
 	s.ErrMsg = &v
+	return s
+}
+
+func (s *ModelTask) SetExtra(v interface{}) *ModelTask {
+	s.Extra = v
 	return s
 }
 
@@ -6322,6 +7422,31 @@ func (s *ModelTask) SetFinished(v bool) *ModelTask {
 	return s
 }
 
+func (s *ModelTask) SetFinishedTime(v float64) *ModelTask {
+	s.FinishedTime = &v
+	return s
+}
+
+func (s *ModelTask) SetId(v string) *ModelTask {
+	s.Id = &v
+	return s
+}
+
+func (s *ModelTask) SetParams(v string) *ModelTask {
+	s.Params = &v
+	return s
+}
+
+func (s *ModelTask) SetResult(v interface{}) *ModelTask {
+	s.Result = v
+	return s
+}
+
+func (s *ModelTask) SetSpeed(v string) *ModelTask {
+	s.Speed = &v
+	return s
+}
+
 func (s *ModelTask) SetStartTime(v float64) *ModelTask {
 	s.StartTime = &v
 	return s
@@ -6337,8 +7462,23 @@ func (s *ModelTask) SetTaskId(v string) *ModelTask {
 	return s
 }
 
+func (s *ModelTask) SetTaskType(v string) *ModelTask {
+	s.TaskType = &v
+	return s
+}
+
 func (s *ModelTask) SetTotal(v float32) *ModelTask {
 	s.Total = &v
+	return s
+}
+
+func (s *ModelTask) SetTotalBytes(v string) *ModelTask {
+	s.TotalBytes = &v
+	return s
+}
+
+func (s *ModelTask) SetUpdateTime(v float64) *ModelTask {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -8824,6 +9964,7 @@ type Toolset struct {
 	//
 	// my-toolset
 	Name   *string        `json:"name,omitempty" xml:"name,omitempty"`
+	Spec   *ToolsetSpec   `json:"spec,omitempty" xml:"spec,omitempty"`
 	Status *ToolsetStatus `json:"status,omitempty" xml:"status,omitempty"`
 	// example:
 	//
@@ -8861,6 +10002,11 @@ func (s *Toolset) SetLabels(v map[string]*string) *Toolset {
 
 func (s *Toolset) SetName(v string) *Toolset {
 	s.Name = &v
+	return s
+}
+
+func (s *Toolset) SetSpec(v *ToolsetSpec) *Toolset {
+	s.Spec = v
 	return s
 }
 
@@ -8927,8 +10073,7 @@ func (s *ToolsetSchema) SetType(v string) *ToolsetSchema {
 }
 
 type ToolsetSpec struct {
-	Authorization *ToolsetAuthorization `json:"authorization,omitempty" xml:"authorization,omitempty"`
-	Schema        *ToolsetSchema        `json:"schema,omitempty" xml:"schema,omitempty"`
+	Schema *ToolsetSchema `json:"schema,omitempty" xml:"schema,omitempty"`
 }
 
 func (s ToolsetSpec) String() string {
@@ -8939,18 +10084,19 @@ func (s ToolsetSpec) GoString() string {
 	return s.String()
 }
 
-func (s *ToolsetSpec) SetAuthorization(v *ToolsetAuthorization) *ToolsetSpec {
-	s.Authorization = v
-	return s
-}
-
 func (s *ToolsetSpec) SetSchema(v *ToolsetSchema) *ToolsetSpec {
 	s.Schema = v
 	return s
 }
 
 type ToolsetStatus struct {
-	Tools map[string]*Tool `json:"tools,omitempty" xml:"tools,omitempty"`
+	ObservedGeneration *int64                 `json:"observedGeneration,omitempty" xml:"observedGeneration,omitempty"`
+	ObservedTime       *string                `json:"observedTime,omitempty" xml:"observedTime,omitempty"`
+	Outputs            map[string]interface{} `json:"outputs,omitempty" xml:"outputs,omitempty"`
+	// example:
+	//
+	// Installed
+	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
 }
 
 func (s ToolsetStatus) String() string {
@@ -8961,8 +10107,23 @@ func (s ToolsetStatus) GoString() string {
 	return s.String()
 }
 
-func (s *ToolsetStatus) SetTools(v map[string]*Tool) *ToolsetStatus {
-	s.Tools = v
+func (s *ToolsetStatus) SetObservedGeneration(v int64) *ToolsetStatus {
+	s.ObservedGeneration = &v
+	return s
+}
+
+func (s *ToolsetStatus) SetObservedTime(v string) *ToolsetStatus {
+	s.ObservedTime = &v
+	return s
+}
+
+func (s *ToolsetStatus) SetOutputs(v map[string]interface{}) *ToolsetStatus {
+	s.Outputs = v
+	return s
+}
+
+func (s *ToolsetStatus) SetPhase(v string) *ToolsetStatus {
+	s.Phase = &v
 	return s
 }
 
@@ -9483,6 +10644,52 @@ func (s *CreateTaskResponse) SetBody(v *Task) *CreateTaskResponse {
 	return s
 }
 
+type CreateToolsetRequest struct {
+	Body *Toolset `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateToolsetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateToolsetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateToolsetRequest) SetBody(v *Toolset) *CreateToolsetRequest {
+	s.Body = v
+	return s
+}
+
+type CreateToolsetResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Toolset           `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateToolsetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateToolsetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateToolsetResponse) SetHeaders(v map[string]*string) *CreateToolsetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateToolsetResponse) SetStatusCode(v int32) *CreateToolsetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateToolsetResponse) SetBody(v *Toolset) *CreateToolsetResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteArtifactResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -9637,6 +10844,29 @@ func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectR
 }
 
 func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteToolsetResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteToolsetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteToolsetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteToolsetResponse) SetHeaders(v map[string]*string) *DeleteToolsetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteToolsetResponse) SetStatusCode(v int32) *DeleteToolsetResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -10002,6 +11232,35 @@ func (s *GetTaskResponse) SetStatusCode(v int32) *GetTaskResponse {
 }
 
 func (s *GetTaskResponse) SetBody(v *Task) *GetTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetToolsetResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Toolset           `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetToolsetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetToolsetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetToolsetResponse) SetHeaders(v map[string]*string) *GetToolsetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetToolsetResponse) SetStatusCode(v int32) *GetToolsetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetToolsetResponse) SetBody(v *Toolset) *GetToolsetResponse {
 	s.Body = v
 	return s
 }
@@ -10776,6 +12035,167 @@ func (s *ListTasksResponse) SetBody(v []*Task) *ListTasksResponse {
 	return s
 }
 
+type ListToolsetsRequest struct {
+	// example:
+	//
+	// demo
+	Keyword       *string   `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	LabelSelector []*string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListToolsetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListToolsetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListToolsetsRequest) SetKeyword(v string) *ListToolsetsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListToolsetsRequest) SetLabelSelector(v []*string) *ListToolsetsRequest {
+	s.LabelSelector = v
+	return s
+}
+
+func (s *ListToolsetsRequest) SetPageNumber(v int64) *ListToolsetsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListToolsetsRequest) SetPageSize(v int64) *ListToolsetsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListToolsetsShrinkRequest struct {
+	// example:
+	//
+	// demo
+	Keyword             *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	LabelSelectorShrink *string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListToolsetsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListToolsetsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListToolsetsShrinkRequest) SetKeyword(v string) *ListToolsetsShrinkRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListToolsetsShrinkRequest) SetLabelSelectorShrink(v string) *ListToolsetsShrinkRequest {
+	s.LabelSelectorShrink = &v
+	return s
+}
+
+func (s *ListToolsetsShrinkRequest) SetPageNumber(v int64) *ListToolsetsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListToolsetsShrinkRequest) SetPageSize(v int64) *ListToolsetsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListToolsetsResponseBody struct {
+	Data []*Toolset `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListToolsetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListToolsetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListToolsetsResponseBody) SetData(v []*Toolset) *ListToolsetsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListToolsetsResponseBody) SetPageNumber(v int64) *ListToolsetsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListToolsetsResponseBody) SetPageSize(v int64) *ListToolsetsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListToolsetsResponseBody) SetTotalCount(v int64) *ListToolsetsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListToolsetsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListToolsetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListToolsetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListToolsetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListToolsetsResponse) SetHeaders(v map[string]*string) *ListToolsetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListToolsetsResponse) SetStatusCode(v int32) *ListToolsetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListToolsetsResponse) SetBody(v *ListToolsetsResponseBody) *ListToolsetsResponse {
+	s.Body = v
+	return s
+}
+
 type PreviewEnvironmentResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -11291,6 +12711,52 @@ func (s *UpdateProjectResponse) SetBody(v *Project) *UpdateProjectResponse {
 	return s
 }
 
+type UpdateToolsetRequest struct {
+	Body *Toolset `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateToolsetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateToolsetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateToolsetRequest) SetBody(v *Toolset) *UpdateToolsetRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateToolsetResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Toolset           `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateToolsetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateToolsetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateToolsetResponse) SetHeaders(v map[string]*string) *UpdateToolsetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateToolsetResponse) SetStatusCode(v int32) *UpdateToolsetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateToolsetResponse) SetBody(v *Toolset) *UpdateToolsetResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -11378,24 +12844,13 @@ func (client *Client) ActivateConnectionWithOptions(name *string, request *Activ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ActivateConnectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ActivateConnectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ActivateConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11441,24 +12896,13 @@ func (client *Client) CancelPipelineWithOptions(name *string, headers map[string
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CancelPipelineResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CancelPipelineResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CancelPipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11502,24 +12946,13 @@ func (client *Client) CancelTaskWithOptions(name *string, headers map[string]*st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CancelTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CancelTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CancelTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11570,24 +13003,13 @@ func (client *Client) CreateArtifactWithOptions(request *CreateArtifactRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateArtifactResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateArtifactResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateArtifactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11640,24 +13062,13 @@ func (client *Client) CreateEnvironmentWithOptions(projectName *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateEnvironmentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateEnvironmentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11710,24 +13121,13 @@ func (client *Client) CreatePipelineWithOptions(request *CreatePipelineRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreatePipelineResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreatePipelineResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11780,24 +13180,13 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11850,24 +13239,13 @@ func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11882,6 +13260,65 @@ func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTas
 	headers := make(map[string]*string)
 	_result = &CreateTaskResponse{}
 	_body, _err := client.CreateTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建工具集
+//
+// @param request - CreateToolsetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateToolsetResponse
+func (client *Client) CreateToolsetWithOptions(request *CreateToolsetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateToolsetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateToolset"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/toolsets"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateToolsetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建工具集
+//
+// @param request - CreateToolsetRequest
+//
+// @return CreateToolsetResponse
+func (client *Client) CreateToolset(request *CreateToolsetRequest) (_result *CreateToolsetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateToolsetResponse{}
+	_body, _err := client.CreateToolsetWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11913,24 +13350,13 @@ func (client *Client) DeleteArtifactWithOptions(name *string, headers map[string
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("none"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteArtifactResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteArtifactResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteArtifactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11986,24 +13412,13 @@ func (client *Client) DeleteConnectionWithOptions(name *string, request *DeleteC
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteConnectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteConnectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12049,24 +13464,13 @@ func (client *Client) DeleteEnvironmentWithOptions(projectName *string, name *st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("none"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteEnvironmentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteEnvironmentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12122,24 +13526,13 @@ func (client *Client) DeleteProjectWithOptions(name *string, request *DeleteProj
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("none"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12154,6 +13547,56 @@ func (client *Client) DeleteProject(name *string, request *DeleteProjectRequest)
 	headers := make(map[string]*string)
 	_result = &DeleteProjectResponse{}
 	_body, _err := client.DeleteProjectWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除工具集
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteToolsetResponse
+func (client *Client) DeleteToolsetWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteToolsetResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteToolset"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/toolsets/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteToolsetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除工具集
+//
+// @return DeleteToolsetResponse
+func (client *Client) DeleteToolset(name *string) (_result *DeleteToolsetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteToolsetResponse{}
+	_body, _err := client.DeleteToolsetWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12192,24 +13635,13 @@ func (client *Client) DeployEnvironmentWithOptions(projectName *string, name *st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeployEnvironmentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeployEnvironmentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeployEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12255,24 +13687,13 @@ func (client *Client) FetchArtifactDownloadUrlWithOptions(name *string, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &FetchArtifactDownloadUrlResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &FetchArtifactDownloadUrlResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &FetchArtifactDownloadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12316,24 +13737,13 @@ func (client *Client) FetchArtifactTempBucketTokenWithOptions(headers map[string
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &FetchArtifactTempBucketTokenResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &FetchArtifactTempBucketTokenResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &FetchArtifactTempBucketTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12377,24 +13787,13 @@ func (client *Client) FetchConnectionCredentialWithOptions(name *string, headers
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &FetchConnectionCredentialResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &FetchConnectionCredentialResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &FetchConnectionCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12438,24 +13837,13 @@ func (client *Client) GetArtifactWithOptions(name *string, headers map[string]*s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetArtifactResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetArtifactResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetArtifactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12499,24 +13887,13 @@ func (client *Client) GetEnvironmentWithOptions(projectName *string, name *strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetEnvironmentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetEnvironmentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12560,24 +13937,13 @@ func (client *Client) GetEnvironmentDeploymentWithOptions(name *string, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetEnvironmentDeploymentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetEnvironmentDeploymentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetEnvironmentDeploymentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12621,24 +13987,13 @@ func (client *Client) GetPipelineWithOptions(name *string, headers map[string]*s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetPipelineResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetPipelineResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetPipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12682,24 +14037,13 @@ func (client *Client) GetProjectWithOptions(name *string, headers map[string]*st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12743,24 +14087,13 @@ func (client *Client) GetRepositoryWithOptions(name *string, headers map[string]
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetRepositoryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetRepositoryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetRepositoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12804,24 +14137,13 @@ func (client *Client) GetServiceDeploymentWithOptions(name *string, headers map[
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetServiceDeploymentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetServiceDeploymentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetServiceDeploymentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12865,24 +14187,13 @@ func (client *Client) GetTaskWithOptions(name *string, headers map[string]*strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12895,6 +14206,56 @@ func (client *Client) GetTask(name *string) (_result *GetTaskResponse, _err erro
 	headers := make(map[string]*string)
 	_result = &GetTaskResponse{}
 	_body, _err := client.GetTaskWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询工具集
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetToolsetResponse
+func (client *Client) GetToolsetWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetToolsetResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetToolset"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/toolsets/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetToolsetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询工具集
+//
+// @return GetToolsetResponse
+func (client *Client) GetToolset(name *string) (_result *GetToolsetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetToolsetResponse{}
+	_body, _err := client.GetToolsetWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12956,24 +14317,13 @@ func (client *Client) ListConnectionsWithOptions(tmpReq *ListConnectionsRequest,
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListConnectionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListConnectionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListConnectionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13049,24 +14399,13 @@ func (client *Client) ListEnvironmentsWithOptions(projectName *string, tmpReq *L
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListEnvironmentsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListEnvironmentsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListEnvironmentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13130,24 +14469,13 @@ func (client *Client) ListPipelinesWithOptions(tmpReq *ListPipelinesRequest, hea
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("array"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListPipelinesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListPipelinesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListPipelinesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13223,24 +14551,13 @@ func (client *Client) ListProjectsWithOptions(tmpReq *ListProjectsRequest, heade
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListProjectsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListProjectsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13316,24 +14633,13 @@ func (client *Client) ListServiceDeploymentsWithOptions(tmpReq *ListServiceDeplo
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListServiceDeploymentsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListServiceDeploymentsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListServiceDeploymentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13397,24 +14703,13 @@ func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, headers map
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("array"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTasksResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTasksResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13429,6 +14724,88 @@ func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksRe
 	headers := make(map[string]*string)
 	_result = &ListTasksResponse{}
 	_body, _err := client.ListTasksWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询工具集
+//
+// @param tmpReq - ListToolsetsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListToolsetsResponse
+func (client *Client) ListToolsetsWithOptions(tmpReq *ListToolsetsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListToolsetsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListToolsetsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LabelSelector)) {
+		request.LabelSelectorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelSelector, tea.String("labelSelector"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelSelectorShrink)) {
+		query["labelSelector"] = request.LabelSelectorShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListToolsets"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/toolsets"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListToolsetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询工具集
+//
+// @param request - ListToolsetsRequest
+//
+// @return ListToolsetsResponse
+func (client *Client) ListToolsets(request *ListToolsetsRequest) (_result *ListToolsetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListToolsetsResponse{}
+	_body, _err := client.ListToolsetsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13460,24 +14837,13 @@ func (client *Client) PreviewEnvironmentWithOptions(projectName *string, name *s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PreviewEnvironmentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PreviewEnvironmentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PreviewEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13534,24 +14900,13 @@ func (client *Client) PutArtifactWithOptions(name *string, request *PutArtifactR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PutArtifactResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PutArtifactResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PutArtifactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13610,24 +14965,13 @@ func (client *Client) PutPipelineStatusWithOptions(name *string, request *PutPip
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PutPipelineStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PutPipelineStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PutPipelineStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13686,24 +15030,13 @@ func (client *Client) PutTaskStatusWithOptions(name *string, request *PutTaskSta
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PutTaskStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PutTaskStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PutTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13777,24 +15110,13 @@ func (client *Client) RenderServicesByTemplateWithOptions(request *RenderService
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RenderServicesByTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RenderServicesByTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RenderServicesByTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13840,24 +15162,13 @@ func (client *Client) ResumeTaskWithOptions(name *string, headers map[string]*st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResumeTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ResumeTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ResumeTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13901,24 +15212,13 @@ func (client *Client) RetryTaskWithOptions(name *string, headers map[string]*str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RetryTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RetryTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RetryTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13962,24 +15262,13 @@ func (client *Client) StartPipelineWithOptions(name *string, headers map[string]
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartPipelineResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartPipelineResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartPipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14023,24 +15312,13 @@ func (client *Client) StartTaskWithOptions(name *string, headers map[string]*str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14091,24 +15369,13 @@ func (client *Client) UpdateEnvironmentWithOptions(projectName *string, name *st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateEnvironmentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateEnvironmentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14161,24 +15428,13 @@ func (client *Client) UpdateProjectWithOptions(name *string, request *UpdateProj
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14193,6 +15449,65 @@ func (client *Client) UpdateProject(name *string, request *UpdateProjectRequest)
 	headers := make(map[string]*string)
 	_result = &UpdateProjectResponse{}
 	_body, _err := client.UpdateProjectWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工具集
+//
+// @param request - UpdateToolsetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateToolsetResponse
+func (client *Client) UpdateToolsetWithOptions(name *string, request *UpdateToolsetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateToolsetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateToolset"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/toolsets/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateToolsetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工具集
+//
+// @param request - UpdateToolsetRequest
+//
+// @return UpdateToolsetResponse
+func (client *Client) UpdateToolset(name *string, request *UpdateToolsetRequest) (_result *UpdateToolsetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateToolsetResponse{}
+	_body, _err := client.UpdateToolsetWithOptions(name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
