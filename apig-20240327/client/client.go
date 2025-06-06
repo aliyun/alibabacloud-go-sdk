@@ -3022,6 +3022,7 @@ type HttpRoute struct {
 	EnvironmentInfo *HttpRouteEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
 	GatewayStatus   map[string]*string        `json:"gatewayStatus,omitempty" xml:"gatewayStatus,omitempty"`
 	Match           *HttpRouteMatch           `json:"match,omitempty" xml:"match,omitempty"`
+	McpServerInfo   *HttpRouteMcpServerInfo   `json:"mcpServerInfo,omitempty" xml:"mcpServerInfo,omitempty" type:"Struct"`
 	Name            *string                   `json:"name,omitempty" xml:"name,omitempty"`
 	RouteId         *string                   `json:"routeId,omitempty" xml:"routeId,omitempty"`
 	UpdateTimestamp *int64                    `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
@@ -3072,6 +3073,11 @@ func (s *HttpRoute) SetGatewayStatus(v map[string]*string) *HttpRoute {
 
 func (s *HttpRoute) SetMatch(v *HttpRouteMatch) *HttpRoute {
 	s.Match = v
+	return s
+}
+
+func (s *HttpRoute) SetMcpServerInfo(v *HttpRouteMcpServerInfo) *HttpRoute {
+	s.McpServerInfo = v
 	return s
 }
 
@@ -3217,6 +3223,76 @@ func (s *HttpRouteEnvironmentInfoSubDomains) SetNetworkType(v string) *HttpRoute
 }
 
 func (s *HttpRouteEnvironmentInfoSubDomains) SetProtocol(v string) *HttpRouteEnvironmentInfoSubDomains {
+	s.Protocol = &v
+	return s
+}
+
+type HttpRouteMcpServerInfo struct {
+	CreateFromType    *string                               `json:"createFromType,omitempty" xml:"createFromType,omitempty"`
+	ImportInstanceId  *string                               `json:"importInstanceId,omitempty" xml:"importInstanceId,omitempty"`
+	ImportMcpServerId *string                               `json:"importMcpServerId,omitempty" xml:"importMcpServerId,omitempty"`
+	ImportNamespace   *string                               `json:"importNamespace,omitempty" xml:"importNamespace,omitempty"`
+	McpRouteConfig    *HttpRouteMcpServerInfoMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
+	McpServerConfig   *string                               `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty"`
+}
+
+func (s HttpRouteMcpServerInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpRouteMcpServerInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HttpRouteMcpServerInfo) SetCreateFromType(v string) *HttpRouteMcpServerInfo {
+	s.CreateFromType = &v
+	return s
+}
+
+func (s *HttpRouteMcpServerInfo) SetImportInstanceId(v string) *HttpRouteMcpServerInfo {
+	s.ImportInstanceId = &v
+	return s
+}
+
+func (s *HttpRouteMcpServerInfo) SetImportMcpServerId(v string) *HttpRouteMcpServerInfo {
+	s.ImportMcpServerId = &v
+	return s
+}
+
+func (s *HttpRouteMcpServerInfo) SetImportNamespace(v string) *HttpRouteMcpServerInfo {
+	s.ImportNamespace = &v
+	return s
+}
+
+func (s *HttpRouteMcpServerInfo) SetMcpRouteConfig(v *HttpRouteMcpServerInfoMcpRouteConfig) *HttpRouteMcpServerInfo {
+	s.McpRouteConfig = v
+	return s
+}
+
+func (s *HttpRouteMcpServerInfo) SetMcpServerConfig(v string) *HttpRouteMcpServerInfo {
+	s.McpServerConfig = &v
+	return s
+}
+
+type HttpRouteMcpServerInfoMcpRouteConfig struct {
+	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
+	Protocol       *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+}
+
+func (s HttpRouteMcpServerInfoMcpRouteConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpRouteMcpServerInfoMcpRouteConfig) GoString() string {
+	return s.String()
+}
+
+func (s *HttpRouteMcpServerInfoMcpRouteConfig) SetExposedUriPath(v string) *HttpRouteMcpServerInfoMcpRouteConfig {
+	s.ExposedUriPath = &v
+	return s
+}
+
+func (s *HttpRouteMcpServerInfoMcpRouteConfig) SetProtocol(v string) *HttpRouteMcpServerInfoMcpRouteConfig {
 	s.Protocol = &v
 	return s
 }
