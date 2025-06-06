@@ -6348,6 +6348,144 @@ func (s *LivenessFaceVerifyResponse) SetBody(v *LivenessFaceVerifyResponseBody) 
 	return s
 }
 
+type Mobile2MetaVerifyRequest struct {
+	// This parameter is required.
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// normal
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// This parameter is required.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s Mobile2MetaVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Mobile2MetaVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *Mobile2MetaVerifyRequest) SetMobile(v string) *Mobile2MetaVerifyRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *Mobile2MetaVerifyRequest) SetParamType(v string) *Mobile2MetaVerifyRequest {
+	s.ParamType = &v
+	return s
+}
+
+func (s *Mobile2MetaVerifyRequest) SetUserName(v string) *Mobile2MetaVerifyRequest {
+	s.UserName = &v
+	return s
+}
+
+type Mobile2MetaVerifyResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 130A2C10-B9EE-4D84-88E3-5384FF039795
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *Mobile2MetaVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s Mobile2MetaVerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Mobile2MetaVerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *Mobile2MetaVerifyResponseBody) SetCode(v string) *Mobile2MetaVerifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *Mobile2MetaVerifyResponseBody) SetMessage(v string) *Mobile2MetaVerifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *Mobile2MetaVerifyResponseBody) SetRequestId(v string) *Mobile2MetaVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *Mobile2MetaVerifyResponseBody) SetResultObject(v *Mobile2MetaVerifyResponseBodyResultObject) *Mobile2MetaVerifyResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type Mobile2MetaVerifyResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// example:
+	//
+	// CMCC
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+}
+
+func (s Mobile2MetaVerifyResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Mobile2MetaVerifyResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *Mobile2MetaVerifyResponseBodyResultObject) SetBizCode(v string) *Mobile2MetaVerifyResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+func (s *Mobile2MetaVerifyResponseBodyResultObject) SetIspName(v string) *Mobile2MetaVerifyResponseBodyResultObject {
+	s.IspName = &v
+	return s
+}
+
+type Mobile2MetaVerifyResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Mobile2MetaVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s Mobile2MetaVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Mobile2MetaVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *Mobile2MetaVerifyResponse) SetHeaders(v map[string]*string) *Mobile2MetaVerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *Mobile2MetaVerifyResponse) SetStatusCode(v int32) *Mobile2MetaVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *Mobile2MetaVerifyResponse) SetBody(v *Mobile2MetaVerifyResponseBody) *Mobile2MetaVerifyResponse {
+	s.Body = v
+	return s
+}
+
 type Mobile3MetaDetailStandardVerifyRequest struct {
 	// example:
 	//
@@ -11796,6 +11934,74 @@ func (client *Client) LivenessFaceVerify(request *LivenessFaceVerifyRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &LivenessFaceVerifyResponse{}
 	_body, _err := client.LivenessFaceVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 手机二要素核验
+//
+// @param request - Mobile2MetaVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return Mobile2MetaVerifyResponse
+func (client *Client) Mobile2MetaVerifyWithOptions(request *Mobile2MetaVerifyRequest, runtime *util.RuntimeOptions) (_result *Mobile2MetaVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		body["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		body["ParamType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["UserName"] = request.UserName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Mobile2MetaVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &Mobile2MetaVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 手机二要素核验
+//
+// @param request - Mobile2MetaVerifyRequest
+//
+// @return Mobile2MetaVerifyResponse
+func (client *Client) Mobile2MetaVerify(request *Mobile2MetaVerifyRequest) (_result *Mobile2MetaVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &Mobile2MetaVerifyResponse{}
+	_body, _err := client.Mobile2MetaVerifyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
