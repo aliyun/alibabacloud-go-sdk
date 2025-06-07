@@ -2509,6 +2509,7 @@ type DescribeUsersRequest struct {
 	OrgId      *string                `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	ShowExtras map[string]interface{} `json:"ShowExtras,omitempty" xml:"ShowExtras,omitempty"`
 	SolutionId *string                `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	Status     *int32                 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeUsersRequest) String() string {
@@ -2584,6 +2585,11 @@ func (s *DescribeUsersRequest) SetSolutionId(v string) *DescribeUsersRequest {
 	return s
 }
 
+func (s *DescribeUsersRequest) SetStatus(v int32) *DescribeUsersRequest {
+	s.Status = &v
+	return s
+}
+
 type DescribeUsersShrinkRequest struct {
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The usernames that must be exactly matched.
@@ -2631,6 +2637,7 @@ type DescribeUsersShrinkRequest struct {
 	OrgId            *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	ShowExtrasShrink *string `json:"ShowExtras,omitempty" xml:"ShowExtras,omitempty"`
 	SolutionId       *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeUsersShrinkRequest) String() string {
@@ -2703,6 +2710,11 @@ func (s *DescribeUsersShrinkRequest) SetShowExtrasShrink(v string) *DescribeUser
 
 func (s *DescribeUsersShrinkRequest) SetSolutionId(v string) *DescribeUsersShrinkRequest {
 	s.SolutionId = &v
+	return s
+}
+
+func (s *DescribeUsersShrinkRequest) SetStatus(v int32) *DescribeUsersShrinkRequest {
+	s.Status = &v
 	return s
 }
 
@@ -3061,7 +3073,8 @@ type DescribeUsersResponseBodyUsersOrgs struct {
 	// example:
 	//
 	// Organization 1
-	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	OrgName     *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	OrgNamePath *string `json:"OrgNamePath,omitempty" xml:"OrgNamePath,omitempty"`
 }
 
 func (s DescribeUsersResponseBodyUsersOrgs) String() string {
@@ -3079,6 +3092,11 @@ func (s *DescribeUsersResponseBodyUsersOrgs) SetOrgId(v string) *DescribeUsersRe
 
 func (s *DescribeUsersResponseBodyUsersOrgs) SetOrgName(v string) *DescribeUsersResponseBodyUsersOrgs {
 	s.OrgName = &v
+	return s
+}
+
+func (s *DescribeUsersResponseBodyUsersOrgs) SetOrgNamePath(v string) *DescribeUsersResponseBodyUsersOrgs {
+	s.OrgNamePath = &v
 	return s
 }
 
@@ -4003,8 +4021,9 @@ func (s *FilterUsersResponseBodyUsersExternalInfo) SetJobNumber(v string) *Filte
 }
 
 type FilterUsersResponseBodyUsersOrgList struct {
-	OrgId   *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName     *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	OrgNamePath *string `json:"OrgNamePath,omitempty" xml:"OrgNamePath,omitempty"`
 }
 
 func (s FilterUsersResponseBodyUsersOrgList) String() string {
@@ -4022,6 +4041,11 @@ func (s *FilterUsersResponseBodyUsersOrgList) SetOrgId(v string) *FilterUsersRes
 
 func (s *FilterUsersResponseBodyUsersOrgList) SetOrgName(v string) *FilterUsersResponseBodyUsersOrgList {
 	s.OrgName = &v
+	return s
+}
+
+func (s *FilterUsersResponseBodyUsersOrgList) SetOrgNamePath(v string) *FilterUsersResponseBodyUsersOrgList {
+	s.OrgNamePath = &v
 	return s
 }
 
@@ -7719,6 +7743,10 @@ func (client *Client) DescribeUsersWithOptions(tmpReq *DescribeUsersRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
 	}
 
 	body := map[string]interface{}{}
