@@ -66531,7 +66531,8 @@ type UpdateAclRequest struct {
 	// example:
 	//
 	// mse-cn-78v1l83****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 }
 
 func (s UpdateAclRequest) String() string {
@@ -66554,6 +66555,11 @@ func (s *UpdateAclRequest) SetAclEntryList(v string) *UpdateAclRequest {
 
 func (s *UpdateAclRequest) SetInstanceId(v string) *UpdateAclRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateAclRequest) SetNetworkType(v string) *UpdateAclRequest {
+	s.NetworkType = &v
 	return s
 }
 
@@ -97211,6 +97217,10 @@ func (client *Client) UpdateAclWithOptions(request *UpdateAclRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
+		query["NetworkType"] = request.NetworkType
 	}
 
 	req := &openapi.OpenApiRequest{
