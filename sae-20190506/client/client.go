@@ -8625,6 +8625,126 @@ func (s *WebWAFConfig) SetEnableWAF(v bool) *WebWAFConfig {
 	return s
 }
 
+type DataInstancesValue struct {
+	// The domain name.
+	//
+	// example:
+	//
+	// nlb-wb7r6dlwetvt5j****.cn-hangzhou.nlb.aliyuncs.com
+	DnsName *string `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
+	// The listeners.
+	Listeners map[string]*DataInstancesValueListenersValue `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
+	// Indicates whether the instance is created by SAE.
+	//
+	// 	- **true**: The instance is created by SAE.
+	//
+	// 	- **false**: The existing instance is reused.
+	//
+	// example:
+	//
+	// true
+	CreatedBySae *bool `json:"CreatedBySae,omitempty" xml:"CreatedBySae,omitempty"`
+}
+
+func (s DataInstancesValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataInstancesValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataInstancesValue) SetDnsName(v string) *DataInstancesValue {
+	s.DnsName = &v
+	return s
+}
+
+func (s *DataInstancesValue) SetListeners(v map[string]*DataInstancesValueListenersValue) *DataInstancesValue {
+	s.Listeners = v
+	return s
+}
+
+func (s *DataInstancesValue) SetCreatedBySae(v bool) *DataInstancesValue {
+	s.CreatedBySae = &v
+	return s
+}
+
+type DataInstancesValueListenersValue struct {
+	// The listener protocol.
+	//
+	// example:
+	//
+	// TCPSSL
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The listener port of the NLB instance.
+	//
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The status of the NLB listener.
+	//
+	// 	- **Creating**: The listener is being created.
+	//
+	// 	- **Configuring**: The listener is being configured.
+	//
+	// 	- **Bounded**: The listener runs as expected.
+	//
+	// 	- **Unbinding**: The listener is being deleted.
+	//
+	// 	- **Failed**: The listener is unavailable.
+	//
+	// example:
+	//
+	// Bounded
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The open ports of the NLB instance.
+	//
+	// example:
+	//
+	// 8080
+	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	// The server certificates.
+	//
+	// example:
+	//
+	// 123157******
+	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+}
+
+func (s DataInstancesValueListenersValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataInstancesValueListenersValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataInstancesValueListenersValue) SetProtocol(v string) *DataInstancesValueListenersValue {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DataInstancesValueListenersValue) SetPort(v int32) *DataInstancesValueListenersValue {
+	s.Port = &v
+	return s
+}
+
+func (s *DataInstancesValueListenersValue) SetStatus(v string) *DataInstancesValueListenersValue {
+	s.Status = &v
+	return s
+}
+
+func (s *DataInstancesValueListenersValue) SetTargetPort(v int32) *DataInstancesValueListenersValue {
+	s.TargetPort = &v
+	return s
+}
+
+func (s *DataInstancesValueListenersValue) SetCertIds(v string) *DataInstancesValueListenersValue {
+	s.CertIds = &v
+	return s
+}
+
 type AbortAndRollbackChangeOrderRequest struct {
 	// The ID of the change order.
 	//
@@ -9391,6 +9511,237 @@ func (s *BatchStopApplicationsResponse) SetStatusCode(v int32) *BatchStopApplica
 }
 
 func (s *BatchStopApplicationsResponse) SetBody(v *BatchStopApplicationsResponseBody) *BatchStopApplicationsResponse {
+	s.Body = v
+	return s
+}
+
+type BindNlbRequest struct {
+	// The type of the IP addresses. Valid values:
+	//
+	// 	- Internet: public endpoint.
+	//
+	// 	- Intranet: private endpoint.
+	//
+	// example:
+	//
+	// Internet
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// The ID of the application to which the NLB instance is bound.
+	//
+	// example:
+	//
+	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The listener that you want to manage. The value is a string that consists of JSON arrays. Each listener contains the following fields:
+	//
+	// 	- **port**: the port number of the NLB listener. This field is required. Data type: integer. Valid values: 0 to 65535.
+	//
+	// 	- **TargetPort**: the port number of the container listener. This field is required. Data type: integer. Valid values: 0 to 65535.
+	//
+	// 	- **Protocol**: the listener protocol. This field is required. Data type: string. Valid values: TCP, UDP, and TCPSSL.
+	//
+	// 	- **CertIds**: the IDs of the server certificates. This field is optional. Data type: string. This field is supported only by TCPSSL listeners.
+	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
+	// The ID of the NLB instance.
+	//
+	// example:
+	//
+	// nlb-7z7jjbzz44d82c9***
+	NlbId *string `json:"NlbId,omitempty" xml:"NlbId,omitempty"`
+	// The mappings between zones and vSwitches. The value is a JSON string. You can specify at most 10 zones. If the region supports two or more zones, specify at least two zones. A ZoneMapping contains the following fields:
+	//
+	// 	- The ID of the vSwitch in the zone. Each zone can contain only one vSwitch and one subnet. Data type: string.
+	//
+	// 	- The zone ID of the NLB instance. Data type: string.
+	//
+	// example:
+	//
+	// vsw-sersdf****
+	//
+	// cn-hangzhou-a
+	ZoneMappings *string `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty"`
+}
+
+func (s BindNlbRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindNlbRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindNlbRequest) SetAddressType(v string) *BindNlbRequest {
+	s.AddressType = &v
+	return s
+}
+
+func (s *BindNlbRequest) SetAppId(v string) *BindNlbRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *BindNlbRequest) SetListeners(v string) *BindNlbRequest {
+	s.Listeners = &v
+	return s
+}
+
+func (s *BindNlbRequest) SetNlbId(v string) *BindNlbRequest {
+	s.NlbId = &v
+	return s
+}
+
+func (s *BindNlbRequest) SetZoneMappings(v string) *BindNlbRequest {
+	s.ZoneMappings = &v
+	return s
+}
+
+type BindNlbResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *BindNlbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The status code. Value values:
+	//
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	//
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned. Valid values:
+	//
+	// 	- If the request was successful, **success*	- is returned.
+	//
+	// 	- If the request failed, an error code is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the applications were stopped. Valid values:
+	//
+	// 	- **true**: The applications were stopped.
+	//
+	// 	- **false**: The applications failed to be stopped.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace. The ID is used to query the details of a request.
+	//
+	// example:
+	//
+	// 0a06dfe717389800573793090e0589
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s BindNlbResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindNlbResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindNlbResponseBody) SetCode(v string) *BindNlbResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BindNlbResponseBody) SetData(v *BindNlbResponseBodyData) *BindNlbResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BindNlbResponseBody) SetErrorCode(v string) *BindNlbResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *BindNlbResponseBody) SetMessage(v string) *BindNlbResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BindNlbResponseBody) SetRequestId(v string) *BindNlbResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BindNlbResponseBody) SetSuccess(v bool) *BindNlbResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *BindNlbResponseBody) SetTraceId(v string) *BindNlbResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type BindNlbResponseBodyData struct {
+	// The ID of the change order. The ID can be used to query the status of the change task.
+	//
+	// example:
+	//
+	// ba386059-69b1-4e65-b1e5-0682d9fa****
+	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
+}
+
+func (s BindNlbResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindNlbResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BindNlbResponseBodyData) SetChangeOrderId(v string) *BindNlbResponseBodyData {
+	s.ChangeOrderId = &v
+	return s
+}
+
+type BindNlbResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindNlbResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BindNlbResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindNlbResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindNlbResponse) SetHeaders(v map[string]*string) *BindNlbResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindNlbResponse) SetStatusCode(v int32) *BindNlbResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BindNlbResponse) SetBody(v *BindNlbResponseBody) *BindNlbResponse {
 	s.Body = v
 	return s
 }
@@ -22397,6 +22748,171 @@ func (s *DescribeApplicationInstancesResponse) SetBody(v *DescribeApplicationIns
 	return s
 }
 
+type DescribeApplicationNlbsRequest struct {
+	// The ID of the application.
+	//
+	// example:
+	//
+	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s DescribeApplicationNlbsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationNlbsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationNlbsRequest) SetAppId(v string) *DescribeApplicationNlbsRequest {
+	s.AppId = &v
+	return s
+}
+
+type DescribeApplicationNlbsResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *DescribeApplicationNlbsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The status code. Value values:
+	//
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	//
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- section in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned. Valid values:If the request was successful, success is returned. If the request failed, an error code is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the NLB instance was successfully associated with the application. Valid values:
+	//
+	// 	- **true**: The application was associated.
+	//
+	// 	- **false**: The application failed to be associated.
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace. The ID is used to query the details of a request.
+	//
+	// example:
+	//
+	// ac1a0b2215622246421415014e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DescribeApplicationNlbsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationNlbsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationNlbsResponseBody) SetCode(v string) *DescribeApplicationNlbsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeApplicationNlbsResponseBody) SetData(v *DescribeApplicationNlbsResponseBodyData) *DescribeApplicationNlbsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApplicationNlbsResponseBody) SetErrorCode(v string) *DescribeApplicationNlbsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeApplicationNlbsResponseBody) SetMessage(v string) *DescribeApplicationNlbsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeApplicationNlbsResponseBody) SetRequestId(v string) *DescribeApplicationNlbsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApplicationNlbsResponseBody) SetSuccess(v string) *DescribeApplicationNlbsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeApplicationNlbsResponseBody) SetTraceId(v string) *DescribeApplicationNlbsResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DescribeApplicationNlbsResponseBodyData struct {
+	// The details of the instance.
+	Instances map[string]*DataInstancesValue `json:"Instances,omitempty" xml:"Instances,omitempty"`
+}
+
+func (s DescribeApplicationNlbsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationNlbsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationNlbsResponseBodyData) SetInstances(v map[string]*DataInstancesValue) *DescribeApplicationNlbsResponseBodyData {
+	s.Instances = v
+	return s
+}
+
+type DescribeApplicationNlbsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApplicationNlbsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApplicationNlbsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationNlbsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationNlbsResponse) SetHeaders(v map[string]*string) *DescribeApplicationNlbsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApplicationNlbsResponse) SetStatusCode(v int32) *DescribeApplicationNlbsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApplicationNlbsResponse) SetBody(v *DescribeApplicationNlbsResponseBody) *DescribeApplicationNlbsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeApplicationScalingRuleRequest struct {
 	// a0d2e04c-159d-40a8-b240-d2f2c263\\*\\*\\*\\*
 	//
@@ -24011,6 +24527,7 @@ type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimer
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The points in time when the auto scaling policy is triggered within one day.
 	Schedules []*DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimerSchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Repeated"`
+	TimeZone  *string                                                                                 `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimer) String() string {
@@ -24038,6 +24555,11 @@ func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesT
 
 func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimer) SetSchedules(v []*DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimerSchedules) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimer {
 	s.Schedules = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimer) SetTimeZone(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimer {
+	s.TimeZone = &v
 	return s
 }
 
@@ -52206,6 +52728,86 @@ func (client *Client) BatchStopApplications(request *BatchStopApplicationsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates a Network Load Balancer (NLB) instance with an application.
+//
+// @param request - BindNlbRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindNlbResponse
+func (client *Client) BindNlbWithOptions(request *BindNlbRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BindNlbResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
+		query["AddressType"] = request.AddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Listeners)) {
+		query["Listeners"] = request.Listeners
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NlbId)) {
+		query["NlbId"] = request.NlbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneMappings)) {
+		query["ZoneMappings"] = request.ZoneMappings
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindNlb"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/app/nlb"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindNlbResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Associates a Network Load Balancer (NLB) instance with an application.
+//
+// @param request - BindNlbRequest
+//
+// @return BindNlbResponse
+func (client *Client) BindNlb(request *BindNlbRequest) (_result *BindNlbResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BindNlbResponse{}
+	_body, _err := client.BindNlbWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - BindSlbRequest
 //
 // @param headers - map
@@ -55621,6 +56223,70 @@ func (client *Client) DescribeApplicationInstances(request *DescribeApplicationI
 	headers := make(map[string]*string)
 	_result = &DescribeApplicationInstancesResponse{}
 	_body, _err := client.DescribeApplicationInstancesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the Network Load Balancer (NLB) instances bound to an application and their listeners.
+//
+// @param request - DescribeApplicationNlbsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationNlbsResponse
+func (client *Client) DescribeApplicationNlbsWithOptions(request *DescribeApplicationNlbsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeApplicationNlbsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApplicationNlbs"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/app/nlb"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApplicationNlbsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the Network Load Balancer (NLB) instances bound to an application and their listeners.
+//
+// @param request - DescribeApplicationNlbsRequest
+//
+// @return DescribeApplicationNlbsResponse
+func (client *Client) DescribeApplicationNlbs(request *DescribeApplicationNlbsRequest) (_result *DescribeApplicationNlbsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeApplicationNlbsResponse{}
+	_body, _err := client.DescribeApplicationNlbsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
