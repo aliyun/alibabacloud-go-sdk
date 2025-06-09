@@ -1421,6 +1421,7 @@ type CreateDefenseRuleRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -1457,6 +1458,11 @@ func (s *CreateDefenseRuleRequest) SetInstanceId(v string) *CreateDefenseRuleReq
 
 func (s *CreateDefenseRuleRequest) SetRegionId(v string) *CreateDefenseRuleRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDefenseRuleRequest) SetResource(v string) *CreateDefenseRuleRequest {
+	s.Resource = &v
 	return s
 }
 
@@ -3958,6 +3964,7 @@ type DeleteDefenseRuleRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -3995,6 +4002,11 @@ func (s *DeleteDefenseRuleRequest) SetInstanceId(v string) *DeleteDefenseRuleReq
 
 func (s *DeleteDefenseRuleRequest) SetRegionId(v string) *DeleteDefenseRuleRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteDefenseRuleRequest) SetResource(v string) *DeleteDefenseRuleRequest {
+	s.Resource = &v
 	return s
 }
 
@@ -4578,6 +4590,248 @@ func (s *DeleteMemberAccountResponse) SetStatusCode(v int32) *DeleteMemberAccoun
 }
 
 func (s *DeleteMemberAccountResponse) SetBody(v *DeleteMemberAccountResponseBody) *DeleteMemberAccountResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAbnormalCloudResourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeAbnormalCloudResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAbnormalCloudResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAbnormalCloudResourcesRequest) SetInstanceId(v string) *DescribeAbnormalCloudResourcesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesRequest) SetRegionId(v string) *DescribeAbnormalCloudResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesRequest) SetResourceManagerResourceGroupId(v string) *DescribeAbnormalCloudResourcesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeAbnormalCloudResourcesResponseBody struct {
+	AbnormalCloudResources []*DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources `json:"AbnormalCloudResources,omitempty" xml:"AbnormalCloudResources,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 66A98669-CC6E-4F3E-80A6-***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAbnormalCloudResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAbnormalCloudResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBody) SetAbnormalCloudResources(v []*DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) *DescribeAbnormalCloudResourcesResponseBody {
+	s.AbnormalCloudResources = v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBody) SetRequestId(v string) *DescribeAbnormalCloudResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources struct {
+	Details []*DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CertExpired
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// lb-***
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// example:
+	//
+	// test-name
+	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
+	// example:
+	//
+	// 80
+	ResourceInstancePort *int32 `json:"ResourceInstancePort,omitempty" xml:"ResourceInstancePort,omitempty"`
+	// example:
+	//
+	// clb7
+	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+}
+
+func (s DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) SetDetails(v []*DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources {
+	s.Details = v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) SetReason(v string) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) SetResourceInstanceId(v string) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources {
+	s.ResourceInstanceId = &v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) SetResourceInstanceName(v string) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources {
+	s.ResourceInstanceName = &v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) SetResourceInstancePort(v int32) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources {
+	s.ResourceInstancePort = &v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources) SetResourceProduct(v string) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources {
+	s.ResourceProduct = &v
+	return s
+}
+
+type DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails struct {
+	// example:
+	//
+	// default
+	AppliedType *string `json:"AppliedType,omitempty" xml:"AppliedType,omitempty"`
+	// example:
+	//
+	// test-name
+	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// example:
+	//
+	// CertExpired
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// www.test.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// example:
+	//
+	// 1735009193
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 123-cn-hangzhou
+	ProductCertId *string `json:"ProductCertId,omitempty" xml:"ProductCertId,omitempty"`
+	// example:
+	//
+	// test-name
+	ProductCertName *string `json:"ProductCertName,omitempty" xml:"ProductCertName,omitempty"`
+	// example:
+	//
+	// www.test.com
+	ProductDomainExtension *string `json:"ProductDomainExtension,omitempty" xml:"ProductDomainExtension,omitempty"`
+}
+
+func (s DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails) SetAppliedType(v string) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails {
+	s.AppliedType = &v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails) SetCertName(v string) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails {
+	s.CertName = &v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails) SetCode(v string) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails) SetCommonName(v string) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails {
+	s.CommonName = &v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails) SetExpireTime(v int64) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails) SetProductCertId(v string) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails {
+	s.ProductCertId = &v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails) SetProductCertName(v string) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails {
+	s.ProductCertName = &v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails) SetProductDomainExtension(v string) *DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails {
+	s.ProductDomainExtension = &v
+	return s
+}
+
+type DescribeAbnormalCloudResourcesResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAbnormalCloudResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAbnormalCloudResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAbnormalCloudResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAbnormalCloudResourcesResponse) SetHeaders(v map[string]*string) *DescribeAbnormalCloudResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponse) SetStatusCode(v int32) *DescribeAbnormalCloudResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAbnormalCloudResourcesResponse) SetBody(v *DescribeAbnormalCloudResourcesResponseBody) *DescribeAbnormalCloudResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -14294,6 +14548,7 @@ type DescribeDefenseRuleRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -14331,6 +14586,11 @@ func (s *DescribeDefenseRuleRequest) SetInstanceId(v string) *DescribeDefenseRul
 
 func (s *DescribeDefenseRuleRequest) SetRegionId(v string) *DescribeDefenseRuleRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDefenseRuleRequest) SetResource(v string) *DescribeDefenseRuleRequest {
+	s.Resource = &v
 	return s
 }
 
@@ -14406,7 +14666,8 @@ type DescribeDefenseRuleResponseBodyRule struct {
 	// example:
 	//
 	// 1665196746000
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Resource    *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the protection rule.
 	//
 	// example:
@@ -14462,6 +14723,11 @@ func (s *DescribeDefenseRuleResponseBodyRule) SetDefenseScene(v string) *Describ
 
 func (s *DescribeDefenseRuleResponseBodyRule) SetGmtModified(v int64) *DescribeDefenseRuleResponseBodyRule {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDefenseRuleResponseBodyRule) SetResource(v string) *DescribeDefenseRuleResponseBodyRule {
+	s.Resource = &v
 	return s
 }
 
@@ -14715,7 +14981,8 @@ type DescribeDefenseRulesResponseBodyRules struct {
 	// example:
 	//
 	// 1665460629000
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Resource    *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the protection rule.
 	//
 	// example:
@@ -14797,6 +15064,11 @@ func (s *DescribeDefenseRulesResponseBodyRules) SetGmtCreate(v int64) *DescribeD
 
 func (s *DescribeDefenseRulesResponseBodyRules) SetGmtModified(v int64) *DescribeDefenseRulesResponseBodyRules {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDefenseRulesResponseBodyRules) SetResource(v string) *DescribeDefenseRulesResponseBodyRules {
+	s.Resource = &v
 	return s
 }
 
@@ -35639,6 +35911,7 @@ type ModifyDefenseRuleRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
@@ -35675,6 +35948,11 @@ func (s *ModifyDefenseRuleRequest) SetInstanceId(v string) *ModifyDefenseRuleReq
 
 func (s *ModifyDefenseRuleRequest) SetRegionId(v string) *ModifyDefenseRuleRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDefenseRuleRequest) SetResource(v string) *ModifyDefenseRuleRequest {
+	s.Resource = &v
 	return s
 }
 
@@ -38925,6 +39203,130 @@ func (s *ModifyTemplateResourcesResponse) SetBody(v *ModifyTemplateResourcesResp
 	return s
 }
 
+type ReCreateCloudResourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 443
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-bp1*****jqnnqk5uj2p
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// clb7
+	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+}
+
+func (s ReCreateCloudResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReCreateCloudResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReCreateCloudResourceRequest) SetInstanceId(v string) *ReCreateCloudResourceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ReCreateCloudResourceRequest) SetPort(v int32) *ReCreateCloudResourceRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *ReCreateCloudResourceRequest) SetRegionId(v string) *ReCreateCloudResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ReCreateCloudResourceRequest) SetResourceInstanceId(v string) *ReCreateCloudResourceRequest {
+	s.ResourceInstanceId = &v
+	return s
+}
+
+func (s *ReCreateCloudResourceRequest) SetResourceManagerResourceGroupId(v string) *ReCreateCloudResourceRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ReCreateCloudResourceRequest) SetResourceProduct(v string) *ReCreateCloudResourceRequest {
+	s.ResourceProduct = &v
+	return s
+}
+
+type ReCreateCloudResourceResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReCreateCloudResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReCreateCloudResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReCreateCloudResourceResponseBody) SetRequestId(v string) *ReCreateCloudResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReCreateCloudResourceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReCreateCloudResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReCreateCloudResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReCreateCloudResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReCreateCloudResourceResponse) SetHeaders(v map[string]*string) *ReCreateCloudResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReCreateCloudResourceResponse) SetStatusCode(v int32) *ReCreateCloudResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReCreateCloudResourceResponse) SetBody(v *ReCreateCloudResourceResponseBody) *ReCreateCloudResourceResponse {
+	s.Body = v
+	return s
+}
+
 type ReleaseInstanceRequest struct {
 	// The ID of the WAF instance.
 	//
@@ -39985,6 +40387,10 @@ func (client *Client) CreateDefenseRuleWithOptions(request *CreateDefenseRuleReq
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
 		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
@@ -40977,6 +41383,10 @@ func (client *Client) DeleteDefenseRuleWithOptions(request *DeleteDefenseRuleReq
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
 		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
@@ -41327,6 +41737,74 @@ func (client *Client) DeleteMemberAccount(request *DeleteMemberAccountRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMemberAccountResponse{}
 	_body, _err := client.DeleteMemberAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询异常的云产品接入资源
+//
+// @param request - DescribeAbnormalCloudResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAbnormalCloudResourcesResponse
+func (client *Client) DescribeAbnormalCloudResourcesWithOptions(request *DescribeAbnormalCloudResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeAbnormalCloudResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAbnormalCloudResources"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAbnormalCloudResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询异常的云产品接入资源
+//
+// @param request - DescribeAbnormalCloudResourcesRequest
+//
+// @return DescribeAbnormalCloudResourcesResponse
+func (client *Client) DescribeAbnormalCloudResources(request *DescribeAbnormalCloudResourcesRequest) (_result *DescribeAbnormalCloudResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAbnormalCloudResourcesResponse{}
+	_body, _err := client.DescribeAbnormalCloudResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44279,6 +44757,10 @@ func (client *Client) DescribeDefenseRuleWithOptions(request *DescribeDefenseRul
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
@@ -51161,6 +51643,10 @@ func (client *Client) ModifyDefenseRuleWithOptions(request *ModifyDefenseRuleReq
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
 		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
@@ -52647,6 +53133,86 @@ func (client *Client) ModifyTemplateResources(request *ModifyTemplateResourcesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyTemplateResourcesResponse{}
 	_body, _err := client.ModifyTemplateResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重新接入云产品
+//
+// @param request - ReCreateCloudResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReCreateCloudResourceResponse
+func (client *Client) ReCreateCloudResourceWithOptions(request *ReCreateCloudResourceRequest, runtime *util.RuntimeOptions) (_result *ReCreateCloudResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceInstanceId)) {
+		query["ResourceInstanceId"] = request.ResourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceProduct)) {
+		query["ResourceProduct"] = request.ResourceProduct
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReCreateCloudResource"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReCreateCloudResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重新接入云产品
+//
+// @param request - ReCreateCloudResourceRequest
+//
+// @return ReCreateCloudResourceResponse
+func (client *Client) ReCreateCloudResource(request *ReCreateCloudResourceRequest) (_result *ReCreateCloudResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReCreateCloudResourceResponse{}
+	_body, _err := client.ReCreateCloudResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
