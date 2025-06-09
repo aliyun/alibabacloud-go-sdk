@@ -9257,11 +9257,13 @@ type GetHotTopicBroadcastResponseBodyDataData struct {
 	//
 	// 22
 	OutputToken *int32                                           `json:"OutputToken,omitempty" xml:"OutputToken,omitempty"`
+	PubTime     *string                                          `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
 	Summary     *GetHotTopicBroadcastResponseBodyDataDataSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Struct"`
 	// example:
 	//
 	// 热点话题文本摘要
 	TextSummary *string `json:"TextSummary,omitempty" xml:"TextSummary,omitempty"`
+	Url         *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetHotTopicBroadcastResponseBodyDataData) String() string {
@@ -9337,6 +9339,11 @@ func (s *GetHotTopicBroadcastResponseBodyDataData) SetOutputToken(v int32) *GetH
 	return s
 }
 
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetPubTime(v string) *GetHotTopicBroadcastResponseBodyDataData {
+	s.PubTime = &v
+	return s
+}
+
 func (s *GetHotTopicBroadcastResponseBodyDataData) SetSummary(v *GetHotTopicBroadcastResponseBodyDataDataSummary) *GetHotTopicBroadcastResponseBodyDataData {
 	s.Summary = v
 	return s
@@ -9344,6 +9351,11 @@ func (s *GetHotTopicBroadcastResponseBodyDataData) SetSummary(v *GetHotTopicBroa
 
 func (s *GetHotTopicBroadcastResponseBodyDataData) SetTextSummary(v string) *GetHotTopicBroadcastResponseBodyDataData {
 	s.TextSummary = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetUrl(v string) *GetHotTopicBroadcastResponseBodyDataData {
+	s.Url = &v
 	return s
 }
 
