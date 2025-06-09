@@ -10,6 +10,29 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AgentInstanceConfigGrayConfigs struct {
+	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	Content   *string `json:"content,omitempty" xml:"content,omitempty"`
+}
+
+func (s AgentInstanceConfigGrayConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AgentInstanceConfigGrayConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *AgentInstanceConfigGrayConfigs) SetCondition(v string) *AgentInstanceConfigGrayConfigs {
+	s.Condition = &v
+	return s
+}
+
+func (s *AgentInstanceConfigGrayConfigs) SetContent(v string) *AgentInstanceConfigGrayConfigs {
+	s.Content = &v
+	return s
+}
+
 type Alert struct {
 	// This parameter is required.
 	Configuration *AlertConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
@@ -5436,13 +5459,12 @@ func (s *ConsumerGroupUpdateCheckPointResponse) SetStatusCode(v int32) *Consumer
 }
 
 type CreateAgentInstanceConfigRequest struct {
-	// This parameter is required.
-	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	// This parameter is required.
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
 	// This parameter is required.
-	ConfigType  *string `json:"configType,omitempty" xml:"configType,omitempty"`
-	GrayConfigs *string `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty"`
+	ConfigType  *string                           `json:"configType,omitempty" xml:"configType,omitempty"`
+	GrayConfigs []*AgentInstanceConfigGrayConfigs `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
 }
 
 func (s CreateAgentInstanceConfigRequest) String() string {
@@ -5453,8 +5475,8 @@ func (s CreateAgentInstanceConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAgentInstanceConfigRequest) SetAttributes(v string) *CreateAgentInstanceConfigRequest {
-	s.Attributes = &v
+func (s *CreateAgentInstanceConfigRequest) SetAttributes(v map[string]*string) *CreateAgentInstanceConfigRequest {
+	s.Attributes = v
 	return s
 }
 
@@ -5468,8 +5490,8 @@ func (s *CreateAgentInstanceConfigRequest) SetConfigType(v string) *CreateAgentI
 	return s
 }
 
-func (s *CreateAgentInstanceConfigRequest) SetGrayConfigs(v string) *CreateAgentInstanceConfigRequest {
-	s.GrayConfigs = &v
+func (s *CreateAgentInstanceConfigRequest) SetGrayConfigs(v []*AgentInstanceConfigGrayConfigs) *CreateAgentInstanceConfigRequest {
+	s.GrayConfigs = v
 	return s
 }
 
@@ -7707,7 +7729,7 @@ type CreateTicketRequest struct {
 	AccessTokenExpirationTime *int64 `json:"accessTokenExpirationTime,omitempty" xml:"accessTokenExpirationTime,omitempty"`
 	// 	- You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the CreateTicket operation. After you obtain the ticket, you can use the ticket regardless of the region.
 	//
-	// 	- The validity period for the URL of the console page that you want to embed. Unit: seconds. Default value: 86400, which specifies one day. Valid values: 0 to 2592000. The value 2592000 specifies 30 days.
+	// 	- The validity period for the URL of the console page that you want to embed. Unit: seconds. Default value: 86400 (one day). Valid values: 0 to 2592000 (30 days).
 	//
 	// example:
 	//
@@ -7785,8 +7807,7 @@ func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicke
 }
 
 type DeleteAgentInstanceConfigRequest struct {
-	// This parameter is required.
-	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 }
 
 func (s DeleteAgentInstanceConfigRequest) String() string {
@@ -7797,8 +7818,25 @@ func (s DeleteAgentInstanceConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteAgentInstanceConfigRequest) SetAttributes(v string) *DeleteAgentInstanceConfigRequest {
-	s.Attributes = &v
+func (s *DeleteAgentInstanceConfigRequest) SetAttributes(v map[string]*string) *DeleteAgentInstanceConfigRequest {
+	s.Attributes = v
+	return s
+}
+
+type DeleteAgentInstanceConfigShrinkRequest struct {
+	AttributesShrink *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+}
+
+func (s DeleteAgentInstanceConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAgentInstanceConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAgentInstanceConfigShrinkRequest) SetAttributesShrink(v string) *DeleteAgentInstanceConfigShrinkRequest {
+	s.AttributesShrink = &v
 	return s
 }
 
@@ -8700,8 +8738,7 @@ func (s *EnableScheduledSQLResponse) SetStatusCode(v int32) *EnableScheduledSQLR
 }
 
 type GetAgentInstanceConfigRequest struct {
-	// This parameter is required.
-	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 }
 
 func (s GetAgentInstanceConfigRequest) String() string {
@@ -8712,18 +8749,35 @@ func (s GetAgentInstanceConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetAgentInstanceConfigRequest) SetAttributes(v string) *GetAgentInstanceConfigRequest {
-	s.Attributes = &v
+func (s *GetAgentInstanceConfigRequest) SetAttributes(v map[string]*string) *GetAgentInstanceConfigRequest {
+	s.Attributes = v
+	return s
+}
+
+type GetAgentInstanceConfigShrinkRequest struct {
+	AttributesShrink *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+}
+
+func (s GetAgentInstanceConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAgentInstanceConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentInstanceConfigShrinkRequest) SetAttributesShrink(v string) *GetAgentInstanceConfigShrinkRequest {
+	s.AttributesShrink = &v
 	return s
 }
 
 type GetAgentInstanceConfigResponseBody struct {
-	Attributes     *string              `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	Config         *string              `json:"config,omitempty" xml:"config,omitempty"`
-	ConfigType     *string              `json:"configType,omitempty" xml:"configType,omitempty"`
-	CreateTime     *int64               `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	GrayConfigs    []map[string]*string `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
-	LastModifyTime *int64               `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	Attributes     map[string]*string                `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	Config         *string                           `json:"config,omitempty" xml:"config,omitempty"`
+	ConfigType     *string                           `json:"configType,omitempty" xml:"configType,omitempty"`
+	CreateTime     *int64                            `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	GrayConfigs    []*AgentInstanceConfigGrayConfigs `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
+	LastModifyTime *int64                            `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
 }
 
 func (s GetAgentInstanceConfigResponseBody) String() string {
@@ -8734,8 +8788,8 @@ func (s GetAgentInstanceConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetAgentInstanceConfigResponseBody) SetAttributes(v string) *GetAgentInstanceConfigResponseBody {
-	s.Attributes = &v
+func (s *GetAgentInstanceConfigResponseBody) SetAttributes(v map[string]*string) *GetAgentInstanceConfigResponseBody {
+	s.Attributes = v
 	return s
 }
 
@@ -8754,7 +8808,7 @@ func (s *GetAgentInstanceConfigResponseBody) SetCreateTime(v int64) *GetAgentIns
 	return s
 }
 
-func (s *GetAgentInstanceConfigResponseBody) SetGrayConfigs(v []map[string]*string) *GetAgentInstanceConfigResponseBody {
+func (s *GetAgentInstanceConfigResponseBody) SetGrayConfigs(v []*AgentInstanceConfigGrayConfigs) *GetAgentInstanceConfigResponseBody {
 	s.GrayConfigs = v
 	return s
 }
@@ -12281,7 +12335,6 @@ func (s *GetStoreViewIndexResponse) SetBody(v *GetStoreViewIndexResponseBody) *G
 }
 
 type ListAgentInstanceConfigsRequest struct {
-	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
 	Offset     *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
 	Size       *int64  `json:"size,omitempty" xml:"size,omitempty"`
@@ -12293,11 +12346,6 @@ func (s ListAgentInstanceConfigsRequest) String() string {
 
 func (s ListAgentInstanceConfigsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListAgentInstanceConfigsRequest) SetAttributes(v string) *ListAgentInstanceConfigsRequest {
-	s.Attributes = &v
-	return s
 }
 
 func (s *ListAgentInstanceConfigsRequest) SetConfigType(v string) *ListAgentInstanceConfigsRequest {
@@ -13862,7 +13910,7 @@ type ListDownloadJobsResponseBody struct {
 	//
 	// 10
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The log download tasks.
+	// Array, to return a list of log download tasks.
 	Results []*ListDownloadJobsResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -13912,7 +13960,7 @@ type ListDownloadJobsResponseBodyResults struct {
 	//
 	// download-123
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 任务执行细节
+	// The execution details.
 	ExecutionDetails *ListDownloadJobsResponseBodyResultsExecutionDetails `json:"executionDetails,omitempty" xml:"executionDetails,omitempty" type:"Struct"`
 	// 代表资源名称的资源属性字段
 	//
@@ -17378,11 +17426,10 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 }
 
 type UpdateAgentInstanceConfigRequest struct {
+	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	// This parameter is required.
-	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// This parameter is required.
-	Config      *string `json:"config,omitempty" xml:"config,omitempty"`
-	GrayConfigs *string `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty"`
+	Config      *string                           `json:"config,omitempty" xml:"config,omitempty"`
+	GrayConfigs []*AgentInstanceConfigGrayConfigs `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
 }
 
 func (s UpdateAgentInstanceConfigRequest) String() string {
@@ -17393,8 +17440,8 @@ func (s UpdateAgentInstanceConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateAgentInstanceConfigRequest) SetAttributes(v string) *UpdateAgentInstanceConfigRequest {
-	s.Attributes = &v
+func (s *UpdateAgentInstanceConfigRequest) SetAttributes(v map[string]*string) *UpdateAgentInstanceConfigRequest {
+	s.Attributes = v
 	return s
 }
 
@@ -17403,8 +17450,38 @@ func (s *UpdateAgentInstanceConfigRequest) SetConfig(v string) *UpdateAgentInsta
 	return s
 }
 
-func (s *UpdateAgentInstanceConfigRequest) SetGrayConfigs(v string) *UpdateAgentInstanceConfigRequest {
-	s.GrayConfigs = &v
+func (s *UpdateAgentInstanceConfigRequest) SetGrayConfigs(v []*AgentInstanceConfigGrayConfigs) *UpdateAgentInstanceConfigRequest {
+	s.GrayConfigs = v
+	return s
+}
+
+type UpdateAgentInstanceConfigShrinkRequest struct {
+	AttributesShrink *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// This parameter is required.
+	Config      *string                           `json:"config,omitempty" xml:"config,omitempty"`
+	GrayConfigs []*AgentInstanceConfigGrayConfigs `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
+}
+
+func (s UpdateAgentInstanceConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAgentInstanceConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAgentInstanceConfigShrinkRequest) SetAttributesShrink(v string) *UpdateAgentInstanceConfigShrinkRequest {
+	s.AttributesShrink = &v
+	return s
+}
+
+func (s *UpdateAgentInstanceConfigShrinkRequest) SetConfig(v string) *UpdateAgentInstanceConfigShrinkRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *UpdateAgentInstanceConfigShrinkRequest) SetGrayConfigs(v []*AgentInstanceConfigGrayConfigs) *UpdateAgentInstanceConfigShrinkRequest {
+	s.GrayConfigs = v
 	return s
 }
 
@@ -22557,21 +22634,27 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 //
 // # DeleteAgentInstanceConfig
 //
-// @param request - DeleteAgentInstanceConfigRequest
+// @param tmpReq - DeleteAgentInstanceConfigRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAgentInstanceConfigResponse
-func (client *Client) DeleteAgentInstanceConfigWithOptions(configType *string, request *DeleteAgentInstanceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAgentInstanceConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DeleteAgentInstanceConfigWithOptions(configType *string, tmpReq *DeleteAgentInstanceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAgentInstanceConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DeleteAgentInstanceConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Attributes)) {
+		request.AttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attributes, tea.String("attributes"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Attributes)) {
-		query["attributes"] = request.Attributes
+	if !tea.BoolValue(util.IsUnset(request.AttributesShrink)) {
+		query["attributes"] = request.AttributesShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -24700,21 +24783,27 @@ func (client *Client) EnableScheduledSQL(project *string, scheduledSQLName *stri
 //
 // # GetAgentInstanceConfig
 //
-// @param request - GetAgentInstanceConfigRequest
+// @param tmpReq - GetAgentInstanceConfigRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAgentInstanceConfigResponse
-func (client *Client) GetAgentInstanceConfigWithOptions(configType *string, request *GetAgentInstanceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAgentInstanceConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetAgentInstanceConfigWithOptions(configType *string, tmpReq *GetAgentInstanceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAgentInstanceConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GetAgentInstanceConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Attributes)) {
+		request.AttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attributes, tea.String("attributes"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Attributes)) {
-		query["attributes"] = request.Attributes
+	if !tea.BoolValue(util.IsUnset(request.AttributesShrink)) {
+		query["attributes"] = request.AttributesShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -27810,10 +27899,6 @@ func (client *Client) ListAgentInstanceConfigsWithOptions(request *ListAgentInst
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Attributes)) {
-		query["attributes"] = request.Attributes
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ConfigType)) {
 		query["configType"] = request.ConfigType
 	}
@@ -28696,7 +28781,7 @@ func (client *Client) ListDomains(project *string, request *ListDomainsRequest) 
 
 // Summary:
 //
-// 列举下载任务
+// Queries a list of log download tasks in a project.
 //
 // @param request - ListDownloadJobsRequest
 //
@@ -28752,7 +28837,7 @@ func (client *Client) ListDownloadJobsWithOptions(project *string, request *List
 
 // Summary:
 //
-// 列举下载任务
+// Queries a list of log download tasks in a project.
 //
 // @param request - ListDownloadJobsRequest
 //
@@ -32004,21 +32089,27 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // # UpdateAgentInstanceConfig
 //
-// @param request - UpdateAgentInstanceConfigRequest
+// @param tmpReq - UpdateAgentInstanceConfigRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAgentInstanceConfigResponse
-func (client *Client) UpdateAgentInstanceConfigWithOptions(configType *string, request *UpdateAgentInstanceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAgentInstanceConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateAgentInstanceConfigWithOptions(configType *string, tmpReq *UpdateAgentInstanceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAgentInstanceConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateAgentInstanceConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Attributes)) {
+		request.AttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attributes, tea.String("attributes"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Attributes)) {
-		query["attributes"] = request.Attributes
+	if !tea.BoolValue(util.IsUnset(request.AttributesShrink)) {
+		query["attributes"] = request.AttributesShrink
 	}
 
 	body := map[string]interface{}{}
