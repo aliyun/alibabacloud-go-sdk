@@ -840,7 +840,8 @@ type CreateInstanceRequest struct {
 	// dsw-123456789
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The tags.
-	Tag []*CreateInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag         []*CreateInstanceRequestTag       `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UserCommand *CreateInstanceRequestUserCommand `json:"UserCommand,omitempty" xml:"UserCommand,omitempty" type:"Struct"`
 	// The ID of the instance owner. Valid values: Alibaba Cloud account and RAM user.
 	//
 	// example:
@@ -979,6 +980,11 @@ func (s *CreateInstanceRequest) SetResourceId(v string) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetTag(v []*CreateInstanceRequestTag) *CreateInstanceRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetUserCommand(v *CreateInstanceRequestUserCommand) *CreateInstanceRequest {
+	s.UserCommand = v
 	return s
 }
 
@@ -1438,6 +1444,40 @@ func (s *CreateInstanceRequestTag) SetKey(v string) *CreateInstanceRequestTag {
 
 func (s *CreateInstanceRequestTag) SetValue(v string) *CreateInstanceRequestTag {
 	s.Value = &v
+	return s
+}
+
+type CreateInstanceRequestUserCommand struct {
+	OnStart *CreateInstanceRequestUserCommandOnStart `json:"OnStart,omitempty" xml:"OnStart,omitempty" type:"Struct"`
+}
+
+func (s CreateInstanceRequestUserCommand) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestUserCommand) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestUserCommand) SetOnStart(v *CreateInstanceRequestUserCommandOnStart) *CreateInstanceRequestUserCommand {
+	s.OnStart = v
+	return s
+}
+
+type CreateInstanceRequestUserCommandOnStart struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s CreateInstanceRequestUserCommandOnStart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestUserCommandOnStart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestUserCommandOnStart) SetContent(v string) *CreateInstanceRequestUserCommandOnStart {
+	s.Content = &v
 	return s
 }
 
@@ -2978,7 +3018,8 @@ type GetInstanceResponseBody struct {
 	// example:
 	//
 	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/tty/
-	TerminalUrl *string `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
+	TerminalUrl   *string `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
+	UserCommandId *string `json:"UserCommandId,omitempty" xml:"UserCommandId,omitempty"`
 	// The user ID.
 	//
 	// example:
@@ -3239,6 +3280,11 @@ func (s *GetInstanceResponseBody) SetTags(v []*GetInstanceResponseBodyTags) *Get
 
 func (s *GetInstanceResponseBody) SetTerminalUrl(v string) *GetInstanceResponseBody {
 	s.TerminalUrl = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetUserCommandId(v string) *GetInstanceResponseBody {
+	s.UserCommandId = &v
 	return s
 }
 
@@ -9106,13 +9152,15 @@ type UpdateInstanceRequest struct {
 	// example:
 	//
 	// false
-	DisassociateDriver *bool `json:"DisassociateDriver,omitempty" xml:"DisassociateDriver,omitempty"`
+	DisassociateDriver               *bool `json:"DisassociateDriver,omitempty" xml:"DisassociateDriver,omitempty"`
+	DisassociateEnvironmentVariables *bool `json:"DisassociateEnvironmentVariables,omitempty" xml:"DisassociateEnvironmentVariables,omitempty"`
 	// Specifies whether to delete the associated forward information.
 	//
 	// example:
 	//
 	// false
 	DisassociateForwardInfos *bool `json:"DisassociateForwardInfos,omitempty" xml:"DisassociateForwardInfos,omitempty"`
+	DisassociateUserCommand  *bool `json:"DisassociateUserCommand,omitempty" xml:"DisassociateUserCommand,omitempty"`
 	// Specifies whether to delete the associated user VPC.
 	//
 	// example:
@@ -9132,7 +9180,8 @@ type UpdateInstanceRequest struct {
 	// example:
 	//
 	// ecs.c6.large
-	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	EcsSpec              *string                `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	EnvironmentVariables map[string]interface{} `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
 	// The Base64-encoded account and password for the user‘s private image. The password will be hidden.
 	//
 	// example:
@@ -9178,6 +9227,7 @@ type UpdateInstanceRequest struct {
 	//
 	// {"CPU":"4","Memory":"8Gi","SharedMemory":"4Gi","GPU":"1","GPUType":"Tesla-V100-16G"}
 	RequestedResource *UpdateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
+	UserCommand       *UpdateInstanceRequestUserCommand       `json:"UserCommand,omitempty" xml:"UserCommand,omitempty" type:"Struct"`
 	// the User ID of the instance.
 	//
 	// example:
@@ -9258,8 +9308,18 @@ func (s *UpdateInstanceRequest) SetDisassociateDriver(v bool) *UpdateInstanceReq
 	return s
 }
 
+func (s *UpdateInstanceRequest) SetDisassociateEnvironmentVariables(v bool) *UpdateInstanceRequest {
+	s.DisassociateEnvironmentVariables = &v
+	return s
+}
+
 func (s *UpdateInstanceRequest) SetDisassociateForwardInfos(v bool) *UpdateInstanceRequest {
 	s.DisassociateForwardInfos = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetDisassociateUserCommand(v bool) *UpdateInstanceRequest {
+	s.DisassociateUserCommand = &v
 	return s
 }
 
@@ -9280,6 +9340,11 @@ func (s *UpdateInstanceRequest) SetDynamicMount(v *DynamicMount) *UpdateInstance
 
 func (s *UpdateInstanceRequest) SetEcsSpec(v string) *UpdateInstanceRequest {
 	s.EcsSpec = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetEnvironmentVariables(v map[string]interface{}) *UpdateInstanceRequest {
+	s.EnvironmentVariables = v
 	return s
 }
 
@@ -9315,6 +9380,11 @@ func (s *UpdateInstanceRequest) SetPriority(v int64) *UpdateInstanceRequest {
 
 func (s *UpdateInstanceRequest) SetRequestedResource(v *UpdateInstanceRequestRequestedResource) *UpdateInstanceRequest {
 	s.RequestedResource = v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetUserCommand(v *UpdateInstanceRequestUserCommand) *UpdateInstanceRequest {
+	s.UserCommand = v
 	return s
 }
 
@@ -9620,6 +9690,40 @@ func (s *UpdateInstanceRequestRequestedResource) SetMemory(v string) *UpdateInst
 
 func (s *UpdateInstanceRequestRequestedResource) SetSharedMemory(v string) *UpdateInstanceRequestRequestedResource {
 	s.SharedMemory = &v
+	return s
+}
+
+type UpdateInstanceRequestUserCommand struct {
+	OnStart *UpdateInstanceRequestUserCommandOnStart `json:"OnStart,omitempty" xml:"OnStart,omitempty" type:"Struct"`
+}
+
+func (s UpdateInstanceRequestUserCommand) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceRequestUserCommand) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceRequestUserCommand) SetOnStart(v *UpdateInstanceRequestUserCommandOnStart) *UpdateInstanceRequestUserCommand {
+	s.OnStart = v
+	return s
+}
+
+type UpdateInstanceRequestUserCommandOnStart struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s UpdateInstanceRequestUserCommandOnStart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceRequestUserCommandOnStart) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceRequestUserCommandOnStart) SetContent(v string) *UpdateInstanceRequestUserCommandOnStart {
+	s.Content = &v
 	return s
 }
 
@@ -10146,6 +10250,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		body["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserCommand)) {
+		body["UserCommand"] = request.UserCommand
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
@@ -11924,8 +12032,16 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		body["DisassociateDriver"] = request.DisassociateDriver
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DisassociateEnvironmentVariables)) {
+		body["DisassociateEnvironmentVariables"] = request.DisassociateEnvironmentVariables
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DisassociateForwardInfos)) {
 		body["DisassociateForwardInfos"] = request.DisassociateForwardInfos
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisassociateUserCommand)) {
+		body["DisassociateUserCommand"] = request.DisassociateUserCommand
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DisassociateVpc)) {
@@ -11942,6 +12058,10 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 
 	if !tea.BoolValue(util.IsUnset(request.EcsSpec)) {
 		body["EcsSpec"] = request.EcsSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentVariables)) {
+		body["EnvironmentVariables"] = request.EnvironmentVariables
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageAuth)) {
@@ -11970,6 +12090,10 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 
 	if !tea.BoolValue(util.IsUnset(request.RequestedResource)) {
 		body["RequestedResource"] = request.RequestedResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserCommand)) {
+		body["UserCommand"] = request.UserCommand
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
