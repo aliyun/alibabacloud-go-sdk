@@ -9,6 +9,26 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type InstanceMetadataOptions struct {
+	// example:
+	//
+	// optional
+	HttpTokens *string `json:"http_tokens,omitempty" xml:"http_tokens,omitempty"`
+}
+
+func (s InstanceMetadataOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstanceMetadataOptions) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceMetadataOptions) SetHttpTokens(v string) *InstanceMetadataOptions {
+	s.HttpTokens = &v
+	return s
+}
+
 type Addon struct {
 	// example:
 	//
@@ -5574,7 +5594,8 @@ type CreateClusterNodePoolRequest struct {
 	// example:
 	//
 	// 1
-	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	Count         *int64                                     `json:"count,omitempty" xml:"count,omitempty"`
+	EfloNodeGroup *CreateClusterNodePoolRequestEfloNodeGroup `json:"eflo_node_group,omitempty" xml:"eflo_node_group,omitempty" type:"Struct"`
 	// Specifies whether to set the network type of the pod to host network.
 	//
 	// 	- `true`: sets to host network.
@@ -5650,6 +5671,11 @@ func (s *CreateClusterNodePoolRequest) SetAutoScaling(v *CreateClusterNodePoolRe
 
 func (s *CreateClusterNodePoolRequest) SetCount(v int64) *CreateClusterNodePoolRequest {
 	s.Count = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequest) SetEfloNodeGroup(v *CreateClusterNodePoolRequestEfloNodeGroup) *CreateClusterNodePoolRequest {
+	s.EfloNodeGroup = v
 	return s
 }
 
@@ -5847,6 +5873,29 @@ func (s *CreateClusterNodePoolRequestAutoScaling) SetMinInstances(v int64) *Crea
 
 func (s *CreateClusterNodePoolRequestAutoScaling) SetType(v string) *CreateClusterNodePoolRequestAutoScaling {
 	s.Type = &v
+	return s
+}
+
+type CreateClusterNodePoolRequestEfloNodeGroup struct {
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	GroupId   *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestEfloNodeGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestEfloNodeGroup) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestEfloNodeGroup) SetClusterId(v string) *CreateClusterNodePoolRequestEfloNodeGroup {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestEfloNodeGroup) SetGroupId(v string) *CreateClusterNodePoolRequestEfloNodeGroup {
+	s.GroupId = &v
 	return s
 }
 
@@ -33932,6 +33981,10 @@ func (client *Client) CreateClusterNodePoolWithOptions(ClusterId *string, reques
 
 	if !tea.BoolValue(util.IsUnset(request.Count)) {
 		body["count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EfloNodeGroup)) {
+		body["eflo_node_group"] = request.EfloNodeGroup
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.HostNetwork)) {
