@@ -598,6 +598,7 @@ type CopilotAction struct {
 	Description             *string                                 `json:"description,omitempty" xml:"description,omitempty"`
 	Name                    *string                                 `json:"name,omitempty" xml:"name,omitempty"`
 	Parameters              []*CopilotActionParameters              `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
+	QueryMaxLength          *int64                                  `json:"queryMaxLength,omitempty" xml:"queryMaxLength,omitempty"`
 	QueryTemplate           *string                                 `json:"queryTemplate,omitempty" xml:"queryTemplate,omitempty"`
 	QueryTemplateParameters []*CopilotActionQueryTemplateParameters `json:"queryTemplateParameters,omitempty" xml:"queryTemplateParameters,omitempty" type:"Repeated"`
 	Scene                   *string                                 `json:"scene,omitempty" xml:"scene,omitempty"`
@@ -628,6 +629,11 @@ func (s *CopilotAction) SetName(v string) *CopilotAction {
 
 func (s *CopilotAction) SetParameters(v []*CopilotActionParameters) *CopilotAction {
 	s.Parameters = v
+	return s
+}
+
+func (s *CopilotAction) SetQueryMaxLength(v int64) *CopilotAction {
+	s.QueryMaxLength = &v
 	return s
 }
 
@@ -3000,6 +3006,10 @@ type OSSIngestionConfigurationSource struct {
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// example:
 	//
+	// true
+	TagPackId *bool `json:"tagPackId,omitempty" xml:"tagPackId,omitempty"`
+	// example:
+	//
 	// __time__
 	TimeField *string `json:"timeField,omitempty" xml:"timeField,omitempty"`
 	// example:
@@ -3087,6 +3097,11 @@ func (s *OSSIngestionConfigurationSource) SetRoleARN(v string) *OSSIngestionConf
 
 func (s *OSSIngestionConfigurationSource) SetStartTime(v int64) *OSSIngestionConfigurationSource {
 	s.StartTime = &v
+	return s
+}
+
+func (s *OSSIngestionConfigurationSource) SetTagPackId(v bool) *OSSIngestionConfigurationSource {
+	s.TagPackId = &v
 	return s
 }
 
@@ -5140,6 +5155,65 @@ func (s *ApplyConfigToMachineGroupResponse) SetStatusCode(v int32) *ApplyConfigT
 	return s
 }
 
+type CallAiToolsRequest struct {
+	Params   map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
+	RegionId *string            `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// This parameter is required.
+	ToolName *string `json:"toolName,omitempty" xml:"toolName,omitempty"`
+}
+
+func (s CallAiToolsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CallAiToolsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CallAiToolsRequest) SetParams(v map[string]*string) *CallAiToolsRequest {
+	s.Params = v
+	return s
+}
+
+func (s *CallAiToolsRequest) SetRegionId(v string) *CallAiToolsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CallAiToolsRequest) SetToolName(v string) *CallAiToolsRequest {
+	s.ToolName = &v
+	return s
+}
+
+type CallAiToolsResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *string            `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CallAiToolsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CallAiToolsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CallAiToolsResponse) SetHeaders(v map[string]*string) *CallAiToolsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CallAiToolsResponse) SetStatusCode(v int32) *CallAiToolsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CallAiToolsResponse) SetBody(v string) *CallAiToolsResponse {
+	s.Body = &v
+	return s
+}
+
 type ChangeResourceGroupRequest struct {
 	// The ID of the resource group.
 	//
@@ -5363,12 +5437,12 @@ func (s *ConsumerGroupUpdateCheckPointResponse) SetStatusCode(v int32) *Consumer
 
 type CreateAgentInstanceConfigRequest struct {
 	// This parameter is required.
+	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// This parameter is required.
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
 	// This parameter is required.
-	ConfigMatcher *string `json:"configMatcher,omitempty" xml:"configMatcher,omitempty"`
-	// This parameter is required.
-	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
-	IsGray     *bool   `json:"isGray,omitempty" xml:"isGray,omitempty"`
+	ConfigType  *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	GrayConfigs *string `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty"`
 }
 
 func (s CreateAgentInstanceConfigRequest) String() string {
@@ -5379,23 +5453,23 @@ func (s CreateAgentInstanceConfigRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateAgentInstanceConfigRequest) SetAttributes(v string) *CreateAgentInstanceConfigRequest {
+	s.Attributes = &v
+	return s
+}
+
 func (s *CreateAgentInstanceConfigRequest) SetConfig(v string) *CreateAgentInstanceConfigRequest {
 	s.Config = &v
 	return s
 }
 
-func (s *CreateAgentInstanceConfigRequest) SetConfigMatcher(v string) *CreateAgentInstanceConfigRequest {
-	s.ConfigMatcher = &v
+func (s *CreateAgentInstanceConfigRequest) SetConfigType(v string) *CreateAgentInstanceConfigRequest {
+	s.ConfigType = &v
 	return s
 }
 
-func (s *CreateAgentInstanceConfigRequest) SetConfigName(v string) *CreateAgentInstanceConfigRequest {
-	s.ConfigName = &v
-	return s
-}
-
-func (s *CreateAgentInstanceConfigRequest) SetIsGray(v bool) *CreateAgentInstanceConfigRequest {
-	s.IsGray = &v
+func (s *CreateAgentInstanceConfigRequest) SetGrayConfigs(v string) *CreateAgentInstanceConfigRequest {
+	s.GrayConfigs = &v
 	return s
 }
 
@@ -6068,18 +6142,26 @@ func (s *CreateDownloadJobResponse) SetStatusCode(v int32) *CreateDownloadJobRes
 }
 
 type CreateETLRequest struct {
+	// The detailed configuration of the job.
+	//
 	// This parameter is required.
 	Configuration *ETLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The description of the job.
+	//
 	// example:
 	//
 	// this is ETL
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sls-test-etl
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The name of the job (unique within a project).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6181,11 +6263,11 @@ func (s *CreateIndexResponse) SetStatusCode(v int32) *CreateIndexResponse {
 }
 
 type CreateLogStoreRequest struct {
-	// Specifies whether to record the **public IP address*	- and **log receiving time**. Default value: false. Valid values:
+	// Specifies whether to record the **public IP address*	- and the **log receiving time**. Default value: false. Valid values:
 	//
-	// 	- true********
+	// 	- true: records the public IP address and the log receiving time. If you set this parameter to true, Simple Log Service automatically adds the public IP address of the device from which the log is collected and the time when Simple Log Service receives the log to the Tag field of the collected log.
 	//
-	// 	- false********
+	// 	- false: does not record the public IP address or log receiving time.
 	//
 	// example:
 	//
@@ -6213,7 +6295,7 @@ type CreateLogStoreRequest struct {
 	EnableTracking *bool `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
 	// The data structure of the encryption configuration. The following parameters are included: `enable`, `encrypt_type`, and `user_cmk_info`. For more information, see [EncryptConf](https://help.aliyun.com/document_detail/409461.html).
 	EncryptConf *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
-	// The retention period of data in the hot storage tier of the Logstore. Valid values: 7 to 3000. Unit: days.
+	// The data retention period for the hot storage tier. Unit: days. Minimum value: 7. The value of this parameter cannot exceed the value of ttl. If you set this parameter to -1, all data is stored in the hot storage tier.
 	//
 	// After the retention period that is specified for the hot storage tier elapses, the data is moved to the Infrequent Access (IA) storage tier. For more information, see [Enable hot and cold-tiered storage for a Logstore](https://help.aliyun.com/document_detail/308645.html).
 	//
@@ -6221,7 +6303,7 @@ type CreateLogStoreRequest struct {
 	//
 	// 60
 	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
-	// The retention period of data in the IA storage tier of the Logstore. You must set this parameter to at least 30 days. After the data retention period that you specify for the IA storage tier elapses, the data is moved to the Archive storage tier.
+	// The data retention period for the IA storage tier. You must set this parameter to at least 30 days. After the data retention period that you specify for the IA storage tier elapses, the data is moved to the Archive storage tier.
 	//
 	// example:
 	//
@@ -6233,7 +6315,7 @@ type CreateLogStoreRequest struct {
 	//
 	// 	- The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// 	- The name must start and end with a lowercase letter or a digit.
+	// 	- The name must start and end with a lowercase letter or digit.
 	//
 	// 	- The name must be 3 to 63 characters in length.
 	//
@@ -6253,14 +6335,15 @@ type CreateLogStoreRequest struct {
 	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
 	// The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores. Valid values:
 	//
-	// 	- **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
+	// 	- **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can use this type of Logstore to build a comprehensive observability system.
 	//
-	// 	- **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. If logs are stored for weeks or months, the log retention period is considered long.
+	// 	- **query**: Query Logstore. This type of Logstore supports high-performance query operations. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the data retention period is long, or log analysis is not required. Data retention periods of weeks or months are considered long.
 	//
 	// example:
 	//
 	// standard
-	Mode        *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// IngestProcessor ID
 	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
 	// The number of shards.
 	//
@@ -6282,7 +6365,7 @@ type CreateLogStoreRequest struct {
 	//
 	// None
 	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
-	// The retention period of data. Unit: days. Valid values: 1 to 3000. If you set this parameter to 3650, data is permanently stored.
+	// The data retention period. Unit: days. Valid values: 1 to 3650. If you set this parameter to 3650, data is permanently stored.
 	//
 	// This parameter is required.
 	//
@@ -6758,6 +6841,82 @@ func (s *CreateMachineGroupResponse) SetStatusCode(v int32) *CreateMachineGroupR
 	return s
 }
 
+type CreateMaxComputeExportRequest struct {
+	// The setting of the MaxCompute data shipping job.
+	//
+	// This parameter is required.
+	Configuration *MaxComputeExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The description of the MaxCompute data shipping job.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the MaxCompute data shipping job.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my-mc-job
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The unique identifier of the MaxCompute data shipping job.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// export-mc-1234567890-123456
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateMaxComputeExportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaxComputeExportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaxComputeExportRequest) SetConfiguration(v *MaxComputeExportConfiguration) *CreateMaxComputeExportRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateMaxComputeExportRequest) SetDescription(v string) *CreateMaxComputeExportRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateMaxComputeExportRequest) SetDisplayName(v string) *CreateMaxComputeExportRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateMaxComputeExportRequest) SetName(v string) *CreateMaxComputeExportRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateMaxComputeExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateMaxComputeExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaxComputeExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaxComputeExportResponse) SetHeaders(v map[string]*string) *CreateMaxComputeExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMaxComputeExportResponse) SetStatusCode(v int32) *CreateMaxComputeExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type CreateMetricStoreRequest struct {
 	// Specifies whether to enable automatic sharding.
 	//
@@ -7040,13 +7199,13 @@ func (s *CreateOSSHDFSExportResponse) SetStatusCode(v int32) *CreateOSSHDFSExpor
 }
 
 type CreateOSSIngestionRequest struct {
-	// The configurations of the OSS data import job.
+	// The configuration of the OSS data import job.
 	//
 	// This parameter is required.
 	Configuration *OSSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// The description of the job.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The display name.
+	// The display name of the job.
 	//
 	// This parameter is required.
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
@@ -7118,195 +7277,12 @@ func (s *CreateOSSIngestionResponse) SetStatusCode(v int32) *CreateOSSIngestionR
 	return s
 }
 
-type CreateOssExternalStoreRequest struct {
-	// The name of the external store.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// test_oss_store
-	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
-	// The parameters of the external store.
-	//
-	// This parameter is required.
-	Parameter *CreateOssExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
-	// The type of the external store. Set the value to oss.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// oss
-	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
-}
-
-func (s CreateOssExternalStoreRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateOssExternalStoreRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateOssExternalStoreRequest) SetExternalStoreName(v string) *CreateOssExternalStoreRequest {
-	s.ExternalStoreName = &v
-	return s
-}
-
-func (s *CreateOssExternalStoreRequest) SetParameter(v *CreateOssExternalStoreRequestParameter) *CreateOssExternalStoreRequest {
-	s.Parameter = v
-	return s
-}
-
-func (s *CreateOssExternalStoreRequest) SetStoreType(v string) *CreateOssExternalStoreRequest {
-	s.StoreType = &v
-	return s
-}
-
-type CreateOssExternalStoreRequestParameter struct {
-	// The AccessKey ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// LTAI5tFsHGGeYry*****1Sz
-	Accessid *string `json:"accessid,omitempty" xml:"accessid,omitempty"`
-	// The AccessKey secret.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// GyviCLDVHkHrOztdkxuE6******Rp6
-	Accesskey *string `json:"accesskey,omitempty" xml:"accesskey,omitempty"`
-	// The name of the OSS bucket.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// my-bucket
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// The associated fields.
-	//
-	// This parameter is required.
-	Columns []*CreateOssExternalStoreRequestParameterColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	// The OSS endpoint. For more information, see [Regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// oss-cn-hangzhou.aliyuncs.com
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The associated OSS objects. Valid values of n: 1 to 100.
-	//
-	// This parameter is required.
-	Objects []*string `json:"objects,omitempty" xml:"objects,omitempty" type:"Repeated"`
-}
-
-func (s CreateOssExternalStoreRequestParameter) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateOssExternalStoreRequestParameter) GoString() string {
-	return s.String()
-}
-
-func (s *CreateOssExternalStoreRequestParameter) SetAccessid(v string) *CreateOssExternalStoreRequestParameter {
-	s.Accessid = &v
-	return s
-}
-
-func (s *CreateOssExternalStoreRequestParameter) SetAccesskey(v string) *CreateOssExternalStoreRequestParameter {
-	s.Accesskey = &v
-	return s
-}
-
-func (s *CreateOssExternalStoreRequestParameter) SetBucket(v string) *CreateOssExternalStoreRequestParameter {
-	s.Bucket = &v
-	return s
-}
-
-func (s *CreateOssExternalStoreRequestParameter) SetColumns(v []*CreateOssExternalStoreRequestParameterColumns) *CreateOssExternalStoreRequestParameter {
-	s.Columns = v
-	return s
-}
-
-func (s *CreateOssExternalStoreRequestParameter) SetEndpoint(v string) *CreateOssExternalStoreRequestParameter {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *CreateOssExternalStoreRequestParameter) SetObjects(v []*string) *CreateOssExternalStoreRequestParameter {
-	s.Objects = v
-	return s
-}
-
-type CreateOssExternalStoreRequestParameterColumns struct {
-	// The name of the field.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// auto-test
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The data type of the field.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// sls
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s CreateOssExternalStoreRequestParameterColumns) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateOssExternalStoreRequestParameterColumns) GoString() string {
-	return s.String()
-}
-
-func (s *CreateOssExternalStoreRequestParameterColumns) SetName(v string) *CreateOssExternalStoreRequestParameterColumns {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateOssExternalStoreRequestParameterColumns) SetType(v string) *CreateOssExternalStoreRequestParameterColumns {
-	s.Type = &v
-	return s
-}
-
-type CreateOssExternalStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-}
-
-func (s CreateOssExternalStoreResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateOssExternalStoreResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateOssExternalStoreResponse) SetHeaders(v map[string]*string) *CreateOssExternalStoreResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateOssExternalStoreResponse) SetStatusCode(v int32) *CreateOssExternalStoreResponse {
-	s.StatusCode = &v
-	return s
-}
-
 type CreateProjectRequest struct {
-	// Data redundancy type
+	// The disaster recovery type. Valid values:
+	//
+	// 	- LRS: locally redundant storage
+	//
+	// 	- ZRS: zone-redundant storage
 	//
 	// example:
 	//
@@ -7320,23 +7296,34 @@ type CreateProjectRequest struct {
 	//
 	// this is test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the project. The name must be unique in a region. You cannot change the name after you create the project. The name must meet the following requirements:
+	// The project name must be unique in a region. You cannot change the name after you create the project. The name must meet the following requirements:
 	//
-	// 	- The name must be unique.
+	// 	- The name must be globally unique.
 	//
-	// 	- It can contain only lowercase letters, digits, and hyphens (-).
+	// 	- The name can contain only lowercase letters, digits, and hyphens (-).
 	//
-	// 	- It must start and end with a lowercase letter or a digit.
+	// 	- The name must start and end with a lowercase letter or a digit.
 	//
-	// 	- It must be 3 to 63 characters in length.
+	// 	- The name must be 3 to 63 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
-	ProjectName       *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	RecycleBinEnabled *bool   `json:"recycleBinEnabled,omitempty" xml:"recycleBinEnabled,omitempty"`
+	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// Specifies whether to enable the recycle bin feature.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	RecycleBinEnabled *bool `json:"recycleBinEnabled,omitempty" xml:"recycleBinEnabled,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -7397,197 +7384,6 @@ func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectR
 }
 
 func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type CreateRdsExternalStoreRequest struct {
-	// The name of the external store. The name must be unique in a project and must be different from Logstore names.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// rds_store
-	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
-	// The parameter struct.
-	//
-	// This parameter is required.
-	Parameter *CreateRdsExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
-	// The storage type. Set the value to rds-vpc, which indicates an ApsaraDB RDS for MySQL database in a virtual private cloud (VPC).
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// rds-vpc
-	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
-}
-
-func (s CreateRdsExternalStoreRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRdsExternalStoreRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRdsExternalStoreRequest) SetExternalStoreName(v string) *CreateRdsExternalStoreRequest {
-	s.ExternalStoreName = &v
-	return s
-}
-
-func (s *CreateRdsExternalStoreRequest) SetParameter(v *CreateRdsExternalStoreRequestParameter) *CreateRdsExternalStoreRequest {
-	s.Parameter = v
-	return s
-}
-
-func (s *CreateRdsExternalStoreRequest) SetStoreType(v string) *CreateRdsExternalStoreRequest {
-	s.StoreType = &v
-	return s
-}
-
-type CreateRdsExternalStoreRequestParameter struct {
-	// The name of the database in the ApsaraDB RDS for MySQL instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// meta
-	Db *string `json:"db,omitempty" xml:"db,omitempty"`
-	// The internal or public endpoint of the ApsaraDB RDS for MySQL instance.
-	//
-	// example:
-	//
-	// 192.168.XX.XX
-	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// The ID of the ApsaraDB RDS for MySQL instance.
-	//
-	// example:
-	//
-	// i-bp1b6c719dfa08exf****
-	InstanceId *string `json:"instance-id,omitempty" xml:"instance-id,omitempty"`
-	// The password that is used to log on to the ApsaraDB RDS for MySQL instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// sfdsfldsfksfls****
-	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// The internal or public port of the ApsaraDB RDS for MySQL instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 3306
-	Port *string `json:"port,omitempty" xml:"port,omitempty"`
-	// The region where the ApsaraDB RDS for MySQL instance resides. Valid values: cn-qingdao, cn-beijing, and cn-hangzhou.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-qingdao
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The name of the database table in the ApsaraDB RDS for MySQL instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// join_meta
-	Table *string `json:"table,omitempty" xml:"table,omitempty"`
-	// The username that is used to log on to the ApsaraDB RDS for MySQL instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// root
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
-	// The ID of the VPC to which the ApsaraDB RDS for MySQL instance belongs.
-	//
-	// example:
-	//
-	// vpc-bp1aevy8sofi8mh1q****
-	VpcId *string `json:"vpc-id,omitempty" xml:"vpc-id,omitempty"`
-}
-
-func (s CreateRdsExternalStoreRequestParameter) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRdsExternalStoreRequestParameter) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRdsExternalStoreRequestParameter) SetDb(v string) *CreateRdsExternalStoreRequestParameter {
-	s.Db = &v
-	return s
-}
-
-func (s *CreateRdsExternalStoreRequestParameter) SetHost(v string) *CreateRdsExternalStoreRequestParameter {
-	s.Host = &v
-	return s
-}
-
-func (s *CreateRdsExternalStoreRequestParameter) SetInstanceId(v string) *CreateRdsExternalStoreRequestParameter {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateRdsExternalStoreRequestParameter) SetPassword(v string) *CreateRdsExternalStoreRequestParameter {
-	s.Password = &v
-	return s
-}
-
-func (s *CreateRdsExternalStoreRequestParameter) SetPort(v string) *CreateRdsExternalStoreRequestParameter {
-	s.Port = &v
-	return s
-}
-
-func (s *CreateRdsExternalStoreRequestParameter) SetRegion(v string) *CreateRdsExternalStoreRequestParameter {
-	s.Region = &v
-	return s
-}
-
-func (s *CreateRdsExternalStoreRequestParameter) SetTable(v string) *CreateRdsExternalStoreRequestParameter {
-	s.Table = &v
-	return s
-}
-
-func (s *CreateRdsExternalStoreRequestParameter) SetUsername(v string) *CreateRdsExternalStoreRequestParameter {
-	s.Username = &v
-	return s
-}
-
-func (s *CreateRdsExternalStoreRequestParameter) SetVpcId(v string) *CreateRdsExternalStoreRequestParameter {
-	s.VpcId = &v
-	return s
-}
-
-type CreateRdsExternalStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-}
-
-func (s CreateRdsExternalStoreResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRdsExternalStoreResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRdsExternalStoreResponse) SetHeaders(v map[string]*string) *CreateRdsExternalStoreResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateRdsExternalStoreResponse) SetStatusCode(v int32) *CreateRdsExternalStoreResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -7989,7 +7785,8 @@ func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicke
 }
 
 type DeleteAgentInstanceConfigRequest struct {
-	IsGray *bool `json:"isGray,omitempty" xml:"isGray,omitempty"`
+	// This parameter is required.
+	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 }
 
 func (s DeleteAgentInstanceConfigRequest) String() string {
@@ -8000,8 +7797,8 @@ func (s DeleteAgentInstanceConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteAgentInstanceConfigRequest) SetIsGray(v bool) *DeleteAgentInstanceConfigRequest {
-	s.IsGray = &v
+func (s *DeleteAgentInstanceConfigRequest) SetAttributes(v string) *DeleteAgentInstanceConfigRequest {
+	s.Attributes = &v
 	return s
 }
 
@@ -8310,29 +8107,6 @@ func (s *DeleteETLResponse) SetStatusCode(v int32) *DeleteETLResponse {
 	return s
 }
 
-type DeleteExternalStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-}
-
-func (s DeleteExternalStoreResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteExternalStoreResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteExternalStoreResponse) SetHeaders(v map[string]*string) *DeleteExternalStoreResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteExternalStoreResponse) SetStatusCode(v int32) *DeleteExternalStoreResponse {
-	s.StatusCode = &v
-	return s
-}
-
 type DeleteIndexResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -8467,6 +8241,29 @@ func (s *DeleteMachineGroupResponse) SetHeaders(v map[string]*string) *DeleteMac
 }
 
 func (s *DeleteMachineGroupResponse) SetStatusCode(v int32) *DeleteMachineGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteMaxComputeExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteMaxComputeExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMaxComputeExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMaxComputeExportResponse) SetHeaders(v map[string]*string) *DeleteMaxComputeExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMaxComputeExportResponse) SetStatusCode(v int32) *DeleteMaxComputeExportResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -8696,7 +8493,19 @@ func (s *DeleteStoreViewResponse) SetStatusCode(v int32) *DeleteStoreViewRespons
 }
 
 type DescribeRegionsRequest struct {
-	// A short description of struct
+	// The language of the localName parameter that is returned.
+	//
+	// Valid values:
+	//
+	// 	- ja
+	//
+	// 	- en
+	//
+	// 	- zh
+	//
+	// example:
+	//
+	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
 }
 
@@ -8731,9 +8540,12 @@ func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBod
 }
 
 type DescribeRegionsResponseBodyRegions struct {
+	// The public endpoint of Simple Log Service.
 	InternetEndpoint *string `json:"internetEndpoint,omitempty" xml:"internetEndpoint,omitempty"`
+	// The internal endpoint of Simple Log Service.
 	IntranetEndpoint *string `json:"intranetEndpoint,omitempty" xml:"intranetEndpoint,omitempty"`
-	LocalName        *string `json:"localName,omitempty" xml:"localName,omitempty"`
+	// The name of the Simple Log Service region.
+	LocalName *string `json:"localName,omitempty" xml:"localName,omitempty"`
 	// SLS region
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 }
@@ -8887,13 +8699,31 @@ func (s *EnableScheduledSQLResponse) SetStatusCode(v int32) *EnableScheduledSQLR
 	return s
 }
 
+type GetAgentInstanceConfigRequest struct {
+	// This parameter is required.
+	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+}
+
+func (s GetAgentInstanceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAgentInstanceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentInstanceConfigRequest) SetAttributes(v string) *GetAgentInstanceConfigRequest {
+	s.Attributes = &v
+	return s
+}
+
 type GetAgentInstanceConfigResponseBody struct {
-	Config         *string `json:"config,omitempty" xml:"config,omitempty"`
-	ConfigMatcher  *string `json:"configMatcher,omitempty" xml:"configMatcher,omitempty"`
-	ConfigName     *string `json:"configName,omitempty" xml:"configName,omitempty"`
-	CreateTime     *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	IsGray         *bool   `json:"isGray,omitempty" xml:"isGray,omitempty"`
-	LastModifyTime *int64  `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	Attributes     *string              `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	Config         *string              `json:"config,omitempty" xml:"config,omitempty"`
+	ConfigType     *string              `json:"configType,omitempty" xml:"configType,omitempty"`
+	CreateTime     *int64               `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	GrayConfigs    []map[string]*string `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty" type:"Repeated"`
+	LastModifyTime *int64               `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
 }
 
 func (s GetAgentInstanceConfigResponseBody) String() string {
@@ -8904,18 +8734,18 @@ func (s GetAgentInstanceConfigResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetAgentInstanceConfigResponseBody) SetAttributes(v string) *GetAgentInstanceConfigResponseBody {
+	s.Attributes = &v
+	return s
+}
+
 func (s *GetAgentInstanceConfigResponseBody) SetConfig(v string) *GetAgentInstanceConfigResponseBody {
 	s.Config = &v
 	return s
 }
 
-func (s *GetAgentInstanceConfigResponseBody) SetConfigMatcher(v string) *GetAgentInstanceConfigResponseBody {
-	s.ConfigMatcher = &v
-	return s
-}
-
-func (s *GetAgentInstanceConfigResponseBody) SetConfigName(v string) *GetAgentInstanceConfigResponseBody {
-	s.ConfigName = &v
+func (s *GetAgentInstanceConfigResponseBody) SetConfigType(v string) *GetAgentInstanceConfigResponseBody {
+	s.ConfigType = &v
 	return s
 }
 
@@ -8924,8 +8754,8 @@ func (s *GetAgentInstanceConfigResponseBody) SetCreateTime(v int64) *GetAgentIns
 	return s
 }
 
-func (s *GetAgentInstanceConfigResponseBody) SetIsGray(v bool) *GetAgentInstanceConfigResponseBody {
-	s.IsGray = &v
+func (s *GetAgentInstanceConfigResponseBody) SetGrayConfigs(v []map[string]*string) *GetAgentInstanceConfigResponseBody {
+	s.GrayConfigs = v
 	return s
 }
 
@@ -10376,35 +10206,6 @@ func (s *GetETLResponse) SetBody(v *ETL) *GetETLResponse {
 	return s
 }
 
-type GetExternalStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ExternalStore     `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetExternalStoreResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetExternalStoreResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetExternalStoreResponse) SetHeaders(v map[string]*string) *GetExternalStoreResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetExternalStoreResponse) SetStatusCode(v int32) *GetExternalStoreResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetExternalStoreResponse) SetBody(v *ExternalStore) *GetExternalStoreResponse {
-	s.Body = v
-	return s
-}
-
 type GetHistogramsRequest struct {
 	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
 	//
@@ -11698,6 +11499,35 @@ func (s *GetMachineGroupResponse) SetBody(v *MachineGroup) *GetMachineGroupRespo
 	return s
 }
 
+type GetMaxComputeExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MaxComputeExport  `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMaxComputeExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMaxComputeExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMaxComputeExportResponse) SetHeaders(v map[string]*string) *GetMaxComputeExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMaxComputeExportResponse) SetStatusCode(v int32) *GetMaxComputeExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMaxComputeExportResponse) SetBody(v *MaxComputeExport) *GetMaxComputeExportResponse {
+	s.Body = v
+	return s
+}
+
 type GetMetricStoreResponseBody struct {
 	// Indicates whether the automatic sharding feature is enabled.
 	//
@@ -12451,8 +12281,10 @@ func (s *GetStoreViewIndexResponse) SetBody(v *GetStoreViewIndexResponseBody) *G
 }
 
 type ListAgentInstanceConfigsRequest struct {
-	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	Offset     *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size       *int64  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListAgentInstanceConfigsRequest) String() string {
@@ -12461,6 +12293,16 @@ func (s ListAgentInstanceConfigsRequest) String() string {
 
 func (s ListAgentInstanceConfigsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListAgentInstanceConfigsRequest) SetAttributes(v string) *ListAgentInstanceConfigsRequest {
+	s.Attributes = &v
+	return s
+}
+
+func (s *ListAgentInstanceConfigsRequest) SetConfigType(v string) *ListAgentInstanceConfigsRequest {
+	s.ConfigType = &v
+	return s
 }
 
 func (s *ListAgentInstanceConfigsRequest) SetOffset(v int64) *ListAgentInstanceConfigsRequest {
@@ -12474,9 +12316,9 @@ func (s *ListAgentInstanceConfigsRequest) SetSize(v int64) *ListAgentInstanceCon
 }
 
 type ListAgentInstanceConfigsResponseBody struct {
-	Configs []*string `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	Size    *int64    `json:"size,omitempty" xml:"size,omitempty"`
-	Total   *int64    `json:"total,omitempty" xml:"total,omitempty"`
+	Configs []*ListAgentInstanceConfigsResponseBodyConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	Size    *int64                                         `json:"size,omitempty" xml:"size,omitempty"`
+	Total   *int64                                         `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListAgentInstanceConfigsResponseBody) String() string {
@@ -12487,7 +12329,7 @@ func (s ListAgentInstanceConfigsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListAgentInstanceConfigsResponseBody) SetConfigs(v []*string) *ListAgentInstanceConfigsResponseBody {
+func (s *ListAgentInstanceConfigsResponseBody) SetConfigs(v []*ListAgentInstanceConfigsResponseBodyConfigs) *ListAgentInstanceConfigsResponseBody {
 	s.Configs = v
 	return s
 }
@@ -12499,6 +12341,29 @@ func (s *ListAgentInstanceConfigsResponseBody) SetSize(v int64) *ListAgentInstan
 
 func (s *ListAgentInstanceConfigsResponseBody) SetTotal(v int64) *ListAgentInstanceConfigsResponseBody {
 	s.Total = &v
+	return s
+}
+
+type ListAgentInstanceConfigsResponseBodyConfigs struct {
+	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+}
+
+func (s ListAgentInstanceConfigsResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAgentInstanceConfigsResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListAgentInstanceConfigsResponseBodyConfigs) SetAttributes(v string) *ListAgentInstanceConfigsResponseBodyConfigs {
+	s.Attributes = &v
+	return s
+}
+
+func (s *ListAgentInstanceConfigsResponseBodyConfigs) SetConfigType(v string) *ListAgentInstanceConfigsResponseBodyConfigs {
+	s.ConfigType = &v
 	return s
 }
 
@@ -12528,6 +12393,111 @@ func (s *ListAgentInstanceConfigsResponse) SetStatusCode(v int32) *ListAgentInst
 
 func (s *ListAgentInstanceConfigsResponse) SetBody(v *ListAgentInstanceConfigsResponseBody) *ListAgentInstanceConfigsResponse {
 	s.Body = v
+	return s
+}
+
+type ListAiToolsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []*ListAiToolsResponseBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+}
+
+func (s ListAiToolsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAiToolsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAiToolsResponse) SetHeaders(v map[string]*string) *ListAiToolsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAiToolsResponse) SetStatusCode(v int32) *ListAiToolsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAiToolsResponse) SetBody(v []*ListAiToolsResponseBody) *ListAiToolsResponse {
+	s.Body = v
+	return s
+}
+
+type ListAiToolsResponseBody struct {
+	Fields      []*ListAiToolsResponseBodyFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	Name        *string                          `json:"name,omitempty" xml:"name,omitempty"`
+	Description *string                          `json:"description,omitempty" xml:"description,omitempty"`
+}
+
+func (s ListAiToolsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAiToolsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAiToolsResponseBody) SetFields(v []*ListAiToolsResponseBodyFields) *ListAiToolsResponseBody {
+	s.Fields = v
+	return s
+}
+
+func (s *ListAiToolsResponseBody) SetName(v string) *ListAiToolsResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAiToolsResponseBody) SetDescription(v string) *ListAiToolsResponseBody {
+	s.Description = &v
+	return s
+}
+
+type ListAiToolsResponseBodyFields struct {
+	Name        *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Option      []*string `json:"option,omitempty" xml:"option,omitempty" type:"Repeated"`
+	Required    *bool     `json:"required,omitempty" xml:"required,omitempty"`
+	Type        *string   `json:"type,omitempty" xml:"type,omitempty"`
+	Example     *string   `json:"example,omitempty" xml:"example,omitempty"`
+	Description *string   `json:"description,omitempty" xml:"description,omitempty"`
+}
+
+func (s ListAiToolsResponseBodyFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAiToolsResponseBodyFields) GoString() string {
+	return s.String()
+}
+
+func (s *ListAiToolsResponseBodyFields) SetName(v string) *ListAiToolsResponseBodyFields {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAiToolsResponseBodyFields) SetOption(v []*string) *ListAiToolsResponseBodyFields {
+	s.Option = v
+	return s
+}
+
+func (s *ListAiToolsResponseBodyFields) SetRequired(v bool) *ListAiToolsResponseBodyFields {
+	s.Required = &v
+	return s
+}
+
+func (s *ListAiToolsResponseBodyFields) SetType(v string) *ListAiToolsResponseBodyFields {
+	s.Type = &v
+	return s
+}
+
+func (s *ListAiToolsResponseBodyFields) SetExample(v string) *ListAiToolsResponseBodyFields {
+	s.Example = &v
+	return s
+}
+
+func (s *ListAiToolsResponseBodyFields) SetDescription(v string) *ListAiToolsResponseBodyFields {
+	s.Description = &v
 	return s
 }
 
@@ -13519,6 +13489,8 @@ func (s *ListConsumerGroupResponse) SetBody(v []*ConsumerGroup) *ListConsumerGro
 }
 
 type ListDashboardRequest struct {
+	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
+	DisplayName   *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The line from which the query starts. Default value: 0.
 	//
 	// example:
@@ -13530,7 +13502,8 @@ type ListDashboardRequest struct {
 	// example:
 	//
 	// 10
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Size *int32                      `json:"size,omitempty" xml:"size,omitempty"`
+	Tags []*ListDashboardRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s ListDashboardRequest) String() string {
@@ -13541,6 +13514,16 @@ func (s ListDashboardRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListDashboardRequest) SetDashboardName(v string) *ListDashboardRequest {
+	s.DashboardName = &v
+	return s
+}
+
+func (s *ListDashboardRequest) SetDisplayName(v string) *ListDashboardRequest {
+	s.DisplayName = &v
+	return s
+}
+
 func (s *ListDashboardRequest) SetOffset(v int32) *ListDashboardRequest {
 	s.Offset = &v
 	return s
@@ -13548,6 +13531,85 @@ func (s *ListDashboardRequest) SetOffset(v int32) *ListDashboardRequest {
 
 func (s *ListDashboardRequest) SetSize(v int32) *ListDashboardRequest {
 	s.Size = &v
+	return s
+}
+
+func (s *ListDashboardRequest) SetTags(v []*ListDashboardRequestTags) *ListDashboardRequest {
+	s.Tags = v
+	return s
+}
+
+type ListDashboardRequestTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListDashboardRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDashboardRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListDashboardRequestTags) SetKey(v string) *ListDashboardRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListDashboardRequestTags) SetValue(v string) *ListDashboardRequestTags {
+	s.Value = &v
+	return s
+}
+
+type ListDashboardShrinkRequest struct {
+	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
+	DisplayName   *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The line from which the query starts. Default value: 0.
+	//
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries per page. Maximum value: 500. Default value: 500.
+	//
+	// example:
+	//
+	// 10
+	Size       *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
+}
+
+func (s ListDashboardShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDashboardShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDashboardShrinkRequest) SetDashboardName(v string) *ListDashboardShrinkRequest {
+	s.DashboardName = &v
+	return s
+}
+
+func (s *ListDashboardShrinkRequest) SetDisplayName(v string) *ListDashboardShrinkRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListDashboardShrinkRequest) SetOffset(v int32) *ListDashboardShrinkRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListDashboardShrinkRequest) SetSize(v int32) *ListDashboardShrinkRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *ListDashboardShrinkRequest) SetTagsShrink(v string) *ListDashboardShrinkRequest {
+	s.TagsShrink = &v
 	return s
 }
 
@@ -13583,6 +13645,7 @@ type ListDashboardResponseBodyDashboardItems struct {
 	//
 	// dashboard-1609294922657-434834
 	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
+	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the dashboard.
 	//
 	// example:
@@ -13601,6 +13664,11 @@ func (s ListDashboardResponseBodyDashboardItems) GoString() string {
 
 func (s *ListDashboardResponseBodyDashboardItems) SetDashboardName(v string) *ListDashboardResponseBodyDashboardItems {
 	s.DashboardName = &v
+	return s
+}
+
+func (s *ListDashboardResponseBodyDashboardItems) SetDescription(v string) *ListDashboardResponseBodyDashboardItems {
+	s.Description = &v
 	return s
 }
 
@@ -14215,9 +14283,19 @@ func (s *ListETLsRequest) SetSize(v int32) *ListETLsRequest {
 }
 
 type ListETLsResponseBody struct {
+	// The number of data transformation jobs that are returned.
+	//
+	// example:
+	//
+	// 10
 	Count   *int32 `json:"count,omitempty" xml:"count,omitempty"`
 	Results []*ETL `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	Total   *int32 `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of data transformation jobs in the project.
+	//
+	// example:
+	//
+	// 80
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListETLsResponseBody) String() string {
@@ -14878,6 +14956,110 @@ func (s *ListMachinesResponse) SetStatusCode(v int32) *ListMachinesResponse {
 }
 
 func (s *ListMachinesResponse) SetBody(v *ListMachinesResponseBody) *ListMachinesResponse {
+	s.Body = v
+	return s
+}
+
+type ListMaxComputeExportsRequest struct {
+	// example:
+	//
+	// my-logstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries to return. Default value: 10.
+	//
+	// example:
+	//
+	// 100
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListMaxComputeExportsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMaxComputeExportsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMaxComputeExportsRequest) SetLogstore(v string) *ListMaxComputeExportsRequest {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ListMaxComputeExportsRequest) SetOffset(v int32) *ListMaxComputeExportsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListMaxComputeExportsRequest) SetSize(v int32) *ListMaxComputeExportsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListMaxComputeExportsResponseBody struct {
+	// example:
+	//
+	// 2
+	Count   *int32              `json:"count,omitempty" xml:"count,omitempty"`
+	Results []*MaxComputeExport `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListMaxComputeExportsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMaxComputeExportsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMaxComputeExportsResponseBody) SetCount(v int32) *ListMaxComputeExportsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListMaxComputeExportsResponseBody) SetResults(v []*MaxComputeExport) *ListMaxComputeExportsResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ListMaxComputeExportsResponseBody) SetTotal(v int32) *ListMaxComputeExportsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListMaxComputeExportsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMaxComputeExportsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMaxComputeExportsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMaxComputeExportsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMaxComputeExportsResponse) SetHeaders(v map[string]*string) *ListMaxComputeExportsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMaxComputeExportsResponse) SetStatusCode(v int32) *ListMaxComputeExportsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMaxComputeExportsResponse) SetBody(v *ListMaxComputeExportsResponseBody) *ListMaxComputeExportsResponse {
 	s.Body = v
 	return s
 }
@@ -16776,6 +16958,29 @@ func (s *StartETLResponse) SetStatusCode(v int32) *StartETLResponse {
 	return s
 }
 
+type StartMaxComputeExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StartMaxComputeExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartMaxComputeExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartMaxComputeExportResponse) SetHeaders(v map[string]*string) *StartMaxComputeExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartMaxComputeExportResponse) SetStatusCode(v int32) *StartMaxComputeExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type StartOSSExportResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -16864,6 +17069,29 @@ func (s *StopETLResponse) SetHeaders(v map[string]*string) *StopETLResponse {
 }
 
 func (s *StopETLResponse) SetStatusCode(v int32) *StopETLResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type StopMaxComputeExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s StopMaxComputeExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopMaxComputeExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopMaxComputeExportResponse) SetHeaders(v map[string]*string) *StopMaxComputeExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopMaxComputeExportResponse) SetStatusCode(v int32) *StopMaxComputeExportResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -17151,10 +17379,10 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 
 type UpdateAgentInstanceConfigRequest struct {
 	// This parameter is required.
-	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	// This parameter is required.
-	ConfigMatcher *string `json:"configMatcher,omitempty" xml:"configMatcher,omitempty"`
-	IsGray        *bool   `json:"isGray,omitempty" xml:"isGray,omitempty"`
+	Config      *string `json:"config,omitempty" xml:"config,omitempty"`
+	GrayConfigs *string `json:"grayConfigs,omitempty" xml:"grayConfigs,omitempty"`
 }
 
 func (s UpdateAgentInstanceConfigRequest) String() string {
@@ -17165,18 +17393,18 @@ func (s UpdateAgentInstanceConfigRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateAgentInstanceConfigRequest) SetAttributes(v string) *UpdateAgentInstanceConfigRequest {
+	s.Attributes = &v
+	return s
+}
+
 func (s *UpdateAgentInstanceConfigRequest) SetConfig(v string) *UpdateAgentInstanceConfigRequest {
 	s.Config = &v
 	return s
 }
 
-func (s *UpdateAgentInstanceConfigRequest) SetConfigMatcher(v string) *UpdateAgentInstanceConfigRequest {
-	s.ConfigMatcher = &v
-	return s
-}
-
-func (s *UpdateAgentInstanceConfigRequest) SetIsGray(v bool) *UpdateAgentInstanceConfigRequest {
-	s.IsGray = &v
+func (s *UpdateAgentInstanceConfigRequest) SetGrayConfigs(v string) *UpdateAgentInstanceConfigRequest {
+	s.GrayConfigs = &v
 	return s
 }
 
@@ -18462,6 +18690,69 @@ func (s *UpdateMachineGroupMachineResponse) SetStatusCode(v int32) *UpdateMachin
 	return s
 }
 
+type UpdateMaxComputeExportRequest struct {
+	// The setting of the MaxCompute data shipping job.
+	//
+	// This parameter is required.
+	Configuration *MaxComputeExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The description of the MaxCompute data shipping job.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the MaxCompute data shipping job.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my-mc-job
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+}
+
+func (s UpdateMaxComputeExportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMaxComputeExportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMaxComputeExportRequest) SetConfiguration(v *MaxComputeExportConfiguration) *UpdateMaxComputeExportRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *UpdateMaxComputeExportRequest) SetDescription(v string) *UpdateMaxComputeExportRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateMaxComputeExportRequest) SetDisplayName(v string) *UpdateMaxComputeExportRequest {
+	s.DisplayName = &v
+	return s
+}
+
+type UpdateMaxComputeExportResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateMaxComputeExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMaxComputeExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMaxComputeExportResponse) SetHeaders(v map[string]*string) *UpdateMaxComputeExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMaxComputeExportResponse) SetStatusCode(v int32) *UpdateMaxComputeExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateMetricStoreRequest struct {
 	// Specifies whether to enable automatic sharding.
 	//
@@ -18553,6 +18844,8 @@ func (s *UpdateMetricStoreResponse) SetStatusCode(v int32) *UpdateMetricStoreRes
 }
 
 type UpdateMetricStoreMeteringModeRequest struct {
+	// The billing mode. Default value: ChargeByFunction. Valid values: ChargeByFunction and ChargeByDataIngest.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18767,11 +19060,11 @@ func (s *UpdateOSSHDFSExportResponse) SetStatusCode(v int32) *UpdateOSSHDFSExpor
 }
 
 type UpdateOSSIngestionRequest struct {
-	// The configurations of the OSS data import job.
+	// The configuration of the OSS data import job.
 	//
 	// This parameter is required.
 	Configuration *OSSIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	// The description of the OSS data import job.
+	// The description of the Object Storage Service (OSS) data import job.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the OSS data import job.
 	//
@@ -18832,193 +19125,6 @@ func (s *UpdateOSSIngestionResponse) SetStatusCode(v int32) *UpdateOSSIngestionR
 	return s
 }
 
-type UpdateOssExternalStoreRequest struct {
-	// The name of the external store.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// test-oss-store
-	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
-	// The parameters that are configured for the external store.
-	//
-	// This parameter is required.
-	Parameter *UpdateOssExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
-	// The type of the external store. Set the value to oss.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// oss
-	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
-}
-
-func (s UpdateOssExternalStoreRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateOssExternalStoreRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateOssExternalStoreRequest) SetExternalStoreName(v string) *UpdateOssExternalStoreRequest {
-	s.ExternalStoreName = &v
-	return s
-}
-
-func (s *UpdateOssExternalStoreRequest) SetParameter(v *UpdateOssExternalStoreRequestParameter) *UpdateOssExternalStoreRequest {
-	s.Parameter = v
-	return s
-}
-
-func (s *UpdateOssExternalStoreRequest) SetStoreType(v string) *UpdateOssExternalStoreRequest {
-	s.StoreType = &v
-	return s
-}
-
-type UpdateOssExternalStoreRequestParameter struct {
-	// The AccessKey ID of your account.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// LTAI5tFsHGGeYry*****1Sz
-	Accessid *string `json:"accessid,omitempty" xml:"accessid,omitempty"`
-	// The AccessKey secret of your account.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// GyviCLDVHkHrOztdkxuE6******Rp6
-	Accesskey *string `json:"accesskey,omitempty" xml:"accesskey,omitempty"`
-	// The name of the OSS bucket.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// my-bucket
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// The fields that are associated to the external store.
-	//
-	// This parameter is required.
-	Columns []*UpdateOssExternalStoreRequestParameterColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	// The Object Storage Service (OSS) endpoint.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// oss-cn-hangzhou.aliyuncs.com
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The names of the OSS objects that are associated to the external store.
-	//
-	// This parameter is required.
-	Objects []*string `json:"objects,omitempty" xml:"objects,omitempty" type:"Repeated"`
-}
-
-func (s UpdateOssExternalStoreRequestParameter) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateOssExternalStoreRequestParameter) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateOssExternalStoreRequestParameter) SetAccessid(v string) *UpdateOssExternalStoreRequestParameter {
-	s.Accessid = &v
-	return s
-}
-
-func (s *UpdateOssExternalStoreRequestParameter) SetAccesskey(v string) *UpdateOssExternalStoreRequestParameter {
-	s.Accesskey = &v
-	return s
-}
-
-func (s *UpdateOssExternalStoreRequestParameter) SetBucket(v string) *UpdateOssExternalStoreRequestParameter {
-	s.Bucket = &v
-	return s
-}
-
-func (s *UpdateOssExternalStoreRequestParameter) SetColumns(v []*UpdateOssExternalStoreRequestParameterColumns) *UpdateOssExternalStoreRequestParameter {
-	s.Columns = v
-	return s
-}
-
-func (s *UpdateOssExternalStoreRequestParameter) SetEndpoint(v string) *UpdateOssExternalStoreRequestParameter {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *UpdateOssExternalStoreRequestParameter) SetObjects(v []*string) *UpdateOssExternalStoreRequestParameter {
-	s.Objects = v
-	return s
-}
-
-type UpdateOssExternalStoreRequestParameterColumns struct {
-	// The name of the field.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of the field.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// varchar
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s UpdateOssExternalStoreRequestParameterColumns) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateOssExternalStoreRequestParameterColumns) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateOssExternalStoreRequestParameterColumns) SetName(v string) *UpdateOssExternalStoreRequestParameterColumns {
-	s.Name = &v
-	return s
-}
-
-func (s *UpdateOssExternalStoreRequestParameterColumns) SetType(v string) *UpdateOssExternalStoreRequestParameterColumns {
-	s.Type = &v
-	return s
-}
-
-type UpdateOssExternalStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-}
-
-func (s UpdateOssExternalStoreResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateOssExternalStoreResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateOssExternalStoreResponse) SetHeaders(v map[string]*string) *UpdateOssExternalStoreResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateOssExternalStoreResponse) SetStatusCode(v int32) *UpdateOssExternalStoreResponse {
-	s.StatusCode = &v
-	return s
-}
-
 type UpdateProjectRequest struct {
 	// The description of the project. The default value is an empty string.
 	//
@@ -19027,8 +19133,19 @@ type UpdateProjectRequest struct {
 	// example:
 	//
 	// Description of my-project-test
-	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
-	RecycleBinEnabled *bool   `json:"recycleBinEnabled,omitempty" xml:"recycleBinEnabled,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Specifies whether to enable the recycle bin feature.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	RecycleBinEnabled *bool `json:"recycleBinEnabled,omitempty" xml:"recycleBinEnabled,omitempty"`
 }
 
 func (s UpdateProjectRequest) String() string {
@@ -19068,197 +19185,6 @@ func (s *UpdateProjectResponse) SetHeaders(v map[string]*string) *UpdateProjectR
 }
 
 func (s *UpdateProjectResponse) SetStatusCode(v int32) *UpdateProjectResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type UpdateRdsExternalStoreRequest struct {
-	// The name of the external store.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// rds_store
-	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
-	// The parameter struct.
-	//
-	// This parameter is required.
-	Parameter *UpdateRdsExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
-	// The storage type. Set the value to rds-vpc, which indicates an ApsaraDB RDS for MySQL database in a virtual private cloud (VPC).
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// rds-vpc
-	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
-}
-
-func (s UpdateRdsExternalStoreRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateRdsExternalStoreRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateRdsExternalStoreRequest) SetExternalStoreName(v string) *UpdateRdsExternalStoreRequest {
-	s.ExternalStoreName = &v
-	return s
-}
-
-func (s *UpdateRdsExternalStoreRequest) SetParameter(v *UpdateRdsExternalStoreRequestParameter) *UpdateRdsExternalStoreRequest {
-	s.Parameter = v
-	return s
-}
-
-func (s *UpdateRdsExternalStoreRequest) SetStoreType(v string) *UpdateRdsExternalStoreRequest {
-	s.StoreType = &v
-	return s
-}
-
-type UpdateRdsExternalStoreRequestParameter struct {
-	// The name of the database in the ApsaraDB RDS for MySQL instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// meta
-	Db *string `json:"db,omitempty" xml:"db,omitempty"`
-	// The internal or public endpoint of the ApsaraDB RDS for MySQL instance.
-	//
-	// example:
-	//
-	// 192.168.XX.XX
-	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// The ID of the ApsaraDB RDS for MySQL instance.
-	//
-	// example:
-	//
-	// i-bp1b6c719dfa08exf****
-	InstanceId *string `json:"instance-id,omitempty" xml:"instance-id,omitempty"`
-	// The password that is used to log on to the ApsaraDB RDS for MySQL instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// sfdsfldsfksfls****
-	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// The internal or public port of the ApsaraDB RDS for MySQL instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 3306
-	Port *string `json:"port,omitempty" xml:"port,omitempty"`
-	// The region where the ApsaraDB RDS for MySQL instance resides. Valid values: cn-qingdao, cn-beijing, and cn-hangzhou.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-qingdao
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The name of the database table in the ApsaraDB RDS for MySQL instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// join_meta
-	Table *string `json:"table,omitempty" xml:"table,omitempty"`
-	// The username that is used to log on to the ApsaraDB RDS for MySQL instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// root
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
-	// The ID of the VPC to which the ApsaraDB RDS for MySQL instance belongs.
-	//
-	// example:
-	//
-	// vpc-bp1aevy8sofi8mh1q****
-	VpcId *string `json:"vpc-id,omitempty" xml:"vpc-id,omitempty"`
-}
-
-func (s UpdateRdsExternalStoreRequestParameter) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateRdsExternalStoreRequestParameter) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateRdsExternalStoreRequestParameter) SetDb(v string) *UpdateRdsExternalStoreRequestParameter {
-	s.Db = &v
-	return s
-}
-
-func (s *UpdateRdsExternalStoreRequestParameter) SetHost(v string) *UpdateRdsExternalStoreRequestParameter {
-	s.Host = &v
-	return s
-}
-
-func (s *UpdateRdsExternalStoreRequestParameter) SetInstanceId(v string) *UpdateRdsExternalStoreRequestParameter {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *UpdateRdsExternalStoreRequestParameter) SetPassword(v string) *UpdateRdsExternalStoreRequestParameter {
-	s.Password = &v
-	return s
-}
-
-func (s *UpdateRdsExternalStoreRequestParameter) SetPort(v string) *UpdateRdsExternalStoreRequestParameter {
-	s.Port = &v
-	return s
-}
-
-func (s *UpdateRdsExternalStoreRequestParameter) SetRegion(v string) *UpdateRdsExternalStoreRequestParameter {
-	s.Region = &v
-	return s
-}
-
-func (s *UpdateRdsExternalStoreRequestParameter) SetTable(v string) *UpdateRdsExternalStoreRequestParameter {
-	s.Table = &v
-	return s
-}
-
-func (s *UpdateRdsExternalStoreRequestParameter) SetUsername(v string) *UpdateRdsExternalStoreRequestParameter {
-	s.Username = &v
-	return s
-}
-
-func (s *UpdateRdsExternalStoreRequestParameter) SetVpcId(v string) *UpdateRdsExternalStoreRequestParameter {
-	s.VpcId = &v
-	return s
-}
-
-type UpdateRdsExternalStoreResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-}
-
-func (s UpdateRdsExternalStoreResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateRdsExternalStoreResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateRdsExternalStoreResponse) SetHeaders(v map[string]*string) *UpdateRdsExternalStoreResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateRdsExternalStoreResponse) SetStatusCode(v int32) *UpdateRdsExternalStoreResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -19937,6 +19863,78 @@ func (client *Client) ApplyConfigToMachineGroup(project *string, machineGroup *s
 
 // Summary:
 //
+// 调用 ai 工具
+//
+// @param request - CallAiToolsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CallAiToolsResponse
+func (client *Client) CallAiToolsWithOptions(request *CallAiToolsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CallAiToolsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToolName)) {
+		body["toolName"] = request.ToolName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CallAiTools"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/tool/call"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("string"),
+	}
+	_result = &CallAiToolsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用 ai 工具
+//
+// @param request - CallAiToolsRequest
+//
+// @return CallAiToolsResponse
+func (client *Client) CallAiTools(request *CallAiToolsRequest) (_result *CallAiToolsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CallAiToolsResponse{}
+	_body, _err := client.CallAiToolsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Changes the resource group to which a resource belongs.
 //
 // @param request - ChangeResourceGroupRequest
@@ -20252,20 +20250,20 @@ func (client *Client) CreateAgentInstanceConfigWithOptions(request *CreateAgentI
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Attributes)) {
+		body["attributes"] = request.Attributes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Config)) {
 		body["config"] = request.Config
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ConfigMatcher)) {
-		body["configMatcher"] = request.ConfigMatcher
+	if !tea.BoolValue(util.IsUnset(request.ConfigType)) {
+		body["configType"] = request.ConfigType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ConfigName)) {
-		body["configName"] = request.ConfigName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IsGray)) {
-		body["isGray"] = request.IsGray
+	if !tea.BoolValue(util.IsUnset(request.GrayConfigs)) {
+		body["grayConfigs"] = request.GrayConfigs
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20981,7 +20979,7 @@ func (client *Client) CreateDownloadJob(project *string, request *CreateDownload
 
 // Summary:
 //
-// 创建数据加工任务
+// Creates a data transformation job in a project.
 //
 // @param request - CreateETLRequest
 //
@@ -21041,7 +21039,7 @@ func (client *Client) CreateETLWithOptions(project *string, request *CreateETLRe
 
 // Summary:
 //
-// 创建数据加工任务
+// Creates a data transformation job in a project.
 //
 // @param request - CreateETLRequest
 //
@@ -21570,6 +21568,105 @@ func (client *Client) CreateMachineGroup(project *string, request *CreateMachine
 
 // Summary:
 //
+// Creates a MaxCompute data shipping job.
+//
+// Description:
+//
+//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+//
+// @param request - CreateMaxComputeExportRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMaxComputeExportResponse
+func (client *Client) CreateMaxComputeExportWithOptions(project *string, request *CreateMaxComputeExportRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateMaxComputeExportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMaxComputeExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/maxcomputeexports"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateMaxComputeExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a MaxCompute data shipping job.
+//
+// Description:
+//
+//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+//
+// @param request - CreateMaxComputeExportRequest
+//
+// @return CreateMaxComputeExportResponse
+func (client *Client) CreateMaxComputeExport(project *string, request *CreateMaxComputeExportRequest) (_result *CreateMaxComputeExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateMaxComputeExportResponse{}
+	_body, _err := client.CreateMaxComputeExportWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a Metricstore to store metric data.
 //
 // Description:
@@ -21942,93 +22039,6 @@ func (client *Client) CreateOSSIngestion(project *string, request *CreateOSSInge
 
 // Summary:
 //
-// Creates an Object Storage Service (OSS) external store.
-//
-// Description:
-//
-// ### [](#)Usage notes
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @param request - CreateOssExternalStoreRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateOssExternalStoreResponse
-func (client *Client) CreateOssExternalStoreWithOptions(project *string, request *CreateOssExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOssExternalStoreResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ExternalStoreName)) {
-		body["externalStoreName"] = request.ExternalStoreName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Parameter)) {
-		body["parameter"] = request.Parameter
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StoreType)) {
-		body["storeType"] = request.StoreType
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateOssExternalStore"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/externalstores"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &CreateOssExternalStoreResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an Object Storage Service (OSS) external store.
-//
-// Description:
-//
-// ### [](#)Usage notes
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @param request - CreateOssExternalStoreRequest
-//
-// @return CreateOssExternalStoreResponse
-func (client *Client) CreateOssExternalStore(project *string, request *CreateOssExternalStoreRequest) (_result *CreateOssExternalStoreResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateOssExternalStoreResponse{}
-	_body, _err := client.CreateOssExternalStoreWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Creates a project.
 //
 // @param request - CreateProjectRequest
@@ -22100,89 +22110,6 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 	headers := make(map[string]*string)
 	_result = &CreateProjectResponse{}
 	_body, _err := client.CreateProjectWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an ApsaraDB RDS external store.
-//
-// Description:
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @param request - CreateRdsExternalStoreRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateRdsExternalStoreResponse
-func (client *Client) CreateRdsExternalStoreWithOptions(project *string, request *CreateRdsExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRdsExternalStoreResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ExternalStoreName)) {
-		body["externalStoreName"] = request.ExternalStoreName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Parameter)) {
-		body["parameter"] = request.Parameter
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StoreType)) {
-		body["storeType"] = request.StoreType
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateRdsExternalStore"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/externalstores"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &CreateRdsExternalStoreResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an ApsaraDB RDS external store.
-//
-// Description:
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @param request - CreateRdsExternalStoreRequest
-//
-// @return CreateRdsExternalStoreResponse
-func (client *Client) CreateRdsExternalStore(project *string, request *CreateRdsExternalStoreRequest) (_result *CreateRdsExternalStoreResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateRdsExternalStoreResponse{}
-	_body, _err := client.CreateRdsExternalStoreWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22637,14 +22564,14 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAgentInstanceConfigResponse
-func (client *Client) DeleteAgentInstanceConfigWithOptions(configName *string, request *DeleteAgentInstanceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAgentInstanceConfigResponse, _err error) {
+func (client *Client) DeleteAgentInstanceConfigWithOptions(configType *string, request *DeleteAgentInstanceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAgentInstanceConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.IsGray)) {
-		query["isGray"] = request.IsGray
+	if !tea.BoolValue(util.IsUnset(request.Attributes)) {
+		query["attributes"] = request.Attributes
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -22655,7 +22582,7 @@ func (client *Client) DeleteAgentInstanceConfigWithOptions(configName *string, r
 		Action:      tea.String("DeleteAgentInstanceConfig"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/agentinstanceconfigs/" + tea.StringValue(configName)),
+		Pathname:    tea.String("/agentinstanceconfigs/" + tea.StringValue(configType)),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -22678,11 +22605,11 @@ func (client *Client) DeleteAgentInstanceConfigWithOptions(configName *string, r
 // @param request - DeleteAgentInstanceConfigRequest
 //
 // @return DeleteAgentInstanceConfigResponse
-func (client *Client) DeleteAgentInstanceConfig(configName *string, request *DeleteAgentInstanceConfigRequest) (_result *DeleteAgentInstanceConfigResponse, _err error) {
+func (client *Client) DeleteAgentInstanceConfig(configType *string, request *DeleteAgentInstanceConfigRequest) (_result *DeleteAgentInstanceConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteAgentInstanceConfigResponse{}
-	_body, _err := client.DeleteAgentInstanceConfigWithOptions(configName, request, headers, runtime)
+	_body, _err := client.DeleteAgentInstanceConfigWithOptions(configType, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23364,7 +23291,7 @@ func (client *Client) DeleteDownloadJob(project *string, downloadJobName *string
 
 // Summary:
 //
-// 删除数据加工任务
+// Deletes a data transformation job.
 //
 // @param headers - map
 //
@@ -23400,7 +23327,7 @@ func (client *Client) DeleteETLWithOptions(project *string, etlName *string, hea
 
 // Summary:
 //
-// 删除数据加工任务
+// Deletes a data transformation job.
 //
 // @return DeleteETLResponse
 func (client *Client) DeleteETL(project *string, etlName *string) (_result *DeleteETLResponse, _err error) {
@@ -23408,67 +23335,6 @@ func (client *Client) DeleteETL(project *string, etlName *string) (_result *Dele
 	headers := make(map[string]*string)
 	_result = &DeleteETLResponse{}
 	_body, _err := client.DeleteETLWithOptions(project, etlName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an external store.
-//
-// Description:
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteExternalStoreResponse
-func (client *Client) DeleteExternalStoreWithOptions(project *string, externalStoreName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteExternalStoreResponse, _err error) {
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteExternalStore"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/externalstores/" + tea.StringValue(externalStoreName)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &DeleteExternalStoreResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an external store.
-//
-// Description:
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @return DeleteExternalStoreResponse
-func (client *Client) DeleteExternalStore(project *string, externalStoreName *string) (_result *DeleteExternalStoreResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteExternalStoreResponse{}
-	_body, _err := client.DeleteExternalStoreWithOptions(project, externalStoreName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23831,6 +23697,79 @@ func (client *Client) DeleteMachineGroup(project *string, machineGroup *string) 
 	headers := make(map[string]*string)
 	_result = &DeleteMachineGroupResponse{}
 	_body, _err := client.DeleteMachineGroupWithOptions(project, machineGroup, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a MaxCompute data shipping job.
+//
+// Description:
+//
+//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMaxComputeExportResponse
+func (client *Client) DeleteMaxComputeExportWithOptions(project *string, mcExportName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteMaxComputeExportResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMaxComputeExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/maxcomputeexports/" + tea.StringValue(mcExportName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteMaxComputeExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a MaxCompute data shipping job.
+//
+// Description:
+//
+//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+//
+// @return DeleteMaxComputeExportResponse
+func (client *Client) DeleteMaxComputeExport(project *string, mcExportName *string) (_result *DeleteMaxComputeExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteMaxComputeExportResponse{}
+	_body, _err := client.DeleteMaxComputeExportWithOptions(project, mcExportName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24483,7 +24422,7 @@ func (client *Client) DeleteStoreView(project *string, name *string) (_result *D
 
 // Summary:
 //
-// 查询可用的区域
+// Queries supported regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -24528,7 +24467,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// 查询可用的区域
+// Queries supported regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -24761,20 +24700,32 @@ func (client *Client) EnableScheduledSQL(project *string, scheduledSQLName *stri
 //
 // # GetAgentInstanceConfig
 //
+// @param request - GetAgentInstanceConfigRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAgentInstanceConfigResponse
-func (client *Client) GetAgentInstanceConfigWithOptions(configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAgentInstanceConfigResponse, _err error) {
+func (client *Client) GetAgentInstanceConfigWithOptions(configType *string, request *GetAgentInstanceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAgentInstanceConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Attributes)) {
+		query["attributes"] = request.Attributes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetAgentInstanceConfig"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/agentinstanceconfigs/" + tea.StringValue(configName)),
+		Pathname:    tea.String("/agentinstanceconfigs/" + tea.StringValue(configType)),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -24794,12 +24745,14 @@ func (client *Client) GetAgentInstanceConfigWithOptions(configName *string, head
 //
 // # GetAgentInstanceConfig
 //
+// @param request - GetAgentInstanceConfigRequest
+//
 // @return GetAgentInstanceConfigResponse
-func (client *Client) GetAgentInstanceConfig(configName *string) (_result *GetAgentInstanceConfigResponse, _err error) {
+func (client *Client) GetAgentInstanceConfig(configType *string, request *GetAgentInstanceConfigRequest) (_result *GetAgentInstanceConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetAgentInstanceConfigResponse{}
-	_body, _err := client.GetAgentInstanceConfigWithOptions(configName, headers, runtime)
+	_body, _err := client.GetAgentInstanceConfigWithOptions(configType, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25793,7 +25746,7 @@ func (client *Client) GetDownloadJob(project *string, downloadJobName *string) (
 
 // Summary:
 //
-// 获取数据加工任务信息
+// Queries the configurations of a data transformation job.
 //
 // @param headers - map
 //
@@ -25829,7 +25782,7 @@ func (client *Client) GetETLWithOptions(project *string, etlName *string, header
 
 // Summary:
 //
-// 获取数据加工任务信息
+// Queries the configurations of a data transformation job.
 //
 // @return GetETLResponse
 func (client *Client) GetETL(project *string, etlName *string) (_result *GetETLResponse, _err error) {
@@ -25837,71 +25790,6 @@ func (client *Client) GetETL(project *string, etlName *string) (_result *GetETLR
 	headers := make(map[string]*string)
 	_result = &GetETLResponse{}
 	_body, _err := client.GetETLWithOptions(project, etlName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an external store.
-//
-// Description:
-//
-//	  The supported data sources of external stores include Object Storage Service (OSS) buckets and ApsaraDB RDS for MySQL databases in a virtual private cloud (VPC).
-//
-//		- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetExternalStoreResponse
-func (client *Client) GetExternalStoreWithOptions(project *string, externalStoreName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetExternalStoreResponse, _err error) {
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetExternalStore"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/externalstores/" + tea.StringValue(externalStoreName)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetExternalStoreResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an external store.
-//
-// Description:
-//
-//	  The supported data sources of external stores include Object Storage Service (OSS) buckets and ApsaraDB RDS for MySQL databases in a virtual private cloud (VPC).
-//
-//		- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @return GetExternalStoreResponse
-func (client *Client) GetExternalStore(project *string, externalStoreName *string) (_result *GetExternalStoreResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetExternalStoreResponse{}
-	_body, _err := client.GetExternalStoreWithOptions(project, externalStoreName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26893,6 +26781,79 @@ func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_r
 
 // Summary:
 //
+// Queries a MaxCompute data shipping job.
+//
+// Description:
+//
+//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMaxComputeExportResponse
+func (client *Client) GetMaxComputeExportWithOptions(project *string, mcExportName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMaxComputeExportResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMaxComputeExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/maxcomputeexports/" + tea.StringValue(mcExportName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMaxComputeExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a MaxCompute data shipping job.
+//
+// Description:
+//
+//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+//
+// @return GetMaxComputeExportResponse
+func (client *Client) GetMaxComputeExport(project *string, mcExportName *string) (_result *GetMaxComputeExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMaxComputeExportResponse{}
+	_body, _err := client.GetMaxComputeExportWithOptions(project, mcExportName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a Metricstore.
 //
 // Description:
@@ -27849,6 +27810,14 @@ func (client *Client) ListAgentInstanceConfigsWithOptions(request *ListAgentInst
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Attributes)) {
+		query["attributes"] = request.Attributes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigType)) {
+		query["configType"] = request.ConfigType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Offset)) {
 		query["offset"] = request.Offset
 	}
@@ -27893,6 +27862,56 @@ func (client *Client) ListAgentInstanceConfigs(request *ListAgentInstanceConfigs
 	headers := make(map[string]*string)
 	_result = &ListAgentInstanceConfigsResponse{}
 	_body, _err := client.ListAgentInstanceConfigsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取 ai 工具列表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAiToolsResponse
+func (client *Client) ListAiToolsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAiToolsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAiTools"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/tool/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &ListAiToolsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取 ai 工具列表
+//
+// @return ListAiToolsResponse
+func (client *Client) ListAiTools() (_result *ListAiToolsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAiToolsResponse{}
+	_body, _err := client.ListAiToolsWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28491,27 +28510,45 @@ func (client *Client) ListConsumerGroup(project *string, logstore *string) (_res
 //
 //   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
-// @param request - ListDashboardRequest
+// @param tmpReq - ListDashboardRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDashboardResponse
-func (client *Client) ListDashboardWithOptions(project *string, request *ListDashboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDashboardResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListDashboardWithOptions(project *string, tmpReq *ListDashboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDashboardResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
+	request := &ListDashboardShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("tags"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DashboardName)) {
+		query["dashboardName"] = request.DashboardName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["displayName"] = request.DisplayName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Offset)) {
 		query["offset"] = request.Offset
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
 		query["size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["tags"] = request.TagsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -28734,7 +28771,7 @@ func (client *Client) ListDownloadJobs(project *string, request *ListDownloadJob
 
 // Summary:
 //
-// 列出数据加工任务
+// Queries a list of data transformation jobs in a project.
 //
 // @param request - ListETLsRequest
 //
@@ -28790,7 +28827,7 @@ func (client *Client) ListETLsWithOptions(project *string, request *ListETLsRequ
 
 // Summary:
 //
-// 列出数据加工任务
+// Queries a list of data transformation jobs in a project.
 //
 // @param request - ListETLsRequest
 //
@@ -29255,6 +29292,101 @@ func (client *Client) ListMachines(project *string, machineGroup *string, reques
 	headers := make(map[string]*string)
 	_result = &ListMachinesResponse{}
 	_body, _err := client.ListMachinesWithOptions(project, machineGroup, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of MaxCompute data shipping jobs.
+//
+// Description:
+//
+//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+//
+// @param request - ListMaxComputeExportsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMaxComputeExportsResponse
+func (client *Client) ListMaxComputeExportsWithOptions(project *string, request *ListMaxComputeExportsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMaxComputeExportsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		query["logstore"] = request.Logstore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMaxComputeExports"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/maxcomputeexports"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMaxComputeExportsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of MaxCompute data shipping jobs.
+//
+// Description:
+//
+//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+//
+// @param request - ListMaxComputeExportsRequest
+//
+// @return ListMaxComputeExportsResponse
+func (client *Client) ListMaxComputeExports(project *string, request *ListMaxComputeExportsRequest) (_result *ListMaxComputeExportsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMaxComputeExportsResponse{}
+	_body, _err := client.ListMaxComputeExportsWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31060,7 +31192,7 @@ func (client *Client) SplitShard(project *string, logstore *string, shard *strin
 
 // Summary:
 //
-// 启动数据加工任务
+// Starts a data transformation job.
 //
 // @param headers - map
 //
@@ -31096,7 +31228,7 @@ func (client *Client) StartETLWithOptions(project *string, etlName *string, head
 
 // Summary:
 //
-// 启动数据加工任务
+// Starts a data transformation job.
 //
 // @return StartETLResponse
 func (client *Client) StartETL(project *string, etlName *string) (_result *StartETLResponse, _err error) {
@@ -31104,6 +31236,79 @@ func (client *Client) StartETL(project *string, etlName *string) (_result *Start
 	headers := make(map[string]*string)
 	_result = &StartETLResponse{}
 	_body, _err := client.StartETLWithOptions(project, etlName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Starts a MaxCompute data shipping job.
+//
+// Description:
+//
+//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartMaxComputeExportResponse
+func (client *Client) StartMaxComputeExportWithOptions(project *string, mcExportName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartMaxComputeExportResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartMaxComputeExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/maxcomputeexports/" + tea.StringValue(mcExportName) + "?action=START"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StartMaxComputeExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Starts a MaxCompute data shipping job.
+//
+// Description:
+//
+//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
+//
+// @return StartMaxComputeExportResponse
+func (client *Client) StartMaxComputeExport(project *string, mcExportName *string) (_result *StartMaxComputeExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartMaxComputeExportResponse{}
+	_body, _err := client.StartMaxComputeExportWithOptions(project, mcExportName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31272,7 +31477,7 @@ func (client *Client) StartOSSIngestion(project *string, ossIngestionName *strin
 
 // Summary:
 //
-// 停止数据加工任务
+// Stops a data transformation job.
 //
 // @param headers - map
 //
@@ -31308,7 +31513,7 @@ func (client *Client) StopETLWithOptions(project *string, etlName *string, heade
 
 // Summary:
 //
-// 停止数据加工任务
+// Stops a data transformation job.
 //
 // @return StopETLResponse
 func (client *Client) StopETL(project *string, etlName *string) (_result *StopETLResponse, _err error) {
@@ -31316,6 +31521,79 @@ func (client *Client) StopETL(project *string, etlName *string) (_result *StopET
 	headers := make(map[string]*string)
 	_result = &StopETLResponse{}
 	_body, _err := client.StopETLWithOptions(project, etlName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops a MaxCompute data shipping job.
+//
+// Description:
+//
+//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopMaxComputeExportResponse
+func (client *Client) StopMaxComputeExportWithOptions(project *string, mcExportName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopMaxComputeExportResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopMaxComputeExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/maxcomputeexports/" + tea.StringValue(mcExportName) + "?action=STOP"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &StopMaxComputeExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops a MaxCompute data shipping job.
+//
+// Description:
+//
+//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+//
+// @return StopMaxComputeExportResponse
+func (client *Client) StopMaxComputeExport(project *string, mcExportName *string) (_result *StopMaxComputeExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopMaxComputeExportResponse{}
+	_body, _err := client.StopMaxComputeExportWithOptions(project, mcExportName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31733,33 +32011,35 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAgentInstanceConfigResponse
-func (client *Client) UpdateAgentInstanceConfigWithOptions(configName *string, request *UpdateAgentInstanceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAgentInstanceConfigResponse, _err error) {
+func (client *Client) UpdateAgentInstanceConfigWithOptions(configType *string, request *UpdateAgentInstanceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAgentInstanceConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Attributes)) {
+		query["attributes"] = request.Attributes
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Config)) {
 		body["config"] = request.Config
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ConfigMatcher)) {
-		body["configMatcher"] = request.ConfigMatcher
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IsGray)) {
-		body["isGray"] = request.IsGray
+	if !tea.BoolValue(util.IsUnset(request.GrayConfigs)) {
+		body["grayConfigs"] = request.GrayConfigs
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateAgentInstanceConfig"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/agentinstanceconfigs/" + tea.StringValue(configName)),
+		Pathname:    tea.String("/agentinstanceconfigs/" + tea.StringValue(configType)),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -31782,11 +32062,11 @@ func (client *Client) UpdateAgentInstanceConfigWithOptions(configName *string, r
 // @param request - UpdateAgentInstanceConfigRequest
 //
 // @return UpdateAgentInstanceConfigResponse
-func (client *Client) UpdateAgentInstanceConfig(configName *string, request *UpdateAgentInstanceConfigRequest) (_result *UpdateAgentInstanceConfigResponse, _err error) {
+func (client *Client) UpdateAgentInstanceConfig(configType *string, request *UpdateAgentInstanceConfigRequest) (_result *UpdateAgentInstanceConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &UpdateAgentInstanceConfigResponse{}
-	_body, _err := client.UpdateAgentInstanceConfigWithOptions(configName, request, headers, runtime)
+	_body, _err := client.UpdateAgentInstanceConfigWithOptions(configType, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32305,7 +32585,7 @@ func (client *Client) UpdateDashboard(project *string, dashboardName *string, re
 
 // Summary:
 //
-// 更新数据加工任务
+// Updates a data transformation job.
 //
 // @param request - UpdateETLRequest
 //
@@ -32361,7 +32641,7 @@ func (client *Client) UpdateETLWithOptions(project *string, etlName *string, req
 
 // Summary:
 //
-// 更新数据加工任务
+// Updates a data transformation job.
 //
 // @param request - UpdateETLRequest
 //
@@ -33175,6 +33455,101 @@ func (client *Client) UpdateMachineGroupMachine(project *string, machineGroup *s
 
 // Summary:
 //
+// Updates a MaxCompute data shipping job.
+//
+// Description:
+//
+//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+//
+// @param request - UpdateMaxComputeExportRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMaxComputeExportResponse
+func (client *Client) UpdateMaxComputeExportWithOptions(project *string, mcExportName *string, request *UpdateMaxComputeExportRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMaxComputeExportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMaxComputeExport"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/maxcomputeexports/" + tea.StringValue(mcExportName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateMaxComputeExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a MaxCompute data shipping job.
+//
+// Description:
+//
+//	  Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+//		- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+//   - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+//
+// @param request - UpdateMaxComputeExportRequest
+//
+// @return UpdateMaxComputeExportResponse
+func (client *Client) UpdateMaxComputeExport(project *string, mcExportName *string, request *UpdateMaxComputeExportRequest) (_result *UpdateMaxComputeExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMaxComputeExportResponse{}
+	_body, _err := client.UpdateMaxComputeExportWithOptions(project, mcExportName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the settings of an existing Metricstore. Metricstores are used to store metric data.
 //
 // Description:
@@ -33661,93 +34036,6 @@ func (client *Client) UpdateOSSIngestion(project *string, ossIngestionName *stri
 
 // Summary:
 //
-// Updates an Object Storage Service (OSS) external store.
-//
-// Description:
-//
-// ### [](#)Usage notes
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @param request - UpdateOssExternalStoreRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateOssExternalStoreResponse
-func (client *Client) UpdateOssExternalStoreWithOptions(project *string, externalStoreName *string, request *UpdateOssExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateOssExternalStoreResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ExternalStoreName)) {
-		body["externalStoreName"] = request.ExternalStoreName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Parameter)) {
-		body["parameter"] = request.Parameter
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StoreType)) {
-		body["storeType"] = request.StoreType
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateOssExternalStore"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/externalstores/" + tea.StringValue(externalStoreName)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &UpdateOssExternalStoreResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates an Object Storage Service (OSS) external store.
-//
-// Description:
-//
-// ### [](#)Usage notes
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @param request - UpdateOssExternalStoreRequest
-//
-// @return UpdateOssExternalStoreResponse
-func (client *Client) UpdateOssExternalStore(project *string, externalStoreName *string, request *UpdateOssExternalStoreRequest) (_result *UpdateOssExternalStoreResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateOssExternalStoreResponse{}
-	_body, _err := client.UpdateOssExternalStoreWithOptions(project, externalStoreName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Updates a project.
 //
 // Description:
@@ -33850,89 +34138,6 @@ func (client *Client) UpdateProject(project *string, request *UpdateProjectReque
 	headers := make(map[string]*string)
 	_result = &UpdateProjectResponse{}
 	_body, _err := client.UpdateProjectWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates an ApsaraDB RDS external store.
-//
-// Description:
-//
-// Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
-//
-// @param request - UpdateRdsExternalStoreRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateRdsExternalStoreResponse
-func (client *Client) UpdateRdsExternalStoreWithOptions(project *string, externalStoreName *string, request *UpdateRdsExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRdsExternalStoreResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ExternalStoreName)) {
-		body["externalStoreName"] = request.ExternalStoreName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Parameter)) {
-		body["parameter"] = request.Parameter
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StoreType)) {
-		body["storeType"] = request.StoreType
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateRdsExternalStore"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/externalstores/" + tea.StringValue(externalStoreName)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &UpdateRdsExternalStoreResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates an ApsaraDB RDS external store.
-//
-// Description:
-//
-// Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
-//
-// @param request - UpdateRdsExternalStoreRequest
-//
-// @return UpdateRdsExternalStoreResponse
-func (client *Client) UpdateRdsExternalStore(project *string, externalStoreName *string, request *UpdateRdsExternalStoreRequest) (_result *UpdateRdsExternalStoreResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateRdsExternalStoreResponse{}
-	_body, _err := client.UpdateRdsExternalStoreWithOptions(project, externalStoreName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
