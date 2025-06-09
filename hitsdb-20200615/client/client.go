@@ -12080,6 +12080,7 @@ func (s *UpgradeLindormInstanceResponse) SetBody(v *UpgradeLindormInstanceRespon
 }
 
 type UpgradeLindormV2StreamEngineRequest struct {
+	CustomConfig *string `json:"CustomConfig,omitempty" xml:"CustomConfig,omitempty"`
 	// This parameter is required.
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -12104,6 +12105,11 @@ func (s UpgradeLindormV2StreamEngineRequest) String() string {
 
 func (s UpgradeLindormV2StreamEngineRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpgradeLindormV2StreamEngineRequest) SetCustomConfig(v string) *UpgradeLindormV2StreamEngineRequest {
+	s.CustomConfig = &v
+	return s
 }
 
 func (s *UpgradeLindormV2StreamEngineRequest) SetInstanceId(v string) *UpgradeLindormV2StreamEngineRequest {
@@ -17265,6 +17271,10 @@ func (client *Client) UpgradeLindormV2StreamEngineWithOptions(request *UpgradeLi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomConfig)) {
+		query["CustomConfig"] = request.CustomConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
