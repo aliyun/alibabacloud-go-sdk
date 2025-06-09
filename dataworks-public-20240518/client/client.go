@@ -12887,6 +12887,7 @@ type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	//
 	// 2
 	Parallelism *int32 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	Priority    *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The root task IDs.
 	RootTaskIds []*int64 `json:"RootTaskIds,omitempty" xml:"RootTaskIds,omitempty" type:"Repeated"`
 	// The data backfill policy. If you leave this parameter empty, the runtime configuration is used.
@@ -12949,6 +12950,11 @@ func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetOrder(v string) 
 
 func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetParallelism(v int32) *CreateWorkflowInstancesRequestDefaultRunProperties {
 	s.Parallelism = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetPriority(v int32) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.Priority = &v
 	return s
 }
 
@@ -64715,28 +64721,40 @@ func (s *UpdateAlertRuleResponse) SetBody(v *UpdateAlertRuleResponseBody) *Updat
 }
 
 type UpdateBusinessRequest struct {
+	// The workflow ID. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 300000
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// The name of the workflow. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the name.
+	//
 	// example:
 	//
 	// MyBusiness
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
+	// The description of the workflow.
+	//
 	// example:
 	//
 	// modified from my first business
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The owner of the workflow. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the owner.
+	//
 	// example:
 	//
 	// 348428****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must configure either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
+	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must configure either this parameter or the ProjectId parameter to determine the DataWorks workspace to which the operation is applied.
+	//
 	// example:
 	//
 	// dw_project
@@ -64782,22 +64800,36 @@ func (s *UpdateBusinessRequest) SetProjectIdentifier(v string) *UpdateBusinessRe
 }
 
 type UpdateBusinessResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// true\\
+	//
+	// false
+	//
 	// example:
 	//
 	// true
@@ -76554,6 +76586,10 @@ func (client *Client) CreateWorkflowDefinition(request *CreateWorkflowDefinition
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建工作流实例
+//
 // @param tmpReq - CreateWorkflowInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -76642,6 +76678,10 @@ func (client *Client) CreateWorkflowInstancesWithOptions(tmpReq *CreateWorkflowI
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建工作流实例
+//
 // @param request - CreateWorkflowInstancesRequest
 //
 // @return CreateWorkflowInstancesResponse
@@ -87676,6 +87716,10 @@ func (client *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a workflow.
+//
 // @param request - UpdateBusinessRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -87734,6 +87778,10 @@ func (client *Client) UpdateBusinessWithOptions(request *UpdateBusinessRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a workflow.
+//
 // @param request - UpdateBusinessRequest
 //
 // @return UpdateBusinessResponse
