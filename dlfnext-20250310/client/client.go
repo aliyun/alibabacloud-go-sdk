@@ -74,6 +74,112 @@ func (s *Catalog) SetUpdatedBy(v string) *Catalog {
 	return s
 }
 
+type CatalogSummary struct {
+	ApiVisitCountMonthly *int64     `json:"apiVisitCountMonthly,omitempty" xml:"apiVisitCountMonthly,omitempty"`
+	DatabaseCount        *MoMValues `json:"databaseCount,omitempty" xml:"databaseCount,omitempty"`
+	// Update date of the statistics
+	GeneratedDate        *string    `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
+	PartitionCount       *MoMValues `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
+	TableCount           *MoMValues `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
+	ThroughputMonthly    *int64     `json:"throughputMonthly,omitempty" xml:"throughputMonthly,omitempty"`
+	TotalFileCount       *MoMValues `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
+	TotalFileSizeInBytes *MoMValues `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
+}
+
+func (s CatalogSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CatalogSummary) GoString() string {
+	return s.String()
+}
+
+func (s *CatalogSummary) SetApiVisitCountMonthly(v int64) *CatalogSummary {
+	s.ApiVisitCountMonthly = &v
+	return s
+}
+
+func (s *CatalogSummary) SetDatabaseCount(v *MoMValues) *CatalogSummary {
+	s.DatabaseCount = v
+	return s
+}
+
+func (s *CatalogSummary) SetGeneratedDate(v string) *CatalogSummary {
+	s.GeneratedDate = &v
+	return s
+}
+
+func (s *CatalogSummary) SetPartitionCount(v *MoMValues) *CatalogSummary {
+	s.PartitionCount = v
+	return s
+}
+
+func (s *CatalogSummary) SetTableCount(v *MoMValues) *CatalogSummary {
+	s.TableCount = v
+	return s
+}
+
+func (s *CatalogSummary) SetThroughputMonthly(v int64) *CatalogSummary {
+	s.ThroughputMonthly = &v
+	return s
+}
+
+func (s *CatalogSummary) SetTotalFileCount(v *MoMValues) *CatalogSummary {
+	s.TotalFileCount = v
+	return s
+}
+
+func (s *CatalogSummary) SetTotalFileSizeInBytes(v *MoMValues) *CatalogSummary {
+	s.TotalFileSizeInBytes = v
+	return s
+}
+
+type CatalogSummaryTrend struct {
+	// API visit count trends
+	ApiVisitCount []*DateSummary `json:"apiVisitCount,omitempty" xml:"apiVisitCount,omitempty" type:"Repeated"`
+	// Table count trends
+	Throughput []*DateSummary `json:"throughput,omitempty" xml:"throughput,omitempty" type:"Repeated"`
+	// Historical total file count
+	TotalFileCount []*DateSummary `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty" type:"Repeated"`
+	// Database count trends
+	TotalFileSizeInBytes []*DateSummary `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty" type:"Repeated"`
+	// Latest snapshot file count
+	TotalMetaCount []*DateSummary `json:"totalMetaCount,omitempty" xml:"totalMetaCount,omitempty" type:"Repeated"`
+}
+
+func (s CatalogSummaryTrend) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CatalogSummaryTrend) GoString() string {
+	return s.String()
+}
+
+func (s *CatalogSummaryTrend) SetApiVisitCount(v []*DateSummary) *CatalogSummaryTrend {
+	s.ApiVisitCount = v
+	return s
+}
+
+func (s *CatalogSummaryTrend) SetThroughput(v []*DateSummary) *CatalogSummaryTrend {
+	s.Throughput = v
+	return s
+}
+
+func (s *CatalogSummaryTrend) SetTotalFileCount(v []*DateSummary) *CatalogSummaryTrend {
+	s.TotalFileCount = v
+	return s
+}
+
+func (s *CatalogSummaryTrend) SetTotalFileSizeInBytes(v []*DateSummary) *CatalogSummaryTrend {
+	s.TotalFileSizeInBytes = v
+	return s
+}
+
+func (s *CatalogSummaryTrend) SetTotalMetaCount(v []*DateSummary) *CatalogSummaryTrend {
+	s.TotalMetaCount = v
+	return s
+}
+
 type DataField struct {
 	Description *string       `json:"description,omitempty" xml:"description,omitempty"`
 	Id          *int32        `json:"id,omitempty" xml:"id,omitempty"`
@@ -171,6 +277,95 @@ func (s *Database) SetUpdatedAt(v int64) *Database {
 
 func (s *Database) SetUpdatedBy(v string) *Database {
 	s.UpdatedBy = &v
+	return s
+}
+
+type DatabaseSummary struct {
+	// Creation timestamp in milliseconds
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// 库名 - Database name
+	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+	// Last profile update date in format yyyyMMdd
+	GeneratedDate *string `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
+	// Storage location URI
+	Location       *string `json:"location,omitempty" xml:"location,omitempty"`
+	PartitionCount *int64  `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
+	// Total storage in bytes
+	TableCount     *int64 `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
+	TotalFileCount *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
+	// Total file count
+	TotalFileSizeInBytes *int64 `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
+}
+
+func (s DatabaseSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DatabaseSummary) GoString() string {
+	return s.String()
+}
+
+func (s *DatabaseSummary) SetCreatedAt(v int64) *DatabaseSummary {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *DatabaseSummary) SetDatabaseName(v string) *DatabaseSummary {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DatabaseSummary) SetGeneratedDate(v string) *DatabaseSummary {
+	s.GeneratedDate = &v
+	return s
+}
+
+func (s *DatabaseSummary) SetLocation(v string) *DatabaseSummary {
+	s.Location = &v
+	return s
+}
+
+func (s *DatabaseSummary) SetPartitionCount(v int64) *DatabaseSummary {
+	s.PartitionCount = &v
+	return s
+}
+
+func (s *DatabaseSummary) SetTableCount(v int64) *DatabaseSummary {
+	s.TableCount = &v
+	return s
+}
+
+func (s *DatabaseSummary) SetTotalFileCount(v int64) *DatabaseSummary {
+	s.TotalFileCount = &v
+	return s
+}
+
+func (s *DatabaseSummary) SetTotalFileSizeInBytes(v int64) *DatabaseSummary {
+	s.TotalFileSizeInBytes = &v
+	return s
+}
+
+type DateSummary struct {
+	Date *string `json:"date,omitempty" xml:"date,omitempty"`
+	// Metric value at corresponding date
+	Value *int64 `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s DateSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DateSummary) GoString() string {
+	return s.String()
+}
+
+func (s *DateSummary) SetDate(v string) *DateSummary {
+	s.Date = &v
+	return s
+}
+
+func (s *DateSummary) SetValue(v int64) *DateSummary {
+	s.Value = &v
 	return s
 }
 
@@ -393,6 +588,38 @@ func (s *Identifier) SetObject(v string) *Identifier {
 	return s
 }
 
+type MoMValues struct {
+	// total
+	CurrentValue *int64 `json:"currentValue,omitempty" xml:"currentValue,omitempty"`
+	// daily addition
+	LastDayValue *int64 `json:"lastDayValue,omitempty" xml:"lastDayValue,omitempty"`
+	// monthly addition
+	LastMonthValue *int64 `json:"lastMonthValue,omitempty" xml:"lastMonthValue,omitempty"`
+}
+
+func (s MoMValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoMValues) GoString() string {
+	return s.String()
+}
+
+func (s *MoMValues) SetCurrentValue(v int64) *MoMValues {
+	s.CurrentValue = &v
+	return s
+}
+
+func (s *MoMValues) SetLastDayValue(v int64) *MoMValues {
+	s.LastDayValue = &v
+	return s
+}
+
+func (s *MoMValues) SetLastMonthValue(v int64) *MoMValues {
+	s.LastMonthValue = &v
+	return s
+}
+
 type Move struct {
 	FieldName          *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
 	ReferenceFieldName *string `json:"referenceFieldName,omitempty" xml:"referenceFieldName,omitempty"`
@@ -490,6 +717,96 @@ func (s *Partition) SetUpdatedAt(v int64) *Partition {
 
 func (s *Partition) SetUpdatedBy(v string) *Partition {
 	s.UpdatedBy = &v
+	return s
+}
+
+type PartitionSummaries struct {
+	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
+	// Current page of partition profiles
+	Partitions []*PartitionSummary `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
+}
+
+func (s PartitionSummaries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PartitionSummaries) GoString() string {
+	return s.String()
+}
+
+func (s *PartitionSummaries) SetNextPageToken(v string) *PartitionSummaries {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *PartitionSummaries) SetPartitions(v []*PartitionSummary) *PartitionSummaries {
+	s.Partitions = v
+	return s
+}
+
+type PartitionSummary struct {
+	// Partition creation timestamp in milliseconds
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// Database name
+	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+	// Total files in partition
+	LastAccessTime *int64 `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
+	// Partition identifier
+	PartitionName *string `json:"partitionName,omitempty" xml:"partitionName,omitempty"`
+	// Table name
+	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	// 24h access count
+	TotalFileCount *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
+	// Last data access timestamp in milliseconds
+	TotalFileSizeInBytes *int64 `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
+	UpdatedAt            *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+}
+
+func (s PartitionSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PartitionSummary) GoString() string {
+	return s.String()
+}
+
+func (s *PartitionSummary) SetCreatedAt(v int64) *PartitionSummary {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *PartitionSummary) SetDatabaseName(v string) *PartitionSummary {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *PartitionSummary) SetLastAccessTime(v int64) *PartitionSummary {
+	s.LastAccessTime = &v
+	return s
+}
+
+func (s *PartitionSummary) SetPartitionName(v string) *PartitionSummary {
+	s.PartitionName = &v
+	return s
+}
+
+func (s *PartitionSummary) SetTableName(v string) *PartitionSummary {
+	s.TableName = &v
+	return s
+}
+
+func (s *PartitionSummary) SetTotalFileCount(v int64) *PartitionSummary {
+	s.TotalFileCount = &v
+	return s
+}
+
+func (s *PartitionSummary) SetTotalFileSizeInBytes(v int64) *PartitionSummary {
+	s.TotalFileSizeInBytes = &v
+	return s
+}
+
+func (s *PartitionSummary) SetUpdatedAt(v int64) *PartitionSummary {
+	s.UpdatedAt = &v
 	return s
 }
 
@@ -878,6 +1195,76 @@ func (s *TableSnapshot) SetRecordCount(v int64) *TableSnapshot {
 
 func (s *TableSnapshot) SetSnapshot(v *Snapshot) *TableSnapshot {
 	s.Snapshot = v
+	return s
+}
+
+type TableSummary struct {
+	// Latest snapshot storage size
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// Database name
+	DatabaseName   *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+	GeneratedDate  *string `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
+	LastAccessTime *int64  `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
+	// Creation timestamp in milliseconds
+	PartitionCount *int64  `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
+	Path           *string `json:"path,omitempty" xml:"path,omitempty"`
+	// Table name
+	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	// 30-day access count
+	TotalFileCount       *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
+	TotalFileSizeInBytes *int64 `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
+}
+
+func (s TableSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TableSummary) GoString() string {
+	return s.String()
+}
+
+func (s *TableSummary) SetCreatedAt(v int64) *TableSummary {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *TableSummary) SetDatabaseName(v string) *TableSummary {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *TableSummary) SetGeneratedDate(v string) *TableSummary {
+	s.GeneratedDate = &v
+	return s
+}
+
+func (s *TableSummary) SetLastAccessTime(v int64) *TableSummary {
+	s.LastAccessTime = &v
+	return s
+}
+
+func (s *TableSummary) SetPartitionCount(v int64) *TableSummary {
+	s.PartitionCount = &v
+	return s
+}
+
+func (s *TableSummary) SetPath(v string) *TableSummary {
+	s.Path = &v
+	return s
+}
+
+func (s *TableSummary) SetTableName(v string) *TableSummary {
+	s.TableName = &v
+	return s
+}
+
+func (s *TableSummary) SetTotalFileCount(v int64) *TableSummary {
+	s.TotalFileCount = &v
+	return s
+}
+
+func (s *TableSummary) SetTotalFileSizeInBytes(v int64) *TableSummary {
+	s.TotalFileSizeInBytes = &v
 	return s
 }
 
@@ -1487,6 +1874,181 @@ func (s *GetCatalogResponse) SetBody(v *Catalog) *GetCatalogResponse {
 	return s
 }
 
+type GetCatalogSummaryResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CatalogSummary    `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCatalogSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCatalogSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCatalogSummaryResponse) SetHeaders(v map[string]*string) *GetCatalogSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCatalogSummaryResponse) SetStatusCode(v int32) *GetCatalogSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCatalogSummaryResponse) SetBody(v *CatalogSummary) *GetCatalogSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type GetCatalogSummaryTrendRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2025-06-01
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2025-05-01
+	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+}
+
+func (s GetCatalogSummaryTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCatalogSummaryTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCatalogSummaryTrendRequest) SetEndDate(v string) *GetCatalogSummaryTrendRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetCatalogSummaryTrendRequest) SetStartDate(v string) *GetCatalogSummaryTrendRequest {
+	s.StartDate = &v
+	return s
+}
+
+type GetCatalogSummaryTrendResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CatalogSummaryTrend `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCatalogSummaryTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCatalogSummaryTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCatalogSummaryTrendResponse) SetHeaders(v map[string]*string) *GetCatalogSummaryTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCatalogSummaryTrendResponse) SetStatusCode(v int32) *GetCatalogSummaryTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCatalogSummaryTrendResponse) SetBody(v *CatalogSummaryTrend) *GetCatalogSummaryTrendResponse {
+	s.Body = v
+	return s
+}
+
+type GetCatalogTokenResponseBody struct {
+	// example:
+	//
+	// 1749160909000
+	ExpiresAtMillis *int64             `json:"expiresAtMillis,omitempty" xml:"expiresAtMillis,omitempty"`
+	Token           map[string]*string `json:"token,omitempty" xml:"token,omitempty"`
+}
+
+func (s GetCatalogTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCatalogTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCatalogTokenResponseBody) SetExpiresAtMillis(v int64) *GetCatalogTokenResponseBody {
+	s.ExpiresAtMillis = &v
+	return s
+}
+
+func (s *GetCatalogTokenResponseBody) SetToken(v map[string]*string) *GetCatalogTokenResponseBody {
+	s.Token = v
+	return s
+}
+
+type GetCatalogTokenResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCatalogTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCatalogTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCatalogTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCatalogTokenResponse) SetHeaders(v map[string]*string) *GetCatalogTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCatalogTokenResponse) SetStatusCode(v int32) *GetCatalogTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCatalogTokenResponse) SetBody(v *GetCatalogTokenResponseBody) *GetCatalogTokenResponse {
+	s.Body = v
+	return s
+}
+
+type GetDatabaseSummaryResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DatabaseSummary   `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDatabaseSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseSummaryResponse) SetHeaders(v map[string]*string) *GetDatabaseSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatabaseSummaryResponse) SetStatusCode(v int32) *GetDatabaseSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDatabaseSummaryResponse) SetBody(v *DatabaseSummary) *GetDatabaseSummaryResponse {
+	s.Body = v
+	return s
+}
+
 type GetRegionStatusResponseBody struct {
 	// example:
 	//
@@ -1590,6 +2152,35 @@ func (s *GetRoleResponse) SetStatusCode(v int32) *GetRoleResponse {
 }
 
 func (s *GetRoleResponse) SetBody(v *Role) *GetRoleResponse {
+	s.Body = v
+	return s
+}
+
+type GetTableSummaryResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TableSummary      `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTableSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableSummaryResponse) SetHeaders(v map[string]*string) *GetTableSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTableSummaryResponse) SetStatusCode(v int32) *GetTableSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTableSummaryResponse) SetBody(v *TableSummary) *GetTableSummaryResponse {
 	s.Body = v
 	return s
 }
@@ -1778,6 +2369,73 @@ func (s *ListCatalogsResponse) SetStatusCode(v int32) *ListCatalogsResponse {
 }
 
 func (s *ListCatalogsResponse) SetBody(v *ListCatalogsResponseBody) *ListCatalogsResponse {
+	s.Body = v
+	return s
+}
+
+type ListPartitionSummariesRequest struct {
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// ""
+	PageToken *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
+	// example:
+	//
+	// hh=10
+	PartitionNamePattern *string `json:"partitionNamePattern,omitempty" xml:"partitionNamePattern,omitempty"`
+}
+
+func (s ListPartitionSummariesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPartitionSummariesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPartitionSummariesRequest) SetMaxResults(v int32) *ListPartitionSummariesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListPartitionSummariesRequest) SetPageToken(v string) *ListPartitionSummariesRequest {
+	s.PageToken = &v
+	return s
+}
+
+func (s *ListPartitionSummariesRequest) SetPartitionNamePattern(v string) *ListPartitionSummariesRequest {
+	s.PartitionNamePattern = &v
+	return s
+}
+
+type ListPartitionSummariesResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PartitionSummaries `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPartitionSummariesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPartitionSummariesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPartitionSummariesResponse) SetHeaders(v map[string]*string) *ListPartitionSummariesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPartitionSummariesResponse) SetStatusCode(v int32) *ListPartitionSummariesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPartitionSummariesResponse) SetBody(v *PartitionSummaries) *ListPartitionSummariesResponse {
 	s.Body = v
 	return s
 }
@@ -3070,6 +3728,224 @@ func (client *Client) GetCatalog(catalog *string) (_result *GetCatalogResponse, 
 
 // Summary:
 //
+// 查看表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCatalogSummaryResponse
+func (client *Client) GetCatalogSummaryWithOptions(catalogId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCatalogSummaryResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCatalogSummary"),
+		Version:     tea.String("2025-03-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dlf/v1/storage-summary/" + tea.StringValue(openapiutil.GetEncodeParam(catalogId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCatalogSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表
+//
+// @return GetCatalogSummaryResponse
+func (client *Client) GetCatalogSummary(catalogId *string) (_result *GetCatalogSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCatalogSummaryResponse{}
+	_body, _err := client.GetCatalogSummaryWithOptions(catalogId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表
+//
+// @param request - GetCatalogSummaryTrendRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCatalogSummaryTrendResponse
+func (client *Client) GetCatalogSummaryTrendWithOptions(catalogId *string, request *GetCatalogSummaryTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCatalogSummaryTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["endDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["startDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCatalogSummaryTrend"),
+		Version:     tea.String("2025-03-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dlf/v1/storage-summary/" + tea.StringValue(openapiutil.GetEncodeParam(catalogId)) + "/trend"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCatalogSummaryTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表
+//
+// @param request - GetCatalogSummaryTrendRequest
+//
+// @return GetCatalogSummaryTrendResponse
+func (client *Client) GetCatalogSummaryTrend(catalogId *string, request *GetCatalogSummaryTrendRequest) (_result *GetCatalogSummaryTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCatalogSummaryTrendResponse{}
+	_body, _err := client.GetCatalogSummaryTrendWithOptions(catalogId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据湖Catalog的临时访问凭证
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCatalogTokenResponse
+func (client *Client) GetCatalogTokenWithOptions(catalog *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCatalogTokenResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCatalogToken"),
+		Version:     tea.String("2025-03-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dlf/v1/catalogs/" + tea.StringValue(openapiutil.GetEncodeParam(catalog)) + "/token"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCatalogTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据湖Catalog的临时访问凭证
+//
+// @return GetCatalogTokenResponse
+func (client *Client) GetCatalogToken(catalog *string) (_result *GetCatalogTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCatalogTokenResponse{}
+	_body, _err := client.GetCatalogTokenWithOptions(catalog, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatabaseSummaryResponse
+func (client *Client) GetDatabaseSummaryWithOptions(catalogId *string, database *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDatabaseSummaryResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDatabaseSummary"),
+		Version:     tea.String("2025-03-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dlf/v1/storage-summary/" + tea.StringValue(openapiutil.GetEncodeParam(catalogId)) + "/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDatabaseSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表
+//
+// @return GetDatabaseSummaryResponse
+func (client *Client) GetDatabaseSummary(catalogId *string, database *string) (_result *GetDatabaseSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDatabaseSummaryResponse{}
+	_body, _err := client.GetDatabaseSummaryWithOptions(catalogId, database, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询 DLF 当前地域开通状态
 //
 // @param headers - map
@@ -3175,6 +4051,56 @@ func (client *Client) GetRole(request *GetRoleRequest) (_result *GetRoleResponse
 	headers := make(map[string]*string)
 	_result = &GetRoleResponse{}
 	_body, _err := client.GetRoleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableSummaryResponse
+func (client *Client) GetTableSummaryWithOptions(catalogId *string, database *string, table *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTableSummaryResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTableSummary"),
+		Version:     tea.String("2025-03-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dlf/v1/storage-summary/" + tea.StringValue(openapiutil.GetEncodeParam(catalogId)) + "/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database)) + "/tables/" + tea.StringValue(openapiutil.GetEncodeParam(table))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTableSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表
+//
+// @return GetTableSummaryResponse
+func (client *Client) GetTableSummary(catalogId *string, database *string, table *string) (_result *GetTableSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTableSummaryResponse{}
+	_body, _err := client.GetTableSummaryWithOptions(catalogId, database, table, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3379,6 +4305,78 @@ func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListC
 	headers := make(map[string]*string)
 	_result = &ListCatalogsResponse{}
 	_body, _err := client.ListCatalogsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表
+//
+// @param request - ListPartitionSummariesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPartitionSummariesResponse
+func (client *Client) ListPartitionSummariesWithOptions(catalogId *string, database *string, table *string, request *ListPartitionSummariesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPartitionSummariesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageToken)) {
+		query["pageToken"] = request.PageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PartitionNamePattern)) {
+		query["partitionNamePattern"] = request.PartitionNamePattern
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPartitionSummaries"),
+		Version:     tea.String("2025-03-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dlf/v1/storage-summary/" + tea.StringValue(openapiutil.GetEncodeParam(catalogId)) + "/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database)) + "/tables/" + tea.StringValue(openapiutil.GetEncodeParam(table)) + "/partitions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPartitionSummariesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表
+//
+// @param request - ListPartitionSummariesRequest
+//
+// @return ListPartitionSummariesResponse
+func (client *Client) ListPartitionSummaries(catalogId *string, database *string, table *string, request *ListPartitionSummariesRequest) (_result *ListPartitionSummariesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPartitionSummariesResponse{}
+	_body, _err := client.ListPartitionSummariesWithOptions(catalogId, database, table, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
