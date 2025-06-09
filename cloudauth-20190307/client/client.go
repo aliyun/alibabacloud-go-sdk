@@ -2807,6 +2807,148 @@ func (s *DeleteFaceVerifyResultResponse) SetBody(v *DeleteFaceVerifyResultRespon
 	return s
 }
 
+type DescribeCardVerifyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 91707dc296d469ad38e4c5efa6a0xxxx
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+}
+
+func (s DescribeCardVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCardVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCardVerifyRequest) SetCertifyId(v string) *DescribeCardVerifyRequest {
+	s.CertifyId = &v
+	return s
+}
+
+type DescribeCardVerifyResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 130A2C10-B9EE-4D84-88E3-5384FF03****
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *DescribeCardVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s DescribeCardVerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCardVerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCardVerifyResponseBody) SetCode(v string) *DescribeCardVerifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeCardVerifyResponseBody) SetMessage(v string) *DescribeCardVerifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeCardVerifyResponseBody) SetRequestId(v string) *DescribeCardVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCardVerifyResponseBody) SetResultObject(v *DescribeCardVerifyResponseBodyResultObject) *DescribeCardVerifyResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type DescribeCardVerifyResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
+	BizCode     *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	CardInfo    *string `json:"CardInfo,omitempty" xml:"CardInfo,omitempty"`
+	OcrCardInfo *string `json:"OcrCardInfo,omitempty" xml:"OcrCardInfo,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//     "certUrl": "https://cn-shanghai-aliyun-nmeta.cn-shanghai.oss.aliyuncs.com/verify/xxxxxxx/xxxxxxxxxx_ocridface_dbf2_normal.jpeg",
+	//
+	//     "certNationalUrl": "https://cn-shanghai-aliyun-nmeta.cn-shanghai.oss.aliyuncs.com/verify/xxxxxxxxxx/xxxxxxxxxxx_ocridback_e8a3_normal.jpeg"
+	//
+	// }
+	PictureInfo *string `json:"PictureInfo,omitempty" xml:"PictureInfo,omitempty"`
+}
+
+func (s DescribeCardVerifyResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCardVerifyResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCardVerifyResponseBodyResultObject) SetBizCode(v string) *DescribeCardVerifyResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+func (s *DescribeCardVerifyResponseBodyResultObject) SetCardInfo(v string) *DescribeCardVerifyResponseBodyResultObject {
+	s.CardInfo = &v
+	return s
+}
+
+func (s *DescribeCardVerifyResponseBodyResultObject) SetOcrCardInfo(v string) *DescribeCardVerifyResponseBodyResultObject {
+	s.OcrCardInfo = &v
+	return s
+}
+
+func (s *DescribeCardVerifyResponseBodyResultObject) SetPictureInfo(v string) *DescribeCardVerifyResponseBodyResultObject {
+	s.PictureInfo = &v
+	return s
+}
+
+type DescribeCardVerifyResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCardVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCardVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCardVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCardVerifyResponse) SetHeaders(v map[string]*string) *DescribeCardVerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCardVerifyResponse) SetStatusCode(v int32) *DescribeCardVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCardVerifyResponse) SetBody(v *DescribeCardVerifyResponseBody) *DescribeCardVerifyResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDeviceInfoRequest struct {
 	// example:
 	//
@@ -5621,6 +5763,214 @@ func (s *Id2MetaVerifyWithOCRResponse) SetStatusCode(v int32) *Id2MetaVerifyWith
 }
 
 func (s *Id2MetaVerifyWithOCRResponse) SetBody(v *Id2MetaVerifyWithOCRResponseBody) *Id2MetaVerifyWithOCRResponse {
+	s.Body = v
+	return s
+}
+
+type InitCardVerifyRequest struct {
+	// example:
+	//
+	// NMjvQanQgplBSaEI0sL86WnQplB
+	CallbackToken *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
+	// example:
+	//
+	// https://www.aliyun.com
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CardPageNumber *string `json:"CardPageNumber,omitempty" xml:"CardPageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// IDENTITY_CARD
+	CardType *string `json:"CardType,omitempty" xml:"CardType,omitempty"`
+	// example:
+	//
+	// shoot
+	DocScanMode *string `json:"DocScanMode,omitempty" xml:"DocScanMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e0c34a77f5ac40a5aa5e6ed20c35****
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"zimVer":"3.0.0","appVersion": "1","bioMetaInfo": "4.1.0:1150****,0","appName": "com.aliyun.antcloudauth","deviceType": "ios","osVersion": "iOS 10.3.2","apdidToken": "","deviceModel": "iPhone9,1"}
+	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OCR_VERIFY
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// T
+	PictureSave *string `json:"PictureSave,omitempty" xml:"PictureSave,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ID_2_META
+	VerifyMeta *string `json:"VerifyMeta,omitempty" xml:"VerifyMeta,omitempty"`
+}
+
+func (s InitCardVerifyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitCardVerifyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InitCardVerifyRequest) SetCallbackToken(v string) *InitCardVerifyRequest {
+	s.CallbackToken = &v
+	return s
+}
+
+func (s *InitCardVerifyRequest) SetCallbackUrl(v string) *InitCardVerifyRequest {
+	s.CallbackUrl = &v
+	return s
+}
+
+func (s *InitCardVerifyRequest) SetCardPageNumber(v string) *InitCardVerifyRequest {
+	s.CardPageNumber = &v
+	return s
+}
+
+func (s *InitCardVerifyRequest) SetCardType(v string) *InitCardVerifyRequest {
+	s.CardType = &v
+	return s
+}
+
+func (s *InitCardVerifyRequest) SetDocScanMode(v string) *InitCardVerifyRequest {
+	s.DocScanMode = &v
+	return s
+}
+
+func (s *InitCardVerifyRequest) SetMerchantBizId(v string) *InitCardVerifyRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *InitCardVerifyRequest) SetMetaInfo(v string) *InitCardVerifyRequest {
+	s.MetaInfo = &v
+	return s
+}
+
+func (s *InitCardVerifyRequest) SetModel(v string) *InitCardVerifyRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *InitCardVerifyRequest) SetPictureSave(v string) *InitCardVerifyRequest {
+	s.PictureSave = &v
+	return s
+}
+
+func (s *InitCardVerifyRequest) SetVerifyMeta(v string) *InitCardVerifyRequest {
+	s.VerifyMeta = &v
+	return s
+}
+
+type InitCardVerifyResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 130A2C10-B9EE-4D84-88E3-5384FF039795
+	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *InitCardVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s InitCardVerifyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitCardVerifyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InitCardVerifyResponseBody) SetCode(v string) *InitCardVerifyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InitCardVerifyResponseBody) SetMessage(v string) *InitCardVerifyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InitCardVerifyResponseBody) SetRequestId(v string) *InitCardVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InitCardVerifyResponseBody) SetResultObject(v *InitCardVerifyResponseBodyResultObject) *InitCardVerifyResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type InitCardVerifyResponseBodyResultObject struct {
+	// example:
+	//
+	// 91707dc296d469ad38e4c5efa6a0****
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+}
+
+func (s InitCardVerifyResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitCardVerifyResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *InitCardVerifyResponseBodyResultObject) SetCertifyId(v string) *InitCardVerifyResponseBodyResultObject {
+	s.CertifyId = &v
+	return s
+}
+
+type InitCardVerifyResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InitCardVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s InitCardVerifyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitCardVerifyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InitCardVerifyResponse) SetHeaders(v map[string]*string) *InitCardVerifyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InitCardVerifyResponse) SetStatusCode(v int32) *InitCardVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InitCardVerifyResponse) SetBody(v *InitCardVerifyResponseBody) *InitCardVerifyResponse {
 	s.Body = v
 	return s
 }
@@ -10454,6 +10804,66 @@ func (client *Client) DeleteFaceVerifyResult(request *DeleteFaceVerifyResultRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片要素核验获取认证结果
+//
+// @param request - DescribeCardVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCardVerifyResponse
+func (client *Client) DescribeCardVerifyWithOptions(request *DescribeCardVerifyRequest, runtime *util.RuntimeOptions) (_result *DescribeCardVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertifyId)) {
+		query["CertifyId"] = request.CertifyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCardVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCardVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 图片要素核验获取认证结果
+//
+// @param request - DescribeCardVerifyRequest
+//
+// @return DescribeCardVerifyResponse
+func (client *Client) DescribeCardVerify(request *DescribeCardVerifyRequest) (_result *DescribeCardVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCardVerifyResponse{}
+	_body, _err := client.DescribeCardVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DescribeDeviceInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11554,6 +11964,102 @@ func (client *Client) Id2MetaVerifyWithOCRAdvance(request *Id2MetaVerifyWithOCRA
 	}
 
 	_result = id2MetaVerifyWithOCRResp
+	return _result, _err
+}
+
+// Summary:
+//
+// 图片核验发起认证请求
+//
+// @param request - InitCardVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitCardVerifyResponse
+func (client *Client) InitCardVerifyWithOptions(request *InitCardVerifyRequest, runtime *util.RuntimeOptions) (_result *InitCardVerifyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallbackToken)) {
+		query["CallbackToken"] = request.CallbackToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackUrl)) {
+		query["CallbackUrl"] = request.CallbackUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CardPageNumber)) {
+		query["CardPageNumber"] = request.CardPageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CardType)) {
+		query["CardType"] = request.CardType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocScanMode)) {
+		query["DocScanMode"] = request.DocScanMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetaInfo)) {
+		query["MetaInfo"] = request.MetaInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		query["Model"] = request.Model
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PictureSave)) {
+		query["PictureSave"] = request.PictureSave
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyMeta)) {
+		query["VerifyMeta"] = request.VerifyMeta
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InitCardVerify"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InitCardVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 图片核验发起认证请求
+//
+// @param request - InitCardVerifyRequest
+//
+// @return InitCardVerifyResponse
+func (client *Client) InitCardVerify(request *InitCardVerifyRequest) (_result *InitCardVerifyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InitCardVerifyResponse{}
+	_body, _err := client.InitCardVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
