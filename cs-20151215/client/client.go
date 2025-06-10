@@ -3311,6 +3311,7 @@ type CreateClusterRequest struct {
 	// kubernetes.default.svc
 	ApiAudiences   *string                             `json:"api_audiences,omitempty" xml:"api_audiences,omitempty"`
 	AuditLogConfig *CreateClusterRequestAuditLogConfig `json:"audit_log_config,omitempty" xml:"audit_log_config,omitempty" type:"Struct"`
+	AutoMode       *CreateClusterRequestAutoMode       `json:"auto_mode,omitempty" xml:"auto_mode,omitempty" type:"Struct"`
 	// Deprecated
 	//
 	// [**Deprecated**]
@@ -4377,6 +4378,11 @@ func (s *CreateClusterRequest) SetAuditLogConfig(v *CreateClusterRequestAuditLog
 	return s
 }
 
+func (s *CreateClusterRequest) SetAutoMode(v *CreateClusterRequestAutoMode) *CreateClusterRequest {
+	s.AutoMode = v
+	return s
+}
+
 func (s *CreateClusterRequest) SetAutoRenew(v bool) *CreateClusterRequest {
 	s.AutoRenew = &v
 	return s
@@ -4872,6 +4878,23 @@ func (s *CreateClusterRequestAuditLogConfig) SetEnabled(v bool) *CreateClusterRe
 
 func (s *CreateClusterRequestAuditLogConfig) SetSlsProjectName(v string) *CreateClusterRequestAuditLogConfig {
 	s.SlsProjectName = &v
+	return s
+}
+
+type CreateClusterRequestAutoMode struct {
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+}
+
+func (s CreateClusterRequestAutoMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestAutoMode) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestAutoMode) SetEnable(v bool) *CreateClusterRequestAutoMode {
+	s.Enable = &v
 	return s
 }
 
@@ -5583,6 +5606,7 @@ func (s *CreateClusterInspectConfigResponse) SetBody(v *CreateClusterInspectConf
 }
 
 type CreateClusterNodePoolRequest struct {
+	AutoMode *CreateClusterNodePoolRequestAutoMode `json:"auto_mode,omitempty" xml:"auto_mode,omitempty" type:"Struct"`
 	// The configurations of auto scaling.
 	AutoScaling *CreateClusterNodePoolRequestAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
 	// Deprecated
@@ -5664,6 +5688,11 @@ func (s CreateClusterNodePoolRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateClusterNodePoolRequest) SetAutoMode(v *CreateClusterNodePoolRequestAutoMode) *CreateClusterNodePoolRequest {
+	s.AutoMode = v
+	return s
+}
+
 func (s *CreateClusterNodePoolRequest) SetAutoScaling(v *CreateClusterNodePoolRequestAutoScaling) *CreateClusterNodePoolRequest {
 	s.AutoScaling = v
 	return s
@@ -5731,6 +5760,23 @@ func (s *CreateClusterNodePoolRequest) SetScalingGroup(v *CreateClusterNodePoolR
 
 func (s *CreateClusterNodePoolRequest) SetTeeConfig(v *CreateClusterNodePoolRequestTeeConfig) *CreateClusterNodePoolRequest {
 	s.TeeConfig = v
+	return s
+}
+
+type CreateClusterNodePoolRequestAutoMode struct {
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestAutoMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestAutoMode) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestAutoMode) SetEnable(v bool) *CreateClusterNodePoolRequestAutoMode {
+	s.Enable = &v
 	return s
 }
 
@@ -9881,6 +9927,7 @@ func (s *DescribeClusterAttachScriptsResponse) SetBody(v string) *DescribeCluste
 }
 
 type DescribeClusterDetailResponseBody struct {
+	AutoMode *DescribeClusterDetailResponseBodyAutoMode `json:"auto_mode,omitempty" xml:"auto_mode,omitempty" type:"Struct"`
 	// The domain name of the cluster.
 	//
 	// example:
@@ -10175,6 +10222,11 @@ func (s DescribeClusterDetailResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeClusterDetailResponseBody) SetAutoMode(v *DescribeClusterDetailResponseBodyAutoMode) *DescribeClusterDetailResponseBody {
+	s.AutoMode = v
+	return s
+}
+
 func (s *DescribeClusterDetailResponseBody) SetClusterDomain(v string) *DescribeClusterDetailResponseBody {
 	s.ClusterDomain = &v
 	return s
@@ -10372,6 +10424,23 @@ func (s *DescribeClusterDetailResponseBody) SetWorkerRamRoleName(v string) *Desc
 
 func (s *DescribeClusterDetailResponseBody) SetZoneId(v string) *DescribeClusterDetailResponseBody {
 	s.ZoneId = &v
+	return s
+}
+
+type DescribeClusterDetailResponseBodyAutoMode struct {
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+}
+
+func (s DescribeClusterDetailResponseBodyAutoMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterDetailResponseBodyAutoMode) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterDetailResponseBodyAutoMode) SetEnable(v bool) *DescribeClusterDetailResponseBodyAutoMode {
+	s.Enable = &v
 	return s
 }
 
@@ -33379,6 +33448,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		body["audit_log_config"] = request.AuditLogConfig
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AutoMode)) {
+		body["auto_mode"] = request.AutoMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
 		body["auto_renew"] = request.AutoRenew
 	}
@@ -33975,6 +34048,10 @@ func (client *Client) CreateClusterNodePoolWithOptions(ClusterId *string, reques
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoMode)) {
+		body["auto_mode"] = request.AutoMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoScaling)) {
 		body["auto_scaling"] = request.AutoScaling
 	}
