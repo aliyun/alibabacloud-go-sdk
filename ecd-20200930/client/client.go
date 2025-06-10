@@ -26090,7 +26090,8 @@ type DescribeDesktopTypesRequest struct {
 	// example:
 	//
 	// FastBuy
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	Scope    *string   `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	ScopeSet []*string `json:"ScopeSet,omitempty" xml:"ScopeSet,omitempty" type:"Repeated"`
 	// The sorting order.
 	//
 	// Valid values:
@@ -26197,6 +26198,11 @@ func (s *DescribeDesktopTypesRequest) SetRegionId(v string) *DescribeDesktopType
 
 func (s *DescribeDesktopTypesRequest) SetScope(v string) *DescribeDesktopTypesRequest {
 	s.Scope = &v
+	return s
+}
+
+func (s *DescribeDesktopTypesRequest) SetScopeSet(v []*string) *DescribeDesktopTypesRequest {
+	s.ScopeSet = v
 	return s
 }
 
@@ -74992,6 +74998,10 @@ func (client *Client) DescribeDesktopTypesWithOptions(request *DescribeDesktopTy
 
 	if !tea.BoolValue(util.IsUnset(request.Scope)) {
 		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeSet)) {
+		query["ScopeSet"] = request.ScopeSet
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortType)) {
