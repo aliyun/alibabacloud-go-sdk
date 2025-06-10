@@ -3129,6 +3129,7 @@ type DescribeCardVerifyResponseBodyResultObject struct {
 	// 1
 	BizCode     *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	CardInfo    *string `json:"CardInfo,omitempty" xml:"CardInfo,omitempty"`
+	FaceDetail  *string `json:"FaceDetail,omitempty" xml:"FaceDetail,omitempty"`
 	OcrCardInfo *string `json:"OcrCardInfo,omitempty" xml:"OcrCardInfo,omitempty"`
 	// example:
 	//
@@ -3157,6 +3158,11 @@ func (s *DescribeCardVerifyResponseBodyResultObject) SetBizCode(v string) *Descr
 
 func (s *DescribeCardVerifyResponseBodyResultObject) SetCardInfo(v string) *DescribeCardVerifyResponseBodyResultObject {
 	s.CardInfo = &v
+	return s
+}
+
+func (s *DescribeCardVerifyResponseBodyResultObject) SetFaceDetail(v string) *DescribeCardVerifyResponseBodyResultObject {
+	s.FaceDetail = &v
 	return s
 }
 
