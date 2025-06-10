@@ -9,6 +9,61 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type RepoConfiguration struct {
+	ArtifactBuildRuleParameters *RepoConfigurationArtifactBuildRuleParameters `json:"ArtifactBuildRuleParameters,omitempty" xml:"ArtifactBuildRuleParameters,omitempty" type:"Struct"`
+	// This parameter is required.
+	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	// This parameter is required.
+	TagImmutability *bool `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
+}
+
+func (s RepoConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RepoConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *RepoConfiguration) SetArtifactBuildRuleParameters(v *RepoConfigurationArtifactBuildRuleParameters) *RepoConfiguration {
+	s.ArtifactBuildRuleParameters = v
+	return s
+}
+
+func (s *RepoConfiguration) SetRepoType(v string) *RepoConfiguration {
+	s.RepoType = &v
+	return s
+}
+
+func (s *RepoConfiguration) SetTagImmutability(v bool) *RepoConfiguration {
+	s.TagImmutability = &v
+	return s
+}
+
+type RepoConfigurationArtifactBuildRuleParameters struct {
+	// This parameter is required.
+	ImageIndexOnly *bool   `json:"ImageIndexOnly,omitempty" xml:"ImageIndexOnly,omitempty"`
+	PriorityFile   *string `json:"PriorityFile,omitempty" xml:"PriorityFile,omitempty"`
+}
+
+func (s RepoConfigurationArtifactBuildRuleParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RepoConfigurationArtifactBuildRuleParameters) GoString() string {
+	return s.String()
+}
+
+func (s *RepoConfigurationArtifactBuildRuleParameters) SetImageIndexOnly(v bool) *RepoConfigurationArtifactBuildRuleParameters {
+	s.ImageIndexOnly = &v
+	return s
+}
+
+func (s *RepoConfigurationArtifactBuildRuleParameters) SetPriorityFile(v string) *RepoConfigurationArtifactBuildRuleParameters {
+	s.PriorityFile = &v
+	return s
+}
+
 type CancelArtifactBuildTaskRequest struct {
 	// The ID of the artifact building task.
 	//
@@ -1271,18 +1326,24 @@ func (s *CreateArtifactSubscriptionTaskResponse) SetBody(v *CreateArtifactSubscr
 }
 
 type CreateBuildRecordByRecordRequest struct {
+	// The ID of the image building record.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0A311FC5-B8C6-4332-80E4-539EB73****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the image repository.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1315,18 +1376,32 @@ func (s *CreateBuildRecordByRecordRequest) SetRepoId(v string) *CreateBuildRecor
 }
 
 type CreateBuildRecordByRecordResponseBody struct {
+	// The ID of the image building record.
+	//
 	// example:
 	//
 	// crbr-ly77w5i3t31f****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the request is successful.\\
+	//
+	// Other status codes indicate that the request failed.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4CE1F661-75DD-4EBD-A4AD-057B26834ABB
@@ -2324,12 +2399,15 @@ type CreateNamespaceRequest struct {
 	// example:
 	//
 	// true
-	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
-	// The default type of the repository that is automatically created. Valid values:
+	AutoCreateRepo           *bool              `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	DefaultRepoConfiguration *RepoConfiguration `json:"DefaultRepoConfiguration,omitempty" xml:"DefaultRepoConfiguration,omitempty"`
+	// Deprecated
 	//
-	// 	- `PUBLIC`: a public repository
+	// The default type of the repositories that are automatically created in the namespace. Valid values:
 	//
-	// 	- `PRIVATE`: a private repository
+	// 	- `PUBLIC`: public repositories
+	//
+	// 	- `PRIVATE`: private repositories.
 	//
 	// example:
 	//
@@ -2366,6 +2444,11 @@ func (s *CreateNamespaceRequest) SetAutoCreateRepo(v bool) *CreateNamespaceReque
 	return s
 }
 
+func (s *CreateNamespaceRequest) SetDefaultRepoConfiguration(v *RepoConfiguration) *CreateNamespaceRequest {
+	s.DefaultRepoConfiguration = v
+	return s
+}
+
 func (s *CreateNamespaceRequest) SetDefaultRepoType(v string) *CreateNamespaceRequest {
 	s.DefaultRepoType = &v
 	return s
@@ -2377,6 +2460,77 @@ func (s *CreateNamespaceRequest) SetInstanceId(v string) *CreateNamespaceRequest
 }
 
 func (s *CreateNamespaceRequest) SetNamespaceName(v string) *CreateNamespaceRequest {
+	s.NamespaceName = &v
+	return s
+}
+
+type CreateNamespaceShrinkRequest struct {
+	// Specifies whether to automatically create an image repository in the namespace.
+	//
+	// example:
+	//
+	// true
+	AutoCreateRepo                 *bool   `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	DefaultRepoConfigurationShrink *string `json:"DefaultRepoConfiguration,omitempty" xml:"DefaultRepoConfiguration,omitempty"`
+	// Deprecated
+	//
+	// The default type of the repositories that are automatically created in the namespace. Valid values:
+	//
+	// 	- `PUBLIC`: public repositories
+	//
+	// 	- `PRIVATE`: private repositories.
+	//
+	// example:
+	//
+	// PUBLIC
+	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
+	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the namespace. The name must be 2 to 120 characters in length, and can contain lowercase letters, digits, and the following delimiters: underscores (_), hyphens (-), and periods (.). The name cannot start or end with a delimiter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// namespace1
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+}
+
+func (s CreateNamespaceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNamespaceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNamespaceShrinkRequest) SetAutoCreateRepo(v bool) *CreateNamespaceShrinkRequest {
+	s.AutoCreateRepo = &v
+	return s
+}
+
+func (s *CreateNamespaceShrinkRequest) SetDefaultRepoConfigurationShrink(v string) *CreateNamespaceShrinkRequest {
+	s.DefaultRepoConfigurationShrink = &v
+	return s
+}
+
+func (s *CreateNamespaceShrinkRequest) SetDefaultRepoType(v string) *CreateNamespaceShrinkRequest {
+	s.DefaultRepoType = &v
+	return s
+}
+
+func (s *CreateNamespaceShrinkRequest) SetInstanceId(v string) *CreateNamespaceShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateNamespaceShrinkRequest) SetNamespaceName(v string) *CreateNamespaceShrinkRequest {
 	s.NamespaceName = &v
 	return s
 }
@@ -2865,23 +3019,29 @@ func (s *CreateRepoSourceCodeRepoResponse) SetBody(v *CreateRepoSourceCodeRepoRe
 }
 
 type CreateRepoSyncRuleRequest struct {
+	// The source instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespace name of the source instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ns1
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The name of the image repository in the source instance.
+	//
 	// example:
 	//
 	// repo1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The rule that is used to filter repositories.
+	// The regular expression that is used to filter repositories.
 	//
 	// >  This parameter is valid only when SyncScope is set to `NAMESPACE`.
 	//
@@ -2889,50 +3049,78 @@ type CreateRepoSyncRuleRequest struct {
 	//
 	// .*
 	RepoNameFilter *string `json:"RepoNameFilter,omitempty" xml:"RepoNameFilter,omitempty"`
+	// The name of the image synchronization rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rule
 	SyncRuleName *string `json:"SyncRuleName,omitempty" xml:"SyncRuleName,omitempty"`
+	// The synchronization scope. Valid values:
+	//
+	// 	- `REPO`: synchronizes the image tags in an image repository that meet the synchronization rule.
+	//
+	// 	- `NAMESPACE`: synchronizes the image tags in a namespace that meet the synchronization rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// REPO
 	SyncScope *string `json:"SyncScope,omitempty" xml:"SyncScope,omitempty"`
+	// The mode of triggering the synchronization rule. Valid values:
+	//
+	// 	- `INITIATIVE`: manually triggers the synchronization rule.
+	//
+	// 	- `PASSIVE`: automatically triggers the synchronization rule.
+	//
 	// example:
 	//
 	// PASSIVE
 	SyncTrigger *string `json:"SyncTrigger,omitempty" xml:"SyncTrigger,omitempty"`
+	// The regular expression that is used to filter image tags.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// .*
 	TagFilter *string `json:"TagFilter,omitempty" xml:"TagFilter,omitempty"`
+	// The destination instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-ibxs3piklys3****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	// The namespace name of the destination instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ns1
 	TargetNamespaceName *string `json:"TargetNamespaceName,omitempty" xml:"TargetNamespaceName,omitempty"`
+	// The region ID of the destination instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	TargetRegionId *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
+	// The name of the image repository in the destination instance.
+	//
 	// example:
 	//
 	// repo1
 	TargetRepoName *string `json:"TargetRepoName,omitempty" xml:"TargetRepoName,omitempty"`
+	// The user ID (UID) of the account to which the destination instance belongs.
+	//
+	// >  If you synchronize images across accounts, you must use the UID.
+	//
 	// example:
 	//
 	// 12645940***
@@ -3013,18 +3201,26 @@ func (s *CreateRepoSyncRuleRequest) SetTargetUserId(v string) *CreateRepoSyncRul
 }
 
 type CreateRepoSyncRuleResponseBody struct {
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8F8A0BA6-7F06-4BAE-B147-10BD6A25****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the synchronization rule.
+	//
 	// example:
 	//
 	// crsr-gk5p2ns1kzns****
@@ -3588,7 +3784,7 @@ type CreateRepoTagScanTaskRequest struct {
 	//
 	// sha256:815386ebbe9a3490f38785ab11bda34ec8dacf4634af77b8912832d4f85dca04
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The ID of the instance.
+	// The ID of the Container Registry instance.
 	//
 	// This parameter is required.
 	//
@@ -3615,7 +3811,7 @@ type CreateRepoTagScanTaskRequest struct {
 	// ACR_SCAN_SERVICE
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
 	ScanType    *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
-	// The version of the image.
+	// The image version.
 	//
 	// This parameter is required.
 	//
@@ -3670,7 +3866,7 @@ type CreateRepoTagScanTaskResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the API request is successful. Valid values:
 	//
 	// 	- `true`: The request is successful.
 	//
@@ -3680,7 +3876,7 @@ type CreateRepoTagScanTaskResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -8576,6 +8772,8 @@ func (s *GetChartRepositoryResponse) SetBody(v *GetChartRepositoryResponseBody) 
 }
 
 type GetInstanceRequest struct {
+	// The ID of the Container Registry instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8602,10 +8800,14 @@ type GetInstanceResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 1571926439000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the Container Registry instance.
+	//
 	// example:
 	//
 	// cri-xkx6vujuhay0****
@@ -8616,6 +8818,8 @@ type GetInstanceResponseBody struct {
 	//
 	// The issue occurs on the instance. Valid values: OSS_TOO_MANY_BUCKETS: The number of Object Storage Service (OSS) buckets exceeds the upper limit. OSS_BUCKET_ALREADY_EXISTS: An OSS bucket that has the duplicate name already exists. OSS_SERVICE_ROLE_UNAUTHORIZED: The OSS service-linked role is not granted permissions. USER_NOT_REGISTERED_BY_REAL_NAME: The Alibaba Cloud account has not passed a real name verification.
 	InstanceIssue *string `json:"InstanceIssue,omitempty" xml:"InstanceIssue,omitempty"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// shanghai-instance1
@@ -8626,22 +8830,52 @@ type GetInstanceResponseBody struct {
 	//
 	// Enterprise_Basic
 	InstanceSpecification *string `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// 	- `PENDING`: The instance is being initialized.
+	//
+	// 	- `INIT_ERROR`: The instance failed to be initialized.
+	//
+	// 	- `STARTING`: The instance is being started.
+	//
+	// 	- `RUNNING`: The instance is running.
+	//
+	// 	- `STOPPING`: The instance is being stopped.
+	//
+	// 	- `STOPPED`: The instance is stopped.
+	//
+	// 	- `DELETING`: The instance is being deleted.
+	//
+	// 	- `DELETED`: The instance is deleted.
+	//
 	// example:
 	//
 	// RUNNING
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The time when the instance was last modified.
+	//
 	// example:
 	//
 	// 1571926560000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6EF34B18-4228-470C-860C-D28597CF010E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
 	// example:
 	//
 	// rg-acfmv36i4isx****
@@ -9609,12 +9843,15 @@ type GetNamespaceResponseBody struct {
 	// example:
 	//
 	// success
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The default type of repositories. Valid values:
+	Code                     *string            `json:"Code,omitempty" xml:"Code,omitempty"`
+	DefaultRepoConfiguration *RepoConfiguration `json:"DefaultRepoConfiguration,omitempty" xml:"DefaultRepoConfiguration,omitempty"`
+	// Deprecated
 	//
-	// 	- PUBLIC: The repositories are public repositories.
+	// The default type of repositories in the namespace. Valid values:
 	//
-	// 	- PRIVATE: The repositories are private repositories.
+	// 	- PUBLIC: public repositories.
+	//
+	// 	- PRIVATE: private repositories.
 	//
 	// example:
 	//
@@ -9683,6 +9920,11 @@ func (s *GetNamespaceResponseBody) SetAutoCreateRepo(v bool) *GetNamespaceRespon
 
 func (s *GetNamespaceResponseBody) SetCode(v string) *GetNamespaceResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *GetNamespaceResponseBody) SetDefaultRepoConfiguration(v *RepoConfiguration) *GetNamespaceResponseBody {
+	s.DefaultRepoConfiguration = v
 	return s
 }
 
@@ -10981,25 +11223,35 @@ func (s *GetRepoTagResponse) SetBody(v *GetRepoTagResponseBody) *GetRepoTagRespo
 }
 
 type GetRepoTagScanStatusRequest struct {
+	// The image digest.
+	//
 	// example:
 	//
 	// 67bfbcc12b67936ec7f867927817cbb071832b873dbcaed312a1930ba5f1d529
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-2j88dtld8yel****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the image repository.
+	//
 	// example:
 	//
 	// crr-uf082u9dg8do****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the image scan task.
+	//
 	// example:
 	//
 	// 838152F9-F725-5A52-A344-8972D65AC045
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
 	ScanType   *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
+	// The image tag.
+	//
 	// example:
 	//
 	// 1
@@ -11045,22 +11297,48 @@ func (s *GetRepoTagScanStatusRequest) SetTag(v string) *GetRepoTagScanStatusRequ
 }
 
 type GetRepoTagScanStatusResponseBody struct {
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BC648259-91A7-4502-BED3-EDF64361FA83
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of the scanning engine.
+	//
+	// 	- `ACR_SCAN_SERVICE`: Trivy scan engine provided by Container Registry
+	//
+	// 	- `SAS_SCAN_SERVICE`: Security Center scan engine
+	//
 	// example:
 	//
 	// ACR_SCAN_SERVICE
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
+	// The scanning status of the image tag. Valid values:
+	//
+	// 	- `SCANNING`: The image tag is being scanned.
+	//
+	// 	- `COMPLETE`: The scanning of the image tag is complete.
+	//
+	// 	- `FAILED`: The image tag failed to be scanned.
+	//
+	// 	- `RETRYING`: The system is retrying to scan the image tag.
+	//
 	// example:
 	//
 	// COMPLETE
@@ -11824,7 +12102,7 @@ type ListArtifactLifecycleRuleRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page. Maximum value: 100. If you specify a value greater than 100 for this parameter, the system reports a parameter error or uses 100 as the maximum value.
 	//
 	// example:
 	//
@@ -15642,7 +15920,7 @@ func (s *ListInstanceRegionResponse) SetBody(v *ListInstanceRegionResponseBody) 
 }
 
 type ListNamespaceRequest struct {
-	// The number of the page to return.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -15650,25 +15928,29 @@ type ListNamespaceRequest struct {
 	//
 	// cri-94klsruryslx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries returned per page.
+	// The namespace name.
 	//
 	// example:
 	//
 	// test-namespace
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The ID of the namespace.
+	// The status of the namespace. Valid values:
+	//
+	// 	- `NORMAL`
+	//
+	// 	- `DELETING`
 	//
 	// example:
 	//
 	// NORMAL
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
-	// The list of namespaces.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The ID of the request.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -15710,19 +15992,32 @@ func (s *ListNamespaceRequest) SetPageSize(v int32) *ListNamespaceRequest {
 }
 
 type ListNamespaceResponseBody struct {
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
 	// example:
 	//
 	// true
-	IsSuccess  *bool                                  `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The queried namespaces.
 	Namespaces []*ListNamespaceResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
@@ -15733,6 +16028,8 @@ type ListNamespaceResponseBody struct {
 	//
 	// B7E5FCA5-55ED-451C-9649-0BB2B93387D0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of the queried namespaces.
+	//
 	// example:
 	//
 	// 1
@@ -15783,30 +16080,55 @@ func (s *ListNamespaceResponseBody) SetTotalCount(v string) *ListNamespaceRespon
 }
 
 type ListNamespaceResponseBodyNamespaces struct {
+	// Indicates whether the automatically creating repositories feature is enabled for the namespace.
+	//
 	// example:
 	//
 	// true
-	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	AutoCreateRepo           *bool              `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	DefaultRepoConfiguration *RepoConfiguration `json:"DefaultRepoConfiguration,omitempty" xml:"DefaultRepoConfiguration,omitempty"`
+	// Deprecated
+	//
+	// The default type of repositories in the namespace. Valid values:
+	//
+	// 	- `PUBLIC`: public repositories.
+	//
+	// 	- `PRIVATE`: private repositories.
+	//
 	// example:
 	//
 	// PUBLIC
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// cri-94klsruryslx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespace ID.
+	//
 	// example:
 	//
 	// crn-tiw8t3f8i5lt****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The namespace name.
+	//
 	// example:
 	//
 	// test
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The status of the namespace. Valid values:
+	//
+	// 	- `NORMAL`: The namespace is normal.
+	//
+	// 	- `DELETING`: The namespace is being deleted.
+	//
 	// example:
 	//
 	// NORMAL
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfm4n5kzyf2fbi
@@ -15823,6 +16145,11 @@ func (s ListNamespaceResponseBodyNamespaces) GoString() string {
 
 func (s *ListNamespaceResponseBodyNamespaces) SetAutoCreateRepo(v bool) *ListNamespaceResponseBodyNamespaces {
 	s.AutoCreateRepo = &v
+	return s
+}
+
+func (s *ListNamespaceResponseBodyNamespaces) SetDefaultRepoConfiguration(v *RepoConfiguration) *ListNamespaceResponseBodyNamespaces {
+	s.DefaultRepoConfiguration = v
 	return s
 }
 
@@ -17096,24 +17423,34 @@ func (s *ListRepoSyncRuleResponse) SetBody(v *ListRepoSyncRuleResponseBody) *Lis
 }
 
 type ListRepoSyncTaskRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The repository name.
+	//
 	// example:
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace to which the repository belongs.
+	//
 	// example:
 	//
 	// ns
@@ -17126,6 +17463,8 @@ type ListRepoSyncTaskRequest struct {
 	//
 	// crsr-7lph66uloi6h****
 	SyncRecordId *string `json:"SyncRecordId,omitempty" xml:"SyncRecordId,omitempty"`
+	// The image tag.
+	//
 	// example:
 	//
 	// nginx
@@ -17176,28 +17515,40 @@ func (s *ListRepoSyncTaskRequest) SetTag(v string) *ListRepoSyncTaskRequest {
 }
 
 type ListRepoSyncTaskResponseBody struct {
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7640819A-FB5B-4E25-A227-97717F62****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details about synchronization tasks.
+	// The queried synchronization tasks.
 	SyncTasks []*ListRepoSyncTaskResponseBodySyncTasks `json:"SyncTasks,omitempty" xml:"SyncTasks,omitempty" type:"Repeated"`
+	// The total number of the queried synchronization tasks.
+	//
 	// example:
 	//
 	// 1
@@ -17248,36 +17599,62 @@ func (s *ListRepoSyncTaskResponseBody) SetTotalCount(v string) *ListRepoSyncTask
 }
 
 type ListRepoSyncTaskResponseBodySyncTasks struct {
+	// The time when the synchronization task was created.
+	//
 	// example:
 	//
 	// 1572839126000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the synchronization task is performed across Alibaba Cloud accounts. Valid values:
+	//
+	// 	- `true`: The image synchronization task is performed across accounts.
+	//
+	// 	- `false`: The image synchronization task is performed within the same account.
+	//
+	// Default value: `false`.
+	//
 	// example:
 	//
 	// true
 	CrossUser *bool `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
+	// Indicates whether a custom synchronization link is used.
+	//
 	// example:
 	//
 	// true
-	CustomLink *bool                                           `json:"CustomLink,omitempty" xml:"CustomLink,omitempty"`
-	ImageFrom  *ListRepoSyncTaskResponseBodySyncTasksImageFrom `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
-	ImageTo    *ListRepoSyncTaskResponseBodySyncTasksImageTo   `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
+	CustomLink *bool `json:"CustomLink,omitempty" xml:"CustomLink,omitempty"`
+	// The information about the source image.
+	ImageFrom *ListRepoSyncTaskResponseBodySyncTasksImageFrom `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
+	// The information about the destination image.
+	ImageTo *ListRepoSyncTaskResponseBodySyncTasksImageTo `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
+	// The time when the synchronization task was last modified.
+	//
 	// example:
 	//
 	// 1572839133000
 	ModifedTime *int64 `json:"ModifedTime,omitempty" xml:"ModifedTime,omitempty"`
+	// The ID of the image synchronization batch tasks, which is the same as the value of SyncRecordId in the request.
+	//
+	// >  If an image meets multiple synchronization rules and multiple synchronization tasks are generated for the image, these synchronization tasks use the same SyncBatchTaskId.
+	//
 	// example:
 	//
 	// 15DEEB56-9271-4FDD-AC4D-C3A5CC2C****
 	SyncBatchTaskId *string `json:"SyncBatchTaskId,omitempty" xml:"SyncBatchTaskId,omitempty"`
+	// The ID of the synchronization rule.
+	//
 	// example:
 	//
 	// crsr-7lph66uloi6h****
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
+	// The ID of the synchronization task.
+	//
 	// example:
 	//
 	// rst-4kfd7fk6pohk****
 	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
+	// Indicates whether the synchronization transfer acceleration feature is enabled for the synchronization task.
+	//
 	// example:
 	//
 	// true
@@ -17286,13 +17663,13 @@ type ListRepoSyncTaskResponseBodySyncTasks struct {
 	//
 	// >  The system uses this parameter to return an error message if the synchronization task fails.
 	//
-	// Valid values:
+	// Valid value:
 	//
-	// 	- OSS_POLICY_UNAUTHORIZED: Container Registry is not granted permissions to use Object Storage Service (OSS).
+	// 	- OSS_POLICY_UNAUTHORIZED: Container Registry is not granted permissions to access Object Storage Service (OSS).
 	//
 	// 	- TAG_CONFLICT: The destination repository contains an image that has the same tag as the source image, and image tag immutability is enabled for the destination repository.
 	//
-	// 	- UNSUPPORTED_FORMAT: The manifest and config formats of the image to be synchronized are not supported.
+	// 	- UNSUPPORTED_FORMAT: The manifest or config format of the image to be synchronized is not supported.
 	//
 	// 	- INTERNAL_ERROR: The synchronization task failed due to internal issues on the server.
 	//
@@ -17310,6 +17687,14 @@ type ListRepoSyncTaskResponseBodySyncTasks struct {
 	//
 	// SUCCESS
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The policy that is configured to trigger the synchronization task. Valid values:
+	//
+	// 	- `PASSIVE`: automatically triggers the synchronization task.
+	//
+	// 	- `INITIATIVE`: manually triggers the synchronization task.
+	//
+	// Default value: `PASSIVE`.
+	//
 	// example:
 	//
 	// PASSIVE
@@ -17390,22 +17775,32 @@ func (s *ListRepoSyncTaskResponseBodySyncTasks) SetTaskTrigger(v string) *ListRe
 }
 
 type ListRepoSyncTaskResponseBodySyncTasksImageFrom struct {
+	// The image tag.
+	//
 	// example:
 	//
 	// v0.1
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The repository name.
+	//
 	// example:
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The namespace to which the repository belongs.
+	//
 	// example:
 	//
 	// test
@@ -17446,22 +17841,32 @@ func (s *ListRepoSyncTaskResponseBodySyncTasksImageFrom) SetRepoNamespaceName(v 
 }
 
 type ListRepoSyncTaskResponseBodySyncTasksImageTo struct {
+	// The image tag.
+	//
 	// example:
 	//
 	// v0.1
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// cri-k77rd2eo9zttneqo
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The repository name.
+	//
 	// example:
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The namespace to which the repository belongs.
+	//
 	// example:
 	//
 	// test
@@ -18497,27 +18902,40 @@ func (s *ListRepositoryRequest) SetRepoStatus(v string) *ListRepositoryRequest {
 }
 
 type ListRepositoryResponseBody struct {
+	// The return value.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
-	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The information about the repositories.
 	Repositories []*ListRepositoryResponseBodyRepositories `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5241C090-DA69-4B0F-8E3F-2F24FDE1110E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of the queried image repositories.
+	//
 	// example:
 	//
 	// 1
@@ -18568,50 +18986,82 @@ func (s *ListRepositoryResponseBody) SetTotalCount(v string) *ListRepositoryResp
 }
 
 type ListRepositoryResponseBodyRepositories struct {
+	// The time when the repository was created.
+	//
 	// example:
 	//
 	// 1564153576000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the Container Registry instance to which the repository belongs.
+	//
 	// example:
 	//
 	// cri-kmsiwlxxdcv****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the repository was last modified.
+	//
 	// example:
 	//
 	// 1564153576000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The type of the repository building. Valid values:
+	//
+	// 	- `AUTO`: The repository is automatically built.
+	//
+	// 	- `MANUAL`: The repository is manually built.
+	//
 	// example:
 	//
 	// MANUAL
 	RepoBuildType *string `json:"RepoBuildType,omitempty" xml:"RepoBuildType,omitempty"`
+	// The ID of the repository.
+	//
 	// example:
 	//
 	// crr-03cuozrsqhkw****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The name of the repository.
+	//
 	// example:
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace to which the repository belongs.
+	//
 	// example:
 	//
 	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
+	// The status of the repository.
+	//
 	// example:
 	//
 	// NORMAL
 	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
+	// The type of the repository. Valid values:
+	//
+	// 	- `PUBLIC`
+	//
+	// 	- `PRIVATE`
+	//
 	// example:
 	//
 	// PRIVATE
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	// The ID of the resource group to which the repository belongs.
+	//
 	// example:
 	//
 	// rg-acfm4n5kzyfxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The summary of the repository.
+	//
 	// example:
 	//
 	// test OK
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Indicates whether the feature of image tag immutability is enabled for the repository.
+	//
 	// example:
 	//
 	// true
@@ -18716,19 +19166,19 @@ func (s *ListRepositoryResponse) SetBody(v *ListRepositoryResponseBody) *ListRep
 }
 
 type ListScanBaselineByTaskRequest struct {
-	// The image digest.
+	// The digest value of the image.
 	//
 	// example:
 	//
 	// sha256:1c89806cfaf66d2990e2cf1131ebd56ff24b133745a33abf1228*************
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The instance ID.
+	// The ID of the Container Registry instance.
 	//
 	// example:
 	//
 	// cri-***********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The severity of the risk.
+	// The level of the baseline risk.
 	//
 	// example:
 	//
@@ -18746,7 +19196,7 @@ type ListScanBaselineByTaskRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The repository ID.
+	// The ID of the image repository.
 	//
 	// example:
 	//
@@ -18758,7 +19208,7 @@ type ListScanBaselineByTaskRequest struct {
 	//
 	// 3e526d7e-4b45-4703-b046-***********
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	// The image tag.
+	// The image version.
 	//
 	// example:
 	//
@@ -18821,7 +19271,7 @@ type ListScanBaselineByTaskResponseBody struct {
 	//
 	// success
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the API request is successful. Valid values:
+	// Indicates whether the API request was successful. Valid values:
 	//
 	// 	- `true`: successful
 	//
@@ -18849,7 +19299,7 @@ type ListScanBaselineByTaskResponseBody struct {
 	//
 	// 5259118F-79E2-57E9-9AEA-551586F4FAED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried baseline risks.
+	// The scanned baseline risks.
 	ScanBaselines []*ListScanBaselineByTaskResponseBodyScanBaselines `json:"ScanBaselines,omitempty" xml:"ScanBaselines,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -18903,9 +19353,9 @@ func (s *ListScanBaselineByTaskResponseBody) SetTotalCount(v int32) *ListScanBas
 }
 
 type ListScanBaselineByTaskResponseBodyScanBaselines struct {
-	// The category of the baseline risk.
+	// The category to which the baseline risk belongs.
 	BaselineClassAlias *string `json:"BaselineClassAlias,omitempty" xml:"BaselineClassAlias,omitempty"`
-	// The suggestion on handling the baseline risk.
+	// Suggestions about how to fix the baseline risk.
 	BaselineDetailAdvice *string `json:"BaselineDetailAdvice,omitempty" xml:"BaselineDetailAdvice,omitempty"`
 	// The description of the baseline risk.
 	BaselineDetailDescription *string `json:"BaselineDetailDescription,omitempty" xml:"BaselineDetailDescription,omitempty"`
@@ -18923,7 +19373,7 @@ type ListScanBaselineByTaskResponseBodyScanBaselines struct {
 	BaselineItemCount *int32 `json:"BaselineItemCount,omitempty" xml:"BaselineItemCount,omitempty"`
 	// The name of the baseline risk.
 	BaselineNameAlias *string `json:"BaselineNameAlias,omitempty" xml:"BaselineNameAlias,omitempty"`
-	// The name of the baseline risk.
+	// The key of the baseline name.
 	//
 	// example:
 	//
@@ -18935,31 +19385,31 @@ type ListScanBaselineByTaskResponseBodyScanBaselines struct {
 	//
 	// high
 	BaselineNameLevel *string `json:"BaselineNameLevel,omitempty" xml:"BaselineNameLevel,omitempty"`
-	// The time when the image was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1695090008000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the image was first scanned.
+	// The time of the first scan.
 	//
 	// example:
 	//
 	// 2024-04-10 15:33:26
 	FirstScanTime *int64 `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
-	// The quantity of baseline risks whose severity is high.
+	// High risk quantity.
 	//
 	// example:
 	//
 	// 1
 	HighRiskItemCount *int32 `json:"HighRiskItemCount,omitempty" xml:"HighRiskItemCount,omitempty"`
-	// The quantity of baseline risks whose severity is low.
+	// Low risk quantity.
 	//
 	// example:
 	//
 	// 1
 	LowRiskItemCount *int32 `json:"LowRiskItemCount,omitempty" xml:"LowRiskItemCount,omitempty"`
-	// The quantity of baseline risks whose severity is medium.
+	// Medium risk quantity.
 	//
 	// example:
 	//
@@ -18971,7 +19421,7 @@ type ListScanBaselineByTaskResponseBodyScanBaselines struct {
 	//
 	// 2328fcaa-f28a-405d-a357-asdvfrew23
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	// The time when the image was updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -21445,7 +21895,10 @@ type UpdateNamespaceRequest struct {
 	// example:
 	//
 	// true
-	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	AutoCreateRepo           *bool              `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	DefaultRepoConfiguration *RepoConfiguration `json:"DefaultRepoConfiguration,omitempty" xml:"DefaultRepoConfiguration,omitempty"`
+	// Deprecated
+	//
 	// The default type of the repository. Valid values:
 	//
 	// 	- `PUBLIC`: The repository is a public repository.
@@ -21487,6 +21940,11 @@ func (s *UpdateNamespaceRequest) SetAutoCreateRepo(v bool) *UpdateNamespaceReque
 	return s
 }
 
+func (s *UpdateNamespaceRequest) SetDefaultRepoConfiguration(v *RepoConfiguration) *UpdateNamespaceRequest {
+	s.DefaultRepoConfiguration = v
+	return s
+}
+
 func (s *UpdateNamespaceRequest) SetDefaultRepoType(v string) *UpdateNamespaceRequest {
 	s.DefaultRepoType = &v
 	return s
@@ -21498,6 +21956,77 @@ func (s *UpdateNamespaceRequest) SetInstanceId(v string) *UpdateNamespaceRequest
 }
 
 func (s *UpdateNamespaceRequest) SetNamespaceName(v string) *UpdateNamespaceRequest {
+	s.NamespaceName = &v
+	return s
+}
+
+type UpdateNamespaceShrinkRequest struct {
+	// Specifies whether to automatically create a repository when an image is pushed to the namespace.
+	//
+	// example:
+	//
+	// true
+	AutoCreateRepo                 *bool   `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	DefaultRepoConfigurationShrink *string `json:"DefaultRepoConfiguration,omitempty" xml:"DefaultRepoConfiguration,omitempty"`
+	// Deprecated
+	//
+	// The default type of the repository. Valid values:
+	//
+	// 	- `PUBLIC`: The repository is a public repository.
+	//
+	// 	- `PRIVATE`: The repository is a private repository.
+	//
+	// example:
+	//
+	// PRIVATE
+	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
+	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the namespace.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+}
+
+func (s UpdateNamespaceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNamespaceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNamespaceShrinkRequest) SetAutoCreateRepo(v bool) *UpdateNamespaceShrinkRequest {
+	s.AutoCreateRepo = &v
+	return s
+}
+
+func (s *UpdateNamespaceShrinkRequest) SetDefaultRepoConfigurationShrink(v string) *UpdateNamespaceShrinkRequest {
+	s.DefaultRepoConfigurationShrink = &v
+	return s
+}
+
+func (s *UpdateNamespaceShrinkRequest) SetDefaultRepoType(v string) *UpdateNamespaceShrinkRequest {
+	s.DefaultRepoType = &v
+	return s
+}
+
+func (s *UpdateNamespaceShrinkRequest) SetInstanceId(v string) *UpdateNamespaceShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateNamespaceShrinkRequest) SetNamespaceName(v string) *UpdateNamespaceShrinkRequest {
 	s.NamespaceName = &v
 	return s
 }
@@ -23531,19 +24060,29 @@ func (client *Client) CreateInstanceVpcEndpointLinkedVpc(request *CreateInstance
 //
 // Creates a namespace of image repositories.
 //
-// @param request - CreateNamespaceRequest
+// @param tmpReq - CreateNamespaceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateNamespaceResponse
-func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateNamespaceWithOptions(tmpReq *CreateNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateNamespaceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DefaultRepoConfiguration)) {
+		request.DefaultRepoConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultRepoConfiguration, tea.String("DefaultRepoConfiguration"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoCreateRepo)) {
 		query["AutoCreateRepo"] = request.AutoCreateRepo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultRepoConfigurationShrink)) {
+		query["DefaultRepoConfiguration"] = request.DefaultRepoConfigurationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DefaultRepoType)) {
@@ -24123,6 +24662,10 @@ func (client *Client) CreateRepoTag(request *CreateRepoTagRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an image scan task.
+//
 // @param request - CreateRepoTagScanTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -24181,6 +24724,10 @@ func (client *Client) CreateRepoTagScanTaskWithOptions(request *CreateRepoTagSca
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an image scan task.
+//
 // @param request - CreateRepoTagScanTaskRequest
 //
 // @return CreateRepoTagScanTaskResponse
@@ -26670,6 +27217,10 @@ func (client *Client) GetRepoTag(request *GetRepoTagRequest) (_result *GetRepoTa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the scanning status of an image tag.
+//
 // @param request - GetRepoTagScanStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -26728,6 +27279,10 @@ func (client *Client) GetRepoTagScanStatusWithOptions(request *GetRepoTagScanSta
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the scanning status of an image tag.
+//
 // @param request - GetRepoTagScanStatusRequest
 //
 // @return GetRepoTagScanStatusResponse
@@ -27812,7 +28367,7 @@ func (client *Client) ListInstanceRegion(request *ListInstanceRegionRequest) (_r
 
 // Summary:
 //
-// cri-94klsruryslx****
+// Queries namespaces in a Container Registry instance.
 //
 // @param request - ListNamespaceRequest
 //
@@ -27870,7 +28425,7 @@ func (client *Client) ListNamespaceWithOptions(request *ListNamespaceRequest, ru
 
 // Summary:
 //
-// cri-94klsruryslx****
+// Queries namespaces in a Container Registry instance.
 //
 // @param request - ListNamespaceRequest
 //
@@ -28188,7 +28743,7 @@ func (client *Client) ListRepoSyncRule(request *ListRepoSyncRuleRequest) (_resul
 
 // Summary:
 //
-// Indicates whether automatic link is used.
+// Queries image synchronization tasks in an image repository.
 //
 // @param request - ListRepoSyncTaskRequest
 //
@@ -28254,7 +28809,7 @@ func (client *Client) ListRepoSyncTaskWithOptions(request *ListRepoSyncTaskReque
 
 // Summary:
 //
-// Indicates whether automatic link is used.
+// Queries image synchronization tasks in an image repository.
 //
 // @param request - ListRepoSyncTaskRequest
 //
@@ -29612,19 +30167,29 @@ func (client *Client) UpdateInstanceEndpointStatus(request *UpdateInstanceEndpoi
 //
 // Updates a namespace.
 //
-// @param request - UpdateNamespaceRequest
+// @param tmpReq - UpdateNamespaceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateNamespaceResponse
-func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest, runtime *util.RuntimeOptions) (_result *UpdateNamespaceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateNamespaceWithOptions(tmpReq *UpdateNamespaceRequest, runtime *util.RuntimeOptions) (_result *UpdateNamespaceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateNamespaceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DefaultRepoConfiguration)) {
+		request.DefaultRepoConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultRepoConfiguration, tea.String("DefaultRepoConfiguration"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoCreateRepo)) {
 		query["AutoCreateRepo"] = request.AutoCreateRepo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultRepoConfigurationShrink)) {
+		query["DefaultRepoConfiguration"] = request.DefaultRepoConfigurationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DefaultRepoType)) {
