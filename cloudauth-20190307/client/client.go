@@ -1486,6 +1486,256 @@ func (s *CreateVerifySettingResponse) SetBody(v *CreateVerifySettingResponseBody
 	return s
 }
 
+type CredentialProductVerifyV2Request struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0501
+	CredName *string `json:"CredName,omitempty" xml:"CredName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 05
+	CredType *string `json:"CredType,omitempty" xml:"CredType,omitempty"`
+	// example:
+	//
+	// https://aliyundoc.com/picture*****.jpeg
+	ImageFile *string `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
+	// example:
+	//
+	// https://aliyundoc.com/picture*****.jpeg
+	ImageUrl   *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	MerchantId *string `json:"MerchantId,omitempty" xml:"MerchantId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ANTI_FAKE_CHECK
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+}
+
+func (s CredentialProductVerifyV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialProductVerifyV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialProductVerifyV2Request) SetCredName(v string) *CredentialProductVerifyV2Request {
+	s.CredName = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2Request) SetCredType(v string) *CredentialProductVerifyV2Request {
+	s.CredType = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2Request) SetImageFile(v string) *CredentialProductVerifyV2Request {
+	s.ImageFile = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2Request) SetImageUrl(v string) *CredentialProductVerifyV2Request {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2Request) SetMerchantId(v string) *CredentialProductVerifyV2Request {
+	s.MerchantId = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2Request) SetProductCode(v string) *CredentialProductVerifyV2Request {
+	s.ProductCode = &v
+	return s
+}
+
+type CredentialProductVerifyV2AdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0501
+	CredName *string `json:"CredName,omitempty" xml:"CredName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 05
+	CredType *string `json:"CredType,omitempty" xml:"CredType,omitempty"`
+	// example:
+	//
+	// https://aliyundoc.com/picture*****.jpeg
+	ImageFileObject io.Reader `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
+	// example:
+	//
+	// https://aliyundoc.com/picture*****.jpeg
+	ImageUrl   *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	MerchantId *string `json:"MerchantId,omitempty" xml:"MerchantId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ANTI_FAKE_CHECK
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+}
+
+func (s CredentialProductVerifyV2AdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialProductVerifyV2AdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialProductVerifyV2AdvanceRequest) SetCredName(v string) *CredentialProductVerifyV2AdvanceRequest {
+	s.CredName = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2AdvanceRequest) SetCredType(v string) *CredentialProductVerifyV2AdvanceRequest {
+	s.CredType = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2AdvanceRequest) SetImageFileObject(v io.Reader) *CredentialProductVerifyV2AdvanceRequest {
+	s.ImageFileObject = v
+	return s
+}
+
+func (s *CredentialProductVerifyV2AdvanceRequest) SetImageUrl(v string) *CredentialProductVerifyV2AdvanceRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2AdvanceRequest) SetMerchantId(v string) *CredentialProductVerifyV2AdvanceRequest {
+	s.MerchantId = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2AdvanceRequest) SetProductCode(v string) *CredentialProductVerifyV2AdvanceRequest {
+	s.ProductCode = &v
+	return s
+}
+
+type CredentialProductVerifyV2ResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 130A2C10-B9EE-4D84-88E3-5384FF039795
+	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *CredentialProductVerifyV2ResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s CredentialProductVerifyV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialProductVerifyV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialProductVerifyV2ResponseBody) SetCode(v string) *CredentialProductVerifyV2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2ResponseBody) SetMessage(v string) *CredentialProductVerifyV2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2ResponseBody) SetRequestId(v string) *CredentialProductVerifyV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2ResponseBody) SetResultObject(v *CredentialProductVerifyV2ResponseBodyResultObject) *CredentialProductVerifyV2ResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type CredentialProductVerifyV2ResponseBodyResultObject struct {
+	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
+	// example:
+	//
+	// 1
+	Result    *string            `json:"Result,omitempty" xml:"Result,omitempty"`
+	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
+	// example:
+	//
+	// PS,LOW_QUALITY_PRODUCT
+	RiskTag *string `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
+}
+
+func (s CredentialProductVerifyV2ResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialProductVerifyV2ResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialProductVerifyV2ResponseBodyResultObject) SetMaterialInfo(v string) *CredentialProductVerifyV2ResponseBodyResultObject {
+	s.MaterialInfo = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2ResponseBodyResultObject) SetResult(v string) *CredentialProductVerifyV2ResponseBodyResultObject {
+	s.Result = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2ResponseBodyResultObject) SetRiskScore(v map[string]*string) *CredentialProductVerifyV2ResponseBodyResultObject {
+	s.RiskScore = v
+	return s
+}
+
+func (s *CredentialProductVerifyV2ResponseBodyResultObject) SetRiskTag(v string) *CredentialProductVerifyV2ResponseBodyResultObject {
+	s.RiskTag = &v
+	return s
+}
+
+type CredentialProductVerifyV2Response struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CredentialProductVerifyV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CredentialProductVerifyV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialProductVerifyV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialProductVerifyV2Response) SetHeaders(v map[string]*string) *CredentialProductVerifyV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *CredentialProductVerifyV2Response) SetStatusCode(v int32) *CredentialProductVerifyV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CredentialProductVerifyV2Response) SetBody(v *CredentialProductVerifyV2ResponseBody) *CredentialProductVerifyV2Response {
+	s.Body = v
+	return s
+}
+
 type CredentialVerifyRequest struct {
 	// example:
 	//
@@ -10312,6 +10562,199 @@ func (client *Client) CreateVerifySetting(request *CreateVerifySettingRequest) (
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 商品凭证核验
+//
+// @param request - CredentialProductVerifyV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CredentialProductVerifyV2Response
+func (client *Client) CredentialProductVerifyV2WithOptions(request *CredentialProductVerifyV2Request, runtime *util.RuntimeOptions) (_result *CredentialProductVerifyV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredName)) {
+		query["CredName"] = request.CredName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CredType)) {
+		query["CredType"] = request.CredType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantId)) {
+		query["MerchantId"] = request.MerchantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageFile)) {
+		body["ImageFile"] = request.ImageFile
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CredentialProductVerifyV2"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CredentialProductVerifyV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 商品凭证核验
+//
+// @param request - CredentialProductVerifyV2Request
+//
+// @return CredentialProductVerifyV2Response
+func (client *Client) CredentialProductVerifyV2(request *CredentialProductVerifyV2Request) (_result *CredentialProductVerifyV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CredentialProductVerifyV2Response{}
+	_body, _err := client.CredentialProductVerifyV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CredentialProductVerifyV2Advance(request *CredentialProductVerifyV2AdvanceRequest, runtime *util.RuntimeOptions) (_result *CredentialProductVerifyV2Response, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("Cloudauth"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	credentialProductVerifyV2Req := &CredentialProductVerifyV2Request{}
+	openapiutil.Convert(request, credentialProductVerifyV2Req)
+	if !tea.BoolValue(util.IsUnset(request.ImageFileObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageFileObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		credentialProductVerifyV2Req.ImageFile = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	credentialProductVerifyV2Resp, _err := client.CredentialProductVerifyV2WithOptions(credentialProductVerifyV2Req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = credentialProductVerifyV2Resp
 	return _result, _err
 }
 
