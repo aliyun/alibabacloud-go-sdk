@@ -15081,6 +15081,185 @@ func (s *CreateUserDeliveryTaskResponse) SetBody(v *CreateUserDeliveryTaskRespon
 	return s
 }
 
+type CreateVideoProcessingRequest struct {
+	// example:
+	//
+	// end
+	FlvSeekEnd *string `json:"FlvSeekEnd,omitempty" xml:"FlvSeekEnd,omitempty"`
+	// example:
+	//
+	// start
+	FlvSeekStart *string `json:"FlvSeekStart,omitempty" xml:"FlvSeekStart,omitempty"`
+	// example:
+	//
+	// by_byte
+	FlvVideoSeekMode *string `json:"FlvVideoSeekMode,omitempty" xml:"FlvVideoSeekMode,omitempty"`
+	// example:
+	//
+	// end
+	Mp4SeekEnd *string `json:"Mp4SeekEnd,omitempty" xml:"Mp4SeekEnd,omitempty"`
+	// example:
+	//
+	// start
+	Mp4SeekStart *string `json:"Mp4SeekStart,omitempty" xml:"Mp4SeekStart,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// on
+	VideoSeekEnable *string `json:"VideoSeekEnable,omitempty" xml:"VideoSeekEnable,omitempty"`
+}
+
+func (s CreateVideoProcessingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoProcessingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoProcessingRequest) SetFlvSeekEnd(v string) *CreateVideoProcessingRequest {
+	s.FlvSeekEnd = &v
+	return s
+}
+
+func (s *CreateVideoProcessingRequest) SetFlvSeekStart(v string) *CreateVideoProcessingRequest {
+	s.FlvSeekStart = &v
+	return s
+}
+
+func (s *CreateVideoProcessingRequest) SetFlvVideoSeekMode(v string) *CreateVideoProcessingRequest {
+	s.FlvVideoSeekMode = &v
+	return s
+}
+
+func (s *CreateVideoProcessingRequest) SetMp4SeekEnd(v string) *CreateVideoProcessingRequest {
+	s.Mp4SeekEnd = &v
+	return s
+}
+
+func (s *CreateVideoProcessingRequest) SetMp4SeekStart(v string) *CreateVideoProcessingRequest {
+	s.Mp4SeekStart = &v
+	return s
+}
+
+func (s *CreateVideoProcessingRequest) SetRule(v string) *CreateVideoProcessingRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateVideoProcessingRequest) SetRuleEnable(v string) *CreateVideoProcessingRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateVideoProcessingRequest) SetRuleName(v string) *CreateVideoProcessingRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateVideoProcessingRequest) SetSequence(v int32) *CreateVideoProcessingRequest {
+	s.Sequence = &v
+	return s
+}
+
+func (s *CreateVideoProcessingRequest) SetSiteId(v int64) *CreateVideoProcessingRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateVideoProcessingRequest) SetSiteVersion(v int32) *CreateVideoProcessingRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *CreateVideoProcessingRequest) SetVideoSeekEnable(v string) *CreateVideoProcessingRequest {
+	s.VideoSeekEnable = &v
+	return s
+}
+
+type CreateVideoProcessingResponseBody struct {
+	// example:
+	//
+	// 352816**********
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateVideoProcessingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoProcessingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoProcessingResponseBody) SetConfigId(v int64) *CreateVideoProcessingResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateVideoProcessingResponseBody) SetRequestId(v string) *CreateVideoProcessingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateVideoProcessingResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVideoProcessingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateVideoProcessingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoProcessingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoProcessingResponse) SetHeaders(v map[string]*string) *CreateVideoProcessingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVideoProcessingResponse) SetStatusCode(v int32) *CreateVideoProcessingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateVideoProcessingResponse) SetBody(v *CreateVideoProcessingResponseBody) *CreateVideoProcessingResponse {
+	s.Body = v
+	return s
+}
+
 type CreateWafRuleRequest struct {
 	// Rule configuration, specifying the detailed configuration for creating a rule.
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
@@ -20080,6 +20259,88 @@ func (s *DeleteUserDeliveryTaskResponse) SetStatusCode(v int32) *DeleteUserDeliv
 }
 
 func (s *DeleteUserDeliveryTaskResponse) SetBody(v *DeleteUserDeliveryTaskResponseBody) *DeleteUserDeliveryTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteVideoProcessingRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteVideoProcessingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVideoProcessingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVideoProcessingRequest) SetConfigId(v int64) *DeleteVideoProcessingRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteVideoProcessingRequest) SetSiteId(v int64) *DeleteVideoProcessingRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteVideoProcessingResponseBody struct {
+	// example:
+	//
+	// 6abd807e-ed2a-44de-ac54-ac38a62472e6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteVideoProcessingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVideoProcessingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVideoProcessingResponseBody) SetRequestId(v string) *DeleteVideoProcessingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteVideoProcessingResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVideoProcessingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteVideoProcessingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVideoProcessingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVideoProcessingResponse) SetHeaders(v map[string]*string) *DeleteVideoProcessingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteVideoProcessingResponse) SetStatusCode(v int32) *DeleteVideoProcessingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteVideoProcessingResponse) SetBody(v *DeleteVideoProcessingResponseBody) *DeleteVideoProcessingResponse {
 	s.Body = v
 	return s
 }
@@ -38402,6 +38663,205 @@ func (s *GetUserLogDeliveryQuotaResponse) SetBody(v *GetUserLogDeliveryQuotaResp
 	return s
 }
 
+type GetVideoProcessingRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23321557***
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23282348***
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetVideoProcessingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoProcessingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoProcessingRequest) SetConfigId(v int64) *GetVideoProcessingRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetVideoProcessingRequest) SetSiteId(v int64) *GetVideoProcessingRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetVideoProcessingResponseBody struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// end
+	FlvSeekEnd *string `json:"FlvSeekEnd,omitempty" xml:"FlvSeekEnd,omitempty"`
+	// example:
+	//
+	// start
+	FlvSeekStart *string `json:"FlvSeekStart,omitempty" xml:"FlvSeekStart,omitempty"`
+	// example:
+	//
+	// by_byte
+	FlvVideoSeekMode *string `json:"FlvVideoSeekMode,omitempty" xml:"FlvVideoSeekMode,omitempty"`
+	// example:
+	//
+	// end
+	Mp4SeekEnd *string `json:"Mp4SeekEnd,omitempty" xml:"Mp4SeekEnd,omitempty"`
+	// example:
+	//
+	// start
+	Mp4SeekStart *string `json:"Mp4SeekStart,omitempty" xml:"Mp4SeekStart,omitempty"`
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// on
+	VideoSeekEnable *string `json:"VideoSeekEnable,omitempty" xml:"VideoSeekEnable,omitempty"`
+}
+
+func (s GetVideoProcessingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoProcessingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoProcessingResponseBody) SetConfigId(v int64) *GetVideoProcessingResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetVideoProcessingResponseBody) SetConfigType(v string) *GetVideoProcessingResponseBody {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *GetVideoProcessingResponseBody) SetFlvSeekEnd(v string) *GetVideoProcessingResponseBody {
+	s.FlvSeekEnd = &v
+	return s
+}
+
+func (s *GetVideoProcessingResponseBody) SetFlvSeekStart(v string) *GetVideoProcessingResponseBody {
+	s.FlvSeekStart = &v
+	return s
+}
+
+func (s *GetVideoProcessingResponseBody) SetFlvVideoSeekMode(v string) *GetVideoProcessingResponseBody {
+	s.FlvVideoSeekMode = &v
+	return s
+}
+
+func (s *GetVideoProcessingResponseBody) SetMp4SeekEnd(v string) *GetVideoProcessingResponseBody {
+	s.Mp4SeekEnd = &v
+	return s
+}
+
+func (s *GetVideoProcessingResponseBody) SetMp4SeekStart(v string) *GetVideoProcessingResponseBody {
+	s.Mp4SeekStart = &v
+	return s
+}
+
+func (s *GetVideoProcessingResponseBody) SetRequestId(v string) *GetVideoProcessingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVideoProcessingResponseBody) SetRule(v string) *GetVideoProcessingResponseBody {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetVideoProcessingResponseBody) SetRuleEnable(v string) *GetVideoProcessingResponseBody {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *GetVideoProcessingResponseBody) SetRuleName(v string) *GetVideoProcessingResponseBody {
+	s.RuleName = &v
+	return s
+}
+
+func (s *GetVideoProcessingResponseBody) SetSequence(v int32) *GetVideoProcessingResponseBody {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetVideoProcessingResponseBody) SetSiteVersion(v int32) *GetVideoProcessingResponseBody {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *GetVideoProcessingResponseBody) SetVideoSeekEnable(v string) *GetVideoProcessingResponseBody {
+	s.VideoSeekEnable = &v
+	return s
+}
+
+type GetVideoProcessingResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVideoProcessingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetVideoProcessingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoProcessingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoProcessingResponse) SetHeaders(v map[string]*string) *GetVideoProcessingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVideoProcessingResponse) SetStatusCode(v int32) *GetVideoProcessingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVideoProcessingResponse) SetBody(v *GetVideoProcessingResponseBody) *GetVideoProcessingResponse {
+	s.Body = v
+	return s
+}
+
 type GetWafBotAppKeyResponseBody struct {
 	// Application key.
 	//
@@ -56304,6 +56764,301 @@ func (s *ListUserRoutinesResponse) SetBody(v *ListUserRoutinesResponseBody) *Lis
 	return s
 }
 
+type ListVideoProcessingsRequest struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListVideoProcessingsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVideoProcessingsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListVideoProcessingsRequest) SetConfigId(v int64) *ListVideoProcessingsRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListVideoProcessingsRequest) SetConfigType(v string) *ListVideoProcessingsRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListVideoProcessingsRequest) SetPageNumber(v int32) *ListVideoProcessingsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListVideoProcessingsRequest) SetPageSize(v int32) *ListVideoProcessingsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVideoProcessingsRequest) SetRuleName(v string) *ListVideoProcessingsRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListVideoProcessingsRequest) SetSiteId(v int64) *ListVideoProcessingsRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListVideoProcessingsRequest) SetSiteVersion(v int32) *ListVideoProcessingsRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListVideoProcessingsResponseBody struct {
+	Configs []*ListVideoProcessingsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 55
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 3
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListVideoProcessingsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVideoProcessingsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListVideoProcessingsResponseBody) SetConfigs(v []*ListVideoProcessingsResponseBodyConfigs) *ListVideoProcessingsResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBody) SetPageNumber(v int32) *ListVideoProcessingsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBody) SetPageSize(v int32) *ListVideoProcessingsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBody) SetRequestId(v string) *ListVideoProcessingsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBody) SetTotalCount(v int32) *ListVideoProcessingsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBody) SetTotalPage(v int32) *ListVideoProcessingsResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListVideoProcessingsResponseBodyConfigs struct {
+	// example:
+	//
+	// 234123**
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// end
+	FlvSeekEnd *string `json:"FlvSeekEnd,omitempty" xml:"FlvSeekEnd,omitempty"`
+	// example:
+	//
+	// start
+	FlvSeekStart *string `json:"FlvSeekStart,omitempty" xml:"FlvSeekStart,omitempty"`
+	// example:
+	//
+	// by_byte
+	FlvVideoSeekMode *string `json:"FlvVideoSeekMode,omitempty" xml:"FlvVideoSeekMode,omitempty"`
+	// example:
+	//
+	// end
+	Mp4SeekEnd *string `json:"Mp4SeekEnd,omitempty" xml:"Mp4SeekEnd,omitempty"`
+	// example:
+	//
+	// start
+	Mp4SeekStart *string `json:"Mp4SeekStart,omitempty" xml:"Mp4SeekStart,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// on
+	VideoSeekEnable *string `json:"VideoSeekEnable,omitempty" xml:"VideoSeekEnable,omitempty"`
+}
+
+func (s ListVideoProcessingsResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVideoProcessingsResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListVideoProcessingsResponseBodyConfigs) SetConfigId(v int64) *ListVideoProcessingsResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBodyConfigs) SetConfigType(v string) *ListVideoProcessingsResponseBodyConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBodyConfigs) SetFlvSeekEnd(v string) *ListVideoProcessingsResponseBodyConfigs {
+	s.FlvSeekEnd = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBodyConfigs) SetFlvSeekStart(v string) *ListVideoProcessingsResponseBodyConfigs {
+	s.FlvSeekStart = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBodyConfigs) SetFlvVideoSeekMode(v string) *ListVideoProcessingsResponseBodyConfigs {
+	s.FlvVideoSeekMode = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBodyConfigs) SetMp4SeekEnd(v string) *ListVideoProcessingsResponseBodyConfigs {
+	s.Mp4SeekEnd = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBodyConfigs) SetMp4SeekStart(v string) *ListVideoProcessingsResponseBodyConfigs {
+	s.Mp4SeekStart = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBodyConfigs) SetRule(v string) *ListVideoProcessingsResponseBodyConfigs {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBodyConfigs) SetRuleEnable(v string) *ListVideoProcessingsResponseBodyConfigs {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBodyConfigs) SetRuleName(v string) *ListVideoProcessingsResponseBodyConfigs {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBodyConfigs) SetSequence(v int32) *ListVideoProcessingsResponseBodyConfigs {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBodyConfigs) SetSiteVersion(v int32) *ListVideoProcessingsResponseBodyConfigs {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponseBodyConfigs) SetVideoSeekEnable(v string) *ListVideoProcessingsResponseBodyConfigs {
+	s.VideoSeekEnable = &v
+	return s
+}
+
+type ListVideoProcessingsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVideoProcessingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListVideoProcessingsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVideoProcessingsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListVideoProcessingsResponse) SetHeaders(v map[string]*string) *ListVideoProcessingsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListVideoProcessingsResponse) SetStatusCode(v int32) *ListVideoProcessingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListVideoProcessingsResponse) SetBody(v *ListVideoProcessingsResponseBody) *ListVideoProcessingsResponse {
+	s.Body = v
+	return s
+}
+
 type ListWafManagedRulesRequest struct {
 	// Attack type of the vulnerability protection event. Values:
 	//
@@ -63285,11 +64040,11 @@ func (s *UpdateCacheTagResponse) SetBody(v *UpdateCacheTagResponseBody) *UpdateC
 }
 
 type UpdateCnameFlatteningRequest struct {
-	// Flattening mode. Possible values:
+	// The CNAME flattening mode. Valid values:
 	//
-	// - flatten_all: Flatten all.
+	// 	- flatten_all: flattens all CNAMEs.
 	//
-	// - flatten_at_root: Flatten only the root domain. The default is to flatten the root domain.
+	// 	- flatten_at_root: flattens only the root domain. Default: flatten_at_root
 	//
 	// This parameter is required.
 	//
@@ -63297,7 +64052,7 @@ type UpdateCnameFlatteningRequest struct {
 	//
 	// flatten_all
 	FlattenMode *string `json:"FlattenMode,omitempty" xml:"FlattenMode,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -63326,7 +64081,7 @@ func (s *UpdateCnameFlatteningRequest) SetSiteId(v int64) *UpdateCnameFlattening
 }
 
 type UpdateCnameFlatteningResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -68295,7 +69050,8 @@ type UpdateRecordRequest struct {
 	// example:
 	//
 	// 30
-	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	Ttl  *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateRecordRequest) String() string {
@@ -68348,6 +69104,11 @@ func (s *UpdateRecordRequest) SetSourceType(v string) *UpdateRecordRequest {
 
 func (s *UpdateRecordRequest) SetTtl(v int32) *UpdateRecordRequest {
 	s.Ttl = &v
+	return s
+}
+
+func (s *UpdateRecordRequest) SetType(v string) *UpdateRecordRequest {
+	s.Type = &v
 	return s
 }
 
@@ -68694,7 +69455,8 @@ type UpdateRecordShrinkRequest struct {
 	// example:
 	//
 	// 30
-	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	Ttl  *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateRecordShrinkRequest) String() string {
@@ -68747,6 +69509,11 @@ func (s *UpdateRecordShrinkRequest) SetSourceType(v string) *UpdateRecordShrinkR
 
 func (s *UpdateRecordShrinkRequest) SetTtl(v int32) *UpdateRecordShrinkRequest {
 	s.Ttl = &v
+	return s
+}
+
+func (s *UpdateRecordShrinkRequest) SetType(v string) *UpdateRecordShrinkRequest {
+	s.Type = &v
 	return s
 }
 
@@ -70796,6 +71563,178 @@ func (s *UpdateUserDeliveryTaskStatusResponse) SetStatusCode(v int32) *UpdateUse
 }
 
 func (s *UpdateUserDeliveryTaskStatusResponse) SetBody(v *UpdateUserDeliveryTaskStatusResponseBody) *UpdateUserDeliveryTaskStatusResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateVideoProcessingRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// end
+	FlvSeekEnd *string `json:"FlvSeekEnd,omitempty" xml:"FlvSeekEnd,omitempty"`
+	// example:
+	//
+	// start
+	FlvSeekStart *string `json:"FlvSeekStart,omitempty" xml:"FlvSeekStart,omitempty"`
+	// example:
+	//
+	// by_byte
+	FlvVideoSeekMode *string `json:"FlvVideoSeekMode,omitempty" xml:"FlvVideoSeekMode,omitempty"`
+	// example:
+	//
+	// end
+	Mp4SeekEnd *string `json:"Mp4SeekEnd,omitempty" xml:"Mp4SeekEnd,omitempty"`
+	// example:
+	//
+	// start
+	Mp4SeekStart *string `json:"Mp4SeekStart,omitempty" xml:"Mp4SeekStart,omitempty"`
+	// example:
+	//
+	// (http.host eq "video.example.com")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// on
+	VideoSeekEnable *string `json:"VideoSeekEnable,omitempty" xml:"VideoSeekEnable,omitempty"`
+}
+
+func (s UpdateVideoProcessingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVideoProcessingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVideoProcessingRequest) SetConfigId(v int64) *UpdateVideoProcessingRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateVideoProcessingRequest) SetFlvSeekEnd(v string) *UpdateVideoProcessingRequest {
+	s.FlvSeekEnd = &v
+	return s
+}
+
+func (s *UpdateVideoProcessingRequest) SetFlvSeekStart(v string) *UpdateVideoProcessingRequest {
+	s.FlvSeekStart = &v
+	return s
+}
+
+func (s *UpdateVideoProcessingRequest) SetFlvVideoSeekMode(v string) *UpdateVideoProcessingRequest {
+	s.FlvVideoSeekMode = &v
+	return s
+}
+
+func (s *UpdateVideoProcessingRequest) SetMp4SeekEnd(v string) *UpdateVideoProcessingRequest {
+	s.Mp4SeekEnd = &v
+	return s
+}
+
+func (s *UpdateVideoProcessingRequest) SetMp4SeekStart(v string) *UpdateVideoProcessingRequest {
+	s.Mp4SeekStart = &v
+	return s
+}
+
+func (s *UpdateVideoProcessingRequest) SetRule(v string) *UpdateVideoProcessingRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateVideoProcessingRequest) SetRuleEnable(v string) *UpdateVideoProcessingRequest {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateVideoProcessingRequest) SetRuleName(v string) *UpdateVideoProcessingRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateVideoProcessingRequest) SetSequence(v int32) *UpdateVideoProcessingRequest {
+	s.Sequence = &v
+	return s
+}
+
+func (s *UpdateVideoProcessingRequest) SetSiteId(v int64) *UpdateVideoProcessingRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateVideoProcessingRequest) SetVideoSeekEnable(v string) *UpdateVideoProcessingRequest {
+	s.VideoSeekEnable = &v
+	return s
+}
+
+type UpdateVideoProcessingResponseBody struct {
+	// example:
+	//
+	// 3558df77-8a7a-4060-a900-2d7949403836
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateVideoProcessingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVideoProcessingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVideoProcessingResponseBody) SetRequestId(v string) *UpdateVideoProcessingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateVideoProcessingResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateVideoProcessingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateVideoProcessingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVideoProcessingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVideoProcessingResponse) SetHeaders(v map[string]*string) *UpdateVideoProcessingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateVideoProcessingResponse) SetStatusCode(v int32) *UpdateVideoProcessingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateVideoProcessingResponse) SetBody(v *UpdateVideoProcessingResponseBody) *UpdateVideoProcessingResponse {
 	s.Body = v
 	return s
 }
@@ -78185,6 +79124,110 @@ func (client *Client) CreateUserDeliveryTask(request *CreateUserDeliveryTaskRequ
 
 // Summary:
 //
+// 新增站点视频处理配置
+//
+// @param request - CreateVideoProcessingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVideoProcessingResponse
+func (client *Client) CreateVideoProcessingWithOptions(request *CreateVideoProcessingRequest, runtime *util.RuntimeOptions) (_result *CreateVideoProcessingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FlvSeekEnd)) {
+		query["FlvSeekEnd"] = request.FlvSeekEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlvSeekStart)) {
+		query["FlvSeekStart"] = request.FlvSeekStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlvVideoSeekMode)) {
+		query["FlvVideoSeekMode"] = request.FlvVideoSeekMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mp4SeekEnd)) {
+		query["Mp4SeekEnd"] = request.Mp4SeekEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mp4SeekStart)) {
+		query["Mp4SeekStart"] = request.Mp4SeekStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoSeekEnable)) {
+		query["VideoSeekEnable"] = request.VideoSeekEnable
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVideoProcessing"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateVideoProcessingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增站点视频处理配置
+//
+// @param request - CreateVideoProcessingRequest
+//
+// @return CreateVideoProcessingResponse
+func (client *Client) CreateVideoProcessing(request *CreateVideoProcessingRequest) (_result *CreateVideoProcessingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateVideoProcessingResponse{}
+	_body, _err := client.CreateVideoProcessingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create WAF Rule
 //
 // @param tmpReq - CreateWafRuleRequest
@@ -81122,6 +82165,70 @@ func (client *Client) DeleteUserDeliveryTask(request *DeleteUserDeliveryTaskRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserDeliveryTaskResponse{}
 	_body, _err := client.DeleteUserDeliveryTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除站点视频处理配置
+//
+// @param request - DeleteVideoProcessingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVideoProcessingResponse
+func (client *Client) DeleteVideoProcessingWithOptions(request *DeleteVideoProcessingRequest, runtime *util.RuntimeOptions) (_result *DeleteVideoProcessingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVideoProcessing"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteVideoProcessingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除站点视频处理配置
+//
+// @param request - DeleteVideoProcessingRequest
+//
+// @return DeleteVideoProcessingResponse
+func (client *Client) DeleteVideoProcessing(request *DeleteVideoProcessingRequest) (_result *DeleteVideoProcessingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteVideoProcessingResponse{}
+	_body, _err := client.DeleteVideoProcessingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -86570,6 +87677,70 @@ func (client *Client) GetUserLogDeliveryQuota(request *GetUserLogDeliveryQuotaRe
 
 // Summary:
 //
+// 查询站点视频处理配置详情
+//
+// @param request - GetVideoProcessingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoProcessingResponse
+func (client *Client) GetVideoProcessingWithOptions(request *GetVideoProcessingRequest, runtime *util.RuntimeOptions) (_result *GetVideoProcessingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVideoProcessing"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVideoProcessingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点视频处理配置详情
+//
+// @param request - GetVideoProcessingRequest
+//
+// @return GetVideoProcessingResponse
+func (client *Client) GetVideoProcessing(request *GetVideoProcessingRequest) (_result *GetVideoProcessingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVideoProcessingResponse{}
+	_body, _err := client.GetVideoProcessingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // This interface is used to obtain the application key (AppKey) for the BOT behavior detection feature in the site\\"s Web Application Firewall (WAF). The key is typically used for authentication and data exchange with the WAF service.
 //
 // @param request - GetWafBotAppKeyRequest
@@ -89897,6 +91068,90 @@ func (client *Client) ListUserRoutines(request *ListUserRoutinesRequest) (_resul
 
 // Summary:
 //
+// 查询站点视频处理配置列表
+//
+// @param request - ListVideoProcessingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVideoProcessingsResponse
+func (client *Client) ListVideoProcessingsWithOptions(request *ListVideoProcessingsRequest, runtime *util.RuntimeOptions) (_result *ListVideoProcessingsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigType)) {
+		query["ConfigType"] = request.ConfigType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVideoProcessings"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListVideoProcessingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点视频处理配置列表
+//
+// @param request - ListVideoProcessingsRequest
+//
+// @return ListVideoProcessingsResponse
+func (client *Client) ListVideoProcessings(request *ListVideoProcessingsRequest) (_result *ListVideoProcessingsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListVideoProcessingsResponse{}
+	_body, _err := client.ListVideoProcessingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # List WAF Managed Rules
 //
 // @param tmpReq - ListWafManagedRulesRequest
@@ -92692,7 +93947,7 @@ func (client *Client) UpdateCacheTag(request *UpdateCacheTagRequest) (_result *U
 
 // Summary:
 //
-// # Modify site CNAME flattening configuration
+// Modifies the CNAME flattening configuration of a website.
 //
 // @param request - UpdateCnameFlatteningRequest
 //
@@ -92738,7 +93993,7 @@ func (client *Client) UpdateCnameFlatteningWithOptions(request *UpdateCnameFlatt
 
 // Summary:
 //
-// # Modify site CNAME flattening configuration
+// Modifies the CNAME flattening configuration of a website.
 //
 // @param request - UpdateCnameFlatteningRequest
 //
@@ -94771,6 +96026,10 @@ func (client *Client) UpdateRecordWithOptions(tmpReq *UpdateRecordRequest, runti
 		query["Ttl"] = request.Ttl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -96005,6 +97264,110 @@ func (client *Client) UpdateUserDeliveryTaskStatus(request *UpdateUserDeliveryTa
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserDeliveryTaskStatusResponse{}
 	_body, _err := client.UpdateUserDeliveryTaskStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改站点视频处理配置
+//
+// @param request - UpdateVideoProcessingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVideoProcessingResponse
+func (client *Client) UpdateVideoProcessingWithOptions(request *UpdateVideoProcessingRequest, runtime *util.RuntimeOptions) (_result *UpdateVideoProcessingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlvSeekEnd)) {
+		query["FlvSeekEnd"] = request.FlvSeekEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlvSeekStart)) {
+		query["FlvSeekStart"] = request.FlvSeekStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlvVideoSeekMode)) {
+		query["FlvVideoSeekMode"] = request.FlvVideoSeekMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mp4SeekEnd)) {
+		query["Mp4SeekEnd"] = request.Mp4SeekEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mp4SeekStart)) {
+		query["Mp4SeekStart"] = request.Mp4SeekStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleEnable)) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoSeekEnable)) {
+		query["VideoSeekEnable"] = request.VideoSeekEnable
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateVideoProcessing"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateVideoProcessingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改站点视频处理配置
+//
+// @param request - UpdateVideoProcessingRequest
+//
+// @return UpdateVideoProcessingResponse
+func (client *Client) UpdateVideoProcessing(request *UpdateVideoProcessingRequest) (_result *UpdateVideoProcessingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateVideoProcessingResponse{}
+	_body, _err := client.UpdateVideoProcessingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
