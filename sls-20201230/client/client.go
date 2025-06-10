@@ -12393,8 +12393,8 @@ func (s *ListAgentInstanceConfigsResponseBody) SetTotal(v int64) *ListAgentInsta
 }
 
 type ListAgentInstanceConfigsResponseBodyConfigs struct {
-	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	ConfigType *string            `json:"configType,omitempty" xml:"configType,omitempty"`
 }
 
 func (s ListAgentInstanceConfigsResponseBodyConfigs) String() string {
@@ -12405,8 +12405,8 @@ func (s ListAgentInstanceConfigsResponseBodyConfigs) GoString() string {
 	return s.String()
 }
 
-func (s *ListAgentInstanceConfigsResponseBodyConfigs) SetAttributes(v string) *ListAgentInstanceConfigsResponseBodyConfigs {
-	s.Attributes = &v
+func (s *ListAgentInstanceConfigsResponseBodyConfigs) SetAttributes(v map[string]*string) *ListAgentInstanceConfigsResponseBodyConfigs {
+	s.Attributes = v
 	return s
 }
 
