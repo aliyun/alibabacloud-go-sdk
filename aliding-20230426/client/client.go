@@ -82902,6 +82902,270 @@ func (s *UnsubscribeEventResponse) SetBody(v *UnsubscribeEventResponseBody) *Uns
 	return s
 }
 
+type UpdateConvExtensionHeaders struct {
+	CommonHeaders  map[string]*string                        `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *UpdateConvExtensionHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s UpdateConvExtensionHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConvExtensionHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConvExtensionHeaders) SetCommonHeaders(v map[string]*string) *UpdateConvExtensionHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateConvExtensionHeaders) SetAccountContext(v *UpdateConvExtensionHeadersAccountContext) *UpdateConvExtensionHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type UpdateConvExtensionHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s UpdateConvExtensionHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConvExtensionHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConvExtensionHeadersAccountContext) SetAccountId(v string) *UpdateConvExtensionHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type UpdateConvExtensionShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s UpdateConvExtensionShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConvExtensionShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConvExtensionShrinkHeaders) SetCommonHeaders(v map[string]*string) *UpdateConvExtensionShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateConvExtensionShrinkHeaders) SetAccountContextShrink(v string) *UpdateConvExtensionShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type UpdateConvExtensionRequest struct {
+	// example:
+	//
+	// https://xxx
+	MobileUrl *string `json:"MobileUrl,omitempty" xml:"MobileUrl,omitempty"`
+	// example:
+	//
+	// https://xxx
+	PcUrl       *string   `json:"PcUrl,omitempty" xml:"PcUrl,omitempty"`
+	StaffIdList []*string `json:"StaffIdList,omitempty" xml:"StaffIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 546374856
+	SystemUid     *string                                  `json:"SystemUid,omitempty" xml:"SystemUid,omitempty"`
+	TenantContext *UpdateConvExtensionRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s UpdateConvExtensionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConvExtensionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConvExtensionRequest) SetMobileUrl(v string) *UpdateConvExtensionRequest {
+	s.MobileUrl = &v
+	return s
+}
+
+func (s *UpdateConvExtensionRequest) SetPcUrl(v string) *UpdateConvExtensionRequest {
+	s.PcUrl = &v
+	return s
+}
+
+func (s *UpdateConvExtensionRequest) SetStaffIdList(v []*string) *UpdateConvExtensionRequest {
+	s.StaffIdList = v
+	return s
+}
+
+func (s *UpdateConvExtensionRequest) SetSystemUid(v string) *UpdateConvExtensionRequest {
+	s.SystemUid = &v
+	return s
+}
+
+func (s *UpdateConvExtensionRequest) SetTenantContext(v *UpdateConvExtensionRequestTenantContext) *UpdateConvExtensionRequest {
+	s.TenantContext = v
+	return s
+}
+
+type UpdateConvExtensionRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s UpdateConvExtensionRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConvExtensionRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConvExtensionRequestTenantContext) SetTenantId(v string) *UpdateConvExtensionRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type UpdateConvExtensionShrinkRequest struct {
+	// example:
+	//
+	// https://xxx
+	MobileUrl *string `json:"MobileUrl,omitempty" xml:"MobileUrl,omitempty"`
+	// example:
+	//
+	// https://xxx
+	PcUrl             *string `json:"PcUrl,omitempty" xml:"PcUrl,omitempty"`
+	StaffIdListShrink *string `json:"StaffIdList,omitempty" xml:"StaffIdList,omitempty"`
+	// example:
+	//
+	// 546374856
+	SystemUid           *string `json:"SystemUid,omitempty" xml:"SystemUid,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s UpdateConvExtensionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConvExtensionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConvExtensionShrinkRequest) SetMobileUrl(v string) *UpdateConvExtensionShrinkRequest {
+	s.MobileUrl = &v
+	return s
+}
+
+func (s *UpdateConvExtensionShrinkRequest) SetPcUrl(v string) *UpdateConvExtensionShrinkRequest {
+	s.PcUrl = &v
+	return s
+}
+
+func (s *UpdateConvExtensionShrinkRequest) SetStaffIdListShrink(v string) *UpdateConvExtensionShrinkRequest {
+	s.StaffIdListShrink = &v
+	return s
+}
+
+func (s *UpdateConvExtensionShrinkRequest) SetSystemUid(v string) *UpdateConvExtensionShrinkRequest {
+	s.SystemUid = &v
+	return s
+}
+
+func (s *UpdateConvExtensionShrinkRequest) SetTenantContextShrink(v string) *UpdateConvExtensionShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type UpdateConvExtensionResponseBody struct {
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s UpdateConvExtensionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConvExtensionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConvExtensionResponseBody) SetSuccess(v bool) *UpdateConvExtensionResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateConvExtensionResponseBody) SetRequestId(v string) *UpdateConvExtensionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateConvExtensionResponseBody) SetVendorRequestId(v string) *UpdateConvExtensionResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *UpdateConvExtensionResponseBody) SetVendorType(v string) *UpdateConvExtensionResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type UpdateConvExtensionResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateConvExtensionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateConvExtensionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConvExtensionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConvExtensionResponse) SetHeaders(v map[string]*string) *UpdateConvExtensionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateConvExtensionResponse) SetStatusCode(v int32) *UpdateConvExtensionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateConvExtensionResponse) SetBody(v *UpdateConvExtensionResponseBody) *UpdateConvExtensionResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateFormDataHeaders struct {
 	CommonHeaders  map[string]*string                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *UpdateFormDataHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -112471,6 +112735,103 @@ func (client *Client) UnsubscribeEvent(request *UnsubscribeEventRequest) (_resul
 	headers := &UnsubscribeEventHeaders{}
 	_result = &UnsubscribeEventResponse{}
 	_body, _err := client.UnsubscribeEventWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - UpdateConvExtensionRequest
+//
+// @param tmpHeader - UpdateConvExtensionHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConvExtensionResponse
+func (client *Client) UpdateConvExtensionWithOptions(tmpReq *UpdateConvExtensionRequest, tmpHeader *UpdateConvExtensionHeaders, runtime *util.RuntimeOptions) (_result *UpdateConvExtensionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateConvExtensionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &UpdateConvExtensionShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.StaffIdList)) {
+		request.StaffIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StaffIdList, tea.String("StaffIdList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MobileUrl)) {
+		body["MobileUrl"] = request.MobileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PcUrl)) {
+		body["PcUrl"] = request.PcUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StaffIdListShrink)) {
+		body["StaffIdList"] = request.StaffIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemUid)) {
+		body["SystemUid"] = request.SystemUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateConvExtension"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/conversation/updateConvExtension"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateConvExtensionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateConvExtensionRequest
+//
+// @return UpdateConvExtensionResponse
+func (client *Client) UpdateConvExtension(request *UpdateConvExtensionRequest) (_result *UpdateConvExtensionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateConvExtensionHeaders{}
+	_result = &UpdateConvExtensionResponse{}
+	_body, _err := client.UpdateConvExtensionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
