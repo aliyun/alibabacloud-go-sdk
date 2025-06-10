@@ -11425,7 +11425,8 @@ func (s *DescribeRenderingInstanceRequest) SetRenderingInstanceId(v string) *Des
 }
 
 type DescribeRenderingInstanceResponseBody struct {
-	ConfigInfo *DescribeRenderingInstanceResponseBodyConfigInfo `json:"ConfigInfo,omitempty" xml:"ConfigInfo,omitempty" type:"Struct"`
+	AdditionalIngresses []*DescribeRenderingInstanceResponseBodyAdditionalIngresses `json:"AdditionalIngresses,omitempty" xml:"AdditionalIngresses,omitempty" type:"Repeated"`
+	ConfigInfo          *DescribeRenderingInstanceResponseBodyConfigInfo            `json:"ConfigInfo,omitempty" xml:"ConfigInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// 2024-05-07T02:27:06Z
@@ -11435,6 +11436,7 @@ type DescribeRenderingInstanceResponseBody struct {
 	//
 	// cn-xxx.ecr.aliyuncs.com
 	Hostname     *string                                              `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	Isp          *string                                              `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	PortMappings []*DescribeRenderingInstanceResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -11458,6 +11460,11 @@ func (s DescribeRenderingInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeRenderingInstanceResponseBody) SetAdditionalIngresses(v []*DescribeRenderingInstanceResponseBodyAdditionalIngresses) *DescribeRenderingInstanceResponseBody {
+	s.AdditionalIngresses = v
+	return s
+}
+
 func (s *DescribeRenderingInstanceResponseBody) SetConfigInfo(v *DescribeRenderingInstanceResponseBodyConfigInfo) *DescribeRenderingInstanceResponseBody {
 	s.ConfigInfo = v
 	return s
@@ -11475,6 +11482,11 @@ func (s *DescribeRenderingInstanceResponseBody) SetEgressIp(v string) *DescribeR
 
 func (s *DescribeRenderingInstanceResponseBody) SetHostname(v string) *DescribeRenderingInstanceResponseBody {
 	s.Hostname = &v
+	return s
+}
+
+func (s *DescribeRenderingInstanceResponseBody) SetIsp(v string) *DescribeRenderingInstanceResponseBody {
+	s.Isp = &v
 	return s
 }
 
@@ -11510,6 +11522,58 @@ func (s *DescribeRenderingInstanceResponseBody) SetStorageSize(v int32) *Describ
 
 func (s *DescribeRenderingInstanceResponseBody) SetSystemInfo(v *DescribeRenderingInstanceResponseBodySystemInfo) *DescribeRenderingInstanceResponseBody {
 	s.SystemInfo = v
+	return s
+}
+
+type DescribeRenderingInstanceResponseBodyAdditionalIngresses struct {
+	Hostname     *string                                                                 `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	Isp          *string                                                                 `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	PortMappings []*DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRenderingInstanceResponseBodyAdditionalIngresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRenderingInstanceResponseBodyAdditionalIngresses) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenderingInstanceResponseBodyAdditionalIngresses) SetHostname(v string) *DescribeRenderingInstanceResponseBodyAdditionalIngresses {
+	s.Hostname = &v
+	return s
+}
+
+func (s *DescribeRenderingInstanceResponseBodyAdditionalIngresses) SetIsp(v string) *DescribeRenderingInstanceResponseBodyAdditionalIngresses {
+	s.Isp = &v
+	return s
+}
+
+func (s *DescribeRenderingInstanceResponseBodyAdditionalIngresses) SetPortMappings(v []*DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings) *DescribeRenderingInstanceResponseBodyAdditionalIngresses {
+	s.PortMappings = v
+	return s
+}
+
+type DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings struct {
+	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+}
+
+func (s DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings) SetExternalPort(v string) *DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings {
+	s.ExternalPort = &v
+	return s
+}
+
+func (s *DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings) SetInternalPort(v string) *DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings {
+	s.InternalPort = &v
 	return s
 }
 
@@ -12133,6 +12197,7 @@ func (s *DescribeRenderingSessionRequest) SetSessionId(v string) *DescribeRender
 }
 
 type DescribeRenderingSessionResponseBody struct {
+	AdditionalIngresses []*DescribeRenderingSessionResponseBodyAdditionalIngresses `json:"AdditionalIngresses,omitempty" xml:"AdditionalIngresses,omitempty" type:"Repeated"`
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
@@ -12145,6 +12210,7 @@ type DescribeRenderingSessionResponseBody struct {
 	//
 	// 111.45.29.96
 	Hostname     *string                                             `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	Isp          *string                                             `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	Location     *DescribeRenderingSessionResponseBodyLocation       `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
 	PortMappings []*DescribeRenderingSessionResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
 	// example:
@@ -12170,6 +12236,11 @@ func (s DescribeRenderingSessionResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeRenderingSessionResponseBody) SetAdditionalIngresses(v []*DescribeRenderingSessionResponseBodyAdditionalIngresses) *DescribeRenderingSessionResponseBody {
+	s.AdditionalIngresses = v
+	return s
+}
+
 func (s *DescribeRenderingSessionResponseBody) SetAppId(v string) *DescribeRenderingSessionResponseBody {
 	s.AppId = &v
 	return s
@@ -12182,6 +12253,11 @@ func (s *DescribeRenderingSessionResponseBody) SetClientId(v string) *DescribeRe
 
 func (s *DescribeRenderingSessionResponseBody) SetHostname(v string) *DescribeRenderingSessionResponseBody {
 	s.Hostname = &v
+	return s
+}
+
+func (s *DescribeRenderingSessionResponseBody) SetIsp(v string) *DescribeRenderingSessionResponseBody {
+	s.Isp = &v
 	return s
 }
 
@@ -12212,6 +12288,58 @@ func (s *DescribeRenderingSessionResponseBody) SetStartTime(v string) *DescribeR
 
 func (s *DescribeRenderingSessionResponseBody) SetStateInfo(v *DescribeRenderingSessionResponseBodyStateInfo) *DescribeRenderingSessionResponseBody {
 	s.StateInfo = v
+	return s
+}
+
+type DescribeRenderingSessionResponseBodyAdditionalIngresses struct {
+	Hostname     *string                                                                `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	Isp          *string                                                                `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	PortMappings []*DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRenderingSessionResponseBodyAdditionalIngresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRenderingSessionResponseBodyAdditionalIngresses) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenderingSessionResponseBodyAdditionalIngresses) SetHostname(v string) *DescribeRenderingSessionResponseBodyAdditionalIngresses {
+	s.Hostname = &v
+	return s
+}
+
+func (s *DescribeRenderingSessionResponseBodyAdditionalIngresses) SetIsp(v string) *DescribeRenderingSessionResponseBodyAdditionalIngresses {
+	s.Isp = &v
+	return s
+}
+
+func (s *DescribeRenderingSessionResponseBodyAdditionalIngresses) SetPortMappings(v []*DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings) *DescribeRenderingSessionResponseBodyAdditionalIngresses {
+	s.PortMappings = v
+	return s
+}
+
+type DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings struct {
+	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+}
+
+func (s DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings) SetExternalPort(v string) *DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings {
+	s.ExternalPort = &v
+	return s
+}
+
+func (s *DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings) SetInternalPort(v string) *DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings {
+	s.InternalPort = &v
 	return s
 }
 
@@ -32888,7 +33016,11 @@ func (client *Client) DescribeRenderingInstanceWithOptions(request *DescribeRend
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
+		query["RenderingInstanceId"] = request.RenderingInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -32897,7 +33029,7 @@ func (client *Client) DescribeRenderingInstanceWithOptions(request *DescribeRend
 		Version:     tea.String("2018-12-12"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
