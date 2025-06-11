@@ -47098,6 +47098,7 @@ func (s *UploadDocumentAsyncResponse) SetBody(v *UploadDocumentAsyncResponseBody
 }
 
 type UpsertChunksRequest struct {
+	AllowInsertWithFilter *bool `json:"AllowInsertWithFilter,omitempty" xml:"AllowInsertWithFilter,omitempty"`
 	// Document collection name.
 	//
 	// > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can use the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the already created document collections.
@@ -47164,6 +47165,11 @@ func (s UpsertChunksRequest) String() string {
 
 func (s UpsertChunksRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpsertChunksRequest) SetAllowInsertWithFilter(v bool) *UpsertChunksRequest {
+	s.AllowInsertWithFilter = &v
+	return s
 }
 
 func (s *UpsertChunksRequest) SetCollection(v string) *UpsertChunksRequest {
@@ -47259,6 +47265,7 @@ func (s *UpsertChunksRequestTextChunks) SetMetadata(v map[string]interface{}) *U
 }
 
 type UpsertChunksShrinkRequest struct {
+	AllowInsertWithFilter *bool `json:"AllowInsertWithFilter,omitempty" xml:"AllowInsertWithFilter,omitempty"`
 	// Document collection name.
 	//
 	// > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can use the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the already created document collections.
@@ -47325,6 +47332,11 @@ func (s UpsertChunksShrinkRequest) String() string {
 
 func (s UpsertChunksShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpsertChunksShrinkRequest) SetAllowInsertWithFilter(v bool) *UpsertChunksShrinkRequest {
+	s.AllowInsertWithFilter = &v
+	return s
 }
 
 func (s *UpsertChunksShrinkRequest) SetCollection(v string) *UpsertChunksShrinkRequest {
@@ -65519,6 +65531,10 @@ func (client *Client) UpsertChunksWithOptions(tmpReq *UpsertChunksRequest, runti
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowInsertWithFilter)) {
+		query["AllowInsertWithFilter"] = request.AllowInsertWithFilter
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Collection)) {
 		query["Collection"] = request.Collection
 	}
