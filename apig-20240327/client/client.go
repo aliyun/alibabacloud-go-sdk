@@ -8944,7 +8944,8 @@ type GetGatewayResponseBodyData struct {
 	// example:
 	//
 	// gw-cq2vundlhtg***
-	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId   *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	// List of entry addresses for the gateway.
 	LoadBalancers []*GetGatewayResponseBodyDataLoadBalancers `json:"loadBalancers,omitempty" xml:"loadBalancers,omitempty" type:"Repeated"`
 	// Gateway name.
@@ -9062,6 +9063,11 @@ func (s *GetGatewayResponseBodyData) SetExpireTimestamp(v int64) *GetGatewayResp
 
 func (s *GetGatewayResponseBodyData) SetGatewayId(v string) *GetGatewayResponseBodyData {
 	s.GatewayId = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetGatewayType(v string) *GetGatewayResponseBodyData {
+	s.GatewayType = &v
 	return s
 }
 
@@ -13424,6 +13430,297 @@ func (s *ListHttpApisResponse) SetStatusCode(v int32) *ListHttpApisResponse {
 }
 
 func (s *ListHttpApisResponse) SetBody(v *ListHttpApisResponseBody) *ListHttpApisResponse {
+	s.Body = v
+	return s
+}
+
+type ListPluginAttachmentsRequest struct {
+	// example:
+	//
+	// hr-cv2h58em1hkg7c6vt43g
+	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
+	// example:
+	//
+	// GatewayRoute
+	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// example:
+	//
+	// GatewayRoute
+	AttachResourceTypes *string `json:"attachResourceTypes,omitempty" xml:"attachResourceTypes,omitempty"`
+	// example:
+	//
+	// env-crlnqhtlhtgqflkqislg
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// example:
+	//
+	// gw-cr79f75lhtgme744084g
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// pl-ct8181um1hkiqns9f6e0
+	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	// example:
+	//
+	// false
+	WithParentResource *bool `json:"withParentResource,omitempty" xml:"withParentResource,omitempty"`
+}
+
+func (s ListPluginAttachmentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginAttachmentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginAttachmentsRequest) SetAttachResourceId(v string) *ListPluginAttachmentsRequest {
+	s.AttachResourceId = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsRequest) SetAttachResourceType(v string) *ListPluginAttachmentsRequest {
+	s.AttachResourceType = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsRequest) SetAttachResourceTypes(v string) *ListPluginAttachmentsRequest {
+	s.AttachResourceTypes = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsRequest) SetEnvironmentId(v string) *ListPluginAttachmentsRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsRequest) SetGatewayId(v string) *ListPluginAttachmentsRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsRequest) SetPageNumber(v int32) *ListPluginAttachmentsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsRequest) SetPageSize(v int32) *ListPluginAttachmentsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsRequest) SetPluginId(v string) *ListPluginAttachmentsRequest {
+	s.PluginId = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsRequest) SetWithParentResource(v bool) *ListPluginAttachmentsRequest {
+	s.WithParentResource = &v
+	return s
+}
+
+type ListPluginAttachmentsResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListPluginAttachmentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 9640D776-794A-5077-9184-A247CA4B45C1
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListPluginAttachmentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginAttachmentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginAttachmentsResponseBody) SetCode(v string) *ListPluginAttachmentsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponseBody) SetData(v *ListPluginAttachmentsResponseBodyData) *ListPluginAttachmentsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponseBody) SetMessage(v string) *ListPluginAttachmentsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponseBody) SetRequestId(v string) *ListPluginAttachmentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListPluginAttachmentsResponseBodyData struct {
+	Items []*ListPluginAttachmentsResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 10
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+}
+
+func (s ListPluginAttachmentsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginAttachmentsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginAttachmentsResponseBodyData) SetItems(v []*ListPluginAttachmentsResponseBodyDataItems) *ListPluginAttachmentsResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponseBodyData) SetPageNumber(v int32) *ListPluginAttachmentsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponseBodyData) SetPageSize(v int32) *ListPluginAttachmentsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponseBodyData) SetTotalSize(v int32) *ListPluginAttachmentsResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListPluginAttachmentsResponseBodyDataItems struct {
+	// example:
+	//
+	// GatewayRoute
+	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// example:
+	//
+	// true
+	Enable             *bool               `json:"enable,omitempty" xml:"enable,omitempty"`
+	EnvironmentInfo    *EnvironmentInfo    `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
+	ParentResourceInfo *ParentResourceInfo `json:"parentResourceInfo,omitempty" xml:"parentResourceInfo,omitempty"`
+	// example:
+	//
+	// pa-d0j9t5em1hkncrlo51mg
+	PluginAttachmentId *string          `json:"pluginAttachmentId,omitempty" xml:"pluginAttachmentId,omitempty"`
+	PluginClassInfo    *PluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty"`
+	// example:
+	//
+	// bGltaXRfYnlfaGVhZGVyOiB4LWFwaS1rZXkKbGltaXRfa2V5czoKLSBrZXk6IGV4YW1wbGUta2V5LWEKICBxdWVyeV9wZXJfc2Vjb25kOiAxMAotIGtleTogZXhhbXBsZS1rZXktYgogIHF1ZXJ5X3Blcl9zZWNvbmQ6IDEK
+	PluginConfig *string `json:"pluginConfig,omitempty" xml:"pluginConfig,omitempty"`
+	// example:
+	//
+	// pl-cvu6r4um1hko3b3ti0a0
+	PluginId      *string         `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	ResourceInfos []*ResourceInfo `json:"resourceInfos,omitempty" xml:"resourceInfos,omitempty" type:"Repeated"`
+}
+
+func (s ListPluginAttachmentsResponseBodyDataItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginAttachmentsResponseBodyDataItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginAttachmentsResponseBodyDataItems) SetAttachResourceType(v string) *ListPluginAttachmentsResponseBodyDataItems {
+	s.AttachResourceType = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponseBodyDataItems) SetEnable(v bool) *ListPluginAttachmentsResponseBodyDataItems {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponseBodyDataItems) SetEnvironmentInfo(v *EnvironmentInfo) *ListPluginAttachmentsResponseBodyDataItems {
+	s.EnvironmentInfo = v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponseBodyDataItems) SetParentResourceInfo(v *ParentResourceInfo) *ListPluginAttachmentsResponseBodyDataItems {
+	s.ParentResourceInfo = v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponseBodyDataItems) SetPluginAttachmentId(v string) *ListPluginAttachmentsResponseBodyDataItems {
+	s.PluginAttachmentId = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponseBodyDataItems) SetPluginClassInfo(v *PluginClassInfo) *ListPluginAttachmentsResponseBodyDataItems {
+	s.PluginClassInfo = v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponseBodyDataItems) SetPluginConfig(v string) *ListPluginAttachmentsResponseBodyDataItems {
+	s.PluginConfig = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponseBodyDataItems) SetPluginId(v string) *ListPluginAttachmentsResponseBodyDataItems {
+	s.PluginId = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponseBodyDataItems) SetResourceInfos(v []*ResourceInfo) *ListPluginAttachmentsResponseBodyDataItems {
+	s.ResourceInfos = v
+	return s
+}
+
+type ListPluginAttachmentsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPluginAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPluginAttachmentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginAttachmentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginAttachmentsResponse) SetHeaders(v map[string]*string) *ListPluginAttachmentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponse) SetStatusCode(v int32) *ListPluginAttachmentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPluginAttachmentsResponse) SetBody(v *ListPluginAttachmentsResponseBody) *ListPluginAttachmentsResponse {
 	s.Body = v
 	return s
 }
@@ -19323,6 +19620,102 @@ func (client *Client) ListHttpApis(request *ListHttpApisRequest) (_result *ListH
 	headers := make(map[string]*string)
 	_result = &ListHttpApisResponse{}
 	_body, _err := client.ListHttpApisWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取挂载列表
+//
+// @param request - ListPluginAttachmentsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPluginAttachmentsResponse
+func (client *Client) ListPluginAttachmentsWithOptions(request *ListPluginAttachmentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPluginAttachmentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttachResourceId)) {
+		query["attachResourceId"] = request.AttachResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttachResourceType)) {
+		query["attachResourceType"] = request.AttachResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttachResourceTypes)) {
+		query["attachResourceTypes"] = request.AttachResourceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["environmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
+		query["pluginId"] = request.PluginId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithParentResource)) {
+		query["withParentResource"] = request.WithParentResource
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPluginAttachments"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/plugin-attachments"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPluginAttachmentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取挂载列表
+//
+// @param request - ListPluginAttachmentsRequest
+//
+// @return ListPluginAttachmentsResponse
+func (client *Client) ListPluginAttachments(request *ListPluginAttachmentsRequest) (_result *ListPluginAttachmentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPluginAttachmentsResponse{}
+	_body, _err := client.ListPluginAttachmentsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
