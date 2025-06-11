@@ -1913,7 +1913,9 @@ func (s *CreateDBClusterResponse) SetBody(v *CreateDBClusterResponseBody) *Creat
 }
 
 type CreateDBResourceGroupRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterMode         *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
 	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
@@ -1923,7 +1925,9 @@ type CreateDBResourceGroupRequest struct {
 	// example:
 	//
 	// am-bp1ub9grke1****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId  *string                `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Engine       *string                `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
 	// 	- The name can be up to 255 characters in length.
@@ -1947,7 +1951,11 @@ type CreateDBResourceGroupRequest struct {
 	// example:
 	//
 	// interactive
-	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	GroupType          *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	MaxClusterCount    *int32  `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
+	MinClusterCount    *int32  `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
 	// The number of nodes. Default value: 0.
 	//
 	// 	- Each node is configured with the resources of 16 cores and 64 GB memory.
@@ -1977,8 +1985,28 @@ func (s *CreateDBResourceGroupRequest) SetClientToken(v string) *CreateDBResourc
 	return s
 }
 
+func (s *CreateDBResourceGroupRequest) SetClusterMode(v string) *CreateDBResourceGroupRequest {
+	s.ClusterMode = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetClusterSizeResource(v string) *CreateDBResourceGroupRequest {
+	s.ClusterSizeResource = &v
+	return s
+}
+
 func (s *CreateDBResourceGroupRequest) SetDBClusterId(v string) *CreateDBResourceGroupRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetEngine(v string) *CreateDBResourceGroupRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetEngineParams(v map[string]interface{}) *CreateDBResourceGroupRequest {
+	s.EngineParams = v
 	return s
 }
 
@@ -1989,6 +2017,26 @@ func (s *CreateDBResourceGroupRequest) SetGroupName(v string) *CreateDBResourceG
 
 func (s *CreateDBResourceGroupRequest) SetGroupType(v string) *CreateDBResourceGroupRequest {
 	s.GroupType = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetMaxClusterCount(v int32) *CreateDBResourceGroupRequest {
+	s.MaxClusterCount = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetMaxComputeResource(v string) *CreateDBResourceGroupRequest {
+	s.MaxComputeResource = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetMinClusterCount(v int32) *CreateDBResourceGroupRequest {
+	s.MinClusterCount = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetMinComputeResource(v string) *CreateDBResourceGroupRequest {
+	s.MinComputeResource = &v
 	return s
 }
 
@@ -2013,6 +2061,159 @@ func (s *CreateDBResourceGroupRequest) SetResourceOwnerAccount(v string) *Create
 }
 
 func (s *CreateDBResourceGroupRequest) SetResourceOwnerId(v int64) *CreateDBResourceGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateDBResourceGroupShrinkRequest struct {
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterMode         *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-bp1ub9grke1****
+	DBClusterId        *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	// The name of the resource group.
+	//
+	// 	- The name can be up to 255 characters in length.
+	//
+	// 	- The name must start with an uppercase letter or a digit.
+	//
+	// 	- The name can contain uppercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_group
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The query execution mode. Valid values:
+	//
+	// 	- **interactive*	- (default)
+	//
+	// 	- **batch**
+	//
+	// example:
+	//
+	// interactive
+	GroupType          *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	MaxClusterCount    *int32  `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
+	MinClusterCount    *int32  `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
+	// The number of nodes. Default value: 0.
+	//
+	// 	- Each node is configured with the resources of 16 cores and 64 GB memory.
+	//
+	// 	- Make sure that the amount of resources of the nodes (Number of nodes × 16 cores and 64 GB memory) is less than or equal to the amount of unused resources of the cluster.
+	//
+	// example:
+	//
+	// 2
+	NodeNum              *int32  `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateDBResourceGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBResourceGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetClientToken(v string) *CreateDBResourceGroupShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetClusterMode(v string) *CreateDBResourceGroupShrinkRequest {
+	s.ClusterMode = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetClusterSizeResource(v string) *CreateDBResourceGroupShrinkRequest {
+	s.ClusterSizeResource = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetDBClusterId(v string) *CreateDBResourceGroupShrinkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetEngine(v string) *CreateDBResourceGroupShrinkRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetEngineParamsShrink(v string) *CreateDBResourceGroupShrinkRequest {
+	s.EngineParamsShrink = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetGroupName(v string) *CreateDBResourceGroupShrinkRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetGroupType(v string) *CreateDBResourceGroupShrinkRequest {
+	s.GroupType = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetMaxClusterCount(v int32) *CreateDBResourceGroupShrinkRequest {
+	s.MaxClusterCount = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetMaxComputeResource(v string) *CreateDBResourceGroupShrinkRequest {
+	s.MaxComputeResource = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetMinClusterCount(v int32) *CreateDBResourceGroupShrinkRequest {
+	s.MinClusterCount = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetMinComputeResource(v string) *CreateDBResourceGroupShrinkRequest {
+	s.MinComputeResource = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetNodeNum(v int32) *CreateDBResourceGroupShrinkRequest {
+	s.NodeNum = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetOwnerAccount(v string) *CreateDBResourceGroupShrinkRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetOwnerId(v int64) *CreateDBResourceGroupShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetResourceOwnerAccount(v string) *CreateDBResourceGroupShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetResourceOwnerId(v int64) *CreateDBResourceGroupShrinkRequest {
 	s.ResourceOwnerId = &v
 	return s
 }
@@ -11272,6 +11473,7 @@ type DescribeDBClusterNetInfoRequest struct {
 	//
 	// am-bp1xxxxxxxx47
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Engine       *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the cluster.
@@ -11294,6 +11496,11 @@ func (s DescribeDBClusterNetInfoRequest) GoString() string {
 
 func (s *DescribeDBClusterNetInfoRequest) SetDBClusterId(v string) *DescribeDBClusterNetInfoRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeDBClusterNetInfoRequest) SetEngine(v string) *DescribeDBClusterNetInfoRequest {
+	s.Engine = &v
 	return s
 }
 
@@ -13998,12 +14205,18 @@ func (s *DescribeDBResourceGroupResponseBody) SetRequestId(v string) *DescribeDB
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
+	ClusterMode         *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
+	ConnectionString    *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The time when the resource group was created.
 	//
 	// example:
 	//
 	// 2022-10-09 16:57:35.241
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime                *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ElasticMinComputeResource *string                `json:"ElasticMinComputeResource,omitempty" xml:"ElasticMinComputeResource,omitempty"`
+	Engine                    *string                `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineParams              map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
 	// example:
@@ -14029,13 +14242,20 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	// example:
 	//
 	// testb,testc
-	GroupUsers *string `json:"GroupUsers,omitempty" xml:"GroupUsers,omitempty"`
+	GroupUsers         *string `json:"GroupUsers,omitempty" xml:"GroupUsers,omitempty"`
+	MaxClusterCount    *int32  `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
+	MinClusterCount    *int32  `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
 	// The number of nodes. Each node provides 16 cores and 64 GB memory.
 	//
 	// example:
 	//
 	// 2
-	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	NodeNum             *int32  `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	Port                *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	RunningClusterCount *int32  `json:"RunningClusterCount,omitempty" xml:"RunningClusterCount,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time when the resource group was updated.
 	//
 	// example:
@@ -14052,8 +14272,38 @@ func (s DescribeDBResourceGroupResponseBodyGroupsInfo) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetClusterMode(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.ClusterMode = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetClusterSizeResource(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.ClusterSizeResource = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetConnectionString(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.ConnectionString = &v
+	return s
+}
+
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetCreateTime(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetElasticMinComputeResource(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.ElasticMinComputeResource = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetEngine(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetEngineParams(v map[string]interface{}) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.EngineParams = v
 	return s
 }
 
@@ -14077,8 +14327,43 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetGroupUsers(v string) 
 	return s
 }
 
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetMaxClusterCount(v int32) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.MaxClusterCount = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetMaxComputeResource(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.MaxComputeResource = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetMinClusterCount(v int32) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.MinClusterCount = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetMinComputeResource(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.MinComputeResource = &v
+	return s
+}
+
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetNodeNum(v int32) *DescribeDBResourceGroupResponseBodyGroupsInfo {
 	s.NodeNum = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetPort(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetRunningClusterCount(v int32) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.RunningClusterCount = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetStatus(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.Status = &v
 	return s
 }
 
@@ -34548,7 +34833,9 @@ type ModifyDBResourceGroupRequest struct {
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-t7241****
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterMode         *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
 	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
@@ -34558,7 +34845,8 @@ type ModifyDBResourceGroupRequest struct {
 	// example:
 	//
 	// am-bp1ub9grke1****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId  *string                `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
 	// This parameter is required.
@@ -34578,7 +34866,11 @@ type ModifyDBResourceGroupRequest struct {
 	// example:
 	//
 	// batch
-	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	GroupType          *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	MaxClusterCount    *int32  `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
+	MinClusterCount    *int32  `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
 	// The number of nodes. Default value: 0.
 	//
 	// 	- Each node is configured with the resources of 16 cores and 64 GB memory.
@@ -34610,8 +34902,23 @@ func (s *ModifyDBResourceGroupRequest) SetClientToken(v string) *ModifyDBResourc
 	return s
 }
 
+func (s *ModifyDBResourceGroupRequest) SetClusterMode(v string) *ModifyDBResourceGroupRequest {
+	s.ClusterMode = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequest) SetClusterSizeResource(v string) *ModifyDBResourceGroupRequest {
+	s.ClusterSizeResource = &v
+	return s
+}
+
 func (s *ModifyDBResourceGroupRequest) SetDBClusterId(v string) *ModifyDBResourceGroupRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequest) SetEngineParams(v map[string]interface{}) *ModifyDBResourceGroupRequest {
+	s.EngineParams = v
 	return s
 }
 
@@ -34622,6 +34929,26 @@ func (s *ModifyDBResourceGroupRequest) SetGroupName(v string) *ModifyDBResourceG
 
 func (s *ModifyDBResourceGroupRequest) SetGroupType(v string) *ModifyDBResourceGroupRequest {
 	s.GroupType = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequest) SetMaxClusterCount(v int32) *ModifyDBResourceGroupRequest {
+	s.MaxClusterCount = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequest) SetMaxComputeResource(v string) *ModifyDBResourceGroupRequest {
+	s.MaxComputeResource = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequest) SetMinClusterCount(v int32) *ModifyDBResourceGroupRequest {
+	s.MinClusterCount = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequest) SetMinComputeResource(v string) *ModifyDBResourceGroupRequest {
+	s.MinComputeResource = &v
 	return s
 }
 
@@ -34661,7 +34988,9 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-t7241****
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterMode         *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
 	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a specific region.
@@ -34671,7 +35000,8 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	// example:
 	//
 	// am-bp1ub9grke1****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId        *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
 	// This parameter is required.
@@ -34691,7 +35021,11 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	// example:
 	//
 	// batch
-	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	GroupType          *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	MaxClusterCount    *int32  `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
+	MinClusterCount    *int32  `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
 	// The number of nodes. Default value: 0.
 	//
 	// 	- Each node is configured with the resources of 16 cores and 64 GB memory.
@@ -34723,8 +35057,23 @@ func (s *ModifyDBResourceGroupShrinkRequest) SetClientToken(v string) *ModifyDBR
 	return s
 }
 
+func (s *ModifyDBResourceGroupShrinkRequest) SetClusterMode(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.ClusterMode = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetClusterSizeResource(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.ClusterSizeResource = &v
+	return s
+}
+
 func (s *ModifyDBResourceGroupShrinkRequest) SetDBClusterId(v string) *ModifyDBResourceGroupShrinkRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetEngineParamsShrink(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.EngineParamsShrink = &v
 	return s
 }
 
@@ -34735,6 +35084,26 @@ func (s *ModifyDBResourceGroupShrinkRequest) SetGroupName(v string) *ModifyDBRes
 
 func (s *ModifyDBResourceGroupShrinkRequest) SetGroupType(v string) *ModifyDBResourceGroupShrinkRequest {
 	s.GroupType = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetMaxClusterCount(v int32) *ModifyDBResourceGroupShrinkRequest {
+	s.MaxClusterCount = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetMaxComputeResource(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.MaxComputeResource = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetMinClusterCount(v int32) *ModifyDBResourceGroupShrinkRequest {
+	s.MinClusterCount = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetMinComputeResource(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.MinComputeResource = &v
 	return s
 }
 
@@ -38799,23 +39168,45 @@ func (client *Client) CreateDBCluster(request *CreateDBClusterRequest) (_result 
 //
 // This operation is applicable only for elastic clusters of 32 cores or more.
 //
-// @param request - CreateDBResourceGroupRequest
+// @param tmpReq - CreateDBResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDBResourceGroupResponse
-func (client *Client) CreateDBResourceGroupWithOptions(request *CreateDBResourceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateDBResourceGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateDBResourceGroupWithOptions(tmpReq *CreateDBResourceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateDBResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateDBResourceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EngineParams)) {
+		request.EngineParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EngineParams, tea.String("EngineParams"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClusterMode)) {
+		query["ClusterMode"] = request.ClusterMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterSizeResource)) {
+		query["ClusterSizeResource"] = request.ClusterSizeResource
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineParamsShrink)) {
+		query["EngineParams"] = request.EngineParamsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
@@ -38824,6 +39215,22 @@ func (client *Client) CreateDBResourceGroupWithOptions(request *CreateDBResource
 
 	if !tea.BoolValue(util.IsUnset(request.GroupType)) {
 		query["GroupType"] = request.GroupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxClusterCount)) {
+		query["MaxClusterCount"] = request.MaxClusterCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxComputeResource)) {
+		query["MaxComputeResource"] = request.MaxComputeResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinClusterCount)) {
+		query["MinClusterCount"] = request.MinClusterCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinComputeResource)) {
+		query["MinComputeResource"] = request.MinComputeResource
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodeNum)) {
@@ -41802,6 +42209,10 @@ func (client *Client) DescribeDBClusterNetInfoWithOptions(request *DescribeDBClu
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -49269,6 +49680,10 @@ func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceG
 	}
 	request := &ModifyDBResourceGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EngineParams)) {
+		request.EngineParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EngineParams, tea.String("EngineParams"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.PoolUserList)) {
 		request.PoolUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PoolUserList, tea.String("PoolUserList"), tea.String("json"))
 	}
@@ -49278,8 +49693,20 @@ func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceG
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClusterMode)) {
+		query["ClusterMode"] = request.ClusterMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterSizeResource)) {
+		query["ClusterSizeResource"] = request.ClusterSizeResource
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineParamsShrink)) {
+		query["EngineParams"] = request.EngineParamsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
@@ -49288,6 +49715,22 @@ func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceG
 
 	if !tea.BoolValue(util.IsUnset(request.GroupType)) {
 		query["GroupType"] = request.GroupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxClusterCount)) {
+		query["MaxClusterCount"] = request.MaxClusterCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxComputeResource)) {
+		query["MaxComputeResource"] = request.MaxComputeResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinClusterCount)) {
+		query["MinClusterCount"] = request.MinClusterCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinComputeResource)) {
+		query["MinComputeResource"] = request.MinComputeResource
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodeNum)) {
