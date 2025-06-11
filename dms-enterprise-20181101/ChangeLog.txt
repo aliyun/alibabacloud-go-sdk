@@ -1,3 +1,9 @@
+2025-06-11 Version: v1.74.0
+- Support API EditMetaKnowledgeAsset.
+- Support API GetTableKnowledgeInfo.
+- Support API ListTableColumns.
+
+
 2025-05-22 Version: v1.73.1
 - Update API CreateDataImportOrder: add request parameters RealLoginUserUid.
 

@@ -62,6 +62,53 @@ func (s *AsyncTaskVO) SetUserId(v int64) *AsyncTaskVO {
 	return s
 }
 
+type ColumnKnowledgeInfo struct {
+	AssetDescription *string `json:"AssetDescription,omitempty" xml:"AssetDescription,omitempty"`
+	AssetModifiedGmt *string `json:"AssetModifiedGmt,omitempty" xml:"AssetModifiedGmt,omitempty"`
+	ColumnName       *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	ColumnType       *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Position         *int32  `json:"Position,omitempty" xml:"Position,omitempty"`
+}
+
+func (s ColumnKnowledgeInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ColumnKnowledgeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ColumnKnowledgeInfo) SetAssetDescription(v string) *ColumnKnowledgeInfo {
+	s.AssetDescription = &v
+	return s
+}
+
+func (s *ColumnKnowledgeInfo) SetAssetModifiedGmt(v string) *ColumnKnowledgeInfo {
+	s.AssetModifiedGmt = &v
+	return s
+}
+
+func (s *ColumnKnowledgeInfo) SetColumnName(v string) *ColumnKnowledgeInfo {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ColumnKnowledgeInfo) SetColumnType(v string) *ColumnKnowledgeInfo {
+	s.ColumnType = &v
+	return s
+}
+
+func (s *ColumnKnowledgeInfo) SetDescription(v string) *ColumnKnowledgeInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *ColumnKnowledgeInfo) SetPosition(v int32) *ColumnKnowledgeInfo {
+	s.Position = &v
+	return s
+}
+
 type DLCatalog struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Location    *string `json:"Location,omitempty" xml:"Location,omitempty"`
@@ -1142,6 +1189,53 @@ func (s *StsTokenVO) SetExpiration(v string) *StsTokenVO {
 
 func (s *StsTokenVO) SetSecurityToken(v string) *StsTokenVO {
 	s.SecurityToken = &v
+	return s
+}
+
+type TableKnowledgeInfo struct {
+	AssetDescription *string                `json:"AssetDescription,omitempty" xml:"AssetDescription,omitempty"`
+	AssetModifiedGmt *string                `json:"AssetModifiedGmt,omitempty" xml:"AssetModifiedGmt,omitempty"`
+	ColumnList       []*ColumnKnowledgeInfo `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
+	Description      *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Summary          *string                `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	TableName        *string                `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s TableKnowledgeInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TableKnowledgeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *TableKnowledgeInfo) SetAssetDescription(v string) *TableKnowledgeInfo {
+	s.AssetDescription = &v
+	return s
+}
+
+func (s *TableKnowledgeInfo) SetAssetModifiedGmt(v string) *TableKnowledgeInfo {
+	s.AssetModifiedGmt = &v
+	return s
+}
+
+func (s *TableKnowledgeInfo) SetColumnList(v []*ColumnKnowledgeInfo) *TableKnowledgeInfo {
+	s.ColumnList = v
+	return s
+}
+
+func (s *TableKnowledgeInfo) SetDescription(v string) *TableKnowledgeInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *TableKnowledgeInfo) SetSummary(v string) *TableKnowledgeInfo {
+	s.Summary = &v
+	return s
+}
+
+func (s *TableKnowledgeInfo) SetTableName(v string) *TableKnowledgeInfo {
+	s.TableName = &v
 	return s
 }
 
@@ -16928,9 +17022,21 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 }
 
 type DescribeDifyAttributeRequest struct {
-	AppUuid     *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
+	// example:
+	//
+	// 92748163-af62-4ca4-ad85-1****
+	AppUuid *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCzxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DataRegion  *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// example:
+	//
+	// 339170706****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -16963,13 +17069,31 @@ func (s *DescribeDifyAttributeRequest) SetWorkspaceId(v string) *DescribeDifyAtt
 }
 
 type DescribeDifyAttributeResponseBody struct {
-	Code           *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	ErrorCode      *string                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	HttpStatusCode *int32                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Root           *DescribeDifyAttributeResponseBodyRoot `json:"Root,omitempty" xml:"Root,omitempty" type:"Struct"`
-	Success        *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Root      *DescribeDifyAttributeResponseBodyRoot `json:"Root,omitempty" xml:"Root,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDifyAttributeResponseBody) String() string {
@@ -17016,15 +17140,42 @@ func (s *DescribeDifyAttributeResponseBody) SetSuccess(v bool) *DescribeDifyAttr
 }
 
 type DescribeDifyAttributeResponseBodyRoot struct {
-	AppUuid         *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
-	Replicas        *string `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	ResourceQuota   *string `json:"ResourceQuota,omitempty" xml:"ResourceQuota,omitempty"`
+	// example:
+	//
+	// 92748163-af62-4ca4-ad85-1****
+	AppUuid *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
+	// example:
+	//
+	// 1
+	Replicas *string `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// example:
+	//
+	// 4CU
+	ResourceQuota *string `json:"ResourceQuota,omitempty" xml:"ResourceQuota,omitempty"`
+	// example:
+	//
+	// sg-bp1ik7t5d5f24b****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// DEPLOYED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// vsw-bp1tzpv5jfsuoqy****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-bp1n16nsg8z1kn6****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// 339170706****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-j
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDifyAttributeResponseBodyRoot) String() string {
@@ -18088,6 +18239,114 @@ func (s *EditLogicDatabaseResponse) SetStatusCode(v int32) *EditLogicDatabaseRes
 }
 
 func (s *EditLogicDatabaseResponse) SetBody(v *EditLogicDatabaseResponseBody) *EditLogicDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type EditMetaKnowledgeAssetRequest struct {
+	// This parameter is required.
+	AssetDescription *string `json:"AssetDescription,omitempty" xml:"AssetDescription,omitempty"`
+	ColumnName       *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// This parameter is required.
+	DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// This parameter is required.
+	TableName       *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableSchemaName *string `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
+}
+
+func (s EditMetaKnowledgeAssetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditMetaKnowledgeAssetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EditMetaKnowledgeAssetRequest) SetAssetDescription(v string) *EditMetaKnowledgeAssetRequest {
+	s.AssetDescription = &v
+	return s
+}
+
+func (s *EditMetaKnowledgeAssetRequest) SetColumnName(v string) *EditMetaKnowledgeAssetRequest {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *EditMetaKnowledgeAssetRequest) SetDbId(v int32) *EditMetaKnowledgeAssetRequest {
+	s.DbId = &v
+	return s
+}
+
+func (s *EditMetaKnowledgeAssetRequest) SetTableName(v string) *EditMetaKnowledgeAssetRequest {
+	s.TableName = &v
+	return s
+}
+
+func (s *EditMetaKnowledgeAssetRequest) SetTableSchemaName(v string) *EditMetaKnowledgeAssetRequest {
+	s.TableSchemaName = &v
+	return s
+}
+
+type EditMetaKnowledgeAssetResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EditMetaKnowledgeAssetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditMetaKnowledgeAssetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EditMetaKnowledgeAssetResponseBody) SetErrorCode(v string) *EditMetaKnowledgeAssetResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *EditMetaKnowledgeAssetResponseBody) SetErrorMessage(v string) *EditMetaKnowledgeAssetResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *EditMetaKnowledgeAssetResponseBody) SetRequestId(v string) *EditMetaKnowledgeAssetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EditMetaKnowledgeAssetResponseBody) SetSuccess(v bool) *EditMetaKnowledgeAssetResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EditMetaKnowledgeAssetResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EditMetaKnowledgeAssetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EditMetaKnowledgeAssetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EditMetaKnowledgeAssetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EditMetaKnowledgeAssetResponse) SetHeaders(v map[string]*string) *EditMetaKnowledgeAssetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EditMetaKnowledgeAssetResponse) SetStatusCode(v int32) *EditMetaKnowledgeAssetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EditMetaKnowledgeAssetResponse) SetBody(v *EditMetaKnowledgeAssetResponseBody) *EditMetaKnowledgeAssetResponse {
 	s.Body = v
 	return s
 }
@@ -36662,6 +36921,107 @@ func (s *GetTableDesignProjectInfoResponse) SetStatusCode(v int32) *GetTableDesi
 }
 
 func (s *GetTableDesignProjectInfoResponse) SetBody(v *GetTableDesignProjectInfoResponseBody) *GetTableDesignProjectInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetTableKnowledgeInfoRequest struct {
+	// This parameter is required.
+	DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// This parameter is required.
+	TableName       *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableSchemaName *string `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
+}
+
+func (s GetTableKnowledgeInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableKnowledgeInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableKnowledgeInfoRequest) SetDbId(v int32) *GetTableKnowledgeInfoRequest {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetTableKnowledgeInfoRequest) SetTableName(v string) *GetTableKnowledgeInfoRequest {
+	s.TableName = &v
+	return s
+}
+
+func (s *GetTableKnowledgeInfoRequest) SetTableSchemaName(v string) *GetTableKnowledgeInfoRequest {
+	s.TableSchemaName = &v
+	return s
+}
+
+type GetTableKnowledgeInfoResponseBody struct {
+	ErrorCode    *string             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool               `json:"Success,omitempty" xml:"Success,omitempty"`
+	Table        *TableKnowledgeInfo `json:"Table,omitempty" xml:"Table,omitempty"`
+}
+
+func (s GetTableKnowledgeInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableKnowledgeInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableKnowledgeInfoResponseBody) SetErrorCode(v string) *GetTableKnowledgeInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTableKnowledgeInfoResponseBody) SetErrorMessage(v string) *GetTableKnowledgeInfoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTableKnowledgeInfoResponseBody) SetRequestId(v string) *GetTableKnowledgeInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTableKnowledgeInfoResponseBody) SetSuccess(v bool) *GetTableKnowledgeInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetTableKnowledgeInfoResponseBody) SetTable(v *TableKnowledgeInfo) *GetTableKnowledgeInfoResponseBody {
+	s.Table = v
+	return s
+}
+
+type GetTableKnowledgeInfoResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTableKnowledgeInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTableKnowledgeInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableKnowledgeInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableKnowledgeInfoResponse) SetHeaders(v map[string]*string) *GetTableKnowledgeInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTableKnowledgeInfoResponse) SetStatusCode(v int32) *GetTableKnowledgeInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTableKnowledgeInfoResponse) SetBody(v *GetTableKnowledgeInfoResponseBody) *GetTableKnowledgeInfoResponse {
 	s.Body = v
 	return s
 }
@@ -55288,6 +55648,284 @@ func (s *ListStandardGroupsResponse) SetStatusCode(v int32) *ListStandardGroupsR
 }
 
 func (s *ListStandardGroupsResponse) SetBody(v *ListStandardGroupsResponseBody) *ListStandardGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTableColumnsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100g_customer
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// dbo
+	TableSchemaName *string `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListTableColumnsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableColumnsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableColumnsRequest) SetDbId(v int32) *ListTableColumnsRequest {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListTableColumnsRequest) SetTableName(v string) *ListTableColumnsRequest {
+	s.TableName = &v
+	return s
+}
+
+func (s *ListTableColumnsRequest) SetTableSchemaName(v string) *ListTableColumnsRequest {
+	s.TableSchemaName = &v
+	return s
+}
+
+func (s *ListTableColumnsRequest) SetTid(v int64) *ListTableColumnsRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListTableColumnsResponseBody struct {
+	ColumnList *ListTableColumnsResponseBodyColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Struct"`
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListTableColumnsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableColumnsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableColumnsResponseBody) SetColumnList(v *ListTableColumnsResponseBodyColumnList) *ListTableColumnsResponseBody {
+	s.ColumnList = v
+	return s
+}
+
+func (s *ListTableColumnsResponseBody) SetErrorCode(v string) *ListTableColumnsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBody) SetErrorMessage(v string) *ListTableColumnsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBody) SetRequestId(v string) *ListTableColumnsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBody) SetSuccess(v bool) *ListTableColumnsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTableColumnsResponseBodyColumnList struct {
+	Column []*ListTableColumnsResponseBodyColumnListColumn `json:"Column,omitempty" xml:"Column,omitempty" type:"Repeated"`
+}
+
+func (s ListTableColumnsResponseBodyColumnList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableColumnsResponseBodyColumnList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableColumnsResponseBodyColumnList) SetColumn(v []*ListTableColumnsResponseBodyColumnListColumn) *ListTableColumnsResponseBodyColumnList {
+	s.Column = v
+	return s
+}
+
+type ListTableColumnsResponseBodyColumnListColumn struct {
+	// example:
+	//
+	// false
+	AutoIncrement *bool `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
+	// example:
+	//
+	// 12345
+	ColumnId *string `json:"ColumnId,omitempty" xml:"ColumnId,omitempty"`
+	// example:
+	//
+	// c1
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// example:
+	//
+	// varchar
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	// example:
+	//
+	// 32
+	DataLength *int64 `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
+	// example:
+	//
+	// 0
+	DataPrecision *int32 `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
+	// example:
+	//
+	// 0
+	DataScale *int32 `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
+	// example:
+	//
+	// aaa
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// example:
+	//
+	// column desc
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// NULL
+	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
+	// example:
+	//
+	// true
+	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	// example:
+	//
+	// INNER
+	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	// example:
+	//
+	// false
+	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
+}
+
+func (s ListTableColumnsResponseBodyColumnListColumn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableColumnsResponseBodyColumnListColumn) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableColumnsResponseBodyColumnListColumn) SetAutoIncrement(v bool) *ListTableColumnsResponseBodyColumnListColumn {
+	s.AutoIncrement = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBodyColumnListColumn) SetColumnId(v string) *ListTableColumnsResponseBodyColumnListColumn {
+	s.ColumnId = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBodyColumnListColumn) SetColumnName(v string) *ListTableColumnsResponseBodyColumnListColumn {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBodyColumnListColumn) SetColumnType(v string) *ListTableColumnsResponseBodyColumnListColumn {
+	s.ColumnType = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBodyColumnListColumn) SetDataLength(v int64) *ListTableColumnsResponseBodyColumnListColumn {
+	s.DataLength = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBodyColumnListColumn) SetDataPrecision(v int32) *ListTableColumnsResponseBodyColumnListColumn {
+	s.DataPrecision = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBodyColumnListColumn) SetDataScale(v int32) *ListTableColumnsResponseBodyColumnListColumn {
+	s.DataScale = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBodyColumnListColumn) SetDefaultValue(v string) *ListTableColumnsResponseBodyColumnListColumn {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBodyColumnListColumn) SetDescription(v string) *ListTableColumnsResponseBodyColumnListColumn {
+	s.Description = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBodyColumnListColumn) SetFunctionType(v string) *ListTableColumnsResponseBodyColumnListColumn {
+	s.FunctionType = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBodyColumnListColumn) SetNullable(v bool) *ListTableColumnsResponseBodyColumnListColumn {
+	s.Nullable = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBodyColumnListColumn) SetSecurityLevel(v string) *ListTableColumnsResponseBodyColumnListColumn {
+	s.SecurityLevel = &v
+	return s
+}
+
+func (s *ListTableColumnsResponseBodyColumnListColumn) SetSensitive(v bool) *ListTableColumnsResponseBodyColumnListColumn {
+	s.Sensitive = &v
+	return s
+}
+
+type ListTableColumnsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTableColumnsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTableColumnsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableColumnsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableColumnsResponse) SetHeaders(v map[string]*string) *ListTableColumnsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTableColumnsResponse) SetStatusCode(v int32) *ListTableColumnsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTableColumnsResponse) SetBody(v *ListTableColumnsResponseBody) *ListTableColumnsResponse {
 	s.Body = v
 	return s
 }
@@ -78998,6 +79636,82 @@ func (client *Client) EditLogicDatabase(request *EditLogicDatabaseRequest) (_res
 
 // Summary:
 //
+// 编辑指定guid的元数据业务知识
+//
+// @param request - EditMetaKnowledgeAssetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EditMetaKnowledgeAssetResponse
+func (client *Client) EditMetaKnowledgeAssetWithOptions(request *EditMetaKnowledgeAssetRequest, runtime *util.RuntimeOptions) (_result *EditMetaKnowledgeAssetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetDescription)) {
+		query["AssetDescription"] = request.AssetDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColumnName)) {
+		query["ColumnName"] = request.ColumnName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableSchemaName)) {
+		query["TableSchemaName"] = request.TableSchemaName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EditMetaKnowledgeAsset"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EditMetaKnowledgeAssetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑指定guid的元数据业务知识
+//
+// @param request - EditMetaKnowledgeAssetRequest
+//
+// @return EditMetaKnowledgeAssetResponse
+func (client *Client) EditMetaKnowledgeAsset(request *EditMetaKnowledgeAssetRequest) (_result *EditMetaKnowledgeAssetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EditMetaKnowledgeAssetResponse{}
+	_body, _err := client.EditMetaKnowledgeAssetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // You can call this operation to enable a user that has been disabled in Data Management (DMS) Enterprise.
 //
 // Description:
@@ -83473,6 +84187,74 @@ func (client *Client) GetTableDesignProjectInfo(request *GetTableDesignProjectIn
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTableDesignProjectInfoResponse{}
 	_body, _err := client.GetTableDesignProjectInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定guid的元数据知识
+//
+// @param request - GetTableKnowledgeInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableKnowledgeInfoResponse
+func (client *Client) GetTableKnowledgeInfoWithOptions(request *GetTableKnowledgeInfoRequest, runtime *util.RuntimeOptions) (_result *GetTableKnowledgeInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableSchemaName)) {
+		query["TableSchemaName"] = request.TableSchemaName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTableKnowledgeInfo"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTableKnowledgeInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定guid的元数据知识
+//
+// @param request - GetTableKnowledgeInfoRequest
+//
+// @return GetTableKnowledgeInfoResponse
+func (client *Client) GetTableKnowledgeInfo(request *GetTableKnowledgeInfoRequest) (_result *GetTableKnowledgeInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTableKnowledgeInfoResponse{}
+	_body, _err := client.GetTableKnowledgeInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -88569,6 +89351,78 @@ func (client *Client) ListStandardGroups(request *ListStandardGroupsRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ListStandardGroupsResponse{}
 	_body, _err := client.ListStandardGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取表字段信息
+//
+// @param request - ListTableColumnsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTableColumnsResponse
+func (client *Client) ListTableColumnsWithOptions(request *ListTableColumnsRequest, runtime *util.RuntimeOptions) (_result *ListTableColumnsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableSchemaName)) {
+		query["TableSchemaName"] = request.TableSchemaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTableColumns"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTableColumnsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取表字段信息
+//
+// @param request - ListTableColumnsRequest
+//
+// @return ListTableColumnsResponse
+func (client *Client) ListTableColumns(request *ListTableColumnsRequest) (_result *ListTableColumnsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTableColumnsResponse{}
+	_body, _err := client.ListTableColumnsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
