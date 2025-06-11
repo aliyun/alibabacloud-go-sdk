@@ -1401,6 +1401,7 @@ type CreateDefenseRuleRequest struct {
 	//
 	// waf_group
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	DefenseType  *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -1448,6 +1449,11 @@ func (s CreateDefenseRuleRequest) GoString() string {
 
 func (s *CreateDefenseRuleRequest) SetDefenseScene(v string) *CreateDefenseRuleRequest {
 	s.DefenseScene = &v
+	return s
+}
+
+func (s *CreateDefenseRuleRequest) SetDefenseType(v string) *CreateDefenseRuleRequest {
+	s.DefenseType = &v
 	return s
 }
 
@@ -3944,6 +3950,7 @@ func (s *DeleteDefenseResourceGroupResponse) SetBody(v *DeleteDefenseResourceGro
 }
 
 type DeleteDefenseRuleRequest struct {
+	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -3993,6 +4000,11 @@ func (s DeleteDefenseRuleRequest) String() string {
 
 func (s DeleteDefenseRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteDefenseRuleRequest) SetDefenseType(v string) *DeleteDefenseRuleRequest {
+	s.DefenseType = &v
+	return s
 }
 
 func (s *DeleteDefenseRuleRequest) SetInstanceId(v string) *DeleteDefenseRuleRequest {
@@ -14528,6 +14540,7 @@ func (s *DescribeDefenseResourcesResponse) SetBody(v *DescribeDefenseResourcesRe
 }
 
 type DescribeDefenseRuleRequest struct {
+	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -14577,6 +14590,11 @@ func (s DescribeDefenseRuleRequest) String() string {
 
 func (s DescribeDefenseRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDefenseRuleRequest) SetDefenseType(v string) *DescribeDefenseRuleRequest {
+	s.DefenseType = &v
+	return s
 }
 
 func (s *DescribeDefenseRuleRequest) SetInstanceId(v string) *DescribeDefenseRuleRequest {
@@ -35891,6 +35909,7 @@ type ModifyDefenseRuleRequest struct {
 	//
 	// waf_group
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	DefenseType  *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -35938,6 +35957,11 @@ func (s ModifyDefenseRuleRequest) GoString() string {
 
 func (s *ModifyDefenseRuleRequest) SetDefenseScene(v string) *ModifyDefenseRuleRequest {
 	s.DefenseScene = &v
+	return s
+}
+
+func (s *ModifyDefenseRuleRequest) SetDefenseType(v string) *ModifyDefenseRuleRequest {
+	s.DefenseType = &v
 	return s
 }
 
@@ -40379,6 +40403,10 @@ func (client *Client) CreateDefenseRuleWithOptions(request *CreateDefenseRuleReq
 		query["DefenseScene"] = request.DefenseScene
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -41375,6 +41403,10 @@ func (client *Client) DeleteDefenseRuleWithOptions(request *DeleteDefenseRuleReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -44751,6 +44783,10 @@ func (client *Client) DescribeDefenseRuleWithOptions(request *DescribeDefenseRul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -51633,6 +51669,10 @@ func (client *Client) ModifyDefenseRuleWithOptions(request *ModifyDefenseRuleReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DefenseScene)) {
 		query["DefenseScene"] = request.DefenseScene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
