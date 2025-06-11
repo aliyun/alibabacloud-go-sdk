@@ -2047,6 +2047,7 @@ type GetTaskResultResponseBodyDataAsrResult struct {
 	EmotionValue *int32  `json:"emotionValue,omitempty" xml:"emotionValue,omitempty"`
 	End          *int64  `json:"end,omitempty" xml:"end,omitempty"`
 	Role         *string `json:"role,omitempty" xml:"role,omitempty"`
+	RoleName     *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
 	SpeechRate   *int32  `json:"speechRate,omitempty" xml:"speechRate,omitempty"`
 	Words        *string `json:"words,omitempty" xml:"words,omitempty"`
 }
@@ -2076,6 +2077,11 @@ func (s *GetTaskResultResponseBodyDataAsrResult) SetEnd(v int64) *GetTaskResultR
 
 func (s *GetTaskResultResponseBodyDataAsrResult) SetRole(v string) *GetTaskResultResponseBodyDataAsrResult {
 	s.Role = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataAsrResult) SetRoleName(v string) *GetTaskResultResponseBodyDataAsrResult {
+	s.RoleName = &v
 	return s
 }
 
