@@ -2945,6 +2945,8 @@ func (s *CreateChatappMigrationInitiateResponse) SetBody(v *CreateChatappMigrati
 }
 
 type CreateChatappTemplateRequest struct {
+	// Deprecated
+	//
 	// Specifies whether to allow Facebook to automatically change the directory of the template. If you set this parameter to true, the review success rate of the template is improved. This parameter is valid only when TemplateType is set to WHATSAPP.
 	//
 	// example:
@@ -2984,7 +2986,8 @@ type CreateChatappTemplateRequest struct {
 	// example:
 	//
 	// The code of the message template.
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CategoryChangePaused *bool   `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
 	// The components of the message template.
 	//
 	// >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter must be empty.
@@ -3070,6 +3073,11 @@ func (s *CreateChatappTemplateRequest) SetAllowCategoryChange(v bool) *CreateCha
 
 func (s *CreateChatappTemplateRequest) SetCategory(v string) *CreateChatappTemplateRequest {
 	s.Category = &v
+	return s
+}
+
+func (s *CreateChatappTemplateRequest) SetCategoryChangePaused(v bool) *CreateChatappTemplateRequest {
+	s.CategoryChangePaused = &v
 	return s
 }
 
@@ -3718,6 +3726,8 @@ func (s *CreateChatappTemplateRequestComponentsCardsCardComponentsButtons) SetUr
 }
 
 type CreateChatappTemplateShrinkRequest struct {
+	// Deprecated
+	//
 	// Specifies whether to allow Facebook to automatically change the directory of the template. If you set this parameter to true, the review success rate of the template is improved. This parameter is valid only when TemplateType is set to WHATSAPP.
 	//
 	// example:
@@ -3757,7 +3767,8 @@ type CreateChatappTemplateShrinkRequest struct {
 	// example:
 	//
 	// The code of the message template.
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CategoryChangePaused *bool   `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
 	// The components of the message template.
 	//
 	// >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter must be empty.
@@ -3843,6 +3854,11 @@ func (s *CreateChatappTemplateShrinkRequest) SetAllowCategoryChange(v bool) *Cre
 
 func (s *CreateChatappTemplateShrinkRequest) SetCategory(v string) *CreateChatappTemplateShrinkRequest {
 	s.Category = &v
+	return s
+}
+
+func (s *CreateChatappTemplateShrinkRequest) SetCategoryChangePaused(v bool) *CreateChatappTemplateShrinkRequest {
+	s.CategoryChangePaused = &v
 	return s
 }
 
@@ -5550,6 +5566,7 @@ func (s *GetChatappTemplateDetailResponseBody) SetRequestId(v string) *GetChatap
 }
 
 type GetChatappTemplateDetailResponseBodyData struct {
+	AllowSend *bool `json:"AllowSend,omitempty" xml:"AllowSend,omitempty"`
 	// The review status of the message template. Valid values:
 	//
 	// 	- **pass**: The message template is approved.
@@ -5597,7 +5614,8 @@ type GetChatappTemplateDetailResponseBodyData struct {
 	// example:
 	//
 	// TRANSACTIONAL
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CategoryChangePaused *bool   `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
 	// The components of the message template.
 	Components []*GetChatappTemplateDetailResponseBodyDataComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// The examples of variables.
@@ -5660,6 +5678,11 @@ func (s GetChatappTemplateDetailResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetChatappTemplateDetailResponseBodyData) SetAllowSend(v bool) *GetChatappTemplateDetailResponseBodyData {
+	s.AllowSend = &v
+	return s
+}
+
 func (s *GetChatappTemplateDetailResponseBodyData) SetAuditStatus(v string) *GetChatappTemplateDetailResponseBodyData {
 	s.AuditStatus = &v
 	return s
@@ -5667,6 +5690,11 @@ func (s *GetChatappTemplateDetailResponseBodyData) SetAuditStatus(v string) *Get
 
 func (s *GetChatappTemplateDetailResponseBodyData) SetCategory(v string) *GetChatappTemplateDetailResponseBodyData {
 	s.Category = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyData) SetCategoryChangePaused(v bool) *GetChatappTemplateDetailResponseBodyData {
+	s.CategoryChangePaused = &v
 	return s
 }
 
@@ -11328,7 +11356,8 @@ type ModifyChatappTemplateRequest struct {
 	// example:
 	//
 	// text
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CategoryChangePaused *bool   `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
 	// The components of the message template.
 	//
 	// >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, you do not need to set the Text sub-parameter of the Components parameter because the value is automatically generated.
@@ -11411,6 +11440,11 @@ func (s ModifyChatappTemplateRequest) GoString() string {
 
 func (s *ModifyChatappTemplateRequest) SetCategory(v string) *ModifyChatappTemplateRequest {
 	s.Category = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequest) SetCategoryChangePaused(v bool) *ModifyChatappTemplateRequest {
+	s.CategoryChangePaused = &v
 	return s
 }
 
@@ -12091,7 +12125,8 @@ type ModifyChatappTemplateShrinkRequest struct {
 	// example:
 	//
 	// text
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CategoryChangePaused *bool   `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
 	// The components of the message template.
 	//
 	// >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, you do not need to set the Text sub-parameter of the Components parameter because the value is automatically generated.
@@ -12174,6 +12209,11 @@ func (s ModifyChatappTemplateShrinkRequest) GoString() string {
 
 func (s *ModifyChatappTemplateShrinkRequest) SetCategory(v string) *ModifyChatappTemplateShrinkRequest {
 	s.Category = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateShrinkRequest) SetCategoryChangePaused(v bool) *ModifyChatappTemplateShrinkRequest {
+	s.CategoryChangePaused = &v
 	return s
 }
 
@@ -12351,6 +12391,188 @@ func (s *ModifyChatappTemplateResponse) SetStatusCode(v int32) *ModifyChatappTem
 }
 
 func (s *ModifyChatappTemplateResponse) SetBody(v *ModifyChatappTemplateResponseBody) *ModifyChatappTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyChatappTemplatePropertiesRequest struct {
+	// example:
+	//
+	// true
+	AllowSend *bool `json:"AllowSend,omitempty" xml:"AllowSend,omitempty"`
+	// example:
+	//
+	// false
+	CategoryChangePaused *bool `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cams-idk***
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh_CN
+	Language             *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 929938***
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// WHATSAPP
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s ModifyChatappTemplatePropertiesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyChatappTemplatePropertiesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyChatappTemplatePropertiesRequest) SetAllowSend(v bool) *ModifyChatappTemplatePropertiesRequest {
+	s.AllowSend = &v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesRequest) SetCategoryChangePaused(v bool) *ModifyChatappTemplatePropertiesRequest {
+	s.CategoryChangePaused = &v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesRequest) SetCustSpaceId(v string) *ModifyChatappTemplatePropertiesRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesRequest) SetLanguage(v string) *ModifyChatappTemplatePropertiesRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesRequest) SetOwnerId(v int64) *ModifyChatappTemplatePropertiesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesRequest) SetResourceOwnerAccount(v string) *ModifyChatappTemplatePropertiesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesRequest) SetResourceOwnerId(v int64) *ModifyChatappTemplatePropertiesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesRequest) SetTemplateCode(v string) *ModifyChatappTemplatePropertiesRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesRequest) SetTemplateType(v string) *ModifyChatappTemplatePropertiesRequest {
+	s.TemplateType = &v
+	return s
+}
+
+type ModifyChatappTemplatePropertiesResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	Model map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyChatappTemplatePropertiesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyChatappTemplatePropertiesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyChatappTemplatePropertiesResponseBody) SetAccessDeniedDetail(v string) *ModifyChatappTemplatePropertiesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesResponseBody) SetCode(v string) *ModifyChatappTemplatePropertiesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesResponseBody) SetMessage(v string) *ModifyChatappTemplatePropertiesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesResponseBody) SetModel(v map[string]interface{}) *ModifyChatappTemplatePropertiesResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesResponseBody) SetRequestId(v string) *ModifyChatappTemplatePropertiesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesResponseBody) SetSuccess(v bool) *ModifyChatappTemplatePropertiesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyChatappTemplatePropertiesResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyChatappTemplatePropertiesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyChatappTemplatePropertiesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyChatappTemplatePropertiesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyChatappTemplatePropertiesResponse) SetHeaders(v map[string]*string) *ModifyChatappTemplatePropertiesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesResponse) SetStatusCode(v int32) *ModifyChatappTemplatePropertiesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyChatappTemplatePropertiesResponse) SetBody(v *ModifyChatappTemplatePropertiesResponseBody) *ModifyChatappTemplatePropertiesResponse {
 	s.Body = v
 	return s
 }
@@ -13227,6 +13449,10 @@ type QueryChatappBindWabaResponseBodyData struct {
 	//
 	// 20393988393993***
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// Y
+	MarketingMessageLiteStatus *string `json:"MarketingMessageLiteStatus,omitempty" xml:"MarketingMessageLiteStatus,omitempty"`
 	// The namespace of the message template.
 	//
 	// example:
@@ -13282,6 +13508,11 @@ func (s *QueryChatappBindWabaResponseBodyData) SetCurrency(v string) *QueryChata
 
 func (s *QueryChatappBindWabaResponseBodyData) SetId(v string) *QueryChatappBindWabaResponseBodyData {
 	s.Id = &v
+	return s
+}
+
+func (s *QueryChatappBindWabaResponseBodyData) SetMarketingMessageLiteStatus(v string) *QueryChatappBindWabaResponseBodyData {
+	s.MarketingMessageLiteStatus = &v
 	return s
 }
 
@@ -18787,6 +19018,10 @@ func (client *Client) CreateChatappTemplateWithOptions(tmpReq *CreateChatappTemp
 		body["Category"] = request.Category
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CategoryChangePaused)) {
+		body["CategoryChangePaused"] = request.CategoryChangePaused
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ComponentsShrink)) {
 		body["Components"] = request.ComponentsShrink
 	}
@@ -21371,6 +21606,10 @@ func (client *Client) ModifyChatappTemplateWithOptions(tmpReq *ModifyChatappTemp
 		body["Category"] = request.Category
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CategoryChangePaused)) {
+		body["CategoryChangePaused"] = request.CategoryChangePaused
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ComponentsShrink)) {
 		body["Components"] = request.ComponentsShrink
 	}
@@ -21449,6 +21688,98 @@ func (client *Client) ModifyChatappTemplate(request *ModifyChatappTemplateReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyChatappTemplateResponse{}
 	_body, _err := client.ModifyChatappTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改模板上的一些属性
+//
+// @param request - ModifyChatappTemplatePropertiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyChatappTemplatePropertiesResponse
+func (client *Client) ModifyChatappTemplatePropertiesWithOptions(request *ModifyChatappTemplatePropertiesRequest, runtime *util.RuntimeOptions) (_result *ModifyChatappTemplatePropertiesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowSend)) {
+		query["AllowSend"] = request.AllowSend
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryChangePaused)) {
+		query["CategoryChangePaused"] = request.CategoryChangePaused
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyChatappTemplateProperties"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyChatappTemplatePropertiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改模板上的一些属性
+//
+// @param request - ModifyChatappTemplatePropertiesRequest
+//
+// @return ModifyChatappTemplatePropertiesResponse
+func (client *Client) ModifyChatappTemplateProperties(request *ModifyChatappTemplatePropertiesRequest) (_result *ModifyChatappTemplatePropertiesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyChatappTemplatePropertiesResponse{}
+	_body, _err := client.ModifyChatappTemplatePropertiesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
