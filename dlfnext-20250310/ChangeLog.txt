@@ -1,3 +1,6 @@
+2025-06-11 Version: v1.1.1
+- Generated golang 2025-03-10 for DlfNext.
+
 2025-06-09 Version: v1.1.0
 - Support API GetCatalogSummary.
 - Support API GetCatalogSummaryTrend.
