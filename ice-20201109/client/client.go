@@ -42591,6 +42591,7 @@ func (s *GetWorkflowTaskResponse) SetBody(v *GetWorkflowTaskResponseBody) *GetWo
 }
 
 type InsertMediaToSearchLibRequest struct {
+	ImagesInput *string `json:"ImagesInput,omitempty" xml:"ImagesInput,omitempty"`
 	// The URL of the video, audio, or image file that you want to import to the search library.
 	//
 	// Note: Make sure that you specify a correct file name and the bucket in which the file resides is in the same region where this operation is called. Otherwise, the file cannot be found or the operation may fail.
@@ -42643,6 +42644,11 @@ func (s InsertMediaToSearchLibRequest) String() string {
 
 func (s InsertMediaToSearchLibRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InsertMediaToSearchLibRequest) SetImagesInput(v string) *InsertMediaToSearchLibRequest {
+	s.ImagesInput = &v
+	return s
 }
 
 func (s *InsertMediaToSearchLibRequest) SetInput(v string) *InsertMediaToSearchLibRequest {
@@ -69387,7 +69393,8 @@ type SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo struct {
 	// example:
 	//
 	// 480
-	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Height      *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	ImagesInput *string `json:"ImagesInput,omitempty" xml:"ImagesInput,omitempty"`
 	// The time when the file was last modified.
 	//
 	// example:
@@ -69463,6 +69470,11 @@ func (s *SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo) SetForma
 
 func (s *SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo) SetHeight(v string) *SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo {
 	s.Height = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo) SetImagesInput(v string) *SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo {
+	s.ImagesInput = &v
 	return s
 }
 
@@ -69587,6 +69599,7 @@ type SearchMediaResponseBodyMediaInfoListMediaBasicInfo struct {
 	//
 	// 2020-12-01T19:48Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Namespace    *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The custom ID of the media asset. The ID is a string that contains 6 to 64 characters. Only letters, digits, hyphens (-), and underscores (_) are supported. Each custom ID is unique.
 	//
 	// example:
@@ -69636,7 +69649,8 @@ type SearchMediaResponseBodyMediaInfoListMediaBasicInfo struct {
 	// example:
 	//
 	// userData
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData          *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	VisionDescription *string `json:"VisionDescription,omitempty" xml:"VisionDescription,omitempty"`
 }
 
 func (s SearchMediaResponseBodyMediaInfoListMediaBasicInfo) String() string {
@@ -69717,6 +69731,11 @@ func (s *SearchMediaResponseBodyMediaInfoListMediaBasicInfo) SetModifiedTime(v s
 	return s
 }
 
+func (s *SearchMediaResponseBodyMediaInfoListMediaBasicInfo) SetNamespace(v string) *SearchMediaResponseBodyMediaInfoListMediaBasicInfo {
+	s.Namespace = &v
+	return s
+}
+
 func (s *SearchMediaResponseBodyMediaInfoListMediaBasicInfo) SetReferenceId(v string) *SearchMediaResponseBodyMediaInfoListMediaBasicInfo {
 	s.ReferenceId = &v
 	return s
@@ -69759,6 +69778,11 @@ func (s *SearchMediaResponseBodyMediaInfoListMediaBasicInfo) SetUploadSource(v s
 
 func (s *SearchMediaResponseBodyMediaInfoListMediaBasicInfo) SetUserData(v string) *SearchMediaResponseBodyMediaInfoListMediaBasicInfo {
 	s.UserData = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListMediaBasicInfo) SetVisionDescription(v string) *SearchMediaResponseBodyMediaInfoListMediaBasicInfo {
+	s.VisionDescription = &v
 	return s
 }
 
@@ -69825,6 +69849,7 @@ type SearchMediaByAILabelRequest struct {
 	//
 	// Ocr
 	MultimodalSearchType *string `json:"MultimodalSearchType,omitempty" xml:"MultimodalSearchType,omitempty"`
+	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -69892,6 +69917,11 @@ func (s *SearchMediaByAILabelRequest) SetMediaType(v string) *SearchMediaByAILab
 
 func (s *SearchMediaByAILabelRequest) SetMultimodalSearchType(v string) *SearchMediaByAILabelRequest {
 	s.MultimodalSearchType = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelRequest) SetNamespace(v string) *SearchMediaByAILabelRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -70593,6 +70623,7 @@ type SearchMediaByFaceRequest struct {
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -70641,6 +70672,11 @@ func (s *SearchMediaByFaceRequest) SetFaceSearchToken(v string) *SearchMediaByFa
 
 func (s *SearchMediaByFaceRequest) SetMediaType(v string) *SearchMediaByFaceRequest {
 	s.MediaType = &v
+	return s
+}
+
+func (s *SearchMediaByFaceRequest) SetNamespace(v string) *SearchMediaByFaceRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -70788,6 +70824,7 @@ type SearchMediaByHybridRequest struct {
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// example:
 	//
 	// 1
@@ -70818,6 +70855,11 @@ func (s *SearchMediaByHybridRequest) SetMediaId(v string) *SearchMediaByHybridRe
 
 func (s *SearchMediaByHybridRequest) SetMediaType(v string) *SearchMediaByHybridRequest {
 	s.MediaType = &v
+	return s
+}
+
+func (s *SearchMediaByHybridRequest) SetNamespace(v string) *SearchMediaByHybridRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -71000,6 +71042,7 @@ type SearchMediaByMultimodalRequest struct {
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -71032,6 +71075,11 @@ func (s SearchMediaByMultimodalRequest) GoString() string {
 
 func (s *SearchMediaByMultimodalRequest) SetMediaType(v string) *SearchMediaByMultimodalRequest {
 	s.MediaType = &v
+	return s
+}
+
+func (s *SearchMediaByMultimodalRequest) SetNamespace(v string) *SearchMediaByMultimodalRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -110225,6 +110273,10 @@ func (client *Client) InsertMediaToSearchLibWithOptions(request *InsertMediaToSe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImagesInput)) {
+		query["ImagesInput"] = request.ImagesInput
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Input)) {
 		query["Input"] = request.Input
 	}
@@ -116469,6 +116521,10 @@ func (client *Client) SearchMediaByAILabelWithOptions(request *SearchMediaByAILa
 		query["MultimodalSearchType"] = request.MultimodalSearchType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
 		query["PageNo"] = request.PageNo
 	}
@@ -116569,6 +116625,10 @@ func (client *Client) SearchMediaByFaceWithOptions(request *SearchMediaByFaceReq
 		query["MediaType"] = request.MediaType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
 		query["PageNo"] = request.PageNo
 	}
@@ -116653,6 +116713,10 @@ func (client *Client) SearchMediaByHybridWithOptions(request *SearchMediaByHybri
 		query["MediaType"] = request.MediaType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
 		query["PageNo"] = request.PageNo
 	}
@@ -116731,6 +116795,10 @@ func (client *Client) SearchMediaByMultimodalWithOptions(request *SearchMediaByM
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
 		query["MediaType"] = request.MediaType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
