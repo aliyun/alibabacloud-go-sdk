@@ -43,7 +43,7 @@ func (s *AddUserToGroupRequest) SetUserName(v string) *AddUserToGroupRequest {
 }
 
 type AddUserToGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ func (s *AttachPolicyToGroupRequest) SetPolicyType(v string) *AttachPolicyToGrou
 }
 
 type AttachPolicyToGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ func (s *AttachPolicyToRoleRequest) SetRoleName(v string) *AttachPolicyToRoleReq
 }
 
 type AttachPolicyToRoleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -328,7 +328,7 @@ func (s *AttachPolicyToUserRequest) SetUserName(v string) *AttachPolicyToUserReq
 }
 
 type AttachPolicyToUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -434,7 +434,7 @@ func (s *BindMFADeviceRequest) SetUserName(v string) *BindMFADeviceRequest {
 }
 
 type BindMFADeviceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -485,7 +485,7 @@ func (s *BindMFADeviceResponse) SetBody(v *BindMFADeviceResponseBody) *BindMFADe
 }
 
 type ChangePasswordRequest struct {
-	// The new password that is used to log on to the Alibaba Cloud Management Console.
+	// The new password that is used to log on to the console.
 	//
 	// The password must meet the complexity requirements. For more information, see [SetPasswordPolicy](https://help.aliyun.com/document_detail/28739.html).
 	//
@@ -493,7 +493,7 @@ type ChangePasswordRequest struct {
 	//
 	// aw$2****
 	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
-	// The old password that is used to log on to the Alibaba Cloud Management Console.
+	// The old password that is used to log on to the console.
 	//
 	// example:
 	//
@@ -520,7 +520,7 @@ func (s *ChangePasswordRequest) SetOldPassword(v string) *ChangePasswordRequest 
 }
 
 type ChangePasswordResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -571,7 +571,7 @@ func (s *ChangePasswordResponse) SetBody(v *ChangePasswordResponseBody) *ChangeP
 }
 
 type ClearAccountAliasResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -644,9 +644,9 @@ func (s *CreateAccessKeyRequest) SetUserName(v string) *CreateAccessKeyRequest {
 }
 
 type CreateAccessKeyResponseBody struct {
-	// The information of the AccessKey pair.
+	// The information about the AccessKey pair.
 	AccessKey *CreateAccessKeyResponseBodyAccessKey `json:"AccessKey,omitempty" xml:"AccessKey,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -907,7 +907,7 @@ func (s *CreateGroupResponse) SetBody(v *CreateGroupResponseBody) *CreateGroupRe
 }
 
 type CreateLoginProfileRequest struct {
-	// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`.
+	// Specifies whether the RAM user must bind a multi-factor authentication (MFA) device upon the next logon. Default value: `false`.
 	//
 	// example:
 	//
@@ -919,7 +919,7 @@ type CreateLoginProfileRequest struct {
 	//
 	// mypassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Specifies whether the RAM user must change the password upon logon. Default value: `false`.
+	// Specifies whether the RAM user has to change the password upon logon. Default value: `false`.
 	//
 	// example:
 	//
@@ -964,7 +964,7 @@ func (s *CreateLoginProfileRequest) SetUserName(v string) *CreateLoginProfileReq
 type CreateLoginProfileResponseBody struct {
 	// The logon configurations of the RAM user.
 	LoginProfile *CreateLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -991,13 +991,13 @@ func (s *CreateLoginProfileResponseBody) SetRequestId(v string) *CreateLoginProf
 }
 
 type CreateLoginProfileResponseBodyLoginProfile struct {
-	// The time when the logon configurations were created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// Indicates whether an MFA device must be attached to the RAM user upon logon.
+	// Indicates whether an MFA device must be bound to the RAM user.
 	//
 	// example:
 	//
@@ -1095,12 +1095,14 @@ type CreatePolicyRequest struct {
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
 	// The name of the policy.
 	//
-	// The name must be 1 to 128 characters in length, and can contain letters, digits, and hyphens (-).
+	// The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	//
 	// example:
 	//
 	// View-ECS-instances-in-a-specific-region
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The tags.
+	Tag []*CreatePolicyRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreatePolicyRequest) String() string {
@@ -1126,10 +1128,107 @@ func (s *CreatePolicyRequest) SetPolicyName(v string) *CreatePolicyRequest {
 	return s
 }
 
+func (s *CreatePolicyRequest) SetTag(v []*CreatePolicyRequestTag) *CreatePolicyRequest {
+	s.Tag = v
+	return s
+}
+
+type CreatePolicyRequestTag struct {
+	// The key of the tag.
+	//
+	// example:
+	//
+	// owner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// alice
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreatePolicyRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyRequestTag) SetKey(v string) *CreatePolicyRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreatePolicyRequestTag) SetValue(v string) *CreatePolicyRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreatePolicyShrinkRequest struct {
+	// The description of the policy.
+	//
+	// The description must be 1 to 1,024 characters in length.
+	//
+	// example:
+	//
+	// Query ECS instances in a specific region
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The document of the policy.
+	//
+	// The document must be 1 to 6,144 characters in length.
+	//
+	// For more information about policy elements and sample policies, see [Policy elements](https://help.aliyun.com/document_detail/93738.html) and [Overview of sample policies](https://help.aliyun.com/document_detail/210969.html).
+	//
+	// example:
+	//
+	// {"Statement": [{"Effect": "Allow","Action": "ecs:Describe*","Resource": "acs:ecs:cn-qingdao:*:instance/*"}],"Version": "1"}
+	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	// The name of the policy.
+	//
+	// The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+	//
+	// example:
+	//
+	// View-ECS-instances-in-a-specific-region
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s CreatePolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyShrinkRequest) SetDescription(v string) *CreatePolicyShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreatePolicyShrinkRequest) SetPolicyDocument(v string) *CreatePolicyShrinkRequest {
+	s.PolicyDocument = &v
+	return s
+}
+
+func (s *CreatePolicyShrinkRequest) SetPolicyName(v string) *CreatePolicyShrinkRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *CreatePolicyShrinkRequest) SetTagShrink(v string) *CreatePolicyShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
 type CreatePolicyResponseBody struct {
 	// The information about the policy.
 	Policy *CreatePolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -1182,9 +1281,9 @@ type CreatePolicyResponseBodyPolicy struct {
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The type of the policy. Valid values:
 	//
-	// 	- Custom: custom policy
+	// 	- Custom
 	//
-	// 	- System: system policy
+	// 	- System
 	//
 	// example:
 	//
@@ -1320,7 +1419,7 @@ func (s *CreatePolicyVersionRequest) SetSetAsDefault(v bool) *CreatePolicyVersio
 type CreatePolicyVersionResponseBody struct {
 	// The information about the policy version.
 	PolicyVersion *CreatePolicyVersionResponseBodyPolicyVersion `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -1447,7 +1546,7 @@ type CreateRoleRequest struct {
 	//
 	// ECS administrator
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum session duration of the RAM role.
+	// The maximum session time of the RAM role.
 	//
 	// Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
 	//
@@ -1465,6 +1564,8 @@ type CreateRoleRequest struct {
 	//
 	// ECSAdmin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The tags.
+	Tag []*CreateRoleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateRoleRequest) String() string {
@@ -1495,14 +1596,124 @@ func (s *CreateRoleRequest) SetRoleName(v string) *CreateRoleRequest {
 	return s
 }
 
+func (s *CreateRoleRequest) SetTag(v []*CreateRoleRequestTag) *CreateRoleRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateRoleRequestTag struct {
+	// The key of the tag.
+	//
+	// example:
+	//
+	// k1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// v1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateRoleRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRoleRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoleRequestTag) SetKey(v string) *CreateRoleRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateRoleRequestTag) SetValue(v string) *CreateRoleRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateRoleShrinkRequest struct {
+	// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+	//
+	// >  RAM users cannot assume the RAM roles of trusted Alibaba Cloud services.
+	//
+	// example:
+	//
+	// {"Statement":[{"Action":"sts:AssumeRole","Effect":"Allow","Principal":{"RAM":"acs:ram::123456789012****:root"}}],"Version":"1"}
+	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
+	// The description of the RAM role.
+	//
+	// The description must be 1 to 1,024 characters in length.
+	//
+	// example:
+	//
+	// ECS administrator
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The maximum session time of the RAM role.
+	//
+	// Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
+	//
+	// If you do not specify this parameter, the default value is used.
+	//
+	// example:
+	//
+	// 3600
+	MaxSessionDuration *int64 `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
+	// The name of the RAM role.
+	//
+	// The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+	//
+	// example:
+	//
+	// ECSAdmin
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s CreateRoleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRoleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoleShrinkRequest) SetAssumeRolePolicyDocument(v string) *CreateRoleShrinkRequest {
+	s.AssumeRolePolicyDocument = &v
+	return s
+}
+
+func (s *CreateRoleShrinkRequest) SetDescription(v string) *CreateRoleShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRoleShrinkRequest) SetMaxSessionDuration(v int64) *CreateRoleShrinkRequest {
+	s.MaxSessionDuration = &v
+	return s
+}
+
+func (s *CreateRoleShrinkRequest) SetRoleName(v string) *CreateRoleShrinkRequest {
+	s.RoleName = &v
+	return s
+}
+
+func (s *CreateRoleShrinkRequest) SetTagShrink(v string) *CreateRoleShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
 type CreateRoleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the RAM role.
+	// The information about the RAM role.
 	Role *CreateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
@@ -1525,7 +1736,7 @@ func (s *CreateRoleResponseBody) SetRole(v *CreateRoleResponseBodyRole) *CreateR
 }
 
 type CreateRoleResponseBodyRole struct {
-	// The Alibaba Cloud Resource Name (ARN) of the role.
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
 	//
 	// example:
 	//
@@ -1537,7 +1748,7 @@ type CreateRoleResponseBodyRole struct {
 	//
 	// { "Statement": [ { "Action": "sts:AssumeRole", "Effect": "Allow", "Principal": { "RAM": "acs:ram::123456789012****:root" } } ], "Version": "1" }
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	// The time when the RAM user was created.
+	// The time when the RAM role was created.
 	//
 	// example:
 	//
@@ -1549,7 +1760,7 @@ type CreateRoleResponseBodyRole struct {
 	//
 	// ECS administrator
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum session duration of the RAM role.
+	// The maximum session time of the RAM role.
 	//
 	// example:
 	//
@@ -1652,7 +1863,7 @@ type CreateUserRequest struct {
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	// The display name of the RAM user.
 	//
-	// The display name must be 1 to 128 characters in length.
+	// The name must be 1 to 128 characters in length.
 	//
 	// example:
 	//
@@ -1668,7 +1879,7 @@ type CreateUserRequest struct {
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The mobile phone number of the RAM user.
 	//
-	// Format: Country code-Mobile phone number.
+	// Format: \\<Country code>-\\<Mobile phone number>.
 	//
 	// >  This parameter applies only to the China site (aliyun.com).
 	//
@@ -1676,9 +1887,9 @@ type CreateUserRequest struct {
 	//
 	// 86-1868888****
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	// The username of the RAM user.
+	// The name of the RAM user.
 	//
-	// The username must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
+	// The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
 	//
 	// example:
 	//
@@ -1720,7 +1931,7 @@ func (s *CreateUserRequest) SetUserName(v string) *CreateUserRequest {
 }
 
 type CreateUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -1769,7 +1980,7 @@ type CreateUserResponseBodyUser struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the RAM user.
 	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
+	// >  This parameter applies only to the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -1777,7 +1988,7 @@ type CreateUserResponseBodyUser struct {
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The mobile phone number of the RAM user.
 	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
+	// >  This parameter applies only to the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -1789,7 +2000,7 @@ type CreateUserResponseBodyUser struct {
 	//
 	// 122748924538****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The username of the RAM user.
+	// The name of the RAM user.
 	//
 	// example:
 	//
@@ -1872,7 +2083,7 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 type CreateVirtualMFADeviceRequest struct {
 	// The name of the MFA device.
 	//
-	// The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+	// The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
 	//
 	// example:
 	//
@@ -1894,13 +2105,13 @@ func (s *CreateVirtualMFADeviceRequest) SetVirtualMFADeviceName(v string) *Creat
 }
 
 type CreateVirtualMFADeviceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the MFA device.
+	// The information about the MFA device.
 	VirtualMFADevice *CreateVirtualMFADeviceResponseBodyVirtualMFADevice `json:"VirtualMFADevice,omitempty" xml:"VirtualMFADevice,omitempty" type:"Struct"`
 }
 
@@ -2069,19 +2280,7 @@ type DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage struct {
 	//
 	// 	- true
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
@@ -2394,7 +2593,7 @@ func (s *DecodeDiagnosticMessageResponse) SetBody(v *DecodeDiagnosticMessageResp
 }
 
 type DeleteAccessKeyRequest struct {
-	// The AccessKey ID in the AccessKey pair that you want to delete.
+	// The AccessKey ID in the AccessKey pair that you want to delete.``
 	//
 	// example:
 	//
@@ -2427,7 +2626,7 @@ func (s *DeleteAccessKeyRequest) SetUserName(v string) *DeleteAccessKeyRequest {
 }
 
 type DeleteAccessKeyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -2480,7 +2679,7 @@ func (s *DeleteAccessKeyResponse) SetBody(v *DeleteAccessKeyResponseBody) *Delet
 type DeleteGroupRequest struct {
 	// The name of the RAM user group.
 	//
-	// If you want to query the name of a RAM user group, call the [ListGroups](https://help.aliyun.com/document_detail/28703.html) operation.
+	// If you want to query the name of a RAM user group, you can call the [ListGroups](https://help.aliyun.com/document_detail/28703.html) operation.
 	//
 	// example:
 	//
@@ -2502,7 +2701,7 @@ func (s *DeleteGroupRequest) SetGroupName(v string) *DeleteGroupRequest {
 }
 
 type DeleteGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -2575,7 +2774,7 @@ func (s *DeleteLoginProfileRequest) SetUserName(v string) *DeleteLoginProfileReq
 }
 
 type DeleteLoginProfileResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -2626,6 +2825,15 @@ func (s *DeleteLoginProfileResponse) SetBody(v *DeleteLoginProfileResponseBody) 
 }
 
 type DeletePolicyRequest struct {
+	// Specifies whether to delete all versions of the policy. Valid values:
+	//
+	// 	- true: deletes all versions of the policy.
+	//
+	// 	- false: does not delete all versions of the policy. If you set the parameter to false, the non-default versions of the policy are not deleted. Before you delete the policy, you must manually delete all non-default versions of the policy.
+	//
+	// example:
+	//
+	// true
 	CascadingDelete *bool `json:"CascadingDelete,omitempty" xml:"CascadingDelete,omitempty"`
 	// The name of the policy.
 	//
@@ -2654,7 +2862,7 @@ func (s *DeletePolicyRequest) SetPolicyName(v string) *DeletePolicyRequest {
 }
 
 type DeletePolicyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -2711,7 +2919,7 @@ type DeletePolicyVersionRequest struct {
 	//
 	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The ID of the policy version.
+	// The ID of the policy version that you want to delete.
 	//
 	// example:
 	//
@@ -2738,7 +2946,7 @@ func (s *DeletePolicyVersionRequest) SetVersionId(v string) *DeletePolicyVersion
 }
 
 type DeletePolicyVersionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -2811,7 +3019,7 @@ func (s *DeleteRoleRequest) SetRoleName(v string) *DeleteRoleRequest {
 }
 
 type DeleteRoleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -2886,7 +3094,7 @@ func (s *DeleteUserRequest) SetUserName(v string) *DeleteUserRequest {
 }
 
 type DeleteUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -2959,7 +3167,7 @@ func (s *DeleteVirtualMFADeviceRequest) SetSerialNumber(v string) *DeleteVirtual
 }
 
 type DeleteVirtualMFADeviceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3054,7 +3262,7 @@ func (s *DetachPolicyFromGroupRequest) SetPolicyType(v string) *DetachPolicyFrom
 }
 
 type DetachPolicyFromGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3149,7 +3357,7 @@ func (s *DetachPolicyFromRoleRequest) SetRoleName(v string) *DetachPolicyFromRol
 }
 
 type DetachPolicyFromRoleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3244,7 +3452,7 @@ func (s *DetachPolicyFromUserRequest) SetUserName(v string) *DetachPolicyFromUse
 }
 
 type DetachPolicyFromUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3324,7 +3532,10 @@ func (s *GetAccessKeyLastUsedRequest) SetUserName(v string) *GetAccessKeyLastUse
 }
 
 type GetAccessKeyLastUsedResponseBody struct {
+	// The details of the time when the AccessKey pair was used for the last time.
 	AccessKeyLastUsed *GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed `json:"AccessKeyLastUsed,omitempty" xml:"AccessKeyLastUsed,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5CCE804C-6450-49A7-B1DB-2460F7A97416
@@ -3350,6 +3561,8 @@ func (s *GetAccessKeyLastUsedResponseBody) SetRequestId(v string) *GetAccessKeyL
 }
 
 type GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed struct {
+	// The time when the AccessKey pair was used for the last time.
+	//
 	// example:
 	//
 	// 2020-10-21T06:37:40Z
@@ -3405,7 +3618,7 @@ type GetAccountAliasResponseBody struct {
 	//
 	// myalias
 	AccountAlias *string `json:"AccountAlias,omitempty" xml:"AccountAlias,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3483,9 +3696,9 @@ func (s *GetGroupRequest) SetGroupName(v string) *GetGroupRequest {
 }
 
 type GetGroupResponseBody struct {
-	// The information of the RAM user group.
+	// The information about the RAM user group.
 	Group *GetGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3536,7 +3749,7 @@ type GetGroupResponseBodyGroup struct {
 	//
 	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The time when the information of the RAM user group was updated.
+	// The modification time.
 	//
 	// example:
 	//
@@ -3631,7 +3844,7 @@ func (s *GetLoginProfileRequest) SetUserName(v string) *GetLoginProfileRequest {
 type GetLoginProfileResponseBody struct {
 	// The logon configurations of the RAM user.
 	LoginProfile *GetLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3658,13 +3871,13 @@ func (s *GetLoginProfileResponseBody) SetRequestId(v string) *GetLoginProfileRes
 }
 
 type GetLoginProfileResponseBodyLoginProfile struct {
-	// The time when the logon configurations were created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// Indicates whether an MFA device must be attached to the RAM user upon logon.
+	// Indicates whether a multi-factor authentication (MFA) device must be bound to the RAM user.
 	//
 	// example:
 	//
@@ -3742,9 +3955,9 @@ func (s *GetLoginProfileResponse) SetBody(v *GetLoginProfileResponseBody) *GetLo
 }
 
 type GetPasswordPolicyResponseBody struct {
-	// The policy to manage passwords.
+	// The password policy.
 	PasswordPolicy *GetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3771,13 +3984,11 @@ func (s *GetPasswordPolicyResponseBody) SetRequestId(v string) *GetPasswordPolic
 }
 
 type GetPasswordPolicyResponseBodyPasswordPolicy struct {
-	// Indicates whether the password has expired.
+	// Indicates whether a password expires. Valid values: `true` and `false`. Default value: `false`. If the parameter is unspecified, the default value false is returned.
 	//
-	// Valid values: `true` and `false`. Default value: `false`.
+	// 	- If this parameter is set to `true`, the Alibaba Cloud account to which the RAM users belong must reset the password before the RAM users can log on to the Alibaba Cloud Management Console.
 	//
-	// 	- If the value of this parameter is `true`, the parent Alibaba Cloud account must reset the password before the RAM user can log on to the console.
-	//
-	// 	- If the value of this parameter is `false`, the RAM user can change the password and then log on to the console.
+	// 	- If this parameter is set to `false`, the RAM users can change the passwords after the passwords expire and then log on to the Alibaba Cloud Management Console.
 	//
 	// example:
 	//
@@ -3789,19 +4000,19 @@ type GetPasswordPolicyResponseBodyPasswordPolicy struct {
 	//
 	// 5
 	MaxLoginAttemps *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
-	// The number of days for which a password is valid. Default value: 0. The default value indicates that the password never expires.
+	// The number of days for which a password is valid. If you reset a password, the password validity period restarts. Default value: 0. The default value indicates that the password never expires.
 	//
 	// example:
 	//
 	// 0
 	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
-	// The minimum required number of characters in a password.
+	// The minimum number of characters in a password.
 	//
 	// example:
 	//
 	// 12
 	MinimumPasswordLength *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
-	// The number of previous passwords that the user is prevented from reusing. Default value: 0. The default value indicates that the RAM user is not prevented from reusing previous passwords
+	// The number of previous passwords that a RAM user is prevented from reusing. Default value: 0. The default value indicates that the RAM user can reuse previous passwords.
 	//
 	// example:
 	//
@@ -3949,11 +4160,11 @@ func (s *GetPolicyRequest) SetPolicyType(v string) *GetPolicyRequest {
 }
 
 type GetPolicyResponseBody struct {
-	// The information of the default policy version.
+	// The information about the default policy version.
 	DefaultPolicyVersion *GetPolicyResponseBodyDefaultPolicyVersion `json:"DefaultPolicyVersion,omitempty" xml:"DefaultPolicyVersion,omitempty" type:"Struct"`
-	// The basic information of the policy.
+	// The basic information about the policy.
 	Policy *GetPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3997,7 +4208,7 @@ type GetPolicyResponseBodyDefaultPolicyVersion struct {
 	//
 	// true
 	IsDefaultVersion *bool `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
-	// The script of the default policy version.
+	// The document of the policy.
 	//
 	// example:
 	//
@@ -4052,7 +4263,7 @@ type GetPolicyResponseBodyPolicy struct {
 	//
 	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The default version ID of the policy.
+	// The default version of the policy.
 	//
 	// example:
 	//
@@ -4212,9 +4423,9 @@ func (s *GetPolicyVersionRequest) SetVersionId(v string) *GetPolicyVersionReques
 }
 
 type GetPolicyVersionResponseBody struct {
-	// The information of the policy version.
+	// The information about the policy version.
 	PolicyVersion *GetPolicyVersionResponseBodyPolicyVersion `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -4241,25 +4452,25 @@ func (s *GetPolicyVersionResponseBody) SetRequestId(v string) *GetPolicyVersionR
 }
 
 type GetPolicyVersionResponseBodyPolicyVersion struct {
-	// The time when the version was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// Indicates whether the version is the default version.
+	// Indicates whether the policy version is the default version.
 	//
 	// example:
 	//
 	// false
 	IsDefaultVersion *bool `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
-	// The script of the policy.
+	// The document of the policy.
 	//
 	// example:
 	//
 	// { "Statement": [{ "Action": ["oss:*"], "Effect": "Allow", "Resource": ["acs:oss:*:*:*"]}], "Version": "1"}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The ID of the version.
+	// The ID of the policy version.
 	//
 	// example:
 	//
@@ -4349,13 +4560,13 @@ func (s *GetRoleRequest) SetRoleName(v string) *GetRoleRequest {
 }
 
 type GetRoleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the RAM role.
+	// The information about the RAM role.
 	Role *GetRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
@@ -4384,7 +4595,7 @@ type GetRoleResponseBodyRole struct {
 	//
 	// acs:ram::123456789012****:role/ECSAdmin
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The content of the policy that specifies one or more entities entrusted to assume the RAM role.
+	// The policy that specifies the trusted entity to assume the RAM role.
 	//
 	// example:
 	//
@@ -4506,7 +4717,7 @@ func (s *GetRoleResponse) SetBody(v *GetRoleResponseBody) *GetRoleResponse {
 }
 
 type GetSecurityPreferenceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -4537,13 +4748,13 @@ func (s *GetSecurityPreferenceResponseBody) SetSecurityPreference(v *GetSecurity
 type GetSecurityPreferenceResponseBodySecurityPreference struct {
 	// The AccessKey pair preference.
 	AccessKeyPreference *GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference `json:"AccessKeyPreference,omitempty" xml:"AccessKeyPreference,omitempty" type:"Struct"`
-	// The logon preferences.
+	// The logon preference.
 	LoginProfilePreference *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference `json:"LoginProfilePreference,omitempty" xml:"LoginProfilePreference,omitempty" type:"Struct"`
-	// The MFA preference.
+	// The multi-factor authentication (MFA) preference.
 	MFAPreference *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
 	// The public key preference.
 	//
-	// >  The public key preference is valid only for the Japan site.
+	// >  This parameter is valid only for the Japan site.
 	PublicKeyPreference *GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference `json:"PublicKeyPreference,omitempty" xml:"PublicKeyPreference,omitempty" type:"Struct"`
 }
 
@@ -4576,11 +4787,11 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetPublicKeyPrefer
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference struct {
-	// Indicates whether RAM users can manage their AccessKey pairs. Valid values:
+	// Indicates whether Resource Access Management (RAM) users can manage their AccessKey pairs. Valid values:
 	//
-	// 	- true: RAM users can manage their AccessKey pairs.
+	// 	- true
 	//
-	// 	- false: RAM users cannot manage their AccessKey pairs.
+	// 	- false
 	//
 	// example:
 	//
@@ -4604,19 +4815,19 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference)
 type GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference struct {
 	// Indicates whether RAM users can change their passwords. Valid values:
 	//
-	// 	- true: RAM users can change their passwords.
+	// 	- true
 	//
-	// 	- false: RAM users cannot change their passwords.
+	// 	- false
 	//
 	// example:
 	//
 	// true
 	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
-	// Indicates whether RAM users can save security codes for multi-factor authentication (MFA) during logon. Each security code is valid for seven days. Valid values:
+	// Indicates whether RAM users can save security codes for MFA during logon. Each security code is valid for seven days. Valid values:
 	//
-	// 	- true: RAM users can save MFA security codes during logon.
+	// 	- true
 	//
-	// 	- false: RAM users cannot save MFA security codes during logon.
+	// 	- false
 	//
 	// example:
 	//
@@ -4624,17 +4835,17 @@ type GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference s
 	EnableSaveMFATicket *bool `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
 	// The subnet mask that indicates the IP addresses from which logon to the Alibaba Cloud Management Console is allowed. This parameter applies to password-based logon and single sign-on (SSO). However, this parameter does not apply to API calls that are authenticated based on AccessKey pairs.
 	//
-	// 	- If a subnet mask is specified, RAM users can log on to the Alibaba Cloud Management Console only by using the IP addresses in the subnetwork.
+	// 	- If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
 	//
-	// 	- If no subnet mask is specified, RAM users can log on to the Alibaba Cloud Management Console by using all IP addresses.
+	// 	- If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
 	//
-	// If more than one subnet mask is specified, the masks are separated with semicolons (;), for example, 192.168.0.0/16;10.0.0.0/8.
+	// If you want to specify more than one subnet mask, separate the masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
 	//
 	// example:
 	//
 	// 10.0.0.0/8
 	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
-	// The validity period of a logon session of a RAM user. Unit: hours.
+	// The validity period of the logon session of RAM users. Unit: hours.
 	//
 	// example:
 	//
@@ -4673,9 +4884,9 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreferen
 type GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference struct {
 	// Indicates whether RAM users can manage their MFA devices. Valid values:
 	//
-	// 	- true: RAM users can manage their MFA devices.
+	// 	- true
 	//
-	// 	- false: RAM users cannot manage their MFA devices.
+	// 	- false
 	//
 	// example:
 	//
@@ -4699,9 +4910,9 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAl
 type GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference struct {
 	// Indicates whether RAM users can manage their public keys. Valid values:
 	//
-	// 	- true: RAM users can manage their public keys.
+	// 	- true
 	//
-	// 	- false: RAM users cannot manage their public keys.
+	// 	- false
 	//
 	// example:
 	//
@@ -4776,7 +4987,7 @@ func (s *GetUserRequest) SetUserName(v string) *GetUserRequest {
 }
 
 type GetUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -4948,7 +5159,7 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 }
 
 type GetUserMFAInfoRequest struct {
-	// The username of the RAM user.
+	// The name of the RAM user.
 	//
 	// example:
 	//
@@ -4970,9 +5181,9 @@ func (s *GetUserMFAInfoRequest) SetUserName(v string) *GetUserMFAInfoRequest {
 }
 
 type GetUserMFAInfoResponseBody struct {
-	// The information about the MFA device that is attached to the RAM user.
+	// The information about the MFA device that is bound to the RAM user.
 	MFADevice *GetUserMFAInfoResponseBodyMFADevice `json:"MFADevice,omitempty" xml:"MFADevice,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -5007,9 +5218,9 @@ type GetUserMFAInfoResponseBodyMFADevice struct {
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The type of the MFA device. Valid values:
 	//
-	// 	- VMFA: virtual MFA device
+	// 	- VMFA: virtual MFA device.
 	//
-	// 	- U2F: Universal 2nd Factor (U2F) security key
+	// 	- U2F: Universal 2nd Factor (U2F) security key.
 	//
 	// example:
 	//
@@ -5087,9 +5298,9 @@ func (s *ListAccessKeysRequest) SetUserName(v string) *ListAccessKeysRequest {
 }
 
 type ListAccessKeysResponseBody struct {
-	// The list of AccessKey pairs that belong to the RAM user.
+	// The AccessKey pairs that belong to the RAM user.
 	AccessKeys *ListAccessKeysResponseBodyAccessKeys `json:"AccessKeys,omitempty" xml:"AccessKeys,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -5239,17 +5450,17 @@ func (s *ListEntitiesForPolicyRequest) SetPolicyType(v string) *ListEntitiesForP
 }
 
 type ListEntitiesForPolicyResponseBody struct {
-	// The list of the RAM user groups.
+	// The information about the Resource Access Management (RAM) user groups.
 	Groups *ListEntitiesForPolicyResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7B8A4E7D-6CFF-471D-84DF-195A7A241ECB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of RAM roles.
+	// The information about the RAM roles.
 	Roles *ListEntitiesForPolicyResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
-	// The list of the RAM users to which the policy is attached.
+	// The information about the RAM users.
 	Users *ListEntitiesForPolicyResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
@@ -5366,7 +5577,7 @@ type ListEntitiesForPolicyResponseBodyRolesRole struct {
 	//
 	// acs:ram::123456789012****:role/ECSAdmin
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The time when the policy was attached to the RAM user.
+	// The time when the policy was attached to the RAM role.
 	//
 	// example:
 	//
@@ -5527,15 +5738,19 @@ func (s *ListEntitiesForPolicyResponse) SetBody(v *ListEntitiesForPolicyResponse
 }
 
 type ListGroupsRequest struct {
-	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.``
+	//
+	// When you call the operation for the first time, if the total number of returned entries exceeds the value of `MaxItems`, the entries are truncated. The system returns entries based on the value of `MaxItems` and does not return the excess entries. In this case, the value of the response parameter `IsTruncated` is `true`, and `Marker` is returned. In the next call, you can use the value of `Marker` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
 	//
 	// example:
 	//
 	// EXAMPLE
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` is `true`.
+	// The number of entries per page.
 	//
-	// Valid values: 1 to 1000. Default value: 100.
+	// Valid values: 1 to 100.
+	//
+	// Default value: 100.
 	//
 	// example:
 	//
@@ -5562,15 +5777,21 @@ func (s *ListGroupsRequest) SetMaxItems(v int32) *ListGroupsRequest {
 }
 
 type ListGroupsResponseBody struct {
-	// The list of the RAM user groups.
+	// The information about the RAM user groups.
 	Groups *ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	// Indicates whether the response is truncated.
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
 	//
 	// example:
 	//
 	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If `true` is returned, you can call this operation again and set the `Marker` parameter to obtain the truncated part.
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// >  This parameter is returned only when `IsTruncated` is `true`.
 	//
 	// example:
 	//
@@ -5630,13 +5851,13 @@ func (s *ListGroupsResponseBodyGroups) SetGroup(v []*ListGroupsResponseBodyGroup
 }
 
 type ListGroupsResponseBodyGroupsGroup struct {
-	// The description of the RAM user group.
+	// The description.
 	//
 	// example:
 	//
 	// Dev-Team
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The time when the RAM user group was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -5654,7 +5875,7 @@ type ListGroupsResponseBodyGroupsGroup struct {
 	//
 	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The time when the information of the RAM user group was updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -5725,7 +5946,7 @@ func (s *ListGroupsResponse) SetBody(v *ListGroupsResponseBody) *ListGroupsRespo
 }
 
 type ListGroupsForUserRequest struct {
-	// The username of the RAM user.
+	// The name of the RAM user.
 	//
 	// example:
 	//
@@ -5747,7 +5968,7 @@ func (s *ListGroupsForUserRequest) SetUserName(v string) *ListGroupsForUserReque
 }
 
 type ListGroupsForUserResponseBody struct {
-	// The list of the RAM user groups.
+	// The information about the RAM user groups.
 	Groups *ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -5793,7 +6014,7 @@ func (s *ListGroupsForUserResponseBodyGroups) SetGroup(v []*ListGroupsForUserRes
 }
 
 type ListGroupsForUserResponseBodyGroupsGroup struct {
-	// The description of the RAM user group.
+	// The description.
 	//
 	// example:
 	//
@@ -5811,7 +6032,7 @@ type ListGroupsForUserResponseBodyGroupsGroup struct {
 	//
 	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The time when the RAM user joined the RAM user group.
+	// The time when the RAM user was added to the RAM user group.
 	//
 	// example:
 	//
@@ -5877,7 +6098,7 @@ func (s *ListGroupsForUserResponse) SetBody(v *ListGroupsForUserResponseBody) *L
 }
 
 type ListPoliciesRequest struct {
-	// The `Marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
 	//
 	// example:
 	//
@@ -5891,12 +6112,14 @@ type ListPoliciesRequest struct {
 	//
 	// 100
 	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
-	// The type of the `Policy`. Valid values: `System` and `Custom`. If you do not specify the parameter, all policies are returned.
+	// The type of the policies. Valid values: `System` and `Custom`. If you do not specify the parameter, all policies are returned.``
 	//
 	// example:
 	//
 	// System
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The tags.
+	Tag []*ListPoliciesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListPoliciesRequest) String() string {
@@ -5922,6 +6145,97 @@ func (s *ListPoliciesRequest) SetPolicyType(v string) *ListPoliciesRequest {
 	return s
 }
 
+func (s *ListPoliciesRequest) SetTag(v []*ListPoliciesRequestTag) *ListPoliciesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListPoliciesRequestTag struct {
+	// The key of the tag.
+	//
+	// example:
+	//
+	// owner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// alice
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListPoliciesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesRequestTag) SetKey(v string) *ListPoliciesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListPoliciesRequestTag) SetValue(v string) *ListPoliciesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListPoliciesShrinkRequest struct {
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+	//
+	// Valid values: 1 to 1000. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The type of the policies. Valid values: `System` and `Custom`. If you do not specify the parameter, all policies are returned.``
+	//
+	// example:
+	//
+	// System
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListPoliciesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesShrinkRequest) SetMarker(v string) *ListPoliciesShrinkRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListPoliciesShrinkRequest) SetMaxItems(v int32) *ListPoliciesShrinkRequest {
+	s.MaxItems = &v
+	return s
+}
+
+func (s *ListPoliciesShrinkRequest) SetPolicyType(v string) *ListPoliciesShrinkRequest {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *ListPoliciesShrinkRequest) SetTagShrink(v string) *ListPoliciesShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
 type ListPoliciesResponseBody struct {
 	// Indicates whether the response is truncated.
 	//
@@ -5929,15 +6243,15 @@ type ListPoliciesResponseBody struct {
 	//
 	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the value of IsTruncated is `true`, you can call this operation again and set `Marker` to obtain the truncated part.
+	// The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set `Marker` to obtain the truncated part.``
 	//
 	// example:
 	//
 	// EXAMPLE
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The list of policies.
+	// The information about the policies.
 	Policies *ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -6027,6 +6341,8 @@ type ListPoliciesResponseBodyPoliciesPolicy struct {
 	//
 	// System
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The tags.
+	Tags *ListPoliciesResponseBodyPoliciesPolicyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The time when the policy was modified.
 	//
 	// example:
@@ -6073,8 +6389,63 @@ func (s *ListPoliciesResponseBodyPoliciesPolicy) SetPolicyType(v string) *ListPo
 	return s
 }
 
+func (s *ListPoliciesResponseBodyPoliciesPolicy) SetTags(v *ListPoliciesResponseBodyPoliciesPolicyTags) *ListPoliciesResponseBodyPoliciesPolicy {
+	s.Tags = v
+	return s
+}
+
 func (s *ListPoliciesResponseBodyPoliciesPolicy) SetUpdateDate(v string) *ListPoliciesResponseBodyPoliciesPolicy {
 	s.UpdateDate = &v
+	return s
+}
+
+type ListPoliciesResponseBodyPoliciesPolicyTags struct {
+	Tag []*ListPoliciesResponseBodyPoliciesPolicyTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListPoliciesResponseBodyPoliciesPolicyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesResponseBodyPoliciesPolicyTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesResponseBodyPoliciesPolicyTags) SetTag(v []*ListPoliciesResponseBodyPoliciesPolicyTagsTag) *ListPoliciesResponseBodyPoliciesPolicyTags {
+	s.Tag = v
+	return s
+}
+
+type ListPoliciesResponseBodyPoliciesPolicyTagsTag struct {
+	// The key of the tag.
+	//
+	// example:
+	//
+	// owner
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// alice
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListPoliciesResponseBodyPoliciesPolicyTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesResponseBodyPoliciesPolicyTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesResponseBodyPoliciesPolicyTagsTag) SetTagKey(v string) *ListPoliciesResponseBodyPoliciesPolicyTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBodyPoliciesPolicyTagsTag) SetTagValue(v string) *ListPoliciesResponseBodyPoliciesPolicyTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -6130,9 +6501,9 @@ func (s *ListPoliciesForGroupRequest) SetGroupName(v string) *ListPoliciesForGro
 }
 
 type ListPoliciesForGroupResponseBody struct {
-	// The list of the policies that are attached to the RAM user group.
+	// The information about the policies.
 	Policies *ListPoliciesForGroupResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -6293,9 +6664,9 @@ func (s *ListPoliciesForRoleRequest) SetRoleName(v string) *ListPoliciesForRoleR
 }
 
 type ListPoliciesForRoleResponseBody struct {
-	// The list of the policies that are attached to the RAM role.
+	// The information about the policies.
 	Policies *ListPoliciesForRoleResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -6634,9 +7005,9 @@ func (s *ListPolicyVersionsRequest) SetPolicyType(v string) *ListPolicyVersionsR
 }
 
 type ListPolicyVersionsResponseBody struct {
-	// The list of the policy versions.
+	// The information about the policy versions.
 	PolicyVersions *ListPolicyVersionsResponseBodyPolicyVersions `json:"PolicyVersions,omitempty" xml:"PolicyVersions,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -6686,19 +7057,19 @@ type ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion struct {
 	//
 	// 2015-02-26T01:25:52Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// Indicates whether the version is the default version.
+	// Indicates whether the policy version is the default version.
 	//
 	// example:
 	//
 	// false
 	IsDefaultVersion *bool `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
-	// The script of the policy.
+	// The document of the policy.
 	//
 	// example:
 	//
 	// { "Statement": [{ "Action": ["oss:*"], "Effect": "Allow", "Resource": ["acs:oss:*:*:*"]}], "Version": "1"}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The ID of the version.
+	// The ID of the policy version.
 	//
 	// example:
 	//
@@ -6778,6 +7149,8 @@ type ListRolesRequest struct {
 	//
 	// 100
 	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The tags.
+	Tag []*ListRolesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListRolesRequest) String() string {
@@ -6798,6 +7171,86 @@ func (s *ListRolesRequest) SetMaxItems(v int32) *ListRolesRequest {
 	return s
 }
 
+func (s *ListRolesRequest) SetTag(v []*ListRolesRequestTag) *ListRolesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListRolesRequestTag struct {
+	// The key of the tag.
+	//
+	// example:
+	//
+	// owner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// alice
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListRolesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRolesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListRolesRequestTag) SetKey(v string) *ListRolesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListRolesRequestTag) SetValue(v string) *ListRolesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListRolesShrinkRequest struct {
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+	//
+	// Valid values: 1 to 1000. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListRolesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRolesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRolesShrinkRequest) SetMarker(v string) *ListRolesShrinkRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListRolesShrinkRequest) SetMaxItems(v int32) *ListRolesShrinkRequest {
+	s.MaxItems = &v
+	return s
+}
+
+func (s *ListRolesShrinkRequest) SetTagShrink(v string) *ListRolesShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
 type ListRolesResponseBody struct {
 	// Indicates whether the response is truncated.
 	//
@@ -6805,19 +7258,19 @@ type ListRolesResponseBody struct {
 	//
 	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the value is `true`, you can call this operation again and set the `Marker` parameter to obtain the truncated part.
+	// The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.````
 	//
 	// example:
 	//
 	// EXAMPLE
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7B8A4E7D-6CFF-471D-84DF-195A7A241ECB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of RAM roles.
+	// The information about the RAM roles.
 	Roles *ListRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
 }
 
@@ -6873,7 +7326,7 @@ type ListRolesResponseBodyRolesRole struct {
 	//
 	// acs:ram::123456789012****:role/ECSAdmin
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The time when the RAM role was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -6903,7 +7356,9 @@ type ListRolesResponseBodyRolesRole struct {
 	//
 	// ECSAdmin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The time when the RAM role was modified.
+	// The tags.
+	Tags *ListRolesResponseBodyRolesRoleTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The update time.
 	//
 	// example:
 	//
@@ -6949,8 +7404,63 @@ func (s *ListRolesResponseBodyRolesRole) SetRoleName(v string) *ListRolesRespons
 	return s
 }
 
+func (s *ListRolesResponseBodyRolesRole) SetTags(v *ListRolesResponseBodyRolesRoleTags) *ListRolesResponseBodyRolesRole {
+	s.Tags = v
+	return s
+}
+
 func (s *ListRolesResponseBodyRolesRole) SetUpdateDate(v string) *ListRolesResponseBodyRolesRole {
 	s.UpdateDate = &v
+	return s
+}
+
+type ListRolesResponseBodyRolesRoleTags struct {
+	Tag []*ListRolesResponseBodyRolesRoleTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListRolesResponseBodyRolesRoleTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRolesResponseBodyRolesRoleTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListRolesResponseBodyRolesRoleTags) SetTag(v []*ListRolesResponseBodyRolesRoleTagsTag) *ListRolesResponseBodyRolesRoleTags {
+	s.Tag = v
+	return s
+}
+
+type ListRolesResponseBodyRolesRoleTagsTag struct {
+	// The key of the tag.
+	//
+	// example:
+	//
+	// owner
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// alice
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListRolesResponseBodyRolesRoleTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRolesResponseBodyRolesRoleTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListRolesResponseBodyRolesRoleTagsTag) SetTagKey(v string) *ListRolesResponseBodyRolesRoleTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListRolesResponseBodyRolesRoleTagsTag) SetTagValue(v string) *ListRolesResponseBodyRolesRoleTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -6979,6 +7489,291 @@ func (s *ListRolesResponse) SetStatusCode(v int32) *ListRolesResponse {
 }
 
 func (s *ListRolesResponse) SetBody(v *ListRolesResponseBody) *ListRolesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTagResourcesRequest struct {
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// GY/oWREsOP1bPHGcHGrXfYX7UG1k9KqWFYThNDPx1UX26PbWOIu2CMqqiMr68H/K
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100.
+	//
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The names of the resources. You can specify up to 50 resource names.
+	ResourceNames []*string `json:"ResourceNames,omitempty" xml:"ResourceNames,omitempty" type:"Repeated"`
+	// The resource type.
+	//
+	// Enumerated values:
+	//
+	// 	- role
+	//
+	// 	- policy
+	//
+	// example:
+	//
+	// role
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags. You can specify up to 20 tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetPageSize(v int32) *ListTagResourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceNames(v []*string) *ListTagResourcesRequest {
+	s.ResourceNames = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	// The key of the tag. The tag key can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// t1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag. The tag value can be up to 256 characters in length.
+	//
+	// example:
+	//
+	// v1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesShrinkRequest struct {
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// GY/oWREsOP1bPHGcHGrXfYX7UG1k9KqWFYThNDPx1UX26PbWOIu2CMqqiMr68H/K
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100.
+	//
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The names of the resources. You can specify up to 50 resource names.
+	ResourceNamesShrink *string `json:"ResourceNames,omitempty" xml:"ResourceNames,omitempty"`
+	// The resource type.
+	//
+	// Enumerated values:
+	//
+	// 	- role
+	//
+	// 	- policy
+	//
+	// example:
+	//
+	// role
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags. You can specify up to 20 tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListTagResourcesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesShrinkRequest) SetNextToken(v string) *ListTagResourcesShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetPageSize(v int32) *ListTagResourcesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetResourceNamesShrink(v string) *ListTagResourcesShrinkRequest {
+	s.ResourceNamesShrink = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetResourceType(v string) *ListTagResourcesShrinkRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetTagShrink(v string) *ListTagResourcesShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// GY/oWREsOP1bPHGcHGrXfYX7UG1k9KqWFYThNDPx1UX26PbWOIu2CMqqiMr68H/K
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 5CCE804C-6450-49A7-B1DB-2460F7A97416
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tags that are added to the resources.
+	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	// The name of the resource.
+	//
+	// example:
+	//
+	// role1
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The resource type.
+	//
+	// example:
+	//
+	// role
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The key of the tag.
+	//
+	// example:
+	//
+	// t1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// v1
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceName(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -7271,19 +8066,19 @@ type ListUsersForGroupResponseBody struct {
 	//
 	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the value of IsTruncated is `true`, you can call this operation again and set `marker` to obtain the truncated part.
+	// The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.````
 	//
 	// example:
 	//
 	// EXAMPLE
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4B450CA1-36E8-4AA2-8461-86B42BF4CC4E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of the RAM users.
+	// The information about the RAM users.
 	Users *ListUsersForGroupResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
@@ -7406,13 +8201,13 @@ func (s *ListUsersForGroupResponse) SetBody(v *ListUsersForGroupResponseBody) *L
 }
 
 type ListVirtualMFADevicesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of MFA devices.
+	// The information about the MFA devices.
 	VirtualMFADevices *ListVirtualMFADevicesResponseBodyVirtualMFADevices `json:"VirtualMFADevices,omitempty" xml:"VirtualMFADevices,omitempty" type:"Struct"`
 }
 
@@ -7464,7 +8259,7 @@ type ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice struct {
 	//
 	// acs:ram::123456789012****:mfa/device002
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// The basic information of the RAM user to which the MFA device is attached.
+	// The basic information about the Resource Access Management (RAM) user to which the MFA device is bound.
 	User *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
@@ -7598,7 +8393,7 @@ func (s *RemoveUserFromGroupRequest) SetUserName(v string) *RemoveUserFromGroupR
 }
 
 type RemoveUserFromGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -7653,7 +8448,7 @@ type SetAccountAliasRequest struct {
 	//
 	// The alias must be 3 to 32 characters in length, and can contain lowercase letters, digits, and hyphens (-).
 	//
-	// > It cannot start or end with a hyphen (-), and cannot contain consecutive hyphens (-).
+	// >  It cannot start or end with a hyphen (-), and cannot contain consecutive hyphens (-).
 	//
 	// example:
 	//
@@ -7675,7 +8470,7 @@ func (s *SetAccountAliasRequest) SetAccountAlias(v string) *SetAccountAliasReque
 }
 
 type SetAccountAliasResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -7759,7 +8554,7 @@ func (s *SetDefaultPolicyVersionRequest) SetVersionId(v string) *SetDefaultPolic
 }
 
 type SetDefaultPolicyVersionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -7810,9 +8605,7 @@ func (s *SetDefaultPolicyVersionResponse) SetBody(v *SetDefaultPolicyVersionResp
 }
 
 type SetPasswordPolicyRequest struct {
-	// Specifies whether a password will expire.
-	//
-	// Valid values: `true` and `false`. Default value: `false`. If you leave this parameter unspecified, the default value false is used.
+	// Specifies whether a password will expire. Valid values: `true` and `false`. Default value: `false`. If you leave this parameter unspecified, the default value false is used.
 	//
 	// 	- If you set this parameter to `true`, the Alibaba Cloud account to which the RAM users belong must reset the passwords before the RAM users can log on to the Alibaba Cloud Management Console.
 	//
@@ -7828,13 +8621,13 @@ type SetPasswordPolicyRequest struct {
 	//
 	// 5
 	MaxLoginAttemps *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
-	// The number of days for which a password is valid. Default value: 0. The default value indicates that the password never expires.
+	// The number of days for which a password is valid. If you reset a password, the password validity period restarts. Default value: 0. The default value indicates that the password never expires.
 	//
 	// example:
 	//
 	// 0
 	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
-	// The minimum required number of characters in a password.
+	// The minimum number of characters in a password.
 	//
 	// Valid values: 8 to 32. Default value: 8.
 	//
@@ -7930,7 +8723,7 @@ func (s *SetPasswordPolicyRequest) SetRequireUppercaseCharacters(v bool) *SetPas
 type SetPasswordPolicyResponseBody struct {
 	// The password policy.
 	PasswordPolicy *SetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -7957,9 +8750,7 @@ func (s *SetPasswordPolicyResponseBody) SetRequestId(v string) *SetPasswordPolic
 }
 
 type SetPasswordPolicyResponseBodyPasswordPolicy struct {
-	// Indicates whether a password expires.
-	//
-	// Valid values: `true` and `false`. Default value: `false`. If the parameter is unspecified, the default value false is returned.
+	// Indicates whether a password expires. Valid values: `true` and `false`. Default value: `false`. If the parameter is unspecified, the default value false is returned.
 	//
 	// 	- If this parameter is set to `true`, the Alibaba Cloud account to which the RAM users belong must reset the password before the RAM users can log on to the Alibaba Cloud Management Console.
 	//
@@ -7975,13 +8766,13 @@ type SetPasswordPolicyResponseBodyPasswordPolicy struct {
 	//
 	// 5
 	MaxLoginAttemps *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
-	// The number of days for which a password is valid. Default value: 0. The default value indicates that the password never expires.
+	// The number of days for which a password is valid. If you reset a password, the password validity period restarts. Default value: 0. The default value indicates that the password never expires.
 	//
 	// example:
 	//
 	// 0
 	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
-	// The minimum required number of characters in a password.
+	// The minimum number of characters in a password.
 	//
 	// example:
 	//
@@ -8104,9 +8895,9 @@ func (s *SetPasswordPolicyResponse) SetBody(v *SetPasswordPolicyResponseBody) *S
 type SetSecurityPreferenceRequest struct {
 	// Specifies whether RAM users can change their passwords. Valid values:
 	//
-	// 	- true: RAM users can change their passwords. This is the default value.
+	// 	- true (default)
 	//
-	// 	- false: RAM users cannot change their passwords.
+	// 	- false
 	//
 	// example:
 	//
@@ -8114,9 +8905,9 @@ type SetSecurityPreferenceRequest struct {
 	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
 	// Specifies whether RAM users can manage their AccessKey pairs. Valid values:
 	//
-	// 	- true: RAM users can manage their AccessKey pairs.
+	// 	- true
 	//
-	// 	- false: RAM users cannot manage their AccessKey pairs. This is the default value.
+	// 	- false (default)
 	//
 	// example:
 	//
@@ -8124,9 +8915,9 @@ type SetSecurityPreferenceRequest struct {
 	AllowUserToManageAccessKeys *bool `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
 	// Specifies whether RAM users can manage their MFA devices. Valid values:
 	//
-	// 	- true: RAM users can manage their MFA devices. This is the default value.
+	// 	- true (default)
 	//
-	// 	- false: RAM users cannot manage their MFA devices.
+	// 	- false
 	//
 	// example:
 	//
@@ -8134,9 +8925,9 @@ type SetSecurityPreferenceRequest struct {
 	AllowUserToManageMFADevices *bool `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
 	// Specifies whether RAM users can manage their public keys. Valid values:
 	//
-	// 	- true: RAM users can manage their public keys.
+	// 	- true
 	//
-	// 	- false: RAM users cannot manage their public keys. This is the default value.
+	// 	- false (default)
 	//
 	// >  This parameter is valid only for the Japan site.
 	//
@@ -8146,9 +8937,9 @@ type SetSecurityPreferenceRequest struct {
 	AllowUserToManagePublicKeys *bool `json:"AllowUserToManagePublicKeys,omitempty" xml:"AllowUserToManagePublicKeys,omitempty"`
 	// Specifies whether to remember the multi-factor authentication (MFA) devices of Resource Access Management (RAM) users for seven days. Valid values:
 	//
-	// 	- true: remembers the MFA devices of RAM users for seven days.
+	// 	- true
 	//
-	// 	- false: does not remember the MFA devices of RAM users for seven days.
+	// 	- false (default)
 	//
 	// example:
 	//
@@ -8441,7 +9232,180 @@ func (s *SetSecurityPreferenceResponse) SetBody(v *SetSecurityPreferenceResponse
 	return s
 }
 
+type TagResourcesRequest struct {
+	// The names of the resources. You can specify up to 50 resource names.
+	ResourceNames []*string `json:"ResourceNames,omitempty" xml:"ResourceNames,omitempty" type:"Repeated"`
+	// The resource type.
+	//
+	// Enumerated values:
+	//
+	// 	- role
+	//
+	// 	- policy
+	//
+	// example:
+	//
+	// role
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags. You can specify up to 20 tags.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetResourceNames(v []*string) *TagResourcesRequest {
+	s.ResourceNames = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	// The key of the tag. The tag key can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// k1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag. The tag value can be up to 256 characters in length.
+	//
+	// example:
+	//
+	// v1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesShrinkRequest struct {
+	// The names of the resources. You can specify up to 50 resource names.
+	ResourceNamesShrink *string `json:"ResourceNames,omitempty" xml:"ResourceNames,omitempty"`
+	// The resource type.
+	//
+	// Enumerated values:
+	//
+	// 	- role
+	//
+	// 	- policy
+	//
+	// example:
+	//
+	// role
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags. You can specify up to 20 tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s TagResourcesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesShrinkRequest) SetResourceNamesShrink(v string) *TagResourcesShrinkRequest {
+	s.ResourceNamesShrink = &v
+	return s
+}
+
+func (s *TagResourcesShrinkRequest) SetResourceType(v string) *TagResourcesShrinkRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesShrinkRequest) SetTagShrink(v string) *TagResourcesShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 697852FB-50D7-44D9-9774-530C31EAC572
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type UnbindMFADeviceRequest struct {
+	// Specifies the username.
+	//
+	// example:
+	//
+	// zhangq****
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -8459,8 +9423,14 @@ func (s *UnbindMFADeviceRequest) SetUserName(v string) *UnbindMFADeviceRequest {
 }
 
 type UnbindMFADeviceResponseBody struct {
+	// The information about the MFA device.
 	MFADevice *UnbindMFADeviceResponseBodyMFADevice `json:"MFADevice,omitempty" xml:"MFADevice,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UnbindMFADeviceResponseBody) String() string {
@@ -8482,6 +9452,11 @@ func (s *UnbindMFADeviceResponseBody) SetRequestId(v string) *UnbindMFADeviceRes
 }
 
 type UnbindMFADeviceResponseBodyMFADevice struct {
+	// The serial number of the MFA device.
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:mfa/device002
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
@@ -8527,6 +9502,175 @@ func (s *UnbindMFADeviceResponse) SetBody(v *UnbindMFADeviceResponseBody) *Unbin
 	return s
 }
 
+type UntagResourcesRequest struct {
+	// Specifies whether to remove all tags from the resources.
+	//
+	// Enumerated values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The names of the resources. You can specify up to 50 resource names.
+	ResourceNames []*string `json:"ResourceNames,omitempty" xml:"ResourceNames,omitempty" type:"Repeated"`
+	// The resource type.
+	//
+	// Enumerated values:
+	//
+	// 	- role
+	//
+	// 	- policy
+	//
+	// example:
+	//
+	// role
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The keys of the tags. You can specify up to 20 tag keys.
+	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceNames(v []*string) *UntagResourcesRequest {
+	s.ResourceNames = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKeys(v []*string) *UntagResourcesRequest {
+	s.TagKeys = v
+	return s
+}
+
+type UntagResourcesShrinkRequest struct {
+	// Specifies whether to remove all tags from the resources.
+	//
+	// Enumerated values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The names of the resources. You can specify up to 50 resource names.
+	ResourceNamesShrink *string `json:"ResourceNames,omitempty" xml:"ResourceNames,omitempty"`
+	// The resource type.
+	//
+	// Enumerated values:
+	//
+	// 	- role
+	//
+	// 	- policy
+	//
+	// example:
+	//
+	// role
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The keys of the tags. You can specify up to 20 tag keys.
+	TagKeysShrink *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
+}
+
+func (s UntagResourcesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesShrinkRequest) SetAll(v bool) *UntagResourcesShrinkRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesShrinkRequest) SetResourceNamesShrink(v string) *UntagResourcesShrinkRequest {
+	s.ResourceNamesShrink = &v
+	return s
+}
+
+func (s *UntagResourcesShrinkRequest) SetResourceType(v string) *UntagResourcesShrinkRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesShrinkRequest) SetTagKeysShrink(v string) *UntagResourcesShrinkRequest {
+	s.TagKeysShrink = &v
+	return s
+}
+
+type UntagResourcesResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 9B34724D-54B0-4A51-B34D-4512372FE1BE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAccessKeyRequest struct {
 	// The status of the AccessKey pair. Valid values: `Active` and `Inactive`.
 	//
@@ -8534,7 +9678,7 @@ type UpdateAccessKeyRequest struct {
 	//
 	// Inactive
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The AccessKey ID in the AccessKey pair whose status you want to change.
+	// The AccessKey ID in the AccessKey pair whose status you want to change.``
 	//
 	// example:
 	//
@@ -8572,7 +9716,7 @@ func (s *UpdateAccessKeyRequest) SetUserName(v string) *UpdateAccessKeyRequest {
 }
 
 type UpdateAccessKeyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -8631,7 +9775,7 @@ type UpdateGroupRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The new description of the RAM user group.
 	//
-	// The comments must be 1 to 128 characters in length.
+	// The new description must be 1 to 128 characters in length.
 	//
 	// example:
 	//
@@ -8671,9 +9815,9 @@ func (s *UpdateGroupRequest) SetNewGroupName(v string) *UpdateGroupRequest {
 }
 
 type UpdateGroupResponseBody struct {
-	// The information of the RAM user group.
+	// The information about the RAM user group.
 	Group *UpdateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -8700,13 +9844,13 @@ func (s *UpdateGroupResponseBody) SetRequestId(v string) *UpdateGroupResponseBod
 }
 
 type UpdateGroupResponseBodyGroup struct {
-	// The description of the RAM user group.
+	// The description.
 	//
 	// example:
 	//
 	// NewDev-Team
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The time when the RAM user group was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -8718,13 +9862,13 @@ type UpdateGroupResponseBodyGroup struct {
 	//
 	// g-FpMEHiMysofp****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The new name of the RAM user group.
+	// The name of the RAM user group.
 	//
 	// example:
 	//
 	// NewDev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The time when the information of the RAM user group was updated.
+	// The modification time.
 	//
 	// example:
 	//
@@ -8795,7 +9939,7 @@ func (s *UpdateGroupResponse) SetBody(v *UpdateGroupResponseBody) *UpdateGroupRe
 }
 
 type UpdateLoginProfileRequest struct {
-	// Specifies whether an MFA device must be attached to the RAM user upon logon.
+	// Specifies whether a multi-factor authentication (MFA) device must be bound to the RAM user upon logon.
 	//
 	// example:
 	//
@@ -8807,7 +9951,7 @@ type UpdateLoginProfileRequest struct {
 	//
 	// mypassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Specifies whether the RAM user must change the password upon logon.
+	// Specifies whether the RAM user has to change the password upon logon.
 	//
 	// example:
 	//
@@ -8850,7 +9994,7 @@ func (s *UpdateLoginProfileRequest) SetUserName(v string) *UpdateLoginProfileReq
 }
 
 type UpdateLoginProfileResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -8903,7 +10047,7 @@ func (s *UpdateLoginProfileResponse) SetBody(v *UpdateLoginProfileResponseBody) 
 type UpdatePolicyDescriptionRequest struct {
 	// The description of the policy.
 	//
-	// The value of the parameter must be 1 to 1,024 characters in length.
+	// The description must be 1 to 1,024 characters in length.
 	//
 	// example:
 	//
@@ -8938,7 +10082,7 @@ func (s *UpdatePolicyDescriptionRequest) SetPolicyName(v string) *UpdatePolicyDe
 type UpdatePolicyDescriptionResponseBody struct {
 	// The information about the policy.
 	Policy *UpdatePolicyDescriptionResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -8991,9 +10135,9 @@ type UpdatePolicyDescriptionResponseBodyPolicy struct {
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The type of the policy. Valid values:
 	//
-	// 	- Custom: custom policy
+	// 	- Custom
 	//
-	// 	- System: system policy
+	// 	- System
 	//
 	// example:
 	//
@@ -9075,7 +10219,7 @@ func (s *UpdatePolicyDescriptionResponse) SetBody(v *UpdatePolicyDescriptionResp
 }
 
 type UpdateRoleRequest struct {
-	// The policy that specifies the trusted entity to assume the RAM role.
+	// The trust policy that specifies the trusted entity to assume the RAM role.
 	//
 	// example:
 	//
@@ -9083,15 +10227,15 @@ type UpdateRoleRequest struct {
 	NewAssumeRolePolicyDocument *string `json:"NewAssumeRolePolicyDocument,omitempty" xml:"NewAssumeRolePolicyDocument,omitempty"`
 	// The new description of the RAM role.
 	//
-	// The value must be 1 to 1,024 characters in length.
+	// The description must be 1 to 1,024 characters in length.
 	//
 	// example:
 	//
 	// ECS administrator
 	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
-	// The maximum session duration of the RAM role.
+	// The maximum session time of the RAM role.
 	//
-	// Valid values: 3600 to 43200. Unit: seconds.Default value: 3600.
+	// Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
 	//
 	// If you do not specify this parameter, the default value is used.
 	//
@@ -9101,7 +10245,7 @@ type UpdateRoleRequest struct {
 	NewMaxSessionDuration *int64 `json:"NewMaxSessionDuration,omitempty" xml:"NewMaxSessionDuration,omitempty"`
 	// The name of the RAM role.
 	//
-	// The name must be 1 to 64 characters in length and can contain letters, digits, periods (.),and hyphens (-).
+	// The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
 	//
 	// example:
 	//
@@ -9138,13 +10282,13 @@ func (s *UpdateRoleRequest) SetRoleName(v string) *UpdateRoleRequest {
 }
 
 type UpdateRoleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the RAM role.
+	// The information about the RAM role.
 	Role *UpdateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
@@ -9167,13 +10311,13 @@ func (s *UpdateRoleResponseBody) SetRole(v *UpdateRoleResponseBodyRole) *UpdateR
 }
 
 type UpdateRoleResponseBodyRole struct {
-	// The Alibaba Cloud Resource Name (ARN) of the role.
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
 	//
 	// example:
 	//
 	// acs:ram::123456789012****:role/ECSAdmin
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The policy that specifies the trusted entity to assume the RAM role.
+	// The trust policy that specifies the trusted entity to assume the RAM role.
 	//
 	// example:
 	//
@@ -9191,7 +10335,7 @@ type UpdateRoleResponseBodyRole struct {
 	//
 	// ECS administrator
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum session duration of the RAM role.
+	// The maximum session time of the RAM role.
 	//
 	// example:
 	//
@@ -9313,7 +10457,7 @@ type UpdateUserRequest struct {
 	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
 	// The new email address of the RAM user.
 	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
+	// >  This parameter applies only to the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -9323,7 +10467,7 @@ type UpdateUserRequest struct {
 	//
 	// Format: \\<Country code>-\\<Mobile phone number>.
 	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
+	// >  This parameter applies only to the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -9384,7 +10528,7 @@ func (s *UpdateUserRequest) SetUserName(v string) *UpdateUserRequest {
 }
 
 type UpdateUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -9593,7 +10737,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds a RAM user to a RAM user group.
+// Adds a Resource Access Management (RAM) user to a RAM user group.
 //
 // @param request - AddUserToGroupRequest
 //
@@ -9639,7 +10783,7 @@ func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, 
 
 // Summary:
 //
-// Adds a RAM user to a RAM user group.
+// Adds a Resource Access Management (RAM) user to a RAM user group.
 //
 // @param request - AddUserToGroupRequest
 //
@@ -9657,7 +10801,7 @@ func (client *Client) AddUserToGroup(request *AddUserToGroupRequest) (_result *A
 
 // Summary:
 //
-// Attaches a policy to a RAM user group.
+// Attaches a policy to a Resource Access Management (RAM) user group.
 //
 // @param request - AttachPolicyToGroupRequest
 //
@@ -9707,7 +10851,7 @@ func (client *Client) AttachPolicyToGroupWithOptions(request *AttachPolicyToGrou
 
 // Summary:
 //
-// Attaches a policy to a RAM user group.
+// Attaches a policy to a Resource Access Management (RAM) user group.
 //
 // @param request - AttachPolicyToGroupRequest
 //
@@ -9725,7 +10869,7 @@ func (client *Client) AttachPolicyToGroup(request *AttachPolicyToGroupRequest) (
 
 // Summary:
 //
-// Attaches a policy to a RAM role.
+// Attaches a policy to a Resource Access Management (RAM) role.
 //
 // @param request - AttachPolicyToRoleRequest
 //
@@ -9775,7 +10919,7 @@ func (client *Client) AttachPolicyToRoleWithOptions(request *AttachPolicyToRoleR
 
 // Summary:
 //
-// Attaches a policy to a RAM role.
+// Attaches a policy to a Resource Access Management (RAM) role.
 //
 // @param request - AttachPolicyToRoleRequest
 //
@@ -9793,7 +10937,7 @@ func (client *Client) AttachPolicyToRole(request *AttachPolicyToRoleRequest) (_r
 
 // Summary:
 //
-// Attaches a policy to a RAM user.
+// Attaches a policy to a Resource Access Management (RAM) user.
 //
 // @param request - AttachPolicyToUserRequest
 //
@@ -9843,7 +10987,7 @@ func (client *Client) AttachPolicyToUserWithOptions(request *AttachPolicyToUserR
 
 // Summary:
 //
-// Attaches a policy to a RAM user.
+// Attaches a policy to a Resource Access Management (RAM) user.
 //
 // @param request - AttachPolicyToUserRequest
 //
@@ -9859,6 +11003,10 @@ func (client *Client) AttachPolicyToUser(request *AttachPolicyToUserRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
+//
 // @param request - BindMFADeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9909,6 +11057,10 @@ func (client *Client) BindMFADeviceWithOptions(request *BindMFADeviceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
+//
 // @param request - BindMFADeviceRequest
 //
 // @return BindMFADeviceResponse
@@ -9923,9 +11075,13 @@ func (client *Client) BindMFADevice(request *BindMFADeviceRequest) (_result *Bin
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
+//
 // Description:
 //
-// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
 //
 // @param request - ChangePasswordRequest
 //
@@ -9969,9 +11125,13 @@ func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
+//
 // Description:
 //
-// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
 //
 // @param request - ChangePasswordRequest
 //
@@ -9987,6 +11147,10 @@ func (client *Client) ChangePassword(request *ChangePasswordRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the alias of an Alibaba Cloud account.
+//
 // @param request - ClearAccountAliasRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10014,6 +11178,10 @@ func (client *Client) ClearAccountAliasWithOptions(runtime *util.RuntimeOptions)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the alias of an Alibaba Cloud account.
+//
 // @return ClearAccountAliasResponse
 func (client *Client) ClearAccountAlias() (_result *ClearAccountAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -10026,6 +11194,10 @@ func (client *Client) ClearAccountAlias() (_result *ClearAccountAliasResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an AccessKey pair for a Resource Access Management (RAM) user.
+//
 // @param request - CreateAccessKeyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10064,6 +11236,10 @@ func (client *Client) CreateAccessKeyWithOptions(request *CreateAccessKeyRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an AccessKey pair for a Resource Access Management (RAM) user.
+//
 // @param request - CreateAccessKeyRequest
 //
 // @return CreateAccessKeyResponse
@@ -10144,7 +11320,7 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 
 // Summary:
 //
-// Enables console logon for a RAM user.
+// Enables console logon for a Resource Access Management (RAM) user.
 //
 // @param request - CreateLoginProfileRequest
 //
@@ -10198,7 +11374,7 @@ func (client *Client) CreateLoginProfileWithOptions(request *CreateLoginProfileR
 
 // Summary:
 //
-// Enables console logon for a RAM user.
+// Enables console logon for a Resource Access Management (RAM) user.
 //
 // @param request - CreateLoginProfileRequest
 //
@@ -10224,16 +11400,22 @@ func (client *Client) CreateLoginProfile(request *CreateLoginProfileRequest) (_r
 //
 // This topic provides an example on how to create a custom policy to query Elastic Compute Service (ECS) instances in a specific region.
 //
-// @param request - CreatePolicyRequest
+// @param tmpReq - CreatePolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePolicyResponse
-func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runtime *util.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreatePolicyWithOptions(tmpReq *CreatePolicyRequest, runtime *util.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreatePolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
@@ -10245,6 +11427,10 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
 		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10294,6 +11480,10 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a version for a policy.
+//
 // @param request - CreatePolicyVersionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10344,6 +11534,10 @@ func (client *Client) CreatePolicyVersionWithOptions(request *CreatePolicyVersio
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a version for a policy.
+//
 // @param request - CreatePolicyVersionRequest
 //
 // @return CreatePolicyVersionResponse
@@ -10360,24 +11554,30 @@ func (client *Client) CreatePolicyVersion(request *CreatePolicyVersionRequest) (
 
 // Summary:
 //
-// Creates a RAM role.
+// Creates a Resource Access Management (RAM) role.
 //
 // Description:
 //
-// ## Description
+// ### [](#)Operation description
 //
 // For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
 //
-// @param request - CreateRoleRequest
+// @param tmpReq - CreateRoleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRoleResponse
-func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, runtime *util.RuntimeOptions) (_result *CreateRoleResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateRoleWithOptions(tmpReq *CreateRoleRequest, runtime *util.RuntimeOptions) (_result *CreateRoleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateRoleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AssumeRolePolicyDocument)) {
 		query["AssumeRolePolicyDocument"] = request.AssumeRolePolicyDocument
@@ -10393,6 +11593,10 @@ func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
 		query["RoleName"] = request.RoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10420,11 +11624,11 @@ func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, runtime 
 
 // Summary:
 //
-// Creates a RAM role.
+// Creates a Resource Access Management (RAM) role.
 //
 // Description:
 //
-// ## Description
+// ### [](#)Operation description
 //
 // For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
 //
@@ -10526,6 +11730,10 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a multi-factor authentication (MFA) device.
+//
 // @param request - CreateVirtualMFADeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10564,6 +11772,10 @@ func (client *Client) CreateVirtualMFADeviceWithOptions(request *CreateVirtualMF
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a multi-factor authentication (MFA) device.
+//
 // @param request - CreateVirtualMFADeviceRequest
 //
 // @return CreateVirtualMFADeviceResponse
@@ -10638,6 +11850,10 @@ func (client *Client) DecodeDiagnosticMessage(request *DecodeDiagnosticMessageRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an AccessKey pair of a Resource Access Management (RAM) user.
+//
 // @param request - DeleteAccessKeyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10680,6 +11896,10 @@ func (client *Client) DeleteAccessKeyWithOptions(request *DeleteAccessKeyRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an AccessKey pair of a Resource Access Management (RAM) user.
+//
 // @param request - DeleteAccessKeyRequest
 //
 // @return DeleteAccessKeyResponse
@@ -10694,6 +11914,10 @@ func (client *Client) DeleteAccessKey(request *DeleteAccessKeyRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Resource Access Management (RAM) user group.
+//
 // Description:
 //
 // Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
@@ -10736,6 +11960,10 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Resource Access Management (RAM) user group.
+//
 // Description:
 //
 // Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
@@ -10754,6 +11982,10 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables console logon for a Resource Access Management (RAM) user.
+//
 // @param request - DeleteLoginProfileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10792,6 +12024,10 @@ func (client *Client) DeleteLoginProfileWithOptions(request *DeleteLoginProfileR
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables console logon for a Resource Access Management (RAM) user.
+//
 // @param request - DeleteLoginProfileRequest
 //
 // @return DeleteLoginProfileResponse
@@ -10806,6 +12042,10 @@ func (client *Client) DeleteLoginProfile(request *DeleteLoginProfileRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a policy.
+//
 // @param request - DeletePolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10848,6 +12088,10 @@ func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a policy.
+//
 // @param request - DeletePolicyRequest
 //
 // @return DeletePolicyResponse
@@ -10862,6 +12106,10 @@ func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a policy version.
+//
 // @param request - DeletePolicyVersionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10904,6 +12152,10 @@ func (client *Client) DeletePolicyVersionWithOptions(request *DeletePolicyVersio
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a policy version.
+//
 // @param request - DeletePolicyVersionRequest
 //
 // @return DeletePolicyVersionResponse
@@ -10918,6 +12170,10 @@ func (client *Client) DeletePolicyVersion(request *DeletePolicyVersionRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Resource Access Management (RAM) role.
+//
 // @param request - DeleteRoleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10956,6 +12212,10 @@ func (client *Client) DeleteRoleWithOptions(request *DeleteRoleRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Resource Access Management (RAM) role.
+//
 // @param request - DeleteRoleRequest
 //
 // @return DeleteRoleResponse
@@ -10970,6 +12230,10 @@ func (client *Client) DeleteRole(request *DeleteRoleRequest) (_result *DeleteRol
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Resource Access Management (RAM) user.
+//
 // Description:
 //
 // Before you delete a RAM user, make sure that no policies are attached to the RAM user and that the RAM user does not belong to any groups.
@@ -11012,6 +12276,10 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Resource Access Management (RAM) user.
+//
 // Description:
 //
 // Before you delete a RAM user, make sure that no policies are attached to the RAM user and that the RAM user does not belong to any groups.
@@ -11030,6 +12298,10 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a multi-factor authentication (MFA) device.
+//
 // @param request - DeleteVirtualMFADeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11068,6 +12340,10 @@ func (client *Client) DeleteVirtualMFADeviceWithOptions(request *DeleteVirtualMF
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a multi-factor authentication (MFA) device.
+//
 // @param request - DeleteVirtualMFADeviceRequest
 //
 // @return DeleteVirtualMFADeviceResponse
@@ -11084,7 +12360,7 @@ func (client *Client) DeleteVirtualMFADevice(request *DeleteVirtualMFADeviceRequ
 
 // Summary:
 //
-// Detaches a policy from a RAM user group.
+// Detaches a policy from a Resource Access Management (RAM) user group.
 //
 // @param request - DetachPolicyFromGroupRequest
 //
@@ -11134,7 +12410,7 @@ func (client *Client) DetachPolicyFromGroupWithOptions(request *DetachPolicyFrom
 
 // Summary:
 //
-// Detaches a policy from a RAM user group.
+// Detaches a policy from a Resource Access Management (RAM) user group.
 //
 // @param request - DetachPolicyFromGroupRequest
 //
@@ -11152,7 +12428,7 @@ func (client *Client) DetachPolicyFromGroup(request *DetachPolicyFromGroupReques
 
 // Summary:
 //
-// Detaches a policy from a RAM role.
+// Detaches a policy from a Resource Access Management (RAM) role.
 //
 // @param request - DetachPolicyFromRoleRequest
 //
@@ -11202,7 +12478,7 @@ func (client *Client) DetachPolicyFromRoleWithOptions(request *DetachPolicyFromR
 
 // Summary:
 //
-// Detaches a policy from a RAM role.
+// Detaches a policy from a Resource Access Management (RAM) role.
 //
 // @param request - DetachPolicyFromRoleRequest
 //
@@ -11220,7 +12496,7 @@ func (client *Client) DetachPolicyFromRole(request *DetachPolicyFromRoleRequest)
 
 // Summary:
 //
-// Detaches a policy from a RAM user.
+// Detaches a policy from a Resource Access Management (RAM) user.
 //
 // @param request - DetachPolicyFromUserRequest
 //
@@ -11270,7 +12546,7 @@ func (client *Client) DetachPolicyFromUserWithOptions(request *DetachPolicyFromU
 
 // Summary:
 //
-// Detaches a policy from a RAM user.
+// Detaches a policy from a Resource Access Management (RAM) user.
 //
 // @param request - DetachPolicyFromUserRequest
 //
@@ -11342,6 +12618,10 @@ func (client *Client) GetAccessKeyLastUsed(request *GetAccessKeyLastUsedRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alias of an Alibaba Cloud account.
+//
 // @param request - GetAccountAliasRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11369,6 +12649,10 @@ func (client *Client) GetAccountAliasWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the alias of an Alibaba Cloud account.
+//
 // @return GetAccountAliasResponse
 func (client *Client) GetAccountAlias() (_result *GetAccountAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -11383,7 +12667,7 @@ func (client *Client) GetAccountAlias() (_result *GetAccountAliasResponse, _err 
 
 // Summary:
 //
-// Queries the information of a RAM user group.
+// Queries information about a Resource Access Management (RAM) user group.
 //
 // @param request - GetGroupRequest
 //
@@ -11425,7 +12709,7 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *uti
 
 // Summary:
 //
-// Queries the information of a RAM user group.
+// Queries information about a Resource Access Management (RAM) user group.
 //
 // @param request - GetGroupRequest
 //
@@ -11441,6 +12725,10 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logon configurations of a Resource Access Management (RAM) user.
+//
 // @param request - GetLoginProfileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11479,6 +12767,10 @@ func (client *Client) GetLoginProfileWithOptions(request *GetLoginProfileRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logon configurations of a Resource Access Management (RAM) user.
+//
 // @param request - GetLoginProfileRequest
 //
 // @return GetLoginProfileResponse
@@ -11493,6 +12785,10 @@ func (client *Client) GetLoginProfile(request *GetLoginProfileRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the password policy of Resource Access Management (RAM) users, including the password strength.
+//
 // @param request - GetPasswordPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11520,6 +12816,10 @@ func (client *Client) GetPasswordPolicyWithOptions(runtime *util.RuntimeOptions)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the password policy of Resource Access Management (RAM) users, including the password strength.
+//
 // @return GetPasswordPolicyResponse
 func (client *Client) GetPasswordPolicy() (_result *GetPasswordPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -11534,7 +12834,7 @@ func (client *Client) GetPasswordPolicy() (_result *GetPasswordPolicyResponse, _
 
 // Summary:
 //
-// Queries the information of a policy.
+// Queries information about a policy.
 //
 // @param request - GetPolicyRequest
 //
@@ -11580,7 +12880,7 @@ func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *u
 
 // Summary:
 //
-// Queries the information of a policy.
+// Queries information about a policy.
 //
 // @param request - GetPolicyRequest
 //
@@ -11598,7 +12898,7 @@ func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyRe
 
 // Summary:
 //
-// Queries the information of a policy version.
+// Queries the information about a policy version.
 //
 // @param request - GetPolicyVersionRequest
 //
@@ -11648,7 +12948,7 @@ func (client *Client) GetPolicyVersionWithOptions(request *GetPolicyVersionReque
 
 // Summary:
 //
-// Queries the information of a policy version.
+// Queries the information about a policy version.
 //
 // @param request - GetPolicyVersionRequest
 //
@@ -11666,7 +12966,7 @@ func (client *Client) GetPolicyVersion(request *GetPolicyVersionRequest) (_resul
 
 // Summary:
 //
-// Queries information of a RAM role.
+// Queries information about a Resource Access Management (RAM) role.
 //
 // @param request - GetRoleRequest
 //
@@ -11708,7 +13008,7 @@ func (client *Client) GetRoleWithOptions(request *GetRoleRequest, runtime *util.
 
 // Summary:
 //
-// Queries information of a RAM role.
+// Queries information about a Resource Access Management (RAM) role.
 //
 // @param request - GetRoleRequest
 //
@@ -11724,6 +13024,10 @@ func (client *Client) GetRole(request *GetRoleRequest) (_result *GetRoleResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the security preferences.
+//
 // @param request - GetSecurityPreferenceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11751,6 +13055,10 @@ func (client *Client) GetSecurityPreferenceWithOptions(runtime *util.RuntimeOpti
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the security preferences.
+//
 // @return GetSecurityPreferenceResponse
 func (client *Client) GetSecurityPreference() (_result *GetSecurityPreferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -11765,11 +13073,11 @@ func (client *Client) GetSecurityPreference() (_result *GetSecurityPreferenceRes
 
 // Summary:
 //
-// Queries the information about a RAM user.
+// Queries information about a Resource Access Management (RAM) user.
 //
 // Description:
 //
-// This topic provides an example on how to query the information about the RAM user `alice`.
+// This topic provides an example on how to query information about the RAM user `alice`.
 //
 // @param request - GetUserRequest
 //
@@ -11811,11 +13119,11 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 
 // Summary:
 //
-// Queries the information about a RAM user.
+// Queries information about a Resource Access Management (RAM) user.
 //
 // Description:
 //
-// This topic provides an example on how to query the information about the RAM user `alice`.
+// This topic provides an example on how to query information about the RAM user `alice`.
 //
 // @param request - GetUserRequest
 //
@@ -11831,6 +13139,10 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
+//
 // @param request - GetUserMFAInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11869,6 +13181,10 @@ func (client *Client) GetUserMFAInfoWithOptions(request *GetUserMFAInfoRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
+//
 // @param request - GetUserMFAInfoRequest
 //
 // @return GetUserMFAInfoResponse
@@ -11885,7 +13201,7 @@ func (client *Client) GetUserMFAInfo(request *GetUserMFAInfoRequest) (_result *G
 
 // Summary:
 //
-// Queries the list of all AccessKey pairs that belong to a RAM user.
+// Queries all AccessKey pairs that belong to a Resource Access Management (RAM) user.
 //
 // @param request - ListAccessKeysRequest
 //
@@ -11927,7 +13243,7 @@ func (client *Client) ListAccessKeysWithOptions(request *ListAccessKeysRequest, 
 
 // Summary:
 //
-// Queries the list of all AccessKey pairs that belong to a RAM user.
+// Queries all AccessKey pairs that belong to a Resource Access Management (RAM) user.
 //
 // @param request - ListAccessKeysRequest
 //
@@ -12009,7 +13325,7 @@ func (client *Client) ListEntitiesForPolicy(request *ListEntitiesForPolicyReques
 
 // Summary:
 //
-// Queries RAM user groups.
+// Queries Resource Access Management (RAM) user groups.
 //
 // @param request - ListGroupsRequest
 //
@@ -12055,7 +13371,7 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 
 // Summary:
 //
-// Queries RAM user groups.
+// Queries Resource Access Management (RAM) user groups.
 //
 // @param request - ListGroupsRequest
 //
@@ -12076,6 +13392,8 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 // Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
 //
 // Description:
+//
+// ### [](#)
 //
 // This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
 //
@@ -12123,6 +13441,8 @@ func (client *Client) ListGroupsForUserWithOptions(request *ListGroupsForUserReq
 //
 // Description:
 //
+// ### [](#)
+//
 // This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
 //
 // @param request - ListGroupsForUserRequest
@@ -12143,16 +13463,22 @@ func (client *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (_res
 //
 // Queries a list of policies.
 //
-// @param request - ListPoliciesRequest
+// @param tmpReq - ListPoliciesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPoliciesResponse
-func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListPoliciesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListPoliciesWithOptions(tmpReq *ListPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListPoliciesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListPoliciesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Marker)) {
 		query["Marker"] = request.Marker
@@ -12164,6 +13490,10 @@ func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
 		query["PolicyType"] = request.PolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -12209,7 +13539,7 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 
 // Summary:
 //
-// Queries the policies that are attached to a RAM user group.
+// Queries the policies that are attached to a Resource Access Management (RAM) user group.
 //
 // @param request - ListPoliciesForGroupRequest
 //
@@ -12251,7 +13581,7 @@ func (client *Client) ListPoliciesForGroupWithOptions(request *ListPoliciesForGr
 
 // Summary:
 //
-// Queries the policies that are attached to a RAM user group.
+// Queries the policies that are attached to a Resource Access Management (RAM) user group.
 //
 // @param request - ListPoliciesForGroupRequest
 //
@@ -12269,7 +13599,7 @@ func (client *Client) ListPoliciesForGroup(request *ListPoliciesForGroupRequest)
 
 // Summary:
 //
-// Queries the policies that are attached to a RAM role.
+// Queries the policies that are attached to a Resource Access Management (RAM) role.
 //
 // @param request - ListPoliciesForRoleRequest
 //
@@ -12311,7 +13641,7 @@ func (client *Client) ListPoliciesForRoleWithOptions(request *ListPoliciesForRol
 
 // Summary:
 //
-// Queries the policies that are attached to a RAM role.
+// Queries the policies that are attached to a Resource Access Management (RAM) role.
 //
 // @param request - ListPoliciesForRoleRequest
 //
@@ -12461,18 +13791,24 @@ func (client *Client) ListPolicyVersions(request *ListPolicyVersionsRequest) (_r
 
 // Summary:
 //
-// Queries the list of all RAM roles.
+// Queries all Resource Access Management (RAM) roles.
 //
-// @param request - ListRolesRequest
+// @param tmpReq - ListRolesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRolesResponse
-func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *util.RuntimeOptions) (_result *ListRolesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListRolesWithOptions(tmpReq *ListRolesRequest, runtime *util.RuntimeOptions) (_result *ListRolesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListRolesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Marker)) {
 		query["Marker"] = request.Marker
@@ -12480,6 +13816,10 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
 		query["MaxItems"] = request.MaxItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -12507,7 +13847,7 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *u
 
 // Summary:
 //
-// Queries the list of all RAM roles.
+// Queries all Resource Access Management (RAM) roles.
 //
 // @param request - ListRolesRequest
 //
@@ -12516,6 +13856,92 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRolesResponse{}
 	_body, _err := client.ListRolesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the tags that are added to resources.
+//
+// @param tmpReq - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListTagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceNames)) {
+		request.ResourceNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceNames, tea.String("ResourceNames"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceNamesShrink)) {
+		query["ResourceNames"] = request.ResourceNamesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the tags that are added to resources.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12587,6 +14013,10 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Resource Access Management (RAM) users in a RAM user group.
+//
 // @param request - ListUsersForGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12633,6 +14063,10 @@ func (client *Client) ListUsersForGroupWithOptions(request *ListUsersForGroupReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Resource Access Management (RAM) users in a RAM user group.
+//
 // @param request - ListUsersForGroupRequest
 //
 // @return ListUsersForGroupResponse
@@ -12649,7 +14083,7 @@ func (client *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (_res
 
 // Summary:
 //
-// Queries the list of all multi-factor authentication (MFA) devices.
+// Queries multi-factor authentication (MFA) devices.
 //
 // @param request - ListVirtualMFADevicesRequest
 //
@@ -12680,7 +14114,7 @@ func (client *Client) ListVirtualMFADevicesWithOptions(runtime *util.RuntimeOpti
 
 // Summary:
 //
-// Queries the list of all multi-factor authentication (MFA) devices.
+// Queries multi-factor authentication (MFA) devices.
 //
 // @return ListVirtualMFADevicesResponse
 func (client *Client) ListVirtualMFADevices() (_result *ListVirtualMFADevicesResponse, _err error) {
@@ -12694,6 +14128,10 @@ func (client *Client) ListVirtualMFADevices() (_result *ListVirtualMFADevicesRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a Resource Access Management (RAM) user from a RAM user group.
+//
 // @param request - RemoveUserFromGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12736,6 +14174,10 @@ func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a Resource Access Management (RAM) user from a RAM user group.
+//
 // @param request - RemoveUserFromGroupRequest
 //
 // @return RemoveUserFromGroupResponse
@@ -12752,7 +14194,7 @@ func (client *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (
 
 // Summary:
 //
-// You can call this operation to specify an alias for an Alibaba Cloud account.
+// Configures an alias for an Alibaba Cloud account.
 //
 // @param request - SetAccountAliasRequest
 //
@@ -12794,7 +14236,7 @@ func (client *Client) SetAccountAliasWithOptions(request *SetAccountAliasRequest
 
 // Summary:
 //
-// You can call this operation to specify an alias for an Alibaba Cloud account.
+// Configures an alias for an Alibaba Cloud account.
 //
 // @param request - SetAccountAliasRequest
 //
@@ -12812,7 +14254,7 @@ func (client *Client) SetAccountAlias(request *SetAccountAliasRequest) (_result 
 
 // Summary:
 //
-// Sets the default version of a policy.
+// Specifies a version for a policy as the default version.
 //
 // @param request - SetDefaultPolicyVersionRequest
 //
@@ -12858,7 +14300,7 @@ func (client *Client) SetDefaultPolicyVersionWithOptions(request *SetDefaultPoli
 
 // Summary:
 //
-// Sets the default version of a policy.
+// Specifies a version for a policy as the default version.
 //
 // @param request - SetDefaultPolicyVersionRequest
 //
@@ -12874,6 +14316,10 @@ func (client *Client) SetDefaultPolicyVersion(request *SetDefaultPolicyVersionRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the password policy for Resource Access Management (RAM) users, including the password strength.
+//
 // @param request - SetPasswordPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12944,6 +14390,10 @@ func (client *Client) SetPasswordPolicyWithOptions(request *SetPasswordPolicyReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the password policy for Resource Access Management (RAM) users, including the password strength.
+//
 // @param request - SetPasswordPolicyRequest
 //
 // @return SetPasswordPolicyResponse
@@ -13044,7 +14494,85 @@ func (client *Client) SetSecurityPreference(request *SetSecurityPreferenceReques
 
 // Summary:
 //
-// Detaches a multi-factor authentication (MFA) device from a RAM user.
+// Adds tags to resources.
+//
+// @param tmpReq - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithOptions(tmpReq *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &TagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceNames)) {
+		request.ResourceNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceNames, tea.String("ResourceNames"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceNamesShrink)) {
+		query["ResourceNames"] = request.ResourceNamesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds tags to resources.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
 //
 // @param request - UnbindMFADeviceRequest
 //
@@ -13086,7 +14614,7 @@ func (client *Client) UnbindMFADeviceWithOptions(request *UnbindMFADeviceRequest
 
 // Summary:
 //
-// Detaches a multi-factor authentication (MFA) device from a RAM user.
+// Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
 //
 // @param request - UnbindMFADeviceRequest
 //
@@ -13102,6 +14630,92 @@ func (client *Client) UnbindMFADevice(request *UnbindMFADeviceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources.
+//
+// @param tmpReq - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UntagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceNames)) {
+		request.ResourceNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceNames, tea.String("ResourceNames"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagKeys)) {
+		request.TagKeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagKeys, tea.String("TagKeys"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceNamesShrink)) {
+		query["ResourceNames"] = request.ResourceNamesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeysShrink)) {
+		query["TagKeys"] = request.TagKeysShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes tags from resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the status of an AccessKey pair that belongs to a Resource Access Management (RAM) user.
+//
 // @param request - UpdateAccessKeyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13148,6 +14762,10 @@ func (client *Client) UpdateAccessKeyWithOptions(request *UpdateAccessKeyRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the status of an AccessKey pair that belongs to a Resource Access Management (RAM) user.
+//
 // @param request - UpdateAccessKeyRequest
 //
 // @return UpdateAccessKeyResponse
@@ -13164,7 +14782,7 @@ func (client *Client) UpdateAccessKey(request *UpdateAccessKeyRequest) (_result 
 
 // Summary:
 //
-// Modifies a RAM user group.
+// Modifies a Resource Access Management (RAM) user group.
 //
 // @param request - UpdateGroupRequest
 //
@@ -13214,7 +14832,7 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtim
 
 // Summary:
 //
-// Modifies a RAM user group.
+// Modifies a Resource Access Management (RAM) user group.
 //
 // @param request - UpdateGroupRequest
 //
@@ -13230,6 +14848,10 @@ func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateG
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the logon configurations of a Resource Access Management (RAM) user.
+//
 // @param request - UpdateLoginProfileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13280,6 +14902,10 @@ func (client *Client) UpdateLoginProfileWithOptions(request *UpdateLoginProfileR
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the logon configurations of a Resource Access Management (RAM) user.
+//
 // @param request - UpdateLoginProfileRequest
 //
 // @return UpdateLoginProfileResponse
@@ -13299,6 +14925,8 @@ func (client *Client) UpdateLoginProfile(request *UpdateLoginProfileRequest) (_r
 // Modifies the description of a custom policy.
 //
 // Description:
+//
+// ### [](#)
 //
 // You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
 //
@@ -13350,6 +14978,8 @@ func (client *Client) UpdatePolicyDescriptionWithOptions(request *UpdatePolicyDe
 //
 // Description:
 //
+// ### [](#)
+//
 // You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
 //
 // @param request - UpdatePolicyDescriptionRequest
@@ -13368,11 +14998,11 @@ func (client *Client) UpdatePolicyDescription(request *UpdatePolicyDescriptionRe
 
 // Summary:
 //
-// Changes the description of a RAM role.
+// Modifies information about a Resource Access Management (RAM) role.
 //
 // Description:
 //
-// This topic provides an example to show how to change the description of ECSAdmin to ECS administrator.
+// This topic provides an example on how to change the description of `ECSAdmin` to `ECS administrator`.
 //
 // @param request - UpdateRoleRequest
 //
@@ -13426,11 +15056,11 @@ func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, runtime 
 
 // Summary:
 //
-// Changes the description of a RAM role.
+// Modifies information about a Resource Access Management (RAM) role.
 //
 // Description:
 //
-// This topic provides an example to show how to change the description of ECSAdmin to ECS administrator.
+// This topic provides an example on how to change the description of `ECSAdmin` to `ECS administrator`.
 //
 // @param request - UpdateRoleRequest
 //
@@ -13446,6 +15076,10 @@ func (client *Client) UpdateRole(request *UpdateRoleRequest) (_result *UpdateRol
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies information about a Resource Access Management (RAM) user.
+//
 // Description:
 //
 // This topic provides an example on how to change the name of a RAM user from `zhangq****` to `xiaoq****`.
@@ -13508,6 +15142,10 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies information about a Resource Access Management (RAM) user.
+//
 // Description:
 //
 // This topic provides an example on how to change the name of a RAM user from `zhangq****` to `xiaoq****`.

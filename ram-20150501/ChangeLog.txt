@@ -1,3 +1,15 @@
+2025-06-12 Version: v2.2.0
+- Support API ListTagResources.
+- Support API TagResources.
+- Support API UntagResources.
+- Update API CreatePolicy: add request parameters Tag.
+- Update API CreateRole: add request parameters Tag.
+- Update API ListPolicies: add request parameters Tag.
+- Update API ListPolicies: add response parameters Body.Policies.$.Tags.
+- Update API ListRoles: add request parameters Tag.
+- Update API ListRoles: add response parameters Body.Roles.$.Tags.
+
+
 2025-01-08 Version: v2.1.1
 - Update API DeletePolicy: add param CascadingDelete.
 
