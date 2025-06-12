@@ -1773,43 +1773,46 @@ func (s *FigureClusterForReqCoverFigures) SetFigureId(v string) *FigureClusterFo
 }
 
 type File struct {
-	AccessControlAllowOrigin              *string                `json:"AccessControlAllowOrigin,omitempty" xml:"AccessControlAllowOrigin,omitempty"`
-	AccessControlRequestMethod            *string                `json:"AccessControlRequestMethod,omitempty" xml:"AccessControlRequestMethod,omitempty"`
-	Addresses                             []*Address             `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	Album                                 *string                `json:"Album,omitempty" xml:"Album,omitempty"`
-	AlbumArtist                           *string                `json:"AlbumArtist,omitempty" xml:"AlbumArtist,omitempty"`
-	Artist                                *string                `json:"Artist,omitempty" xml:"Artist,omitempty"`
-	AudioCovers                           []*Image               `json:"AudioCovers,omitempty" xml:"AudioCovers,omitempty" type:"Repeated"`
-	AudioStreams                          []*AudioStream         `json:"AudioStreams,omitempty" xml:"AudioStreams,omitempty" type:"Repeated"`
-	Bitrate                               *int64                 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	CacheControl                          *string                `json:"CacheControl,omitempty" xml:"CacheControl,omitempty"`
-	Composer                              *string                `json:"Composer,omitempty" xml:"Composer,omitempty"`
-	ContentDisposition                    *string                `json:"ContentDisposition,omitempty" xml:"ContentDisposition,omitempty"`
-	ContentEncoding                       *string                `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	ContentLanguage                       *string                `json:"ContentLanguage,omitempty" xml:"ContentLanguage,omitempty"`
-	ContentMd5                            *string                `json:"ContentMd5,omitempty" xml:"ContentMd5,omitempty"`
-	ContentType                           *string                `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	CreateTime                            *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CroppingSuggestions                   []*CroppingSuggestion  `json:"CroppingSuggestions,omitempty" xml:"CroppingSuggestions,omitempty" type:"Repeated"`
-	CustomId                              *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	CustomLabels                          map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName                           *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Duration                              *float64               `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	ETag                                  *string                `json:"ETag,omitempty" xml:"ETag,omitempty"`
-	EXIF                                  *string                `json:"EXIF,omitempty" xml:"EXIF,omitempty"`
-	Elements                              []*Element             `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
-	FigureCount                           *int64                 `json:"FigureCount,omitempty" xml:"FigureCount,omitempty"`
-	Figures                               []*Figure              `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
-	FileAccessTime                        *string                `json:"FileAccessTime,omitempty" xml:"FileAccessTime,omitempty"`
-	FileCreateTime                        *string                `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
-	FileHash                              *string                `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
-	FileModifiedTime                      *string                `json:"FileModifiedTime,omitempty" xml:"FileModifiedTime,omitempty"`
-	Filename                              *string                `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	FormatLongName                        *string                `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
-	FormatName                            *string                `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	ImageHeight                           *int64                 `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
-	ImageScore                            *ImageScore            `json:"ImageScore,omitempty" xml:"ImageScore,omitempty"`
-	ImageWidth                            *int64                 `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
+	AccessControlAllowOrigin   *string                `json:"AccessControlAllowOrigin,omitempty" xml:"AccessControlAllowOrigin,omitempty"`
+	AccessControlRequestMethod *string                `json:"AccessControlRequestMethod,omitempty" xml:"AccessControlRequestMethod,omitempty"`
+	Addresses                  []*Address             `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	Album                      *string                `json:"Album,omitempty" xml:"Album,omitempty"`
+	AlbumArtist                *string                `json:"AlbumArtist,omitempty" xml:"AlbumArtist,omitempty"`
+	Artist                     *string                `json:"Artist,omitempty" xml:"Artist,omitempty"`
+	AudioCovers                []*Image               `json:"AudioCovers,omitempty" xml:"AudioCovers,omitempty" type:"Repeated"`
+	AudioStreams               []*AudioStream         `json:"AudioStreams,omitempty" xml:"AudioStreams,omitempty" type:"Repeated"`
+	Bitrate                    *int64                 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CacheControl               *string                `json:"CacheControl,omitempty" xml:"CacheControl,omitempty"`
+	Composer                   *string                `json:"Composer,omitempty" xml:"Composer,omitempty"`
+	ContentDisposition         *string                `json:"ContentDisposition,omitempty" xml:"ContentDisposition,omitempty"`
+	ContentEncoding            *string                `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	ContentLanguage            *string                `json:"ContentLanguage,omitempty" xml:"ContentLanguage,omitempty"`
+	ContentMd5                 *string                `json:"ContentMd5,omitempty" xml:"ContentMd5,omitempty"`
+	ContentType                *string                `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	CreateTime                 *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CroppingSuggestions        []*CroppingSuggestion  `json:"CroppingSuggestions,omitempty" xml:"CroppingSuggestions,omitempty" type:"Repeated"`
+	CustomId                   *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	CustomLabels               map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	DatasetName                *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Duration                   *float64               `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ETag                       *string                `json:"ETag,omitempty" xml:"ETag,omitempty"`
+	EXIF                       *string                `json:"EXIF,omitempty" xml:"EXIF,omitempty"`
+	Elements                   []*Element             `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+	FigureCount                *int64                 `json:"FigureCount,omitempty" xml:"FigureCount,omitempty"`
+	Figures                    []*Figure              `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
+	FileAccessTime             *string                `json:"FileAccessTime,omitempty" xml:"FileAccessTime,omitempty"`
+	FileCreateTime             *string                `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
+	FileHash                   *string                `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
+	FileModifiedTime           *string                `json:"FileModifiedTime,omitempty" xml:"FileModifiedTime,omitempty"`
+	Filename                   *string                `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	FormatLongName             *string                `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
+	FormatName                 *string                `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	ImageHeight                *int64                 `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
+	ImageScore                 *ImageScore            `json:"ImageScore,omitempty" xml:"ImageScore,omitempty"`
+	ImageWidth                 *int64                 `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
+	// if can be null:
+	// true
+	Insights                              *Insights              `json:"Insights,omitempty" xml:"Insights,omitempty"`
 	Labels                                []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	Language                              *string                `json:"Language,omitempty" xml:"Language,omitempty"`
 	LatLong                               *string                `json:"LatLong,omitempty" xml:"LatLong,omitempty"`
@@ -2048,6 +2051,11 @@ func (s *File) SetImageScore(v *ImageScore) *File {
 
 func (s *File) SetImageWidth(v int64) *File {
 	s.ImageWidth = &v
+	return s
+}
+
+func (s *File) SetInsights(v *Insights) *File {
+	s.Insights = v
 	return s
 }
 
@@ -2477,6 +2485,33 @@ func (s *Image) SetOCRContents(v []*OCRContents) *Image {
 	return s
 }
 
+type ImageInsight struct {
+	// if can be null:
+	// true
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// if can be null:
+	// true
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s ImageInsight) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageInsight) GoString() string {
+	return s.String()
+}
+
+func (s *ImageInsight) SetCaption(v string) *ImageInsight {
+	s.Caption = &v
+	return s
+}
+
+func (s *ImageInsight) SetDescription(v string) *ImageInsight {
+	s.Description = &v
+	return s
+}
+
 type ImageScore struct {
 	OverallQualityScore *float32 `json:"OverallQualityScore,omitempty" xml:"OverallQualityScore,omitempty"`
 }
@@ -2686,6 +2721,33 @@ func (s *InputOSS) SetMatchExpressions(v []*string) *InputOSS {
 
 func (s *InputOSS) SetPrefix(v string) *InputOSS {
 	s.Prefix = &v
+	return s
+}
+
+type Insights struct {
+	// if can be null:
+	// true
+	Image *ImageInsight `json:"Image,omitempty" xml:"Image,omitempty"`
+	// if can be null:
+	// true
+	Video *VideoInsight `json:"Video,omitempty" xml:"Video,omitempty"`
+}
+
+func (s Insights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Insights) GoString() string {
+	return s.String()
+}
+
+func (s *Insights) SetImage(v *ImageInsight) *Insights {
+	s.Image = v
+	return s
+}
+
+func (s *Insights) SetVideo(v *VideoInsight) *Insights {
+	s.Video = v
 	return s
 }
 
@@ -5265,6 +5327,33 @@ func (s *TrimPolicy) SetDisableDeleteUnusedShape(v bool) *TrimPolicy {
 	return s
 }
 
+type VideoInsight struct {
+	// if can be null:
+	// true
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// if can be null:
+	// true
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s VideoInsight) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoInsight) GoString() string {
+	return s.String()
+}
+
+func (s *VideoInsight) SetCaption(v string) *VideoInsight {
+	s.Caption = &v
+	return s
+}
+
+func (s *VideoInsight) SetDescription(v string) *VideoInsight {
+	s.Description = &v
+	return s
+}
+
 type VideoStream struct {
 	AverageFrameRate   *string  `json:"AverageFrameRate,omitempty" xml:"AverageFrameRate,omitempty"`
 	BitDepth           *int64   `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
@@ -5576,6 +5665,29 @@ func (s *WebofficeWatermark) SetValue(v string) *WebofficeWatermark {
 
 func (s *WebofficeWatermark) SetVertical(v int64) *WebofficeWatermark {
 	s.Vertical = &v
+	return s
+}
+
+type WorkflowParameter struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s WorkflowParameter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WorkflowParameter) GoString() string {
+	return s.String()
+}
+
+func (s *WorkflowParameter) SetName(v string) *WorkflowParameter {
+	s.Name = &v
+	return s
+}
+
+func (s *WorkflowParameter) SetValue(v string) *WorkflowParameter {
+	s.Value = &v
 	return s
 }
 
@@ -9038,7 +9150,8 @@ type CreateDatasetRequest struct {
 	// example:
 	//
 	// Official:AllFunction
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId         *string              `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	WorkflowParameters []*WorkflowParameter `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty" type:"Repeated"`
 }
 
 func (s CreateDatasetRequest) String() string {
@@ -9091,6 +9204,137 @@ func (s *CreateDatasetRequest) SetProjectName(v string) *CreateDatasetRequest {
 
 func (s *CreateDatasetRequest) SetTemplateId(v string) *CreateDatasetRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetWorkflowParameters(v []*WorkflowParameter) *CreateDatasetRequest {
+	s.WorkflowParameters = v
+	return s
+}
+
+type CreateDatasetShrinkRequest struct {
+	// The maximum number of bindings for the dataset. Valid values: 1 to 10. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// The maximum number of metadata entities in the dataset. Default value: 10000000000.
+	//
+	// example:
+	//
+	// 10000000000
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// The maximum number of files in the dataset. Valid values: 1 to 100000000. Default value: 100000000.
+	//
+	// example:
+	//
+	// 100000000
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// The maximum number of metadata relationships in the dataset. Default value: 100000000000.
+	//
+	// example:
+	//
+	// 100000000000
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// The maximum total file size for the dataset. If the total file size of the dataset exceeds this limit, indexes can no longer be added. Default value: 90000000000000000. Unit: bytes.
+	//
+	// example:
+	//
+	// 90000000000000000
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// The name of the dataset. The dataset name must be unique in the same project. The name must meet the following requirements:
+	//
+	// 	- The name must be 1 to 128 characters in length.
+	//
+	// 	- The name can contain only letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- The name must start with a letter or underscore (_).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dataset001
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The description of the dataset. The description must be 1 to 256 characters in length. You can leave this parameter empty.
+	//
+	// example:
+	//
+	// immtest
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+	//
+	// example:
+	//
+	// Official:AllFunction
+	TemplateId               *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	WorkflowParametersShrink *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
+}
+
+func (s CreateDatasetShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetShrinkRequest) SetDatasetMaxBindCount(v int64) *CreateDatasetShrinkRequest {
+	s.DatasetMaxBindCount = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetDatasetMaxEntityCount(v int64) *CreateDatasetShrinkRequest {
+	s.DatasetMaxEntityCount = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetDatasetMaxFileCount(v int64) *CreateDatasetShrinkRequest {
+	s.DatasetMaxFileCount = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetDatasetMaxRelationCount(v int64) *CreateDatasetShrinkRequest {
+	s.DatasetMaxRelationCount = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetDatasetMaxTotalFileSize(v int64) *CreateDatasetShrinkRequest {
+	s.DatasetMaxTotalFileSize = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetDatasetName(v string) *CreateDatasetShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetDescription(v string) *CreateDatasetShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetProjectName(v string) *CreateDatasetShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetTemplateId(v string) *CreateDatasetShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetWorkflowParametersShrink(v string) *CreateDatasetShrinkRequest {
+	s.WorkflowParametersShrink = &v
 	return s
 }
 
@@ -27518,7 +27762,8 @@ type UpdateDatasetRequest struct {
 	// example:
 	//
 	// Official:AllFunction
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId         *string              `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	WorkflowParameters []*WorkflowParameter `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty" type:"Repeated"`
 }
 
 func (s UpdateDatasetRequest) String() string {
@@ -27571,6 +27816,113 @@ func (s *UpdateDatasetRequest) SetProjectName(v string) *UpdateDatasetRequest {
 
 func (s *UpdateDatasetRequest) SetTemplateId(v string) *UpdateDatasetRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetWorkflowParameters(v []*WorkflowParameter) *UpdateDatasetRequest {
+	s.WorkflowParameters = v
+	return s
+}
+
+type UpdateDatasetShrinkRequest struct {
+	// example:
+	//
+	// 10
+	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// example:
+	//
+	// 10000000000
+	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// example:
+	//
+	// 100000000
+	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// example:
+	//
+	// 100000000000
+	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// example:
+	//
+	// 90000000000000000
+	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// immtest
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// Official:AllFunction
+	TemplateId               *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	WorkflowParametersShrink *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
+}
+
+func (s UpdateDatasetShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetShrinkRequest) SetDatasetMaxBindCount(v int64) *UpdateDatasetShrinkRequest {
+	s.DatasetMaxBindCount = &v
+	return s
+}
+
+func (s *UpdateDatasetShrinkRequest) SetDatasetMaxEntityCount(v int64) *UpdateDatasetShrinkRequest {
+	s.DatasetMaxEntityCount = &v
+	return s
+}
+
+func (s *UpdateDatasetShrinkRequest) SetDatasetMaxFileCount(v int64) *UpdateDatasetShrinkRequest {
+	s.DatasetMaxFileCount = &v
+	return s
+}
+
+func (s *UpdateDatasetShrinkRequest) SetDatasetMaxRelationCount(v int64) *UpdateDatasetShrinkRequest {
+	s.DatasetMaxRelationCount = &v
+	return s
+}
+
+func (s *UpdateDatasetShrinkRequest) SetDatasetMaxTotalFileSize(v int64) *UpdateDatasetShrinkRequest {
+	s.DatasetMaxTotalFileSize = &v
+	return s
+}
+
+func (s *UpdateDatasetShrinkRequest) SetDatasetName(v string) *UpdateDatasetShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *UpdateDatasetShrinkRequest) SetDescription(v string) *UpdateDatasetShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDatasetShrinkRequest) SetProjectName(v string) *UpdateDatasetShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *UpdateDatasetShrinkRequest) SetTemplateId(v string) *UpdateDatasetShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateDatasetShrinkRequest) SetWorkflowParametersShrink(v string) *UpdateDatasetShrinkRequest {
+	s.WorkflowParametersShrink = &v
 	return s
 }
 
@@ -30603,16 +30955,22 @@ func (client *Client) CreateCustomizedStory(request *CreateCustomizedStoryReques
 //
 //		- After creating a dataset, you can call the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) operation to index metadata. Metadata indexing enhances [data retrieval efficiency and statistics collection](https://help.aliyun.com/document_detail/478175.html), and enables intelligent data management.
 //
-// @param request - CreateDatasetRequest
+// @param tmpReq - CreateDatasetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDatasetResponse
-func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, runtime *util.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, runtime *util.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateDatasetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.WorkflowParameters)) {
+		request.WorkflowParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowParameters, tea.String("WorkflowParameters"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatasetMaxBindCount)) {
 		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
@@ -30648,6 +31006,10 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowParametersShrink)) {
+		query["WorkflowParameters"] = request.WorkflowParametersShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -39297,16 +39659,22 @@ func (client *Client) UpdateBatch(request *UpdateBatchRequest) (_result *UpdateB
 //
 // Updates a dataset.
 //
-// @param request - UpdateDatasetRequest
+// @param tmpReq - UpdateDatasetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDatasetResponse
-func (client *Client) UpdateDatasetWithOptions(request *UpdateDatasetRequest, runtime *util.RuntimeOptions) (_result *UpdateDatasetResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateDatasetWithOptions(tmpReq *UpdateDatasetRequest, runtime *util.RuntimeOptions) (_result *UpdateDatasetResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateDatasetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.WorkflowParameters)) {
+		request.WorkflowParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowParameters, tea.String("WorkflowParameters"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatasetMaxBindCount)) {
 		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
@@ -39342,6 +39710,10 @@ func (client *Client) UpdateDatasetWithOptions(request *UpdateDatasetRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowParametersShrink)) {
+		query["WorkflowParameters"] = request.WorkflowParametersShrink
 	}
 
 	req := &openapi.OpenApiRequest{
