@@ -360,6 +360,8 @@ type CreateJobRequestDeploymentPolicy struct {
 	AllocationSpec *string                                  `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
 	Level          *string                                  `json:"Level,omitempty" xml:"Level,omitempty"`
 	Network        *CreateJobRequestDeploymentPolicyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	Pool           *string                                  `json:"Pool,omitempty" xml:"Pool,omitempty"`
+	Priority       *int32                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	Tag            []*CreateJobRequestDeploymentPolicyTag   `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -383,6 +385,16 @@ func (s *CreateJobRequestDeploymentPolicy) SetLevel(v string) *CreateJobRequestD
 
 func (s *CreateJobRequestDeploymentPolicy) SetNetwork(v *CreateJobRequestDeploymentPolicyNetwork) *CreateJobRequestDeploymentPolicy {
 	s.Network = v
+	return s
+}
+
+func (s *CreateJobRequestDeploymentPolicy) SetPool(v string) *CreateJobRequestDeploymentPolicy {
+	s.Pool = &v
+	return s
+}
+
+func (s *CreateJobRequestDeploymentPolicy) SetPriority(v int32) *CreateJobRequestDeploymentPolicy {
+	s.Priority = &v
 	return s
 }
 
@@ -611,8 +623,9 @@ type CreateJobRequestTasksTaskSpecResource struct {
 	// example:
 	//
 	// 2
-	Cores *float32                                      `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	Disks []*CreateJobRequestTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	Cores         *float32                                      `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	Disks         []*CreateJobRequestTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	InstanceTypes []*string                                     `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 4
@@ -634,6 +647,11 @@ func (s *CreateJobRequestTasksTaskSpecResource) SetCores(v float32) *CreateJobRe
 
 func (s *CreateJobRequestTasksTaskSpecResource) SetDisks(v []*CreateJobRequestTasksTaskSpecResourceDisks) *CreateJobRequestTasksTaskSpecResource {
 	s.Disks = v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecResource) SetInstanceTypes(v []*string) *CreateJobRequestTasksTaskSpecResource {
+	s.InstanceTypes = v
 	return s
 }
 
@@ -696,6 +714,7 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutor) SetVM(v *CreateJobRequestTas
 
 type CreateJobRequestTasksTaskSpecTaskExecutorContainer struct {
 	AppId           *string                                                              `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Arg             []*string                                                            `json:"Arg,omitempty" xml:"Arg,omitempty" type:"Repeated"`
 	Command         []*string                                                            `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
 	EnvironmentVars []*CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
 	// This parameter is required.
@@ -720,6 +739,11 @@ func (s CreateJobRequestTasksTaskSpecTaskExecutorContainer) GoString() string {
 
 func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetAppId(v string) *CreateJobRequestTasksTaskSpecTaskExecutorContainer {
 	s.AppId = &v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorContainer) SetArg(v []*string) *CreateJobRequestTasksTaskSpecTaskExecutorContainer {
+	s.Arg = v
 	return s
 }
 
@@ -779,7 +803,8 @@ type CreateJobRequestTasksTaskSpecTaskExecutorVM struct {
 	// example:
 	//
 	// m-xxxx
-	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	Image    *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// example:
 	//
 	// ZWNobyBoZWxsbyBlY3Mh
@@ -808,6 +833,11 @@ func (s *CreateJobRequestTasksTaskSpecTaskExecutorVM) SetImage(v string) *Create
 	return s
 }
 
+func (s *CreateJobRequestTasksTaskSpecTaskExecutorVM) SetPassword(v string) *CreateJobRequestTasksTaskSpecTaskExecutorVM {
+	s.Password = &v
+	return s
+}
+
 func (s *CreateJobRequestTasksTaskSpecTaskExecutorVM) SetPrologScript(v string) *CreateJobRequestTasksTaskSpecTaskExecutorVM {
 	s.PrologScript = &v
 	return s
@@ -827,6 +857,7 @@ type CreateJobRequestTasksTaskSpecVolumeMount struct {
 	//
 	// /mnt
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	ReadOnly  *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
 	// example:
 	//
 	// alicloud/nas
@@ -848,6 +879,11 @@ func (s *CreateJobRequestTasksTaskSpecVolumeMount) SetMountOptions(v string) *Cr
 
 func (s *CreateJobRequestTasksTaskSpecVolumeMount) SetMountPath(v string) *CreateJobRequestTasksTaskSpecVolumeMount {
 	s.MountPath = &v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecVolumeMount) SetReadOnly(v bool) *CreateJobRequestTasksTaskSpecVolumeMount {
+	s.ReadOnly = &v
 	return s
 }
 
@@ -2685,8 +2721,9 @@ type GetJobResponseBodyJobInfoTasksTaskSpecResource struct {
 	// example:
 	//
 	// 1
-	Cores *float32                                               `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	Disks []*GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	Cores         *float32                                               `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	Disks         []*GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	InstanceTypes []*string                                              `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 4
@@ -2708,6 +2745,11 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) SetCores(v float32) *Ge
 
 func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) SetDisks(v []*GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks) *GetJobResponseBodyJobInfoTasksTaskSpecResource {
 	s.Disks = v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) SetInstanceTypes(v []*string) *GetJobResponseBodyJobInfoTasksTaskSpecResource {
+	s.InstanceTypes = v
 	return s
 }
 
@@ -2774,7 +2816,8 @@ type GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM struct {
 	// example:
 	//
 	// ZWNobyAiMTIzNCIgPiBgZGF0ZSArJXNg
-	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	Script   *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) String() string {
@@ -2797,6 +2840,11 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) SetPrologScript(v
 
 func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) SetScript(v string) *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM {
 	s.Script = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) SetUserName(v string) *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM {
+	s.UserName = &v
 	return s
 }
 
