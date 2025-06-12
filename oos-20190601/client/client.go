@@ -6629,6 +6629,8 @@ type GetApplicationGroupResponseBodyApplicationGroup struct {
 	//
 	// ApplicationGroup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ErrorDetail *string `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty"`
+	ErrorType   *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
 	// The tag key.
 	//
 	// example:
@@ -6724,6 +6726,16 @@ func (s *GetApplicationGroupResponseBodyApplicationGroup) SetDeployRegionId(v st
 
 func (s *GetApplicationGroupResponseBodyApplicationGroup) SetDescription(v string) *GetApplicationGroupResponseBodyApplicationGroup {
 	s.Description = &v
+	return s
+}
+
+func (s *GetApplicationGroupResponseBodyApplicationGroup) SetErrorDetail(v string) *GetApplicationGroupResponseBodyApplicationGroup {
+	s.ErrorDetail = &v
+	return s
+}
+
+func (s *GetApplicationGroupResponseBodyApplicationGroup) SetErrorType(v string) *GetApplicationGroupResponseBodyApplicationGroup {
+	s.ErrorType = &v
 	return s
 }
 
@@ -10791,6 +10803,8 @@ type ListApplicationGroupsResponseBodyApplicationGroups struct {
 	//
 	// ApplicationGroup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ErrorDetail *string `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty"`
+	ErrorType   *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
 	// The tag key.
 	//
 	// example:
@@ -10864,6 +10878,16 @@ func (s *ListApplicationGroupsResponseBodyApplicationGroups) SetDeployRegionId(v
 
 func (s *ListApplicationGroupsResponseBodyApplicationGroups) SetDescription(v string) *ListApplicationGroupsResponseBodyApplicationGroups {
 	s.Description = &v
+	return s
+}
+
+func (s *ListApplicationGroupsResponseBodyApplicationGroups) SetErrorDetail(v string) *ListApplicationGroupsResponseBodyApplicationGroups {
+	s.ErrorDetail = &v
+	return s
+}
+
+func (s *ListApplicationGroupsResponseBodyApplicationGroups) SetErrorType(v string) *ListApplicationGroupsResponseBodyApplicationGroups {
+	s.ErrorType = &v
 	return s
 }
 
