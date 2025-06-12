@@ -7630,6 +7630,165 @@ func (s *GetLindormV2StorageUsageResponse) SetBody(v *GetLindormV2StorageUsageRe
 	return s
 }
 
+type GetLindormV2StreamEngineInfoRequest struct {
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s GetLindormV2StreamEngineInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2StreamEngineInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2StreamEngineInfoRequest) SetInstanceId(v string) *GetLindormV2StreamEngineInfoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoRequest) SetOwnerAccount(v string) *GetLindormV2StreamEngineInfoRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoRequest) SetOwnerId(v int64) *GetLindormV2StreamEngineInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoRequest) SetResourceOwnerAccount(v string) *GetLindormV2StreamEngineInfoRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoRequest) SetResourceOwnerId(v int64) *GetLindormV2StreamEngineInfoRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoRequest) SetSecurityToken(v string) *GetLindormV2StreamEngineInfoRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type GetLindormV2StreamEngineInfoResponseBody struct {
+	InstanceId        *string                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId         *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupList []*GetLindormV2StreamEngineInfoResponseBodyResourceGroupList `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Repeated"`
+}
+
+func (s GetLindormV2StreamEngineInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2StreamEngineInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2StreamEngineInfoResponseBody) SetInstanceId(v string) *GetLindormV2StreamEngineInfoResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoResponseBody) SetRequestId(v string) *GetLindormV2StreamEngineInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoResponseBody) SetResourceGroupList(v []*GetLindormV2StreamEngineInfoResponseBodyResourceGroupList) *GetLindormV2StreamEngineInfoResponseBody {
+	s.ResourceGroupList = v
+	return s
+}
+
+type GetLindormV2StreamEngineInfoResponseBodyResourceGroupList struct {
+	JmIpList          []*string `json:"JmIpList,omitempty" xml:"JmIpList,omitempty" type:"Repeated"`
+	Quantity          *int32    `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	ResourceGroupName *string   `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	SgIpList          []*string `json:"SgIpList,omitempty" xml:"SgIpList,omitempty" type:"Repeated"`
+	Spec              *string   `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	SpecId            *string   `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	Status            *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetLindormV2StreamEngineInfoResponseBodyResourceGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2StreamEngineInfoResponseBodyResourceGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2StreamEngineInfoResponseBodyResourceGroupList) SetJmIpList(v []*string) *GetLindormV2StreamEngineInfoResponseBodyResourceGroupList {
+	s.JmIpList = v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoResponseBodyResourceGroupList) SetQuantity(v int32) *GetLindormV2StreamEngineInfoResponseBodyResourceGroupList {
+	s.Quantity = &v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoResponseBodyResourceGroupList) SetResourceGroupName(v string) *GetLindormV2StreamEngineInfoResponseBodyResourceGroupList {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoResponseBodyResourceGroupList) SetSgIpList(v []*string) *GetLindormV2StreamEngineInfoResponseBodyResourceGroupList {
+	s.SgIpList = v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoResponseBodyResourceGroupList) SetSpec(v string) *GetLindormV2StreamEngineInfoResponseBodyResourceGroupList {
+	s.Spec = &v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoResponseBodyResourceGroupList) SetSpecId(v string) *GetLindormV2StreamEngineInfoResponseBodyResourceGroupList {
+	s.SpecId = &v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoResponseBodyResourceGroupList) SetStatus(v string) *GetLindormV2StreamEngineInfoResponseBodyResourceGroupList {
+	s.Status = &v
+	return s
+}
+
+type GetLindormV2StreamEngineInfoResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLindormV2StreamEngineInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLindormV2StreamEngineInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormV2StreamEngineInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2StreamEngineInfoResponse) SetHeaders(v map[string]*string) *GetLindormV2StreamEngineInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoResponse) SetStatusCode(v int32) *GetLindormV2StreamEngineInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLindormV2StreamEngineInfoResponse) SetBody(v *GetLindormV2StreamEngineInfoResponseBody) *GetLindormV2StreamEngineInfoResponse {
+	s.Body = v
+	return s
+}
+
 type ListAutoScalingConfigsRequest struct {
 	// This parameter is required.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -14921,6 +15080,86 @@ func (client *Client) GetLindormV2StorageUsage(request *GetLindormV2StorageUsage
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLindormV2StorageUsageResponse{}
 	_body, _err := client.GetLindormV2StorageUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取流引擎信息
+//
+// @param request - GetLindormV2StreamEngineInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLindormV2StreamEngineInfoResponse
+func (client *Client) GetLindormV2StreamEngineInfoWithOptions(request *GetLindormV2StreamEngineInfoRequest, runtime *util.RuntimeOptions) (_result *GetLindormV2StreamEngineInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLindormV2StreamEngineInfo"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLindormV2StreamEngineInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取流引擎信息
+//
+// @param request - GetLindormV2StreamEngineInfoRequest
+//
+// @return GetLindormV2StreamEngineInfoResponse
+func (client *Client) GetLindormV2StreamEngineInfo(request *GetLindormV2StreamEngineInfoRequest) (_result *GetLindormV2StreamEngineInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLindormV2StreamEngineInfoResponse{}
+	_body, _err := client.GetLindormV2StreamEngineInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
