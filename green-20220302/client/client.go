@@ -385,7 +385,12 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	// example:
 	//
 	// This is a title.
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the labels.
+	//
+	// example:
+	//
+	// no risk
 	Descriptions *string `json:"Descriptions,omitempty" xml:"Descriptions,omitempty"`
 	// The details of the labels.
 	//
@@ -623,6 +628,11 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary) Set
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels struct {
+	// The description of the labels.
+	//
+	// example:
+	//
+	// no risk
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The details of the labels.
 	//
@@ -781,7 +791,8 @@ type DescribeImageModerationResultResponseBodyData struct {
 	// example:
 	//
 	// 1
-	FrameNum *int32 `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
+	FrameNum     *int32  `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
+	ManualTaskId *string `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
 	// The reqId field returned by the Image Async Moderation API.
 	//
 	// example:
@@ -821,6 +832,11 @@ func (s *DescribeImageModerationResultResponseBodyData) SetFrameNum(v int32) *De
 	return s
 }
 
+func (s *DescribeImageModerationResultResponseBodyData) SetManualTaskId(v string) *DescribeImageModerationResultResponseBodyData {
+	s.ManualTaskId = &v
+	return s
+}
+
 func (s *DescribeImageModerationResultResponseBodyData) SetReqId(v string) *DescribeImageModerationResultResponseBodyData {
 	s.ReqId = &v
 	return s
@@ -854,7 +870,12 @@ type DescribeImageModerationResultResponseBodyDataResult struct {
 	// example:
 	//
 	// violent_explosion
-	Label     *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// Risk Level
+	//
+	// example:
+	//
+	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
@@ -1992,7 +2013,8 @@ type ImageBatchModerationResponseBodyData struct {
 	// example:
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
-	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId       *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	ManualTaskId *string `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
 	// The risk labels, confidence scores, and other parameters of image detection results, in an array structure.
 	Result []*ImageBatchModerationResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The risk labels, confidence scores, and other parameters for each service\\"s image detection, in an array structure.
@@ -2015,6 +2037,11 @@ func (s ImageBatchModerationResponseBodyData) GoString() string {
 
 func (s *ImageBatchModerationResponseBodyData) SetDataId(v string) *ImageBatchModerationResponseBodyData {
 	s.DataId = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyData) SetManualTaskId(v string) *ImageBatchModerationResponseBodyData {
+	s.ManualTaskId = &v
 	return s
 }
 
@@ -2791,7 +2818,8 @@ type ImageModerationResponseBodyData struct {
 	// fb5ffab1-993b-449f-b8d6-b97d5e3331f2
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	// Auxiliary reference information.
-	Ext *ImageModerationResponseBodyDataExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
+	Ext          *ImageModerationResponseBodyDataExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
+	ManualTaskId *string                             `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
 	// The results of image moderation parameters such as the label parameter and the confidence parameter, which are an array structure.
 	Result []*ImageModerationResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Risk Level.
@@ -2817,6 +2845,11 @@ func (s *ImageModerationResponseBodyData) SetDataId(v string) *ImageModerationRe
 
 func (s *ImageModerationResponseBodyData) SetExt(v *ImageModerationResponseBodyDataExt) *ImageModerationResponseBodyData {
 	s.Ext = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyData) SetManualTaskId(v string) *ImageModerationResponseBodyData {
+	s.ManualTaskId = &v
 	return s
 }
 
@@ -3932,7 +3965,12 @@ type ImageModerationResponseBodyDataResult struct {
 	// example:
 	//
 	// violent_explosion
-	Label     *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// Risk Level
+	//
+	// example:
+	//
+	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
@@ -3994,23 +4032,38 @@ func (s *ImageModerationResponse) SetBody(v *ImageModerationResponseBody) *Image
 }
 
 type ManualCallbackRequest struct {
+	// Channel field
+	//
+	// example:
+	//
+	// ant
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// Checksum.
+	//
 	// example:
 	//
 	// abc
 	Checksum *string `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
+	// Code value
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
+	//
 	// example:
 	//
 	// {\\"Result\\": [{\\"Confidence\\": 100.0, \\"CustomizedHit\\": [{\\"KeyWords\\": u\\"\\u4fdd\\u969c,\\u6700\\u5927,\\u9ad8\\u7ea7\\", \\"LibName\\": u\\"\\u4f18\\u8def\\u654f\\u611f\\u8bcd\\"}], \\"Label\\": \\"customized\\"}]}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Message information
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Platform request ID, used for troubleshooting assistance
+	//
 	// example:
 	//
 	// B0963D30-BAB4-562F-9ED0-7A23AEC51C7C
@@ -4056,15 +4109,19 @@ func (s *ManualCallbackRequest) SetReqId(v string) *ManualCallbackRequest {
 }
 
 type ManualCallbackResponseBody struct {
+	// Error code
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Message information
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -4125,10 +4182,18 @@ func (s *ManualCallbackResponse) SetBody(v *ManualCallbackResponseBody) *ManualC
 }
 
 type ManualModerationRequest struct {
+	// Service.
+	//
 	// example:
 	//
 	// imageManualCheck
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// Parameter set required for the review service, in JSON string format.
+	//
+	// - url: The URL of the object to be checked. Please ensure that this URL is publicly accessible.
+	//
+	// - dataId: Optional, the data ID corresponding to the object being checked.
+	//
 	// example:
 	//
 	// {"url": "https://talesofai.oss-cn-shanghai.aliyuncs.com/xxx.mp4", "dataId": "data1234"}
@@ -4154,16 +4219,21 @@ func (s *ManualModerationRequest) SetServiceParameters(v string) *ManualModerati
 }
 
 type ManualModerationResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 200
-	Code *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *ManualModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error message
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -4200,10 +4270,14 @@ func (s *ManualModerationResponseBody) SetRequestId(v string) *ManualModerationR
 }
 
 type ManualModerationResponseBodyData struct {
+	// The value of dataId passed during the API request. This field will not be present if it was not provided during the request.
+	//
 	// example:
 	//
 	// 2a5389eb-4ff8-4584-ac99-644e2a539aa1
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// xxxxx-xxxxx
@@ -4258,6 +4332,10 @@ func (s *ManualModerationResponse) SetBody(v *ManualModerationResponseBody) *Man
 }
 
 type ManualModerationResultRequest struct {
+	// Set of parameters required by the service, in JSON string format.
+	//
+	// - TaskId: The task ID returned when the task was submitted.
+	//
 	// example:
 	//
 	// {\\"TaskId\\":\\"e5f2d886-4c23-440d-999c-bd98acde11b6\\"}
@@ -4278,16 +4356,21 @@ func (s *ManualModerationResultRequest) SetServiceParameters(v string) *ManualMo
 }
 
 type ManualModerationResultResponseBody struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *ManualModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error message
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -4324,15 +4407,30 @@ func (s *ManualModerationResultResponseBody) SetRequestId(v string) *ManualModer
 }
 
 type ManualModerationResultResponseBodyData struct {
+	// The value of dataId passed during the API request. This field will not be present if it was not provided during the request.
+	//
 	// example:
 	//
 	// data1234
-	DataId *string                                         `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// Detailed label results.
 	Result []*ManualModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Risk level, returned based on the set high and low risk scores. Possible values include:
+	//
+	// - high: High risk
+	//
+	//
+	//
+	// - low: Low risk
+	//
+	//  - none: No risk detected
+	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// xxxxx-xxxxx
@@ -4368,7 +4466,14 @@ func (s *ManualModerationResultResponseBodyData) SetTaskId(v string) *ManualMode
 }
 
 type ManualModerationResultResponseBodyDataResult struct {
+	// Label description
+	//
+	// example:
+	//
+	// no risk
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Risk label
+	//
 	// example:
 	//
 	// violent_explosion
@@ -4423,7 +4528,23 @@ func (s *ManualModerationResultResponse) SetBody(v *ManualModerationResultRespon
 }
 
 type TextModerationRequest struct {
-	// The type of the moderation service.
+	// The type of the moderation service. Valid values: nickname_detection: user nickname chat_detection: chat interactions comment_detection: dynamic comments pgc_detection: professionally-generated content (PGC) teaching materials
+	//
+	// Valid values:
+	//
+	// 	- pgc_detection: moderation of PGC teaching materials
+	//
+	// 	- nickname_detection: user nickname moderation
+	//
+	// 	- comment_multilingual_pro: multi-language moderation in international business scenarios
+	//
+	// 	- chat_detection: moderation of interactive content of private chats
+	//
+	// 	- ad_compliance_detection: advertising law compliance identification
+	//
+	// 	- comment_detection: moderation of comment content of public chats
+	//
+	// 	- ai_art_detection: AI-generated text identfication
 	//
 	// example:
 	//
@@ -4512,8 +4633,18 @@ type TextModerationResponseBodyData struct {
 	// example:
 	//
 	// 123456
-	AccountId    *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	DataId       *string `json:"dataId,omitempty" xml:"dataId,omitempty"`
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// The ID of the moderated object.
+	//
+	// example:
+	//
+	// text1234
+	DataId *string `json:"dataId,omitempty" xml:"dataId,omitempty"`
+	// The description of the labels.
+	//
+	// example:
+	//
+	// no risk
 	Descriptions *string `json:"descriptions,omitempty" xml:"descriptions,omitempty"`
 	// The device ID.
 	//
@@ -4521,13 +4652,14 @@ type TextModerationResponseBodyData struct {
 	//
 	// xxxxxx
 	DeviceId *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
-	// Labels.
+	// The labels. Multiple labels are separated by commas (,). Valid values: ad: ad violation profanity: abuse contraband: contraband sexual_content: pornography violence: violence nonsense: irrigation spam: spam negative_content: undesirable content cyberbullying: cyberbullying C_customized: custom library that is hit
 	//
 	// example:
 	//
 	// porn
-	Labels *string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The JSON string used to locate the cause.
+	Labels       *string `json:"labels,omitempty" xml:"labels,omitempty"`
+	ManualTaskId *string `json:"manualTaskId,omitempty" xml:"manualTaskId,omitempty"`
+	// The JSON string used to locate the cause. Valid values: riskTips: subcategory label riskWords: risk words adNums: hit advertising number customizedWords: customized words customizedLibs: customized libraries
 	//
 	// example:
 	//
@@ -4565,6 +4697,11 @@ func (s *TextModerationResponseBodyData) SetDeviceId(v string) *TextModerationRe
 
 func (s *TextModerationResponseBodyData) SetLabels(v string) *TextModerationResponseBodyData {
 	s.Labels = &v
+	return s
+}
+
+func (s *TextModerationResponseBodyData) SetManualTaskId(v string) *TextModerationResponseBodyData {
+	s.ManualTaskId = &v
 	return s
 }
 
@@ -4714,7 +4851,8 @@ type TextModerationPlusResponseBodyData struct {
 	// example:
 	//
 	// text1234
-	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId       *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	ManualTaskId *string `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
 	// The results.
 	Result []*TextModerationPlusResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Risk Level
@@ -4764,6 +4902,11 @@ func (s *TextModerationPlusResponseBodyData) SetAttackResult(v []*TextModeration
 
 func (s *TextModerationPlusResponseBodyData) SetDataId(v string) *TextModerationPlusResponseBodyData {
 	s.DataId = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyData) SetManualTaskId(v string) *TextModerationPlusResponseBodyData {
+	s.ManualTaskId = &v
 	return s
 }
 
@@ -5580,7 +5723,8 @@ type VideoModerationResultResponseBodyData struct {
 	// example:
 	//
 	// liveId
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId       *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	ManualTaskId *string `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
 	// Risk Level.
 	//
 	// example:
@@ -5620,6 +5764,11 @@ func (s *VideoModerationResultResponseBodyData) SetFrameResult(v *VideoModeratio
 
 func (s *VideoModerationResultResponseBodyData) SetLiveId(v string) *VideoModerationResultResponseBodyData {
 	s.LiveId = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyData) SetManualTaskId(v string) *VideoModerationResultResponseBodyData {
+	s.ManualTaskId = &v
 	return s
 }
 
@@ -5670,6 +5819,11 @@ func (s *VideoModerationResultResponseBodyDataAudioResult) SetSliceDetails(v []*
 }
 
 type VideoModerationResultResponseBodyDataAudioResultAudioSummarys struct {
+	// The description of the labels.
+	//
+	// example:
+	//
+	// no risk
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The voice label.
 	//
@@ -5709,6 +5863,11 @@ func (s *VideoModerationResultResponseBodyDataAudioResultAudioSummarys) SetLabel
 }
 
 type VideoModerationResultResponseBodyDataAudioResultSliceDetails struct {
+	// The description of the labels.
+	//
+	// example:
+	//
+	// no risk
 	Descriptions *string `json:"Descriptions,omitempty" xml:"Descriptions,omitempty"`
 	// The end time of the text after voice-to-text conversion. Unit: seconds.
 	//
@@ -6013,7 +6172,8 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetTimestamp(v 
 type VideoModerationResultResponseBodyDataFrameResultFramesResults struct {
 	// If a custom image library is hit, information about the custom image library is returned.
 	CustomImage []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
-	LogoData    []*VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData    `json:"LogoData,omitempty" xml:"LogoData,omitempty" type:"Repeated"`
+	// Returns logo information when the video contains a logo.
+	LogoData []*VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData `json:"LogoData,omitempty" xml:"LogoData,omitempty" type:"Repeated"`
 	// If the video contains a specific figure, the code of the identified figure is returned.
 	PublicFigure []*VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
 	// The results of frame moderation parameters such as the label parameter and the confidence parameter.
@@ -6100,8 +6260,10 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImag
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData struct {
+	// The location of the logo.
 	Location *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	Logo     []*VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo   `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
+	// Logo information.
+	Logo []*VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData) String() string {
@@ -6123,9 +6285,29 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData) 
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation struct {
+	// The height of the text area. Unit: pixels.
+	//
+	// example:
+	//
+	// 111
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	// The width of the text area. Unit: pixels.
+	//
+	// example:
+	//
+	// 111
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	// The distance from the top-left corner of the text area to the y-axis, with the top-left corner of the image as the origin. Unit: pixels.
+	//
+	// example:
+	//
+	// 111
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The distance from the top-left corner of the text area to the x-axis, with the top-left corner of the image as the origin. Unit: pixels.
+	//
+	// example:
+	//
+	// 222
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -6158,9 +6340,24 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLo
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo struct {
-	Confidence *int64  `json:"confidence,omitempty" xml:"confidence,omitempty"`
-	Label      *string `json:"label,omitempty" xml:"label,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Confidence score, ranging from 0 to 100, with two decimal places.
+	//
+	// example:
+	//
+	// 99.10
+	Confidence *int64 `json:"confidence,omitempty" xml:"confidence,omitempty"`
+	// label
+	//
+	// example:
+	//
+	// pt_logotoSocialNetwork
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// Logo name.
+	//
+	// example:
+	//
+	// **logo
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo) String() string {
@@ -6631,7 +6828,8 @@ type VoiceModerationResultResponseBodyData struct {
 	// example:
 	//
 	// liveId
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId       *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	ManualTaskId *string `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
 	// Risk Level.
 	//
 	// example:
@@ -6672,6 +6870,11 @@ func (s *VoiceModerationResultResponseBodyData) SetLiveId(v string) *VoiceModera
 	return s
 }
 
+func (s *VoiceModerationResultResponseBodyData) SetManualTaskId(v string) *VoiceModerationResultResponseBodyData {
+	s.ManualTaskId = &v
+	return s
+}
+
 func (s *VoiceModerationResultResponseBodyData) SetRiskLevel(v string) *VoiceModerationResultResponseBodyData {
 	s.RiskLevel = &v
 	return s
@@ -6693,6 +6896,11 @@ func (s *VoiceModerationResultResponseBodyData) SetUrl(v string) *VoiceModeratio
 }
 
 type VoiceModerationResultResponseBodyDataSliceDetails struct {
+	// The description of the labels.
+	//
+	// example:
+	//
+	// no risk
 	Descriptions *string `json:"Descriptions,omitempty" xml:"Descriptions,omitempty"`
 	// The end time of the audio segment in seconds.
 	//
@@ -6985,24 +7193,13 @@ func (client *Client) DescribeFileModerationResultWithOptions(request *DescribeF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeFileModerationResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeFileModerationResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeFileModerationResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7029,9 +7226,9 @@ func (client *Client) DescribeFileModerationResult(request *DescribeFileModerati
 //
 // Description:
 //
-//   Billing: This operation is free of charge.
+//	  Billing: This operation is free of charge.
 //
-// 	- QPS limit: You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//		- QPS limit: You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeImageModerationResultRequest
 //
@@ -7062,24 +7259,13 @@ func (client *Client) DescribeImageModerationResultWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeImageModerationResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeImageModerationResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeImageModerationResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7088,9 +7274,9 @@ func (client *Client) DescribeImageModerationResultWithOptions(request *Describe
 //
 // Description:
 //
-//   Billing: This operation is free of charge.
+//	  Billing: This operation is free of charge.
 //
-// 	- QPS limit: You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//		- QPS limit: You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeImageModerationResultRequest
 //
@@ -7143,24 +7329,13 @@ func (client *Client) DescribeImageResultExtWithOptions(request *DescribeImageRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeImageResultExtResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeImageResultExtResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeImageResultExtResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7203,24 +7378,13 @@ func (client *Client) DescribeUploadTokenWithOptions(runtime *util.RuntimeOption
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUploadTokenResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUploadTokenResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUploadTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7245,11 +7409,11 @@ func (client *Client) DescribeUploadToken() (_result *DescribeUploadTokenRespons
 //
 // Description:
 //
-//   Billing: This operation is free of charge.
+//	  Billing: This operation is free of charge.
 //
-// 	- Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
+//		- Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
 //
-// 	- You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//		- You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeUrlModerationResultRequest
 //
@@ -7280,24 +7444,13 @@ func (client *Client) DescribeUrlModerationResultWithOptions(request *DescribeUr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUrlModerationResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUrlModerationResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUrlModerationResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7306,11 +7459,11 @@ func (client *Client) DescribeUrlModerationResultWithOptions(request *DescribeUr
 //
 // Description:
 //
-//   Billing: This operation is free of charge.
+//	  Billing: This operation is free of charge.
 //
-// 	- Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
+//		- Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
 //
-// 	- You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//		- You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeUrlModerationResultRequest
 //
@@ -7363,24 +7516,13 @@ func (client *Client) FileModerationWithOptions(request *FileModerationRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &FileModerationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &FileModerationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &FileModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7438,24 +7580,13 @@ func (client *Client) ImageAsyncModerationWithOptions(request *ImageAsyncModerat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ImageAsyncModerationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ImageAsyncModerationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ImageAsyncModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7513,24 +7644,13 @@ func (client *Client) ImageBatchModerationWithOptions(request *ImageBatchModerat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ImageBatchModerationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ImageBatchModerationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ImageBatchModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7592,24 +7712,13 @@ func (client *Client) ImageModerationWithOptions(request *ImageModerationRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ImageModerationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ImageModerationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ImageModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7636,7 +7745,7 @@ func (client *Client) ImageModeration(request *ImageModerationRequest) (_result 
 
 // Summary:
 //
-// 内容安全人审结果回调接口
+// # Content Security Manual Review Result Callback Interface
 //
 // @param request - ManualCallbackRequest
 //
@@ -7687,29 +7796,18 @@ func (client *Client) ManualCallbackWithOptions(request *ManualCallbackRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ManualCallbackResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ManualCallbackResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ManualCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 内容安全人审结果回调接口
+// # Content Security Manual Review Result Callback Interface
 //
 // @param request - ManualCallbackRequest
 //
@@ -7727,7 +7825,7 @@ func (client *Client) ManualCallback(request *ManualCallbackRequest) (_result *M
 
 // Summary:
 //
-// 内容安全人审提交请求接口
+// # Content Security Manual Review Request Interface
 //
 // @param request - ManualModerationRequest
 //
@@ -7762,29 +7860,18 @@ func (client *Client) ManualModerationWithOptions(request *ManualModerationReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ManualModerationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ManualModerationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ManualModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 内容安全人审提交请求接口
+// # Content Security Manual Review Request Interface
 //
 // @param request - ManualModerationRequest
 //
@@ -7802,7 +7889,7 @@ func (client *Client) ManualModeration(request *ManualModerationRequest) (_resul
 
 // Summary:
 //
-// 获取人审结果
+// # Retrieve manual review results
 //
 // @param request - ManualModerationResultRequest
 //
@@ -7833,29 +7920,18 @@ func (client *Client) ManualModerationResultWithOptions(request *ManualModeratio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ManualModerationResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ManualModerationResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ManualModerationResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取人审结果
+// # Retrieve manual review results
 //
 // @param request - ManualModerationResultRequest
 //
@@ -7873,7 +7949,11 @@ func (client *Client) ManualModerationResult(request *ManualModerationResultRequ
 
 // Summary:
 //
-// 文本审核
+// Provides moderation services for multiple business scenarios and identifies various violation risks.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/464388.html?#section-itm-m2s-ugq) of Text Moderation 2.0.
 //
 // @param request - TextModerationRequest
 //
@@ -7908,29 +7988,22 @@ func (client *Client) TextModerationWithOptions(request *TextModerationRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TextModerationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TextModerationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TextModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 文本审核
+// Provides moderation services for multiple business scenarios and identifies various violation risks.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/464388.html?#section-itm-m2s-ugq) of Text Moderation 2.0.
 //
 // @param request - TextModerationRequest
 //
@@ -7987,24 +8060,13 @@ func (client *Client) TextModerationPlusWithOptions(request *TextModerationPlusR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TextModerationPlusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TextModerationPlusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TextModerationPlusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8066,24 +8128,13 @@ func (client *Client) UrlAsyncModerationWithOptions(request *UrlAsyncModerationR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UrlAsyncModerationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UrlAsyncModerationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UrlAsyncModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8141,24 +8192,13 @@ func (client *Client) VideoModerationWithOptions(request *VideoModerationRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &VideoModerationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &VideoModerationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &VideoModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8216,24 +8256,13 @@ func (client *Client) VideoModerationCancelWithOptions(request *VideoModerationC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &VideoModerationCancelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &VideoModerationCancelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &VideoModerationCancelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8256,7 +8285,7 @@ func (client *Client) VideoModerationCancel(request *VideoModerationCancelReques
 
 // Summary:
 //
-// Obtains the moderation results of a Video Moderation 2.0 task
+// # Get Video Detection Results
 //
 // Description:
 //
@@ -8295,29 +8324,18 @@ func (client *Client) VideoModerationResultWithOptions(request *VideoModerationR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &VideoModerationResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &VideoModerationResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &VideoModerationResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Obtains the moderation results of a Video Moderation 2.0 task
+// # Get Video Detection Results
 //
 // Description:
 //
@@ -8374,24 +8392,13 @@ func (client *Client) VoiceModerationWithOptions(request *VoiceModerationRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &VoiceModerationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &VoiceModerationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &VoiceModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8449,24 +8456,13 @@ func (client *Client) VoiceModerationCancelWithOptions(request *VoiceModerationC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &VoiceModerationCancelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &VoiceModerationCancelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &VoiceModerationCancelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8524,24 +8520,13 @@ func (client *Client) VoiceModerationResultWithOptions(request *VoiceModerationR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &VoiceModerationResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &VoiceModerationResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &VoiceModerationResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
