@@ -2180,8 +2180,9 @@ type CredentialVerifyV2Request struct {
 	// example:
 	//
 	// 4****************1
-	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	ImageFile   *string `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
+	IdentifyNum  *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	ImageContext *string `json:"ImageContext,omitempty" xml:"ImageContext,omitempty"`
+	ImageFile    *string `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
 	// example:
 	//
 	// http://marry.momocdn.com/avatar/3B/B6/3BB6527E-7467-926E-1048-B43614F20CC420230803_L.jpg
@@ -2233,6 +2234,11 @@ func (s *CredentialVerifyV2Request) SetCredType(v string) *CredentialVerifyV2Req
 
 func (s *CredentialVerifyV2Request) SetIdentifyNum(v string) *CredentialVerifyV2Request {
 	s.IdentifyNum = &v
+	return s
+}
+
+func (s *CredentialVerifyV2Request) SetImageContext(v string) *CredentialVerifyV2Request {
+	s.ImageContext = &v
 	return s
 }
 
@@ -2332,6 +2338,7 @@ type CredentialVerifyV2AdvanceRequest struct {
 	//
 	// 4****************1
 	IdentifyNum     *string   `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	ImageContext    *string   `json:"ImageContext,omitempty" xml:"ImageContext,omitempty"`
 	ImageFileObject io.Reader `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
 	// example:
 	//
@@ -2384,6 +2391,11 @@ func (s *CredentialVerifyV2AdvanceRequest) SetCredType(v string) *CredentialVeri
 
 func (s *CredentialVerifyV2AdvanceRequest) SetIdentifyNum(v string) *CredentialVerifyV2AdvanceRequest {
 	s.IdentifyNum = &v
+	return s
+}
+
+func (s *CredentialVerifyV2AdvanceRequest) SetImageContext(v string) *CredentialVerifyV2AdvanceRequest {
+	s.ImageContext = &v
 	return s
 }
 
@@ -2482,8 +2494,9 @@ type CredentialVerifyV2ShrinkRequest struct {
 	// example:
 	//
 	// 4****************1
-	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	ImageFile   *string `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
+	IdentifyNum  *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	ImageContext *string `json:"ImageContext,omitempty" xml:"ImageContext,omitempty"`
+	ImageFile    *string `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
 	// example:
 	//
 	// http://marry.momocdn.com/avatar/3B/B6/3BB6527E-7467-926E-1048-B43614F20CC420230803_L.jpg
@@ -2535,6 +2548,11 @@ func (s *CredentialVerifyV2ShrinkRequest) SetCredType(v string) *CredentialVerif
 
 func (s *CredentialVerifyV2ShrinkRequest) SetIdentifyNum(v string) *CredentialVerifyV2ShrinkRequest {
 	s.IdentifyNum = &v
+	return s
+}
+
+func (s *CredentialVerifyV2ShrinkRequest) SetImageContext(v string) *CredentialVerifyV2ShrinkRequest {
+	s.ImageContext = &v
 	return s
 }
 
@@ -10958,6 +10976,10 @@ func (client *Client) CredentialVerifyV2WithOptions(tmpReq *CredentialVerifyV2Re
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageContext)) {
+		body["ImageContext"] = request.ImageContext
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageFile)) {
 		body["ImageFile"] = request.ImageFile
 	}
