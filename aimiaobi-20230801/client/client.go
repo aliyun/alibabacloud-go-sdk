@@ -3930,6 +3930,133 @@ func (s *ExportAnalysisTagDetailByTaskIdResponse) SetBody(v *ExportAnalysisTagDe
 	return s
 }
 
+type ExportCustomSourceAnalysisTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c9f226b02cca4f42a84c5e955c39dfd2
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ExportCustomSourceAnalysisTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportCustomSourceAnalysisTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportCustomSourceAnalysisTaskRequest) SetTaskId(v string) *ExportCustomSourceAnalysisTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ExportCustomSourceAnalysisTaskRequest) SetWorkspaceId(v string) *ExportCustomSourceAnalysisTaskRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ExportCustomSourceAnalysisTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// http://www.example.com/xxx.jsonLine
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ExportCustomSourceAnalysisTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportCustomSourceAnalysisTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportCustomSourceAnalysisTaskResponseBody) SetCode(v string) *ExportCustomSourceAnalysisTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExportCustomSourceAnalysisTaskResponseBody) SetData(v string) *ExportCustomSourceAnalysisTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ExportCustomSourceAnalysisTaskResponseBody) SetHttpStatusCode(v int32) *ExportCustomSourceAnalysisTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExportCustomSourceAnalysisTaskResponseBody) SetMessage(v string) *ExportCustomSourceAnalysisTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExportCustomSourceAnalysisTaskResponseBody) SetRequestId(v string) *ExportCustomSourceAnalysisTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExportCustomSourceAnalysisTaskResponseBody) SetSuccess(v bool) *ExportCustomSourceAnalysisTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExportCustomSourceAnalysisTaskResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportCustomSourceAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExportCustomSourceAnalysisTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportCustomSourceAnalysisTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportCustomSourceAnalysisTaskResponse) SetHeaders(v map[string]*string) *ExportCustomSourceAnalysisTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportCustomSourceAnalysisTaskResponse) SetStatusCode(v int32) *ExportCustomSourceAnalysisTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportCustomSourceAnalysisTaskResponse) SetBody(v *ExportCustomSourceAnalysisTaskResponseBody) *ExportCustomSourceAnalysisTaskResponse {
+	s.Body = v
+	return s
+}
+
 type ExportGeneratedContentRequest struct {
 	// This parameter is required.
 	//
@@ -6110,6 +6237,241 @@ func (s *GetCustomHotTopicBroadcastJobResponse) SetStatusCode(v int32) *GetCusto
 }
 
 func (s *GetCustomHotTopicBroadcastJobResponse) SetBody(v *GetCustomHotTopicBroadcastJobResponseBody) *GetCustomHotTopicBroadcastJobResponse {
+	s.Body = v
+	return s
+}
+
+type GetCustomSourceTopicAnalysisTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c9f226b02cca4f42a84c5e955c39dfd2
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetCustomSourceTopicAnalysisTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomSourceTopicAnalysisTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskRequest) SetTaskId(v string) *GetCustomSourceTopicAnalysisTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskRequest) SetWorkspaceId(v string) *GetCustomSourceTopicAnalysisTaskRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetCustomSourceTopicAnalysisTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetCustomSourceTopicAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCustomSourceTopicAnalysisTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomSourceTopicAnalysisTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBody) SetCode(v string) *GetCustomSourceTopicAnalysisTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBody) SetData(v *GetCustomSourceTopicAnalysisTaskResponseBodyData) *GetCustomSourceTopicAnalysisTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBody) SetHttpStatusCode(v int32) *GetCustomSourceTopicAnalysisTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBody) SetMessage(v string) *GetCustomSourceTopicAnalysisTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBody) SetRequestId(v string) *GetCustomSourceTopicAnalysisTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBody) SetSuccess(v bool) *GetCustomSourceTopicAnalysisTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCustomSourceTopicAnalysisTaskResponseBodyData struct {
+	// example:
+	//
+	// 5
+	ClusterCount   *int32                                                            `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
+	ClusterResults []*GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults `json:"ClusterResults,omitempty" xml:"ClusterResults,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 8
+	MaxClusteredTopicNewsSize *int32 `json:"MaxClusteredTopicNewsSize,omitempty" xml:"MaxClusteredTopicNewsSize,omitempty"`
+	// example:
+	//
+	// 10
+	ParsedNewsSize *int32 `json:"ParsedNewsSize,omitempty" xml:"ParsedNewsSize,omitempty"`
+	// example:
+	//
+	// SUCCESSED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetCustomSourceTopicAnalysisTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomSourceTopicAnalysisTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBodyData) SetClusterCount(v int32) *GetCustomSourceTopicAnalysisTaskResponseBodyData {
+	s.ClusterCount = &v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBodyData) SetClusterResults(v []*GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults) *GetCustomSourceTopicAnalysisTaskResponseBodyData {
+	s.ClusterResults = v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBodyData) SetErrorMessage(v string) *GetCustomSourceTopicAnalysisTaskResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBodyData) SetMaxClusteredTopicNewsSize(v int32) *GetCustomSourceTopicAnalysisTaskResponseBodyData {
+	s.MaxClusteredTopicNewsSize = &v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBodyData) SetParsedNewsSize(v int32) *GetCustomSourceTopicAnalysisTaskResponseBodyData {
+	s.ParsedNewsSize = &v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBodyData) SetStatus(v string) *GetCustomSourceTopicAnalysisTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults struct {
+	ClusterNews []*GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews `json:"ClusterNews,omitempty" xml:"ClusterNews,omitempty" type:"Repeated"`
+	Topic       *string                                                                      `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults) SetClusterNews(v []*GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews) *GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults {
+	s.ClusterNews = v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults) SetTopic(v string) *GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults {
+	s.Topic = &v
+	return s
+}
+
+type GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews struct {
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// http://www.example.com/xxx.html
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews) SetTitle(v string) *GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews {
+	s.Title = &v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews) SetUrl(v string) *GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews {
+	s.Url = &v
+	return s
+}
+
+type GetCustomSourceTopicAnalysisTaskResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCustomSourceTopicAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCustomSourceTopicAnalysisTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCustomSourceTopicAnalysisTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponse) SetHeaders(v map[string]*string) *GetCustomSourceTopicAnalysisTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponse) SetStatusCode(v int32) *GetCustomSourceTopicAnalysisTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponse) SetBody(v *GetCustomSourceTopicAnalysisTaskResponseBody) *GetCustomSourceTopicAnalysisTaskResponse {
 	s.Body = v
 	return s
 }
@@ -42664,6 +43026,300 @@ func (s *SubmitCustomHotTopicBroadcastJobResponse) SetBody(v *SubmitCustomHotTop
 	return s
 }
 
+type SubmitCustomSourceTopicAnalysisRequest struct {
+	// example:
+	//
+	// json
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// example:
+	//
+	// http://www.example.com/xxx.json
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// 50
+	MaxTopicSize *int32                                        `json:"MaxTopicSize,omitempty" xml:"MaxTopicSize,omitempty"`
+	News         []*SubmitCustomSourceTopicAnalysisRequestNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s SubmitCustomSourceTopicAnalysisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomSourceTopicAnalysisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequest) SetFileType(v string) *SubmitCustomSourceTopicAnalysisRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequest) SetFileUrl(v string) *SubmitCustomSourceTopicAnalysisRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequest) SetMaxTopicSize(v int32) *SubmitCustomSourceTopicAnalysisRequest {
+	s.MaxTopicSize = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequest) SetNews(v []*SubmitCustomSourceTopicAnalysisRequestNews) *SubmitCustomSourceTopicAnalysisRequest {
+	s.News = v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequest) SetWorkspaceId(v string) *SubmitCustomSourceTopicAnalysisRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type SubmitCustomSourceTopicAnalysisRequestNews struct {
+	Comments []*SubmitCustomSourceTopicAnalysisRequestNewsComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
+	Content  *string                                               `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2024-01-22 10:29:00
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// http://www.example.com/xxx.html
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s SubmitCustomSourceTopicAnalysisRequestNews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomSourceTopicAnalysisRequestNews) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestNews) SetComments(v []*SubmitCustomSourceTopicAnalysisRequestNewsComments) *SubmitCustomSourceTopicAnalysisRequestNews {
+	s.Comments = v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestNews) SetContent(v string) *SubmitCustomSourceTopicAnalysisRequestNews {
+	s.Content = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestNews) SetPubTime(v string) *SubmitCustomSourceTopicAnalysisRequestNews {
+	s.PubTime = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestNews) SetTitle(v string) *SubmitCustomSourceTopicAnalysisRequestNews {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestNews) SetUrl(v string) *SubmitCustomSourceTopicAnalysisRequestNews {
+	s.Url = &v
+	return s
+}
+
+type SubmitCustomSourceTopicAnalysisRequestNewsComments struct {
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s SubmitCustomSourceTopicAnalysisRequestNewsComments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomSourceTopicAnalysisRequestNewsComments) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestNewsComments) SetText(v string) *SubmitCustomSourceTopicAnalysisRequestNewsComments {
+	s.Text = &v
+	return s
+}
+
+type SubmitCustomSourceTopicAnalysisShrinkRequest struct {
+	// example:
+	//
+	// json
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// example:
+	//
+	// http://www.example.com/xxx.json
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// 50
+	MaxTopicSize *int32  `json:"MaxTopicSize,omitempty" xml:"MaxTopicSize,omitempty"`
+	NewsShrink   *string `json:"News,omitempty" xml:"News,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s SubmitCustomSourceTopicAnalysisShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomSourceTopicAnalysisShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomSourceTopicAnalysisShrinkRequest) SetFileType(v string) *SubmitCustomSourceTopicAnalysisShrinkRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisShrinkRequest) SetFileUrl(v string) *SubmitCustomSourceTopicAnalysisShrinkRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisShrinkRequest) SetMaxTopicSize(v int32) *SubmitCustomSourceTopicAnalysisShrinkRequest {
+	s.MaxTopicSize = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisShrinkRequest) SetNewsShrink(v string) *SubmitCustomSourceTopicAnalysisShrinkRequest {
+	s.NewsShrink = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisShrinkRequest) SetWorkspaceId(v string) *SubmitCustomSourceTopicAnalysisShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type SubmitCustomSourceTopicAnalysisResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitCustomSourceTopicAnalysisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitCustomSourceTopicAnalysisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomSourceTopicAnalysisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomSourceTopicAnalysisResponseBody) SetCode(v string) *SubmitCustomSourceTopicAnalysisResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisResponseBody) SetData(v *SubmitCustomSourceTopicAnalysisResponseBodyData) *SubmitCustomSourceTopicAnalysisResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisResponseBody) SetHttpStatusCode(v int32) *SubmitCustomSourceTopicAnalysisResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisResponseBody) SetMessage(v string) *SubmitCustomSourceTopicAnalysisResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisResponseBody) SetRequestId(v string) *SubmitCustomSourceTopicAnalysisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisResponseBody) SetSuccess(v bool) *SubmitCustomSourceTopicAnalysisResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitCustomSourceTopicAnalysisResponseBodyData struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s SubmitCustomSourceTopicAnalysisResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomSourceTopicAnalysisResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomSourceTopicAnalysisResponseBodyData) SetTaskId(v string) *SubmitCustomSourceTopicAnalysisResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisResponseBodyData) SetTaskName(v string) *SubmitCustomSourceTopicAnalysisResponseBodyData {
+	s.TaskName = &v
+	return s
+}
+
+type SubmitCustomSourceTopicAnalysisResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitCustomSourceTopicAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitCustomSourceTopicAnalysisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCustomSourceTopicAnalysisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCustomSourceTopicAnalysisResponse) SetHeaders(v map[string]*string) *SubmitCustomSourceTopicAnalysisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisResponse) SetStatusCode(v int32) *SubmitCustomSourceTopicAnalysisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisResponse) SetBody(v *SubmitCustomSourceTopicAnalysisResponseBody) *SubmitCustomSourceTopicAnalysisResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest struct {
 	// This parameter is required.
 	//
@@ -48468,6 +49124,70 @@ func (client *Client) ExportAnalysisTagDetailByTaskId(request *ExportAnalysisTag
 
 // Summary:
 //
+// 导出-自定义数据源-选题视角分析任务结果
+//
+// @param request - ExportCustomSourceAnalysisTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportCustomSourceAnalysisTaskResponse
+func (client *Client) ExportCustomSourceAnalysisTaskWithOptions(request *ExportCustomSourceAnalysisTaskRequest, runtime *util.RuntimeOptions) (_result *ExportCustomSourceAnalysisTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportCustomSourceAnalysisTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportCustomSourceAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出-自定义数据源-选题视角分析任务结果
+//
+// @param request - ExportCustomSourceAnalysisTaskRequest
+//
+// @return ExportCustomSourceAnalysisTaskResponse
+func (client *Client) ExportCustomSourceAnalysisTask(request *ExportCustomSourceAnalysisTaskRequest) (_result *ExportCustomSourceAnalysisTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportCustomSourceAnalysisTaskResponse{}
+	_body, _err := client.ExportCustomSourceAnalysisTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 文档管理-导出。
 //
 // @param request - ExportGeneratedContentRequest
@@ -49277,6 +49997,70 @@ func (client *Client) GetCustomHotTopicBroadcastJob(request *GetCustomHotTopicBr
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCustomHotTopicBroadcastJobResponse{}
 	_body, _err := client.GetCustomHotTopicBroadcastJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义数据源-选题视角分析任务结果
+//
+// @param request - GetCustomSourceTopicAnalysisTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomSourceTopicAnalysisTaskResponse
+func (client *Client) GetCustomSourceTopicAnalysisTaskWithOptions(request *GetCustomSourceTopicAnalysisTaskRequest, runtime *util.RuntimeOptions) (_result *GetCustomSourceTopicAnalysisTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCustomSourceTopicAnalysisTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCustomSourceTopicAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自定义数据源-选题视角分析任务结果
+//
+// @param request - GetCustomSourceTopicAnalysisTaskRequest
+//
+// @return GetCustomSourceTopicAnalysisTaskResponse
+func (client *Client) GetCustomSourceTopicAnalysisTask(request *GetCustomSourceTopicAnalysisTaskRequest) (_result *GetCustomSourceTopicAnalysisTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCustomSourceTopicAnalysisTaskResponse{}
+	_body, _err := client.GetCustomSourceTopicAnalysisTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -57155,6 +57939,88 @@ func (client *Client) SubmitCustomHotTopicBroadcastJob(request *SubmitCustomHotT
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitCustomHotTopicBroadcastJobResponse{}
 	_body, _err := client.SubmitCustomHotTopicBroadcastJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 从自定义数据源提交选题热点分析
+//
+// @param tmpReq - SubmitCustomSourceTopicAnalysisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitCustomSourceTopicAnalysisResponse
+func (client *Client) SubmitCustomSourceTopicAnalysisWithOptions(tmpReq *SubmitCustomSourceTopicAnalysisRequest, runtime *util.RuntimeOptions) (_result *SubmitCustomSourceTopicAnalysisResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitCustomSourceTopicAnalysisShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.News)) {
+		request.NewsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.News, tea.String("News"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		body["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		body["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxTopicSize)) {
+		body["MaxTopicSize"] = request.MaxTopicSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewsShrink)) {
+		body["News"] = request.NewsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitCustomSourceTopicAnalysis"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitCustomSourceTopicAnalysisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 从自定义数据源提交选题热点分析
+//
+// @param request - SubmitCustomSourceTopicAnalysisRequest
+//
+// @return SubmitCustomSourceTopicAnalysisResponse
+func (client *Client) SubmitCustomSourceTopicAnalysis(request *SubmitCustomSourceTopicAnalysisRequest) (_result *SubmitCustomSourceTopicAnalysisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitCustomSourceTopicAnalysisResponse{}
+	_body, _err := client.SubmitCustomSourceTopicAnalysisWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
