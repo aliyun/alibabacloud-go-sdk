@@ -13368,7 +13368,8 @@ func (s *InstallSystemPluginResponse) SetBody(v *InstallSystemPluginResponseBody
 }
 
 type InstallUserPluginsRequest struct {
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body  *string `json:"body,omitempty" xml:"body,omitempty"`
+	Force *bool   `json:"force,omitempty" xml:"force,omitempty"`
 }
 
 func (s InstallUserPluginsRequest) String() string {
@@ -13381,6 +13382,11 @@ func (s InstallUserPluginsRequest) GoString() string {
 
 func (s *InstallUserPluginsRequest) SetBody(v string) *InstallUserPluginsRequest {
 	s.Body = &v
+	return s
+}
+
+func (s *InstallUserPluginsRequest) SetForce(v bool) *InstallUserPluginsRequest {
+	s.Force = &v
 	return s
 }
 
@@ -19103,7 +19109,8 @@ type ListInstanceRequest struct {
 	// example:
 	//
 	// 10
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Size   *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The header of the response.
 	//
 	// example:
@@ -19169,6 +19176,11 @@ func (s *ListInstanceRequest) SetResourceGroupId(v string) *ListInstanceRequest 
 
 func (s *ListInstanceRequest) SetSize(v int32) *ListInstanceRequest {
 	s.Size = &v
+	return s
+}
+
+func (s *ListInstanceRequest) SetStatus(v string) *ListInstanceRequest {
+	s.Status = &v
 	return s
 }
 
@@ -31810,6 +31822,7 @@ type UpdateInstanceSettingsRequest struct {
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****
 	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Force          *bool   `json:"force,omitempty" xml:"force,omitempty"`
 	UpdateStrategy *string `json:"updateStrategy,omitempty" xml:"updateStrategy,omitempty"`
 }
 
@@ -31828,6 +31841,11 @@ func (s *UpdateInstanceSettingsRequest) SetBody(v string) *UpdateInstanceSetting
 
 func (s *UpdateInstanceSettingsRequest) SetClientToken(v string) *UpdateInstanceSettingsRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateInstanceSettingsRequest) SetForce(v bool) *UpdateInstanceSettingsRequest {
+	s.Force = &v
 	return s
 }
 
@@ -39586,8 +39604,14 @@ func (client *Client) InstallUserPluginsWithOptions(InstanceId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["force"] = request.Force
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    request.Body,
 	}
 	params := &openapi.Params{
@@ -41432,6 +41456,10 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
 		query["size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["status"] = request.Status
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tags)) {
@@ -46531,6 +46559,10 @@ func (client *Client) UpdateInstanceSettingsWithOptions(InstanceId *string, requ
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["clientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["force"] = request.Force
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UpdateStrategy)) {
