@@ -7044,7 +7044,12 @@ func (s *GetScanResultResponseBodyData) SetTotalCount(v int64) *GetScanResultRes
 }
 
 type GetScanResultResponseBodyDataItems struct {
-	AttackLevel *string `json:"AttackLevel,omitempty" xml:"AttackLevel,omitempty"`
+	ApiLabels      *string `json:"ApiLabels,omitempty" xml:"ApiLabels,omitempty"`
+	ApiRequestTime *string `json:"ApiRequestTime,omitempty" xml:"ApiRequestTime,omitempty"`
+	ApiRiskLevel   *string `json:"ApiRiskLevel,omitempty" xml:"ApiRiskLevel,omitempty"`
+	ApiService     *string `json:"ApiService,omitempty" xml:"ApiService,omitempty"`
+	ApiTaskId      *string `json:"ApiTaskId,omitempty" xml:"ApiTaskId,omitempty"`
+	AttackLevel    *string `json:"AttackLevel,omitempty" xml:"AttackLevel,omitempty"`
 	// example:
 	//
 	// xxx
@@ -7089,8 +7094,9 @@ type GetScanResultResponseBodyDataItems struct {
 	// example:
 	//
 	// nonLabel
-	Labels   *string   `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	NoLabels []*string `json:"NoLabels,omitempty" xml:"NoLabels,omitempty" type:"Repeated"`
+	Labels     *string   `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	ManualOnly *bool     `json:"ManualOnly,omitempty" xml:"ManualOnly,omitempty"`
+	NoLabels   []*string `json:"NoLabels,omitempty" xml:"NoLabels,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -7107,11 +7113,17 @@ type GetScanResultResponseBodyDataItems struct {
 	// example:
 	//
 	// 2023-08-11 09:00:19
-	RequestTime *string                                     `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
-	Result      []*GetScanResultResponseBodyDataItemsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	RiskLevel   *string                                     `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	RiskTips    *string                                     `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
-	RiskWords   *string                                     `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+	RequestTime     *string                                     `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
+	ResourceType    *string                                     `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Result          []*GetScanResultResponseBodyDataItemsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	ReviewLabels    *string                                     `json:"ReviewLabels,omitempty" xml:"ReviewLabels,omitempty"`
+	ReviewRiskLevel *string                                     `json:"ReviewRiskLevel,omitempty" xml:"ReviewRiskLevel,omitempty"`
+	ReviewTime      *string                                     `json:"ReviewTime,omitempty" xml:"ReviewTime,omitempty"`
+	ReviewUid       *string                                     `json:"ReviewUid,omitempty" xml:"ReviewUid,omitempty"`
+	Reviewed        *bool                                       `json:"Reviewed,omitempty" xml:"Reviewed,omitempty"`
+	RiskLevel       *string                                     `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskTips        *string                                     `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
+	RiskWords       *string                                     `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
 	// example:
 	//
 	// {}
@@ -7167,6 +7179,31 @@ func (s GetScanResultResponseBodyDataItems) String() string {
 
 func (s GetScanResultResponseBodyDataItems) GoString() string {
 	return s.String()
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetApiLabels(v string) *GetScanResultResponseBodyDataItems {
+	s.ApiLabels = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetApiRequestTime(v string) *GetScanResultResponseBodyDataItems {
+	s.ApiRequestTime = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetApiRiskLevel(v string) *GetScanResultResponseBodyDataItems {
+	s.ApiRiskLevel = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetApiService(v string) *GetScanResultResponseBodyDataItems {
+	s.ApiService = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetApiTaskId(v string) *GetScanResultResponseBodyDataItems {
+	s.ApiTaskId = &v
+	return s
 }
 
 func (s *GetScanResultResponseBodyDataItems) SetAttackLevel(v string) *GetScanResultResponseBodyDataItems {
@@ -7229,6 +7266,11 @@ func (s *GetScanResultResponseBodyDataItems) SetLabels(v string) *GetScanResultR
 	return s
 }
 
+func (s *GetScanResultResponseBodyDataItems) SetManualOnly(v bool) *GetScanResultResponseBodyDataItems {
+	s.ManualOnly = &v
+	return s
+}
+
 func (s *GetScanResultResponseBodyDataItems) SetNoLabels(v []*string) *GetScanResultResponseBodyDataItems {
 	s.NoLabels = v
 	return s
@@ -7259,8 +7301,38 @@ func (s *GetScanResultResponseBodyDataItems) SetRequestTime(v string) *GetScanRe
 	return s
 }
 
+func (s *GetScanResultResponseBodyDataItems) SetResourceType(v string) *GetScanResultResponseBodyDataItems {
+	s.ResourceType = &v
+	return s
+}
+
 func (s *GetScanResultResponseBodyDataItems) SetResult(v []*GetScanResultResponseBodyDataItemsResult) *GetScanResultResponseBodyDataItems {
 	s.Result = v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetReviewLabels(v string) *GetScanResultResponseBodyDataItems {
+	s.ReviewLabels = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetReviewRiskLevel(v string) *GetScanResultResponseBodyDataItems {
+	s.ReviewRiskLevel = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetReviewTime(v string) *GetScanResultResponseBodyDataItems {
+	s.ReviewTime = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetReviewUid(v string) *GetScanResultResponseBodyDataItems {
+	s.ReviewUid = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetReviewed(v bool) *GetScanResultResponseBodyDataItems {
+	s.Reviewed = &v
 	return s
 }
 
@@ -7754,9 +7826,10 @@ func (s *GetServiceConfigResponseBodyData) SetUid(v string) *GetServiceConfigRes
 }
 
 type GetServiceConfigResponseBodyDataCustomServiceConf struct {
-	KeywordFilterLibs  []*string `json:"KeywordFilterLibs,omitempty" xml:"KeywordFilterLibs,omitempty" type:"Repeated"`
-	KeywordHitLibs     []*string `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty" type:"Repeated"`
-	SimilarTextHitLibs []*string `json:"SimilarTextHitLibs,omitempty" xml:"SimilarTextHitLibs,omitempty" type:"Repeated"`
+	KeywordFilterLibs   []*string                                                             `json:"KeywordFilterLibs,omitempty" xml:"KeywordFilterLibs,omitempty" type:"Repeated"`
+	KeywordHitLibs      []*string                                                             `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty" type:"Repeated"`
+	ManualMachineConfig *GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig `json:"ManualMachineConfig,omitempty" xml:"ManualMachineConfig,omitempty" type:"Struct"`
+	SimilarTextHitLibs  []*string                                                             `json:"SimilarTextHitLibs,omitempty" xml:"SimilarTextHitLibs,omitempty" type:"Repeated"`
 }
 
 func (s GetServiceConfigResponseBodyDataCustomServiceConf) String() string {
@@ -7777,8 +7850,48 @@ func (s *GetServiceConfigResponseBodyDataCustomServiceConf) SetKeywordHitLibs(v 
 	return s
 }
 
+func (s *GetServiceConfigResponseBodyDataCustomServiceConf) SetManualMachineConfig(v *GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig) *GetServiceConfigResponseBodyDataCustomServiceConf {
+	s.ManualMachineConfig = v
+	return s
+}
+
 func (s *GetServiceConfigResponseBodyDataCustomServiceConf) SetSimilarTextHitLibs(v []*string) *GetServiceConfigResponseBodyDataCustomServiceConf {
 	s.SimilarTextHitLibs = v
+	return s
+}
+
+type GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig struct {
+	AuditRiskLevels []*string `json:"AuditRiskLevels,omitempty" xml:"AuditRiskLevels,omitempty" type:"Repeated"`
+	CallbackId      *int64    `json:"CallbackId,omitempty" xml:"CallbackId,omitempty"`
+	Enable          *bool     `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	ManualService   *string   `json:"ManualService,omitempty" xml:"ManualService,omitempty"`
+}
+
+func (s GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig) SetAuditRiskLevels(v []*string) *GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig {
+	s.AuditRiskLevels = v
+	return s
+}
+
+func (s *GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig) SetCallbackId(v int64) *GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig {
+	s.CallbackId = &v
+	return s
+}
+
+func (s *GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig) SetEnable(v bool) *GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig) SetManualService(v string) *GetServiceConfigResponseBodyDataCustomServiceConfManualMachineConfig {
+	s.ManualService = &v
 	return s
 }
 
@@ -13038,6 +13151,7 @@ type UpdateScanResultFeedbackRequest struct {
 	//
 	// missOut
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	Labels   *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// example:
 	//
 	// 46232656-984E-****-A648-B1D0667B6C3E
@@ -13050,6 +13164,7 @@ type UpdateScanResultFeedbackRequest struct {
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RiskLevel    *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s UpdateScanResultFeedbackRequest) String() string {
@@ -13065,6 +13180,11 @@ func (s *UpdateScanResultFeedbackRequest) SetFeedback(v string) *UpdateScanResul
 	return s
 }
 
+func (s *UpdateScanResultFeedbackRequest) SetLabels(v string) *UpdateScanResultFeedbackRequest {
+	s.Labels = &v
+	return s
+}
+
 func (s *UpdateScanResultFeedbackRequest) SetQueryRequestId(v string) *UpdateScanResultFeedbackRequest {
 	s.QueryRequestId = &v
 	return s
@@ -13077,6 +13197,11 @@ func (s *UpdateScanResultFeedbackRequest) SetRegionId(v string) *UpdateScanResul
 
 func (s *UpdateScanResultFeedbackRequest) SetResourceType(v string) *UpdateScanResultFeedbackRequest {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *UpdateScanResultFeedbackRequest) SetRiskLevel(v string) *UpdateScanResultFeedbackRequest {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -13150,7 +13275,8 @@ type UpdateServiceConfigRequest struct {
 	// example:
 	//
 	// []
-	KeywordHitLibs *string `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty"`
+	KeywordHitLibs      *string `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty"`
+	ManualMachineConfig *string `json:"ManualMachineConfig,omitempty" xml:"ManualMachineConfig,omitempty"`
 	// example:
 	//
 	// cn-shanghai
@@ -13197,6 +13323,11 @@ func (s *UpdateServiceConfigRequest) SetKeywordFilterLibs(v string) *UpdateServi
 
 func (s *UpdateServiceConfigRequest) SetKeywordHitLibs(v string) *UpdateServiceConfigRequest {
 	s.KeywordHitLibs = &v
+	return s
+}
+
+func (s *UpdateServiceConfigRequest) SetManualMachineConfig(v string) *UpdateServiceConfigRequest {
+	s.ManualMachineConfig = &v
 	return s
 }
 
@@ -18651,12 +18782,20 @@ func (client *Client) UpdateScanResultFeedbackWithOptions(request *UpdateScanRes
 		body["Feedback"] = request.Feedback
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.QueryRequestId)) {
 		body["QueryRequestId"] = request.QueryRequestId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		body["RiskLevel"] = request.RiskLevel
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -18731,6 +18870,10 @@ func (client *Client) UpdateServiceConfigWithOptions(request *UpdateServiceConfi
 
 	if !tea.BoolValue(util.IsUnset(request.KeywordHitLibs)) {
 		body["KeywordHitLibs"] = request.KeywordHitLibs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManualMachineConfig)) {
+		body["ManualMachineConfig"] = request.ManualMachineConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
