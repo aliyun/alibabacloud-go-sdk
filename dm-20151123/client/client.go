@@ -3020,7 +3020,9 @@ type GetTrackListRequest struct {
 	// example:
 	//
 	// test@example.com
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountName       *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DedicatedIp       *string `json:"DedicatedIp,omitempty" xml:"DedicatedIp,omitempty"`
+	DedicatedIpPoolId *string `json:"DedicatedIpPoolId,omitempty" xml:"DedicatedIpPoolId,omitempty"`
 	// End time, the span between start and end time cannot exceed 7 days. Format: yyyy-MM-dd.
 	//
 	// This parameter is required.
@@ -3029,6 +3031,7 @@ type GetTrackListRequest struct {
 	//
 	// 2019-09-29
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Esp     *string `json:"Esp,omitempty" xml:"Esp,omitempty"`
 	// For the first query, set to 0; for subsequent queries, fixed at 1. 1 indicates pagination in ascending order by time. (This field is deprecated)
 	//
 	// example:
@@ -3097,8 +3100,23 @@ func (s *GetTrackListRequest) SetAccountName(v string) *GetTrackListRequest {
 	return s
 }
 
+func (s *GetTrackListRequest) SetDedicatedIp(v string) *GetTrackListRequest {
+	s.DedicatedIp = &v
+	return s
+}
+
+func (s *GetTrackListRequest) SetDedicatedIpPoolId(v string) *GetTrackListRequest {
+	s.DedicatedIpPoolId = &v
+	return s
+}
+
 func (s *GetTrackListRequest) SetEndTime(v string) *GetTrackListRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *GetTrackListRequest) SetEsp(v string) *GetTrackListRequest {
+	s.Esp = &v
 	return s
 }
 
@@ -3193,7 +3211,8 @@ type GetTrackListResponseBody struct {
 	// example:
 	//
 	// 100
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 	// Tracking data records
 	Data *GetTrackListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
@@ -3233,6 +3252,11 @@ func (s *GetTrackListResponseBody) SetRequestId(v string) *GetTrackListResponseB
 
 func (s *GetTrackListResponseBody) SetTotal(v int32) *GetTrackListResponseBody {
 	s.Total = &v
+	return s
+}
+
+func (s *GetTrackListResponseBody) SetTotalPages(v int32) *GetTrackListResponseBody {
+	s.TotalPages = &v
 	return s
 }
 
@@ -3416,7 +3440,9 @@ type GetTrackListByMailFromAndTagNameRequest struct {
 	// example:
 	//
 	// e-service@amegroups.cn
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountName       *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DedicatedIp       *string `json:"DedicatedIp,omitempty" xml:"DedicatedIp,omitempty"`
+	DedicatedIpPoolId *string `json:"DedicatedIpPoolId,omitempty" xml:"DedicatedIpPoolId,omitempty"`
 	// End time, with a span from the start time that cannot exceed 15 days. Format: yyyy-MM-dd.
 	//
 	// This parameter is required.
@@ -3425,6 +3451,7 @@ type GetTrackListByMailFromAndTagNameRequest struct {
 	//
 	// 2019-09-29
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Esp     *string `json:"Esp,omitempty" xml:"Esp,omitempty"`
 	// For the first query, set to 0; for subsequent queries, fixed at 1. 1 indicates pagination in ascending order by time. (This field is deprecated)
 	//
 	// example:
@@ -3493,8 +3520,23 @@ func (s *GetTrackListByMailFromAndTagNameRequest) SetAccountName(v string) *GetT
 	return s
 }
 
+func (s *GetTrackListByMailFromAndTagNameRequest) SetDedicatedIp(v string) *GetTrackListByMailFromAndTagNameRequest {
+	s.DedicatedIp = &v
+	return s
+}
+
+func (s *GetTrackListByMailFromAndTagNameRequest) SetDedicatedIpPoolId(v string) *GetTrackListByMailFromAndTagNameRequest {
+	s.DedicatedIpPoolId = &v
+	return s
+}
+
 func (s *GetTrackListByMailFromAndTagNameRequest) SetEndTime(v string) *GetTrackListByMailFromAndTagNameRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *GetTrackListByMailFromAndTagNameRequest) SetEsp(v string) *GetTrackListByMailFromAndTagNameRequest {
+	s.Esp = &v
 	return s
 }
 
@@ -3589,7 +3631,8 @@ type GetTrackListByMailFromAndTagNameResponseBody struct {
 	// example:
 	//
 	// 4
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Total      *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
+	TotalPages *string `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 	// Tracking data records
 	TrackList *GetTrackListByMailFromAndTagNameResponseBodyTrackList `json:"TrackList,omitempty" xml:"TrackList,omitempty" type:"Struct"`
 }
@@ -3629,6 +3672,11 @@ func (s *GetTrackListByMailFromAndTagNameResponseBody) SetRequestId(v string) *G
 
 func (s *GetTrackListByMailFromAndTagNameResponseBody) SetTotal(v int32) *GetTrackListByMailFromAndTagNameResponseBody {
 	s.Total = &v
+	return s
+}
+
+func (s *GetTrackListByMailFromAndTagNameResponseBody) SetTotalPages(v string) *GetTrackListByMailFromAndTagNameResponseBody {
+	s.TotalPages = &v
 	return s
 }
 
@@ -6909,7 +6957,9 @@ type SenderStatisticsByTagNameAndBatchIDRequest struct {
 	// example:
 	//
 	// xxx
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountName       *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DedicatedIp       *string `json:"DedicatedIp,omitempty" xml:"DedicatedIp,omitempty"`
+	DedicatedIpPoolId *string `json:"DedicatedIpPoolId,omitempty" xml:"DedicatedIpPoolId,omitempty"`
 	// End time, which cannot exceed 7 days from the start time, in the format yyyy-MM-dd.
 	//
 	// This parameter is required.
@@ -6918,6 +6968,7 @@ type SenderStatisticsByTagNameAndBatchIDRequest struct {
 	//
 	// 2019-09-29
 	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Esp                  *string `json:"Esp,omitempty" xml:"Esp,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6950,8 +7001,23 @@ func (s *SenderStatisticsByTagNameAndBatchIDRequest) SetAccountName(v string) *S
 	return s
 }
 
+func (s *SenderStatisticsByTagNameAndBatchIDRequest) SetDedicatedIp(v string) *SenderStatisticsByTagNameAndBatchIDRequest {
+	s.DedicatedIp = &v
+	return s
+}
+
+func (s *SenderStatisticsByTagNameAndBatchIDRequest) SetDedicatedIpPoolId(v string) *SenderStatisticsByTagNameAndBatchIDRequest {
+	s.DedicatedIpPoolId = &v
+	return s
+}
+
 func (s *SenderStatisticsByTagNameAndBatchIDRequest) SetEndTime(v string) *SenderStatisticsByTagNameAndBatchIDRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *SenderStatisticsByTagNameAndBatchIDRequest) SetEsp(v string) *SenderStatisticsByTagNameAndBatchIDRequest {
+	s.Esp = &v
 	return s
 }
 
@@ -9779,8 +9845,20 @@ func (client *Client) GetTrackListWithOptions(request *GetTrackListRequest, runt
 		query["AccountName"] = request.AccountName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DedicatedIp)) {
+		query["DedicatedIp"] = request.DedicatedIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DedicatedIpPoolId)) {
+		query["DedicatedIpPoolId"] = request.DedicatedIpPoolId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Esp)) {
+		query["Esp"] = request.Esp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Offset)) {
@@ -9887,8 +9965,20 @@ func (client *Client) GetTrackListByMailFromAndTagNameWithOptions(request *GetTr
 		query["AccountName"] = request.AccountName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DedicatedIp)) {
+		query["DedicatedIp"] = request.DedicatedIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DedicatedIpPoolId)) {
+		query["DedicatedIpPoolId"] = request.DedicatedIpPoolId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Esp)) {
+		query["Esp"] = request.Esp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Offset)) {
@@ -11218,8 +11308,20 @@ func (client *Client) SenderStatisticsByTagNameAndBatchIDWithOptions(request *Se
 		query["AccountName"] = request.AccountName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DedicatedIp)) {
+		query["DedicatedIp"] = request.DedicatedIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DedicatedIpPoolId)) {
+		query["DedicatedIpPoolId"] = request.DedicatedIpPoolId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Esp)) {
+		query["Esp"] = request.Esp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
