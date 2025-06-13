@@ -482,6 +482,90 @@ func (s *PAL7ConfigRewriteOp) SetValueVariable(v string) *PAL7ConfigRewriteOp {
 	return s
 }
 
+type ProcessGroup struct {
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate      *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified    *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProcessGroupId *string `json:"ProcessGroupId,omitempty" xml:"ProcessGroupId,omitempty"`
+	// if can be null:
+	// false
+	Processes []*ProcessItem `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
+}
+
+func (s ProcessGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProcessGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ProcessGroup) SetDescription(v string) *ProcessGroup {
+	s.Description = &v
+	return s
+}
+
+func (s *ProcessGroup) SetGmtCreate(v string) *ProcessGroup {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ProcessGroup) SetGmtModified(v string) *ProcessGroup {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ProcessGroup) SetName(v string) *ProcessGroup {
+	s.Name = &v
+	return s
+}
+
+func (s *ProcessGroup) SetProcessGroupId(v string) *ProcessGroup {
+	s.ProcessGroupId = &v
+	return s
+}
+
+func (s *ProcessGroup) SetProcesses(v []*ProcessItem) *ProcessGroup {
+	s.Processes = v
+	return s
+}
+
+type ProcessItem struct {
+	BundleId  *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
+	DevType   *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
+	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	Process   *string `json:"Process,omitempty" xml:"Process,omitempty"`
+}
+
+func (s ProcessItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProcessItem) GoString() string {
+	return s.String()
+}
+
+func (s *ProcessItem) SetBundleId(v string) *ProcessItem {
+	s.BundleId = &v
+	return s
+}
+
+func (s *ProcessItem) SetDevType(v string) *ProcessItem {
+	s.DevType = &v
+	return s
+}
+
+func (s *ProcessItem) SetDirectory(v string) *ProcessItem {
+	s.Directory = &v
+	return s
+}
+
+func (s *ProcessItem) SetProcess(v string) *ProcessItem {
+	s.Process = &v
+	return s
+}
+
 type RecoveryContent struct {
 	AuthReportInterval *AuthReportInterval `json:"AuthReportInterval,omitempty" xml:"AuthReportInterval,omitempty"`
 	// This parameter is required.
@@ -1773,18 +1857,25 @@ type CreateEnterpriseAcceleratePolicyRequest struct {
 	//
 	// 1
 	ShowInClient *int32 `json:"ShowInClient,omitempty" xml:"ShowInClient,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12.34.56.XX
 	UpstreamHost *string `json:"UpstreamHost,omitempty" xml:"UpstreamHost,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1000
 	UpstreamPort *int32 `json:"UpstreamPort,omitempty" xml:"UpstreamPort,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ga
-	UpstreamType       *string `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
+	UpstreamType *string `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
+	// This parameter is required.
 	UserAttributeGroup *string `json:"UserAttributeGroup,omitempty" xml:"UserAttributeGroup,omitempty"`
 }
 
@@ -1891,10 +1982,13 @@ func (s *CreateEnterpriseAcceleratePolicyResponse) SetBody(v *CreateEnterpriseAc
 }
 
 type CreateEnterpriseAccelerateTargetRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// eap-eec34d4b12fcca61
-	EapId  *string   `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	// This parameter is required.
 	Target []*string `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`
 }
 
@@ -2497,9 +2591,12 @@ type CreatePrivateAccessPolicyRequest struct {
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 内网访问标签ID集合。最多可输入100个内网访问标签ID。当**ApplicationType**为**Tag时**，必填。和**ApplicationIds**互斥。
-	TagIds            []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	TriggerTemplateId *string   `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
-	UserGroupIds      []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	TagIds                 []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	TriggerTemplateId      *string   `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
+	TrustedProcessGroupIds []*string `json:"TrustedProcessGroupIds,omitempty" xml:"TrustedProcessGroupIds,omitempty" type:"Repeated"`
+	TrustedProcessStatus   *string   `json:"TrustedProcessStatus,omitempty" xml:"TrustedProcessStatus,omitempty"`
+	TrustedSoftwareIds     []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
+	UserGroupIds           []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 	// 内网访问策略的用户组类型。取值：
 	//
 	// - **Normal**：普通用户组。
@@ -2579,6 +2676,21 @@ func (s *CreatePrivateAccessPolicyRequest) SetTagIds(v []*string) *CreatePrivate
 
 func (s *CreatePrivateAccessPolicyRequest) SetTriggerTemplateId(v string) *CreatePrivateAccessPolicyRequest {
 	s.TriggerTemplateId = &v
+	return s
+}
+
+func (s *CreatePrivateAccessPolicyRequest) SetTrustedProcessGroupIds(v []*string) *CreatePrivateAccessPolicyRequest {
+	s.TrustedProcessGroupIds = v
+	return s
+}
+
+func (s *CreatePrivateAccessPolicyRequest) SetTrustedProcessStatus(v string) *CreatePrivateAccessPolicyRequest {
+	s.TrustedProcessStatus = &v
+	return s
+}
+
+func (s *CreatePrivateAccessPolicyRequest) SetTrustedSoftwareIds(v []*string) *CreatePrivateAccessPolicyRequest {
+	s.TrustedSoftwareIds = v
 	return s
 }
 
@@ -4944,6 +5056,8 @@ func (s *DeleteDynamicRouteResponse) SetBody(v *DeleteDynamicRouteResponseBody) 
 }
 
 type DeleteEnterpriseAcceleratePolicyRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// eap-6edfb9d722ef8429
@@ -5013,10 +5127,13 @@ func (s *DeleteEnterpriseAcceleratePolicyResponse) SetBody(v *DeleteEnterpriseAc
 }
 
 type DeleteEnterpriseAccelerateTargetRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// eap-ed1f0e392a28a4e6
-	EapId  *string   `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	// This parameter is required.
 	Target []*string `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`
 }
 
@@ -5857,6 +5974,8 @@ func (s *DetachPolicy2ApprovalProcessResponse) SetBody(v *DetachPolicy2ApprovalP
 }
 
 type DisableEnterpriseAcceleratePolicyRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// eap-d50b45aa7dc04aef
@@ -5926,6 +6045,8 @@ func (s *DisableEnterpriseAcceleratePolicyResponse) SetBody(v *DisableEnterprise
 }
 
 type EnableEnterpriseAcceleratePolicyRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// eap-530da9f7110441fb
@@ -8403,10 +8524,13 @@ type GetPrivateAccessPolicyResponseBodyPolicy struct {
 	// example:
 	//
 	// Enabled
-	Status            *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIds            []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	TriggerTemplateId *string   `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
-	UserGroupIds      []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	Status                 *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagIds                 []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	TriggerTemplateId      *string   `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
+	TrustedProcessGroupIds []*string `json:"TrustedProcessGroupIds,omitempty" xml:"TrustedProcessGroupIds,omitempty" type:"Repeated"`
+	TrustedProcessStatus   *string   `json:"TrustedProcessStatus,omitempty" xml:"TrustedProcessStatus,omitempty"`
+	TrustedSoftwareIds     []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
+	UserGroupIds           []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Normal
@@ -8488,6 +8612,21 @@ func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetTagIds(v []*string) *GetPr
 
 func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetTriggerTemplateId(v string) *GetPrivateAccessPolicyResponseBodyPolicy {
 	s.TriggerTemplateId = &v
+	return s
+}
+
+func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetTrustedProcessGroupIds(v []*string) *GetPrivateAccessPolicyResponseBodyPolicy {
+	s.TrustedProcessGroupIds = v
+	return s
+}
+
+func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetTrustedProcessStatus(v string) *GetPrivateAccessPolicyResponseBodyPolicy {
+	s.TrustedProcessStatus = &v
+	return s
+}
+
+func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetTrustedSoftwareIds(v []*string) *GetPrivateAccessPolicyResponseBodyPolicy {
+	s.TrustedSoftwareIds = v
 	return s
 }
 
@@ -13425,11 +13564,15 @@ func (s *ListEnterpriseAccelerateLogsResponse) SetBody(v *ListEnterpriseAccelera
 }
 
 type ListEnterpriseAcceleratePoliciesRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -13637,14 +13780,20 @@ func (s *ListEnterpriseAcceleratePoliciesResponse) SetBody(v *ListEnterpriseAcce
 }
 
 type ListEnterpriseAccelerateTargetsRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// eap-424ba3f47660425c
 	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -16240,7 +16389,10 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	// example:
 	//
 	// dag-d3f64e8bdd4a****
-	TriggerTemplateId *string `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
+	TriggerTemplateId      *string   `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
+	TrustedProcessGroupIds []*string `json:"TrustedProcessGroupIds,omitempty" xml:"TrustedProcessGroupIds,omitempty" type:"Repeated"`
+	TrustedProcessStatus   *string   `json:"TrustedProcessStatus,omitempty" xml:"TrustedProcessStatus,omitempty"`
+	TrustedSoftwareIds     []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
 	// The IDs of user groups in the private access policy. If the value of UserGroupMode is **Normal**, this parameter is returned.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 	// The type of the user group in the private access policy. Valid values:
@@ -16330,6 +16482,21 @@ func (s *ListPrivateAccessPolicesResponseBodyPolices) SetTagIds(v []*string) *Li
 
 func (s *ListPrivateAccessPolicesResponseBodyPolices) SetTriggerTemplateId(v string) *ListPrivateAccessPolicesResponseBodyPolices {
 	s.TriggerTemplateId = &v
+	return s
+}
+
+func (s *ListPrivateAccessPolicesResponseBodyPolices) SetTrustedProcessGroupIds(v []*string) *ListPrivateAccessPolicesResponseBodyPolices {
+	s.TrustedProcessGroupIds = v
+	return s
+}
+
+func (s *ListPrivateAccessPolicesResponseBodyPolices) SetTrustedProcessStatus(v string) *ListPrivateAccessPolicesResponseBodyPolices {
+	s.TrustedProcessStatus = &v
+	return s
+}
+
+func (s *ListPrivateAccessPolicesResponseBodyPolices) SetTrustedSoftwareIds(v []*string) *ListPrivateAccessPolicesResponseBodyPolices {
+	s.TrustedSoftwareIds = v
 	return s
 }
 
@@ -19573,7 +19740,9 @@ type ListUserPrivateAccessPoliciesResponseBodyPolices struct {
 	// example:
 	//
 	// 1
-	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority               *int64    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	TrustedProcessGroupIds []*string `json:"TrustedProcessGroupIds,omitempty" xml:"TrustedProcessGroupIds,omitempty" type:"Repeated"`
+	TrustedSoftwareIds     []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Custom
@@ -19620,6 +19789,16 @@ func (s *ListUserPrivateAccessPoliciesResponseBodyPolices) SetPolicyId(v string)
 
 func (s *ListUserPrivateAccessPoliciesResponseBodyPolices) SetPriority(v int64) *ListUserPrivateAccessPoliciesResponseBodyPolices {
 	s.Priority = &v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBodyPolices) SetTrustedProcessGroupIds(v []*string) *ListUserPrivateAccessPoliciesResponseBodyPolices {
+	s.TrustedProcessGroupIds = v
+	return s
+}
+
+func (s *ListUserPrivateAccessPoliciesResponseBodyPolices) SetTrustedSoftwareIds(v []*string) *ListUserPrivateAccessPoliciesResponseBodyPolices {
+	s.TrustedSoftwareIds = v
 	return s
 }
 
@@ -20036,18 +20215,25 @@ type ModifyEnterpriseAcceleratePolicyRequest struct {
 	//
 	// 0
 	ShowInClient *int32 `json:"ShowInClient,omitempty" xml:"ShowInClient,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 12.34.56.XX
 	UpstreamHost *string `json:"UpstreamHost,omitempty" xml:"UpstreamHost,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1000
 	UpstreamPort *int32 `json:"UpstreamPort,omitempty" xml:"UpstreamPort,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ga
-	UpstreamType       *string `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
+	UpstreamType *string `json:"UpstreamType,omitempty" xml:"UpstreamType,omitempty"`
+	// This parameter is required.
 	UserAttributeGroup *string `json:"UserAttributeGroup,omitempty" xml:"UserAttributeGroup,omitempty"`
 }
 
@@ -22895,7 +23081,14 @@ type UpdatePrivateAccessPolicyRequest struct {
 	// 内网访问标签ID集合。一条策略最多支持100个内网访问标签ID。
 	TagIds            []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 	TriggerTemplateId *string   `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
-	UserGroupIds      []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	// if can be null:
+	// false
+	TrustedProcessGroupIds []*string `json:"TrustedProcessGroupIds,omitempty" xml:"TrustedProcessGroupIds,omitempty" type:"Repeated"`
+	TrustedProcessStatus   *string   `json:"TrustedProcessStatus,omitempty" xml:"TrustedProcessStatus,omitempty"`
+	// if can be null:
+	// false
+	TrustedSoftwareIds []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
+	UserGroupIds       []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 	// 内网访问策略的用户组类型。取值：
 	//
 	// - **Normal**：普通用户组。
@@ -22978,6 +23171,21 @@ func (s *UpdatePrivateAccessPolicyRequest) SetTagIds(v []*string) *UpdatePrivate
 
 func (s *UpdatePrivateAccessPolicyRequest) SetTriggerTemplateId(v string) *UpdatePrivateAccessPolicyRequest {
 	s.TriggerTemplateId = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessPolicyRequest) SetTrustedProcessGroupIds(v []*string) *UpdatePrivateAccessPolicyRequest {
+	s.TrustedProcessGroupIds = v
+	return s
+}
+
+func (s *UpdatePrivateAccessPolicyRequest) SetTrustedProcessStatus(v string) *UpdatePrivateAccessPolicyRequest {
+	s.TrustedProcessStatus = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessPolicyRequest) SetTrustedSoftwareIds(v []*string) *UpdatePrivateAccessPolicyRequest {
+	s.TrustedSoftwareIds = v
 	return s
 }
 
@@ -25546,6 +25754,18 @@ func (client *Client) CreatePrivateAccessPolicyWithOptions(request *CreatePrivat
 
 	if !tea.BoolValue(util.IsUnset(request.TriggerTemplateId)) {
 		body["TriggerTemplateId"] = request.TriggerTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrustedProcessGroupIds)) {
+		bodyFlat["TrustedProcessGroupIds"] = request.TrustedProcessGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrustedProcessStatus)) {
+		body["TrustedProcessStatus"] = request.TrustedProcessStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrustedSoftwareIds)) {
+		bodyFlat["TrustedSoftwareIds"] = request.TrustedSoftwareIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserGroupIds)) {
@@ -31761,6 +31981,18 @@ func (client *Client) UpdatePrivateAccessPolicyWithOptions(request *UpdatePrivat
 
 	if !tea.BoolValue(util.IsUnset(request.TriggerTemplateId)) {
 		body["TriggerTemplateId"] = request.TriggerTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrustedProcessGroupIds)) {
+		bodyFlat["TrustedProcessGroupIds"] = request.TrustedProcessGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrustedProcessStatus)) {
+		body["TrustedProcessStatus"] = request.TrustedProcessStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrustedSoftwareIds)) {
+		bodyFlat["TrustedSoftwareIds"] = request.TrustedSoftwareIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserGroupIds)) {
