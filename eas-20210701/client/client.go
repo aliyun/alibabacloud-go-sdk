@@ -6283,6 +6283,7 @@ func (s *DescribeBenchmarkTaskReportResponse) SetBody(v *DescribeBenchmarkTaskRe
 }
 
 type DescribeGatewayResponseBody struct {
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The time when the private gateway was created. The time is displayed in UTC.
 	//
 	// example:
@@ -6419,6 +6420,11 @@ func (s DescribeGatewayResponseBody) String() string {
 
 func (s DescribeGatewayResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeGatewayResponseBody) SetChargeType(v string) *DescribeGatewayResponseBody {
+	s.ChargeType = &v
+	return s
 }
 
 func (s *DescribeGatewayResponseBody) SetCreateTime(v string) *DescribeGatewayResponseBody {
@@ -10392,12 +10398,17 @@ func (s *ListGatewayDomainsResponseBody) SetRequestId(v string) *ListGatewayDoma
 }
 
 type ListGatewayDomainsResponseBodyCustomDomains struct {
+	CertificateEndDate *string `json:"CertificateEndDate,omitempty" xml:"CertificateEndDate,omitempty"`
 	// The ID of the SSL certificate bound to the domain name. Obtain the certificate ID after you upload or purchase a certificate in the [Certificate Management Service](https://yundunnext.console.aliyun.com/?spm=5176.2020520163.console-base_help.2.4b3baJixaJixOc\\&p=cas) console.
 	//
 	// example:
 	//
 	// 1473**25
-	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	CertificateId        *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	CertificateName      *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	CertificateStartDate *string `json:"CertificateStartDate,omitempty" xml:"CertificateStartDate,omitempty"`
+	CertificateStatus    *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The custom domain name.
 	//
 	// example:
@@ -10415,7 +10426,8 @@ type ListGatewayDomainsResponseBodyCustomDomains struct {
 	// example:
 	//
 	// intranet
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListGatewayDomainsResponseBodyCustomDomains) String() string {
@@ -10426,8 +10438,33 @@ func (s ListGatewayDomainsResponseBodyCustomDomains) GoString() string {
 	return s.String()
 }
 
+func (s *ListGatewayDomainsResponseBodyCustomDomains) SetCertificateEndDate(v string) *ListGatewayDomainsResponseBodyCustomDomains {
+	s.CertificateEndDate = &v
+	return s
+}
+
 func (s *ListGatewayDomainsResponseBodyCustomDomains) SetCertificateId(v string) *ListGatewayDomainsResponseBodyCustomDomains {
 	s.CertificateId = &v
+	return s
+}
+
+func (s *ListGatewayDomainsResponseBodyCustomDomains) SetCertificateName(v string) *ListGatewayDomainsResponseBodyCustomDomains {
+	s.CertificateName = &v
+	return s
+}
+
+func (s *ListGatewayDomainsResponseBodyCustomDomains) SetCertificateStartDate(v string) *ListGatewayDomainsResponseBodyCustomDomains {
+	s.CertificateStartDate = &v
+	return s
+}
+
+func (s *ListGatewayDomainsResponseBodyCustomDomains) SetCertificateStatus(v string) *ListGatewayDomainsResponseBodyCustomDomains {
+	s.CertificateStatus = &v
+	return s
+}
+
+func (s *ListGatewayDomainsResponseBodyCustomDomains) SetCreateTime(v string) *ListGatewayDomainsResponseBodyCustomDomains {
+	s.CreateTime = &v
 	return s
 }
 
@@ -10438,6 +10475,11 @@ func (s *ListGatewayDomainsResponseBodyCustomDomains) SetDomain(v string) *ListG
 
 func (s *ListGatewayDomainsResponseBodyCustomDomains) SetType(v string) *ListGatewayDomainsResponseBodyCustomDomains {
 	s.Type = &v
+	return s
+}
+
+func (s *ListGatewayDomainsResponseBodyCustomDomains) SetUpdateTime(v string) *ListGatewayDomainsResponseBodyCustomDomains {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -10745,6 +10787,7 @@ type ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs struct {
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the VPC peer.
 	//
 	// example:
@@ -10763,6 +10806,11 @@ func (s ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs) GoStrin
 
 func (s *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs) SetRegion(v string) *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs {
 	s.Region = &v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs) SetStatus(v string) *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs {
+	s.Status = &v
 	return s
 }
 
