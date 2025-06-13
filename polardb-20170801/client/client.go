@@ -21874,6 +21874,273 @@ func (s *DescribeGlobalSecurityIPGroupRelationResponse) SetBody(v *DescribeGloba
 	return s
 }
 
+type DescribeHALogsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The node ID.
+	//
+	// >  Queries the HA failover records of the Node `DBNodeId` . You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as node IDs.
+	//
+	// example:
+	//
+	// pi-****************
+	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	// example:
+	//
+	// 2020-09-23T01:01:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The log type.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HaSwitchLogList
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2020-05-01T00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeHALogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHALogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHALogsRequest) SetDBClusterId(v string) *DescribeHALogsRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeHALogsRequest) SetDBNodeId(v string) *DescribeHALogsRequest {
+	s.DBNodeId = &v
+	return s
+}
+
+func (s *DescribeHALogsRequest) SetEndTime(v string) *DescribeHALogsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeHALogsRequest) SetLogType(v string) *DescribeHALogsRequest {
+	s.LogType = &v
+	return s
+}
+
+func (s *DescribeHALogsRequest) SetPageNumber(v int32) *DescribeHALogsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHALogsRequest) SetPageSize(v int32) *DescribeHALogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHALogsRequest) SetStartTime(v string) *DescribeHALogsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeHALogsResponseBody struct {
+	// example:
+	//
+	// pc-a*************
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// polardb_mysql_rw
+	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
+	// The failover logs.
+	HaLogItems []*DescribeHALogsResponseBodyHaLogItems `json:"HaLogItems,omitempty" xml:"HaLogItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	HaStatus *int32 `json:"HaStatus,omitempty" xml:"HaStatus,omitempty"`
+	// example:
+	//
+	// 10
+	ItemsNumbers *int32 `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 6BD9CDE4-5E7B-4BF3-9BB8-83C73E******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 160
+	TotalRecords *int32 `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
+}
+
+func (s DescribeHALogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHALogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHALogsResponseBody) SetDBInstanceName(v string) *DescribeHALogsResponseBody {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *DescribeHALogsResponseBody) SetDBInstanceType(v string) *DescribeHALogsResponseBody {
+	s.DBInstanceType = &v
+	return s
+}
+
+func (s *DescribeHALogsResponseBody) SetHaLogItems(v []*DescribeHALogsResponseBodyHaLogItems) *DescribeHALogsResponseBody {
+	s.HaLogItems = v
+	return s
+}
+
+func (s *DescribeHALogsResponseBody) SetHaStatus(v int32) *DescribeHALogsResponseBody {
+	s.HaStatus = &v
+	return s
+}
+
+func (s *DescribeHALogsResponseBody) SetItemsNumbers(v int32) *DescribeHALogsResponseBody {
+	s.ItemsNumbers = &v
+	return s
+}
+
+func (s *DescribeHALogsResponseBody) SetPageNumber(v int32) *DescribeHALogsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHALogsResponseBody) SetPageSize(v int32) *DescribeHALogsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHALogsResponseBody) SetRequestId(v string) *DescribeHALogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHALogsResponseBody) SetTotalRecords(v int32) *DescribeHALogsResponseBody {
+	s.TotalRecords = &v
+	return s
+}
+
+type DescribeHALogsResponseBodyHaLogItems struct {
+	// The reason code of the failover.
+	//
+	// example:
+	//
+	// Platform.Ha.AuroraService.ManualOperations
+	SwitchCauseCode *string `json:"SwitchCauseCode,omitempty" xml:"SwitchCauseCode,omitempty"`
+	// The reason of the failover.
+	//
+	// example:
+	//
+	// Platform.Ha.ManuallyTriggered
+	SwitchCauseDetail *string `json:"SwitchCauseDetail,omitempty" xml:"SwitchCauseDetail,omitempty"`
+	// The time when the failover ended.
+	//
+	// example:
+	//
+	// 2025-05-20T03:09:56Z
+	SwitchFinishTime *string `json:"SwitchFinishTime,omitempty" xml:"SwitchFinishTime,omitempty"`
+	// example:
+	//
+	// e571f897-9b3c-4012-9470-88333832dec4
+	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	// The time when the failover started.
+	//
+	// example:
+	//
+	// 2025-05-20T03:09:45Z
+	SwitchStartTime *string `json:"SwitchStartTime,omitempty" xml:"SwitchStartTime,omitempty"`
+}
+
+func (s DescribeHALogsResponseBodyHaLogItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHALogsResponseBodyHaLogItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHALogsResponseBodyHaLogItems) SetSwitchCauseCode(v string) *DescribeHALogsResponseBodyHaLogItems {
+	s.SwitchCauseCode = &v
+	return s
+}
+
+func (s *DescribeHALogsResponseBodyHaLogItems) SetSwitchCauseDetail(v string) *DescribeHALogsResponseBodyHaLogItems {
+	s.SwitchCauseDetail = &v
+	return s
+}
+
+func (s *DescribeHALogsResponseBodyHaLogItems) SetSwitchFinishTime(v string) *DescribeHALogsResponseBodyHaLogItems {
+	s.SwitchFinishTime = &v
+	return s
+}
+
+func (s *DescribeHALogsResponseBodyHaLogItems) SetSwitchId(v string) *DescribeHALogsResponseBodyHaLogItems {
+	s.SwitchId = &v
+	return s
+}
+
+func (s *DescribeHALogsResponseBodyHaLogItems) SetSwitchStartTime(v string) *DescribeHALogsResponseBodyHaLogItems {
+	s.SwitchStartTime = &v
+	return s
+}
+
+type DescribeHALogsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHALogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeHALogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHALogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHALogsResponse) SetHeaders(v map[string]*string) *DescribeHALogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHALogsResponse) SetStatusCode(v int32) *DescribeHALogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHALogsResponse) SetBody(v *DescribeHALogsResponseBody) *DescribeHALogsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeHistoryTasksRequest struct {
 	// example:
 	//
@@ -36083,6 +36350,103 @@ func (s *OpenAITaskResponse) SetBody(v *OpenAITaskResponseBody) *OpenAITaskRespo
 	return s
 }
 
+type ReactivateDBClusterBackupRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+}
+
+func (s ReactivateDBClusterBackupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReactivateDBClusterBackupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReactivateDBClusterBackupRequest) SetDBClusterId(v string) *ReactivateDBClusterBackupRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+type ReactivateDBClusterBackupResponseBody struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-****************
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the order.
+	//
+	// example:
+	//
+	// 2035629******
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// F2A9EFA7-915F-4572-8299-85A307******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReactivateDBClusterBackupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReactivateDBClusterBackupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReactivateDBClusterBackupResponseBody) SetDBClusterId(v string) *ReactivateDBClusterBackupResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ReactivateDBClusterBackupResponseBody) SetOrderId(v string) *ReactivateDBClusterBackupResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ReactivateDBClusterBackupResponseBody) SetRequestId(v string) *ReactivateDBClusterBackupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReactivateDBClusterBackupResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReactivateDBClusterBackupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReactivateDBClusterBackupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReactivateDBClusterBackupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReactivateDBClusterBackupResponse) SetHeaders(v map[string]*string) *ReactivateDBClusterBackupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReactivateDBClusterBackupResponse) SetStatusCode(v int32) *ReactivateDBClusterBackupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReactivateDBClusterBackupResponse) SetBody(v *ReactivateDBClusterBackupResponseBody) *ReactivateDBClusterBackupResponse {
+	s.Body = v
+	return s
+}
+
 type RefreshDBClusterStorageUsageRequest struct {
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -45711,6 +46075,90 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelation(request *DescribeGlo
 
 // Summary:
 //
+// 查询实例高可用相关日志
+//
+// @param request - DescribeHALogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHALogsResponse
+func (client *Client) DescribeHALogsWithOptions(request *DescribeHALogsRequest, runtime *util.RuntimeOptions) (_result *DescribeHALogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBNodeId)) {
+		query["DBNodeId"] = request.DBNodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogType)) {
+		query["LogType"] = request.LogType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHALogs"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHALogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例高可用相关日志
+//
+// @param request - DescribeHALogsRequest
+//
+// @return DescribeHALogsResponse
+func (client *Client) DescribeHALogs(request *DescribeHALogsRequest) (_result *DescribeHALogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHALogsResponse{}
+	_body, _err := client.DescribeHALogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 任务中心任务列表
 //
 // @param request - DescribeHistoryTasksRequest
@@ -51950,6 +52398,66 @@ func (client *Client) OpenAITask(request *OpenAITaskRequest) (_result *OpenAITas
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenAITaskResponse{}
 	_body, _err := client.OpenAITaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Reactivates the backup feature.
+//
+// @param request - ReactivateDBClusterBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReactivateDBClusterBackupResponse
+func (client *Client) ReactivateDBClusterBackupWithOptions(request *ReactivateDBClusterBackupRequest, runtime *util.RuntimeOptions) (_result *ReactivateDBClusterBackupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReactivateDBClusterBackup"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReactivateDBClusterBackupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Reactivates the backup feature.
+//
+// @param request - ReactivateDBClusterBackupRequest
+//
+// @return ReactivateDBClusterBackupResponse
+func (client *Client) ReactivateDBClusterBackup(request *ReactivateDBClusterBackupRequest) (_result *ReactivateDBClusterBackupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReactivateDBClusterBackupResponse{}
+	_body, _err := client.ReactivateDBClusterBackupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
