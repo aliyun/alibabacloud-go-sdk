@@ -4824,6 +4824,154 @@ func (s *FeedbackDialogueResponse) SetBody(v *FeedbackDialogueResponseBody) *Fee
 	return s
 }
 
+type FetchExportWordTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// 2e27abb32cb64f80a0c6e829b6c87a09
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s FetchExportWordTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FetchExportWordTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FetchExportWordTaskRequest) SetAgentKey(v string) *FetchExportWordTaskRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *FetchExportWordTaskRequest) SetTaskId(v string) *FetchExportWordTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type FetchExportWordTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *FetchExportWordTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s FetchExportWordTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FetchExportWordTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FetchExportWordTaskResponseBody) SetCode(v string) *FetchExportWordTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FetchExportWordTaskResponseBody) SetData(v *FetchExportWordTaskResponseBodyData) *FetchExportWordTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *FetchExportWordTaskResponseBody) SetHttpStatusCode(v int32) *FetchExportWordTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *FetchExportWordTaskResponseBody) SetMessage(v string) *FetchExportWordTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FetchExportWordTaskResponseBody) SetRequestId(v string) *FetchExportWordTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FetchExportWordTaskResponseBody) SetSuccess(v bool) *FetchExportWordTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type FetchExportWordTaskResponseBodyData struct {
+	// example:
+	//
+	// http://xxx/xxx.xls
+	FileUrl   *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	TaskStats *string `json:"TaskStats,omitempty" xml:"TaskStats,omitempty"`
+}
+
+func (s FetchExportWordTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FetchExportWordTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *FetchExportWordTaskResponseBodyData) SetFileUrl(v string) *FetchExportWordTaskResponseBodyData {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *FetchExportWordTaskResponseBodyData) SetTaskStats(v string) *FetchExportWordTaskResponseBodyData {
+	s.TaskStats = &v
+	return s
+}
+
+type FetchExportWordTaskResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FetchExportWordTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s FetchExportWordTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FetchExportWordTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FetchExportWordTaskResponse) SetHeaders(v map[string]*string) *FetchExportWordTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FetchExportWordTaskResponse) SetStatusCode(v int32) *FetchExportWordTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FetchExportWordTaskResponse) SetBody(v *FetchExportWordTaskResponseBody) *FetchExportWordTaskResponse {
+	s.Body = v
+	return s
+}
+
 type FetchImageTaskRequest struct {
 	// This parameter is required.
 	//
@@ -5095,6 +5243,150 @@ func (s *FetchImageTaskResponse) SetStatusCode(v int32) *FetchImageTaskResponse 
 }
 
 func (s *FetchImageTaskResponse) SetBody(v *FetchImageTaskResponseBody) *FetchImageTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateExportWordTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	GeneratedContentId *int64 `json:"GeneratedContentId,omitempty" xml:"GeneratedContentId,omitempty"`
+}
+
+func (s GenerateExportWordTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateExportWordTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateExportWordTaskRequest) SetAgentKey(v string) *GenerateExportWordTaskRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GenerateExportWordTaskRequest) SetGeneratedContentId(v int64) *GenerateExportWordTaskRequest {
+	s.GeneratedContentId = &v
+	return s
+}
+
+type GenerateExportWordTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GenerateExportWordTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GenerateExportWordTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateExportWordTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateExportWordTaskResponseBody) SetCode(v string) *GenerateExportWordTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GenerateExportWordTaskResponseBody) SetData(v *GenerateExportWordTaskResponseBodyData) *GenerateExportWordTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenerateExportWordTaskResponseBody) SetHttpStatusCode(v int32) *GenerateExportWordTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GenerateExportWordTaskResponseBody) SetMessage(v string) *GenerateExportWordTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GenerateExportWordTaskResponseBody) SetRequestId(v string) *GenerateExportWordTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateExportWordTaskResponseBody) SetSuccess(v bool) *GenerateExportWordTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GenerateExportWordTaskResponseBodyData struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GenerateExportWordTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateExportWordTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateExportWordTaskResponseBodyData) SetTaskId(v string) *GenerateExportWordTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type GenerateExportWordTaskResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateExportWordTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateExportWordTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateExportWordTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateExportWordTaskResponse) SetHeaders(v map[string]*string) *GenerateExportWordTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateExportWordTaskResponse) SetStatusCode(v int32) *GenerateExportWordTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateExportWordTaskResponse) SetBody(v *GenerateExportWordTaskResponseBody) *GenerateExportWordTaskResponse {
 	s.Body = v
 	return s
 }
@@ -49506,6 +49798,72 @@ func (client *Client) FeedbackDialogue(request *FeedbackDialogueRequest) (_resul
 
 // Summary:
 //
+// 获取异步导出文档任务结果
+//
+// @param request - FetchExportWordTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FetchExportWordTaskResponse
+func (client *Client) FetchExportWordTaskWithOptions(request *FetchExportWordTaskRequest, runtime *util.RuntimeOptions) (_result *FetchExportWordTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FetchExportWordTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FetchExportWordTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取异步导出文档任务结果
+//
+// @param request - FetchExportWordTaskRequest
+//
+// @return FetchExportWordTaskResponse
+func (client *Client) FetchExportWordTask(request *FetchExportWordTaskRequest) (_result *FetchExportWordTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FetchExportWordTaskResponse{}
+	_body, _err := client.FetchExportWordTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取图片任务执行结果
 //
 // @param tmpReq - FetchImageTaskRequest
@@ -49573,6 +49931,72 @@ func (client *Client) FetchImageTask(request *FetchImageTaskRequest) (_result *F
 	runtime := &util.RuntimeOptions{}
 	_result = &FetchImageTaskResponse{}
 	_body, _err := client.FetchImageTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成内容导出文档任务
+//
+// @param request - GenerateExportWordTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateExportWordTaskResponse
+func (client *Client) GenerateExportWordTaskWithOptions(request *GenerateExportWordTaskRequest, runtime *util.RuntimeOptions) (_result *GenerateExportWordTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GeneratedContentId)) {
+		body["GeneratedContentId"] = request.GeneratedContentId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateExportWordTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateExportWordTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成内容导出文档任务
+//
+// @param request - GenerateExportWordTaskRequest
+//
+// @return GenerateExportWordTaskResponse
+func (client *Client) GenerateExportWordTask(request *GenerateExportWordTaskRequest) (_result *GenerateExportWordTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateExportWordTaskResponse{}
+	_body, _err := client.GenerateExportWordTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
