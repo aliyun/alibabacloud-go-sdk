@@ -1225,6 +1225,18 @@ type CreateAScriptsRequestAScripts struct {
 	ExtAttributeEnabled *bool `json:"ExtAttributeEnabled,omitempty" xml:"ExtAttributeEnabled,omitempty"`
 	// The extended attributes.
 	ExtAttributes []*CreateAScriptsRequestAScriptsExtAttributes `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty" type:"Repeated"`
+	// 可编程脚本执行位置
+	//
+	// - RequestHead（默认值）：请求方向规则执行前
+	//
+	// - RequestFoot：请求方向规则执行后
+	//
+	// - ResponseHead：响应方向规则执行前
+	//
+	// example:
+	//
+	// RequestFoot
+	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
 	// The content of the AScript rule.
 	//
 	// This parameter is required.
@@ -1260,6 +1272,11 @@ func (s *CreateAScriptsRequestAScripts) SetExtAttributeEnabled(v bool) *CreateAS
 
 func (s *CreateAScriptsRequestAScripts) SetExtAttributes(v []*CreateAScriptsRequestAScriptsExtAttributes) *CreateAScriptsRequestAScripts {
 	s.ExtAttributes = v
+	return s
+}
+
+func (s *CreateAScriptsRequestAScripts) SetPosition(v string) *CreateAScriptsRequestAScripts {
+	s.Position = &v
 	return s
 }
 
@@ -1708,8 +1725,13 @@ type CreateHealthCheckTemplateRequest struct {
 	// example:
 	//
 	// 4
-	HealthyThreshold *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tag []*CreateHealthCheckTemplateRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success*	- to **fail**.
@@ -2709,11 +2731,13 @@ func (s *CreateListenerResponse) SetBody(v *CreateListenerResponseBody) *CreateL
 }
 
 type CreateLoadBalancerRequest struct {
-	// The mode in which IP addresses are allocated. Default value: Dynamic. Valid values:
+	// The mode in which IP addresses are allocated to the ALB instance. Valid values:
 	//
-	// 	- **Fixed**: The ALB instance uses a static IP address.
+	// 	- **Fixed*	- (default): a fixed IP address is assigned to the ALB instance in each zone.
 	//
-	// 	- **Dynamic*	- (default): The system dynamically allocates an IP address to each zone of the ALB instance.
+	// 	- **Dynamic**: IP addresses are dynamically allocated to the ALB instance in each zone.
+	//
+	// >  Starting from 00:00:00 on February 25, 2025 (UTC+8), when you call this operation to create an ALB instance, the instance is automatically the [upgraded version](https://help.aliyun.com/document_detail/2864070.html) regardless of the mode you specify. Upgraded ALB instances no longer differentiate between IP modes. Instead, they globally auto-scale IP addresses for providing load balancing services. The ALB instances you created before this date and time are not affected.
 	//
 	// example:
 	//
@@ -2797,7 +2821,7 @@ type CreateLoadBalancerRequest struct {
 	//
 	// alb1
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// The configuration of the configuration read-only mode.
+	// The configuration read-only mode settings.
 	ModificationProtectionConfig *CreateLoadBalancerRequestModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
 	// The ID of the resource group.
 	//
@@ -2906,7 +2930,7 @@ type CreateLoadBalancerRequestLoadBalancerBillingConfig struct {
 	//
 	// cbwp-bp1vevu8h3ieh****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The billing method of the ALB instance.
+	// The billing method of the instance.
 	//
 	// Set the value to **PostPay**, which specifies the pay-as-you-go billing method.
 	//
@@ -2937,9 +2961,11 @@ func (s *CreateLoadBalancerRequestLoadBalancerBillingConfig) SetPayType(v string
 }
 
 type CreateLoadBalancerRequestModificationProtectionConfig struct {
-	// The reason for enabling the configuration read-only mode. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
+	// The reason for enabling the configuration read-only mode.
 	//
-	// > This parameter takes effect only if `Status` is set to **ConsoleProtection**.
+	// The reason must be 2 to 128 characters in length, can contain letters, digits, periods (.), underscores (_), and hyphens (-), and must start with a letter.
+	//
+	// >  This parameter takes effect only when **Status*	- is set to **ConsoleProtection**.
 	//
 	// example:
 	//
@@ -2947,11 +2973,11 @@ type CreateLoadBalancerRequestModificationProtectionConfig struct {
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// Specifies whether to enable the configuration read-only mode. Valid values:
 	//
-	// 	- **NonProtection**: disables the configuration read-only mode. In this case, you cannot specify ModificationProtectionReason. If you specify ModificationProtectionReason, the value of the parameter is cleared.
+	// 	- **NonProtection**: Disables the configuration read-only mode. In this case, the value of the **Reason*	- parameter that you specify does not take effect. If you specify **Reason**, the value of the parameter is cleared.
 	//
-	// 	- **ConsoleProtection**: enables the configuration read-only mode. In this case, you can specify ModificationProtectionReason.
+	// 	- **ConsoleProtection**: Enables the configuration read-only mode. In this case, the value of the **Reason*	- parameter that you specify takes effect.****
 	//
-	// > If you set this parameter to **ConsoleProtection**, you cannot use the ALB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+	// >  If the parameter is set to **ConsoleProtection**, the configuration read-only mode is enabled. You cannot modify the configurations of the ALB instance in the ALB console. However, you can call API operations to modify the configurations of the ALB instance.
 	//
 	// example:
 	//
@@ -3297,7 +3323,7 @@ type CreateRuleRequestRuleActions struct {
 	//
 	// >  Do not set all fields in **RedirectConfig*	- to default values, except for **httpCode**.
 	RedirectConfig *CreateRuleRequestRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
-	// The HTTP header to be removed.
+	// The HTTP headers to be removed.
 	RemoveHeaderConfig *CreateRuleRequestRuleActionsRemoveHeaderConfig `json:"RemoveHeaderConfig,omitempty" xml:"RemoveHeaderConfig,omitempty" type:"Struct"`
 	// The configuration of the rewrite action.
 	//
@@ -3311,11 +3337,11 @@ type CreateRuleRequestRuleActions struct {
 	//
 	// 	- **ForwardGroup**: distributes requests to multiple vServer groups.
 	//
-	// 	- **Redirect**: redirects a request.
+	// 	- **Redirect**: redirects requests.
 	//
 	// 	- **FixedResponse**: returns a custom response.
 	//
-	// 	- **Rewrite**: rewrites a request.
+	// 	- **Rewrite**: rewrites requests.
 	//
 	// 	- **InsertHeader**: inserts headers.
 	//
@@ -3405,11 +3431,11 @@ func (s *CreateRuleRequestRuleActions) SetType(v string) *CreateRuleRequestRuleA
 }
 
 type CreateRuleRequestRuleActionsCorsConfig struct {
-	// Specifies whether to allow credentials to be carried in CORS requests. Valid values:
+	// Specifies whether credentials can be carried in CORS requests. Valid values:
 	//
-	// 	- **on**: allows credentials to be carried in CORS requests.
+	// 	- **on**
 	//
-	// 	- **off**: does not allow credentials to be carried in CORS requests.
+	// 	- **off**
 	//
 	// example:
 	//
@@ -3417,7 +3443,7 @@ type CreateRuleRequestRuleActionsCorsConfig struct {
 	AllowCredentials *string `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
 	// The trusted headers of CORS requests.
 	AllowHeaders []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
-	// The trusted HTTP methods of CORS requests.
+	// The allowed HTTP methods of CORS requests.
 	AllowMethods []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
 	// The trusted origins of CORS requests. You can specify one or more values, or only the wildcard character (`*`).
 	//
@@ -3549,15 +3575,15 @@ func (s *CreateRuleRequestRuleActionsForwardGroupConfig) SetServerGroupTuples(v 
 type CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession struct {
 	// Specifies whether to enable session persistence. Valid values:
 	//
-	// 	- **true**: enables session persistence.
+	// 	- **true**
 	//
-	// 	- **false*	- (default): disables session persistence.
+	// 	- **false*	- (default)
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The timeout period of sessions. Unit: seconds Valid values: **1*	- to **86400**. Default value: **1000**.
+	// The timeout period of sessions. Unit: seconds. Valid values: **1*	- to **86400**. Default value: **1000**.
 	//
 	// example:
 	//
@@ -3623,7 +3649,7 @@ func (s *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples) SetWei
 type CreateRuleRequestRuleActionsInsertHeaderConfig struct {
 	// The key of the header. The header key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header keys specified by **InsertHeaderConfig*	- must be unique.
 	//
-	// >  You cannot specify the following header keys: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The header keys are not case-sensitive.
+	// >  You cannot specify the following header keys: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, `authority`, and `x-forwarded-host`. The header keys are case-insensitive.
 	//
 	// example:
 	//
@@ -3643,7 +3669,7 @@ type CreateRuleRequestRuleActionsInsertHeaderConfig struct {
 	//
 	//     	- **SLBPort**: the listener port.
 	//
-	// 	- If **ValueType*	- is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length, and can contain wildcard characters, such as asterisks (\\*) and question marks (?), and printable characters whose ASCII values are `larger than or equal to 32 and smaller than 127`. The header value cannot start or end with a space character.
+	// 	- If **ValueType*	- is set to **UserDefined**, a custom header value is supported. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\\*) and question marks (?) as wildcard characters. `Quotation marks (")` are not supported. The header value cannot start or end with a space character, or end with a backslash (`\\`).
 	//
 	// 	- If **ValueType*	- is set to **ReferenceHeader**, you can reference a value from request headers. The value must be 1 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_).
 	//
@@ -3651,7 +3677,7 @@ type CreateRuleRequestRuleActionsInsertHeaderConfig struct {
 	//
 	// UserDefined
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The type of header. Valid values:
+	// The type of the header. Valid values:
 	//
 	// 	- **UserDefined**: a custom header value.
 	//
@@ -3721,9 +3747,9 @@ type CreateRuleRequestRuleActionsRedirectConfig struct {
 	//
 	// 	- If you want to specify a custom value, make sure that the following requirements are met:
 	//
-	//     	- The UTRL must be 1 to 128 characters in length, and is case-sensitive. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//     	- The URL must be 1 to 128 characters in length, and is case-sensitive. You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
-	//     	- The URL must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//     	- The URL must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ : \\" 	- ?`. It cannot contain the following special characters: `% # ; ! ( ) [ ] ^ , \\ "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
 	// example:
 	//
@@ -3739,7 +3765,7 @@ type CreateRuleRequestRuleActionsRedirectConfig struct {
 	//
 	// 10
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The redirect protocol. Valid values: Valid values:
+	// The redirect protocol. Valid values:
 	//
 	// 	- **${protocol}*	- (default): If you set the value to ${protocol}, you cannot modify the value or append other characters.
 	//
@@ -3759,13 +3785,13 @@ type CreateRuleRequestRuleActionsRedirectConfig struct {
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The query string to which requests are redirected.
 	//
-	// 	- Default value: **${query}**. **${host}**, **${protocol}**, and **${port}*	- are also supported. Each variable can be specified only once. The preceding variables can be used at the same time or combined with a custom value.
+	// 	- Default value: **${query}**. **${host}**, **${protocol}**, and **${port}*	- are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
 	// 	- If you want to specify a custom value, make sure that the following requirements are met:
 	//
 	//     	- The query string must be 1 to 128 characters in length.
 	//
-	//     	- It can contain printable characters, but cannot contain space characters, the special characters `# [ ] { } \\ | < > &`, or lowercase letters.
+	//     	- It can contain printable characters, excluding space characters, the special characters `# [ ] { } \\ | < > "`, and lowercase letters.
 	//
 	// example:
 	//
@@ -3812,9 +3838,9 @@ func (s *CreateRuleRequestRuleActionsRedirectConfig) SetQuery(v string) *CreateR
 }
 
 type CreateRuleRequestRuleActionsRemoveHeaderConfig struct {
-	// The key of the header to be removed. The header key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header keys specified in RemoveHeader must be unique.
+	// The keys of the headers to be removed. The header keys must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header keys specified in RemoveHeader must be unique.
 	//
-	// 	- If Direction is set to Requests, the following header keys are not supported: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The header keys are not case-sensitive.
+	// 	- If Direction is set to Request, the following request headers cannot be removed: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, `authority`, and `x-forwarded-host`. Request headers are not case-sensitive.
 	//
 	// 	- If Direction is set to Response, the following response header keys are not supported: `connection`, `upgrade`, `content-length`, and `transfer-encoding`. The header keys are not case-sensitive.
 	//
@@ -3862,9 +3888,9 @@ type CreateRuleRequestRuleActionsRewriteConfig struct {
 	//
 	// 	- If you want to specify a custom value, make sure that the following requirements are met:
 	//
-	//     	- The UTRL must be 1 to 128 characters in length, and is case-sensitive. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//     	- The URL must be 1 to 128 characters in length, and is case-sensitive. You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
-	//     	- The URL must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//     	- The URL must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ : \\" 	- ?`. It cannot contain the following special characters: `% # ; ! ( ) [ ] ^ , \\ "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
 	// example:
 	//
@@ -3876,9 +3902,9 @@ type CreateRuleRequestRuleActionsRewriteConfig struct {
 	//
 	// 	- If you want to specify a custom value, make sure that the following requirements are met:
 	//
-	//     	- The query string must be 1 to 128 characters in length.
+	//     	- The path must be 1 to 128 characters in length.
 	//
-	//     	- It can contain printable characters, but cannot contain space characters, the special characters `# [ ] { } \\ | < > &`, or lowercase letters.
+	//     	- It can contain printable characters, excluding space characters, the special characters `# [ ] { } \\ | < > "` and lowercase letters.
 	//
 	// example:
 	//
@@ -3918,7 +3944,7 @@ type CreateRuleRequestRuleActionsTrafficLimitConfig struct {
 	//
 	// 80
 	PerIpQps *int32 `json:"PerIpQps,omitempty" xml:"PerIpQps,omitempty"`
-	// The number of queries per second (QPS). Valid values: **1 to 1000000**.
+	// The queries per second (QPS). Valid values: **1 to 1000000**.
 	//
 	// example:
 	//
@@ -3947,7 +3973,7 @@ func (s *CreateRuleRequestRuleActionsTrafficLimitConfig) SetQPS(v int32) *Create
 type CreateRuleRequestRuleActionsTrafficMirrorConfig struct {
 	// The configuration of the server group to which traffic is mirrored.
 	MirrorGroupConfig *CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
-	// The type of target to which network traffic is mirrored. Valid values:
+	// The type of destination to which network traffic is mirrored. Valid values:
 	//
 	// 	- **ForwardGroupMirror**: a server group.
 	//
@@ -3976,7 +4002,7 @@ func (s *CreateRuleRequestRuleActionsTrafficMirrorConfig) SetTargetType(v string
 }
 
 type CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig struct {
-	// The server group to which traffic is mirrored.
+	// The configuration of the server group to which traffic is mirrored.
 	ServerGroupTuples []*CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
@@ -3994,7 +4020,7 @@ func (s *CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig) SetSe
 }
 
 type CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
-	// The ID of the VServer group.
+	// The server group ID.
 	//
 	// example:
 	//
@@ -4026,13 +4052,13 @@ type CreateRuleRequestRuleConditions struct {
 	MethodConfig *CreateRuleRequestRuleConditionsMethodConfig `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
 	// The configurations of the URL to which requests are forwarded.
 	PathConfig *CreateRuleRequestRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	// The configurations of the query strings.
+	// The configuration of the query strings.
 	QueryStringConfig *CreateRuleRequestRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
 	// The configuration of headers.
 	ResponseHeaderConfig *CreateRuleRequestRuleConditionsResponseHeaderConfig `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
-	// The configurations of the response status codes.
+	// The configuration of the response status codes.
 	ResponseStatusCodeConfig *CreateRuleRequestRuleConditionsResponseStatusCodeConfig `json:"ResponseStatusCodeConfig,omitempty" xml:"ResponseStatusCodeConfig,omitempty" type:"Struct"`
-	// Configurations of traffic matching based on source IP addresses. This parameter is required and valid when **Type*	- is set to **SourceIP**.
+	// Configuration of traffic matching based on source IP addresses. This parameter is required and valid when **Type*	- is set to **SourceIP**.
 	SourceIpConfig *CreateRuleRequestRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
 	// The type of forwarding rule. Valid values:
 	//
@@ -4040,7 +4066,7 @@ type CreateRuleRequestRuleConditions struct {
 	//
 	// 	- **Path**: Requests are distributed based on paths.
 	//
-	// 	- **Header**: Requests are forwarded based on HTTP headers.
+	// 	- **Header**: Requests are distributed based on HTTP headers.
 	//
 	// 	- **QueryString**: Requests are distributed based on query strings.
 	//
@@ -4145,7 +4171,7 @@ type CreateRuleRequestRuleConditionsCookieConfigValues struct {
 	//
 	// 	- You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
-	// 	- The cookie key can contain printable characters, but cannot contain uppercase letters, space characters, or the following special characters: `; # [ ] { } \\ | < > &`.
+	// 	- The value can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `; # [ ] { } \\ | < > & "`.
 	//
 	// example:
 	//
@@ -4157,7 +4183,7 @@ type CreateRuleRequestRuleConditionsCookieConfigValues struct {
 	//
 	// 	- You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
-	// 	- The cookie value can contain printable characters, but cannot contain uppercase letters, space characters, or the following special characters: `; # [ ] { } \\ | < > &`.
+	// 	- The value can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `; # [ ] { } \\ | < > & "`.
 	//
 	// example:
 	//
@@ -4295,7 +4321,7 @@ type CreateRuleRequestRuleConditionsQueryStringConfigValues struct {
 	//
 	// 	- The key must be 1 to 100 characters in length.
 	//
-	// 	- You can use asterisks (\\*) and question marks (?) as wildcard characters. The key can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > &`.
+	// 	- You can use asterisks (\\*) and question marks (?) as wildcard characters. It can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > & "`.
 	//
 	// example:
 	//
@@ -4303,9 +4329,9 @@ type CreateRuleRequestRuleConditionsQueryStringConfigValues struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the query string.
 	//
-	// 	- The query string must be 1 to 128 characters in length.
+	// 	- The value must be 1 to 128 characters in length.
 	//
-	// 	- The value can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > &`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	// 	- It can contain printable characters, but cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > &`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
 	// example:
 	//
@@ -4332,11 +4358,11 @@ func (s *CreateRuleRequestRuleConditionsQueryStringConfigValues) SetValue(v stri
 }
 
 type CreateRuleRequestRuleConditionsResponseHeaderConfig struct {
-	// The key of the header.
+	// The header key.
 	//
-	// 	- The key must be 1 to 40 characters in length,
+	// 	- The key must be 1 to 40 characters in length.
 	//
-	// 	- The key can contain letters, digits, hyphens (-), and underscores (_).
+	// 	- It can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// 	- Cookie and Host are not supported.
 	//
@@ -7092,7 +7118,7 @@ type DeleteRulesRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The forwarding rules.
+	// The forwarding rules. You can specify at most 100 forwarding rules in each call.
 	//
 	// This parameter is required.
 	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
@@ -8886,7 +8912,12 @@ type GetHealthCheckTemplateAttributeResponseBody struct {
 	// example:
 	//
 	// DB1AFC33-DAE8-528E-AA4D-4A6AABE71945
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tags []*GetHealthCheckTemplateAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -10081,7 +10112,7 @@ func (s *GetListenerHealthStatusRequest) SetNextToken(v string) *GetListenerHeal
 }
 
 type GetListenerHealthStatusResponseBody struct {
-	// The health check status of the server groups that are associated with the listener.
+	// The health check status of the server groups associated with the listener.
 	ListenerHealthStatus []*GetListenerHealthStatusResponseBodyListenerHealthStatus `json:"ListenerHealthStatus,omitempty" xml:"ListenerHealthStatus,omitempty" type:"Repeated"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
@@ -10244,7 +10275,7 @@ type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonN
 	//
 	// 90
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The cause of the abnormal state.
+	// The cause for the unhealthy state of the backend servers.
 	Reason *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
 	// The ID of the backend server.
 	//
@@ -10342,7 +10373,7 @@ type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonN
 	//
 	// 	- **RESPONSE_FORMAT_ERROR**: The format of the response from the backend server is invalid.
 	//
-	// 	- **RESPONSE_FORMAT_ERROR**: The HTTP status code returned from the backend server is not the expected one.
+	// 	- **RESPONSE_MISMATCH**: The HTTP status code returned from the backend server is not the expected one.
 	//
 	// example:
 	//
@@ -10460,7 +10491,7 @@ type GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNorma
 	//
 	// 90
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The cause of the abnormal state.
+	// The cause for the unhealthy state of the backend servers.
 	Reason *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
 	// The ID of the backend server.
 	//
@@ -10542,7 +10573,7 @@ type GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNorma
 	//
 	// HTTP_2xx
 	ExpectedResponse *string `json:"ExpectedResponse,omitempty" xml:"ExpectedResponse,omitempty"`
-	// The reason why the value of **Status*	- is Unhealthy. Only HTTP and HTTPS listeners support this parameter.
+	// The reason why the value of **Status*	- is Unhealthy. Only forwarding rules for HTTP and HTTPS listeners support this parameter.
 	//
 	// 	- **CONNECT_TIMEOUT**: ALB failed to connect to the backend server within the specified period of time.
 	//
@@ -10558,7 +10589,7 @@ type GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNorma
 	//
 	// 	- **RESPONSE_FORMAT_ERROR**: The format of the response from the backend server is invalid.
 	//
-	// 	- **RESPONSE_FORMAT_ERROR**: The HTTP status code returned from the backend server is not the expected one.
+	// 	- **RESPONSE_MISMATCH**: The HTTP status code returned from the backend server is not the expected one.
 	//
 	// example:
 	//
@@ -10769,7 +10800,7 @@ type GetLoadBalancerAttributeResponseBody struct {
 	//
 	// Active
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	// The configuration of the configuration read-only mode.
+	// The configuration read-only mode settings.
 	ModificationProtectionConfig *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
 	// The region ID of the ALB instance.
 	//
@@ -11069,21 +11100,23 @@ func (s *GetLoadBalancerAttributeResponseBodyLoadBalancerOperationLocks) SetLock
 }
 
 type GetLoadBalancerAttributeResponseBodyModificationProtectionConfig struct {
-	// The reason for enabling the configuration read-only mode. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
+	// The reason why the configuration read-only mode is enabled.
 	//
-	// This parameter is valid only if **ModificationProtectionStatus*	- is set to **ConsoleProtection**.
+	// The name must be 2 to 128 character characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+	//
+	// This parameter takes effect only if **Status*	- is set to **ConsoleProtection**.
 	//
 	// example:
 	//
 	// test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The status of the configuration read-only mode. Valid values:
+	// Specifies whether the configuration read-only mode is enabled. Valid values:
 	//
-	// 	- **NonProtection**: The configuration read-only mode is disabled. In this case, you cannot specify ModificationProtectionReason. If you specify ModificationProtectionReason, the value of the parameter is cleared.
+	// 	- **NonProtection**: The configuration read-only mode is disabled. In this case, the value of the **Reason*	- parameter that you specify does not take effect. If you set **Reason**, the value is cleared.
 	//
-	// 	- **ConsoleProtection**: The configuration read-only mode is enabled. In this case, you can specify ModificationProtectionReason.
+	// 	- **ConsoleProtection**: The configuration read-only mode is enabled. In this case, the value of the **Reason*	- parameter takes effect.****
 	//
-	// > If you set this parameter to **ConsoleProtection**, you cannot use the ALB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+	// >  If the parameter is set to **ConsoleProtection**, the configuration read-only mode is enabled. You cannot modify the configurations of the ALB instance in the ALB console. However, you can call API operations to modify the configurations of the ALB instance.
 	//
 	// example:
 	//
@@ -12692,7 +12725,7 @@ type ListHealthCheckTemplatesRequest struct {
 	HealthCheckTemplateIds []*string `json:"HealthCheckTemplateIds,omitempty" xml:"HealthCheckTemplateIds,omitempty" type:"Repeated"`
 	// The health check templates.
 	HealthCheckTemplateNames []*string `json:"HealthCheckTemplateNames,omitempty" xml:"HealthCheckTemplateNames,omitempty" type:"Repeated"`
-	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries to return in each call. Valid values: **1*	- to **100**. Default value: **20**
 	//
 	// example:
 	//
@@ -12707,7 +12740,12 @@ type ListHealthCheckTemplatesRequest struct {
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource group ID. You can filter the query results based on the specified ID.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tag []*ListHealthCheckTemplatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -12962,8 +13000,13 @@ type ListHealthCheckTemplatesResponseBodyHealthCheckTemplates struct {
 	// example:
 	//
 	// 4
-	HealthyThreshold *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tags []*ListHealthCheckTemplatesResponseBodyHealthCheckTemplatesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success*	- to **fail**.
@@ -13124,7 +13167,7 @@ func (s *ListHealthCheckTemplatesResponse) SetBody(v *ListHealthCheckTemplatesRe
 }
 
 type ListListenerCertificatesRequest struct {
-	// The certificate IDs.
+	// The certificates.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
 	// The type of the certificate. Valid values: **Ca*	- and **Server**.
 	//
@@ -13140,7 +13183,7 @@ type ListListenerCertificatesRequest struct {
 	//
 	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The maximum number of entries to return. Valid values: **1 to 100**. Default value: **20**.
+	// The number of entries to return in each call. Valid values: **1 to 100**. Default value: **20**.
 	//
 	// example:
 	//
@@ -14687,14 +14730,15 @@ type ListLoadBalancersResponseBodyLoadBalancers struct {
 	//
 	// Active
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	// The configuration of modification protection.
+	// The configuration read-only mode settings.
 	ModificationProtectionConfig *ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
 	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-atstuj3rtop****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId  *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 	// The information about the tags.
 	Tags []*ListLoadBalancersResponseBodyLoadBalancersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the VPC in which the ALB instance is deployed.
@@ -14803,6 +14847,11 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetResourceGroupId(v string
 	return s
 }
 
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetSecurityGroupIds(v []*string) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.SecurityGroupIds = v
+	return s
+}
+
 func (s *ListLoadBalancersResponseBodyLoadBalancers) SetTags(v []*ListLoadBalancersResponseBodyLoadBalancersTags) *ListLoadBalancersResponseBodyLoadBalancers {
 	s.Tags = v
 	return s
@@ -14884,7 +14933,7 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig) Set
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig struct {
-	// The billing method. Valid values:
+	// The billing method. Valid value:
 	//
 	// Only **PostPay*	- may be returned, which indicates the pay-as-you-go billing method.
 	//
@@ -14953,19 +15002,19 @@ type ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig stru
 	//
 	// The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
-	// This parameter is available only if the **ModificationProtectionStatus*	- parameter is set to **ConsoleProtection**.
+	// This parameter takes effect only if **Status*	- is set to **ConsoleProtection**.
 	//
 	// example:
 	//
 	// Test Reason
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// Indicates whether the configuration read-only mode is enabled for the ALB instance. Valid values:
+	// Indicates whether the configuration read-only mode is enabled. Valid values:
 	//
-	// 	- **NonProtection**: Modification protection is disabled. In this case, you cannot set the ModificationProtectionReason parameter. If the ModificationProtectionReason parameter is specified, the value is cleared.
+	// 	- **NonProtection**: The configuration read-only mode is disabled. In this case, **Reason*	- is not returned. If **Reason*	- is set, the value is cleared.
 	//
-	// 	- **ConsoleProtection**: Modification protection is enabled. In this case, you can set the ModificationProtectionReason parameter.
+	// 	- **ConsoleProtection**: The configuration read-only mode is enabled. In this case, **Reason*	- is returned.****
 	//
-	// >  If the value is **ConsoleProtection**, modification protection is enabled. You cannot modify the configurations of the ALB instance in the ALB console. However, you can call API operations to modify the configurations of the ALB instance.
+	// >  If the value is **ConsoleProtection**, the configuration read-only mode is enabled. You cannot modify the configurations of the ALB instance in the ALB console. However, you can call API operations to modify the configurations of the ALB instance.
 	//
 	// example:
 	//
@@ -19070,7 +19119,7 @@ type LoadBalancerLeaveSecurityGroupRequest struct {
 	//
 	// alb-iv9gj3lpak6fbj****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The security IDs.
+	// The security group IDs.
 	//
 	// This parameter is required.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
@@ -19431,7 +19480,7 @@ type RemoveServersFromServerGroupRequest struct {
 	//
 	// sgp-atstuj3rtop****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The server group. You can add at most 200 backend servers to the server group.
+	// The backend servers to be removed. You can specify up to 200 backend servers.
 	//
 	// This parameter is required.
 	Servers []*RemoveServersFromServerGroupRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
@@ -19474,15 +19523,15 @@ type RemoveServersFromServerGroupRequestServers struct {
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the server group.
+	// The backend server ID.
 	//
 	// 	- If the server group is of the **Instance*	- type, set ServerId to the ID of a resource of the **Ecs**, **Eni**, or **Eci*	- type.
 	//
-	// 	- If the server group is of the **Ip*	- type, set ServerId to IP addresses.
+	// 	- If the server group is of the **Ip*	- type, set this parameter to IP addresses.
 	//
-	// 	- If the server group is of the **Fc**, set ServerId to the Alibaba Cloud Resource Name (ARN) of a function.
+	// 	- If the server group is of the **Fc*	- type, set ServerId to the Alibaba Cloud Resource Name (ARN) of a function.
 	//
-	// >  You can call the ListServerGroups operation to query information about the server group type so that you can set ServerId to a proper value.[](~~213627~~)
+	// >  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/2254862.html) operation to query information about the server group type so that you can set ServerId to a proper value.
 	//
 	// This parameter is required.
 	//
@@ -19490,7 +19539,7 @@ type RemoveServersFromServerGroupRequestServers struct {
 	//
 	// i-bp1f9kdprbgy9uiu****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The IP address of the elastic network interface (ENI) in exclusive mode.
+	// The IP address of the elastic network interface (ENI) in inclusive mode.
 	//
 	// example:
 	//
@@ -19498,7 +19547,7 @@ type RemoveServersFromServerGroupRequestServers struct {
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	// The type of the backend server. Valid values:
 	//
-	// 	- **Ecs**: ECS instance
+	// 	- **Ecs**: Elastic Compute Service (ECS) instance
 	//
 	// 	- **Eni**: ENI
 	//
@@ -19506,7 +19555,7 @@ type RemoveServersFromServerGroupRequestServers struct {
 	//
 	// 	- **Ip**: IP address
 	//
-	// 	- **Fc**: Function Compute
+	// 	- **Fc**: Function Compute instance
 	//
 	// This parameter is required.
 	//
@@ -21287,9 +21336,9 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// true
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	// The timeout period of an idle connection. Unit: seconds. Valid values: **1 to 60**.
+	// The timeout period for idle connections. Unit: seconds. Valid values: **1 to 60**
 	//
-	// If no request is received within the specified timeout period, ALB closes the current connection. When another request is received, ALB establishes a new connection.
+	// If no requests are received within the specified timeout period, ALB closes the current connection. When another request is received, ALB establishes a new connection.
 	//
 	// example:
 	//
@@ -22223,11 +22272,11 @@ type UpdateLoadBalancerAddressTypeConfigRequestZoneMappings struct {
 	//
 	// eip-bp1aedxso6u80u0qf****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The type of EIP. Valid values:
+	// The type of the EIP. Valid values:
 	//
-	// 	- **Common**: an EIP.
+	// 	- Common (default): indicates an EIP
 	//
-	// 	- **Anycast**: an Anycast EIP.
+	// 	- Anycast: indicates an Anycast EIP
 	//
 	// >  For more information about the regions in which ALB supports Anycast EIPs, see [Limits](https://help.aliyun.com/document_detail/460727.html).
 	//
@@ -22376,7 +22425,7 @@ type UpdateLoadBalancerAttributeRequest struct {
 	//
 	// lb-instance-test
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// The configuration read-only mode.
+	// The configuration read-only mode settings.
 	ModificationProtectionConfig *UpdateLoadBalancerAttributeRequestModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
 }
 
@@ -22414,21 +22463,23 @@ func (s *UpdateLoadBalancerAttributeRequest) SetModificationProtectionConfig(v *
 }
 
 type UpdateLoadBalancerAttributeRequestModificationProtectionConfig struct {
-	// It must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+	// The reason for enabling the configuration read-only mode.
 	//
-	// This parameter takes effect only when **ModificationProtectionStatus*	- is set to **ConsoleProtection**.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+	//
+	// This parameter takes effect only when **Status*	- is set to **ConsoleProtection**.
 	//
 	// example:
 	//
 	// test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The status of the configuration read-only mode. Valid values:
+	// Specifies whether to enable the configuration read-only mode. Valid values:
 	//
-	// 	- **NonProtection**: disables the configuration read-only mode. In this case, you cannot specify **ModificationProtectionReason**. If you specify **ModificationProtectionReason**, the value of the parameter is cleared.
+	// 	- **NonProtection**: disables the configuration read-only mode. In this case, the value of the **Reason*	- parameter that you specify does not take effect. If you set the value of **Reason**, the value is cleared.
 	//
-	// 	- **ConsoleProtection**: enables the configuration read-only mode. In this case, you can specify **ModificationProtectionReason**.
+	// 	- **ConsoleProtection**: enables the configuration read-only mode. In this case, the value of the **Reason*	- parameter that you specify takes effect.****
 	//
-	// > If you set this parameter to **ConsoleProtection**, you cannot use the ALB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+	// >  If the parameter is set to **ConsoleProtection**, the configuration read-only mode is enabled. You cannot modify the configurations of the ALB instance in the ALB console. However, you can call API operations to modify the configurations of the ALB instance.
 	//
 	// example:
 	//
@@ -22861,7 +22912,7 @@ type UpdateRuleAttributeRequest struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The actions of the forwarding rule.
 	RuleActions []*UpdateRuleAttributeRequestRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
-	// The match condition of the forwarding rule.
+	// The match conditions of the forwarding rule.
 	RuleConditions []*UpdateRuleAttributeRequestRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 	// The ID of the forwarding rule.
 	//
@@ -22927,17 +22978,17 @@ type UpdateRuleAttributeRequestRuleActions struct {
 	CorsConfig *UpdateRuleAttributeRequestRuleActionsCorsConfig `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty" type:"Struct"`
 	// The configuration of the custom response.
 	FixedResponseConfig *UpdateRuleAttributeRequestRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
-	// The configurations of the server groups.
+	// The configuration of the server groups.
 	ForwardGroupConfig *UpdateRuleAttributeRequestRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	// The configuration of the header to be inserted.
 	InsertHeaderConfig *UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
-	// The priority of the action. Valid values: **1 to 50000**. A smaller value specifies a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter is required. The priority of each action within a forwarding rule must be unique. You can specify at most 20 forwarding rule priorities.
+	// The priority of the action. Valid values: **1 to 50000**. A smaller value specifies a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter cannot be left empty. The priority of each action within a forwarding rule must be unique. You can specify up to 20 forwarding rule priorities.
 	//
 	// example:
 	//
 	// 1
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The configuration of the redirect action. You can specify at most 20 redirect actions.
+	// The configuration of the redirect action. You can specify up to 20 redirect actions.
 	RedirectConfig *UpdateRuleAttributeRequestRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
 	// The HTTP header to be removed.
 	RemoveHeaderConfig *UpdateRuleAttributeRequestRuleActionsRemoveHeaderConfig `json:"RemoveHeaderConfig,omitempty" xml:"RemoveHeaderConfig,omitempty" type:"Struct"`
@@ -22947,9 +22998,9 @@ type UpdateRuleAttributeRequestRuleActions struct {
 	TrafficLimitConfig *UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
 	// The configuration of the traffic mirroring action.
 	TrafficMirrorConfig *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
-	// The type of the task. You can specify at most 11 types of action. Valid values:
+	// The type of the task. You can specify up to 11 types of action. Valid values:
 	//
-	// 	- **ForwardGroup**: forwards requests to multiple vServer groups.
+	// 	- **ForwardGroup**: forwards a request to multiple vServer groups.
 	//
 	// 	- **Redirect**: redirects requests.
 	//
@@ -22959,7 +23010,7 @@ type UpdateRuleAttributeRequestRuleActions struct {
 	//
 	// 	- **InsertHeader**: inserts a header.
 	//
-	// 	- **RemoveHeader**: removes headers.
+	// 	- **RemoveHeader**: deletes the header of a request.
 	//
 	// 	- **TrafficLimit**: throttles traffic.
 	//
@@ -23043,7 +23094,7 @@ func (s *UpdateRuleAttributeRequestRuleActions) SetType(v string) *UpdateRuleAtt
 }
 
 type UpdateRuleAttributeRequestRuleActionsCorsConfig struct {
-	// Specifies whether to allow credentials to be carried in CORS requests. Valid values:
+	// Specifies whether credentials can be carried in CORS requests. Valid values:
 	//
 	// 	- **on**
 	//
@@ -23160,7 +23211,7 @@ func (s *UpdateRuleAttributeRequestRuleActionsFixedResponseConfig) SetHttpCode(v
 }
 
 type UpdateRuleAttributeRequestRuleActionsForwardGroupConfig struct {
-	// The configuration of session persistence.
+	// The configuration of session persistence for server groups.
 	ServerGroupStickySession *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession `json:"ServerGroupStickySession,omitempty" xml:"ServerGroupStickySession,omitempty" type:"Struct"`
 	// The server groups to which requests are forwarded.
 	ServerGroupTuples []*UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
@@ -23187,7 +23238,7 @@ func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfig) SetServerGroup
 type UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession struct {
 	// Specifies whether to enable session persistence. Valid values:
 	//
-	// 	- **true**: enables session persistence.
+	// 	- **true**
 	//
 	// 	- **false*	- (default)
 	//
@@ -23195,7 +23246,7 @@ type UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySes
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The timeout period of sessions. Unit: seconds Valid values: 1 to 86400.
+	// The timeout period for sessions. Unit: seconds. Valid values: 1 to 86400.
 	//
 	// example:
 	//
@@ -23261,9 +23312,9 @@ func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuple
 type UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig struct {
 	// Specifies whether to overwrite the request header values. Valid values:
 	//
-	// 	- **true**: overwrites the request header.
+	// 	- **true**
 	//
-	// 	- **false*	- (default): does not overwrite the request header.
+	// 	- **false*	- (default)
 	//
 	// example:
 	//
@@ -23271,7 +23322,7 @@ type UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig struct {
 	CoverEnabled *bool `json:"CoverEnabled,omitempty" xml:"CoverEnabled,omitempty"`
 	// The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header keys specified by **InsertHeaderConfig*	- must be unique.
 	//
-	// > The following header keys are not supported: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The header keys are not case-sensitive.
+	// >  You cannot specify the following header keys: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `x-forwarded-host`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The header keys are case-insensitive.
 	//
 	// example:
 	//
@@ -23291,7 +23342,7 @@ type UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig struct {
 	//
 	//     	- **SLBPort**: the listener port of the ALB instance.
 	//
-	// 	- If **ValueType*	- is set to **UserDefined**, you can specify a custom value. The value must be 1 to 128 characters in length, and can contain asterisks (\\*), question marks (?), and printable characters whose ASCII values are `larger than or equal to 32 and smaller than 127`. It cannot start or end with a space character.
+	// 	- If **ValueType*	- is set to **UserDefined**, a custom header value is supported. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\\*) and question marks (?) as wildcard characters. Quotation marks (`"`) are not supported. The header value cannot start or end with a space character, or end with a backslash (`\\`).
 	//
 	// 	- If **ValueType*	- is set to **ReferenceHeader**, you can reference a value from request headers. The value must be 1 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_).
 	//
@@ -23350,11 +23401,11 @@ type UpdateRuleAttributeRequestRuleActionsRedirectConfig struct {
 	//
 	//     	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (\\*), and question marks (?).
 	//
-	//     	- The hostname must contain at least one period (.) but cannot start or end with a period (.).
+	//     	- The hostname contains at least one period (.) but does not start or end with a period (.).
 	//
 	//     	- The rightmost domain label can contain only letters and wildcard characters. It cannot contain digits or hyphens (-).
 	//
-	//     	- Other domain labels cannot start or end with a hyphen (-).
+	//     	- The domain labels do not start or end with a hyphen (-).
 	//
 	//     	- You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
 	//
@@ -23374,9 +23425,9 @@ type UpdateRuleAttributeRequestRuleActionsRedirectConfig struct {
 	//
 	// 	- If you want to specify a custom value, make sure that the following requirements are met:
 	//
-	//     	- The URL must be 1 to 128 characters in length,
+	//     	- The header value must be 1 to 128 characters in length.
 	//
-	//     	- The URL must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//     	- It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ :`. It does not contain the following special characters: `% # ; ! ( ) [ ] ^ , \\ "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
 	// example:
 	//
@@ -23398,21 +23449,21 @@ type UpdateRuleAttributeRequestRuleActionsRedirectConfig struct {
 	//
 	// 	- **HTTP*	- or **HTTPS**.
 	//
-	// > HTTPS listeners support only HTTPS redirects.
+	// >  HTTPS listeners support only HTTPS redirects.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The query string to which requests are redirected. Valid values:
+	// The query string of the URL to which requests are forwarded. Valid values:
 	//
 	// 	- Default value: **${query}**. \\*\\*${host}**, **${protocol}**, and **${port}\\*\\	- are also supported. Each variable can be specified only once. The preceding variables can be used at the same time or combined with a custom value.
 	//
 	// 	- If you want to specify a custom value, make sure that the following requirements are met:
 	//
-	//     	- The query string must be 1 to 128 characters in length.
+	//     	- The header value must be 1 to 128 characters in length.
 	//
-	//     	- The query string can contain printable characters, but cannot contain space characters, the special characters `# [ ] { } \\ | < > &`, or uppercase letters.
+	//     	- It can contain printable characters, excluding space characters, the special characters `# [ ] { } \\ | < > "`, and uppercase letters.
 	//
 	// example:
 	//
@@ -23461,7 +23512,7 @@ func (s *UpdateRuleAttributeRequestRuleActionsRedirectConfig) SetQuery(v string)
 type UpdateRuleAttributeRequestRuleActionsRemoveHeaderConfig struct {
 	// The key of the header to be removed. The header key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header keys specified in RemoveHeader must be unique.
 	//
-	// 	- If Direction is set to Request, the following request header keys are not supported: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The header keys are not case-sensitive.
+	// 	- If Direction is set to Request, the following request headers cannot be removed: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `x-forwarded-host`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. Request headers are not case-sensitive.
 	//
 	// 	- If Direction is set to Response, the following header keys are not supported: `connection`, `upgrade`, `content-length`, and `transfer-encoding`. The header keys are not case-sensitive.
 	//
@@ -23497,7 +23548,7 @@ type UpdateRuleAttributeRequestRuleActionsRewriteConfig struct {
 	//
 	//     	- The rightmost domain label can contain only letters and wildcard characters. It cannot contain digits or hyphens (-).
 	//
-	//     	- Other domain labels cannot start or end with a hyphen (-). You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//     	- The domain labels do not start or end with a hyphen (-). You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
 	//
 	// example:
 	//
@@ -23509,9 +23560,9 @@ type UpdateRuleAttributeRequestRuleActionsRewriteConfig struct {
 	//
 	// 	- If you want to specify a custom value, make sure that the following requirements are met:
 	//
-	//     	- The URL must be 1 to 128 characters in length,
+	//     	- The header value must be 1 to 128 characters in length.
 	//
-	//     	- The URL must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//     	- It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ :`. It does not contain the following special characters: `% # ; ! ( ) [ ] ^ , \\ "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
 	// example:
 	//
@@ -23523,9 +23574,9 @@ type UpdateRuleAttributeRequestRuleActionsRewriteConfig struct {
 	//
 	// 	- If you want to specify a custom value, make sure that the following requirements are met:
 	//
-	//     	- The query string must be 1 to 128 characters in length.
+	//     	- The header value must be 1 to 128 characters in length.
 	//
-	//     	- The query string can contain printable characters, but cannot contain space characters, the special characters `# [ ] { } \\ | < > &`, or uppercase letters.
+	//     	- It can contain printable characters, excluding space characters, the special characters `# [ ] { } \\ | < > "`, and uppercase letters.
 	//
 	// example:
 	//
@@ -23557,15 +23608,15 @@ func (s *UpdateRuleAttributeRequestRuleActionsRewriteConfig) SetQuery(v string) 
 }
 
 type UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig struct {
-	// The number of requests per IP address. Value range: **1 to 1000000**.
+	// The number of requests per IP address. Value range: **1 to 1,000,000**.
 	//
-	// > If both the **QPS*	- and **PerIpQps*	- parameters are specified, make sure that the value of the **QPS*	- parameter is smaller than the value of the PerIpQps parameter.
+	// >  If both the **QPS*	- and **PerIpQps*	- parameters are specified, make sure that the value of the **QPS*	- parameter is smaller than the value of the PerIpQps parameter.
 	//
 	// example:
 	//
 	// 80
 	PerIpQps *int32 `json:"PerIpQps,omitempty" xml:"PerIpQps,omitempty"`
-	// The queries per second (QPS). Value range: **1 to 1000000**.
+	// The number of queries per second (QPS). Value range: **1 to 1,000,000**.
 	//
 	// example:
 	//
@@ -23623,7 +23674,7 @@ func (s *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig) SetTargetType
 }
 
 type UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig struct {
-	// The server group to which network traffic is mirrored.
+	// The server group to which traffic is mirrored.
 	ServerGroupTuples []*UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
@@ -23667,25 +23718,25 @@ type UpdateRuleAttributeRequestRuleConditions struct {
 	CookieConfig *UpdateRuleAttributeRequestRuleConditionsCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
 	// The configuration of the header.
 	HeaderConfig *UpdateRuleAttributeRequestRuleConditionsHeaderConfig `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
-	// The configurations of the hosts.
+	// The configuration of the hosts.
 	HostConfig *UpdateRuleAttributeRequestRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
 	// The configuration of the request method.
 	MethodConfig *UpdateRuleAttributeRequestRuleConditionsMethodConfig `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
-	// The configurations of the forwarding URL.
+	// The configuration of the forwarding URL.
 	PathConfig *UpdateRuleAttributeRequestRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	// The configurations of the query strings.
+	// The configuration of the query strings.
 	QueryStringConfig *UpdateRuleAttributeRequestRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
 	// The configuration of headers.
 	ResponseHeaderConfig *UpdateRuleAttributeRequestRuleConditionsResponseHeaderConfig `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
-	// The configurations of the response status codes.
+	// The configuration of the response status codes.
 	ResponseStatusCodeConfig *UpdateRuleAttributeRequestRuleConditionsResponseStatusCodeConfig `json:"ResponseStatusCodeConfig,omitempty" xml:"ResponseStatusCodeConfig,omitempty" type:"Struct"`
-	// Traffic matching based on source IP addresses. You can specify at most five IP addresses, including CIDR blocks.
+	// Traffic matching based on source IP addresses. You can specify up to five IP addresses, including CIDR blocks.
 	SourceIpConfig *UpdateRuleAttributeRequestRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
-	// The type of forwarding rule. You can specify at most seven types of forwarding rule. Valid values:
+	// The type of forwarding rule. You can specify up to seven types of forwarding rule. Valid values:
 	//
 	// 	- **Host**: Requests are forwarded based on hosts.
 	//
-	// 	- **Path**: Requests are forwarded based on paths.
+	// 	- **Path**: Requests are forwarded based on URLs.
 	//
 	// 	- **Header**: Requests are forwarded based on HTTP headers.
 	//
@@ -23695,7 +23746,7 @@ type UpdateRuleAttributeRequestRuleConditions struct {
 	//
 	// 	- **Cookie**: Requests are forwarded based on cookies.
 	//
-	// 	- **SourceIp**: Responses are forwarded based on source IP addresses.
+	// 	- **SourceIp**: Requests are forwarded based on source IP addresses.
 	//
 	// 	- **ResponseHeader**: Requests are forwarded based on HTTP response headers.
 	//
@@ -23784,7 +23835,7 @@ func (s *UpdateRuleAttributeRequestRuleConditionsCookieConfig) SetValues(v []*Up
 }
 
 type UpdateRuleAttributeRequestRuleConditionsCookieConfigValues struct {
-	// The cookie key. The cookie key must be 1 to 100 characters in length, and can contain lowercase letters, printable ASCII characters, asterisks (\\*), and question marks (?). It cannot contain space characters or the following special characters: `# [ ] { } \\ | < > &`.
+	// The cookie key. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > & " ;`.
 	//
 	// example:
 	//
@@ -23817,7 +23868,7 @@ func (s *UpdateRuleAttributeRequestRuleConditionsCookieConfigValues) SetValue(v 
 }
 
 type UpdateRuleAttributeRequestRuleConditionsHeaderConfig struct {
-	// The key of the response header. The header key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). Cookie and Host are not supported.
+	// The header key. The header key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). Cookie and Host are not supported.
 	//
 	// example:
 	//
@@ -23882,7 +23933,7 @@ func (s *UpdateRuleAttributeRequestRuleConditionsMethodConfig) SetValues(v []*st
 }
 
 type UpdateRuleAttributeRequestRuleConditionsPathConfig struct {
-	// The URLs to which requests are forwarded.
+	// The forwarding URLs.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -23900,7 +23951,7 @@ func (s *UpdateRuleAttributeRequestRuleConditionsPathConfig) SetValues(v []*stri
 }
 
 type UpdateRuleAttributeRequestRuleConditionsQueryStringConfig struct {
-	// The query strings. You can specify at most 20 query strings.
+	// The query strings. You can specify up to 20 query strings.
 	Values []*UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -23918,13 +23969,13 @@ func (s *UpdateRuleAttributeRequestRuleConditionsQueryStringConfig) SetValues(v 
 }
 
 type UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues struct {
-	// The key of the query string. The key must be 1 to 100 characters in length, and can contain lowercase letters, printable ASCII characters, asterisks (\\*), and question marks (?). It cannot contain space characters or the following special characters: `# [ ] { } \\ | < > &`.
+	// The key of the query string. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > & "`.
 	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the query string. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters, asterisks (\\*), and question marks (?). It cannot contain space characters or the following special characters: `# [ ] { } \\ | < > &`.
+	// The value of the query string. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). The value cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > & "`.
 	//
 	// example:
 	//
@@ -23953,9 +24004,9 @@ func (s *UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues) SetVal
 type UpdateRuleAttributeRequestRuleConditionsResponseHeaderConfig struct {
 	// The header key.
 	//
-	// 	- The header key must be 1 to 40 characters in length.
+	// 	- The key must be 1 to 40 characters in length.
 	//
-	// 	- The header key can contain lowercase letters, digits, hyphens (-), and underscores (_).
+	// 	- It can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// 	- Cookie and Host are not supported.
 	//
@@ -26002,17 +26053,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-//   Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
+//	  Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
 //
-//     	- The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
+//	    	- The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
 //
-//     	- The maximum number of IP entries that each ACL can contain: 1,000
+//	    	- The maximum number of IP entries that each ACL can contain: 1,000
 //
-// 	- **AddEntriesToAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
+//		- **AddEntriesToAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
 //
-//     	- If the ACL is in the **Adding*	- state, the IP entries are being added.
+//	    	- If the ACL is in the **Adding*	- state, the IP entries are being added.
 //
-//     	- If the ACL is in the **Available*	- state, the IP entries are added.
+//	    	- If the ACL is in the **Available*	- state, the IP entries are added.
 //
 // @param request - AddEntriesToAclRequest
 //
@@ -26055,24 +26106,13 @@ func (client *Client) AddEntriesToAclWithOptions(request *AddEntriesToAclRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddEntriesToAclResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddEntriesToAclResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddEntriesToAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26081,17 +26121,17 @@ func (client *Client) AddEntriesToAclWithOptions(request *AddEntriesToAclRequest
 //
 // Description:
 //
-//   Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
+//	  Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
 //
-//     	- The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
+//	    	- The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
 //
-//     	- The maximum number of IP entries that each ACL can contain: 1,000
+//	    	- The maximum number of IP entries that each ACL can contain: 1,000
 //
-// 	- **AddEntriesToAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
+//		- **AddEntriesToAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
 //
-//     	- If the ACL is in the **Adding*	- state, the IP entries are being added.
+//	    	- If the ACL is in the **Adding*	- state, the IP entries are being added.
 //
-//     	- If the ACL is in the **Available*	- state, the IP entries are added.
+//	    	- If the ACL is in the **Available*	- state, the IP entries are added.
 //
 // @param request - AddEntriesToAclRequest
 //
@@ -26117,15 +26157,15 @@ func (client *Client) AddEntriesToAcl(request *AddEntriesToAclRequest) (_result 
 //
 // 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
 //
-// 	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//   - If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
 //
-// 	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//   - If a server group is in the **Available*	- state, it indicates that the server group is running.
 //
 // 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
 //
-// 	- If a backend server is in the **Adding*	- state, it indicates that the backend server is being added to a server group.
+//   - If a backend server is in the **Adding*	- state, it indicates that the backend server is being added to a server group.
 //
-// 	- If a backend server is in the **Available*	- state, it indicates that the server is running.
+//   - If a backend server is in the **Available*	- state, it indicates that the server is running.
 //
 // @param request - AddServersToServerGroupRequest
 //
@@ -26168,24 +26208,13 @@ func (client *Client) AddServersToServerGroupWithOptions(request *AddServersToSe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddServersToServerGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddServersToServerGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddServersToServerGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26198,15 +26227,15 @@ func (client *Client) AddServersToServerGroupWithOptions(request *AddServersToSe
 //
 // 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
 //
-// 	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//   - If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
 //
-// 	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//   - If a server group is in the **Available*	- state, it indicates that the server group is running.
 //
 // 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
 //
-// 	- If a backend server is in the **Adding*	- state, it indicates that the backend server is being added to a server group.
+//   - If a backend server is in the **Adding*	- state, it indicates that the backend server is being added to a server group.
 //
-// 	- If a backend server is in the **Available*	- state, it indicates that the server is running.
+//   - If a backend server is in the **Available*	- state, it indicates that the server is running.
 //
 // @param request - AddServersToServerGroupRequest
 //
@@ -26267,24 +26296,13 @@ func (client *Client) ApplyHealthCheckTemplateToServerGroupWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ApplyHealthCheckTemplateToServerGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ApplyHealthCheckTemplateToServerGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ApplyHealthCheckTemplateToServerGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26313,9 +26331,9 @@ func (client *Client) ApplyHealthCheckTemplateToServerGroup(request *ApplyHealth
 //
 // *DeleteDhcpOptionsSet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
 //
-// 	- If an ACL is in the **Associating*	- state, the ACL is being associated with a listener.
+//   - If an ACL is in the **Associating*	- state, the ACL is being associated with a listener.
 //
-// 	- If an ACL is in the **Associated*	- state, the ACL is associated with a listener.
+//   - If an ACL is in the **Associated*	- state, the ACL is associated with a listener.
 //
 // @param request - AssociateAclsWithListenerRequest
 //
@@ -26362,24 +26380,13 @@ func (client *Client) AssociateAclsWithListenerWithOptions(request *AssociateAcl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AssociateAclsWithListenerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AssociateAclsWithListenerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AssociateAclsWithListenerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26390,9 +26397,9 @@ func (client *Client) AssociateAclsWithListenerWithOptions(request *AssociateAcl
 //
 // *DeleteDhcpOptionsSet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
 //
-// 	- If an ACL is in the **Associating*	- state, the ACL is being associated with a listener.
+//   - If an ACL is in the **Associating*	- state, the ACL is being associated with a listener.
 //
-// 	- If an ACL is in the **Associated*	- state, the ACL is associated with a listener.
+//   - If an ACL is in the **Associated*	- state, the ACL is associated with a listener.
 //
 // @param request - AssociateAclsWithListenerRequest
 //
@@ -26416,9 +26423,9 @@ func (client *Client) AssociateAclsWithListener(request *AssociateAclsWithListen
 //
 // *AssociateAdditionalCertificatesWithListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
 //
-// 	- If the HTTPS or QUIC listener is in the **Associating*	- state, the additional certificates are being associated.
+//   - If the HTTPS or QUIC listener is in the **Associating*	- state, the additional certificates are being associated.
 //
-// 	- If the HTTPS or QUIC listener is in the **Associated*	- state, the additional certificates are associated.
+//   - If the HTTPS or QUIC listener is in the **Associated*	- state, the additional certificates are associated.
 //
 // @param request - AssociateAdditionalCertificatesWithListenerRequest
 //
@@ -26461,24 +26468,13 @@ func (client *Client) AssociateAdditionalCertificatesWithListenerWithOptions(req
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AssociateAdditionalCertificatesWithListenerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AssociateAdditionalCertificatesWithListenerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AssociateAdditionalCertificatesWithListenerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26489,9 +26485,9 @@ func (client *Client) AssociateAdditionalCertificatesWithListenerWithOptions(req
 //
 // *AssociateAdditionalCertificatesWithListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
 //
-// 	- If the HTTPS or QUIC listener is in the **Associating*	- state, the additional certificates are being associated.
+//   - If the HTTPS or QUIC listener is in the **Associating*	- state, the additional certificates are being associated.
 //
-// 	- If the HTTPS or QUIC listener is in the **Associated*	- state, the additional certificates are associated.
+//   - If the HTTPS or QUIC listener is in the **Associated*	- state, the additional certificates are associated.
 //
 // @param request - AssociateAdditionalCertificatesWithListenerRequest
 //
@@ -26515,9 +26511,9 @@ func (client *Client) AssociateAdditionalCertificatesWithListener(request *Assoc
 //
 // *AttachCommonBandwidthPackageToLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
 //
-// 	- If the ALB instance is in the **Configuring*	- state, the EIP bandwidth plan is being associated with the ALB instance.
+//   - If the ALB instance is in the **Configuring*	- state, the EIP bandwidth plan is being associated with the ALB instance.
 //
-// 	- If the ALB instance is in the **Active*	- state, the EIP bandwidth plan is associated with the ALB instance.
+//   - If the ALB instance is in the **Active*	- state, the EIP bandwidth plan is associated with the ALB instance.
 //
 // @param request - AttachCommonBandwidthPackageToLoadBalancerRequest
 //
@@ -26564,24 +26560,13 @@ func (client *Client) AttachCommonBandwidthPackageToLoadBalancerWithOptions(requ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AttachCommonBandwidthPackageToLoadBalancerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AttachCommonBandwidthPackageToLoadBalancerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AttachCommonBandwidthPackageToLoadBalancerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26592,9 +26577,9 @@ func (client *Client) AttachCommonBandwidthPackageToLoadBalancerWithOptions(requ
 //
 // *AttachCommonBandwidthPackageToLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
 //
-// 	- If the ALB instance is in the **Configuring*	- state, the EIP bandwidth plan is being associated with the ALB instance.
+//   - If the ALB instance is in the **Configuring*	- state, the EIP bandwidth plan is being associated with the ALB instance.
 //
-// 	- If the ALB instance is in the **Active*	- state, the EIP bandwidth plan is associated with the ALB instance.
+//   - If the ALB instance is in the **Active*	- state, the EIP bandwidth plan is associated with the ALB instance.
 //
 // @param request - AttachCommonBandwidthPackageToLoadBalancerRequest
 //
@@ -26659,24 +26644,13 @@ func (client *Client) CancelShiftLoadBalancerZonesWithOptions(request *CancelShi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CancelShiftLoadBalancerZonesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CancelShiftLoadBalancerZonesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CancelShiftLoadBalancerZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26709,15 +26683,15 @@ func (client *Client) CancelShiftLoadBalancerZones(request *CancelShiftLoadBalan
 //
 // ### [](#)Prerequisites
 //
-// 	- A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+//   - A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
 //
 // ### [](#)Usage notes
 //
 // **CreateAScripts*	- an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of a script.
 //
-// 	- If the script is in the **Creating*	- state, the script is being created.
+//   - If the script is in the **Creating*	- state, the script is being created.
 //
-// 	- If the script is in the **Available**, the script is created.
+//   - If the script is in the **Available**, the script is created.
 //
 // @param request - CreateAScriptsRequest
 //
@@ -26760,24 +26734,13 @@ func (client *Client) CreateAScriptsWithOptions(request *CreateAScriptsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAScriptsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAScriptsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAScriptsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26788,15 +26751,15 @@ func (client *Client) CreateAScriptsWithOptions(request *CreateAScriptsRequest, 
 //
 // ### [](#)Prerequisites
 //
-// 	- A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+//   - A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
 //
 // ### [](#)Usage notes
 //
 // **CreateAScripts*	- an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of a script.
 //
-// 	- If the script is in the **Creating*	- state, the script is being created.
+//   - If the script is in the **Creating*	- state, the script is being created.
 //
-// 	- If the script is in the **Available**, the script is created.
+//   - If the script is in the **Available**, the script is created.
 //
 // @param request - CreateAScriptsRequest
 //
@@ -26822,9 +26785,9 @@ func (client *Client) CreateAScripts(request *CreateAScriptsRequest) (_result *C
 //
 // The **CreateAcl*	- operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of an ACL:
 //
-// 	- If an ACL is in the **Creating*	- state, the ACL is being created.
+//   - If an ACL is in the **Creating*	- state, the ACL is being created.
 //
-// 	- If an ACL is in the **Available*	- state, the ACL is created.
+//   - If an ACL is in the **Available*	- state, the ACL is created.
 //
 // @param request - CreateAclRequest
 //
@@ -26871,24 +26834,13 @@ func (client *Client) CreateAclWithOptions(request *CreateAclRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAclResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAclResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -26901,9 +26853,9 @@ func (client *Client) CreateAclWithOptions(request *CreateAclRequest, runtime *u
 //
 // The **CreateAcl*	- operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of an ACL:
 //
-// 	- If an ACL is in the **Creating*	- state, the ACL is being created.
+//   - If an ACL is in the **Creating*	- state, the ACL is being created.
 //
-// 	- If an ACL is in the **Available*	- state, the ACL is created.
+//   - If an ACL is in the **Available*	- state, the ACL is created.
 //
 // @param request - CreateAclRequest
 //
@@ -27012,24 +26964,13 @@ func (client *Client) CreateHealthCheckTemplateWithOptions(request *CreateHealth
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateHealthCheckTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateHealthCheckTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateHealthCheckTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27060,9 +27001,9 @@ func (client *Client) CreateHealthCheckTemplate(request *CreateHealthCheckTempla
 //
 // **CreateListener*	- is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/214353.html) operation to query the status of the HTTP, HTTPS, or QUIC listener.
 //
-// 	- If the HTTP, HTTPS, or QUIC listener is in the **Provisioning*	- state, it indicates that the listener is being created.
+//   - If the HTTP, HTTPS, or QUIC listener is in the **Provisioning*	- state, it indicates that the listener is being created.
 //
-// 	- If the HTTP, HTTPS, or QUIC listener is in the **Running*	- state, it indicates that the listener has been created successfully.
+//   - If the HTTP, HTTPS, or QUIC listener is in the **Running*	- state, it indicates that the listener has been created successfully.
 //
 // @param request - CreateListenerRequest
 //
@@ -27161,24 +27102,13 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateListenerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateListenerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateListenerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27191,9 +27121,9 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 //
 // **CreateListener*	- is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/214353.html) operation to query the status of the HTTP, HTTPS, or QUIC listener.
 //
-// 	- If the HTTP, HTTPS, or QUIC listener is in the **Provisioning*	- state, it indicates that the listener is being created.
+//   - If the HTTP, HTTPS, or QUIC listener is in the **Provisioning*	- state, it indicates that the listener is being created.
 //
-// 	- If the HTTP, HTTPS, or QUIC listener is in the **Running*	- state, it indicates that the listener has been created successfully.
+//   - If the HTTP, HTTPS, or QUIC listener is in the **Running*	- state, it indicates that the listener has been created successfully.
 //
 // @param request - CreateListenerRequest
 //
@@ -27217,9 +27147,9 @@ func (client *Client) CreateListener(request *CreateListenerRequest) (_result *C
 //
 // *CreateLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of an ALB instance.
 //
-// 	- If an ALB instance is in the **Provisioning*	- state, it indicates that the ALB instance is being created.
+//   - If an ALB instance is in the **Provisioning*	- state, it indicates that the ALB instance is being created.
 //
-// 	- If an ALB instance is in the **Active*	- state, it indicates that the ALB instance is created.
+//   - If an ALB instance is in the **Active*	- state, it indicates that the ALB instance is created.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -27302,24 +27232,13 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateLoadBalancerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateLoadBalancerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateLoadBalancerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27330,9 +27249,9 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 //
 // *CreateLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of an ALB instance.
 //
-// 	- If an ALB instance is in the **Provisioning*	- state, it indicates that the ALB instance is being created.
+//   - If an ALB instance is in the **Provisioning*	- state, it indicates that the ALB instance is being created.
 //
-// 	- If an ALB instance is in the **Active*	- state, it indicates that the ALB instance is created.
+//   - If an ALB instance is in the **Active*	- state, it indicates that the ALB instance is created.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -27356,21 +27275,21 @@ func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_r
 //
 // Take note of the following limits:
 //
-// 	- When you configure the **Redirect*	- action, you can use the default value only for the **HttpCode*	- parameter. Do not use the default values for the other parameters.
+//   - When you configure the **Redirect*	- action, you can use the default value only for the **HttpCode*	- parameter. Do not use the default values for the other parameters.
 //
-// 	- If you specify the **Rewrite*	- action together with other actions in a forwarding rule, make sure that the **ForwardGroup*	- action is specified.
+//   - If you specify the **Rewrite*	- action together with other actions in a forwarding rule, make sure that the **ForwardGroup*	- action is specified.
 //
-// 	- **CreateRule*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule.
+//   - **CreateRule*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule.
 //
-//     	- If a forwarding rule is in the **Provisioning*	- state, the forwarding rule is being created.
+//   - If a forwarding rule is in the **Provisioning*	- state, the forwarding rule is being created.
 //
-//     	- If a forwarding rule is in the **Available*	- state, the forwarding rule is created.
+//   - If a forwarding rule is in the **Available*	- state, the forwarding rule is created.
 //
-// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
+//   - You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
 //
-//     	- Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+//   - Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
 //
-//     	- Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+//   - Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
 //
 // @param request - CreateRuleRequest
 //
@@ -27433,24 +27352,13 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27461,21 +27369,21 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 //
 // Take note of the following limits:
 //
-// 	- When you configure the **Redirect*	- action, you can use the default value only for the **HttpCode*	- parameter. Do not use the default values for the other parameters.
+//   - When you configure the **Redirect*	- action, you can use the default value only for the **HttpCode*	- parameter. Do not use the default values for the other parameters.
 //
-// 	- If you specify the **Rewrite*	- action together with other actions in a forwarding rule, make sure that the **ForwardGroup*	- action is specified.
+//   - If you specify the **Rewrite*	- action together with other actions in a forwarding rule, make sure that the **ForwardGroup*	- action is specified.
 //
-// 	- **CreateRule*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule.
+//   - **CreateRule*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule.
 //
-//     	- If a forwarding rule is in the **Provisioning*	- state, the forwarding rule is being created.
+//   - If a forwarding rule is in the **Provisioning*	- state, the forwarding rule is being created.
 //
-//     	- If a forwarding rule is in the **Available*	- state, the forwarding rule is created.
+//   - If a forwarding rule is in the **Available*	- state, the forwarding rule is created.
 //
-// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
+//   - You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
 //
-//     	- Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+//   - Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
 //
-//     	- Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+//   - Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
 //
 // @param request - CreateRuleRequest
 //
@@ -27499,21 +27407,21 @@ func (client *Client) CreateRule(request *CreateRuleRequest) (_result *CreateRul
 //
 // When you call this operation, take note of the following limits:
 //
-// 	- When you configure the **Redirect*	- action, do not use the default values for parameters other than **HttpCode**.
+//   - When you configure the **Redirect*	- action, do not use the default values for parameters other than **HttpCode**.
 //
-// 	- If you specify multiple actions in a forward rule, you must specify the **ForwardGroup*	- parameter along with the **Rewrite*	- parameter.
+//   - If you specify multiple actions in a forward rule, you must specify the **ForwardGroup*	- parameter along with the **Rewrite*	- parameter.
 //
-// 	- **CreateRules*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of the forwarding rules.
+//   - **CreateRules*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of the forwarding rules.
 //
-//     	- If the forwarding rules are in the **Provisioning*	- state, the forwarding rules are being created.
+//   - If the forwarding rules are in the **Provisioning*	- state, the forwarding rules are being created.
 //
-//     	- If the forwarding rules are in the **Available*	- state, the forwarding rules are created.
+//   - If the forwarding rules are in the **Available*	- state, the forwarding rules are created.
 //
-// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+//   - You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
 //
-//     	- Conditions: 5 for each basic ALB instance, 10 for each standard ALB instance, and 10 for each WAF-enabled ALB instance.
+//   - Conditions: 5 for each basic ALB instance, 10 for each standard ALB instance, and 10 for each WAF-enabled ALB instance.
 //
-//     	- Actions: 3 for each basic ALB instance, 5 for each standard ALB instance, and 5 for each WAF-enabled ALB instance.
+//   - Actions: 3 for each basic ALB instance, 5 for each standard ALB instance, and 5 for each WAF-enabled ALB instance.
 //
 // @param request - CreateRulesRequest
 //
@@ -27561,24 +27469,13 @@ func (client *Client) CreateRulesWithOptions(request *CreateRulesRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateRulesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateRulesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27589,21 +27486,21 @@ func (client *Client) CreateRulesWithOptions(request *CreateRulesRequest, runtim
 //
 // When you call this operation, take note of the following limits:
 //
-// 	- When you configure the **Redirect*	- action, do not use the default values for parameters other than **HttpCode**.
+//   - When you configure the **Redirect*	- action, do not use the default values for parameters other than **HttpCode**.
 //
-// 	- If you specify multiple actions in a forward rule, you must specify the **ForwardGroup*	- parameter along with the **Rewrite*	- parameter.
+//   - If you specify multiple actions in a forward rule, you must specify the **ForwardGroup*	- parameter along with the **Rewrite*	- parameter.
 //
-// 	- **CreateRules*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of the forwarding rules.
+//   - **CreateRules*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of the forwarding rules.
 //
-//     	- If the forwarding rules are in the **Provisioning*	- state, the forwarding rules are being created.
+//   - If the forwarding rules are in the **Provisioning*	- state, the forwarding rules are being created.
 //
-//     	- If the forwarding rules are in the **Available*	- state, the forwarding rules are created.
+//   - If the forwarding rules are in the **Available*	- state, the forwarding rules are created.
 //
-// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+//   - You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
 //
-//     	- Conditions: 5 for each basic ALB instance, 10 for each standard ALB instance, and 10 for each WAF-enabled ALB instance.
+//   - Conditions: 5 for each basic ALB instance, 10 for each standard ALB instance, and 10 for each WAF-enabled ALB instance.
 //
-//     	- Actions: 3 for each basic ALB instance, 5 for each standard ALB instance, and 5 for each WAF-enabled ALB instance.
+//   - Actions: 3 for each basic ALB instance, 5 for each standard ALB instance, and 5 for each WAF-enabled ALB instance.
 //
 // @param request - CreateRulesRequest
 //
@@ -27676,24 +27573,13 @@ func (client *Client) CreateSecurityPolicyWithOptions(request *CreateSecurityPol
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateSecurityPolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateSecurityPolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateSecurityPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27722,9 +27608,9 @@ func (client *Client) CreateSecurityPolicy(request *CreateSecurityPolicyRequest)
 //
 // *CreateServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) to query the status of a server group.
 //
-// 	- If a server group is in the **Creating*	- state, it indicates that the server group is being created.
+//   - If a server group is in the **Creating*	- state, it indicates that the server group is being created.
 //
-// 	- If a server group is in the **Available*	- state, it indicates that the server group is created.
+//   - If a server group is in the **Available*	- state, it indicates that the server group is created.
 //
 // @param request - CreateServerGroupRequest
 //
@@ -27823,24 +27709,13 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateServerGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateServerGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateServerGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27851,9 +27726,9 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 //
 // *CreateServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) to query the status of a server group.
 //
-// 	- If a server group is in the **Creating*	- state, it indicates that the server group is being created.
+//   - If a server group is in the **Creating*	- state, it indicates that the server group is being created.
 //
-// 	- If a server group is in the **Available*	- state, it indicates that the server group is created.
+//   - If a server group is in the **Available*	- state, it indicates that the server group is created.
 //
 // @param request - CreateServerGroupRequest
 //
@@ -27877,9 +27752,9 @@ func (client *Client) CreateServerGroup(request *CreateServerGroupRequest) (_res
 //
 // *DeleteAScripts*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task:
 //
-// 	- If an AScript rule is in the **Deleting*	- state, the AScript rule is being deleted.
+//   - If an AScript rule is in the **Deleting*	- state, the AScript rule is being deleted.
 //
-// 	- If an AScript rule cannot be found, the AScript rule is deleted.
+//   - If an AScript rule cannot be found, the AScript rule is deleted.
 //
 // @param request - DeleteAScriptsRequest
 //
@@ -27918,24 +27793,13 @@ func (client *Client) DeleteAScriptsWithOptions(request *DeleteAScriptsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAScriptsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAScriptsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAScriptsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27946,9 +27810,9 @@ func (client *Client) DeleteAScriptsWithOptions(request *DeleteAScriptsRequest, 
 //
 // *DeleteAScripts*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task:
 //
-// 	- If an AScript rule is in the **Deleting*	- state, the AScript rule is being deleted.
+//   - If an AScript rule is in the **Deleting*	- state, the AScript rule is being deleted.
 //
-// 	- If an AScript rule cannot be found, the AScript rule is deleted.
+//   - If an AScript rule cannot be found, the AScript rule is deleted.
 //
 // @param request - DeleteAScriptsRequest
 //
@@ -27972,9 +27836,9 @@ func (client *Client) DeleteAScripts(request *DeleteAScriptsRequest) (_result *D
 //
 // *DeleteAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of the task.
 //
-// 	- If the ACL is in the **Deleting*	- state, the ACL is being deleted.
+//   - If the ACL is in the **Deleting*	- state, the ACL is being deleted.
 //
-// 	- If the ACL cannot be found, the ACL is deleted.
+//   - If the ACL cannot be found, the ACL is deleted.
 //
 // @param request - DeleteAclRequest
 //
@@ -28013,24 +27877,13 @@ func (client *Client) DeleteAclWithOptions(request *DeleteAclRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAclResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAclResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28041,9 +27894,9 @@ func (client *Client) DeleteAclWithOptions(request *DeleteAclRequest, runtime *u
 //
 // *DeleteAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of the task.
 //
-// 	- If the ACL is in the **Deleting*	- state, the ACL is being deleted.
+//   - If the ACL is in the **Deleting*	- state, the ACL is being deleted.
 //
-// 	- If the ACL cannot be found, the ACL is deleted.
+//   - If the ACL cannot be found, the ACL is deleted.
 //
 // @param request - DeleteAclRequest
 //
@@ -28100,24 +27953,13 @@ func (client *Client) DeleteHealthCheckTemplatesWithOptions(request *DeleteHealt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteHealthCheckTemplatesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteHealthCheckTemplatesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteHealthCheckTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28146,9 +27988,9 @@ func (client *Client) DeleteHealthCheckTemplates(request *DeleteHealthCheckTempl
 //
 // *DeleteListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
 //
-// 	- If the listener is in the **Deleting*	- state, the listener is being deleted.
+//   - If the listener is in the **Deleting*	- state, the listener is being deleted.
 //
-// 	- If the listener cannot be found, the listener is deleted.
+//   - If the listener cannot be found, the listener is deleted.
 //
 // @param request - DeleteListenerRequest
 //
@@ -28187,24 +28029,13 @@ func (client *Client) DeleteListenerWithOptions(request *DeleteListenerRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteListenerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteListenerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteListenerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28215,9 +28046,9 @@ func (client *Client) DeleteListenerWithOptions(request *DeleteListenerRequest, 
 //
 // *DeleteListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
 //
-// 	- If the listener is in the **Deleting*	- state, the listener is being deleted.
+//   - If the listener is in the **Deleting*	- state, the listener is being deleted.
 //
-// 	- If the listener cannot be found, the listener is deleted.
+//   - If the listener cannot be found, the listener is deleted.
 //
 // @param request - DeleteListenerRequest
 //
@@ -28241,9 +28072,9 @@ func (client *Client) DeleteListener(request *DeleteListenerRequest) (_result *D
 //
 // *DeleteLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
 //
-// 	- If an ALB instance is in the **Deleting*	- state, the ALB instance is being deleted.
+//   - If an ALB instance is in the **Deleting*	- state, the ALB instance is being deleted.
 //
-// 	- If an ALB instance cannot be found, the ALB instance is deleted.
+//   - If an ALB instance cannot be found, the ALB instance is deleted.
 //
 // @param request - DeleteLoadBalancerRequest
 //
@@ -28282,24 +28113,13 @@ func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteLoadBalancerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteLoadBalancerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteLoadBalancerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28310,9 +28130,9 @@ func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerR
 //
 // *DeleteLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
 //
-// 	- If an ALB instance is in the **Deleting*	- state, the ALB instance is being deleted.
+//   - If an ALB instance is in the **Deleting*	- state, the ALB instance is being deleted.
 //
-// 	- If an ALB instance cannot be found, the ALB instance is deleted.
+//   - If an ALB instance cannot be found, the ALB instance is deleted.
 //
 // @param request - DeleteLoadBalancerRequest
 //
@@ -28336,9 +28156,9 @@ func (client *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (_r
 //
 // *DeleteRule*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
 //
-// 	- If the forwarding rule is in the **Deleting*	- state, the forwarding rule is being deleted.
+//   - If the forwarding rule is in the **Deleting*	- state, the forwarding rule is being deleted.
 //
-// 	- If the forwarding rule cannot be found, the forwarding rule is deleted.
+//   - If the forwarding rule cannot be found, the forwarding rule is deleted.
 //
 // @param request - DeleteRuleRequest
 //
@@ -28377,24 +28197,13 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28405,9 +28214,9 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 //
 // *DeleteRule*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
 //
-// 	- If the forwarding rule is in the **Deleting*	- state, the forwarding rule is being deleted.
+//   - If the forwarding rule is in the **Deleting*	- state, the forwarding rule is being deleted.
 //
-// 	- If the forwarding rule cannot be found, the forwarding rule is deleted.
+//   - If the forwarding rule cannot be found, the forwarding rule is deleted.
 //
 // @param request - DeleteRuleRequest
 //
@@ -28431,9 +28240,9 @@ func (client *Client) DeleteRule(request *DeleteRuleRequest) (_result *DeleteRul
 //
 // *DeleteRules*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of forwarding rules.
 //
-// 	- If the forwarding rules are in the **Deleting*	- state, the forwarding rules are being deleted.
+//   - If the forwarding rules are in the **Deleting*	- state, the forwarding rules are being deleted.
 //
-// 	- If the forwarding rules cannot be found, the forwarding rules are deleted.
+//   - If the forwarding rules cannot be found, the forwarding rules are deleted.
 //
 // @param request - DeleteRulesRequest
 //
@@ -28472,24 +28281,13 @@ func (client *Client) DeleteRulesWithOptions(request *DeleteRulesRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteRulesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteRulesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28500,9 +28298,9 @@ func (client *Client) DeleteRulesWithOptions(request *DeleteRulesRequest, runtim
 //
 // *DeleteRules*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of forwarding rules.
 //
-// 	- If the forwarding rules are in the **Deleting*	- state, the forwarding rules are being deleted.
+//   - If the forwarding rules are in the **Deleting*	- state, the forwarding rules are being deleted.
 //
-// 	- If the forwarding rules cannot be found, the forwarding rules are deleted.
+//   - If the forwarding rules cannot be found, the forwarding rules are deleted.
 //
 // @param request - DeleteRulesRequest
 //
@@ -28559,24 +28357,13 @@ func (client *Client) DeleteSecurityPolicyWithOptions(request *DeleteSecurityPol
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteSecurityPolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteSecurityPolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteSecurityPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28605,9 +28392,9 @@ func (client *Client) DeleteSecurityPolicy(request *DeleteSecurityPolicyRequest)
 //
 // *DeleteServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of the task.
 //
-// 	- If a server group is in the **Deleting*	- state, it indicates that the server group is being deleted.
+//   - If a server group is in the **Deleting*	- state, it indicates that the server group is being deleted.
 //
-// 	- If a specified server group cannot be found, it indicates that the server group has been deleted.
+//   - If a specified server group cannot be found, it indicates that the server group has been deleted.
 //
 // @param request - DeleteServerGroupRequest
 //
@@ -28646,24 +28433,13 @@ func (client *Client) DeleteServerGroupWithOptions(request *DeleteServerGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteServerGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteServerGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteServerGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28674,9 +28450,9 @@ func (client *Client) DeleteServerGroupWithOptions(request *DeleteServerGroupReq
 //
 // *DeleteServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of the task.
 //
-// 	- If a server group is in the **Deleting*	- state, it indicates that the server group is being deleted.
+//   - If a server group is in the **Deleting*	- state, it indicates that the server group is being deleted.
 //
-// 	- If a specified server group cannot be found, it indicates that the server group has been deleted.
+//   - If a specified server group cannot be found, it indicates that the server group has been deleted.
 //
 // @param request - DeleteServerGroupRequest
 //
@@ -28725,24 +28501,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRegionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRegionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28796,24 +28561,13 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeZonesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeZonesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28842,9 +28596,9 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 //
 // *DetachCommonBandwidthPackageFromLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214359.html) operation to query the status of the task.
 //
-// 	- If an ALB instance is in the **Configuring*	- state, the EIP bandwidth plan is being disassociated from the ALB instance.
+//   - If an ALB instance is in the **Configuring*	- state, the EIP bandwidth plan is being disassociated from the ALB instance.
 //
-// 	- If an ALB instance is in the **Active*	- state, the EIP bandwidth plan is disassociated from the ALB instance.
+//   - If an ALB instance is in the **Active*	- state, the EIP bandwidth plan is disassociated from the ALB instance.
 //
 // @param request - DetachCommonBandwidthPackageFromLoadBalancerRequest
 //
@@ -28891,24 +28645,13 @@ func (client *Client) DetachCommonBandwidthPackageFromLoadBalancerWithOptions(re
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DetachCommonBandwidthPackageFromLoadBalancerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DetachCommonBandwidthPackageFromLoadBalancerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DetachCommonBandwidthPackageFromLoadBalancerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28919,9 +28662,9 @@ func (client *Client) DetachCommonBandwidthPackageFromLoadBalancerWithOptions(re
 //
 // *DetachCommonBandwidthPackageFromLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214359.html) operation to query the status of the task.
 //
-// 	- If an ALB instance is in the **Configuring*	- state, the EIP bandwidth plan is being disassociated from the ALB instance.
+//   - If an ALB instance is in the **Configuring*	- state, the EIP bandwidth plan is being disassociated from the ALB instance.
 //
-// 	- If an ALB instance is in the **Active*	- state, the EIP bandwidth plan is disassociated from the ALB instance.
+//   - If an ALB instance is in the **Active*	- state, the EIP bandwidth plan is disassociated from the ALB instance.
 //
 // @param request - DetachCommonBandwidthPackageFromLoadBalancerRequest
 //
@@ -28978,24 +28721,13 @@ func (client *Client) DisableDeletionProtectionWithOptions(request *DisableDelet
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DisableDeletionProtectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DisableDeletionProtectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DisableDeletionProtectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29057,24 +28789,13 @@ func (client *Client) DisableLoadBalancerAccessLogWithOptions(request *DisableLo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DisableLoadBalancerAccessLogResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DisableLoadBalancerAccessLogResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DisableLoadBalancerAccessLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29107,19 +28828,19 @@ func (client *Client) DisableLoadBalancerAccessLog(request *DisableLoadBalancerA
 //
 // > If you set **AddressIpVersion*	- to **DualStack**:
 //
-// 	- If you set **AddressType*	- to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+//   - If you set **AddressType*	- to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
 //
-// 	- If you set **AddressType*	- to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+//   - If you set **AddressType*	- to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
 //
 // ### Description
 //
-// 	- After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType*	- is changed to **Intranet*	- and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+//   - After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType*	- is changed to **Intranet*	- and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
 //
-// 	- **DisableLoadBalancerIpv6Internet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+//   - **DisableLoadBalancerIpv6Internet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
 //
-//     	- If the ALB instance is in the **Configuring*	- state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+//   - If the ALB instance is in the **Configuring*	- state, the network type of the IPv6 address that is used by the ALB instance is being changed.
 //
-//     	- If the ALB instance is in the **Active*	- state, the network type of the IPv6 address that is used by the ALB instance is changed.
+//   - If the ALB instance is in the **Active*	- state, the network type of the IPv6 address that is used by the ALB instance is changed.
 //
 // @param request - DisableLoadBalancerIpv6InternetRequest
 //
@@ -29158,24 +28879,13 @@ func (client *Client) DisableLoadBalancerIpv6InternetWithOptions(request *Disabl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DisableLoadBalancerIpv6InternetResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DisableLoadBalancerIpv6InternetResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DisableLoadBalancerIpv6InternetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29190,19 +28900,19 @@ func (client *Client) DisableLoadBalancerIpv6InternetWithOptions(request *Disabl
 //
 // > If you set **AddressIpVersion*	- to **DualStack**:
 //
-// 	- If you set **AddressType*	- to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+//   - If you set **AddressType*	- to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
 //
-// 	- If you set **AddressType*	- to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+//   - If you set **AddressType*	- to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
 //
 // ### Description
 //
-// 	- After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType*	- is changed to **Intranet*	- and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+//   - After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType*	- is changed to **Intranet*	- and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
 //
-// 	- **DisableLoadBalancerIpv6Internet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+//   - **DisableLoadBalancerIpv6Internet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
 //
-//     	- If the ALB instance is in the **Configuring*	- state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+//   - If the ALB instance is in the **Configuring*	- state, the network type of the IPv6 address that is used by the ALB instance is being changed.
 //
-//     	- If the ALB instance is in the **Active*	- state, the network type of the IPv6 address that is used by the ALB instance is changed.
+//   - If the ALB instance is in the **Active*	- state, the network type of the IPv6 address that is used by the ALB instance is changed.
 //
 // @param request - DisableLoadBalancerIpv6InternetRequest
 //
@@ -29224,11 +28934,11 @@ func (client *Client) DisableLoadBalancerIpv6Internet(request *DisableLoadBalanc
 //
 // Description:
 //
-// *DeleteDhcpOptionsSet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
+// *DissociateAclsFromListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) to query the status of an ACL.
 //
-// 	- If an ACL is in the **Dissociating*	- state, the ACL is being disassociated from the listener.
+//   - If an ACL is in the **Dissociating*	- state, the ACL is being disassociated from the listener.
 //
-// 	- If an ACL is in the **Dissociated*	- state, the ACL is disassociated from the listener.
+//   - If an ACL is in the **Dissociated*	- state, the ACL is disassociated from the listener.
 //
 // @param request - DissociateAclsFromListenerRequest
 //
@@ -29271,24 +28981,13 @@ func (client *Client) DissociateAclsFromListenerWithOptions(request *DissociateA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DissociateAclsFromListenerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DissociateAclsFromListenerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DissociateAclsFromListenerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29297,11 +28996,11 @@ func (client *Client) DissociateAclsFromListenerWithOptions(request *DissociateA
 //
 // Description:
 //
-// *DeleteDhcpOptionsSet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
+// *DissociateAclsFromListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) to query the status of an ACL.
 //
-// 	- If an ACL is in the **Dissociating*	- state, the ACL is being disassociated from the listener.
+//   - If an ACL is in the **Dissociating*	- state, the ACL is being disassociated from the listener.
 //
-// 	- If an ACL is in the **Dissociated*	- state, the ACL is disassociated from the listener.
+//   - If an ACL is in the **Dissociated*	- state, the ACL is disassociated from the listener.
 //
 // @param request - DissociateAclsFromListenerRequest
 //
@@ -29366,24 +29065,13 @@ func (client *Client) DissociateAdditionalCertificatesFromListenerWithOptions(re
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DissociateAdditionalCertificatesFromListenerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DissociateAdditionalCertificatesFromListenerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DissociateAdditionalCertificatesFromListenerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29449,24 +29137,13 @@ func (client *Client) EnableDeletionProtectionWithOptions(request *EnableDeletio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EnableDeletionProtectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EnableDeletionProtectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EnableDeletionProtectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29536,24 +29213,13 @@ func (client *Client) EnableLoadBalancerAccessLogWithOptions(request *EnableLoad
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EnableLoadBalancerAccessLogResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EnableLoadBalancerAccessLogResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EnableLoadBalancerAccessLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29586,19 +29252,19 @@ func (client *Client) EnableLoadBalancerAccessLog(request *EnableLoadBalancerAcc
 //
 // > If you set **AddressIpVersion*	- to **DualStack**:
 //
-// 	- If you set **AddressType*	- to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+//   - If you set **AddressType*	- to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
 //
-// 	- If you set **AddressType*	- to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+//   - If you set **AddressType*	- to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
 //
 // ### Description
 //
-// 	- After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType*	- is changed to **Internet*	- and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+//   - After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType*	- is changed to **Internet*	- and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
 //
-// 	- **EnableLoadBalancerIpv6Internet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+//   - **EnableLoadBalancerIpv6Internet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
 //
-//     	- If the ALB instance is in the **Configuring*	- state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+//   - If the ALB instance is in the **Configuring*	- state, the network type of the IPv6 address that is used by the ALB instance is being changed.
 //
-//     	- If the ALB instance is in the **Active*	- state, the network type of the IPv6 address that is used by the ALB instance is changed.
+//   - If the ALB instance is in the **Active*	- state, the network type of the IPv6 address that is used by the ALB instance is changed.
 //
 // @param request - EnableLoadBalancerIpv6InternetRequest
 //
@@ -29637,24 +29303,13 @@ func (client *Client) EnableLoadBalancerIpv6InternetWithOptions(request *EnableL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EnableLoadBalancerIpv6InternetResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EnableLoadBalancerIpv6InternetResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EnableLoadBalancerIpv6InternetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29669,19 +29324,19 @@ func (client *Client) EnableLoadBalancerIpv6InternetWithOptions(request *EnableL
 //
 // > If you set **AddressIpVersion*	- to **DualStack**:
 //
-// 	- If you set **AddressType*	- to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+//   - If you set **AddressType*	- to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
 //
-// 	- If you set **AddressType*	- to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+//   - If you set **AddressType*	- to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
 //
 // ### Description
 //
-// 	- After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType*	- is changed to **Internet*	- and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+//   - After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType*	- is changed to **Internet*	- and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
 //
-// 	- **EnableLoadBalancerIpv6Internet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+//   - **EnableLoadBalancerIpv6Internet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
 //
-//     	- If the ALB instance is in the **Configuring*	- state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+//   - If the ALB instance is in the **Configuring*	- state, the network type of the IPv6 address that is used by the ALB instance is being changed.
 //
-//     	- If the ALB instance is in the **Active*	- state, the network type of the IPv6 address that is used by the ALB instance is changed.
+//   - If the ALB instance is in the **Active*	- state, the network type of the IPv6 address that is used by the ALB instance is changed.
 //
 // @param request - EnableLoadBalancerIpv6InternetRequest
 //
@@ -29730,24 +29385,13 @@ func (client *Client) GetHealthCheckTemplateAttributeWithOptions(request *GetHea
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetHealthCheckTemplateAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetHealthCheckTemplateAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetHealthCheckTemplateAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29801,24 +29445,13 @@ func (client *Client) GetListenerAttributeWithOptions(request *GetListenerAttrib
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetListenerAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetListenerAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetListenerAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29884,24 +29517,13 @@ func (client *Client) GetListenerHealthStatusWithOptions(request *GetListenerHea
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetListenerHealthStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetListenerHealthStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetListenerHealthStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29955,24 +29577,13 @@ func (client *Client) GetLoadBalancerAttributeWithOptions(request *GetLoadBalanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetLoadBalancerAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetLoadBalancerAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetLoadBalancerAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30042,24 +29653,13 @@ func (client *Client) ListAScriptsWithOptions(request *ListAScriptsRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAScriptsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAScriptsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAScriptsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30121,24 +29721,13 @@ func (client *Client) ListAclEntriesWithOptions(request *ListAclEntriesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAclEntriesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAclEntriesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAclEntriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30192,24 +29781,13 @@ func (client *Client) ListAclRelationsWithOptions(request *ListAclRelationsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAclRelationsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAclRelationsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAclRelationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30283,24 +29861,13 @@ func (client *Client) ListAclsWithOptions(request *ListAclsRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAclsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAclsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAclsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30382,24 +29949,13 @@ func (client *Client) ListAsynJobsWithOptions(request *ListAsynJobsRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAsynJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAsynJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAsynJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30473,24 +30029,13 @@ func (client *Client) ListHealthCheckTemplatesWithOptions(request *ListHealthChe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListHealthCheckTemplatesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListHealthCheckTemplatesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListHealthCheckTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30560,24 +30105,13 @@ func (client *Client) ListListenerCertificatesWithOptions(request *ListListenerC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListListenerCertificatesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListListenerCertificatesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListListenerCertificatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30651,24 +30185,13 @@ func (client *Client) ListListenersWithOptions(request *ListListenersRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListListenersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListListenersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListListenersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30778,24 +30301,13 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListLoadBalancersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListLoadBalancersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListLoadBalancersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30873,24 +30385,13 @@ func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListRulesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListRulesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30964,24 +30465,13 @@ func (client *Client) ListSecurityPoliciesWithOptions(request *ListSecurityPolic
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListSecurityPoliciesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListSecurityPoliciesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListSecurityPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31035,24 +30525,13 @@ func (client *Client) ListSecurityPolicyRelationsWithOptions(request *ListSecuri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListSecurityPolicyRelationsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListSecurityPolicyRelationsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListSecurityPolicyRelationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31122,24 +30601,13 @@ func (client *Client) ListServerGroupServersWithOptions(request *ListServerGroup
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListServerGroupServersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListServerGroupServersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListServerGroupServersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31221,24 +30689,13 @@ func (client *Client) ListServerGroupsWithOptions(request *ListServerGroupsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListServerGroupsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListServerGroupsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListServerGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31281,24 +30738,13 @@ func (client *Client) ListSystemSecurityPoliciesWithOptions(runtime *util.Runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListSystemSecurityPoliciesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListSystemSecurityPoliciesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListSystemSecurityPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31366,24 +30812,13 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTagKeysResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTagKeysResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTagKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31453,24 +30888,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31540,24 +30964,13 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTagValuesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTagValuesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTagValuesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31584,19 +30997,19 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 //
 // Description:
 //
-//   By default, security groups are unavailable. To use security groups, contact your account manager.
+//	  By default, security groups are unavailable. To use security groups, contact your account manager.
 //
-// 	- Make sure that a security group is created. For more information about how to create security groups, see [CreateSecurityGroup](https://help.aliyun.com/document_detail/2679843.html).
+//		- Make sure that a security group is created. For more information about how to create security groups, see [CreateSecurityGroup](https://help.aliyun.com/document_detail/2679843.html).
 //
-// 	- Each ALB instance can be added to at most four security groups.
+//		- Each ALB instance can be added to at most four security groups.
 //
-// 	- To query the security groups of an ALB instance, call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2254835.html) operation.
+//		- To query the security groups of an ALB instance, call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2254835.html) operation.
 //
-// 	- GetLoadBalancerAttribute is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAsynJobs](https://help.aliyun.com/document_detail/2254893.html) operation to query the status of the task.
+//		- GetLoadBalancerAttribute is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAsynJobs](https://help.aliyun.com/document_detail/2254893.html) operation to query the status of the task.
 //
-//     	- If the task is in the Succeeded state, the ALB instance is added to the security group.
+//	    	- If the task is in the Succeeded state, the ALB instance is added to the security group.
 //
-//     	- If the task is in the Processing state, the ALB instance is being added to the security group. In this case, you can query the task but cannot perform other operations.
+//	    	- If the task is in the Processing state, the ALB instance is being added to the security group. In this case, you can query the task but cannot perform other operations.
 //
 // @param request - LoadBalancerJoinSecurityGroupRequest
 //
@@ -31639,24 +31052,13 @@ func (client *Client) LoadBalancerJoinSecurityGroupWithOptions(request *LoadBala
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &LoadBalancerJoinSecurityGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &LoadBalancerJoinSecurityGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &LoadBalancerJoinSecurityGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31665,19 +31067,19 @@ func (client *Client) LoadBalancerJoinSecurityGroupWithOptions(request *LoadBala
 //
 // Description:
 //
-//   By default, security groups are unavailable. To use security groups, contact your account manager.
+//	  By default, security groups are unavailable. To use security groups, contact your account manager.
 //
-// 	- Make sure that a security group is created. For more information about how to create security groups, see [CreateSecurityGroup](https://help.aliyun.com/document_detail/2679843.html).
+//		- Make sure that a security group is created. For more information about how to create security groups, see [CreateSecurityGroup](https://help.aliyun.com/document_detail/2679843.html).
 //
-// 	- Each ALB instance can be added to at most four security groups.
+//		- Each ALB instance can be added to at most four security groups.
 //
-// 	- To query the security groups of an ALB instance, call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2254835.html) operation.
+//		- To query the security groups of an ALB instance, call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2254835.html) operation.
 //
-// 	- GetLoadBalancerAttribute is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAsynJobs](https://help.aliyun.com/document_detail/2254893.html) operation to query the status of the task.
+//		- GetLoadBalancerAttribute is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAsynJobs](https://help.aliyun.com/document_detail/2254893.html) operation to query the status of the task.
 //
-//     	- If the task is in the Succeeded state, the ALB instance is added to the security group.
+//	    	- If the task is in the Succeeded state, the ALB instance is added to the security group.
 //
-//     	- If the task is in the Processing state, the ALB instance is being added to the security group. In this case, you can query the task but cannot perform other operations.
+//	    	- If the task is in the Processing state, the ALB instance is being added to the security group. In this case, you can query the task but cannot perform other operations.
 //
 // @param request - LoadBalancerJoinSecurityGroupRequest
 //
@@ -31699,11 +31101,11 @@ func (client *Client) LoadBalancerJoinSecurityGroup(request *LoadBalancerJoinSec
 //
 // Description:
 //
-//   LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAsynJobs](https://help.aliyun.com/document_detail/2254893.html) operation to query the status of the task.
+//	LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAsynJobs](https://help.aliyun.com/document_detail/2254893.html) operation to query the status of the task.
 //
-//     	- If the task is in the Succeeded state, the ALB instance is removed from the security group.
+//	  	- If the task is in the Succeeded state, the ALB instance is removed from the security group.
 //
-//     	- If the task is in the Processing state, the ALB instance is being removed from the security group. In this case, you can query the task but cannot perform other operations.
+//	  	- If the task is in the Processing state, the ALB instance is being removed from the security group. In this case, you can query the task but cannot perform other operations.
 //
 // @param request - LoadBalancerLeaveSecurityGroupRequest
 //
@@ -31746,24 +31148,13 @@ func (client *Client) LoadBalancerLeaveSecurityGroupWithOptions(request *LoadBal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &LoadBalancerLeaveSecurityGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &LoadBalancerLeaveSecurityGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &LoadBalancerLeaveSecurityGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31772,11 +31163,11 @@ func (client *Client) LoadBalancerLeaveSecurityGroupWithOptions(request *LoadBal
 //
 // Description:
 //
-//   LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAsynJobs](https://help.aliyun.com/document_detail/2254893.html) operation to query the status of the task.
+//	LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAsynJobs](https://help.aliyun.com/document_detail/2254893.html) operation to query the status of the task.
 //
-//     	- If the task is in the Succeeded state, the ALB instance is removed from the security group.
+//	  	- If the task is in the Succeeded state, the ALB instance is removed from the security group.
 //
-//     	- If the task is in the Processing state, the ALB instance is being removed from the security group. In this case, you can query the task but cannot perform other operations.
+//	  	- If the task is in the Processing state, the ALB instance is being removed from the security group. In this case, you can query the task but cannot perform other operations.
 //
 // @param request - LoadBalancerLeaveSecurityGroupRequest
 //
@@ -31833,24 +31224,13 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &MoveResourceGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &MoveResourceGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &MoveResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31879,9 +31259,9 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 //
 // *RemoveEntriesFromAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
 //
-// 	- If an ACL is in the **Removing*	- state, the entries are being removed.
+//   - If an ACL is in the **Removing*	- state, the entries are being removed.
 //
-// 	- If an ACL cannot be found, the entries are removed.
+//   - If an ACL cannot be found, the entries are removed.
 //
 // @param request - RemoveEntriesFromAclRequest
 //
@@ -31924,24 +31304,13 @@ func (client *Client) RemoveEntriesFromAclWithOptions(request *RemoveEntriesFrom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveEntriesFromAclResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemoveEntriesFromAclResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemoveEntriesFromAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31952,9 +31321,9 @@ func (client *Client) RemoveEntriesFromAclWithOptions(request *RemoveEntriesFrom
 //
 // *RemoveEntriesFromAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
 //
-// 	- If an ACL is in the **Removing*	- state, the entries are being removed.
+//   - If an ACL is in the **Removing*	- state, the entries are being removed.
 //
-// 	- If an ACL cannot be found, the entries are removed.
+//   - If an ACL cannot be found, the entries are removed.
 //
 // @param request - RemoveEntriesFromAclRequest
 //
@@ -31978,17 +31347,17 @@ func (client *Client) RemoveEntriesFromAcl(request *RemoveEntriesFromAclRequest)
 //
 // *RemoveServersFromServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
 //
-// 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+// 1.  You can call [ListServerGroups](https://help.aliyun.com/document_detail/2254862.html) to query the status of a server group.
 //
-//     	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//   - If the server group is in the **Configuring*	- state, the server group is being modified.
 //
-//     	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//   - If the server group is in the **Available*	- state, the server group is running.
 //
-// 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+// 2.  You can call [ListServerGroupServers](https://help.aliyun.com/document_detail/2254863.html) to query the status of a backend server.
 //
-//     	- If a backend server is in the **Removing*	- state, the server is being removed from the server group.
+//   - If the backend server is in the **Removing*	- state, the backend server is being removed from the server group.
 //
-//     	- If a backend server cannot be found, the server is no longer in the server group.
+//   - If the backend server cannot be found, the backend server is no longer in the server group.
 //
 // @param request - RemoveServersFromServerGroupRequest
 //
@@ -32031,24 +31400,13 @@ func (client *Client) RemoveServersFromServerGroupWithOptions(request *RemoveSer
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveServersFromServerGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemoveServersFromServerGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemoveServersFromServerGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32059,17 +31417,17 @@ func (client *Client) RemoveServersFromServerGroupWithOptions(request *RemoveSer
 //
 // *RemoveServersFromServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
 //
-// 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+// 1.  You can call [ListServerGroups](https://help.aliyun.com/document_detail/2254862.html) to query the status of a server group.
 //
-//     	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//   - If the server group is in the **Configuring*	- state, the server group is being modified.
 //
-//     	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//   - If the server group is in the **Available*	- state, the server group is running.
 //
-// 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+// 2.  You can call [ListServerGroupServers](https://help.aliyun.com/document_detail/2254863.html) to query the status of a backend server.
 //
-//     	- If a backend server is in the **Removing*	- state, the server is being removed from the server group.
+//   - If the backend server is in the **Removing*	- state, the backend server is being removed from the server group.
 //
-//     	- If a backend server cannot be found, the server is no longer in the server group.
+//   - If the backend server cannot be found, the backend server is no longer in the server group.
 //
 // @param request - RemoveServersFromServerGroupRequest
 //
@@ -32095,15 +31453,15 @@ func (client *Client) RemoveServersFromServerGroup(request *RemoveServersFromSer
 //
 // 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
 //
-//     	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//   - If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
 //
-//     	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//   - If a server group is in the **Available*	- state, it indicates that the server group is running.
 //
 // 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
 //
-//     	- If a backend server is in the **Replacing*	- state, it indicates that the server is being removed from the server group and a new server is added to the server group.
+//   - If a backend server is in the **Replacing*	- state, it indicates that the server is being removed from the server group and a new server is added to the server group.
 //
-//     	- If a backend server is in the \\*\\*Available\\*\\	- state, it indicates that the server is running.
+//   - If a backend server is in the \\*\\*Available\\*\\	- state, it indicates that the server is running.
 //
 // @param request - ReplaceServersInServerGroupRequest
 //
@@ -32150,24 +31508,13 @@ func (client *Client) ReplaceServersInServerGroupWithOptions(request *ReplaceSer
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ReplaceServersInServerGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ReplaceServersInServerGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ReplaceServersInServerGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32180,15 +31527,15 @@ func (client *Client) ReplaceServersInServerGroupWithOptions(request *ReplaceSer
 //
 // 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
 //
-//     	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//   - If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
 //
-//     	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//   - If a server group is in the **Available*	- state, it indicates that the server group is running.
 //
 // 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
 //
-//     	- If a backend server is in the **Replacing*	- state, it indicates that the server is being removed from the server group and a new server is added to the server group.
+//   - If a backend server is in the **Replacing*	- state, it indicates that the server is being removed from the server group and a new server is added to the server group.
 //
-//     	- If a backend server is in the \\*\\*Available\\*\\	- state, it indicates that the server is running.
+//   - If a backend server is in the \\*\\*Available\\*\\	- state, it indicates that the server is running.
 //
 // @param request - ReplaceServersInServerGroupRequest
 //
@@ -32212,9 +31559,9 @@ func (client *Client) ReplaceServersInServerGroup(request *ReplaceServersInServe
 //
 // *StartListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
 //
-// 	- If a listener is in the **Configuring*	- state, the listener is being enabled.
+//   - If a listener is in the **Configuring*	- state, the listener is being enabled.
 //
-// 	- If a listener is in the **Running*	- state, the listener is enabled.
+//   - If a listener is in the **Running*	- state, the listener is enabled.
 //
 // @param request - StartListenerRequest
 //
@@ -32253,24 +31600,13 @@ func (client *Client) StartListenerWithOptions(request *StartListenerRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartListenerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartListenerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartListenerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32281,9 +31617,9 @@ func (client *Client) StartListenerWithOptions(request *StartListenerRequest, ru
 //
 // *StartListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
 //
-// 	- If a listener is in the **Configuring*	- state, the listener is being enabled.
+//   - If a listener is in the **Configuring*	- state, the listener is being enabled.
 //
-// 	- If a listener is in the **Running*	- state, the listener is enabled.
+//   - If a listener is in the **Running*	- state, the listener is enabled.
 //
 // @param request - StartListenerRequest
 //
@@ -32348,24 +31684,13 @@ func (client *Client) StartShiftLoadBalancerZonesWithOptions(request *StartShift
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartShiftLoadBalancerZonesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartShiftLoadBalancerZonesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartShiftLoadBalancerZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32398,9 +31723,9 @@ func (client *Client) StartShiftLoadBalancerZones(request *StartShiftLoadBalance
 //
 // *StopListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
 //
-// 	- If a listener is in the **Configuring*	- state, the listener is being disabled.
+//   - If a listener is in the **Configuring*	- state, the listener is being disabled.
 //
-// 	- If a listener is in the **Stopped*	- state, the listener is disabled.
+//   - If a listener is in the **Stopped*	- state, the listener is disabled.
 //
 // @param request - StopListenerRequest
 //
@@ -32439,24 +31764,13 @@ func (client *Client) StopListenerWithOptions(request *StopListenerRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopListenerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopListenerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopListenerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32467,9 +31781,9 @@ func (client *Client) StopListenerWithOptions(request *StopListenerRequest, runt
 //
 // *StopListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
 //
-// 	- If a listener is in the **Configuring*	- state, the listener is being disabled.
+//   - If a listener is in the **Configuring*	- state, the listener is being disabled.
 //
-// 	- If a listener is in the **Stopped*	- state, the listener is disabled.
+//   - If a listener is in the **Stopped*	- state, the listener is disabled.
 //
 // @param request - StopListenerRequest
 //
@@ -32526,24 +31840,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32613,24 +31916,13 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UnTagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UnTagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UnTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32659,9 +31951,9 @@ func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *U
 //
 // *UpdateAScripts*	- is an an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of an AScript rule.
 //
-// 	- If the rule is in the **Configuring*	- state, the rule is being updated.
+//   - If the rule is in the **Configuring*	- state, the rule is being updated.
 //
-// 	- If the rule is in the **Available*	- state, the rule is updated.
+//   - If the rule is in the **Available*	- state, the rule is updated.
 //
 // @param request - UpdateAScriptsRequest
 //
@@ -32700,24 +31992,13 @@ func (client *Client) UpdateAScriptsWithOptions(request *UpdateAScriptsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateAScriptsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateAScriptsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateAScriptsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32728,9 +32009,9 @@ func (client *Client) UpdateAScriptsWithOptions(request *UpdateAScriptsRequest, 
 //
 // *UpdateAScripts*	- is an an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of an AScript rule.
 //
-// 	- If the rule is in the **Configuring*	- state, the rule is being updated.
+//   - If the rule is in the **Configuring*	- state, the rule is being updated.
 //
-// 	- If the rule is in the **Available*	- state, the rule is updated.
+//   - If the rule is in the **Available*	- state, the rule is updated.
 //
 // @param request - UpdateAScriptsRequest
 //
@@ -32791,24 +32072,13 @@ func (client *Client) UpdateAclAttributeWithOptions(request *UpdateAclAttributeR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateAclAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateAclAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateAclAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32918,24 +32188,13 @@ func (client *Client) UpdateHealthCheckTemplateAttributeWithOptions(request *Upd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateHealthCheckTemplateAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateHealthCheckTemplateAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateHealthCheckTemplateAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32964,9 +32223,9 @@ func (client *Client) UpdateHealthCheckTemplateAttribute(request *UpdateHealthCh
 //
 // *UpdateListenerAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task.
 //
-// 	- If a listener is in the **Configuring*	- state, the configuration of the listener is being modified.
+//   - If a listener is in the **Configuring*	- state, the configuration of the listener is being modified.
 //
-// 	- If a listener is in the **Running*	- state, the configuration of the listener is modified.
+//   - If a listener is in the **Running*	- state, the configuration of the listener is modified.
 //
 // @param request - UpdateListenerAttributeRequest
 //
@@ -33053,24 +32312,13 @@ func (client *Client) UpdateListenerAttributeWithOptions(request *UpdateListener
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateListenerAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateListenerAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateListenerAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33081,9 +32329,9 @@ func (client *Client) UpdateListenerAttributeWithOptions(request *UpdateListener
 //
 // *UpdateListenerAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task.
 //
-// 	- If a listener is in the **Configuring*	- state, the configuration of the listener is being modified.
+//   - If a listener is in the **Configuring*	- state, the configuration of the listener is being modified.
 //
-// 	- If a listener is in the **Running*	- state, the configuration of the listener is modified.
+//   - If a listener is in the **Running*	- state, the configuration of the listener is modified.
 //
 // @param request - UpdateListenerAttributeRequest
 //
@@ -33107,9 +32355,9 @@ func (client *Client) UpdateListenerAttribute(request *UpdateListenerAttributeRe
 //
 // *UpdateListenerLogConfig*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task:
 //
-// 	- If a listener is in the **Configuring*	- state, the log configuration of the listener is being modified.
+//   - If a listener is in the **Configuring*	- state, the log configuration of the listener is being modified.
 //
-// 	- If a listener is in the **Running*	- state, the log configuration of the listener is modified.
+//   - If a listener is in the **Running*	- state, the log configuration of the listener is modified.
 //
 // > You can update the log configuration of a listener only after you enable the access log feature.
 //
@@ -33158,24 +32406,13 @@ func (client *Client) UpdateListenerLogConfigWithOptions(request *UpdateListener
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateListenerLogConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateListenerLogConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateListenerLogConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33186,9 +32423,9 @@ func (client *Client) UpdateListenerLogConfigWithOptions(request *UpdateListener
 //
 // *UpdateListenerLogConfig*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task:
 //
-// 	- If a listener is in the **Configuring*	- state, the log configuration of the listener is being modified.
+//   - If a listener is in the **Configuring*	- state, the log configuration of the listener is being modified.
 //
-// 	- If a listener is in the **Running*	- state, the log configuration of the listener is modified.
+//   - If a listener is in the **Running*	- state, the log configuration of the listener is modified.
 //
 // > You can update the log configuration of a listener only after you enable the access log feature.
 //
@@ -33214,17 +32451,17 @@ func (client *Client) UpdateListenerLogConfig(request *UpdateListenerLogConfigRe
 //
 // ## Prerequisites
 //
-// 	- An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+//   - An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
 //
-// 	- If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
+//   - If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
 //
 // ## Usage notes
 //
 // **UpdateLoadBalancerAddressTypeConfig*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
 //
-// 	- If an ALB instance is in the **Configuring*	- state, the network type is being changed.
+//   - If an ALB instance is in the **Configuring*	- state, the network type is being changed.
 //
-// 	- If an ALB instance is in the **Active*	- state, the network type has been changed.
+//   - If an ALB instance is in the **Active*	- state, the network type has been changed.
 //
 // @param request - UpdateLoadBalancerAddressTypeConfigRequest
 //
@@ -33271,24 +32508,13 @@ func (client *Client) UpdateLoadBalancerAddressTypeConfigWithOptions(request *Up
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateLoadBalancerAddressTypeConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateLoadBalancerAddressTypeConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateLoadBalancerAddressTypeConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33299,17 +32525,17 @@ func (client *Client) UpdateLoadBalancerAddressTypeConfigWithOptions(request *Up
 //
 // ## Prerequisites
 //
-// 	- An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+//   - An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
 //
-// 	- If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
+//   - If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
 //
 // ## Usage notes
 //
 // **UpdateLoadBalancerAddressTypeConfig*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
 //
-// 	- If an ALB instance is in the **Configuring*	- state, the network type is being changed.
+//   - If an ALB instance is in the **Configuring*	- state, the network type is being changed.
 //
-// 	- If an ALB instance is in the **Active*	- state, the network type has been changed.
+//   - If an ALB instance is in the **Active*	- state, the network type has been changed.
 //
 // @param request - UpdateLoadBalancerAddressTypeConfigRequest
 //
@@ -33333,9 +32559,9 @@ func (client *Client) UpdateLoadBalancerAddressTypeConfig(request *UpdateLoadBal
 //
 // *UpdateLoadBalancerAttribute*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
 //
-// 	- If the ALB instance is in the **Configuring*	- state, the ALB instance is being modified.
+//   - If the ALB instance is in the **Configuring*	- state, the ALB instance is being modified.
 //
-// 	- If the ALB instance is in the **Active*	- state, the ALB instance is modified.
+//   - If the ALB instance is in the **Active*	- state, the ALB instance is modified.
 //
 // @param request - UpdateLoadBalancerAttributeRequest
 //
@@ -33382,24 +32608,13 @@ func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoad
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateLoadBalancerAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateLoadBalancerAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateLoadBalancerAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33410,9 +32625,9 @@ func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoad
 //
 // *UpdateLoadBalancerAttribute*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
 //
-// 	- If the ALB instance is in the **Configuring*	- state, the ALB instance is being modified.
+//   - If the ALB instance is in the **Configuring*	- state, the ALB instance is being modified.
 //
-// 	- If the ALB instance is in the **Active*	- state, the ALB instance is modified.
+//   - If the ALB instance is in the **Active*	- state, the ALB instance is modified.
 //
 // @param request - UpdateLoadBalancerAttributeRequest
 //
@@ -33434,13 +32649,13 @@ func (client *Client) UpdateLoadBalancerAttribute(request *UpdateLoadBalancerAtt
 //
 // Description:
 //
-//   You can only upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance. You cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](https://help.aliyun.com/document_detail/214654.html).
+//	  You can only upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance. You cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](https://help.aliyun.com/document_detail/214654.html).
 //
-// 	- **UpdateLoadBalancerEdition*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of an ALB instance.
+//		- **UpdateLoadBalancerEdition*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of an ALB instance.
 //
-//     	- If the ALB instance is in the **Configuring*	- state, the edition of the ALB instance is being modified.
+//	    	- If the ALB instance is in the **Configuring*	- state, the edition of the ALB instance is being modified.
 //
-//     	- If the ALB instance is in the **Active*	- state, the edition of the ALB instance is modified.
+//	    	- If the ALB instance is in the **Active*	- state, the edition of the ALB instance is modified.
 //
 // @param request - UpdateLoadBalancerEditionRequest
 //
@@ -33483,24 +32698,13 @@ func (client *Client) UpdateLoadBalancerEditionWithOptions(request *UpdateLoadBa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateLoadBalancerEditionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateLoadBalancerEditionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateLoadBalancerEditionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33509,13 +32713,13 @@ func (client *Client) UpdateLoadBalancerEditionWithOptions(request *UpdateLoadBa
 //
 // Description:
 //
-//   You can only upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance. You cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](https://help.aliyun.com/document_detail/214654.html).
+//	  You can only upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance. You cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](https://help.aliyun.com/document_detail/214654.html).
 //
-// 	- **UpdateLoadBalancerEdition*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of an ALB instance.
+//		- **UpdateLoadBalancerEdition*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of an ALB instance.
 //
-//     	- If the ALB instance is in the **Configuring*	- state, the edition of the ALB instance is being modified.
+//	    	- If the ALB instance is in the **Configuring*	- state, the edition of the ALB instance is being modified.
 //
-//     	- If the ALB instance is in the **Active*	- state, the edition of the ALB instance is modified.
+//	    	- If the ALB instance is in the **Active*	- state, the edition of the ALB instance is modified.
 //
 // @param request - UpdateLoadBalancerEditionRequest
 //
@@ -33539,9 +32743,9 @@ func (client *Client) UpdateLoadBalancerEdition(request *UpdateLoadBalancerEditi
 //
 // *UpdateLoadBalancerZones*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
 //
-// 	- If an ALB instance is in the **Configuring*	- state, the zones are being modified.
+//   - If an ALB instance is in the **Configuring*	- state, the zones are being modified.
 //
-// 	- If an ALB instance is in the **Active*	- state, the zones are modified.
+//   - If an ALB instance is in the **Active*	- state, the zones are modified.
 //
 // > You may be charged after you call UpdateLoadBalancerZones.
 //
@@ -33586,24 +32790,13 @@ func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBala
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateLoadBalancerZonesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateLoadBalancerZonesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateLoadBalancerZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33614,9 +32807,9 @@ func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBala
 //
 // *UpdateLoadBalancerZones*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
 //
-// 	- If an ALB instance is in the **Configuring*	- state, the zones are being modified.
+//   - If an ALB instance is in the **Configuring*	- state, the zones are being modified.
 //
-// 	- If an ALB instance is in the **Active*	- state, the zones are modified.
+//   - If an ALB instance is in the **Active*	- state, the zones are modified.
 //
 // > You may be charged after you call UpdateLoadBalancerZones.
 //
@@ -33640,17 +32833,17 @@ func (client *Client) UpdateLoadBalancerZones(request *UpdateLoadBalancerZonesRe
 //
 // Description:
 //
-//   **UpdateRuleAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
+//	  **UpdateRuleAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
 //
-//     	- If a forwarding rule is in the **Configuring*	- state, the forwarding rule is being updated.
+//	    	- If a forwarding rule is in the **Configuring*	- state, the forwarding rule is being updated.
 //
-//     	- If a forwarding rule is in the **Available*	- state, the forwarding rule is updated.
+//	    	- If a forwarding rule is in the **Available*	- state, the forwarding rule is updated.
 //
-// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+//		- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
 //
-//     	- Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
+//	    	- Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
 //
-//     	- Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
+//	    	- Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
 //
 // @param request - UpdateRuleAttributeRequest
 //
@@ -33705,24 +32898,13 @@ func (client *Client) UpdateRuleAttributeWithOptions(request *UpdateRuleAttribut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateRuleAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateRuleAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateRuleAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33731,17 +32913,17 @@ func (client *Client) UpdateRuleAttributeWithOptions(request *UpdateRuleAttribut
 //
 // Description:
 //
-//   **UpdateRuleAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
+//	  **UpdateRuleAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
 //
-//     	- If a forwarding rule is in the **Configuring*	- state, the forwarding rule is being updated.
+//	    	- If a forwarding rule is in the **Configuring*	- state, the forwarding rule is being updated.
 //
-//     	- If a forwarding rule is in the **Available*	- state, the forwarding rule is updated.
+//	    	- If a forwarding rule is in the **Available*	- state, the forwarding rule is updated.
 //
-// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+//		- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
 //
-//     	- Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
+//	    	- Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
 //
-//     	- Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
+//	    	- Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
 //
 // @param request - UpdateRuleAttributeRequest
 //
@@ -33765,15 +32947,15 @@ func (client *Client) UpdateRuleAttribute(request *UpdateRuleAttributeRequest) (
 //
 // *UpdateRulesAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of the task.
 //
-// 	- If a forwarding rule is in the **Configuring*	- state, the forwarding rule is being updated.
+//   - If a forwarding rule is in the **Configuring*	- state, the forwarding rule is being updated.
 //
-// 	- If a forwarding rule is in the **Available*	- state, the forwarding rule is updated.
+//   - If a forwarding rule is in the **Available*	- state, the forwarding rule is updated.
 //
-// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
+//   - You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
 //
-//     	- Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+//   - Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
 //
-//     	- Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+//   - Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
 //
 // @param request - UpdateRulesAttributeRequest
 //
@@ -33817,24 +32999,13 @@ func (client *Client) UpdateRulesAttributeWithOptions(request *UpdateRulesAttrib
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateRulesAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateRulesAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateRulesAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33845,15 +33016,15 @@ func (client *Client) UpdateRulesAttributeWithOptions(request *UpdateRulesAttrib
 //
 // *UpdateRulesAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of the task.
 //
-// 	- If a forwarding rule is in the **Configuring*	- state, the forwarding rule is being updated.
+//   - If a forwarding rule is in the **Configuring*	- state, the forwarding rule is being updated.
 //
-// 	- If a forwarding rule is in the **Available*	- state, the forwarding rule is updated.
+//   - If a forwarding rule is in the **Available*	- state, the forwarding rule is updated.
 //
-// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
+//   - You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
 //
-//     	- Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+//   - Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
 //
-//     	- Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+//   - Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
 //
 // @param request - UpdateRulesAttributeRequest
 //
@@ -33879,9 +33050,9 @@ func (client *Client) UpdateRulesAttribute(request *UpdateRulesAttributeRequest)
 //
 // **UpdateSecurityPolicyAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListSecurityPolicies](https://help.aliyun.com/document_detail/213609.html) to query the status of the task.
 //
-// 	- If a security policy is in the **Configuring*	- state, the security policy is being updated.
+//   - If a security policy is in the **Configuring*	- state, the security policy is being updated.
 //
-// 	- If a security policy is in the **Available*	- state, the security policy is updated.
+//   - If a security policy is in the **Available*	- state, the security policy is updated.
 //
 // @param request - UpdateSecurityPolicyAttributeRequest
 //
@@ -33932,24 +33103,13 @@ func (client *Client) UpdateSecurityPolicyAttributeWithOptions(request *UpdateSe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateSecurityPolicyAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateSecurityPolicyAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateSecurityPolicyAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33962,9 +33122,9 @@ func (client *Client) UpdateSecurityPolicyAttributeWithOptions(request *UpdateSe
 //
 // **UpdateSecurityPolicyAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListSecurityPolicies](https://help.aliyun.com/document_detail/213609.html) to query the status of the task.
 //
-// 	- If a security policy is in the **Configuring*	- state, the security policy is being updated.
+//   - If a security policy is in the **Configuring*	- state, the security policy is being updated.
 //
-// 	- If a security policy is in the **Available*	- state, the security policy is updated.
+//   - If a security policy is in the **Available*	- state, the security policy is updated.
 //
 // @param request - UpdateSecurityPolicyAttributeRequest
 //
@@ -33990,9 +33150,9 @@ func (client *Client) UpdateSecurityPolicyAttribute(request *UpdateSecurityPolic
 //
 // **UpdateServerGroupAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group:
 //
-// 	- If a server group is in the **Configuring*	- state, the configuration of the server group is being modified.
+//   - If a server group is in the **Configuring*	- state, the configuration of the server group is being modified.
 //
-// 	- If a server group is in the **Available*	- state, the configuration of the server group is modified.
+//   - If a server group is in the **Available*	- state, the configuration of the server group is modified.
 //
 // @param request - UpdateServerGroupAttributeRequest
 //
@@ -34071,24 +33231,13 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateServerGroupAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateServerGroupAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateServerGroupAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34101,9 +33250,9 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 //
 // **UpdateServerGroupAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group:
 //
-// 	- If a server group is in the **Configuring*	- state, the configuration of the server group is being modified.
+//   - If a server group is in the **Configuring*	- state, the configuration of the server group is being modified.
 //
-// 	- If a server group is in the **Available*	- state, the configuration of the server group is modified.
+//   - If a server group is in the **Available*	- state, the configuration of the server group is modified.
 //
 // @param request - UpdateServerGroupAttributeRequest
 //
@@ -34129,15 +33278,15 @@ func (client *Client) UpdateServerGroupAttribute(request *UpdateServerGroupAttri
 //
 // 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
 //
-//     	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//   - If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
 //
-//     	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//   - If a server group is in the **Available*	- state, it indicates that the server group is running.
 //
 // 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
 //
-//     	- If a backend server is in the **Configuring*	- state, it indicates that the backend server is being modified.
+//   - If a backend server is in the **Configuring*	- state, it indicates that the backend server is being modified.
 //
-//     	- If a backend server is in the **Available*	- state, it indicates that the backend server is running.
+//   - If a backend server is in the **Available*	- state, it indicates that the backend server is running.
 //
 // @param request - UpdateServerGroupServersAttributeRequest
 //
@@ -34180,24 +33329,13 @@ func (client *Client) UpdateServerGroupServersAttributeWithOptions(request *Upda
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateServerGroupServersAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateServerGroupServersAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateServerGroupServersAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34210,15 +33348,15 @@ func (client *Client) UpdateServerGroupServersAttributeWithOptions(request *Upda
 //
 // 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
 //
-//     	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//   - If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
 //
-//     	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//   - If a server group is in the **Available*	- state, it indicates that the server group is running.
 //
 // 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
 //
-//     	- If a backend server is in the **Configuring*	- state, it indicates that the backend server is being modified.
+//   - If a backend server is in the **Configuring*	- state, it indicates that the backend server is being modified.
 //
-//     	- If a backend server is in the **Available*	- state, it indicates that the backend server is running.
+//   - If a backend server is in the **Available*	- state, it indicates that the backend server is running.
 //
 // @param request - UpdateServerGroupServersAttributeRequest
 //
