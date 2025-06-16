@@ -1617,6 +1617,7 @@ type DocOcrMaxRequest struct {
 	//
 	// https://***********.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
 	IdOcrPictureUrl *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
+	IdSpoof         *string `json:"IdSpoof,omitempty" xml:"IdSpoof,omitempty"`
 	// example:
 	//
 	// 0
@@ -1668,6 +1669,11 @@ func (s *DocOcrMaxRequest) SetIdOcrPictureBase64(v string) *DocOcrMaxRequest {
 
 func (s *DocOcrMaxRequest) SetIdOcrPictureUrl(v string) *DocOcrMaxRequest {
 	s.IdOcrPictureUrl = &v
+	return s
+}
+
+func (s *DocOcrMaxRequest) SetIdSpoof(v string) *DocOcrMaxRequest {
+	s.IdSpoof = &v
 	return s
 }
 
@@ -3203,7 +3209,11 @@ type InitializeRequest struct {
 	// example:
 	//
 	// *
-	Ocr               *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	Ocr *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	// example:
+	//
+	// 1
+	Pages             *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
 	ProcedurePriority *string `json:"ProcedurePriority,omitempty" xml:"ProcedurePriority,omitempty"`
 	// example:
 	//
@@ -3359,6 +3369,11 @@ func (s *InitializeRequest) SetOcr(v string) *InitializeRequest {
 	return s
 }
 
+func (s *InitializeRequest) SetPages(v string) *InitializeRequest {
+	s.Pages = &v
+	return s
+}
+
 func (s *InitializeRequest) SetProcedurePriority(v string) *InitializeRequest {
 	s.ProcedurePriority = &v
 	return s
@@ -3468,7 +3483,11 @@ type InitializeShrinkRequest struct {
 	// example:
 	//
 	// *
-	Ocr               *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	Ocr *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	// example:
+	//
+	// 1
+	Pages             *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
 	ProcedurePriority *string `json:"ProcedurePriority,omitempty" xml:"ProcedurePriority,omitempty"`
 	// example:
 	//
@@ -3621,6 +3640,11 @@ func (s *InitializeShrinkRequest) SetModel(v string) *InitializeShrinkRequest {
 
 func (s *InitializeShrinkRequest) SetOcr(v string) *InitializeShrinkRequest {
 	s.Ocr = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetPages(v string) *InitializeShrinkRequest {
+	s.Pages = &v
 	return s
 }
 
@@ -4809,6 +4833,10 @@ func (client *Client) DocOcrMaxWithOptions(request *DocOcrMaxRequest, runtime *u
 		body["IdOcrPictureUrl"] = request.IdOcrPictureUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IdSpoof)) {
+		body["IdSpoof"] = request.IdSpoof
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IdThreshold)) {
 		body["IdThreshold"] = request.IdThreshold
 	}
@@ -5583,6 +5611,10 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 
 	if !tea.BoolValue(util.IsUnset(request.Ocr)) {
 		query["Ocr"] = request.Ocr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pages)) {
+		query["Pages"] = request.Pages
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProcedurePriority)) {
