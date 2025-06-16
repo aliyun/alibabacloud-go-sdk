@@ -7822,6 +7822,7 @@ type EnrichResponseBodyDataSolutionList struct {
 	SegmentBaggageMappingList []*EnrichResponseBodyDataSolutionListSegmentBaggageMappingList `json:"segment_baggage_mapping_list,omitempty" xml:"segment_baggage_mapping_list,omitempty" type:"Repeated"`
 	// change and refund policy
 	SegmentRefundChangeRuleMappingList []*EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList `json:"segment_refund_change_rule_mapping_list,omitempty" xml:"segment_refund_change_rule_mapping_list,omitempty" type:"Repeated"`
+	SolutionAttribute                  *EnrichResponseBodyDataSolutionListSolutionAttribute                    `json:"solution_attribute,omitempty" xml:"solution_attribute,omitempty" type:"Struct"`
 	// solution ID
 	//
 	// example:
@@ -7895,6 +7896,11 @@ func (s *EnrichResponseBodyDataSolutionList) SetSegmentBaggageMappingList(v []*E
 
 func (s *EnrichResponseBodyDataSolutionList) SetSegmentRefundChangeRuleMappingList(v []*EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList) *EnrichResponseBodyDataSolutionList {
 	s.SegmentRefundChangeRuleMappingList = v
+	return s
+}
+
+func (s *EnrichResponseBodyDataSolutionList) SetSolutionAttribute(v *EnrichResponseBodyDataSolutionListSolutionAttribute) *EnrichResponseBodyDataSolutionList {
+	s.SolutionAttribute = v
 	return s
 }
 
@@ -8273,6 +8279,26 @@ func (s *EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList) S
 
 func (s *EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList) SetSegmentIdList(v []*string) *EnrichResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList {
 	s.SegmentIdList = v
+	return s
+}
+
+type EnrichResponseBodyDataSolutionListSolutionAttribute struct {
+	// example:
+	//
+	// 1
+	SupplySourceType *string `json:"supply_source_type,omitempty" xml:"supply_source_type,omitempty"`
+}
+
+func (s EnrichResponseBodyDataSolutionListSolutionAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnrichResponseBodyDataSolutionListSolutionAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *EnrichResponseBodyDataSolutionListSolutionAttribute) SetSupplySourceType(v string) *EnrichResponseBodyDataSolutionListSolutionAttribute {
+	s.SupplySourceType = &v
 	return s
 }
 
@@ -14901,6 +14927,7 @@ type SearchResponseBodyDataSolutionList struct {
 	SegmentBaggageMappingList []*SearchResponseBodyDataSolutionListSegmentBaggageMappingList `json:"segment_baggage_mapping_list,omitempty" xml:"segment_baggage_mapping_list,omitempty" type:"Repeated"`
 	// change and refund policy
 	SegmentRefundChangeRuleMappingList []*SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList `json:"segment_refund_change_rule_mapping_list,omitempty" xml:"segment_refund_change_rule_mapping_list,omitempty" type:"Repeated"`
+	SolutionAttribute                  *SearchResponseBodyDataSolutionListSolutionAttribute                    `json:"solution_attribute,omitempty" xml:"solution_attribute,omitempty" type:"Struct"`
 	// solution ID
 	//
 	// example:
@@ -14974,6 +15001,11 @@ func (s *SearchResponseBodyDataSolutionList) SetSegmentBaggageMappingList(v []*S
 
 func (s *SearchResponseBodyDataSolutionList) SetSegmentRefundChangeRuleMappingList(v []*SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList) *SearchResponseBodyDataSolutionList {
 	s.SegmentRefundChangeRuleMappingList = v
+	return s
+}
+
+func (s *SearchResponseBodyDataSolutionList) SetSolutionAttribute(v *SearchResponseBodyDataSolutionListSolutionAttribute) *SearchResponseBodyDataSolutionList {
+	s.SolutionAttribute = v
 	return s
 }
 
@@ -15356,6 +15388,26 @@ func (s *SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList) S
 
 func (s *SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList) SetSegmentIdList(v []*string) *SearchResponseBodyDataSolutionListSegmentRefundChangeRuleMappingList {
 	s.SegmentIdList = v
+	return s
+}
+
+type SearchResponseBodyDataSolutionListSolutionAttribute struct {
+	// example:
+	//
+	// 1
+	SupplySourceType *string `json:"supply_source_type,omitempty" xml:"supply_source_type,omitempty"`
+}
+
+func (s SearchResponseBodyDataSolutionListSolutionAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchResponseBodyDataSolutionListSolutionAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *SearchResponseBodyDataSolutionListSolutionAttribute) SetSupplySourceType(v string) *SearchResponseBodyDataSolutionListSolutionAttribute {
+	s.SupplySourceType = &v
 	return s
 }
 
@@ -16272,7 +16324,7 @@ func (client *Client) AccountFlowList(request *AccountFlowListRequest) (_result 
 
 // Summary:
 //
-// Ancillary - Suggestion
+// # Ancillary - Suggestion
 //
 // Description:
 //
@@ -16334,7 +16386,7 @@ func (client *Client) AncillarySuggestWithOptions(request *AncillarySuggestReque
 
 // Summary:
 //
-// Ancillary - Suggestion
+// # Ancillary - Suggestion
 //
 // Description:
 //
@@ -16357,7 +16409,7 @@ func (client *Client) AncillarySuggest(request *AncillarySuggestRequest) (_resul
 
 // Summary:
 //
-// Transaction-Reservation
+// # Transaction-Reservation
 //
 // Description:
 //
@@ -16455,7 +16507,7 @@ func (client *Client) BookWithOptions(tmpReq *BookRequest, headers *BookHeaders,
 
 // Summary:
 //
-// Transaction-Reservation
+// # Transaction-Reservation
 //
 // Description:
 //
@@ -16484,7 +16536,7 @@ func (client *Client) Book(request *BookRequest) (_result *BookResponse, _err er
 
 // Summary:
 //
-// Transaction - Unpaid Cancellation
+// # Transaction - Unpaid Cancellation
 //
 // Description:
 //
@@ -16546,7 +16598,7 @@ func (client *Client) CancelWithOptions(request *CancelRequest, headers *CancelH
 
 // Summary:
 //
-// Transaction - Unpaid Cancellation
+// # Transaction - Unpaid Cancellation
 //
 // Description:
 //
@@ -17168,7 +17220,7 @@ func (client *Client) CollectFlightLowestPrice(request *CollectFlightLowestPrice
 
 // Summary:
 //
-// Search-Enrich
+// # Search-Enrich
 //
 // Description:
 //
@@ -17262,7 +17314,7 @@ func (client *Client) EnrichWithOptions(tmpReq *EnrichRequest, headers *EnrichHe
 
 // Summary:
 //
-// Search-Enrich
+// # Search-Enrich
 //
 // Description:
 //
@@ -17449,7 +17501,7 @@ func (client *Client) FlightChangeOfOrder(request *FlightChangeOfOrderRequest) (
 
 // Summary:
 //
-// Get Token
+// # Get Token
 //
 // @param request - GetTokenRequest
 //
@@ -17498,7 +17550,7 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[
 
 // Summary:
 //
-// Get Token
+// # Get Token
 //
 // @param request - GetTokenRequest
 //
@@ -17600,7 +17652,7 @@ func (client *Client) LuggageDirect(request *LuggageDirectRequest) (_result *Lug
 
 // Summary:
 //
-// Trade-Order Details
+// # Trade-Order Details
 //
 // Description:
 //
@@ -17666,7 +17718,7 @@ func (client *Client) OrderDetailWithOptions(request *OrderDetailRequest, header
 
 // Summary:
 //
-// Trade-Order Details
+// # Trade-Order Details
 //
 // Description:
 //
@@ -17689,7 +17741,7 @@ func (client *Client) OrderDetail(request *OrderDetailRequest) (_result *OrderDe
 
 // Summary:
 //
-// Trade - Order List
+// # Trade - Order List
 //
 // Description:
 //
@@ -17767,7 +17819,7 @@ func (client *Client) OrderListWithOptions(request *OrderListRequest, headers *O
 
 // Summary:
 //
-// Trade - Order List
+// # Trade - Order List
 //
 // Description:
 //
@@ -17790,7 +17842,7 @@ func (client *Client) OrderList(request *OrderListRequest) (_result *OrderListRe
 
 // Summary:
 //
-// Trade - Seat and Price Verification
+// # Trade - Seat and Price Verification
 //
 // Description:
 //
@@ -17852,7 +17904,7 @@ func (client *Client) PricingWithOptions(request *PricingRequest, headers *Prici
 
 // Summary:
 //
-// Trade - Seat and Price Verification
+// # Trade - Seat and Price Verification
 //
 // Description:
 //
@@ -17986,7 +18038,7 @@ func (client *Client) RefundApply(request *RefundApplyRequest) (_result *RefundA
 
 // Summary:
 //
-// Refund - Detail
+// # Refund - Detail
 //
 // Description:
 //
@@ -18048,7 +18100,7 @@ func (client *Client) RefundDetailWithOptions(request *RefundDetailRequest, head
 
 // Summary:
 //
-// Refund - Detail
+// # Refund - Detail
 //
 // Description:
 //
@@ -18071,7 +18123,7 @@ func (client *Client) RefundDetail(request *RefundDetailRequest) (_result *Refun
 
 // Summary:
 //
-// Refund - Detail List
+// # Refund - Detail List
 //
 // Description:
 //
@@ -18149,7 +18201,7 @@ func (client *Client) RefundDetailListWithOptions(request *RefundDetailListReque
 
 // Summary:
 //
-// Refund - Detail List
+// # Refund - Detail List
 //
 // Description:
 //
@@ -18287,7 +18339,7 @@ func (client *Client) Search(request *SearchRequest) (_result *SearchResponse, _
 
 // Summary:
 //
-// Transaction - Payment and Ticket Issuance
+// # Transaction - Payment and Ticket Issuance
 //
 // @param request - TicketingRequest
 //
@@ -18345,7 +18397,7 @@ func (client *Client) TicketingWithOptions(request *TicketingRequest, headers *T
 
 // Summary:
 //
-// Transaction - Payment and Ticket Issuance
+// # Transaction - Payment and Ticket Issuance
 //
 // @param request - TicketingRequest
 //
@@ -18364,7 +18416,7 @@ func (client *Client) Ticketing(request *TicketingRequest) (_result *TicketingRe
 
 // Summary:
 //
-// Transaction - Pre-payment verification
+// # Transaction - Pre-payment verification
 //
 // Description:
 //
@@ -18426,7 +18478,7 @@ func (client *Client) TicketingCheckWithOptions(request *TicketingCheckRequest, 
 
 // Summary:
 //
-// Transaction - Pre-payment verification
+// # Transaction - Pre-payment verification
 //
 // Description:
 //
