@@ -8713,7 +8713,7 @@ type CreateLoadBalancerRequest struct {
 	//
 	// example:
 	//
-	// 测试负载均衡器描述
+	// Load balancer description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Whether the load balancer is enabled.
 	//
@@ -8821,7 +8821,7 @@ type CreateLoadBalancerRequest struct {
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// Load balancing strategy.
 	//
-	// - geo: Geographic strategy.
+	// - geo: Geographical strategy.
 	//
 	// - random: Weighted round-robin.
 	//
@@ -8833,7 +8833,7 @@ type CreateLoadBalancerRequest struct {
 	//
 	// order
 	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
-	// Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
+	// Address pools corresponding to secondary regions. When multiple secondary regions share the same set of address pools, the keys can be concatenated with commas.
 	//
 	// example:
 	//
@@ -8969,7 +8969,7 @@ type CreateLoadBalancerRequestMonitor struct {
 	//
 	// 3
 	ConsecutiveUp *int32 `json:"ConsecutiveUp,omitempty" xml:"ConsecutiveUp,omitempty"`
-	// Expected status codes, such as `200,202`, indicating successful HTTP responses.
+	// Expected status codes, such as `200,202`, which are successful HTTP responses.
 	//
 	// example:
 	//
@@ -8985,7 +8985,7 @@ type CreateLoadBalancerRequestMonitor struct {
 	//
 	// true
 	FollowRedirects *bool `json:"FollowRedirects,omitempty" xml:"FollowRedirects,omitempty"`
-	// Header information included in the probe, which is the HTTP header.
+	// Header information included in the probe, which is an HTTP header.
 	//
 	// example:
 	//
@@ -9001,7 +9001,7 @@ type CreateLoadBalancerRequestMonitor struct {
 	//
 	//     }
 	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
-	// Monitoring interval, such as `60` seconds, representing the frequency of checks.
+	// Monitoring interval, such as `60` seconds, which is the frequency of checks.
 	//
 	// example:
 	//
@@ -9012,8 +9012,9 @@ type CreateLoadBalancerRequestMonitor struct {
 	// example:
 	//
 	// GET
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// Monitor check path, such as `/healthcheck`, which is the HTTP request path.
+	Method           *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	MonitoringRegion *string `json:"MonitoringRegion,omitempty" xml:"MonitoringRegion,omitempty"`
+	// Monitor check path, such as `/healthcheck`, which is an HTTP request path.
 	//
 	// example:
 	//
@@ -9096,6 +9097,11 @@ func (s *CreateLoadBalancerRequestMonitor) SetMethod(v string) *CreateLoadBalanc
 	return s
 }
 
+func (s *CreateLoadBalancerRequestMonitor) SetMonitoringRegion(v string) *CreateLoadBalancerRequestMonitor {
+	s.MonitoringRegion = &v
+	return s
+}
+
 func (s *CreateLoadBalancerRequestMonitor) SetPath(v string) *CreateLoadBalancerRequestMonitor {
 	s.Path = &v
 	return s
@@ -9117,7 +9123,7 @@ func (s *CreateLoadBalancerRequestMonitor) SetType(v string) *CreateLoadBalancer
 }
 
 type CreateLoadBalancerRequestRandomSteering struct {
-	// Default weight for round-robin, used for all pools that do not have a specific weight set. The value range is an integer between 0 and 100.
+	// Default weight for all pools that do not have individual weights specified. The value range is an integer between 0 and 100.
 	//
 	// example:
 	//
@@ -9260,13 +9266,13 @@ type CreateLoadBalancerRequestRules struct {
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. This parameter does not need to be set when adding global configurations.
+	// The name of the rule. This parameter does not need to be set when adding global configurations.
 	//
 	// example:
 	//
 	// rule_1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The execution order of the rule. It can be left blank, in which case the rules will be executed in the order they appear in the list. If specified, it should be an integer greater than 0, with higher values indicating a higher priority for execution.
+	// The execution order of the rule. It can be left blank, in which case the rules will be executed in the order they appear in the list. If specified, it must be a positive integer, with higher values indicating higher priority.
 	//
 	// example:
 	//
@@ -9401,7 +9407,7 @@ type CreateLoadBalancerShrinkRequest struct {
 	//
 	// example:
 	//
-	// 测试负载均衡器描述
+	// Load balancer description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Whether the load balancer is enabled.
 	//
@@ -9509,7 +9515,7 @@ type CreateLoadBalancerShrinkRequest struct {
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// Load balancing strategy.
 	//
-	// - geo: Geographic strategy.
+	// - geo: Geographical strategy.
 	//
 	// - random: Weighted round-robin.
 	//
@@ -9521,7 +9527,7 @@ type CreateLoadBalancerShrinkRequest struct {
 	//
 	// order
 	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
-	// Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
+	// Address pools corresponding to secondary regions. When multiple secondary regions share the same set of address pools, the keys can be concatenated with commas.
 	//
 	// example:
 	//
@@ -31624,7 +31630,8 @@ type GetLoadBalancerResponseBodyMonitor struct {
 	// example:
 	//
 	// GET
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Method           *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	MonitoringRegion *string `json:"MonitoringRegion,omitempty" xml:"MonitoringRegion,omitempty"`
 	// Path.
 	//
 	// example:
@@ -31691,6 +31698,11 @@ func (s *GetLoadBalancerResponseBodyMonitor) SetInterval(v int32) *GetLoadBalanc
 
 func (s *GetLoadBalancerResponseBodyMonitor) SetMethod(v string) *GetLoadBalancerResponseBodyMonitor {
 	s.Method = &v
+	return s
+}
+
+func (s *GetLoadBalancerResponseBodyMonitor) SetMonitoringRegion(v string) *GetLoadBalancerResponseBodyMonitor {
+	s.MonitoringRegion = &v
 	return s
 }
 
@@ -48731,7 +48743,8 @@ type ListLoadBalancersResponseBodyLoadBalancersMonitor struct {
 	// example:
 	//
 	// GET
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Method           *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	MonitoringRegion *string `json:"MonitoringRegion,omitempty" xml:"MonitoringRegion,omitempty"`
 	// The path.
 	//
 	// example:
@@ -48798,6 +48811,11 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetInterval(v int32)
 
 func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetMethod(v string) *ListLoadBalancersResponseBodyLoadBalancersMonitor {
 	s.Method = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) SetMonitoringRegion(v string) *ListLoadBalancersResponseBodyLoadBalancersMonitor {
+	s.MonitoringRegion = &v
 	return s
 }
 
@@ -57429,7 +57447,7 @@ type ListWafManagedRulesResponseBodyRules struct {
 	//
 	// example:
 	//
-	// SQL注入
+	// SQL injection
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Protection level of the managed rule.
 	//
@@ -66684,7 +66702,7 @@ func (s *UpdateListResponse) SetBody(v *UpdateListResponseBody) *UpdateListRespo
 }
 
 type UpdateLoadBalancerRequest struct {
-	// Configuration for failover across pools.
+	// Configuration for fallback across pools.
 	AdaptiveRouting *UpdateLoadBalancerRequestAdaptiveRouting `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty" type:"Struct"`
 	// List of default pool IDs.
 	DefaultPools []*int64 `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
@@ -66692,7 +66710,7 @@ type UpdateLoadBalancerRequest struct {
 	//
 	// example:
 	//
-	// 负载均衡器描述
+	// Load balancer description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Whether the load balancer is enabled.
 	//
@@ -66775,7 +66793,7 @@ type UpdateLoadBalancerRequest struct {
 	//
 	// order
 	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
-	// Address pool corresponding to the secondary region. When multiple secondary regions share the same address pool, the keys can be concatenated with commas.
+	// Address pool corresponding to the secondary region. When multiple secondary regions share the same address pool, the regions can be concatenated with commas as the key.
 	//
 	// example:
 	//
@@ -66873,7 +66891,7 @@ func (s *UpdateLoadBalancerRequest) SetTtl(v int32) *UpdateLoadBalancerRequest {
 }
 
 type UpdateLoadBalancerRequestAdaptiveRouting struct {
-	// Whether to failover across pools.
+	// Whether to fallback across pools.
 	//
 	// - true: Yes.
 	//
@@ -66954,7 +66972,8 @@ type UpdateLoadBalancerRequestMonitor struct {
 	// example:
 	//
 	// GET
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Method           *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	MonitoringRegion *string `json:"MonitoringRegion,omitempty" xml:"MonitoringRegion,omitempty"`
 	// Monitor check path, such as /healthcheck, which is the HTTP request path.
 	//
 	// example:
@@ -66973,7 +66992,7 @@ type UpdateLoadBalancerRequestMonitor struct {
 	//
 	// 5
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// Monitor protocol type, such as HTTP, used for health checks. When set to \\"off\\", no check is performed.
+	// Monitor protocol type, such as HTTP, used for health checks. When set to \\"off\\", no checks are performed.
 	//
 	// example:
 	//
@@ -67024,6 +67043,11 @@ func (s *UpdateLoadBalancerRequestMonitor) SetMethod(v string) *UpdateLoadBalanc
 	return s
 }
 
+func (s *UpdateLoadBalancerRequestMonitor) SetMonitoringRegion(v string) *UpdateLoadBalancerRequestMonitor {
+	s.MonitoringRegion = &v
+	return s
+}
+
 func (s *UpdateLoadBalancerRequestMonitor) SetPath(v string) *UpdateLoadBalancerRequestMonitor {
 	s.Path = &v
 	return s
@@ -67045,13 +67069,13 @@ func (s *UpdateLoadBalancerRequestMonitor) SetType(v string) *UpdateLoadBalancer
 }
 
 type UpdateLoadBalancerRequestRandomSteering struct {
-	// The default round-robin weight, used for all pools that do not have a specific weight set. Value range: integers between 0-100.
+	// Default round-robin weight, used for all pools that do not have a separately specified weight. Value range: integers between 0-100.
 	//
 	// example:
 	//
 	// 50
 	DefaultWeight *int32 `json:"DefaultWeight,omitempty" xml:"DefaultWeight,omitempty"`
-	// Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+	// Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight factor. The weight factor represents the proportion of relative traffic distribution.
 	PoolWeights map[string]*int32 `json:"PoolWeights,omitempty" xml:"PoolWeights,omitempty"`
 }
 
@@ -67168,7 +67192,7 @@ type UpdateLoadBalancerRequestRules struct {
 	//
 	// - Match all incoming requests: Set the value to true
 	//
-	// - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+	// - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
 	//
 	// example:
 	//
@@ -67190,7 +67214,7 @@ type UpdateLoadBalancerRequestRules struct {
 	//
 	// rule_1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The execution order of the rule. It can be left empty, in which case the rules will be executed in the order they appear in the list. If specified, it must be a positive integer, with higher values indicating higher priority.
+	// The execution order of the rule. It can be left blank, in which case the rules will be executed in the order they appear in the list. If specified, it must be a positive integer, with higher values indicating higher priority.
 	//
 	// example:
 	//
@@ -67307,7 +67331,7 @@ func (s *UpdateLoadBalancerRequestRulesFixedResponse) SetStatusCode(v int32) *Up
 }
 
 type UpdateLoadBalancerShrinkRequest struct {
-	// Configuration for failover across pools.
+	// Configuration for fallback across pools.
 	AdaptiveRoutingShrink *string `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty"`
 	// List of default pool IDs.
 	DefaultPoolsShrink *string `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty"`
@@ -67315,7 +67339,7 @@ type UpdateLoadBalancerShrinkRequest struct {
 	//
 	// example:
 	//
-	// 负载均衡器描述
+	// Load balancer description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Whether the load balancer is enabled.
 	//
@@ -67398,7 +67422,7 @@ type UpdateLoadBalancerShrinkRequest struct {
 	//
 	// order
 	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
-	// Address pool corresponding to the secondary region. When multiple secondary regions share the same address pool, the keys can be concatenated with commas.
+	// Address pool corresponding to the secondary region. When multiple secondary regions share the same address pool, the regions can be concatenated with commas as the key.
 	//
 	// example:
 	//
@@ -77325,7 +77349,7 @@ func (client *Client) CreateList(request *CreateListRequest) (_result *CreateLis
 //
 // Description:
 //
-// Through this API, users can configure load balancing services according to their business needs, including but not limited to adaptive routing, weighted round-robin, rule matching, health checks, and other settings, to achieve effective traffic management and optimization.
+// Through this API, users can configure load balancing services according to their business needs, including but not limited to adaptive routing, weighted round-robin, rule matching, health checks, and more, to achieve effective traffic management and optimization.
 //
 // @param tmpReq - CreateLoadBalancerRequest
 //
@@ -77449,7 +77473,7 @@ func (client *Client) CreateLoadBalancerWithOptions(tmpReq *CreateLoadBalancerRe
 //
 // Description:
 //
-// Through this API, users can configure load balancing services according to their business needs, including but not limited to adaptive routing, weighted round-robin, rule matching, health checks, and other settings, to achieve effective traffic management and optimization.
+// Through this API, users can configure load balancing services according to their business needs, including but not limited to adaptive routing, weighted round-robin, rule matching, health checks, and more, to achieve effective traffic management and optimization.
 //
 // @param request - CreateLoadBalancerRequest
 //
