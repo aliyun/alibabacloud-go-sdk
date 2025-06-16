@@ -3543,7 +3543,8 @@ type CreateWmBaseImageRequest struct {
 	// example:
 	//
 	// 1080
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Height       *int32                                `json:"Height,omitempty" xml:"Height,omitempty"`
+	ImageControl *CreateWmBaseImageRequestImageControl `json:"ImageControl,omitempty" xml:"ImageControl,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -3595,6 +3596,11 @@ func (s *CreateWmBaseImageRequest) SetHeight(v int32) *CreateWmBaseImageRequest 
 	return s
 }
 
+func (s *CreateWmBaseImageRequest) SetImageControl(v *CreateWmBaseImageRequestImageControl) *CreateWmBaseImageRequest {
+	s.ImageControl = v
+	return s
+}
+
 func (s *CreateWmBaseImageRequest) SetOpacity(v int32) *CreateWmBaseImageRequest {
 	s.Opacity = &v
 	return s
@@ -3626,6 +3632,294 @@ func (s *CreateWmBaseImageRequest) SetWmInfoUint(v string) *CreateWmBaseImageReq
 }
 
 func (s *CreateWmBaseImageRequest) SetWmType(v string) *CreateWmBaseImageRequest {
+	s.WmType = &v
+	return s
+}
+
+type CreateWmBaseImageRequestImageControl struct {
+	LogoVisibleControl *CreateWmBaseImageRequestImageControlLogoVisibleControl `json:"LogoVisibleControl,omitempty" xml:"LogoVisibleControl,omitempty" type:"Struct"`
+	TextVisibleControl *CreateWmBaseImageRequestImageControlTextVisibleControl `json:"TextVisibleControl,omitempty" xml:"TextVisibleControl,omitempty" type:"Struct"`
+}
+
+func (s CreateWmBaseImageRequestImageControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmBaseImageRequestImageControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmBaseImageRequestImageControl) SetLogoVisibleControl(v *CreateWmBaseImageRequestImageControlLogoVisibleControl) *CreateWmBaseImageRequestImageControl {
+	s.LogoVisibleControl = v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControl) SetTextVisibleControl(v *CreateWmBaseImageRequestImageControlTextVisibleControl) *CreateWmBaseImageRequestImageControl {
+	s.TextVisibleControl = v
+	return s
+}
+
+type CreateWmBaseImageRequestImageControlLogoVisibleControl struct {
+	Angle      *int64   `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	LogoBase64 *string  `json:"LogoBase64,omitempty" xml:"LogoBase64,omitempty"`
+	Mode       *string  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Opacity    *int32   `json:"Opacity,omitempty" xml:"Opacity,omitempty"`
+	PosAx      *float32 `json:"PosAx,omitempty" xml:"PosAx,omitempty"`
+	PosAy      *float32 `json:"PosAy,omitempty" xml:"PosAy,omitempty"`
+	PosX       *int64   `json:"PosX,omitempty" xml:"PosX,omitempty"`
+	PosY       *int64   `json:"PosY,omitempty" xml:"PosY,omitempty"`
+	SpaceX     *int64   `json:"SpaceX,omitempty" xml:"SpaceX,omitempty"`
+	SpaceY     *int64   `json:"SpaceY,omitempty" xml:"SpaceY,omitempty"`
+	Visible    *bool    `json:"Visible,omitempty" xml:"Visible,omitempty"`
+}
+
+func (s CreateWmBaseImageRequestImageControlLogoVisibleControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmBaseImageRequestImageControlLogoVisibleControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetAngle(v int64) *CreateWmBaseImageRequestImageControlLogoVisibleControl {
+	s.Angle = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetLogoBase64(v string) *CreateWmBaseImageRequestImageControlLogoVisibleControl {
+	s.LogoBase64 = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetMode(v string) *CreateWmBaseImageRequestImageControlLogoVisibleControl {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetOpacity(v int32) *CreateWmBaseImageRequestImageControlLogoVisibleControl {
+	s.Opacity = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetPosAx(v float32) *CreateWmBaseImageRequestImageControlLogoVisibleControl {
+	s.PosAx = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetPosAy(v float32) *CreateWmBaseImageRequestImageControlLogoVisibleControl {
+	s.PosAy = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetPosX(v int64) *CreateWmBaseImageRequestImageControlLogoVisibleControl {
+	s.PosX = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetPosY(v int64) *CreateWmBaseImageRequestImageControlLogoVisibleControl {
+	s.PosY = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetSpaceX(v int64) *CreateWmBaseImageRequestImageControlLogoVisibleControl {
+	s.SpaceX = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetSpaceY(v int64) *CreateWmBaseImageRequestImageControlLogoVisibleControl {
+	s.SpaceY = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetVisible(v bool) *CreateWmBaseImageRequestImageControlLogoVisibleControl {
+	s.Visible = &v
+	return s
+}
+
+type CreateWmBaseImageRequestImageControlTextVisibleControl struct {
+	Angle       *int64   `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	FontColor   *string  `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontSize    *int64   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	Mode        *string  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Opacity     *int32   `json:"Opacity,omitempty" xml:"Opacity,omitempty"`
+	PosAx       *float32 `json:"PosAx,omitempty" xml:"PosAx,omitempty"`
+	PosAy       *float32 `json:"PosAy,omitempty" xml:"PosAy,omitempty"`
+	PosX        *int64   `json:"PosX,omitempty" xml:"PosX,omitempty"`
+	PosY        *int64   `json:"PosY,omitempty" xml:"PosY,omitempty"`
+	SpaceX      *int64   `json:"SpaceX,omitempty" xml:"SpaceX,omitempty"`
+	SpaceY      *int64   `json:"SpaceY,omitempty" xml:"SpaceY,omitempty"`
+	Visible     *bool    `json:"Visible,omitempty" xml:"Visible,omitempty"`
+	VisibleText *string  `json:"VisibleText,omitempty" xml:"VisibleText,omitempty"`
+}
+
+func (s CreateWmBaseImageRequestImageControlTextVisibleControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmBaseImageRequestImageControlTextVisibleControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetAngle(v int64) *CreateWmBaseImageRequestImageControlTextVisibleControl {
+	s.Angle = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetFontColor(v string) *CreateWmBaseImageRequestImageControlTextVisibleControl {
+	s.FontColor = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetFontSize(v int64) *CreateWmBaseImageRequestImageControlTextVisibleControl {
+	s.FontSize = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetMode(v string) *CreateWmBaseImageRequestImageControlTextVisibleControl {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetOpacity(v int32) *CreateWmBaseImageRequestImageControlTextVisibleControl {
+	s.Opacity = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetPosAx(v float32) *CreateWmBaseImageRequestImageControlTextVisibleControl {
+	s.PosAx = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetPosAy(v float32) *CreateWmBaseImageRequestImageControlTextVisibleControl {
+	s.PosAy = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetPosX(v int64) *CreateWmBaseImageRequestImageControlTextVisibleControl {
+	s.PosX = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetPosY(v int64) *CreateWmBaseImageRequestImageControlTextVisibleControl {
+	s.PosY = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetSpaceX(v int64) *CreateWmBaseImageRequestImageControlTextVisibleControl {
+	s.SpaceX = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetSpaceY(v int64) *CreateWmBaseImageRequestImageControlTextVisibleControl {
+	s.SpaceY = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetVisible(v bool) *CreateWmBaseImageRequestImageControlTextVisibleControl {
+	s.Visible = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetVisibleText(v string) *CreateWmBaseImageRequestImageControlTextVisibleControl {
+	s.VisibleText = &v
+	return s
+}
+
+type CreateWmBaseImageShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1080
+	Height             *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	ImageControlShrink *string `json:"ImageControl,omitempty" xml:"ImageControl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 255
+	Opacity *int32 `json:"Opacity,omitempty" xml:"Opacity,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Scale *int32 `json:"Scale,omitempty" xml:"Scale,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1920
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// aGVsbG8gc2F*****
+	WmInfoBytesB64 *string `json:"WmInfoBytesB64,omitempty" xml:"WmInfoBytesB64,omitempty"`
+	// example:
+	//
+	// 32
+	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
+	// example:
+	//
+	// 12*****
+	WmInfoUint *string `json:"WmInfoUint,omitempty" xml:"WmInfoUint,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PureWebappInvisible
+	WmType *string `json:"WmType,omitempty" xml:"WmType,omitempty"`
+}
+
+func (s CreateWmBaseImageShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmBaseImageShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmBaseImageShrinkRequest) SetHeight(v int32) *CreateWmBaseImageShrinkRequest {
+	s.Height = &v
+	return s
+}
+
+func (s *CreateWmBaseImageShrinkRequest) SetImageControlShrink(v string) *CreateWmBaseImageShrinkRequest {
+	s.ImageControlShrink = &v
+	return s
+}
+
+func (s *CreateWmBaseImageShrinkRequest) SetOpacity(v int32) *CreateWmBaseImageShrinkRequest {
+	s.Opacity = &v
+	return s
+}
+
+func (s *CreateWmBaseImageShrinkRequest) SetScale(v int32) *CreateWmBaseImageShrinkRequest {
+	s.Scale = &v
+	return s
+}
+
+func (s *CreateWmBaseImageShrinkRequest) SetWidth(v int32) *CreateWmBaseImageShrinkRequest {
+	s.Width = &v
+	return s
+}
+
+func (s *CreateWmBaseImageShrinkRequest) SetWmInfoBytesB64(v string) *CreateWmBaseImageShrinkRequest {
+	s.WmInfoBytesB64 = &v
+	return s
+}
+
+func (s *CreateWmBaseImageShrinkRequest) SetWmInfoSize(v int64) *CreateWmBaseImageShrinkRequest {
+	s.WmInfoSize = &v
+	return s
+}
+
+func (s *CreateWmBaseImageShrinkRequest) SetWmInfoUint(v string) *CreateWmBaseImageShrinkRequest {
+	s.WmInfoUint = &v
+	return s
+}
+
+func (s *CreateWmBaseImageShrinkRequest) SetWmType(v string) *CreateWmBaseImageShrinkRequest {
 	s.WmType = &v
 	return s
 }
@@ -8444,6 +8738,12 @@ func (s *GetPrivateAccessApplicationResponse) SetBody(v *GetPrivateAccessApplica
 }
 
 type GetPrivateAccessPolicyRequest struct {
+	// Intranet access policy ID. The value can be obtained from:
+	//
+	// - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): Query multiple intranet access policies in bulk.
+	//
+	// - [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): Create an intranet access policy.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8466,7 +8766,10 @@ func (s *GetPrivateAccessPolicyRequest) SetPolicyId(v string) *GetPrivateAccessP
 }
 
 type GetPrivateAccessPolicyResponseBody struct {
+	// Intranet access policy.
 	Policy *GetPrivateAccessPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	// The ID of the current request.
+	//
 	// example:
 	//
 	// 7E9D7ACD-53D5-56EF-A913-79D148D06299
@@ -8492,45 +8795,116 @@ func (s *GetPrivateAccessPolicyResponseBody) SetRequestId(v string) *GetPrivateA
 }
 
 type GetPrivateAccessPolicyResponseBodyPolicy struct {
+	// A collection of application IDs for the private access policy. This field has a value when the application type is Application.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// The application type of the private access policy. Possible values:
+	//
+	// - **Application**: Application.
+	//
+	// - **Tag**: Tag.
+	//
 	// example:
 	//
 	// Application
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// Intranet access policy creation time.
+	//
 	// example:
 	//
 	// 2021-07-29 11:26:02
-	CreateTime            *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CustomUserAttributes  []*GetPrivateAccessPolicyResponseBodyPolicyCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
-	Description           *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	DeviceAttributeAction *string                                                         `json:"DeviceAttributeAction,omitempty" xml:"DeviceAttributeAction,omitempty"`
-	DeviceAttributeId     *string                                                         `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Collection of custom user group attributes. Multiple custom user group attributes are combined with an OR relationship and take effect as a set.
+	CustomUserAttributes []*GetPrivateAccessPolicyResponseBodyPolicyCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
+	// Intranet access policy description.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The action to take if the security baseline is not met. Possible values:
+	//
+	// - **Block**: Block.
+	//
+	// - **Observe**: Observe.
+	//
+	// example:
+	//
+	// Block
+	DeviceAttributeAction *string `json:"DeviceAttributeAction,omitempty" xml:"DeviceAttributeAction,omitempty"`
+	// The ID of the security baseline policy.
+	//
+	// example:
+	//
+	// dag-d3f64e8bdd4a****
+	DeviceAttributeId *string `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
+	// Intranet access policy name.
+	//
 	// example:
 	//
 	// private_access_policy_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Intranet access policy action. Values:
+	//
+	// - **Block**: Block.
+	//
+	// - **Allow**: Allow.
+	//
 	// example:
 	//
 	// Allow
 	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// Intranet access policy ID.
+	//
 	// example:
 	//
 	// pa-policy-63b2f1844b86****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// Intranet access policy priority. A value of 1 indicates the highest priority.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Intranet access policy status. Values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Enabled
-	Status                 *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagIds                 []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	TriggerTemplateId      *string   `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A collection of tag IDs for the private access policy. This field has a value when the application type is Tag.
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	// The trigger template ID.
+	//
+	// example:
+	//
+	// dag-d3f64e8bdd4a****
+	TriggerTemplateId *string `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
+	// A list of trusted process group IDs.
 	TrustedProcessGroupIds []*string `json:"TrustedProcessGroupIds,omitempty" xml:"TrustedProcessGroupIds,omitempty" type:"Repeated"`
-	TrustedProcessStatus   *string   `json:"TrustedProcessStatus,omitempty" xml:"TrustedProcessStatus,omitempty"`
-	TrustedSoftwareIds     []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
-	UserGroupIds           []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	// The status of the trusted process switch. Possible values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
+	// example:
+	//
+	// Enabled
+	TrustedProcessStatus *string `json:"TrustedProcessStatus,omitempty" xml:"TrustedProcessStatus,omitempty"`
+	// A list of trusted software IDs.
+	TrustedSoftwareIds []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
+	// Collection of user group IDs for the intranet access policy. This field is populated when the user group type is Normal.
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	// User group type for the intranet access policy. Values:
+	//
+	// - **Normal**: Normal user group.
+	//
+	// - **Custom**: Custom user group.
+	//
 	// example:
 	//
 	// Normal
@@ -8641,19 +9015,46 @@ func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetUserGroupMode(v string) *G
 }
 
 type GetPrivateAccessPolicyResponseBodyPolicyCustomUserAttributes struct {
+	// The identity provider ID for the custom user group. This field is required when the custom user group type is **department**.
+	//
 	// example:
 	//
 	// 12
 	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// Custom user group relationship. Values: - **Equal**: Equal to. - **Unequal**: Not equal to.
+	//
 	// example:
 	//
 	// Equal
 	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// Type of the custom user group. Values:
+	//
+	// - **username**: Username.
+	//
+	// - **department**: Department.
+	//
+	// - **email**: Email.
+	//
+	// - **telephone**: Telephone.
+	//
 	// example:
 	//
 	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value of the custom user group attribute.
+	//
+	// - When the user group type is **username**, it represents the value of the username. The length should be 1 to 128 characters, supporting Chinese and case-sensitive English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
+	//
+	// - When the user group type is **department**, it represents the value of the department. For example: OU=Department1,OU=SASE DingTalk.
+	//
+	// - When the user group type is **email**, it represents the value of the email. For example: username@example.com.
+	//
+	// - When the user group type is **telephone**, it represents the value of the phone number. For example: 13900001234.
+	//
+	// example:
+	//
+	// OU=部门1,OU=SASE钉钉
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetPrivateAccessPolicyResponseBodyPolicyCustomUserAttributes) String() string {
@@ -16389,10 +16790,21 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	// example:
 	//
 	// dag-d3f64e8bdd4a****
-	TriggerTemplateId      *string   `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
+	TriggerTemplateId *string `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
+	// List of trusted process group IDs.
 	TrustedProcessGroupIds []*string `json:"TrustedProcessGroupIds,omitempty" xml:"TrustedProcessGroupIds,omitempty" type:"Repeated"`
-	TrustedProcessStatus   *string   `json:"TrustedProcessStatus,omitempty" xml:"TrustedProcessStatus,omitempty"`
-	TrustedSoftwareIds     []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
+	// Trusted process switch status. Values:
+	//
+	// - **Enabled**: On.
+	//
+	// - **Disabled**: Off.
+	//
+	// example:
+	//
+	// Enabled
+	TrustedProcessStatus *string `json:"TrustedProcessStatus,omitempty" xml:"TrustedProcessStatus,omitempty"`
+	// List of trusted software IDs.
+	TrustedSoftwareIds []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
 	// The IDs of user groups in the private access policy. If the value of UserGroupMode is **Normal**, this parameter is returned.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 	// The type of the user group in the private access policy. Valid values:
@@ -19626,22 +20038,30 @@ func (s *ListUserGroupsForRegistrationPolicyResponse) SetBody(v *ListUserGroupsF
 }
 
 type ListUserPrivateAccessPoliciesRequest struct {
+	// Current page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Intranet access policy name. Length should be between 1 to 128 characters, supporting Chinese and case-sensitive English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
+	//
 	// example:
 	//
 	// private_access_policy_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Number of items per page for pagination. Range: 1~100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// User ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -19679,13 +20099,16 @@ func (s *ListUserPrivateAccessPoliciesRequest) SetSaseUserId(v string) *ListUser
 }
 
 type ListUserPrivateAccessPoliciesResponseBody struct {
+	// List of authorized policies.
 	Polices []*ListUserPrivateAccessPoliciesResponseBodyPolices `json:"Polices,omitempty" xml:"Polices,omitempty" type:"Repeated"`
-	// Id of the request
+	// ID of the request.
 	//
 	// example:
 	//
 	// 9D852F87-AFB5-51B8-AACD-F7D0EFB8277D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of authorized policies.
+	//
 	// example:
 	//
 	// 20
@@ -19716,33 +20139,58 @@ func (s *ListUserPrivateAccessPoliciesResponseBody) SetTotalNum(v int32) *ListUs
 }
 
 type ListUserPrivateAccessPoliciesResponseBodyPolices struct {
+	// Set of custom user group attributes. Multiple custom user group attributes are in an OR relationship, effective as a union.
 	CustomUserAttributes []*ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
+	// Associated security baseline.
+	//
 	// example:
 	//
 	// device_attribute_name
 	DeviceAttributeName *string `json:"DeviceAttributeName,omitempty" xml:"DeviceAttributeName,omitempty"`
+	// Associated user group.
+	//
 	// example:
 	//
 	// user_group_name
 	MatchedUserGroup *string `json:"MatchedUserGroup,omitempty" xml:"MatchedUserGroup,omitempty"`
+	// Intranet access policy name.
+	//
 	// example:
 	//
 	// private_access_policy_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Action of the intranet access policy. Values:
+	//
+	// - **Block**: Block.
+	//
+	// - **Allow**: Allow.
+	//
 	// example:
 	//
 	// Allow
 	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// Intranet access policy ID.
+	//
 	// example:
 	//
 	// pa-policy-1b0d0e8b4bcf****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// Priority of the intranet access policy. The number 1 indicates the highest priority.
+	//
 	// example:
 	//
 	// 1
-	Priority               *int64    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// List of trusted process group IDs.
 	TrustedProcessGroupIds []*string `json:"TrustedProcessGroupIds,omitempty" xml:"TrustedProcessGroupIds,omitempty" type:"Repeated"`
-	TrustedSoftwareIds     []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
+	// List of trusted software IDs.
+	TrustedSoftwareIds []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
+	// Type of the user group for the intranet access policy. Values:
+	//
+	// - **Normal**: Normal user group.
+	//
+	// - **Custom**: Custom user group.
+	//
 	// example:
 	//
 	// Custom
@@ -19808,19 +20256,50 @@ func (s *ListUserPrivateAccessPoliciesResponseBodyPolices) SetUserGroupMode(v st
 }
 
 type ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes struct {
+	// The identity provider ID of the user group. This value exists when the custom user group type is **department**.
+	//
 	// example:
 	//
 	// 12
 	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// Relation of the user group. Values:
+	//
+	// - **Equal**: Equal.
+	//
+	// - **Unequal**: Not equal.
+	//
 	// example:
 	//
 	// Equal
 	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// Type of the user group. Values:
+	//
+	// - **username**: Username.
+	//
+	// - **department**: Department.
+	//
+	// - **email**: Email.
+	//
+	// - **telephone**: Telephone.
+	//
 	// example:
 	//
 	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value of the user group attribute.
+	//
+	// - When the user group type is **username**, it represents the value of the username. The length is 1 to 128 characters, supporting Chinese and case-sensitive English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
+	//
+	// - When the user group type is **department**, it represents the value of the department. For example: OU=Department1,OU=SASE DingTalk.
+	//
+	// - When the user group type is **email**, it represents the value of the email. For example: username@example.com.
+	//
+	// - When the user group type is **telephone**, it represents the value of the phone number. For example: 13900001234.
+	//
+	// example:
+	//
+	// OU=部门1,OU=SASE钉钉
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListUserPrivateAccessPoliciesResponseBodyPolicesCustomUserAttributes) String() string {
@@ -23045,55 +23524,128 @@ func (s *UpdatePrivateAccessApplicationResponse) SetBody(v *UpdatePrivateAccessA
 }
 
 type UpdatePrivateAccessPolicyRequest struct {
+	// Set of application IDs for the private access policy. A single policy supports up to 100 private access application IDs.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// Application type of the private access policy. Values:
+	//
+	// - **Application**: Application.
+	//
+	// - **Tag**: Tag.
+	//
 	// example:
 	//
 	// Application
-	ApplicationType      *string                                                 `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// Set of custom user attributes for the private access policy, required when the user group type is **Custom**. Mutually exclusive with the user group ID set. The total number of custom user groups is limited to 10.
 	CustomUserAttributes []*UpdatePrivateAccessPolicyRequestCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
+	// Description of the private access policy. Length should be 1 to 128 characters, supporting Chinese and English letters (both uppercase and lowercase), and can include numbers, periods (.), underscores (_), hyphens (-), and spaces.
+	//
 	// if can be null:
 	// true
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The execution strategy for not meeting the security baseline. Values:
+	//
+	// - **Block**: Block.
+	//
+	// - **Observe**: Observe.
+	//
+	// example:
+	//
+	// Block
 	DeviceAttributeAction *string `json:"DeviceAttributeAction,omitempty" xml:"DeviceAttributeAction,omitempty"`
-	DeviceAttributeId     *string `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
+	// The ID of the security baseline policy.
+	//
+	// example:
+	//
+	// dag-d3f64e8bdd4a****
+	DeviceAttributeId *string `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
+	// The modification type of the private access policy. Values:
+	//
+	// - **Cover*	- (default): Use the values of **ApplicationIds**, **UserGroupIds**, and **CustomUserAttributes*	- to overwrite the original application ID set, user group ID set, and custom user attribute set, respectively.
+	//
+	// - **Append**: Add the values provided in **ApplicationIds**, **UserGroupIds**, and **CustomUserAttributes*	- to the original application ID set, user group ID set, and custom user attribute set, respectively.
+	//
 	// example:
 	//
 	// Cover
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	// Action of the private access policy. Values:
+	//
+	// - **Block**: Block.
+	//
+	// - **Allow**: Allow.
+	//
 	// example:
 	//
 	// Allow
 	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// ID of the private access policy. Value sources:
+	//
+	// - [ListPrivateAccessPolicies](~~ListPrivateAccessPolicies~~): Batch query for private access policies.
+	//
+	// - [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): Create a private access policy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pa-policy-63b2f1844b86****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The priority of the private access policy. The number 1 indicates the highest priority. Range: 1~1000, with the maximum value being the total number of private access policies minus one.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The status of the private access policy. Values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 内网访问标签ID集合。一条策略最多支持100个内网访问标签ID。
-	TagIds            []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	TriggerTemplateId *string   `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
+	// Set of tag IDs for the private access policy. A single policy supports up to 100 private access tag IDs.
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	// The trigger template ID.
+	//
+	// example:
+	//
+	// dag-d3f64e8bdd4a****
+	TriggerTemplateId *string `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
+	// Trusted process group ID.
+	//
 	// if can be null:
 	// false
 	TrustedProcessGroupIds []*string `json:"TrustedProcessGroupIds,omitempty" xml:"TrustedProcessGroupIds,omitempty" type:"Repeated"`
-	TrustedProcessStatus   *string   `json:"TrustedProcessStatus,omitempty" xml:"TrustedProcessStatus,omitempty"`
+	// Trusted process switch status. Values:
+	//
+	// - **Enabled**: On.
+	//
+	// - **Disabled**: Off.
+	//
+	// example:
+	//
+	// Disabled
+	TrustedProcessStatus *string `json:"TrustedProcessStatus,omitempty" xml:"TrustedProcessStatus,omitempty"`
+	// Trusted Software ID.
+	//
 	// if can be null:
 	// false
 	TrustedSoftwareIds []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
-	UserGroupIds       []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// 内网访问策略的用户组类型。取值：
+	// Set of user group IDs for the private access policy, required when the user group type is **Normal**. Mutually exclusive with the custom user group set. A single policy supports up to 10,000 user groups, and a maximum of 2,000 user group IDs can be modified at once.
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	// User group type of the private access policy. Values:
 	//
-	// - **Normal**：普通用户组。
+	// - **Normal**: Normal user group.
 	//
-	// - **Custom**：自定义用户组。
+	// - **Custom**: Custom user group.
 	//
 	// example:
 	//
@@ -23200,23 +23752,47 @@ func (s *UpdatePrivateAccessPolicyRequest) SetUserGroupMode(v string) *UpdatePri
 }
 
 type UpdatePrivateAccessPolicyRequestCustomUserAttributes struct {
+	// The identity source ID of the custom user group. Required when the custom user group type is **department**.
+	//
 	// example:
 	//
 	// 12
 	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// Relation of the custom user group. Values:
+	//
+	// - **Equal**: Equal.
+	//
+	// - **Unequal**: Not equal.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Equal
 	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// Type of the custom user group. Values:
+	//
+	// - **username**: Username.
+	//
+	// - **department**: Department.
+	//
+	// - **email**: Email.
+	//
+	// - **telephone**: Telephone.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
+	// Custom user group attribute values. - When the user group type is **username**, it represents the value of the username. The length should be 1 to 128 characters, supporting Chinese and case-sensitive English letters, and can include numbers, half-width periods (.), underscores (_), hyphens (-), asterisks (*), at symbols (@), and spaces. - When the user group type is **department**, it represents the value of the department. For example: OU=Department1,OU=SASE DingTalk. - When the user group type is **email**, it represents the value of the email. For example: username@example.com. - When the user group type is **telephone**, it represents the value of the mobile phone. For example: 13900001234.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// OU=部门1,OU=SASE钉钉
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -23249,6 +23825,8 @@ func (s *UpdatePrivateAccessPolicyRequestCustomUserAttributes) SetValue(v string
 }
 
 type UpdatePrivateAccessPolicyResponseBody struct {
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 5FEF5CFA-14CC-5DE5-BD1F-AFFE0996E71D
@@ -26071,19 +26649,29 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 //
 // 创建数字水印暗水印透明底图
 //
-// @param request - CreateWmBaseImageRequest
+// @param tmpReq - CreateWmBaseImageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateWmBaseImageResponse
-func (client *Client) CreateWmBaseImageWithOptions(request *CreateWmBaseImageRequest, runtime *util.RuntimeOptions) (_result *CreateWmBaseImageResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateWmBaseImageWithOptions(tmpReq *CreateWmBaseImageRequest, runtime *util.RuntimeOptions) (_result *CreateWmBaseImageResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateWmBaseImageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ImageControl)) {
+		request.ImageControlShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageControl, tea.String("ImageControl"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Height)) {
 		body["Height"] = request.Height
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageControlShrink)) {
+		body["ImageControl"] = request.ImageControlShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Opacity)) {
@@ -28104,7 +28692,7 @@ func (client *Client) GetPrivateAccessApplication(request *GetPrivateAccessAppli
 
 // Summary:
 //
-// 查询内网访问策略详情
+// # Query Intranet Access Policy Details
 //
 // @param request - GetPrivateAccessPolicyRequest
 //
@@ -28142,7 +28730,7 @@ func (client *Client) GetPrivateAccessPolicyWithOptions(request *GetPrivateAcces
 
 // Summary:
 //
-// 查询内网访问策略详情
+// # Query Intranet Access Policy Details
 //
 // @param request - GetPrivateAccessPolicyRequest
 //
@@ -30711,7 +31299,7 @@ func (client *Client) ListUserGroupsForRegistrationPolicy(request *ListUserGroup
 
 // Summary:
 //
-// 列表查询用户零信任策略
+// # List query of user zero trust policies
 //
 // @param request - ListUserPrivateAccessPoliciesRequest
 //
@@ -30749,7 +31337,7 @@ func (client *Client) ListUserPrivateAccessPoliciesWithOptions(request *ListUser
 
 // Summary:
 //
-// 列表查询用户零信任策略
+// # List query of user zero trust policies
 //
 // @param request - ListUserPrivateAccessPoliciesRequest
 //
@@ -31917,7 +32505,7 @@ func (client *Client) UpdatePrivateAccessApplication(request *UpdatePrivateAcces
 
 // Summary:
 //
-// 修改内网访问策略
+// # Modify Private Access Policy
 //
 // @param request - UpdatePrivateAccessPolicyRequest
 //
@@ -32030,7 +32618,7 @@ func (client *Client) UpdatePrivateAccessPolicyWithOptions(request *UpdatePrivat
 
 // Summary:
 //
-// 修改内网访问策略
+// # Modify Private Access Policy
 //
 // @param request - UpdatePrivateAccessPolicyRequest
 //
