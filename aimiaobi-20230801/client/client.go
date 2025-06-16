@@ -3930,6 +3930,131 @@ func (s *ExportAnalysisTagDetailByTaskIdResponse) SetBody(v *ExportAnalysisTagDe
 	return s
 }
 
+type ExportAuditContentResultRequest struct {
+	// example:
+	//
+	// 7AA2AE16-D873-5C5F-9708-15396C382EB1
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ExportAuditContentResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportAuditContentResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportAuditContentResultRequest) SetTaskId(v string) *ExportAuditContentResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ExportAuditContentResultRequest) SetWorkspaceId(v string) *ExportAuditContentResultRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ExportAuditContentResultResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// http://www.example.com/xxx.docx
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 94512A33-8EC1-5452-A793-5C91F18ED2F0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ExportAuditContentResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportAuditContentResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportAuditContentResultResponseBody) SetCode(v string) *ExportAuditContentResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExportAuditContentResultResponseBody) SetData(v string) *ExportAuditContentResultResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ExportAuditContentResultResponseBody) SetHttpStatusCode(v int32) *ExportAuditContentResultResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExportAuditContentResultResponseBody) SetMessage(v string) *ExportAuditContentResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExportAuditContentResultResponseBody) SetRequestId(v string) *ExportAuditContentResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExportAuditContentResultResponseBody) SetSuccess(v bool) *ExportAuditContentResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExportAuditContentResultResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportAuditContentResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExportAuditContentResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportAuditContentResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportAuditContentResultResponse) SetHeaders(v map[string]*string) *ExportAuditContentResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportAuditContentResultResponse) SetStatusCode(v int32) *ExportAuditContentResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportAuditContentResultResponse) SetBody(v *ExportAuditContentResultResponseBody) *ExportAuditContentResultResponse {
+	s.Body = v
+	return s
+}
+
 type ExportCustomSourceAnalysisTaskRequest struct {
 	// This parameter is required.
 	//
@@ -12059,6 +12184,258 @@ func (s *GetPropertiesResponse) SetBody(v *GetPropertiesResponseBody) *GetProper
 	return s
 }
 
+type GetSmartAuditResultRequest struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// llm-xx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetSmartAuditResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmartAuditResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmartAuditResultRequest) SetTaskId(v string) *GetSmartAuditResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetSmartAuditResultRequest) SetWorkspaceId(v string) *GetSmartAuditResultRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetSmartAuditResultResponseBody struct {
+	// example:
+	//
+	// DataNotExists
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetSmartAuditResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 400
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// xxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSmartAuditResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmartAuditResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmartAuditResultResponseBody) SetCode(v string) *GetSmartAuditResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBody) SetData(v *GetSmartAuditResultResponseBodyData) *GetSmartAuditResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBody) SetHttpStatusCode(v int32) *GetSmartAuditResultResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBody) SetMessage(v string) *GetSmartAuditResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBody) SetRequestId(v string) *GetSmartAuditResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBody) SetSuccess(v bool) *GetSmartAuditResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSmartAuditResultResponseBodyData struct {
+	ErrorItemDetails []*GetSmartAuditResultResponseBodyDataErrorItemDetails `json:"ErrorItemDetails,omitempty" xml:"ErrorItemDetails,omitempty" type:"Repeated"`
+	// example:
+	//
+	// SUCCESSED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetSmartAuditResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmartAuditResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmartAuditResultResponseBodyData) SetErrorItemDetails(v []*GetSmartAuditResultResponseBodyDataErrorItemDetails) *GetSmartAuditResultResponseBodyData {
+	s.ErrorItemDetails = v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBodyData) SetStatus(v string) *GetSmartAuditResultResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetSmartAuditResultResponseBodyDataErrorItemDetails struct {
+	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// example:
+	//
+	// 0
+	ContextOffset *int32 `json:"ContextOffset,omitempty" xml:"ContextOffset,omitempty"`
+	// example:
+	//
+	// 2
+	ErrorLevel *int32 `json:"ErrorLevel,omitempty" xml:"ErrorLevel,omitempty"`
+	// example:
+	//
+	// ”xxx“
+	ErrorWord *string `json:"ErrorWord,omitempty" xml:"ErrorWord,omitempty"`
+	// example:
+	//
+	// ContentAccuracy
+	MajorCode     *string `json:"MajorCode,omitempty" xml:"MajorCode,omitempty"`
+	MajorCodeDesc *string `json:"MajorCodeDesc,omitempty" xml:"MajorCodeDesc,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// “xxx”
+	RightWord *string `json:"RightWord,omitempty" xml:"RightWord,omitempty"`
+	// example:
+	//
+	// PunctuationError
+	SubClassCode *string `json:"SubClassCode,omitempty" xml:"SubClassCode,omitempty"`
+	SubClassDesc *string `json:"SubClassDesc,omitempty" xml:"SubClassDesc,omitempty"`
+}
+
+func (s GetSmartAuditResultResponseBodyDataErrorItemDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmartAuditResultResponseBodyDataErrorItemDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetCheckId(v string) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
+	s.CheckId = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetContext(v string) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
+	s.Context = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetContextOffset(v int32) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
+	s.ContextOffset = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetErrorLevel(v int32) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
+	s.ErrorLevel = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetErrorWord(v string) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
+	s.ErrorWord = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetMajorCode(v string) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
+	s.MajorCode = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetMajorCodeDesc(v string) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
+	s.MajorCodeDesc = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetOffset(v int32) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
+	s.Offset = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetReason(v string) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
+	s.Reason = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetRightWord(v string) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
+	s.RightWord = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetSubClassCode(v string) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
+	s.SubClassCode = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetSubClassDesc(v string) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
+	s.SubClassDesc = &v
+	return s
+}
+
+type GetSmartAuditResultResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSmartAuditResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSmartAuditResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmartAuditResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmartAuditResultResponse) SetHeaders(v map[string]*string) *GetSmartAuditResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSmartAuditResultResponse) SetStatusCode(v int32) *GetSmartAuditResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponse) SetBody(v *GetSmartAuditResultResponseBody) *GetSmartAuditResultResponse {
+	s.Body = v
+	return s
+}
+
 type GetSmartClipTaskRequest struct {
 	// This parameter is required.
 	//
@@ -15849,6 +16226,219 @@ func (s *ListAsyncTasksResponse) SetStatusCode(v int32) *ListAsyncTasksResponse 
 }
 
 func (s *ListAsyncTasksResponse) SetBody(v *ListAsyncTasksResponseBody) *ListAsyncTasksResponse {
+	s.Body = v
+	return s
+}
+
+type ListAuditContentErrorTypesRequest struct {
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// cEoBWREAXdxaOyjq/cqAbg==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListAuditContentErrorTypesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuditContentErrorTypesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuditContentErrorTypesRequest) SetMaxResults(v int32) *ListAuditContentErrorTypesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesRequest) SetNextToken(v string) *ListAuditContentErrorTypesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesRequest) SetWorkspaceId(v string) *ListAuditContentErrorTypesRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListAuditContentErrorTypesResponseBody struct {
+	// example:
+	//
+	// DataNotExists
+	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListAuditContentErrorTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// success
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// xxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAuditContentErrorTypesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuditContentErrorTypesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuditContentErrorTypesResponseBody) SetCode(v string) *ListAuditContentErrorTypesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesResponseBody) SetData(v []*ListAuditContentErrorTypesResponseBodyData) *ListAuditContentErrorTypesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesResponseBody) SetHttpStatusCode(v int32) *ListAuditContentErrorTypesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesResponseBody) SetMaxResults(v int32) *ListAuditContentErrorTypesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesResponseBody) SetMessage(v string) *ListAuditContentErrorTypesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesResponseBody) SetNextToken(v string) *ListAuditContentErrorTypesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesResponseBody) SetRequestId(v string) *ListAuditContentErrorTypesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesResponseBody) SetSuccess(v bool) *ListAuditContentErrorTypesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesResponseBody) SetTotalCount(v int32) *ListAuditContentErrorTypesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAuditContentErrorTypesResponseBodyData struct {
+	// example:
+	//
+	// ContentAccuracy
+	MajorClassCode *string                                                 `json:"MajorClassCode,omitempty" xml:"MajorClassCode,omitempty"`
+	MajorClassName *string                                                 `json:"MajorClassName,omitempty" xml:"MajorClassName,omitempty"`
+	SubClasses     []*ListAuditContentErrorTypesResponseBodyDataSubClasses `json:"SubClasses,omitempty" xml:"SubClasses,omitempty" type:"Repeated"`
+}
+
+func (s ListAuditContentErrorTypesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuditContentErrorTypesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuditContentErrorTypesResponseBodyData) SetMajorClassCode(v string) *ListAuditContentErrorTypesResponseBodyData {
+	s.MajorClassCode = &v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesResponseBodyData) SetMajorClassName(v string) *ListAuditContentErrorTypesResponseBodyData {
+	s.MajorClassName = &v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesResponseBodyData) SetSubClasses(v []*ListAuditContentErrorTypesResponseBodyDataSubClasses) *ListAuditContentErrorTypesResponseBodyData {
+	s.SubClasses = v
+	return s
+}
+
+type ListAuditContentErrorTypesResponseBodyDataSubClasses struct {
+	// example:
+	//
+	// PunctuationError
+	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
+}
+
+func (s ListAuditContentErrorTypesResponseBodyDataSubClasses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuditContentErrorTypesResponseBodyDataSubClasses) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuditContentErrorTypesResponseBodyDataSubClasses) SetClassCode(v string) *ListAuditContentErrorTypesResponseBodyDataSubClasses {
+	s.ClassCode = &v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesResponseBodyDataSubClasses) SetClassName(v string) *ListAuditContentErrorTypesResponseBodyDataSubClasses {
+	s.ClassName = &v
+	return s
+}
+
+type ListAuditContentErrorTypesResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAuditContentErrorTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAuditContentErrorTypesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuditContentErrorTypesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuditContentErrorTypesResponse) SetHeaders(v map[string]*string) *ListAuditContentErrorTypesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesResponse) SetStatusCode(v int32) *ListAuditContentErrorTypesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAuditContentErrorTypesResponse) SetBody(v *ListAuditContentErrorTypesResponseBody) *ListAuditContentErrorTypesResponse {
 	s.Body = v
 	return s
 }
@@ -44580,6 +45170,183 @@ func (s *SubmitEnterpriseVocAnalysisTaskResponse) SetBody(v *SubmitEnterpriseVoc
 	return s
 }
 
+type SubmitSmartAuditRequest struct {
+	SubCodes []*string `json:"SubCodes,omitempty" xml:"SubCodes,omitempty" type:"Repeated"`
+	Text     *string   `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s SubmitSmartAuditRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartAuditRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartAuditRequest) SetSubCodes(v []*string) *SubmitSmartAuditRequest {
+	s.SubCodes = v
+	return s
+}
+
+func (s *SubmitSmartAuditRequest) SetText(v string) *SubmitSmartAuditRequest {
+	s.Text = &v
+	return s
+}
+
+func (s *SubmitSmartAuditRequest) SetWorkspaceId(v string) *SubmitSmartAuditRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type SubmitSmartAuditShrinkRequest struct {
+	SubCodesShrink *string `json:"SubCodes,omitempty" xml:"SubCodes,omitempty"`
+	Text           *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s SubmitSmartAuditShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartAuditShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartAuditShrinkRequest) SetSubCodesShrink(v string) *SubmitSmartAuditShrinkRequest {
+	s.SubCodesShrink = &v
+	return s
+}
+
+func (s *SubmitSmartAuditShrinkRequest) SetText(v string) *SubmitSmartAuditShrinkRequest {
+	s.Text = &v
+	return s
+}
+
+func (s *SubmitSmartAuditShrinkRequest) SetWorkspaceId(v string) *SubmitSmartAuditShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type SubmitSmartAuditResponseBody struct {
+	// example:
+	//
+	// DataNotExists
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitSmartAuditResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 400
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// xxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitSmartAuditResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartAuditResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartAuditResponseBody) SetCode(v string) *SubmitSmartAuditResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitSmartAuditResponseBody) SetData(v *SubmitSmartAuditResponseBodyData) *SubmitSmartAuditResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitSmartAuditResponseBody) SetHttpStatusCode(v int32) *SubmitSmartAuditResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitSmartAuditResponseBody) SetMessage(v string) *SubmitSmartAuditResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitSmartAuditResponseBody) SetRequestId(v string) *SubmitSmartAuditResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitSmartAuditResponseBody) SetSuccess(v bool) *SubmitSmartAuditResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitSmartAuditResponseBodyData struct {
+	// example:
+	//
+	// xxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s SubmitSmartAuditResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartAuditResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartAuditResponseBodyData) SetTaskId(v string) *SubmitSmartAuditResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitSmartAuditResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitSmartAuditResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitSmartAuditResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartAuditResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartAuditResponse) SetHeaders(v map[string]*string) *SubmitSmartAuditResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitSmartAuditResponse) SetStatusCode(v int32) *SubmitSmartAuditResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitSmartAuditResponse) SetBody(v *SubmitSmartAuditResponseBody) *SubmitSmartAuditResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitSmartClipTaskRequest struct {
 	EditingConfig *SubmitSmartClipTaskRequestEditingConfig `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty" type:"Struct"`
 	ExtendParam   *string                                  `json:"ExtendParam,omitempty" xml:"ExtendParam,omitempty"`
@@ -49416,6 +50183,70 @@ func (client *Client) ExportAnalysisTagDetailByTaskId(request *ExportAnalysisTag
 
 // Summary:
 //
+// 导出智能审核报告
+//
+// @param request - ExportAuditContentResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportAuditContentResultResponse
+func (client *Client) ExportAuditContentResultWithOptions(request *ExportAuditContentResultRequest, runtime *util.RuntimeOptions) (_result *ExportAuditContentResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportAuditContentResult"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportAuditContentResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出智能审核报告
+//
+// @param request - ExportAuditContentResultRequest
+//
+// @return ExportAuditContentResultResponse
+func (client *Client) ExportAuditContentResult(request *ExportAuditContentResultRequest) (_result *ExportAuditContentResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportAuditContentResultResponse{}
+	_body, _err := client.ExportAuditContentResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 导出-自定义数据源-选题视角分析任务结果
 //
 // @param request - ExportCustomSourceAnalysisTaskRequest
@@ -51676,6 +52507,70 @@ func (client *Client) GetProperties(request *GetPropertiesRequest) (_result *Get
 
 // Summary:
 //
+// 查询智能审核结果
+//
+// @param request - GetSmartAuditResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSmartAuditResultResponse
+func (client *Client) GetSmartAuditResultWithOptions(request *GetSmartAuditResultRequest, runtime *util.RuntimeOptions) (_result *GetSmartAuditResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSmartAuditResult"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSmartAuditResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询智能审核结果
+//
+// @param request - GetSmartAuditResultRequest
+//
+// @return GetSmartAuditResultResponse
+func (client *Client) GetSmartAuditResult(request *GetSmartAuditResultRequest) (_result *GetSmartAuditResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSmartAuditResultResponse{}
+	_body, _err := client.GetSmartAuditResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询一键成片剪辑任务
 //
 // @param request - GetSmartClipTaskRequest
@@ -52423,6 +53318,74 @@ func (client *Client) ListAsyncTasks(request *ListAsyncTasksRequest) (_result *L
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAsyncTasksResponse{}
 	_body, _err := client.ListAsyncTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取审核维度列表
+//
+// @param request - ListAuditContentErrorTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuditContentErrorTypesResponse
+func (client *Client) ListAuditContentErrorTypesWithOptions(request *ListAuditContentErrorTypesRequest, runtime *util.RuntimeOptions) (_result *ListAuditContentErrorTypesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAuditContentErrorTypes"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAuditContentErrorTypesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取审核维度列表
+//
+// @param request - ListAuditContentErrorTypesRequest
+//
+// @return ListAuditContentErrorTypesResponse
+func (client *Client) ListAuditContentErrorTypes(request *ListAuditContentErrorTypesRequest) (_result *ListAuditContentErrorTypesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAuditContentErrorTypesResponse{}
+	_body, _err := client.ListAuditContentErrorTypesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -58723,6 +59686,80 @@ func (client *Client) SubmitEnterpriseVocAnalysisTask(request *SubmitEnterpriseV
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitEnterpriseVocAnalysisTaskResponse{}
 	_body, _err := client.SubmitEnterpriseVocAnalysisTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交智能审核
+//
+// @param tmpReq - SubmitSmartAuditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSmartAuditResponse
+func (client *Client) SubmitSmartAuditWithOptions(tmpReq *SubmitSmartAuditRequest, runtime *util.RuntimeOptions) (_result *SubmitSmartAuditResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitSmartAuditShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SubCodes)) {
+		request.SubCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubCodes, tea.String("SubCodes"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SubCodesShrink)) {
+		body["SubCodes"] = request.SubCodesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		body["Text"] = request.Text
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSmartAudit"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitSmartAuditResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交智能审核
+//
+// @param request - SubmitSmartAuditRequest
+//
+// @return SubmitSmartAuditResponse
+func (client *Client) SubmitSmartAudit(request *SubmitSmartAuditRequest) (_result *SubmitSmartAuditResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitSmartAuditResponse{}
+	_body, _err := client.SubmitSmartAuditWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
