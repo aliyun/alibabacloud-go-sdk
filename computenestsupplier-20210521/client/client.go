@@ -804,7 +804,8 @@ type CreateArtifactRequestArtifactBuildProperty struct {
 	// ubuntu_22_04_x64_20G_alibase_20240926.vhd
 	//
 	// OOS Common Parameter Name：aliyun/services/computenest/images/aliyun_3_2104_python_3_11
-	SourceImageId *string `json:"SourceImageId,omitempty" xml:"SourceImageId,omitempty"`
+	SourceImageId  *string `json:"SourceImageId,omitempty" xml:"SourceImageId,omitempty"`
+	SystemDiskSize *int64  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 }
 
 func (s CreateArtifactRequestArtifactBuildProperty) String() string {
@@ -852,6 +853,11 @@ func (s *CreateArtifactRequestArtifactBuildProperty) SetSourceContainerImage(v s
 
 func (s *CreateArtifactRequestArtifactBuildProperty) SetSourceImageId(v string) *CreateArtifactRequestArtifactBuildProperty {
 	s.SourceImageId = &v
+	return s
+}
+
+func (s *CreateArtifactRequestArtifactBuildProperty) SetSystemDiskSize(v int64) *CreateArtifactRequestArtifactBuildProperty {
+	s.SystemDiskSize = &v
 	return s
 }
 
