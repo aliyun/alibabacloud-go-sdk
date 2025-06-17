@@ -776,15 +776,21 @@ type CreateElasticNetworkInterfaceRequest struct {
 	// example:
 	//
 	// cn-wulanchabu
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Resource GroupId.
+	//
+	// example:
+	//
+	// rg-acfmxhucx5ewuwy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the security group.
 	//
 	// example:
 	//
 	// sg-wz9fj2s3o21nw2****
-	SecurityGroupId *string                                    `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Tag             []*CreateElasticNetworkInterfaceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The resource tags.
+	Tag []*CreateElasticNetworkInterfaceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the vSwitch.
 	//
 	// example:
@@ -873,7 +879,17 @@ func (s *CreateElasticNetworkInterfaceRequest) SetZoneId(v string) *CreateElasti
 }
 
 type CreateElasticNetworkInterfaceRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// testKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// testValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1055,8 +1071,9 @@ type CreateErRequest struct {
 	// example:
 	//
 	// rg-acfmyuzlx2iihcy
-	ResourceGroupId *string               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*CreateErRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// List of tags.
+	Tag []*CreateErRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateErRequest) String() string {
@@ -1098,7 +1115,17 @@ func (s *CreateErRequest) SetTag(v []*CreateErRequestTag) *CreateErRequest {
 }
 
 type CreateErRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key-test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// value-test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5226,7 +5253,12 @@ type GetElasticNetworkInterfaceResponseBodyContent struct {
 	// example:
 	//
 	// cn-wulanchabu
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 资源组实例ID
+	//
+	// example:
+	//
+	// rg-acfmzzka6bnjvbi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the security group.
 	//
@@ -5251,8 +5283,9 @@ type GetElasticNetworkInterfaceResponseBodyContent struct {
 	// example:
 	//
 	// Available
-	Status *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*GetElasticNetworkInterfaceResponseBodyContentTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The details of the resource tags.
+	Tags []*GetElasticNetworkInterfaceResponseBodyContentTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// NIC Type
 	//
 	// Valid value:
@@ -5624,7 +5657,17 @@ func (s *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) SetSta
 }
 
 type GetElasticNetworkInterfaceResponseBodyContentTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// testkey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// testValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -5840,8 +5883,9 @@ type GetErResponseBodyContent struct {
 	// example:
 	//
 	// Available
-	Status *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*GetErResponseBodyContentTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// List of Tags
+	Tags []*GetErResponseBodyContentTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the tenant.
 	//
 	// example:
@@ -6529,7 +6573,17 @@ func (s *GetErResponseBodyContentErRouteMaps) SetTransmissionInstanceType(v stri
 }
 
 type GetErResponseBodyContentTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -8057,7 +8111,12 @@ type GetLeniPrivateIpAddressResponseBodyContent struct {
 	// example:
 	//
 	// cn-wulanchabu
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmzzka6bnjvbi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The task status.
 	//
@@ -8314,7 +8373,12 @@ type GetLniPrivateIpAddressResponseBodyContent struct {
 	// example:
 	//
 	// cn-wulanchabu
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The state of the rule.
 	//
@@ -8604,7 +8668,12 @@ type GetNetworkInterfaceResponseBodyContent struct {
 	// example:
 	//
 	// cn-wulanchabu
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmzzka6bnjvbi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Service network interface controller address
 	//
@@ -8620,7 +8689,8 @@ type GetNetworkInterfaceResponseBodyContent struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Lingjun subnet (Subnet) basic information
 	SubnetBaseInfo *GetNetworkInterfaceResponseBodyContentSubnetBaseInfo `json:"SubnetBaseInfo,omitempty" xml:"SubnetBaseInfo,omitempty" type:"Struct"`
-	Tags           []*GetNetworkInterfaceResponseBodyContentTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The details of the resource tags.
+	Tags []*GetNetworkInterfaceResponseBodyContentTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the tenant.
 	//
 	// example:
@@ -8873,7 +8943,17 @@ func (s *GetNetworkInterfaceResponseBodyContentSubnetBaseInfo) SetSubnetName(v s
 }
 
 type GetNetworkInterfaceResponseBodyContentTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key-test
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value-test
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -9092,15 +9172,30 @@ type GetNodeInfoForPodResponseBodyContent struct {
 	// example:
 	//
 	// cluster-****
-	ClusterId         *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	HdeniIpv6SipQuota *int32  `json:"HdeniIpv6SipQuota,omitempty" xml:"HdeniIpv6SipQuota,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Lingjun Hdeni Network Interface IPV6 address Quota
+	//
+	// example:
+	//
+	// 10
+	HdeniIpv6SipQuota *int32 `json:"HdeniIpv6SipQuota,omitempty" xml:"HdeniIpv6SipQuota,omitempty"`
 	// Lingjun Gaomi network interface controller quota
 	//
 	// example:
 	//
 	// 10
-	HdeniQuota       *int32 `json:"HdeniQuota,omitempty" xml:"HdeniQuota,omitempty"`
-	HdeniSipQuota    *int32 `json:"HdeniSipQuota,omitempty" xml:"HdeniSipQuota,omitempty"`
+	HdeniQuota *int32 `json:"HdeniQuota,omitempty" xml:"HdeniQuota,omitempty"`
+	// Lingjun Hdeni Network Interface IPV4 address Quota
+	//
+	// example:
+	//
+	// 10
+	HdeniSipQuota *int32 `json:"HdeniSipQuota,omitempty" xml:"HdeniSipQuota,omitempty"`
+	// Lingjun Elastic Network Interface IPV6 address Quota
+	//
+	// example:
+	//
+	// 10
 	LeniIpv6SipQuota *int32 `json:"LeniIpv6SipQuota,omitempty" xml:"LeniIpv6SipQuota,omitempty"`
 	// Lingjun Elastic Network Interface quota, including system type
 	//
@@ -12834,7 +12929,12 @@ type ListElasticNetworkInterfacesRequest struct {
 	// example:
 	//
 	// cn-wulanchabu
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmzmcpv7odnta
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the enterprise-level snapshot policy.
 	//
@@ -12853,8 +12953,9 @@ type ListElasticNetworkInterfacesRequest struct {
 	// example:
 	//
 	// Available
-	Status *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag    []*ListElasticNetworkInterfacesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// List of Tags
+	Tag []*ListElasticNetworkInterfacesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The type of the variable.
 	//
 	// Valid value:
@@ -12966,7 +13067,17 @@ func (s *ListElasticNetworkInterfacesRequest) SetZoneId(v string) *ListElasticNe
 }
 
 type ListElasticNetworkInterfacesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key-test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// key-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13145,7 +13256,12 @@ type ListElasticNetworkInterfacesResponseBodyContentData struct {
 	// example:
 	//
 	// cn-wulanchabu
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the security group.
 	//
@@ -13158,8 +13274,9 @@ type ListElasticNetworkInterfacesResponseBodyContentData struct {
 	// example:
 	//
 	// Available
-	Status *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListElasticNetworkInterfacesResponseBodyContentDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of tags.
+	Tags []*ListElasticNetworkInterfacesResponseBodyContentDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// network interface controller type, the default type DEFAULT cannot be manually released
 	//
 	// Valid value:
@@ -13296,7 +13413,17 @@ func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetZoneId(v string
 }
 
 type ListElasticNetworkInterfacesResponseBodyContentDataTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key-test
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// Tag value.
+	//
+	// example:
+	//
+	// key-value
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -14944,8 +15071,9 @@ type ListErsRequest struct {
 	// example:
 	//
 	// rg-acfmwfm33rlt6zi
-	ResourceGroupId *string              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*ListErsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// List of tags.
+	Tag []*ListErsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListErsRequest) String() string {
@@ -15012,7 +15140,17 @@ func (s *ListErsRequest) SetTag(v []*ListErsRequestTag) *ListErsRequest {
 }
 
 type ListErsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	//
+	// example:
+	//
+	// rg-er
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// rg-xxxxx
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15197,8 +15335,9 @@ type ListErsResponseBodyContentData struct {
 	// example:
 	//
 	// Available
-	Status *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListErsResponseBodyContentDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of tags.
+	Tags []*ListErsResponseBodyContentDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The tenant ID.
 	//
 	// example:
@@ -15286,7 +15425,17 @@ func (s *ListErsResponseBodyContentData) SetTenantId(v string) *ListErsResponseB
 }
 
 type ListErsResponseBodyContentDataTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// myTest
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -15625,7 +15774,12 @@ type ListLeniPrivateIpAddressesRequest struct {
 	// example:
 	//
 	// cn-wulanchabu
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmynvzeknccpy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the image build command risk.
 	//
@@ -15747,8 +15901,13 @@ func (s *ListLeniPrivateIpAddressesResponseBody) SetRequestId(v string) *ListLen
 
 type ListLeniPrivateIpAddressesResponseBodyContent struct {
 	// The response parameters.
-	Data            []*ListLeniPrivateIpAddressesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ResourceGroupId *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Data []*ListLeniPrivateIpAddressesResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmzzka6bnjvbi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The total number of entries.
 	//
 	// example:
@@ -15828,7 +15987,8 @@ type ListLeniPrivateIpAddressesResponseBodyContentData struct {
 	// example:
 	//
 	// cn-wulanchabu
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The task status.
 	//
 	// example:
@@ -15882,6 +16042,11 @@ func (s *ListLeniPrivateIpAddressesResponseBodyContentData) SetPrivateIpAddress(
 
 func (s *ListLeniPrivateIpAddressesResponseBodyContentData) SetRegionId(v string) *ListLeniPrivateIpAddressesResponseBodyContentData {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListLeniPrivateIpAddressesResponseBodyContentData) SetResourceGroupId(v string) *ListLeniPrivateIpAddressesResponseBodyContentData {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -15969,7 +16134,12 @@ type ListLniPrivateIpAddressRequest struct {
 	// example:
 	//
 	// cn-wulanchabu
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmzzka6bnjvbi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -16090,8 +16260,13 @@ func (s *ListLniPrivateIpAddressResponseBody) SetRequestId(v string) *ListLniPri
 
 type ListLniPrivateIpAddressResponseBodyContent struct {
 	// The returned result.
-	Data            []*ListLniPrivateIpAddressResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ResourceGroupId *string                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Data []*ListLniPrivateIpAddressResponseBodyContentData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-aek2l4sq6l7unhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The total number of entries returned.
 	//
 	// example:
@@ -16171,7 +16346,8 @@ type ListLniPrivateIpAddressResponseBodyContentData struct {
 	// example:
 	//
 	// cn-wulanchabu
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the intervention entry. Valid value:
 	//
 	// example:
@@ -16225,6 +16401,11 @@ func (s *ListLniPrivateIpAddressResponseBodyContentData) SetPrivateIpAddress(v s
 
 func (s *ListLniPrivateIpAddressResponseBodyContentData) SetRegionId(v string) *ListLniPrivateIpAddressResponseBodyContentData {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListLniPrivateIpAddressResponseBodyContentData) SetResourceGroupId(v string) *ListLniPrivateIpAddressResponseBodyContentData {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -16306,15 +16487,21 @@ type ListNetworkInterfacesRequest struct {
 	// example:
 	//
 	// cn-wulanchabu
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-acfmzzka6bnjvbi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the instance to which the Lingjun subnet belongs.
 	//
 	// example:
 	//
 	// subnet-anhtskts
-	SubnetId *string                            `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
-	Tag      []*ListNetworkInterfacesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The list of tags
+	Tag []*ListNetworkInterfacesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the VPD.
 	//
 	// example:
@@ -16387,7 +16574,17 @@ func (s *ListNetworkInterfacesRequest) SetVpdId(v string) *ListNetworkInterfaces
 }
 
 type ListNetworkInterfacesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	//
+	// example:
+	//
+	// key-test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// value-test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16572,7 +16769,12 @@ type ListNetworkInterfacesResponseBodyContentData struct {
 	// example:
 	//
 	// cn-wulanchabu
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group instance ID
+	//
+	// example:
+	//
+	// rg-1234567890
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The address of the service network interface controller.
 	//
@@ -16588,7 +16790,8 @@ type ListNetworkInterfacesResponseBodyContentData struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Lingjun subnet (Subnet) basic information.
 	SubnetBaseInfo *ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo `json:"SubnetBaseInfo,omitempty" xml:"SubnetBaseInfo,omitempty" type:"Struct"`
-	Tags           []*ListNetworkInterfacesResponseBodyContentDataTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// List of tags.
+	Tags []*ListNetworkInterfacesResponseBodyContentDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The tenant ID.
 	//
 	// example:
@@ -16849,7 +17052,17 @@ func (s *ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo) SetSubnetNa
 }
 
 type ListNetworkInterfacesResponseBodyContentDataTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// testkey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// testValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
