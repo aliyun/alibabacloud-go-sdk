@@ -250,8 +250,9 @@ type BatchSendMailRequest struct {
 	//   "X-User-UID2": "UID-2-000001"
 	//
 	// }
-	Headers *string `json:"Headers,omitempty" xml:"Headers,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Headers  *string `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the recipient list that has been created and uploaded. Note: The recipient list should not be deleted until at least 10 minutes after the task is triggered, otherwise it may cause sending failure.
 	//
 	// This parameter is required.
@@ -349,6 +350,11 @@ func (s *BatchSendMailRequest) SetClickTrace(v string) *BatchSendMailRequest {
 
 func (s *BatchSendMailRequest) SetHeaders(v string) *BatchSendMailRequest {
 	s.Headers = &v
+	return s
+}
+
+func (s *BatchSendMailRequest) SetIpPoolId(v string) *BatchSendMailRequest {
+	s.IpPoolId = &v
 	return s
 }
 
@@ -6384,6 +6390,8 @@ type QueryTaskByParamResponseBodyDataTask struct {
 	//
 	// 2022-04-18T10:36Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	IpPoolId   *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
+	IpPoolName *string `json:"IpPoolName,omitempty" xml:"IpPoolName,omitempty"`
 	// Receiver\\"s name.
 	//
 	// example:
@@ -6443,6 +6451,16 @@ func (s *QueryTaskByParamResponseBodyDataTask) SetAddressType(v string) *QueryTa
 
 func (s *QueryTaskByParamResponseBodyDataTask) SetCreateTime(v string) *QueryTaskByParamResponseBodyDataTask {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryTaskByParamResponseBodyDataTask) SetIpPoolId(v string) *QueryTaskByParamResponseBodyDataTask {
+	s.IpPoolId = &v
+	return s
+}
+
+func (s *QueryTaskByParamResponseBodyDataTask) SetIpPoolName(v string) *QueryTaskByParamResponseBodyDataTask {
+	s.IpPoolName = &v
 	return s
 }
 
@@ -7680,6 +7698,7 @@ type SingleSendMailRequest struct {
 	//
 	// body
 	HtmlBody *string `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
+	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Reply-to address
 	//
@@ -7802,6 +7821,11 @@ func (s *SingleSendMailRequest) SetHeaders(v string) *SingleSendMailRequest {
 
 func (s *SingleSendMailRequest) SetHtmlBody(v string) *SingleSendMailRequest {
 	s.HtmlBody = &v
+	return s
+}
+
+func (s *SingleSendMailRequest) SetIpPoolId(v string) *SingleSendMailRequest {
+	s.IpPoolId = &v
 	return s
 }
 
@@ -8347,6 +8371,10 @@ func (client *Client) BatchSendMailWithOptions(request *BatchSendMailRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.Headers)) {
 		query["Headers"] = request.Headers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpPoolId)) {
+		query["IpPoolId"] = request.IpPoolId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
@@ -11594,6 +11622,10 @@ func (client *Client) SingleSendMailWithOptions(request *SingleSendMailRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.HtmlBody)) {
 		query["HtmlBody"] = request.HtmlBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpPoolId)) {
+		query["IpPoolId"] = request.IpPoolId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
