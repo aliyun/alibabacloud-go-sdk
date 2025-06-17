@@ -9982,7 +9982,7 @@ type ConfirmPipelineBatchRequest struct {
 	//
 	// true
 	Confirm *bool `json:"Confirm,omitempty" xml:"Confirm,omitempty"`
-	// e2e-vds-feh-\\*\\*\\*
+	// The ID of the batch. You can call the [DescribeChangeOrder](https://www.alibabacloud.com/help/zh/sae/serverless-app-engine-classic/developer-reference/api-sae-2019-05-06-describechangeorder-old?spm=a2c63.p38356.help-menu-search-118957.d_0) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -17644,7 +17644,10 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// {\\"instanceId\\":\\"mse-cn-zvp2bh6h70r\\",\\"namespace\\":\\"4c0aa74f-57cb-423c-b6af-5d9f2d0e3dbd\\"}
-	MicroRegistrationConfig  *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	// example:
+	//
+	// {"enable": true,"mseLosslessRule": {"delayTime": 0,"enable": false,"notice": false,"warmupTime": 120}}
 	MicroserviceEngineConfig *string `json:"MicroserviceEngineConfig,omitempty" xml:"MicroserviceEngineConfig,omitempty"`
 	// The percentage of the minimum number of available instances. Take note of the following rules:
 	//
@@ -17703,7 +17706,10 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// 10d3b4****
-	NasId         *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	// example:
+	//
+	// pro
 	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
 	// The name of the RAM role used to authenticate the user identity.
 	//
@@ -17870,7 +17876,10 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
-	SlsConfigs               *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	// example:
+	//
+	// {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
 	StartupProbe             *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
 	SwimlanePvtzDiscoverySvc *string `json:"SwimlanePvtzDiscoverySvc,omitempty" xml:"SwimlanePvtzDiscoverySvc,omitempty"`
 	// The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
@@ -18627,7 +18636,10 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// {\\"instanceId\\":\\"mse-cn-zvp2bh6h70r\\",\\"namespace\\":\\"4c0aa74f-57cb-423c-b6af-5d9f2d0e3dbd\\"}
-	MicroRegistrationConfig  *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	// example:
+	//
+	// {"enable": true,"mseLosslessRule": {"delayTime": 0,"enable": false,"notice": false,"warmupTime": 120}}
 	MicroserviceEngineConfig *string `json:"MicroserviceEngineConfig,omitempty" xml:"MicroserviceEngineConfig,omitempty"`
 	// The percentage of the minimum number of available instances. Take note of the following rules:
 	//
@@ -18686,7 +18698,10 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// 10d3b4****
-	NasId         *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	// example:
+	//
+	// pro
 	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
 	// The name of the RAM role used to authenticate the user identity.
 	//
@@ -18853,7 +18868,10 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
-	SlsConfigs               *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	// example:
+	//
+	// {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
 	StartupProbe             *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
 	SwimlanePvtzDiscoverySvc *string `json:"SwimlanePvtzDiscoverySvc,omitempty" xml:"SwimlanePvtzDiscoverySvc,omitempty"`
 	// The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
@@ -22955,7 +22973,7 @@ type DescribeApplicationScalingRuleResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data      *DescribeApplicationScalingRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	ErrorCode *string                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// example:
@@ -23044,10 +23062,26 @@ type DescribeApplicationScalingRuleResponseBodyData struct {
 	LastDisableTime *int64 `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
 	// The details of the metric-based auto scaling policy.
 	Metric *DescribeApplicationScalingRuleResponseBodyDataMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	// The ratio of the minimum number of available instances to the current number of instances. Valid values:
+	//
+	// 	- **-1*	- (default value): The minimum number of available instances is not determined based on this parameter.
+	//
+	// 	- **0 to 100**: The minimum number of available instances is calculated by using the following formula: Number of existing instances × Value of MinReadyInstanceRatio × 100%. The calculation result is rounded up to the nearest integer. For example, if the number of existing instances is 5 and MinReadyInstanceRatio is set to 50, the minimum number of available instances is 3.
+	//
+	// >  If the **MinReadyInstanceRatio*	- and **MinReadyInstanceRatio*	- parameters are configured and the **MinReadyInstanceRatio*	- parameter is set to a number from 0 to 100, the value of the MinReadyInstanceRatio parameter takes precedence. For example, if the **MinReadyInstances*	- parameter is set to **5**, and the **MinReadyInstanceRatio*	- parameter is set to **50**, the minimum number of available instances is set to the nearest integer rounded up from the calculated result of the following formula: Nmber of existing instances × **50**.
+	//
 	// example:
 	//
 	// -1
 	MinReadyInstanceRatio *int32 `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	// The minimum number of available instances. Valid values:
+	//
+	// 	- If you set the value to **0**, business is interrupted when the application is updated.
+	//
+	// 	- If you set this property to -1, the system calculates a recommended value as the minimum number of available instances by using the following formula: Recommended value = Number of existing instances × 25%. The calculation result is rounded up to the nearest integer. For example, if the number of existing instances is 5, the recommended value is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+	//
+	// >  To ensure business continuity, make sure that at least one instance is available during application deployment and rollback.
+	//
 	// example:
 	//
 	// 1
@@ -28758,6 +28792,11 @@ func (s *DescribeIngressResponse) SetBody(v *DescribeIngressResponseBody) *Descr
 }
 
 type DescribeInstanceLogRequest struct {
+	// The ID of the sidecar container. You can call the [DescribeApplicationInstances](https://help.aliyun.com/document_detail/2834847.html) to obtain the ID.
+	//
+	// example:
+	//
+	// sidecar-test-01
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
 	// The ID of the request.
 	//
@@ -36665,11 +36704,17 @@ func (s *GetWebshellTokenResponseBody) SetTraceId(v string) *GetWebshellTokenRes
 }
 
 type GetWebshellTokenResponseBodyData struct {
+	// example:
+	//
+	// HttpUrl :  "https://saenext.console.aliyun.com/cn-shenzhen/app-list/app1/micro-app/shell/pod1?tokenId=xxx
 	HttpUrl *string `json:"HttpUrl,omitempty" xml:"HttpUrl,omitempty"`
 	// example:
 	//
 	// zWWpvRj_5pzof4hfo7-hGynM8oGMmO_7
-	Token        *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// wss://sae-webshell.console.aliyun.com/websocket/eamWebshell?tokenId=xxx&region=cn-shenzhen
 	WebSocketUrl *string `json:"WebSocketUrl,omitempty" xml:"WebSocketUrl,omitempty"`
 }
 
@@ -39195,7 +39240,7 @@ func (s *ListApplicationsResponseBody) SetTotalSize(v int32) *ListApplicationsRe
 }
 
 type ListApplicationsResponseBodyData struct {
-	// The applications.
+	// The queried applications.
 	Applications []*ListApplicationsResponseBodyDataApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	// The number of application instances.
 	//
@@ -45629,6 +45674,9 @@ func (s *QueryResourceStaticsResponseBodyDataRealTimeRes) SetMemory(v float32) *
 }
 
 type QueryResourceStaticsResponseBodyDataSummary struct {
+	// example:
+	//
+	// 10
 	ActiveCpu *float32 `json:"ActiveCpu,omitempty" xml:"ActiveCpu,omitempty"`
 	// The CPU usage. Unit: core per minute.
 	//
@@ -45640,7 +45688,10 @@ type QueryResourceStaticsResponseBodyDataSummary struct {
 	EphemeralStorage *float32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
 	GpuA10           *float32 `json:"GpuA10,omitempty" xml:"GpuA10,omitempty"`
 	GpuPpu810e       *float32 `json:"GpuPpu810e,omitempty" xml:"GpuPpu810e,omitempty"`
-	IdleCpu          *float32 `json:"IdleCpu,omitempty" xml:"IdleCpu,omitempty"`
+	// example:
+	//
+	// 10
+	IdleCpu *float32 `json:"IdleCpu,omitempty" xml:"IdleCpu,omitempty"`
 	// The memory usage. Unit: GiB per minute.
 	//
 	// example:
@@ -48510,6 +48561,128 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 }
 
 func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAppModeRequest struct {
+	// example:
+	//
+	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// true
+	EnableIdle *bool `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
+}
+
+func (s UpdateAppModeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppModeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppModeRequest) SetAppId(v string) *UpdateAppModeRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAppModeRequest) SetEnableIdle(v bool) *UpdateAppModeRequest {
+	s.EnableIdle = &v
+	return s
+}
+
+type UpdateAppModeResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0a98a02315955564772843261e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s UpdateAppModeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppModeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppModeResponseBody) SetCode(v string) *UpdateAppModeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAppModeResponseBody) SetErrorCode(v string) *UpdateAppModeResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateAppModeResponseBody) SetMessage(v string) *UpdateAppModeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAppModeResponseBody) SetRequestId(v string) *UpdateAppModeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAppModeResponseBody) SetSuccess(v string) *UpdateAppModeResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateAppModeResponseBody) SetTraceId(v string) *UpdateAppModeResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type UpdateAppModeResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAppModeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAppModeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppModeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppModeResponse) SetHeaders(v map[string]*string) *UpdateAppModeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAppModeResponse) SetStatusCode(v int32) *UpdateAppModeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAppModeResponse) SetBody(v *UpdateAppModeResponseBody) *UpdateAppModeResponse {
 	s.Body = v
 	return s
 }
@@ -52888,6 +53061,10 @@ func (client *Client) BindSlb(request *BindSlbRequest) (_result *BindSlbResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Confirms whether to start the next batch.
+//
 // @param request - ConfirmPipelineBatchRequest
 //
 // @param headers - map
@@ -52933,6 +53110,10 @@ func (client *Client) ConfirmPipelineBatchWithOptions(request *ConfirmPipelineBa
 	return _result, _err
 }
 
+// Summary:
+//
+// Confirms whether to start the next batch.
+//
 // @param request - ConfirmPipelineBatchRequest
 //
 // @return ConfirmPipelineBatchResponse
@@ -56296,7 +56477,7 @@ func (client *Client) DescribeApplicationNlbs(request *DescribeApplicationNlbsRe
 
 // Summary:
 //
-// Queries a specified auto scaling policy of an application.
+// Queries an Auto Scaling policy of an application.
 //
 // @param request - DescribeApplicationScalingRuleRequest
 //
@@ -56345,7 +56526,7 @@ func (client *Client) DescribeApplicationScalingRuleWithOptions(request *Describ
 
 // Summary:
 //
-// Queries a specified auto scaling policy of an application.
+// Queries an Auto Scaling policy of an application.
 //
 // @param request - DescribeApplicationScalingRuleRequest
 //
@@ -57008,6 +57189,10 @@ func (client *Client) DescribeIngress(request *DescribeIngressRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logs of a sidecar container instance.
+//
 // @param request - DescribeInstanceLogRequest
 //
 // @param headers - map
@@ -57053,6 +57238,10 @@ func (client *Client) DescribeInstanceLogWithOptions(request *DescribeInstanceLo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logs of a sidecar container instance.
+//
 // @param request - DescribeInstanceLogRequest
 //
 // @return DescribeInstanceLogResponse
@@ -59434,7 +59623,7 @@ func (client *Client) ListAppEvents(request *ListAppEventsRequest) (_result *Lis
 
 // Summary:
 //
-// # Queries the list of microservices
+// Queries the list of microservices.
 //
 // @param request - ListAppServicesRequest
 //
@@ -59511,7 +59700,7 @@ func (client *Client) ListAppServicesWithOptions(request *ListAppServicesRequest
 
 // Summary:
 //
-// # Queries the list of microservices
+// Queries the list of microservices.
 //
 // @param request - ListAppServicesRequest
 //
@@ -62463,6 +62652,74 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
+// 应用闲置模式更新
+//
+// @param request - UpdateAppModeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAppModeResponse
+func (client *Client) UpdateAppModeWithOptions(request *UpdateAppModeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAppModeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableIdle)) {
+		query["EnableIdle"] = request.EnableIdle
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAppMode"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/app/updateAppMode"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAppModeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用闲置模式更新
+//
+// @param request - UpdateAppModeRequest
+//
+// @return UpdateAppModeResponse
+func (client *Client) UpdateAppMode(request *UpdateAppModeRequest) (_result *UpdateAppModeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAppModeResponse{}
+	_body, _err := client.UpdateAppModeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the security group of an application.
 //
 // @param request - UpdateAppSecurityGroupRequest
@@ -62767,7 +63024,7 @@ func (client *Client) UpdateApplicationVswitches(request *UpdateApplicationVswit
 
 // Summary:
 //
-// Update a ConfigMap.
+// Updates a ConfigMap instance.
 //
 // @param request - UpdateConfigMapRequest
 //
@@ -62822,7 +63079,7 @@ func (client *Client) UpdateConfigMapWithOptions(request *UpdateConfigMapRequest
 
 // Summary:
 //
-// Update a ConfigMap.
+// Updates a ConfigMap instance.
 //
 // @param request - UpdateConfigMapRequest
 //
