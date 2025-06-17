@@ -2398,6 +2398,248 @@ func (s *MediaConvertInput) SetName(v string) *MediaConvertInput {
 	return s
 }
 
+type MediaConvertJob struct {
+	ClientToken        *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Code               *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Config             *MediaConvertJobConfig           `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	CreateTime         *string                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime         *string                          `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	JobId              *string                          `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message            *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	OutputDetails      []*MediaConvertOutputDetail      `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
+	OutputGroupDetails []*MediaConvertOutputGroupDetail `json:"OutputGroupDetails,omitempty" xml:"OutputGroupDetails,omitempty" type:"Repeated"`
+	Percent            *int32                           `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	PipelineId         *string                          `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	RequestId          *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State              *string                          `json:"State,omitempty" xml:"State,omitempty"`
+	UserData           *string                          `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s MediaConvertJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertJob) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertJob) SetClientToken(v string) *MediaConvertJob {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *MediaConvertJob) SetCode(v string) *MediaConvertJob {
+	s.Code = &v
+	return s
+}
+
+func (s *MediaConvertJob) SetConfig(v *MediaConvertJobConfig) *MediaConvertJob {
+	s.Config = v
+	return s
+}
+
+func (s *MediaConvertJob) SetCreateTime(v string) *MediaConvertJob {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *MediaConvertJob) SetFinishTime(v string) *MediaConvertJob {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *MediaConvertJob) SetJobId(v string) *MediaConvertJob {
+	s.JobId = &v
+	return s
+}
+
+func (s *MediaConvertJob) SetMessage(v string) *MediaConvertJob {
+	s.Message = &v
+	return s
+}
+
+func (s *MediaConvertJob) SetOutputDetails(v []*MediaConvertOutputDetail) *MediaConvertJob {
+	s.OutputDetails = v
+	return s
+}
+
+func (s *MediaConvertJob) SetOutputGroupDetails(v []*MediaConvertOutputGroupDetail) *MediaConvertJob {
+	s.OutputGroupDetails = v
+	return s
+}
+
+func (s *MediaConvertJob) SetPercent(v int32) *MediaConvertJob {
+	s.Percent = &v
+	return s
+}
+
+func (s *MediaConvertJob) SetPipelineId(v string) *MediaConvertJob {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *MediaConvertJob) SetRequestId(v string) *MediaConvertJob {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MediaConvertJob) SetState(v string) *MediaConvertJob {
+	s.State = &v
+	return s
+}
+
+func (s *MediaConvertJob) SetUserData(v string) *MediaConvertJob {
+	s.UserData = &v
+	return s
+}
+
+type MediaConvertJobConfig struct {
+	Inputs       []*MediaConvertInput       `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	JobName      *string                    `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	OutputGroups []*MediaConvertOutputGroup `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
+	Outputs      []*MediaConvertOutput      `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+}
+
+func (s MediaConvertJobConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertJobConfig) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertJobConfig) SetInputs(v []*MediaConvertInput) *MediaConvertJobConfig {
+	s.Inputs = v
+	return s
+}
+
+func (s *MediaConvertJobConfig) SetJobName(v string) *MediaConvertJobConfig {
+	s.JobName = &v
+	return s
+}
+
+func (s *MediaConvertJobConfig) SetOutputGroups(v []*MediaConvertOutputGroup) *MediaConvertJobConfig {
+	s.OutputGroups = v
+	return s
+}
+
+func (s *MediaConvertJobConfig) SetOutputs(v []*MediaConvertOutput) *MediaConvertJobConfig {
+	s.Outputs = v
+	return s
+}
+
+type MediaConvertJobWithoutDetail struct {
+	ClientToken *string                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Code        *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Config      *MediaConvertJobWithoutDetailConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	CreateTime  *string                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime  *string                             `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	JobId       *string                             `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message     *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	PipelineId  *string                             `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State       *string                             `json:"State,omitempty" xml:"State,omitempty"`
+	UserData    *string                             `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s MediaConvertJobWithoutDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertJobWithoutDetail) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertJobWithoutDetail) SetClientToken(v string) *MediaConvertJobWithoutDetail {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *MediaConvertJobWithoutDetail) SetCode(v string) *MediaConvertJobWithoutDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *MediaConvertJobWithoutDetail) SetConfig(v *MediaConvertJobWithoutDetailConfig) *MediaConvertJobWithoutDetail {
+	s.Config = v
+	return s
+}
+
+func (s *MediaConvertJobWithoutDetail) SetCreateTime(v string) *MediaConvertJobWithoutDetail {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *MediaConvertJobWithoutDetail) SetFinishTime(v string) *MediaConvertJobWithoutDetail {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *MediaConvertJobWithoutDetail) SetJobId(v string) *MediaConvertJobWithoutDetail {
+	s.JobId = &v
+	return s
+}
+
+func (s *MediaConvertJobWithoutDetail) SetMessage(v string) *MediaConvertJobWithoutDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *MediaConvertJobWithoutDetail) SetPipelineId(v string) *MediaConvertJobWithoutDetail {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *MediaConvertJobWithoutDetail) SetRequestId(v string) *MediaConvertJobWithoutDetail {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MediaConvertJobWithoutDetail) SetState(v string) *MediaConvertJobWithoutDetail {
+	s.State = &v
+	return s
+}
+
+func (s *MediaConvertJobWithoutDetail) SetUserData(v string) *MediaConvertJobWithoutDetail {
+	s.UserData = &v
+	return s
+}
+
+type MediaConvertJobWithoutDetailConfig struct {
+	Inputs       []*MediaConvertInput       `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	JobName      *string                    `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	OutputGroups []*MediaConvertOutputGroup `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
+	Outputs      []*MediaConvertOutput      `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+}
+
+func (s MediaConvertJobWithoutDetailConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertJobWithoutDetailConfig) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertJobWithoutDetailConfig) SetInputs(v []*MediaConvertInput) *MediaConvertJobWithoutDetailConfig {
+	s.Inputs = v
+	return s
+}
+
+func (s *MediaConvertJobWithoutDetailConfig) SetJobName(v string) *MediaConvertJobWithoutDetailConfig {
+	s.JobName = &v
+	return s
+}
+
+func (s *MediaConvertJobWithoutDetailConfig) SetOutputGroups(v []*MediaConvertOutputGroup) *MediaConvertJobWithoutDetailConfig {
+	s.OutputGroups = v
+	return s
+}
+
+func (s *MediaConvertJobWithoutDetailConfig) SetOutputs(v []*MediaConvertOutput) *MediaConvertJobWithoutDetailConfig {
+	s.Outputs = v
+	return s
+}
+
 type MediaConvertMuxConfig struct {
 	Segment *MediaConvertSegment `json:"Segment,omitempty" xml:"Segment,omitempty"`
 }
@@ -2463,11 +2705,14 @@ func (s *MediaConvertOutput) SetTemplateId(v string) *MediaConvertOutput {
 }
 
 type MediaConvertOutputDetail struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Code       *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	CreateTime *string                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime *string                         `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Message    *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name       *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Result     *MediaConvertOutputDetailResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Status     *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId     *string                         `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s MediaConvertOutputDetail) String() string {
@@ -2483,6 +2728,16 @@ func (s *MediaConvertOutputDetail) SetCode(v string) *MediaConvertOutputDetail {
 	return s
 }
 
+func (s *MediaConvertOutputDetail) SetCreateTime(v string) *MediaConvertOutputDetail {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetail) SetFinishTime(v string) *MediaConvertOutputDetail {
+	s.FinishTime = &v
+	return s
+}
+
 func (s *MediaConvertOutputDetail) SetMessage(v string) *MediaConvertOutputDetail {
 	s.Message = &v
 	return s
@@ -2493,6 +2748,11 @@ func (s *MediaConvertOutputDetail) SetName(v string) *MediaConvertOutputDetail {
 	return s
 }
 
+func (s *MediaConvertOutputDetail) SetResult(v *MediaConvertOutputDetailResult) *MediaConvertOutputDetail {
+	s.Result = v
+	return s
+}
+
 func (s *MediaConvertOutputDetail) SetStatus(v string) *MediaConvertOutputDetail {
 	s.Status = &v
 	return s
@@ -2500,6 +2760,564 @@ func (s *MediaConvertOutputDetail) SetStatus(v string) *MediaConvertOutputDetail
 
 func (s *MediaConvertOutputDetail) SetTaskId(v string) *MediaConvertOutputDetail {
 	s.TaskId = &v
+	return s
+}
+
+type MediaConvertOutputDetailResult struct {
+	OutFileMeta *MediaConvertOutputDetailFileMeta         `json:"OutFileMeta,omitempty" xml:"OutFileMeta,omitempty"`
+	OutputFile  *MediaConvertOutputDetailResultOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
+}
+
+func (s MediaConvertOutputDetailResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertOutputDetailResult) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertOutputDetailResult) SetOutFileMeta(v *MediaConvertOutputDetailFileMeta) *MediaConvertOutputDetailResult {
+	s.OutFileMeta = v
+	return s
+}
+
+func (s *MediaConvertOutputDetailResult) SetOutputFile(v *MediaConvertOutputDetailResultOutputFile) *MediaConvertOutputDetailResult {
+	s.OutputFile = v
+	return s
+}
+
+type MediaConvertOutputDetailResultOutputFile struct {
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s MediaConvertOutputDetailResultOutputFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertOutputDetailResultOutputFile) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertOutputDetailResultOutputFile) SetMedia(v string) *MediaConvertOutputDetailResultOutputFile {
+	s.Media = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailResultOutputFile) SetType(v string) *MediaConvertOutputDetailResultOutputFile {
+	s.Type = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailResultOutputFile) SetUrl(v string) *MediaConvertOutputDetailResultOutputFile {
+	s.Url = &v
+	return s
+}
+
+type MediaConvertOutputDetailFileMeta struct {
+	AudioStreamInfoList []*MediaConvertOutputDetailFileMetaAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
+	FileBasicInfo       *MediaConvertOutputDetailFileMetaFileBasicInfo         `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	VideoStreamInfoList []*MediaConvertOutputDetailFileMetaVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
+}
+
+func (s MediaConvertOutputDetailFileMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertOutputDetailFileMeta) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertOutputDetailFileMeta) SetAudioStreamInfoList(v []*MediaConvertOutputDetailFileMetaAudioStreamInfoList) *MediaConvertOutputDetailFileMeta {
+	s.AudioStreamInfoList = v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMeta) SetFileBasicInfo(v *MediaConvertOutputDetailFileMetaFileBasicInfo) *MediaConvertOutputDetailFileMeta {
+	s.FileBasicInfo = v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMeta) SetVideoStreamInfoList(v []*MediaConvertOutputDetailFileMetaVideoStreamInfoList) *MediaConvertOutputDetailFileMeta {
+	s.VideoStreamInfoList = v
+	return s
+}
+
+type MediaConvertOutputDetailFileMetaAudioStreamInfoList struct {
+	// example:
+	//
+	// 0.f
+	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// example:
+	//
+	// stereo
+	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	// example:
+	//
+	// 2
+	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// example:
+	//
+	// AAC (Advanced Audio Coding)
+	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// example:
+	//
+	// aac
+	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// example:
+	//
+	// 0x000f
+	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// example:
+	//
+	// [15][0][0][0]
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// example:
+	//
+	// 1/44100
+	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// example:
+	//
+	// 403.039989
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 1
+	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// fltp
+	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	// example:
+	//
+	// 44100
+	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// example:
+	//
+	// 1.473556
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1/90000
+	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+}
+
+func (s MediaConvertOutputDetailFileMetaAudioStreamInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertOutputDetailFileMetaAudioStreamInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetBitrate(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetChannelLayout(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.ChannelLayout = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetChannels(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.Channels = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetCodecLongName(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.CodecLongName = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetCodecName(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.CodecName = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetCodecTag(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetCodecTagString(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.CodecTagString = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetCodecTimeBase(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.CodecTimeBase = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetDuration(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.Duration = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetIndex(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.Index = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetLang(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.Lang = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetSampleFmt(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.SampleFmt = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetSampleRate(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.SampleRate = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetStartTime(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaAudioStreamInfoList) SetTimebase(v string) *MediaConvertOutputDetailFileMetaAudioStreamInfoList {
+	s.Timebase = &v
+	return s
+}
+
+type MediaConvertOutputDetailFileMetaFileBasicInfo struct {
+	// example:
+	//
+	// 888.563
+	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// example:
+	//
+	// 403.039999
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// file.m3u8
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// 31737
+	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// example:
+	//
+	// Normal
+	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// example:
+	//
+	// source_file
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// example:
+	//
+	// http://bucket.oss-cn-shanghai.aliyuncs.com/path/to/file.m3u8
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// hls,applehttp
+	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// example:
+	//
+	// 478
+	Height  *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 848
+	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s MediaConvertOutputDetailFileMetaFileBasicInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertOutputDetailFileMetaFileBasicInfo) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertOutputDetailFileMetaFileBasicInfo) SetBitrate(v string) *MediaConvertOutputDetailFileMetaFileBasicInfo {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaFileBasicInfo) SetDuration(v string) *MediaConvertOutputDetailFileMetaFileBasicInfo {
+	s.Duration = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaFileBasicInfo) SetFileName(v string) *MediaConvertOutputDetailFileMetaFileBasicInfo {
+	s.FileName = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaFileBasicInfo) SetFileSize(v string) *MediaConvertOutputDetailFileMetaFileBasicInfo {
+	s.FileSize = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaFileBasicInfo) SetFileStatus(v string) *MediaConvertOutputDetailFileMetaFileBasicInfo {
+	s.FileStatus = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaFileBasicInfo) SetFileType(v string) *MediaConvertOutputDetailFileMetaFileBasicInfo {
+	s.FileType = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaFileBasicInfo) SetFileUrl(v string) *MediaConvertOutputDetailFileMetaFileBasicInfo {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaFileBasicInfo) SetFormatName(v string) *MediaConvertOutputDetailFileMetaFileBasicInfo {
+	s.FormatName = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaFileBasicInfo) SetHeight(v string) *MediaConvertOutputDetailFileMetaFileBasicInfo {
+	s.Height = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaFileBasicInfo) SetMediaId(v string) *MediaConvertOutputDetailFileMetaFileBasicInfo {
+	s.MediaId = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaFileBasicInfo) SetRegion(v string) *MediaConvertOutputDetailFileMetaFileBasicInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaFileBasicInfo) SetWidth(v string) *MediaConvertOutputDetailFileMetaFileBasicInfo {
+	s.Width = &v
+	return s
+}
+
+type MediaConvertOutputDetailFileMetaVideoStreamInfoList struct {
+	// example:
+	//
+	// 25.0
+	AvgFps *string `json:"Avg_fps,omitempty" xml:"Avg_fps,omitempty"`
+	// example:
+	//
+	// 888.563
+	BitRate *string `json:"Bit_rate,omitempty" xml:"Bit_rate,omitempty"`
+	// example:
+	//
+	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+	CodecLongName *string `json:"Codec_long_name,omitempty" xml:"Codec_long_name,omitempty"`
+	// example:
+	//
+	// h264
+	CodecName *string `json:"Codec_name,omitempty" xml:"Codec_name,omitempty"`
+	// example:
+	//
+	// 0x001b
+	CodecTag *string `json:"Codec_tag,omitempty" xml:"Codec_tag,omitempty"`
+	// example:
+	//
+	// [27][0][0][0]
+	CodecTagString *string `json:"Codec_tag_string,omitempty" xml:"Codec_tag_string,omitempty"`
+	CodecTimeBase  *string `json:"Codec_time_base,omitempty" xml:"Codec_time_base,omitempty"`
+	// example:
+	//
+	// 16:9
+	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	// example:
+	//
+	// 403.039989
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 25.0
+	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// example:
+	//
+	// 2
+	HasBFrames *string `json:"Has_b_frames,omitempty" xml:"Has_b_frames,omitempty"`
+	// example:
+	//
+	// 478
+	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 31
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// example:
+	//
+	// 10040
+	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// example:
+	//
+	// yuv420p
+	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// example:
+	//
+	// High
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// example:
+	//
+	// 0
+	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// example:
+	//
+	// 478:477
+	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	// example:
+	//
+	// 1.473556
+	StartTime *string `json:"Start_time,omitempty" xml:"Start_time,omitempty"`
+	// example:
+	//
+	// 1/90000
+	TimeBase *string `json:"Time_base,omitempty" xml:"Time_base,omitempty"`
+	// example:
+	//
+	// 848
+	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s MediaConvertOutputDetailFileMetaVideoStreamInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MediaConvertOutputDetailFileMetaVideoStreamInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetAvgFps(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.AvgFps = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetBitRate(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.BitRate = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetCodecLongName(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.CodecLongName = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetCodecName(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.CodecName = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetCodecTag(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetCodecTagString(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.CodecTagString = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetCodecTimeBase(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.CodecTimeBase = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetDar(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.Dar = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetDuration(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.Duration = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetFps(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.Fps = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetHasBFrames(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.HasBFrames = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetHeight(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.Height = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetIndex(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.Index = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetLang(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.Lang = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetLevel(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.Level = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetNumFrames(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.NumFrames = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetPixFmt(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.PixFmt = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetProfile(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.Profile = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetRotate(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.Rotate = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetSar(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.Sar = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetStartTime(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetTimeBase(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.TimeBase = &v
+	return s
+}
+
+func (s *MediaConvertOutputDetailFileMetaVideoStreamInfoList) SetWidth(v string) *MediaConvertOutputDetailFileMetaVideoStreamInfoList {
+	s.Width = &v
 	return s
 }
 
@@ -2562,12 +3380,14 @@ func (s *MediaConvertOutputGroupConfig) SetType(v string) *MediaConvertOutputGro
 }
 
 type MediaConvertOutputGroupDetail struct {
-	Code    *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name    *string                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	Outputs []*MediaConvertOutputDetail `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
-	Status  *string                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId  *string                     `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Code       *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	CreateTime *string                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime *string                     `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Message    *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name       *string                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Outputs    []*MediaConvertOutputDetail `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	Status     *string                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId     *string                     `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s MediaConvertOutputGroupDetail) String() string {
@@ -2580,6 +3400,16 @@ func (s MediaConvertOutputGroupDetail) GoString() string {
 
 func (s *MediaConvertOutputGroupDetail) SetCode(v string) *MediaConvertOutputGroupDetail {
 	s.Code = &v
+	return s
+}
+
+func (s *MediaConvertOutputGroupDetail) SetCreateTime(v string) *MediaConvertOutputGroupDetail {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *MediaConvertOutputGroupDetail) SetFinishTime(v string) *MediaConvertOutputGroupDetail {
+	s.FinishTime = &v
 	return s
 }
 
@@ -28679,7 +29509,9 @@ type GetMediaConvertJobResponseBodyJob struct {
 	// InvalidParameter.ResourceContentBad
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The configurations of the transcoding task.
-	Config *GetMediaConvertJobResponseBodyJobConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	Config     *GetMediaConvertJobResponseBodyJobConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	CreateTime *string                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime *string                                  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	// The ID of the transcoding task, which is a 32-bit string.
 	//
 	// example:
@@ -28696,6 +29528,7 @@ type GetMediaConvertJobResponseBodyJob struct {
 	OutputDetails []*MediaConvertOutputDetail `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
 	// The details of the output groups, each corresponding to an output group configuration.
 	OutputGroupDetails []*MediaConvertOutputGroupDetail `json:"OutputGroupDetails,omitempty" xml:"OutputGroupDetails,omitempty" type:"Repeated"`
+	Percent            *int32                           `json:"Percent,omitempty" xml:"Percent,omitempty"`
 	// The ID of the queue.
 	//
 	// example:
@@ -28755,6 +29588,16 @@ func (s *GetMediaConvertJobResponseBodyJob) SetConfig(v *GetMediaConvertJobRespo
 	return s
 }
 
+func (s *GetMediaConvertJobResponseBodyJob) SetCreateTime(v string) *GetMediaConvertJobResponseBodyJob {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJob) SetFinishTime(v string) *GetMediaConvertJobResponseBodyJob {
+	s.FinishTime = &v
+	return s
+}
+
 func (s *GetMediaConvertJobResponseBodyJob) SetJobId(v string) *GetMediaConvertJobResponseBodyJob {
 	s.JobId = &v
 	return s
@@ -28772,6 +29615,11 @@ func (s *GetMediaConvertJobResponseBodyJob) SetOutputDetails(v []*MediaConvertOu
 
 func (s *GetMediaConvertJobResponseBodyJob) SetOutputGroupDetails(v []*MediaConvertOutputGroupDetail) *GetMediaConvertJobResponseBodyJob {
 	s.OutputGroupDetails = v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJob) SetPercent(v int32) *GetMediaConvertJobResponseBodyJob {
+	s.Percent = &v
 	return s
 }
 
@@ -28797,7 +29645,8 @@ func (s *GetMediaConvertJobResponseBodyJob) SetUserData(v string) *GetMediaConve
 
 type GetMediaConvertJobResponseBodyJobConfig struct {
 	// The inputs of the transcoding task.
-	Inputs []*MediaConvertInput `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	Inputs  []*MediaConvertInput `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	JobName *string              `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The output group configurations.
 	OutputGroups []*MediaConvertOutputGroup `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
 	// The output configurations.
@@ -28814,6 +29663,11 @@ func (s GetMediaConvertJobResponseBodyJobConfig) GoString() string {
 
 func (s *GetMediaConvertJobResponseBodyJobConfig) SetInputs(v []*MediaConvertInput) *GetMediaConvertJobResponseBodyJobConfig {
 	s.Inputs = v
+	return s
+}
+
+func (s *GetMediaConvertJobResponseBodyJobConfig) SetJobName(v string) *GetMediaConvertJobResponseBodyJobConfig {
+	s.JobName = &v
 	return s
 }
 
@@ -57544,7 +58398,7 @@ type ListSearchLibResponseBody struct {
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// 总数。
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -57631,9 +58485,18 @@ func (s *ListSearchLibResponseBodySearchLibInfoList) SetStatus(v string) *ListSe
 }
 
 type ListSearchLibResponseBodySearchLibInfoListIndexInfo struct {
+	// example:
+	//
+	// Normal
 	IndexReadiness *string `json:"IndexReadiness,omitempty" xml:"IndexReadiness,omitempty"`
-	IndexStatus    *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
-	IndexType      *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	// example:
+	//
+	// Active
+	IndexStatus *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
+	// example:
+	//
+	// face
+	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
 }
 
 func (s ListSearchLibResponseBodySearchLibInfoListIndexInfo) String() string {
@@ -79620,7 +80483,8 @@ func (s *SubmitMediaConvertJobResponseBodyJob) SetUserData(v string) *SubmitMedi
 
 type SubmitMediaConvertJobResponseBodyJobConfig struct {
 	// The inputs of the transcoding task.
-	Inputs []*MediaConvertInput `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	Inputs  []*MediaConvertInput `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	JobName *string              `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The output group configurations.
 	OutputGroups []*MediaConvertOutputGroup `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
 	// The output configurations.
@@ -79637,6 +80501,11 @@ func (s SubmitMediaConvertJobResponseBodyJobConfig) GoString() string {
 
 func (s *SubmitMediaConvertJobResponseBodyJobConfig) SetInputs(v []*MediaConvertInput) *SubmitMediaConvertJobResponseBodyJobConfig {
 	s.Inputs = v
+	return s
+}
+
+func (s *SubmitMediaConvertJobResponseBodyJobConfig) SetJobName(v string) *SubmitMediaConvertJobResponseBodyJobConfig {
+	s.JobName = &v
 	return s
 }
 
