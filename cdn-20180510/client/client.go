@@ -3189,6 +3189,70 @@ func (s *DeleteCdnSubTaskResponse) SetBody(v *DeleteCdnSubTaskResponseBody) *Del
 	return s
 }
 
+type DeleteCustomDomainSampleRateRequest struct {
+	// This parameter is required.
+	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
+}
+
+func (s DeleteCustomDomainSampleRateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomDomainSampleRateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomDomainSampleRateRequest) SetDomainNames(v string) *DeleteCustomDomainSampleRateRequest {
+	s.DomainNames = &v
+	return s
+}
+
+type DeleteCustomDomainSampleRateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCustomDomainSampleRateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomDomainSampleRateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomDomainSampleRateResponseBody) SetRequestId(v string) *DeleteCustomDomainSampleRateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCustomDomainSampleRateResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCustomDomainSampleRateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCustomDomainSampleRateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomDomainSampleRateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomDomainSampleRateResponse) SetHeaders(v map[string]*string) *DeleteCustomDomainSampleRateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomDomainSampleRateResponse) SetStatusCode(v int32) *DeleteCustomDomainSampleRateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomDomainSampleRateResponse) SetBody(v *DeleteCustomDomainSampleRateResponseBody) *DeleteCustomDomainSampleRateResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteFCTriggerRequest struct {
 	// The trigger that corresponds to the Function Compute service.
 	//
@@ -8796,7 +8860,9 @@ type DescribeCdnServiceResponseBody struct {
 	// example:
 	//
 	// PayByTraffic
-	ChangingChargeType *string `json:"ChangingChargeType,omitempty" xml:"ChangingChargeType,omitempty"`
+	ChangingChargeType         *string `json:"ChangingChargeType,omitempty" xml:"ChangingChargeType,omitempty"`
+	ChangingDynamicBillingType *string `json:"ChangingDynamicBillingType,omitempty" xml:"ChangingDynamicBillingType,omitempty"`
+	DynamicBillingType         *string `json:"DynamicBillingType,omitempty" xml:"DynamicBillingType,omitempty"`
 	// The ID of the instance.
 	//
 	// example:
@@ -8844,6 +8910,16 @@ func (s *DescribeCdnServiceResponseBody) SetChangingAffectTime(v string) *Descri
 
 func (s *DescribeCdnServiceResponseBody) SetChangingChargeType(v string) *DescribeCdnServiceResponseBody {
 	s.ChangingChargeType = &v
+	return s
+}
+
+func (s *DescribeCdnServiceResponseBody) SetChangingDynamicBillingType(v string) *DescribeCdnServiceResponseBody {
+	s.ChangingDynamicBillingType = &v
+	return s
+}
+
+func (s *DescribeCdnServiceResponseBody) SetDynamicBillingType(v string) *DescribeCdnServiceResponseBody {
+	s.DynamicBillingType = &v
 	return s
 }
 
@@ -10739,7 +10815,10 @@ type DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePacka
 	// example:
 	//
 	// 10995089554629
-	CurrCapacity *string `json:"CurrCapacity,omitempty" xml:"CurrCapacity,omitempty"`
+	CurrCapacity          *string `json:"CurrCapacity,omitempty" xml:"CurrCapacity,omitempty"`
+	CurrCapacityBaseUnit  *string `json:"CurrCapacityBaseUnit,omitempty" xml:"CurrCapacityBaseUnit,omitempty"`
+	CurrCapacityShowUnit  *string `json:"CurrCapacityShowUnit,omitempty" xml:"CurrCapacityShowUnit,omitempty"`
+	CurrCapacityShowValue *string `json:"CurrCapacityShowValue,omitempty" xml:"CurrCapacityShowValue,omitempty"`
 	// The name of the resource plan.
 	//
 	// example:
@@ -10761,13 +10840,17 @@ type DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePacka
 	// example:
 	//
 	// 536870912000
-	InitCapacity *string `json:"InitCapacity,omitempty" xml:"InitCapacity,omitempty"`
+	InitCapacity          *string `json:"InitCapacity,omitempty" xml:"InitCapacity,omitempty"`
+	InitCapacityBaseUnit  *string `json:"InitCapacityBaseUnit,omitempty" xml:"InitCapacityBaseUnit,omitempty"`
+	InitCapacityShowUnit  *string `json:"InitCapacityShowUnit,omitempty" xml:"InitCapacityShowUnit,omitempty"`
+	InitCapacityShowValue *string `json:"InitCapacityShowValue,omitempty" xml:"InitCapacityShowValue,omitempty"`
 	// The ID of the instance
 	//
 	// example:
 	//
 	// FP-ilttxc23a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The effective time.
 	//
 	// example:
@@ -10810,6 +10893,21 @@ func (s *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourceP
 	return s
 }
 
+func (s *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetCurrCapacityBaseUnit(v string) *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
+	s.CurrCapacityBaseUnit = &v
+	return s
+}
+
+func (s *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetCurrCapacityShowUnit(v string) *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
+	s.CurrCapacityShowUnit = &v
+	return s
+}
+
+func (s *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetCurrCapacityShowValue(v string) *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
+	s.CurrCapacityShowValue = &v
+	return s
+}
+
 func (s *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetDisplayName(v string) *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
 	s.DisplayName = &v
 	return s
@@ -10825,8 +10923,28 @@ func (s *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourceP
 	return s
 }
 
+func (s *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetInitCapacityBaseUnit(v string) *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
+	s.InitCapacityBaseUnit = &v
+	return s
+}
+
+func (s *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetInitCapacityShowUnit(v string) *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
+	s.InitCapacityShowUnit = &v
+	return s
+}
+
+func (s *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetInitCapacityShowValue(v string) *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
+	s.InitCapacityShowValue = &v
+	return s
+}
+
 func (s *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetInstanceId(v string) *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) SetRegion(v string) *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo {
+	s.Region = &v
 	return s
 }
 
@@ -11281,7 +11399,9 @@ func (s *DescribeCertificateInfoByIDResponse) SetBody(v *DescribeCertificateInfo
 }
 
 type DescribeCustomDomainSampleRateRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
+	PageNumber  *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeCustomDomainSampleRateRequest) String() string {
@@ -11292,8 +11412,18 @@ func (s DescribeCustomDomainSampleRateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCustomDomainSampleRateRequest) SetDomainName(v string) *DescribeCustomDomainSampleRateRequest {
-	s.DomainName = &v
+func (s *DescribeCustomDomainSampleRateRequest) SetDomainNames(v string) *DescribeCustomDomainSampleRateRequest {
+	s.DomainNames = &v
+	return s
+}
+
+func (s *DescribeCustomDomainSampleRateRequest) SetPageNumber(v int64) *DescribeCustomDomainSampleRateRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCustomDomainSampleRateRequest) SetPageSize(v int64) *DescribeCustomDomainSampleRateRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -11322,6 +11452,9 @@ func (s *DescribeCustomDomainSampleRateResponseBody) SetRequestId(v string) *Des
 
 type DescribeCustomDomainSampleRateResponseBodyContent struct {
 	DomainContent []*DescribeCustomDomainSampleRateResponseBodyContentDomainContent `json:"DomainContent,omitempty" xml:"DomainContent,omitempty" type:"Repeated"`
+	PageNumber    *int64                                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int64                                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount    *int64                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeCustomDomainSampleRateResponseBodyContent) String() string {
@@ -11334,6 +11467,21 @@ func (s DescribeCustomDomainSampleRateResponseBodyContent) GoString() string {
 
 func (s *DescribeCustomDomainSampleRateResponseBodyContent) SetDomainContent(v []*DescribeCustomDomainSampleRateResponseBodyContentDomainContent) *DescribeCustomDomainSampleRateResponseBodyContent {
 	s.DomainContent = v
+	return s
+}
+
+func (s *DescribeCustomDomainSampleRateResponseBodyContent) SetPageNumber(v int64) *DescribeCustomDomainSampleRateResponseBodyContent {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCustomDomainSampleRateResponseBodyContent) SetPageSize(v int64) *DescribeCustomDomainSampleRateResponseBodyContent {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCustomDomainSampleRateResponseBodyContent) SetTotalCount(v int64) *DescribeCustomDomainSampleRateResponseBodyContent {
+	s.TotalCount = &v
 	return s
 }
 
@@ -13229,6 +13377,8 @@ type DescribeDomainCnameResponseBodyCnameDatasData struct {
 	//
 	// a.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
 	// The CNAME detection result. Valid values:
 	//
 	// 	- 0: The DNS can detect the CNAME assigned to the domain name.
@@ -13256,6 +13406,16 @@ func (s *DescribeDomainCnameResponseBodyCnameDatasData) SetCname(v string) *Desc
 
 func (s *DescribeDomainCnameResponseBodyCnameDatasData) SetDomain(v string) *DescribeDomainCnameResponseBodyCnameDatasData {
 	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainCnameResponseBodyCnameDatasData) SetErrMsg(v string) *DescribeDomainCnameResponseBodyCnameDatasData {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *DescribeDomainCnameResponseBodyCnameDatasData) SetPassed(v string) *DescribeDomainCnameResponseBodyCnameDatasData {
+	s.Passed = &v
 	return s
 }
 
@@ -17972,18 +18132,6 @@ type DescribeDomainRealTimeSrcHttpCodeDataRequest struct {
 	//
 	// 2019-11-30T05:40:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query ISPs. If you leave this parameter empty, all ISPs are queried.
-	//
-	// example:
-	//
-	// unicom
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The name of the region. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions. If you leave this parameter empty, all regions are queried.
-	//
-	// example:
-	//
-	// beijing
-	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
@@ -18007,16 +18155,6 @@ func (s *DescribeDomainRealTimeSrcHttpCodeDataRequest) SetDomainName(v string) *
 
 func (s *DescribeDomainRealTimeSrcHttpCodeDataRequest) SetEndTime(v string) *DescribeDomainRealTimeSrcHttpCodeDataRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainRealTimeSrcHttpCodeDataRequest) SetIspNameEn(v string) *DescribeDomainRealTimeSrcHttpCodeDataRequest {
-	s.IspNameEn = &v
-	return s
-}
-
-func (s *DescribeDomainRealTimeSrcHttpCodeDataRequest) SetLocationNameEn(v string) *DescribeDomainRealTimeSrcHttpCodeDataRequest {
-	s.LocationNameEn = &v
 	return s
 }
 
@@ -30012,7 +30150,7 @@ func (s *ModifyCdnServiceResponse) SetBody(v *ModifyCdnServiceResponseBody) *Mod
 type ModifyCustomDomainSampleRateRequest struct {
 	BaseConfigID *string `json:"BaseConfigID,omitempty" xml:"BaseConfigID,omitempty"`
 	// This parameter is required.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
 	// This parameter is required.
 	SampleRate *float32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
 	SinkID     *int64   `json:"SinkID,omitempty" xml:"SinkID,omitempty"`
@@ -30031,8 +30169,8 @@ func (s *ModifyCustomDomainSampleRateRequest) SetBaseConfigID(v string) *ModifyC
 	return s
 }
 
-func (s *ModifyCustomDomainSampleRateRequest) SetDomainName(v string) *ModifyCustomDomainSampleRateRequest {
-	s.DomainName = &v
+func (s *ModifyCustomDomainSampleRateRequest) SetDomainNames(v string) *ModifyCustomDomainSampleRateRequest {
+	s.DomainNames = &v
 	return s
 }
 
@@ -30047,7 +30185,8 @@ func (s *ModifyCustomDomainSampleRateRequest) SetSinkID(v int64) *ModifyCustomDo
 }
 
 type ModifyCustomDomainSampleRateResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Content   *ModifyCustomDomainSampleRateResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyCustomDomainSampleRateResponseBody) String() string {
@@ -30058,8 +30197,59 @@ func (s ModifyCustomDomainSampleRateResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyCustomDomainSampleRateResponseBody) SetContent(v *ModifyCustomDomainSampleRateResponseBodyContent) *ModifyCustomDomainSampleRateResponseBody {
+	s.Content = v
+	return s
+}
+
 func (s *ModifyCustomDomainSampleRateResponseBody) SetRequestId(v string) *ModifyCustomDomainSampleRateResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type ModifyCustomDomainSampleRateResponseBodyContent struct {
+	Content []*ModifyCustomDomainSampleRateResponseBodyContentContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
+}
+
+func (s ModifyCustomDomainSampleRateResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCustomDomainSampleRateResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCustomDomainSampleRateResponseBodyContent) SetContent(v []*ModifyCustomDomainSampleRateResponseBodyContentContent) *ModifyCustomDomainSampleRateResponseBodyContent {
+	s.Content = v
+	return s
+}
+
+type ModifyCustomDomainSampleRateResponseBodyContentContent struct {
+	DomainName *string  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ErrMessage *string  `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	SampleRate *float32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+}
+
+func (s ModifyCustomDomainSampleRateResponseBodyContentContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCustomDomainSampleRateResponseBodyContentContent) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCustomDomainSampleRateResponseBodyContentContent) SetDomainName(v string) *ModifyCustomDomainSampleRateResponseBodyContentContent {
+	s.DomainName = &v
+	return s
+}
+
+func (s *ModifyCustomDomainSampleRateResponseBodyContentContent) SetErrMessage(v string) *ModifyCustomDomainSampleRateResponseBodyContentContent {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ModifyCustomDomainSampleRateResponseBodyContentContent) SetSampleRate(v float32) *ModifyCustomDomainSampleRateResponseBodyContentContent {
+	s.SampleRate = &v
 	return s
 }
 
@@ -32862,15 +33052,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-//   You must activate Alibaba Cloud CDN before you can add a domain name to it. For more information, see [Activate Alibaba Cloud CDN](https://help.aliyun.com/document_detail/27272.html).
+//	  You must activate Alibaba Cloud CDN before you can add a domain name to it. For more information, see [Activate Alibaba Cloud CDN](https://help.aliyun.com/document_detail/27272.html).
 //
-// 	- The domain name that you want to add has a valid Internet Content Provider (ICP) number.
+//		- The domain name that you want to add has a valid Internet Content Provider (ICP) number.
 //
-// 	- You can add only one domain name to Alibaba Cloud CDN in each call. Each Alibaba Cloud account can add a maximum of 50 domain names to Alibaba Cloud CDN.
+//		- You can add only one domain name to Alibaba Cloud CDN in each call. Each Alibaba Cloud account can add a maximum of 50 domain names to Alibaba Cloud CDN.
 //
-// 	- If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. The review will be completed by the end of the next business day after you submit the application.
+//		- If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. The review will be completed by the end of the next business day after you submit the application.
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
 // @param request - AddCdnDomainRequest
 //
@@ -32941,24 +33131,13 @@ func (client *Client) AddCdnDomainWithOptions(request *AddCdnDomainRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddCdnDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddCdnDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddCdnDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32967,15 +33146,15 @@ func (client *Client) AddCdnDomainWithOptions(request *AddCdnDomainRequest, runt
 //
 // Description:
 //
-//   You must activate Alibaba Cloud CDN before you can add a domain name to it. For more information, see [Activate Alibaba Cloud CDN](https://help.aliyun.com/document_detail/27272.html).
+//	  You must activate Alibaba Cloud CDN before you can add a domain name to it. For more information, see [Activate Alibaba Cloud CDN](https://help.aliyun.com/document_detail/27272.html).
 //
-// 	- The domain name that you want to add has a valid Internet Content Provider (ICP) number.
+//		- The domain name that you want to add has a valid Internet Content Provider (ICP) number.
 //
-// 	- You can add only one domain name to Alibaba Cloud CDN in each call. Each Alibaba Cloud account can add a maximum of 50 domain names to Alibaba Cloud CDN.
+//		- You can add only one domain name to Alibaba Cloud CDN in each call. Each Alibaba Cloud account can add a maximum of 50 domain names to Alibaba Cloud CDN.
 //
-// 	- If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. The review will be completed by the end of the next business day after you submit the application.
+//		- If the content of the origin server is not stored on Alibaba Cloud, the content must be reviewed. The review will be completed by the end of the next business day after you submit the application.
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
 // @param request - AddCdnDomainRequest
 //
@@ -33050,24 +33229,13 @@ func (client *Client) AddFCTriggerWithOptions(request *AddFCTriggerRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddFCTriggerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddFCTriggerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddFCTriggerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33094,15 +33262,15 @@ func (client *Client) AddFCTrigger(request *AddFCTriggerRequest) (_result *AddFC
 //
 // Description:
 //
-//   You must activate Alibaba Cloud CDN before you can add a domain name to it. For more information, see [Activate Alibaba Cloud CDN](https://help.aliyun.com/document_detail/27272.html).
+//	  You must activate Alibaba Cloud CDN before you can add a domain name to it. For more information, see [Activate Alibaba Cloud CDN](https://help.aliyun.com/document_detail/27272.html).
 //
-// 	- If the acceleration region is Chinese Mainland Only or Global, you must apply for an ICP filing for the domain name.
+//		- If the acceleration region is Chinese Mainland Only or Global, you must apply for an ICP filing for the domain name.
 //
-// 	- You can specify multiple domain names and separate them with commas (,). You can specify at most 50 domain names in each call.
+//		- You can specify multiple domain names and separate them with commas (,). You can specify at most 50 domain names in each call.
 //
-// 	- For more information, see [Add a domain name](https://help.aliyun.com/document_detail/122181.html).
+//		- For more information, see [Add a domain name](https://help.aliyun.com/document_detail/122181.html).
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
 // @param request - BatchAddCdnDomainRequest
 //
@@ -33169,24 +33337,13 @@ func (client *Client) BatchAddCdnDomainWithOptions(request *BatchAddCdnDomainReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchAddCdnDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchAddCdnDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchAddCdnDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33195,15 +33352,15 @@ func (client *Client) BatchAddCdnDomainWithOptions(request *BatchAddCdnDomainReq
 //
 // Description:
 //
-//   You must activate Alibaba Cloud CDN before you can add a domain name to it. For more information, see [Activate Alibaba Cloud CDN](https://help.aliyun.com/document_detail/27272.html).
+//	  You must activate Alibaba Cloud CDN before you can add a domain name to it. For more information, see [Activate Alibaba Cloud CDN](https://help.aliyun.com/document_detail/27272.html).
 //
-// 	- If the acceleration region is Chinese Mainland Only or Global, you must apply for an ICP filing for the domain name.
+//		- If the acceleration region is Chinese Mainland Only or Global, you must apply for an ICP filing for the domain name.
 //
-// 	- You can specify multiple domain names and separate them with commas (,). You can specify at most 50 domain names in each call.
+//		- You can specify multiple domain names and separate them with commas (,). You can specify at most 50 domain names in each call.
 //
-// 	- For more information, see [Add a domain name](https://help.aliyun.com/document_detail/122181.html).
+//		- For more information, see [Add a domain name](https://help.aliyun.com/document_detail/122181.html).
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
 // @param request - BatchAddCdnDomainRequest
 //
@@ -33225,9 +33382,9 @@ func (client *Client) BatchAddCdnDomain(request *BatchAddCdnDomainRequest) (_res
 //
 // Description:
 //
-//   You can specify up to 50 domain names in each request.
+//	  You can specify up to 50 domain names in each request.
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
 // @param request - BatchDeleteCdnDomainConfigRequest
 //
@@ -33274,24 +33431,13 @@ func (client *Client) BatchDeleteCdnDomainConfigWithOptions(request *BatchDelete
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchDeleteCdnDomainConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchDeleteCdnDomainConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchDeleteCdnDomainConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33300,9 +33446,9 @@ func (client *Client) BatchDeleteCdnDomainConfigWithOptions(request *BatchDelete
 //
 // Description:
 //
-//   You can specify up to 50 domain names in each request.
+//	  You can specify up to 50 domain names in each request.
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
 // @param request - BatchDeleteCdnDomainConfigRequest
 //
@@ -33359,24 +33505,13 @@ func (client *Client) BatchDescribeCdnIpInfoWithOptions(request *BatchDescribeCd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchDescribeCdnIpInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchDescribeCdnIpInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchDescribeCdnIpInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33407,11 +33542,11 @@ func (client *Client) BatchDescribeCdnIpInfo(request *BatchDescribeCdnIpInfoRequ
 //
 // Description:
 //
-//   You can call this operation up to 30 times per second per account.
+//	  You can call this operation up to 30 times per second per account.
 //
-// 	- You can specify multiple domain names and must separate them with commas (,). You can specify up to 50 domain names in each call.
+//		- You can specify multiple domain names and must separate them with commas (,). You can specify up to 50 domain names in each call.
 //
-// 	- If the BatchSetCdnDomainConfig operation is successful, a unique configuration ID (ConfigId) is generated. You can use configuration IDs to update or delete configurations. For more information, see [Usage notes on ConfigId](https://help.aliyun.com/document_detail/388994.html).
+//		- If the BatchSetCdnDomainConfig operation is successful, a unique configuration ID (ConfigId) is generated. You can use configuration IDs to update or delete configurations. For more information, see [Usage notes on ConfigId](https://help.aliyun.com/document_detail/388994.html).
 //
 // @param request - BatchSetCdnDomainConfigRequest
 //
@@ -33458,24 +33593,13 @@ func (client *Client) BatchSetCdnDomainConfigWithOptions(request *BatchSetCdnDom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchSetCdnDomainConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchSetCdnDomainConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchSetCdnDomainConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33484,11 +33608,11 @@ func (client *Client) BatchSetCdnDomainConfigWithOptions(request *BatchSetCdnDom
 //
 // Description:
 //
-//   You can call this operation up to 30 times per second per account.
+//	  You can call this operation up to 30 times per second per account.
 //
-// 	- You can specify multiple domain names and must separate them with commas (,). You can specify up to 50 domain names in each call.
+//		- You can specify multiple domain names and must separate them with commas (,). You can specify up to 50 domain names in each call.
 //
-// 	- If the BatchSetCdnDomainConfig operation is successful, a unique configuration ID (ConfigId) is generated. You can use configuration IDs to update or delete configurations. For more information, see [Usage notes on ConfigId](https://help.aliyun.com/document_detail/388994.html).
+//		- If the BatchSetCdnDomainConfig operation is successful, a unique configuration ID (ConfigId) is generated. You can use configuration IDs to update or delete configurations. For more information, see [Usage notes on ConfigId](https://help.aliyun.com/document_detail/388994.html).
 //
 // @param request - BatchSetCdnDomainConfigRequest
 //
@@ -33541,24 +33665,13 @@ func (client *Client) BatchSetGrayDomainFunctionWithOptions(request *BatchSetGra
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchSetGrayDomainFunctionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchSetGrayDomainFunctionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchSetGrayDomainFunctionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33585,11 +33698,11 @@ func (client *Client) BatchSetGrayDomainFunction(request *BatchSetGrayDomainFunc
 //
 // Description:
 //
-//   If a domain name specified in the request is in an invalid state or your account has an overdue payment, the domain name cannot be enabled.
+//	  If a domain name specified in the request is in an invalid state or your account has an overdue payment, the domain name cannot be enabled.
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
-// 	- You can specify up to 50 domain names in each request.
+//		- You can specify up to 50 domain names in each request.
 //
 // @param request - BatchStartCdnDomainRequest
 //
@@ -33628,24 +33741,13 @@ func (client *Client) BatchStartCdnDomainWithOptions(request *BatchStartCdnDomai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchStartCdnDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchStartCdnDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchStartCdnDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33654,11 +33756,11 @@ func (client *Client) BatchStartCdnDomainWithOptions(request *BatchStartCdnDomai
 //
 // Description:
 //
-//   If a domain name specified in the request is in an invalid state or your account has an overdue payment, the domain name cannot be enabled.
+//	  If a domain name specified in the request is in an invalid state or your account has an overdue payment, the domain name cannot be enabled.
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
-// 	- You can specify up to 50 domain names in each request.
+//		- You can specify up to 50 domain names in each request.
 //
 // @param request - BatchStartCdnDomainRequest
 //
@@ -33680,13 +33782,13 @@ func (client *Client) BatchStartCdnDomain(request *BatchStartCdnDomainRequest) (
 //
 // Description:
 //
-//   After an accelerated domain name is disabled, Alibaba Cloud CDN retains its information and reroutes all the requests that are destined for the accelerated domain name to the origin.
+//	  After an accelerated domain name is disabled, Alibaba Cloud CDN retains its information and reroutes all the requests that are destined for the accelerated domain name to the origin.
 //
-// 	- If you need to temporarily disable CDN acceleration for a domain name, we recommend that you call the StopDomain operation.
+//		- If you need to temporarily disable CDN acceleration for a domain name, we recommend that you call the StopDomain operation.
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
-// 	- You can specify up to 50 domain names in each request.
+//		- You can specify up to 50 domain names in each request.
 //
 // @param request - BatchStopCdnDomainRequest
 //
@@ -33725,24 +33827,13 @@ func (client *Client) BatchStopCdnDomainWithOptions(request *BatchStopCdnDomainR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchStopCdnDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchStopCdnDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchStopCdnDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33751,13 +33842,13 @@ func (client *Client) BatchStopCdnDomainWithOptions(request *BatchStopCdnDomainR
 //
 // Description:
 //
-//   After an accelerated domain name is disabled, Alibaba Cloud CDN retains its information and reroutes all the requests that are destined for the accelerated domain name to the origin.
+//	  After an accelerated domain name is disabled, Alibaba Cloud CDN retains its information and reroutes all the requests that are destined for the accelerated domain name to the origin.
 //
-// 	- If you need to temporarily disable CDN acceleration for a domain name, we recommend that you call the StopDomain operation.
+//		- If you need to temporarily disable CDN acceleration for a domain name, we recommend that you call the StopDomain operation.
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
-// 	- You can specify up to 50 domain names in each request.
+//		- You can specify up to 50 domain names in each request.
 //
 // @param request - BatchStopCdnDomainRequest
 //
@@ -33779,9 +33870,9 @@ func (client *Client) BatchStopCdnDomain(request *BatchStopCdnDomainRequest) (_r
 //
 // Description:
 //
-//   You can call this operation up to 30 times per second per account.
+//	  You can call this operation up to 30 times per second per account.
 //
-// 	- You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
+//		- You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
 //
 // @param request - BatchUpdateCdnDomainRequest
 //
@@ -33832,24 +33923,13 @@ func (client *Client) BatchUpdateCdnDomainWithOptions(request *BatchUpdateCdnDom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchUpdateCdnDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchUpdateCdnDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchUpdateCdnDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33858,9 +33938,9 @@ func (client *Client) BatchUpdateCdnDomainWithOptions(request *BatchUpdateCdnDom
 //
 // Description:
 //
-//   You can call this operation up to 30 times per second per account.
+//	  You can call this operation up to 30 times per second per account.
 //
-// 	- You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
+//		- You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
 //
 // @param request - BatchUpdateCdnDomainRequest
 //
@@ -33909,24 +33989,13 @@ func (client *Client) CdnMigrateRegisterWithOptions(request *CdnMigrateRegisterR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CdnMigrateRegisterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CdnMigrateRegisterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CdnMigrateRegisterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33996,24 +34065,13 @@ func (client *Client) ChangeCdnDomainToDcdnWithOptions(request *ChangeCdnDomainT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ChangeCdnDomainToDcdnResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ChangeCdnDomainToDcdnResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ChangeCdnDomainToDcdnResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34079,24 +34137,13 @@ func (client *Client) CheckCdnDomainExistWithOptions(request *CheckCdnDomainExis
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CheckCdnDomainExistResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CheckCdnDomainExistResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CheckCdnDomainExistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34162,24 +34209,13 @@ func (client *Client) CheckCdnDomainICPWithOptions(request *CheckCdnDomainICPReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CheckCdnDomainICPResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CheckCdnDomainICPResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CheckCdnDomainICPResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34265,24 +34301,13 @@ func (client *Client) CreateCdnCertificateSigningRequestWithOptions(request *Cre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateCdnCertificateSigningRequestResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateCdnCertificateSigningRequestResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateCdnCertificateSigningRequestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34360,24 +34385,13 @@ func (client *Client) CreateCdnDeliverTaskWithOptions(request *CreateCdnDeliverT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateCdnDeliverTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateCdnDeliverTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateCdnDeliverTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34408,9 +34422,9 @@ func (client *Client) CreateCdnDeliverTask(request *CreateCdnDeliverTaskRequest)
 //
 // Description:
 //
-//   This operation allows you to create a custom operations report for a specific domain name. You can view the statistics about the domain name in the report.
+//	  This operation allows you to create a custom operations report for a specific domain name. You can view the statistics about the domain name in the report.
 //
-// 	- You can call this operation up to three times per second per account.
+//		- You can call this operation up to three times per second per account.
 //
 // @param request - CreateCdnSubTaskRequest
 //
@@ -34445,24 +34459,13 @@ func (client *Client) CreateCdnSubTaskWithOptions(request *CreateCdnSubTaskReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateCdnSubTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateCdnSubTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateCdnSubTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34471,9 +34474,9 @@ func (client *Client) CreateCdnSubTaskWithOptions(request *CreateCdnSubTaskReque
 //
 // Description:
 //
-//   This operation allows you to create a custom operations report for a specific domain name. You can view the statistics about the domain name in the report.
+//	  This operation allows you to create a custom operations report for a specific domain name. You can view the statistics about the domain name in the report.
 //
-// 	- You can call this operation up to three times per second per account.
+//		- You can call this operation up to three times per second per account.
 //
 // @param request - CreateCdnSubTaskRequest
 //
@@ -34522,24 +34525,13 @@ func (client *Client) CreateRealTimeLogDeliveryWithOptions(request *CreateRealTi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateRealTimeLogDeliveryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateRealTimeLogDeliveryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateRealTimeLogDeliveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34570,9 +34562,9 @@ func (client *Client) CreateRealTimeLogDelivery(request *CreateRealTimeLogDelive
 //
 // Description:
 //
-//   You can create a task to query data in the last year. The maximum time range that can be queried is one month.
+//	  You can create a task to query data in the last year. The maximum time range that can be queried is one month.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//		- You can call this operation up to 100 times per second per account.
 //
 // @param request - CreateUsageDetailDataExportTaskRequest
 //
@@ -34627,24 +34619,13 @@ func (client *Client) CreateUsageDetailDataExportTaskWithOptions(request *Create
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateUsageDetailDataExportTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateUsageDetailDataExportTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateUsageDetailDataExportTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34653,9 +34634,9 @@ func (client *Client) CreateUsageDetailDataExportTaskWithOptions(request *Create
 //
 // Description:
 //
-//   You can create a task to query data in the last year. The maximum time range that can be queried is one month.
+//	  You can create a task to query data in the last year. The maximum time range that can be queried is one month.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//		- You can call this operation up to 100 times per second per account.
 //
 // @param request - CreateUsageDetailDataExportTaskRequest
 //
@@ -34677,9 +34658,9 @@ func (client *Client) CreateUsageDetailDataExportTask(request *CreateUsageDetail
 //
 // Description:
 //
-//   You can create a task to query data in the last year. The maximum time range that can be queried is one month.
+//	  You can create a task to query data in the last year. The maximum time range that can be queried is one month.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//		- You can call this operation up to 100 times per second per account.
 //
 // @param request - CreateUserUsageDataExportTaskRequest
 //
@@ -34722,24 +34703,13 @@ func (client *Client) CreateUserUsageDataExportTaskWithOptions(request *CreateUs
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateUserUsageDataExportTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateUserUsageDataExportTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateUserUsageDataExportTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34748,9 +34718,9 @@ func (client *Client) CreateUserUsageDataExportTaskWithOptions(request *CreateUs
 //
 // Description:
 //
-//   You can create a task to query data in the last year. The maximum time range that can be queried is one month.
+//	  You can create a task to query data in the last year. The maximum time range that can be queried is one month.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//		- You can call this operation up to 100 times per second per account.
 //
 // @param request - CreateUserUsageDataExportTaskRequest
 //
@@ -34803,24 +34773,13 @@ func (client *Client) DeleteCdnDeliverTaskWithOptions(request *DeleteCdnDeliverT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteCdnDeliverTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteCdnDeliverTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteCdnDeliverTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34851,11 +34810,11 @@ func (client *Client) DeleteCdnDeliverTask(request *DeleteCdnDeliverTaskRequest)
 //
 // Description:
 //
-//   We recommend that you add an A record for the domain name in the system of your DNS service provider before you remove the domain name from Alibaba Cloud CDN. Otherwise, the domain name may become inaccessible. Proceed with caution.
+//	  We recommend that you add an A record for the domain name in the system of your DNS service provider before you remove the domain name from Alibaba Cloud CDN. Otherwise, the domain name may become inaccessible. Proceed with caution.
 //
-// 	- After you successfully call the DeleteCdnDomain operation, all records of the removed domain name are deleted. If you need to only disable the domain name, we recommend that you call the StopCdnDomain operation.
+//		- After you successfully call the DeleteCdnDomain operation, all records of the removed domain name are deleted. If you need to only disable the domain name, we recommend that you call the StopCdnDomain operation.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - DeleteCdnDomainRequest
 //
@@ -34894,24 +34853,13 @@ func (client *Client) DeleteCdnDomainWithOptions(request *DeleteCdnDomainRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteCdnDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteCdnDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteCdnDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34920,11 +34868,11 @@ func (client *Client) DeleteCdnDomainWithOptions(request *DeleteCdnDomainRequest
 //
 // Description:
 //
-//   We recommend that you add an A record for the domain name in the system of your DNS service provider before you remove the domain name from Alibaba Cloud CDN. Otherwise, the domain name may become inaccessible. Proceed with caution.
+//	  We recommend that you add an A record for the domain name in the system of your DNS service provider before you remove the domain name from Alibaba Cloud CDN. Otherwise, the domain name may become inaccessible. Proceed with caution.
 //
-// 	- After you successfully call the DeleteCdnDomain operation, all records of the removed domain name are deleted. If you need to only disable the domain name, we recommend that you call the StopCdnDomain operation.
+//		- After you successfully call the DeleteCdnDomain operation, all records of the removed domain name are deleted. If you need to only disable the domain name, we recommend that you call the StopCdnDomain operation.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - DeleteCdnDomainRequest
 //
@@ -34966,24 +34914,13 @@ func (client *Client) DeleteCdnSubTaskWithOptions(runtime *util.RuntimeOptions) 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteCdnSubTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteCdnSubTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteCdnSubTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34999,6 +34936,66 @@ func (client *Client) DeleteCdnSubTask() (_result *DeleteCdnSubTaskResponse, _er
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCdnSubTaskResponse{}
 	_body, _err := client.DeleteCdnSubTaskWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # A客户定制实时日志删除接口
+//
+// @param request - DeleteCustomDomainSampleRateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomDomainSampleRateResponse
+func (client *Client) DeleteCustomDomainSampleRateWithOptions(request *DeleteCustomDomainSampleRateRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomDomainSampleRateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		body["DomainNames"] = request.DomainNames
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomDomainSampleRate"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomDomainSampleRateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # A客户定制实时日志删除接口
+//
+// @param request - DeleteCustomDomainSampleRateRequest
+//
+// @return DeleteCustomDomainSampleRateResponse
+func (client *Client) DeleteCustomDomainSampleRate(request *DeleteCustomDomainSampleRateRequest) (_result *DeleteCustomDomainSampleRateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomDomainSampleRateResponse{}
+	_body, _err := client.DeleteCustomDomainSampleRateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35039,24 +35036,13 @@ func (client *Client) DeleteFCTriggerWithOptions(request *DeleteFCTriggerRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteFCTriggerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteFCTriggerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteFCTriggerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35110,24 +35096,13 @@ func (client *Client) DeleteRealTimeLogLogstoreWithOptions(request *DeleteRealTi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteRealTimeLogLogstoreResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteRealTimeLogLogstoreResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteRealTimeLogLogstoreResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35185,24 +35160,13 @@ func (client *Client) DeleteRealtimeLogDeliveryWithOptions(request *DeleteRealti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteRealtimeLogDeliveryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteRealtimeLogDeliveryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteRealtimeLogDeliveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35276,24 +35240,13 @@ func (client *Client) DeleteSpecificConfigWithOptions(request *DeleteSpecificCon
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteSpecificConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteSpecificConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteSpecificConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35367,24 +35320,13 @@ func (client *Client) DeleteSpecificStagingConfigWithOptions(request *DeleteSpec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteSpecificStagingConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteSpecificStagingConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteSpecificStagingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35446,24 +35388,13 @@ func (client *Client) DeleteUsageDetailDataExportTaskWithOptions(request *Delete
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteUsageDetailDataExportTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteUsageDetailDataExportTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteUsageDetailDataExportTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35525,24 +35456,13 @@ func (client *Client) DeleteUserUsageDataExportTaskWithOptions(request *DeleteUs
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteUserUsageDataExportTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteUserUsageDataExportTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteUserUsageDataExportTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35600,24 +35520,13 @@ func (client *Client) DescribeBlockedRegionsWithOptions(request *DescribeBlocked
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeBlockedRegionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeBlockedRegionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeBlockedRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35687,24 +35596,13 @@ func (client *Client) DescribeCdnCertificateDetailWithOptions(request *DescribeC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnCertificateDetailResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnCertificateDetailResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnCertificateDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35774,24 +35672,13 @@ func (client *Client) DescribeCdnCertificateDetailByIdWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnCertificateDetailByIdResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnCertificateDetailByIdResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnCertificateDetailByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35860,24 +35747,13 @@ func (client *Client) DescribeCdnCertificateListWithOptions(request *DescribeCdn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnCertificateListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnCertificateListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnCertificateListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Deprecated: OpenAPI DescribeCdnCertificateList is deprecated, please use Cdn::2018-05-10::DescribeCdnSSLCertificateList instead.
@@ -35938,24 +35814,13 @@ func (client *Client) DescribeCdnConditionIPBInfoWithOptions(request *DescribeCd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnConditionIPBInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnConditionIPBInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnConditionIPBInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36017,24 +35882,13 @@ func (client *Client) DescribeCdnDeletedDomainsWithOptions(request *DescribeCdnD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnDeletedDomainsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnDeletedDomainsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnDeletedDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36096,24 +35950,13 @@ func (client *Client) DescribeCdnDeliverListWithOptions(request *DescribeCdnDeli
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnDeliverListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnDeliverListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnDeliverListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36187,24 +36030,13 @@ func (client *Client) DescribeCdnDomainAtoaLogsWithOptions(request *DescribeCdnD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnDomainAtoaLogsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnDomainAtoaLogsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnDomainAtoaLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36270,24 +36102,13 @@ func (client *Client) DescribeCdnDomainByCertificateWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnDomainByCertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnDomainByCertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnDomainByCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36365,24 +36186,13 @@ func (client *Client) DescribeCdnDomainConfigsWithOptions(request *DescribeCdnDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnDomainConfigsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnDomainConfigsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnDomainConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36452,24 +36262,13 @@ func (client *Client) DescribeCdnDomainDetailWithOptions(request *DescribeCdnDom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnDomainDetailResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnDomainDetailResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnDomainDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36500,13 +36299,13 @@ func (client *Client) DescribeCdnDomainDetail(request *DescribeCdnDomainDetailRe
 //
 // Description:
 //
-//   If you do not set **StartTime*	- or **EndTime**, the request returns the data collected in the last 24 hours. If you set both **StartTime*	- and **EndTime**, the request returns the data collected within the specified time range.
+//	  If you do not set **StartTime*	- or **EndTime**, the request returns the data collected in the last 24 hours. If you set both **StartTime*	- and **EndTime**, the request returns the data collected within the specified time range.
 //
-// 	- The log data is collected every hour.
+//		- The log data is collected every hour.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//		- You can call this operation up to 100 times per second per account.
 //
-// 	- You can query only logs in the last month. The start time and the current time cannot exceed 31 days.
+//		- You can query only logs in the last month. The start time and the current time cannot exceed 31 days.
 //
 // @param request - DescribeCdnDomainLogsRequest
 //
@@ -36553,24 +36352,13 @@ func (client *Client) DescribeCdnDomainLogsWithOptions(request *DescribeCdnDomai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnDomainLogsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnDomainLogsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnDomainLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36579,13 +36367,13 @@ func (client *Client) DescribeCdnDomainLogsWithOptions(request *DescribeCdnDomai
 //
 // Description:
 //
-//   If you do not set **StartTime*	- or **EndTime**, the request returns the data collected in the last 24 hours. If you set both **StartTime*	- and **EndTime**, the request returns the data collected within the specified time range.
+//	  If you do not set **StartTime*	- or **EndTime**, the request returns the data collected in the last 24 hours. If you set both **StartTime*	- and **EndTime**, the request returns the data collected within the specified time range.
 //
-// 	- The log data is collected every hour.
+//		- The log data is collected every hour.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//		- You can call this operation up to 100 times per second per account.
 //
-// 	- You can query only logs in the last month. The start time and the current time cannot exceed 31 days.
+//		- You can query only logs in the last month. The start time and the current time cannot exceed 31 days.
 //
 // @param request - DescribeCdnDomainLogsRequest
 //
@@ -36650,24 +36438,13 @@ func (client *Client) DescribeCdnDomainLogsExTtlWithOptions(request *DescribeCdn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnDomainLogsExTtlResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnDomainLogsExTtlResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnDomainLogsExTtlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36729,24 +36506,13 @@ func (client *Client) DescribeCdnDomainStagingConfigWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnDomainStagingConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnDomainStagingConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnDomainStagingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36779,13 +36545,13 @@ func (client *Client) DescribeCdnDomainStagingConfig(request *DescribeCdnDomainS
 //
 // >
 //
-// 	- To use this operation,[submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+//   - To use this operation,[submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
 //
-// 	- If you specify IP addresses or CIDR blocks, IP addresses that are effective and the corresponding expiration time are returned. If you do not specify IP addresses or CIDR blocks, all effective IP addresses and the corresponding expiration time are returned.
+//   - If you specify IP addresses or CIDR blocks, IP addresses that are effective and the corresponding expiration time are returned. If you do not specify IP addresses or CIDR blocks, all effective IP addresses and the corresponding expiration time are returned.
 //
-// 	- The results are written to OSS and returned as OSS URLs. The content in OSS objects is in the format of IP address-Corresponding expiration time. The expiration time is in the YYYY-MM-DD hh:mm:ss format.
+//   - The results are written to OSS and returned as OSS URLs. The content in OSS objects is in the format of IP address-Corresponding expiration time. The expiration time is in the YYYY-MM-DD hh:mm:ss format.
 //
-// 	- You can share OSS URLs with others. The shared URLs are valid for three days.
+//   - You can share OSS URLs with others. The shared URLs are valid for three days.
 //
 // @param request - DescribeCdnFullDomainsBlockIPConfigRequest
 //
@@ -36816,24 +36582,13 @@ func (client *Client) DescribeCdnFullDomainsBlockIPConfigWithOptions(request *De
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnFullDomainsBlockIPConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnFullDomainsBlockIPConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnFullDomainsBlockIPConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36844,13 +36599,13 @@ func (client *Client) DescribeCdnFullDomainsBlockIPConfigWithOptions(request *De
 //
 // >
 //
-// 	- To use this operation,[submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+//   - To use this operation,[submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
 //
-// 	- If you specify IP addresses or CIDR blocks, IP addresses that are effective and the corresponding expiration time are returned. If you do not specify IP addresses or CIDR blocks, all effective IP addresses and the corresponding expiration time are returned.
+//   - If you specify IP addresses or CIDR blocks, IP addresses that are effective and the corresponding expiration time are returned. If you do not specify IP addresses or CIDR blocks, all effective IP addresses and the corresponding expiration time are returned.
 //
-// 	- The results are written to OSS and returned as OSS URLs. The content in OSS objects is in the format of IP address-Corresponding expiration time. The expiration time is in the YYYY-MM-DD hh:mm:ss format.
+//   - The results are written to OSS and returned as OSS URLs. The content in OSS objects is in the format of IP address-Corresponding expiration time. The expiration time is in the YYYY-MM-DD hh:mm:ss format.
 //
-// 	- You can share OSS URLs with others. The shared URLs are valid for three days.
+//   - You can share OSS URLs with others. The shared URLs are valid for three days.
 //
 // @param request - DescribeCdnFullDomainsBlockIPConfigRequest
 //
@@ -36874,15 +36629,15 @@ func (client *Client) DescribeCdnFullDomainsBlockIPConfig(request *DescribeCdnFu
 //
 // >
 //
-// 	- To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+//   - To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
 //
-// 	- For a specified IP addresses and time range, the time when the IP address was delivered to the edge and the corresponding result are returned.
+//   - For a specified IP addresses and time range, the time when the IP address was delivered to the edge and the corresponding result are returned.
 //
-// 	- If a specified IP address or CIDR block has multiple blocking records in a specified time range, the records are sorted by delivery time in descending order.
+//   - If a specified IP address or CIDR block has multiple blocking records in a specified time range, the records are sorted by delivery time in descending order.
 //
-// 	- The maximum time range to query is 90 days.
+//   - The maximum time range to query is 90 days.
 //
-// 	- If no blocking record exists or delivery fails for the given IP address and time range, the delivery time is empty.
+//   - If no blocking record exists or delivery fails for the given IP address and time range, the delivery time is empty.
 //
 // @param request - DescribeCdnFullDomainsBlockIPHistoryRequest
 //
@@ -36921,24 +36676,13 @@ func (client *Client) DescribeCdnFullDomainsBlockIPHistoryWithOptions(request *D
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnFullDomainsBlockIPHistoryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnFullDomainsBlockIPHistoryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnFullDomainsBlockIPHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36949,15 +36693,15 @@ func (client *Client) DescribeCdnFullDomainsBlockIPHistoryWithOptions(request *D
 //
 // >
 //
-// 	- To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+//   - To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
 //
-// 	- For a specified IP addresses and time range, the time when the IP address was delivered to the edge and the corresponding result are returned.
+//   - For a specified IP addresses and time range, the time when the IP address was delivered to the edge and the corresponding result are returned.
 //
-// 	- If a specified IP address or CIDR block has multiple blocking records in a specified time range, the records are sorted by delivery time in descending order.
+//   - If a specified IP address or CIDR block has multiple blocking records in a specified time range, the records are sorted by delivery time in descending order.
 //
-// 	- The maximum time range to query is 90 days.
+//   - The maximum time range to query is 90 days.
 //
-// 	- If no blocking record exists or delivery fails for the given IP address and time range, the delivery time is empty.
+//   - If no blocking record exists or delivery fails for the given IP address and time range, the delivery time is empty.
 //
 // @param request - DescribeCdnFullDomainsBlockIPHistoryRequest
 //
@@ -37018,24 +36762,13 @@ func (client *Client) DescribeCdnHttpsDomainListWithOptions(request *DescribeCdn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnHttpsDomainListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnHttpsDomainListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnHttpsDomainListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37097,24 +36830,13 @@ func (client *Client) DescribeCdnMigrateRegisterStatusWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnMigrateRegisterStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnMigrateRegisterStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnMigrateRegisterStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37180,24 +36902,13 @@ func (client *Client) DescribeCdnOrderCommodityCodeWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnOrderCommodityCodeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnOrderCommodityCodeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnOrderCommodityCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37224,9 +36935,9 @@ func (client *Client) DescribeCdnOrderCommodityCode(request *DescribeCdnOrderCom
 //
 // Description:
 //
-//   The lists of ISPs and regions that are supported by Alibaba Cloud CDN are updated and published on the Alibaba Cloud International site.
+//	  The lists of ISPs and regions that are supported by Alibaba Cloud CDN are updated and published on the Alibaba Cloud International site.
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
 // @param request - DescribeCdnRegionAndIspRequest
 //
@@ -37261,24 +36972,13 @@ func (client *Client) DescribeCdnRegionAndIspWithOptions(request *DescribeCdnReg
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnRegionAndIspResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnRegionAndIspResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnRegionAndIspResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37287,9 +36987,9 @@ func (client *Client) DescribeCdnRegionAndIspWithOptions(request *DescribeCdnReg
 //
 // Description:
 //
-//   The lists of ISPs and regions that are supported by Alibaba Cloud CDN are updated and published on the Alibaba Cloud International site.
+//	  The lists of ISPs and regions that are supported by Alibaba Cloud CDN are updated and published on the Alibaba Cloud International site.
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
 // @param request - DescribeCdnRegionAndIspRequest
 //
@@ -37366,24 +37066,13 @@ func (client *Client) DescribeCdnReportWithOptions(request *DescribeCdnReportReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnReportResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnReportResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37414,9 +37103,9 @@ func (client *Client) DescribeCdnReport(request *DescribeCdnReportRequest) (_res
 //
 // Description:
 //
-//   This operation queries the metadata of all operations reports. The statistics in the reports are not returned.
+//	  This operation queries the metadata of all operations reports. The statistics in the reports are not returned.
 //
-// 	- You can call this operation up to three times per second per account.
+//		- You can call this operation up to three times per second per account.
 //
 // @param request - DescribeCdnReportListRequest
 //
@@ -37447,24 +37136,13 @@ func (client *Client) DescribeCdnReportListWithOptions(request *DescribeCdnRepor
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnReportListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnReportListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnReportListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37473,9 +37151,9 @@ func (client *Client) DescribeCdnReportListWithOptions(request *DescribeCdnRepor
 //
 // Description:
 //
-//   This operation queries the metadata of all operations reports. The statistics in the reports are not returned.
+//	  This operation queries the metadata of all operations reports. The statistics in the reports are not returned.
 //
-// 	- You can call this operation up to three times per second per account.
+//		- You can call this operation up to three times per second per account.
 //
 // @param request - DescribeCdnReportListRequest
 //
@@ -37536,24 +37214,13 @@ func (client *Client) DescribeCdnSMCertificateDetailWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnSMCertificateDetailResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnSMCertificateDetailResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnSMCertificateDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37623,24 +37290,13 @@ func (client *Client) DescribeCdnSMCertificateListWithOptions(request *DescribeC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnSMCertificateListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnSMCertificateListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnSMCertificateListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37718,24 +37374,13 @@ func (client *Client) DescribeCdnSSLCertificateListWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnSSLCertificateListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnSSLCertificateListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnSSLCertificateListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37793,24 +37438,13 @@ func (client *Client) DescribeCdnSecFuncInfoWithOptions(request *DescribeCdnSecF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnSecFuncInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnSecFuncInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnSecFuncInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37872,24 +37506,13 @@ func (client *Client) DescribeCdnServiceWithOptions(request *DescribeCdnServiceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnServiceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnServiceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37920,9 +37543,9 @@ func (client *Client) DescribeCdnService(request *DescribeCdnServiceRequest) (_r
 //
 // Description:
 //
-//   By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
+//	  By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
 //
-// 	- You can call this operation up to three times per second per account.
+//		- You can call this operation up to three times per second per account.
 //
 // @param request - DescribeCdnSubListRequest
 //
@@ -37942,24 +37565,13 @@ func (client *Client) DescribeCdnSubListWithOptions(runtime *util.RuntimeOptions
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnSubListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnSubListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnSubListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37968,9 +37580,9 @@ func (client *Client) DescribeCdnSubListWithOptions(runtime *util.RuntimeOptions
 //
 // Description:
 //
-//   By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
+//	  By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
 //
-// 	- You can call this operation up to three times per second per account.
+//		- You can call this operation up to three times per second per account.
 //
 // @return DescribeCdnSubListResponse
 func (client *Client) DescribeCdnSubList() (_result *DescribeCdnSubListResponse, _err error) {
@@ -38025,24 +37637,13 @@ func (client *Client) DescribeCdnTypesWithOptions(request *DescribeCdnTypesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnTypesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnTypesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnTypesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38069,9 +37670,9 @@ func (client *Client) DescribeCdnTypes(request *DescribeCdnTypesRequest) (_resul
 //
 // Description:
 //
-//   You can query billing history up to the last one month.
+//	  You can query billing history up to the last one month.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//		- You can call this operation up to 100 times per second per account.
 //
 // @param request - DescribeCdnUserBillHistoryRequest
 //
@@ -38106,24 +37707,13 @@ func (client *Client) DescribeCdnUserBillHistoryWithOptions(request *DescribeCdn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnUserBillHistoryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnUserBillHistoryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnUserBillHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38132,9 +37722,9 @@ func (client *Client) DescribeCdnUserBillHistoryWithOptions(request *DescribeCdn
 //
 // Description:
 //
-//   You can query billing history up to the last one month.
+//	  You can query billing history up to the last one month.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//		- You can call this operation up to 100 times per second per account.
 //
 // @param request - DescribeCdnUserBillHistoryRequest
 //
@@ -38158,15 +37748,15 @@ func (client *Client) DescribeCdnUserBillHistory(request *DescribeCdnUserBillHis
 //
 // You can call this operation to estimate resource usage of the current month based on the metering method that is specified on the first day of the current month. You can call this operation to estimate resource usage only of the current month within your Alibaba Cloud account. The time range used for the estimation starts at 00:00 on the first day of the current month and ends 2 hours earlier than the current time.
 //
-// 	- Pay by monthly 95th percentile: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
+//   - Pay by monthly 95th percentile: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
 //
-// 	- Pay by average daily peak bandwidth per month: Estimated value = Sum of daily peak bandwidth values/Number of days. The current day is excluded.
+//   - Pay by average daily peak bandwidth per month: Estimated value = Sum of daily peak bandwidth values/Number of days. The current day is excluded.
 //
-// 	- Pay by 4th peak bandwidth per month: The estimated value is the 4th peak bandwidth value between the start time and end time. If the time range is less than four days, the estimated value is 0.
+//   - Pay by 4th peak bandwidth per month: The estimated value is the 4th peak bandwidth value between the start time and end time. If the time range is less than four days, the estimated value is 0.
 //
-// 	- Pay by average daily 95th percentile bandwidth per month: Estimated value = Sum of daily 95th percentile bandwidth values/Number of days. The current day is excluded.
+//   - Pay by average daily 95th percentile bandwidth per month: Estimated value = Sum of daily 95th percentile bandwidth values/Number of days. The current day is excluded.
 //
-// 	- Pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
+//   - Pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
 //
 // > You can call this operation only once per second per account.
 //
@@ -38211,24 +37801,13 @@ func (client *Client) DescribeCdnUserBillPredictionWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnUserBillPredictionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnUserBillPredictionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnUserBillPredictionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38239,15 +37818,15 @@ func (client *Client) DescribeCdnUserBillPredictionWithOptions(request *Describe
 //
 // You can call this operation to estimate resource usage of the current month based on the metering method that is specified on the first day of the current month. You can call this operation to estimate resource usage only of the current month within your Alibaba Cloud account. The time range used for the estimation starts at 00:00 on the first day of the current month and ends 2 hours earlier than the current time.
 //
-// 	- Pay by monthly 95th percentile: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
+//   - Pay by monthly 95th percentile: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
 //
-// 	- Pay by average daily peak bandwidth per month: Estimated value = Sum of daily peak bandwidth values/Number of days. The current day is excluded.
+//   - Pay by average daily peak bandwidth per month: Estimated value = Sum of daily peak bandwidth values/Number of days. The current day is excluded.
 //
-// 	- Pay by 4th peak bandwidth per month: The estimated value is the 4th peak bandwidth value between the start time and end time. If the time range is less than four days, the estimated value is 0.
+//   - Pay by 4th peak bandwidth per month: The estimated value is the 4th peak bandwidth value between the start time and end time. If the time range is less than four days, the estimated value is 0.
 //
-// 	- Pay by average daily 95th percentile bandwidth per month: Estimated value = Sum of daily 95th percentile bandwidth values/Number of days. The current day is excluded.
+//   - Pay by average daily 95th percentile bandwidth per month: Estimated value = Sum of daily 95th percentile bandwidth values/Number of days. The current day is excluded.
 //
-// 	- Pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
+//   - Pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
 //
 // > You can call this operation only once per second per account.
 //
@@ -38271,7 +37850,7 @@ func (client *Client) DescribeCdnUserBillPrediction(request *DescribeCdnUserBill
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	You can call this operation up to 100 times per second per account.
 //
 // @param request - DescribeCdnUserBillTypeRequest
 //
@@ -38306,24 +37885,13 @@ func (client *Client) DescribeCdnUserBillTypeWithOptions(request *DescribeCdnUse
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnUserBillTypeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnUserBillTypeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnUserBillTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38332,7 +37900,7 @@ func (client *Client) DescribeCdnUserBillTypeWithOptions(request *DescribeCdnUse
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	You can call this operation up to 100 times per second per account.
 //
 // @param request - DescribeCdnUserBillTypeRequest
 //
@@ -38385,24 +37953,13 @@ func (client *Client) DescribeCdnUserConfigsWithOptions(request *DescribeCdnUser
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnUserConfigsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnUserConfigsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnUserConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38476,24 +38033,13 @@ func (client *Client) DescribeCdnUserDomainsByFuncWithOptions(request *DescribeC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnUserDomainsByFuncResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnUserDomainsByFuncResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnUserDomainsByFuncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38559,24 +38105,13 @@ func (client *Client) DescribeCdnUserQuotaWithOptions(request *DescribeCdnUserQu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnUserQuotaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnUserQuotaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnUserQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38646,24 +38181,13 @@ func (client *Client) DescribeCdnUserResourcePackageWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnUserResourcePackageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnUserResourcePackageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnUserResourcePackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38733,24 +38257,13 @@ func (client *Client) DescribeCdnWafDomainWithOptions(request *DescribeCdnWafDom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCdnWafDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCdnWafDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCdnWafDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38781,9 +38294,9 @@ func (client *Client) DescribeCdnWafDomain(request *DescribeCdnWafDomainRequest)
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- If a certificate is associated with a domain name but the certificate is not enabled, the result of this operation shows that the certificate does not exist.
+//		- If a certificate is associated with a domain name but the certificate is not enabled, the result of this operation shows that the certificate does not exist.
 //
 // @param request - DescribeCertificateInfoByIDRequest
 //
@@ -38810,24 +38323,13 @@ func (client *Client) DescribeCertificateInfoByIDWithOptions(request *DescribeCe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCertificateInfoByIDResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCertificateInfoByIDResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCertificateInfoByIDResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38836,9 +38338,9 @@ func (client *Client) DescribeCertificateInfoByIDWithOptions(request *DescribeCe
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- If a certificate is associated with a domain name but the certificate is not enabled, the result of this operation shows that the certificate does not exist.
+//		- If a certificate is associated with a domain name but the certificate is not enabled, the result of this operation shows that the certificate does not exist.
 //
 // @param request - DescribeCertificateInfoByIDRequest
 //
@@ -38856,7 +38358,7 @@ func (client *Client) DescribeCertificateInfoByID(request *DescribeCertificateIn
 
 // Summary:
 //
-// A客户定制查询域名采样率
+// # A客户定制查询域名采样率
 //
 // @param request - DescribeCustomDomainSampleRateRequest
 //
@@ -38883,29 +38385,18 @@ func (client *Client) DescribeCustomDomainSampleRateWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCustomDomainSampleRateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCustomDomainSampleRateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCustomDomainSampleRateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// A客户定制查询域名采样率
+// # A客户定制查询域名采样率
 //
 // @param request - DescribeCustomDomainSampleRateRequest
 //
@@ -38954,24 +38445,13 @@ func (client *Client) DescribeCustomLogConfigWithOptions(request *DescribeCustom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCustomLogConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCustomLogConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCustomLogConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39067,24 +38547,13 @@ func (client *Client) DescribeDomainAverageResponseTimeWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainAverageResponseTimeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainAverageResponseTimeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainAverageResponseTimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39123,7 +38592,7 @@ func (client *Client) DescribeDomainAverageResponseTime(request *DescribeDomainA
 //
 // You can call this operation up to 150 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -39188,24 +38657,13 @@ func (client *Client) DescribeDomainBpsDataWithOptions(request *DescribeDomainBp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainBpsDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainBpsDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainBpsDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39216,7 +38674,7 @@ func (client *Client) DescribeDomainBpsDataWithOptions(request *DescribeDomainBp
 //
 // You can call this operation up to 150 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -39254,7 +38712,7 @@ func (client *Client) DescribeDomainBpsData(request *DescribeDomainBpsDataReques
 //
 // You can call this operation up to 20 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -39323,24 +38781,13 @@ func (client *Client) DescribeDomainBpsDataByLayerWithOptions(request *DescribeD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainBpsDataByLayerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainBpsDataByLayerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainBpsDataByLayerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39351,7 +38798,7 @@ func (client *Client) DescribeDomainBpsDataByLayerWithOptions(request *DescribeD
 //
 // You can call this operation up to 20 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -39387,13 +38834,13 @@ func (client *Client) DescribeDomainBpsDataByLayer(request *DescribeDomainBpsDat
 //
 // Description:
 //
-//   The bandwidth is measured in bit/s.
+//	  The bandwidth is measured in bit/s.
 //
-// 	- You can specify only one accelerated domain name in each request.
+//		- You can specify only one accelerated domain name in each request.
 //
-// 	- The data is collected every 5 minutes.
+//		- The data is collected every 5 minutes.
 //
-// 	- You can call this operation up to 20 times per second per account.
+//		- You can call this operation up to 20 times per second per account.
 //
 // @param request - DescribeDomainBpsDataByTimeStampRequest
 //
@@ -39436,24 +38883,13 @@ func (client *Client) DescribeDomainBpsDataByTimeStampWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainBpsDataByTimeStampResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainBpsDataByTimeStampResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainBpsDataByTimeStampResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39462,13 +38898,13 @@ func (client *Client) DescribeDomainBpsDataByTimeStampWithOptions(request *Descr
 //
 // Description:
 //
-//   The bandwidth is measured in bit/s.
+//	  The bandwidth is measured in bit/s.
 //
-// 	- You can specify only one accelerated domain name in each request.
+//		- You can specify only one accelerated domain name in each request.
 //
-// 	- The data is collected every 5 minutes.
+//		- The data is collected every 5 minutes.
 //
-// 	- You can call this operation up to 20 times per second per account.
+//		- You can call this operation up to 20 times per second per account.
 //
 // @param request - DescribeDomainBpsDataByTimeStampRequest
 //
@@ -39490,13 +38926,13 @@ func (client *Client) DescribeDomainBpsDataByTimeStamp(request *DescribeDomainBp
 //
 // Description:
 //
-//   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range. You must set both parameters or leave both parameters empty.
+//	  If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range. You must set both parameters or leave both parameters empty.
 //
-// 	- You can specify up to 20 domain names in reach request. If you specify multiple domain names, separate them with commas (,).
+//		- You can specify up to 20 domain names in reach request. If you specify multiple domain names, separate them with commas (,).
 //
-// 	- You can query data collected over the last 30 days.
+//		- You can query data collected over the last 30 days.
 //
-// 	- You can call this operation up to 50 times per second per account.
+//		- You can call this operation up to 50 times per second per account.
 //
 // @param request - DescribeDomainCcActivityLogRequest
 //
@@ -39555,24 +38991,13 @@ func (client *Client) DescribeDomainCcActivityLogWithOptions(request *DescribeDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainCcActivityLogResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainCcActivityLogResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainCcActivityLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39581,13 +39006,13 @@ func (client *Client) DescribeDomainCcActivityLogWithOptions(request *DescribeDo
 //
 // Description:
 //
-//   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range. You must set both parameters or leave both parameters empty.
+//	  If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range. You must set both parameters or leave both parameters empty.
 //
-// 	- You can specify up to 20 domain names in reach request. If you specify multiple domain names, separate them with commas (,).
+//		- You can specify up to 20 domain names in reach request. If you specify multiple domain names, separate them with commas (,).
 //
-// 	- You can query data collected over the last 30 days.
+//		- You can query data collected over the last 30 days.
 //
-// 	- You can call this operation up to 50 times per second per account.
+//		- You can call this operation up to 50 times per second per account.
 //
 // @param request - DescribeDomainCcActivityLogRequest
 //
@@ -39640,24 +39065,13 @@ func (client *Client) DescribeDomainCertificateInfoWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainCertificateInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainCertificateInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainCertificateInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39715,24 +39129,13 @@ func (client *Client) DescribeDomainCnameWithOptions(request *DescribeDomainCnam
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainCnameResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainCnameResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainCnameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39786,24 +39189,13 @@ func (client *Client) DescribeDomainCustomLogConfigWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainCustomLogConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainCustomLogConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainCustomLogConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39861,24 +39253,13 @@ func (client *Client) DescribeDomainDetailDataByLayerWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainDetailDataByLayerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainDetailDataByLayerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainDetailDataByLayerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39911,7 +39292,7 @@ func (client *Client) DescribeDomainDetailDataByLayer(request *DescribeDomainDet
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -39968,24 +39349,13 @@ func (client *Client) DescribeDomainHitRateDataWithOptions(request *DescribeDoma
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainHitRateDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainHitRateDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainHitRateDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39996,7 +39366,7 @@ func (client *Client) DescribeDomainHitRateDataWithOptions(request *DescribeDoma
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -40034,7 +39404,7 @@ func (client *Client) DescribeDomainHitRateData(request *DescribeDomainHitRateDa
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -40099,24 +39469,13 @@ func (client *Client) DescribeDomainHttpCodeDataWithOptions(request *DescribeDom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainHttpCodeDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainHttpCodeDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainHttpCodeDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40127,7 +39486,7 @@ func (client *Client) DescribeDomainHttpCodeDataWithOptions(request *DescribeDom
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -40165,7 +39524,7 @@ func (client *Client) DescribeDomainHttpCodeData(request *DescribeDomainHttpCode
 //
 // You can call this operation up to 20 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // ### Time granularity
 //
@@ -40234,24 +39593,13 @@ func (client *Client) DescribeDomainHttpCodeDataByLayerWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainHttpCodeDataByLayerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainHttpCodeDataByLayerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainHttpCodeDataByLayerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40262,7 +39610,7 @@ func (client *Client) DescribeDomainHttpCodeDataByLayerWithOptions(request *Desc
 //
 // You can call this operation up to 20 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // ### Time granularity
 //
@@ -40343,24 +39691,13 @@ func (client *Client) DescribeDomainISPDataWithOptions(request *DescribeDomainIS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainISPDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainISPDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainISPDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40399,19 +39736,19 @@ func (client *Client) DescribeDomainISPData(request *DescribeDomainISPDataReques
 //
 // *You can use one of the following methods to query data:**
 //
-// 	- If you specify the StartTime and EndTime parameters and the time range that is specified by these parameters is less than or equal to 24 hours, the 95th percentile bandwidth data on the day of the start time is returned. If the time range that is specified by these parameters is more than 24 hours, the 95th percentile bandwidth data in the month of the start time is returned.
+//   - If you specify the StartTime and EndTime parameters and the time range that is specified by these parameters is less than or equal to 24 hours, the 95th percentile bandwidth data on the day of the start time is returned. If the time range that is specified by these parameters is more than 24 hours, the 95th percentile bandwidth data in the month of the start time is returned.
 //
-// 	- If you specify the TimePoint and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned.
+//   - If you specify the TimePoint and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned.
 //
-// 	- If you specify the StartTime, EndTime, and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned.
+//   - If you specify the StartTime, EndTime, and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned.
 //
 // If you do not use one of the methods, the 95th percentile bandwidth data of the previous 24 hours is returned by default.
 //
-// 	- Maximum time range to query: 90 days
+//   - Maximum time range to query: 90 days
 //
-// 	- Minimum data granularity to query: 1 day
+//   - Minimum data granularity to query: 1 day
 //
-// 	- Historical data available: 90 days
+//   - Historical data available: 90 days
 //
 // - You can call this operation up to 100 times per second per account.
 //
@@ -40462,24 +39799,13 @@ func (client *Client) DescribeDomainMax95BpsDataWithOptions(request *DescribeDom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainMax95BpsDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainMax95BpsDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainMax95BpsDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40490,19 +39816,19 @@ func (client *Client) DescribeDomainMax95BpsDataWithOptions(request *DescribeDom
 //
 // *You can use one of the following methods to query data:**
 //
-// 	- If you specify the StartTime and EndTime parameters and the time range that is specified by these parameters is less than or equal to 24 hours, the 95th percentile bandwidth data on the day of the start time is returned. If the time range that is specified by these parameters is more than 24 hours, the 95th percentile bandwidth data in the month of the start time is returned.
+//   - If you specify the StartTime and EndTime parameters and the time range that is specified by these parameters is less than or equal to 24 hours, the 95th percentile bandwidth data on the day of the start time is returned. If the time range that is specified by these parameters is more than 24 hours, the 95th percentile bandwidth data in the month of the start time is returned.
 //
-// 	- If you specify the TimePoint and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned.
+//   - If you specify the TimePoint and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned.
 //
-// 	- If you specify the StartTime, EndTime, and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned.
+//   - If you specify the StartTime, EndTime, and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned.
 //
 // If you do not use one of the methods, the 95th percentile bandwidth data of the previous 24 hours is returned by default.
 //
-// 	- Maximum time range to query: 90 days
+//   - Maximum time range to query: 90 days
 //
-// 	- Minimum data granularity to query: 1 day
+//   - Minimum data granularity to query: 1 day
 //
-// 	- Historical data available: 90 days
+//   - Historical data available: 90 days
 //
 // - You can call this operation up to 100 times per second per account.
 //
@@ -40528,15 +39854,15 @@ func (client *Client) DescribeDomainMax95BpsData(request *DescribeDomainMax95Bps
 //
 // Description:
 //
-//   If you do not set StartTime or EndTime, data collected within the last 10 minutes is queried.
+//	  If you do not set StartTime or EndTime, data collected within the last 10 minutes is queried.
 //
-// 	- The maximum interval between StartTime and EndTime is 1 hour.
+//		- The maximum interval between StartTime and EndTime is 1 hour.
 //
-// 	- You can query data within the last 90 days.
+//		- You can query data within the last 90 days.
 //
-// 	- You can query the traffic data and the number of requests for accelerated domain names that are deleted.
+//		- You can query the traffic data and the number of requests for accelerated domain names that are deleted.
 //
-// 	- You can call this operation up to 50 times per second per account.
+//		- You can call this operation up to 50 times per second per account.
 //
 // @param request - DescribeDomainMultiUsageDataRequest
 //
@@ -40575,24 +39901,13 @@ func (client *Client) DescribeDomainMultiUsageDataWithOptions(request *DescribeD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainMultiUsageDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainMultiUsageDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainMultiUsageDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40601,15 +39916,15 @@ func (client *Client) DescribeDomainMultiUsageDataWithOptions(request *DescribeD
 //
 // Description:
 //
-//   If you do not set StartTime or EndTime, data collected within the last 10 minutes is queried.
+//	  If you do not set StartTime or EndTime, data collected within the last 10 minutes is queried.
 //
-// 	- The maximum interval between StartTime and EndTime is 1 hour.
+//		- The maximum interval between StartTime and EndTime is 1 hour.
 //
-// 	- You can query data within the last 90 days.
+//		- You can query data within the last 90 days.
 //
-// 	- You can query the traffic data and the number of requests for accelerated domain names that are deleted.
+//		- You can query the traffic data and the number of requests for accelerated domain names that are deleted.
 //
-// 	- You can call this operation up to 50 times per second per account.
+//		- You can call this operation up to 50 times per second per account.
 //
 // @param request - DescribeDomainMultiUsageDataRequest
 //
@@ -40631,19 +39946,19 @@ func (client *Client) DescribeDomainMultiUsageData(request *DescribeDomainMultiU
 //
 // Description:
 //
-//   This operation is available only to users that are on the whitelist. If the daily peak bandwidth value of your workloads reaches 10 Gbit/s, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply to be included in the whitelist.
+//	  This operation is available only to users that are on the whitelist. If the daily peak bandwidth value of your workloads reaches 10 Gbit/s, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply to be included in the whitelist.
 //
-// 	- You can call this API operation up to 6,000 times per second per account.
+//		- You can call this API operation up to 6,000 times per second per account.
 //
-// 	- Data collection by directory is available only to specified domain names within your Alibaba Cloud account. It cannot be enabled for all domain names within your Alibaba Cloud account.
+//		- Data collection by directory is available only to specified domain names within your Alibaba Cloud account. It cannot be enabled for all domain names within your Alibaba Cloud account.
 //
-// 	- The average size of the files that belong to the domain name must be larger than 1 MB.
+//		- The average size of the files that belong to the domain name must be larger than 1 MB.
 //
-// 	- The number of directories specified for a single domain name cannot exceed 100. If the number of directories exceeds 100, the data accuracy reduces.
+//		- The number of directories specified for a single domain name cannot exceed 100. If the number of directories exceeds 100, the data accuracy reduces.
 //
-// 	- If you do not set StartTime or EndTime, data collected within the last 24 hours is queried. If you set both StartTime and EndTime, data within the specified time range is queried.
+//		- If you do not set StartTime or EndTime, data collected within the last 24 hours is queried. If you set both StartTime and EndTime, data within the specified time range is queried.
 //
-// 	- You can query data collected within the last 30 days.
+//		- You can query data collected within the last 30 days.
 //
 // @param request - DescribeDomainPathDataRequest
 //
@@ -40670,24 +39985,13 @@ func (client *Client) DescribeDomainPathDataWithOptions(request *DescribeDomainP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainPathDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainPathDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainPathDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40696,19 +40000,19 @@ func (client *Client) DescribeDomainPathDataWithOptions(request *DescribeDomainP
 //
 // Description:
 //
-//   This operation is available only to users that are on the whitelist. If the daily peak bandwidth value of your workloads reaches 10 Gbit/s, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply to be included in the whitelist.
+//	  This operation is available only to users that are on the whitelist. If the daily peak bandwidth value of your workloads reaches 10 Gbit/s, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply to be included in the whitelist.
 //
-// 	- You can call this API operation up to 6,000 times per second per account.
+//		- You can call this API operation up to 6,000 times per second per account.
 //
-// 	- Data collection by directory is available only to specified domain names within your Alibaba Cloud account. It cannot be enabled for all domain names within your Alibaba Cloud account.
+//		- Data collection by directory is available only to specified domain names within your Alibaba Cloud account. It cannot be enabled for all domain names within your Alibaba Cloud account.
 //
-// 	- The average size of the files that belong to the domain name must be larger than 1 MB.
+//		- The average size of the files that belong to the domain name must be larger than 1 MB.
 //
-// 	- The number of directories specified for a single domain name cannot exceed 100. If the number of directories exceeds 100, the data accuracy reduces.
+//		- The number of directories specified for a single domain name cannot exceed 100. If the number of directories exceeds 100, the data accuracy reduces.
 //
-// 	- If you do not set StartTime or EndTime, data collected within the last 24 hours is queried. If you set both StartTime and EndTime, data within the specified time range is queried.
+//		- If you do not set StartTime or EndTime, data collected within the last 24 hours is queried. If you set both StartTime and EndTime, data within the specified time range is queried.
 //
-// 	- You can query data collected within the last 30 days.
+//		- You can query data collected within the last 30 days.
 //
 // @param request - DescribeDomainPathDataRequest
 //
@@ -40773,24 +40077,13 @@ func (client *Client) DescribeDomainPvDataWithOptions(request *DescribeDomainPvD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainPvDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainPvDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainPvDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40827,7 +40120,7 @@ func (client *Client) DescribeDomainPvData(request *DescribeDomainPvDataRequest)
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -40892,24 +40185,13 @@ func (client *Client) DescribeDomainQpsDataWithOptions(request *DescribeDomainQp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainQpsDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainQpsDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainQpsDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40920,7 +40202,7 @@ func (client *Client) DescribeDomainQpsDataWithOptions(request *DescribeDomainQp
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -40958,7 +40240,7 @@ func (client *Client) DescribeDomainQpsData(request *DescribeDomainQpsDataReques
 //
 // You can call this operation up to 20 times per second per user.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -41027,24 +40309,13 @@ func (client *Client) DescribeDomainQpsDataByLayerWithOptions(request *DescribeD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainQpsDataByLayerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainQpsDataByLayerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainQpsDataByLayerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41055,7 +40326,7 @@ func (client *Client) DescribeDomainQpsDataByLayerWithOptions(request *DescribeD
 //
 // You can call this operation up to 20 times per second per user.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -41093,7 +40364,7 @@ func (client *Client) DescribeDomainQpsDataByLayer(request *DescribeDomainQpsDat
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity*	- The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
 //
@@ -41132,24 +40403,13 @@ func (client *Client) DescribeDomainRealTimeBpsDataWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainRealTimeBpsDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainRealTimeBpsDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainRealTimeBpsDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41160,7 +40420,7 @@ func (client *Client) DescribeDomainRealTimeBpsDataWithOptions(request *Describe
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity*	- The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
 //
@@ -41196,9 +40456,9 @@ func (client *Client) DescribeDomainRealTimeBpsData(request *DescribeDomainRealT
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
 //
-// 	- The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
+//   - The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
 //
 // **Time granularity**
 //
@@ -41239,24 +40499,13 @@ func (client *Client) DescribeDomainRealTimeByteHitRateDataWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainRealTimeByteHitRateDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainRealTimeByteHitRateDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainRealTimeByteHitRateDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41267,9 +40516,9 @@ func (client *Client) DescribeDomainRealTimeByteHitRateDataWithOptions(request *
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
 //
-// 	- The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
+//   - The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
 //
 // **Time granularity**
 //
@@ -41305,9 +40554,9 @@ func (client *Client) DescribeDomainRealTimeByteHitRateData(request *DescribeDom
 //
 // Description:
 //
-//   You can query data in the last seven days. Data is collected every minute.
+//	  You can query data in the last seven days. Data is collected every minute.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - DescribeDomainRealTimeDetailDataRequest
 //
@@ -41334,24 +40583,13 @@ func (client *Client) DescribeDomainRealTimeDetailDataWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainRealTimeDetailDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainRealTimeDetailDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainRealTimeDetailDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41360,9 +40598,9 @@ func (client *Client) DescribeDomainRealTimeDetailDataWithOptions(request *Descr
 //
 // Description:
 //
-//   You can query data in the last seven days. Data is collected every minute.
+//	  You can query data in the last seven days. Data is collected every minute.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - DescribeDomainRealTimeDetailDataRequest
 //
@@ -41386,7 +40624,7 @@ func (client *Client) DescribeDomainRealTimeDetailData(request *DescribeDomainRe
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -41447,24 +40685,13 @@ func (client *Client) DescribeDomainRealTimeHttpCodeDataWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainRealTimeHttpCodeDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainRealTimeHttpCodeDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainRealTimeHttpCodeDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41475,7 +40702,7 @@ func (client *Client) DescribeDomainRealTimeHttpCodeDataWithOptions(request *Des
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -41513,7 +40740,7 @@ func (client *Client) DescribeDomainRealTimeHttpCodeData(request *DescribeDomain
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -41554,24 +40781,13 @@ func (client *Client) DescribeDomainRealTimeQpsDataWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainRealTimeQpsDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainRealTimeQpsDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainRealTimeQpsDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41582,7 +40798,7 @@ func (client *Client) DescribeDomainRealTimeQpsDataWithOptions(request *Describe
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -41620,11 +40836,11 @@ func (client *Client) DescribeDomainRealTimeQpsData(request *DescribeDomainRealT
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
 //
-// 	- By default, requests in the Go programming language use the POST request method. You must manually change the request method to GET by declaring: request.Method="GET".
+//   - By default, requests in the Go programming language use the POST request method. You must manually change the request method to GET by declaring: request.Method="GET".
 //
-// 	- The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the request hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
+//   - The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the request hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
 //
 // **Time granularity**
 //
@@ -41665,24 +40881,13 @@ func (client *Client) DescribeDomainRealTimeReqHitRateDataWithOptions(request *D
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainRealTimeReqHitRateDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainRealTimeReqHitRateDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainRealTimeReqHitRateDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41693,11 +40898,11 @@ func (client *Client) DescribeDomainRealTimeReqHitRateDataWithOptions(request *D
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
 //
-// 	- By default, requests in the Go programming language use the POST request method. You must manually change the request method to GET by declaring: request.Method="GET".
+//   - By default, requests in the Go programming language use the POST request method. You must manually change the request method to GET by declaring: request.Method="GET".
 //
-// 	- The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the request hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
+//   - The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the request hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
 //
 // **Time granularity**
 //
@@ -41735,7 +40940,7 @@ func (client *Client) DescribeDomainRealTimeReqHitRateData(request *DescribeDoma
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -41788,24 +40993,13 @@ func (client *Client) DescribeDomainRealTimeSrcBpsDataWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainRealTimeSrcBpsDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainRealTimeSrcBpsDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainRealTimeSrcBpsDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41816,7 +41010,7 @@ func (client *Client) DescribeDomainRealTimeSrcBpsDataWithOptions(request *Descr
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -41854,7 +41048,7 @@ func (client *Client) DescribeDomainRealTimeSrcBpsData(request *DescribeDomainRe
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -41889,14 +41083,6 @@ func (client *Client) DescribeDomainRealTimeSrcHttpCodeDataWithOptions(request *
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
-		query["IspNameEn"] = request.IspNameEn
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
-		query["LocationNameEn"] = request.LocationNameEn
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -41915,24 +41101,13 @@ func (client *Client) DescribeDomainRealTimeSrcHttpCodeDataWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainRealTimeSrcHttpCodeDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainRealTimeSrcHttpCodeDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainRealTimeSrcHttpCodeDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41943,7 +41118,7 @@ func (client *Client) DescribeDomainRealTimeSrcHttpCodeDataWithOptions(request *
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -41981,7 +41156,7 @@ func (client *Client) DescribeDomainRealTimeSrcHttpCodeData(request *DescribeDom
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last hour by default. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
+//   - If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last hour by default. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -42034,24 +41209,13 @@ func (client *Client) DescribeDomainRealTimeSrcTrafficDataWithOptions(request *D
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainRealTimeSrcTrafficDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainRealTimeSrcTrafficDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainRealTimeSrcTrafficDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42062,7 +41226,7 @@ func (client *Client) DescribeDomainRealTimeSrcTrafficDataWithOptions(request *D
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last hour by default. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
+//   - If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last hour by default. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -42100,7 +41264,7 @@ func (client *Client) DescribeDomainRealTimeSrcTrafficData(request *DescribeDoma
 //
 // You can call this operation up to 50 times per second per account.
 //
-// 	- If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
+//   - If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -42161,24 +41325,13 @@ func (client *Client) DescribeDomainRealTimeTrafficDataWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainRealTimeTrafficDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainRealTimeTrafficDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainRealTimeTrafficDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42189,7 +41342,7 @@ func (client *Client) DescribeDomainRealTimeTrafficDataWithOptions(request *Desc
 //
 // You can call this operation up to 50 times per second per account.
 //
-// 	- If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
+//   - If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -42252,24 +41405,13 @@ func (client *Client) DescribeDomainRealtimeLogDeliveryWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainRealtimeLogDeliveryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainRealtimeLogDeliveryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainRealtimeLogDeliveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42345,24 +41487,13 @@ func (client *Client) DescribeDomainRegionDataWithOptions(request *DescribeDomai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainRegionDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainRegionDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainRegionDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42401,7 +41532,7 @@ func (client *Client) DescribeDomainRegionData(request *DescribeDomainRegionData
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -42458,24 +41589,13 @@ func (client *Client) DescribeDomainReqHitRateDataWithOptions(request *DescribeD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainReqHitRateDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainReqHitRateDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainReqHitRateDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42486,7 +41606,7 @@ func (client *Client) DescribeDomainReqHitRateDataWithOptions(request *DescribeD
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -42524,7 +41644,7 @@ func (client *Client) DescribeDomainReqHitRateData(request *DescribeDomainReqHit
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
+//   - If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -42581,24 +41701,13 @@ func (client *Client) DescribeDomainSrcBpsDataWithOptions(request *DescribeDomai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainSrcBpsDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainSrcBpsDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainSrcBpsDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42609,7 +41718,7 @@ func (client *Client) DescribeDomainSrcBpsDataWithOptions(request *DescribeDomai
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
+//   - If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -42647,7 +41756,7 @@ func (client *Client) DescribeDomainSrcBpsData(request *DescribeDomainSrcBpsData
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -42704,24 +41813,13 @@ func (client *Client) DescribeDomainSrcHttpCodeDataWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainSrcHttpCodeDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainSrcHttpCodeDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainSrcHttpCodeDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42732,7 +41830,7 @@ func (client *Client) DescribeDomainSrcHttpCodeDataWithOptions(request *Describe
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -42770,7 +41868,7 @@ func (client *Client) DescribeDomainSrcHttpCodeData(request *DescribeDomainSrcHt
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // ### Time granularity
 //
@@ -42827,24 +41925,13 @@ func (client *Client) DescribeDomainSrcQpsDataWithOptions(request *DescribeDomai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainSrcQpsDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainSrcQpsDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainSrcQpsDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42855,7 +41942,7 @@ func (client *Client) DescribeDomainSrcQpsDataWithOptions(request *DescribeDomai
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // ### Time granularity
 //
@@ -42938,24 +42025,13 @@ func (client *Client) DescribeDomainSrcTopUrlVisitWithOptions(request *DescribeD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainSrcTopUrlVisitResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainSrcTopUrlVisitResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainSrcTopUrlVisitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42992,7 +42068,7 @@ func (client *Client) DescribeDomainSrcTopUrlVisit(request *DescribeDomainSrcTop
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -43049,24 +42125,13 @@ func (client *Client) DescribeDomainSrcTrafficDataWithOptions(request *DescribeD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainSrcTrafficDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainSrcTrafficDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainSrcTrafficDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43077,7 +42142,7 @@ func (client *Client) DescribeDomainSrcTrafficDataWithOptions(request *DescribeD
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -43170,24 +42235,13 @@ func (client *Client) DescribeDomainTopClientIpVisitWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainTopClientIpVisitResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainTopClientIpVisitResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainTopClientIpVisitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43228,11 +42282,11 @@ func (client *Client) DescribeDomainTopClientIpVisit(request *DescribeDomainTopC
 //
 // >
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
-// 	- Data is collected at an interval of five minutes.
+//   - Data is collected at an interval of five minutes.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//   - You can call this operation up to 10 times per second per account.
 //
 // @param request - DescribeDomainTopReferVisitRequest
 //
@@ -43275,24 +42329,13 @@ func (client *Client) DescribeDomainTopReferVisitWithOptions(request *DescribeDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainTopReferVisitResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainTopReferVisitResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainTopReferVisitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43305,11 +42348,11 @@ func (client *Client) DescribeDomainTopReferVisitWithOptions(request *DescribeDo
 //
 // >
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
-// 	- Data is collected at an interval of five minutes.
+//   - Data is collected at an interval of five minutes.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//   - You can call this operation up to 10 times per second per account.
 //
 // @param request - DescribeDomainTopReferVisitRequest
 //
@@ -43382,24 +42425,13 @@ func (client *Client) DescribeDomainTopUrlVisitWithOptions(request *DescribeDoma
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainTopUrlVisitResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainTopUrlVisitResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainTopUrlVisitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43440,7 +42472,7 @@ func (client *Client) DescribeDomainTopUrlVisit(request *DescribeDomainTopUrlVis
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -43505,24 +42537,13 @@ func (client *Client) DescribeDomainTrafficDataWithOptions(request *DescribeDoma
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainTrafficDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainTrafficDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainTrafficDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43533,7 +42554,7 @@ func (client *Client) DescribeDomainTrafficDataWithOptions(request *DescribeDoma
 //
 // You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -43571,7 +42592,7 @@ func (client *Client) DescribeDomainTrafficData(request *DescribeDomainTrafficDa
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
+//   - The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
 //
 // |Time granularity|Maximum time range per query|Historical data available|Data delay|
 //
@@ -43640,24 +42661,13 @@ func (client *Client) DescribeDomainUsageDataWithOptions(request *DescribeDomain
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainUsageDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainUsageDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainUsageDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43668,7 +42678,7 @@ func (client *Client) DescribeDomainUsageDataWithOptions(request *DescribeDomain
 //
 // You can call this operation up to 10 times per second per account.
 //
-// 	- The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
+//   - The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
 //
 // |Time granularity|Maximum time range per query|Historical data available|Data delay|
 //
@@ -43704,11 +42714,11 @@ func (client *Client) DescribeDomainUsageData(request *DescribeDomainUsageDataRe
 //
 // >
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
-// 	- You can specify only one accelerated domain name or all accelerated domain names in your Alibaba Cloud account.
+//   - You can specify only one accelerated domain name or all accelerated domain names in your Alibaba Cloud account.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//   - You can call this operation up to 100 times per second per account.
 //
 // @param request - DescribeDomainUvDataRequest
 //
@@ -43747,24 +42757,13 @@ func (client *Client) DescribeDomainUvDataWithOptions(request *DescribeDomainUvD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainUvDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainUvDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainUvDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43777,11 +42776,11 @@ func (client *Client) DescribeDomainUvDataWithOptions(request *DescribeDomainUvD
 //
 // >
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
-// 	- You can specify only one accelerated domain name or all accelerated domain names in your Alibaba Cloud account.
+//   - You can specify only one accelerated domain name or all accelerated domain names in your Alibaba Cloud account.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//   - You can call this operation up to 100 times per second per account.
 //
 // @param request - DescribeDomainUvDataRequest
 //
@@ -43838,24 +42837,13 @@ func (client *Client) DescribeDomainVerifyDataWithOptions(request *DescribeDomai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainVerifyDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainVerifyDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainVerifyDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43925,24 +42913,13 @@ func (client *Client) DescribeDomainsBySourceWithOptions(request *DescribeDomain
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainsBySourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainsBySourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainsBySourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43973,11 +42950,11 @@ func (client *Client) DescribeDomainsBySource(request *DescribeDomainsBySourceRe
 //
 // Description:
 //
-//   You can call this operation up to 10 times per second per account.
+//	  You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not set StartTime or EndTime, data within the last 24 hours is queried. If you set both StartTime and EndTime, data within the specified time range is queried.
+//		- If you do not set StartTime or EndTime, data within the last 24 hours is queried. If you set both StartTime and EndTime, data within the specified time range is queried.
 //
-// 	- You can query the monitoring data of a specific accelerated domain name or all accelerated domain names that belong to your Alibaba Cloud account.
+//		- You can query the monitoring data of a specific accelerated domain name or all accelerated domain names that belong to your Alibaba Cloud account.
 //
 // @param request - DescribeDomainsUsageByDayRequest
 //
@@ -44016,24 +42993,13 @@ func (client *Client) DescribeDomainsUsageByDayWithOptions(request *DescribeDoma
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDomainsUsageByDayResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDomainsUsageByDayResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDomainsUsageByDayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44042,11 +43008,11 @@ func (client *Client) DescribeDomainsUsageByDayWithOptions(request *DescribeDoma
 //
 // Description:
 //
-//   You can call this operation up to 10 times per second per account.
+//	  You can call this operation up to 10 times per second per account.
 //
-// 	- If you do not set StartTime or EndTime, data within the last 24 hours is queried. If you set both StartTime and EndTime, data within the specified time range is queried.
+//		- If you do not set StartTime or EndTime, data within the last 24 hours is queried. If you set both StartTime and EndTime, data within the specified time range is queried.
 //
-// 	- You can query the monitoring data of a specific accelerated domain name or all accelerated domain names that belong to your Alibaba Cloud account.
+//		- You can query the monitoring data of a specific accelerated domain name or all accelerated domain names that belong to your Alibaba Cloud account.
 //
 // @param request - DescribeDomainsUsageByDayRequest
 //
@@ -44068,7 +43034,7 @@ func (client *Client) DescribeDomainsUsageByDay(request *DescribeDomainsUsageByD
 //
 // Description:
 //
-//   You can call this operation up to 30 times per second per account.
+//	You can call this operation up to 30 times per second per account.
 //
 // @param request - DescribeEsExceptionDataRequest
 //
@@ -44107,24 +43073,13 @@ func (client *Client) DescribeEsExceptionDataWithOptions(request *DescribeEsExce
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeEsExceptionDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeEsExceptionDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeEsExceptionDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44133,7 +43088,7 @@ func (client *Client) DescribeEsExceptionDataWithOptions(request *DescribeEsExce
 //
 // Description:
 //
-//   You can call this operation up to 30 times per second per account.
+//	You can call this operation up to 30 times per second per account.
 //
 // @param request - DescribeEsExceptionDataRequest
 //
@@ -44155,7 +43110,7 @@ func (client *Client) DescribeEsExceptionData(request *DescribeEsExceptionDataRe
 //
 // Description:
 //
-//   You can call this operation up to 30 times per second per account.
+//	You can call this operation up to 30 times per second per account.
 //
 // @param request - DescribeEsExecuteDataRequest
 //
@@ -44194,24 +43149,13 @@ func (client *Client) DescribeEsExecuteDataWithOptions(request *DescribeEsExecut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeEsExecuteDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeEsExecuteDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeEsExecuteDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44220,7 +43164,7 @@ func (client *Client) DescribeEsExecuteDataWithOptions(request *DescribeEsExecut
 //
 // Description:
 //
-//   You can call this operation up to 30 times per second per account.
+//	You can call this operation up to 30 times per second per account.
 //
 // @param request - DescribeEsExecuteDataRequest
 //
@@ -44265,24 +43209,13 @@ func (client *Client) DescribeFCTriggerWithOptions(request *DescribeFCTriggerReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeFCTriggerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeFCTriggerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeFCTriggerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44336,24 +43269,13 @@ func (client *Client) DescribeIpInfoWithOptions(request *DescribeIpInfoRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeIpInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeIpInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeIpInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44407,24 +43329,13 @@ func (client *Client) DescribeIpStatusWithOptions(request *DescribeIpStatusReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeIpStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeIpStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeIpStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44455,9 +43366,9 @@ func (client *Client) DescribeIpStatus(request *DescribeIpStatusRequest) (_resul
 //
 // Description:
 //
-//   This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
+//	  This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
 //
-// 	- You can call this operation up to 40 times per second per account.
+//		- You can call this operation up to 40 times per second per account.
 //
 // @param request - DescribeL2VipsByDomainRequest
 //
@@ -44496,24 +43407,13 @@ func (client *Client) DescribeL2VipsByDomainWithOptions(request *DescribeL2VipsB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeL2VipsByDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeL2VipsByDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeL2VipsByDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44522,9 +43422,9 @@ func (client *Client) DescribeL2VipsByDomainWithOptions(request *DescribeL2VipsB
 //
 // Description:
 //
-//   This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
+//	  This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
 //
-// 	- You can call this operation up to 40 times per second per account.
+//		- You can call this operation up to 40 times per second per account.
 //
 // @param request - DescribeL2VipsByDomainRequest
 //
@@ -44546,9 +43446,9 @@ func (client *Client) DescribeL2VipsByDomain(request *DescribeL2VipsByDomainRequ
 //
 // Description:
 //
-//   You can query data within the last 3 days.
+//	  You can query data within the last 3 days.
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
 // @param request - DescribePreloadDetailByIdRequest
 //
@@ -44579,24 +43479,13 @@ func (client *Client) DescribePreloadDetailByIdWithOptions(request *DescribePrel
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribePreloadDetailByIdResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribePreloadDetailByIdResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribePreloadDetailByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44605,9 +43494,9 @@ func (client *Client) DescribePreloadDetailByIdWithOptions(request *DescribePrel
 //
 // Description:
 //
-//   You can query data within the last 3 days.
+//	  You can query data within the last 3 days.
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
 // @param request - DescribePreloadDetailByIdRequest
 //
@@ -44629,9 +43518,9 @@ func (client *Client) DescribePreloadDetailById(request *DescribePreloadDetailBy
 //
 // Description:
 //
-//   The data is collected every 5 minutes.
+//	  The data is collected every 5 minutes.
 //
-// 	- You can call this operation up to 20 times per second per account.
+//		- You can call this operation up to 20 times per second per account.
 //
 // @param request - DescribeRangeDataByLocateAndIspServiceRequest
 //
@@ -44678,24 +43567,13 @@ func (client *Client) DescribeRangeDataByLocateAndIspServiceWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRangeDataByLocateAndIspServiceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRangeDataByLocateAndIspServiceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRangeDataByLocateAndIspServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44704,9 +43582,9 @@ func (client *Client) DescribeRangeDataByLocateAndIspServiceWithOptions(request 
 //
 // Description:
 //
-//   The data is collected every 5 minutes.
+//	  The data is collected every 5 minutes.
 //
-// 	- You can call this operation up to 20 times per second per account.
+//		- You can call this operation up to 20 times per second per account.
 //
 // @param request - DescribeRangeDataByLocateAndIspServiceRequest
 //
@@ -44775,24 +43653,13 @@ func (client *Client) DescribeRealtimeDeliveryAccWithOptions(request *DescribeRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRealtimeDeliveryAccResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRealtimeDeliveryAccResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRealtimeDeliveryAccResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44819,7 +43686,7 @@ func (client *Client) DescribeRealtimeDeliveryAcc(request *DescribeRealtimeDeliv
 
 // Summary:
 //
-// DescribeRefreshQuota
+// # DescribeRefreshQuota
 //
 // Description:
 //
@@ -44858,29 +43725,18 @@ func (client *Client) DescribeRefreshQuotaWithOptions(request *DescribeRefreshQu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRefreshQuotaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRefreshQuotaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRefreshQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// DescribeRefreshQuota
+// # DescribeRefreshQuota
 //
 // Description:
 //
@@ -44906,9 +43762,9 @@ func (client *Client) DescribeRefreshQuota(request *DescribeRefreshQuotaRequest)
 //
 // Description:
 //
-//   You can query data in the last three days.
+//	  You can query data in the last three days.
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
 // @param request - DescribeRefreshTaskByIdRequest
 //
@@ -44939,24 +43795,13 @@ func (client *Client) DescribeRefreshTaskByIdWithOptions(request *DescribeRefres
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRefreshTaskByIdResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRefreshTaskByIdResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRefreshTaskByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44965,9 +43810,9 @@ func (client *Client) DescribeRefreshTaskByIdWithOptions(request *DescribeRefres
 //
 // Description:
 //
-//   You can query data in the last three days.
+//	  You can query data in the last three days.
 //
-// 	- You can call this operation up to 30 times per second per account.
+//		- You can call this operation up to 30 times per second per account.
 //
 // @param request - DescribeRefreshTaskByIdRequest
 //
@@ -44989,15 +43834,15 @@ func (client *Client) DescribeRefreshTaskById(request *DescribeRefreshTaskByIdRe
 //
 // Description:
 //
-//   You can query the status of tasks by task ID or URL.
+//	  You can query the status of tasks by task ID or URL.
 //
-// 	- You can set both the **TaskId*	- and **ObjectPath*	- parameters. If you do not set the **TaskId*	- or **ObjectPath*	- parameter, data entries on the first page (20 entries) collected in the last 3 days are returned.
+//		- You can set both the **TaskId*	- and **ObjectPath*	- parameters. If you do not set the **TaskId*	- or **ObjectPath*	- parameter, data entries on the first page (20 entries) collected in the last 3 days are returned.
 //
-// 	- You can query data collected in the last 3 days.
+//		- You can query data collected in the last 3 days.
 //
-// 	- If auto CDN cache update is enabled in the Object Storage Service (OSS) console, you cannot call the DescribeRefreshTasks operation to query automatic refresh tasks in OSS.
+//		- If auto CDN cache update is enabled in the Object Storage Service (OSS) console, you cannot call the DescribeRefreshTasks operation to query automatic refresh tasks in OSS.
 //
-// 	- You can call this operation up to 10 times per second per account. If you want to query tasks at a higher frequency, call the [DescribeRefreshTaskById](https://help.aliyun.com/document_detail/187709.html) operation. This operation allows you to query tasks by task ID.
+//		- You can call this operation up to 10 times per second per account. If you want to query tasks at a higher frequency, call the [DescribeRefreshTaskById](https://help.aliyun.com/document_detail/187709.html) operation. This operation allows you to query tasks by task ID.
 //
 // @param request - DescribeRefreshTasksRequest
 //
@@ -45072,24 +43917,13 @@ func (client *Client) DescribeRefreshTasksWithOptions(request *DescribeRefreshTa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRefreshTasksResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRefreshTasksResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRefreshTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45098,15 +43932,15 @@ func (client *Client) DescribeRefreshTasksWithOptions(request *DescribeRefreshTa
 //
 // Description:
 //
-//   You can query the status of tasks by task ID or URL.
+//	  You can query the status of tasks by task ID or URL.
 //
-// 	- You can set both the **TaskId*	- and **ObjectPath*	- parameters. If you do not set the **TaskId*	- or **ObjectPath*	- parameter, data entries on the first page (20 entries) collected in the last 3 days are returned.
+//		- You can set both the **TaskId*	- and **ObjectPath*	- parameters. If you do not set the **TaskId*	- or **ObjectPath*	- parameter, data entries on the first page (20 entries) collected in the last 3 days are returned.
 //
-// 	- You can query data collected in the last 3 days.
+//		- You can query data collected in the last 3 days.
 //
-// 	- If auto CDN cache update is enabled in the Object Storage Service (OSS) console, you cannot call the DescribeRefreshTasks operation to query automatic refresh tasks in OSS.
+//		- If auto CDN cache update is enabled in the Object Storage Service (OSS) console, you cannot call the DescribeRefreshTasks operation to query automatic refresh tasks in OSS.
 //
-// 	- You can call this operation up to 10 times per second per account. If you want to query tasks at a higher frequency, call the [DescribeRefreshTaskById](https://help.aliyun.com/document_detail/187709.html) operation. This operation allows you to query tasks by task ID.
+//		- You can call this operation up to 10 times per second per account. If you want to query tasks at a higher frequency, call the [DescribeRefreshTaskById](https://help.aliyun.com/document_detail/187709.html) operation. This operation allows you to query tasks by task ID.
 //
 // @param request - DescribeRefreshTasksRequest
 //
@@ -45148,24 +43982,13 @@ func (client *Client) DescribeStagingIpWithOptions(runtime *util.RuntimeOptions)
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeStagingIpResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeStagingIpResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeStagingIpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45233,24 +44056,13 @@ func (client *Client) DescribeTagResourcesWithOptions(request *DescribeTagResour
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeTagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeTagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45324,24 +44136,13 @@ func (client *Client) DescribeTopDomainsByFlowWithOptions(request *DescribeTopDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeTopDomainsByFlowResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeTopDomainsByFlowResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeTopDomainsByFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45407,24 +44208,13 @@ func (client *Client) DescribeUserCdnStatusWithOptions(request *DescribeUserCdnS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUserCdnStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUserCdnStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUserCdnStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45471,24 +44261,13 @@ func (client *Client) DescribeUserCertificateExpireCountWithOptions(runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUserCertificateExpireCountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUserCertificateExpireCountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUserCertificateExpireCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45552,24 +44331,13 @@ func (client *Client) DescribeUserConfigsWithOptions(request *DescribeUserConfig
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUserConfigsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUserConfigsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUserConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45596,9 +44364,9 @@ func (client *Client) DescribeUserConfigs(request *DescribeUserConfigsRequest) (
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
+//		- You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
 //
 // @param request - DescribeUserDomainsRequest
 //
@@ -45685,24 +44453,13 @@ func (client *Client) DescribeUserDomainsWithOptions(request *DescribeUserDomain
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUserDomainsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUserDomainsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUserDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45711,9 +44468,9 @@ func (client *Client) DescribeUserDomainsWithOptions(request *DescribeUserDomain
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
+//		- You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
 //
 // @param request - DescribeUserDomainsRequest
 //
@@ -45755,24 +44512,13 @@ func (client *Client) DescribeUserTagsWithOptions(runtime *util.RuntimeOptions) 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUserTagsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUserTagsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUserTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45836,24 +44582,13 @@ func (client *Client) DescribeUserUsageDataExportTaskWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUserUsageDataExportTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUserUsageDataExportTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUserUsageDataExportTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45884,9 +44619,9 @@ func (client *Client) DescribeUserUsageDataExportTask(request *DescribeUserUsage
 //
 // Description:
 //
-//   This operation has been available since July 20, 2018. You can query information about resource usage collected within the last three months.
+//	  This operation has been available since July 20, 2018. You can query information about resource usage collected within the last three months.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//		- You can call this operation up to 100 times per second per account.
 //
 // @param request - DescribeUserUsageDetailDataExportTaskRequest
 //
@@ -45921,24 +44656,13 @@ func (client *Client) DescribeUserUsageDetailDataExportTaskWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUserUsageDetailDataExportTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUserUsageDetailDataExportTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUserUsageDetailDataExportTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45947,9 +44671,9 @@ func (client *Client) DescribeUserUsageDetailDataExportTaskWithOptions(request *
 //
 // Description:
 //
-//   This operation has been available since July 20, 2018. You can query information about resource usage collected within the last three months.
+//	  This operation has been available since July 20, 2018. You can query information about resource usage collected within the last three months.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//		- You can call this operation up to 100 times per second per account.
 //
 // @param request - DescribeUserUsageDetailDataExportTaskRequest
 //
@@ -45998,24 +44722,13 @@ func (client *Client) DescribeUserVipsByDomainWithOptions(request *DescribeUserV
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUserVipsByDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUserVipsByDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUserVipsByDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46073,24 +44786,13 @@ func (client *Client) DescribeVerifyContentWithOptions(request *DescribeVerifyCo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeVerifyContentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeVerifyContentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeVerifyContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46144,24 +44846,13 @@ func (client *Client) DisableRealtimeLogDeliveryWithOptions(request *DisableReal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DisableRealtimeLogDeliveryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DisableRealtimeLogDeliveryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DisableRealtimeLogDeliveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46219,24 +44910,13 @@ func (client *Client) EnableRealtimeLogDeliveryWithOptions(request *EnableRealti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EnableRealtimeLogDeliveryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EnableRealtimeLogDeliveryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EnableRealtimeLogDeliveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46298,24 +44978,13 @@ func (client *Client) GetGrayDomainFunctionWithOptions(request *GetGrayDomainFun
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetGrayDomainFunctionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetGrayDomainFunctionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetGrayDomainFunctionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46369,24 +45038,13 @@ func (client *Client) ListDomainsByLogConfigIdWithOptions(request *ListDomainsBy
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDomainsByLogConfigIdResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDomainsByLogConfigIdResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDomainsByLogConfigIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46444,24 +45102,13 @@ func (client *Client) ListFCTriggerWithOptions(request *ListFCTriggerRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListFCTriggerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListFCTriggerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListFCTriggerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46508,24 +45155,13 @@ func (client *Client) ListRealtimeLogDeliveryWithOptions(runtime *util.RuntimeOp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListRealtimeLogDeliveryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListRealtimeLogDeliveryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListRealtimeLogDeliveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46577,24 +45213,13 @@ func (client *Client) ListRealtimeLogDeliveryDomainsWithOptions(request *ListRea
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListRealtimeLogDeliveryDomainsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListRealtimeLogDeliveryDomainsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListRealtimeLogDeliveryDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46645,24 +45270,13 @@ func (client *Client) ListRealtimeLogDeliveryInfosWithOptions(runtime *util.Runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListRealtimeLogDeliveryInfosResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListRealtimeLogDeliveryInfosResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListRealtimeLogDeliveryInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46738,24 +45352,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46802,24 +45405,13 @@ func (client *Client) ListUserCustomLogConfigWithOptions(runtime *util.RuntimeOp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListUserCustomLogConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListUserCustomLogConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListUserCustomLogConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46899,24 +45491,13 @@ func (client *Client) ModifyCdnDomainWithOptions(request *ModifyCdnDomainRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyCdnDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyCdnDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyCdnDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46949,9 +45530,9 @@ func (client *Client) ModifyCdnDomain(request *ModifyCdnDomainRequest) (_result 
 //
 // This operation is used in the following scenario:
 //
-// 	- You have multiple Alibaba Cloud accounts and want to transfer domain names from Account A to Account B.
+//   - You have multiple Alibaba Cloud accounts and want to transfer domain names from Account A to Account B.
 //
-// 	- You are prompted that a domain name has been added when you add the domain name to Alibaba Cloud CDN. You do not know which account does the domain name belong to, and you want to transfer the domain name to your current account.
+//   - You are prompted that a domain name has been added when you add the domain name to Alibaba Cloud CDN. You do not know which account does the domain name belong to, and you want to transfer the domain name to your current account.
 //
 // @param request - ModifyCdnDomainOwnerRequest
 //
@@ -46994,24 +45575,13 @@ func (client *Client) ModifyCdnDomainOwnerWithOptions(request *ModifyCdnDomainOw
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyCdnDomainOwnerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyCdnDomainOwnerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyCdnDomainOwnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47022,9 +45592,9 @@ func (client *Client) ModifyCdnDomainOwnerWithOptions(request *ModifyCdnDomainOw
 //
 // This operation is used in the following scenario:
 //
-// 	- You have multiple Alibaba Cloud accounts and want to transfer domain names from Account A to Account B.
+//   - You have multiple Alibaba Cloud accounts and want to transfer domain names from Account A to Account B.
 //
-// 	- You are prompted that a domain name has been added when you add the domain name to Alibaba Cloud CDN. You do not know which account does the domain name belong to, and you want to transfer the domain name to your current account.
+//   - You are prompted that a domain name has been added when you add the domain name to Alibaba Cloud CDN. You do not know which account does the domain name belong to, and you want to transfer the domain name to your current account.
 //
 // @param request - ModifyCdnDomainOwnerRequest
 //
@@ -47081,24 +45651,13 @@ func (client *Client) ModifyCdnDomainSchdmByPropertyWithOptions(request *ModifyC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyCdnDomainSchdmByPropertyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyCdnDomainSchdmByPropertyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyCdnDomainSchdmByPropertyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47164,24 +45723,13 @@ func (client *Client) ModifyCdnServiceWithOptions(request *ModifyCdnServiceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyCdnServiceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyCdnServiceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyCdnServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47204,7 +45752,7 @@ func (client *Client) ModifyCdnService(request *ModifyCdnServiceRequest) (_resul
 
 // Summary:
 //
-// A客户定制修改域名采样率接口
+// # A客户定制新增修改域名采样率接口
 //
 // @param request - ModifyCustomDomainSampleRateRequest
 //
@@ -47221,8 +45769,8 @@ func (client *Client) ModifyCustomDomainSampleRateWithOptions(request *ModifyCus
 		body["BaseConfigID"] = request.BaseConfigID
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
-		body["DomainName"] = request.DomainName
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		body["DomainNames"] = request.DomainNames
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SampleRate)) {
@@ -47247,29 +45795,18 @@ func (client *Client) ModifyCustomDomainSampleRateWithOptions(request *ModifyCus
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyCustomDomainSampleRateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyCustomDomainSampleRateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyCustomDomainSampleRateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// A客户定制修改域名采样率接口
+// # A客户定制新增修改域名采样率接口
 //
 // @param request - ModifyCustomDomainSampleRateRequest
 //
@@ -47318,24 +45855,13 @@ func (client *Client) ModifyRealtimeLogDeliveryWithOptions(request *ModifyRealti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyRealtimeLogDeliveryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyRealtimeLogDeliveryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyRealtimeLogDeliveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47366,9 +45892,9 @@ func (client *Client) ModifyRealtimeLogDelivery(request *ModifyRealtimeLogDelive
 //
 // Description:
 //
-//   Alibaba Cloud CDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must complete real-name verification to activate Alibaba Cloud CDN.
+//	  Alibaba Cloud CDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must complete real-name verification to activate Alibaba Cloud CDN.
 //
-// 	- You can call this operation up to five times per second per user.
+//		- You can call this operation up to five times per second per user.
 //
 // @param request - OpenCdnServiceRequest
 //
@@ -47407,24 +45933,13 @@ func (client *Client) OpenCdnServiceWithOptions(request *OpenCdnServiceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &OpenCdnServiceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &OpenCdnServiceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &OpenCdnServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47433,9 +45948,9 @@ func (client *Client) OpenCdnServiceWithOptions(request *OpenCdnServiceRequest, 
 //
 // Description:
 //
-//   Alibaba Cloud CDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must complete real-name verification to activate Alibaba Cloud CDN.
+//	  Alibaba Cloud CDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must complete real-name verification to activate Alibaba Cloud CDN.
 //
-// 	- You can call this operation up to five times per second per user.
+//		- You can call this operation up to five times per second per user.
 //
 // @param request - OpenCdnServiceRequest
 //
@@ -47500,24 +46015,13 @@ func (client *Client) PublishGrayDomainConfigWithOptions(request *PublishGrayDom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PublishGrayDomainConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PublishGrayDomainConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PublishGrayDomainConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47575,24 +46079,13 @@ func (client *Client) PublishStagingConfigToProductionWithOptions(request *Publi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PublishStagingConfigToProductionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PublishStagingConfigToProductionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PublishStagingConfigToProductionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47623,27 +46116,27 @@ func (client *Client) PublishStagingConfigToProduction(request *PublishStagingCo
 //
 // Description:
 //
-//   Alibaba Cloud CDN supports POST requests in which parameters are sent as a form.
+//	  Alibaba Cloud CDN supports POST requests in which parameters are sent as a form.
 //
-// 	- You can call the [RefreshObjectCaches](https://help.aliyun.com/document_detail/91164.html) operation to refresh content and call the [PushObjectCache](https://help.aliyun.com/document_detail/91161.html) operation to prefetch content.
+//		- You can call the [RefreshObjectCaches](https://help.aliyun.com/document_detail/91164.html) operation to refresh content and call the [PushObjectCache](https://help.aliyun.com/document_detail/91161.html) operation to prefetch content.
 //
-// 	- By default, each Alibaba Cloud account can submit up to 1,000 URLs per day. If the daily peak bandwidth value of your workloads exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to increase your daily quota. Alibaba Cloud reviews your application and then increases the quota accordingly.
+//		- By default, each Alibaba Cloud account can submit up to 1,000 URLs per day. If the daily peak bandwidth value of your workloads exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to increase your daily quota. Alibaba Cloud reviews your application and then increases the quota accordingly.
 //
-// 	- You can specify at most 100 URLs in each prefetch request.
+//		- You can specify at most 100 URLs in each prefetch request.
 //
-// 	- For each Alibaba Cloud account, the prefetch queue can contain up to 50,000 URLs. Content is prefetched based on the time when the URLs are submitted. The URL that is submitted the earliest has the highest priority. If the number of URLs in the queue reaches 50,000, you cannot submit more URLs until the number drops below 50,000.
+//		- For each Alibaba Cloud account, the prefetch queue can contain up to 50,000 URLs. Content is prefetched based on the time when the URLs are submitted. The URL that is submitted the earliest has the highest priority. If the number of URLs in the queue reaches 50,000, you cannot submit more URLs until the number drops below 50,000.
 //
-// 	- You can call this operation up to 50 times per second per account.
+//		- You can call this operation up to 50 times per second per account.
 //
-// 	- For more information about how to automate refresh or prefetch tasks, see [Run scripts to refresh and prefetch content](https://help.aliyun.com/document_detail/151829.html).
+//		- For more information about how to automate refresh or prefetch tasks, see [Run scripts to refresh and prefetch content](https://help.aliyun.com/document_detail/151829.html).
 //
 // ## Precautions
 //
-// 	- After a prefetch task is submitted and completed, the POPs immediately start to retrieve resources from the origin server. Therefore, a large number of refresh tasks cause a large number of concurrent download tasks. This increases the number of requests that are redirected to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
+//   - After a prefetch task is submitted and completed, the POPs immediately start to retrieve resources from the origin server. Therefore, a large number of refresh tasks cause a large number of concurrent download tasks. This increases the number of requests that are redirected to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
 //
-// 	- The time required for a prefetch task to complete is proportional to the size of the prefetched file. In actual practice, most prefetch tasks require 5 to 30 minutes to complete. A task with a smaller average file size requires less time.
+//   - The time required for a prefetch task to complete is proportional to the size of the prefetched file. In actual practice, most prefetch tasks require 5 to 30 minutes to complete. A task with a smaller average file size requires less time.
 //
-// 	- To allow RAM users to perform this operation, you must first grant them the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](https://help.aliyun.com/document_detail/260300.html).
+//   - To allow RAM users to perform this operation, you must first grant them the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](https://help.aliyun.com/document_detail/260300.html).
 //
 // @param request - PushObjectCacheRequest
 //
@@ -47698,24 +46191,13 @@ func (client *Client) PushObjectCacheWithOptions(request *PushObjectCacheRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PushObjectCacheResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PushObjectCacheResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PushObjectCacheResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47724,27 +46206,27 @@ func (client *Client) PushObjectCacheWithOptions(request *PushObjectCacheRequest
 //
 // Description:
 //
-//   Alibaba Cloud CDN supports POST requests in which parameters are sent as a form.
+//	  Alibaba Cloud CDN supports POST requests in which parameters are sent as a form.
 //
-// 	- You can call the [RefreshObjectCaches](https://help.aliyun.com/document_detail/91164.html) operation to refresh content and call the [PushObjectCache](https://help.aliyun.com/document_detail/91161.html) operation to prefetch content.
+//		- You can call the [RefreshObjectCaches](https://help.aliyun.com/document_detail/91164.html) operation to refresh content and call the [PushObjectCache](https://help.aliyun.com/document_detail/91161.html) operation to prefetch content.
 //
-// 	- By default, each Alibaba Cloud account can submit up to 1,000 URLs per day. If the daily peak bandwidth value of your workloads exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to increase your daily quota. Alibaba Cloud reviews your application and then increases the quota accordingly.
+//		- By default, each Alibaba Cloud account can submit up to 1,000 URLs per day. If the daily peak bandwidth value of your workloads exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to increase your daily quota. Alibaba Cloud reviews your application and then increases the quota accordingly.
 //
-// 	- You can specify at most 100 URLs in each prefetch request.
+//		- You can specify at most 100 URLs in each prefetch request.
 //
-// 	- For each Alibaba Cloud account, the prefetch queue can contain up to 50,000 URLs. Content is prefetched based on the time when the URLs are submitted. The URL that is submitted the earliest has the highest priority. If the number of URLs in the queue reaches 50,000, you cannot submit more URLs until the number drops below 50,000.
+//		- For each Alibaba Cloud account, the prefetch queue can contain up to 50,000 URLs. Content is prefetched based on the time when the URLs are submitted. The URL that is submitted the earliest has the highest priority. If the number of URLs in the queue reaches 50,000, you cannot submit more URLs until the number drops below 50,000.
 //
-// 	- You can call this operation up to 50 times per second per account.
+//		- You can call this operation up to 50 times per second per account.
 //
-// 	- For more information about how to automate refresh or prefetch tasks, see [Run scripts to refresh and prefetch content](https://help.aliyun.com/document_detail/151829.html).
+//		- For more information about how to automate refresh or prefetch tasks, see [Run scripts to refresh and prefetch content](https://help.aliyun.com/document_detail/151829.html).
 //
 // ## Precautions
 //
-// 	- After a prefetch task is submitted and completed, the POPs immediately start to retrieve resources from the origin server. Therefore, a large number of refresh tasks cause a large number of concurrent download tasks. This increases the number of requests that are redirected to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
+//   - After a prefetch task is submitted and completed, the POPs immediately start to retrieve resources from the origin server. Therefore, a large number of refresh tasks cause a large number of concurrent download tasks. This increases the number of requests that are redirected to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
 //
-// 	- The time required for a prefetch task to complete is proportional to the size of the prefetched file. In actual practice, most prefetch tasks require 5 to 30 minutes to complete. A task with a smaller average file size requires less time.
+//   - The time required for a prefetch task to complete is proportional to the size of the prefetched file. In actual practice, most prefetch tasks require 5 to 30 minutes to complete. A task with a smaller average file size requires less time.
 //
-// 	- To allow RAM users to perform this operation, you must first grant them the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](https://help.aliyun.com/document_detail/260300.html).
+//   - To allow RAM users to perform this operation, you must first grant them the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](https://help.aliyun.com/document_detail/260300.html).
 //
 // @param request - PushObjectCacheRequest
 //
@@ -47801,24 +46283,13 @@ func (client *Client) RefreshObjectCacheByCacheTagWithOptions(request *RefreshOb
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RefreshObjectCacheByCacheTagResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RefreshObjectCacheByCacheTagResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RefreshObjectCacheByCacheTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47845,31 +46316,31 @@ func (client *Client) RefreshObjectCacheByCacheTag(request *RefreshObjectCacheBy
 //
 // Description:
 //
-//   Alibaba Cloud CDN supports POST requests in which parameters are sent as a form.
+//	  Alibaba Cloud CDN supports POST requests in which parameters are sent as a form.
 //
-// 	- You can call the [RefreshObjectCaches](https://help.aliyun.com/document_detail/91164.html) operation to refresh content and call the [PushObjectCache](https://help.aliyun.com/document_detail/91161.html) operation to prefetch content.
+//		- You can call the [RefreshObjectCaches](https://help.aliyun.com/document_detail/91164.html) operation to refresh content and call the [PushObjectCache](https://help.aliyun.com/document_detail/91161.html) operation to prefetch content.
 //
-// 	- You can call the RefreshObjectCaches operation up to 50 times per second per account.
+//		- You can call the RefreshObjectCaches operation up to 50 times per second per account.
 //
-// 	- For more information about how to automatically refresh or prefetch tasks, see [Run scripts to refresh and prefetch content](https://help.aliyun.com/document_detail/151829.html).
+//		- For more information about how to automatically refresh or prefetch tasks, see [Run scripts to refresh and prefetch content](https://help.aliyun.com/document_detail/151829.html).
 //
 // ## Precautions
 //
-// 	- After a refresh task is submitted and completed, specific resources are removed from POPs. When a POP receives a request for the removed resources, the POP forwards the request to the origin server to retrieve the resources. The retrieved resources are returned to the client and cached on the POP. Multiple refresh tasks may cause a large number of resources to be removed from the POPs. This increases the number of requests that are forwarded to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
+//   - After a refresh task is submitted and completed, specific resources are removed from POPs. When a POP receives a request for the removed resources, the POP forwards the request to the origin server to retrieve the resources. The retrieved resources are returned to the client and cached on the POP. Multiple refresh tasks may cause a large number of resources to be removed from the POPs. This increases the number of requests that are forwarded to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
 //
-// 	- A refresh task takes effect 5 to 6 minutes after being submitted. This means that if the resource you want to refresh has a TTL of less than five minutes, you wait for it to expire instead of manually running a refresh task.
+//   - A refresh task takes effect 5 to 6 minutes after being submitted. This means that if the resource you want to refresh has a TTL of less than five minutes, you wait for it to expire instead of manually running a refresh task.
 //
-// 	- If you want to use RAM users to refresh or prefetch resources, you must obtain the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](https://help.aliyun.com/document_detail/260300.html).
+//   - If you want to use RAM users to refresh or prefetch resources, you must obtain the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](https://help.aliyun.com/document_detail/260300.html).
 //
 // ### Refresh quota
 //
-// 	- By default, each Alibaba Cloud account can refresh content from up to 10,000 URLs and 100 directories per day. The directories include subdirectories. If the daily peak bandwidth value exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to request a quota increase. Alibaba Cloud CDN evaluates your application based on your workloads.
+//   - By default, each Alibaba Cloud account can refresh content from up to 10,000 URLs and 100 directories per day. The directories include subdirectories. If the daily peak bandwidth value exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to request a quota increase. Alibaba Cloud CDN evaluates your application based on your workloads.
 //
-// 	- By default, each Alibaba Cloud account can submit up to 20 refresh rules that contain regular expressions per day. If the daily peak bandwidth of your Alibaba Cloud account exceeds 10 Gbit/s, you can [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to request a quota increase.
+//   - By default, each Alibaba Cloud account can submit up to 20 refresh rules that contain regular expressions per day. If the daily peak bandwidth of your Alibaba Cloud account exceeds 10 Gbit/s, you can [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to request a quota increase.
 //
-// 	- You can specify up to 1,000 URL refresh rules, 100 directory refresh rules, or 1 refresh rule that contains regular expressions in each call.
+//   - You can specify up to 1,000 URL refresh rules, 100 directory refresh rules, or 1 refresh rule that contains regular expressions in each call.
 //
-// 	- You can refresh up to 1,000 URLs per minute for each domain name.
+//   - You can refresh up to 1,000 URLs per minute for each domain name.
 //
 // @param request - RefreshObjectCachesRequest
 //
@@ -47918,24 +46389,13 @@ func (client *Client) RefreshObjectCachesWithOptions(request *RefreshObjectCache
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RefreshObjectCachesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RefreshObjectCachesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RefreshObjectCachesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47944,31 +46404,31 @@ func (client *Client) RefreshObjectCachesWithOptions(request *RefreshObjectCache
 //
 // Description:
 //
-//   Alibaba Cloud CDN supports POST requests in which parameters are sent as a form.
+//	  Alibaba Cloud CDN supports POST requests in which parameters are sent as a form.
 //
-// 	- You can call the [RefreshObjectCaches](https://help.aliyun.com/document_detail/91164.html) operation to refresh content and call the [PushObjectCache](https://help.aliyun.com/document_detail/91161.html) operation to prefetch content.
+//		- You can call the [RefreshObjectCaches](https://help.aliyun.com/document_detail/91164.html) operation to refresh content and call the [PushObjectCache](https://help.aliyun.com/document_detail/91161.html) operation to prefetch content.
 //
-// 	- You can call the RefreshObjectCaches operation up to 50 times per second per account.
+//		- You can call the RefreshObjectCaches operation up to 50 times per second per account.
 //
-// 	- For more information about how to automatically refresh or prefetch tasks, see [Run scripts to refresh and prefetch content](https://help.aliyun.com/document_detail/151829.html).
+//		- For more information about how to automatically refresh or prefetch tasks, see [Run scripts to refresh and prefetch content](https://help.aliyun.com/document_detail/151829.html).
 //
 // ## Precautions
 //
-// 	- After a refresh task is submitted and completed, specific resources are removed from POPs. When a POP receives a request for the removed resources, the POP forwards the request to the origin server to retrieve the resources. The retrieved resources are returned to the client and cached on the POP. Multiple refresh tasks may cause a large number of resources to be removed from the POPs. This increases the number of requests that are forwarded to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
+//   - After a refresh task is submitted and completed, specific resources are removed from POPs. When a POP receives a request for the removed resources, the POP forwards the request to the origin server to retrieve the resources. The retrieved resources are returned to the client and cached on the POP. Multiple refresh tasks may cause a large number of resources to be removed from the POPs. This increases the number of requests that are forwarded to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
 //
-// 	- A refresh task takes effect 5 to 6 minutes after being submitted. This means that if the resource you want to refresh has a TTL of less than five minutes, you wait for it to expire instead of manually running a refresh task.
+//   - A refresh task takes effect 5 to 6 minutes after being submitted. This means that if the resource you want to refresh has a TTL of less than five minutes, you wait for it to expire instead of manually running a refresh task.
 //
-// 	- If you want to use RAM users to refresh or prefetch resources, you must obtain the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](https://help.aliyun.com/document_detail/260300.html).
+//   - If you want to use RAM users to refresh or prefetch resources, you must obtain the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](https://help.aliyun.com/document_detail/260300.html).
 //
 // ### Refresh quota
 //
-// 	- By default, each Alibaba Cloud account can refresh content from up to 10,000 URLs and 100 directories per day. The directories include subdirectories. If the daily peak bandwidth value exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to request a quota increase. Alibaba Cloud CDN evaluates your application based on your workloads.
+//   - By default, each Alibaba Cloud account can refresh content from up to 10,000 URLs and 100 directories per day. The directories include subdirectories. If the daily peak bandwidth value exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to request a quota increase. Alibaba Cloud CDN evaluates your application based on your workloads.
 //
-// 	- By default, each Alibaba Cloud account can submit up to 20 refresh rules that contain regular expressions per day. If the daily peak bandwidth of your Alibaba Cloud account exceeds 10 Gbit/s, you can [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to request a quota increase.
+//   - By default, each Alibaba Cloud account can submit up to 20 refresh rules that contain regular expressions per day. If the daily peak bandwidth of your Alibaba Cloud account exceeds 10 Gbit/s, you can [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to request a quota increase.
 //
-// 	- You can specify up to 1,000 URL refresh rules, 100 directory refresh rules, or 1 refresh rule that contains regular expressions in each call.
+//   - You can specify up to 1,000 URL refresh rules, 100 directory refresh rules, or 1 refresh rule that contains regular expressions in each call.
 //
-// 	- You can refresh up to 1,000 URLs per minute for each domain name.
+//   - You can refresh up to 1,000 URLs per minute for each domain name.
 //
 // @param request - RefreshObjectCachesRequest
 //
@@ -48021,24 +46481,13 @@ func (client *Client) RollbackStagingConfigWithOptions(request *RollbackStagingC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RollbackStagingConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RollbackStagingConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RollbackStagingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48104,24 +46553,13 @@ func (client *Client) SetCdnDomainCSRCertificateWithOptions(request *SetCdnDomai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetCdnDomainCSRCertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetCdnDomainCSRCertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetCdnDomainCSRCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48199,24 +46637,13 @@ func (client *Client) SetCdnDomainSMCertificateWithOptions(request *SetCdnDomain
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetCdnDomainSMCertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetCdnDomainSMCertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetCdnDomainSMCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48247,9 +46674,9 @@ func (client *Client) SetCdnDomainSMCertificate(request *SetCdnDomainSMCertifica
 //
 // Description:
 //
-//   You can call this operation up to 30 times per second per account.
+//	  You can call this operation up to 30 times per second per account.
 //
-// 	- Method: POST.
+//		- Method: POST.
 //
 // @param request - SetCdnDomainSSLCertificateRequest
 //
@@ -48320,24 +46747,13 @@ func (client *Client) SetCdnDomainSSLCertificateWithOptions(request *SetCdnDomai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetCdnDomainSSLCertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetCdnDomainSSLCertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetCdnDomainSSLCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48346,9 +46762,9 @@ func (client *Client) SetCdnDomainSSLCertificateWithOptions(request *SetCdnDomai
 //
 // Description:
 //
-//   You can call this operation up to 30 times per second per account.
+//	  You can call this operation up to 30 times per second per account.
 //
-// 	- Method: POST.
+//		- Method: POST.
 //
 // @param request - SetCdnDomainSSLCertificateRequest
 //
@@ -48405,24 +46821,13 @@ func (client *Client) SetCdnDomainStagingConfigWithOptions(request *SetCdnDomain
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetCdnDomainStagingConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetCdnDomainStagingConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetCdnDomainStagingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48455,9 +46860,9 @@ func (client *Client) SetCdnDomainStagingConfig(request *SetCdnDomainStagingConf
 //
 // >
 //
-// 	- To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+//   - To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
 //
-// 	- This operation is suitable for blocking or unblocking a maximum of 1,000 IP addresses or CIDR blocks at a time.
+//   - This operation is suitable for blocking or unblocking a maximum of 1,000 IP addresses or CIDR blocks at a time.
 //
 // @param request - SetCdnFullDomainsBlockIPRequest
 //
@@ -48500,24 +46905,13 @@ func (client *Client) SetCdnFullDomainsBlockIPWithOptions(request *SetCdnFullDom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetCdnFullDomainsBlockIPResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetCdnFullDomainsBlockIPResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetCdnFullDomainsBlockIPResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48528,9 +46922,9 @@ func (client *Client) SetCdnFullDomainsBlockIPWithOptions(request *SetCdnFullDom
 //
 // >
 //
-// 	- To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+//   - To use this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
 //
-// 	- This operation is suitable for blocking or unblocking a maximum of 1,000 IP addresses or CIDR blocks at a time.
+//   - This operation is suitable for blocking or unblocking a maximum of 1,000 IP addresses or CIDR blocks at a time.
 //
 // @param request - SetCdnFullDomainsBlockIPRequest
 //
@@ -48599,24 +46993,13 @@ func (client *Client) SetReqHeaderConfigWithOptions(request *SetReqHeaderConfigR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetReqHeaderConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetReqHeaderConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetReqHeaderConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48694,24 +47077,13 @@ func (client *Client) SetWaitingRoomConfigWithOptions(request *SetWaitingRoomCon
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetWaitingRoomConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetWaitingRoomConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetWaitingRoomConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48742,9 +47114,9 @@ func (client *Client) SetWaitingRoomConfig(request *SetWaitingRoomConfigRequest)
 //
 // Description:
 //
-//   If the domain name is in an invalid state or you have an overdue payment in your account, the domain name cannot be enabled.
+//	  If the domain name is in an invalid state or you have an overdue payment in your account, the domain name cannot be enabled.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//		- You can call this operation up to 100 times per second per account.
 //
 // @param request - StartCdnDomainRequest
 //
@@ -48783,24 +47155,13 @@ func (client *Client) StartCdnDomainWithOptions(request *StartCdnDomainRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartCdnDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartCdnDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartCdnDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48809,9 +47170,9 @@ func (client *Client) StartCdnDomainWithOptions(request *StartCdnDomainRequest, 
 //
 // Description:
 //
-//   If the domain name is in an invalid state or you have an overdue payment in your account, the domain name cannot be enabled.
+//	  If the domain name is in an invalid state or you have an overdue payment in your account, the domain name cannot be enabled.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//		- You can call this operation up to 100 times per second per account.
 //
 // @param request - StartCdnDomainRequest
 //
@@ -48833,9 +47194,9 @@ func (client *Client) StartCdnDomain(request *StartCdnDomainRequest) (_result *S
 //
 // Description:
 //
-//   After an accelerated domain is disabled, Alibaba Cloud CDN retains its information and routes all the requests that are destined for the accelerated domain to the origin server.
+//	  After an accelerated domain is disabled, Alibaba Cloud CDN retains its information and routes all the requests that are destined for the accelerated domain to the origin server.
 //
-// 	- You can call this operation up to 40 times per second per account.
+//		- You can call this operation up to 40 times per second per account.
 //
 // @param request - StopCdnDomainRequest
 //
@@ -48874,24 +47235,13 @@ func (client *Client) StopCdnDomainWithOptions(request *StopCdnDomainRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopCdnDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopCdnDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopCdnDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48900,9 +47250,9 @@ func (client *Client) StopCdnDomainWithOptions(request *StopCdnDomainRequest, ru
 //
 // Description:
 //
-//   After an accelerated domain is disabled, Alibaba Cloud CDN retains its information and routes all the requests that are destined for the accelerated domain to the origin server.
+//	  After an accelerated domain is disabled, Alibaba Cloud CDN retains its information and routes all the requests that are destined for the accelerated domain to the origin server.
 //
-// 	- You can call this operation up to 40 times per second per account.
+//		- You can call this operation up to 40 times per second per account.
 //
 // @param request - StopCdnDomainRequest
 //
@@ -48963,24 +47313,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -49054,24 +47393,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UntagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UntagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -49153,24 +47481,13 @@ func (client *Client) UpdateCdnDeliverTaskWithOptions(request *UpdateCdnDeliverT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateCdnDeliverTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateCdnDeliverTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateCdnDeliverTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -49244,24 +47561,13 @@ func (client *Client) UpdateCdnSubTaskWithOptions(request *UpdateCdnSubTaskReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateCdnSubTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateCdnSubTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateCdnSubTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -49337,24 +47643,13 @@ func (client *Client) UpdateFCTriggerWithOptions(request *UpdateFCTriggerRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateFCTriggerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateFCTriggerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateFCTriggerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -49416,24 +47711,13 @@ func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &VerifyDomainOwnerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &VerifyDomainOwnerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &VerifyDomainOwnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
