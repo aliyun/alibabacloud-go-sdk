@@ -21782,6 +21782,246 @@ func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *Des
 	return s
 }
 
+type DescribeIpAbroadCountryInfosRequest struct {
+	// example:
+	//
+	// US-CA
+	AbroadRegion *string `json:"AbroadRegion,omitempty" xml:"AbroadRegion,omitempty"`
+	// example:
+	//
+	// US
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xl*******005
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// en
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0*****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-aekzwwk****cv5i
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeIpAbroadCountryInfosRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpAbroadCountryInfosRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpAbroadCountryInfosRequest) SetAbroadRegion(v string) *DescribeIpAbroadCountryInfosRequest {
+	s.AbroadRegion = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosRequest) SetCountry(v string) *DescribeIpAbroadCountryInfosRequest {
+	s.Country = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosRequest) SetInstanceId(v string) *DescribeIpAbroadCountryInfosRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosRequest) SetLanguage(v string) *DescribeIpAbroadCountryInfosRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosRequest) SetMaxResults(v int32) *DescribeIpAbroadCountryInfosRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosRequest) SetNextToken(v string) *DescribeIpAbroadCountryInfosRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosRequest) SetRegionId(v string) *DescribeIpAbroadCountryInfosRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosRequest) SetResourceManagerResourceGroupId(v string) *DescribeIpAbroadCountryInfosRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeIpAbroadCountryInfosResponseBody struct {
+	AbroadInfos []*DescribeIpAbroadCountryInfosResponseBodyAbroadInfos `json:"AbroadInfos,omitempty" xml:"AbroadInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0*****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 66A98669-CC6E-4F3E-80A6-3014697B11AE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeIpAbroadCountryInfosResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpAbroadCountryInfosResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpAbroadCountryInfosResponseBody) SetAbroadInfos(v []*DescribeIpAbroadCountryInfosResponseBodyAbroadInfos) *DescribeIpAbroadCountryInfosResponseBody {
+	s.AbroadInfos = v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosResponseBody) SetMaxResults(v int32) *DescribeIpAbroadCountryInfosResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosResponseBody) SetNextToken(v string) *DescribeIpAbroadCountryInfosResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosResponseBody) SetRequestId(v string) *DescribeIpAbroadCountryInfosResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosResponseBody) SetTotalCount(v int32) *DescribeIpAbroadCountryInfosResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeIpAbroadCountryInfosResponseBodyAbroadInfos struct {
+	// example:
+	//
+	// 北美洲
+	Continent *string `json:"Continent,omitempty" xml:"Continent,omitempty"`
+	// example:
+	//
+	// US
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// example:
+	//
+	// 美国
+	CountryName *string                                                       `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	Regions     []*DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+}
+
+func (s DescribeIpAbroadCountryInfosResponseBodyAbroadInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpAbroadCountryInfosResponseBodyAbroadInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpAbroadCountryInfosResponseBodyAbroadInfos) SetContinent(v string) *DescribeIpAbroadCountryInfosResponseBodyAbroadInfos {
+	s.Continent = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosResponseBodyAbroadInfos) SetCountry(v string) *DescribeIpAbroadCountryInfosResponseBodyAbroadInfos {
+	s.Country = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosResponseBodyAbroadInfos) SetCountryName(v string) *DescribeIpAbroadCountryInfosResponseBodyAbroadInfos {
+	s.CountryName = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosResponseBodyAbroadInfos) SetRegions(v []*DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions) *DescribeIpAbroadCountryInfosResponseBodyAbroadInfos {
+	s.Regions = v
+	return s
+}
+
+type DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions struct {
+	// example:
+	//
+	// US-CA
+	AbroadRegionId *string `json:"AbroadRegionId,omitempty" xml:"AbroadRegionId,omitempty"`
+	// example:
+	//
+	// 加利福尼亚州
+	AbroadRegionName *string `json:"AbroadRegionName,omitempty" xml:"AbroadRegionName,omitempty"`
+}
+
+func (s DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions) SetAbroadRegionId(v string) *DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions {
+	s.AbroadRegionId = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions) SetAbroadRegionName(v string) *DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions {
+	s.AbroadRegionName = &v
+	return s
+}
+
+type DescribeIpAbroadCountryInfosResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeIpAbroadCountryInfosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeIpAbroadCountryInfosResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpAbroadCountryInfosResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpAbroadCountryInfosResponse) SetHeaders(v map[string]*string) *DescribeIpAbroadCountryInfosResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosResponse) SetStatusCode(v int32) *DescribeIpAbroadCountryInfosResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeIpAbroadCountryInfosResponse) SetBody(v *DescribeIpAbroadCountryInfosResponseBody) *DescribeIpAbroadCountryInfosResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeMajorProtectionBlackIpsRequest struct {
 	// The ID of the WAF instance.
 	//
@@ -46537,6 +46777,94 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceResponse{}
 	_body, _err := client.DescribeInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取支持的海外IP区域封禁支持的国际及地域。
+//
+// @param request - DescribeIpAbroadCountryInfosRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeIpAbroadCountryInfosResponse
+func (client *Client) DescribeIpAbroadCountryInfosWithOptions(request *DescribeIpAbroadCountryInfosRequest, runtime *util.RuntimeOptions) (_result *DescribeIpAbroadCountryInfosResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AbroadRegion)) {
+		query["AbroadRegion"] = request.AbroadRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Country)) {
+		query["Country"] = request.Country
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIpAbroadCountryInfos"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeIpAbroadCountryInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取支持的海外IP区域封禁支持的国际及地域。
+//
+// @param request - DescribeIpAbroadCountryInfosRequest
+//
+// @return DescribeIpAbroadCountryInfosResponse
+func (client *Client) DescribeIpAbroadCountryInfos(request *DescribeIpAbroadCountryInfosRequest) (_result *DescribeIpAbroadCountryInfosResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeIpAbroadCountryInfosResponse{}
+	_body, _err := client.DescribeIpAbroadCountryInfosWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
