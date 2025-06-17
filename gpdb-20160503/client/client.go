@@ -12817,6 +12817,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// VPC
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	InstanceSpec        *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// Lock mode, with the following values:
 	//
 	// - **Unlock**: Normal.
@@ -13256,6 +13257,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetIdl
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetInstanceNetworkType(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.InstanceNetworkType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetInstanceSpec(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.InstanceSpec = &v
 	return s
 }
 
