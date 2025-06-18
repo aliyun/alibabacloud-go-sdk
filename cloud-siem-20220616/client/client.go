@@ -20298,7 +20298,8 @@ type ListEntitiesRequest struct {
 	// example:
 	//
 	// 1
-	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	Tags     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListEntitiesRequest) String() string {
@@ -20361,6 +20362,11 @@ func (s *ListEntitiesRequest) SetRoleFor(v int64) *ListEntitiesRequest {
 
 func (s *ListEntitiesRequest) SetRoleType(v int32) *ListEntitiesRequest {
 	s.RoleType = &v
+	return s
+}
+
+func (s *ListEntitiesRequest) SetTags(v string) *ListEntitiesRequest {
+	s.Tags = &v
 	return s
 }
 
@@ -20538,6 +20544,8 @@ type ListEntitiesResponseBodyDataResponseData struct {
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	IsAsset      *string `json:"IsAsset,omitempty" xml:"IsAsset,omitempty"`
+	IsMalware    *string `json:"IsMalware,omitempty" xml:"IsMalware,omitempty"`
 	// example:
 	//
 	// aliyun.siem.sas.alert_tag.webshell
@@ -20545,7 +20553,8 @@ type ListEntitiesResponseBodyDataResponseData struct {
 	// example:
 	//
 	// 113091674488****
-	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	SubUserId *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	Tags      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListEntitiesResponseBodyDataResponseData) String() string {
@@ -20626,6 +20635,16 @@ func (s *ListEntitiesResponseBodyDataResponseData) SetIncidentUuid(v string) *Li
 	return s
 }
 
+func (s *ListEntitiesResponseBodyDataResponseData) SetIsAsset(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.IsAsset = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetIsMalware(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.IsMalware = &v
+	return s
+}
+
 func (s *ListEntitiesResponseBodyDataResponseData) SetMalwareType(v string) *ListEntitiesResponseBodyDataResponseData {
 	s.MalwareType = &v
 	return s
@@ -20633,6 +20652,11 @@ func (s *ListEntitiesResponseBodyDataResponseData) SetMalwareType(v string) *Lis
 
 func (s *ListEntitiesResponseBodyDataResponseData) SetSubUserId(v int64) *ListEntitiesResponseBodyDataResponseData {
 	s.SubUserId = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetTags(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.Tags = &v
 	return s
 }
 
@@ -30436,6 +30460,10 @@ func (client *Client) ListEntitiesWithOptions(request *ListEntitiesRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
 		body["RoleType"] = request.RoleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["Tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{
