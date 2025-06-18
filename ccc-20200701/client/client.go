@@ -9506,6 +9506,7 @@ type DeleteContactFlowRequest struct {
 	//
 	// 0f87c997-b0c1-41d4-9e9e-1b791de6ad1f
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	Force         *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -9524,6 +9525,11 @@ func (s DeleteContactFlowRequest) GoString() string {
 
 func (s *DeleteContactFlowRequest) SetContactFlowId(v string) *DeleteContactFlowRequest {
 	s.ContactFlowId = &v
+	return s
+}
+
+func (s *DeleteContactFlowRequest) SetForce(v bool) *DeleteContactFlowRequest {
+	s.Force = &v
 	return s
 }
 
@@ -31044,8 +31050,9 @@ type ListContactFlowsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
+	SortOrder     *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// example:
 	//
 	// MAIN_FLOW
@@ -31077,6 +31084,11 @@ func (s *ListContactFlowsRequest) SetPageNumber(v int32) *ListContactFlowsReques
 
 func (s *ListContactFlowsRequest) SetPageSize(v int32) *ListContactFlowsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListContactFlowsRequest) SetSearchPattern(v string) *ListContactFlowsRequest {
+	s.SearchPattern = &v
 	return s
 }
 
@@ -70159,6 +70171,10 @@ func (client *Client) DeleteCallTag(request *DeleteCallTagRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// -
+//
 // @param request - DeleteContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -70172,6 +70188,10 @@ func (client *Client) DeleteContactFlowWithOptions(request *DeleteContactFlowReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ContactFlowId)) {
 		query["ContactFlowId"] = request.ContactFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
@@ -70201,6 +70221,10 @@ func (client *Client) DeleteContactFlowWithOptions(request *DeleteContactFlowReq
 	return _result, _err
 }
 
+// Summary:
+//
+// -
+//
 // @param request - DeleteContactFlowRequest
 //
 // @return DeleteContactFlowResponse
@@ -75879,6 +75903,10 @@ func (client *Client) ListConfigItems(request *ListConfigItemsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// -
+//
 // @param request - ListContactFlowsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -75904,6 +75932,10 @@ func (client *Client) ListContactFlowsWithOptions(request *ListContactFlowsReque
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchPattern)) {
+		query["SearchPattern"] = request.SearchPattern
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
@@ -75937,6 +75969,10 @@ func (client *Client) ListContactFlowsWithOptions(request *ListContactFlowsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// -
+//
 // @param request - ListContactFlowsRequest
 //
 // @return ListContactFlowsResponse
