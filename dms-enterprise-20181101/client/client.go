@@ -28953,7 +28953,8 @@ type GetInstanceResponseBodyInstance struct {
 	// example:
 	//
 	// false
-	SellSitd *string `json:"SellSitd,omitempty" xml:"SellSitd,omitempty"`
+	SellSitd  *string `json:"SellSitd,omitempty" xml:"SellSitd,omitempty"`
+	SellTrust *string `json:"SellTrust,omitempty" xml:"SellTrust,omitempty"`
 	// The SID of the database instance.
 	//
 	// example:
@@ -29100,6 +29101,11 @@ func (s *GetInstanceResponseBodyInstance) SetSafeRuleId(v string) *GetInstanceRe
 
 func (s *GetInstanceResponseBodyInstance) SetSellSitd(v string) *GetInstanceResponseBodyInstance {
 	s.SellSitd = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetSellTrust(v string) *GetInstanceResponseBodyInstance {
+	s.SellTrust = &v
 	return s
 }
 
@@ -49334,7 +49340,8 @@ type ListInstancesResponseBodyInstanceListInstance struct {
 	// example:
 	//
 	// true
-	SellSitd *bool `json:"SellSitd,omitempty" xml:"SellSitd,omitempty"`
+	SellSitd  *bool   `json:"SellSitd,omitempty" xml:"SellSitd,omitempty"`
+	SellTrust *string `json:"SellTrust,omitempty" xml:"SellTrust,omitempty"`
 	// The system ID (SID) of the database instance.
 	//
 	// example:
@@ -49477,6 +49484,11 @@ func (s *ListInstancesResponseBodyInstanceListInstance) SetSafeRuleId(v string) 
 
 func (s *ListInstancesResponseBodyInstanceListInstance) SetSellSitd(v bool) *ListInstancesResponseBodyInstanceListInstance {
 	s.SellSitd = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstanceListInstance) SetSellTrust(v string) *ListInstancesResponseBodyInstanceListInstance {
+	s.SellTrust = &v
 	return s
 }
 
@@ -63229,7 +63241,8 @@ type RegisterInstanceRequest struct {
 	// example:
 	//
 	// 60
-	QueryTimeout *int32 `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
+	QueryTimeout  *int32  `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	// The name of the security rule set (GroupName) for the database instance. You can call the [ListStandardGroups](https://help.aliyun.com/document_detail/417891.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the name of the security rule set.
 	//
 	// This parameter is required.
@@ -63391,6 +63404,11 @@ func (s *RegisterInstanceRequest) SetPort(v int32) *RegisterInstanceRequest {
 
 func (s *RegisterInstanceRequest) SetQueryTimeout(v int32) *RegisterInstanceRequest {
 	s.QueryTimeout = &v
+	return s
+}
+
+func (s *RegisterInstanceRequest) SetResourceGroup(v string) *RegisterInstanceRequest {
+	s.ResourceGroup = &v
 	return s
 }
 
@@ -91753,6 +91771,10 @@ func (client *Client) RegisterInstanceWithOptions(request *RegisterInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.QueryTimeout)) {
 		query["QueryTimeout"] = request.QueryTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroup)) {
+		query["ResourceGroup"] = request.ResourceGroup
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SafeRule)) {
