@@ -610,7 +610,25 @@ func (s *CreateClientCertificateWithCsrRequest) SetYears(v int32) *CreateClientC
 }
 
 type CreateClientCertificateWithCsrResponseBody struct {
-	CertKmcRep1    *string `json:"CertKmcRep1,omitempty" xml:"CertKmcRep1,omitempty"`
+	// CertKmcRep1.
+	//
+	// example:
+	//
+	// userSeal=MHkCIEu94PQAahFWuFk%
+	//
+	// ***
+	//
+	// EtFw%2FkMMBjw8i5bFfSkV%2FIUrcOJD
+	CertKmcRep1 *string `json:"CertKmcRep1,omitempty" xml:"CertKmcRep1,omitempty"`
+	// Cert Sign Buf Kmc.
+	//
+	// example:
+	//
+	// userSeal=MHkCIEu94PQAahFWuFk%
+	//
+	// ***
+	//
+	// EtFw%2FkMMBjw8i5bFfSkV%2FIUrcOJD
 	CertSignBufKmc *string `json:"CertSignBufKmc,omitempty" xml:"CertSignBufKmc,omitempty"`
 	// The certificate chain of the client certificate.
 	//
@@ -3199,6 +3217,8 @@ func (s *DescribeCACertificateCountResponse) SetBody(v *DescribeCACertificateCou
 }
 
 type DescribeCACertificateListRequest struct {
+	CaStatus *string `json:"CaStatus,omitempty" xml:"CaStatus,omitempty"`
+	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	// The number of the page to return. Default value: **1**.
 	//
 	// example:
@@ -3213,12 +3233,14 @@ type DescribeCACertificateListRequest struct {
 	//
 	// 160ae6bb538d538c70c01f81dcf2****
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	IssuerType *string `json:"IssuerType,omitempty" xml:"IssuerType,omitempty"`
 	// The number of CA certificates to return on each page. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
-	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	ShowSize    *int32  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	ValidStatus *string `json:"ValidStatus,omitempty" xml:"ValidStatus,omitempty"`
 }
 
 func (s DescribeCACertificateListRequest) String() string {
@@ -3227,6 +3249,16 @@ func (s DescribeCACertificateListRequest) String() string {
 
 func (s DescribeCACertificateListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCACertificateListRequest) SetCaStatus(v string) *DescribeCACertificateListRequest {
+	s.CaStatus = &v
+	return s
+}
+
+func (s *DescribeCACertificateListRequest) SetCertType(v string) *DescribeCACertificateListRequest {
+	s.CertType = &v
+	return s
 }
 
 func (s *DescribeCACertificateListRequest) SetCurrentPage(v int32) *DescribeCACertificateListRequest {
@@ -3239,8 +3271,18 @@ func (s *DescribeCACertificateListRequest) SetIdentifier(v string) *DescribeCACe
 	return s
 }
 
+func (s *DescribeCACertificateListRequest) SetIssuerType(v string) *DescribeCACertificateListRequest {
+	s.IssuerType = &v
+	return s
+}
+
 func (s *DescribeCACertificateListRequest) SetShowSize(v int32) *DescribeCACertificateListRequest {
 	s.ShowSize = &v
+	return s
+}
+
+func (s *DescribeCACertificateListRequest) SetValidStatus(v string) *DescribeCACertificateListRequest {
+	s.ValidStatus = &v
 	return s
 }
 
@@ -4472,6 +4514,368 @@ func (s *GetCAInstanceStatusResponse) SetBody(v *GetCAInstanceStatusResponseBody
 	return s
 }
 
+type ListCertRequest struct {
+	// example:
+	//
+	// 2024-05-13 12:59:45
+	AfterDate *string `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
+	// example:
+	//
+	// 2025-09-04
+	BeforeDate *string `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 1ef79512-569b-6a4e-9105-9b91473562f7
+	InstanceUuid *string `json:"InstanceUuid,omitempty" xml:"InstanceUuid,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 1d2db86sca4384811e0b5e8707e68181f
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 50
+	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// example:
+	//
+	// ISSUE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// CLIENT
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListCertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertRequest) SetAfterDate(v string) *ListCertRequest {
+	s.AfterDate = &v
+	return s
+}
+
+func (s *ListCertRequest) SetBeforeDate(v string) *ListCertRequest {
+	s.BeforeDate = &v
+	return s
+}
+
+func (s *ListCertRequest) SetCurrentPage(v int32) *ListCertRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCertRequest) SetInstanceUuid(v string) *ListCertRequest {
+	s.InstanceUuid = &v
+	return s
+}
+
+func (s *ListCertRequest) SetMaxResults(v int32) *ListCertRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListCertRequest) SetNextToken(v string) *ListCertRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListCertRequest) SetShowSize(v int32) *ListCertRequest {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListCertRequest) SetStatus(v string) *ListCertRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCertRequest) SetType(v string) *ListCertRequest {
+	s.Type = &v
+	return s
+}
+
+type ListCertResponseBody struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	List        []*ListCertResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 1d2db86sca4384811e0b5e8707e68181f
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1
+	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 50
+	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertResponseBody) SetCurrentPage(v int32) *ListCertResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCertResponseBody) SetList(v []*ListCertResponseBodyList) *ListCertResponseBody {
+	s.List = v
+	return s
+}
+
+func (s *ListCertResponseBody) SetMaxResults(v int32) *ListCertResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListCertResponseBody) SetNextToken(v string) *ListCertResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListCertResponseBody) SetPageCount(v int32) *ListCertResponseBody {
+	s.PageCount = &v
+	return s
+}
+
+func (s *ListCertResponseBody) SetRequestId(v string) *ListCertResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCertResponseBody) SetShowSize(v int32) *ListCertResponseBody {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListCertResponseBody) SetTotalCount(v int64) *ListCertResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCertResponseBodyList struct {
+	// example:
+	//
+	// 2024-05-13 12:59:45
+	AfterDate *string `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
+	// example:
+	//
+	// 1728921600000
+	AfterTime *int64 `json:"AfterTime,omitempty" xml:"AfterTime,omitempty"`
+	// example:
+	//
+	// RSA
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// example:
+	//
+	// 2026-05-19
+	BeforeDate *string `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	// example:
+	//
+	// 1728921600000
+	BeforeTime *int64 `json:"BeforeTime,omitempty" xml:"BeforeTime,omitempty"`
+	// example:
+	//
+	// Server
+	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	// example:
+	//
+	// www.kfsjn.xyz
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// example:
+	//
+	// {\\"appId\\":\\"APP_PFHMIGUHKDUW6S3N7ZL2\\"}
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// example:
+	//
+	// 1806958
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1ef539a8-1e1f-6b88-8c11-21cf01a203e9
+	Identifier    *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	KeyExportable *bool   `json:"KeyExportable,omitempty" xml:"KeyExportable,omitempty"`
+	Organization  *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	// example:
+	//
+	// IT
+	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	// example:
+	//
+	// 3a3ee3c3597d675e
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// complete
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// SubjectDn
+	SubjectDn *string   `json:"SubjectDn,omitempty" xml:"SubjectDn,omitempty"`
+	Tags      []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s ListCertResponseBodyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertResponseBodyList) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertResponseBodyList) SetAfterDate(v string) *ListCertResponseBodyList {
+	s.AfterDate = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetAfterTime(v int64) *ListCertResponseBodyList {
+	s.AfterTime = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetAlgorithm(v string) *ListCertResponseBodyList {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetAliasName(v string) *ListCertResponseBodyList {
+	s.AliasName = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetBeforeDate(v string) *ListCertResponseBodyList {
+	s.BeforeDate = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetBeforeTime(v int64) *ListCertResponseBodyList {
+	s.BeforeTime = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetCertificateType(v string) *ListCertResponseBodyList {
+	s.CertificateType = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetCommonName(v string) *ListCertResponseBodyList {
+	s.CommonName = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetExtra(v string) *ListCertResponseBodyList {
+	s.Extra = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetId(v string) *ListCertResponseBodyList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetIdentifier(v string) *ListCertResponseBodyList {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetKeyExportable(v bool) *ListCertResponseBodyList {
+	s.KeyExportable = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetOrganization(v string) *ListCertResponseBodyList {
+	s.Organization = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetOrganizationUnit(v string) *ListCertResponseBodyList {
+	s.OrganizationUnit = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetSerialNumber(v string) *ListCertResponseBodyList {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetStatus(v string) *ListCertResponseBodyList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetSubjectDn(v string) *ListCertResponseBodyList {
+	s.SubjectDn = &v
+	return s
+}
+
+func (s *ListCertResponseBodyList) SetTags(v []*string) *ListCertResponseBodyList {
+	s.Tags = v
+	return s
+}
+
+type ListCertResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertResponse) SetHeaders(v map[string]*string) *ListCertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCertResponse) SetStatusCode(v int32) *ListCertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCertResponse) SetBody(v *ListCertResponseBody) *ListCertResponse {
+	s.Body = v
+	return s
+}
+
 type ListClientCertificateRequest struct {
 	// The number of the page to return. Default value: **1**.
 	//
@@ -5418,6 +5822,79 @@ func (s *UpdateCACertificateStatusResponse) SetBody(v *UpdateCACertificateStatus
 	return s
 }
 
+type UploadPcaCertToCasRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 59425,59426
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+}
+
+func (s UploadPcaCertToCasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadPcaCertToCasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadPcaCertToCasRequest) SetIds(v string) *UploadPcaCertToCasRequest {
+	s.Ids = &v
+	return s
+}
+
+type UploadPcaCertToCasResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UploadPcaCertToCasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadPcaCertToCasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadPcaCertToCasResponseBody) SetRequestId(v string) *UploadPcaCertToCasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UploadPcaCertToCasResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadPcaCertToCasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UploadPcaCertToCasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadPcaCertToCasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadPcaCertToCasResponse) SetHeaders(v map[string]*string) *UploadPcaCertToCasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadPcaCertToCasResponse) SetStatusCode(v int32) *UploadPcaCertToCasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadPcaCertToCasResponse) SetBody(v *UploadPcaCertToCasResponseBody) *UploadPcaCertToCasResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -5623,24 +6100,13 @@ func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateClientCertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateClientCertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateClientCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5778,24 +6244,13 @@ func (client *Client) CreateClientCertificateWithCsrWithOptions(request *CreateC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateClientCertificateWithCsrResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateClientCertificateWithCsrResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateClientCertificateWithCsrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5909,24 +6364,13 @@ func (client *Client) CreateCustomCertificateWithOptions(request *CreateCustomCe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateCustomCertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateCustomCertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateCustomCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6022,24 +6466,13 @@ func (client *Client) CreateRevokeClientCertificateWithOptions(request *CreateRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateRevokeClientCertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateRevokeClientCertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateRevokeClientCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6141,24 +6574,13 @@ func (client *Client) CreateRootCACertificateWithOptions(request *CreateRootCACe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateRootCACertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateRootCACertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateRootCACertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6290,24 +6712,13 @@ func (client *Client) CreateServerCertificateWithOptions(request *CreateServerCe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateServerCertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateServerCertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateServerCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6439,24 +6850,13 @@ func (client *Client) CreateServerCertificateWithCsrWithOptions(request *CreateS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateServerCertificateWithCsrResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateServerCertificateWithCsrResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateServerCertificateWithCsrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6574,24 +6974,13 @@ func (client *Client) CreateSubCACertificateWithOptions(request *CreateSubCACert
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateSubCACertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateSubCACertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateSubCACertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6663,24 +7052,13 @@ func (client *Client) DeleteClientCertificateWithOptions(request *DeleteClientCe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteClientCertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteClientCertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteClientCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6752,24 +7130,13 @@ func (client *Client) DescribeCACertificateWithOptions(request *DescribeCACertif
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCACertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCACertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCACertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6830,24 +7197,13 @@ func (client *Client) DescribeCACertificateCountWithOptions(runtime *util.Runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCACertificateCountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCACertificateCountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCACertificateCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6897,6 +7253,14 @@ func (client *Client) DescribeCACertificateListWithOptions(request *DescribeCACe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CaStatus)) {
+		query["CaStatus"] = request.CaStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertType)) {
+		query["CertType"] = request.CertType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -6905,8 +7269,16 @@ func (client *Client) DescribeCACertificateListWithOptions(request *DescribeCACe
 		query["Identifier"] = request.Identifier
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IssuerType)) {
+		query["IssuerType"] = request.IssuerType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ShowSize)) {
 		query["ShowSize"] = request.ShowSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidStatus)) {
+		query["ValidStatus"] = request.ValidStatus
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6923,24 +7295,13 @@ func (client *Client) DescribeCACertificateListWithOptions(request *DescribeCACe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCACertificateListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCACertificateListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCACertificateListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7030,24 +7391,13 @@ func (client *Client) DescribeCertificatePrivateKeyWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCertificatePrivateKeyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCertificatePrivateKeyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCertificatePrivateKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7147,24 +7497,13 @@ func (client *Client) DescribeClientCertificateWithOptions(request *DescribeClie
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeClientCertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeClientCertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeClientCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7248,24 +7587,13 @@ func (client *Client) DescribeClientCertificateStatusWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeClientCertificateStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeClientCertificateStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeClientCertificateStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7339,24 +7667,13 @@ func (client *Client) GetCAInstanceStatusWithOptions(request *GetCAInstanceStatu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetCAInstanceStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetCAInstanceStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetCAInstanceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7378,6 +7695,98 @@ func (client *Client) GetCAInstanceStatus(request *GetCAInstanceStatusRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCAInstanceStatusResponse{}
 	_body, _err := client.GetCAInstanceStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取证书列表
+//
+// @param request - ListCertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCertResponse
+func (client *Client) ListCertWithOptions(request *ListCertRequest, runtime *util.RuntimeOptions) (_result *ListCertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AfterDate)) {
+		query["AfterDate"] = request.AfterDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeforeDate)) {
+		query["BeforeDate"] = request.BeforeDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceUuid)) {
+		query["InstanceUuid"] = request.InstanceUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowSize)) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCert"),
+		Version:     tea.String("2020-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取证书列表
+//
+// @param request - ListCertRequest
+//
+// @return ListCertResponse
+func (client *Client) ListCert(request *ListCertRequest) (_result *ListCertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCertResponse{}
+	_body, _err := client.ListCertWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7434,24 +7843,13 @@ func (client *Client) ListClientCertificateWithOptions(request *ListClientCertif
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListClientCertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListClientCertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListClientCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7525,24 +7923,13 @@ func (client *Client) ListRevokeCertificateWithOptions(request *ListRevokeCertif
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListRevokeCertificateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListRevokeCertificateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListRevokeCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7618,24 +8005,13 @@ func (client *Client) UpdateCACertificateStatusWithOptions(request *UpdateCACert
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateCACertificateStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateCACertificateStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateCACertificateStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7659,6 +8035,66 @@ func (client *Client) UpdateCACertificateStatus(request *UpdateCACertificateStat
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCACertificateStatusResponse{}
 	_body, _err := client.UpdateCACertificateStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传pca证书到SSL上传证书
+//
+// @param request - UploadPcaCertToCasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadPcaCertToCasResponse
+func (client *Client) UploadPcaCertToCasWithOptions(request *UploadPcaCertToCasRequest, runtime *util.RuntimeOptions) (_result *UploadPcaCertToCasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ids)) {
+		query["Ids"] = request.Ids
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadPcaCertToCas"),
+		Version:     tea.String("2020-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UploadPcaCertToCasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传pca证书到SSL上传证书
+//
+// @param request - UploadPcaCertToCasRequest
+//
+// @return UploadPcaCertToCasResponse
+func (client *Client) UploadPcaCertToCas(request *UploadPcaCertToCasRequest) (_result *UploadPcaCertToCasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UploadPcaCertToCasResponse{}
+	_body, _err := client.UploadPcaCertToCasWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
