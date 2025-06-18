@@ -325,6 +325,100 @@ func (s *BindingPolicy) SetNodeSpecCount(v int64) *BindingPolicy {
 	return s
 }
 
+type CacheInfo struct {
+	MountPoint *string `json:"MountPoint,omitempty" xml:"MountPoint,omitempty"`
+	Port       *string `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s CacheInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CacheInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CacheInfo) SetMountPoint(v string) *CacheInfo {
+	s.MountPoint = &v
+	return s
+}
+
+func (s *CacheInfo) SetPort(v string) *CacheInfo {
+	s.Port = &v
+	return s
+}
+
+type CacheService struct {
+	CacheInfos              []*CacheInfo `json:"CacheInfos,omitempty" xml:"CacheInfos,omitempty" type:"Repeated"`
+	CacheServiceId          *string      `json:"CacheServiceId,omitempty" xml:"CacheServiceId,omitempty"`
+	CreatedBy               *string      `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	GmtCreated              *string      `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	QuotaId                 *string      `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	Status                  *string      `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportedClientQuotaIds []*string    `json:"SupportedClientQuotaIds,omitempty" xml:"SupportedClientQuotaIds,omitempty" type:"Repeated"`
+	TenantId                *string      `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UserId                  *string      `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserVpc                 *UserVpc     `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+}
+
+func (s CacheService) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CacheService) GoString() string {
+	return s.String()
+}
+
+func (s *CacheService) SetCacheInfos(v []*CacheInfo) *CacheService {
+	s.CacheInfos = v
+	return s
+}
+
+func (s *CacheService) SetCacheServiceId(v string) *CacheService {
+	s.CacheServiceId = &v
+	return s
+}
+
+func (s *CacheService) SetCreatedBy(v string) *CacheService {
+	s.CreatedBy = &v
+	return s
+}
+
+func (s *CacheService) SetGmtCreated(v string) *CacheService {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *CacheService) SetQuotaId(v string) *CacheService {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *CacheService) SetStatus(v string) *CacheService {
+	s.Status = &v
+	return s
+}
+
+func (s *CacheService) SetSupportedClientQuotaIds(v []*string) *CacheService {
+	s.SupportedClientQuotaIds = v
+	return s
+}
+
+func (s *CacheService) SetTenantId(v string) *CacheService {
+	s.TenantId = &v
+	return s
+}
+
+func (s *CacheService) SetUserId(v string) *CacheService {
+	s.UserId = &v
+	return s
+}
+
+func (s *CacheService) SetUserVpc(v *UserVpc) *CacheService {
+	s.UserVpc = v
+	return s
+}
+
 type Channel struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
@@ -1066,6 +1160,8 @@ type MachineGroup struct {
 	//
 	// 470.199.02
 	DefaultDriver   *string `json:"DefaultDriver,omitempty" xml:"DefaultDriver,omitempty"`
+	DiskCapacity    *int64  `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
+	DiskPL          *string `json:"DiskPL,omitempty" xml:"DiskPL,omitempty"`
 	EcsCount        *int64  `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
 	EcsSpec         *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
 	GmtCreatedTime  *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
@@ -1102,6 +1198,16 @@ func (s *MachineGroup) SetCreatorID(v string) *MachineGroup {
 
 func (s *MachineGroup) SetDefaultDriver(v string) *MachineGroup {
 	s.DefaultDriver = &v
+	return s
+}
+
+func (s *MachineGroup) SetDiskCapacity(v int64) *MachineGroup {
+	s.DiskCapacity = &v
+	return s
+}
+
+func (s *MachineGroup) SetDiskPL(v string) *MachineGroup {
+	s.DiskPL = &v
 	return s
 }
 
@@ -1258,6 +1364,7 @@ func (s *MetricDefinition) SetRegex(v string) *MetricDefinition {
 
 type Node struct {
 	AcceleratorType   *string        `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	AvailabilityZone  *string        `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
 	BoundQuotas       []*QuotaIdName `json:"BoundQuotas,omitempty" xml:"BoundQuotas,omitempty" type:"Repeated"`
 	CPU               *string        `json:"CPU,omitempty" xml:"CPU,omitempty"`
 	CreatorId         *string        `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
@@ -1267,6 +1374,7 @@ type Node struct {
 	GmtCreateTime     *string        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtExpiredTime    *string        `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
 	GmtModifiedTime   *string        `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	HyperZone         *string        `json:"HyperZone,omitempty" xml:"HyperZone,omitempty"`
 	IsBound           *bool          `json:"IsBound,omitempty" xml:"IsBound,omitempty"`
 	LimitCPU          *string        `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty"`
 	LimitGPU          *string        `json:"LimitGPU,omitempty" xml:"LimitGPU,omitempty"`
@@ -1299,6 +1407,11 @@ func (s Node) GoString() string {
 
 func (s *Node) SetAcceleratorType(v string) *Node {
 	s.AcceleratorType = &v
+	return s
+}
+
+func (s *Node) SetAvailabilityZone(v string) *Node {
+	s.AvailabilityZone = &v
 	return s
 }
 
@@ -1344,6 +1457,11 @@ func (s *Node) SetGmtExpiredTime(v string) *Node {
 
 func (s *Node) SetGmtModifiedTime(v string) *Node {
 	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *Node) SetHyperZone(v string) *Node {
+	s.HyperZone = &v
 	return s
 }
 
@@ -2031,6 +2149,29 @@ func (s *NodeViewMetric) SetUserNumber(v string) *NodeViewMetric {
 	return s
 }
 
+type OversoldUsageConfig struct {
+	Disabled   *string `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	DisabledBy *string `json:"DisabledBy,omitempty" xml:"DisabledBy,omitempty"`
+}
+
+func (s OversoldUsageConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OversoldUsageConfig) GoString() string {
+	return s.String()
+}
+
+func (s *OversoldUsageConfig) SetDisabled(v string) *OversoldUsageConfig {
+	s.Disabled = &v
+	return s
+}
+
+func (s *OversoldUsageConfig) SetDisabledBy(v string) *OversoldUsageConfig {
+	s.DisabledBy = &v
+	return s
+}
+
 type Permission struct {
 	IsEnabled    *bool   `json:"IsEnabled,omitempty" xml:"IsEnabled,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -2104,9 +2245,10 @@ type QueueInfo struct {
 	// example:
 	//
 	// Enqueued
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UseOversoldResource *bool   `json:"UseOversoldResource,omitempty" xml:"UseOversoldResource,omitempty"`
+	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName            *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// example:
 	//
 	// dlcxxxx
@@ -2123,7 +2265,8 @@ type QueueInfo struct {
 	// example:
 	//
 	// “432524”
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s QueueInfo) String() string {
@@ -2204,6 +2347,11 @@ func (s *QueueInfo) SetStatus(v string) *QueueInfo {
 	return s
 }
 
+func (s *QueueInfo) SetUseOversoldResource(v bool) *QueueInfo {
+	s.UseOversoldResource = &v
+	return s
+}
+
 func (s *QueueInfo) SetUserId(v string) *QueueInfo {
 	s.UserId = &v
 	return s
@@ -2236,6 +2384,11 @@ func (s *QueueInfo) SetWorkloadType(v string) *QueueInfo {
 
 func (s *QueueInfo) SetWorkspaceId(v string) *QueueInfo {
 	s.WorkspaceId = &v
+	return s
+}
+
+func (s *QueueInfo) SetWorkspaceName(v string) *QueueInfo {
+	s.WorkspaceName = &v
 	return s
 }
 
@@ -2391,12 +2544,15 @@ type QuotaConfig struct {
 	// example:
 	//
 	// 470.199.02
-	DefaultGPUDriver               *string                   `json:"DefaultGPUDriver,omitempty" xml:"DefaultGPUDriver,omitempty"`
-	EnablePreemptSubquotaWorkloads *bool                     `json:"EnablePreemptSubquotaWorkloads,omitempty" xml:"EnablePreemptSubquotaWorkloads,omitempty"`
-	EnableSubQuotaPreemption       *bool                     `json:"EnableSubQuotaPreemption,omitempty" xml:"EnableSubQuotaPreemption,omitempty"`
-	ResourceSpecs                  []*WorkspaceSpecs         `json:"ResourceSpecs,omitempty" xml:"ResourceSpecs,omitempty" type:"Repeated"`
-	SubQuotaPreemptionConfig       *SubQuotaPreemptionConfig `json:"SubQuotaPreemptionConfig,omitempty" xml:"SubQuotaPreemptionConfig,omitempty"`
-	SupportGPUDrivers              []*string                 `json:"SupportGPUDrivers,omitempty" xml:"SupportGPUDrivers,omitempty" type:"Repeated"`
+	DefaultGPUDriver               *string                    `json:"DefaultGPUDriver,omitempty" xml:"DefaultGPUDriver,omitempty"`
+	EnableGPUShare                 *bool                      `json:"EnableGPUShare,omitempty" xml:"EnableGPUShare,omitempty"`
+	EnablePreemptSubquotaWorkloads *bool                      `json:"EnablePreemptSubquotaWorkloads,omitempty" xml:"EnablePreemptSubquotaWorkloads,omitempty"`
+	EnableSubQuotaPreemption       *bool                      `json:"EnableSubQuotaPreemption,omitempty" xml:"EnableSubQuotaPreemption,omitempty"`
+	OversoldUsageInfo              *OversoldUsageConfig       `json:"OversoldUsageInfo,omitempty" xml:"OversoldUsageInfo,omitempty"`
+	ResourceSpecs                  []*WorkspaceSpecs          `json:"ResourceSpecs,omitempty" xml:"ResourceSpecs,omitempty" type:"Repeated"`
+	SelfQuotaPreemptionConfig      *SelfQuotaPreemptionConfig `json:"SelfQuotaPreemptionConfig,omitempty" xml:"SelfQuotaPreemptionConfig,omitempty"`
+	SubQuotaPreemptionConfig       *SubQuotaPreemptionConfig  `json:"SubQuotaPreemptionConfig,omitempty" xml:"SubQuotaPreemptionConfig,omitempty"`
+	SupportGPUDrivers              []*string                  `json:"SupportGPUDrivers,omitempty" xml:"SupportGPUDrivers,omitempty" type:"Repeated"`
 	// example:
 	//
 	// false
@@ -2427,6 +2583,11 @@ func (s *QuotaConfig) SetDefaultGPUDriver(v string) *QuotaConfig {
 	return s
 }
 
+func (s *QuotaConfig) SetEnableGPUShare(v bool) *QuotaConfig {
+	s.EnableGPUShare = &v
+	return s
+}
+
 func (s *QuotaConfig) SetEnablePreemptSubquotaWorkloads(v bool) *QuotaConfig {
 	s.EnablePreemptSubquotaWorkloads = &v
 	return s
@@ -2437,8 +2598,18 @@ func (s *QuotaConfig) SetEnableSubQuotaPreemption(v bool) *QuotaConfig {
 	return s
 }
 
+func (s *QuotaConfig) SetOversoldUsageInfo(v *OversoldUsageConfig) *QuotaConfig {
+	s.OversoldUsageInfo = v
+	return s
+}
+
 func (s *QuotaConfig) SetResourceSpecs(v []*WorkspaceSpecs) *QuotaConfig {
 	s.ResourceSpecs = v
+	return s
+}
+
+func (s *QuotaConfig) SetSelfQuotaPreemptionConfig(v *SelfQuotaPreemptionConfig) *QuotaConfig {
+	s.SelfQuotaPreemptionConfig = v
 	return s
 }
 
@@ -2470,6 +2641,7 @@ type QuotaDetails struct {
 	DesiredMinQuota           *ResourceAmount `json:"DesiredMinQuota,omitempty" xml:"DesiredMinQuota,omitempty"`
 	RequestedQuota            *ResourceAmount `json:"RequestedQuota,omitempty" xml:"RequestedQuota,omitempty"`
 	SelfAllocatedQuota        *ResourceAmount `json:"SelfAllocatedQuota,omitempty" xml:"SelfAllocatedQuota,omitempty"`
+	SelfSubmittedQuota        *ResourceAmount `json:"SelfSubmittedQuota,omitempty" xml:"SelfSubmittedQuota,omitempty"`
 	UsedQuota                 *ResourceAmount `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
 }
 
@@ -2513,6 +2685,11 @@ func (s *QuotaDetails) SetRequestedQuota(v *ResourceAmount) *QuotaDetails {
 
 func (s *QuotaDetails) SetSelfAllocatedQuota(v *ResourceAmount) *QuotaDetails {
 	s.SelfAllocatedQuota = v
+	return s
+}
+
+func (s *QuotaDetails) SetSelfSubmittedQuota(v *ResourceAmount) *QuotaDetails {
+	s.SelfSubmittedQuota = v
 	return s
 }
 
@@ -3507,6 +3684,35 @@ func (s *SchedulingRule) SetExecuteOnce(v bool) *SchedulingRule {
 
 func (s *SchedulingRule) SetStartAt(v string) *SchedulingRule {
 	s.StartAt = &v
+	return s
+}
+
+type SelfQuotaPreemptionConfig struct {
+	PreemptedPriorities []*int32  `json:"PreemptedPriorities,omitempty" xml:"PreemptedPriorities,omitempty" type:"Repeated"`
+	PreemptedProducts   []*string `json:"PreemptedProducts,omitempty" xml:"PreemptedProducts,omitempty" type:"Repeated"`
+	PreemptorPriorities []*int32  `json:"PreemptorPriorities,omitempty" xml:"PreemptorPriorities,omitempty" type:"Repeated"`
+}
+
+func (s SelfQuotaPreemptionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SelfQuotaPreemptionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SelfQuotaPreemptionConfig) SetPreemptedPriorities(v []*int32) *SelfQuotaPreemptionConfig {
+	s.PreemptedPriorities = v
+	return s
+}
+
+func (s *SelfQuotaPreemptionConfig) SetPreemptedProducts(v []*string) *SelfQuotaPreemptionConfig {
+	s.PreemptedProducts = v
+	return s
+}
+
+func (s *SelfQuotaPreemptionConfig) SetPreemptorPriorities(v []*int32) *SelfQuotaPreemptionConfig {
+	s.PreemptorPriorities = v
 	return s
 }
 
@@ -9428,7 +9634,8 @@ type ListNodesRequest struct {
 	// example:
 	//
 	// CPU
-	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	AcceleratorType  *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
 	// example:
 	//
 	// quotamtl37ge7gkvdz
@@ -9441,6 +9648,7 @@ type ListNodesRequest struct {
 	//
 	// T4
 	GPUType         *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	HyperZone       *string `json:"HyperZone,omitempty" xml:"HyperZone,omitempty"`
 	MachineGroupIds *string `json:"MachineGroupIds,omitempty" xml:"MachineGroupIds,omitempty"`
 	// example:
 	//
@@ -9502,6 +9710,11 @@ func (s *ListNodesRequest) SetAcceleratorType(v string) *ListNodesRequest {
 	return s
 }
 
+func (s *ListNodesRequest) SetAvailabilityZone(v string) *ListNodesRequest {
+	s.AvailabilityZone = &v
+	return s
+}
+
 func (s *ListNodesRequest) SetFilterByQuotaId(v string) *ListNodesRequest {
 	s.FilterByQuotaId = &v
 	return s
@@ -9514,6 +9727,11 @@ func (s *ListNodesRequest) SetFilterByResourceGroupIds(v string) *ListNodesReque
 
 func (s *ListNodesRequest) SetGPUType(v string) *ListNodesRequest {
 	s.GPUType = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetHyperZone(v string) *ListNodesRequest {
+	s.HyperZone = &v
 	return s
 }
 
@@ -15138,6 +15356,10 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, headers ma
 		query["AcceleratorType"] = request.AcceleratorType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AvailabilityZone)) {
+		query["AvailabilityZone"] = request.AvailabilityZone
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FilterByQuotaId)) {
 		query["FilterByQuotaId"] = request.FilterByQuotaId
 	}
@@ -15148,6 +15370,10 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, headers ma
 
 	if !tea.BoolValue(util.IsUnset(request.GPUType)) {
 		query["GPUType"] = request.GPUType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HyperZone)) {
+		query["HyperZone"] = request.HyperZone
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MachineGroupIds)) {
