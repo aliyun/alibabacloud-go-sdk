@@ -17,6 +17,7 @@ type Catalog struct {
 	Options   map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
 	Owner     *string            `json:"owner,omitempty" xml:"owner,omitempty"`
 	Status    *string            `json:"status,omitempty" xml:"status,omitempty"`
+	Type      *string            `json:"type,omitempty" xml:"type,omitempty"`
 	UpdatedAt *int64             `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 	UpdatedBy *string            `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
@@ -61,6 +62,11 @@ func (s *Catalog) SetOwner(v string) *Catalog {
 
 func (s *Catalog) SetStatus(v string) *Catalog {
 	s.Status = &v
+	return s
+}
+
+func (s *Catalog) SetType(v string) *Catalog {
+	s.Type = &v
 	return s
 }
 
@@ -474,6 +480,35 @@ func (s *FullDataType) SetValue(v *FullDataType) *FullDataType {
 	return s
 }
 
+type FullInstant struct {
+	SnapshotId *int64  `json:"snapshotId,omitempty" xml:"snapshotId,omitempty"`
+	TagName    *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s FullInstant) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FullInstant) GoString() string {
+	return s.String()
+}
+
+func (s *FullInstant) SetSnapshotId(v int64) *FullInstant {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *FullInstant) SetTagName(v string) *FullInstant {
+	s.TagName = &v
+	return s
+}
+
+func (s *FullInstant) SetType(v string) *FullInstant {
+	s.Type = &v
+	return s
+}
+
 type FullSchemaChange struct {
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
 	// required in UpdateComment/AddColumn
@@ -565,6 +600,247 @@ func (s *FullSchemaChange) SetValue(v string) *FullSchemaChange {
 	return s
 }
 
+type IcebergNestedField struct {
+	Doc      *string `json:"doc,omitempty" xml:"doc,omitempty"`
+	Id       *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Optional *bool   `json:"optional,omitempty" xml:"optional,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s IcebergNestedField) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IcebergNestedField) GoString() string {
+	return s.String()
+}
+
+func (s *IcebergNestedField) SetDoc(v string) *IcebergNestedField {
+	s.Doc = &v
+	return s
+}
+
+func (s *IcebergNestedField) SetId(v int64) *IcebergNestedField {
+	s.Id = &v
+	return s
+}
+
+func (s *IcebergNestedField) SetName(v string) *IcebergNestedField {
+	s.Name = &v
+	return s
+}
+
+func (s *IcebergNestedField) SetOptional(v bool) *IcebergNestedField {
+	s.Optional = &v
+	return s
+}
+
+func (s *IcebergNestedField) SetType(v string) *IcebergNestedField {
+	s.Type = &v
+	return s
+}
+
+type IcebergPartitionField struct {
+	FieldId   *int64  `json:"fieldId,omitempty" xml:"fieldId,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	SourceId  *int64  `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	Transform *string `json:"transform,omitempty" xml:"transform,omitempty"`
+}
+
+func (s IcebergPartitionField) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IcebergPartitionField) GoString() string {
+	return s.String()
+}
+
+func (s *IcebergPartitionField) SetFieldId(v int64) *IcebergPartitionField {
+	s.FieldId = &v
+	return s
+}
+
+func (s *IcebergPartitionField) SetName(v string) *IcebergPartitionField {
+	s.Name = &v
+	return s
+}
+
+func (s *IcebergPartitionField) SetSourceId(v int64) *IcebergPartitionField {
+	s.SourceId = &v
+	return s
+}
+
+func (s *IcebergPartitionField) SetTransform(v string) *IcebergPartitionField {
+	s.Transform = &v
+	return s
+}
+
+type IcebergSnapshot struct {
+	AddedRows       *int64             `json:"addedRows,omitempty" xml:"addedRows,omitempty"`
+	Id              *int64             `json:"id,omitempty" xml:"id,omitempty"`
+	Operation       *string            `json:"operation,omitempty" xml:"operation,omitempty"`
+	ParentId        *int64             `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	SchemaId        *int64             `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
+	SequenceNumber  *int64             `json:"sequenceNumber,omitempty" xml:"sequenceNumber,omitempty"`
+	Summary         map[string]*string `json:"summary,omitempty" xml:"summary,omitempty"`
+	TimestampMillis *int64             `json:"timestampMillis,omitempty" xml:"timestampMillis,omitempty"`
+}
+
+func (s IcebergSnapshot) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IcebergSnapshot) GoString() string {
+	return s.String()
+}
+
+func (s *IcebergSnapshot) SetAddedRows(v int64) *IcebergSnapshot {
+	s.AddedRows = &v
+	return s
+}
+
+func (s *IcebergSnapshot) SetId(v int64) *IcebergSnapshot {
+	s.Id = &v
+	return s
+}
+
+func (s *IcebergSnapshot) SetOperation(v string) *IcebergSnapshot {
+	s.Operation = &v
+	return s
+}
+
+func (s *IcebergSnapshot) SetParentId(v int64) *IcebergSnapshot {
+	s.ParentId = &v
+	return s
+}
+
+func (s *IcebergSnapshot) SetSchemaId(v int64) *IcebergSnapshot {
+	s.SchemaId = &v
+	return s
+}
+
+func (s *IcebergSnapshot) SetSequenceNumber(v int64) *IcebergSnapshot {
+	s.SequenceNumber = &v
+	return s
+}
+
+func (s *IcebergSnapshot) SetSummary(v map[string]*string) *IcebergSnapshot {
+	s.Summary = v
+	return s
+}
+
+func (s *IcebergSnapshot) SetTimestampMillis(v int64) *IcebergSnapshot {
+	s.TimestampMillis = &v
+	return s
+}
+
+type IcebergTable struct {
+	CreatedAt            *int64                `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatedBy            *string               `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	IcebergTableMetadata *IcebergTableMetadata `json:"icebergTableMetadata,omitempty" xml:"icebergTableMetadata,omitempty"`
+	Id                   *string               `json:"id,omitempty" xml:"id,omitempty"`
+	Name                 *string               `json:"name,omitempty" xml:"name,omitempty"`
+	Owner                *string               `json:"owner,omitempty" xml:"owner,omitempty"`
+	Path                 *string               `json:"path,omitempty" xml:"path,omitempty"`
+	UpdatedAt            *int64                `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	UpdatedBy            *string               `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	Version              *int64                `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s IcebergTable) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IcebergTable) GoString() string {
+	return s.String()
+}
+
+func (s *IcebergTable) SetCreatedAt(v int64) *IcebergTable {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *IcebergTable) SetCreatedBy(v string) *IcebergTable {
+	s.CreatedBy = &v
+	return s
+}
+
+func (s *IcebergTable) SetIcebergTableMetadata(v *IcebergTableMetadata) *IcebergTable {
+	s.IcebergTableMetadata = v
+	return s
+}
+
+func (s *IcebergTable) SetId(v string) *IcebergTable {
+	s.Id = &v
+	return s
+}
+
+func (s *IcebergTable) SetName(v string) *IcebergTable {
+	s.Name = &v
+	return s
+}
+
+func (s *IcebergTable) SetOwner(v string) *IcebergTable {
+	s.Owner = &v
+	return s
+}
+
+func (s *IcebergTable) SetPath(v string) *IcebergTable {
+	s.Path = &v
+	return s
+}
+
+func (s *IcebergTable) SetUpdatedAt(v int64) *IcebergTable {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *IcebergTable) SetUpdatedBy(v string) *IcebergTable {
+	s.UpdatedBy = &v
+	return s
+}
+
+func (s *IcebergTable) SetVersion(v int64) *IcebergTable {
+	s.Version = &v
+	return s
+}
+
+type IcebergTableMetadata struct {
+	CurrentSnapshot *IcebergSnapshot         `json:"currentSnapshot,omitempty" xml:"currentSnapshot,omitempty"`
+	Fields          []*IcebergNestedField    `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	PartitionFields []*IcebergPartitionField `json:"partitionFields,omitempty" xml:"partitionFields,omitempty" type:"Repeated"`
+	Properties      map[string]*string       `json:"properties,omitempty" xml:"properties,omitempty"`
+}
+
+func (s IcebergTableMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IcebergTableMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *IcebergTableMetadata) SetCurrentSnapshot(v *IcebergSnapshot) *IcebergTableMetadata {
+	s.CurrentSnapshot = v
+	return s
+}
+
+func (s *IcebergTableMetadata) SetFields(v []*IcebergNestedField) *IcebergTableMetadata {
+	s.Fields = v
+	return s
+}
+
+func (s *IcebergTableMetadata) SetPartitionFields(v []*IcebergPartitionField) *IcebergTableMetadata {
+	s.PartitionFields = v
+	return s
+}
+
+func (s *IcebergTableMetadata) SetProperties(v map[string]*string) *IcebergTableMetadata {
+	s.Properties = v
+	return s
+}
+
 type Identifier struct {
 	Database *string `json:"database,omitempty" xml:"database,omitempty"`
 	Object   *string `json:"object,omitempty" xml:"object,omitempty"`
@@ -646,6 +922,71 @@ func (s *Move) SetReferenceFieldName(v string) *Move {
 
 func (s *Move) SetType(v string) *Move {
 	s.Type = &v
+	return s
+}
+
+type Namespace struct {
+	CreatedAt *int64             `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatedBy *string            `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	Id        *string            `json:"id,omitempty" xml:"id,omitempty"`
+	Location  *string            `json:"location,omitempty" xml:"location,omitempty"`
+	Name      *string            `json:"name,omitempty" xml:"name,omitempty"`
+	Options   map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	Owner     *string            `json:"owner,omitempty" xml:"owner,omitempty"`
+	UpdatedAt *int64             `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	UpdatedBy *string            `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+}
+
+func (s Namespace) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Namespace) GoString() string {
+	return s.String()
+}
+
+func (s *Namespace) SetCreatedAt(v int64) *Namespace {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *Namespace) SetCreatedBy(v string) *Namespace {
+	s.CreatedBy = &v
+	return s
+}
+
+func (s *Namespace) SetId(v string) *Namespace {
+	s.Id = &v
+	return s
+}
+
+func (s *Namespace) SetLocation(v string) *Namespace {
+	s.Location = &v
+	return s
+}
+
+func (s *Namespace) SetName(v string) *Namespace {
+	s.Name = &v
+	return s
+}
+
+func (s *Namespace) SetOptions(v map[string]*string) *Namespace {
+	s.Options = v
+	return s
+}
+
+func (s *Namespace) SetOwner(v string) *Namespace {
+	s.Owner = &v
+	return s
+}
+
+func (s *Namespace) SetUpdatedAt(v int64) *Namespace {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *Namespace) SetUpdatedBy(v string) *Namespace {
+	s.UpdatedBy = &v
 	return s
 }
 
@@ -1157,6 +1498,41 @@ func (s *Table) SetUpdatedBy(v string) *Table {
 	return s
 }
 
+type TableCompaction struct {
+	CatalogId             *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	LastCompactedFileTime *int64  `json:"lastCompactedFileTime,omitempty" xml:"lastCompactedFileTime,omitempty"`
+	MaxLevel0FileCount    *string `json:"maxLevel0FileCount,omitempty" xml:"maxLevel0FileCount,omitempty"`
+	TableId               *string `json:"tableId,omitempty" xml:"tableId,omitempty"`
+}
+
+func (s TableCompaction) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TableCompaction) GoString() string {
+	return s.String()
+}
+
+func (s *TableCompaction) SetCatalogId(v string) *TableCompaction {
+	s.CatalogId = &v
+	return s
+}
+
+func (s *TableCompaction) SetLastCompactedFileTime(v int64) *TableCompaction {
+	s.LastCompactedFileTime = &v
+	return s
+}
+
+func (s *TableCompaction) SetMaxLevel0FileCount(v string) *TableCompaction {
+	s.MaxLevel0FileCount = &v
+	return s
+}
+
+func (s *TableCompaction) SetTableId(v string) *TableCompaction {
+	s.TableId = &v
+	return s
+}
+
 type TableSnapshot struct {
 	FileCount            *int64    `json:"fileCount,omitempty" xml:"fileCount,omitempty"`
 	FileSizeInBytes      *int64    `json:"fileSizeInBytes,omitempty" xml:"fileSizeInBytes,omitempty"`
@@ -1577,6 +1953,7 @@ type CreateCatalogRequest struct {
 	Name               *string            `json:"name,omitempty" xml:"name,omitempty"`
 	OptimizationConfig map[string]*string `json:"optimizationConfig,omitempty" xml:"optimizationConfig,omitempty"`
 	Options            map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	Type               *string            `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateCatalogRequest) String() string {
@@ -1599,6 +1976,11 @@ func (s *CreateCatalogRequest) SetOptimizationConfig(v map[string]*string) *Crea
 
 func (s *CreateCatalogRequest) SetOptions(v map[string]*string) *CreateCatalogRequest {
 	s.Options = v
+	return s
+}
+
+func (s *CreateCatalogRequest) SetType(v string) *CreateCatalogRequest {
+	s.Type = &v
 	return s
 }
 
@@ -3395,6 +3777,10 @@ func (client *Client) CreateCatalogWithOptions(request *CreateCatalogRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Options)) {
 		body["options"] = request.Options
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{
