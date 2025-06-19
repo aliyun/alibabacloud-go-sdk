@@ -32675,7 +32675,11 @@ type GetMediaLiveChannelResponseBodyChannelVideoSettings struct {
 	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
 	// The video encoding settings.
 	VideoCodecSetting *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting `json:"VideoCodecSetting,omitempty" xml:"VideoCodecSetting,omitempty" type:"Struct"`
-	// 视频转码方式（普通转码、窄带高清转码等）
+	// The video transcoding method. Valid values: NORMAL (regular transcoding) and NBHD (Narrowband HD™ transcoding).
+	//
+	// example:
+	//
+	// NORMAL
 	VideoCodecType *string `json:"VideoCodecType,omitempty" xml:"VideoCodecType,omitempty"`
 	// The width of the video in pixels.
 	//
@@ -53085,6 +53089,148 @@ func (s *ListMediaBasicInfosResponse) SetBody(v *ListMediaBasicInfosResponseBody
 	return s
 }
 
+type ListMediaConvertJobsRequest struct {
+	// example:
+	//
+	// 2022-07-15T00:00:00Z
+	EndOfCreateTime *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
+	// example:
+	//
+	// 88c6ca184c0e47098a5b665e2****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// ab4802364a2e49208c99efab82dfa8e8
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// CreateTimeDesc
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2022-07-01T00:00:00Z
+	StartOfCreateTime *string `json:"StartOfCreateTime,omitempty" xml:"StartOfCreateTime,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListMediaConvertJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaConvertJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaConvertJobsRequest) SetEndOfCreateTime(v string) *ListMediaConvertJobsRequest {
+	s.EndOfCreateTime = &v
+	return s
+}
+
+func (s *ListMediaConvertJobsRequest) SetJobId(v string) *ListMediaConvertJobsRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListMediaConvertJobsRequest) SetNextPageToken(v string) *ListMediaConvertJobsRequest {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListMediaConvertJobsRequest) SetOrderBy(v string) *ListMediaConvertJobsRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListMediaConvertJobsRequest) SetPageSize(v int32) *ListMediaConvertJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMediaConvertJobsRequest) SetStartOfCreateTime(v string) *ListMediaConvertJobsRequest {
+	s.StartOfCreateTime = &v
+	return s
+}
+
+func (s *ListMediaConvertJobsRequest) SetStatus(v string) *ListMediaConvertJobsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListMediaConvertJobsResponseBody struct {
+	Jobs []*MediaConvertJobWithoutDetail `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ****cdb3e74639973036bc84****
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListMediaConvertJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaConvertJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaConvertJobsResponseBody) SetJobs(v []*MediaConvertJobWithoutDetail) *ListMediaConvertJobsResponseBody {
+	s.Jobs = v
+	return s
+}
+
+func (s *ListMediaConvertJobsResponseBody) SetNextPageToken(v string) *ListMediaConvertJobsResponseBody {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListMediaConvertJobsResponseBody) SetRequestId(v string) *ListMediaConvertJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListMediaConvertJobsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMediaConvertJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMediaConvertJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaConvertJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaConvertJobsResponse) SetHeaders(v map[string]*string) *ListMediaConvertJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMediaConvertJobsResponse) SetStatusCode(v int32) *ListMediaConvertJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMediaConvertJobsResponse) SetBody(v *ListMediaConvertJobsResponseBody) *ListMediaConvertJobsResponse {
+	s.Body = v
+	return s
+}
+
 type ListMediaInfoJobsRequest struct {
 	// The end of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
@@ -54839,7 +54985,11 @@ type ListMediaLiveChannelsResponseBodyChannelsVideoSettings struct {
 	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
 	// The video encoding settings.
 	VideoCodecSetting *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting `json:"VideoCodecSetting,omitempty" xml:"VideoCodecSetting,omitempty" type:"Struct"`
-	// 视频转码方式（普通转码、窄带高清转码等）
+	// The video transcoding method. Valid values: NORMAL (regular transcoding) and NBHD (Narrowband HD™ transcoding).
+	//
+	// example:
+	//
+	// NORMAL
 	VideoCodecType *string `json:"VideoCodecType,omitempty" xml:"VideoCodecType,omitempty"`
 	// The width of the video in pixels.
 	//
@@ -74870,6 +75020,7 @@ func (s *StartRtcRobotInstanceResponse) SetBody(v *StartRtcRobotInstanceResponse
 }
 
 type StartWorkflowRequest struct {
+	SkipInputVerification *bool `json:"SkipInputVerification,omitempty" xml:"SkipInputVerification,omitempty"`
 	// The workflow input. Only media assets are supported.
 	//
 	// example:
@@ -74898,6 +75049,11 @@ func (s StartWorkflowRequest) String() string {
 
 func (s StartWorkflowRequest) GoString() string {
 	return s.String()
+}
+
+func (s *StartWorkflowRequest) SetSkipInputVerification(v bool) *StartWorkflowRequest {
+	s.SkipInputVerification = &v
+	return s
 }
 
 func (s *StartWorkflowRequest) SetTaskInput(v string) *StartWorkflowRequest {
@@ -113633,6 +113789,90 @@ func (client *Client) ListMediaBasicInfos(request *ListMediaBasicInfosRequest) (
 
 // Summary:
 //
+// 查询 MediaConvertJob 列表
+//
+// @param request - ListMediaConvertJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMediaConvertJobsResponse
+func (client *Client) ListMediaConvertJobsWithOptions(request *ListMediaConvertJobsRequest, runtime *util.RuntimeOptions) (_result *ListMediaConvertJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndOfCreateTime)) {
+		query["EndOfCreateTime"] = request.EndOfCreateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartOfCreateTime)) {
+		query["StartOfCreateTime"] = request.StartOfCreateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMediaConvertJobs"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMediaConvertJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 MediaConvertJob 列表
+//
+// @param request - ListMediaConvertJobsRequest
+//
+// @return ListMediaConvertJobsResponse
+func (client *Client) ListMediaConvertJobs(request *ListMediaConvertJobsRequest) (_result *ListMediaConvertJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMediaConvertJobsResponse{}
+	_body, _err := client.ListMediaConvertJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of media information analysis jobs.
 //
 // @param request - ListMediaInfoJobsRequest
@@ -119150,6 +119390,10 @@ func (client *Client) StartWorkflowWithOptions(request *StartWorkflowRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SkipInputVerification)) {
+		query["SkipInputVerification"] = request.SkipInputVerification
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TaskInput)) {
 		query["TaskInput"] = request.TaskInput
 	}
