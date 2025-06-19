@@ -42155,7 +42155,8 @@ type ListClustersRequest struct {
 	// rg-acfmxbzafebvvfa
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The list of tags. A maximum number of 20 tags are supported.
-	Tag []*ListClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag   []*ListClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VpcId *string                   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListClustersRequest) String() string {
@@ -42208,6 +42209,11 @@ func (s *ListClustersRequest) SetResourceGroupId(v string) *ListClustersRequest 
 
 func (s *ListClustersRequest) SetTag(v []*ListClustersRequestTag) *ListClustersRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *ListClustersRequest) SetVpcId(v string) *ListClustersRequest {
+	s.VpcId = &v
 	return s
 }
 
@@ -92145,6 +92151,10 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
 	}
 
 	req := &openapi.OpenApiRequest{
