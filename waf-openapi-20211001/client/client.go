@@ -1234,6 +1234,398 @@ func (s *CreateCloudResourceResponse) SetBody(v *CreateCloudResourceResponseBody
 	return s
 }
 
+type CreateDefenseResourceRequest struct {
+	CustomHeaders []*string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {\\"domain\\": \\"zhhclb4test096-05111.test.com\\"}
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-4xl*******
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 123221XXX
+	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// domain
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// abctest.com
+	Resource      *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// custom
+	ResourceOrigin *string                            `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
+	Tag            []*CreateDefenseResourceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	XffStatus *int32 `json:"XffStatus,omitempty" xml:"XffStatus,omitempty"`
+}
+
+func (s CreateDefenseResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDefenseResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDefenseResourceRequest) SetCustomHeaders(v []*string) *CreateDefenseResourceRequest {
+	s.CustomHeaders = v
+	return s
+}
+
+func (s *CreateDefenseResourceRequest) SetDescription(v string) *CreateDefenseResourceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDefenseResourceRequest) SetDetail(v string) *CreateDefenseResourceRequest {
+	s.Detail = &v
+	return s
+}
+
+func (s *CreateDefenseResourceRequest) SetInstanceId(v string) *CreateDefenseResourceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateDefenseResourceRequest) SetOwnerUserId(v string) *CreateDefenseResourceRequest {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *CreateDefenseResourceRequest) SetPattern(v string) *CreateDefenseResourceRequest {
+	s.Pattern = &v
+	return s
+}
+
+func (s *CreateDefenseResourceRequest) SetProduct(v string) *CreateDefenseResourceRequest {
+	s.Product = &v
+	return s
+}
+
+func (s *CreateDefenseResourceRequest) SetRegionId(v string) *CreateDefenseResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDefenseResourceRequest) SetResource(v string) *CreateDefenseResourceRequest {
+	s.Resource = &v
+	return s
+}
+
+func (s *CreateDefenseResourceRequest) SetResourceGroup(v string) *CreateDefenseResourceRequest {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *CreateDefenseResourceRequest) SetResourceManagerResourceGroupId(v string) *CreateDefenseResourceRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDefenseResourceRequest) SetResourceOrigin(v string) *CreateDefenseResourceRequest {
+	s.ResourceOrigin = &v
+	return s
+}
+
+func (s *CreateDefenseResourceRequest) SetTag(v []*CreateDefenseResourceRequestTag) *CreateDefenseResourceRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateDefenseResourceRequest) SetXffStatus(v int32) *CreateDefenseResourceRequest {
+	s.XffStatus = &v
+	return s
+}
+
+type CreateDefenseResourceRequestTag struct {
+	// example:
+	//
+	// demoTagKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// TagValue1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDefenseResourceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDefenseResourceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDefenseResourceRequestTag) SetKey(v string) *CreateDefenseResourceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDefenseResourceRequestTag) SetValue(v string) *CreateDefenseResourceRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateDefenseResourceShrinkRequest struct {
+	CustomHeadersShrink *string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {\\"domain\\": \\"zhhclb4test096-05111.test.com\\"}
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-4xl*******
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 123221XXX
+	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// domain
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// abctest.com
+	Resource      *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// custom
+	ResourceOrigin *string                                  `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
+	Tag            []*CreateDefenseResourceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	XffStatus *int32 `json:"XffStatus,omitempty" xml:"XffStatus,omitempty"`
+}
+
+func (s CreateDefenseResourceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDefenseResourceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDefenseResourceShrinkRequest) SetCustomHeadersShrink(v string) *CreateDefenseResourceShrinkRequest {
+	s.CustomHeadersShrink = &v
+	return s
+}
+
+func (s *CreateDefenseResourceShrinkRequest) SetDescription(v string) *CreateDefenseResourceShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDefenseResourceShrinkRequest) SetDetail(v string) *CreateDefenseResourceShrinkRequest {
+	s.Detail = &v
+	return s
+}
+
+func (s *CreateDefenseResourceShrinkRequest) SetInstanceId(v string) *CreateDefenseResourceShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateDefenseResourceShrinkRequest) SetOwnerUserId(v string) *CreateDefenseResourceShrinkRequest {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *CreateDefenseResourceShrinkRequest) SetPattern(v string) *CreateDefenseResourceShrinkRequest {
+	s.Pattern = &v
+	return s
+}
+
+func (s *CreateDefenseResourceShrinkRequest) SetProduct(v string) *CreateDefenseResourceShrinkRequest {
+	s.Product = &v
+	return s
+}
+
+func (s *CreateDefenseResourceShrinkRequest) SetRegionId(v string) *CreateDefenseResourceShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDefenseResourceShrinkRequest) SetResource(v string) *CreateDefenseResourceShrinkRequest {
+	s.Resource = &v
+	return s
+}
+
+func (s *CreateDefenseResourceShrinkRequest) SetResourceGroup(v string) *CreateDefenseResourceShrinkRequest {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *CreateDefenseResourceShrinkRequest) SetResourceManagerResourceGroupId(v string) *CreateDefenseResourceShrinkRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDefenseResourceShrinkRequest) SetResourceOrigin(v string) *CreateDefenseResourceShrinkRequest {
+	s.ResourceOrigin = &v
+	return s
+}
+
+func (s *CreateDefenseResourceShrinkRequest) SetTag(v []*CreateDefenseResourceShrinkRequestTag) *CreateDefenseResourceShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateDefenseResourceShrinkRequest) SetXffStatus(v int32) *CreateDefenseResourceShrinkRequest {
+	s.XffStatus = &v
+	return s
+}
+
+type CreateDefenseResourceShrinkRequestTag struct {
+	// example:
+	//
+	// demoTagKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// TagValue1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDefenseResourceShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDefenseResourceShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDefenseResourceShrinkRequestTag) SetKey(v string) *CreateDefenseResourceShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDefenseResourceShrinkRequestTag) SetValue(v string) *CreateDefenseResourceShrinkRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateDefenseResourceResponseBody struct {
+	// example:
+	//
+	// 1738C613-D054-5191-888B-DC0CF4C3A4A0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// cdX.XXX-call.cn-alb
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+}
+
+func (s CreateDefenseResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDefenseResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDefenseResourceResponseBody) SetRequestId(v string) *CreateDefenseResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDefenseResourceResponseBody) SetResource(v string) *CreateDefenseResourceResponseBody {
+	s.Resource = &v
+	return s
+}
+
+type CreateDefenseResourceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDefenseResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDefenseResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDefenseResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDefenseResourceResponse) SetHeaders(v map[string]*string) *CreateDefenseResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDefenseResourceResponse) SetStatusCode(v int32) *CreateDefenseResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDefenseResourceResponse) SetBody(v *CreateDefenseResourceResponseBody) *CreateDefenseResourceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDefenseResourceGroupRequest struct {
 	// The protected objects that you want to add to the protected object group. You can add multiple protected objects to a protected object group at the same time. You can specify multiple protected objects. Separate them with commas (,).
 	//
@@ -3829,6 +4221,106 @@ func (s *DeleteCloudResourceResponse) SetStatusCode(v int32) *DeleteCloudResourc
 }
 
 func (s *DeleteCloudResourceResponse) SetBody(v *DeleteCloudResourceResponseBody) *DeleteCloudResourceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDefenseResourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-9lb*******
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zhh*****-2034.test.top-clb7
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DeleteDefenseResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDefenseResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDefenseResourceRequest) SetInstanceId(v string) *DeleteDefenseResourceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteDefenseResourceRequest) SetRegionId(v string) *DeleteDefenseResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteDefenseResourceRequest) SetResource(v string) *DeleteDefenseResourceRequest {
+	s.Resource = &v
+	return s
+}
+
+func (s *DeleteDefenseResourceRequest) SetResourceManagerResourceGroupId(v string) *DeleteDefenseResourceRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DeleteDefenseResourceResponseBody struct {
+	// example:
+	//
+	// 745F051D-95FD-57EC-9DC1-79BB4883C6A4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDefenseResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDefenseResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDefenseResourceResponseBody) SetRequestId(v string) *DeleteDefenseResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDefenseResourceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDefenseResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDefenseResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDefenseResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDefenseResourceResponse) SetHeaders(v map[string]*string) *DeleteDefenseResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDefenseResourceResponse) SetStatusCode(v int32) *DeleteDefenseResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDefenseResourceResponse) SetBody(v *DeleteDefenseResourceResponseBody) *DeleteDefenseResourceResponse {
 	s.Body = v
 	return s
 }
@@ -40546,6 +41038,124 @@ func (client *Client) CreateCloudResource(request *CreateCloudResourceRequest) (
 
 // Summary:
 //
+// 创建防护对象
+//
+// @param tmpReq - CreateDefenseResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDefenseResourceResponse
+func (client *Client) CreateDefenseResourceWithOptions(tmpReq *CreateDefenseResourceRequest, runtime *util.RuntimeOptions) (_result *CreateDefenseResourceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDefenseResourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomHeaders)) {
+		request.CustomHeadersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomHeaders, tea.String("CustomHeaders"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomHeadersShrink)) {
+		query["CustomHeaders"] = request.CustomHeadersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Detail)) {
+		query["Detail"] = request.Detail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerUserId)) {
+		query["OwnerUserId"] = request.OwnerUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pattern)) {
+		query["Pattern"] = request.Pattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["Product"] = request.Product
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroup)) {
+		query["ResourceGroup"] = request.ResourceGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOrigin)) {
+		query["ResourceOrigin"] = request.ResourceOrigin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XffStatus)) {
+		query["XffStatus"] = request.XffStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDefenseResource"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDefenseResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建防护对象
+//
+// @param request - CreateDefenseResourceRequest
+//
+// @return CreateDefenseResourceResponse
+func (client *Client) CreateDefenseResource(request *CreateDefenseResourceRequest) (_result *CreateDefenseResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDefenseResourceResponse{}
+	_body, _err := client.CreateDefenseResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a protected object group.
 //
 // @param request - CreateDefenseResourceGroupRequest
@@ -41549,6 +42159,78 @@ func (client *Client) DeleteCloudResource(request *DeleteCloudResourceRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCloudResourceResponse{}
 	_body, _err := client.DeleteCloudResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除单个防护对象
+//
+// @param request - DeleteDefenseResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDefenseResourceResponse
+func (client *Client) DeleteDefenseResourceWithOptions(request *DeleteDefenseResourceRequest, runtime *util.RuntimeOptions) (_result *DeleteDefenseResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDefenseResource"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDefenseResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除单个防护对象
+//
+// @param request - DeleteDefenseResourceRequest
+//
+// @return DeleteDefenseResourceResponse
+func (client *Client) DeleteDefenseResource(request *DeleteDefenseResourceRequest) (_result *DeleteDefenseResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDefenseResourceResponse{}
+	_body, _err := client.DeleteDefenseResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
