@@ -3217,29 +3217,71 @@ func (s *DescribeCACertificateCountResponse) SetBody(v *DescribeCACertificateCou
 }
 
 type DescribeCACertificateListRequest struct {
+	// CaStatus.
+	//
+	// - issue：inUse.
+	//
+	// - forbidden ：forbidden.
+	//
+	// - revoke：revoked.
+	//
+	// example:
+	//
+	// issue
 	CaStatus *string `json:"CaStatus,omitempty" xml:"CaStatus,omitempty"`
+	// The type of the certificate. Valid values:
+	//
+	// - root：rootCA.
+	//
+	// - subRoot：subCA.
+	//
+	// - externalCa：import.
+	//
+	// example:
+	//
+	// subRoot
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The unique identifier of the client certificate or server certificate that you want to revoke.
+	// The unique identifier of the CA certificate.
 	//
-	// >  You can call the [ListClientCertificate](https://help.aliyun.com/document_detail/330884.html) operation to query the unique identifiers of all client certificates and server certificates.
+	// >  You can call the [DescribeCACertificateList](https://help.aliyun.com/document_detail/328095.html) operation to query the unique identifiers of all CA certificates.
 	//
 	// example:
 	//
 	// 160ae6bb538d538c70c01f81dcf2****
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The CA Issuer Type.
+	//
+	// - local：Private certificate.
+	//
+	// - iTrusChina： Compliance CA.
+	//
+	// - external：External Import.
+	//
+	// example:
+	//
+	// local
 	IssuerType *string `json:"IssuerType,omitempty" xml:"IssuerType,omitempty"`
-	// The number of CA certificates to return on each page. Default value: **20**.
+	// The number of CA certificates per page. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
-	ShowSize    *int32  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// valid time.
+	//
+	// - valid：means in the valid period.
+	//
+	// - notValid：means expired.
+	//
+	// example:
+	//
+	// valid
 	ValidStatus *string `json:"ValidStatus,omitempty" xml:"ValidStatus,omitempty"`
 }
 
@@ -3287,7 +3329,7 @@ func (s *DescribeCACertificateListRequest) SetValidStatus(v string) *DescribeCAC
 }
 
 type DescribeCACertificateListResponseBody struct {
-	// An array that consists of the details about the CA certificate.
+	// The details about the CA certificates.
 	CertificateList []*DescribeCACertificateListResponseBodyCertificateList `json:"CertificateList,omitempty" xml:"CertificateList,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
@@ -3378,6 +3420,12 @@ type DescribeCACertificateListResponseBodyCertificateList struct {
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The alias of the CA.
+	//
+	// example:
+	//
+	// Aliyun_CA
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	// The issuance date of the CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
@@ -3386,9 +3434,9 @@ type DescribeCACertificateListResponseBodyCertificateList struct {
 	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
 	// The type of the CA certificate. Valid values:
 	//
-	// 	- **ROOT**: root CA certificate
+	// 	- **ROOT**: a root CA certificate.
 	//
-	// 	- **SUB_ROOT**: intermediate CA certificate
+	// 	- **SUB_ROOT**: an intermediate CA certificate.
 	//
 	// example:
 	//
@@ -3494,15 +3542,15 @@ type DescribeCACertificateListResponseBodyCertificateList struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The Distinguished Name (DN) attribute of the CA certificate, which indicates the user information of the certificate. The DN attribute contains the following information:
 	//
-	// 	- **C**: the country code in which the organization is located
+	// 	- **C**: the code of the country in which the organization is located.
 	//
-	// 	- **O**: the name of the organization
+	// 	- **O**: the name of the organization.
 	//
-	// 	- **OU**: the name of the department or branch in the organization
+	// 	- **OU**: the name of the department or branch in the organization.
 	//
-	// 	- **L**: the name of the city in which the organization is located
+	// 	- **L**: the name of the city in which the organization is located.
 	//
-	// 	- **CN**: the common name or abbreviation of the organization
+	// 	- **CN**: the common name or abbreviation of the organization.
 	//
 	// example:
 	//
@@ -3537,6 +3585,11 @@ func (s *DescribeCACertificateListResponseBodyCertificateList) SetAfterDate(v in
 
 func (s *DescribeCACertificateListResponseBodyCertificateList) SetAlgorithm(v string) *DescribeCACertificateListResponseBodyCertificateList {
 	s.Algorithm = &v
+	return s
+}
+
+func (s *DescribeCACertificateListResponseBodyCertificateList) SetAlias(v string) *DescribeCACertificateListResponseBodyCertificateList {
+	s.Alias = &v
 	return s
 }
 
