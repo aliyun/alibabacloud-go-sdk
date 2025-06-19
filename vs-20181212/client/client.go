@@ -12209,10 +12209,11 @@ type DescribeRenderingSessionResponseBody struct {
 	// example:
 	//
 	// 111.45.29.96
-	Hostname     *string                                             `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	Isp          *string                                             `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	Location     *DescribeRenderingSessionResponseBodyLocation       `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	PortMappings []*DescribeRenderingSessionResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
+	Hostname            *string                                             `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	Isp                 *string                                             `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	Location            *DescribeRenderingSessionResponseBodyLocation       `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	PortMappings        []*DescribeRenderingSessionResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
+	RenderingInstanceId *string                                             `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
@@ -12268,6 +12269,11 @@ func (s *DescribeRenderingSessionResponseBody) SetLocation(v *DescribeRenderingS
 
 func (s *DescribeRenderingSessionResponseBody) SetPortMappings(v []*DescribeRenderingSessionResponseBodyPortMappings) *DescribeRenderingSessionResponseBody {
 	s.PortMappings = v
+	return s
+}
+
+func (s *DescribeRenderingSessionResponseBody) SetRenderingInstanceId(v string) *DescribeRenderingSessionResponseBody {
+	s.RenderingInstanceId = &v
 	return s
 }
 
@@ -19045,6 +19051,117 @@ func (s *ForbidVsStreamResponse) SetBody(v *ForbidVsStreamResponseBody) *ForbidV
 	return s
 }
 
+type GetRenderingInstanceCommandsStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cmd-81de027b66e442e99c1e0e09a16a0be5
+	CmdId *string `json:"CmdId,omitempty" xml:"CmdId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// render-9f8c57355d224ad7beaf95e145f22111
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+}
+
+func (s GetRenderingInstanceCommandsStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRenderingInstanceCommandsStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRenderingInstanceCommandsStatusRequest) SetCmdId(v string) *GetRenderingInstanceCommandsStatusRequest {
+	s.CmdId = &v
+	return s
+}
+
+func (s *GetRenderingInstanceCommandsStatusRequest) SetRenderingInstanceId(v string) *GetRenderingInstanceCommandsStatusRequest {
+	s.RenderingInstanceId = &v
+	return s
+}
+
+type GetRenderingInstanceCommandsStatusResponseBody struct {
+	// example:
+	//
+	// conn failed!
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// BEA5625F-8FCF-48F4-851B-CA63946DA664
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Thu Jun 27 16:06:26 CST 2024
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetRenderingInstanceCommandsStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRenderingInstanceCommandsStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRenderingInstanceCommandsStatusResponseBody) SetMessage(v string) *GetRenderingInstanceCommandsStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetRenderingInstanceCommandsStatusResponseBody) SetRequestId(v string) *GetRenderingInstanceCommandsStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRenderingInstanceCommandsStatusResponseBody) SetResult(v string) *GetRenderingInstanceCommandsStatusResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *GetRenderingInstanceCommandsStatusResponseBody) SetStatus(v string) *GetRenderingInstanceCommandsStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetRenderingInstanceCommandsStatusResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRenderingInstanceCommandsStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetRenderingInstanceCommandsStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRenderingInstanceCommandsStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRenderingInstanceCommandsStatusResponse) SetHeaders(v map[string]*string) *GetRenderingInstanceCommandsStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRenderingInstanceCommandsStatusResponse) SetStatusCode(v int32) *GetRenderingInstanceCommandsStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRenderingInstanceCommandsStatusResponse) SetBody(v *GetRenderingInstanceCommandsStatusResponseBody) *GetRenderingInstanceCommandsStatusResponse {
+	s.Body = v
+	return s
+}
+
 type GetRenderingInstanceStreamingInfoRequest struct {
 	// This parameter is required.
 	//
@@ -21475,7 +21592,8 @@ type ListRenderingSessionsRequest struct {
 	// example:
 	//
 	// project-422bc38dfgh5eb44149f135ef76304f63b
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId           *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
 	// example:
 	//
 	// session-i205217481741918129226
@@ -21516,6 +21634,11 @@ func (s *ListRenderingSessionsRequest) SetPageSize(v int32) *ListRenderingSessio
 
 func (s *ListRenderingSessionsRequest) SetProjectId(v string) *ListRenderingSessionsRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *ListRenderingSessionsRequest) SetRenderingInstanceId(v string) *ListRenderingSessionsRequest {
+	s.RenderingInstanceId = &v
 	return s
 }
 
@@ -21572,7 +21695,8 @@ type ListRenderingSessionsResponseBodySessions struct {
 	// example:
 	//
 	// fd6b2134-7954-4754-8915-5fb8b0469622
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientId            *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
 	// example:
 	//
 	// session-i205217481741918129226
@@ -21598,6 +21722,11 @@ func (s *ListRenderingSessionsResponseBodySessions) SetAppId(v string) *ListRend
 
 func (s *ListRenderingSessionsResponseBodySessions) SetClientId(v string) *ListRenderingSessionsResponseBodySessions {
 	s.ClientId = &v
+	return s
+}
+
+func (s *ListRenderingSessionsResponseBodySessions) SetRenderingInstanceId(v string) *ListRenderingSessionsResponseBodySessions {
+	s.RenderingInstanceId = &v
 	return s
 }
 
@@ -24140,12 +24269,14 @@ type SendRenderingInstanceCommandsRequest struct {
 	//
 	// date;ls -l /tmp
 	Commands *string `json:"Commands,omitempty" xml:"Commands,omitempty"`
+	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	Timeout             *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s SendRenderingInstanceCommandsRequest) String() string {
@@ -24161,12 +24292,23 @@ func (s *SendRenderingInstanceCommandsRequest) SetCommands(v string) *SendRender
 	return s
 }
 
+func (s *SendRenderingInstanceCommandsRequest) SetMode(v string) *SendRenderingInstanceCommandsRequest {
+	s.Mode = &v
+	return s
+}
+
 func (s *SendRenderingInstanceCommandsRequest) SetRenderingInstanceId(v string) *SendRenderingInstanceCommandsRequest {
 	s.RenderingInstanceId = &v
 	return s
 }
 
+func (s *SendRenderingInstanceCommandsRequest) SetTimeout(v int32) *SendRenderingInstanceCommandsRequest {
+	s.Timeout = &v
+	return s
+}
+
 type SendRenderingInstanceCommandsResponseBody struct {
+	CmdId *string `json:"CmdId,omitempty" xml:"CmdId,omitempty"`
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
@@ -24183,6 +24325,11 @@ func (s SendRenderingInstanceCommandsResponseBody) String() string {
 
 func (s SendRenderingInstanceCommandsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *SendRenderingInstanceCommandsResponseBody) SetCmdId(v string) *SendRenderingInstanceCommandsResponseBody {
+	s.CmdId = &v
+	return s
 }
 
 func (s *SendRenderingInstanceCommandsResponseBody) SetRequestId(v string) *SendRenderingInstanceCommandsResponseBody {
@@ -25056,9 +25203,10 @@ type StartRenderingSessionResponseBody struct {
 	// example:
 	//
 	// false
-	IsRepeatedRequest *bool                                            `json:"IsRepeatedRequest,omitempty" xml:"IsRepeatedRequest,omitempty"`
-	Location          *StartRenderingSessionResponseBodyLocation       `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	PortMappings      []*StartRenderingSessionResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
+	IsRepeatedRequest   *bool                                            `json:"IsRepeatedRequest,omitempty" xml:"IsRepeatedRequest,omitempty"`
+	Location            *StartRenderingSessionResponseBodyLocation       `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	PortMappings        []*StartRenderingSessionResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
+	RenderingInstanceId *string                                          `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
@@ -25095,6 +25243,11 @@ func (s *StartRenderingSessionResponseBody) SetLocation(v *StartRenderingSession
 
 func (s *StartRenderingSessionResponseBody) SetPortMappings(v []*StartRenderingSessionResponseBodyPortMappings) *StartRenderingSessionResponseBody {
 	s.PortMappings = v
+	return s
+}
+
+func (s *StartRenderingSessionResponseBody) SetRenderingInstanceId(v string) *StartRenderingSessionResponseBody {
+	s.RenderingInstanceId = &v
 	return s
 }
 
@@ -35490,6 +35643,70 @@ func (client *Client) ForbidVsStream(request *ForbidVsStreamRequest) (_result *F
 
 // Summary:
 //
+// 查询命令的执行状态与结果。
+//
+// @param request - GetRenderingInstanceCommandsStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRenderingInstanceCommandsStatusResponse
+func (client *Client) GetRenderingInstanceCommandsStatusWithOptions(request *GetRenderingInstanceCommandsStatusRequest, runtime *util.RuntimeOptions) (_result *GetRenderingInstanceCommandsStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CmdId)) {
+		query["CmdId"] = request.CmdId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
+		query["RenderingInstanceId"] = request.RenderingInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRenderingInstanceCommandsStatus"),
+		Version:     tea.String("2018-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRenderingInstanceCommandsStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询命令的执行状态与结果。
+//
+// @param request - GetRenderingInstanceCommandsStatusRequest
+//
+// @return GetRenderingInstanceCommandsStatusResponse
+func (client *Client) GetRenderingInstanceCommandsStatus(request *GetRenderingInstanceCommandsStatusRequest) (_result *GetRenderingInstanceCommandsStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRenderingInstanceCommandsStatusResponse{}
+	_body, _err := client.GetRenderingInstanceCommandsStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取云渲染实例流连接信息，每次流化建联前都需要调用此接口获取最新连接信息
 //
 // @param request - GetRenderingInstanceStreamingInfoRequest
@@ -36437,6 +36654,10 @@ func (client *Client) ListRenderingSessionsWithOptions(request *ListRenderingSes
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
 		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
+		query["RenderingInstanceId"] = request.RenderingInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
@@ -38059,7 +38280,7 @@ func (client *Client) ResumeVsStream(request *ResumeVsStreamRequest) (_result *R
 
 // Summary:
 //
-// 下发shell命令，同步响应。不适用于耗时命令。
+// 下发shell命令，支持同步/异步响应命令。
 //
 // @param request - SendRenderingInstanceCommandsRequest
 //
@@ -38072,8 +38293,16 @@ func (client *Client) SendRenderingInstanceCommandsWithOptions(request *SendRend
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
 		query["RenderingInstanceId"] = request.RenderingInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
 	}
 
 	body := map[string]interface{}{}
@@ -38107,7 +38336,7 @@ func (client *Client) SendRenderingInstanceCommandsWithOptions(request *SendRend
 
 // Summary:
 //
-// 下发shell命令，同步响应。不适用于耗时命令。
+// 下发shell命令，支持同步/异步响应命令。
 //
 // @param request - SendRenderingInstanceCommandsRequest
 //
