@@ -15222,6 +15222,7 @@ func (s *CreateRunHeaders) SetAccountId(v string) *CreateRunHeaders {
 }
 
 type CreateRunRequest struct {
+	AllowStructViewContent *bool `json:"allowStructViewContent,omitempty" xml:"allowStructViewContent,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -15258,6 +15259,11 @@ func (s CreateRunRequest) String() string {
 
 func (s CreateRunRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRunRequest) SetAllowStructViewContent(v bool) *CreateRunRequest {
+	s.AllowStructViewContent = &v
+	return s
 }
 
 func (s *CreateRunRequest) SetAssistantId(v string) *CreateRunRequest {
@@ -15327,7 +15333,8 @@ type CreateRunResponseBodyMessages struct {
 	// example:
 	//
 	// 这是一张小猫钓鱼图
-	ContentDesc *string `json:"contentDesc,omitempty" xml:"contentDesc,omitempty"`
+	ContentDesc   *string                                     `json:"contentDesc,omitempty" xml:"contentDesc,omitempty"`
+	ContentStruct *CreateRunResponseBodyMessagesContentStruct `json:"contentStruct,omitempty" xml:"contentStruct,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1642448000000
@@ -15365,6 +15372,11 @@ func (s *CreateRunResponseBodyMessages) SetContent(v *CreateRunResponseBodyMessa
 
 func (s *CreateRunResponseBodyMessages) SetContentDesc(v string) *CreateRunResponseBodyMessages {
 	s.ContentDesc = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessages) SetContentStruct(v *CreateRunResponseBodyMessagesContentStruct) *CreateRunResponseBodyMessages {
+	s.ContentStruct = v
 	return s
 }
 
@@ -16054,6 +16066,311 @@ func (s CreateRunResponseBodyMessagesContentText) GoString() string {
 
 func (s *CreateRunResponseBodyMessagesContentText) SetValue(v string) *CreateRunResponseBodyMessagesContentText {
 	s.Value = &v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStruct struct {
+	Parts []*CreateRunResponseBodyMessagesContentStructParts `json:"parts,omitempty" xml:"parts,omitempty" type:"Repeated"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStruct) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStruct) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStruct) SetParts(v []*CreateRunResponseBodyMessagesContentStructParts) *CreateRunResponseBodyMessagesContentStruct {
+	s.Parts = v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructParts struct {
+	Append *bool `json:"append,omitempty" xml:"append,omitempty"`
+	// example:
+	//
+	// {}
+	DataPart *CreateRunResponseBodyMessagesContentStructPartsDataPart `json:"dataPart,omitempty" xml:"dataPart,omitempty" type:"Struct"`
+	Finish   *bool                                                    `json:"finish,omitempty" xml:"finish,omitempty"`
+	// example:
+	//
+	// 这是正文内容部分
+	PartDesc *string `json:"partDesc,omitempty" xml:"partDesc,omitempty"`
+	// example:
+	//
+	// artifactId123
+	PartId *string `json:"partId,omitempty" xml:"partId,omitempty"`
+	// example:
+	//
+	// {}
+	ReasonPart *CreateRunResponseBodyMessagesContentStructPartsReasonPart `json:"reasonPart,omitempty" xml:"reasonPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	RecommendPart *CreateRunResponseBodyMessagesContentStructPartsRecommendPart `json:"recommendPart,omitempty" xml:"recommendPart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	ReferencePart *CreateRunResponseBodyMessagesContentStructPartsReferencePart `json:"referencePart,omitempty" xml:"referencePart,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
+	TextPart *CreateRunResponseBodyMessagesContentStructPartsTextPart `json:"textPart,omitempty" xml:"textPart,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// textPart
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructParts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructParts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructParts) SetAppend(v bool) *CreateRunResponseBodyMessagesContentStructParts {
+	s.Append = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructParts) SetDataPart(v *CreateRunResponseBodyMessagesContentStructPartsDataPart) *CreateRunResponseBodyMessagesContentStructParts {
+	s.DataPart = v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructParts) SetFinish(v bool) *CreateRunResponseBodyMessagesContentStructParts {
+	s.Finish = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructParts) SetPartDesc(v string) *CreateRunResponseBodyMessagesContentStructParts {
+	s.PartDesc = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructParts) SetPartId(v string) *CreateRunResponseBodyMessagesContentStructParts {
+	s.PartId = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructParts) SetReasonPart(v *CreateRunResponseBodyMessagesContentStructPartsReasonPart) *CreateRunResponseBodyMessagesContentStructParts {
+	s.ReasonPart = v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructParts) SetRecommendPart(v *CreateRunResponseBodyMessagesContentStructPartsRecommendPart) *CreateRunResponseBodyMessagesContentStructParts {
+	s.RecommendPart = v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructParts) SetReferencePart(v *CreateRunResponseBodyMessagesContentStructPartsReferencePart) *CreateRunResponseBodyMessagesContentStructParts {
+	s.ReferencePart = v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructParts) SetTextPart(v *CreateRunResponseBodyMessagesContentStructPartsTextPart) *CreateRunResponseBodyMessagesContentStructParts {
+	s.TextPart = v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructParts) SetType(v string) *CreateRunResponseBodyMessagesContentStructParts {
+	s.Type = &v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructPartsDataPart struct {
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsDataPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsDataPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsDataPart) SetData(v interface{}) *CreateRunResponseBodyMessagesContentStructPartsDataPart {
+	s.Data = v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructPartsReasonPart struct {
+	// example:
+	//
+	// 123123
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsReasonPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsReasonPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsReasonPart) SetReason(v string) *CreateRunResponseBodyMessagesContentStructPartsReasonPart {
+	s.Reason = &v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructPartsRecommendPart struct {
+	Recommends []*CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends `json:"recommends,omitempty" xml:"recommends,omitempty" type:"Repeated"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsRecommendPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsRecommendPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsRecommendPart) SetRecommends(v []*CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends) *CreateRunResponseBodyMessagesContentStructPartsRecommendPart {
+	s.Recommends = v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends struct {
+	MobileUrl *string `json:"mobileUrl,omitempty" xml:"mobileUrl,omitempty"`
+	Text      *string `json:"text,omitempty" xml:"text,omitempty"`
+	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends) SetMobileUrl(v string) *CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends {
+	s.MobileUrl = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends) SetText(v string) *CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends {
+	s.Text = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends) SetUrl(v string) *CreateRunResponseBodyMessagesContentStructPartsRecommendPartRecommends {
+	s.Url = &v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructPartsReferencePart struct {
+	References []*CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences `json:"references,omitempty" xml:"references,omitempty" type:"Repeated"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsReferencePart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsReferencePart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsReferencePart) SetReferences(v []*CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences) *CreateRunResponseBodyMessagesContentStructPartsReferencePart {
+	s.References = v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences struct {
+	// example:
+	//
+	// 0
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// example:
+	//
+	// mcp是....
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// ata
+	SourceCode *string `json:"sourceCode,omitempty" xml:"sourceCode,omitempty"`
+	SourceIcon *string `json:"sourceIcon,omitempty" xml:"sourceIcon,omitempty"`
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// example:
+	//
+	// 《mcp原理介绍》
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// https://taobao.com
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences) SetIndex(v string) *CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences {
+	s.Index = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences) SetName(v string) *CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences) SetSourceCode(v string) *CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences {
+	s.SourceCode = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences) SetSourceIcon(v string) *CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences {
+	s.SourceIcon = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences) SetSummary(v string) *CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences {
+	s.Summary = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences) SetTitle(v string) *CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences) SetUrl(v string) *CreateRunResponseBodyMessagesContentStructPartsReferencePartReferences {
+	s.Url = &v
+	return s
+}
+
+type CreateRunResponseBodyMessagesContentStructPartsTextPart struct {
+	// example:
+	//
+	// 123123
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsTextPart) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyMessagesContentStructPartsTextPart) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyMessagesContentStructPartsTextPart) SetText(v string) *CreateRunResponseBodyMessagesContentStructPartsTextPart {
+	s.Text = &v
 	return s
 }
 
@@ -93710,6 +94027,10 @@ func (client *Client) CreateRunWithOptions(request *CreateRunRequest, headers *C
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowStructViewContent)) {
+		body["allowStructViewContent"] = request.AllowStructViewContent
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AssistantId)) {
 		body["assistantId"] = request.AssistantId
 	}
