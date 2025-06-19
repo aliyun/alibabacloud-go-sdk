@@ -8756,7 +8756,7 @@ type CreateDataSourceRequest struct {
 	//
 	// 	- Prod: production environment
 	//
-	// The parameters that you need to configure to the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
+	// The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
 	//
 	// This parameter is required.
 	//
@@ -12705,9 +12705,9 @@ type CreateWorkflowInstancesRequest struct {
 	DefaultRunProperties *CreateWorkflowInstancesRequestDefaultRunProperties `json:"DefaultRunProperties,omitempty" xml:"DefaultRunProperties,omitempty" type:"Struct"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod: production environment
+	// 	- Prod
 	//
-	// 	- Dev: development environment
+	// 	- Dev
 	//
 	// example:
 	//
@@ -12721,7 +12721,7 @@ type CreateWorkflowInstancesRequest struct {
 	//
 	// WorkflowInstance1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Make up the data cycle settings.
+	// The configuration of the data backfilling period.
 	Periods *CreateWorkflowInstancesRequestPeriods `json:"Periods,omitempty" xml:"Periods,omitempty" type:"Struct"`
 	// The project ID.
 	//
@@ -12745,13 +12745,13 @@ type CreateWorkflowInstancesRequest struct {
 	TaskParameters *string `json:"TaskParameters,omitempty" xml:"TaskParameters,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
-	// 	- SupplementData The values of the RootTaskIds and IncludeTaskIds parameters vary based on the value of the Mode parameter. For more information, see the Mode parameter in this API operation.
+	// 	- SupplementData: The values of the RootTaskIds and IncludeTaskIds parameters vary based on the value of the Mode parameter. For more information, see the Mode parameter in this API operation.
 	//
-	// 	- ManualWorkflow You must set the WorkflowId parameter to the ID of the manually triggered workflow. The RootTaskIds parameter is optional. If you do not specify the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
+	// 	- ManualWorkflow: If you set the Type parameter to ManualWorkflow, you must set the WorkflowId parameter to the ID of the manually triggered workflow. The RootTaskIds parameter is optional. If you do not configure the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
 	//
-	// 	- Manual You need to specify only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
+	// 	- Manual: You need to configure only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
 	//
-	// 	- SmokeTest You need to specify only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
+	// 	- SmokeTest: You need to configure only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
 	//
 	// This parameter is required.
 	//
@@ -12847,7 +12847,7 @@ func (s *CreateWorkflowInstancesRequest) SetWorkflowParameters(v string) *Create
 type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	// The alert settings.
 	Alert *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert `json:"Alert,omitempty" xml:"Alert,omitempty" type:"Struct"`
-	// The analysis of the configurations.
+	// The configurations for analysis. If you set the Type parameter to SupplementData, this parameter is required.
 	Analysis *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
 	// The IDs of the projects that do not need to be run.
 	ExcludeProjectIds []*int64 `json:"ExcludeProjectIds,omitempty" xml:"ExcludeProjectIds,omitempty" type:"Repeated"`
@@ -12857,15 +12857,15 @@ type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	IncludeProjectIds []*int64 `json:"IncludeProjectIds,omitempty" xml:"IncludeProjectIds,omitempty" type:"Repeated"`
 	// The IDs of the tasks that need to be run.
 	IncludeTaskIds []*int64 `json:"IncludeTaskIds,omitempty" xml:"IncludeTaskIds,omitempty" type:"Repeated"`
-	// The data backfill mode. Default value: ManualSelection. Valid values:
+	// The data backfill mode. Default value: ManualSelection. If you set the Type parameter to SupplementData, this parameter is required. Valid values:
 	//
-	// 	- General: You can specify only one root task ID. The `IncludeTaskIds` parameter is optional. If you do not specify the IncludeTaskIds parameter, the tasks that are specified by the `RootTaskIds` parameter are included by default.``
+	// 	- General: You can specify only `one root task ID`. The `IncludeTaskIds` parameter is optional. If you do not configure the IncludeTaskIds parameter, the tasks that are specified by the `RootTaskIds` parameter are included by default.
 	//
-	// 	- ManualSelection: You can specify multiple root tasks IDs. The `IncludeTaskIds` parameter is optional. If you do not specify the IncludeTaskIds parameter, the tasks that are specified by the `RootTaskIds` parameter are included by default.``
+	// 	- ManualSelection: You can specify `multiple root task IDs`. The `IncludeTaskIds` parameter is optional. If you do not configure the IncludeTaskIds parameter, the tasks that are specified by the `RootTaskIds` parameter are included by default.
 	//
-	// 	- Chain: The value of the `RootTaskIds` parameter is left empty. You must set the `IncludeTaskIds` parameter to the start task ID and the end task ID.
+	// 	- Chain: If you set the Mode parameter to Chain, you must leave the `RootTaskIds` parameter empty and set the `IncludeTaskIds` parameter to the start task ID and the end task ID.
 	//
-	// 	- AllDownstream: You can specify only one root task ID.``
+	// 	- AllDownstream: You can specify only one `root task ID`.
 	//
 	// example:
 	//
@@ -12881,7 +12881,7 @@ type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of tasks that can be run in parallel. If you specify the value to 2 to 10, the value indicates the number of tasks that can be run in parallel. If you specify the value to 1, the tasks are run one by one.
+	// The number of tasks that can be run in parallel. If you specify a value that ranges from 2 to 10, the value indicates the number of tasks that can be run in parallel. If you set the value to 1, the tasks are run one by one. If you set the Type parameter to SupplementData, this parameter is required.
 	//
 	// example:
 	//
@@ -12889,8 +12889,16 @@ type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	Parallelism *int32 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
 	Priority    *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The root task IDs.
+	//
+	// 	- If you set the Type parameter to SupplementData and the Mode parameter to a value other than Chain, the RootTaskIds parameter is required.
+	//
+	// 	- If you set the Type parameter to ManualWorkflow, the RootTaskIds parameter is optional. If you do not configure the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
+	//
+	// 	- If you set the Type parameter to Manual, the RootTaskIds parameter is required. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
+	//
+	// 	- If you set the Type parameter to SmokeTest, the RootTaskIds parameter is required. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
 	RootTaskIds []*int64 `json:"RootTaskIds,omitempty" xml:"RootTaskIds,omitempty" type:"Repeated"`
-	// The data backfill policy. If you leave this parameter empty, the runtime configuration is used.
+	// The policy for running. If you leave this parameter empty, the runtime configuration is used.
 	RunPolicy *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy `json:"RunPolicy,omitempty" xml:"RunPolicy,omitempty" type:"Struct"`
 	// The identifier of the custom resource group for scheduling. If you leave this parameter empty, the runtime configuration is used.
 	//
@@ -13019,13 +13027,13 @@ func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert) SetType(v stri
 }
 
 type CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis struct {
-	// Specifies whether to block the running of the instance if the analysis fails.
+	// Specifies whether to block the running of the instance if the analysis fails. If you set the Type parameter to SupplementData, this parameter is required.
 	//
 	// example:
 	//
 	// true
 	Blocked *bool `json:"Blocked,omitempty" xml:"Blocked,omitempty"`
-	// Specifies whether to enable the analysis feature.
+	// Specifies whether to enable the analysis feature. If you set the Type parameter to SupplementData, this parameter is required.
 	//
 	// example:
 	//
@@ -13052,7 +13060,7 @@ func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis) SetEnabled(
 }
 
 type CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy struct {
-	// The time when the instance finishes running. This parameter is required if you specify the RunPolicy parameter.
+	// The end time of running. Configure this parameter in the `hh:mm:ss` format. The time must be in the 24-hour clock. This parameter is required if you configure the RunPolicy parameter.
 	//
 	// example:
 	//
@@ -13064,13 +13072,13 @@ type CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy struct {
 	//
 	// false
 	Immediately *bool `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
-	// The time when the instance starts to run. This parameter is required if you specify the RunPolicy parameter.
+	// The start time of running. Configure this parameter in the `hh:mm:ss` format. The time must be in the 24-hour clock. This parameter is required if you configure the RunPolicy parameter.
 	//
 	// example:
 	//
 	// 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the time period during which the data is backfilled. This parameter is required if you specify the RunPolicy parameter. Valid values:
+	// The type of the time period during which the data is backfilled. This parameter is required if you configure the RunPolicy parameter.
 	//
 	// 	- Daily
 	//
@@ -13111,21 +13119,21 @@ func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy) SetType(v 
 }
 
 type CreateWorkflowInstancesRequestPeriods struct {
-	// The list of business dates. You can specify a multi-segment business date (up to 7 segments).
+	// The data timestamps. You can specify up to seven data timestamps.
 	//
 	// This parameter is required.
 	BizDates []*CreateWorkflowInstancesRequestPeriodsBizDates `json:"BizDates,omitempty" xml:"BizDates,omitempty" type:"Repeated"`
-	// Specifies the end cycle time. Default value: 23:59:59.
+	// The end time of data backfill. Configure this parameter in the `hh:mm:ss` format. The time must be in the 24-hour clock. Default value: 23:59:59.
 	//
-	// If you enter this field, StartTime and EndTime must be filled in at the same time.
+	// If you configure this parameter, you must also configure the StartTime parameter.
 	//
 	// example:
 	//
 	// 23:59:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies the start cycle time. Default value: 00:00:00.
+	// The start time of data backfill. Configure this parameter in the `hh:mm:ss` format. The time must be in the 24-hour clock. Default value: 00:00:00.
 	//
-	// If you enter this field, StartTime and EndTime must be filled in at the same time.
+	// If you configure this parameter, you must also configure the EndTime parameter.
 	//
 	// example:
 	//
@@ -13157,7 +13165,7 @@ func (s *CreateWorkflowInstancesRequestPeriods) SetStartTime(v string) *CreateWo
 }
 
 type CreateWorkflowInstancesRequestPeriodsBizDates struct {
-	// The end date of the business.
+	// The data timestamp at which data is no longer backfilled. Configure this parameter in the `yyyy-mm-dd` format.
 	//
 	// This parameter is required.
 	//
@@ -13165,7 +13173,7 @@ type CreateWorkflowInstancesRequestPeriodsBizDates struct {
 	//
 	// 2024-11-24
 	EndBizDate *string `json:"EndBizDate,omitempty" xml:"EndBizDate,omitempty"`
-	// The start business date.
+	// The data timestamp at which the data starts to be backfilled. Configure this parameter in the `yyyy-mm-dd` format.
 	//
 	// This parameter is required.
 	//
@@ -13210,9 +13218,9 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	DefaultRunPropertiesShrink *string `json:"DefaultRunProperties,omitempty" xml:"DefaultRunProperties,omitempty"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod: production environment
+	// 	- Prod
 	//
-	// 	- Dev: development environment
+	// 	- Dev
 	//
 	// example:
 	//
@@ -13226,7 +13234,7 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	//
 	// WorkflowInstance1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Make up the data cycle settings.
+	// The configuration of the data backfilling period.
 	PeriodsShrink *string `json:"Periods,omitempty" xml:"Periods,omitempty"`
 	// The project ID.
 	//
@@ -13250,13 +13258,13 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	TaskParameters *string `json:"TaskParameters,omitempty" xml:"TaskParameters,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
-	// 	- SupplementData The values of the RootTaskIds and IncludeTaskIds parameters vary based on the value of the Mode parameter. For more information, see the Mode parameter in this API operation.
+	// 	- SupplementData: The values of the RootTaskIds and IncludeTaskIds parameters vary based on the value of the Mode parameter. For more information, see the Mode parameter in this API operation.
 	//
-	// 	- ManualWorkflow You must set the WorkflowId parameter to the ID of the manually triggered workflow. The RootTaskIds parameter is optional. If you do not specify the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
+	// 	- ManualWorkflow: If you set the Type parameter to ManualWorkflow, you must set the WorkflowId parameter to the ID of the manually triggered workflow. The RootTaskIds parameter is optional. If you do not configure the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
 	//
-	// 	- Manual You need to specify only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
+	// 	- Manual: You need to configure only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
 	//
-	// 	- SmokeTest You need to specify only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
+	// 	- SmokeTest: You need to configure only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
 	//
 	// This parameter is required.
 	//
@@ -27541,6 +27549,109 @@ func (s *GetProjectRoleResponse) SetBody(v *GetProjectRoleResponseBody) *GetProj
 	return s
 }
 
+type GetRerunWorkflowInstancesResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e15ad21c-b0e9-4792-8f55-b037xxxxxxxx
+	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+}
+
+func (s GetRerunWorkflowInstancesResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRerunWorkflowInstancesResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRerunWorkflowInstancesResultRequest) SetOperationId(v string) *GetRerunWorkflowInstancesResultRequest {
+	s.OperationId = &v
+	return s
+}
+
+type GetRerunWorkflowInstancesResultResponseBody struct {
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetRerunWorkflowInstancesResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s GetRerunWorkflowInstancesResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRerunWorkflowInstancesResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRerunWorkflowInstancesResultResponseBody) SetRequestId(v string) *GetRerunWorkflowInstancesResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRerunWorkflowInstancesResultResponseBody) SetResult(v *GetRerunWorkflowInstancesResultResponseBodyResult) *GetRerunWorkflowInstancesResultResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetRerunWorkflowInstancesResultResponseBodyResult struct {
+	FailureMessage *string `json:"FailureMessage,omitempty" xml:"FailureMessage,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetRerunWorkflowInstancesResultResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRerunWorkflowInstancesResultResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetRerunWorkflowInstancesResultResponseBodyResult) SetFailureMessage(v string) *GetRerunWorkflowInstancesResultResponseBodyResult {
+	s.FailureMessage = &v
+	return s
+}
+
+func (s *GetRerunWorkflowInstancesResultResponseBodyResult) SetStatus(v string) *GetRerunWorkflowInstancesResultResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+type GetRerunWorkflowInstancesResultResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRerunWorkflowInstancesResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetRerunWorkflowInstancesResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRerunWorkflowInstancesResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRerunWorkflowInstancesResultResponse) SetHeaders(v map[string]*string) *GetRerunWorkflowInstancesResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRerunWorkflowInstancesResultResponse) SetStatusCode(v int32) *GetRerunWorkflowInstancesResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRerunWorkflowInstancesResultResponse) SetBody(v *GetRerunWorkflowInstancesResultResponseBody) *GetRerunWorkflowInstancesResultResponse {
+	s.Body = v
+	return s
+}
+
 type GetResourceRequest struct {
 	// The ID of the file resource.
 	//
@@ -28301,6 +28412,12 @@ func (s *GetRouteResponse) SetBody(v *GetRouteResponseBody) *GetRouteResponse {
 }
 
 type GetSchemaRequest struct {
+	// The schema ID. You can call the ListSchemas operation to query schema IDs. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	//
+	// Configure this parameter in the `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}` format. If a level does not exist, leave the level empty.
+	//
+	// >  If you want to query the information about a MaxCompute schema, specify an empty string at the Instance ID level as a placeholder and a MaxCompute project name at the Database name level. Make sure that the schema feature is enabled for the MaxCompute project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30021,7 +30138,9 @@ type GetTaskInstanceResponseBodyTaskInstance struct {
 	// example:
 	//
 	// Scheduler
-	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	TriggerType         *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	WaitingResourceTime *int64  `json:"WaitingResourceTime,omitempty" xml:"WaitingResourceTime,omitempty"`
+	WaitingTriggerTime  *int64  `json:"WaitingTriggerTime,omitempty" xml:"WaitingTriggerTime,omitempty"`
 	// The ID of the workflow to which the instance belongs.
 	//
 	// example:
@@ -30225,6 +30344,16 @@ func (s *GetTaskInstanceResponseBodyTaskInstance) SetTriggerTime(v int64) *GetTa
 
 func (s *GetTaskInstanceResponseBodyTaskInstance) SetTriggerType(v string) *GetTaskInstanceResponseBodyTaskInstance {
 	s.TriggerType = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetWaitingResourceTime(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.WaitingResourceTime = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetWaitingTriggerTime(v int64) *GetTaskInstanceResponseBodyTaskInstance {
+	s.WaitingTriggerTime = &v
 	return s
 }
 
@@ -48937,7 +49066,7 @@ func (s *ListNodeDependenciesResponse) SetBody(v *ListNodeDependenciesResponseBo
 }
 
 type ListNodesRequest struct {
-	// The container ID. This parameter specifies a filter condition.
+	// The container ID, which is a filter condition. If you do not want to use this condition for filtering, you do not need to configure this parameter. The container ID that you specify is unrelated to the resource group ID indicated by the ResourceGroupId parameter.
 	//
 	// example:
 	//
@@ -48964,21 +49093,19 @@ type ListNodesRequest struct {
 	//
 	// 12345
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The scheduling type. This parameter specifies a filter condition.
+	// The scheduling type, which is a filter condition. Valid values:
 	//
-	// Valid values:
+	// 	- Normal: The nodes are scheduled as expected.
 	//
-	// 	- Normal: Nodes are scheduled as expected.
+	// 	- Pause: The nodes are paused, and the running of their descendant nodes is blocked.
 	//
-	// 	- Pause: Nodes are paused, and the running of their descendant nodes is blocked.
-	//
-	// 	- Skip: Nodes are dry run. The system does not actually run the nodes but directly prompts that the nodes are successfully run. The running duration of the nodes is 0 seconds. In addition, the nodes do not occupy resources or block the running of their descendant nodes.
+	// 	- Skip: The nodes are dry run. The system does not actually run the nodes, but directly returns a success response. The running duration of the nodes is 0 seconds. In addition, the nodes do not occupy resources or block the running of their descendant nodes.
 	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The rerun mode. Valid values:
+	// The rerun property, which is a filter condition. If you do not want to use this condition for filtering, you do not need to configure this parameter. Valid values:
 	//
 	// 	- Allowed: The nodes can be rerun regardless of whether they are successfully run or fail to run.
 	//
@@ -48990,9 +49117,7 @@ type ListNodesRequest struct {
 	//
 	// Allowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The scene of the node. This parameter determines the location of the node.
-	//
-	// Valid values:
+	// The location of the nodes in the left-side navigation pane of the Data Studio page, which is a filter condition. If you do not want to use this condition for filtering, you do not need to configure this parameter. Valid values:
 	//
 	// 	- DataworksProject
 	//
@@ -52857,7 +52982,7 @@ type ListResourcesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
@@ -52971,7 +53096,7 @@ type ListResourcesResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The file resources.
+	// The queried file resources.
 	Resources []*ListResourcesResponseBodyPagingInfoResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -53042,7 +53167,7 @@ type ListResourcesResponseBodyPagingInfoResources struct {
 	//
 	// 110755000425XXXX
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
 	//
 	// example:
 	//
@@ -55088,7 +55213,8 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// The runtime information about the instance.
 	Runtime *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
 	// The information about the resource group with which the instance is associated.
-	RuntimeResource *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	RuntimeResource  *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	ScriptParameters *string                                                              `json:"ScriptParameters,omitempty" xml:"ScriptParameters,omitempty"`
 	// The time when the instance started to run.
 	//
 	// example:
@@ -55176,7 +55302,9 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// example:
 	//
 	// Scheduler
-	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	TriggerType         *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	WaitingResourceTime *int64  `json:"WaitingResourceTime,omitempty" xml:"WaitingResourceTime,omitempty"`
+	WaitingTriggerTime  *int64  `json:"WaitingTriggerTime,omitempty" xml:"WaitingTriggerTime,omitempty"`
 	// The ID of the workflow to which the instance belongs.
 	//
 	// example:
@@ -55320,6 +55448,11 @@ func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetRuntimeResourc
 	return s
 }
 
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetScriptParameters(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.ScriptParameters = &v
+	return s
+}
+
 func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetStartedTime(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
 	s.StartedTime = &v
 	return s
@@ -55362,6 +55495,16 @@ func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTriggerTime(v 
 
 func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetTriggerType(v string) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
 	s.TriggerType = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetWaitingResourceTime(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.WaitingResourceTime = &v
+	return s
+}
+
+func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetWaitingTriggerTime(v int64) *ListTaskInstancesResponseBodyPagingInfoTaskInstances {
+	s.WaitingTriggerTime = &v
 	return s
 }
 
@@ -61826,6 +61969,323 @@ func (s *RerunTaskInstancesResponse) SetBody(v *RerunTaskInstancesResponseBody) 
 	return s
 }
 
+type RerunWorkflowInstancesRequest struct {
+	// example:
+	//
+	// 1710239005403
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	EndTriggerTime *int64 `json:"EndTriggerTime,omitempty" xml:"EndTriggerTime,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType *string                              `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Filter  *RerunWorkflowInstancesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	Ids     []*int64                             `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	StartTriggerTime *int64 `json:"StartTriggerTime,omitempty" xml:"StartTriggerTime,omitempty"`
+	// example:
+	//
+	// Failure
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ManualWorkflow
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s RerunWorkflowInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerunWorkflowInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RerunWorkflowInstancesRequest) SetBizdate(v int64) *RerunWorkflowInstancesRequest {
+	s.Bizdate = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesRequest) SetEndTriggerTime(v int64) *RerunWorkflowInstancesRequest {
+	s.EndTriggerTime = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesRequest) SetEnvType(v string) *RerunWorkflowInstancesRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesRequest) SetFilter(v *RerunWorkflowInstancesRequestFilter) *RerunWorkflowInstancesRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *RerunWorkflowInstancesRequest) SetIds(v []*int64) *RerunWorkflowInstancesRequest {
+	s.Ids = v
+	return s
+}
+
+func (s *RerunWorkflowInstancesRequest) SetName(v string) *RerunWorkflowInstancesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesRequest) SetProjectId(v int64) *RerunWorkflowInstancesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesRequest) SetStartTriggerTime(v int64) *RerunWorkflowInstancesRequest {
+	s.StartTriggerTime = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesRequest) SetStatus(v string) *RerunWorkflowInstancesRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesRequest) SetType(v string) *RerunWorkflowInstancesRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesRequest) SetWorkflowId(v int64) *RerunWorkflowInstancesRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+type RerunWorkflowInstancesRequestFilter struct {
+	// example:
+	//
+	// false
+	RerunDownstreamEnabled *bool     `json:"RerunDownstreamEnabled,omitempty" xml:"RerunDownstreamEnabled,omitempty"`
+	TaskIds                []*int64  `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	TaskInstanceStatuses   []*string `json:"TaskInstanceStatuses,omitempty" xml:"TaskInstanceStatuses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	TaskName  *string   `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskTypes []*string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
+}
+
+func (s RerunWorkflowInstancesRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerunWorkflowInstancesRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *RerunWorkflowInstancesRequestFilter) SetRerunDownstreamEnabled(v bool) *RerunWorkflowInstancesRequestFilter {
+	s.RerunDownstreamEnabled = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesRequestFilter) SetTaskIds(v []*int64) *RerunWorkflowInstancesRequestFilter {
+	s.TaskIds = v
+	return s
+}
+
+func (s *RerunWorkflowInstancesRequestFilter) SetTaskInstanceStatuses(v []*string) *RerunWorkflowInstancesRequestFilter {
+	s.TaskInstanceStatuses = v
+	return s
+}
+
+func (s *RerunWorkflowInstancesRequestFilter) SetTaskName(v string) *RerunWorkflowInstancesRequestFilter {
+	s.TaskName = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesRequestFilter) SetTaskTypes(v []*string) *RerunWorkflowInstancesRequestFilter {
+	s.TaskTypes = v
+	return s
+}
+
+type RerunWorkflowInstancesShrinkRequest struct {
+	// example:
+	//
+	// 1710239005403
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	EndTriggerTime *int64 `json:"EndTriggerTime,omitempty" xml:"EndTriggerTime,omitempty"`
+	// example:
+	//
+	// Prod
+	EnvType      *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	IdsShrink    *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	StartTriggerTime *int64 `json:"StartTriggerTime,omitempty" xml:"StartTriggerTime,omitempty"`
+	// example:
+	//
+	// Failure
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ManualWorkflow
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s RerunWorkflowInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerunWorkflowInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RerunWorkflowInstancesShrinkRequest) SetBizdate(v int64) *RerunWorkflowInstancesShrinkRequest {
+	s.Bizdate = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesShrinkRequest) SetEndTriggerTime(v int64) *RerunWorkflowInstancesShrinkRequest {
+	s.EndTriggerTime = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesShrinkRequest) SetEnvType(v string) *RerunWorkflowInstancesShrinkRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesShrinkRequest) SetFilterShrink(v string) *RerunWorkflowInstancesShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesShrinkRequest) SetIdsShrink(v string) *RerunWorkflowInstancesShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesShrinkRequest) SetName(v string) *RerunWorkflowInstancesShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesShrinkRequest) SetProjectId(v int64) *RerunWorkflowInstancesShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesShrinkRequest) SetStartTriggerTime(v int64) *RerunWorkflowInstancesShrinkRequest {
+	s.StartTriggerTime = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesShrinkRequest) SetStatus(v string) *RerunWorkflowInstancesShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesShrinkRequest) SetType(v string) *RerunWorkflowInstancesShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesShrinkRequest) SetWorkflowId(v int64) *RerunWorkflowInstancesShrinkRequest {
+	s.WorkflowId = &v
+	return s
+}
+
+type RerunWorkflowInstancesResponseBody struct {
+	// example:
+	//
+	// e15ad21c-b0e9-4792-8f55-b037xxxxxxxx
+	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	// example:
+	//
+	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RerunWorkflowInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerunWorkflowInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RerunWorkflowInstancesResponseBody) SetOperationId(v string) *RerunWorkflowInstancesResponseBody {
+	s.OperationId = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesResponseBody) SetRequestId(v string) *RerunWorkflowInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RerunWorkflowInstancesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RerunWorkflowInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RerunWorkflowInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerunWorkflowInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RerunWorkflowInstancesResponse) SetHeaders(v map[string]*string) *RerunWorkflowInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RerunWorkflowInstancesResponse) SetStatusCode(v int32) *RerunWorkflowInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RerunWorkflowInstancesResponse) SetBody(v *RerunWorkflowInstancesResponseBody) *RerunWorkflowInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type ResumeTaskInstancesRequest struct {
 	// Remarks.
 	//
@@ -64721,7 +65181,9 @@ func (s *UpdateAlertRuleResponse) SetBody(v *UpdateAlertRuleResponseBody) *Updat
 }
 
 type UpdateBusinessRequest struct {
-	// The workflow ID. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the ID.
+	// The workflow ID.
+	//
+	// You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -64729,7 +65191,9 @@ type UpdateBusinessRequest struct {
 	//
 	// 300000
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// The name of the workflow. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the name.
+	// The name of the workflow.
+	//
+	// You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the name.
 	//
 	// example:
 	//
@@ -64741,19 +65205,21 @@ type UpdateBusinessRequest struct {
 	//
 	// modified from my first business
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The owner of the workflow. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the owner.
+	// The owner of the workflow.
+	//
+	// You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to query the owner.
 	//
 	// example:
 	//
 	// 348428****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must configure either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace to which the operation is applied.
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to obtain the workspace ID. You must configure either this parameter or the `ProjectIdentifier` parameter to determine the DataWorks workspace to which the operation is applied.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must configure either this parameter or the ProjectId parameter to determine the DataWorks workspace to which the operation is applied.
+	// The name of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to obtain the name. You must configure either this parameter or the `ProjectId` parameter to determine the DataWorks workspace to which the operation is applied.
 	//
 	// example:
 	//
@@ -64826,9 +65292,9 @@ type UpdateBusinessResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// true\\
+	// 	- true
 	//
-	// false
+	// 	- false
 	//
 	// example:
 	//
@@ -68595,7 +69061,7 @@ type UpdateDataSourceRequest struct {
 	//
 	// 	- Prod: production environment
 	//
-	// The parameters that you need to configure to the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
+	// The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
 	//
 	// This parameter is required.
 	//
@@ -76588,7 +77054,7 @@ func (client *Client) CreateWorkflowDefinition(request *CreateWorkflowDefinition
 
 // Summary:
 //
-// 创建工作流实例
+// Creates a workflow instance, such as a data backfill workflow instance, based on configurations.
 //
 // @param tmpReq - CreateWorkflowInstancesRequest
 //
@@ -76680,7 +77146,7 @@ func (client *Client) CreateWorkflowInstancesWithOptions(tmpReq *CreateWorkflowI
 
 // Summary:
 //
-// 创建工作流实例
+// Creates a workflow instance, such as a data backfill workflow instance, based on configurations.
 //
 // @param request - CreateWorkflowInstancesRequest
 //
@@ -80776,6 +81242,66 @@ func (client *Client) GetProjectRole(request *GetProjectRoleRequest) (_result *G
 
 // Summary:
 //
+// 查询异步重跑工作流实例的结果
+//
+// @param request - GetRerunWorkflowInstancesResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRerunWorkflowInstancesResultResponse
+func (client *Client) GetRerunWorkflowInstancesResultWithOptions(request *GetRerunWorkflowInstancesResultRequest, runtime *util.RuntimeOptions) (_result *GetRerunWorkflowInstancesResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OperationId)) {
+		query["OperationId"] = request.OperationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRerunWorkflowInstancesResult"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRerunWorkflowInstancesResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询异步重跑工作流实例的结果
+//
+// @param request - GetRerunWorkflowInstancesResultRequest
+//
+// @return GetRerunWorkflowInstancesResultResponse
+func (client *Client) GetRerunWorkflowInstancesResult(request *GetRerunWorkflowInstancesResultRequest) (_result *GetRerunWorkflowInstancesResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRerunWorkflowInstancesResultResponse{}
+	_body, _err := client.GetRerunWorkflowInstancesResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a file resource.
 //
 // @param request - GetResourceRequest
@@ -80960,7 +81486,13 @@ func (client *Client) GetRoute(request *GetRouteRequest) (_result *GetRouteRespo
 
 // Summary:
 //
-// 获取模式详情
+// Queries the information about a schema in Data Map. You can call this API operation to query the information only about MaxCompute and Hologres schemas.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this API operation to query the information only about MaxCompute and Hologres schemas.
 //
 // @param request - GetSchemaRequest
 //
@@ -80998,7 +81530,13 @@ func (client *Client) GetSchemaWithOptions(request *GetSchemaRequest, runtime *u
 
 // Summary:
 //
-// 获取模式详情
+// Queries the information about a schema in Data Map. You can call this API operation to query the information only about MaxCompute and Hologres schemas.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this API operation to query the information only about MaxCompute and Hologres schemas.
 //
 // @param request - GetSchemaRequest
 //
@@ -86517,6 +87055,116 @@ func (client *Client) RerunTaskInstances(request *RerunTaskInstancesRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &RerunTaskInstancesResponse{}
 	_body, _err := client.RerunTaskInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重跑工作流实例
+//
+// @param tmpReq - RerunWorkflowInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RerunWorkflowInstancesResponse
+func (client *Client) RerunWorkflowInstancesWithOptions(tmpReq *RerunWorkflowInstancesRequest, runtime *util.RuntimeOptions) (_result *RerunWorkflowInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RerunWorkflowInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filter)) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, tea.String("Filter"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bizdate)) {
+		body["Bizdate"] = request.Bizdate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTriggerTime)) {
+		body["EndTriggerTime"] = request.EndTriggerTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterShrink)) {
+		body["Filter"] = request.FilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTriggerTime)) {
+		body["StartTriggerTime"] = request.StartTriggerTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowId)) {
+		body["WorkflowId"] = request.WorkflowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RerunWorkflowInstances"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RerunWorkflowInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重跑工作流实例
+//
+// @param request - RerunWorkflowInstancesRequest
+//
+// @return RerunWorkflowInstancesResponse
+func (client *Client) RerunWorkflowInstances(request *RerunWorkflowInstancesRequest) (_result *RerunWorkflowInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RerunWorkflowInstancesResponse{}
+	_body, _err := client.RerunWorkflowInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
