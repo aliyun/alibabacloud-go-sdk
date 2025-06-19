@@ -10988,13 +10988,16 @@ func (s *DiscoverEventSourceResponseBodyData) SetSourceMySQLDiscovery(v *Discove
 }
 
 type DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery struct {
-	DatabaseNames []*string `json:"DatabaseNames,omitempty" xml:"DatabaseNames,omitempty" type:"Repeated"`
+	DatabaseNames  []*string `json:"DatabaseNames,omitempty" xml:"DatabaseNames,omitempty" type:"Repeated"`
+	EstimatedRows  *int64    `json:"EstimatedRows,omitempty" xml:"EstimatedRows,omitempty"`
+	ExpireLogsDays *int32    `json:"ExpireLogsDays,omitempty" xml:"ExpireLogsDays,omitempty"`
 	// example:
 	//
 	// [{\\"is_active\\":\\"1\\",\\"name\\":\\"0c0c5d1a-e844-44a8-902d-4f62cbcb0479\\",\\"id\\":\\"21\\"},{\\"is_active\\":\\"1\\",\\"name\\":\\"18ef033e-70bb-4795-8222-6cfb54f38f26\\",\\"id\\":\\"22\\"}]
 	SimpleData  *string                                                             `json:"SimpleData,omitempty" xml:"SimpleData,omitempty"`
 	TableNames  []*string                                                           `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
 	TableSchema *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema `json:"TableSchema,omitempty" xml:"TableSchema,omitempty" type:"Struct"`
+	WaitTimeout *int32                                                              `json:"WaitTimeout,omitempty" xml:"WaitTimeout,omitempty"`
 }
 
 func (s DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) String() string {
@@ -11010,6 +11013,16 @@ func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) SetDatabaseNam
 	return s
 }
 
+func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) SetEstimatedRows(v int64) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery {
+	s.EstimatedRows = &v
+	return s
+}
+
+func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) SetExpireLogsDays(v int32) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery {
+	s.ExpireLogsDays = &v
+	return s
+}
+
 func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) SetSimpleData(v string) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery {
 	s.SimpleData = &v
 	return s
@@ -11022,6 +11035,11 @@ func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) SetTableNames(
 
 func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) SetTableSchema(v *DiscoverEventSourceResponseBodyDataSourceMySQLDiscoveryTableSchema) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery {
 	s.TableSchema = v
+	return s
+}
+
+func (s *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery) SetWaitTimeout(v int32) *DiscoverEventSourceResponseBodyDataSourceMySQLDiscovery {
+	s.WaitTimeout = &v
 	return s
 }
 
