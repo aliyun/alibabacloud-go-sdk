@@ -6259,6 +6259,7 @@ func (s *CreateKeyPairResponse) SetBody(v *CreateKeyPairResponseBody) *CreateKey
 }
 
 type CreateLoadBalancerRequest struct {
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. This prevents repeated operations caused by multiple retries.
 	//
 	// 	- You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
@@ -6297,6 +6298,7 @@ type CreateLoadBalancerRequest struct {
 	//
 	// elb.s2.medium
 	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+	LoadBalancerType *string `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
 	// The network ID of the created ELB instance.
 	//
 	// This parameter is required.
@@ -6331,6 +6333,11 @@ func (s CreateLoadBalancerRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateLoadBalancerRequest) SetBillingCycle(v string) *CreateLoadBalancerRequest {
+	s.BillingCycle = &v
+	return s
+}
+
 func (s *CreateLoadBalancerRequest) SetClientToken(v string) *CreateLoadBalancerRequest {
 	s.ClientToken = &v
 	return s
@@ -6348,6 +6355,11 @@ func (s *CreateLoadBalancerRequest) SetLoadBalancerName(v string) *CreateLoadBal
 
 func (s *CreateLoadBalancerRequest) SetLoadBalancerSpec(v string) *CreateLoadBalancerRequest {
 	s.LoadBalancerSpec = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetLoadBalancerType(v string) *CreateLoadBalancerRequest {
+	s.LoadBalancerType = &v
 	return s
 }
 
@@ -30700,6 +30712,7 @@ type DescribeLoadBalancerAttributeResponseBody struct {
 	//
 	// ipv4
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	AddressType      *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The list of backend servers.
 	BackendServers []*DescribeLoadBalancerAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
 	// The peak bandwidth of the ELB. The default value is -1, which indicates that the bandwidth is unlimited.
@@ -30758,6 +30771,7 @@ type DescribeLoadBalancerAttributeResponseBody struct {
 	//
 	// Active
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	LoadBalancerType   *string `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
 	// The ID of the network.
 	//
 	// example:
@@ -30803,6 +30817,11 @@ func (s *DescribeLoadBalancerAttributeResponseBody) SetAddress(v string) *Descri
 
 func (s *DescribeLoadBalancerAttributeResponseBody) SetAddressIPVersion(v string) *DescribeLoadBalancerAttributeResponseBody {
 	s.AddressIPVersion = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetAddressType(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.AddressType = &v
 	return s
 }
 
@@ -30858,6 +30877,11 @@ func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerSpec(v string
 
 func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerStatus(v string) *DescribeLoadBalancerAttributeResponseBody {
 	s.LoadBalancerStatus = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetLoadBalancerType(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.LoadBalancerType = &v
 	return s
 }
 
@@ -33406,6 +33430,7 @@ type DescribeLoadBalancersRequest struct {
 	//
 	// InActive
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	LoadBalancerType   *string `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
 	// The ID of the network.
 	//
 	// example:
@@ -33473,6 +33498,11 @@ func (s *DescribeLoadBalancersRequest) SetLoadBalancerName(v string) *DescribeLo
 
 func (s *DescribeLoadBalancersRequest) SetLoadBalancerStatus(v string) *DescribeLoadBalancersRequest {
 	s.LoadBalancerStatus = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersRequest) SetLoadBalancerType(v string) *DescribeLoadBalancersRequest {
+	s.LoadBalancerType = &v
 	return s
 }
 
@@ -33593,6 +33623,7 @@ type DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer struct {
 	//
 	// ipv4
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	AddressType      *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The time when the ELB instance was created. The time is displayed in UTC.
 	//
 	// example:
@@ -33627,6 +33658,7 @@ type DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer struct {
 	//
 	// InActive
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	LoadBalancerType   *string `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
 	// The ID of the network.
 	//
 	// example:
@@ -33669,6 +33701,11 @@ func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetAddressI
 	return s
 }
 
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetAddressType(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.AddressType = &v
+	return s
+}
+
 func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetCreateTime(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.CreateTime = &v
 	return s
@@ -33691,6 +33728,11 @@ func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetLoadBala
 
 func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetLoadBalancerStatus(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.LoadBalancerStatus = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetLoadBalancerType(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.LoadBalancerType = &v
 	return s
 }
 
@@ -65505,6 +65547,10 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -65519,6 +65565,10 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 
 	if !tea.BoolValue(util.IsUnset(request.LoadBalancerSpec)) {
 		query["LoadBalancerSpec"] = request.LoadBalancerSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerType)) {
+		query["LoadBalancerType"] = request.LoadBalancerType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
