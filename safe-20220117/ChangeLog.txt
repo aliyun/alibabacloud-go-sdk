@@ -1,3 +1,16 @@
+2025-06-20 Version: v1.1.0
+- Support API CancelBlock.
+- Support API CreateMaYiBlock.
+- Update API CreateBlock: add request parameters creatorEmpId.
+- Update API CreateBlock: add request parameters Scopes.$.changeObjectRegex.
+- Update API CreateBlock: add request parameters Scopes.$.riskLevels.
+- Update API QueryBlockEvent: add response parameters Body.Data.DataInfo.$.levelType.
+- Update API QueryBlockEvent: add response parameters Body.Data.DataInfo.$.versionId.
+- Update API QueryBlockEvent: add response parameters Body.Data.DataInfo.$.EventTimes.$.ruleId.
+- Update API SafeChangeCancel: add request parameters BgVid.
+- Update API SafeChangeCheck: add request parameters HarmNoticeCombineParam.
+
+
 2024-12-03 Version: v1.0.0
 - Generated golang 2022-01-17 for Safe.
 

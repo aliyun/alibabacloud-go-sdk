@@ -9,6 +9,128 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CancelBlockRequest struct {
+	BlockId         *int64  `json:"BlockId,omitempty" xml:"BlockId,omitempty"`
+	CancelBLockDesc *string `json:"CancelBLockDesc,omitempty" xml:"CancelBLockDesc,omitempty"`
+	CreateEmpId     *string `json:"CreateEmpId,omitempty" xml:"CreateEmpId,omitempty"`
+}
+
+func (s CancelBlockRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelBlockRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelBlockRequest) SetBlockId(v int64) *CancelBlockRequest {
+	s.BlockId = &v
+	return s
+}
+
+func (s *CancelBlockRequest) SetCancelBLockDesc(v string) *CancelBlockRequest {
+	s.CancelBLockDesc = &v
+	return s
+}
+
+func (s *CancelBlockRequest) SetCreateEmpId(v string) *CancelBlockRequest {
+	s.CreateEmpId = &v
+	return s
+}
+
+type CancelBlockResponseBody struct {
+	Code      *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CancelBlockResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CancelBlockResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelBlockResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelBlockResponseBody) SetCode(v int32) *CancelBlockResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelBlockResponseBody) SetData(v *CancelBlockResponseBodyData) *CancelBlockResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CancelBlockResponseBody) SetMessage(v string) *CancelBlockResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelBlockResponseBody) SetRequestId(v string) *CancelBlockResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelBlockResponseBody) SetSuccess(v bool) *CancelBlockResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CancelBlockResponseBodyData struct {
+	ApproveInstanceId *string `json:"ApproveInstanceId,omitempty" xml:"ApproveInstanceId,omitempty"`
+	Success           *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CancelBlockResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelBlockResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CancelBlockResponseBodyData) SetApproveInstanceId(v string) *CancelBlockResponseBodyData {
+	s.ApproveInstanceId = &v
+	return s
+}
+
+func (s *CancelBlockResponseBodyData) SetSuccess(v bool) *CancelBlockResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type CancelBlockResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelBlockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelBlockResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelBlockResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelBlockResponse) SetHeaders(v map[string]*string) *CancelBlockResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelBlockResponse) SetStatusCode(v int32) *CancelBlockResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelBlockResponse) SetBody(v *CancelBlockResponseBody) *CancelBlockResponse {
+	s.Body = v
+	return s
+}
+
 type ChangeCancelRequest struct {
 	AuthKey       *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 	AuthSign      *string `json:"AuthSign,omitempty" xml:"AuthSign,omitempty"`
@@ -2272,6 +2394,7 @@ type CreateBlockRequest struct {
 	Title                *string                                   `json:"Title,omitempty" xml:"Title,omitempty"`
 	Type                 *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
 	VersionId            *int64                                    `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	CreatorEmpId         *string                                   `json:"creatorEmpId,omitempty" xml:"creatorEmpId,omitempty"`
 }
 
 func (s CreateBlockRequest) String() string {
@@ -2372,6 +2495,11 @@ func (s *CreateBlockRequest) SetVersionId(v int64) *CreateBlockRequest {
 	return s
 }
 
+func (s *CreateBlockRequest) SetCreatorEmpId(v string) *CreateBlockRequest {
+	s.CreatorEmpId = &v
+	return s
+}
+
 type CreateBlockRequestApproveStrategyNodes struct {
 	ApproveRuleType *int32    `json:"ApproveRuleType,omitempty" xml:"ApproveRuleType,omitempty"`
 	ApproveType     *int32    `json:"ApproveType,omitempty" xml:"ApproveType,omitempty"`
@@ -2461,10 +2589,12 @@ func (s *CreateBlockRequestNoticeEnclosureInfos) SetUrl(v string) *CreateBlockRe
 }
 
 type CreateBlockRequestScopes struct {
-	BlockHarm  []*int32                            `json:"BlockHarm,omitempty" xml:"BlockHarm,omitempty" type:"Repeated"`
-	BlockScope *CreateBlockRequestScopesBlockScope `json:"BlockScope,omitempty" xml:"BlockScope,omitempty" type:"Struct"`
-	EffectTime []*int64                            `json:"EffectTime,omitempty" xml:"EffectTime,omitempty" type:"Repeated"`
-	ScopeRule  *string                             `json:"ScopeRule,omitempty" xml:"ScopeRule,omitempty"`
+	BlockHarm         []*int32                            `json:"BlockHarm,omitempty" xml:"BlockHarm,omitempty" type:"Repeated"`
+	BlockScope        *CreateBlockRequestScopesBlockScope `json:"BlockScope,omitempty" xml:"BlockScope,omitempty" type:"Struct"`
+	EffectTime        []*int64                            `json:"EffectTime,omitempty" xml:"EffectTime,omitempty" type:"Repeated"`
+	ScopeRule         *string                             `json:"ScopeRule,omitempty" xml:"ScopeRule,omitempty"`
+	ChangeObjectRegex *string                             `json:"changeObjectRegex,omitempty" xml:"changeObjectRegex,omitempty"`
+	RiskLevels        []*int32                            `json:"riskLevels,omitempty" xml:"riskLevels,omitempty" type:"Repeated"`
 }
 
 func (s CreateBlockRequestScopes) String() string {
@@ -2492,6 +2622,16 @@ func (s *CreateBlockRequestScopes) SetEffectTime(v []*int64) *CreateBlockRequest
 
 func (s *CreateBlockRequestScopes) SetScopeRule(v string) *CreateBlockRequestScopes {
 	s.ScopeRule = &v
+	return s
+}
+
+func (s *CreateBlockRequestScopes) SetChangeObjectRegex(v string) *CreateBlockRequestScopes {
+	s.ChangeObjectRegex = &v
+	return s
+}
+
+func (s *CreateBlockRequestScopes) SetRiskLevels(v []*int32) *CreateBlockRequestScopes {
+	s.RiskLevels = v
 	return s
 }
 
@@ -2864,6 +3004,357 @@ func (s *CreateBlockResponse) SetStatusCode(v int32) *CreateBlockResponse {
 }
 
 func (s *CreateBlockResponse) SetBody(v *CreateBlockResponseBody) *CreateBlockResponse {
+	s.Body = v
+	return s
+}
+
+type CreateMaYiBlockRequest struct {
+	BlockId *string `json:"BlockId,omitempty" xml:"BlockId,omitempty"`
+	// This parameter is required.
+	BlockTimes []*CreateMaYiBlockRequestBlockTimes `json:"BlockTimes,omitempty" xml:"BlockTimes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	BlockType *string `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
+	// This parameter is required.
+	CreatorEmpId *string `json:"CreatorEmpId,omitempty" xml:"CreatorEmpId,omitempty"`
+	// This parameter is required.
+	Director     []*string `json:"Director,omitempty" xml:"Director,omitempty" type:"Repeated"`
+	FaultVersion *string   `json:"FaultVersion,omitempty" xml:"FaultVersion,omitempty"`
+	Information  []*string `json:"Information,omitempty" xml:"Information,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Reason *string                      `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Scope  *CreateMaYiBlockRequestScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
+	// This parameter is required.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateMaYiBlockRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaYiBlockRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaYiBlockRequest) SetBlockId(v string) *CreateMaYiBlockRequest {
+	s.BlockId = &v
+	return s
+}
+
+func (s *CreateMaYiBlockRequest) SetBlockTimes(v []*CreateMaYiBlockRequestBlockTimes) *CreateMaYiBlockRequest {
+	s.BlockTimes = v
+	return s
+}
+
+func (s *CreateMaYiBlockRequest) SetBlockType(v string) *CreateMaYiBlockRequest {
+	s.BlockType = &v
+	return s
+}
+
+func (s *CreateMaYiBlockRequest) SetCreatorEmpId(v string) *CreateMaYiBlockRequest {
+	s.CreatorEmpId = &v
+	return s
+}
+
+func (s *CreateMaYiBlockRequest) SetDirector(v []*string) *CreateMaYiBlockRequest {
+	s.Director = v
+	return s
+}
+
+func (s *CreateMaYiBlockRequest) SetFaultVersion(v string) *CreateMaYiBlockRequest {
+	s.FaultVersion = &v
+	return s
+}
+
+func (s *CreateMaYiBlockRequest) SetInformation(v []*string) *CreateMaYiBlockRequest {
+	s.Information = v
+	return s
+}
+
+func (s *CreateMaYiBlockRequest) SetReason(v string) *CreateMaYiBlockRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *CreateMaYiBlockRequest) SetScope(v *CreateMaYiBlockRequestScope) *CreateMaYiBlockRequest {
+	s.Scope = v
+	return s
+}
+
+func (s *CreateMaYiBlockRequest) SetTitle(v string) *CreateMaYiBlockRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateMaYiBlockRequest) SetType(v string) *CreateMaYiBlockRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateMaYiBlockRequestBlockTimes struct {
+	EndTime   *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s CreateMaYiBlockRequestBlockTimes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaYiBlockRequestBlockTimes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaYiBlockRequestBlockTimes) SetEndTime(v int64) *CreateMaYiBlockRequestBlockTimes {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateMaYiBlockRequestBlockTimes) SetStartTime(v int64) *CreateMaYiBlockRequestBlockTimes {
+	s.StartTime = &v
+	return s
+}
+
+type CreateMaYiBlockRequestScope struct {
+	GroupBlockScopeParams []*CreateMaYiBlockRequestScopeGroupBlockScopeParams `json:"GroupBlockScopeParams,omitempty" xml:"GroupBlockScopeParams,omitempty" type:"Repeated"`
+}
+
+func (s CreateMaYiBlockRequestScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaYiBlockRequestScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaYiBlockRequestScope) SetGroupBlockScopeParams(v []*CreateMaYiBlockRequestScopeGroupBlockScopeParams) *CreateMaYiBlockRequestScope {
+	s.GroupBlockScopeParams = v
+	return s
+}
+
+type CreateMaYiBlockRequestScopeGroupBlockScopeParams struct {
+	Az     *string `json:"Az,omitempty" xml:"Az,omitempty"`
+	Idc    *string `json:"Idc,omitempty" xml:"Idc,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s CreateMaYiBlockRequestScopeGroupBlockScopeParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaYiBlockRequestScopeGroupBlockScopeParams) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaYiBlockRequestScopeGroupBlockScopeParams) SetAz(v string) *CreateMaYiBlockRequestScopeGroupBlockScopeParams {
+	s.Az = &v
+	return s
+}
+
+func (s *CreateMaYiBlockRequestScopeGroupBlockScopeParams) SetIdc(v string) *CreateMaYiBlockRequestScopeGroupBlockScopeParams {
+	s.Idc = &v
+	return s
+}
+
+func (s *CreateMaYiBlockRequestScopeGroupBlockScopeParams) SetRegion(v string) *CreateMaYiBlockRequestScopeGroupBlockScopeParams {
+	s.Region = &v
+	return s
+}
+
+type CreateMaYiBlockShrinkRequest struct {
+	BlockId *string `json:"BlockId,omitempty" xml:"BlockId,omitempty"`
+	// This parameter is required.
+	BlockTimes []*CreateMaYiBlockShrinkRequestBlockTimes `json:"BlockTimes,omitempty" xml:"BlockTimes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	BlockType *string `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
+	// This parameter is required.
+	CreatorEmpId *string `json:"CreatorEmpId,omitempty" xml:"CreatorEmpId,omitempty"`
+	// This parameter is required.
+	Director     []*string `json:"Director,omitempty" xml:"Director,omitempty" type:"Repeated"`
+	FaultVersion *string   `json:"FaultVersion,omitempty" xml:"FaultVersion,omitempty"`
+	Information  []*string `json:"Information,omitempty" xml:"Information,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ScopeShrink *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// This parameter is required.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateMaYiBlockShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaYiBlockShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaYiBlockShrinkRequest) SetBlockId(v string) *CreateMaYiBlockShrinkRequest {
+	s.BlockId = &v
+	return s
+}
+
+func (s *CreateMaYiBlockShrinkRequest) SetBlockTimes(v []*CreateMaYiBlockShrinkRequestBlockTimes) *CreateMaYiBlockShrinkRequest {
+	s.BlockTimes = v
+	return s
+}
+
+func (s *CreateMaYiBlockShrinkRequest) SetBlockType(v string) *CreateMaYiBlockShrinkRequest {
+	s.BlockType = &v
+	return s
+}
+
+func (s *CreateMaYiBlockShrinkRequest) SetCreatorEmpId(v string) *CreateMaYiBlockShrinkRequest {
+	s.CreatorEmpId = &v
+	return s
+}
+
+func (s *CreateMaYiBlockShrinkRequest) SetDirector(v []*string) *CreateMaYiBlockShrinkRequest {
+	s.Director = v
+	return s
+}
+
+func (s *CreateMaYiBlockShrinkRequest) SetFaultVersion(v string) *CreateMaYiBlockShrinkRequest {
+	s.FaultVersion = &v
+	return s
+}
+
+func (s *CreateMaYiBlockShrinkRequest) SetInformation(v []*string) *CreateMaYiBlockShrinkRequest {
+	s.Information = v
+	return s
+}
+
+func (s *CreateMaYiBlockShrinkRequest) SetReason(v string) *CreateMaYiBlockShrinkRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *CreateMaYiBlockShrinkRequest) SetScopeShrink(v string) *CreateMaYiBlockShrinkRequest {
+	s.ScopeShrink = &v
+	return s
+}
+
+func (s *CreateMaYiBlockShrinkRequest) SetTitle(v string) *CreateMaYiBlockShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *CreateMaYiBlockShrinkRequest) SetType(v string) *CreateMaYiBlockShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateMaYiBlockShrinkRequestBlockTimes struct {
+	EndTime   *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s CreateMaYiBlockShrinkRequestBlockTimes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaYiBlockShrinkRequestBlockTimes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaYiBlockShrinkRequestBlockTimes) SetEndTime(v int64) *CreateMaYiBlockShrinkRequestBlockTimes {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateMaYiBlockShrinkRequestBlockTimes) SetStartTime(v int64) *CreateMaYiBlockShrinkRequestBlockTimes {
+	s.StartTime = &v
+	return s
+}
+
+type CreateMaYiBlockResponseBody struct {
+	Code      *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateMaYiBlockResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateMaYiBlockResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaYiBlockResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaYiBlockResponseBody) SetCode(v int32) *CreateMaYiBlockResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateMaYiBlockResponseBody) SetData(v *CreateMaYiBlockResponseBodyData) *CreateMaYiBlockResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateMaYiBlockResponseBody) SetMessage(v string) *CreateMaYiBlockResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateMaYiBlockResponseBody) SetRequestId(v string) *CreateMaYiBlockResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateMaYiBlockResponseBody) SetSuccess(v bool) *CreateMaYiBlockResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateMaYiBlockResponseBodyData struct {
+	BlockId  *int64  `json:"BlockId,omitempty" xml:"BlockId,omitempty"`
+	BlockUrl *string `json:"BlockUrl,omitempty" xml:"BlockUrl,omitempty"`
+}
+
+func (s CreateMaYiBlockResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaYiBlockResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaYiBlockResponseBodyData) SetBlockId(v int64) *CreateMaYiBlockResponseBodyData {
+	s.BlockId = &v
+	return s
+}
+
+func (s *CreateMaYiBlockResponseBodyData) SetBlockUrl(v string) *CreateMaYiBlockResponseBodyData {
+	s.BlockUrl = &v
+	return s
+}
+
+type CreateMaYiBlockResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMaYiBlockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateMaYiBlockResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMaYiBlockResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMaYiBlockResponse) SetHeaders(v map[string]*string) *CreateMaYiBlockResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMaYiBlockResponse) SetStatusCode(v int32) *CreateMaYiBlockResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMaYiBlockResponse) SetBody(v *CreateMaYiBlockResponseBody) *CreateMaYiBlockResponse {
 	s.Body = v
 	return s
 }
@@ -3471,6 +3962,8 @@ type QueryBlockEventResponseBodyDataDataInfo struct {
 	StartTime   *int64                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Title       *string                                              `json:"Title,omitempty" xml:"Title,omitempty"`
 	Url         *string                                              `json:"Url,omitempty" xml:"Url,omitempty"`
+	LevelType   *QueryBlockEventResponseBodyDataDataInfoLevelType    `json:"levelType,omitempty" xml:"levelType,omitempty" type:"Struct"`
+	VersionId   *int64                                               `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s QueryBlockEventResponseBodyDataDataInfo) String() string {
@@ -3531,11 +4024,22 @@ func (s *QueryBlockEventResponseBodyDataDataInfo) SetUrl(v string) *QueryBlockEv
 	return s
 }
 
+func (s *QueryBlockEventResponseBodyDataDataInfo) SetLevelType(v *QueryBlockEventResponseBodyDataDataInfoLevelType) *QueryBlockEventResponseBodyDataDataInfo {
+	s.LevelType = v
+	return s
+}
+
+func (s *QueryBlockEventResponseBodyDataDataInfo) SetVersionId(v int64) *QueryBlockEventResponseBodyDataDataInfo {
+	s.VersionId = &v
+	return s
+}
+
 type QueryBlockEventResponseBodyDataDataInfoEventTimes struct {
 	EndTime   *int64                                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Express   *string                                                  `json:"Express,omitempty" xml:"Express,omitempty"`
 	Rule      []*QueryBlockEventResponseBodyDataDataInfoEventTimesRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
 	StartTime *int64                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	RuleId    *int64                                                   `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
 }
 
 func (s QueryBlockEventResponseBodyDataDataInfoEventTimes) String() string {
@@ -3563,6 +4067,11 @@ func (s *QueryBlockEventResponseBodyDataDataInfoEventTimes) SetRule(v []*QueryBl
 
 func (s *QueryBlockEventResponseBodyDataDataInfoEventTimes) SetStartTime(v int64) *QueryBlockEventResponseBodyDataDataInfoEventTimes {
 	s.StartTime = &v
+	return s
+}
+
+func (s *QueryBlockEventResponseBodyDataDataInfoEventTimes) SetRuleId(v int64) *QueryBlockEventResponseBodyDataDataInfoEventTimes {
+	s.RuleId = &v
 	return s
 }
 
@@ -3610,6 +4119,29 @@ func (s *QueryBlockEventResponseBodyDataDataInfoEventTimesRule) SetLevel5(v stri
 
 func (s *QueryBlockEventResponseBodyDataDataInfoEventTimesRule) SetType(v string) *QueryBlockEventResponseBodyDataDataInfoEventTimesRule {
 	s.Type = &v
+	return s
+}
+
+type QueryBlockEventResponseBodyDataDataInfoLevelType struct {
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	Value *int32  `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s QueryBlockEventResponseBodyDataDataInfoLevelType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryBlockEventResponseBodyDataDataInfoLevelType) GoString() string {
+	return s.String()
+}
+
+func (s *QueryBlockEventResponseBodyDataDataInfoLevelType) SetLabel(v string) *QueryBlockEventResponseBodyDataDataInfoLevelType {
+	s.Label = &v
+	return s
+}
+
+func (s *QueryBlockEventResponseBodyDataDataInfoLevelType) SetValue(v int32) *QueryBlockEventResponseBodyDataDataInfoLevelType {
+	s.Value = &v
 	return s
 }
 
@@ -4985,6 +5517,7 @@ func (s *QueryRegionAzResponse) SetBody(v *QueryRegionAzResponseBody) *QueryRegi
 type SafeChangeCancelRequest struct {
 	AuthKey       *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 	AuthSign      *string `json:"AuthSign,omitempty" xml:"AuthSign,omitempty"`
+	BgVid         *string `json:"BgVid,omitempty" xml:"BgVid,omitempty"`
 	OperateEmpNo  *string `json:"OperateEmpNo,omitempty" xml:"OperateEmpNo,omitempty"`
 	ReqTimestamp  *int64  `json:"ReqTimestamp,omitempty" xml:"ReqTimestamp,omitempty"`
 	SourceOrderId *string `json:"SourceOrderId,omitempty" xml:"SourceOrderId,omitempty"`
@@ -5005,6 +5538,11 @@ func (s *SafeChangeCancelRequest) SetAuthKey(v string) *SafeChangeCancelRequest 
 
 func (s *SafeChangeCancelRequest) SetAuthSign(v string) *SafeChangeCancelRequest {
 	s.AuthSign = &v
+	return s
+}
+
+func (s *SafeChangeCancelRequest) SetBgVid(v string) *SafeChangeCancelRequest {
+	s.BgVid = &v
 	return s
 }
 
@@ -5143,6 +5681,7 @@ type SafeChangeCheckRequest struct {
 	Follower                 []*string                                       `json:"Follower,omitempty" xml:"Follower,omitempty" type:"Repeated"`
 	GrayStatus               *string                                         `json:"GrayStatus,omitempty" xml:"GrayStatus,omitempty"`
 	HarmChangeNoticeEnum     *string                                         `json:"HarmChangeNoticeEnum,omitempty" xml:"HarmChangeNoticeEnum,omitempty"`
+	HarmNoticeCombineParam   *SafeChangeCheckRequestHarmNoticeCombineParam   `json:"HarmNoticeCombineParam,omitempty" xml:"HarmNoticeCombineParam,omitempty" type:"Struct"`
 	Incidence                *string                                         `json:"Incidence,omitempty" xml:"Incidence,omitempty"`
 	InfluenceInfo            *SafeChangeCheckRequestInfluenceInfo            `json:"InfluenceInfo,omitempty" xml:"InfluenceInfo,omitempty" type:"Struct"`
 	Instance                 *SafeChangeCheckRequestInstance                 `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
@@ -5325,6 +5864,11 @@ func (s *SafeChangeCheckRequest) SetGrayStatus(v string) *SafeChangeCheckRequest
 
 func (s *SafeChangeCheckRequest) SetHarmChangeNoticeEnum(v string) *SafeChangeCheckRequest {
 	s.HarmChangeNoticeEnum = &v
+	return s
+}
+
+func (s *SafeChangeCheckRequest) SetHarmNoticeCombineParam(v *SafeChangeCheckRequestHarmNoticeCombineParam) *SafeChangeCheckRequest {
+	s.HarmNoticeCombineParam = v
 	return s
 }
 
@@ -5758,6 +6302,35 @@ func (s *SafeChangeCheckRequestDamagedChangeNoticesSensitiveCustomersCustomerInf
 	return s
 }
 
+type SafeChangeCheckRequestHarmNoticeCombineParam struct {
+	Combine     *bool   `json:"Combine,omitempty" xml:"Combine,omitempty"`
+	CombineMark *string `json:"CombineMark,omitempty" xml:"CombineMark,omitempty"`
+	CombineRule *string `json:"CombineRule,omitempty" xml:"CombineRule,omitempty"`
+}
+
+func (s SafeChangeCheckRequestHarmNoticeCombineParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckRequestHarmNoticeCombineParam) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckRequestHarmNoticeCombineParam) SetCombine(v bool) *SafeChangeCheckRequestHarmNoticeCombineParam {
+	s.Combine = &v
+	return s
+}
+
+func (s *SafeChangeCheckRequestHarmNoticeCombineParam) SetCombineMark(v string) *SafeChangeCheckRequestHarmNoticeCombineParam {
+	s.CombineMark = &v
+	return s
+}
+
+func (s *SafeChangeCheckRequestHarmNoticeCombineParam) SetCombineRule(v string) *SafeChangeCheckRequestHarmNoticeCombineParam {
+	s.CombineRule = &v
+	return s
+}
+
 type SafeChangeCheckRequestInfluenceInfo struct {
 	NoticeInfos        []*SafeChangeCheckRequestInfluenceInfoNoticeInfos        `json:"NoticeInfos,omitempty" xml:"NoticeInfos,omitempty" type:"Repeated"`
 	SensitiveCustomers []*SafeChangeCheckRequestInfluenceInfoSensitiveCustomers `json:"SensitiveCustomers,omitempty" xml:"SensitiveCustomers,omitempty" type:"Repeated"`
@@ -5945,6 +6518,851 @@ func (s *SafeChangeCheckRequestReleasePackageInfos) SetProductCode(v string) *Sa
 }
 
 func (s *SafeChangeCheckRequestReleasePackageInfos) SetReleasePackage(v []*string) *SafeChangeCheckRequestReleasePackageInfos {
+	s.ReleasePackage = v
+	return s
+}
+
+type SafeChangeCheckShrinkRequest struct {
+	AffectCustomer               *string                                               `json:"AffectCustomer,omitempty" xml:"AffectCustomer,omitempty"`
+	ApproveFlowParam             *SafeChangeCheckShrinkRequestApproveFlowParam         `json:"ApproveFlowParam,omitempty" xml:"ApproveFlowParam,omitempty" type:"Struct"`
+	AuthKey                      *string                                               `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	AuthSign                     *string                                               `json:"AuthSign,omitempty" xml:"AuthSign,omitempty"`
+	BgCustomTemplateExtraDTO     *SafeChangeCheckShrinkRequestBgCustomTemplateExtraDTO `json:"BgCustomTemplateExtraDTO,omitempty" xml:"BgCustomTemplateExtraDTO,omitempty" type:"Struct"`
+	BlockInfos                   []*SafeChangeCheckShrinkRequestBlockInfos             `json:"BlockInfos,omitempty" xml:"BlockInfos,omitempty" type:"Repeated"`
+	CallBackInfo                 *SafeChangeCheckShrinkRequestCallBackInfo             `json:"CallBackInfo,omitempty" xml:"CallBackInfo,omitempty" type:"Struct"`
+	ChangeDataType               *string                                               `json:"ChangeDataType,omitempty" xml:"ChangeDataType,omitempty"`
+	ChangeDesc                   *string                                               `json:"ChangeDesc,omitempty" xml:"ChangeDesc,omitempty"`
+	ChangeEndTime                *int64                                                `json:"ChangeEndTime,omitempty" xml:"ChangeEndTime,omitempty"`
+	ChangeEnv                    *string                                               `json:"ChangeEnv,omitempty" xml:"ChangeEnv,omitempty"`
+	ChangeItems                  *string                                               `json:"ChangeItems,omitempty" xml:"ChangeItems,omitempty"`
+	ChangeObject                 *string                                               `json:"ChangeObject,omitempty" xml:"ChangeObject,omitempty"`
+	ChangeOptSubType             *string                                               `json:"ChangeOptSubType,omitempty" xml:"ChangeOptSubType,omitempty"`
+	ChangeOptType                *string                                               `json:"ChangeOptType,omitempty" xml:"ChangeOptType,omitempty"`
+	ChangeReason                 *string                                               `json:"ChangeReason,omitempty" xml:"ChangeReason,omitempty"`
+	ChangeRmarks                 *string                                               `json:"ChangeRmarks,omitempty" xml:"ChangeRmarks,omitempty"`
+	ChangeSchemes                *string                                               `json:"ChangeSchemes,omitempty" xml:"ChangeSchemes,omitempty"`
+	ChangeStartTime              *int64                                                `json:"ChangeStartTime,omitempty" xml:"ChangeStartTime,omitempty"`
+	ChangeSubTypeDesc            *string                                               `json:"ChangeSubTypeDesc,omitempty" xml:"ChangeSubTypeDesc,omitempty"`
+	ChangeSystem                 *string                                               `json:"ChangeSystem,omitempty" xml:"ChangeSystem,omitempty"`
+	ChangeTimes                  []*SafeChangeCheckShrinkRequestChangeTimes            `json:"ChangeTimes,omitempty" xml:"ChangeTimes,omitempty" type:"Repeated"`
+	ChangeTitle                  *string                                               `json:"ChangeTitle,omitempty" xml:"ChangeTitle,omitempty"`
+	ChangeValidation             *string                                               `json:"ChangeValidation,omitempty" xml:"ChangeValidation,omitempty"`
+	Checker                      []*string                                             `json:"Checker,omitempty" xml:"Checker,omitempty" type:"Repeated"`
+	CreatorEmpId                 *string                                               `json:"CreatorEmpId,omitempty" xml:"CreatorEmpId,omitempty"`
+	DamagedChangeNotices         []*SafeChangeCheckShrinkRequestDamagedChangeNotices   `json:"DamagedChangeNotices,omitempty" xml:"DamagedChangeNotices,omitempty" type:"Repeated"`
+	ExecutorEmpId                *string                                               `json:"ExecutorEmpId,omitempty" xml:"ExecutorEmpId,omitempty"`
+	ExtraInfo                    *string                                               `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	Follower                     []*string                                             `json:"Follower,omitempty" xml:"Follower,omitempty" type:"Repeated"`
+	GrayStatus                   *string                                               `json:"GrayStatus,omitempty" xml:"GrayStatus,omitempty"`
+	HarmChangeNoticeEnum         *string                                               `json:"HarmChangeNoticeEnum,omitempty" xml:"HarmChangeNoticeEnum,omitempty"`
+	HarmNoticeCombineParamShrink *string                                               `json:"HarmNoticeCombineParam,omitempty" xml:"HarmNoticeCombineParam,omitempty"`
+	Incidence                    *string                                               `json:"Incidence,omitempty" xml:"Incidence,omitempty"`
+	InfluenceInfo                *SafeChangeCheckShrinkRequestInfluenceInfo            `json:"InfluenceInfo,omitempty" xml:"InfluenceInfo,omitempty" type:"Struct"`
+	Instance                     *SafeChangeCheckShrinkRequestInstance                 `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	NeedModifyDoc                *string                                               `json:"NeedModifyDoc,omitempty" xml:"NeedModifyDoc,omitempty"`
+	OperateEmpNo                 *string                                               `json:"OperateEmpNo,omitempty" xml:"OperateEmpNo,omitempty"`
+	Product                      []*SafeChangeCheckShrinkRequestProduct                `json:"Product,omitempty" xml:"Product,omitempty" type:"Repeated"`
+	ReleasePackageInfos          []*SafeChangeCheckShrinkRequestReleasePackageInfos    `json:"ReleasePackageInfos,omitempty" xml:"ReleasePackageInfos,omitempty" type:"Repeated"`
+	ReqTimestamp                 *int64                                                `json:"ReqTimestamp,omitempty" xml:"ReqTimestamp,omitempty"`
+	ReuseSourceOrderId           *string                                               `json:"ReuseSourceOrderId,omitempty" xml:"ReuseSourceOrderId,omitempty"`
+	RiskLevel                    *string                                               `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Rollback                     *string                                               `json:"Rollback,omitempty" xml:"Rollback,omitempty"`
+	SourceName                   *string                                               `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SourceOrderId                *string                                               `json:"SourceOrderId,omitempty" xml:"SourceOrderId,omitempty"`
+	SourceUrl                    *string                                               `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	WhiteType                    *int32                                                `json:"whiteType,omitempty" xml:"whiteType,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetAffectCustomer(v string) *SafeChangeCheckShrinkRequest {
+	s.AffectCustomer = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetApproveFlowParam(v *SafeChangeCheckShrinkRequestApproveFlowParam) *SafeChangeCheckShrinkRequest {
+	s.ApproveFlowParam = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetAuthKey(v string) *SafeChangeCheckShrinkRequest {
+	s.AuthKey = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetAuthSign(v string) *SafeChangeCheckShrinkRequest {
+	s.AuthSign = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetBgCustomTemplateExtraDTO(v *SafeChangeCheckShrinkRequestBgCustomTemplateExtraDTO) *SafeChangeCheckShrinkRequest {
+	s.BgCustomTemplateExtraDTO = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetBlockInfos(v []*SafeChangeCheckShrinkRequestBlockInfos) *SafeChangeCheckShrinkRequest {
+	s.BlockInfos = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetCallBackInfo(v *SafeChangeCheckShrinkRequestCallBackInfo) *SafeChangeCheckShrinkRequest {
+	s.CallBackInfo = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeDataType(v string) *SafeChangeCheckShrinkRequest {
+	s.ChangeDataType = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeDesc(v string) *SafeChangeCheckShrinkRequest {
+	s.ChangeDesc = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeEndTime(v int64) *SafeChangeCheckShrinkRequest {
+	s.ChangeEndTime = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeEnv(v string) *SafeChangeCheckShrinkRequest {
+	s.ChangeEnv = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeItems(v string) *SafeChangeCheckShrinkRequest {
+	s.ChangeItems = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeObject(v string) *SafeChangeCheckShrinkRequest {
+	s.ChangeObject = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeOptSubType(v string) *SafeChangeCheckShrinkRequest {
+	s.ChangeOptSubType = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeOptType(v string) *SafeChangeCheckShrinkRequest {
+	s.ChangeOptType = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeReason(v string) *SafeChangeCheckShrinkRequest {
+	s.ChangeReason = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeRmarks(v string) *SafeChangeCheckShrinkRequest {
+	s.ChangeRmarks = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeSchemes(v string) *SafeChangeCheckShrinkRequest {
+	s.ChangeSchemes = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeStartTime(v int64) *SafeChangeCheckShrinkRequest {
+	s.ChangeStartTime = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeSubTypeDesc(v string) *SafeChangeCheckShrinkRequest {
+	s.ChangeSubTypeDesc = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeSystem(v string) *SafeChangeCheckShrinkRequest {
+	s.ChangeSystem = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeTimes(v []*SafeChangeCheckShrinkRequestChangeTimes) *SafeChangeCheckShrinkRequest {
+	s.ChangeTimes = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeTitle(v string) *SafeChangeCheckShrinkRequest {
+	s.ChangeTitle = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChangeValidation(v string) *SafeChangeCheckShrinkRequest {
+	s.ChangeValidation = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetChecker(v []*string) *SafeChangeCheckShrinkRequest {
+	s.Checker = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetCreatorEmpId(v string) *SafeChangeCheckShrinkRequest {
+	s.CreatorEmpId = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetDamagedChangeNotices(v []*SafeChangeCheckShrinkRequestDamagedChangeNotices) *SafeChangeCheckShrinkRequest {
+	s.DamagedChangeNotices = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetExecutorEmpId(v string) *SafeChangeCheckShrinkRequest {
+	s.ExecutorEmpId = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetExtraInfo(v string) *SafeChangeCheckShrinkRequest {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetFollower(v []*string) *SafeChangeCheckShrinkRequest {
+	s.Follower = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetGrayStatus(v string) *SafeChangeCheckShrinkRequest {
+	s.GrayStatus = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetHarmChangeNoticeEnum(v string) *SafeChangeCheckShrinkRequest {
+	s.HarmChangeNoticeEnum = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetHarmNoticeCombineParamShrink(v string) *SafeChangeCheckShrinkRequest {
+	s.HarmNoticeCombineParamShrink = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetIncidence(v string) *SafeChangeCheckShrinkRequest {
+	s.Incidence = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetInfluenceInfo(v *SafeChangeCheckShrinkRequestInfluenceInfo) *SafeChangeCheckShrinkRequest {
+	s.InfluenceInfo = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetInstance(v *SafeChangeCheckShrinkRequestInstance) *SafeChangeCheckShrinkRequest {
+	s.Instance = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetNeedModifyDoc(v string) *SafeChangeCheckShrinkRequest {
+	s.NeedModifyDoc = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetOperateEmpNo(v string) *SafeChangeCheckShrinkRequest {
+	s.OperateEmpNo = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetProduct(v []*SafeChangeCheckShrinkRequestProduct) *SafeChangeCheckShrinkRequest {
+	s.Product = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetReleasePackageInfos(v []*SafeChangeCheckShrinkRequestReleasePackageInfos) *SafeChangeCheckShrinkRequest {
+	s.ReleasePackageInfos = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetReqTimestamp(v int64) *SafeChangeCheckShrinkRequest {
+	s.ReqTimestamp = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetReuseSourceOrderId(v string) *SafeChangeCheckShrinkRequest {
+	s.ReuseSourceOrderId = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetRiskLevel(v string) *SafeChangeCheckShrinkRequest {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetRollback(v string) *SafeChangeCheckShrinkRequest {
+	s.Rollback = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetSourceName(v string) *SafeChangeCheckShrinkRequest {
+	s.SourceName = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetSourceOrderId(v string) *SafeChangeCheckShrinkRequest {
+	s.SourceOrderId = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetSourceUrl(v string) *SafeChangeCheckShrinkRequest {
+	s.SourceUrl = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequest) SetWhiteType(v int32) *SafeChangeCheckShrinkRequest {
+	s.WhiteType = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestApproveFlowParam struct {
+	ApproveNodes []*SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes `json:"ApproveNodes,omitempty" xml:"ApproveNodes,omitempty" type:"Repeated"`
+	FlowStatus   *int32                                                      `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestApproveFlowParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestApproveFlowParam) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestApproveFlowParam) SetApproveNodes(v []*SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes) *SafeChangeCheckShrinkRequestApproveFlowParam {
+	s.ApproveNodes = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestApproveFlowParam) SetFlowStatus(v int32) *SafeChangeCheckShrinkRequestApproveFlowParam {
+	s.FlowStatus = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes struct {
+	ApproverDTO      []*SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO `json:"ApproverDTO,omitempty" xml:"ApproverDTO,omitempty" type:"Repeated"`
+	NodeStatus       *int32                                                                 `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	ProcessName      *string                                                                `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	ProcessNodeOrder *int32                                                                 `json:"ProcessNodeOrder,omitempty" xml:"ProcessNodeOrder,omitempty"`
+	Strategy         *int32                                                                 `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes) SetApproverDTO(v []*SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO) *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes {
+	s.ApproverDTO = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes) SetNodeStatus(v int32) *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes {
+	s.NodeStatus = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes) SetProcessName(v string) *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes) SetProcessNodeOrder(v int32) *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes {
+	s.ProcessNodeOrder = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes) SetStrategy(v int32) *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodes {
+	s.Strategy = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO struct {
+	ApproveDesc  *string `json:"ApproveDesc,omitempty" xml:"ApproveDesc,omitempty"`
+	ApproveTime  *int64  `json:"ApproveTime,omitempty" xml:"ApproveTime,omitempty"`
+	ApproverId   *string `json:"ApproverId,omitempty" xml:"ApproverId,omitempty"`
+	ApproverName *string `json:"ApproverName,omitempty" xml:"ApproverName,omitempty"`
+	Opinion      *int32  `json:"Opinion,omitempty" xml:"Opinion,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO) SetApproveDesc(v string) *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO {
+	s.ApproveDesc = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO) SetApproveTime(v int64) *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO {
+	s.ApproveTime = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO) SetApproverId(v string) *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO {
+	s.ApproverId = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO) SetApproverName(v string) *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO {
+	s.ApproverName = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO) SetOpinion(v int32) *SafeChangeCheckShrinkRequestApproveFlowParamApproveNodesApproverDTO {
+	s.Opinion = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestBgCustomTemplateExtraDTO struct {
+	BgCustomTemplateInfo *string `json:"BgCustomTemplateInfo,omitempty" xml:"BgCustomTemplateInfo,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestBgCustomTemplateExtraDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestBgCustomTemplateExtraDTO) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestBgCustomTemplateExtraDTO) SetBgCustomTemplateInfo(v string) *SafeChangeCheckShrinkRequestBgCustomTemplateExtraDTO {
+	s.BgCustomTemplateInfo = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestBlockInfos struct {
+	HitInfos []*SafeChangeCheckShrinkRequestBlockInfosHitInfos `json:"HitInfos,omitempty" xml:"HitInfos,omitempty" type:"Repeated"`
+	Id       *int64                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestBlockInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestBlockInfos) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestBlockInfos) SetHitInfos(v []*SafeChangeCheckShrinkRequestBlockInfosHitInfos) *SafeChangeCheckShrinkRequestBlockInfos {
+	s.HitInfos = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestBlockInfos) SetId(v int64) *SafeChangeCheckShrinkRequestBlockInfos {
+	s.Id = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestBlockInfosHitInfos struct {
+	HitInfo   *string `json:"HitInfo,omitempty" xml:"HitInfo,omitempty"`
+	HitObject *string `json:"HitObject,omitempty" xml:"HitObject,omitempty"`
+	Scope     *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestBlockInfosHitInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestBlockInfosHitInfos) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestBlockInfosHitInfos) SetHitInfo(v string) *SafeChangeCheckShrinkRequestBlockInfosHitInfos {
+	s.HitInfo = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestBlockInfosHitInfos) SetHitObject(v string) *SafeChangeCheckShrinkRequestBlockInfosHitInfos {
+	s.HitObject = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestBlockInfosHitInfos) SetScope(v string) *SafeChangeCheckShrinkRequestBlockInfosHitInfos {
+	s.Scope = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestCallBackInfo struct {
+	Api        *string `json:"Api,omitempty" xml:"Api,omitempty"`
+	ApiVersion *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
+	EndPoint   *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+	PopProduct *string `json:"PopProduct,omitempty" xml:"PopProduct,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestCallBackInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestCallBackInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestCallBackInfo) SetApi(v string) *SafeChangeCheckShrinkRequestCallBackInfo {
+	s.Api = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestCallBackInfo) SetApiVersion(v string) *SafeChangeCheckShrinkRequestCallBackInfo {
+	s.ApiVersion = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestCallBackInfo) SetEndPoint(v string) *SafeChangeCheckShrinkRequestCallBackInfo {
+	s.EndPoint = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestCallBackInfo) SetPopProduct(v string) *SafeChangeCheckShrinkRequestCallBackInfo {
+	s.PopProduct = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestCallBackInfo) SetRegionId(v string) *SafeChangeCheckShrinkRequestCallBackInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestCallBackInfo) SetType(v string) *SafeChangeCheckShrinkRequestCallBackInfo {
+	s.Type = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestCallBackInfo) SetUrl(v string) *SafeChangeCheckShrinkRequestCallBackInfo {
+	s.Url = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestChangeTimes struct {
+	ChangeEndTime   *int64 `json:"ChangeEndTime,omitempty" xml:"ChangeEndTime,omitempty"`
+	ChangeStartTime *int64 `json:"ChangeStartTime,omitempty" xml:"ChangeStartTime,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestChangeTimes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestChangeTimes) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestChangeTimes) SetChangeEndTime(v int64) *SafeChangeCheckShrinkRequestChangeTimes {
+	s.ChangeEndTime = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestChangeTimes) SetChangeStartTime(v int64) *SafeChangeCheckShrinkRequestChangeTimes {
+	s.ChangeStartTime = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestDamagedChangeNotices struct {
+	BgCancelNoticeContent *string                                                               `json:"BgCancelNoticeContent,omitempty" xml:"BgCancelNoticeContent,omitempty"`
+	BgCancelNoticeEventId *string                                                               `json:"BgCancelNoticeEventId,omitempty" xml:"BgCancelNoticeEventId,omitempty"`
+	Channel               []*string                                                             `json:"Channel,omitempty" xml:"Channel,omitempty" type:"Repeated"`
+	Content               *string                                                               `json:"Content,omitempty" xml:"Content,omitempty"`
+	EventId               *string                                                               `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	SensitiveCustomers    []*SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomers `json:"SensitiveCustomers,omitempty" xml:"SensitiveCustomers,omitempty" type:"Repeated"`
+	Type                  *string                                                               `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestDamagedChangeNotices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestDamagedChangeNotices) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestDamagedChangeNotices) SetBgCancelNoticeContent(v string) *SafeChangeCheckShrinkRequestDamagedChangeNotices {
+	s.BgCancelNoticeContent = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestDamagedChangeNotices) SetBgCancelNoticeEventId(v string) *SafeChangeCheckShrinkRequestDamagedChangeNotices {
+	s.BgCancelNoticeEventId = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestDamagedChangeNotices) SetChannel(v []*string) *SafeChangeCheckShrinkRequestDamagedChangeNotices {
+	s.Channel = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestDamagedChangeNotices) SetContent(v string) *SafeChangeCheckShrinkRequestDamagedChangeNotices {
+	s.Content = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestDamagedChangeNotices) SetEventId(v string) *SafeChangeCheckShrinkRequestDamagedChangeNotices {
+	s.EventId = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestDamagedChangeNotices) SetSensitiveCustomers(v []*SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomers) *SafeChangeCheckShrinkRequestDamagedChangeNotices {
+	s.SensitiveCustomers = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestDamagedChangeNotices) SetType(v string) *SafeChangeCheckShrinkRequestDamagedChangeNotices {
+	s.Type = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomers struct {
+	CustomerInfo []*SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomersCustomerInfo `json:"CustomerInfo,omitempty" xml:"CustomerInfo,omitempty" type:"Repeated"`
+	ProductCode  *string                                                                           `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomers) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomers) SetCustomerInfo(v []*SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomersCustomerInfo) *SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomers {
+	s.CustomerInfo = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomers) SetProductCode(v string) *SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomers {
+	s.ProductCode = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomersCustomerInfo struct {
+	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	Type      *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uid       *string                `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomersCustomerInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomersCustomerInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomersCustomerInfo) SetExtraInfo(v map[string]interface{}) *SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomersCustomerInfo {
+	s.ExtraInfo = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomersCustomerInfo) SetType(v string) *SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomersCustomerInfo {
+	s.Type = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomersCustomerInfo) SetUid(v string) *SafeChangeCheckShrinkRequestDamagedChangeNoticesSensitiveCustomersCustomerInfo {
+	s.Uid = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestInfluenceInfo struct {
+	NoticeInfos        []*SafeChangeCheckShrinkRequestInfluenceInfoNoticeInfos        `json:"NoticeInfos,omitempty" xml:"NoticeInfos,omitempty" type:"Repeated"`
+	SensitiveCustomers []*SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomers `json:"SensitiveCustomers,omitempty" xml:"SensitiveCustomers,omitempty" type:"Repeated"`
+}
+
+func (s SafeChangeCheckShrinkRequestInfluenceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestInfluenceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestInfluenceInfo) SetNoticeInfos(v []*SafeChangeCheckShrinkRequestInfluenceInfoNoticeInfos) *SafeChangeCheckShrinkRequestInfluenceInfo {
+	s.NoticeInfos = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestInfluenceInfo) SetSensitiveCustomers(v []*SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomers) *SafeChangeCheckShrinkRequestInfluenceInfo {
+	s.SensitiveCustomers = v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestInfluenceInfoNoticeInfos struct {
+	Channel []*string `json:"Channel,omitempty" xml:"Channel,omitempty" type:"Repeated"`
+	Content *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	EventId *string   `json:"EventId,omitempty" xml:"EventId,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestInfluenceInfoNoticeInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestInfluenceInfoNoticeInfos) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestInfluenceInfoNoticeInfos) SetChannel(v []*string) *SafeChangeCheckShrinkRequestInfluenceInfoNoticeInfos {
+	s.Channel = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestInfluenceInfoNoticeInfos) SetContent(v string) *SafeChangeCheckShrinkRequestInfluenceInfoNoticeInfos {
+	s.Content = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestInfluenceInfoNoticeInfos) SetEventId(v string) *SafeChangeCheckShrinkRequestInfluenceInfoNoticeInfos {
+	s.EventId = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomers struct {
+	CustomerInfo []*SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomersCustomerInfo `json:"CustomerInfo,omitempty" xml:"CustomerInfo,omitempty" type:"Repeated"`
+	ProductCode  *string                                                                    `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomers) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomers) SetCustomerInfo(v []*SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomersCustomerInfo) *SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomers {
+	s.CustomerInfo = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomers) SetProductCode(v string) *SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomers {
+	s.ProductCode = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomersCustomerInfo struct {
+	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	Type      *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uid       *string                `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomersCustomerInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomersCustomerInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomersCustomerInfo) SetExtraInfo(v map[string]interface{}) *SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomersCustomerInfo {
+	s.ExtraInfo = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomersCustomerInfo) SetType(v string) *SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomersCustomerInfo {
+	s.Type = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomersCustomerInfo) SetUid(v string) *SafeChangeCheckShrinkRequestInfluenceInfoSensitiveCustomersCustomerInfo {
+	s.Uid = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestInstance struct {
+	Nc             []*string `json:"Nc,omitempty" xml:"Nc,omitempty" type:"Repeated"`
+	Uids           []*string `json:"Uids,omitempty" xml:"Uids,omitempty" type:"Repeated"`
+	AttributionApp []*string `json:"attributionApp,omitempty" xml:"attributionApp,omitempty" type:"Repeated"`
+	InfluenceApp   []*string `json:"influenceApp,omitempty" xml:"influenceApp,omitempty" type:"Repeated"`
+	Instance       []*string `json:"instance,omitempty" xml:"instance,omitempty" type:"Repeated"`
+}
+
+func (s SafeChangeCheckShrinkRequestInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestInstance) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestInstance) SetNc(v []*string) *SafeChangeCheckShrinkRequestInstance {
+	s.Nc = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestInstance) SetUids(v []*string) *SafeChangeCheckShrinkRequestInstance {
+	s.Uids = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestInstance) SetAttributionApp(v []*string) *SafeChangeCheckShrinkRequestInstance {
+	s.AttributionApp = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestInstance) SetInfluenceApp(v []*string) *SafeChangeCheckShrinkRequestInstance {
+	s.InfluenceApp = v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestInstance) SetInstance(v []*string) *SafeChangeCheckShrinkRequestInstance {
+	s.Instance = v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestProduct struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s SafeChangeCheckShrinkRequestProduct) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestProduct) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestProduct) SetCode(v string) *SafeChangeCheckShrinkRequestProduct {
+	s.Code = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestProduct) SetName(v string) *SafeChangeCheckShrinkRequestProduct {
+	s.Name = &v
+	return s
+}
+
+type SafeChangeCheckShrinkRequestReleasePackageInfos struct {
+	ProductCode    *string   `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ReleasePackage []*string `json:"ReleasePackage,omitempty" xml:"ReleasePackage,omitempty" type:"Repeated"`
+}
+
+func (s SafeChangeCheckShrinkRequestReleasePackageInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SafeChangeCheckShrinkRequestReleasePackageInfos) GoString() string {
+	return s.String()
+}
+
+func (s *SafeChangeCheckShrinkRequestReleasePackageInfos) SetProductCode(v string) *SafeChangeCheckShrinkRequestReleasePackageInfos {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *SafeChangeCheckShrinkRequestReleasePackageInfos) SetReleasePackage(v []*string) *SafeChangeCheckShrinkRequestReleasePackageInfos {
 	s.ReleasePackage = v
 	return s
 }
@@ -7592,6 +9010,74 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 取消封网接口
+//
+// @param request - CancelBlockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelBlockResponse
+func (client *Client) CancelBlockWithOptions(request *CancelBlockRequest, runtime *util.RuntimeOptions) (_result *CancelBlockResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BlockId)) {
+		body["BlockId"] = request.BlockId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CancelBLockDesc)) {
+		body["CancelBLockDesc"] = request.CancelBLockDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateEmpId)) {
+		body["CreateEmpId"] = request.CreateEmpId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelBlock"),
+		Version:     tea.String("2022-01-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelBlockResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消封网接口
+//
+// @param request - CancelBlockRequest
+//
+// @return CancelBlockResponse
+func (client *Client) CancelBlock(request *CancelBlockRequest) (_result *CancelBlockResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelBlockResponse{}
+	_body, _err := client.CancelBlockWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 变更取消
 //
 // @param request - ChangeCancelRequest
@@ -8199,6 +9685,10 @@ func (client *Client) CreateBlockWithOptions(request *CreateBlockRequest, runtim
 		body["VersionId"] = request.VersionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CreatorEmpId)) {
+		body["creatorEmpId"] = request.CreatorEmpId
+	}
+
 	body = tea.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
@@ -8235,6 +9725,112 @@ func (client *Client) CreateBlock(request *CreateBlockRequest) (_result *CreateB
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBlockResponse{}
 	_body, _err := client.CreateBlockWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建蚂蚁封网接口
+//
+// @param tmpReq - CreateMaYiBlockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMaYiBlockResponse
+func (client *Client) CreateMaYiBlockWithOptions(tmpReq *CreateMaYiBlockRequest, runtime *util.RuntimeOptions) (_result *CreateMaYiBlockResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateMaYiBlockShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Scope)) {
+		request.ScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Scope, tea.String("Scope"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BlockId)) {
+		body["BlockId"] = request.BlockId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BlockTimes)) {
+		body["BlockTimes"] = request.BlockTimes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BlockType)) {
+		body["BlockType"] = request.BlockType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreatorEmpId)) {
+		body["CreatorEmpId"] = request.CreatorEmpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Director)) {
+		body["Director"] = request.Director
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaultVersion)) {
+		body["FaultVersion"] = request.FaultVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Information)) {
+		body["Information"] = request.Information
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		body["Reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeShrink)) {
+		body["Scope"] = request.ScopeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		body["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMaYiBlock"),
+		Version:     tea.String("2022-01-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateMaYiBlockResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建蚂蚁封网接口
+//
+// @param request - CreateMaYiBlockRequest
+//
+// @return CreateMaYiBlockResponse
+func (client *Client) CreateMaYiBlock(request *CreateMaYiBlockRequest) (_result *CreateMaYiBlockResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateMaYiBlockResponse{}
+	_body, _err := client.CreateMaYiBlockWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9195,6 +10791,10 @@ func (client *Client) SafeChangeCancelWithOptions(request *SafeChangeCancelReque
 		body["AuthSign"] = request.AuthSign
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BgVid)) {
+		body["BgVid"] = request.BgVid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OperateEmpNo)) {
 		body["OperateEmpNo"] = request.OperateEmpNo
 	}
@@ -9252,16 +10852,22 @@ func (client *Client) SafeChangeCancel(request *SafeChangeCancelRequest) (_resul
 //
 // 变更check接口
 //
-// @param request - SafeChangeCheckRequest
+// @param tmpReq - SafeChangeCheckRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SafeChangeCheckResponse
-func (client *Client) SafeChangeCheckWithOptions(request *SafeChangeCheckRequest, runtime *util.RuntimeOptions) (_result *SafeChangeCheckResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SafeChangeCheckWithOptions(tmpReq *SafeChangeCheckRequest, runtime *util.RuntimeOptions) (_result *SafeChangeCheckResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &SafeChangeCheckShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HarmNoticeCombineParam)) {
+		request.HarmNoticeCombineParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HarmNoticeCombineParam, tea.String("HarmNoticeCombineParam"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Checker)) {
 		query["Checker"] = request.Checker
@@ -9391,6 +10997,10 @@ func (client *Client) SafeChangeCheckWithOptions(request *SafeChangeCheckRequest
 
 	if !tea.BoolValue(util.IsUnset(request.GrayStatus)) {
 		body["GrayStatus"] = request.GrayStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmNoticeCombineParamShrink)) {
+		body["HarmNoticeCombineParam"] = request.HarmNoticeCombineParamShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Incidence)) {
