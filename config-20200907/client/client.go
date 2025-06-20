@@ -13473,6 +13473,19 @@ type GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail struct {
 	//
 	// {\\"\\"hc\\"\\":[\\"\\"value2\\"\\"]}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-t4n7pokxxxxxxxxxxxxxx
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// vpc-t4nhheyvay74fp7n0hxxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) String() string {
@@ -13540,6 +13553,16 @@ func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) Set
 
 func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetTags(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
 	s.Tags = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetVSwitchId(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetVpcId(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.VpcId = &v
 	return s
 }
 
@@ -19246,6 +19269,24 @@ type GetDiscoveredResourceResponseBodyDiscoveredResourceDetail struct {
 	//
 	// {\\"\\"hc\\"\\":[\\"\\"value2\\"\\"]}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// vsw-t4n7pokxxxxxxxxxxxxxx
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// vpc-t4nhheyvay74fp7n0hxxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) String() string {
@@ -19313,6 +19354,16 @@ func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceT
 
 func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetTags(v string) *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail {
 	s.Tags = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetVSwitchId(v string) *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetVpcId(v string) *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.VpcId = &v
 	return s
 }
 
@@ -24860,12 +24911,30 @@ type ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisco
 	//
 	// 1722441600000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// vsw-t4n7pokxxxxxxxxxxxxxx
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The build version of the resource.
 	//
 	// example:
 	//
 	// 1
 	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// vpc-t4nhheyvay74fp7n0hxxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) String() string {
@@ -24936,8 +25005,18 @@ func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesD
 	return s
 }
 
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetVSwitchId(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.VSwitchId = &v
+	return s
+}
+
 func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetVersion(v int64) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
 	s.Version = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetVpcId(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.VpcId = &v
 	return s
 }
 
@@ -29636,12 +29715,30 @@ type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredReso
 	//
 	// 1722441600000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// vsw-t4n7pokxxxxxxxxxxxxxx
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The version of the resource change.
 	//
 	// example:
 	//
 	// 1
 	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// vpc-t4nhheyvay74fp7n0hxxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) String() string {
@@ -29707,8 +29804,18 @@ func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscovered
 	return s
 }
 
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetVSwitchId(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.VSwitchId = &v
+	return s
+}
+
 func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetVersion(v int64) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
 	s.Version = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetVpcId(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.VpcId = &v
 	return s
 }
 
