@@ -2,11 +2,17 @@
 package client
 
 import (
+	number "github.com/alibabacloud-go/darabonba-number/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
+	fileform "github.com/alibabacloud-go/tea-fileform/service"
+	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
+	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
+	"io"
 )
 
 type AddIpfilterRequest struct {
@@ -7659,7 +7665,8 @@ type SingleSendMailRequest struct {
 	// example:
 	//
 	// 1
-	AddressType *int32 `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	AddressType *int32                              `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	Attachments []*SingleSendMailRequestAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
 	// 1: Enable data tracking function
 	//
 	// 0 (default): Disable data tracking function.
@@ -7804,6 +7811,11 @@ func (s *SingleSendMailRequest) SetAddressType(v int32) *SingleSendMailRequest {
 	return s
 }
 
+func (s *SingleSendMailRequest) SetAttachments(v []*SingleSendMailRequestAttachments) *SingleSendMailRequest {
+	s.Attachments = v
+	return s
+}
+
 func (s *SingleSendMailRequest) SetClickTrace(v string) *SingleSendMailRequest {
 	s.ClickTrace = &v
 	return s
@@ -7886,6 +7898,308 @@ func (s *SingleSendMailRequest) SetUnSubscribeFilterLevel(v string) *SingleSendM
 
 func (s *SingleSendMailRequest) SetUnSubscribeLinkType(v string) *SingleSendMailRequest {
 	s.UnSubscribeLinkType = &v
+	return s
+}
+
+type SingleSendMailRequestAttachments struct {
+	AttachmentName *string `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
+	AttachmentUrl  *string `json:"AttachmentUrl,omitempty" xml:"AttachmentUrl,omitempty"`
+}
+
+func (s SingleSendMailRequestAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SingleSendMailRequestAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *SingleSendMailRequestAttachments) SetAttachmentName(v string) *SingleSendMailRequestAttachments {
+	s.AttachmentName = &v
+	return s
+}
+
+func (s *SingleSendMailRequestAttachments) SetAttachmentUrl(v string) *SingleSendMailRequestAttachments {
+	s.AttachmentUrl = &v
+	return s
+}
+
+type SingleSendMailAdvanceRequest struct {
+	// The sending address configured in the management console.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test***@example.net
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Address type. Values:
+	//
+	// 0: Random account
+	//
+	// 1: Sending address
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	AddressType *int32                                     `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	Attachments []*SingleSendMailAdvanceRequestAttachments `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
+	// 1: Enable data tracking function
+	//
+	// 0 (default): Disable data tracking function.
+	//
+	// example:
+	//
+	// 0
+	ClickTrace *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
+	// Sender nickname, with a maximum length of 15 characters.
+	//
+	// For example, if the sender\\"s nickname is set to "Xiaohong" and the sending address is test***@example.net, the recipient will see the sending address as "Xiaohong" <test***@example.net>.
+	//
+	// example:
+	//
+	// Xiaohong
+	FromAlias *string `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
+	// Standard fields that can currently be added to the email header include Message-ID, List-Unsubscribe, and List-Unsubscribe-Post. Standard fields will overwrite existing values in the email header, while non-standard fields need to start with X-User- and will be appended to the email header.
+	//
+	// Currently, up to 10 headers can be passed in JSON format, and both standard and non-standard fields must comply with the syntax requirements for headers.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "Message-ID": "<msg0001@example.com>",
+	//
+	//   "X-User-UID1": "UID-1-000001",
+	//
+	//   "X-User-UID2": "UID-2-000001"
+	//
+	// }
+	Headers *string `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	// Email HTML body, limited to 80K by the SDK. Note: HtmlBody and TextBody are for different types of email content, and one of them must be provided.
+	//
+	// example:
+	//
+	// body
+	HtmlBody *string `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
+	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Reply-to address
+	//
+	// example:
+	//
+	// test2***@example.net
+	ReplyAddress *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
+	// Reply-to address nickname
+	//
+	// example:
+	//
+	// Xiaohong
+	ReplyAddressAlias *string `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
+	// Whether to enable the reply-to address configured in the management console (the status must be verified). The value range is the string `true` or `false` (not a boolean value).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	ReplyToAddress       *bool   `json:"ReplyToAddress,omitempty" xml:"ReplyToAddress,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Email subject, with a maximum length of 100 characters.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Subject
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// A tag created in the email push console, used to categorize batches of emails sent. You can use tags to query the sending status of each batch. Additionally, if the email tracking feature is enabled, you must use an email tag when sending emails.
+	//
+	// example:
+	//
+	// test
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// Email text body, limited to 80K by the SDK. Note: HtmlBody and TextBody are for different types of email content, and one of them must be provided.
+	//
+	// example:
+	//
+	// body
+	TextBody *string `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
+	// Recipient addresses. Multiple email addresses can be separated by commas, with a maximum of 100 addresses (supports mailing lists).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test1***@example.net
+	ToAddress *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
+	// Filtering level. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
+	//
+	// disabled: No filtering
+	//
+	// default: Use the default strategy, bulk addresses use the sending address level filtering
+	//
+	// mailfrom: Sending address level filtering
+	//
+	// mailfrom_domain: Sending domain level filtering
+	//
+	// edm_id: Account level filtering
+	//
+	// example:
+	//
+	// mailfrom_domain
+	UnSubscribeFilterLevel *string `json:"UnSubscribeFilterLevel,omitempty" xml:"UnSubscribeFilterLevel,omitempty"`
+	// Type of the generated unsubscribe link. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
+	//
+	// disabled: Do not generate
+	//
+	// default: Use the default strategy: Generate unsubscribe links for bulk-type sending addresses when sending to specific domains, such as those containing keywords like "gmail", "yahoo",
+	//
+	// "google", "aol.com", "hotmail",
+	//
+	// "outlook", "ymail.com", etc.
+	//
+	// zh-cn: Generate, for future content preparation
+	//
+	// en-us: Generate, for future content preparation
+	//
+	// example:
+	//
+	// default
+	UnSubscribeLinkType *string `json:"UnSubscribeLinkType,omitempty" xml:"UnSubscribeLinkType,omitempty"`
+}
+
+func (s SingleSendMailAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SingleSendMailAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SingleSendMailAdvanceRequest) SetAccountName(v string) *SingleSendMailAdvanceRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetAddressType(v int32) *SingleSendMailAdvanceRequest {
+	s.AddressType = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetAttachments(v []*SingleSendMailAdvanceRequestAttachments) *SingleSendMailAdvanceRequest {
+	s.Attachments = v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetClickTrace(v string) *SingleSendMailAdvanceRequest {
+	s.ClickTrace = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetFromAlias(v string) *SingleSendMailAdvanceRequest {
+	s.FromAlias = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetHeaders(v string) *SingleSendMailAdvanceRequest {
+	s.Headers = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetHtmlBody(v string) *SingleSendMailAdvanceRequest {
+	s.HtmlBody = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetIpPoolId(v string) *SingleSendMailAdvanceRequest {
+	s.IpPoolId = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetOwnerId(v int64) *SingleSendMailAdvanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetReplyAddress(v string) *SingleSendMailAdvanceRequest {
+	s.ReplyAddress = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetReplyAddressAlias(v string) *SingleSendMailAdvanceRequest {
+	s.ReplyAddressAlias = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetReplyToAddress(v bool) *SingleSendMailAdvanceRequest {
+	s.ReplyToAddress = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetResourceOwnerAccount(v string) *SingleSendMailAdvanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetResourceOwnerId(v int64) *SingleSendMailAdvanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetSubject(v string) *SingleSendMailAdvanceRequest {
+	s.Subject = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetTagName(v string) *SingleSendMailAdvanceRequest {
+	s.TagName = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetTextBody(v string) *SingleSendMailAdvanceRequest {
+	s.TextBody = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetToAddress(v string) *SingleSendMailAdvanceRequest {
+	s.ToAddress = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetUnSubscribeFilterLevel(v string) *SingleSendMailAdvanceRequest {
+	s.UnSubscribeFilterLevel = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequest) SetUnSubscribeLinkType(v string) *SingleSendMailAdvanceRequest {
+	s.UnSubscribeLinkType = &v
+	return s
+}
+
+type SingleSendMailAdvanceRequestAttachments struct {
+	AttachmentName      *string   `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
+	AttachmentUrlObject io.Reader `json:"AttachmentUrl,omitempty" xml:"AttachmentUrl,omitempty"`
+}
+
+func (s SingleSendMailAdvanceRequestAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SingleSendMailAdvanceRequestAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *SingleSendMailAdvanceRequestAttachments) SetAttachmentName(v string) *SingleSendMailAdvanceRequestAttachments {
+	s.AttachmentName = &v
+	return s
+}
+
+func (s *SingleSendMailAdvanceRequestAttachments) SetAttachmentUrlObject(v io.Reader) *SingleSendMailAdvanceRequestAttachments {
+	s.AttachmentUrlObject = v
 	return s
 }
 
@@ -11608,6 +11922,10 @@ func (client *Client) SingleSendMailWithOptions(request *SingleSendMailRequest, 
 		query["AddressType"] = request.AddressType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Attachments)) {
+		query["Attachments"] = request.Attachments
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClickTrace)) {
 		query["ClickTrace"] = request.ClickTrace
 	}
@@ -11714,6 +12032,125 @@ func (client *Client) SingleSendMail(request *SingleSendMailRequest) (_result *S
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SingleSendMailAdvance(request *SingleSendMailAdvanceRequest, runtime *util.RuntimeOptions) (_result *SingleSendMailResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("Dm"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	singleSendMailReq := &SingleSendMailRequest{}
+	openapiutil.Convert(request, singleSendMailReq)
+	if !tea.BoolValue(util.IsUnset(request.Attachments)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.Attachments {
+			if !tea.BoolValue(util.IsUnset(item0.AttachmentUrlObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.AttachmentUrlObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := singleSendMailReq.Attachments[tea.IntValue(i0)]
+				tmp.AttachmentUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	singleSendMailResp, _err := client.SingleSendMailWithOptions(singleSendMailReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = singleSendMailResp
 	return _result, _err
 }
 
