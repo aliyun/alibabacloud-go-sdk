@@ -84,6 +84,244 @@ func (s *AssociateDefaultFilterResponse) SetBody(v *AssociateDefaultFilterRespon
 	return s
 }
 
+type CreateDeliveryChannelRequest struct {
+	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	// This parameter is required.
+	DeliveryChannelFilter *CreateDeliveryChannelRequestDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-delivery
+	DeliveryChannelName      *string                                               `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	ResourceChangeDelivery   *CreateDeliveryChannelRequestResourceChangeDelivery   `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	ResourceSnapshotDelivery *CreateDeliveryChannelRequestResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
+}
+
+func (s CreateDeliveryChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryChannelRequest) SetDeliveryChannelDescription(v string) *CreateDeliveryChannelRequest {
+	s.DeliveryChannelDescription = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequest) SetDeliveryChannelFilter(v *CreateDeliveryChannelRequestDeliveryChannelFilter) *CreateDeliveryChannelRequest {
+	s.DeliveryChannelFilter = v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequest) SetDeliveryChannelName(v string) *CreateDeliveryChannelRequest {
+	s.DeliveryChannelName = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequest) SetResourceChangeDelivery(v *CreateDeliveryChannelRequestResourceChangeDelivery) *CreateDeliveryChannelRequest {
+	s.ResourceChangeDelivery = v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequest) SetResourceSnapshotDelivery(v *CreateDeliveryChannelRequestResourceSnapshotDelivery) *CreateDeliveryChannelRequest {
+	s.ResourceSnapshotDelivery = v
+	return s
+}
+
+type CreateDeliveryChannelRequestDeliveryChannelFilter struct {
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s CreateDeliveryChannelRequestDeliveryChannelFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryChannelRequestDeliveryChannelFilter) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryChannelRequestDeliveryChannelFilter) SetResourceTypes(v []*string) *CreateDeliveryChannelRequestDeliveryChannelFilter {
+	s.ResourceTypes = v
+	return s
+}
+
+type CreateDeliveryChannelRequestResourceChangeDelivery struct {
+	SlsProperties *CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	TargetArn     *string                                                          `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// example:
+	//
+	// SLS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s CreateDeliveryChannelRequestResourceChangeDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryChannelRequestResourceChangeDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryChannelRequestResourceChangeDelivery) SetSlsProperties(v *CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties) *CreateDeliveryChannelRequestResourceChangeDelivery {
+	s.SlsProperties = v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequestResourceChangeDelivery) SetTargetArn(v string) *CreateDeliveryChannelRequestResourceChangeDelivery {
+	s.TargetArn = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequestResourceChangeDelivery) SetTargetType(v string) *CreateDeliveryChannelRequestResourceChangeDelivery {
+	s.TargetType = &v
+	return s
+}
+
+type CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties struct {
+	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
+}
+
+func (s CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties) SetOversizedDataOssTargetArn(v string) *CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties {
+	s.OversizedDataOssTargetArn = &v
+	return s
+}
+
+type CreateDeliveryChannelRequestResourceSnapshotDelivery struct {
+	// example:
+	//
+	// select 	- from resources limit 100;
+	CustomExpression *string `json:"CustomExpression,omitempty" xml:"CustomExpression,omitempty"`
+	// example:
+	//
+	// 09:00Z
+	DeliveryTime  *string                                                            `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	SlsProperties *CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	TargetArn     *string                                                            `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// example:
+	//
+	// OSS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s CreateDeliveryChannelRequestResourceSnapshotDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryChannelRequestResourceSnapshotDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryChannelRequestResourceSnapshotDelivery) SetCustomExpression(v string) *CreateDeliveryChannelRequestResourceSnapshotDelivery {
+	s.CustomExpression = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequestResourceSnapshotDelivery) SetDeliveryTime(v string) *CreateDeliveryChannelRequestResourceSnapshotDelivery {
+	s.DeliveryTime = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequestResourceSnapshotDelivery) SetSlsProperties(v *CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) *CreateDeliveryChannelRequestResourceSnapshotDelivery {
+	s.SlsProperties = v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequestResourceSnapshotDelivery) SetTargetArn(v string) *CreateDeliveryChannelRequestResourceSnapshotDelivery {
+	s.TargetArn = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelRequestResourceSnapshotDelivery) SetTargetType(v string) *CreateDeliveryChannelRequestResourceSnapshotDelivery {
+	s.TargetType = &v
+	return s
+}
+
+type CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties struct {
+	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
+}
+
+func (s CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) SetOversizedDataOssTargetArn(v string) *CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties {
+	s.OversizedDataOssTargetArn = &v
+	return s
+}
+
+type CreateDeliveryChannelResponseBody struct {
+	// example:
+	//
+	// dc-0bzhsqpnk***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// example:
+	//
+	// 42A89312-0616-591E-B614-07BC87D3D***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDeliveryChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryChannelResponseBody) SetDeliveryChannelId(v string) *CreateDeliveryChannelResponseBody {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelResponseBody) SetRequestId(v string) *CreateDeliveryChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDeliveryChannelResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDeliveryChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryChannelResponse) SetHeaders(v map[string]*string) *CreateDeliveryChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDeliveryChannelResponse) SetStatusCode(v int32) *CreateDeliveryChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDeliveryChannelResponse) SetBody(v *CreateDeliveryChannelResponseBody) *CreateDeliveryChannelResponse {
+	s.Body = v
+	return s
+}
+
 type CreateFilterRequest struct {
 	// The configurations of the filter.
 	//
@@ -186,6 +424,251 @@ func (s *CreateFilterResponse) SetStatusCode(v int32) *CreateFilterResponse {
 }
 
 func (s *CreateFilterResponse) SetBody(v *CreateFilterResponseBody) *CreateFilterResponse {
+	s.Body = v
+	return s
+}
+
+type CreateMultiAccountDeliveryChannelRequest struct {
+	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	// This parameter is required.
+	DeliveryChannelFilter *CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-multi-account-delivery
+	DeliveryChannelName      *string                                                           `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	ResourceChangeDelivery   *CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery   `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	ResourceSnapshotDelivery *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
+}
+
+func (s CreateMultiAccountDeliveryChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiAccountDeliveryChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequest) SetDeliveryChannelDescription(v string) *CreateMultiAccountDeliveryChannelRequest {
+	s.DeliveryChannelDescription = &v
+	return s
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequest) SetDeliveryChannelFilter(v *CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter) *CreateMultiAccountDeliveryChannelRequest {
+	s.DeliveryChannelFilter = v
+	return s
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequest) SetDeliveryChannelName(v string) *CreateMultiAccountDeliveryChannelRequest {
+	s.DeliveryChannelName = &v
+	return s
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequest) SetResourceChangeDelivery(v *CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery) *CreateMultiAccountDeliveryChannelRequest {
+	s.ResourceChangeDelivery = v
+	return s
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequest) SetResourceSnapshotDelivery(v *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) *CreateMultiAccountDeliveryChannelRequest {
+	s.ResourceSnapshotDelivery = v
+	return s
+}
+
+type CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter struct {
+	// This parameter is required.
+	AccountScopes []*string `json:"AccountScopes,omitempty" xml:"AccountScopes,omitempty" type:"Repeated"`
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter) SetAccountScopes(v []*string) *CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter {
+	s.AccountScopes = v
+	return s
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter) SetResourceTypes(v []*string) *CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter {
+	s.ResourceTypes = v
+	return s
+}
+
+type CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery struct {
+	SlsProperties *CreateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	TargetArn     *string                                                                      `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// example:
+	//
+	// SLS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery) SetSlsProperties(v *CreateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties) *CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery {
+	s.SlsProperties = v
+	return s
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery) SetTargetArn(v string) *CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery {
+	s.TargetArn = &v
+	return s
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery) SetTargetType(v string) *CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery {
+	s.TargetType = &v
+	return s
+}
+
+type CreateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties struct {
+	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
+}
+
+func (s CreateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties) SetOversizedDataOssTargetArn(v string) *CreateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties {
+	s.OversizedDataOssTargetArn = &v
+	return s
+}
+
+type CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery struct {
+	// example:
+	//
+	// select 	- from resources limit 100;
+	CustomExpression *string `json:"CustomExpression,omitempty" xml:"CustomExpression,omitempty"`
+	// example:
+	//
+	// 09:00Z
+	DeliveryTime  *string                                                                        `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	SlsProperties *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	TargetArn     *string                                                                        `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// example:
+	//
+	// OSS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) SetCustomExpression(v string) *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery {
+	s.CustomExpression = &v
+	return s
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) SetDeliveryTime(v string) *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery {
+	s.DeliveryTime = &v
+	return s
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) SetSlsProperties(v *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery {
+	s.SlsProperties = v
+	return s
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) SetTargetArn(v string) *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery {
+	s.TargetArn = &v
+	return s
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) SetTargetType(v string) *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery {
+	s.TargetType = &v
+	return s
+}
+
+type CreateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties struct {
+	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
+}
+
+func (s CreateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) SetOversizedDataOssTargetArn(v string) *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties {
+	s.OversizedDataOssTargetArn = &v
+	return s
+}
+
+type CreateMultiAccountDeliveryChannelResponseBody struct {
+	// example:
+	//
+	// dc-6q79dm4o9***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// example:
+	//
+	// 994BFEFE-4BB5-5A27-8917-4583DEEF2***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateMultiAccountDeliveryChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiAccountDeliveryChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiAccountDeliveryChannelResponseBody) SetDeliveryChannelId(v string) *CreateMultiAccountDeliveryChannelResponseBody {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *CreateMultiAccountDeliveryChannelResponseBody) SetRequestId(v string) *CreateMultiAccountDeliveryChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateMultiAccountDeliveryChannelResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMultiAccountDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateMultiAccountDeliveryChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiAccountDeliveryChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiAccountDeliveryChannelResponse) SetHeaders(v map[string]*string) *CreateMultiAccountDeliveryChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMultiAccountDeliveryChannelResponse) SetStatusCode(v int32) *CreateMultiAccountDeliveryChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMultiAccountDeliveryChannelResponse) SetBody(v *CreateMultiAccountDeliveryChannelResponseBody) *CreateMultiAccountDeliveryChannelResponse {
 	s.Body = v
 	return s
 }
@@ -308,6 +791,77 @@ func (s *CreateSavedQueryResponse) SetBody(v *CreateSavedQueryResponseBody) *Cre
 	return s
 }
 
+type DeleteDeliveryChannelRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dc-6q79dm4o9***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+}
+
+func (s DeleteDeliveryChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeliveryChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeliveryChannelRequest) SetDeliveryChannelId(v string) *DeleteDeliveryChannelRequest {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+type DeleteDeliveryChannelResponseBody struct {
+	// example:
+	//
+	// AD5F848D-CCDC-5464-93E1-4BA50A482***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDeliveryChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeliveryChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeliveryChannelResponseBody) SetRequestId(v string) *DeleteDeliveryChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDeliveryChannelResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDeliveryChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeliveryChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeliveryChannelResponse) SetHeaders(v map[string]*string) *DeleteDeliveryChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDeliveryChannelResponse) SetStatusCode(v int32) *DeleteDeliveryChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDeliveryChannelResponse) SetBody(v *DeleteDeliveryChannelResponseBody) *DeleteDeliveryChannelResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteFilterRequest struct {
 	// The name of the filter.
 	//
@@ -379,6 +933,77 @@ func (s *DeleteFilterResponse) SetStatusCode(v int32) *DeleteFilterResponse {
 }
 
 func (s *DeleteFilterResponse) SetBody(v *DeleteFilterResponseBody) *DeleteFilterResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMultiAccountDeliveryChannelRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dc-0bzhsqpnkxxx
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+}
+
+func (s DeleteMultiAccountDeliveryChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiAccountDeliveryChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiAccountDeliveryChannelRequest) SetDeliveryChannelId(v string) *DeleteMultiAccountDeliveryChannelRequest {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+type DeleteMultiAccountDeliveryChannelResponseBody struct {
+	// example:
+	//
+	// 3C5CDBF6-4DB7-53E9-ADDC-5919E3FAC***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteMultiAccountDeliveryChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiAccountDeliveryChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiAccountDeliveryChannelResponseBody) SetRequestId(v string) *DeleteMultiAccountDeliveryChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteMultiAccountDeliveryChannelResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMultiAccountDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteMultiAccountDeliveryChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiAccountDeliveryChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiAccountDeliveryChannelResponse) SetHeaders(v map[string]*string) *DeleteMultiAccountDeliveryChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMultiAccountDeliveryChannelResponse) SetStatusCode(v int32) *DeleteMultiAccountDeliveryChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMultiAccountDeliveryChannelResponse) SetBody(v *DeleteMultiAccountDeliveryChannelResponseBody) *DeleteMultiAccountDeliveryChannelResponse {
 	s.Body = v
 	return s
 }
@@ -758,10 +1383,18 @@ type ExecuteMultiAccountSQLQueryRequest struct {
 	//
 	// SELECT 	- FROM resources LIMIT 100;
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
+	// Valid values: 1 to 1000.
+	//
+	// Default value: 1000.
+	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
@@ -949,10 +1582,18 @@ type ExecuteSQLQueryRequest struct {
 	//
 	// SELECT 	- FROM resources LIMIT 100;
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The number of entries per page.
+	//
+	// 	- Valid values: 1 to 1000.
+	//
+	// 	- Default value: 1000.
+	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
@@ -1113,6 +1754,386 @@ func (s *ExecuteSQLQueryResponse) SetStatusCode(v int32) *ExecuteSQLQueryRespons
 }
 
 func (s *ExecuteSQLQueryResponse) SetBody(v *ExecuteSQLQueryResponseBody) *ExecuteSQLQueryResponse {
+	s.Body = v
+	return s
+}
+
+type GetDeliveryChannelRequest struct {
+	// example:
+	//
+	// dc-6q79dm4o9***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+}
+
+func (s GetDeliveryChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryChannelRequest) SetDeliveryChannelId(v string) *GetDeliveryChannelRequest {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+type GetDeliveryChannelResponseBody struct {
+	DeliveryChannelDescription *string                                              `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	DeliveryChannelFilter      *GetDeliveryChannelResponseBodyDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// example:
+	//
+	// dc-6q79dm4o9***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// example:
+	//
+	// test-delivery-channel
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// example:
+	//
+	// 17502A1B-7026-5551-8E1C-CCABD0CBC***
+	RequestId                *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceChangeDelivery   *GetDeliveryChannelResponseBodyResourceChangeDelivery   `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	ResourceSnapshotDelivery *GetDeliveryChannelResponseBodyResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
+}
+
+func (s GetDeliveryChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryChannelResponseBody) SetDeliveryChannelDescription(v string) *GetDeliveryChannelResponseBody {
+	s.DeliveryChannelDescription = &v
+	return s
+}
+
+func (s *GetDeliveryChannelResponseBody) SetDeliveryChannelFilter(v *GetDeliveryChannelResponseBodyDeliveryChannelFilter) *GetDeliveryChannelResponseBody {
+	s.DeliveryChannelFilter = v
+	return s
+}
+
+func (s *GetDeliveryChannelResponseBody) SetDeliveryChannelId(v string) *GetDeliveryChannelResponseBody {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *GetDeliveryChannelResponseBody) SetDeliveryChannelName(v string) *GetDeliveryChannelResponseBody {
+	s.DeliveryChannelName = &v
+	return s
+}
+
+func (s *GetDeliveryChannelResponseBody) SetRequestId(v string) *GetDeliveryChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDeliveryChannelResponseBody) SetResourceChangeDelivery(v *GetDeliveryChannelResponseBodyResourceChangeDelivery) *GetDeliveryChannelResponseBody {
+	s.ResourceChangeDelivery = v
+	return s
+}
+
+func (s *GetDeliveryChannelResponseBody) SetResourceSnapshotDelivery(v *GetDeliveryChannelResponseBodyResourceSnapshotDelivery) *GetDeliveryChannelResponseBody {
+	s.ResourceSnapshotDelivery = v
+	return s
+}
+
+type GetDeliveryChannelResponseBodyDeliveryChannelFilter struct {
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s GetDeliveryChannelResponseBodyDeliveryChannelFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryChannelResponseBodyDeliveryChannelFilter) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryChannelResponseBodyDeliveryChannelFilter) SetResourceTypes(v []*string) *GetDeliveryChannelResponseBodyDeliveryChannelFilter {
+	s.ResourceTypes = v
+	return s
+}
+
+type GetDeliveryChannelResponseBodyResourceChangeDelivery struct {
+	SlsProperties *GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	// example:
+	//
+	// acs:log:cn-hangzhou: 1911422487776***:project/delivery/logstore/resourcecenter-sls
+	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// example:
+	//
+	// SLS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s GetDeliveryChannelResponseBodyResourceChangeDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryChannelResponseBodyResourceChangeDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryChannelResponseBodyResourceChangeDelivery) SetSlsProperties(v *GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties) *GetDeliveryChannelResponseBodyResourceChangeDelivery {
+	s.SlsProperties = v
+	return s
+}
+
+func (s *GetDeliveryChannelResponseBodyResourceChangeDelivery) SetTargetArn(v string) *GetDeliveryChannelResponseBodyResourceChangeDelivery {
+	s.TargetArn = &v
+	return s
+}
+
+func (s *GetDeliveryChannelResponseBodyResourceChangeDelivery) SetTargetType(v string) *GetDeliveryChannelResponseBodyResourceChangeDelivery {
+	s.TargetType = &v
+	return s
+}
+
+type GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties struct {
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
+	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
+}
+
+func (s GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties) SetOversizedDataOssTargetArn(v string) *GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties {
+	s.OversizedDataOssTargetArn = &v
+	return s
+}
+
+type GetDeliveryChannelResponseBodyResourceSnapshotDelivery struct {
+	// example:
+	//
+	// select 	- from resources limit 100;
+	CustomExpression *string `json:"CustomExpression,omitempty" xml:"CustomExpression,omitempty"`
+	// example:
+	//
+	// 09:00Z
+	DeliveryTime  *string                                                              `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	SlsProperties *GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
+	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// example:
+	//
+	// OSS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s GetDeliveryChannelResponseBodyResourceSnapshotDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryChannelResponseBodyResourceSnapshotDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryChannelResponseBodyResourceSnapshotDelivery) SetCustomExpression(v string) *GetDeliveryChannelResponseBodyResourceSnapshotDelivery {
+	s.CustomExpression = &v
+	return s
+}
+
+func (s *GetDeliveryChannelResponseBodyResourceSnapshotDelivery) SetDeliveryTime(v string) *GetDeliveryChannelResponseBodyResourceSnapshotDelivery {
+	s.DeliveryTime = &v
+	return s
+}
+
+func (s *GetDeliveryChannelResponseBodyResourceSnapshotDelivery) SetSlsProperties(v *GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties) *GetDeliveryChannelResponseBodyResourceSnapshotDelivery {
+	s.SlsProperties = v
+	return s
+}
+
+func (s *GetDeliveryChannelResponseBodyResourceSnapshotDelivery) SetTargetArn(v string) *GetDeliveryChannelResponseBodyResourceSnapshotDelivery {
+	s.TargetArn = &v
+	return s
+}
+
+func (s *GetDeliveryChannelResponseBodyResourceSnapshotDelivery) SetTargetType(v string) *GetDeliveryChannelResponseBodyResourceSnapshotDelivery {
+	s.TargetType = &v
+	return s
+}
+
+type GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties struct {
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
+	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
+}
+
+func (s GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties) SetOversizedDataOssTargetArn(v string) *GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties {
+	s.OversizedDataOssTargetArn = &v
+	return s
+}
+
+type GetDeliveryChannelResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDeliveryChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryChannelResponse) SetHeaders(v map[string]*string) *GetDeliveryChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDeliveryChannelResponse) SetStatusCode(v int32) *GetDeliveryChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDeliveryChannelResponse) SetBody(v *GetDeliveryChannelResponseBody) *GetDeliveryChannelResponse {
+	s.Body = v
+	return s
+}
+
+type GetDeliveryChannelStatisticsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dc-6q79dm4o9***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+}
+
+func (s GetDeliveryChannelStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryChannelStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryChannelStatisticsRequest) SetDeliveryChannelId(v string) *GetDeliveryChannelStatisticsRequest {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+type GetDeliveryChannelStatisticsResponseBody struct {
+	DeliveryChannelStatistics *GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics `json:"DeliveryChannelStatistics,omitempty" xml:"DeliveryChannelStatistics,omitempty" type:"Struct"`
+	// example:
+	//
+	// 80DF0610-504C-56D7-BDCF-7C92FD687***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDeliveryChannelStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryChannelStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryChannelStatisticsResponseBody) SetDeliveryChannelStatistics(v *GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics) *GetDeliveryChannelStatisticsResponseBody {
+	s.DeliveryChannelStatistics = v
+	return s
+}
+
+func (s *GetDeliveryChannelStatisticsResponseBody) SetRequestId(v string) *GetDeliveryChannelStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics struct {
+	// example:
+	//
+	// dc-6q79dm4o9***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// example:
+	//
+	// test-delivery-channel
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// example:
+	//
+	// 2025-06-03T16:05:15Z
+	LatestChangeDeliveryTime *string `json:"LatestChangeDeliveryTime,omitempty" xml:"LatestChangeDeliveryTime,omitempty"`
+	// example:
+	//
+	// 2025-06-03T16:00:00Z
+	LatestSnapshotDeliveryTime *string `json:"LatestSnapshotDeliveryTime,omitempty" xml:"LatestSnapshotDeliveryTime,omitempty"`
+}
+
+func (s GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics) SetDeliveryChannelId(v string) *GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics) SetDeliveryChannelName(v string) *GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics {
+	s.DeliveryChannelName = &v
+	return s
+}
+
+func (s *GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics) SetLatestChangeDeliveryTime(v string) *GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics {
+	s.LatestChangeDeliveryTime = &v
+	return s
+}
+
+func (s *GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics) SetLatestSnapshotDeliveryTime(v string) *GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics {
+	s.LatestSnapshotDeliveryTime = &v
+	return s
+}
+
+type GetDeliveryChannelStatisticsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDeliveryChannelStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDeliveryChannelStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeliveryChannelStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeliveryChannelStatisticsResponse) SetHeaders(v map[string]*string) *GetDeliveryChannelStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDeliveryChannelStatisticsResponse) SetStatusCode(v int32) *GetDeliveryChannelStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDeliveryChannelStatisticsResponse) SetBody(v *GetDeliveryChannelStatisticsResponseBody) *GetDeliveryChannelStatisticsResponse {
 	s.Body = v
 	return s
 }
@@ -1290,6 +2311,392 @@ func (s *GetExampleQueryResponse) SetStatusCode(v int32) *GetExampleQueryRespons
 }
 
 func (s *GetExampleQueryResponse) SetBody(v *GetExampleQueryResponseBody) *GetExampleQueryResponse {
+	s.Body = v
+	return s
+}
+
+type GetMultiAccountDeliveryChannelRequest struct {
+	// example:
+	//
+	// dc-6q79dm4o9***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+}
+
+func (s GetMultiAccountDeliveryChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountDeliveryChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountDeliveryChannelRequest) SetDeliveryChannelId(v string) *GetMultiAccountDeliveryChannelRequest {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+type GetMultiAccountDeliveryChannelResponseBody struct {
+	DeliveryChannelDescription *string                                                          `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	DeliveryChannelFilter      *GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// example:
+	//
+	// dc-6q79dm4o9***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// example:
+	//
+	// test-delivery-channel
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// example:
+	//
+	// FE3EAB47-D3A6-5FEA-8353-31C8C0D36***
+	RequestId                *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceChangeDelivery   *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery   `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	ResourceSnapshotDelivery *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
+}
+
+func (s GetMultiAccountDeliveryChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountDeliveryChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBody) SetDeliveryChannelDescription(v string) *GetMultiAccountDeliveryChannelResponseBody {
+	s.DeliveryChannelDescription = &v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBody) SetDeliveryChannelFilter(v *GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter) *GetMultiAccountDeliveryChannelResponseBody {
+	s.DeliveryChannelFilter = v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBody) SetDeliveryChannelId(v string) *GetMultiAccountDeliveryChannelResponseBody {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBody) SetDeliveryChannelName(v string) *GetMultiAccountDeliveryChannelResponseBody {
+	s.DeliveryChannelName = &v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBody) SetRequestId(v string) *GetMultiAccountDeliveryChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBody) SetResourceChangeDelivery(v *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery) *GetMultiAccountDeliveryChannelResponseBody {
+	s.ResourceChangeDelivery = v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBody) SetResourceSnapshotDelivery(v *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery) *GetMultiAccountDeliveryChannelResponseBody {
+	s.ResourceSnapshotDelivery = v
+	return s
+}
+
+type GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter struct {
+	AccountScopes []*string `json:"AccountScopes,omitempty" xml:"AccountScopes,omitempty" type:"Repeated"`
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter) SetAccountScopes(v []*string) *GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter {
+	s.AccountScopes = v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter) SetResourceTypes(v []*string) *GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter {
+	s.ResourceTypes = v
+	return s
+}
+
+type GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery struct {
+	SlsProperties *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	// example:
+	//
+	// acs:log:cn-hangzhou: 1911422487776***:project/delivery/logstore/resourcecenter-sls
+	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// example:
+	//
+	// SLS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery) SetSlsProperties(v *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties) *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery {
+	s.SlsProperties = v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery) SetTargetArn(v string) *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery {
+	s.TargetArn = &v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery) SetTargetType(v string) *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery {
+	s.TargetType = &v
+	return s
+}
+
+type GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties struct {
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
+	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
+}
+
+func (s GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties) SetOversizedDataOssTargetArn(v string) *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties {
+	s.OversizedDataOssTargetArn = &v
+	return s
+}
+
+type GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery struct {
+	// example:
+	//
+	// select 	- from resources limit 100;
+	CustomExpression *string `json:"CustomExpression,omitempty" xml:"CustomExpression,omitempty"`
+	// example:
+	//
+	// 09:00Z
+	DeliveryTime  *string                                                                          `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	SlsProperties *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
+	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// example:
+	//
+	// OSS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery) SetCustomExpression(v string) *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery {
+	s.CustomExpression = &v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery) SetDeliveryTime(v string) *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery {
+	s.DeliveryTime = &v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery) SetSlsProperties(v *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties) *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery {
+	s.SlsProperties = v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery) SetTargetArn(v string) *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery {
+	s.TargetArn = &v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery) SetTargetType(v string) *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery {
+	s.TargetType = &v
+	return s
+}
+
+type GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties struct {
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
+	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
+}
+
+func (s GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties) SetOversizedDataOssTargetArn(v string) *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties {
+	s.OversizedDataOssTargetArn = &v
+	return s
+}
+
+type GetMultiAccountDeliveryChannelResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMultiAccountDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMultiAccountDeliveryChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountDeliveryChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountDeliveryChannelResponse) SetHeaders(v map[string]*string) *GetMultiAccountDeliveryChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponse) SetStatusCode(v int32) *GetMultiAccountDeliveryChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelResponse) SetBody(v *GetMultiAccountDeliveryChannelResponseBody) *GetMultiAccountDeliveryChannelResponse {
+	s.Body = v
+	return s
+}
+
+type GetMultiAccountDeliveryChannelStatisticsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dc-6q79dm4o9***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+}
+
+func (s GetMultiAccountDeliveryChannelStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountDeliveryChannelStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountDeliveryChannelStatisticsRequest) SetDeliveryChannelId(v string) *GetMultiAccountDeliveryChannelStatisticsRequest {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+type GetMultiAccountDeliveryChannelStatisticsResponseBody struct {
+	DeliveryChannelStatistics *GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics `json:"DeliveryChannelStatistics,omitempty" xml:"DeliveryChannelStatistics,omitempty" type:"Struct"`
+	// example:
+	//
+	// 80DF0610-504C-56D7-BDCF-7C92FD687***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetMultiAccountDeliveryChannelStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountDeliveryChannelStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountDeliveryChannelStatisticsResponseBody) SetDeliveryChannelStatistics(v *GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics) *GetMultiAccountDeliveryChannelStatisticsResponseBody {
+	s.DeliveryChannelStatistics = v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelStatisticsResponseBody) SetRequestId(v string) *GetMultiAccountDeliveryChannelStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics struct {
+	// example:
+	//
+	// dc-6q79dm4o9***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// example:
+	//
+	// test-multi-account-delivery
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// example:
+	//
+	// 2025-06-03T16:05:15Z
+	LatestChangeDeliveryTime *string `json:"LatestChangeDeliveryTime,omitempty" xml:"LatestChangeDeliveryTime,omitempty"`
+	// example:
+	//
+	// 2025-06-03T16:00:00Z
+	LatestSnapshotDeliveryTime *string `json:"LatestSnapshotDeliveryTime,omitempty" xml:"LatestSnapshotDeliveryTime,omitempty"`
+}
+
+func (s GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics) SetDeliveryChannelId(v string) *GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics) SetDeliveryChannelName(v string) *GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics {
+	s.DeliveryChannelName = &v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics) SetLatestChangeDeliveryTime(v string) *GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics {
+	s.LatestChangeDeliveryTime = &v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics) SetLatestSnapshotDeliveryTime(v string) *GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics {
+	s.LatestSnapshotDeliveryTime = &v
+	return s
+}
+
+type GetMultiAccountDeliveryChannelStatisticsResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMultiAccountDeliveryChannelStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMultiAccountDeliveryChannelStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountDeliveryChannelStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountDeliveryChannelStatisticsResponse) SetHeaders(v map[string]*string) *GetMultiAccountDeliveryChannelStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelStatisticsResponse) SetStatusCode(v int32) *GetMultiAccountDeliveryChannelStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMultiAccountDeliveryChannelStatisticsResponse) SetBody(v *GetMultiAccountDeliveryChannelStatisticsResponseBody) *GetMultiAccountDeliveryChannelStatisticsResponse {
 	s.Body = v
 	return s
 }
@@ -2473,6 +3880,154 @@ func (s *GetSavedQueryResponse) SetBody(v *GetSavedQueryResponseBody) *GetSavedQ
 	return s
 }
 
+type ListDeliveryChannelsRequest struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListDeliveryChannelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeliveryChannelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeliveryChannelsRequest) SetMaxResults(v int32) *ListDeliveryChannelsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDeliveryChannelsRequest) SetNextToken(v string) *ListDeliveryChannelsRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListDeliveryChannelsResponseBody struct {
+	DeliveryChannels []*ListDeliveryChannelsResponseBodyDeliveryChannels `json:"DeliveryChannels,omitempty" xml:"DeliveryChannels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 17502A1B-7026-5551-8E1C-CCABD0CBC***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDeliveryChannelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeliveryChannelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeliveryChannelsResponseBody) SetDeliveryChannels(v []*ListDeliveryChannelsResponseBodyDeliveryChannels) *ListDeliveryChannelsResponseBody {
+	s.DeliveryChannels = v
+	return s
+}
+
+func (s *ListDeliveryChannelsResponseBody) SetMaxResults(v int32) *ListDeliveryChannelsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDeliveryChannelsResponseBody) SetNextToken(v string) *ListDeliveryChannelsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDeliveryChannelsResponseBody) SetRequestId(v string) *ListDeliveryChannelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDeliveryChannelsResponseBodyDeliveryChannels struct {
+	// example:
+	//
+	// 2024-06-20T08:46:29Z
+	CreateTime                 *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	// example:
+	//
+	// dc-4m6ffpkgu***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// example:
+	//
+	// test-delivery-channel
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+}
+
+func (s ListDeliveryChannelsResponseBodyDeliveryChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeliveryChannelsResponseBodyDeliveryChannels) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeliveryChannelsResponseBodyDeliveryChannels) SetCreateTime(v string) *ListDeliveryChannelsResponseBodyDeliveryChannels {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChannelDescription(v string) *ListDeliveryChannelsResponseBodyDeliveryChannels {
+	s.DeliveryChannelDescription = &v
+	return s
+}
+
+func (s *ListDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChannelId(v string) *ListDeliveryChannelsResponseBodyDeliveryChannels {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *ListDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChannelName(v string) *ListDeliveryChannelsResponseBodyDeliveryChannels {
+	s.DeliveryChannelName = &v
+	return s
+}
+
+type ListDeliveryChannelsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDeliveryChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDeliveryChannelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeliveryChannelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeliveryChannelsResponse) SetHeaders(v map[string]*string) *ListDeliveryChannelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeliveryChannelsResponse) SetStatusCode(v int32) *ListDeliveryChannelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDeliveryChannelsResponse) SetBody(v *ListDeliveryChannelsResponseBody) *ListDeliveryChannelsResponse {
+	s.Body = v
+	return s
+}
+
 type ListExampleQueriesRequest struct {
 	// The maximum number of entries per page.
 	//
@@ -2756,6 +4311,154 @@ func (s *ListFiltersResponse) SetBody(v *ListFiltersResponseBody) *ListFiltersRe
 	return s
 }
 
+type ListMultiAccountDeliveryChannelsRequest struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAARfZmVDe9NvRXloR5+8CK9nNJufMdRA7W1miLC1P****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListMultiAccountDeliveryChannelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiAccountDeliveryChannelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiAccountDeliveryChannelsRequest) SetMaxResults(v int32) *ListMultiAccountDeliveryChannelsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMultiAccountDeliveryChannelsRequest) SetNextToken(v string) *ListMultiAccountDeliveryChannelsRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListMultiAccountDeliveryChannelsResponseBody struct {
+	DeliveryChannels []*ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels `json:"DeliveryChannels,omitempty" xml:"DeliveryChannels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 17502A1B-7026-5551-8E1C-CCABD0CBC***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListMultiAccountDeliveryChannelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiAccountDeliveryChannelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiAccountDeliveryChannelsResponseBody) SetDeliveryChannels(v []*ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels) *ListMultiAccountDeliveryChannelsResponseBody {
+	s.DeliveryChannels = v
+	return s
+}
+
+func (s *ListMultiAccountDeliveryChannelsResponseBody) SetMaxResults(v int32) *ListMultiAccountDeliveryChannelsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMultiAccountDeliveryChannelsResponseBody) SetNextToken(v string) *ListMultiAccountDeliveryChannelsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMultiAccountDeliveryChannelsResponseBody) SetRequestId(v string) *ListMultiAccountDeliveryChannelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels struct {
+	// example:
+	//
+	// 2023-08-17T00:23:55Z
+	CreateTime                 *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	// example:
+	//
+	// dc-0bzhsqpnk***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// example:
+	//
+	// test-multi-account-delivery-channel
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+}
+
+func (s ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels) SetCreateTime(v string) *ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChannelDescription(v string) *ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels {
+	s.DeliveryChannelDescription = &v
+	return s
+}
+
+func (s *ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChannelId(v string) *ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels) SetDeliveryChannelName(v string) *ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels {
+	s.DeliveryChannelName = &v
+	return s
+}
+
+type ListMultiAccountDeliveryChannelsResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMultiAccountDeliveryChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMultiAccountDeliveryChannelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiAccountDeliveryChannelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiAccountDeliveryChannelsResponse) SetHeaders(v map[string]*string) *ListMultiAccountDeliveryChannelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMultiAccountDeliveryChannelsResponse) SetStatusCode(v int32) *ListMultiAccountDeliveryChannelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMultiAccountDeliveryChannelsResponse) SetBody(v *ListMultiAccountDeliveryChannelsResponseBody) *ListMultiAccountDeliveryChannelsResponse {
+	s.Body = v
+	return s
+}
+
 type ListMultiAccountResourceGroupsRequest struct {
 	// The ID of the management account or member of the resource directory.
 	//
@@ -2964,33 +4667,58 @@ func (s *ListMultiAccountResourceGroupsResponse) SetBody(v *ListMultiAccountReso
 }
 
 type ListMultiAccountResourceRelationshipsRequest struct {
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 500.
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId              *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The filter conditions for resources associated with the resource.
 	RelatedResourceFilter []*ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter `json:"RelatedResourceFilter,omitempty" xml:"RelatedResourceFilter,omitempty" type:"Repeated"`
+	// The ID of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// m-eb3hji****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ACS::ACK::Cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The search scope. Valid values:
+	//
+	// 	- ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to query the ID.
+	//
+	// 	- ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to query the ID.
+	//
+	// 	- ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to query the ID.
+	//
+	// 	- ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to query the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3043,15 +4771,20 @@ func (s *ListMultiAccountResourceRelationshipsRequest) SetScope(v string) *ListM
 }
 
 type ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter struct {
+	// The key of the filter condition. For more information, see `Supported filter parameters`.
+	//
 	// example:
 	//
 	// RelatedResourceRegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The matching method.
+	//
 	// example:
 	//
 	// Equals
-	MatchType *string   `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Value     []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The values of the filter condition.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
 func (s ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter) String() string {
@@ -3078,19 +4811,36 @@ func (s *ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter) SetV
 }
 
 type ListMultiAccountResourceRelationshipsResponseBody struct {
+	// The maximum number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BCAB07BA-82FA-5DC0-9322-FB7ED726481D
-	RequestId             *string                                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource relationships.
 	ResourceRelationships []*ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships `json:"ResourceRelationships,omitempty" xml:"ResourceRelationships,omitempty" type:"Repeated"`
+	// The search scope. Valid values:
+	//
+	// 	- ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
+	//
+	// 	- ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
+	//
+	// 	- ID of a folder: Resources within all members in the folder are searched.
+	//
+	// 	- ID of a member: Resources within the member are searched.
+	//
 	// example:
 	//
 	// rd-r4****
@@ -3131,30 +4881,44 @@ func (s *ListMultiAccountResourceRelationshipsResponseBody) SetScope(v string) *
 }
 
 type ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships struct {
+	// The ID of the management account or member.
+	//
 	// example:
 	//
 	// 193396142051****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The region ID of the resource.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the associated resource.
+	//
 	// example:
 	//
 	// vpc-uf6m5okksddm6c9lh7***
 	RelatedResourceId *string `json:"RelatedResourceId,omitempty" xml:"RelatedResourceId,omitempty"`
+	// The region ID of the associated resource.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RelatedResourceRegionId *string `json:"RelatedResourceRegionId,omitempty" xml:"RelatedResourceRegionId,omitempty"`
+	// The type of the associated resource.
+	//
 	// example:
 	//
 	// ACS::VPC::VPC
 	RelatedResourceType *string `json:"RelatedResourceType,omitempty" xml:"RelatedResourceType,omitempty"`
+	// The ID of the resource.
+	//
 	// example:
 	//
 	// m-eb3hji****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
 	// example:
 	//
 	// ACS::ACK::Cluster
@@ -3262,15 +5026,15 @@ type ListMultiAccountTagKeysRequest struct {
 	//
 	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The search scope. You can set the value to one of the following items:
+	// The search scope. The value of this parameter can be one of the following items:
 	//
-	// 	- ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to obtain the ID.
+	// 	- ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to obtain the ID of the resource directory. The ID is indicated by the `ResourceDirectoryId` parameter in the response of the operation.
 	//
-	// 	- ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+	// 	- ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to obtain the ID of the Root folder. The ID is indicated by the `RootFolderId` parameter in the response of the operation.
 	//
-	// 	- ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+	// 	- ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID of the folder. The ID is indicated by the `FolderId` parameter in the response of the operation.
 	//
-	// 	- ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to obtain the ID.
+	// 	- ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to obtain the ID of the member. The ID is indicated by the `AccountId` parameter in the response of the operation.
 	//
 	// This parameter is required.
 	//
@@ -3555,27 +5319,42 @@ func (s *ListMultiAccountTagValuesResponse) SetBody(v *ListMultiAccountTagValues
 }
 
 type ListResourceRelationshipsRequest struct {
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 500.
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId              *string                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The filter conditions for resources associated with the resource.
 	RelatedResourceFilter []*ListResourceRelationshipsRequestRelatedResourceFilter `json:"RelatedResourceFilter,omitempty" xml:"RelatedResourceFilter,omitempty" type:"Repeated"`
+	// The ID of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// m-eb3hji****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3623,15 +5402,20 @@ func (s *ListResourceRelationshipsRequest) SetResourceType(v string) *ListResour
 }
 
 type ListResourceRelationshipsRequestRelatedResourceFilter struct {
+	// The key of the filter condition. For more information, see `Supported filter parameters`.
+	//
 	// example:
 	//
 	// RelatedResourceRegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The matching method.
+	//
 	// example:
 	//
 	// Equals
-	MatchType *string   `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Value     []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The values of the filter condition.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
 func (s ListResourceRelationshipsRequestRelatedResourceFilter) String() string {
@@ -3658,18 +5442,25 @@ func (s *ListResourceRelationshipsRequestRelatedResourceFilter) SetValue(v []*st
 }
 
 type ListResourceRelationshipsResponseBody struct {
+	// The maximum number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 682A3004-38E3-5122-9A11-CCDFAB9C3C4F
-	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource relationships.
 	ResourceRelationships []*ListResourceRelationshipsResponseBodyResourceRelationships `json:"ResourceRelationships,omitempty" xml:"ResourceRelationships,omitempty" type:"Repeated"`
 }
 
@@ -3702,26 +5493,38 @@ func (s *ListResourceRelationshipsResponseBody) SetResourceRelationships(v []*Li
 }
 
 type ListResourceRelationshipsResponseBodyResourceRelationships struct {
+	// The region ID of the resource.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the associated resource.
+	//
 	// example:
 	//
 	// vpc-uf6m5okksddm6c9lh7***
 	RelatedResourceId *string `json:"RelatedResourceId,omitempty" xml:"RelatedResourceId,omitempty"`
+	// The region ID of the associated resource.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RelatedResourceRegionId *string `json:"RelatedResourceRegionId,omitempty" xml:"RelatedResourceRegionId,omitempty"`
+	// The type of the associated resource.
+	//
 	// example:
 	//
 	// ACS::VPC::VPC
 	RelatedResourceType *string `json:"RelatedResourceType,omitempty" xml:"RelatedResourceType,omitempty"`
+	// The ID of the resource.
+	//
 	// example:
 	//
 	// m-eb3hji****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
 	// example:
 	//
 	// ACS::ACK::Cluster
@@ -3880,7 +5683,8 @@ type ListResourceTypesResponseBodyResourceTypes struct {
 	// example:
 	//
 	// Container Service for Kubernetes
-	ProductName          *string   `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The name of supported related resource types.
 	RelatedResourceTypes []*string `json:"RelatedResourceTypes,omitempty" xml:"RelatedResourceTypes,omitempty" type:"Repeated"`
 	// The resource type.
 	//
@@ -4871,6 +6675,10 @@ func (s *SearchMultiAccountResourcesResponseBodyResources) SetZoneId(v string) *
 
 type SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes struct {
 	// The IP address.
+	//
+	// example:
+	//
+	// 192.168.1.2
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The network type. Valid values:
 	//
@@ -5357,6 +7165,10 @@ func (s *SearchResourcesResponseBodyResources) SetZoneId(v string) *SearchResour
 
 type SearchResourcesResponseBodyResourcesIpAddressAttributes struct {
 	// The IP address.
+	//
+	// example:
+	//
+	// 192.168.1.2
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	// The network type. Valid values:
 	//
@@ -5457,6 +7269,261 @@ func (s *SearchResourcesResponse) SetStatusCode(v int32) *SearchResourcesRespons
 }
 
 func (s *SearchResourcesResponse) SetBody(v *SearchResourcesResponseBody) *SearchResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDeliveryChannelRequest struct {
+	DeliveryChannelDescription *string                                            `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	DeliveryChannelFilter      *UpdateDeliveryChannelRequestDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dc-4m6ffpkgu***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// example:
+	//
+	// test-delivery-channel
+	DeliveryChannelName      *string                                               `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	ResourceChangeDelivery   *UpdateDeliveryChannelRequestResourceChangeDelivery   `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	ResourceSnapshotDelivery *UpdateDeliveryChannelRequestResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
+}
+
+func (s UpdateDeliveryChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliveryChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliveryChannelRequest) SetDeliveryChannelDescription(v string) *UpdateDeliveryChannelRequest {
+	s.DeliveryChannelDescription = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetDeliveryChannelFilter(v *UpdateDeliveryChannelRequestDeliveryChannelFilter) *UpdateDeliveryChannelRequest {
+	s.DeliveryChannelFilter = v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetDeliveryChannelId(v string) *UpdateDeliveryChannelRequest {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetDeliveryChannelName(v string) *UpdateDeliveryChannelRequest {
+	s.DeliveryChannelName = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetResourceChangeDelivery(v *UpdateDeliveryChannelRequestResourceChangeDelivery) *UpdateDeliveryChannelRequest {
+	s.ResourceChangeDelivery = v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequest) SetResourceSnapshotDelivery(v *UpdateDeliveryChannelRequestResourceSnapshotDelivery) *UpdateDeliveryChannelRequest {
+	s.ResourceSnapshotDelivery = v
+	return s
+}
+
+type UpdateDeliveryChannelRequestDeliveryChannelFilter struct {
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDeliveryChannelRequestDeliveryChannelFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliveryChannelRequestDeliveryChannelFilter) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliveryChannelRequestDeliveryChannelFilter) SetResourceTypes(v []*string) *UpdateDeliveryChannelRequestDeliveryChannelFilter {
+	s.ResourceTypes = v
+	return s
+}
+
+type UpdateDeliveryChannelRequestResourceChangeDelivery struct {
+	// example:
+	//
+	// true
+	Enabled       *string                                                          `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	SlsProperties *UpdateDeliveryChannelRequestResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	TargetArn     *string                                                          `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// example:
+	//
+	// SLS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s UpdateDeliveryChannelRequestResourceChangeDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliveryChannelRequestResourceChangeDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliveryChannelRequestResourceChangeDelivery) SetEnabled(v string) *UpdateDeliveryChannelRequestResourceChangeDelivery {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequestResourceChangeDelivery) SetSlsProperties(v *UpdateDeliveryChannelRequestResourceChangeDeliverySlsProperties) *UpdateDeliveryChannelRequestResourceChangeDelivery {
+	s.SlsProperties = v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequestResourceChangeDelivery) SetTargetArn(v string) *UpdateDeliveryChannelRequestResourceChangeDelivery {
+	s.TargetArn = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequestResourceChangeDelivery) SetTargetType(v string) *UpdateDeliveryChannelRequestResourceChangeDelivery {
+	s.TargetType = &v
+	return s
+}
+
+type UpdateDeliveryChannelRequestResourceChangeDeliverySlsProperties struct {
+	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
+}
+
+func (s UpdateDeliveryChannelRequestResourceChangeDeliverySlsProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliveryChannelRequestResourceChangeDeliverySlsProperties) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliveryChannelRequestResourceChangeDeliverySlsProperties) SetOversizedDataOssTargetArn(v string) *UpdateDeliveryChannelRequestResourceChangeDeliverySlsProperties {
+	s.OversizedDataOssTargetArn = &v
+	return s
+}
+
+type UpdateDeliveryChannelRequestResourceSnapshotDelivery struct {
+	// example:
+	//
+	// select 	- from resources limit 100;
+	CustomExpression *string `json:"CustomExpression,omitempty" xml:"CustomExpression,omitempty"`
+	// example:
+	//
+	// 09:00Z
+	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	// example:
+	//
+	// true
+	Enabled       *string                                                            `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	SlsProperties *UpdateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	TargetArn     *string                                                            `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// example:
+	//
+	// OSS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s UpdateDeliveryChannelRequestResourceSnapshotDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliveryChannelRequestResourceSnapshotDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliveryChannelRequestResourceSnapshotDelivery) SetCustomExpression(v string) *UpdateDeliveryChannelRequestResourceSnapshotDelivery {
+	s.CustomExpression = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequestResourceSnapshotDelivery) SetDeliveryTime(v string) *UpdateDeliveryChannelRequestResourceSnapshotDelivery {
+	s.DeliveryTime = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequestResourceSnapshotDelivery) SetEnabled(v string) *UpdateDeliveryChannelRequestResourceSnapshotDelivery {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequestResourceSnapshotDelivery) SetSlsProperties(v *UpdateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) *UpdateDeliveryChannelRequestResourceSnapshotDelivery {
+	s.SlsProperties = v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequestResourceSnapshotDelivery) SetTargetArn(v string) *UpdateDeliveryChannelRequestResourceSnapshotDelivery {
+	s.TargetArn = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelRequestResourceSnapshotDelivery) SetTargetType(v string) *UpdateDeliveryChannelRequestResourceSnapshotDelivery {
+	s.TargetType = &v
+	return s
+}
+
+type UpdateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties struct {
+	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
+}
+
+func (s UpdateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) SetOversizedDataOssTargetArn(v string) *UpdateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties {
+	s.OversizedDataOssTargetArn = &v
+	return s
+}
+
+type UpdateDeliveryChannelResponseBody struct {
+	// example:
+	//
+	// AD5F848D-CCDC-5464-93E1-4BA50A482***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateDeliveryChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliveryChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliveryChannelResponseBody) SetRequestId(v string) *UpdateDeliveryChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateDeliveryChannelResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDeliveryChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDeliveryChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDeliveryChannelResponse) SetHeaders(v map[string]*string) *UpdateDeliveryChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDeliveryChannelResponse) SetStatusCode(v int32) *UpdateDeliveryChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDeliveryChannelResponse) SetBody(v *UpdateDeliveryChannelResponseBody) *UpdateDeliveryChannelResponse {
 	s.Body = v
 	return s
 }
@@ -5563,6 +7630,267 @@ func (s *UpdateFilterResponse) SetStatusCode(v int32) *UpdateFilterResponse {
 }
 
 func (s *UpdateFilterResponse) SetBody(v *UpdateFilterResponseBody) *UpdateFilterResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMultiAccountDeliveryChannelRequest struct {
+	DeliveryChannelDescription *string                                                        `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	DeliveryChannelFilter      *UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dc-4m6ffpkgu***
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// example:
+	//
+	// test-multi-account-delivery-channel
+	DeliveryChannelName      *string                                                           `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	ResourceChangeDelivery   *UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery   `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	ResourceSnapshotDelivery *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
+}
+
+func (s UpdateMultiAccountDeliveryChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiAccountDeliveryChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequest) SetDeliveryChannelDescription(v string) *UpdateMultiAccountDeliveryChannelRequest {
+	s.DeliveryChannelDescription = &v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequest) SetDeliveryChannelFilter(v *UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter) *UpdateMultiAccountDeliveryChannelRequest {
+	s.DeliveryChannelFilter = v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequest) SetDeliveryChannelId(v string) *UpdateMultiAccountDeliveryChannelRequest {
+	s.DeliveryChannelId = &v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequest) SetDeliveryChannelName(v string) *UpdateMultiAccountDeliveryChannelRequest {
+	s.DeliveryChannelName = &v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequest) SetResourceChangeDelivery(v *UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery) *UpdateMultiAccountDeliveryChannelRequest {
+	s.ResourceChangeDelivery = v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequest) SetResourceSnapshotDelivery(v *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) *UpdateMultiAccountDeliveryChannelRequest {
+	s.ResourceSnapshotDelivery = v
+	return s
+}
+
+type UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter struct {
+	AccountScopes []*string `json:"AccountScopes,omitempty" xml:"AccountScopes,omitempty" type:"Repeated"`
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter) SetAccountScopes(v []*string) *UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter {
+	s.AccountScopes = v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter) SetResourceTypes(v []*string) *UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter {
+	s.ResourceTypes = v
+	return s
+}
+
+type UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery struct {
+	// example:
+	//
+	// true
+	Enabled       *string                                                                      `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	SlsProperties *UpdateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	TargetArn     *string                                                                      `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// example:
+	//
+	// SLS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery) SetEnabled(v string) *UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery) SetSlsProperties(v *UpdateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties) *UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery {
+	s.SlsProperties = v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery) SetTargetArn(v string) *UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery {
+	s.TargetArn = &v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery) SetTargetType(v string) *UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery {
+	s.TargetType = &v
+	return s
+}
+
+type UpdateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties struct {
+	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
+}
+
+func (s UpdateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties) SetOversizedDataOssTargetArn(v string) *UpdateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties {
+	s.OversizedDataOssTargetArn = &v
+	return s
+}
+
+type UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery struct {
+	// example:
+	//
+	// select 	- from resources limit 100;
+	CustomExpression *string `json:"CustomExpression,omitempty" xml:"CustomExpression,omitempty"`
+	// example:
+	//
+	// 09:00Z
+	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	// example:
+	//
+	// true
+	Enabled       *string                                                                        `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	SlsProperties *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	TargetArn     *string                                                                        `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// example:
+	//
+	// OSS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) SetCustomExpression(v string) *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery {
+	s.CustomExpression = &v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) SetDeliveryTime(v string) *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery {
+	s.DeliveryTime = &v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) SetEnabled(v string) *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) SetSlsProperties(v *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery {
+	s.SlsProperties = v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) SetTargetArn(v string) *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery {
+	s.TargetArn = &v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) SetTargetType(v string) *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery {
+	s.TargetType = &v
+	return s
+}
+
+type UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties struct {
+	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
+}
+
+func (s UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) SetOversizedDataOssTargetArn(v string) *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties {
+	s.OversizedDataOssTargetArn = &v
+	return s
+}
+
+type UpdateMultiAccountDeliveryChannelResponseBody struct {
+	// example:
+	//
+	// 36A3D9BE-B607-5993-B546-7E19EF65D***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateMultiAccountDeliveryChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiAccountDeliveryChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiAccountDeliveryChannelResponseBody) SetRequestId(v string) *UpdateMultiAccountDeliveryChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateMultiAccountDeliveryChannelResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMultiAccountDeliveryChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateMultiAccountDeliveryChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiAccountDeliveryChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiAccountDeliveryChannelResponse) SetHeaders(v map[string]*string) *UpdateMultiAccountDeliveryChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelResponse) SetStatusCode(v int32) *UpdateMultiAccountDeliveryChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMultiAccountDeliveryChannelResponse) SetBody(v *UpdateMultiAccountDeliveryChannelResponseBody) *UpdateMultiAccountDeliveryChannelResponse {
 	s.Body = v
 	return s
 }
@@ -5763,24 +8091,13 @@ func (client *Client) AssociateDefaultFilterWithOptions(request *AssociateDefaul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AssociateDefaultFilterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AssociateDefaultFilterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AssociateDefaultFilterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5794,6 +8111,82 @@ func (client *Client) AssociateDefaultFilter(request *AssociateDefaultFilterRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &AssociateDefaultFilterResponse{}
 	_body, _err := client.AssociateDefaultFilterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建投递渠道
+//
+// @param request - CreateDeliveryChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDeliveryChannelResponse
+func (client *Client) CreateDeliveryChannelWithOptions(request *CreateDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *CreateDeliveryChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelDescription)) {
+		query["DeliveryChannelDescription"] = request.DeliveryChannelDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelFilter)) {
+		query["DeliveryChannelFilter"] = request.DeliveryChannelFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelName)) {
+		query["DeliveryChannelName"] = request.DeliveryChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceChangeDelivery)) {
+		query["ResourceChangeDelivery"] = request.ResourceChangeDelivery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceSnapshotDelivery)) {
+		query["ResourceSnapshotDelivery"] = request.ResourceSnapshotDelivery
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDeliveryChannel"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDeliveryChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建投递渠道
+//
+// @param request - CreateDeliveryChannelRequest
+//
+// @return CreateDeliveryChannelResponse
+func (client *Client) CreateDeliveryChannel(request *CreateDeliveryChannelRequest) (_result *CreateDeliveryChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDeliveryChannelResponse{}
+	_body, _err := client.CreateDeliveryChannelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5838,24 +8231,13 @@ func (client *Client) CreateFilterWithOptions(request *CreateFilterRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateFilterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateFilterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateFilterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5869,6 +8251,82 @@ func (client *Client) CreateFilter(request *CreateFilterRequest) (_result *Creat
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFilterResponse{}
 	_body, _err := client.CreateFilterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建多账号投递渠道
+//
+// @param request - CreateMultiAccountDeliveryChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMultiAccountDeliveryChannelResponse
+func (client *Client) CreateMultiAccountDeliveryChannelWithOptions(request *CreateMultiAccountDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *CreateMultiAccountDeliveryChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelDescription)) {
+		query["DeliveryChannelDescription"] = request.DeliveryChannelDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelFilter)) {
+		query["DeliveryChannelFilter"] = request.DeliveryChannelFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelName)) {
+		query["DeliveryChannelName"] = request.DeliveryChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceChangeDelivery)) {
+		query["ResourceChangeDelivery"] = request.ResourceChangeDelivery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceSnapshotDelivery)) {
+		query["ResourceSnapshotDelivery"] = request.ResourceSnapshotDelivery
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMultiAccountDeliveryChannel"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateMultiAccountDeliveryChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建多账号投递渠道
+//
+// @param request - CreateMultiAccountDeliveryChannelRequest
+//
+// @return CreateMultiAccountDeliveryChannelResponse
+func (client *Client) CreateMultiAccountDeliveryChannel(request *CreateMultiAccountDeliveryChannelRequest) (_result *CreateMultiAccountDeliveryChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateMultiAccountDeliveryChannelResponse{}
+	_body, _err := client.CreateMultiAccountDeliveryChannelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5917,24 +8375,13 @@ func (client *Client) CreateSavedQueryWithOptions(request *CreateSavedQueryReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateSavedQueryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateSavedQueryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateSavedQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5948,6 +8395,66 @@ func (client *Client) CreateSavedQuery(request *CreateSavedQueryRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSavedQueryResponse{}
 	_body, _err := client.CreateSavedQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除投递渠道
+//
+// @param request - DeleteDeliveryChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDeliveryChannelResponse
+func (client *Client) DeleteDeliveryChannelWithOptions(request *DeleteDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *DeleteDeliveryChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelId)) {
+		query["DeliveryChannelId"] = request.DeliveryChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDeliveryChannel"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDeliveryChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除投递渠道
+//
+// @param request - DeleteDeliveryChannelRequest
+//
+// @return DeleteDeliveryChannelResponse
+func (client *Client) DeleteDeliveryChannel(request *DeleteDeliveryChannelRequest) (_result *DeleteDeliveryChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDeliveryChannelResponse{}
+	_body, _err := client.DeleteDeliveryChannelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5988,24 +8495,13 @@ func (client *Client) DeleteFilterWithOptions(request *DeleteFilterRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteFilterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteFilterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteFilterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6019,6 +8515,66 @@ func (client *Client) DeleteFilter(request *DeleteFilterRequest) (_result *Delet
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFilterResponse{}
 	_body, _err := client.DeleteFilterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除多账号投递渠道
+//
+// @param request - DeleteMultiAccountDeliveryChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMultiAccountDeliveryChannelResponse
+func (client *Client) DeleteMultiAccountDeliveryChannelWithOptions(request *DeleteMultiAccountDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *DeleteMultiAccountDeliveryChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelId)) {
+		query["DeliveryChannelId"] = request.DeliveryChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMultiAccountDeliveryChannel"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMultiAccountDeliveryChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除多账号投递渠道
+//
+// @param request - DeleteMultiAccountDeliveryChannelRequest
+//
+// @return DeleteMultiAccountDeliveryChannelResponse
+func (client *Client) DeleteMultiAccountDeliveryChannel(request *DeleteMultiAccountDeliveryChannelRequest) (_result *DeleteMultiAccountDeliveryChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMultiAccountDeliveryChannelResponse{}
+	_body, _err := client.DeleteMultiAccountDeliveryChannelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6059,24 +8615,13 @@ func (client *Client) DeleteSavedQueryWithOptions(request *DeleteSavedQueryReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteSavedQueryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteSavedQueryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteSavedQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6119,24 +8664,13 @@ func (client *Client) DisableMultiAccountResourceCenterWithOptions(runtime *util
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DisableMultiAccountResourceCenterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DisableMultiAccountResourceCenterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DisableMultiAccountResourceCenterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6177,24 +8711,13 @@ func (client *Client) DisableResourceCenterWithOptions(runtime *util.RuntimeOpti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DisableResourceCenterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DisableResourceCenterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DisableResourceCenterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6235,24 +8758,13 @@ func (client *Client) DisassociateDefaultFilterWithOptions(runtime *util.Runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DisassociateDefaultFilterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DisassociateDefaultFilterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DisassociateDefaultFilterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6297,24 +8809,13 @@ func (client *Client) EnableMultiAccountResourceCenterWithOptions(runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EnableMultiAccountResourceCenterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EnableMultiAccountResourceCenterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EnableMultiAccountResourceCenterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6359,24 +8860,13 @@ func (client *Client) EnableResourceCenterWithOptions(runtime *util.RuntimeOptio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EnableResourceCenterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EnableResourceCenterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EnableResourceCenterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6440,24 +8930,13 @@ func (client *Client) ExecuteMultiAccountSQLQueryWithOptions(request *ExecuteMul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteMultiAccountSQLQueryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteMultiAccountSQLQueryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteMultiAccountSQLQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6523,24 +9002,13 @@ func (client *Client) ExecuteSQLQueryWithOptions(request *ExecuteSQLQueryRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteSQLQueryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteSQLQueryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteSQLQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6554,6 +9022,126 @@ func (client *Client) ExecuteSQLQuery(request *ExecuteSQLQueryRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteSQLQueryResponse{}
 	_body, _err := client.ExecuteSQLQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询投递渠道
+//
+// @param request - GetDeliveryChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeliveryChannelResponse
+func (client *Client) GetDeliveryChannelWithOptions(request *GetDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *GetDeliveryChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelId)) {
+		query["DeliveryChannelId"] = request.DeliveryChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDeliveryChannel"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDeliveryChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询投递渠道
+//
+// @param request - GetDeliveryChannelRequest
+//
+// @return GetDeliveryChannelResponse
+func (client *Client) GetDeliveryChannel(request *GetDeliveryChannelRequest) (_result *GetDeliveryChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDeliveryChannelResponse{}
+	_body, _err := client.GetDeliveryChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询投递渠道统计信息
+//
+// @param request - GetDeliveryChannelStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeliveryChannelStatisticsResponse
+func (client *Client) GetDeliveryChannelStatisticsWithOptions(request *GetDeliveryChannelStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetDeliveryChannelStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelId)) {
+		query["DeliveryChannelId"] = request.DeliveryChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDeliveryChannelStatistics"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDeliveryChannelStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询投递渠道统计信息
+//
+// @param request - GetDeliveryChannelStatisticsRequest
+//
+// @return GetDeliveryChannelStatisticsResponse
+func (client *Client) GetDeliveryChannelStatistics(request *GetDeliveryChannelStatisticsRequest) (_result *GetDeliveryChannelStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDeliveryChannelStatisticsResponse{}
+	_body, _err := client.GetDeliveryChannelStatisticsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6594,24 +9182,13 @@ func (client *Client) GetExampleQueryWithOptions(request *GetExampleQueryRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetExampleQueryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetExampleQueryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetExampleQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6625,6 +9202,126 @@ func (client *Client) GetExampleQuery(request *GetExampleQueryRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &GetExampleQueryResponse{}
 	_body, _err := client.GetExampleQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询多账号投递渠道
+//
+// @param request - GetMultiAccountDeliveryChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMultiAccountDeliveryChannelResponse
+func (client *Client) GetMultiAccountDeliveryChannelWithOptions(request *GetMultiAccountDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *GetMultiAccountDeliveryChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelId)) {
+		query["DeliveryChannelId"] = request.DeliveryChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMultiAccountDeliveryChannel"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMultiAccountDeliveryChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询多账号投递渠道
+//
+// @param request - GetMultiAccountDeliveryChannelRequest
+//
+// @return GetMultiAccountDeliveryChannelResponse
+func (client *Client) GetMultiAccountDeliveryChannel(request *GetMultiAccountDeliveryChannelRequest) (_result *GetMultiAccountDeliveryChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMultiAccountDeliveryChannelResponse{}
+	_body, _err := client.GetMultiAccountDeliveryChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询多账号投递渠道统计信息
+//
+// @param request - GetMultiAccountDeliveryChannelStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMultiAccountDeliveryChannelStatisticsResponse
+func (client *Client) GetMultiAccountDeliveryChannelStatisticsWithOptions(request *GetMultiAccountDeliveryChannelStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetMultiAccountDeliveryChannelStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelId)) {
+		query["DeliveryChannelId"] = request.DeliveryChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMultiAccountDeliveryChannelStatistics"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMultiAccountDeliveryChannelStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询多账号投递渠道统计信息
+//
+// @param request - GetMultiAccountDeliveryChannelStatisticsRequest
+//
+// @return GetMultiAccountDeliveryChannelStatisticsResponse
+func (client *Client) GetMultiAccountDeliveryChannelStatistics(request *GetMultiAccountDeliveryChannelStatisticsRequest) (_result *GetMultiAccountDeliveryChannelStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMultiAccountDeliveryChannelStatisticsResponse{}
+	_body, _err := client.GetMultiAccountDeliveryChannelStatisticsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6654,24 +9351,13 @@ func (client *Client) GetMultiAccountResourceCenterServiceStatusWithOptions(runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMultiAccountResourceCenterServiceStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMultiAccountResourceCenterServiceStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMultiAccountResourceCenterServiceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6735,24 +9421,13 @@ func (client *Client) GetMultiAccountResourceConfigurationWithOptions(request *G
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMultiAccountResourceConfigurationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMultiAccountResourceConfigurationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMultiAccountResourceConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6795,24 +9470,13 @@ func (client *Client) GetResourceCenterServiceStatusWithOptions(runtime *util.Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetResourceCenterServiceStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetResourceCenterServiceStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetResourceCenterServiceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6872,24 +9536,13 @@ func (client *Client) GetResourceConfigurationWithOptions(request *GetResourceCo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetResourceConfigurationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetResourceConfigurationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetResourceConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6947,24 +9600,13 @@ func (client *Client) GetResourceCountsWithOptions(request *GetResourceCountsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetResourceCountsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetResourceCountsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetResourceCountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7018,24 +9660,13 @@ func (client *Client) GetSavedQueryWithOptions(request *GetSavedQueryRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetSavedQueryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetSavedQueryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetSavedQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7049,6 +9680,70 @@ func (client *Client) GetSavedQuery(request *GetSavedQueryRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSavedQueryResponse{}
 	_body, _err := client.GetSavedQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出投递渠道
+//
+// @param request - ListDeliveryChannelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDeliveryChannelsResponse
+func (client *Client) ListDeliveryChannelsWithOptions(request *ListDeliveryChannelsRequest, runtime *util.RuntimeOptions) (_result *ListDeliveryChannelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDeliveryChannels"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDeliveryChannelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出投递渠道
+//
+// @param request - ListDeliveryChannelsRequest
+//
+// @return ListDeliveryChannelsResponse
+func (client *Client) ListDeliveryChannels(request *ListDeliveryChannelsRequest) (_result *ListDeliveryChannelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDeliveryChannelsResponse{}
+	_body, _err := client.ListDeliveryChannelsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7093,24 +9788,13 @@ func (client *Client) ListExampleQueriesWithOptions(request *ListExampleQueriesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListExampleQueriesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListExampleQueriesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListExampleQueriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7153,24 +9837,13 @@ func (client *Client) ListFiltersWithOptions(runtime *util.RuntimeOptions) (_res
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListFiltersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListFiltersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListFiltersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7182,6 +9855,70 @@ func (client *Client) ListFilters() (_result *ListFiltersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFiltersResponse{}
 	_body, _err := client.ListFiltersWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出多账号投递渠道
+//
+// @param request - ListMultiAccountDeliveryChannelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMultiAccountDeliveryChannelsResponse
+func (client *Client) ListMultiAccountDeliveryChannelsWithOptions(request *ListMultiAccountDeliveryChannelsRequest, runtime *util.RuntimeOptions) (_result *ListMultiAccountDeliveryChannelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMultiAccountDeliveryChannels"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMultiAccountDeliveryChannelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出多账号投递渠道
+//
+// @param request - ListMultiAccountDeliveryChannelsRequest
+//
+// @return ListMultiAccountDeliveryChannelsResponse
+func (client *Client) ListMultiAccountDeliveryChannels(request *ListMultiAccountDeliveryChannelsRequest) (_result *ListMultiAccountDeliveryChannelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMultiAccountDeliveryChannelsResponse{}
+	_body, _err := client.ListMultiAccountDeliveryChannelsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7234,24 +9971,13 @@ func (client *Client) ListMultiAccountResourceGroupsWithOptions(request *ListMul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListMultiAccountResourceGroupsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListMultiAccountResourceGroupsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListMultiAccountResourceGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7274,7 +10000,17 @@ func (client *Client) ListMultiAccountResourceGroups(request *ListMultiAccountRe
 
 // Summary:
 //
-// 跨账号列出资源关系
+// Queries the relationships between resources within the management account or members of your resource directory.
+//
+// Description:
+//
+//	  Before you use a RAM user or a RAM role to call the operation, you must make sure that the RAM user or RAM role is granted the required permissions. For more information, see [Grant a RAM user the permissions to use Resource Center](https://help.aliyun.com/document_detail/600556.html).
+//
+//		- By default, the operation returns up to 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+//
+//		- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+//
+//		- You can specify one or more filter conditions to narrow the search. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
 //
 // @param request - ListMultiAccountResourceRelationshipsRequest
 //
@@ -7329,29 +10065,28 @@ func (client *Client) ListMultiAccountResourceRelationshipsWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListMultiAccountResourceRelationshipsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListMultiAccountResourceRelationshipsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListMultiAccountResourceRelationshipsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 跨账号列出资源关系
+// Queries the relationships between resources within the management account or members of your resource directory.
+//
+// Description:
+//
+//	  Before you use a RAM user or a RAM role to call the operation, you must make sure that the RAM user or RAM role is granted the required permissions. For more information, see [Grant a RAM user the permissions to use Resource Center](https://help.aliyun.com/document_detail/600556.html).
+//
+//		- By default, the operation returns up to 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+//
+//		- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+//
+//		- You can specify one or more filter conditions to narrow the search. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
 //
 // @param request - ListMultiAccountResourceRelationshipsRequest
 //
@@ -7369,7 +10104,7 @@ func (client *Client) ListMultiAccountResourceRelationships(request *ListMultiAc
 
 // Summary:
 //
-// Queries the tag keys of resources within the management account or a member of a resource directory by using the management account of the resource directory or a delegated administrator account of Resource Center.
+// Queries the tag keys of resources within the management account or a member of your resource directory.
 //
 // @param request - ListMultiAccountTagKeysRequest
 //
@@ -7416,29 +10151,18 @@ func (client *Client) ListMultiAccountTagKeysWithOptions(request *ListMultiAccou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListMultiAccountTagKeysResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListMultiAccountTagKeysResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListMultiAccountTagKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Queries the tag keys of resources within the management account or a member of a resource directory by using the management account of the resource directory or a delegated administrator account of Resource Center.
+// Queries the tag keys of resources within the management account or a member of your resource directory.
 //
 // @param request - ListMultiAccountTagKeysRequest
 //
@@ -7507,24 +10231,13 @@ func (client *Client) ListMultiAccountTagValuesWithOptions(request *ListMultiAcc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListMultiAccountTagValuesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListMultiAccountTagValuesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListMultiAccountTagValuesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7547,7 +10260,17 @@ func (client *Client) ListMultiAccountTagValues(request *ListMultiAccountTagValu
 
 // Summary:
 //
-// 列出资源关系
+// Queries a list of resource relationships on which the current account has access permissions.
+//
+// Description:
+//
+//	  You can call this operation to query only the resource relationships on which the current account has access permissions.
+//
+//		- By default, this operation returns up to 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+//
+//		- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+//
+//		- You can specify one or more filter conditions to narrow the query scope. For information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only entries that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Entries that meet any value of the filter condition are returned.
 //
 // @param request - ListResourceRelationshipsRequest
 //
@@ -7598,29 +10321,28 @@ func (client *Client) ListResourceRelationshipsWithOptions(request *ListResource
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListResourceRelationshipsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListResourceRelationshipsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListResourceRelationshipsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 列出资源关系
+// Queries a list of resource relationships on which the current account has access permissions.
+//
+// Description:
+//
+//	  You can call this operation to query only the resource relationships on which the current account has access permissions.
+//
+//		- By default, this operation returns up to 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+//
+//		- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+//
+//		- You can specify one or more filter conditions to narrow the query scope. For information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only entries that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Entries that meet any value of the filter condition are returned.
 //
 // @param request - ListResourceRelationshipsRequest
 //
@@ -7638,7 +10360,7 @@ func (client *Client) ListResourceRelationships(request *ListResourceRelationshi
 
 // Summary:
 //
-// Queries the metadata of resource types.
+// # Queries the metadata of resource types
 //
 // @param request - ListResourceTypesRequest
 //
@@ -7677,29 +10399,18 @@ func (client *Client) ListResourceTypesWithOptions(request *ListResourceTypesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListResourceTypesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListResourceTypesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListResourceTypesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Queries the metadata of resource types.
+// # Queries the metadata of resource types
 //
 // @param request - ListResourceTypesRequest
 //
@@ -7752,24 +10463,13 @@ func (client *Client) ListSavedQueriesWithOptions(request *ListSavedQueriesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListSavedQueriesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListSavedQueriesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListSavedQueriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7835,24 +10535,13 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTagKeysResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTagKeysResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTagKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7922,24 +10611,13 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTagValuesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTagValuesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTagValuesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8023,24 +10701,13 @@ func (client *Client) SearchMultiAccountResourcesWithOptions(request *SearchMult
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SearchMultiAccountResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SearchMultiAccountResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SearchMultiAccountResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8136,24 +10803,13 @@ func (client *Client) SearchResourcesWithOptions(request *SearchResourcesRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SearchResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SearchResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SearchResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8179,6 +10835,86 @@ func (client *Client) SearchResources(request *SearchResourcesRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchResourcesResponse{}
 	_body, _err := client.SearchResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新投递渠道
+//
+// @param request - UpdateDeliveryChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDeliveryChannelResponse
+func (client *Client) UpdateDeliveryChannelWithOptions(request *UpdateDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *UpdateDeliveryChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelDescription)) {
+		query["DeliveryChannelDescription"] = request.DeliveryChannelDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelFilter)) {
+		query["DeliveryChannelFilter"] = request.DeliveryChannelFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelId)) {
+		query["DeliveryChannelId"] = request.DeliveryChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelName)) {
+		query["DeliveryChannelName"] = request.DeliveryChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceChangeDelivery)) {
+		query["ResourceChangeDelivery"] = request.ResourceChangeDelivery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceSnapshotDelivery)) {
+		query["ResourceSnapshotDelivery"] = request.ResourceSnapshotDelivery
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDeliveryChannel"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDeliveryChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新投递渠道
+//
+// @param request - UpdateDeliveryChannelRequest
+//
+// @return UpdateDeliveryChannelResponse
+func (client *Client) UpdateDeliveryChannel(request *UpdateDeliveryChannelRequest) (_result *UpdateDeliveryChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDeliveryChannelResponse{}
+	_body, _err := client.UpdateDeliveryChannelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8223,24 +10959,13 @@ func (client *Client) UpdateFilterWithOptions(request *UpdateFilterRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateFilterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateFilterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateFilterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8254,6 +10979,86 @@ func (client *Client) UpdateFilter(request *UpdateFilterRequest) (_result *Updat
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateFilterResponse{}
 	_body, _err := client.UpdateFilterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新多账号投递渠道
+//
+// @param request - UpdateMultiAccountDeliveryChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMultiAccountDeliveryChannelResponse
+func (client *Client) UpdateMultiAccountDeliveryChannelWithOptions(request *UpdateMultiAccountDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *UpdateMultiAccountDeliveryChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelDescription)) {
+		query["DeliveryChannelDescription"] = request.DeliveryChannelDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelFilter)) {
+		query["DeliveryChannelFilter"] = request.DeliveryChannelFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelId)) {
+		query["DeliveryChannelId"] = request.DeliveryChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryChannelName)) {
+		query["DeliveryChannelName"] = request.DeliveryChannelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceChangeDelivery)) {
+		query["ResourceChangeDelivery"] = request.ResourceChangeDelivery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceSnapshotDelivery)) {
+		query["ResourceSnapshotDelivery"] = request.ResourceSnapshotDelivery
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMultiAccountDeliveryChannel"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMultiAccountDeliveryChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新多账号投递渠道
+//
+// @param request - UpdateMultiAccountDeliveryChannelRequest
+//
+// @return UpdateMultiAccountDeliveryChannelResponse
+func (client *Client) UpdateMultiAccountDeliveryChannel(request *UpdateMultiAccountDeliveryChannelRequest) (_result *UpdateMultiAccountDeliveryChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMultiAccountDeliveryChannelResponse{}
+	_body, _err := client.UpdateMultiAccountDeliveryChannelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8306,24 +11111,13 @@ func (client *Client) UpdateSavedQueryWithOptions(request *UpdateSavedQueryReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateSavedQueryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateSavedQueryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateSavedQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
