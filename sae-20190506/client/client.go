@@ -37925,6 +37925,7 @@ func (s *ListAppEventsResponseBodyData) SetTotalSize(v int32) *ListAppEventsResp
 }
 
 type ListAppEventsResponseBodyDataAppEventEntity struct {
+	CauseAnalysis *string `json:"CauseAnalysis,omitempty" xml:"CauseAnalysis,omitempty"`
 	// The type of the event. Valid values:
 	//
 	// example:
@@ -37975,6 +37976,11 @@ func (s ListAppEventsResponseBodyDataAppEventEntity) String() string {
 
 func (s ListAppEventsResponseBodyDataAppEventEntity) GoString() string {
 	return s.String()
+}
+
+func (s *ListAppEventsResponseBodyDataAppEventEntity) SetCauseAnalysis(v string) *ListAppEventsResponseBodyDataAppEventEntity {
+	s.CauseAnalysis = &v
+	return s
 }
 
 func (s *ListAppEventsResponseBodyDataAppEventEntity) SetEventType(v string) *ListAppEventsResponseBodyDataAppEventEntity {
