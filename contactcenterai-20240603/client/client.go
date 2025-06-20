@@ -1457,6 +1457,7 @@ type CreateTaskRequestTranscription struct {
 	//
 	// sss.mp3
 	FileName           *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	LanguageHints      *string `json:"languageHints,omitempty" xml:"languageHints,omitempty"`
 	Level              *string `json:"level,omitempty" xml:"level,omitempty"`
 	RoleIdentification *bool   `json:"roleIdentification,omitempty" xml:"roleIdentification,omitempty"`
 	// example:
@@ -1498,6 +1499,11 @@ func (s *CreateTaskRequestTranscription) SetClientChannel(v int32) *CreateTaskRe
 
 func (s *CreateTaskRequestTranscription) SetFileName(v string) *CreateTaskRequestTranscription {
 	s.FileName = &v
+	return s
+}
+
+func (s *CreateTaskRequestTranscription) SetLanguageHints(v string) *CreateTaskRequestTranscription {
+	s.LanguageHints = &v
 	return s
 }
 
