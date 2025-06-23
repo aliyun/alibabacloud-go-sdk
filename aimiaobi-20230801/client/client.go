@@ -651,6 +651,958 @@ func (s *AddDatasetDocumentResponse) SetBody(v *AddDatasetDocumentResponseBody) 
 	return s
 }
 
+type AsyncCreateClipsTaskRequest struct {
+	ColorWords []*AsyncCreateClipsTaskRequestColorWords `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1920
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// http://music.mp4
+	MusicUrl         *string `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
+	MusicVolume      *int32  `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
+	SubtitleFontSize *int32  `json:"SubtitleFontSize,omitempty" xml:"SubtitleFontSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17a299a9-f223-4707-b0dd-4c22519bddf5
+	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	VoiceStyle  *string `json:"VoiceStyle,omitempty" xml:"VoiceStyle,omitempty"`
+	VoiceVolume *int32  `json:"VoiceVolume,omitempty" xml:"VoiceVolume,omitempty"`
+	// example:
+	//
+	// 1080
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-ipe7d81yq4sl5jmk
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s AsyncCreateClipsTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncCreateClipsTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetColorWords(v []*AsyncCreateClipsTaskRequestColorWords) *AsyncCreateClipsTaskRequest {
+	s.ColorWords = v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetHeight(v int32) *AsyncCreateClipsTaskRequest {
+	s.Height = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetMusicUrl(v string) *AsyncCreateClipsTaskRequest {
+	s.MusicUrl = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetMusicVolume(v int32) *AsyncCreateClipsTaskRequest {
+	s.MusicVolume = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetSubtitleFontSize(v int32) *AsyncCreateClipsTaskRequest {
+	s.SubtitleFontSize = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetTaskId(v string) *AsyncCreateClipsTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetVoiceStyle(v string) *AsyncCreateClipsTaskRequest {
+	s.VoiceStyle = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetVoiceVolume(v int32) *AsyncCreateClipsTaskRequest {
+	s.VoiceVolume = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetWidth(v int32) *AsyncCreateClipsTaskRequest {
+	s.Width = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetWorkspaceId(v string) *AsyncCreateClipsTaskRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type AsyncCreateClipsTaskRequestColorWords struct {
+	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	EffectColorStyle *string `json:"EffectColorStyle,omitempty" xml:"EffectColorStyle,omitempty"`
+	FontSize         *int32  `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// example:
+	//
+	// 0
+	TimelineIn *int32 `json:"TimelineIn,omitempty" xml:"TimelineIn,omitempty"`
+	// example:
+	//
+	// 5
+	TimelineOut *int32 `json:"TimelineOut,omitempty" xml:"TimelineOut,omitempty"`
+	// example:
+	//
+	// 0.2
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.5
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s AsyncCreateClipsTaskRequestColorWords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncCreateClipsTaskRequestColorWords) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncCreateClipsTaskRequestColorWords) SetContent(v string) *AsyncCreateClipsTaskRequestColorWords {
+	s.Content = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestColorWords) SetEffectColorStyle(v string) *AsyncCreateClipsTaskRequestColorWords {
+	s.EffectColorStyle = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestColorWords) SetFontSize(v int32) *AsyncCreateClipsTaskRequestColorWords {
+	s.FontSize = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestColorWords) SetTimelineIn(v int32) *AsyncCreateClipsTaskRequestColorWords {
+	s.TimelineIn = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestColorWords) SetTimelineOut(v int32) *AsyncCreateClipsTaskRequestColorWords {
+	s.TimelineOut = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestColorWords) SetX(v float32) *AsyncCreateClipsTaskRequestColorWords {
+	s.X = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequestColorWords) SetY(v float32) *AsyncCreateClipsTaskRequestColorWords {
+	s.Y = &v
+	return s
+}
+
+type AsyncCreateClipsTaskShrinkRequest struct {
+	ColorWordsShrink *string `json:"ColorWords,omitempty" xml:"ColorWords,omitempty"`
+	// example:
+	//
+	// 1920
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// http://music.mp4
+	MusicUrl         *string `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
+	MusicVolume      *int32  `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
+	SubtitleFontSize *int32  `json:"SubtitleFontSize,omitempty" xml:"SubtitleFontSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17a299a9-f223-4707-b0dd-4c22519bddf5
+	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	VoiceStyle  *string `json:"VoiceStyle,omitempty" xml:"VoiceStyle,omitempty"`
+	VoiceVolume *int32  `json:"VoiceVolume,omitempty" xml:"VoiceVolume,omitempty"`
+	// example:
+	//
+	// 1080
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-ipe7d81yq4sl5jmk
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s AsyncCreateClipsTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncCreateClipsTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetColorWordsShrink(v string) *AsyncCreateClipsTaskShrinkRequest {
+	s.ColorWordsShrink = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetHeight(v int32) *AsyncCreateClipsTaskShrinkRequest {
+	s.Height = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetMusicUrl(v string) *AsyncCreateClipsTaskShrinkRequest {
+	s.MusicUrl = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetMusicVolume(v int32) *AsyncCreateClipsTaskShrinkRequest {
+	s.MusicVolume = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetSubtitleFontSize(v int32) *AsyncCreateClipsTaskShrinkRequest {
+	s.SubtitleFontSize = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetTaskId(v string) *AsyncCreateClipsTaskShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetVoiceStyle(v string) *AsyncCreateClipsTaskShrinkRequest {
+	s.VoiceStyle = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetVoiceVolume(v int32) *AsyncCreateClipsTaskShrinkRequest {
+	s.VoiceVolume = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetWidth(v int32) *AsyncCreateClipsTaskShrinkRequest {
+	s.Width = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskShrinkRequest) SetWorkspaceId(v string) *AsyncCreateClipsTaskShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type AsyncCreateClipsTaskResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *AsyncCreateClipsTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AsyncCreateClipsTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncCreateClipsTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncCreateClipsTaskResponseBody) SetCode(v string) *AsyncCreateClipsTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskResponseBody) SetData(v *AsyncCreateClipsTaskResponseBodyData) *AsyncCreateClipsTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskResponseBody) SetRequestId(v string) *AsyncCreateClipsTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AsyncCreateClipsTaskResponseBodyData struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s AsyncCreateClipsTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncCreateClipsTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncCreateClipsTaskResponseBodyData) SetTaskId(v string) *AsyncCreateClipsTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type AsyncCreateClipsTaskResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AsyncCreateClipsTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AsyncCreateClipsTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncCreateClipsTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncCreateClipsTaskResponse) SetHeaders(v map[string]*string) *AsyncCreateClipsTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskResponse) SetStatusCode(v int32) *AsyncCreateClipsTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskResponse) SetBody(v *AsyncCreateClipsTaskResponseBody) *AsyncCreateClipsTaskResponse {
+	s.Body = v
+	return s
+}
+
+type AsyncCreateClipsTimeLineRequest struct {
+	ProcessPrompt *string `json:"ProcessPrompt,omitempty" xml:"ProcessPrompt,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7AA2AE16-D873-5C5F-9708-15396C382EB1
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2setzb9x4ewsd
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s AsyncCreateClipsTimeLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncCreateClipsTimeLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncCreateClipsTimeLineRequest) SetProcessPrompt(v string) *AsyncCreateClipsTimeLineRequest {
+	s.ProcessPrompt = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTimeLineRequest) SetTaskId(v string) *AsyncCreateClipsTimeLineRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTimeLineRequest) SetWorkspaceId(v string) *AsyncCreateClipsTimeLineRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type AsyncCreateClipsTimeLineResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *AsyncCreateClipsTimeLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AsyncCreateClipsTimeLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncCreateClipsTimeLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncCreateClipsTimeLineResponseBody) SetCode(v string) *AsyncCreateClipsTimeLineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTimeLineResponseBody) SetData(v *AsyncCreateClipsTimeLineResponseBodyData) *AsyncCreateClipsTimeLineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AsyncCreateClipsTimeLineResponseBody) SetRequestId(v string) *AsyncCreateClipsTimeLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AsyncCreateClipsTimeLineResponseBodyData struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s AsyncCreateClipsTimeLineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncCreateClipsTimeLineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncCreateClipsTimeLineResponseBodyData) SetTaskId(v string) *AsyncCreateClipsTimeLineResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type AsyncCreateClipsTimeLineResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AsyncCreateClipsTimeLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AsyncCreateClipsTimeLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncCreateClipsTimeLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncCreateClipsTimeLineResponse) SetHeaders(v map[string]*string) *AsyncCreateClipsTimeLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AsyncCreateClipsTimeLineResponse) SetStatusCode(v int32) *AsyncCreateClipsTimeLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTimeLineResponse) SetBody(v *AsyncCreateClipsTimeLineResponseBody) *AsyncCreateClipsTimeLineResponse {
+	s.Body = v
+	return s
+}
+
+type AsyncEditTimelineRequest struct {
+	AutoClips *bool `json:"AutoClips,omitempty" xml:"AutoClips,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0dbf1055f8a2475d99904c3b76a0ffba
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	Timelines []*AsyncEditTimelineRequestTimelines `json:"Timelines,omitempty" xml:"Timelines,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-az2gglkjauwnnhpq
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s AsyncEditTimelineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncEditTimelineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncEditTimelineRequest) SetAutoClips(v bool) *AsyncEditTimelineRequest {
+	s.AutoClips = &v
+	return s
+}
+
+func (s *AsyncEditTimelineRequest) SetTaskId(v string) *AsyncEditTimelineRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *AsyncEditTimelineRequest) SetTimelines(v []*AsyncEditTimelineRequestTimelines) *AsyncEditTimelineRequest {
+	s.Timelines = v
+	return s
+}
+
+func (s *AsyncEditTimelineRequest) SetWorkspaceId(v string) *AsyncEditTimelineRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type AsyncEditTimelineRequestTimelines struct {
+	// This parameter is required.
+	Clips      []*AsyncEditTimelineRequestTimelinesClips `json:"Clips,omitempty" xml:"Clips,omitempty" type:"Repeated"`
+	TimelineId *string                                   `json:"TimelineId,omitempty" xml:"TimelineId,omitempty"`
+}
+
+func (s AsyncEditTimelineRequestTimelines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncEditTimelineRequestTimelines) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncEditTimelineRequestTimelines) SetClips(v []*AsyncEditTimelineRequestTimelinesClips) *AsyncEditTimelineRequestTimelines {
+	s.Clips = v
+	return s
+}
+
+func (s *AsyncEditTimelineRequestTimelines) SetTimelineId(v string) *AsyncEditTimelineRequestTimelines {
+	s.TimelineId = &v
+	return s
+}
+
+type AsyncEditTimelineRequestTimelinesClips struct {
+	ClipId       *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	ContentInner *string `json:"ContentInner,omitempty" xml:"ContentInner,omitempty"`
+	In           *int32  `json:"In,omitempty" xml:"In,omitempty"`
+	Out          *int32  `json:"Out,omitempty" xml:"Out,omitempty"`
+	VideoId      *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	VideoName    *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
+}
+
+func (s AsyncEditTimelineRequestTimelinesClips) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncEditTimelineRequestTimelinesClips) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncEditTimelineRequestTimelinesClips) SetClipId(v string) *AsyncEditTimelineRequestTimelinesClips {
+	s.ClipId = &v
+	return s
+}
+
+func (s *AsyncEditTimelineRequestTimelinesClips) SetContentInner(v string) *AsyncEditTimelineRequestTimelinesClips {
+	s.ContentInner = &v
+	return s
+}
+
+func (s *AsyncEditTimelineRequestTimelinesClips) SetIn(v int32) *AsyncEditTimelineRequestTimelinesClips {
+	s.In = &v
+	return s
+}
+
+func (s *AsyncEditTimelineRequestTimelinesClips) SetOut(v int32) *AsyncEditTimelineRequestTimelinesClips {
+	s.Out = &v
+	return s
+}
+
+func (s *AsyncEditTimelineRequestTimelinesClips) SetVideoId(v string) *AsyncEditTimelineRequestTimelinesClips {
+	s.VideoId = &v
+	return s
+}
+
+func (s *AsyncEditTimelineRequestTimelinesClips) SetVideoName(v string) *AsyncEditTimelineRequestTimelinesClips {
+	s.VideoName = &v
+	return s
+}
+
+type AsyncEditTimelineShrinkRequest struct {
+	AutoClips *bool `json:"AutoClips,omitempty" xml:"AutoClips,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0dbf1055f8a2475d99904c3b76a0ffba
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	TimelinesShrink *string `json:"Timelines,omitempty" xml:"Timelines,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-az2gglkjauwnnhpq
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s AsyncEditTimelineShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncEditTimelineShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncEditTimelineShrinkRequest) SetAutoClips(v bool) *AsyncEditTimelineShrinkRequest {
+	s.AutoClips = &v
+	return s
+}
+
+func (s *AsyncEditTimelineShrinkRequest) SetTaskId(v string) *AsyncEditTimelineShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *AsyncEditTimelineShrinkRequest) SetTimelinesShrink(v string) *AsyncEditTimelineShrinkRequest {
+	s.TimelinesShrink = &v
+	return s
+}
+
+func (s *AsyncEditTimelineShrinkRequest) SetWorkspaceId(v string) *AsyncEditTimelineShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type AsyncEditTimelineResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *AsyncEditTimelineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AsyncEditTimelineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncEditTimelineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncEditTimelineResponseBody) SetCode(v string) *AsyncEditTimelineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AsyncEditTimelineResponseBody) SetData(v *AsyncEditTimelineResponseBodyData) *AsyncEditTimelineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AsyncEditTimelineResponseBody) SetRequestId(v string) *AsyncEditTimelineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AsyncEditTimelineResponseBodyData struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 51e4efd1908242eb93ca9bbb7fc4359d
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s AsyncEditTimelineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncEditTimelineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncEditTimelineResponseBodyData) SetMessage(v string) *AsyncEditTimelineResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *AsyncEditTimelineResponseBodyData) SetTaskId(v string) *AsyncEditTimelineResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type AsyncEditTimelineResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AsyncEditTimelineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AsyncEditTimelineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncEditTimelineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncEditTimelineResponse) SetHeaders(v map[string]*string) *AsyncEditTimelineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AsyncEditTimelineResponse) SetStatusCode(v int32) *AsyncEditTimelineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AsyncEditTimelineResponse) SetBody(v *AsyncEditTimelineResponseBody) *AsyncEditTimelineResponse {
+	s.Body = v
+	return s
+}
+
+type AsyncUploadVideoRequest struct {
+	AnlysisPrompt *string `json:"AnlysisPrompt,omitempty" xml:"AnlysisPrompt,omitempty"`
+	// This parameter is required.
+	SourceVideos []*AsyncUploadVideoRequestSourceVideos `json:"SourceVideos,omitempty" xml:"SourceVideos,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s AsyncUploadVideoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncUploadVideoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncUploadVideoRequest) SetAnlysisPrompt(v string) *AsyncUploadVideoRequest {
+	s.AnlysisPrompt = &v
+	return s
+}
+
+func (s *AsyncUploadVideoRequest) SetSourceVideos(v []*AsyncUploadVideoRequestSourceVideos) *AsyncUploadVideoRequest {
+	s.SourceVideos = v
+	return s
+}
+
+func (s *AsyncUploadVideoRequest) SetWorkspaceId(v string) *AsyncUploadVideoRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type AsyncUploadVideoRequestSourceVideos struct {
+	VideoExtraInfo *string `json:"VideoExtraInfo,omitempty" xml:"VideoExtraInfo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123.mp4
+	VideoName *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
+	// This parameter is required.
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s AsyncUploadVideoRequestSourceVideos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncUploadVideoRequestSourceVideos) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncUploadVideoRequestSourceVideos) SetVideoExtraInfo(v string) *AsyncUploadVideoRequestSourceVideos {
+	s.VideoExtraInfo = &v
+	return s
+}
+
+func (s *AsyncUploadVideoRequestSourceVideos) SetVideoName(v string) *AsyncUploadVideoRequestSourceVideos {
+	s.VideoName = &v
+	return s
+}
+
+func (s *AsyncUploadVideoRequestSourceVideos) SetVideoUrl(v string) *AsyncUploadVideoRequestSourceVideos {
+	s.VideoUrl = &v
+	return s
+}
+
+type AsyncUploadVideoShrinkRequest struct {
+	AnlysisPrompt *string `json:"AnlysisPrompt,omitempty" xml:"AnlysisPrompt,omitempty"`
+	// This parameter is required.
+	SourceVideosShrink *string `json:"SourceVideos,omitempty" xml:"SourceVideos,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s AsyncUploadVideoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncUploadVideoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncUploadVideoShrinkRequest) SetAnlysisPrompt(v string) *AsyncUploadVideoShrinkRequest {
+	s.AnlysisPrompt = &v
+	return s
+}
+
+func (s *AsyncUploadVideoShrinkRequest) SetSourceVideosShrink(v string) *AsyncUploadVideoShrinkRequest {
+	s.SourceVideosShrink = &v
+	return s
+}
+
+func (s *AsyncUploadVideoShrinkRequest) SetWorkspaceId(v string) *AsyncUploadVideoShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type AsyncUploadVideoResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *AsyncUploadVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 94512A33-8EC1-5452-A793-5C91F18ED2F0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AsyncUploadVideoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncUploadVideoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncUploadVideoResponseBody) SetCode(v string) *AsyncUploadVideoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AsyncUploadVideoResponseBody) SetData(v *AsyncUploadVideoResponseBodyData) *AsyncUploadVideoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AsyncUploadVideoResponseBody) SetRequestId(v string) *AsyncUploadVideoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AsyncUploadVideoResponseBodyData struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId     *string                                       `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	VideoInfos []*AsyncUploadVideoResponseBodyDataVideoInfos `json:"VideoInfos,omitempty" xml:"VideoInfos,omitempty" type:"Repeated"`
+}
+
+func (s AsyncUploadVideoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncUploadVideoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncUploadVideoResponseBodyData) SetTaskId(v string) *AsyncUploadVideoResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *AsyncUploadVideoResponseBodyData) SetVideoInfos(v []*AsyncUploadVideoResponseBodyDataVideoInfos) *AsyncUploadVideoResponseBodyData {
+	s.VideoInfos = v
+	return s
+}
+
+type AsyncUploadVideoResponseBodyDataVideoInfos struct {
+	VideoExtraInfo *string `json:"VideoExtraInfo,omitempty" xml:"VideoExtraInfo,omitempty"`
+	// example:
+	//
+	// 60616fad41b171f0bb4b4531948c0102
+	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	// example:
+	//
+	// 123.mp4
+	VideoName *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
+	// example:
+	//
+	// http://123.mp4
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s AsyncUploadVideoResponseBodyDataVideoInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncUploadVideoResponseBodyDataVideoInfos) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncUploadVideoResponseBodyDataVideoInfos) SetVideoExtraInfo(v string) *AsyncUploadVideoResponseBodyDataVideoInfos {
+	s.VideoExtraInfo = &v
+	return s
+}
+
+func (s *AsyncUploadVideoResponseBodyDataVideoInfos) SetVideoId(v string) *AsyncUploadVideoResponseBodyDataVideoInfos {
+	s.VideoId = &v
+	return s
+}
+
+func (s *AsyncUploadVideoResponseBodyDataVideoInfos) SetVideoName(v string) *AsyncUploadVideoResponseBodyDataVideoInfos {
+	s.VideoName = &v
+	return s
+}
+
+func (s *AsyncUploadVideoResponseBodyDataVideoInfos) SetVideoUrl(v string) *AsyncUploadVideoResponseBodyDataVideoInfos {
+	s.VideoUrl = &v
+	return s
+}
+
+type AsyncUploadVideoResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AsyncUploadVideoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AsyncUploadVideoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncUploadVideoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncUploadVideoResponse) SetHeaders(v map[string]*string) *AsyncUploadVideoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AsyncUploadVideoResponse) SetStatusCode(v int32) *AsyncUploadVideoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AsyncUploadVideoResponse) SetBody(v *AsyncUploadVideoResponseBody) *AsyncUploadVideoResponse {
+	s.Body = v
+	return s
+}
+
 type CancelAsyncTaskRequest struct {
 	// This parameter is required.
 	//
@@ -6319,6 +7271,382 @@ func (s *GenerateViewPointResponse) SetStatusCode(v int32) *GenerateViewPointRes
 }
 
 func (s *GenerateViewPointResponse) SetBody(v *GenerateViewPointResponseBody) *GenerateViewPointResponse {
+	s.Body = v
+	return s
+}
+
+type GetAutoClipsTaskInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0dbf1055f8a2475d99904c3b76a0ffba
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetAutoClipsTaskInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoClipsTaskInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoClipsTaskInfoRequest) SetTaskId(v string) *GetAutoClipsTaskInfoRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoRequest) SetWorkspaceId(v string) *GetAutoClipsTaskInfoRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetAutoClipsTaskInfoResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAutoClipsTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAutoClipsTaskInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoClipsTaskInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoClipsTaskInfoResponseBody) SetCode(v string) *GetAutoClipsTaskInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBody) SetData(v *GetAutoClipsTaskInfoResponseBodyData) *GetAutoClipsTaskInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBody) SetRequestId(v string) *GetAutoClipsTaskInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAutoClipsTaskInfoResponseBodyData struct {
+	ColorWords         []*GetAutoClipsTaskInfoResponseBodyDataColorWords `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
+	Content            *string                                           `json:"Content,omitempty" xml:"Content,omitempty"`
+	MediaCloudTimeline *string                                           `json:"MediaCloudTimeline,omitempty" xml:"MediaCloudTimeline,omitempty"`
+	MusicStyle         *string                                           `json:"MusicStyle,omitempty" xml:"MusicStyle,omitempty"`
+	// example:
+	//
+	// http://music.mp4
+	MusicUrl *string `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
+	// example:
+	//
+	// 5
+	MusicVolume *int32 `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
+	// example:
+	//
+	// http://output.mp4
+	OutputVideoUrl *string `json:"OutputVideoUrl,omitempty" xml:"OutputVideoUrl,omitempty"`
+	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// clips
+	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	// example:
+	//
+	// 5
+	SubtitleFontSize *int32 `json:"SubtitleFontSize,omitempty" xml:"SubtitleFontSize,omitempty"`
+	// example:
+	//
+	// e5a1a59c82d0454fad6454e8a04d0093
+	TaskId     *string                                          `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Timelines  []*GetAutoClipsTaskInfoResponseBodyDataTimelines `json:"Timelines,omitempty" xml:"Timelines,omitempty" type:"Repeated"`
+	VoiceStyle *string                                          `json:"VoiceStyle,omitempty" xml:"VoiceStyle,omitempty"`
+	// example:
+	//
+	// 5
+	VoiceVolume *int32 `json:"VoiceVolume,omitempty" xml:"VoiceVolume,omitempty"`
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetColorWords(v []*GetAutoClipsTaskInfoResponseBodyDataColorWords) *GetAutoClipsTaskInfoResponseBodyData {
+	s.ColorWords = v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetContent(v string) *GetAutoClipsTaskInfoResponseBodyData {
+	s.Content = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetMediaCloudTimeline(v string) *GetAutoClipsTaskInfoResponseBodyData {
+	s.MediaCloudTimeline = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetMusicStyle(v string) *GetAutoClipsTaskInfoResponseBodyData {
+	s.MusicStyle = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetMusicUrl(v string) *GetAutoClipsTaskInfoResponseBodyData {
+	s.MusicUrl = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetMusicVolume(v int32) *GetAutoClipsTaskInfoResponseBodyData {
+	s.MusicVolume = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetOutputVideoUrl(v string) *GetAutoClipsTaskInfoResponseBodyData {
+	s.OutputVideoUrl = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetStatus(v int32) *GetAutoClipsTaskInfoResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetStep(v string) *GetAutoClipsTaskInfoResponseBodyData {
+	s.Step = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetSubtitleFontSize(v int32) *GetAutoClipsTaskInfoResponseBodyData {
+	s.SubtitleFontSize = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetTaskId(v string) *GetAutoClipsTaskInfoResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetTimelines(v []*GetAutoClipsTaskInfoResponseBodyDataTimelines) *GetAutoClipsTaskInfoResponseBodyData {
+	s.Timelines = v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetVoiceStyle(v string) *GetAutoClipsTaskInfoResponseBodyData {
+	s.VoiceStyle = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetVoiceVolume(v int32) *GetAutoClipsTaskInfoResponseBodyData {
+	s.VoiceVolume = &v
+	return s
+}
+
+type GetAutoClipsTaskInfoResponseBodyDataColorWords struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// CS0002-000008
+	EffectColorStyle *string `json:"EffectColorStyle,omitempty" xml:"EffectColorStyle,omitempty"`
+	// example:
+	//
+	// 5
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// example:
+	//
+	// 0
+	TimelineIn *int32 `json:"TimelineIn,omitempty" xml:"TimelineIn,omitempty"`
+	// example:
+	//
+	// 5
+	TimelineOut *int32 `json:"TimelineOut,omitempty" xml:"TimelineOut,omitempty"`
+	// example:
+	//
+	// 0.2
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.5
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataColorWords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataColorWords) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataColorWords) SetContent(v string) *GetAutoClipsTaskInfoResponseBodyDataColorWords {
+	s.Content = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataColorWords) SetEffectColorStyle(v string) *GetAutoClipsTaskInfoResponseBodyDataColorWords {
+	s.EffectColorStyle = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataColorWords) SetFontSize(v int32) *GetAutoClipsTaskInfoResponseBodyDataColorWords {
+	s.FontSize = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataColorWords) SetTimelineIn(v int32) *GetAutoClipsTaskInfoResponseBodyDataColorWords {
+	s.TimelineIn = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataColorWords) SetTimelineOut(v int32) *GetAutoClipsTaskInfoResponseBodyDataColorWords {
+	s.TimelineOut = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataColorWords) SetX(v float32) *GetAutoClipsTaskInfoResponseBodyDataColorWords {
+	s.X = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataColorWords) SetY(v float32) *GetAutoClipsTaskInfoResponseBodyDataColorWords {
+	s.Y = &v
+	return s
+}
+
+type GetAutoClipsTaskInfoResponseBodyDataTimelines struct {
+	Clips   []*GetAutoClipsTaskInfoResponseBodyDataTimelinesClips `json:"Clips,omitempty" xml:"Clips,omitempty" type:"Repeated"`
+	Content *string                                               `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 20774ebd9abc71ef80486632b68f0102
+	TimelineId *string `json:"TimelineId,omitempty" xml:"TimelineId,omitempty"`
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataTimelines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataTimelines) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataTimelines) SetClips(v []*GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) *GetAutoClipsTaskInfoResponseBodyDataTimelines {
+	s.Clips = v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataTimelines) SetContent(v string) *GetAutoClipsTaskInfoResponseBodyDataTimelines {
+	s.Content = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataTimelines) SetTimelineId(v string) *GetAutoClipsTaskInfoResponseBodyDataTimelines {
+	s.TimelineId = &v
+	return s
+}
+
+type GetAutoClipsTaskInfoResponseBodyDataTimelinesClips struct {
+	// example:
+	//
+	// 20774ebd9abc71ef80486632b68f0102
+	ClipId       *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	ContentInner *string `json:"ContentInner,omitempty" xml:"ContentInner,omitempty"`
+	// example:
+	//
+	// 0
+	In *int32 `json:"In,omitempty" xml:"In,omitempty"`
+	// example:
+	//
+	// 5
+	Out *int32 `json:"Out,omitempty" xml:"Out,omitempty"`
+	// example:
+	//
+	// 20774ebd9abc71ef80486632b68f0102
+	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	// example:
+	//
+	// 123.mp4
+	VideoName *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) SetClipId(v string) *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips {
+	s.ClipId = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) SetContentInner(v string) *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips {
+	s.ContentInner = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) SetIn(v int32) *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips {
+	s.In = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) SetOut(v int32) *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips {
+	s.Out = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) SetVideoId(v string) *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips {
+	s.VideoId = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) SetVideoName(v string) *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips {
+	s.VideoName = &v
+	return s
+}
+
+type GetAutoClipsTaskInfoResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAutoClipsTaskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAutoClipsTaskInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoClipsTaskInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoClipsTaskInfoResponse) SetHeaders(v map[string]*string) *GetAutoClipsTaskInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponse) SetStatusCode(v int32) *GetAutoClipsTaskInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponse) SetBody(v *GetAutoClipsTaskInfoResponseBody) *GetAutoClipsTaskInfoResponse {
 	s.Body = v
 	return s
 }
@@ -33163,7 +34491,8 @@ func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectio
 }
 
 type RunSearchGenerationRequestChatConfig struct {
-	EnableThinking *bool `json:"EnableThinking,omitempty" xml:"EnableThinking,omitempty"`
+	EnableThinking         *bool     `json:"EnableThinking,omitempty" xml:"EnableThinking,omitempty"`
+	ExcludeGenerateOptions []*string `json:"ExcludeGenerateOptions,omitempty" xml:"ExcludeGenerateOptions,omitempty" type:"Repeated"`
 	// example:
 	//
 	// concise
@@ -33186,6 +34515,11 @@ func (s RunSearchGenerationRequestChatConfig) GoString() string {
 
 func (s *RunSearchGenerationRequestChatConfig) SetEnableThinking(v bool) *RunSearchGenerationRequestChatConfig {
 	s.EnableThinking = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfig) SetExcludeGenerateOptions(v []*string) *RunSearchGenerationRequestChatConfig {
+	s.ExcludeGenerateOptions = v
 	return s
 }
 
@@ -48905,6 +50239,328 @@ func (client *Client) AddDatasetDocument(request *AddDatasetDocumentRequest) (_r
 
 // Summary:
 //
+// 生成剪辑视频任务
+//
+// @param tmpReq - AsyncCreateClipsTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AsyncCreateClipsTaskResponse
+func (client *Client) AsyncCreateClipsTaskWithOptions(tmpReq *AsyncCreateClipsTaskRequest, runtime *util.RuntimeOptions) (_result *AsyncCreateClipsTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AsyncCreateClipsTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ColorWords)) {
+		request.ColorWordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ColorWords, tea.String("ColorWords"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ColorWordsShrink)) {
+		body["ColorWords"] = request.ColorWordsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Height)) {
+		body["Height"] = request.Height
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MusicUrl)) {
+		body["MusicUrl"] = request.MusicUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MusicVolume)) {
+		body["MusicVolume"] = request.MusicVolume
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubtitleFontSize)) {
+		body["SubtitleFontSize"] = request.SubtitleFontSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceStyle)) {
+		body["VoiceStyle"] = request.VoiceStyle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceVolume)) {
+		body["VoiceVolume"] = request.VoiceVolume
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Width)) {
+		body["Width"] = request.Width
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AsyncCreateClipsTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AsyncCreateClipsTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成剪辑视频任务
+//
+// @param request - AsyncCreateClipsTaskRequest
+//
+// @return AsyncCreateClipsTaskResponse
+func (client *Client) AsyncCreateClipsTask(request *AsyncCreateClipsTaskRequest) (_result *AsyncCreateClipsTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AsyncCreateClipsTaskResponse{}
+	_body, _err := client.AsyncCreateClipsTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 智能剪辑timeline
+//
+// @param request - AsyncCreateClipsTimeLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AsyncCreateClipsTimeLineResponse
+func (client *Client) AsyncCreateClipsTimeLineWithOptions(request *AsyncCreateClipsTimeLineRequest, runtime *util.RuntimeOptions) (_result *AsyncCreateClipsTimeLineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProcessPrompt)) {
+		body["ProcessPrompt"] = request.ProcessPrompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AsyncCreateClipsTimeLine"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AsyncCreateClipsTimeLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 智能剪辑timeline
+//
+// @param request - AsyncCreateClipsTimeLineRequest
+//
+// @return AsyncCreateClipsTimeLineResponse
+func (client *Client) AsyncCreateClipsTimeLine(request *AsyncCreateClipsTimeLineRequest) (_result *AsyncCreateClipsTimeLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AsyncCreateClipsTimeLineResponse{}
+	_body, _err := client.AsyncCreateClipsTimeLineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑剪辑任务的timeline
+//
+// @param tmpReq - AsyncEditTimelineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AsyncEditTimelineResponse
+func (client *Client) AsyncEditTimelineWithOptions(tmpReq *AsyncEditTimelineRequest, runtime *util.RuntimeOptions) (_result *AsyncEditTimelineResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AsyncEditTimelineShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Timelines)) {
+		request.TimelinesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Timelines, tea.String("Timelines"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoClips)) {
+		body["AutoClips"] = request.AutoClips
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimelinesShrink)) {
+		body["Timelines"] = request.TimelinesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AsyncEditTimeline"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AsyncEditTimelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑剪辑任务的timeline
+//
+// @param request - AsyncEditTimelineRequest
+//
+// @return AsyncEditTimelineResponse
+func (client *Client) AsyncEditTimeline(request *AsyncEditTimelineRequest) (_result *AsyncEditTimelineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AsyncEditTimelineResponse{}
+	_body, _err := client.AsyncEditTimelineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传剪辑素材
+//
+// @param tmpReq - AsyncUploadVideoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AsyncUploadVideoResponse
+func (client *Client) AsyncUploadVideoWithOptions(tmpReq *AsyncUploadVideoRequest, runtime *util.RuntimeOptions) (_result *AsyncUploadVideoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AsyncUploadVideoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceVideos)) {
+		request.SourceVideosShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceVideos, tea.String("SourceVideos"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnlysisPrompt)) {
+		body["AnlysisPrompt"] = request.AnlysisPrompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceVideosShrink)) {
+		body["SourceVideos"] = request.SourceVideosShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AsyncUploadVideo"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AsyncUploadVideoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传剪辑素材
+//
+// @param request - AsyncUploadVideoRequest
+//
+// @return AsyncUploadVideoResponse
+func (client *Client) AsyncUploadVideo(request *AsyncUploadVideoRequest) (_result *AsyncUploadVideoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AsyncUploadVideoResponse{}
+	_body, _err := client.AsyncUploadVideoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 取消异步任务
 //
 // @param request - CancelAsyncTaskRequest
@@ -51124,6 +52780,70 @@ func (client *Client) GenerateViewPoint(request *GenerateViewPointRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateViewPointResponse{}
 	_body, _err := client.GenerateViewPointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获得剪辑任务状态
+//
+// @param request - GetAutoClipsTaskInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAutoClipsTaskInfoResponse
+func (client *Client) GetAutoClipsTaskInfoWithOptions(request *GetAutoClipsTaskInfoRequest, runtime *util.RuntimeOptions) (_result *GetAutoClipsTaskInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAutoClipsTaskInfo"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAutoClipsTaskInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获得剪辑任务状态
+//
+// @param request - GetAutoClipsTaskInfoRequest
+//
+// @return GetAutoClipsTaskInfoResponse
+func (client *Client) GetAutoClipsTaskInfo(request *GetAutoClipsTaskInfoRequest) (_result *GetAutoClipsTaskInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAutoClipsTaskInfoResponse{}
+	_body, _err := client.GetAutoClipsTaskInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
