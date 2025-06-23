@@ -476,6 +476,117 @@ func (s *BatchSendMailResponse) SetBody(v *BatchSendMailResponseBody) *BatchSend
 	return s
 }
 
+type ChangeDomainDkimRecordRequest struct {
+	DkimRsaLength        *int32  `json:"DkimRsaLength,omitempty" xml:"DkimRsaLength,omitempty"`
+	Domain               *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ChangeDomainDkimRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeDomainDkimRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeDomainDkimRecordRequest) SetDkimRsaLength(v int32) *ChangeDomainDkimRecordRequest {
+	s.DkimRsaLength = &v
+	return s
+}
+
+func (s *ChangeDomainDkimRecordRequest) SetDomain(v string) *ChangeDomainDkimRecordRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *ChangeDomainDkimRecordRequest) SetOwnerId(v int64) *ChangeDomainDkimRecordRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ChangeDomainDkimRecordRequest) SetResourceOwnerAccount(v string) *ChangeDomainDkimRecordRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ChangeDomainDkimRecordRequest) SetResourceOwnerId(v int64) *ChangeDomainDkimRecordRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ChangeDomainDkimRecordResponseBody struct {
+	Changed       *bool   `json:"Changed,omitempty" xml:"Changed,omitempty"`
+	DkimPublicKey *string `json:"DkimPublicKey,omitempty" xml:"DkimPublicKey,omitempty"`
+	DkimRsaLength *int32  `json:"DkimRsaLength,omitempty" xml:"DkimRsaLength,omitempty"`
+	Hostname      *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChangeDomainDkimRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeDomainDkimRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeDomainDkimRecordResponseBody) SetChanged(v bool) *ChangeDomainDkimRecordResponseBody {
+	s.Changed = &v
+	return s
+}
+
+func (s *ChangeDomainDkimRecordResponseBody) SetDkimPublicKey(v string) *ChangeDomainDkimRecordResponseBody {
+	s.DkimPublicKey = &v
+	return s
+}
+
+func (s *ChangeDomainDkimRecordResponseBody) SetDkimRsaLength(v int32) *ChangeDomainDkimRecordResponseBody {
+	s.DkimRsaLength = &v
+	return s
+}
+
+func (s *ChangeDomainDkimRecordResponseBody) SetHostname(v string) *ChangeDomainDkimRecordResponseBody {
+	s.Hostname = &v
+	return s
+}
+
+func (s *ChangeDomainDkimRecordResponseBody) SetRequestId(v string) *ChangeDomainDkimRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeDomainDkimRecordResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeDomainDkimRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ChangeDomainDkimRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeDomainDkimRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeDomainDkimRecordResponse) SetHeaders(v map[string]*string) *ChangeDomainDkimRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeDomainDkimRecordResponse) SetStatusCode(v int32) *ChangeDomainDkimRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeDomainDkimRecordResponse) SetBody(v *ChangeDomainDkimRecordResponseBody) *ChangeDomainDkimRecordResponse {
+	s.Body = v
+	return s
+}
+
 type CheckDomainRequest struct {
 	// Domain ID.
 	//
@@ -2352,7 +2463,8 @@ type DescDomainResponseBody struct {
 	// example:
 	//
 	// aliyun-cn-hangzhou._domainkey.hangzhou26
-	DkimRR *string `json:"DkimRR,omitempty" xml:"DkimRR,omitempty"`
+	DkimRR        *string `json:"DkimRR,omitempty" xml:"DkimRR,omitempty"`
+	DkimRsaLength *int32  `json:"DkimRsaLength,omitempty" xml:"DkimRsaLength,omitempty"`
 	// DMARC verification flag, indicating whether the DMARC record set by the user in DNS has passed validation, 0: Passed, 1: Not passed
 	//
 	// example:
@@ -2530,6 +2642,11 @@ func (s *DescDomainResponseBody) SetDkimPublicKey(v string) *DescDomainResponseB
 
 func (s *DescDomainResponseBody) SetDkimRR(v string) *DescDomainResponseBody {
 	s.DkimRR = &v
+	return s
+}
+
+func (s *DescDomainResponseBody) SetDkimRsaLength(v int32) *DescDomainResponseBody {
+	s.DkimRsaLength = &v
 	return s
 }
 
@@ -8765,6 +8882,82 @@ func (client *Client) BatchSendMail(request *BatchSendMailRequest) (_result *Bat
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchSendMailResponse{}
 	_body, _err := client.BatchSendMailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改域名DKIM记录
+//
+// @param request - ChangeDomainDkimRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeDomainDkimRecordResponse
+func (client *Client) ChangeDomainDkimRecordWithOptions(request *ChangeDomainDkimRecordRequest, runtime *util.RuntimeOptions) (_result *ChangeDomainDkimRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DkimRsaLength)) {
+		query["DkimRsaLength"] = request.DkimRsaLength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeDomainDkimRecord"),
+		Version:     tea.String("2015-11-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeDomainDkimRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改域名DKIM记录
+//
+// @param request - ChangeDomainDkimRecordRequest
+//
+// @return ChangeDomainDkimRecordResponse
+func (client *Client) ChangeDomainDkimRecord(request *ChangeDomainDkimRecordRequest) (_result *ChangeDomainDkimRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeDomainDkimRecordResponse{}
+	_body, _err := client.ChangeDomainDkimRecordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
