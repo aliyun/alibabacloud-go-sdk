@@ -1162,13 +1162,12 @@ type DescribePackageDeductionsRequest struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// CorePackage
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ResourceType  *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
+	StartTime     *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribePackageDeductionsRequest) String() string {
@@ -1206,6 +1205,11 @@ func (s *DescribePackageDeductionsRequest) SetPageSize(v int32) *DescribePackage
 
 func (s *DescribePackageDeductionsRequest) SetResourceType(v string) *DescribePackageDeductionsRequest {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribePackageDeductionsRequest) SetResourceTypes(v []*string) *DescribePackageDeductionsRequest {
+	s.ResourceTypes = v
 	return s
 }
 
@@ -1299,11 +1303,13 @@ type DescribePackageDeductionsResponseBodyDeductions struct {
 	// example:
 	//
 	// 2024-07-31T03:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// example:
 	//
 	// Deleted
 	InstanceState *string `json:"InstanceState,omitempty" xml:"InstanceState,omitempty"`
+	InstanceType  *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// example:
 	//
 	// 8192
@@ -1317,6 +1323,7 @@ type DescribePackageDeductionsResponseBodyDeductions struct {
 	// cn-hangzhou
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SessionId    *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// example:
 	//
 	// 2024-07-31T02:00Z
@@ -1328,7 +1335,8 @@ type DescribePackageDeductionsResponseBodyDeductions struct {
 	// example:
 	//
 	// 3600
-	UsedTime *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	UsedTime          *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	UsedTimeWithScale *int64 `json:"UsedTimeWithScale,omitempty" xml:"UsedTimeWithScale,omitempty"`
 }
 
 func (s DescribePackageDeductionsResponseBodyDeductions) String() string {
@@ -1364,8 +1372,18 @@ func (s *DescribePackageDeductionsResponseBodyDeductions) SetEndTime(v string) *
 	return s
 }
 
+func (s *DescribePackageDeductionsResponseBodyDeductions) SetInstanceId(v string) *DescribePackageDeductionsResponseBodyDeductions {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *DescribePackageDeductionsResponseBodyDeductions) SetInstanceState(v string) *DescribePackageDeductionsResponseBodyDeductions {
 	s.InstanceState = &v
+	return s
+}
+
+func (s *DescribePackageDeductionsResponseBodyDeductions) SetInstanceType(v string) *DescribePackageDeductionsResponseBodyDeductions {
+	s.InstanceType = &v
 	return s
 }
 
@@ -1389,6 +1407,11 @@ func (s *DescribePackageDeductionsResponseBodyDeductions) SetResourceType(v stri
 	return s
 }
 
+func (s *DescribePackageDeductionsResponseBodyDeductions) SetSessionId(v string) *DescribePackageDeductionsResponseBodyDeductions {
+	s.SessionId = &v
+	return s
+}
+
 func (s *DescribePackageDeductionsResponseBodyDeductions) SetStaTime(v string) *DescribePackageDeductionsResponseBodyDeductions {
 	s.StaTime = &v
 	return s
@@ -1401,6 +1424,11 @@ func (s *DescribePackageDeductionsResponseBodyDeductions) SetUsedCoreTime(v floa
 
 func (s *DescribePackageDeductionsResponseBodyDeductions) SetUsedTime(v int64) *DescribePackageDeductionsResponseBodyDeductions {
 	s.UsedTime = &v
+	return s
+}
+
+func (s *DescribePackageDeductionsResponseBodyDeductions) SetUsedTimeWithScale(v int64) *DescribePackageDeductionsResponseBodyDeductions {
+	s.UsedTimeWithScale = &v
 	return s
 }
 
@@ -1662,6 +1690,10 @@ func (client *Client) CreateMultiOrder(request *CreateMultiOrderRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询物流地址
+//
 // @param request - DescribeDeliveryAddressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1689,6 +1721,10 @@ func (client *Client) DescribeDeliveryAddressWithOptions(runtime *util.RuntimeOp
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询物流地址
+//
 // @return DescribeDeliveryAddressResponse
 func (client *Client) DescribeDeliveryAddress() (_result *DescribeDeliveryAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -1701,6 +1737,10 @@ func (client *Client) DescribeDeliveryAddress() (_result *DescribeDeliveryAddres
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量询价
+//
 // @param request - DescribeMultiPriceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1751,6 +1791,10 @@ func (client *Client) DescribeMultiPriceWithOptions(request *DescribeMultiPriceR
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量询价
+//
 // @param request - DescribeMultiPriceRequest
 //
 // @return DescribeMultiPriceResponse
@@ -1804,6 +1848,10 @@ func (client *Client) DescribePackageDeductionsWithOptions(request *DescribePack
 		query["ResourceType"] = request.ResourceType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -1849,6 +1897,10 @@ func (client *Client) DescribePackageDeductions(request *DescribePackageDeductio
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新实例属性
+//
 // @param request - ModifyInstancePropertiesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1903,6 +1955,10 @@ func (client *Client) ModifyInstancePropertiesWithOptions(request *ModifyInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新实例属性
+//
 // @param request - ModifyInstancePropertiesRequest
 //
 // @return ModifyInstancePropertiesResponse
