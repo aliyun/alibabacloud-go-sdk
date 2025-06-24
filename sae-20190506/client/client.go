@@ -39356,7 +39356,8 @@ type ListApplicationsResponseBodyDataApplications struct {
 	// example:
 	//
 	// 2
-	Instances *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	Instances  *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	IsStateful *bool  `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
 	// The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
 	//
 	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
@@ -39408,7 +39409,8 @@ type ListApplicationsResponseBodyDataApplications struct {
 	// 2
 	RunningInstances *int32 `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
 	// The tags of the application.
-	Tags []*ListApplicationsResponseBodyDataApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Tags  []*ListApplicationsResponseBodyDataApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListApplicationsResponseBodyDataApplications) String() string {
@@ -39479,6 +39481,11 @@ func (s *ListApplicationsResponseBodyDataApplications) SetInstances(v int32) *Li
 	return s
 }
 
+func (s *ListApplicationsResponseBodyDataApplications) SetIsStateful(v bool) *ListApplicationsResponseBodyDataApplications {
+	s.IsStateful = &v
+	return s
+}
+
 func (s *ListApplicationsResponseBodyDataApplications) SetMem(v int32) *ListApplicationsResponseBodyDataApplications {
 	s.Mem = &v
 	return s
@@ -39534,6 +39541,11 @@ func (s *ListApplicationsResponseBodyDataApplications) SetTags(v []*ListApplicat
 	return s
 }
 
+func (s *ListApplicationsResponseBodyDataApplications) SetVpcId(v string) *ListApplicationsResponseBodyDataApplications {
+	s.VpcId = &v
+	return s
+}
+
 type ListApplicationsResponseBodyDataApplicationsChildren struct {
 	AppDeletingStatus   *bool                                                       `json:"AppDeletingStatus,omitempty" xml:"AppDeletingStatus,omitempty"`
 	AppDescription      *string                                                     `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
@@ -39543,6 +39555,7 @@ type ListApplicationsResponseBodyDataApplicationsChildren struct {
 	BaseAppId           *string                                                     `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
 	Cpu                 *int32                                                      `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	Instances           *int32                                                      `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	IsStateful          *bool                                                       `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
 	Mem                 *int32                                                      `json:"Mem,omitempty" xml:"Mem,omitempty"`
 	MseEnabled          *bool                                                       `json:"MseEnabled,omitempty" xml:"MseEnabled,omitempty"`
 	NamespaceId         *string                                                     `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
@@ -39601,6 +39614,11 @@ func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetCpu(v int32) *
 
 func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetInstances(v int32) *ListApplicationsResponseBodyDataApplicationsChildren {
 	s.Instances = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetIsStateful(v bool) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.IsStateful = &v
 	return s
 }
 
