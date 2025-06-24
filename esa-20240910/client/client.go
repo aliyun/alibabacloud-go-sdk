@@ -13244,8 +13244,6 @@ type CreateSiteDeliveryTaskRequest struct {
 	//
 	// 	- oversea: outside the Chinese mainland.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cn
@@ -13284,6 +13282,7 @@ type CreateSiteDeliveryTaskRequest struct {
 	//
 	// user_agent,ip_adress,ip_port
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
 	// The configurations for delivery to an HTTP server.
 	HttpDelivery *CreateSiteDeliveryTaskRequestHttpDelivery `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty" type:"Struct"`
 	// The configurations for delivery to Kafka.
@@ -13345,6 +13344,11 @@ func (s *CreateSiteDeliveryTaskRequest) SetFieldName(v string) *CreateSiteDelive
 	return s
 }
 
+func (s *CreateSiteDeliveryTaskRequest) SetFilterVer(v string) *CreateSiteDeliveryTaskRequest {
+	s.FilterVer = &v
+	return s
+}
+
 func (s *CreateSiteDeliveryTaskRequest) SetHttpDelivery(v *CreateSiteDeliveryTaskRequestHttpDelivery) *CreateSiteDeliveryTaskRequest {
 	s.HttpDelivery = v
 	return s
@@ -13394,7 +13398,8 @@ type CreateSiteDeliveryTaskRequestHttpDelivery struct {
 	// http://xxx.aliyun.com/v1/log/upload
 	DestUrl *string `json:"DestUrl,omitempty" xml:"DestUrl,omitempty"`
 	// The custom headers.
-	HeaderParam map[string]*HttpDeliveryHeaderParamValue `json:"HeaderParam,omitempty" xml:"HeaderParam,omitempty"`
+	HeaderParam  map[string]*HttpDeliveryHeaderParamValue `json:"HeaderParam,omitempty" xml:"HeaderParam,omitempty"`
+	LastLogSplit *bool                                    `json:"LastLogSplit,omitempty" xml:"LastLogSplit,omitempty"`
 	// The prefix of the log delivery package.
 	//
 	// example:
@@ -13407,6 +13412,8 @@ type CreateSiteDeliveryTaskRequestHttpDelivery struct {
 	//
 	// cdnVersion:1.0
 	LogBodySuffix *string `json:"LogBodySuffix,omitempty" xml:"LogBodySuffix,omitempty"`
+	LogSplit      *bool   `json:"LogSplit,omitempty" xml:"LogSplit,omitempty"`
+	LogSplitWords *string `json:"LogSplitWords,omitempty" xml:"LogSplitWords,omitempty"`
 	// The maximum size of data for each delivery. Unit: MB.
 	//
 	// example:
@@ -13466,6 +13473,11 @@ func (s *CreateSiteDeliveryTaskRequestHttpDelivery) SetHeaderParam(v map[string]
 	return s
 }
 
+func (s *CreateSiteDeliveryTaskRequestHttpDelivery) SetLastLogSplit(v bool) *CreateSiteDeliveryTaskRequestHttpDelivery {
+	s.LastLogSplit = &v
+	return s
+}
+
 func (s *CreateSiteDeliveryTaskRequestHttpDelivery) SetLogBodyPrefix(v string) *CreateSiteDeliveryTaskRequestHttpDelivery {
 	s.LogBodyPrefix = &v
 	return s
@@ -13473,6 +13485,16 @@ func (s *CreateSiteDeliveryTaskRequestHttpDelivery) SetLogBodyPrefix(v string) *
 
 func (s *CreateSiteDeliveryTaskRequestHttpDelivery) SetLogBodySuffix(v string) *CreateSiteDeliveryTaskRequestHttpDelivery {
 	s.LogBodySuffix = &v
+	return s
+}
+
+func (s *CreateSiteDeliveryTaskRequestHttpDelivery) SetLogSplit(v bool) *CreateSiteDeliveryTaskRequestHttpDelivery {
+	s.LogSplit = &v
+	return s
+}
+
+func (s *CreateSiteDeliveryTaskRequestHttpDelivery) SetLogSplitWords(v string) *CreateSiteDeliveryTaskRequestHttpDelivery {
+	s.LogSplitWords = &v
 	return s
 }
 
@@ -13874,8 +13896,6 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	//
 	// 	- oversea: outside the Chinese mainland.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cn
@@ -13914,6 +13934,7 @@ type CreateSiteDeliveryTaskShrinkRequest struct {
 	//
 	// user_agent,ip_adress,ip_port
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
 	// The configurations for delivery to an HTTP server.
 	HttpDeliveryShrink *string `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty"`
 	// The configurations for delivery to Kafka.
@@ -13972,6 +13993,11 @@ func (s *CreateSiteDeliveryTaskShrinkRequest) SetDiscardRate(v float32) *CreateS
 
 func (s *CreateSiteDeliveryTaskShrinkRequest) SetFieldName(v string) *CreateSiteDeliveryTaskShrinkRequest {
 	s.FieldName = &v
+	return s
+}
+
+func (s *CreateSiteDeliveryTaskShrinkRequest) SetFilterVer(v string) *CreateSiteDeliveryTaskShrinkRequest {
+	s.FilterVer = &v
 	return s
 }
 
@@ -14149,6 +14175,110 @@ func (s *CreateSlrRoleForRealtimeLogResponse) SetBody(v *CreateSlrRoleForRealtim
 	return s
 }
 
+type CreateUrlObservationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// automatic
+	SdkType *string `json:"SdkType,omitempty" xml:"SdkType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456******
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com/test
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s CreateUrlObservationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUrlObservationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUrlObservationRequest) SetSdkType(v string) *CreateUrlObservationRequest {
+	s.SdkType = &v
+	return s
+}
+
+func (s *CreateUrlObservationRequest) SetSiteId(v int64) *CreateUrlObservationRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateUrlObservationRequest) SetUrl(v string) *CreateUrlObservationRequest {
+	s.Url = &v
+	return s
+}
+
+type CreateUrlObservationResponseBody struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateUrlObservationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUrlObservationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUrlObservationResponseBody) SetConfigId(v string) *CreateUrlObservationResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateUrlObservationResponseBody) SetRequestId(v string) *CreateUrlObservationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateUrlObservationResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUrlObservationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateUrlObservationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUrlObservationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUrlObservationResponse) SetHeaders(v map[string]*string) *CreateUrlObservationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateUrlObservationResponse) SetStatusCode(v int32) *CreateUrlObservationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateUrlObservationResponse) SetBody(v *CreateUrlObservationResponseBody) *CreateUrlObservationResponse {
+	s.Body = v
+	return s
+}
+
 type CreateUserDeliveryTaskRequest struct {
 	// The log category. Valid values:
 	//
@@ -14171,8 +14301,6 @@ type CreateUserDeliveryTaskRequest struct {
 	// 	- cn: the Chinese mainland.
 	//
 	// 	- sg: outside the Chinese mainland.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -14213,6 +14341,7 @@ type CreateUserDeliveryTaskRequest struct {
 	//
 	// user_agent,ip_address,ip_port
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
 	// The configurations for delivery to an HTTP server.
 	HttpDelivery *CreateUserDeliveryTaskRequestHttpDelivery `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty" type:"Struct"`
 	// The configurations for delivery to Kafka.
@@ -14271,6 +14400,11 @@ func (s *CreateUserDeliveryTaskRequest) SetFieldName(v string) *CreateUserDelive
 	return s
 }
 
+func (s *CreateUserDeliveryTaskRequest) SetFilterVer(v string) *CreateUserDeliveryTaskRequest {
+	s.FilterVer = &v
+	return s
+}
+
 func (s *CreateUserDeliveryTaskRequest) SetHttpDelivery(v *CreateUserDeliveryTaskRequestHttpDelivery) *CreateUserDeliveryTaskRequest {
 	s.HttpDelivery = v
 	return s
@@ -14321,7 +14455,7 @@ type CreateUserDeliveryTaskRequestHttpDelivery struct {
 	// example:
 	//
 	// \\n
-	LastLogSplit *string `json:"LastLogSplit,omitempty" xml:"LastLogSplit,omitempty"`
+	LastLogSplit *bool `json:"LastLogSplit,omitempty" xml:"LastLogSplit,omitempty"`
 	// The prefix of the log delivery package.
 	//
 	// example:
@@ -14339,19 +14473,13 @@ type CreateUserDeliveryTaskRequestHttpDelivery struct {
 	// example:
 	//
 	// true
-	LogSplit *string `json:"LogSplit,omitempty" xml:"LogSplit,omitempty"`
+	LogSplit *bool `json:"LogSplit,omitempty" xml:"LogSplit,omitempty"`
 	// The log separator.
 	//
 	// example:
 	//
 	// \\n
 	LogSplitWords *string `json:"LogSplitWords,omitempty" xml:"LogSplitWords,omitempty"`
-	// The maximum backoff time. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1000
-	MaxBackoffMS *int64 `json:"MaxBackoffMS,omitempty" xml:"MaxBackoffMS,omitempty"`
 	// The maximum size of data for each delivery. Unit: MB.
 	//
 	// example:
@@ -14370,20 +14498,8 @@ type CreateUserDeliveryTaskRequestHttpDelivery struct {
 	//
 	// 3
 	MaxRetry *int64 `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
-	// The minimum backoff time. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 100
-	MinBackoffMS *int64 `json:"MinBackoffMS,omitempty" xml:"MinBackoffMS,omitempty"`
 	// The custom query parameters.
 	QueryParam map[string]*HttpDeliveryQueryParamValue `json:"QueryParam,omitempty" xml:"QueryParam,omitempty"`
-	// The response field key used for success check.
-	//
-	// example:
-	//
-	// err_code
-	ResponseBodyKey *string `json:"ResponseBodyKey,omitempty" xml:"ResponseBodyKey,omitempty"`
 	// Specifies whether to use server authentication.
 	//
 	// example:
@@ -14392,12 +14508,6 @@ type CreateUserDeliveryTaskRequestHttpDelivery struct {
 	StandardAuthOn *bool `json:"StandardAuthOn,omitempty" xml:"StandardAuthOn,omitempty"`
 	// The authentication configurations.
 	StandardAuthParam *CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam `json:"StandardAuthParam,omitempty" xml:"StandardAuthParam,omitempty" type:"Struct"`
-	// The custom code for a success.
-	//
-	// example:
-	//
-	// 200
-	SuccessCode *int64 `json:"SuccessCode,omitempty" xml:"SuccessCode,omitempty"`
 	// The timeout period. Unit: seconds.
 	//
 	// example:
@@ -14429,7 +14539,7 @@ func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetHeaderParam(v map[string]
 	return s
 }
 
-func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetLastLogSplit(v string) *CreateUserDeliveryTaskRequestHttpDelivery {
+func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetLastLogSplit(v bool) *CreateUserDeliveryTaskRequestHttpDelivery {
 	s.LastLogSplit = &v
 	return s
 }
@@ -14444,18 +14554,13 @@ func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetLogBodySuffix(v string) *
 	return s
 }
 
-func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetLogSplit(v string) *CreateUserDeliveryTaskRequestHttpDelivery {
+func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetLogSplit(v bool) *CreateUserDeliveryTaskRequestHttpDelivery {
 	s.LogSplit = &v
 	return s
 }
 
 func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetLogSplitWords(v string) *CreateUserDeliveryTaskRequestHttpDelivery {
 	s.LogSplitWords = &v
-	return s
-}
-
-func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetMaxBackoffMS(v int64) *CreateUserDeliveryTaskRequestHttpDelivery {
-	s.MaxBackoffMS = &v
 	return s
 }
 
@@ -14474,18 +14579,8 @@ func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetMaxRetry(v int64) *Create
 	return s
 }
 
-func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetMinBackoffMS(v int64) *CreateUserDeliveryTaskRequestHttpDelivery {
-	s.MinBackoffMS = &v
-	return s
-}
-
 func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetQueryParam(v map[string]*HttpDeliveryQueryParamValue) *CreateUserDeliveryTaskRequestHttpDelivery {
 	s.QueryParam = v
-	return s
-}
-
-func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetResponseBodyKey(v string) *CreateUserDeliveryTaskRequestHttpDelivery {
-	s.ResponseBodyKey = &v
 	return s
 }
 
@@ -14496,11 +14591,6 @@ func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetStandardAuthOn(v bool) *C
 
 func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetStandardAuthParam(v *CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam) *CreateUserDeliveryTaskRequestHttpDelivery {
 	s.StandardAuthParam = v
-	return s
-}
-
-func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetSuccessCode(v int64) *CreateUserDeliveryTaskRequestHttpDelivery {
-	s.SuccessCode = &v
 	return s
 }
 
@@ -14870,8 +14960,6 @@ type CreateUserDeliveryTaskShrinkRequest struct {
 	//
 	// 	- sg: outside the Chinese mainland.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cn
@@ -14911,6 +14999,7 @@ type CreateUserDeliveryTaskShrinkRequest struct {
 	//
 	// user_agent,ip_address,ip_port
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
 	// The configurations for delivery to an HTTP server.
 	HttpDeliveryShrink *string `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty"`
 	// The configurations for delivery to Kafka.
@@ -14966,6 +15055,11 @@ func (s *CreateUserDeliveryTaskShrinkRequest) SetDiscardRate(v float32) *CreateU
 
 func (s *CreateUserDeliveryTaskShrinkRequest) SetFieldName(v string) *CreateUserDeliveryTaskShrinkRequest {
 	s.FieldName = &v
+	return s
+}
+
+func (s *CreateUserDeliveryTaskShrinkRequest) SetFilterVer(v string) *CreateUserDeliveryTaskShrinkRequest {
+	s.FilterVer = &v
 	return s
 }
 
@@ -20190,6 +20284,90 @@ func (s *DeleteSiteOriginClientCertificateResponse) SetStatusCode(v int32) *Dele
 }
 
 func (s *DeleteSiteOriginClientCertificateResponse) SetBody(v *DeleteSiteOriginClientCertificateResponseBody) *DeleteSiteOriginClientCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteUrlObservationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteUrlObservationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUrlObservationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUrlObservationRequest) SetConfigId(v int64) *DeleteUrlObservationRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteUrlObservationRequest) SetSiteId(v int64) *DeleteUrlObservationRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteUrlObservationResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteUrlObservationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUrlObservationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUrlObservationResponseBody) SetRequestId(v string) *DeleteUrlObservationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteUrlObservationResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUrlObservationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteUrlObservationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUrlObservationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUrlObservationResponse) SetHeaders(v map[string]*string) *DeleteUrlObservationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUrlObservationResponse) SetStatusCode(v int32) *DeleteUrlObservationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUrlObservationResponse) SetBody(v *DeleteUrlObservationResponseBody) *DeleteUrlObservationResponse {
 	s.Body = v
 	return s
 }
@@ -37273,6 +37451,8 @@ type GetSiteDeliveryTaskResponseBody struct {
 	//
 	// []
 	FilterRules *string `json:"FilterRules,omitempty" xml:"FilterRules,omitempty"`
+	FilterVer   *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
+	RawRule     *string `json:"RawRule,omitempty" xml:"RawRule,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -37350,6 +37530,16 @@ func (s *GetSiteDeliveryTaskResponseBody) SetFieldList(v string) *GetSiteDeliver
 
 func (s *GetSiteDeliveryTaskResponseBody) SetFilterRules(v string) *GetSiteDeliveryTaskResponseBody {
 	s.FilterRules = &v
+	return s
+}
+
+func (s *GetSiteDeliveryTaskResponseBody) SetFilterVer(v string) *GetSiteDeliveryTaskResponseBody {
+	s.FilterVer = &v
+	return s
+}
+
+func (s *GetSiteDeliveryTaskResponseBody) SetRawRule(v string) *GetSiteDeliveryTaskResponseBody {
+	s.RawRule = &v
 	return s
 }
 
@@ -38444,6 +38634,8 @@ type GetUserDeliveryTaskResponseBody struct {
 	//
 	// [{"ClientSSLProtocol": {"equals": ["TLSv1.3"]}}]
 	FilterRules *string `json:"FilterRules,omitempty" xml:"FilterRules,omitempty"`
+	FilterVer   *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
+	RawRule     *string `json:"RawRule,omitempty" xml:"RawRule,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -38510,6 +38702,16 @@ func (s *GetUserDeliveryTaskResponseBody) SetFieldList(v string) *GetUserDeliver
 
 func (s *GetUserDeliveryTaskResponseBody) SetFilterRules(v string) *GetUserDeliveryTaskResponseBody {
 	s.FilterRules = &v
+	return s
+}
+
+func (s *GetUserDeliveryTaskResponseBody) SetFilterVer(v string) *GetUserDeliveryTaskResponseBody {
+	s.FilterVer = &v
+	return s
+}
+
+func (s *GetUserDeliveryTaskResponseBody) SetRawRule(v string) *GetUserDeliveryTaskResponseBody {
+	s.RawRule = &v
 	return s
 }
 
@@ -42791,6 +42993,112 @@ func (s *ListCompressionRulesResponse) SetStatusCode(v int32) *ListCompressionRu
 }
 
 func (s *ListCompressionRulesResponse) SetBody(v *ListCompressionRulesResponseBody) *ListCompressionRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListESAIPInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 192.0.0.24,2408:8740:41FF:2:23::7FE,0.0.0.0,abcd
+	VipInfo *string `json:"VipInfo,omitempty" xml:"VipInfo,omitempty"`
+}
+
+func (s ListESAIPInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListESAIPInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListESAIPInfoRequest) SetVipInfo(v string) *ListESAIPInfoRequest {
+	s.VipInfo = &v
+	return s
+}
+
+type ListESAIPInfoResponseBody struct {
+	Content []*ListESAIPInfoResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListESAIPInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListESAIPInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListESAIPInfoResponseBody) SetContent(v []*ListESAIPInfoResponseBodyContent) *ListESAIPInfoResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *ListESAIPInfoResponseBody) SetRequestId(v string) *ListESAIPInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListESAIPInfoResponseBodyContent struct {
+	// example:
+	//
+	// true
+	CdnIp *string `json:"CdnIp,omitempty" xml:"CdnIp,omitempty"`
+	// example:
+	//
+	// 27.129.167.239
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+}
+
+func (s ListESAIPInfoResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListESAIPInfoResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListESAIPInfoResponseBodyContent) SetCdnIp(v string) *ListESAIPInfoResponseBodyContent {
+	s.CdnIp = &v
+	return s
+}
+
+func (s *ListESAIPInfoResponseBodyContent) SetIp(v string) *ListESAIPInfoResponseBodyContent {
+	s.Ip = &v
+	return s
+}
+
+type ListESAIPInfoResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListESAIPInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListESAIPInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListESAIPInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListESAIPInfoResponse) SetHeaders(v map[string]*string) *ListESAIPInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListESAIPInfoResponse) SetStatusCode(v int32) *ListESAIPInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListESAIPInfoResponse) SetBody(v *ListESAIPInfoResponseBody) *ListESAIPInfoResponse {
 	s.Body = v
 	return s
 }
@@ -55916,6 +56224,186 @@ func (s *ListUploadTasksResponse) SetBody(v *ListUploadTasksResponseBody) *ListU
 	return s
 }
 
+type ListUrlObservationsRequest struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 34003500310****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListUrlObservationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUrlObservationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUrlObservationsRequest) SetConfigId(v int64) *ListUrlObservationsRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListUrlObservationsRequest) SetPageNumber(v int32) *ListUrlObservationsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUrlObservationsRequest) SetPageSize(v int32) *ListUrlObservationsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUrlObservationsRequest) SetSiteId(v int64) *ListUrlObservationsRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ListUrlObservationsResponseBody struct {
+	Configs []*ListUrlObservationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListUrlObservationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUrlObservationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUrlObservationsResponseBody) SetConfigs(v []*ListUrlObservationsResponseBodyConfigs) *ListUrlObservationsResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListUrlObservationsResponseBody) SetPageNumber(v int32) *ListUrlObservationsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUrlObservationsResponseBody) SetPageSize(v int32) *ListUrlObservationsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUrlObservationsResponseBody) SetRequestId(v string) *ListUrlObservationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUrlObservationsResponseBody) SetTotalCount(v int32) *ListUrlObservationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListUrlObservationsResponseBody) SetTotalPage(v int32) *ListUrlObservationsResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListUrlObservationsResponseBodyConfigs struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// manual
+	SdkType *string `json:"SdkType,omitempty" xml:"SdkType,omitempty"`
+	// example:
+	//
+	// example.com/test
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListUrlObservationsResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUrlObservationsResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListUrlObservationsResponseBodyConfigs) SetConfigId(v int64) *ListUrlObservationsResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListUrlObservationsResponseBodyConfigs) SetSdkType(v string) *ListUrlObservationsResponseBodyConfigs {
+	s.SdkType = &v
+	return s
+}
+
+func (s *ListUrlObservationsResponseBodyConfigs) SetUrl(v string) *ListUrlObservationsResponseBodyConfigs {
+	s.Url = &v
+	return s
+}
+
+type ListUrlObservationsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUrlObservationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUrlObservationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUrlObservationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUrlObservationsResponse) SetHeaders(v map[string]*string) *ListUrlObservationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUrlObservationsResponse) SetStatusCode(v int32) *ListUrlObservationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUrlObservationsResponse) SetBody(v *ListUrlObservationsResponseBody) *ListUrlObservationsResponse {
+	s.Body = v
+	return s
+}
+
 type ListUserDeliveryTasksRequest struct {
 	// The log category. Valid values:
 	//
@@ -63283,6 +63771,161 @@ func (s *StopScheduledPreloadExecutionResponse) SetStatusCode(v int32) *StopSche
 }
 
 func (s *StopScheduledPreloadExecutionResponse) SetBody(v *StopScheduledPreloadExecutionResponseBody) *StopScheduledPreloadExecutionResponse {
+	s.Body = v
+	return s
+}
+
+type TagResourcesRequest struct {
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of resource. Valid values of N: **1*	- to **50**.
+	//
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type, which can only be **site**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// site
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The tags that you want to add to the resource. You can enter up to 20 tags.
+	//
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetOwnerId(v int64) *TagResourcesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetSecurityToken(v string) *TagResourcesRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	// The tag keys.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// env
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 156A6B-677B1A-4297B7-9187B7-2B44792
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -70766,6 +71409,7 @@ type UpdateSiteDeliveryTaskRequest struct {
 	//
 	// ClientIP,UserAgent
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
 	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// example:
@@ -70802,6 +71446,11 @@ func (s *UpdateSiteDeliveryTaskRequest) SetDiscardRate(v float32) *UpdateSiteDel
 
 func (s *UpdateSiteDeliveryTaskRequest) SetFieldName(v string) *UpdateSiteDeliveryTaskRequest {
 	s.FieldName = &v
+	return s
+}
+
+func (s *UpdateSiteDeliveryTaskRequest) SetFilterVer(v string) *UpdateSiteDeliveryTaskRequest {
+	s.FilterVer = &v
 	return s
 }
 
@@ -71357,6 +72006,101 @@ func (s *UpdateTieredCacheResponse) SetBody(v *UpdateTieredCacheResponseBody) *U
 	return s
 }
 
+type UpdateUrlObservationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// manual
+	SdkType *string `json:"SdkType,omitempty" xml:"SdkType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateUrlObservationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUrlObservationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUrlObservationRequest) SetConfigId(v int64) *UpdateUrlObservationRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateUrlObservationRequest) SetSdkType(v string) *UpdateUrlObservationRequest {
+	s.SdkType = &v
+	return s
+}
+
+func (s *UpdateUrlObservationRequest) SetSiteId(v int64) *UpdateUrlObservationRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateUrlObservationResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateUrlObservationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUrlObservationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUrlObservationResponseBody) SetRequestId(v string) *UpdateUrlObservationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateUrlObservationResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUrlObservationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateUrlObservationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUrlObservationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUrlObservationResponse) SetHeaders(v map[string]*string) *UpdateUrlObservationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUrlObservationResponse) SetStatusCode(v int32) *UpdateUrlObservationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateUrlObservationResponse) SetBody(v *UpdateUrlObservationResponseBody) *UpdateUrlObservationResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateUserDeliveryTaskRequest struct {
 	// The log category. Valid values:
 	//
@@ -71387,6 +72131,7 @@ type UpdateUserDeliveryTaskRequest struct {
 	//
 	// ClientRequestID,ClientRequestHost
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FilterVer *string `json:"FilterVer,omitempty" xml:"FilterVer,omitempty"`
 	// The name of the delivery task.
 	//
 	// This parameter is required.
@@ -71422,6 +72167,11 @@ func (s *UpdateUserDeliveryTaskRequest) SetDiscardRate(v float32) *UpdateUserDel
 
 func (s *UpdateUserDeliveryTaskRequest) SetFieldName(v string) *UpdateUserDeliveryTaskRequest {
 	s.FieldName = &v
+	return s
+}
+
+func (s *UpdateUserDeliveryTaskRequest) SetFilterVer(v string) *UpdateUserDeliveryTaskRequest {
+	s.FilterVer = &v
 	return s
 }
 
@@ -78864,6 +79614,10 @@ func (client *Client) CreateSiteDeliveryTaskWithOptions(tmpReq *CreateSiteDelive
 		body["FieldName"] = request.FieldName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FilterVer)) {
+		body["FilterVer"] = request.FilterVer
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.HttpDeliveryShrink)) {
 		body["HttpDelivery"] = request.HttpDeliveryShrink
 	}
@@ -78982,6 +79736,74 @@ func (client *Client) CreateSlrRoleForRealtimeLog() (_result *CreateSlrRoleForRe
 
 // Summary:
 //
+// 创建网页监测配置
+//
+// @param request - CreateUrlObservationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUrlObservationResponse
+func (client *Client) CreateUrlObservationWithOptions(request *CreateUrlObservationRequest, runtime *util.RuntimeOptions) (_result *CreateUrlObservationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SdkType)) {
+		query["SdkType"] = request.SdkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUrlObservation"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateUrlObservationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建网页监测配置
+//
+// @param request - CreateUrlObservationRequest
+//
+// @return CreateUrlObservationResponse
+func (client *Client) CreateUrlObservation(request *CreateUrlObservationRequest) (_result *CreateUrlObservationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateUrlObservationResponse{}
+	_body, _err := client.CreateUrlObservationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a log delivery task to ship logs to the specified destination.
 //
 // Description:
@@ -79059,6 +79881,10 @@ func (client *Client) CreateUserDeliveryTaskWithOptions(tmpReq *CreateUserDelive
 
 	if !tea.BoolValue(util.IsUnset(request.FieldName)) {
 		body["FieldName"] = request.FieldName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterVer)) {
+		body["FilterVer"] = request.FilterVer
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.HttpDeliveryShrink)) {
@@ -82109,6 +82935,70 @@ func (client *Client) DeleteSiteOriginClientCertificate(request *DeleteSiteOrigi
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSiteOriginClientCertificateResponse{}
 	_body, _err := client.DeleteSiteOriginClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除网页监测配置
+//
+// @param request - DeleteUrlObservationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUrlObservationResponse
+func (client *Client) DeleteUrlObservationWithOptions(request *DeleteUrlObservationRequest, runtime *util.RuntimeOptions) (_result *DeleteUrlObservationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUrlObservation"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUrlObservationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除网页监测配置
+//
+// @param request - DeleteUrlObservationRequest
+//
+// @return DeleteUrlObservationResponse
+func (client *Client) DeleteUrlObservation(request *DeleteUrlObservationRequest) (_result *DeleteUrlObservationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteUrlObservationResponse{}
+	_body, _err := client.DeleteUrlObservationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -88524,6 +89414,62 @@ func (client *Client) ListCompressionRules(request *ListCompressionRulesRequest)
 
 // Summary:
 //
+// 批量查询IP是否为VIP
+//
+// @param request - ListESAIPInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListESAIPInfoResponse
+func (client *Client) ListESAIPInfoWithOptions(request *ListESAIPInfoRequest, runtime *util.RuntimeOptions) (_result *ListESAIPInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListESAIPInfo"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListESAIPInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询IP是否为VIP
+//
+// @param request - ListESAIPInfoRequest
+//
+// @return ListESAIPInfoResponse
+func (client *Client) ListESAIPInfo(request *ListESAIPInfoRequest) (_result *ListESAIPInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListESAIPInfoResponse{}
+	_body, _err := client.ListESAIPInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists domain names that are associated with a containerized application.
 //
 // @param request - ListEdgeContainerAppRecordsRequest
@@ -90903,6 +91849,78 @@ func (client *Client) ListUploadTasks(request *ListUploadTasksRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUploadTasksResponse{}
 	_body, _err := client.ListUploadTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网页观测配置列表
+//
+// @param request - ListUrlObservationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUrlObservationsResponse
+func (client *Client) ListUrlObservationsWithOptions(request *ListUrlObservationsRequest, runtime *util.RuntimeOptions) (_result *ListUrlObservationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUrlObservations"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUrlObservationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网页观测配置列表
+//
+// @param request - ListUrlObservationsRequest
+//
+// @return ListUrlObservationsResponse
+func (client *Client) ListUrlObservations(request *ListUrlObservationsRequest) (_result *ListUrlObservationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUrlObservationsResponse{}
+	_body, _err := client.ListUrlObservationsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -93574,6 +94592,86 @@ func (client *Client) StopScheduledPreloadExecution(request *StopScheduledPreloa
 	runtime := &util.RuntimeOptions{}
 	_result = &StopScheduledPreloadExecutionResponse{}
 	_body, _err := client.StopScheduledPreloadExecutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds one or more tags to resources.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds one or more tags to resources.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -96790,6 +97888,10 @@ func (client *Client) UpdateSiteDeliveryTaskWithOptions(request *UpdateSiteDeliv
 		body["FieldName"] = request.FieldName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FilterVer)) {
+		body["FilterVer"] = request.FilterVer
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		body["SiteId"] = request.SiteId
 	}
@@ -97153,6 +98255,74 @@ func (client *Client) UpdateTieredCache(request *UpdateTieredCacheRequest) (_res
 
 // Summary:
 //
+// 更新网页监测配置
+//
+// @param request - UpdateUrlObservationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUrlObservationResponse
+func (client *Client) UpdateUrlObservationWithOptions(request *UpdateUrlObservationRequest, runtime *util.RuntimeOptions) (_result *UpdateUrlObservationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SdkType)) {
+		query["SdkType"] = request.SdkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUrlObservation"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateUrlObservationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新网页监测配置
+//
+// @param request - UpdateUrlObservationRequest
+//
+// @return UpdateUrlObservationResponse
+func (client *Client) UpdateUrlObservation(request *UpdateUrlObservationRequest) (_result *UpdateUrlObservationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateUrlObservationResponse{}
+	_body, _err := client.UpdateUrlObservationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configurations of a delivery task, including the task name, log field, log category, and discard rate.
 //
 // @param request - UpdateUserDeliveryTaskRequest
@@ -97180,6 +98350,10 @@ func (client *Client) UpdateUserDeliveryTaskWithOptions(request *UpdateUserDeliv
 
 	if !tea.BoolValue(util.IsUnset(request.FieldName)) {
 		body["FieldName"] = request.FieldName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterVer)) {
+		body["FilterVer"] = request.FilterVer
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
