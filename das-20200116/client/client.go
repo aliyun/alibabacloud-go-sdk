@@ -47201,7 +47201,23 @@ func (client *Client) GetQueryOptimizeExecErrorSampleWithOptions(request *GetQue
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		query["SqlId"] = request.SqlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Time)) {
+		query["Time"] = request.Time
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -47210,7 +47226,7 @@ func (client *Client) GetQueryOptimizeExecErrorSampleWithOptions(request *GetQue
 		Version:     tea.String("2020-01-16"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -47459,7 +47475,71 @@ func (client *Client) GetQueryOptimizeShareUrlWithOptions(request *GetQueryOptim
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Asc)) {
+		query["Asc"] = request.Asc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbNames)) {
+		query["DbNames"] = request.DbNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keywords)) {
+		query["Keywords"] = request.Keywords
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalOperator)) {
+		query["LogicalOperator"] = request.LogicalOperator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OnlyOptimizedSql)) {
+		query["OnlyOptimizedSql"] = request.OnlyOptimizedSql
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rules)) {
+		query["Rules"] = request.Rules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlIds)) {
+		query["SqlIds"] = request.SqlIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagNames)) {
+		query["TagNames"] = request.TagNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Time)) {
+		query["Time"] = request.Time
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -47468,7 +47548,7 @@ func (client *Client) GetQueryOptimizeShareUrlWithOptions(request *GetQueryOptim
 		Version:     tea.String("2020-01-16"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -47543,7 +47623,23 @@ func (client *Client) GetQueryOptimizeSolutionWithOptions(request *GetQueryOptim
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleIds)) {
+		query["RuleIds"] = request.RuleIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		query["SqlId"] = request.SqlId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -47552,7 +47648,7 @@ func (client *Client) GetQueryOptimizeSolutionWithOptions(request *GetQueryOptim
 		Version:     tea.String("2020-01-16"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -47627,7 +47723,19 @@ func (client *Client) GetQueryOptimizeTagWithOptions(request *GetQueryOptimizeTa
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		query["SqlId"] = request.SqlId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -47636,7 +47744,7 @@ func (client *Client) GetQueryOptimizeTagWithOptions(request *GetQueryOptimizeTa
 		Version:     tea.String("2020-01-16"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
