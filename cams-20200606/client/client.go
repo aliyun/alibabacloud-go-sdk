@@ -9,6 +9,339 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddChatGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8613800***
+	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// example:
+	//
+	// WHATSAPP
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cams-***
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+}
+
+func (s AddChatGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddChatGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddChatGroupRequest) SetBusinessNumber(v string) *AddChatGroupRequest {
+	s.BusinessNumber = &v
+	return s
+}
+
+func (s *AddChatGroupRequest) SetChannelType(v string) *AddChatGroupRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *AddChatGroupRequest) SetCustSpaceId(v string) *AddChatGroupRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *AddChatGroupRequest) SetDescription(v string) *AddChatGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *AddChatGroupRequest) SetOwnerId(v int64) *AddChatGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AddChatGroupRequest) SetResourceOwnerAccount(v string) *AddChatGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *AddChatGroupRequest) SetResourceOwnerId(v int64) *AddChatGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *AddChatGroupRequest) SetSubject(v string) *AddChatGroupRequest {
+	s.Subject = &v
+	return s
+}
+
+type AddChatGroupResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// None
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 399s88-***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 8938****
+	UniqueCode *string `json:"UniqueCode,omitempty" xml:"UniqueCode,omitempty"`
+}
+
+func (s AddChatGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddChatGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddChatGroupResponseBody) SetAccessDeniedDetail(v string) *AddChatGroupResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *AddChatGroupResponseBody) SetCode(v string) *AddChatGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddChatGroupResponseBody) SetMessage(v string) *AddChatGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddChatGroupResponseBody) SetRequestId(v string) *AddChatGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddChatGroupResponseBody) SetSuccess(v bool) *AddChatGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AddChatGroupResponseBody) SetUniqueCode(v string) *AddChatGroupResponseBody {
+	s.UniqueCode = &v
+	return s
+}
+
+type AddChatGroupResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddChatGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddChatGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddChatGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddChatGroupResponse) SetHeaders(v map[string]*string) *AddChatGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddChatGroupResponse) SetStatusCode(v int32) *AddChatGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddChatGroupResponse) SetBody(v *AddChatGroupResponseBody) *AddChatGroupResponse {
+	s.Body = v
+	return s
+}
+
+type AddChatGroupInviteLinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8613800***
+	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// example:
+	//
+	// WHATSAPP
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cams-x***
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// E93kdk****
+	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s AddChatGroupInviteLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddChatGroupInviteLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddChatGroupInviteLinkRequest) SetBusinessNumber(v string) *AddChatGroupInviteLinkRequest {
+	s.BusinessNumber = &v
+	return s
+}
+
+func (s *AddChatGroupInviteLinkRequest) SetChannelType(v string) *AddChatGroupInviteLinkRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *AddChatGroupInviteLinkRequest) SetCustSpaceId(v string) *AddChatGroupInviteLinkRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *AddChatGroupInviteLinkRequest) SetGroupId(v string) *AddChatGroupInviteLinkRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *AddChatGroupInviteLinkRequest) SetOwnerId(v int64) *AddChatGroupInviteLinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AddChatGroupInviteLinkRequest) SetResourceOwnerAccount(v string) *AddChatGroupInviteLinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *AddChatGroupInviteLinkRequest) SetResourceOwnerId(v int64) *AddChatGroupInviteLinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type AddChatGroupInviteLinkResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// https://chat.whatsapp.com/****
+	InviteLink *string `json:"InviteLink,omitempty" xml:"InviteLink,omitempty"`
+	// example:
+	//
+	// None
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 3EIK939***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddChatGroupInviteLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddChatGroupInviteLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddChatGroupInviteLinkResponseBody) SetAccessDeniedDetail(v string) *AddChatGroupInviteLinkResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *AddChatGroupInviteLinkResponseBody) SetCode(v string) *AddChatGroupInviteLinkResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddChatGroupInviteLinkResponseBody) SetInviteLink(v string) *AddChatGroupInviteLinkResponseBody {
+	s.InviteLink = &v
+	return s
+}
+
+func (s *AddChatGroupInviteLinkResponseBody) SetMessage(v string) *AddChatGroupInviteLinkResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddChatGroupInviteLinkResponseBody) SetRequestId(v string) *AddChatGroupInviteLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddChatGroupInviteLinkResponseBody) SetSuccess(v bool) *AddChatGroupInviteLinkResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddChatGroupInviteLinkResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddChatGroupInviteLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddChatGroupInviteLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddChatGroupInviteLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddChatGroupInviteLinkResponse) SetHeaders(v map[string]*string) *AddChatGroupInviteLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddChatGroupInviteLinkResponse) SetStatusCode(v int32) *AddChatGroupInviteLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddChatGroupInviteLinkResponse) SetBody(v *AddChatGroupInviteLinkResponseBody) *AddChatGroupInviteLinkResponse {
+	s.Body = v
+	return s
+}
+
 type AddChatappPhoneNumberRequest struct {
 	// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 	//
@@ -1857,7 +2190,7 @@ func (s *ChatappMigrationRegisterResponse) SetBody(v *ChatappMigrationRegisterRe
 }
 
 type ChatappMigrationVerifiedRequest struct {
-	// The space ID of the user under the independent software vendor (ISV) account.
+	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// This parameter is required.
 	//
@@ -1907,6 +2240,11 @@ func (s *ChatappMigrationVerifiedRequest) SetVerifyCode(v string) *ChatappMigrat
 }
 
 type ChatappMigrationVerifiedResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -1918,7 +2256,7 @@ type ChatappMigrationVerifiedResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *ChatappMigrationVerifiedResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
 	//
@@ -4461,6 +4799,595 @@ func (s *CreatePhoneMessageQrdlResponse) SetStatusCode(v int32) *CreatePhoneMess
 }
 
 func (s *CreatePhoneMessageQrdlResponse) SetBody(v *CreatePhoneMessageQrdlResponseBody) *CreatePhoneMessageQrdlResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteChatGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8613800***
+	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// example:
+	//
+	// WHATSAPP
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cams-**
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// E399**
+	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteChatGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatGroupRequest) SetBusinessNumber(v string) *DeleteChatGroupRequest {
+	s.BusinessNumber = &v
+	return s
+}
+
+func (s *DeleteChatGroupRequest) SetChannelType(v string) *DeleteChatGroupRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *DeleteChatGroupRequest) SetCustSpaceId(v string) *DeleteChatGroupRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *DeleteChatGroupRequest) SetGroupId(v string) *DeleteChatGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteChatGroupRequest) SetOwnerId(v int64) *DeleteChatGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteChatGroupRequest) SetResourceOwnerAccount(v string) *DeleteChatGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteChatGroupRequest) SetResourceOwnerId(v int64) *DeleteChatGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteChatGroupResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E939E****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	Result *int64 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteChatGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatGroupResponseBody) SetAccessDeniedDetail(v string) *DeleteChatGroupResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteChatGroupResponseBody) SetCode(v string) *DeleteChatGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteChatGroupResponseBody) SetMessage(v string) *DeleteChatGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteChatGroupResponseBody) SetRequestId(v string) *DeleteChatGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteChatGroupResponseBody) SetResult(v int64) *DeleteChatGroupResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *DeleteChatGroupResponseBody) SetSuccess(v bool) *DeleteChatGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteChatGroupResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteChatGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteChatGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatGroupResponse) SetHeaders(v map[string]*string) *DeleteChatGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteChatGroupResponse) SetStatusCode(v int32) *DeleteChatGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteChatGroupResponse) SetBody(v *DeleteChatGroupResponseBody) *DeleteChatGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteChatGroupInviteLinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8613800***
+	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// example:
+	//
+	// WHATSAPP
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cams-8***
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// E398****
+	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteChatGroupInviteLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatGroupInviteLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatGroupInviteLinkRequest) SetBusinessNumber(v string) *DeleteChatGroupInviteLinkRequest {
+	s.BusinessNumber = &v
+	return s
+}
+
+func (s *DeleteChatGroupInviteLinkRequest) SetChannelType(v string) *DeleteChatGroupInviteLinkRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *DeleteChatGroupInviteLinkRequest) SetCustSpaceId(v string) *DeleteChatGroupInviteLinkRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *DeleteChatGroupInviteLinkRequest) SetGroupId(v string) *DeleteChatGroupInviteLinkRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteChatGroupInviteLinkRequest) SetOwnerId(v int64) *DeleteChatGroupInviteLinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteChatGroupInviteLinkRequest) SetResourceOwnerAccount(v string) *DeleteChatGroupInviteLinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteChatGroupInviteLinkRequest) SetResourceOwnerId(v int64) *DeleteChatGroupInviteLinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteChatGroupInviteLinkResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 3R938***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0
+	Result *int64 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteChatGroupInviteLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatGroupInviteLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatGroupInviteLinkResponseBody) SetAccessDeniedDetail(v string) *DeleteChatGroupInviteLinkResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteChatGroupInviteLinkResponseBody) SetCode(v string) *DeleteChatGroupInviteLinkResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteChatGroupInviteLinkResponseBody) SetMessage(v string) *DeleteChatGroupInviteLinkResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteChatGroupInviteLinkResponseBody) SetRequestId(v string) *DeleteChatGroupInviteLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteChatGroupInviteLinkResponseBody) SetResult(v int64) *DeleteChatGroupInviteLinkResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *DeleteChatGroupInviteLinkResponseBody) SetSuccess(v bool) *DeleteChatGroupInviteLinkResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteChatGroupInviteLinkResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteChatGroupInviteLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteChatGroupInviteLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatGroupInviteLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatGroupInviteLinkResponse) SetHeaders(v map[string]*string) *DeleteChatGroupInviteLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteChatGroupInviteLinkResponse) SetStatusCode(v int32) *DeleteChatGroupInviteLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteChatGroupInviteLinkResponse) SetBody(v *DeleteChatGroupInviteLinkResponseBody) *DeleteChatGroupInviteLinkResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteChatGroupParticipantsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8613800**
+	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// example:
+	//
+	// WHATSAPP。
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cams-**
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EA93UU****
+	GroupId              *string                                   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	List                 []*DeleteChatGroupParticipantsRequestList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	OwnerId              *int64                                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string                                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteChatGroupParticipantsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatGroupParticipantsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatGroupParticipantsRequest) SetBusinessNumber(v string) *DeleteChatGroupParticipantsRequest {
+	s.BusinessNumber = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsRequest) SetChannelType(v string) *DeleteChatGroupParticipantsRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsRequest) SetCustSpaceId(v string) *DeleteChatGroupParticipantsRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsRequest) SetGroupId(v string) *DeleteChatGroupParticipantsRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsRequest) SetList(v []*DeleteChatGroupParticipantsRequestList) *DeleteChatGroupParticipantsRequest {
+	s.List = v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsRequest) SetOwnerId(v int64) *DeleteChatGroupParticipantsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsRequest) SetResourceOwnerAccount(v string) *DeleteChatGroupParticipantsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsRequest) SetResourceOwnerId(v int64) *DeleteChatGroupParticipantsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteChatGroupParticipantsRequestList struct {
+	// example:
+	//
+	// 86138***
+	ParticipantNumber *string `json:"ParticipantNumber,omitempty" xml:"ParticipantNumber,omitempty"`
+}
+
+func (s DeleteChatGroupParticipantsRequestList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatGroupParticipantsRequestList) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatGroupParticipantsRequestList) SetParticipantNumber(v string) *DeleteChatGroupParticipantsRequestList {
+	s.ParticipantNumber = &v
+	return s
+}
+
+type DeleteChatGroupParticipantsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8613800**
+	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// example:
+	//
+	// WHATSAPP。
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cams-**
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EA93UU****
+	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ListShrink           *string `json:"List,omitempty" xml:"List,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteChatGroupParticipantsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatGroupParticipantsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatGroupParticipantsShrinkRequest) SetBusinessNumber(v string) *DeleteChatGroupParticipantsShrinkRequest {
+	s.BusinessNumber = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsShrinkRequest) SetChannelType(v string) *DeleteChatGroupParticipantsShrinkRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsShrinkRequest) SetCustSpaceId(v string) *DeleteChatGroupParticipantsShrinkRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsShrinkRequest) SetGroupId(v string) *DeleteChatGroupParticipantsShrinkRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsShrinkRequest) SetListShrink(v string) *DeleteChatGroupParticipantsShrinkRequest {
+	s.ListShrink = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsShrinkRequest) SetOwnerId(v int64) *DeleteChatGroupParticipantsShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsShrinkRequest) SetResourceOwnerAccount(v string) *DeleteChatGroupParticipantsShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsShrinkRequest) SetResourceOwnerId(v int64) *DeleteChatGroupParticipantsShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteChatGroupParticipantsResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// R39***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	Result *int64 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteChatGroupParticipantsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatGroupParticipantsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatGroupParticipantsResponseBody) SetAccessDeniedDetail(v string) *DeleteChatGroupParticipantsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsResponseBody) SetCode(v string) *DeleteChatGroupParticipantsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsResponseBody) SetMessage(v string) *DeleteChatGroupParticipantsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsResponseBody) SetRequestId(v string) *DeleteChatGroupParticipantsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsResponseBody) SetResult(v int64) *DeleteChatGroupParticipantsResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsResponseBody) SetSuccess(v bool) *DeleteChatGroupParticipantsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteChatGroupParticipantsResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteChatGroupParticipantsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteChatGroupParticipantsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatGroupParticipantsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatGroupParticipantsResponse) SetHeaders(v map[string]*string) *DeleteChatGroupParticipantsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsResponse) SetStatusCode(v int32) *DeleteChatGroupParticipantsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteChatGroupParticipantsResponse) SetBody(v *DeleteChatGroupParticipantsResponseBody) *DeleteChatGroupParticipantsResponse {
 	s.Body = v
 	return s
 }
@@ -9723,6 +10650,714 @@ func (s *IsvGetAppIdResponse) SetStatusCode(v int32) *IsvGetAppIdResponse {
 }
 
 func (s *IsvGetAppIdResponse) SetBody(v *IsvGetAppIdResponseBody) *IsvGetAppIdResponse {
+	s.Body = v
+	return s
+}
+
+type ListChatGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8613800***
+	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// example:
+	//
+	// WHATSAPP
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cams-x***
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// example:
+	//
+	// ACTIVE
+	GroupStatus *string `json:"GroupStatus,omitempty" xml:"GroupStatus,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	Page                 *ListChatGroupRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// test
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+}
+
+func (s ListChatGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatGroupRequest) SetBusinessNumber(v string) *ListChatGroupRequest {
+	s.BusinessNumber = &v
+	return s
+}
+
+func (s *ListChatGroupRequest) SetChannelType(v string) *ListChatGroupRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *ListChatGroupRequest) SetCustSpaceId(v string) *ListChatGroupRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ListChatGroupRequest) SetGroupStatus(v string) *ListChatGroupRequest {
+	s.GroupStatus = &v
+	return s
+}
+
+func (s *ListChatGroupRequest) SetOwnerId(v int64) *ListChatGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListChatGroupRequest) SetPage(v *ListChatGroupRequestPage) *ListChatGroupRequest {
+	s.Page = v
+	return s
+}
+
+func (s *ListChatGroupRequest) SetResourceOwnerAccount(v string) *ListChatGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListChatGroupRequest) SetResourceOwnerId(v int64) *ListChatGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListChatGroupRequest) SetSubject(v string) *ListChatGroupRequest {
+	s.Subject = &v
+	return s
+}
+
+type ListChatGroupRequestPage struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s ListChatGroupRequestPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatGroupRequestPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatGroupRequestPage) SetIndex(v int64) *ListChatGroupRequestPage {
+	s.Index = &v
+	return s
+}
+
+func (s *ListChatGroupRequestPage) SetSize(v int64) *ListChatGroupRequestPage {
+	s.Size = &v
+	return s
+}
+
+type ListChatGroupShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8613800***
+	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// example:
+	//
+	// WHATSAPP
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cams-x***
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// example:
+	//
+	// ACTIVE
+	GroupStatus *string `json:"GroupStatus,omitempty" xml:"GroupStatus,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	PageShrink           *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// test
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+}
+
+func (s ListChatGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatGroupShrinkRequest) SetBusinessNumber(v string) *ListChatGroupShrinkRequest {
+	s.BusinessNumber = &v
+	return s
+}
+
+func (s *ListChatGroupShrinkRequest) SetChannelType(v string) *ListChatGroupShrinkRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *ListChatGroupShrinkRequest) SetCustSpaceId(v string) *ListChatGroupShrinkRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ListChatGroupShrinkRequest) SetGroupStatus(v string) *ListChatGroupShrinkRequest {
+	s.GroupStatus = &v
+	return s
+}
+
+func (s *ListChatGroupShrinkRequest) SetOwnerId(v int64) *ListChatGroupShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListChatGroupShrinkRequest) SetPageShrink(v string) *ListChatGroupShrinkRequest {
+	s.PageShrink = &v
+	return s
+}
+
+func (s *ListChatGroupShrinkRequest) SetResourceOwnerAccount(v string) *ListChatGroupShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListChatGroupShrinkRequest) SetResourceOwnerId(v int64) *ListChatGroupShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListChatGroupShrinkRequest) SetSubject(v string) *ListChatGroupShrinkRequest {
+	s.Subject = &v
+	return s
+}
+
+type ListChatGroupResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListChatGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListChatGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatGroupResponseBody) SetAccessDeniedDetail(v string) *ListChatGroupResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListChatGroupResponseBody) SetCode(v string) *ListChatGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListChatGroupResponseBody) SetData(v *ListChatGroupResponseBodyData) *ListChatGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListChatGroupResponseBody) SetMessage(v string) *ListChatGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListChatGroupResponseBody) SetRequestId(v string) *ListChatGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListChatGroupResponseBody) SetSuccess(v bool) *ListChatGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListChatGroupResponseBodyData struct {
+	List []*ListChatGroupResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 51
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListChatGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatGroupResponseBodyData) SetList(v []*ListChatGroupResponseBodyDataList) *ListChatGroupResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListChatGroupResponseBodyData) SetTotal(v int64) *ListChatGroupResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListChatGroupResponseBodyDataList struct {
+	// example:
+	//
+	// 8613800**
+	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// EA30d***
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// ACTIVE
+	GroupStatus *string `json:"GroupStatus,omitempty" xml:"GroupStatus,omitempty"`
+	// example:
+	//
+	// https://chat.whatsapp.com/***
+	InviteLink *string `json:"InviteLink,omitempty" xml:"InviteLink,omitempty"`
+	// example:
+	//
+	// https://aliyun.com/png.jpg
+	ProfilePictureFile *string `json:"ProfilePictureFile,omitempty" xml:"ProfilePictureFile,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+}
+
+func (s ListChatGroupResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatGroupResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatGroupResponseBodyDataList) SetBusinessNumber(v string) *ListChatGroupResponseBodyDataList {
+	s.BusinessNumber = &v
+	return s
+}
+
+func (s *ListChatGroupResponseBodyDataList) SetDescription(v string) *ListChatGroupResponseBodyDataList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListChatGroupResponseBodyDataList) SetGroupId(v string) *ListChatGroupResponseBodyDataList {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListChatGroupResponseBodyDataList) SetGroupStatus(v string) *ListChatGroupResponseBodyDataList {
+	s.GroupStatus = &v
+	return s
+}
+
+func (s *ListChatGroupResponseBodyDataList) SetInviteLink(v string) *ListChatGroupResponseBodyDataList {
+	s.InviteLink = &v
+	return s
+}
+
+func (s *ListChatGroupResponseBodyDataList) SetProfilePictureFile(v string) *ListChatGroupResponseBodyDataList {
+	s.ProfilePictureFile = &v
+	return s
+}
+
+func (s *ListChatGroupResponseBodyDataList) SetSubject(v string) *ListChatGroupResponseBodyDataList {
+	s.Subject = &v
+	return s
+}
+
+type ListChatGroupResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChatGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListChatGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatGroupResponse) SetHeaders(v map[string]*string) *ListChatGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListChatGroupResponse) SetStatusCode(v int32) *ListChatGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListChatGroupResponse) SetBody(v *ListChatGroupResponseBody) *ListChatGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ListChatGroupParticipantsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8613800***
+	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// example:
+	//
+	// WHATSAPP
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cams-k***
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EA939****
+	GroupId              *string                               `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OwnerId              *int64                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Page                 *ListChatGroupParticipantsRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	ResourceOwnerAccount *string                               `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListChatGroupParticipantsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatGroupParticipantsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatGroupParticipantsRequest) SetBusinessNumber(v string) *ListChatGroupParticipantsRequest {
+	s.BusinessNumber = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsRequest) SetChannelType(v string) *ListChatGroupParticipantsRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsRequest) SetCustSpaceId(v string) *ListChatGroupParticipantsRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsRequest) SetGroupId(v string) *ListChatGroupParticipantsRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsRequest) SetOwnerId(v int64) *ListChatGroupParticipantsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsRequest) SetPage(v *ListChatGroupParticipantsRequestPage) *ListChatGroupParticipantsRequest {
+	s.Page = v
+	return s
+}
+
+func (s *ListChatGroupParticipantsRequest) SetResourceOwnerAccount(v string) *ListChatGroupParticipantsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsRequest) SetResourceOwnerId(v int64) *ListChatGroupParticipantsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListChatGroupParticipantsRequestPage struct {
+	// example:
+	//
+	// 1
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// 20
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s ListChatGroupParticipantsRequestPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatGroupParticipantsRequestPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatGroupParticipantsRequestPage) SetIndex(v int64) *ListChatGroupParticipantsRequestPage {
+	s.Index = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsRequestPage) SetSize(v int64) *ListChatGroupParticipantsRequestPage {
+	s.Size = &v
+	return s
+}
+
+type ListChatGroupParticipantsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8613800***
+	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// example:
+	//
+	// WHATSAPP
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cams-k***
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EA939****
+	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageShrink           *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListChatGroupParticipantsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatGroupParticipantsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatGroupParticipantsShrinkRequest) SetBusinessNumber(v string) *ListChatGroupParticipantsShrinkRequest {
+	s.BusinessNumber = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsShrinkRequest) SetChannelType(v string) *ListChatGroupParticipantsShrinkRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsShrinkRequest) SetCustSpaceId(v string) *ListChatGroupParticipantsShrinkRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsShrinkRequest) SetGroupId(v string) *ListChatGroupParticipantsShrinkRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsShrinkRequest) SetOwnerId(v int64) *ListChatGroupParticipantsShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsShrinkRequest) SetPageShrink(v string) *ListChatGroupParticipantsShrinkRequest {
+	s.PageShrink = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsShrinkRequest) SetResourceOwnerAccount(v string) *ListChatGroupParticipantsShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsShrinkRequest) SetResourceOwnerId(v int64) *ListChatGroupParticipantsShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListChatGroupParticipantsResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListChatGroupParticipantsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E9d9****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListChatGroupParticipantsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatGroupParticipantsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatGroupParticipantsResponseBody) SetAccessDeniedDetail(v string) *ListChatGroupParticipantsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsResponseBody) SetCode(v string) *ListChatGroupParticipantsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsResponseBody) SetData(v *ListChatGroupParticipantsResponseBodyData) *ListChatGroupParticipantsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListChatGroupParticipantsResponseBody) SetMessage(v string) *ListChatGroupParticipantsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsResponseBody) SetRequestId(v string) *ListChatGroupParticipantsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsResponseBody) SetSuccess(v bool) *ListChatGroupParticipantsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListChatGroupParticipantsResponseBodyData struct {
+	List []*ListChatGroupParticipantsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListChatGroupParticipantsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatGroupParticipantsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatGroupParticipantsResponseBodyData) SetList(v []*ListChatGroupParticipantsResponseBodyDataList) *ListChatGroupParticipantsResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListChatGroupParticipantsResponseBodyData) SetTotal(v int64) *ListChatGroupParticipantsResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListChatGroupParticipantsResponseBodyDataList struct {
+	// example:
+	//
+	// 861382***
+	ParticipantNumber *string `json:"ParticipantNumber,omitempty" xml:"ParticipantNumber,omitempty"`
+}
+
+func (s ListChatGroupParticipantsResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatGroupParticipantsResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatGroupParticipantsResponseBodyDataList) SetParticipantNumber(v string) *ListChatGroupParticipantsResponseBodyDataList {
+	s.ParticipantNumber = &v
+	return s
+}
+
+type ListChatGroupParticipantsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChatGroupParticipantsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListChatGroupParticipantsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatGroupParticipantsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatGroupParticipantsResponse) SetHeaders(v map[string]*string) *ListChatGroupParticipantsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListChatGroupParticipantsResponse) SetStatusCode(v int32) *ListChatGroupParticipantsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListChatGroupParticipantsResponse) SetBody(v *ListChatGroupParticipantsResponseBody) *ListChatGroupParticipantsResponse {
 	s.Body = v
 	return s
 }
@@ -15300,6 +16935,7 @@ type SendChatappMessageRequest struct {
 	Payload []*string `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Repeated"`
 	// The information about the products included in the WhatsApp catalog message or multi-product message (MPM).
 	ProductAction *SendChatappMessageRequestProductAction `json:"ProductAction,omitempty" xml:"ProductAction,omitempty" type:"Struct"`
+	RecipientType *string                                 `json:"RecipientType,omitempty" xml:"RecipientType,omitempty"`
 	// The tag information of the Viber message.
 	//
 	// example:
@@ -15450,6 +17086,11 @@ func (s *SendChatappMessageRequest) SetPayload(v []*string) *SendChatappMessageR
 
 func (s *SendChatappMessageRequest) SetProductAction(v *SendChatappMessageRequestProductAction) *SendChatappMessageRequest {
 	s.ProductAction = v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetRecipientType(v string) *SendChatappMessageRequest {
+	s.RecipientType = &v
 	return s
 }
 
@@ -15810,6 +17451,7 @@ type SendChatappMessageShrinkRequest struct {
 	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
 	// The information about the products included in the WhatsApp catalog message or multi-product message (MPM).
 	ProductActionShrink *string `json:"ProductAction,omitempty" xml:"ProductAction,omitempty"`
+	RecipientType       *string `json:"RecipientType,omitempty" xml:"RecipientType,omitempty"`
 	// The tag information of the Viber message.
 	//
 	// example:
@@ -15960,6 +17602,11 @@ func (s *SendChatappMessageShrinkRequest) SetPayloadShrink(v string) *SendChatap
 
 func (s *SendChatappMessageShrinkRequest) SetProductActionShrink(v string) *SendChatappMessageShrinkRequest {
 	s.ProductActionShrink = &v
+	return s
+}
+
+func (s *SendChatappMessageShrinkRequest) SetRecipientType(v string) *SendChatappMessageShrinkRequest {
+	s.RecipientType = &v
 	return s
 }
 
@@ -16741,6 +18388,195 @@ func (s *UpdateAccountWebhookResponse) SetStatusCode(v int32) *UpdateAccountWebh
 }
 
 func (s *UpdateAccountWebhookResponse) SetBody(v *UpdateAccountWebhookResponseBody) *UpdateAccountWebhookResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateChatGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8613800***
+	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
+	// example:
+	//
+	// WHATSAPP
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cams-***
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EA303***
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// https://aliyun.com/img.jpg
+	ProfilePictureFile   *string `json:"ProfilePictureFile,omitempty" xml:"ProfilePictureFile,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+}
+
+func (s UpdateChatGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChatGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChatGroupRequest) SetBusinessNumber(v string) *UpdateChatGroupRequest {
+	s.BusinessNumber = &v
+	return s
+}
+
+func (s *UpdateChatGroupRequest) SetChannelType(v string) *UpdateChatGroupRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *UpdateChatGroupRequest) SetCustSpaceId(v string) *UpdateChatGroupRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *UpdateChatGroupRequest) SetDescription(v string) *UpdateChatGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateChatGroupRequest) SetGroupId(v string) *UpdateChatGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateChatGroupRequest) SetOwnerId(v int64) *UpdateChatGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateChatGroupRequest) SetProfilePictureFile(v string) *UpdateChatGroupRequest {
+	s.ProfilePictureFile = &v
+	return s
+}
+
+func (s *UpdateChatGroupRequest) SetResourceOwnerAccount(v string) *UpdateChatGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateChatGroupRequest) SetResourceOwnerId(v int64) *UpdateChatGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateChatGroupRequest) SetSubject(v string) *UpdateChatGroupRequest {
+	s.Subject = &v
+	return s
+}
+
+type UpdateChatGroupResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EA399***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	Result *int64 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateChatGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChatGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChatGroupResponseBody) SetAccessDeniedDetail(v string) *UpdateChatGroupResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateChatGroupResponseBody) SetCode(v string) *UpdateChatGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateChatGroupResponseBody) SetMessage(v string) *UpdateChatGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateChatGroupResponseBody) SetRequestId(v string) *UpdateChatGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateChatGroupResponseBody) SetResult(v int64) *UpdateChatGroupResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *UpdateChatGroupResponseBody) SetSuccess(v bool) *UpdateChatGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateChatGroupResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateChatGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateChatGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChatGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChatGroupResponse) SetHeaders(v map[string]*string) *UpdateChatGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateChatGroupResponse) SetStatusCode(v int32) *UpdateChatGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateChatGroupResponse) SetBody(v *UpdateChatGroupResponseBody) *UpdateChatGroupResponse {
 	s.Body = v
 	return s
 }
@@ -17968,6 +19804,178 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # AddChatGroup
+//
+// @param request - AddChatGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddChatGroupResponse
+func (client *Client) AddChatGroupWithOptions(request *AddChatGroupRequest, runtime *util.RuntimeOptions) (_result *AddChatGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessNumber)) {
+		query["BusinessNumber"] = request.BusinessNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subject)) {
+		query["Subject"] = request.Subject
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddChatGroup"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddChatGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # AddChatGroup
+//
+// @param request - AddChatGroupRequest
+//
+// @return AddChatGroupResponse
+func (client *Client) AddChatGroup(request *AddChatGroupRequest) (_result *AddChatGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddChatGroupResponse{}
+	_body, _err := client.AddChatGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # AddChatGroupInviteLink
+//
+// @param request - AddChatGroupInviteLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddChatGroupInviteLinkResponse
+func (client *Client) AddChatGroupInviteLinkWithOptions(request *AddChatGroupInviteLinkRequest, runtime *util.RuntimeOptions) (_result *AddChatGroupInviteLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessNumber)) {
+		query["BusinessNumber"] = request.BusinessNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddChatGroupInviteLink"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddChatGroupInviteLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # AddChatGroupInviteLink
+//
+// @param request - AddChatGroupInviteLinkRequest
+//
+// @return AddChatGroupInviteLinkResponse
+func (client *Client) AddChatGroupInviteLink(request *AddChatGroupInviteLinkRequest) (_result *AddChatGroupInviteLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddChatGroupInviteLinkResponse{}
+	_body, _err := client.AddChatGroupInviteLinkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19256,6 +21264,268 @@ func (client *Client) CreatePhoneMessageQrdl(request *CreatePhoneMessageQrdlRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePhoneMessageQrdlResponse{}
 	_body, _err := client.CreatePhoneMessageQrdlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteChatGroup
+//
+// @param request - DeleteChatGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteChatGroupResponse
+func (client *Client) DeleteChatGroupWithOptions(request *DeleteChatGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteChatGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessNumber)) {
+		query["BusinessNumber"] = request.BusinessNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteChatGroup"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteChatGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteChatGroup
+//
+// @param request - DeleteChatGroupRequest
+//
+// @return DeleteChatGroupResponse
+func (client *Client) DeleteChatGroup(request *DeleteChatGroupRequest) (_result *DeleteChatGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteChatGroupResponse{}
+	_body, _err := client.DeleteChatGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteChatGroupInviteLink
+//
+// @param request - DeleteChatGroupInviteLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteChatGroupInviteLinkResponse
+func (client *Client) DeleteChatGroupInviteLinkWithOptions(request *DeleteChatGroupInviteLinkRequest, runtime *util.RuntimeOptions) (_result *DeleteChatGroupInviteLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessNumber)) {
+		query["BusinessNumber"] = request.BusinessNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteChatGroupInviteLink"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteChatGroupInviteLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteChatGroupInviteLink
+//
+// @param request - DeleteChatGroupInviteLinkRequest
+//
+// @return DeleteChatGroupInviteLinkResponse
+func (client *Client) DeleteChatGroupInviteLink(request *DeleteChatGroupInviteLinkRequest) (_result *DeleteChatGroupInviteLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteChatGroupInviteLinkResponse{}
+	_body, _err := client.DeleteChatGroupInviteLinkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteChatGroupParticipants
+//
+// @param tmpReq - DeleteChatGroupParticipantsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteChatGroupParticipantsResponse
+func (client *Client) DeleteChatGroupParticipantsWithOptions(tmpReq *DeleteChatGroupParticipantsRequest, runtime *util.RuntimeOptions) (_result *DeleteChatGroupParticipantsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteChatGroupParticipantsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.List)) {
+		request.ListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.List, tea.String("List"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessNumber)) {
+		query["BusinessNumber"] = request.BusinessNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListShrink)) {
+		query["List"] = request.ListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteChatGroupParticipants"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteChatGroupParticipantsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteChatGroupParticipants
+//
+// @param request - DeleteChatGroupParticipantsRequest
+//
+// @return DeleteChatGroupParticipantsResponse
+func (client *Client) DeleteChatGroupParticipants(request *DeleteChatGroupParticipantsRequest) (_result *DeleteChatGroupParticipantsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteChatGroupParticipantsResponse{}
+	_body, _err := client.DeleteChatGroupParticipantsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21099,6 +23369,198 @@ func (client *Client) IsvGetAppId(request *IsvGetAppIdRequest) (_result *IsvGetA
 
 // Summary:
 //
+// # ListChatGroup
+//
+// @param tmpReq - ListChatGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChatGroupResponse
+func (client *Client) ListChatGroupWithOptions(tmpReq *ListChatGroupRequest, runtime *util.RuntimeOptions) (_result *ListChatGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListChatGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Page)) {
+		request.PageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Page, tea.String("Page"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessNumber)) {
+		query["BusinessNumber"] = request.BusinessNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupStatus)) {
+		query["GroupStatus"] = request.GroupStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageShrink)) {
+		query["Page"] = request.PageShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subject)) {
+		query["Subject"] = request.Subject
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListChatGroup"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListChatGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListChatGroup
+//
+// @param request - ListChatGroupRequest
+//
+// @return ListChatGroupResponse
+func (client *Client) ListChatGroup(request *ListChatGroupRequest) (_result *ListChatGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListChatGroupResponse{}
+	_body, _err := client.ListChatGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListChatGroupParticipants
+//
+// @param tmpReq - ListChatGroupParticipantsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChatGroupParticipantsResponse
+func (client *Client) ListChatGroupParticipantsWithOptions(tmpReq *ListChatGroupParticipantsRequest, runtime *util.RuntimeOptions) (_result *ListChatGroupParticipantsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListChatGroupParticipantsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Page)) {
+		request.PageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Page, tea.String("Page"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessNumber)) {
+		query["BusinessNumber"] = request.BusinessNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageShrink)) {
+		query["Page"] = request.PageShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListChatGroupParticipants"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListChatGroupParticipantsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListChatGroupParticipants
+//
+// @param request - ListChatGroupParticipantsRequest
+//
+// @return ListChatGroupParticipantsResponse
+func (client *Client) ListChatGroupParticipants(request *ListChatGroupParticipantsRequest) (_result *ListChatGroupParticipantsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListChatGroupParticipantsResponse{}
+	_body, _err := client.ListChatGroupParticipantsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries message templates.
 //
 // Description:
@@ -22651,6 +25113,10 @@ func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRe
 		body["ProductAction"] = request.ProductActionShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RecipientType)) {
+		body["RecipientType"] = request.RecipientType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		body["Tag"] = request.Tag
 	}
@@ -23008,6 +25474,102 @@ func (client *Client) UpdateAccountWebhook(request *UpdateAccountWebhookRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAccountWebhookResponse{}
 	_body, _err := client.UpdateAccountWebhookWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # UpdateChatGroup
+//
+// @param request - UpdateChatGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateChatGroupResponse
+func (client *Client) UpdateChatGroupWithOptions(request *UpdateChatGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateChatGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessNumber)) {
+		query["BusinessNumber"] = request.BusinessNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProfilePictureFile)) {
+		query["ProfilePictureFile"] = request.ProfilePictureFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subject)) {
+		query["Subject"] = request.Subject
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateChatGroup"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateChatGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # UpdateChatGroup
+//
+// @param request - UpdateChatGroupRequest
+//
+// @return UpdateChatGroupResponse
+func (client *Client) UpdateChatGroup(request *UpdateChatGroupRequest) (_result *UpdateChatGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateChatGroupResponse{}
+	_body, _err := client.UpdateChatGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
