@@ -4448,6 +4448,194 @@ func (s *GetLdpsResourceCostResponse) SetBody(v *GetLdpsResourceCostResponseBody
 	return s
 }
 
+type GetLindormEngineConfigRequest struct {
+	// This parameter is required.
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s GetLindormEngineConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormEngineConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormEngineConfigRequest) SetEngineType(v string) *GetLindormEngineConfigRequest {
+	s.EngineType = &v
+	return s
+}
+
+func (s *GetLindormEngineConfigRequest) SetInstanceId(v string) *GetLindormEngineConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetLindormEngineConfigRequest) SetOwnerAccount(v string) *GetLindormEngineConfigRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetLindormEngineConfigRequest) SetOwnerId(v int64) *GetLindormEngineConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetLindormEngineConfigRequest) SetRegionId(v string) *GetLindormEngineConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetLindormEngineConfigRequest) SetResourceOwnerAccount(v string) *GetLindormEngineConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetLindormEngineConfigRequest) SetResourceOwnerId(v int64) *GetLindormEngineConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetLindormEngineConfigRequest) SetSecurityToken(v string) *GetLindormEngineConfigRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type GetLindormEngineConfigResponseBody struct {
+	AccessDeniedDetail *string                                            `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	EngineConfigs      []*GetLindormEngineConfigResponseBodyEngineConfigs `json:"EngineConfigs,omitempty" xml:"EngineConfigs,omitempty" type:"Repeated"`
+	RequestId          *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetLindormEngineConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormEngineConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormEngineConfigResponseBody) SetAccessDeniedDetail(v string) *GetLindormEngineConfigResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetLindormEngineConfigResponseBody) SetEngineConfigs(v []*GetLindormEngineConfigResponseBodyEngineConfigs) *GetLindormEngineConfigResponseBody {
+	s.EngineConfigs = v
+	return s
+}
+
+func (s *GetLindormEngineConfigResponseBody) SetRequestId(v string) *GetLindormEngineConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetLindormEngineConfigResponseBodyEngineConfigs struct {
+	ConfigFiles []*GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles `json:"ConfigFiles,omitempty" xml:"ConfigFiles,omitempty" type:"Repeated"`
+	Engine      *string                                                       `json:"Engine,omitempty" xml:"Engine,omitempty"`
+}
+
+func (s GetLindormEngineConfigResponseBodyEngineConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormEngineConfigResponseBodyEngineConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormEngineConfigResponseBodyEngineConfigs) SetConfigFiles(v []*GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles) *GetLindormEngineConfigResponseBodyEngineConfigs {
+	s.ConfigFiles = v
+	return s
+}
+
+func (s *GetLindormEngineConfigResponseBodyEngineConfigs) SetEngine(v string) *GetLindormEngineConfigResponseBodyEngineConfigs {
+	s.Engine = &v
+	return s
+}
+
+type GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles struct {
+	ConfigItems []*GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems `json:"ConfigItems,omitempty" xml:"ConfigItems,omitempty" type:"Repeated"`
+	FileName    *string                                                                  `json:"FileName,omitempty" xml:"FileName,omitempty"`
+}
+
+func (s GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles) SetConfigItems(v []*GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems) *GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles {
+	s.ConfigItems = v
+	return s
+}
+
+func (s *GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles) SetFileName(v string) *GetLindormEngineConfigResponseBodyEngineConfigsConfigFiles {
+	s.FileName = &v
+	return s
+}
+
+type GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems struct {
+	ConfigItemKey   *string `json:"ConfigItemKey,omitempty" xml:"ConfigItemKey,omitempty"`
+	ConfigItemValue *string `json:"ConfigItemValue,omitempty" xml:"ConfigItemValue,omitempty"`
+}
+
+func (s GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems) SetConfigItemKey(v string) *GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems {
+	s.ConfigItemKey = &v
+	return s
+}
+
+func (s *GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems) SetConfigItemValue(v string) *GetLindormEngineConfigResponseBodyEngineConfigsConfigFilesConfigItems {
+	s.ConfigItemValue = &v
+	return s
+}
+
+type GetLindormEngineConfigResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLindormEngineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLindormEngineConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormEngineConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormEngineConfigResponse) SetHeaders(v map[string]*string) *GetLindormEngineConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLindormEngineConfigResponse) SetStatusCode(v int32) *GetLindormEngineConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLindormEngineConfigResponse) SetBody(v *GetLindormEngineConfigResponseBody) *GetLindormEngineConfigResponse {
+	s.Body = v
+	return s
+}
+
 type GetLindormFsUsedDetailRequest struct {
 	// The ID of the instance. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to query the instance ID.
 	//
@@ -4770,7 +4958,9 @@ type GetLindormFsUsedDetailResponseBodyLStorageUsageList struct {
 	// example:
 	//
 	// 33269
-	Used *string `json:"Used,omitempty" xml:"Used,omitempty"`
+	Used                *string `json:"Used,omitempty" xml:"Used,omitempty"`
+	UsedLindormColumn3  *string `json:"UsedLindormColumn3,omitempty" xml:"UsedLindormColumn3,omitempty"`
+	UsedLindormMessage3 *string `json:"UsedLindormMessage3,omitempty" xml:"UsedLindormMessage3,omitempty"`
 	// The storage usage of the search engine. Unit: bytes.
 	//
 	// example:
@@ -4794,7 +4984,8 @@ type GetLindormFsUsedDetailResponseBodyLStorageUsageList struct {
 	// example:
 	//
 	// 33269
-	UsedLindormTsdb *string `json:"UsedLindormTsdb,omitempty" xml:"UsedLindormTsdb,omitempty"`
+	UsedLindormTsdb    *string `json:"UsedLindormTsdb,omitempty" xml:"UsedLindormTsdb,omitempty"`
+	UsedLindormVector3 *string `json:"UsedLindormVector3,omitempty" xml:"UsedLindormVector3,omitempty"`
 	// The storage usage of other resources, such as logs and recycle bins. Unit: bytes.
 	//
 	// example:
@@ -4826,6 +5017,16 @@ func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetUsed(v string) 
 	return s
 }
 
+func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetUsedLindormColumn3(v string) *GetLindormFsUsedDetailResponseBodyLStorageUsageList {
+	s.UsedLindormColumn3 = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetUsedLindormMessage3(v string) *GetLindormFsUsedDetailResponseBodyLStorageUsageList {
+	s.UsedLindormMessage3 = &v
+	return s
+}
+
 func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetUsedLindormSearch(v string) *GetLindormFsUsedDetailResponseBodyLStorageUsageList {
 	s.UsedLindormSearch = &v
 	return s
@@ -4843,6 +5044,11 @@ func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetUsedLindormTabl
 
 func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetUsedLindormTsdb(v string) *GetLindormFsUsedDetailResponseBodyLStorageUsageList {
 	s.UsedLindormTsdb = &v
+	return s
+}
+
+func (s *GetLindormFsUsedDetailResponseBodyLStorageUsageList) SetUsedLindormVector3(v string) *GetLindormFsUsedDetailResponseBodyLStorageUsageList {
+	s.UsedLindormVector3 = &v
 	return s
 }
 
@@ -9121,6 +9327,130 @@ func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesRespo
 }
 
 func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type MigrateSingleZoneToMultiZoneRequest struct {
+	ArbitraryVSwitchId *string `json:"ArbitraryVSwitchId,omitempty" xml:"ArbitraryVSwitchId,omitempty"`
+	ArbitraryZoneId    *string `json:"ArbitraryZoneId,omitempty" xml:"ArbitraryZoneId,omitempty"`
+	// This parameter is required.
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StandbyVSwitchId     *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	StandbyZoneId        *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+}
+
+func (s MigrateSingleZoneToMultiZoneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MigrateSingleZoneToMultiZoneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MigrateSingleZoneToMultiZoneRequest) SetArbitraryVSwitchId(v string) *MigrateSingleZoneToMultiZoneRequest {
+	s.ArbitraryVSwitchId = &v
+	return s
+}
+
+func (s *MigrateSingleZoneToMultiZoneRequest) SetArbitraryZoneId(v string) *MigrateSingleZoneToMultiZoneRequest {
+	s.ArbitraryZoneId = &v
+	return s
+}
+
+func (s *MigrateSingleZoneToMultiZoneRequest) SetInstanceId(v string) *MigrateSingleZoneToMultiZoneRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *MigrateSingleZoneToMultiZoneRequest) SetOwnerAccount(v string) *MigrateSingleZoneToMultiZoneRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *MigrateSingleZoneToMultiZoneRequest) SetOwnerId(v int64) *MigrateSingleZoneToMultiZoneRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *MigrateSingleZoneToMultiZoneRequest) SetResourceOwnerAccount(v string) *MigrateSingleZoneToMultiZoneRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *MigrateSingleZoneToMultiZoneRequest) SetResourceOwnerId(v int64) *MigrateSingleZoneToMultiZoneRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *MigrateSingleZoneToMultiZoneRequest) SetSecurityToken(v string) *MigrateSingleZoneToMultiZoneRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *MigrateSingleZoneToMultiZoneRequest) SetStandbyVSwitchId(v string) *MigrateSingleZoneToMultiZoneRequest {
+	s.StandbyVSwitchId = &v
+	return s
+}
+
+func (s *MigrateSingleZoneToMultiZoneRequest) SetStandbyZoneId(v string) *MigrateSingleZoneToMultiZoneRequest {
+	s.StandbyZoneId = &v
+	return s
+}
+
+type MigrateSingleZoneToMultiZoneResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s MigrateSingleZoneToMultiZoneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MigrateSingleZoneToMultiZoneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MigrateSingleZoneToMultiZoneResponseBody) SetAccessDeniedDetail(v string) *MigrateSingleZoneToMultiZoneResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *MigrateSingleZoneToMultiZoneResponseBody) SetRequestId(v string) *MigrateSingleZoneToMultiZoneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type MigrateSingleZoneToMultiZoneResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MigrateSingleZoneToMultiZoneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MigrateSingleZoneToMultiZoneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MigrateSingleZoneToMultiZoneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MigrateSingleZoneToMultiZoneResponse) SetHeaders(v map[string]*string) *MigrateSingleZoneToMultiZoneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MigrateSingleZoneToMultiZoneResponse) SetStatusCode(v int32) *MigrateSingleZoneToMultiZoneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MigrateSingleZoneToMultiZoneResponse) SetBody(v *MigrateSingleZoneToMultiZoneResponseBody) *MigrateSingleZoneToMultiZoneResponse {
 	s.Body = v
 	return s
 }
@@ -14505,6 +14835,94 @@ func (client *Client) GetLdpsResourceCost(request *GetLdpsResourceCostRequest) (
 
 // Summary:
 //
+// 获取Lindorm引擎配置
+//
+// @param request - GetLindormEngineConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLindormEngineConfigResponse
+func (client *Client) GetLindormEngineConfigWithOptions(request *GetLindormEngineConfigRequest, runtime *util.RuntimeOptions) (_result *GetLindormEngineConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EngineType)) {
+		query["EngineType"] = request.EngineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLindormEngineConfig"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLindormEngineConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Lindorm引擎配置
+//
+// @param request - GetLindormEngineConfigRequest
+//
+// @return GetLindormEngineConfigResponse
+func (client *Client) GetLindormEngineConfig(request *GetLindormEngineConfigRequest) (_result *GetLindormEngineConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLindormEngineConfigResponse{}
+	_body, _err := client.GetLindormEngineConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of each storage type in a Lindorm instance.
 //
 // Description:
@@ -15560,6 +15978,102 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
 	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 单可用区迁移多可用区基础版
+//
+// @param request - MigrateSingleZoneToMultiZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MigrateSingleZoneToMultiZoneResponse
+func (client *Client) MigrateSingleZoneToMultiZoneWithOptions(request *MigrateSingleZoneToMultiZoneRequest, runtime *util.RuntimeOptions) (_result *MigrateSingleZoneToMultiZoneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArbitraryVSwitchId)) {
+		query["ArbitraryVSwitchId"] = request.ArbitraryVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArbitraryZoneId)) {
+		query["ArbitraryZoneId"] = request.ArbitraryZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyVSwitchId)) {
+		query["StandbyVSwitchId"] = request.StandbyVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyZoneId)) {
+		query["StandbyZoneId"] = request.StandbyZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MigrateSingleZoneToMultiZone"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MigrateSingleZoneToMultiZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 单可用区迁移多可用区基础版
+//
+// @param request - MigrateSingleZoneToMultiZoneRequest
+//
+// @return MigrateSingleZoneToMultiZoneResponse
+func (client *Client) MigrateSingleZoneToMultiZone(request *MigrateSingleZoneToMultiZoneRequest) (_result *MigrateSingleZoneToMultiZoneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MigrateSingleZoneToMultiZoneResponse{}
+	_body, _err := client.MigrateSingleZoneToMultiZoneWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
