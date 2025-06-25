@@ -398,7 +398,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// cadt-application
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name             *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProcessVariables map[string]interface{} `json:"ProcessVariables,omitempty" xml:"ProcessVariables,omitempty"`
 	// The ID of the resource group to which the application you want to create belongs.
 	//
 	// example:
@@ -451,6 +452,11 @@ func (s *CreateApplicationRequest) SetInstances(v []*CreateApplicationRequestIns
 
 func (s *CreateApplicationRequest) SetName(v string) *CreateApplicationRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetProcessVariables(v map[string]interface{}) *CreateApplicationRequest {
+	s.ProcessVariables = v
 	return s
 }
 
@@ -545,7 +551,8 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// cadt-application
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProcessVariablesShrink *string `json:"ProcessVariables,omitempty" xml:"ProcessVariables,omitempty"`
 	// The ID of the resource group to which the application you want to create belongs.
 	//
 	// example:
@@ -598,6 +605,11 @@ func (s *CreateApplicationShrinkRequest) SetInstancesShrink(v string) *CreateApp
 
 func (s *CreateApplicationShrinkRequest) SetName(v string) *CreateApplicationShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetProcessVariablesShrink(v string) *CreateApplicationShrinkRequest {
+	s.ProcessVariablesShrink = &v
 	return s
 }
 
@@ -6751,6 +6763,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		request.InstancesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Instances, tea.String("Instances"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.ProcessVariables)) {
+		request.ProcessVariablesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ProcessVariables, tea.String("ProcessVariables"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Variables)) {
 		request.VariablesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Variables, tea.String("Variables"), tea.String("json"))
 	}
@@ -6774,6 +6790,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessVariablesShrink)) {
+		body["ProcessVariables"] = request.ProcessVariablesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
