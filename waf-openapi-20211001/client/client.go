@@ -578,6 +578,151 @@ func (s *CreateApiExportResponse) SetBody(v *CreateApiExportResponseBody) *Creat
 	return s
 }
 
+type CreateCertsRequest struct {
+	// The content of the certificate.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE----- 62EcYPWd2****s6MTXcJSfN9Z7rZ9fmxWr2BFN2XbahgnsSXM48ixZJ4krc+1M+j2kcubVpsE2cgHdj4v8H6jUz9Ji4mr7vMNS6dXv8PUkl/qoDeNGCNdyTS5NIL5ir+g92cL8IGOkjgvhlqt9vc65Cgb4mL+n5+DV9uOyTZTW/MojmlgfUekC2xiXa54nxJf17Y1TADGSbyJbsC0Q9nIrHsPl8YKkvRWvIAqYxXZ7wRwWWmv4TMxFhWRiNY7yZIo2ZUhl02S****gIEeg== -----END CERTIFICATE-----
+	CertContent *string `json:"CertContent,omitempty" xml:"CertContent,omitempty"`
+	// The private key that corresponds to the certificate.
+	//
+	// example:
+	//
+	// -----BEGIN RSA PRIVATE KEY----- DADTPZoOHd9WtZ3U****RgNQmioPQn2bqdKHop+B/dn/4VZL7Jt8zSDGM9sTMThLyvsmLQKBgQCr+ujntC1kN6pGBj2Fw2l/EA/W3rYEce2tyhjgmG7rZ+A/jVE9fld5sQra6ZdwBcQJaiygoIYoaMF2EjRwc0qwHaluq0C15f6ujSoHh2e+D5zdmkTg/3NKNjqNv6xA2gYpinVDzFdZ9Zujxvuh9o4Vqf0YF8****K5G04RtKadOw== -----END RSA PRIVATE KEY-----
+	CertKey *string `json:"CertKey,omitempty" xml:"CertKey,omitempty"`
+	// The name of the certificate.
+	//
+	// example:
+	//
+	// testrsa1
+	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-20p****nw01
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s CreateCertsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCertsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCertsRequest) SetCertContent(v string) *CreateCertsRequest {
+	s.CertContent = &v
+	return s
+}
+
+func (s *CreateCertsRequest) SetCertKey(v string) *CreateCertsRequest {
+	s.CertKey = &v
+	return s
+}
+
+func (s *CreateCertsRequest) SetCertName(v string) *CreateCertsRequest {
+	s.CertName = &v
+	return s
+}
+
+func (s *CreateCertsRequest) SetInstanceId(v string) *CreateCertsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateCertsRequest) SetRegionId(v string) *CreateCertsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateCertsRequest) SetResourceManagerResourceGroupId(v string) *CreateCertsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type CreateCertsResponseBody struct {
+	// The ID of the certificate.
+	//
+	// example:
+	//
+	// 123456-cn-hangzhou
+	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 5BBA38B1-07AE-559F-8766-AB50****C300
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCertsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCertsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCertsResponseBody) SetCertIdentifier(v string) *CreateCertsResponseBody {
+	s.CertIdentifier = &v
+	return s
+}
+
+func (s *CreateCertsResponseBody) SetRequestId(v string) *CreateCertsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCertsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCertsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCertsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCertsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCertsResponse) SetHeaders(v map[string]*string) *CreateCertsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCertsResponse) SetStatusCode(v int32) *CreateCertsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCertsResponse) SetBody(v *CreateCertsResponseBody) *CreateCertsResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCloudResourceRequest struct {
 	// The ID of the WAF instance.
 	//
@@ -17471,6 +17616,92 @@ func (s *DescribeDomainDetailResponse) SetStatusCode(v int32) *DescribeDomainDet
 }
 
 func (s *DescribeDomainDetailResponse) SetBody(v *DescribeDomainDetailResponseBody) *DescribeDomainDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDomainUsedPortsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeDomainUsedPortsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainUsedPortsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainUsedPortsRequest) SetInstanceId(v string) *DescribeDomainUsedPortsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDomainUsedPortsRequest) SetRegionId(v string) *DescribeDomainUsedPortsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeDomainUsedPortsResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-*-A47C-*
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UsedPorts []*int32 `json:"UsedPorts,omitempty" xml:"UsedPorts,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDomainUsedPortsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainUsedPortsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainUsedPortsResponseBody) SetRequestId(v string) *DescribeDomainUsedPortsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDomainUsedPortsResponseBody) SetUsedPorts(v []*int32) *DescribeDomainUsedPortsResponseBody {
+	s.UsedPorts = v
+	return s
+}
+
+type DescribeDomainUsedPortsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainUsedPortsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDomainUsedPortsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainUsedPortsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainUsedPortsResponse) SetHeaders(v map[string]*string) *DescribeDomainUsedPortsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainUsedPortsResponse) SetStatusCode(v int32) *DescribeDomainUsedPortsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDomainUsedPortsResponse) SetBody(v *DescribeDomainUsedPortsResponseBody) *DescribeDomainUsedPortsResponse {
 	s.Body = v
 	return s
 }
@@ -40944,6 +41175,86 @@ func (client *Client) CreateApiExport(request *CreateApiExportRequest) (_result 
 
 // Summary:
 //
+// Uploads a certificate that uses an internationally accepted algorithm for a domain name added to Web Application Firewall (WAF) in CNAME record mode.
+//
+// @param request - CreateCertsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCertsResponse
+func (client *Client) CreateCertsWithOptions(request *CreateCertsRequest, runtime *util.RuntimeOptions) (_result *CreateCertsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertContent)) {
+		query["CertContent"] = request.CertContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertKey)) {
+		query["CertKey"] = request.CertKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		query["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCerts"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCertsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a certificate that uses an internationally accepted algorithm for a domain name added to Web Application Firewall (WAF) in CNAME record mode.
+//
+// @param request - CreateCertsRequest
+//
+// @return CreateCertsResponse
+func (client *Client) CreateCerts(request *CreateCertsRequest) (_result *CreateCertsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCertsResponse{}
+	_body, _err := client.CreateCertsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds a service to Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
 //
 // @param tmpReq - CreateCloudResourceRequest
@@ -46259,6 +46570,70 @@ func (client *Client) DescribeDomainDetail(request *DescribeDomainDetailRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainDetailResponse{}
 	_body, _err := client.DescribeDomainDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询域名已使用的端口
+//
+// @param request - DescribeDomainUsedPortsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainUsedPortsResponse
+func (client *Client) DescribeDomainUsedPortsWithOptions(request *DescribeDomainUsedPortsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainUsedPortsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainUsedPorts"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDomainUsedPortsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询域名已使用的端口
+//
+// @param request - DescribeDomainUsedPortsRequest
+//
+// @return DescribeDomainUsedPortsResponse
+func (client *Client) DescribeDomainUsedPorts(request *DescribeDomainUsedPortsRequest) (_result *DescribeDomainUsedPortsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDomainUsedPortsResponse{}
+	_body, _err := client.DescribeDomainUsedPortsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
