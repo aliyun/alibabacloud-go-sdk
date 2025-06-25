@@ -6125,7 +6125,8 @@ type CreateCenterPolicyRequest struct {
 	// example:
 	//
 	// off
-	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	CameraRedirect    *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	ClientControlMenu *string `json:"ClientControlMenu,omitempty" xml:"ClientControlMenu,omitempty"`
 	// The types of Alibaba Cloud Workspace clients that end users can use to connect to cloud computers.
 	ClientType []*CreateCenterPolicyRequestClientType `json:"ClientType,omitempty" xml:"ClientType,omitempty" type:"Repeated"`
 	// The read/write permissions on the clipboard.
@@ -6155,7 +6156,8 @@ type CreateCenterPolicyRequest struct {
 	// example:
 	//
 	// off
-	ColorEnhancement *string `json:"ColorEnhancement,omitempty" xml:"ColorEnhancement,omitempty"`
+	ColorEnhancement  *string `json:"ColorEnhancement,omitempty" xml:"ColorEnhancement,omitempty"`
+	CpdDriveClipboard *string `json:"CpdDriveClipboard,omitempty" xml:"CpdDriveClipboard,omitempty"`
 	// The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
 	//
 	// example:
@@ -6297,7 +6299,10 @@ type CreateCenterPolicyRequest struct {
 	// example:
 	//
 	// off
-	FileMigrate *string `json:"FileMigrate,omitempty" xml:"FileMigrate,omitempty"`
+	FileMigrate               *string `json:"FileMigrate,omitempty" xml:"FileMigrate,omitempty"`
+	FileTransferAddress       *string `json:"FileTransferAddress,omitempty" xml:"FileTransferAddress,omitempty"`
+	FileTransferSpeed         *string `json:"FileTransferSpeed,omitempty" xml:"FileTransferSpeed,omitempty"`
+	FileTransferSpeedLocation *string `json:"FileTransferSpeedLocation,omitempty" xml:"FileTransferSpeedLocation,omitempty"`
 	// Specifies whether to enable image quality control. This feature is highly recommended for professional design scenarios where computer performance and user experience are critical.
 	//
 	// Valid values:
@@ -6669,7 +6674,8 @@ type CreateCenterPolicyRequest struct {
 	// GLOBAL
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// The effective scopes. This parameter is required when `Scope` is set to `IP`. If `Scope` is set to `IP`, this parameter doesn\\"t take effect.
-	ScopeValue []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
+	ScopeValue        []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
+	ScreenDisplayMode *string   `json:"ScreenDisplayMode,omitempty" xml:"ScreenDisplayMode,omitempty"`
 	// The bandwidth peak allowed for sessions. Unit: Kbit/s. Valid values: 2000 to 100000.
 	//
 	// example:
@@ -6746,6 +6752,7 @@ type CreateCenterPolicyRequest struct {
 	UsbRedirect *string `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
 	// The USB redirection rules.
 	UsbSupplyRedirectRule []*CreateCenterPolicyRequestUsbSupplyRedirectRule `json:"UsbSupplyRedirectRule,omitempty" xml:"UsbSupplyRedirectRule,omitempty" type:"Repeated"`
+	UseTime               *string                                           `json:"UseTime,omitempty" xml:"UseTime,omitempty"`
 	// The average bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
 	//
 	// example:
@@ -6998,6 +7005,11 @@ func (s *CreateCenterPolicyRequest) SetCameraRedirect(v string) *CreateCenterPol
 	return s
 }
 
+func (s *CreateCenterPolicyRequest) SetClientControlMenu(v string) *CreateCenterPolicyRequest {
+	s.ClientControlMenu = &v
+	return s
+}
+
 func (s *CreateCenterPolicyRequest) SetClientType(v []*CreateCenterPolicyRequestClientType) *CreateCenterPolicyRequest {
 	s.ClientType = v
 	return s
@@ -7010,6 +7022,11 @@ func (s *CreateCenterPolicyRequest) SetClipboard(v string) *CreateCenterPolicyRe
 
 func (s *CreateCenterPolicyRequest) SetColorEnhancement(v string) *CreateCenterPolicyRequest {
 	s.ColorEnhancement = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetCpdDriveClipboard(v string) *CreateCenterPolicyRequest {
+	s.CpdDriveClipboard = &v
 	return s
 }
 
@@ -7100,6 +7117,21 @@ func (s *CreateCenterPolicyRequest) SetEndUserGroupCoordinate(v string) *CreateC
 
 func (s *CreateCenterPolicyRequest) SetFileMigrate(v string) *CreateCenterPolicyRequest {
 	s.FileMigrate = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetFileTransferAddress(v string) *CreateCenterPolicyRequest {
+	s.FileTransferAddress = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetFileTransferSpeed(v string) *CreateCenterPolicyRequest {
+	s.FileTransferSpeed = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetFileTransferSpeedLocation(v string) *CreateCenterPolicyRequest {
+	s.FileTransferSpeedLocation = &v
 	return s
 }
 
@@ -7323,6 +7355,11 @@ func (s *CreateCenterPolicyRequest) SetScopeValue(v []*string) *CreateCenterPoli
 	return s
 }
 
+func (s *CreateCenterPolicyRequest) SetScreenDisplayMode(v string) *CreateCenterPolicyRequest {
+	s.ScreenDisplayMode = &v
+	return s
+}
+
 func (s *CreateCenterPolicyRequest) SetSessionMaxRateKbps(v int32) *CreateCenterPolicyRequest {
 	s.SessionMaxRateKbps = &v
 	return s
@@ -7360,6 +7397,11 @@ func (s *CreateCenterPolicyRequest) SetUsbRedirect(v string) *CreateCenterPolicy
 
 func (s *CreateCenterPolicyRequest) SetUsbSupplyRedirectRule(v []*CreateCenterPolicyRequestUsbSupplyRedirectRule) *CreateCenterPolicyRequest {
 	s.UsbSupplyRedirectRule = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetUseTime(v string) *CreateCenterPolicyRequest {
+	s.UseTime = &v
 	return s
 }
 
@@ -19744,7 +19786,8 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// on
-	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	CameraRedirect    *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	ClientControlMenu *string `json:"ClientControlMenu,omitempty" xml:"ClientControlMenu,omitempty"`
 	// The logon method control rules.
 	ClientTypes []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
 	// The read/write permissions on the clipboard.
@@ -19758,7 +19801,8 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// off
-	ColorEnhancement *string `json:"ColorEnhancement,omitempty" xml:"ColorEnhancement,omitempty"`
+	ColorEnhancement  *string `json:"ColorEnhancement,omitempty" xml:"ColorEnhancement,omitempty"`
+	CpdDriveClipboard *string `json:"CpdDriveClipboard,omitempty" xml:"CpdDriveClipboard,omitempty"`
 	// The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
 	//
 	// example:
@@ -19854,7 +19898,10 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// off
-	EndUserGroupCoordinate *string `json:"EndUserGroupCoordinate,omitempty" xml:"EndUserGroupCoordinate,omitempty"`
+	EndUserGroupCoordinate    *string `json:"EndUserGroupCoordinate,omitempty" xml:"EndUserGroupCoordinate,omitempty"`
+	FileTransferAddress       *string `json:"FileTransferAddress,omitempty" xml:"FileTransferAddress,omitempty"`
+	FileTransferSpeed         *string `json:"FileTransferSpeed,omitempty" xml:"FileTransferSpeed,omitempty"`
+	FileTransferSpeedLocation *string `json:"FileTransferSpeedLocation,omitempty" xml:"FileTransferSpeedLocation,omitempty"`
 	// Indicates whether image quality control is enabled. For optimal computer performance and user experience in professional design scenarios, we recommend enabling this feature.
 	//
 	// example:
@@ -20114,7 +20161,8 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// GLOBAL
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// The effective scopes specified by CIDR blocks.
-	ScopeValue []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
+	ScopeValue        []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
+	ScreenDisplayMode *string   `json:"ScreenDisplayMode,omitempty" xml:"ScreenDisplayMode,omitempty"`
 	// Indicates whether smoothness enhancement is enabled for daily office use.
 	//
 	// example:
@@ -20155,6 +20203,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	UsbRedirect *string `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
 	// The USB redirection rules.
 	UsbSupplyRedirectRule []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule `json:"UsbSupplyRedirectRule,omitempty" xml:"UsbSupplyRedirectRule,omitempty" type:"Repeated"`
+	UseTime               *string                                                                          `json:"UseTime,omitempty" xml:"UseTime,omitempty"`
 	// The average bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
 	//
 	// example:
@@ -20310,6 +20359,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetCameraRedi
 	return s
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetClientControlMenu(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ClientControlMenu = &v
+	return s
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetClientTypes(v []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.ClientTypes = v
 	return s
@@ -20322,6 +20376,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetClipboard(
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetColorEnhancement(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.ColorEnhancement = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetCpdDriveClipboard(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.CpdDriveClipboard = &v
 	return s
 }
 
@@ -20412,6 +20471,21 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetEndUserApp
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetEndUserGroupCoordinate(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.EndUserGroupCoordinate = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetFileTransferAddress(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.FileTransferAddress = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetFileTransferSpeed(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.FileTransferSpeed = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetFileTransferSpeedLocation(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.FileTransferSpeedLocation = &v
 	return s
 }
 
@@ -20650,6 +20724,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetScopeValue
 	return s
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetScreenDisplayMode(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ScreenDisplayMode = &v
+	return s
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetSmoothEnhancement(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.SmoothEnhancement = &v
 	return s
@@ -20682,6 +20761,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetUsbRedirec
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetUsbSupplyRedirectRule(v []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.UsbSupplyRedirectRule = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetUseTime(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.UseTime = &v
 	return s
 }
 
@@ -36181,7 +36265,8 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// on
-	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	CameraRedirect    *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	ClientControlMenu *string `json:"ClientControlMenu,omitempty" xml:"ClientControlMenu,omitempty"`
 	// The logon method control rules to limit the type of the Alibaba Cloud Workspace client used by end users to connect to cloud computers.
 	ClientTypes []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
 	// The permissions on the clipboard.
@@ -36211,7 +36296,8 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// off
-	ColorEnhancement *string `json:"ColorEnhancement,omitempty" xml:"ColorEnhancement,omitempty"`
+	ColorEnhancement  *string `json:"ColorEnhancement,omitempty" xml:"ColorEnhancement,omitempty"`
+	CpdDriveClipboard *string `json:"CpdDriveClipboard,omitempty" xml:"CpdDriveClipboard,omitempty"`
 	// The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
 	//
 	// example:
@@ -36345,7 +36431,10 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// null
-	FileTransfer *string `json:"FileTransfer,omitempty" xml:"FileTransfer,omitempty"`
+	FileTransfer              *string `json:"FileTransfer,omitempty" xml:"FileTransfer,omitempty"`
+	FileTransferAddress       *string `json:"FileTransferAddress,omitempty" xml:"FileTransferAddress,omitempty"`
+	FileTransferSpeed         *string `json:"FileTransferSpeed,omitempty" xml:"FileTransferSpeed,omitempty"`
+	FileTransferSpeedLocation *string `json:"FileTransferSpeedLocation,omitempty" xml:"FileTransferSpeedLocation,omitempty"`
 	// Indicates whether the Image Quality Control feature is enabled. If you have high requirements on the performance and user experience in scenarios such as professional design, we recommend that you enable this feature.
 	//
 	// Valid values:
@@ -36756,7 +36845,8 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// GLOBAL
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// This parameter is required when the `Scope` parameter is set to `IP`.````
-	ScopeValue []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
+	ScopeValue        []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
+	ScreenDisplayMode *string   `json:"ScreenDisplayMode,omitempty" xml:"ScreenDisplayMode,omitempty"`
 	// Indicates whether the Smooth Enhancement switch is turned on.
 	//
 	// Valid values:
@@ -36811,6 +36901,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	UsbRedirect *string `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
 	// The USB redirection rule.
 	UsbSupplyRedirectRule []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule `json:"UsbSupplyRedirectRule,omitempty" xml:"UsbSupplyRedirectRule,omitempty" type:"Repeated"`
+	UseTime               *string                                                                      `json:"UseTime,omitempty" xml:"UseTime,omitempty"`
 	// The average bitrate for video encoding. Valid values: 1000 to 50000.
 	//
 	// example:
@@ -37061,6 +37152,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetCameraRedirect
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetClientControlMenu(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.ClientControlMenu = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetClientTypes(v []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.ClientTypes = v
 	return s
@@ -37073,6 +37169,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetClipboard(v st
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetColorEnhancement(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.ColorEnhancement = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetCpdDriveClipboard(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.CpdDriveClipboard = &v
 	return s
 }
 
@@ -37173,6 +37274,21 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetFileMigrate(v 
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetFileTransfer(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.FileTransfer = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetFileTransferAddress(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.FileTransferAddress = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetFileTransferSpeed(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.FileTransferSpeed = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetFileTransferSpeedLocation(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.FileTransferSpeedLocation = &v
 	return s
 }
 
@@ -37421,6 +37537,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetScopeValue(v [
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetScreenDisplayMode(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.ScreenDisplayMode = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetSmoothEnhancement(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.SmoothEnhancement = &v
 	return s
@@ -37448,6 +37569,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetUsbRedirect(v 
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetUsbSupplyRedirectRule(v []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.UsbSupplyRedirectRule = v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetUseTime(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.UseTime = &v
 	return s
 }
 
@@ -51817,7 +51943,8 @@ type ModifyCenterPolicyRequest struct {
 	// example:
 	//
 	// on
-	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	CameraRedirect    *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	ClientControlMenu *string `json:"ClientControlMenu,omitempty" xml:"ClientControlMenu,omitempty"`
 	// The types of Alibaba Cloud Workspace clients that end users can use to connect to cloud computers.
 	ClientType []*ModifyCenterPolicyRequestClientType `json:"ClientType,omitempty" xml:"ClientType,omitempty" type:"Repeated"`
 	// The read/write permissions on the clipboard.
@@ -51847,7 +51974,8 @@ type ModifyCenterPolicyRequest struct {
 	// example:
 	//
 	// off
-	ColorEnhancement *string `json:"ColorEnhancement,omitempty" xml:"ColorEnhancement,omitempty"`
+	ColorEnhancement  *string `json:"ColorEnhancement,omitempty" xml:"ColorEnhancement,omitempty"`
+	CpdDriveClipboard *string `json:"CpdDriveClipboard,omitempty" xml:"CpdDriveClipboard,omitempty"`
 	// The CPU underclocking duration. Valid values: 30 to 120. Unit: seconds.
 	//
 	// example:
@@ -52001,7 +52129,10 @@ type ModifyCenterPolicyRequest struct {
 	// example:
 	//
 	// off
-	FileMigrate *string `json:"FileMigrate,omitempty" xml:"FileMigrate,omitempty"`
+	FileMigrate               *string `json:"FileMigrate,omitempty" xml:"FileMigrate,omitempty"`
+	FileTransferAddress       *string `json:"FileTransferAddress,omitempty" xml:"FileTransferAddress,omitempty"`
+	FileTransferSpeed         *string `json:"FileTransferSpeed,omitempty" xml:"FileTransferSpeed,omitempty"`
+	FileTransferSpeedLocation *string `json:"FileTransferSpeedLocation,omitempty" xml:"FileTransferSpeedLocation,omitempty"`
 	// Specifies whether to enable Image Quality Control. This feature is highly recommended for professional design scenarios where performance and user experience are critical.
 	//
 	// Valid values:
@@ -52389,7 +52520,8 @@ type ModifyCenterPolicyRequest struct {
 	// GLOBAL
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// The effective scopes. This parameter is required when `Scope` is set to `IP`. If `Scope` is set to `IP`, this parameter doesn\\"t take effect.
-	ScopeValue []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
+	ScopeValue        []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
+	ScreenDisplayMode *string   `json:"ScreenDisplayMode,omitempty" xml:"ScreenDisplayMode,omitempty"`
 	// The bandwidth peak allowed for sessions. Unit: Kbit/s. Valid values: 2000 to 100000.
 	//
 	// example:
@@ -52466,6 +52598,7 @@ type ModifyCenterPolicyRequest struct {
 	UsbRedirect *string `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
 	// The USB redirection rules.
 	UsbSupplyRedirectRule []*ModifyCenterPolicyRequestUsbSupplyRedirectRule `json:"UsbSupplyRedirectRule,omitempty" xml:"UsbSupplyRedirectRule,omitempty" type:"Repeated"`
+	UseTime               *string                                           `json:"UseTime,omitempty" xml:"UseTime,omitempty"`
 	// The average bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
 	//
 	// example:
@@ -52724,6 +52857,11 @@ func (s *ModifyCenterPolicyRequest) SetCameraRedirect(v string) *ModifyCenterPol
 	return s
 }
 
+func (s *ModifyCenterPolicyRequest) SetClientControlMenu(v string) *ModifyCenterPolicyRequest {
+	s.ClientControlMenu = &v
+	return s
+}
+
 func (s *ModifyCenterPolicyRequest) SetClientType(v []*ModifyCenterPolicyRequestClientType) *ModifyCenterPolicyRequest {
 	s.ClientType = v
 	return s
@@ -52736,6 +52874,11 @@ func (s *ModifyCenterPolicyRequest) SetClipboard(v string) *ModifyCenterPolicyRe
 
 func (s *ModifyCenterPolicyRequest) SetColorEnhancement(v string) *ModifyCenterPolicyRequest {
 	s.ColorEnhancement = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetCpdDriveClipboard(v string) *ModifyCenterPolicyRequest {
+	s.CpdDriveClipboard = &v
 	return s
 }
 
@@ -52826,6 +52969,21 @@ func (s *ModifyCenterPolicyRequest) SetEndUserGroupCoordinate(v string) *ModifyC
 
 func (s *ModifyCenterPolicyRequest) SetFileMigrate(v string) *ModifyCenterPolicyRequest {
 	s.FileMigrate = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetFileTransferAddress(v string) *ModifyCenterPolicyRequest {
+	s.FileTransferAddress = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetFileTransferSpeed(v string) *ModifyCenterPolicyRequest {
+	s.FileTransferSpeed = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetFileTransferSpeedLocation(v string) *ModifyCenterPolicyRequest {
+	s.FileTransferSpeedLocation = &v
 	return s
 }
 
@@ -53064,6 +53222,11 @@ func (s *ModifyCenterPolicyRequest) SetScopeValue(v []*string) *ModifyCenterPoli
 	return s
 }
 
+func (s *ModifyCenterPolicyRequest) SetScreenDisplayMode(v string) *ModifyCenterPolicyRequest {
+	s.ScreenDisplayMode = &v
+	return s
+}
+
 func (s *ModifyCenterPolicyRequest) SetSessionMaxRateKbps(v int32) *ModifyCenterPolicyRequest {
 	s.SessionMaxRateKbps = &v
 	return s
@@ -53101,6 +53264,11 @@ func (s *ModifyCenterPolicyRequest) SetUsbRedirect(v string) *ModifyCenterPolicy
 
 func (s *ModifyCenterPolicyRequest) SetUsbSupplyRedirectRule(v []*ModifyCenterPolicyRequestUsbSupplyRedirectRule) *ModifyCenterPolicyRequest {
 	s.UsbSupplyRedirectRule = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetUseTime(v string) *ModifyCenterPolicyRequest {
+	s.UseTime = &v
 	return s
 }
 
@@ -69347,6 +69515,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 		query["CameraRedirect"] = request.CameraRedirect
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientControlMenu)) {
+		query["ClientControlMenu"] = request.ClientControlMenu
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientType)) {
 		query["ClientType"] = request.ClientType
 	}
@@ -69357,6 +69529,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 	if !tea.BoolValue(util.IsUnset(request.ColorEnhancement)) {
 		query["ColorEnhancement"] = request.ColorEnhancement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpdDriveClipboard)) {
+		query["CpdDriveClipboard"] = request.CpdDriveClipboard
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CpuDownGradeDuration)) {
@@ -69429,6 +69605,18 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 	if !tea.BoolValue(util.IsUnset(request.FileMigrate)) {
 		query["FileMigrate"] = request.FileMigrate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileTransferAddress)) {
+		query["FileTransferAddress"] = request.FileTransferAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileTransferSpeed)) {
+		query["FileTransferSpeed"] = request.FileTransferSpeed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileTransferSpeedLocation)) {
+		query["FileTransferSpeedLocation"] = request.FileTransferSpeedLocation
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GpuAcceleration)) {
@@ -69607,6 +69795,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 		query["ScopeValue"] = request.ScopeValue
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ScreenDisplayMode)) {
+		query["ScreenDisplayMode"] = request.ScreenDisplayMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SessionMaxRateKbps)) {
 		query["SessionMaxRateKbps"] = request.SessionMaxRateKbps
 	}
@@ -69637,6 +69829,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 	if !tea.BoolValue(util.IsUnset(request.UsbSupplyRedirectRule)) {
 		query["UsbSupplyRedirectRule"] = request.UsbSupplyRedirectRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseTime)) {
+		query["UseTime"] = request.UseTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VideoEncAvgKbps)) {
@@ -81338,6 +81534,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 		query["CameraRedirect"] = request.CameraRedirect
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientControlMenu)) {
+		query["ClientControlMenu"] = request.ClientControlMenu
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientType)) {
 		query["ClientType"] = request.ClientType
 	}
@@ -81348,6 +81548,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 
 	if !tea.BoolValue(util.IsUnset(request.ColorEnhancement)) {
 		query["ColorEnhancement"] = request.ColorEnhancement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpdDriveClipboard)) {
+		query["CpdDriveClipboard"] = request.CpdDriveClipboard
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CpuDownGradeDuration)) {
@@ -81420,6 +81624,18 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 
 	if !tea.BoolValue(util.IsUnset(request.FileMigrate)) {
 		query["FileMigrate"] = request.FileMigrate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileTransferAddress)) {
+		query["FileTransferAddress"] = request.FileTransferAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileTransferSpeed)) {
+		query["FileTransferSpeed"] = request.FileTransferSpeed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileTransferSpeedLocation)) {
+		query["FileTransferSpeedLocation"] = request.FileTransferSpeedLocation
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GpuAcceleration)) {
@@ -81610,6 +81826,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 		query["ScopeValue"] = request.ScopeValue
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ScreenDisplayMode)) {
+		query["ScreenDisplayMode"] = request.ScreenDisplayMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SessionMaxRateKbps)) {
 		query["SessionMaxRateKbps"] = request.SessionMaxRateKbps
 	}
@@ -81640,6 +81860,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 
 	if !tea.BoolValue(util.IsUnset(request.UsbSupplyRedirectRule)) {
 		query["UsbSupplyRedirectRule"] = request.UsbSupplyRedirectRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseTime)) {
+		query["UseTime"] = request.UseTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VideoEncAvgKbps)) {
@@ -84494,7 +84718,7 @@ func (client *Client) ModifyTemplate(request *ModifyTemplateRequest) (_result *M
 //
 // Description:
 //
-// You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](~~ModifyTemplate~~) operation.
+// You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
 //
 // @param request - ModifyTemplateBaseInfoRequest
 //
@@ -84548,7 +84772,7 @@ func (client *Client) ModifyTemplateBaseInfoWithOptions(request *ModifyTemplateB
 //
 // Description:
 //
-// You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](~~ModifyTemplate~~) operation.
+// You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html) operation.
 //
 // @param request - ModifyTemplateBaseInfoRequest
 //
