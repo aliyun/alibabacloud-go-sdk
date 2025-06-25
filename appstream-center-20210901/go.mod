@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/appstream-center-20210901/v3
+module github.com/alibabacloud-go/appstream-center-20210901/v4
 
 go 1.14
 

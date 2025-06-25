@@ -9,144 +9,6 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type AccessPageSetAclRequest struct {
-	// This parameter is required.
-	//
-	// example:
-	//
-	// FREE_ACCESS
-	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// a-062wec3cwmayw****
-	AccessPageId *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
-	// example:
-	//
-	// notepad_test
-	AccessPageName *string `json:"AccessPageName,omitempty" xml:"AccessPageName,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 7
-	EffectTime *int32 `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
-	// example:
-	//
-	// Day
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-}
-
-func (s AccessPageSetAclRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AccessPageSetAclRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AccessPageSetAclRequest) SetAccessMode(v string) *AccessPageSetAclRequest {
-	s.AccessMode = &v
-	return s
-}
-
-func (s *AccessPageSetAclRequest) SetAccessPageId(v string) *AccessPageSetAclRequest {
-	s.AccessPageId = &v
-	return s
-}
-
-func (s *AccessPageSetAclRequest) SetAccessPageName(v string) *AccessPageSetAclRequest {
-	s.AccessPageName = &v
-	return s
-}
-
-func (s *AccessPageSetAclRequest) SetEffectTime(v int32) *AccessPageSetAclRequest {
-	s.EffectTime = &v
-	return s
-}
-
-func (s *AccessPageSetAclRequest) SetUnit(v string) *AccessPageSetAclRequest {
-	s.Unit = &v
-	return s
-}
-
-type AccessPageSetAclResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// InternalError
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// E25FC620-6B6F-12D2-A992-AD8727DC****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s AccessPageSetAclResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AccessPageSetAclResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AccessPageSetAclResponseBody) SetCode(v string) *AccessPageSetAclResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AccessPageSetAclResponseBody) SetMessage(v string) *AccessPageSetAclResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *AccessPageSetAclResponseBody) SetRequestId(v string) *AccessPageSetAclResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AccessPageSetAclResponseBody) SetSuccess(v string) *AccessPageSetAclResponseBody {
-	s.Success = &v
-	return s
-}
-
-type AccessPageSetAclResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *AccessPageSetAclResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s AccessPageSetAclResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AccessPageSetAclResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AccessPageSetAclResponse) SetHeaders(v map[string]*string) *AccessPageSetAclResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AccessPageSetAclResponse) SetStatusCode(v int32) *AccessPageSetAclResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AccessPageSetAclResponse) SetBody(v *AccessPageSetAclResponseBody) *AccessPageSetAclResponse {
-	s.Body = v
-	return s
-}
-
 type ApproveOtaTaskRequest struct {
 	// The ID of the delivery group. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
 	//
@@ -308,202 +170,6 @@ func (s *ApproveOtaTaskResponse) SetBody(v *ApproveOtaTaskResponseBody) *Approve
 	return s
 }
 
-type AskSessionPackagePriceRequest struct {
-	ChargeType  *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	MaxSessions *int32  `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
-	Period      *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit  *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// example:
-	//
-	// 0
-	SessionPackageType *string `json:"SessionPackageType,omitempty" xml:"SessionPackageType,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// appstreaming.general.entry
-	SessionSpec *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// Windows
-	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
-}
-
-func (s AskSessionPackagePriceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AskSessionPackagePriceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AskSessionPackagePriceRequest) SetChargeType(v string) *AskSessionPackagePriceRequest {
-	s.ChargeType = &v
-	return s
-}
-
-func (s *AskSessionPackagePriceRequest) SetMaxSessions(v int32) *AskSessionPackagePriceRequest {
-	s.MaxSessions = &v
-	return s
-}
-
-func (s *AskSessionPackagePriceRequest) SetPeriod(v int32) *AskSessionPackagePriceRequest {
-	s.Period = &v
-	return s
-}
-
-func (s *AskSessionPackagePriceRequest) SetPeriodUnit(v string) *AskSessionPackagePriceRequest {
-	s.PeriodUnit = &v
-	return s
-}
-
-func (s *AskSessionPackagePriceRequest) SetRegion(v string) *AskSessionPackagePriceRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *AskSessionPackagePriceRequest) SetSessionPackageType(v string) *AskSessionPackagePriceRequest {
-	s.SessionPackageType = &v
-	return s
-}
-
-func (s *AskSessionPackagePriceRequest) SetSessionSpec(v string) *AskSessionPackagePriceRequest {
-	s.SessionSpec = &v
-	return s
-}
-
-func (s *AskSessionPackagePriceRequest) SetSessionType(v string) *AskSessionPackagePriceRequest {
-	s.SessionType = &v
-	return s
-}
-
-type AskSessionPackagePriceResponseBody struct {
-	Data []*AskSessionPackagePriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2C64D9E5-DFCD-10A5-A911-xxxxxxx
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s AskSessionPackagePriceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AskSessionPackagePriceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AskSessionPackagePriceResponseBody) SetData(v []*AskSessionPackagePriceResponseBodyData) *AskSessionPackagePriceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *AskSessionPackagePriceResponseBody) SetRequestId(v string) *AskSessionPackagePriceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type AskSessionPackagePriceResponseBodyData struct {
-	Price *AskSessionPackagePriceResponseBodyDataPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
-}
-
-func (s AskSessionPackagePriceResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AskSessionPackagePriceResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *AskSessionPackagePriceResponseBodyData) SetPrice(v *AskSessionPackagePriceResponseBodyDataPrice) *AskSessionPackagePriceResponseBodyData {
-	s.Price = v
-	return s
-}
-
-type AskSessionPackagePriceResponseBodyDataPrice struct {
-	// example:
-	//
-	// CNY
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// example:
-	//
-	// 0.0
-	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	// example:
-	//
-	// 2000.0
-	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// example:
-	//
-	// 2000.0
-	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
-}
-
-func (s AskSessionPackagePriceResponseBodyDataPrice) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AskSessionPackagePriceResponseBodyDataPrice) GoString() string {
-	return s.String()
-}
-
-func (s *AskSessionPackagePriceResponseBodyDataPrice) SetCurrency(v string) *AskSessionPackagePriceResponseBodyDataPrice {
-	s.Currency = &v
-	return s
-}
-
-func (s *AskSessionPackagePriceResponseBodyDataPrice) SetDiscountPrice(v float32) *AskSessionPackagePriceResponseBodyDataPrice {
-	s.DiscountPrice = &v
-	return s
-}
-
-func (s *AskSessionPackagePriceResponseBodyDataPrice) SetOriginalPrice(v float32) *AskSessionPackagePriceResponseBodyDataPrice {
-	s.OriginalPrice = &v
-	return s
-}
-
-func (s *AskSessionPackagePriceResponseBodyDataPrice) SetTradePrice(v float32) *AskSessionPackagePriceResponseBodyDataPrice {
-	s.TradePrice = &v
-	return s
-}
-
-type AskSessionPackagePriceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *AskSessionPackagePriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s AskSessionPackagePriceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AskSessionPackagePriceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AskSessionPackagePriceResponse) SetHeaders(v map[string]*string) *AskSessionPackagePriceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AskSessionPackagePriceResponse) SetStatusCode(v int32) *AskSessionPackagePriceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AskSessionPackagePriceResponse) SetBody(v *AskSessionPackagePriceResponseBody) *AskSessionPackagePriceResponse {
-	s.Body = v
-	return s
-}
-
 type AuthorizeInstanceGroupRequest struct {
 	// This parameter is required.
 	//
@@ -517,14 +183,24 @@ type AuthorizeInstanceGroupRequest struct {
 	//
 	// p-0cc7s3mw2fg4j****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	// if can be null:
+	// true
+	AuthorizeUserGroupIds []*string `json:"AuthorizeUserGroupIds,omitempty" xml:"AuthorizeUserGroupIds,omitempty" type:"Repeated"`
 	// The IDs of the users that you want to add to the authorization list of the delivery group. You can specify 1 to 100 user IDs.
 	AuthorizeUserIds []*string `json:"AuthorizeUserIds,omitempty" xml:"AuthorizeUserIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// default
+	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// if can be null:
+	// true
+	UnAuthorizeUserGroupIds []*string `json:"UnAuthorizeUserGroupIds,omitempty" xml:"UnAuthorizeUserGroupIds,omitempty" type:"Repeated"`
 	// The IDs of the users that you want to remove from the authorization list of the delivery group. You can specify 1 to 100 user IDs.
 	UnAuthorizeUserIds []*string `json:"UnAuthorizeUserIds,omitempty" xml:"UnAuthorizeUserIds,omitempty" type:"Repeated"`
 	// The user information.
@@ -549,13 +225,28 @@ func (s *AuthorizeInstanceGroupRequest) SetAppInstancePersistentId(v string) *Au
 	return s
 }
 
+func (s *AuthorizeInstanceGroupRequest) SetAuthorizeUserGroupIds(v []*string) *AuthorizeInstanceGroupRequest {
+	s.AuthorizeUserGroupIds = v
+	return s
+}
+
 func (s *AuthorizeInstanceGroupRequest) SetAuthorizeUserIds(v []*string) *AuthorizeInstanceGroupRequest {
 	s.AuthorizeUserIds = v
 	return s
 }
 
+func (s *AuthorizeInstanceGroupRequest) SetAvatarId(v string) *AuthorizeInstanceGroupRequest {
+	s.AvatarId = &v
+	return s
+}
+
 func (s *AuthorizeInstanceGroupRequest) SetProductType(v string) *AuthorizeInstanceGroupRequest {
 	s.ProductType = &v
+	return s
+}
+
+func (s *AuthorizeInstanceGroupRequest) SetUnAuthorizeUserGroupIds(v []*string) *AuthorizeInstanceGroupRequest {
+	s.UnAuthorizeUserGroupIds = v
 	return s
 }
 
@@ -621,14 +312,24 @@ type AuthorizeInstanceGroupShrinkRequest struct {
 	//
 	// p-0cc7s3mw2fg4j****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	// if can be null:
+	// true
+	AuthorizeUserGroupIds []*string `json:"AuthorizeUserGroupIds,omitempty" xml:"AuthorizeUserGroupIds,omitempty" type:"Repeated"`
 	// The IDs of the users that you want to add to the authorization list of the delivery group. You can specify 1 to 100 user IDs.
 	AuthorizeUserIds []*string `json:"AuthorizeUserIds,omitempty" xml:"AuthorizeUserIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// default
+	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// if can be null:
+	// true
+	UnAuthorizeUserGroupIds []*string `json:"UnAuthorizeUserGroupIds,omitempty" xml:"UnAuthorizeUserGroupIds,omitempty" type:"Repeated"`
 	// The IDs of the users that you want to remove from the authorization list of the delivery group. You can specify 1 to 100 user IDs.
 	UnAuthorizeUserIds []*string `json:"UnAuthorizeUserIds,omitempty" xml:"UnAuthorizeUserIds,omitempty" type:"Repeated"`
 	// The user information.
@@ -653,13 +354,28 @@ func (s *AuthorizeInstanceGroupShrinkRequest) SetAppInstancePersistentId(v strin
 	return s
 }
 
+func (s *AuthorizeInstanceGroupShrinkRequest) SetAuthorizeUserGroupIds(v []*string) *AuthorizeInstanceGroupShrinkRequest {
+	s.AuthorizeUserGroupIds = v
+	return s
+}
+
 func (s *AuthorizeInstanceGroupShrinkRequest) SetAuthorizeUserIds(v []*string) *AuthorizeInstanceGroupShrinkRequest {
 	s.AuthorizeUserIds = v
 	return s
 }
 
+func (s *AuthorizeInstanceGroupShrinkRequest) SetAvatarId(v string) *AuthorizeInstanceGroupShrinkRequest {
+	s.AvatarId = &v
+	return s
+}
+
 func (s *AuthorizeInstanceGroupShrinkRequest) SetProductType(v string) *AuthorizeInstanceGroupShrinkRequest {
 	s.ProductType = &v
+	return s
+}
+
+func (s *AuthorizeInstanceGroupShrinkRequest) SetUnAuthorizeUserGroupIds(v []*string) *AuthorizeInstanceGroupShrinkRequest {
+	s.UnAuthorizeUserGroupIds = v
 	return s
 }
 
@@ -718,333 +434,6 @@ func (s *AuthorizeInstanceGroupResponse) SetStatusCode(v int32) *AuthorizeInstan
 }
 
 func (s *AuthorizeInstanceGroupResponse) SetBody(v *AuthorizeInstanceGroupResponseBody) *AuthorizeInstanceGroupResponse {
-	s.Body = v
-	return s
-}
-
-type BuySessionPackageRequest struct {
-	AutoPay     *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	ChargeType  *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	MaxSessions *int32  `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
-	Period      *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit  *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// example:
-	//
-	// p-xxxxxxxxxxxxx
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	SessionPackageName *string `json:"SessionPackageName,omitempty" xml:"SessionPackageName,omitempty"`
-	// example:
-	//
-	// 0
-	SessionPackageType *string `json:"SessionPackageType,omitempty" xml:"SessionPackageType,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// appstreaming.general.entry
-	SessionSpec *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// Windows
-	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
-}
-
-func (s BuySessionPackageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BuySessionPackageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BuySessionPackageRequest) SetAutoPay(v bool) *BuySessionPackageRequest {
-	s.AutoPay = &v
-	return s
-}
-
-func (s *BuySessionPackageRequest) SetChargeType(v string) *BuySessionPackageRequest {
-	s.ChargeType = &v
-	return s
-}
-
-func (s *BuySessionPackageRequest) SetMaxSessions(v int32) *BuySessionPackageRequest {
-	s.MaxSessions = &v
-	return s
-}
-
-func (s *BuySessionPackageRequest) SetPeriod(v int32) *BuySessionPackageRequest {
-	s.Period = &v
-	return s
-}
-
-func (s *BuySessionPackageRequest) SetPeriodUnit(v string) *BuySessionPackageRequest {
-	s.PeriodUnit = &v
-	return s
-}
-
-func (s *BuySessionPackageRequest) SetProjectId(v string) *BuySessionPackageRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *BuySessionPackageRequest) SetRegion(v string) *BuySessionPackageRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *BuySessionPackageRequest) SetSessionPackageName(v string) *BuySessionPackageRequest {
-	s.SessionPackageName = &v
-	return s
-}
-
-func (s *BuySessionPackageRequest) SetSessionPackageType(v string) *BuySessionPackageRequest {
-	s.SessionPackageType = &v
-	return s
-}
-
-func (s *BuySessionPackageRequest) SetSessionSpec(v string) *BuySessionPackageRequest {
-	s.SessionSpec = &v
-	return s
-}
-
-func (s *BuySessionPackageRequest) SetSessionType(v string) *BuySessionPackageRequest {
-	s.SessionType = &v
-	return s
-}
-
-type BuySessionPackageResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// There is a missing parameter.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 1CBAFFAB-B697-4049-A9B1-67E1FC5Fxxxxxxxx
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// tp-xxxxxxxxxx
-	SessionPackageId *int64 `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
-	// example:
-	//
-	// false
-	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s BuySessionPackageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BuySessionPackageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BuySessionPackageResponseBody) SetCode(v string) *BuySessionPackageResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *BuySessionPackageResponseBody) SetMessage(v string) *BuySessionPackageResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *BuySessionPackageResponseBody) SetRequestId(v string) *BuySessionPackageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *BuySessionPackageResponseBody) SetSessionPackageId(v int64) *BuySessionPackageResponseBody {
-	s.SessionPackageId = &v
-	return s
-}
-
-func (s *BuySessionPackageResponseBody) SetSuccess(v string) *BuySessionPackageResponseBody {
-	s.Success = &v
-	return s
-}
-
-type BuySessionPackageResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *BuySessionPackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s BuySessionPackageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BuySessionPackageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BuySessionPackageResponse) SetHeaders(v map[string]*string) *BuySessionPackageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BuySessionPackageResponse) SetStatusCode(v int32) *BuySessionPackageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *BuySessionPackageResponse) SetBody(v *BuySessionPackageResponseBody) *BuySessionPackageResponse {
-	s.Body = v
-	return s
-}
-
-type CreateAccessPageRequest struct {
-	// This parameter is required.
-	AccessPageName *string `json:"AccessPageName,omitempty" xml:"AccessPageName,omitempty"`
-	// example:
-	//
-	// c-e-06gdesdaxez****
-	CloudEnvId *string `json:"CloudEnvId,omitempty" xml:"CloudEnvId,omitempty"`
-	// example:
-	//
-	// 7
-	EffectTime *int32 `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// p-065zdecaer07h****
-	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// example:
-	//
-	// Day
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-}
-
-func (s CreateAccessPageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAccessPageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAccessPageRequest) SetAccessPageName(v string) *CreateAccessPageRequest {
-	s.AccessPageName = &v
-	return s
-}
-
-func (s *CreateAccessPageRequest) SetCloudEnvId(v string) *CreateAccessPageRequest {
-	s.CloudEnvId = &v
-	return s
-}
-
-func (s *CreateAccessPageRequest) SetEffectTime(v int32) *CreateAccessPageRequest {
-	s.EffectTime = &v
-	return s
-}
-
-func (s *CreateAccessPageRequest) SetProjectId(v string) *CreateAccessPageRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *CreateAccessPageRequest) SetProjectName(v string) *CreateAccessPageRequest {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *CreateAccessPageRequest) SetUnit(v string) *CreateAccessPageRequest {
-	s.Unit = &v
-	return s
-}
-
-type CreateAccessPageResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// a-06xnr5lyp77e7****
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateAccessPageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAccessPageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAccessPageResponseBody) SetCode(v string) *CreateAccessPageResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateAccessPageResponseBody) SetData(v string) *CreateAccessPageResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CreateAccessPageResponseBody) SetMessage(v string) *CreateAccessPageResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateAccessPageResponseBody) SetRequestId(v string) *CreateAccessPageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateAccessPageResponseBody) SetSuccess(v string) *CreateAccessPageResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateAccessPageResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *CreateAccessPageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CreateAccessPageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateAccessPageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateAccessPageResponse) SetHeaders(v map[string]*string) *CreateAccessPageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateAccessPageResponse) SetStatusCode(v int32) *CreateAccessPageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateAccessPageResponse) SetBody(v *CreateAccessPageResponseBody) *CreateAccessPageResponse {
 	s.Body = v
 	return s
 }
@@ -2226,101 +1615,6 @@ func (s *CreateImageFromAppInstanceGroupResponse) SetBody(v *CreateImageFromAppI
 	return s
 }
 
-type DeleteAccessPageRequest struct {
-	// example:
-	//
-	// a-075nu7bcqim2wvxli
-	AccessPageId *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
-}
-
-func (s DeleteAccessPageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAccessPageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAccessPageRequest) SetAccessPageId(v string) *DeleteAccessPageRequest {
-	s.AccessPageId = &v
-	return s
-}
-
-type DeleteAccessPageResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteAccessPageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAccessPageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAccessPageResponseBody) SetCode(v string) *DeleteAccessPageResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteAccessPageResponseBody) SetMessage(v string) *DeleteAccessPageResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteAccessPageResponseBody) SetRequestId(v string) *DeleteAccessPageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteAccessPageResponseBody) SetSuccess(v string) *DeleteAccessPageResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteAccessPageResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteAccessPageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteAccessPageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAccessPageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAccessPageResponse) SetHeaders(v map[string]*string) *DeleteAccessPageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteAccessPageResponse) SetStatusCode(v int32) *DeleteAccessPageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteAccessPageResponse) SetBody(v *DeleteAccessPageResponseBody) *DeleteAccessPageResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteAppInstanceGroupRequest struct {
 	// The ID of the delivery group.
 	//
@@ -2585,160 +1879,6 @@ func (s *DeleteAppInstancesResponse) SetBody(v *DeleteAppInstancesResponseBody) 
 	return s
 }
 
-type GetAccessPageSessionRequest struct {
-	// This parameter is required.
-	//
-	// example:
-	//
-	// a-062wec3cwmayw****
-	AccessPageId *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 8141B1A674D48ACB8E5D2D6CE53FDB2F3CF8710A5F8F78578D5254BC6F******
-	AccessPageToken *string `json:"AccessPageToken,omitempty" xml:"AccessPageToken,omitempty"`
-	// example:
-	//
-	// Banca******
-	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
-}
-
-func (s GetAccessPageSessionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAccessPageSessionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetAccessPageSessionRequest) SetAccessPageId(v string) *GetAccessPageSessionRequest {
-	s.AccessPageId = &v
-	return s
-}
-
-func (s *GetAccessPageSessionRequest) SetAccessPageToken(v string) *GetAccessPageSessionRequest {
-	s.AccessPageToken = &v
-	return s
-}
-
-func (s *GetAccessPageSessionRequest) SetExternalUserId(v string) *GetAccessPageSessionRequest {
-	s.ExternalUserId = &v
-	return s
-}
-
-type GetAccessPageSessionResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *GetAccessPageSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetAccessPageSessionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAccessPageSessionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetAccessPageSessionResponseBody) SetCode(v string) *GetAccessPageSessionResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetAccessPageSessionResponseBody) SetData(v *GetAccessPageSessionResponseBodyData) *GetAccessPageSessionResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetAccessPageSessionResponseBody) SetMessage(v string) *GetAccessPageSessionResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetAccessPageSessionResponseBody) SetRequestId(v string) *GetAccessPageSessionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetAccessPageSessionResponseBody) SetSuccess(v string) *GetAccessPageSessionResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetAccessPageSessionResponseBodyData struct {
-	// example:
-	//
-	// DQpbRGVza3RvcF0NCkZvcmNlVGxzVHlwZT0xDQpHV1Rva2VuUGFydDE9MDBzQU5DTGVsZ0RqMnAyMGpZdUNkRDMrNTlLekpzUTRXNElPWVdjWGIwZ2QrUkNyais0ZGM3WUJGM1NBdVFJWWl2ejhaWDlvakh1cDJ4c0Vpc3lrQ1I4RVEzeDhIYXdCb2pRRDJReklaQTZIbU52VjdrRlNlWkxQTXV3Y0hNTEZTTkxKaDNOY1BtU0tVYTNqWVVUMFUyKzNqWDBRMXdLM29ZQnJaOFVoL2RWY0xpem5tWEhHTmE0THVGRCtrajloSWlFT0w3b2w4OHY1cjBPelpHZnh4aXlVbk1yQURnRHhoK1F6K3UvdXYxaFYyQ3UwVlduTHJ3cDNRM3hYWWtORW81N00xYWZ4cTJBdWplVmx3aGVxOHd4dDl2Y3NGVGMxNFpPL2hudWdoeGJkaz0NCkdXVG9rZW5QYXJ0Mj0NCkFzcEF1dGhUb2tlbj0wME5LTnlLZXE3UGpzNzNzeURrdEs2NUlaenpYb05WNWxnY3BjVTJMd2NKUEoyMk53WmlrSGNaaDdNVGk2azlLazNyeHFCd2FHZTlmc2NUbFljUDJ0MEVldXRha2paUklMM0x3a0RsT1BZZTZxYmtsay9STHFrajg4dWg0ZFZNTHE2QkF0WVRSeW9ZTC9WUHhaVWxyZEZOQT09DQpBZXNLZXlWZXJzaW9uPTE3MDEyMzk1ODc4NzcNCkdhdGV3YXlEb21haW5BZGRyZXNzPWd3LWFwcC1jbi1oYW5nemhvdS1pLWFwcC10ZXN0MC13aW4ud3V5aW5nLmFsaXl1bmNzLmNvbQ0KR2F0ZXdheUFkZHJlc3M9NDcuOTkuMjIzLjE0OQ0KR2F0ZXdheVBvcnQ9NTkxMg0KR2F0ZXdheVdzc1BvcnQ9ODAwOA0KU3RyZWFtVHlwZT0wDQpSdGNHd1Rva2VuPVAwMFJkc013dVdQVkt4MGtRYUNkSlY3MUc2OC9iaWFhSEJwVn******
-	ConnectTicket *string `json:"ConnectTicket,omitempty" xml:"ConnectTicket,omitempty"`
-	// flow ID
-	//
-	// example:
-	//
-	// e4fa0b4c18c5437a8b1746e7c228172e
-	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-}
-
-func (s GetAccessPageSessionResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAccessPageSessionResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetAccessPageSessionResponseBodyData) SetConnectTicket(v string) *GetAccessPageSessionResponseBodyData {
-	s.ConnectTicket = &v
-	return s
-}
-
-func (s *GetAccessPageSessionResponseBodyData) SetFlowId(v string) *GetAccessPageSessionResponseBodyData {
-	s.FlowId = &v
-	return s
-}
-
-type GetAccessPageSessionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetAccessPageSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetAccessPageSessionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAccessPageSessionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetAccessPageSessionResponse) SetHeaders(v map[string]*string) *GetAccessPageSessionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetAccessPageSessionResponse) SetStatusCode(v int32) *GetAccessPageSessionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetAccessPageSessionResponse) SetBody(v *GetAccessPageSessionResponseBody) *GetAccessPageSessionResponse {
-	s.Body = v
-	return s
-}
-
 type GetAppInstanceGroupRequest struct {
 	// This parameter is required.
 	//
@@ -2800,7 +1940,11 @@ func (s *GetAppInstanceGroupResponseBody) SetRequestId(v string) *GetAppInstance
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// INTERNET
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	Amount     *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// example:
 	//
 	// img-8z4nztpaqvay4****
@@ -2827,6 +1971,10 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	// pg-g3k5wa2ms2****
 	AppPolicyId *string                                                      `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
 	Apps        []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// App
+	AuthMode *string `json:"AuthMode,omitempty" xml:"AuthMode,omitempty"`
 	// example:
 	//
 	// Node
@@ -2922,6 +2070,11 @@ func (s GetAppInstanceGroupResponseBodyAppInstanceGroupModels) GoString() string
 	return s.String()
 }
 
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAccessType(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.AccessType = &v
+	return s
+}
+
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAmount(v int32) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.Amount = &v
 	return s
@@ -2964,6 +2117,11 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAppPolicyId(v
 
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetApps(v []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.Apps = v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAuthMode(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.AuthMode = &v
 	return s
 }
 
@@ -3513,6 +2671,7 @@ type GetConnectionTicketRequest struct {
 	//
 	// p-0bxls9m3cl7s****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	AppPolicyId             *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
 	// The parameters that are configured to start the application. For information about how to obtain these parameters, see [Obtain parameters configured to install and start an application](https://help.aliyun.com/document_detail/426045.html).
 	//
 	// example:
@@ -3598,6 +2757,11 @@ func (s *GetConnectionTicketRequest) SetAppInstancePersistentId(v string) *GetCo
 	return s
 }
 
+func (s *GetConnectionTicketRequest) SetAppPolicyId(v string) *GetConnectionTicketRequest {
+	s.AppPolicyId = &v
+	return s
+}
+
 func (s *GetConnectionTicketRequest) SetAppStartParam(v string) *GetConnectionTicketRequest {
 	s.AppStartParam = &v
 	return s
@@ -3647,6 +2811,7 @@ type GetConnectionTicketResponseBody struct {
 	//
 	// p-0bxls9m3cl7s****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	AvatarId                *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -3725,6 +2890,11 @@ func (s *GetConnectionTicketResponseBody) SetAppInstanceId(v string) *GetConnect
 
 func (s *GetConnectionTicketResponseBody) SetAppInstancePersistentId(v string) *GetConnectionTicketResponseBody {
 	s.AppInstancePersistentId = &v
+	return s
+}
+
+func (s *GetConnectionTicketResponseBody) SetAvatarId(v string) *GetConnectionTicketResponseBody {
+	s.AvatarId = &v
 	return s
 }
 
@@ -5030,299 +4200,6 @@ func (s *GetResourceRenewPriceResponse) SetBody(v *GetResourceRenewPriceResponse
 	return s
 }
 
-type ListAccessPagesRequest struct {
-	// example:
-	//
-	// a-062wec3cwmayw****
-	AccessPageId   *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
-	AccessPageName *string `json:"AccessPageName,omitempty" xml:"AccessPageName,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// example:
-	//
-	// 100
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// p-065zdecaer07h****
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// example:
-	//
-	// ASC
-	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-}
-
-func (s ListAccessPagesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAccessPagesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListAccessPagesRequest) SetAccessPageId(v string) *ListAccessPagesRequest {
-	s.AccessPageId = &v
-	return s
-}
-
-func (s *ListAccessPagesRequest) SetAccessPageName(v string) *ListAccessPagesRequest {
-	s.AccessPageName = &v
-	return s
-}
-
-func (s *ListAccessPagesRequest) SetPageNumber(v int32) *ListAccessPagesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListAccessPagesRequest) SetPageSize(v int32) *ListAccessPagesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListAccessPagesRequest) SetProjectId(v string) *ListAccessPagesRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListAccessPagesRequest) SetSortType(v string) *ListAccessPagesRequest {
-	s.SortType = &v
-	return s
-}
-
-type ListAccessPagesResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// 22
-	Count *string                            `json:"Count,omitempty" xml:"Count,omitempty"`
-	Data  []*ListAccessPagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// example:
-	//
-	// InternalError
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// example:
-	//
-	// 20
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// AF8361BD-5ECB-139A-B019-2E0350CC****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListAccessPagesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAccessPagesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListAccessPagesResponseBody) SetCode(v string) *ListAccessPagesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBody) SetCount(v string) *ListAccessPagesResponseBody {
-	s.Count = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBody) SetData(v []*ListAccessPagesResponseBodyData) *ListAccessPagesResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListAccessPagesResponseBody) SetMessage(v string) *ListAccessPagesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBody) SetPageNumber(v string) *ListAccessPagesResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBody) SetPageSize(v string) *ListAccessPagesResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBody) SetRequestId(v string) *ListAccessPagesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBody) SetSuccess(v string) *ListAccessPagesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListAccessPagesResponseBodyData struct {
-	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	// example:
-	//
-	// a-062wec3cwmayw****
-	AccessPageId *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
-	// example:
-	//
-	// notepad_test
-	AccessPageName *string `json:"AccessPageName,omitempty" xml:"AccessPageName,omitempty"`
-	// example:
-	//
-	// 1
-	AccessPageState *string `json:"AccessPageState,omitempty" xml:"AccessPageState,omitempty"`
-	// example:
-	//
-	// id=a-062wec3cwmayw****&token=9E9A62937B0E41F4AEFE5EC9B238156CCDFB682954003AEE940A05FB2568****
-	AccessUrl *string `json:"AccessUrl,omitempty" xml:"AccessUrl,omitempty"`
-	// example:
-	//
-	// c-05to6wm3w5d53****
-	ContentId   *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
-	ContentName *string `json:"ContentName,omitempty" xml:"ContentName,omitempty"`
-	// example:
-	//
-	// 168
-	EffectTime *int32 `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
-	// example:
-	//
-	// 2023-11-16T08:48:15.000+00:00
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// example:
-	//
-	// p-062wec3cwmayu****
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// example:
-	//
-	// notepad_demo
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// example:
-	//
-	// Hour
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	// example:
-	//
-	// 2023-11-23T08:48:15.000+00:00
-	UrlExpireTime *string `json:"UrlExpireTime,omitempty" xml:"UrlExpireTime,omitempty"`
-}
-
-func (s ListAccessPagesResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAccessPagesResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListAccessPagesResponseBodyData) SetAccessMode(v string) *ListAccessPagesResponseBodyData {
-	s.AccessMode = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBodyData) SetAccessPageId(v string) *ListAccessPagesResponseBodyData {
-	s.AccessPageId = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBodyData) SetAccessPageName(v string) *ListAccessPagesResponseBodyData {
-	s.AccessPageName = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBodyData) SetAccessPageState(v string) *ListAccessPagesResponseBodyData {
-	s.AccessPageState = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBodyData) SetAccessUrl(v string) *ListAccessPagesResponseBodyData {
-	s.AccessUrl = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBodyData) SetContentId(v string) *ListAccessPagesResponseBodyData {
-	s.ContentId = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBodyData) SetContentName(v string) *ListAccessPagesResponseBodyData {
-	s.ContentName = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBodyData) SetEffectTime(v int32) *ListAccessPagesResponseBodyData {
-	s.EffectTime = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBodyData) SetGmtCreate(v string) *ListAccessPagesResponseBodyData {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBodyData) SetProjectId(v string) *ListAccessPagesResponseBodyData {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBodyData) SetProjectName(v string) *ListAccessPagesResponseBodyData {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBodyData) SetUnit(v string) *ListAccessPagesResponseBodyData {
-	s.Unit = &v
-	return s
-}
-
-func (s *ListAccessPagesResponseBodyData) SetUrlExpireTime(v string) *ListAccessPagesResponseBodyData {
-	s.UrlExpireTime = &v
-	return s
-}
-
-type ListAccessPagesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListAccessPagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListAccessPagesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAccessPagesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListAccessPagesResponse) SetHeaders(v map[string]*string) *ListAccessPagesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListAccessPagesResponse) SetStatusCode(v int32) *ListAccessPagesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListAccessPagesResponse) SetBody(v *ListAccessPagesResponseBody) *ListAccessPagesResponse {
-	s.Body = v
-	return s
-}
-
 type ListAppInstanceGroupRequest struct {
 	// The image ID of the app. You can obtain the ID from the Images page in the App Streaming console.
 	//
@@ -5553,6 +4430,10 @@ func (s *ListAppInstanceGroupResponseBody) SetTotalCount(v int32) *ListAppInstan
 }
 
 type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
+	// example:
+	//
+	// INTERNET
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The number of subscription resources. Minimum value: 1.
 	//
 	// example:
@@ -5595,6 +4476,10 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	AppPolicyVersion *string `json:"AppPolicyVersion,omitempty" xml:"AppPolicyVersion,omitempty"`
 	// The apps.
 	Apps []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// App
+	AuthMode *string `json:"AuthMode,omitempty" xml:"AuthMode,omitempty"`
 	// The sales mode.
 	//
 	// Valid values:
@@ -5794,6 +4679,11 @@ func (s ListAppInstanceGroupResponseBodyAppInstanceGroupModels) GoString() strin
 	return s.String()
 }
 
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAccessType(v string) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.AccessType = &v
+	return s
+}
+
 func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAmount(v int32) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.Amount = &v
 	return s
@@ -5836,6 +4726,11 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAppPolicyVer
 
 func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetApps(v []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.Apps = v
+	return s
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAuthMode(v string) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.AuthMode = &v
 	return s
 }
 
@@ -6842,6 +5737,202 @@ func (s *ListAppInstancesResponse) SetStatusCode(v int32) *ListAppInstancesRespo
 }
 
 func (s *ListAppInstancesResponse) SetBody(v *ListAppInstancesResponseBody) *ListAppInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListAuthorizedUserGroupsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// example:
+	//
+	// ug-00001
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+}
+
+func (s ListAuthorizedUserGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedUserGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedUserGroupsRequest) SetAppInstanceGroupId(v string) *ListAuthorizedUserGroupsRequest {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsRequest) SetGroupId(v string) *ListAuthorizedUserGroupsRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsRequest) SetGroupName(v string) *ListAuthorizedUserGroupsRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsRequest) SetPageNumber(v int32) *ListAuthorizedUserGroupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsRequest) SetPageSize(v int32) *ListAuthorizedUserGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsRequest) SetProductType(v string) *ListAuthorizedUserGroupsRequest {
+	s.ProductType = &v
+	return s
+}
+
+type ListAuthorizedUserGroupsResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 6
+	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UserGroups []*ListAuthorizedUserGroupsResponseBodyUserGroups `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
+}
+
+func (s ListAuthorizedUserGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedUserGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedUserGroupsResponseBody) SetPageNumber(v int32) *ListAuthorizedUserGroupsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsResponseBody) SetPageSize(v int32) *ListAuthorizedUserGroupsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsResponseBody) SetRequestId(v string) *ListAuthorizedUserGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsResponseBody) SetTotalCount(v int32) *ListAuthorizedUserGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsResponseBody) SetUserGroups(v []*ListAuthorizedUserGroupsResponseBodyUserGroups) *ListAuthorizedUserGroupsResponseBody {
+	s.UserGroups = v
+	return s
+}
+
+type ListAuthorizedUserGroupsResponseBodyUserGroups struct {
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// example:
+	//
+	// App
+	AuthMode *string `json:"AuthMode,omitempty" xml:"AuthMode,omitempty"`
+	// example:
+	//
+	// ug-00001
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s ListAuthorizedUserGroupsResponseBodyUserGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedUserGroupsResponseBodyUserGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedUserGroupsResponseBodyUserGroups) SetAppInstanceGroupId(v string) *ListAuthorizedUserGroupsResponseBodyUserGroups {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsResponseBodyUserGroups) SetAuthMode(v string) *ListAuthorizedUserGroupsResponseBodyUserGroups {
+	s.AuthMode = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsResponseBodyUserGroups) SetGroupId(v string) *ListAuthorizedUserGroupsResponseBodyUserGroups {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsResponseBodyUserGroups) SetGroupName(v string) *ListAuthorizedUserGroupsResponseBodyUserGroups {
+	s.GroupName = &v
+	return s
+}
+
+type ListAuthorizedUserGroupsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAuthorizedUserGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAuthorizedUserGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedUserGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedUserGroupsResponse) SetHeaders(v map[string]*string) *ListAuthorizedUserGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsResponse) SetStatusCode(v int32) *ListAuthorizedUserGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsResponse) SetBody(v *ListAuthorizedUserGroupsResponseBody) *ListAuthorizedUserGroupsResponse {
 	s.Body = v
 	return s
 }
@@ -8205,400 +7296,6 @@ func (s *ListRegionsResponse) SetStatusCode(v int32) *ListRegionsResponse {
 }
 
 func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsResponse {
-	s.Body = v
-	return s
-}
-
-type ListSessionPackagesRequest struct {
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// example:
-	//
-	// 100
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// p-xxxxxxxxxxxx
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// example:
-	//
-	// tp-xxxxxxxx
-	SessionPackageId   *string `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
-	SessionPackageName *string `json:"SessionPackageName,omitempty" xml:"SessionPackageName,omitempty"`
-	// example:
-	//
-	// ASC
-	SortType  *string  `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	StateList []*int32 `json:"StateList,omitempty" xml:"StateList,omitempty" type:"Repeated"`
-}
-
-func (s ListSessionPackagesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSessionPackagesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListSessionPackagesRequest) SetPageNumber(v int32) *ListSessionPackagesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListSessionPackagesRequest) SetPageSize(v int32) *ListSessionPackagesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListSessionPackagesRequest) SetProjectId(v string) *ListSessionPackagesRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListSessionPackagesRequest) SetSessionPackageId(v string) *ListSessionPackagesRequest {
-	s.SessionPackageId = &v
-	return s
-}
-
-func (s *ListSessionPackagesRequest) SetSessionPackageName(v string) *ListSessionPackagesRequest {
-	s.SessionPackageName = &v
-	return s
-}
-
-func (s *ListSessionPackagesRequest) SetSortType(v string) *ListSessionPackagesRequest {
-	s.SortType = &v
-	return s
-}
-
-func (s *ListSessionPackagesRequest) SetStateList(v []*int32) *ListSessionPackagesRequest {
-	s.StateList = v
-	return s
-}
-
-type ListSessionPackagesResponseBody struct {
-	Data []*ListSessionPackagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// example:
-	//
-	// 100
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// 1CBAFFAB-B697-4049-A9B1-67E1FC5Fxxxxxxxx
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 1
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListSessionPackagesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSessionPackagesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListSessionPackagesResponseBody) SetData(v []*ListSessionPackagesResponseBodyData) *ListSessionPackagesResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBody) SetPageNumber(v int32) *ListSessionPackagesResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBody) SetPageSize(v int32) *ListSessionPackagesResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBody) SetRequestId(v string) *ListSessionPackagesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBody) SetTotalCount(v int64) *ListSessionPackagesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListSessionPackagesResponseBodyData struct {
-	// example:
-	//
-	// 500
-	AvailableHours *int64  `json:"AvailableHours,omitempty" xml:"AvailableHours,omitempty"`
-	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// example:
-	//
-	// 0
-	DeleteStatus *int32 `json:"DeleteStatus,omitempty" xml:"DeleteStatus,omitempty"`
-	// example:
-	//
-	// 1701170196000
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// example:
-	//
-	// 1701170203000
-	GmtModifiedTime *string                                            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	InstanceObject  *ListSessionPackagesResponseBodyDataInstanceObject `json:"InstanceObject,omitempty" xml:"InstanceObject,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1000
-	MaxHours *int64 `json:"MaxHours,omitempty" xml:"MaxHours,omitempty"`
-	// example:
-	//
-	// 100
-	MaxSessions *int64 `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
-	// example:
-	//
-	// p-xxxxxxxxxxxx
-	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// example:
-	//
-	// tp-xxxxxxxxx
-	SessionPackageId   *string `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
-	SessionPackageName *string `json:"SessionPackageName,omitempty" xml:"SessionPackageName,omitempty"`
-	// example:
-	//
-	// 0
-	SessionPackageTypeId *string `json:"SessionPackageTypeId,omitempty" xml:"SessionPackageTypeId,omitempty"`
-	// example:
-	//
-	// appstreaming.general.entry
-	SessionSpec *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
-	// example:
-	//
-	// 60
-	SessionUsageRate *int64 `json:"SessionUsageRate,omitempty" xml:"SessionUsageRate,omitempty"`
-	// example:
-	//
-	// 4
-	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
-	// example:
-	//
-	// 156xxxxxxxxxx
-	UserIdentification *int64 `json:"UserIdentification,omitempty" xml:"UserIdentification,omitempty"`
-}
-
-func (s ListSessionPackagesResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSessionPackagesResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetAvailableHours(v int64) *ListSessionPackagesResponseBodyData {
-	s.AvailableHours = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetChargeType(v string) *ListSessionPackagesResponseBodyData {
-	s.ChargeType = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetDeleteStatus(v int32) *ListSessionPackagesResponseBodyData {
-	s.DeleteStatus = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetGmtCreate(v string) *ListSessionPackagesResponseBodyData {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetGmtModifiedTime(v string) *ListSessionPackagesResponseBodyData {
-	s.GmtModifiedTime = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetInstanceObject(v *ListSessionPackagesResponseBodyDataInstanceObject) *ListSessionPackagesResponseBodyData {
-	s.InstanceObject = v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetMaxHours(v int64) *ListSessionPackagesResponseBodyData {
-	s.MaxHours = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetMaxSessions(v int64) *ListSessionPackagesResponseBodyData {
-	s.MaxSessions = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetProjectId(v string) *ListSessionPackagesResponseBodyData {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetProjectName(v string) *ListSessionPackagesResponseBodyData {
-	s.ProjectName = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetRegion(v string) *ListSessionPackagesResponseBodyData {
-	s.Region = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetSessionPackageId(v string) *ListSessionPackagesResponseBodyData {
-	s.SessionPackageId = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetSessionPackageName(v string) *ListSessionPackagesResponseBodyData {
-	s.SessionPackageName = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetSessionPackageTypeId(v string) *ListSessionPackagesResponseBodyData {
-	s.SessionPackageTypeId = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetSessionSpec(v string) *ListSessionPackagesResponseBodyData {
-	s.SessionSpec = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetSessionUsageRate(v int64) *ListSessionPackagesResponseBodyData {
-	s.SessionUsageRate = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetState(v int32) *ListSessionPackagesResponseBodyData {
-	s.State = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyData) SetUserIdentification(v int64) *ListSessionPackagesResponseBodyData {
-	s.UserIdentification = &v
-	return s
-}
-
-type ListSessionPackagesResponseBodyDataInstanceObject struct {
-	// example:
-	//
-	// 2024-05-28T16:00:00Z
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// example:
-	//
-	// tp-xxxxxxxxxxx
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// appstreaming.general.entry
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// example:
-	//
-	// p-xxxxxxxxxx
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// example:
-	//
-	// AppSessionPackage
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// example:
-	//
-	// 2023-11-28T04:14:07Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// example:
-	//
-	// 3600000
-	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
-	// example:
-	//
-	// 1021
-	UsedTime *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-}
-
-func (s ListSessionPackagesResponseBodyDataInstanceObject) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSessionPackagesResponseBodyDataInstanceObject) GoString() string {
-	return s.String()
-}
-
-func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetExpiredTime(v string) *ListSessionPackagesResponseBodyDataInstanceObject {
-	s.ExpiredTime = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetInstanceId(v string) *ListSessionPackagesResponseBodyDataInstanceObject {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetInstanceType(v string) *ListSessionPackagesResponseBodyDataInstanceObject {
-	s.InstanceType = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetResourceId(v string) *ListSessionPackagesResponseBodyDataInstanceObject {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetResourceType(v string) *ListSessionPackagesResponseBodyDataInstanceObject {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetStartTime(v string) *ListSessionPackagesResponseBodyDataInstanceObject {
-	s.StartTime = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetTotalTime(v int64) *ListSessionPackagesResponseBodyDataInstanceObject {
-	s.TotalTime = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetUsedTime(v int64) *ListSessionPackagesResponseBodyDataInstanceObject {
-	s.UsedTime = &v
-	return s
-}
-
-type ListSessionPackagesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListSessionPackagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListSessionPackagesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSessionPackagesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListSessionPackagesResponse) SetHeaders(v map[string]*string) *ListSessionPackagesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListSessionPackagesResponse) SetStatusCode(v int32) *ListSessionPackagesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListSessionPackagesResponse) SetBody(v *ListSessionPackagesResponseBody) *ListSessionPackagesResponse {
 	s.Body = v
 	return s
 }
@@ -11620,82 +10317,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 更新访问管理
-//
-// @param request - AccessPageSetAclRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return AccessPageSetAclResponse
-func (client *Client) AccessPageSetAclWithOptions(request *AccessPageSetAclRequest, runtime *util.RuntimeOptions) (_result *AccessPageSetAclResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AccessMode)) {
-		query["AccessMode"] = request.AccessMode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AccessPageId)) {
-		query["AccessPageId"] = request.AccessPageId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AccessPageName)) {
-		query["AccessPageName"] = request.AccessPageName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EffectTime)) {
-		query["EffectTime"] = request.EffectTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Unit)) {
-		query["Unit"] = request.Unit
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AccessPageSetAcl"),
-		Version:     tea.String("2021-09-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AccessPageSetAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新访问管理
-//
-// @param request - AccessPageSetAclRequest
-//
-// @return AccessPageSetAclResponse
-func (client *Client) AccessPageSetAcl(request *AccessPageSetAclRequest) (_result *AccessPageSetAclResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AccessPageSetAclResponse{}
-	_body, _err := client.AccessPageSetAclWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Sets the execution time of an over-the-air (OTA) update task.
 //
 // @param request - ApproveOtaTaskRequest
@@ -11772,94 +10393,6 @@ func (client *Client) ApproveOtaTask(request *ApproveOtaTaskRequest) (_result *A
 
 // Summary:
 //
-// 会话包收费查询
-//
-// @param request - AskSessionPackagePriceRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return AskSessionPackagePriceResponse
-func (client *Client) AskSessionPackagePriceWithOptions(request *AskSessionPackagePriceRequest, runtime *util.RuntimeOptions) (_result *AskSessionPackagePriceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
-		query["ChargeType"] = request.ChargeType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxSessions)) {
-		query["MaxSessions"] = request.MaxSessions
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Period)) {
-		query["Period"] = request.Period
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
-		query["PeriodUnit"] = request.PeriodUnit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionPackageType)) {
-		query["SessionPackageType"] = request.SessionPackageType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionSpec)) {
-		query["SessionSpec"] = request.SessionSpec
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionType)) {
-		query["SessionType"] = request.SessionType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AskSessionPackagePrice"),
-		Version:     tea.String("2021-09-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AskSessionPackagePriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 会话包收费查询
-//
-// @param request - AskSessionPackagePriceRequest
-//
-// @return AskSessionPackagePriceResponse
-func (client *Client) AskSessionPackagePrice(request *AskSessionPackagePriceRequest) (_result *AskSessionPackagePriceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AskSessionPackagePriceResponse{}
-	_body, _err := client.AskSessionPackagePriceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 授权用户
 //
 // @param tmpReq - AuthorizeInstanceGroupRequest
@@ -11888,12 +10421,24 @@ func (client *Client) AuthorizeInstanceGroupWithOptions(tmpReq *AuthorizeInstanc
 	}
 
 	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizeUserGroupIds)) {
+		bodyFlat["AuthorizeUserGroupIds"] = request.AuthorizeUserGroupIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AuthorizeUserIds)) {
 		bodyFlat["AuthorizeUserIds"] = request.AuthorizeUserIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AvatarId)) {
+		body["AvatarId"] = request.AvatarId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
 		body["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnAuthorizeUserGroupIds)) {
+		bodyFlat["UnAuthorizeUserGroupIds"] = request.UnAuthorizeUserGroupIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UnAuthorizeUserIds)) {
@@ -11940,186 +10485,6 @@ func (client *Client) AuthorizeInstanceGroup(request *AuthorizeInstanceGroupRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &AuthorizeInstanceGroupResponse{}
 	_body, _err := client.AuthorizeInstanceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 配置会话包
-//
-// @param request - BuySessionPackageRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return BuySessionPackageResponse
-func (client *Client) BuySessionPackageWithOptions(request *BuySessionPackageRequest, runtime *util.RuntimeOptions) (_result *BuySessionPackageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
-		query["AutoPay"] = request.AutoPay
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
-		query["ChargeType"] = request.ChargeType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxSessions)) {
-		query["MaxSessions"] = request.MaxSessions
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Period)) {
-		query["Period"] = request.Period
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
-		query["PeriodUnit"] = request.PeriodUnit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
-		query["ProjectId"] = request.ProjectId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionPackageName)) {
-		query["SessionPackageName"] = request.SessionPackageName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionPackageType)) {
-		query["SessionPackageType"] = request.SessionPackageType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionSpec)) {
-		query["SessionSpec"] = request.SessionSpec
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionType)) {
-		query["SessionType"] = request.SessionType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("BuySessionPackage"),
-		Version:     tea.String("2021-09-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &BuySessionPackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 配置会话包
-//
-// @param request - BuySessionPackageRequest
-//
-// @return BuySessionPackageResponse
-func (client *Client) BuySessionPackage(request *BuySessionPackageRequest) (_result *BuySessionPackageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BuySessionPackageResponse{}
-	_body, _err := client.BuySessionPackageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建访问页面
-//
-// @param request - CreateAccessPageRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateAccessPageResponse
-func (client *Client) CreateAccessPageWithOptions(request *CreateAccessPageRequest, runtime *util.RuntimeOptions) (_result *CreateAccessPageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AccessPageName)) {
-		query["AccessPageName"] = request.AccessPageName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CloudEnvId)) {
-		query["CloudEnvId"] = request.CloudEnvId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EffectTime)) {
-		query["EffectTime"] = request.EffectTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
-		query["ProjectId"] = request.ProjectId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
-		query["ProjectName"] = request.ProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Unit)) {
-		query["Unit"] = request.Unit
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateAccessPage"),
-		Version:     tea.String("2021-09-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateAccessPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建访问页面
-//
-// @param request - CreateAccessPageRequest
-//
-// @return CreateAccessPageResponse
-func (client *Client) CreateAccessPage(request *CreateAccessPageRequest) (_result *CreateAccessPageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateAccessPageResponse{}
-	_body, _err := client.CreateAccessPageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12397,66 +10762,6 @@ func (client *Client) CreateImageFromAppInstanceGroup(request *CreateImageFromAp
 
 // Summary:
 //
-// 删除访问页面
-//
-// @param request - DeleteAccessPageRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteAccessPageResponse
-func (client *Client) DeleteAccessPageWithOptions(request *DeleteAccessPageRequest, runtime *util.RuntimeOptions) (_result *DeleteAccessPageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AccessPageId)) {
-		query["AccessPageId"] = request.AccessPageId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteAccessPage"),
-		Version:     tea.String("2021-09-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteAccessPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除访问页面
-//
-// @param request - DeleteAccessPageRequest
-//
-// @return DeleteAccessPageResponse
-func (client *Client) DeleteAccessPage(request *DeleteAccessPageRequest) (_result *DeleteAccessPageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteAccessPageResponse{}
-	_body, _err := client.DeleteAccessPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Deletes a delivery group that uses the By Resource - Pay-as-you-go billing method.
 //
 // Description:
@@ -12605,74 +10910,6 @@ func (client *Client) DeleteAppInstances(request *DeleteAppInstancesRequest) (_r
 
 // Summary:
 //
-// 访客进入访问页面的匿名api
-//
-// @param request - GetAccessPageSessionRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetAccessPageSessionResponse
-func (client *Client) GetAccessPageSessionWithOptions(request *GetAccessPageSessionRequest, runtime *util.RuntimeOptions) (_result *GetAccessPageSessionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AccessPageId)) {
-		query["AccessPageId"] = request.AccessPageId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AccessPageToken)) {
-		query["AccessPageToken"] = request.AccessPageToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExternalUserId)) {
-		query["ExternalUserId"] = request.ExternalUserId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetAccessPageSession"),
-		Version:     tea.String("2021-09-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("Anonymous"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetAccessPageSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 访客进入访问页面的匿名api
-//
-// @param request - GetAccessPageSessionRequest
-//
-// @return GetAccessPageSessionResponse
-func (client *Client) GetAccessPageSession(request *GetAccessPageSessionRequest) (_result *GetAccessPageSessionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetAccessPageSessionResponse{}
-	_body, _err := client.GetAccessPageSessionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 获取交付组详情
 //
 // @param request - GetAppInstanceGroupRequest
@@ -12776,6 +11013,10 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 
 	if !tea.BoolValue(util.IsUnset(request.AppInstancePersistentId)) {
 		body["AppInstancePersistentId"] = request.AppInstancePersistentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppPolicyId)) {
+		body["AppPolicyId"] = request.AppPolicyId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AppStartParam)) {
@@ -13137,86 +11378,6 @@ func (client *Client) GetResourceRenewPrice(request *GetResourceRenewPriceReques
 
 // Summary:
 //
-// 访问页面分页查询
-//
-// @param request - ListAccessPagesRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListAccessPagesResponse
-func (client *Client) ListAccessPagesWithOptions(request *ListAccessPagesRequest, runtime *util.RuntimeOptions) (_result *ListAccessPagesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AccessPageId)) {
-		query["AccessPageId"] = request.AccessPageId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AccessPageName)) {
-		query["AccessPageName"] = request.AccessPageName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
-		query["ProjectId"] = request.ProjectId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SortType)) {
-		query["SortType"] = request.SortType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListAccessPages"),
-		Version:     tea.String("2021-09-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListAccessPagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 访问页面分页查询
-//
-// @param request - ListAccessPagesRequest
-//
-// @return ListAccessPagesResponse
-func (client *Client) ListAccessPages(request *ListAccessPagesRequest) (_result *ListAccessPagesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListAccessPagesResponse{}
-	_body, _err := client.ListAccessPagesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Queries the details of multiple delivery groups that meet the query conditions.
 //
 // @param request - ListAppInstanceGroupRequest
@@ -13404,6 +11565,86 @@ func (client *Client) ListAppInstances(request *ListAppInstancesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAppInstancesResponse{}
 	_body, _err := client.ListAppInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过交付组查询展示授权的用户组列表
+//
+// @param request - ListAuthorizedUserGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizedUserGroupsResponse
+func (client *Client) ListAuthorizedUserGroupsWithOptions(request *ListAuthorizedUserGroupsRequest, runtime *util.RuntimeOptions) (_result *ListAuthorizedUserGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppInstanceGroupId)) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		body["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["ProductType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAuthorizedUserGroups"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAuthorizedUserGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过交付组查询展示授权的用户组列表
+//
+// @param request - ListAuthorizedUserGroupsRequest
+//
+// @return ListAuthorizedUserGroupsResponse
+func (client *Client) ListAuthorizedUserGroups(request *ListAuthorizedUserGroupsRequest) (_result *ListAuthorizedUserGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAuthorizedUserGroupsResponse{}
+	_body, _err := client.ListAuthorizedUserGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13892,90 +12133,6 @@ func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListReg
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRegionsResponse{}
 	_body, _err := client.ListRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 项目的会话包列表
-//
-// @param request - ListSessionPackagesRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListSessionPackagesResponse
-func (client *Client) ListSessionPackagesWithOptions(request *ListSessionPackagesRequest, runtime *util.RuntimeOptions) (_result *ListSessionPackagesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
-		query["ProjectId"] = request.ProjectId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionPackageId)) {
-		query["SessionPackageId"] = request.SessionPackageId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionPackageName)) {
-		query["SessionPackageName"] = request.SessionPackageName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SortType)) {
-		query["SortType"] = request.SortType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StateList)) {
-		query["StateList"] = request.StateList
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListSessionPackages"),
-		Version:     tea.String("2021-09-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListSessionPackagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 项目的会话包列表
-//
-// @param request - ListSessionPackagesRequest
-//
-// @return ListSessionPackagesResponse
-func (client *Client) ListSessionPackages(request *ListSessionPackagesRequest) (_result *ListSessionPackagesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListSessionPackagesResponse{}
-	_body, _err := client.ListSessionPackagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
