@@ -6851,7 +6851,8 @@ type CreateDBResourceGroupRequest struct {
 	//
 	// 48ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	MaxGpuQuantity     *int32  `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
+	// A reserved parameter.
+	MaxGpuQuantity *int32 `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
@@ -6867,9 +6868,10 @@ type CreateDBResourceGroupRequest struct {
 	// example:
 	//
 	// 0ACU
-	MinComputeResource *string                                `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
-	MinGpuQuantity     *int32                                 `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
-	RayConfig          *CreateDBResourceGroupRequestRayConfig `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
+	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
+	// A reserved parameter.
+	MinGpuQuantity *int32                                 `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
+	RayConfig      *CreateDBResourceGroupRequestRayConfig `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
 	// The region ID of the cluster.
 	//
 	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
@@ -6879,9 +6881,11 @@ type CreateDBResourceGroupRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The job resubmission rules.
-	Rules                   []*CreateDBResourceGroupRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	SpecName                *string                              `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	TargetResourceGroupName *string                              `json:"TargetResourceGroupName,omitempty" xml:"TargetResourceGroupName,omitempty"`
+	Rules []*CreateDBResourceGroupRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// A reserved parameter.
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// A reserved parameter.
+	TargetResourceGroupName *string `json:"TargetResourceGroupName,omitempty" xml:"TargetResourceGroupName,omitempty"`
 }
 
 func (s CreateDBResourceGroupRequest) String() string {
@@ -6993,7 +6997,13 @@ func (s *CreateDBResourceGroupRequest) SetTargetResourceGroupName(v string) *Cre
 }
 
 type CreateDBResourceGroupRequestRayConfig struct {
-	Category     *string                                              `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// BASIC
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// xlarge
 	HeadSpec     *string                                              `json:"HeadSpec,omitempty" xml:"HeadSpec,omitempty"`
 	WorkerGroups []*CreateDBResourceGroupRequestRayConfigWorkerGroups `json:"WorkerGroups,omitempty" xml:"WorkerGroups,omitempty" type:"Repeated"`
 }
@@ -7022,13 +7032,34 @@ func (s *CreateDBResourceGroupRequestRayConfig) SetWorkerGroups(v []*CreateDBRes
 }
 
 type CreateDBResourceGroupRequestRayConfigWorkerGroups struct {
-	AllocateUnit       *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
-	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	MaxWorkerQuantity  *int32  `json:"MaxWorkerQuantity,omitempty" xml:"MaxWorkerQuantity,omitempty"`
-	MinWorkerQuantity  *int32  `json:"MinWorkerQuantity,omitempty" xml:"MinWorkerQuantity,omitempty"`
+	// example:
+	//
+	// 1
+	AllocateUnit *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
+	// example:
+	//
+	// test
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// 2
+	MaxWorkerQuantity *int32 `json:"MaxWorkerQuantity,omitempty" xml:"MaxWorkerQuantity,omitempty"`
+	// example:
+	//
+	// 1
+	MinWorkerQuantity *int32 `json:"MinWorkerQuantity,omitempty" xml:"MinWorkerQuantity,omitempty"`
+	// example:
+	//
+	// 100G
 	WorkerDiskCapacity *string `json:"WorkerDiskCapacity,omitempty" xml:"WorkerDiskCapacity,omitempty"`
-	WorkerSpecName     *string `json:"WorkerSpecName,omitempty" xml:"WorkerSpecName,omitempty"`
-	WorkerSpecType     *string `json:"WorkerSpecType,omitempty" xml:"WorkerSpecType,omitempty"`
+	// example:
+	//
+	// xlarge
+	WorkerSpecName *string `json:"WorkerSpecName,omitempty" xml:"WorkerSpecName,omitempty"`
+	// example:
+	//
+	// GPU
+	WorkerSpecType *string `json:"WorkerSpecType,omitempty" xml:"WorkerSpecType,omitempty"`
 }
 
 func (s CreateDBResourceGroupRequestRayConfigWorkerGroups) String() string {
@@ -7211,7 +7242,8 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// 48ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	MaxGpuQuantity     *int32  `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
+	// A reserved parameter.
+	MaxGpuQuantity *int32 `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
@@ -7228,8 +7260,9 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
-	MinGpuQuantity     *int32  `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
-	RayConfigShrink    *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
+	// A reserved parameter.
+	MinGpuQuantity  *int32  `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
+	RayConfigShrink *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
 	// The region ID of the cluster.
 	//
 	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
@@ -7239,8 +7272,10 @@ type CreateDBResourceGroupShrinkRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The job resubmission rules.
-	RulesShrink             *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	SpecName                *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// A reserved parameter.
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// A reserved parameter.
 	TargetResourceGroupName *string `json:"TargetResourceGroupName,omitempty" xml:"TargetResourceGroupName,omitempty"`
 }
 
@@ -9893,11 +9928,11 @@ type DeleteSparkTemplateRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The directory ID of the template files that you want to delete.
+	// The directory ID or application ID of the template files that you want to delete.
 	//
 	// >
 	//
-	// 	- You can call the [GetSparkTemplateFullTree](https://help.aliyun.com/document_detail/456205.html) operation to query the directory ID of template files.
+	// 	- You can call the [GetSparkTemplateFullTree](https://help.aliyun.com/document_detail/612467.html) operation to query the directory ID or application ID.
 	//
 	// 	- When you specify a directory ID, the directory and all template files that are included in the directory are deleted.
 	//
@@ -12003,22 +12038,36 @@ func (s *DescribeAdbMySqlColumnsResponse) SetBody(v *DescribeAdbMySqlColumnsResp
 }
 
 type DescribeAdbMySqlIndexesRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// am-uf6wjk5xxxxxxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// tpch_oss
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The name of the table.
+	//
+	// >  If you leave this parameter empty, the information about all the current tables in the cluster is returned.
+	//
 	// example:
 	//
 	// orders
@@ -12054,27 +12103,52 @@ func (s *DescribeAdbMySqlIndexesRequest) SetTableName(v string) *DescribeAdbMySq
 }
 
 type DescribeAdbMySqlIndexesResponseBody struct {
+	// The number of indexes.````
+	//
 	// example:
 	//
 	// 10
-	IndexCount *int32                                        `json:"IndexCount,omitempty" xml:"IndexCount,omitempty"`
-	Indexes    []*DescribeAdbMySqlIndexesResponseBodyIndexes `json:"Indexes,omitempty" xml:"Indexes,omitempty" type:"Repeated"`
+	IndexCount *int32 `json:"IndexCount,omitempty" xml:"IndexCount,omitempty"`
+	// The queried indexes.
+	Indexes []*DescribeAdbMySqlIndexesResponseBodyIndexes `json:"Indexes,omitempty" xml:"Indexes,omitempty" type:"Repeated"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F0983B43-B2EC-536A-8791-142B5CF1E9B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the database.
+	//
+	// **
+	//
+	// ****\\
+	//
 	// example:
 	//
 	// adb_demo
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// test
@@ -12125,14 +12199,20 @@ func (s *DescribeAdbMySqlIndexesResponseBody) SetTableName(v string) *DescribeAd
 }
 
 type DescribeAdbMySqlIndexesResponseBodyIndexes struct {
+	// The name of the column.
+	//
 	// example:
 	//
 	// preclcu
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	// The name of the index.
+	//
 	// example:
 	//
 	// ttl
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The index type.
+	//
 	// example:
 	//
 	// normal
@@ -12319,24 +12399,38 @@ func (s *DescribeAdbMySqlSchemasResponse) SetBody(v *DescribeAdbMySqlSchemasResp
 }
 
 type DescribeAdbMySqlTableMetaRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// am-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// adb_demo
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The name of the table.
+	//
+	// >  If you leave this parameter empty, the information about all the current tables in the cluster is returned.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -12374,18 +12468,33 @@ func (s *DescribeAdbMySqlTableMetaRequest) SetTableName(v string) *DescribeAdbMy
 }
 
 type DescribeAdbMySqlTableMetaResponseBody struct {
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2FED790E-FB61-4721-8C1C-07C627FA5A19
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
-	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The queried table metadata.
 	TableMeta *DescribeAdbMySqlTableMetaResponseBodyTableMeta `json:"TableMeta,omitempty" xml:"TableMeta,omitempty" type:"Struct"`
 }
 
@@ -12418,62 +12527,100 @@ func (s *DescribeAdbMySqlTableMetaResponseBody) SetTableMeta(v *DescribeAdbMySql
 }
 
 type DescribeAdbMySqlTableMetaResponseBodyTableMeta struct {
+	// The time when the table was created.
+	//
 	// example:
 	//
 	// 2025-03-14 02:18:08.0
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The distribution key column.
+	//
 	// example:
 	//
 	// customer_id
 	DistributeColumn *string `json:"DistributeColumn,omitempty" xml:"DistributeColumn,omitempty"`
+	// The distribution type.
+	//
 	// example:
 	//
 	// hash
 	DistributeType *string `json:"DistributeType,omitempty" xml:"DistributeType,omitempty"`
+	// Indicates whether full-column indexes are used.
+	//
 	// example:
 	//
 	// false
 	IsAllIndex *bool `json:"IsAllIndex,omitempty" xml:"IsAllIndex,omitempty"`
+	// Indicates whether dictionary encoding is used.
+	//
 	// example:
 	//
 	// true
 	IsDictEncode *bool `json:"IsDictEncode,omitempty" xml:"IsDictEncode,omitempty"`
+	// Indicates whether full-text indexes are used.
+	//
 	// example:
 	//
 	// true
 	IsFullTextDict *bool `json:"IsFullTextDict,omitempty" xml:"IsFullTextDict,omitempty"`
+	// Indicates whether pages are hidden.
+	//
+	// 	- **false**
+	//
+	// 	- **true**
+	//
 	// example:
 	//
 	// true
 	IsHidden *bool `json:"IsHidden,omitempty" xml:"IsHidden,omitempty"`
+	// The partition key column.
+	//
 	// example:
 	//
 	// DATE_FORMAT(login_time, \\"%Y%m%d\\")
 	PartitionColumn *string `json:"PartitionColumn,omitempty" xml:"PartitionColumn,omitempty"`
+	// The type of the partition.
+	//
 	// example:
 	//
 	// value
 	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
+	// The primary key column.
+	//
 	// example:
 	//
 	// login_time,customer_id,phone_num
 	PrimaryKeyColumn *string `json:"PrimaryKeyColumn,omitempty" xml:"PrimaryKeyColumn,omitempty"`
+	// The table engine.
+	//
 	// example:
 	//
 	// XUANWU
 	TableEngine *string `json:"TableEngine,omitempty" xml:"TableEngine,omitempty"`
+	// The name of the table.
+	//
+	// **
+	//
+	// ****
+	//
 	// example:
 	//
 	// external_supplier
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The database to which the table belongs.
+	//
 	// example:
 	//
 	// tpch
 	TableSchema *string `json:"TableSchema,omitempty" xml:"TableSchema,omitempty"`
+	// The type of the table.
+	//
 	// example:
 	//
 	// fact_table
 	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	// The time when the table was updated.
+	//
 	// example:
 	//
 	// 2024-07-25 02:07:23.0
@@ -18603,9 +18750,9 @@ func (s *DescribeClusterAccessWhiteListResponseBodyItems) SetIPArray(v []*Descri
 }
 
 type DescribeClusterAccessWhiteListResponseBodyItemsIPArray struct {
-	// The attribute of the whitelist.
+	// The attribute of the IP address whitelist.
 	//
-	// > Whitelists with the **hidden*	- attribute are not displayed in the console. Those whitelists are used to access Data Transmission Service (DTS) and PolarDB.
+	// >  The IP address whitelists that have the **hidden*	- attribute are not displayed in the console. These IP address whitelists are used to access services such as Data Transmission Service (DTS) and PolarDB.
 	//
 	// example:
 	//
@@ -20406,6 +20553,8 @@ func (s *DescribeDBClusterAttributeResponseBodyItems) SetDBCluster(v []*Describe
 }
 
 type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
+	AINodeNumber *int32  `json:"AINodeNumber,omitempty" xml:"AINodeNumber,omitempty"`
+	AINodeSpec   *string `json:"AINodeSpec,omitempty" xml:"AINodeSpec,omitempty"`
 	// The cache size of the ClickHouse wide table engine. Unit: GB. If a value of -1 is returned, the ClickHouse wide table engine is disabled. If a value other than -1 is returned, this parameter indicates the disk cache size.
 	//
 	// example:
@@ -20727,6 +20876,16 @@ func (s DescribeDBClusterAttributeResponseBodyItemsDBCluster) String() string {
 
 func (s DescribeDBClusterAttributeResponseBodyItemsDBCluster) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetAINodeNumber(v int32) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.AINodeNumber = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetAINodeSpec(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.AINodeSpec = &v
+	return s
 }
 
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetClickhouseEngineCacheSize(v int32) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
@@ -22259,11 +22418,9 @@ type DescribeDBClustersRequest struct {
 	//
 	// amv-bp1r053byu48p****
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
-	// The state of the cluster. Valid values:
+	// The status of the cluster. Valid values:
 	//
 	// 	- **Preparing**
-	//
-	// <!---->
 	//
 	// 	- **Creating**
 	//
@@ -22271,11 +22428,7 @@ type DescribeDBClustersRequest struct {
 	//
 	// 	- **Deleting**
 	//
-	// <!---->
-	//
 	// 	- **Restoring**
-	//
-	// <!---->
 	//
 	// 	- **ClassChanging**
 	//
@@ -22289,13 +22442,13 @@ type DescribeDBClustersRequest struct {
 	//
 	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The database engine version of the cluster. Valid values:
+	// The version number corresponding to the edition of the cluster. Valid values:
 	//
-	// 	- 3.0: Data Warehouse Edition.
+	// 	- **3.0**: Data Warehouse Edition.
 	//
-	// 	- 5.0 (default): Data Lakehouse Edition, Enterprise Edition, and Basic Edition.
+	// 	- **5.0*	- (default): includes Data Lakehouse Edition, Enterprise Edition, and Basic Edition.
 	//
-	// 	- All: Data Warehouse Edition, Data Lakehouse Edition, Enterprise Edition, and Basic Edition.
+	// 	- **All**: all editions, including Data Warehouse Edition, Data Lakehouse Edition, Enterprise Edition, and Basic Edition.
 	//
 	// example:
 	//
@@ -22321,11 +22474,11 @@ type DescribeDBClustersRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The edition of the cluster. Valid values:
 	//
-	// 	- EnterpriseVersion: Enterprise Edition.
+	// 	- **EnterpriseVersion**: Enterprise Edition.
 	//
-	// 	- BasicVersion: Basic Edition.
+	// 	- **BasicVersion**: Basic Edition.
 	//
-	// If you leave this parameter empty, the information about clusters of all editions is returned.
+	// >  If you leave this parameter empty, the information about clusters of all editions is returned.
 	//
 	// example:
 	//
@@ -22576,7 +22729,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	//
 	// amv-bp163885f8q21****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The network type of the cluster. **VPC*	- is returned.
+	// The network type of the cluster. Only **VPC*	- is supported.
 	//
 	// example:
 	//
@@ -22586,19 +22739,13 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	//
 	// 	- **Preparing**
 	//
-	// <!---->
-	//
 	// 	- **Creating**
 	//
 	// 	- **Running**
 	//
 	// 	- **Deleting**
 	//
-	// <!---->
-	//
 	// 	- **Restoring**
-	//
-	// <!---->
 	//
 	// 	- **ClassChanging**
 	//
@@ -22636,7 +22783,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	//
 	// 300
 	DBNodeStorage *int64 `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
-	// The engine version of the AnalyticDB for MySQL Data Lakehouse Edition cluster. **5.0*	- is returned.
+	// The version number corresponding to the edition of the cluster. Only **5.0*	- is supported.
 	//
 	// example:
 	//
@@ -22774,9 +22921,9 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The service type of the cluster. Valid values:
 	//
-	// 	- LegacyForm
+	// 	- **LegacyForm**
 	//
-	// 	- IntegrationForm
+	// 	- **IntegrationForm**
 	//
 	// example:
 	//
@@ -22836,9 +22983,9 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
 	// The tags that are added to the cluster.
 	Tags *DescribeDBClustersResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The job progress.
+	// The information about the job.
 	TaskInfo *DescribeDBClustersResponseBodyItemsDBClusterTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
-	// The ID of the cluster that resides in the VPC.
+	// The VPC endpoint.
 	//
 	// example:
 	//
@@ -24049,9 +24196,9 @@ type DescribeDiagnosisRecordsRequest struct {
 	//
 	// 59.82.XX.XX
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -24448,8 +24595,11 @@ type DescribeDiagnosisRecordsResponseBodyQuerys struct {
 	// example:
 	//
 	// 1
-	OutputRows *int64  `json:"OutputRows,omitempty" xml:"OutputRows,omitempty"`
-	PatternId  *string `json:"PatternId,omitempty" xml:"PatternId,omitempty"`
+	OutputRows *int64 `json:"OutputRows,omitempty" xml:"OutputRows,omitempty"`
+	// example:
+	//
+	// -5575924945138******
+	PatternId *string `json:"PatternId,omitempty" xml:"PatternId,omitempty"`
 	// The peak memory. Unit: bytes.
 	//
 	// example:
@@ -24461,7 +24611,10 @@ type DescribeDiagnosisRecordsResponseBodyQuerys struct {
 	// example:
 	//
 	// 2021093000414401000000023503151******
-	ProcessId       *string                                                      `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The query properties.
+	//
+	// >  For information about common properties, see [Config and hint configuration parameters](https://help.aliyun.com/document_detail/408955.html).
 	QueryProperties []*DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties `json:"QueryProperties,omitempty" xml:"QueryProperties,omitempty" type:"Repeated"`
 	// The amount of time that is consumed for queuing. Unit: milliseconds.
 	//
@@ -24697,7 +24850,13 @@ func (s *DescribeDiagnosisRecordsResponseBodyQuerys) SetUserName(v string) *Desc
 }
 
 type DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// max_select_items_count
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1024
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -28782,14 +28941,24 @@ func (s *DescribeLLMAnswerResponse) SetBody(v *DescribeLLMAnswerResponseBody) *D
 }
 
 type DescribeLLMSimilarQuestionsRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	//
 	// example:
 	//
 	// am-bp1565u55p32****
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The question proposed by a user.
+	//
 	// This parameter is required.
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The region ID
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -28842,11 +29011,16 @@ func (s *DescribeLLMSimilarQuestionsRequest) SetResourceOwnerId(v int64) *Descri
 }
 
 type DescribeLLMSimilarQuestionsResponseBody struct {
+	// The queried similar questions.
 	Items []*DescribeLLMSimilarQuestionsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 96A55627-28E9-5E47-B8F6-D786BE551349
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 4847
@@ -28877,18 +29051,28 @@ func (s *DescribeLLMSimilarQuestionsResponseBody) SetSessionId(v string) *Descri
 }
 
 type DescribeLLMSimilarQuestionsResponseBodyItems struct {
+	// The answer to the similar question.
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// The ID of the similar question.
+	//
 	// example:
 	//
 	// 2389899
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The similarity of the similar question.
+	//
 	// example:
 	//
 	// 0.58
-	Score   *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	Source  *string  `json:"Source,omitempty" xml:"Source,omitempty"`
-	Summary *string  `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Title   *string  `json:"Title,omitempty" xml:"Title,omitempty"`
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The source of the similar question.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The summary of the similar question.
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The content of the similar question.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the answer to the similar question.
+	//
 	// example:
 	//
 	// www.aliyun.com/product
@@ -30838,7 +31022,7 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeResourceGroupSpecRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// The Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -31571,12 +31755,20 @@ func (s *DescribeSQLPatternsResponse) SetBody(v *DescribeSQLPatternsResponseBody
 }
 
 type DescribeSQLWebSocketDomainRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp1lw6g669zpi660
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31604,22 +31796,40 @@ func (s *DescribeSQLWebSocketDomainRequest) SetRegionId(v string) *DescribeSQLWe
 }
 
 type DescribeSQLWebSocketDomainResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// adb-ws-beijing.console.aliyun.com/query
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E03F0806-A67B-5B24-8562-9589F20DEEB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -31854,7 +32064,11 @@ type DescribeSparkAppDiagnosisInfoRequest struct {
 	//
 	// amv-uf663j39b0jd2***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The execution language of the Spark application.
+	// The language in which you want to display the results. Valid values:
+	//
+	// 	- en: English.
+	//
+	// 	- zh (default): Chinese.
 	//
 	// This parameter is required.
 	//
@@ -34836,32 +35050,68 @@ func (s *DescribeTablePartitionDiagnoseResponse) SetBody(v *DescribeTablePartiti
 }
 
 type DescribeTableStatisticsRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The keyword that is used to query information by table name.
+	//
 	// example:
 	//
 	// you_table_name
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The order by which to sort query results. Specify the parameter value in the JSON format.
+	//
+	// Example:
+	//
+	//     [
+	//
+	//         {
+	//
+	//             "Field":"Name",
+	//
+	//             "Type":"Asc"
+	//
+	//         }
+	//
+	//     ]
+	//
+	// Field specifies the field by which to sort the query results. Set the value to Name. Type specifies the sorting order. Valid values: Desc and Asc.
+	//
+	// Field and Type are case-insensitive.
+	//
 	// example:
 	//
 	// [{"Field":"SchemaName","Type":"Desc"}]
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// test
@@ -34912,27 +35162,40 @@ func (s *DescribeTableStatisticsRequest) SetSchemaName(v string) *DescribeTableS
 }
 
 type DescribeTableStatisticsResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// am-****************
-	DBClusterId *string                                   `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Items       *DescribeTableStatisticsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The queried table statistics.
+	Items *DescribeTableStatisticsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C4433FF-5D3A-4C3E-A19C-6D93B2******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The names of databases.
+	//
 	// example:
 	//
 	// [\\"adb_platform\\", \\"adb_ai\\", \\"adb_data\\"]
 	SchemaNames *string `json:"SchemaNames,omitempty" xml:"SchemaNames,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 693
@@ -35000,50 +35263,84 @@ func (s *DescribeTableStatisticsResponseBodyItems) SetTableStatisticRecords(v []
 }
 
 type DescribeTableStatisticsResponseBodyItemsTableStatisticRecords struct {
+	// The size of cold data. Unit: bytes.
+	//
+	// >  This parameter is supported only for AnalyticDB for MySQL clusters of V3.1.3.4 or later.
+	//
 	// example:
 	//
 	// 4428120064
 	ColdDataSize *int64 `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty"`
+	// The data size of the table. Unit: bytes.
+	//
 	// example:
 	//
 	// 15592
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The size of hot data. Unit: bytes.
+	//
 	// example:
 	//
 	// 1048576
 	HotDataSize *int64 `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty"`
+	// The data size of indexes. Unit: bytes.
+	//
 	// example:
 	//
 	// 3076
 	IndexSize *int64 `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
+	// The data size of other data. Unit: bytes.
+	//
 	// example:
 	//
 	// 1048576
 	OtherSize *int64 `json:"OtherSize,omitempty" xml:"OtherSize,omitempty"`
+	// The number of partitions.
+	//
 	// example:
 	//
 	// 1
 	PartitionCount *int64 `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
+	// The data size of the primary key index. Unit: bytes.
+	//
 	// example:
 	//
 	// 16340
 	PrimaryKeyIndexSize *int64 `json:"PrimaryKeyIndexSize,omitempty" xml:"PrimaryKeyIndexSize,omitempty"`
+	// The number of rows in the table.
+	//
 	// example:
 	//
 	// 3
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// test_schema
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The percentage of the table size. Unit: %.
+	//
+	// >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
+	//
 	// example:
 	//
 	// 66.23
 	SpaceRatio *float64 `json:"SpaceRatio,omitempty" xml:"SpaceRatio,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// test_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The total data size of the table. Unit: bytes.
+	//
+	// >  The following formulas can be used to calculate the total data size:
+	//
+	// 	- Formula 1: Total data size = Hot data size + Cold data size.
+	//
+	// 	- Formula 2: Total data size = Data size of table records + Data size of regular indexes + Data size of primary key indexes + Data size of other data.
+	//
 	// example:
 	//
 	// 1577
@@ -38056,7 +38353,7 @@ func (s *GetDatabaseObjectsRequest) SetRegionId(v string) *GetDatabaseObjectsReq
 }
 
 type GetDatabaseObjectsResponseBody struct {
-	// The queried databases.
+	// The returned data.
 	Data *GetDatabaseObjectsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The page number. Pages start from page 1. Default value: **1**.
 	//
@@ -38124,7 +38421,7 @@ func (s *GetDatabaseObjectsResponseBody) SetTotalCount(v int64) *GetDatabaseObje
 }
 
 type GetDatabaseObjectsResponseBodyData struct {
-	// The queried database.
+	// The queried databases.
 	DatabaseSummaryModels []*DatabaseSummaryModel `json:"DatabaseSummaryModels,omitempty" xml:"DatabaseSummaryModels,omitempty" type:"Repeated"`
 	// The page number. Pages start from page 1. Default value: **1**.
 	//
@@ -41276,7 +41573,7 @@ func (s *GetTableColumnsRequest) SetTableName(v string) *GetTableColumnsRequest 
 }
 
 type GetTableColumnsResponseBody struct {
-	// The queried data.
+	// The returned data.
 	Data *GetTableColumnsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The page number. Pages start from page 1. Default value: 1.
 	//
@@ -42082,8 +42379,11 @@ type GetViewObjectsRequest struct {
 	// example:
 	//
 	// adb_demo
-	SchemaName      *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	ShowMvBaseTable *bool   `json:"ShowMvBaseTable,omitempty" xml:"ShowMvBaseTable,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// example:
+	//
+	// true
+	ShowMvBaseTable *bool `json:"ShowMvBaseTable,omitempty" xml:"ShowMvBaseTable,omitempty"`
 }
 
 func (s GetViewObjectsRequest) String() string {
@@ -42440,7 +42740,7 @@ type KillProcessRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The query ID.
 	//
-	// >  You can call the [DescribeProcessList](https://help.aliyun.com/document_detail/143382.html) operation to query the IDs of queries that are being executed.
+	// >  You can call the [DescribeProcessList](https://help.aliyun.com/document_detail/612277.html) operation to query the IDs of queries that are being executed.
 	//
 	// example:
 	//
@@ -48624,7 +48924,7 @@ func (s *ModifyClickhouseEngineResponse) SetBody(v *ModifyClickhouseEngineRespon
 type ModifyClusterAccessWhiteListRequest struct {
 	// The attribute of the IP address whitelist. By default, this parameter is empty.
 	//
-	// > Whitelists with the hidden attribute are not displayed in the console. Those whitelists are used to access Data Transmission Service (DTS) and PolarDB.
+	// >  IP address whitelists with the hidden attribute are not displayed in the console. Those whitelists are used to access Data Transmission Service (DTS) and PolarDB.
 	//
 	// example:
 	//
@@ -52473,7 +52773,11 @@ type SubmitResultExportJobRequest struct {
 	//
 	// XIHE
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The export type.
+	// The type of the result set export job.
+	//
+	// example:
+	//
+	// SLS
 	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
 	// The region ID.
 	//
@@ -52697,7 +53001,7 @@ type SubmitSparkAppRequest struct {
 	//
 	// SQL
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
 	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
@@ -57958,7 +58262,7 @@ func (client *Client) DescribeAdbMySqlColumns(request *DescribeAdbMySqlColumnsRe
 
 // Summary:
 //
-// 用于查看表索引信息
+// Queries the information about table indexes.
 //
 // @param request - DescribeAdbMySqlIndexesRequest
 //
@@ -58012,7 +58316,7 @@ func (client *Client) DescribeAdbMySqlIndexesWithOptions(request *DescribeAdbMyS
 
 // Summary:
 //
-// 用于查看表索引信息
+// Queries the information about table indexes.
 //
 // @param request - DescribeAdbMySqlIndexesRequest
 //
@@ -58106,7 +58410,7 @@ func (client *Client) DescribeAdbMySqlSchemas(request *DescribeAdbMySqlSchemasRe
 
 // Summary:
 //
-// 用于查看表元数据信息
+// Queries the information about table metadata.
 //
 // @param request - DescribeAdbMySqlTableMetaRequest
 //
@@ -58160,7 +58464,7 @@ func (client *Client) DescribeAdbMySqlTableMetaWithOptions(request *DescribeAdbM
 
 // Summary:
 //
-// 用于查看表元数据信息
+// Queries the information about table metadata.
 //
 // @param request - DescribeAdbMySqlTableMetaRequest
 //
@@ -60938,7 +61242,7 @@ func (client *Client) DescribeDBResourceGroup(request *DescribeDBResourceGroupRe
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDiagnosisDimensionsRequest
 //
@@ -61004,7 +61308,7 @@ func (client *Client) DescribeDiagnosisDimensionsWithOptions(request *DescribeDi
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDiagnosisDimensionsRequest
 //
@@ -61022,7 +61326,7 @@ func (client *Client) DescribeDiagnosisDimensions(request *DescribeDiagnosisDime
 
 // Summary:
 //
-// Queries the diagnostic information about SQL statements that meet a query condition for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the diagnostic information about SQL statements that meet a query condition for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
@@ -61140,7 +61444,7 @@ func (client *Client) DescribeDiagnosisRecordsWithOptions(request *DescribeDiagn
 
 // Summary:
 //
-// Queries the diagnostic information about SQL statements that meet a query condition for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the diagnostic information about SQL statements that meet a query condition for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
@@ -61166,7 +61470,7 @@ func (client *Client) DescribeDiagnosisRecords(request *DescribeDiagnosisRecords
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDiagnosisSQLInfoRequest
 //
@@ -61236,7 +61540,7 @@ func (client *Client) DescribeDiagnosisSQLInfoWithOptions(request *DescribeDiagn
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDiagnosisSQLInfoRequest
 //
@@ -61258,7 +61562,7 @@ func (client *Client) DescribeDiagnosisSQLInfo(request *DescribeDiagnosisSQLInfo
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDownloadRecordsRequest
 //
@@ -61312,7 +61616,7 @@ func (client *Client) DescribeDownloadRecordsWithOptions(request *DescribeDownlo
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDownloadRecordsRequest
 //
@@ -62388,6 +62692,10 @@ func (client *Client) DescribeLLMAnswer(request *DescribeLLMAnswerRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of questions similar to a user question.
+//
 // @param request - DescribeLLMSimilarQuestionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -62450,6 +62758,10 @@ func (client *Client) DescribeLLMSimilarQuestionsWithOptions(request *DescribeLL
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of questions similar to a user question.
+//
 // @param request - DescribeLLMSimilarQuestionsRequest
 //
 // @return DescribeLLMSimilarQuestionsResponse
@@ -63056,7 +63368,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // ### [](#)
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-endpoint?spm=a2c63.p38356.help-menu-92664.d_5_3_1.57da5837J23pkx).
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeResourceGroupSpecRequest
 //
@@ -63112,7 +63424,7 @@ func (client *Client) DescribeResourceGroupSpecWithOptions(request *DescribeReso
 //
 // ### [](#)
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-endpoint?spm=a2c63.p38356.help-menu-92664.d_5_3_1.57da5837J23pkx).
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeResourceGroupSpecRequest
 //
@@ -63238,7 +63550,7 @@ func (client *Client) DescribeSQLPatterns(request *DescribeSQLPatternsRequest) (
 
 // Summary:
 //
-// 查看注册的WebSocket域名
+// Queries the WebSocket domain name of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeSQLWebSocketDomainRequest
 //
@@ -63284,7 +63596,7 @@ func (client *Client) DescribeSQLWebSocketDomainWithOptions(request *DescribeSQL
 
 // Summary:
 //
-// 查看注册的WebSocket域名
+// Queries the WebSocket domain name of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeSQLWebSocketDomainRequest
 //
@@ -64098,7 +64410,7 @@ func (client *Client) DescribeStorageResourceUsage(request *DescribeStorageResou
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeTableAccessCountRequest
 //
@@ -64168,7 +64480,7 @@ func (client *Client) DescribeTableAccessCountWithOptions(request *DescribeTable
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeTableAccessCountRequest
 //
@@ -64338,7 +64650,7 @@ func (client *Client) DescribeTablePartitionDiagnose(request *DescribeTableParti
 
 // Summary:
 //
-// 查询表统计信息
+// Queries the table statistics of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeTableStatisticsRequest
 //
@@ -64404,7 +64716,7 @@ func (client *Client) DescribeTableStatisticsWithOptions(request *DescribeTableS
 
 // Summary:
 //
-// 查询表统计信息
+// Queries the table statistics of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeTableStatisticsRequest
 //
@@ -64866,7 +65178,7 @@ func (client *Client) DisableElasticPlan(request *DisableElasticPlanRequest) (_r
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DownloadDiagnosisRecordsRequest
 //
@@ -64968,7 +65280,7 @@ func (client *Client) DownloadDiagnosisRecordsWithOptions(request *DownloadDiagn
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DownloadDiagnosisRecordsRequest
 //
@@ -66028,7 +66340,9 @@ func (client *Client) GetSparkAppLog(request *GetSparkAppLogRequest) (_result *G
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Before you call this operation, you must call the [PreloadSparkAppMetrics](https://help.aliyun.com/document_detail/612447.html) operation to preload the metrics of a Spark application.
+//
+//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 //		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
@@ -66084,7 +66398,9 @@ func (client *Client) GetSparkAppMetricsWithOptions(request *GetSparkAppMetricsR
 //
 // Description:
 //
-//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Before you call this operation, you must call the [PreloadSparkAppMetrics](https://help.aliyun.com/document_detail/612447.html) operation to preload the metrics of a Spark application.
+//
+//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 //		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
@@ -66552,6 +66868,8 @@ func (client *Client) GetSparkReplStatement(request *GetSparkReplStatementReques
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetSparkSQLEngineState is deprecated
+//
 // Summary:
 //
 // Queries the state information about the Spark SQL engine.
@@ -66569,6 +66887,7 @@ func (client *Client) GetSparkReplStatement(request *GetSparkReplStatementReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSparkSQLEngineStateResponse
+// Deprecated
 func (client *Client) GetSparkSQLEngineStateWithOptions(request *GetSparkSQLEngineStateRequest, runtime *util.RuntimeOptions) (_result *GetSparkSQLEngineStateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -66606,6 +66925,8 @@ func (client *Client) GetSparkSQLEngineStateWithOptions(request *GetSparkSQLEngi
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetSparkSQLEngineState is deprecated
+//
 // Summary:
 //
 // Queries the state information about the Spark SQL engine.
@@ -66621,6 +66942,7 @@ func (client *Client) GetSparkSQLEngineStateWithOptions(request *GetSparkSQLEngi
 // @param request - GetSparkSQLEngineStateRequest
 //
 // @return GetSparkSQLEngineStateResponse
+// Deprecated
 func (client *Client) GetSparkSQLEngineState(request *GetSparkSQLEngineStateRequest) (_result *GetSparkSQLEngineStateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSparkSQLEngineStateResponse{}
@@ -67770,6 +68092,8 @@ func (client *Client) KillSparkLogAnalyzeTask(request *KillSparkLogAnalyzeTaskRe
 	return _result, _err
 }
 
+// Deprecated: OpenAPI KillSparkSQLEngine is deprecated
+//
 // Summary:
 //
 // Shuts down a Spark SQL engine.
@@ -67787,6 +68111,7 @@ func (client *Client) KillSparkLogAnalyzeTask(request *KillSparkLogAnalyzeTaskRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return KillSparkSQLEngineResponse
+// Deprecated
 func (client *Client) KillSparkSQLEngineWithOptions(request *KillSparkSQLEngineRequest, runtime *util.RuntimeOptions) (_result *KillSparkSQLEngineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -67824,6 +68149,8 @@ func (client *Client) KillSparkSQLEngineWithOptions(request *KillSparkSQLEngineR
 	return _result, _err
 }
 
+// Deprecated: OpenAPI KillSparkSQLEngine is deprecated
+//
 // Summary:
 //
 // Shuts down a Spark SQL engine.
@@ -67839,6 +68166,7 @@ func (client *Client) KillSparkSQLEngineWithOptions(request *KillSparkSQLEngineR
 // @param request - KillSparkSQLEngineRequest
 //
 // @return KillSparkSQLEngineResponse
+// Deprecated
 func (client *Client) KillSparkSQLEngine(request *KillSparkSQLEngineRequest) (_result *KillSparkSQLEngineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &KillSparkSQLEngineResponse{}
