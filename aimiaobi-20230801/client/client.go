@@ -28821,6 +28821,7 @@ type RunCommentGenerationRequest struct {
 	//
 	// {"short":"50","long":“50”}
 	LengthRange map[string]interface{} `json:"LengthRange,omitempty" xml:"LengthRange,omitempty"`
+	ModelId     *string                `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -28879,6 +28880,11 @@ func (s *RunCommentGenerationRequest) SetLengthRange(v map[string]interface{}) *
 	return s
 }
 
+func (s *RunCommentGenerationRequest) SetModelId(v string) *RunCommentGenerationRequest {
+	s.ModelId = &v
+	return s
+}
+
 func (s *RunCommentGenerationRequest) SetNumComments(v string) *RunCommentGenerationRequest {
 	s.NumComments = &v
 	return s
@@ -28930,6 +28936,7 @@ type RunCommentGenerationShrinkRequest struct {
 	//
 	// {"short":"50","long":“50”}
 	LengthRangeShrink *string `json:"LengthRange,omitempty" xml:"LengthRange,omitempty"`
+	ModelId           *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -28985,6 +28992,11 @@ func (s *RunCommentGenerationShrinkRequest) SetLength(v string) *RunCommentGener
 
 func (s *RunCommentGenerationShrinkRequest) SetLengthRangeShrink(v string) *RunCommentGenerationShrinkRequest {
 	s.LengthRangeShrink = &v
+	return s
+}
+
+func (s *RunCommentGenerationShrinkRequest) SetModelId(v string) *RunCommentGenerationShrinkRequest {
+	s.ModelId = &v
 	return s
 }
 
@@ -30360,6 +30372,7 @@ type RunDocBrainmapRequest struct {
 	//
 	// 12345
 	DocId      *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	ModelName  *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	NodeNumber *int32  `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
 	Prompt     *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// This parameter is required.
@@ -30393,6 +30406,11 @@ func (s *RunDocBrainmapRequest) SetCleanCache(v bool) *RunDocBrainmapRequest {
 
 func (s *RunDocBrainmapRequest) SetDocId(v string) *RunDocBrainmapRequest {
 	s.DocId = &v
+	return s
+}
+
+func (s *RunDocBrainmapRequest) SetModelName(v string) *RunDocBrainmapRequest {
+	s.ModelName = &v
 	return s
 }
 
@@ -30649,6 +30667,7 @@ type RunDocIntroductionRequest struct {
 	DocId              *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
 	IntroductionPrompt *string `json:"IntroductionPrompt,omitempty" xml:"IntroductionPrompt,omitempty"`
 	KeyPointPrompt     *string `json:"KeyPointPrompt,omitempty" xml:"KeyPointPrompt,omitempty"`
+	ModelName          *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -30690,6 +30709,11 @@ func (s *RunDocIntroductionRequest) SetIntroductionPrompt(v string) *RunDocIntro
 
 func (s *RunDocIntroductionRequest) SetKeyPointPrompt(v string) *RunDocIntroductionRequest {
 	s.KeyPointPrompt = &v
+	return s
+}
+
+func (s *RunDocIntroductionRequest) SetModelName(v string) *RunDocIntroductionRequest {
+	s.ModelName = &v
 	return s
 }
 
@@ -31051,6 +31075,7 @@ type RunDocQaRequest struct {
 	CategoryIds          []*string                              `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
 	ConversationContexts []*RunDocQaRequestConversationContexts `json:"ConversationContexts,omitempty" xml:"ConversationContexts,omitempty" type:"Repeated"`
 	DocIds               []*string                              `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	ModelName            *string                                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// This parameter is required.
 	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	ReferenceContent *string `json:"ReferenceContent,omitempty" xml:"ReferenceContent,omitempty"`
@@ -31094,6 +31119,11 @@ func (s *RunDocQaRequest) SetConversationContexts(v []*RunDocQaRequestConversati
 
 func (s *RunDocQaRequest) SetDocIds(v []*string) *RunDocQaRequest {
 	s.DocIds = v
+	return s
+}
+
+func (s *RunDocQaRequest) SetModelName(v string) *RunDocQaRequest {
+	s.ModelName = &v
 	return s
 }
 
@@ -31152,6 +31182,7 @@ type RunDocQaShrinkRequest struct {
 	CategoryIdsShrink          *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
 	ConversationContextsShrink *string `json:"ConversationContexts,omitempty" xml:"ConversationContexts,omitempty"`
 	DocIdsShrink               *string `json:"DocIds,omitempty" xml:"DocIds,omitempty"`
+	ModelName                  *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// This parameter is required.
 	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	ReferenceContent *string `json:"ReferenceContent,omitempty" xml:"ReferenceContent,omitempty"`
@@ -31195,6 +31226,11 @@ func (s *RunDocQaShrinkRequest) SetConversationContextsShrink(v string) *RunDocQ
 
 func (s *RunDocQaShrinkRequest) SetDocIdsShrink(v string) *RunDocQaShrinkRequest {
 	s.DocIdsShrink = &v
+	return s
+}
+
+func (s *RunDocQaShrinkRequest) SetModelName(v string) *RunDocQaShrinkRequest {
+	s.ModelName = &v
 	return s
 }
 
@@ -31609,8 +31645,9 @@ type RunDocSmartCardRequest struct {
 	// example:
 	//
 	// 84ufBYEeLMZOjRFo84HJ7ySL3Efr55
-	DocId  *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
-	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	DocId     *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	Prompt    *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -31635,6 +31672,11 @@ func (s RunDocSmartCardRequest) GoString() string {
 
 func (s *RunDocSmartCardRequest) SetDocId(v string) *RunDocSmartCardRequest {
 	s.DocId = &v
+	return s
+}
+
+func (s *RunDocSmartCardRequest) SetModelName(v string) *RunDocSmartCardRequest {
+	s.ModelName = &v
 	return s
 }
 
@@ -32153,6 +32195,7 @@ type RunDocTranslationRequest struct {
 	//
 	// 12345
 	DocId            *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	ModelName        *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	RecommendContent *string `json:"RecommendContent,omitempty" xml:"RecommendContent,omitempty"`
 	// This parameter is required.
 	//
@@ -32189,6 +32232,11 @@ func (s *RunDocTranslationRequest) SetCleanCache(v bool) *RunDocTranslationReque
 
 func (s *RunDocTranslationRequest) SetDocId(v string) *RunDocTranslationRequest {
 	s.DocId = &v
+	return s
+}
+
+func (s *RunDocTranslationRequest) SetModelName(v string) *RunDocTranslationRequest {
+	s.ModelName = &v
 	return s
 }
 
@@ -32423,7 +32471,8 @@ func (s *RunDocTranslationResponse) SetBody(v *RunDocTranslationResponseBody) *R
 }
 
 type RunDocWashingRequest struct {
-	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	Prompt  *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// This parameter is required.
 	ReferenceContent *string `json:"ReferenceContent,omitempty" xml:"ReferenceContent,omitempty"`
 	SessionId        *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
@@ -32448,6 +32497,11 @@ func (s RunDocWashingRequest) String() string {
 
 func (s RunDocWashingRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunDocWashingRequest) SetModelId(v string) *RunDocWashingRequest {
+	s.ModelId = &v
+	return s
 }
 
 func (s *RunDocWashingRequest) SetPrompt(v string) *RunDocWashingRequest {
@@ -32962,6 +33016,7 @@ type RunGenerateQuestionsRequest struct {
 	//
 	// oOgIwodFANW1u5MnqxysOh1rtld3xn
 	DocId            *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	ModelName        *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	ReferenceContent *string `json:"ReferenceContent,omitempty" xml:"ReferenceContent,omitempty"`
 	// example:
 	//
@@ -32985,6 +33040,11 @@ func (s RunGenerateQuestionsRequest) GoString() string {
 
 func (s *RunGenerateQuestionsRequest) SetDocId(v string) *RunGenerateQuestionsRequest {
 	s.DocId = &v
+	return s
+}
+
+func (s *RunGenerateQuestionsRequest) SetModelName(v string) *RunGenerateQuestionsRequest {
+	s.ModelName = &v
 	return s
 }
 
@@ -33220,6 +33280,7 @@ type RunHotwordRequest struct {
 	//
 	// 84ufBYEeLMZOjRFo84HJ7ySL3Efr55
 	DocId            *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	ModelName        *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	Prompt           *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	ReferenceContent *string `json:"ReferenceContent,omitempty" xml:"ReferenceContent,omitempty"`
 	// example:
@@ -33244,6 +33305,11 @@ func (s RunHotwordRequest) GoString() string {
 
 func (s *RunHotwordRequest) SetDocId(v string) *RunHotwordRequest {
 	s.DocId = &v
+	return s
+}
+
+func (s *RunHotwordRequest) SetModelName(v string) *RunHotwordRequest {
+	s.ModelName = &v
 	return s
 }
 
@@ -33784,6 +33850,7 @@ type RunMultiDocIntroductionRequest struct {
 	// This parameter is required.
 	DocIds         []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
 	KeyPointPrompt *string   `json:"KeyPointPrompt,omitempty" xml:"KeyPointPrompt,omitempty"`
+	ModelName      *string   `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -33817,6 +33884,11 @@ func (s *RunMultiDocIntroductionRequest) SetKeyPointPrompt(v string) *RunMultiDo
 	return s
 }
 
+func (s *RunMultiDocIntroductionRequest) SetModelName(v string) *RunMultiDocIntroductionRequest {
+	s.ModelName = &v
+	return s
+}
+
 func (s *RunMultiDocIntroductionRequest) SetSessionId(v string) *RunMultiDocIntroductionRequest {
 	s.SessionId = &v
 	return s
@@ -33836,6 +33908,7 @@ type RunMultiDocIntroductionShrinkRequest struct {
 	// This parameter is required.
 	DocIdsShrink   *string `json:"DocIds,omitempty" xml:"DocIds,omitempty"`
 	KeyPointPrompt *string `json:"KeyPointPrompt,omitempty" xml:"KeyPointPrompt,omitempty"`
+	ModelName      *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -33866,6 +33939,11 @@ func (s *RunMultiDocIntroductionShrinkRequest) SetDocIdsShrink(v string) *RunMul
 
 func (s *RunMultiDocIntroductionShrinkRequest) SetKeyPointPrompt(v string) *RunMultiDocIntroductionShrinkRequest {
 	s.KeyPointPrompt = &v
+	return s
+}
+
+func (s *RunMultiDocIntroductionShrinkRequest) SetModelName(v string) *RunMultiDocIntroductionShrinkRequest {
+	s.ModelName = &v
 	return s
 }
 
@@ -58008,6 +58086,10 @@ func (client *Client) RunCommentGenerationWithOptions(tmpReq *RunCommentGenerati
 		body["LengthRange"] = request.LengthRangeShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["ModelId"] = request.ModelId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NumComments)) {
 		body["NumComments"] = request.NumComments
 	}
@@ -58344,6 +58426,10 @@ func (client *Client) RunDocBrainmapWithOptions(request *RunDocBrainmapRequest, 
 		body["DocId"] = request.DocId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		body["ModelName"] = request.ModelName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NodeNumber)) {
 		body["NodeNumber"] = request.NodeNumber
 	}
@@ -58438,6 +58524,10 @@ func (client *Client) RunDocIntroductionWithOptions(request *RunDocIntroductionR
 
 	if !tea.BoolValue(util.IsUnset(request.KeyPointPrompt)) {
 		body["KeyPointPrompt"] = request.KeyPointPrompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		body["ModelName"] = request.ModelName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
@@ -58538,6 +58628,10 @@ func (client *Client) RunDocQaWithOptions(tmpReq *RunDocQaRequest, runtime *util
 		body["DocIds"] = request.DocIdsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		body["ModelName"] = request.ModelName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Query)) {
 		body["Query"] = request.Query
 	}
@@ -58616,6 +58710,10 @@ func (client *Client) RunDocSmartCardWithOptions(request *RunDocSmartCardRequest
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DocId)) {
 		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		body["ModelName"] = request.ModelName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
@@ -58778,6 +58876,10 @@ func (client *Client) RunDocTranslationWithOptions(request *RunDocTranslationReq
 		body["DocId"] = request.DocId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		body["ModelName"] = request.ModelName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RecommendContent)) {
 		body["RecommendContent"] = request.RecommendContent
 	}
@@ -58850,6 +58952,10 @@ func (client *Client) RunDocWashingWithOptions(request *RunDocWashingRequest, ru
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["ModelId"] = request.ModelId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
 		body["Prompt"] = request.Prompt
 	}
@@ -59006,6 +59112,10 @@ func (client *Client) RunGenerateQuestionsWithOptions(request *RunGenerateQuesti
 		body["DocId"] = request.DocId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		body["ModelName"] = request.ModelName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ReferenceContent)) {
 		body["ReferenceContent"] = request.ReferenceContent
 	}
@@ -59076,6 +59186,10 @@ func (client *Client) RunHotwordWithOptions(request *RunHotwordRequest, runtime 
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DocId)) {
 		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		body["ModelName"] = request.ModelName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
@@ -59236,6 +59350,10 @@ func (client *Client) RunMultiDocIntroductionWithOptions(tmpReq *RunMultiDocIntr
 
 	if !tea.BoolValue(util.IsUnset(request.KeyPointPrompt)) {
 		body["KeyPointPrompt"] = request.KeyPointPrompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		body["ModelName"] = request.ModelName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
