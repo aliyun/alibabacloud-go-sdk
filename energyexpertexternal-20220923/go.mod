@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/energyexpertexternal-20220923/v3
+module github.com/alibabacloud-go/energyexpertexternal-20220923/v4
 
 go 1.14
 

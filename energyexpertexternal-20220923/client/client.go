@@ -2775,13 +2775,13 @@ type GetChatListRequest struct {
 	// example:
 	//
 	// 1
-	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
 	// Page size.
 	//
 	// example:
 	//
 	// 10
-	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// Q&A session ID, used to record multiple Q&As for the same user.
 	//
 	// This parameter is required.
@@ -2800,12 +2800,12 @@ func (s GetChatListRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetChatListRequest) SetCurrentPage(v string) *GetChatListRequest {
+func (s *GetChatListRequest) SetCurrentPage(v int32) *GetChatListRequest {
 	s.CurrentPage = &v
 	return s
 }
 
-func (s *GetChatListRequest) SetPageSize(v string) *GetChatListRequest {
+func (s *GetChatListRequest) SetPageSize(v int32) *GetChatListRequest {
 	s.PageSize = &v
 	return s
 }
@@ -10073,7 +10073,7 @@ func (s *RecalculateCarbonEmissionResponse) SetBody(v *RecalculateCarbonEmission
 }
 
 type SendDocumentAskQuestionRequest struct {
-	// Folder ID, used to specify the range of documents for the query. If it is empty, it indicates that all documents under the tenant will be queried.
+	// Folder ID, used to specify the range of documents for the query. If it is empty, it indicates that all documents under the default folder will be queried.
 	//
 	// example:
 	//
@@ -13054,7 +13054,7 @@ func (client *Client) GetDocParsingResult(request *GetDocParsingResultRequest) (
 
 // Summary:
 //
-// Get document parsing/extraction result
+// [Important] The api is no longer maintained, please use GetDocExtractionResult, GetVLExtractionResult to get the extraction results.
 //
 // @param request - GetDocumentAnalyzeResultRequest
 //
@@ -13099,7 +13099,7 @@ func (client *Client) GetDocumentAnalyzeResultWithOptions(request *GetDocumentAn
 
 // Summary:
 //
-// Get document parsing/extraction result
+// [Important] The api is no longer maintained, please use GetDocExtractionResult, GetVLExtractionResult to get the extraction results.
 //
 // @param request - GetDocumentAnalyzeResultRequest
 //
@@ -14832,7 +14832,7 @@ func (client *Client) RecalculateCarbonEmission(request *RecalculateCarbonEmissi
 
 // Summary:
 //
-// Online Document Q\\&A
+// [Important] This api is no longer maintained, please use the Chat api.
 //
 // @param request - SendDocumentAskQuestionRequest
 //
@@ -14885,7 +14885,7 @@ func (client *Client) SendDocumentAskQuestionWithOptions(request *SendDocumentAs
 
 // Summary:
 //
-// Online Document Q\\&A
+// [Important] This api is no longer maintained, please use the Chat api.
 //
 // @param request - SendDocumentAskQuestionRequest
 //
@@ -15430,7 +15430,11 @@ func (client *Client) SubmitDocParsingTaskAdvance(request *SubmitDocParsingTaskA
 
 // Summary:
 //
-// # Get document extraction result
+// [Important] The api is no longer maintained, please use the following api:
+//
+// Document parsing using SubmitDocParsingTask.
+//
+// Document extraction using SubmitVLExtractionTask, SubmitDocExtractionTask.
 //
 // @param request - SubmitDocumentAnalyzeJobRequest
 //
@@ -15491,7 +15495,11 @@ func (client *Client) SubmitDocumentAnalyzeJobWithOptions(request *SubmitDocumen
 
 // Summary:
 //
-// # Get document extraction result
+// [Important] The api is no longer maintained, please use the following api:
+//
+// Document parsing using SubmitDocParsingTask.
+//
+// Document extraction using SubmitVLExtractionTask, SubmitDocExtractionTask.
 //
 // @param request - SubmitDocumentAnalyzeJobRequest
 //
