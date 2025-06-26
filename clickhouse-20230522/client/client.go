@@ -387,6 +387,131 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 	return s
 }
 
+type CreateBackupPolicyRequest struct {
+	// The number of days for which you can retain the backup data.
+	//
+	// example:
+	//
+	// 8
+	BackupRetentionPeriod *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cc-2ze0eb0w182xh8549
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The backup cycle, which indicates the day of the week when the system regularly backs up data. Separate multiple dates with commas (`,`).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Monday,Friday
+	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// The backup time window within which the backup task is performed. The time is displayed in `UTC`. For example, `12:00Z-13:00Z` indicates that the backup time window ranges from `12:00` (UTC) to `13:00` `(UTC)`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10:00Z-11:00Z
+	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateBackupPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupPolicyRequest) SetBackupRetentionPeriod(v string) *CreateBackupPolicyRequest {
+	s.BackupRetentionPeriod = &v
+	return s
+}
+
+func (s *CreateBackupPolicyRequest) SetDBInstanceId(v string) *CreateBackupPolicyRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateBackupPolicyRequest) SetPreferredBackupPeriod(v string) *CreateBackupPolicyRequest {
+	s.PreferredBackupPeriod = &v
+	return s
+}
+
+func (s *CreateBackupPolicyRequest) SetPreferredBackupTime(v string) *CreateBackupPolicyRequest {
+	s.PreferredBackupTime = &v
+	return s
+}
+
+func (s *CreateBackupPolicyRequest) SetRegionId(v string) *CreateBackupPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateBackupPolicyResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// F5178C10-1407-4987-9133-DE4DC9119F75
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateBackupPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupPolicyResponseBody) SetRequestId(v string) *CreateBackupPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateBackupPolicyResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateBackupPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupPolicyResponse) SetHeaders(v map[string]*string) *CreateBackupPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBackupPolicyResponse) SetStatusCode(v int32) *CreateBackupPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateBackupPolicyResponse) SetBody(v *CreateBackupPolicyResponseBody) *CreateBackupPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDBRequest struct {
 	// Database remark information.
 	//
@@ -574,10 +699,6 @@ type CreateDBInstanceRequest struct {
 	DeploySchema *string `json:"DeploySchema,omitempty" xml:"DeploySchema,omitempty"`
 	// The engine type.
 	//
-	// Valid values:
-	//
-	// 	- clickhouse
-	//
 	// example:
 	//
 	// clickhouse
@@ -597,7 +718,10 @@ type CreateDBInstanceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The maximum capacity for auto scaling.
 	//
@@ -776,10 +900,6 @@ type CreateDBInstanceShrinkRequest struct {
 	DeploySchema *string `json:"DeploySchema,omitempty" xml:"DeploySchema,omitempty"`
 	// The engine type.
 	//
-	// Valid values:
-	//
-	// 	- clickhouse
-	//
 	// example:
 	//
 	// clickhouse
@@ -799,7 +919,10 @@ type CreateDBInstanceShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The maximum capacity for auto scaling.
 	//
@@ -1286,6 +1409,88 @@ func (s *DeleteAccountResponse) SetStatusCode(v int32) *DeleteAccountResponse {
 }
 
 func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAccountResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteBackupPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cc-xxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteBackupPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupPolicyRequest) SetDBInstanceId(v string) *DeleteBackupPolicyRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteBackupPolicyRequest) SetRegionId(v string) *DeleteBackupPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteBackupPolicyResponseBody struct {
+	// example:
+	//
+	// 60DDD29D-E5A8-563C-88FB-06D3A1F1C609
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBackupPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupPolicyResponseBody) SetRequestId(v string) *DeleteBackupPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBackupPolicyResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteBackupPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupPolicyResponse) SetHeaders(v map[string]*string) *DeleteBackupPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBackupPolicyResponse) SetStatusCode(v int32) *DeleteBackupPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBackupPolicyResponse) SetBody(v *DeleteBackupPolicyResponseBody) *DeleteBackupPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -2104,6 +2309,398 @@ func (s *DescribeAccountsResponse) SetBody(v *DescribeAccountsResponseBody) *Des
 	return s
 }
 
+type DescribeBackupPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cc-bp100p4q1g9z3****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeBackupPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPolicyRequest) SetDBInstanceId(v string) *DescribeBackupPolicyRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyRequest) SetRegionId(v string) *DescribeBackupPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeBackupPolicyResponseBody struct {
+	// example:
+	//
+	// 7
+	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// example:
+	//
+	// 123124
+	BackupSize *string `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	// example:
+	//
+	// Monday
+	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// example:
+	//
+	// 15:00Z-16:00Z
+	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// example:
+	//
+	// F5178C10-1407-4987-9133-DE4DC9119F75
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Switch *string `json:"Switch,omitempty" xml:"Switch,omitempty"`
+}
+
+func (s DescribeBackupPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetBackupRetentionPeriod(v int32) *DescribeBackupPolicyResponseBody {
+	s.BackupRetentionPeriod = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetBackupSize(v string) *DescribeBackupPolicyResponseBody {
+	s.BackupSize = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetPreferredBackupPeriod(v string) *DescribeBackupPolicyResponseBody {
+	s.PreferredBackupPeriod = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetPreferredBackupTime(v string) *DescribeBackupPolicyResponseBody {
+	s.PreferredBackupTime = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBackupPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetSwitch(v string) *DescribeBackupPolicyResponseBody {
+	s.Switch = &v
+	return s
+}
+
+type DescribeBackupPolicyResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeBackupPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPolicyResponse) SetHeaders(v map[string]*string) *DescribeBackupPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponse) SetStatusCode(v int32) *DescribeBackupPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBody) *DescribeBackupPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBackupsRequest struct {
+	// example:
+	//
+	// 117403****
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cc-bp1v9kq45u0o80cvh
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-11-25T16:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-11-21T16:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeBackupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupsRequest) SetBackupId(v string) *DescribeBackupsRequest {
+	s.BackupId = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetDBInstanceId(v string) *DescribeBackupsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetEndTime(v string) *DescribeBackupsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetPageNumber(v int32) *DescribeBackupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetPageSize(v int32) *DescribeBackupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetRegionId(v string) *DescribeBackupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetStartTime(v string) *DescribeBackupsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeBackupsResponseBody struct {
+	Items []*DescribeBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// F5178C10-1407-4987-9133-DE4DC9119F75
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeBackupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupsResponseBody) SetItems(v []*DescribeBackupsResponseBodyItems) *DescribeBackupsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeBackupsResponseBody) SetPageNumber(v string) *DescribeBackupsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBody) SetPageSize(v string) *DescribeBackupsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBody) SetRequestId(v string) *DescribeBackupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBody) SetTotalCount(v string) *DescribeBackupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeBackupsResponseBodyItems struct {
+	// example:
+	//
+	// 2021-11-22T18:28:41Z
+	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	// example:
+	//
+	// 117403****
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// example:
+	//
+	// Physical
+	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	// example:
+	//
+	// {"shard_count"：4}
+	BackupSetInfo *string `json:"BackupSetInfo,omitempty" xml:"BackupSetInfo,omitempty"`
+	// example:
+	//
+	// 131072
+	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	// example:
+	//
+	// 2021-11-22T18:28:22Z
+	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	// example:
+	//
+	// Success
+	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// example:
+	//
+	// IncrementalBackup
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// example:
+	//
+	// cc-bp179i5956tih2m93
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// 2022-07-22T18:28:41Z
+	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+}
+
+func (s DescribeBackupsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupsResponseBodyItems) SetBackupEndTime(v string) *DescribeBackupsResponseBodyItems {
+	s.BackupEndTime = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItems) SetBackupId(v string) *DescribeBackupsResponseBodyItems {
+	s.BackupId = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItems) SetBackupMethod(v string) *DescribeBackupsResponseBodyItems {
+	s.BackupMethod = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItems) SetBackupSetInfo(v string) *DescribeBackupsResponseBodyItems {
+	s.BackupSetInfo = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItems) SetBackupSize(v int64) *DescribeBackupsResponseBodyItems {
+	s.BackupSize = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItems) SetBackupStartTime(v string) *DescribeBackupsResponseBodyItems {
+	s.BackupStartTime = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItems) SetBackupStatus(v string) *DescribeBackupsResponseBodyItems {
+	s.BackupStatus = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItems) SetBackupType(v string) *DescribeBackupsResponseBodyItems {
+	s.BackupType = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItems) SetDBInstanceId(v string) *DescribeBackupsResponseBodyItems {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItems) SetExpireDate(v string) *DescribeBackupsResponseBodyItems {
+	s.ExpireDate = &v
+	return s
+}
+
+type DescribeBackupsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBackupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeBackupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupsResponse) SetHeaders(v map[string]*string) *DescribeBackupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupsResponse) SetStatusCode(v int32) *DescribeBackupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeBackupsResponse) SetBody(v *DescribeBackupsResponseBody) *DescribeBackupsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDBInstanceAttributeRequest struct {
 	// The cluster ID.
 	//
@@ -2651,6 +3248,432 @@ func (s *DescribeDBInstanceAttributeResponse) SetStatusCode(v int32) *DescribeDB
 }
 
 func (s *DescribeDBInstanceAttributeResponse) SetBody(v *DescribeDBInstanceAttributeResponseBody) *DescribeDBInstanceAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBInstanceConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cc-wz9go4x*****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeDBInstanceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceConfigRequest) SetDBInstanceId(v string) *DescribeDBInstanceConfigRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigRequest) SetRegionId(v string) *DescribeDBInstanceConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeDBInstanceConfigResponseBody struct {
+	Data *DescribeDBInstanceConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 66428721-xxxx-xxxx-xxxx-3BD1B67837E0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDBInstanceConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceConfigResponseBody) SetData(v *DescribeDBInstanceConfigResponseBodyData) *DescribeDBInstanceConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigResponseBody) SetRequestId(v string) *DescribeDBInstanceConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDBInstanceConfigResponseBodyData struct {
+	// example:
+	//
+	// cc-bp100p4q1g9z3****
+	DBInstanceId *string                                           `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Params       []*DescribeDBInstanceConfigResponseBodyDataParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBInstanceConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceConfigResponseBodyData) SetDBInstanceId(v string) *DescribeDBInstanceConfigResponseBodyData {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigResponseBodyData) SetParams(v []*DescribeDBInstanceConfigResponseBodyDataParams) *DescribeDBInstanceConfigResponseBodyData {
+	s.Params = v
+	return s
+}
+
+type DescribeDBInstanceConfigResponseBodyDataParams struct {
+	// example:
+	//
+	// Maximum number of concurrently executed queries. Zero means unlimited.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 1
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// example:
+	//
+	// 1
+	IsDynamic *int32 `json:"IsDynamic,omitempty" xml:"IsDynamic,omitempty"`
+	// example:
+	//
+	// 1
+	IsUserModifiable *int32 `json:"IsUserModifiable,omitempty" xml:"IsUserModifiable,omitempty"`
+	// example:
+	//
+	// max_concurrent_queries
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// [0-100]
+	Optional *string `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	// example:
+	//
+	// 0
+	ParamRelyRule *string `json:"ParamRelyRule,omitempty" xml:"ParamRelyRule,omitempty"`
+	// example:
+	//
+	// 100
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDBInstanceConfigResponseBodyDataParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceConfigResponseBodyDataParams) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceConfigResponseBodyDataParams) SetComment(v string) *DescribeDBInstanceConfigResponseBodyDataParams {
+	s.Comment = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigResponseBodyDataParams) SetDefaultValue(v string) *DescribeDBInstanceConfigResponseBodyDataParams {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigResponseBodyDataParams) SetIsDynamic(v int32) *DescribeDBInstanceConfigResponseBodyDataParams {
+	s.IsDynamic = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigResponseBodyDataParams) SetIsUserModifiable(v int32) *DescribeDBInstanceConfigResponseBodyDataParams {
+	s.IsUserModifiable = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigResponseBodyDataParams) SetName(v string) *DescribeDBInstanceConfigResponseBodyDataParams {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigResponseBodyDataParams) SetOptional(v string) *DescribeDBInstanceConfigResponseBodyDataParams {
+	s.Optional = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigResponseBodyDataParams) SetParamRelyRule(v string) *DescribeDBInstanceConfigResponseBodyDataParams {
+	s.ParamRelyRule = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigResponseBodyDataParams) SetValue(v string) *DescribeDBInstanceConfigResponseBodyDataParams {
+	s.Value = &v
+	return s
+}
+
+type DescribeDBInstanceConfigResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDBInstanceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceConfigResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigResponse) SetStatusCode(v int32) *DescribeDBInstanceConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigResponse) SetBody(v *DescribeDBInstanceConfigResponseBody) *DescribeDBInstanceConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBInstanceConfigChangeLogRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cc-uf6lkzf*****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2025-01-01 10:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2025-01-01 10:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDBInstanceConfigChangeLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceConfigChangeLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceConfigChangeLogRequest) SetDBInstanceId(v string) *DescribeDBInstanceConfigChangeLogRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogRequest) SetEndTime(v string) *DescribeDBInstanceConfigChangeLogRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogRequest) SetPageNumber(v int32) *DescribeDBInstanceConfigChangeLogRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogRequest) SetPageSize(v int32) *DescribeDBInstanceConfigChangeLogRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogRequest) SetRegionId(v string) *DescribeDBInstanceConfigChangeLogRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogRequest) SetStartTime(v string) *DescribeDBInstanceConfigChangeLogRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDBInstanceConfigChangeLogResponseBody struct {
+	Data *DescribeDBInstanceConfigChangeLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 780DE414-*********-88BE-A2E21B862B57
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDBInstanceConfigChangeLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceConfigChangeLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceConfigChangeLogResponseBody) SetData(v *DescribeDBInstanceConfigChangeLogResponseBodyData) *DescribeDBInstanceConfigChangeLogResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogResponseBody) SetRequestId(v string) *DescribeDBInstanceConfigChangeLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDBInstanceConfigChangeLogResponseBodyData struct {
+	// example:
+	//
+	// cc-bp100p4q1g9z3****
+	DBInstanceId    *string                                                             `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ParamChangeLogs []*DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs `json:"ParamChangeLogs,omitempty" xml:"ParamChangeLogs,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBInstanceConfigChangeLogResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceConfigChangeLogResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceConfigChangeLogResponseBodyData) SetDBInstanceId(v string) *DescribeDBInstanceConfigChangeLogResponseBodyData {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogResponseBodyData) SetParamChangeLogs(v []*DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs) *DescribeDBInstanceConfigChangeLogResponseBodyData {
+	s.ParamChangeLogs = v
+	return s
+}
+
+type DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs struct {
+	Applied *bool `json:"Applied,omitempty" xml:"Applied,omitempty"`
+	// example:
+	//
+	// 2025-06-25 13:46:06
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2025-06-25 13:46:06
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 1
+	ID *int64 `json:"ID,omitempty" xml:"ID,omitempty"`
+	// example:
+	//
+	// max_concurrent_queries
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 100
+	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
+	// example:
+	//
+	// 50
+	OldValue *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
+}
+
+func (s DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs) SetApplied(v bool) *DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs {
+	s.Applied = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs) SetGmtCreated(v string) *DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs) SetGmtModified(v string) *DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs) SetID(v int64) *DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs {
+	s.ID = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs) SetName(v string) *DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs) SetNewValue(v string) *DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs {
+	s.NewValue = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs) SetOldValue(v string) *DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs {
+	s.OldValue = &v
+	return s
+}
+
+type DescribeDBInstanceConfigChangeLogResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstanceConfigChangeLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDBInstanceConfigChangeLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceConfigChangeLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceConfigChangeLogResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceConfigChangeLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogResponse) SetStatusCode(v int32) *DescribeDBInstanceConfigChangeLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceConfigChangeLogResponse) SetBody(v *DescribeDBInstanceConfigChangeLogResponseBody) *DescribeDBInstanceConfigChangeLogResponse {
 	s.Body = v
 	return s
 }
@@ -5317,6 +6340,121 @@ func (s *ModifyAccountDescriptionResponse) SetBody(v *ModifyAccountDescriptionRe
 	return s
 }
 
+type ModifyBackupPolicyRequest struct {
+	// example:
+	//
+	// 7
+	BackupRetentionPeriod *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cc-xxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Monday
+	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15:00Z-16:00Z
+	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyBackupPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyRequest) SetBackupRetentionPeriod(v string) *ModifyBackupPolicyRequest {
+	s.BackupRetentionPeriod = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetDBInstanceId(v string) *ModifyBackupPolicyRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetPreferredBackupPeriod(v string) *ModifyBackupPolicyRequest {
+	s.PreferredBackupPeriod = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetPreferredBackupTime(v string) *ModifyBackupPolicyRequest {
+	s.PreferredBackupTime = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetRegionId(v string) *ModifyBackupPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyBackupPolicyResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// F5178C10-1407-4987-9133-DE4DC9119F75
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyBackupPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyResponseBody) SetRequestId(v string) *ModifyBackupPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyBackupPolicyResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyBackupPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyResponse) SetHeaders(v map[string]*string) *ModifyBackupPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponse) SetStatusCode(v int32) *ModifyBackupPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) *ModifyBackupPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDBInstanceAttributeRequest struct {
 	// The configuration that you want to modify.
 	//
@@ -5623,6 +6761,125 @@ func (s *ModifyDBInstanceClassResponse) SetStatusCode(v int32) *ModifyDBInstance
 }
 
 func (s *ModifyDBInstanceClassResponse) SetBody(v *ModifyDBInstanceClassResponseBody) *ModifyDBInstanceClassResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDBInstanceConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cc-uf6lkzf*****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// {"max_concurrent_queries":"100"}
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyDBInstanceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetDBInstanceId(v string) *ModifyDBInstanceConfigRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetParameters(v string) *ModifyDBInstanceConfigRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetRegionId(v string) *ModifyDBInstanceConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyDBInstanceConfigResponseBody struct {
+	Data *ModifyDBInstanceConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 05321590-BB65-4720-8C***********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBInstanceConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceConfigResponseBody) SetData(v *ModifyDBInstanceConfigResponseBodyData) *ModifyDBInstanceConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigResponseBody) SetRequestId(v string) *ModifyDBInstanceConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBInstanceConfigResponseBodyData struct {
+	// example:
+	//
+	// cc-uf6lkzf*****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+}
+
+func (s ModifyDBInstanceConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceConfigResponseBodyData) SetDBInstanceId(v string) *ModifyDBInstanceConfigResponseBodyData {
+	s.DBInstanceId = &v
+	return s
+}
+
+type ModifyDBInstanceConfigResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBInstanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDBInstanceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceConfigResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigResponse) SetStatusCode(v int32) *ModifyDBInstanceConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigResponse) SetBody(v *ModifyDBInstanceConfigResponseBody) *ModifyDBInstanceConfigResponse {
 	s.Body = v
 	return s
 }
@@ -6953,24 +8210,13 @@ func (client *Client) CreateAccountWithOptions(tmpReq *CreateAccountRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAccountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAccountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6984,6 +8230,82 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAccountResponse{}
 	_body, _err := client.CreateAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a backup policy for a specified ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+//
+// @param request - CreateBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBackupPolicyResponse
+func (client *Client) CreateBackupPolicyWithOptions(request *CreateBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateBackupPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupRetentionPeriod)) {
+		query["BackupRetentionPeriod"] = request.BackupRetentionPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredBackupPeriod)) {
+		query["PreferredBackupPeriod"] = request.PreferredBackupPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredBackupTime)) {
+		query["PreferredBackupTime"] = request.PreferredBackupTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBackupPolicy"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBackupPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a backup policy for a specified ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+//
+// @param request - CreateBackupPolicyRequest
+//
+// @return CreateBackupPolicyResponse
+func (client *Client) CreateBackupPolicy(request *CreateBackupPolicyRequest) (_result *CreateBackupPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBackupPolicyResponse{}
+	_body, _err := client.CreateBackupPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7036,24 +8358,13 @@ func (client *Client) CreateDBWithOptions(request *CreateDBRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateDBResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateDBResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateDBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7169,24 +8480,13 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateDBInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateDBInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateDBInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7252,24 +8552,13 @@ func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateEndpointResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateEndpointResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7335,24 +8624,13 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAccountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAccountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7366,6 +8644,70 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccountResponse{}
 	_body, _err := client.DeleteAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改备份策略
+//
+// @param request - DeleteBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackupPolicyResponse
+func (client *Client) DeleteBackupPolicyWithOptions(request *DeleteBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteBackupPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBackupPolicy"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBackupPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改备份策略
+//
+// @param request - DeleteBackupPolicyRequest
+//
+// @return DeleteBackupPolicyResponse
+func (client *Client) DeleteBackupPolicy(request *DeleteBackupPolicyRequest) (_result *DeleteBackupPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBackupPolicyResponse{}
+	_body, _err := client.DeleteBackupPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7414,24 +8756,13 @@ func (client *Client) DeleteDBWithOptions(request *DeleteDBRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDBResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDBResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7489,24 +8820,13 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDBInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDBInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDBInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7572,24 +8892,13 @@ func (client *Client) DeleteEndpointWithOptions(request *DeleteEndpointRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteEndpointResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteEndpointResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7651,24 +8960,13 @@ func (client *Client) DescribeAccountAuthorityWithOptions(request *DescribeAccou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAccountAuthorityResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAccountAuthorityResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAccountAuthorityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7738,24 +9036,13 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAccountsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAccountsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7769,6 +9056,154 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccountsResponse{}
 	_body, _err := client.DescribeAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建备份策略
+//
+// @param request - DescribeBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupPolicyResponse
+func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupPolicy"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeBackupPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建备份策略
+//
+// @param request - DescribeBackupPolicyRequest
+//
+// @return DescribeBackupPolicyResponse
+func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest) (_result *DescribeBackupPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupPolicyResponse{}
+	_body, _err := client.DescribeBackupPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询备份集
+//
+// @param request - DescribeBackupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupsResponse
+func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackups"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeBackupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询备份集
+//
+// @param request - DescribeBackupsRequest
+//
+// @return DescribeBackupsResponse
+func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result *DescribeBackupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupsResponse{}
+	_body, _err := client.DescribeBackupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7813,24 +9248,13 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDBInstanceAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDBInstanceAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDBInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7844,6 +9268,118 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceAttributeResponse{}
 	_body, _err := client.DescribeDBInstanceAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例参数配置
+//
+// @param request - DescribeDBInstanceConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceConfigResponse
+func (client *Client) DescribeDBInstanceConfigWithOptions(request *DescribeDBInstanceConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstanceConfig"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBInstanceConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例参数配置
+//
+// @param request - DescribeDBInstanceConfigRequest
+//
+// @return DescribeDBInstanceConfigResponse
+func (client *Client) DescribeDBInstanceConfig(request *DescribeDBInstanceConfigRequest) (_result *DescribeDBInstanceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBInstanceConfigResponse{}
+	_body, _err := client.DescribeDBInstanceConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例参数配置记录
+//
+// @param request - DescribeDBInstanceConfigChangeLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceConfigChangeLogResponse
+func (client *Client) DescribeDBInstanceConfigChangeLogWithOptions(request *DescribeDBInstanceConfigChangeLogRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceConfigChangeLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstanceConfigChangeLog"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBInstanceConfigChangeLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例参数配置记录
+//
+// @param request - DescribeDBInstanceConfigChangeLogRequest
+//
+// @return DescribeDBInstanceConfigChangeLogResponse
+func (client *Client) DescribeDBInstanceConfigChangeLog(request *DescribeDBInstanceConfigChangeLogRequest) (_result *DescribeDBInstanceConfigChangeLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBInstanceConfigChangeLogResponse{}
+	_body, _err := client.DescribeDBInstanceConfigChangeLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7896,24 +9432,13 @@ func (client *Client) DescribeDBInstanceDataSourcesWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDBInstanceDataSourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDBInstanceDataSourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDBInstanceDataSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7991,24 +9516,13 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDBInstancesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDBInstancesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDBInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8066,24 +9580,13 @@ func (client *Client) DescribeEndpointsWithOptions(request *DescribeEndpointsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeEndpointsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeEndpointsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8169,24 +9672,13 @@ func (client *Client) DescribeProcessListWithOptions(request *DescribeProcessLis
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeProcessListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeProcessListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeProcessListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8244,24 +9736,13 @@ func (client *Client) DescribeSecurityIPListWithOptions(request *DescribeSecurit
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeSecurityIPListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeSecurityIPListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeSecurityIPListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8339,24 +9820,13 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeSlowLogRecordsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeSlowLogRecordsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeSlowLogRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8430,24 +9900,13 @@ func (client *Client) DescribeSlowLogTrendWithOptions(request *DescribeSlowLogTr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeSlowLogTrendResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeSlowLogTrendResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeSlowLogTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8509,24 +9968,13 @@ func (client *Client) KillProcessWithOptions(request *KillProcessRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &KillProcessResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &KillProcessResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &KillProcessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8598,24 +10046,13 @@ func (client *Client) ModifyAccountAuthorityWithOptions(tmpReq *ModifyAccountAut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAccountAuthorityResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAccountAuthorityResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAccountAuthorityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8681,24 +10118,13 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAccountDescriptionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAccountDescriptionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAccountDescriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8712,6 +10138,82 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountDescriptionResponse{}
 	_body, _err := client.ModifyAccountDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改备份策略
+//
+// @param request - ModifyBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBackupPolicyResponse
+func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupRetentionPeriod)) {
+		query["BackupRetentionPeriod"] = request.BackupRetentionPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredBackupPeriod)) {
+		query["PreferredBackupPeriod"] = request.PreferredBackupPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredBackupTime)) {
+		query["PreferredBackupTime"] = request.PreferredBackupTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBackupPolicy"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyBackupPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改备份策略
+//
+// @param request - ModifyBackupPolicyRequest
+//
+// @return ModifyBackupPolicyResponse
+func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_result *ModifyBackupPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyBackupPolicyResponse{}
+	_body, _err := client.ModifyBackupPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8768,24 +10270,13 @@ func (client *Client) ModifyDBInstanceAttributeWithOptions(request *ModifyDBInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDBInstanceAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyDBInstanceAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyDBInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8851,24 +10342,13 @@ func (client *Client) ModifyDBInstanceClassWithOptions(request *ModifyDBInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDBInstanceClassResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyDBInstanceClassResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyDBInstanceClassResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8882,6 +10362,74 @@ func (client *Client) ModifyDBInstanceClass(request *ModifyDBInstanceClassReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceClassResponse{}
 	_body, _err := client.ModifyDBInstanceClassWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改实例参数配置
+//
+// @param request - ModifyDBInstanceConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceConfigResponse
+func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanceConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBInstanceConfig"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBInstanceConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改实例参数配置
+//
+// @param request - ModifyDBInstanceConfigRequest
+//
+// @return ModifyDBInstanceConfigResponse
+func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequest) (_result *ModifyDBInstanceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBInstanceConfigResponse{}
+	_body, _err := client.ModifyDBInstanceConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8942,24 +10490,13 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDBInstanceConnectionStringResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyDBInstanceConnectionStringResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyDBInstanceConnectionStringResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9029,24 +10566,13 @@ func (client *Client) ModifySecurityIPListWithOptions(request *ModifySecurityIPL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifySecurityIPListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifySecurityIPListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifySecurityIPListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9116,24 +10642,13 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResetAccountPasswordResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ResetAccountPasswordResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ResetAccountPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9191,24 +10706,13 @@ func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RestartDBInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RestartDBInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RestartDBInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9266,24 +10770,13 @@ func (client *Client) StartDBInstanceWithOptions(request *StartDBInstanceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartDBInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartDBInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartDBInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9341,24 +10834,13 @@ func (client *Client) StopDBInstanceWithOptions(request *StopDBInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopDBInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopDBInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopDBInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9428,24 +10910,13 @@ func (client *Client) UpgradeMinorVersionWithOptions(request *UpgradeMinorVersio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpgradeMinorVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpgradeMinorVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpgradeMinorVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
