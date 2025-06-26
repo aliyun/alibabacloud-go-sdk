@@ -2529,6 +2529,10 @@ type CreateSessionClusterRequest struct {
 	// The Spark configurations.
 	ApplicationConfigs []*CreateSessionClusterRequestApplicationConfigs `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty" type:"Repeated"`
 	// The automatic startup configuration.
+	//
+	// *
+	//
+	// *
 	AutoStartConfiguration *CreateSessionClusterRequestAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
 	// The automatic termination configuration.
 	AutoStopConfiguration *CreateSessionClusterRequestAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
@@ -4055,6 +4059,7 @@ type GetSessionClusterResponseBodySessionCluster struct {
 	AutoStartConfiguration *GetSessionClusterResponseBodySessionClusterAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
 	// Indicates whether automatic termination is enabled.
 	AutoStopConfiguration *GetSessionClusterResponseBodySessionClusterAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	ConnectionToken       *string                                                           `json:"connectionToken,omitempty" xml:"connectionToken,omitempty"`
 	// The version of the Spark engine.
 	//
 	// example:
@@ -4210,6 +4215,11 @@ func (s *GetSessionClusterResponseBodySessionCluster) SetAutoStartConfiguration(
 
 func (s *GetSessionClusterResponseBodySessionCluster) SetAutoStopConfiguration(v *GetSessionClusterResponseBodySessionClusterAutoStopConfiguration) *GetSessionClusterResponseBodySessionCluster {
 	s.AutoStopConfiguration = v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetConnectionToken(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.ConnectionToken = &v
 	return s
 }
 
@@ -4931,7 +4941,8 @@ type ListJobRunsRequest struct {
 	// 1509789347011222
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	// The range of end time.
-	EndTime *ListJobRunsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
+	EndTime    *ListJobRunsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
+	IsWorkflow *string                    `json:"isWorkflow,omitempty" xml:"isWorkflow,omitempty"`
 	// The job run ID.
 	//
 	// example:
@@ -5007,6 +5018,11 @@ func (s *ListJobRunsRequest) SetCreator(v string) *ListJobRunsRequest {
 
 func (s *ListJobRunsRequest) SetEndTime(v *ListJobRunsRequestEndTime) *ListJobRunsRequest {
 	s.EndTime = v
+	return s
+}
+
+func (s *ListJobRunsRequest) SetIsWorkflow(v string) *ListJobRunsRequest {
+	s.IsWorkflow = &v
 	return s
 }
 
@@ -5173,6 +5189,7 @@ type ListJobRunsShrinkRequest struct {
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	// The range of end time.
 	EndTimeShrink *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	IsWorkflow    *string `json:"isWorkflow,omitempty" xml:"isWorkflow,omitempty"`
 	// The job run ID.
 	//
 	// example:
@@ -5248,6 +5265,11 @@ func (s *ListJobRunsShrinkRequest) SetCreator(v string) *ListJobRunsShrinkReques
 
 func (s *ListJobRunsShrinkRequest) SetEndTimeShrink(v string) *ListJobRunsShrinkRequest {
 	s.EndTimeShrink = &v
+	return s
+}
+
+func (s *ListJobRunsShrinkRequest) SetIsWorkflow(v string) *ListJobRunsShrinkRequest {
+	s.IsWorkflow = &v
 	return s
 }
 
@@ -5676,6 +5698,221 @@ func (s *ListJobRunsResponse) SetBody(v *ListJobRunsResponseBody) *ListJobRunsRe
 	return s
 }
 
+type ListKyuubiServicesResponseBody struct {
+	Data *ListKyuubiServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListKyuubiServicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKyuubiServicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListKyuubiServicesResponseBody) SetData(v *ListKyuubiServicesResponseBodyData) *ListKyuubiServicesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBody) SetRequestId(v string) *ListKyuubiServicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListKyuubiServicesResponseBodyData struct {
+	KyuubiServices []*ListKyuubiServicesResponseBodyDataKyuubiServices `json:"kyuubiServices,omitempty" xml:"kyuubiServices,omitempty" type:"Repeated"`
+}
+
+func (s ListKyuubiServicesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKyuubiServicesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListKyuubiServicesResponseBodyData) SetKyuubiServices(v []*ListKyuubiServicesResponseBodyDataKyuubiServices) *ListKyuubiServicesResponseBodyData {
+	s.KyuubiServices = v
+	return s
+}
+
+type ListKyuubiServicesResponseBodyDataKyuubiServices struct {
+	// example:
+	//
+	// 4C16G
+	ComputeInstance *string `json:"computeInstance,omitempty" xml:"computeInstance,omitempty"`
+	// example:
+	//
+	// 2025-03-11T08:21:58Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 103*******
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// kyuubi-cn-hangzhou-internal.spark.emr.aliyuncs.com
+	InnerEndpoint *string `json:"innerEndpoint,omitempty" xml:"innerEndpoint,omitempty"`
+	// example:
+	//
+	// kyuubi.conf.key=value1
+	//
+	// kyuubi.conf.key1=value2
+	KyuubiConfigs *string `json:"kyuubiConfigs,omitempty" xml:"kyuubiConfigs,omitempty"`
+	// KyuubiServer ID。
+	//
+	// example:
+	//
+	// kb-070104e7631242448d12a1377c309f30
+	KyuubiServiceId *string `json:"kyuubiServiceId,omitempty" xml:"kyuubiServiceId,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// emr-spark-kyuubi-gateway-cn-hangzhou.aliyuncs.com
+	PublicEndpoint *string `json:"publicEndpoint,omitempty" xml:"publicEndpoint,omitempty"`
+	// example:
+	//
+	// dev_queue
+	Queue *string `json:"queue,omitempty" xml:"queue,omitempty"`
+	// example:
+	//
+	// esr-4.2.0 (Spark 3.5.2, Scala 2.12)
+	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// example:
+	//
+	// 3
+	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
+	// example:
+	//
+	// spark.conf.key=value1
+	//
+	// spark.conf.key1=value2
+	SparkConfigs *string `json:"sparkConfigs,omitempty" xml:"sparkConfigs,omitempty"`
+	// example:
+	//
+	// 2024-11-23 09:22:00
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s ListKyuubiServicesResponseBodyDataKyuubiServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKyuubiServicesResponseBodyDataKyuubiServices) GoString() string {
+	return s.String()
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetComputeInstance(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.ComputeInstance = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetCreateTime(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetCreator(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetInnerEndpoint(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.InnerEndpoint = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetKyuubiConfigs(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.KyuubiConfigs = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetKyuubiServiceId(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.KyuubiServiceId = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetName(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.Name = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetPublicEndpoint(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.PublicEndpoint = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetQueue(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.Queue = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetReleaseVersion(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.ReleaseVersion = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetReplica(v int32) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.Replica = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetSparkConfigs(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.SparkConfigs = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetStartTime(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetState(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.State = &v
+	return s
+}
+
+type ListKyuubiServicesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListKyuubiServicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListKyuubiServicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKyuubiServicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListKyuubiServicesResponse) SetHeaders(v map[string]*string) *ListKyuubiServicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListKyuubiServicesResponse) SetStatusCode(v int32) *ListKyuubiServicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponse) SetBody(v *ListKyuubiServicesResponseBody) *ListKyuubiServicesResponse {
+	s.Body = v
+	return s
+}
+
 type ListKyuubiSparkApplicationsRequest struct {
 	// The ID of the application that is submitted by using a Kyuubi gateway.
 	//
@@ -5694,13 +5931,17 @@ type ListKyuubiSparkApplicationsRequest struct {
 	// example:
 	//
 	// 20
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	MaxResults  *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	MinDuration *int64 `json:"minDuration,omitempty" xml:"minDuration,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// 1
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	NextToken       *string   `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	OrderBy         []*string `json:"orderBy,omitempty" xml:"orderBy,omitempty" type:"Repeated"`
+	ResourceQueueId *string   `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
+	Sort            *string   `json:"sort,omitempty" xml:"sort,omitempty"`
 	// The range of start time.
 	StartTime *ListKyuubiSparkApplicationsRequestStartTime `json:"startTime,omitempty" xml:"startTime,omitempty" type:"Struct"`
 }
@@ -5728,8 +5969,28 @@ func (s *ListKyuubiSparkApplicationsRequest) SetMaxResults(v int32) *ListKyuubiS
 	return s
 }
 
+func (s *ListKyuubiSparkApplicationsRequest) SetMinDuration(v int64) *ListKyuubiSparkApplicationsRequest {
+	s.MinDuration = &v
+	return s
+}
+
 func (s *ListKyuubiSparkApplicationsRequest) SetNextToken(v string) *ListKyuubiSparkApplicationsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsRequest) SetOrderBy(v []*string) *ListKyuubiSparkApplicationsRequest {
+	s.OrderBy = v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsRequest) SetResourceQueueId(v string) *ListKyuubiSparkApplicationsRequest {
+	s.ResourceQueueId = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsRequest) SetSort(v string) *ListKyuubiSparkApplicationsRequest {
+	s.Sort = &v
 	return s
 }
 
@@ -5789,13 +6050,17 @@ type ListKyuubiSparkApplicationsShrinkRequest struct {
 	// example:
 	//
 	// 20
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	MaxResults  *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	MinDuration *int64 `json:"minDuration,omitempty" xml:"minDuration,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// 1
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	NextToken       *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	OrderByShrink   *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
+	Sort            *string `json:"sort,omitempty" xml:"sort,omitempty"`
 	// The range of start time.
 	StartTimeShrink *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
@@ -5823,8 +6088,28 @@ func (s *ListKyuubiSparkApplicationsShrinkRequest) SetMaxResults(v int32) *ListK
 	return s
 }
 
+func (s *ListKyuubiSparkApplicationsShrinkRequest) SetMinDuration(v int64) *ListKyuubiSparkApplicationsShrinkRequest {
+	s.MinDuration = &v
+	return s
+}
+
 func (s *ListKyuubiSparkApplicationsShrinkRequest) SetNextToken(v string) *ListKyuubiSparkApplicationsShrinkRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsShrinkRequest) SetOrderByShrink(v string) *ListKyuubiSparkApplicationsShrinkRequest {
+	s.OrderByShrink = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsShrinkRequest) SetResourceQueueId(v string) *ListKyuubiSparkApplicationsShrinkRequest {
+	s.ResourceQueueId = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsShrinkRequest) SetSort(v string) *ListKyuubiSparkApplicationsShrinkRequest {
+	s.Sort = &v
 	return s
 }
 
@@ -6043,6 +6328,174 @@ func (s *ListKyuubiSparkApplicationsResponse) SetStatusCode(v int32) *ListKyuubi
 }
 
 func (s *ListKyuubiSparkApplicationsResponse) SetBody(v *ListKyuubiSparkApplicationsResponseBody) *ListKyuubiSparkApplicationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListKyuubiTokenRequest struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s ListKyuubiTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKyuubiTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListKyuubiTokenRequest) SetRegionId(v string) *ListKyuubiTokenRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListKyuubiTokenResponseBody struct {
+	Data *ListKyuubiTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListKyuubiTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKyuubiTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListKyuubiTokenResponseBody) SetData(v *ListKyuubiTokenResponseBodyData) *ListKyuubiTokenResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListKyuubiTokenResponseBody) SetRequestId(v string) *ListKyuubiTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListKyuubiTokenResponseBodyData struct {
+	Tokens []*ListKyuubiTokenResponseBodyDataTokens `json:"tokens,omitempty" xml:"tokens,omitempty" type:"Repeated"`
+}
+
+func (s ListKyuubiTokenResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKyuubiTokenResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListKyuubiTokenResponseBodyData) SetTokens(v []*ListKyuubiTokenResponseBodyDataTokens) *ListKyuubiTokenResponseBodyData {
+	s.Tokens = v
+	return s
+}
+
+type ListKyuubiTokenResponseBodyDataTokens struct {
+	// example:
+	//
+	// 2025-02-11T02:23:02Z
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// test_user
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// example:
+	//
+	// 1740366769165
+	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// example:
+	//
+	// 1740366232121
+	LastUsedTime *int64 `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
+	// example:
+	//
+	// dev_serveless_spark
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// f14c1347-dcfd-4082-b101-77aa96b5de36
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// Token ID。
+	//
+	// example:
+	//
+	// f14c1347-dcfd-4082-b101-77aa96b5de36
+	TokenId *string `json:"tokenId,omitempty" xml:"tokenId,omitempty"`
+}
+
+func (s ListKyuubiTokenResponseBodyDataTokens) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKyuubiTokenResponseBodyDataTokens) GoString() string {
+	return s.String()
+}
+
+func (s *ListKyuubiTokenResponseBodyDataTokens) SetCreateTime(v int64) *ListKyuubiTokenResponseBodyDataTokens {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListKyuubiTokenResponseBodyDataTokens) SetCreatedBy(v string) *ListKyuubiTokenResponseBodyDataTokens {
+	s.CreatedBy = &v
+	return s
+}
+
+func (s *ListKyuubiTokenResponseBodyDataTokens) SetExpireTime(v int64) *ListKyuubiTokenResponseBodyDataTokens {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListKyuubiTokenResponseBodyDataTokens) SetLastUsedTime(v int64) *ListKyuubiTokenResponseBodyDataTokens {
+	s.LastUsedTime = &v
+	return s
+}
+
+func (s *ListKyuubiTokenResponseBodyDataTokens) SetName(v string) *ListKyuubiTokenResponseBodyDataTokens {
+	s.Name = &v
+	return s
+}
+
+func (s *ListKyuubiTokenResponseBodyDataTokens) SetToken(v string) *ListKyuubiTokenResponseBodyDataTokens {
+	s.Token = &v
+	return s
+}
+
+func (s *ListKyuubiTokenResponseBodyDataTokens) SetTokenId(v string) *ListKyuubiTokenResponseBodyDataTokens {
+	s.TokenId = &v
+	return s
+}
+
+type ListKyuubiTokenResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListKyuubiTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListKyuubiTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKyuubiTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListKyuubiTokenResponse) SetHeaders(v map[string]*string) *ListKyuubiTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListKyuubiTokenResponse) SetStatusCode(v int32) *ListKyuubiTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListKyuubiTokenResponse) SetBody(v *ListKyuubiTokenResponseBody) *ListKyuubiTokenResponse {
 	s.Body = v
 	return s
 }
@@ -11442,6 +11895,10 @@ func (client *Client) ListJobRunsWithOptions(workspaceId *string, tmpReq *ListJo
 		query["endTime"] = request.EndTimeShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsWorkflow)) {
+		query["isWorkflow"] = request.IsWorkflow
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.JobRunDeploymentId)) {
 		query["jobRunDeploymentId"] = request.JobRunDeploymentId
 	}
@@ -11531,6 +11988,56 @@ func (client *Client) ListJobRuns(workspaceId *string, request *ListJobRunsReque
 
 // Summary:
 //
+// # ListKyuubiServices
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKyuubiServicesResponse
+func (client *Client) ListKyuubiServicesWithOptions(workspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListKyuubiServicesResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListKyuubiServices"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/kyuubi/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListKyuubiServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListKyuubiServices
+//
+// @return ListKyuubiServicesResponse
+func (client *Client) ListKyuubiServices(workspaceId *string) (_result *ListKyuubiServicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListKyuubiServicesResponse{}
+	_body, _err := client.ListKyuubiServicesWithOptions(workspaceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the applications that are submitted by using a Kyuubi gateway.
 //
 // @param tmpReq - ListKyuubiSparkApplicationsRequest
@@ -11547,6 +12054,10 @@ func (client *Client) ListKyuubiSparkApplicationsWithOptions(workspaceId *string
 	}
 	request := &ListKyuubiSparkApplicationsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.OrderBy)) {
+		request.OrderByShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OrderBy, tea.String("orderBy"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.StartTime)) {
 		request.StartTimeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StartTime, tea.String("startTime"), tea.String("json"))
 	}
@@ -11564,8 +12075,24 @@ func (client *Client) ListKyuubiSparkApplicationsWithOptions(workspaceId *string
 		query["maxResults"] = request.MaxResults
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MinDuration)) {
+		query["minDuration"] = request.MinDuration
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderByShrink)) {
+		query["orderBy"] = request.OrderByShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceQueueId)) {
+		query["resourceQueueId"] = request.ResourceQueueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["sort"] = request.Sort
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTimeShrink)) {
@@ -11608,6 +12135,70 @@ func (client *Client) ListKyuubiSparkApplications(workspaceId *string, kyuubiSer
 	headers := make(map[string]*string)
 	_result = &ListKyuubiSparkApplicationsResponse{}
 	_body, _err := client.ListKyuubiSparkApplicationsWithOptions(workspaceId, kyuubiServiceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出compute的token
+//
+// @param request - ListKyuubiTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKyuubiTokenResponse
+func (client *Client) ListKyuubiTokenWithOptions(workspaceId *string, kyuubiServiceId *string, request *ListKyuubiTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListKyuubiTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListKyuubiToken"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/kyuubiService/" + tea.StringValue(openapiutil.GetEncodeParam(kyuubiServiceId)) + "/token"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListKyuubiTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出compute的token
+//
+// @param request - ListKyuubiTokenRequest
+//
+// @return ListKyuubiTokenResponse
+func (client *Client) ListKyuubiToken(workspaceId *string, kyuubiServiceId *string, request *ListKyuubiTokenRequest) (_result *ListKyuubiTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListKyuubiTokenResponse{}
+	_body, _err := client.ListKyuubiTokenWithOptions(workspaceId, kyuubiServiceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
