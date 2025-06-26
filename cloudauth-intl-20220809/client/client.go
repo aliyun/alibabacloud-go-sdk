@@ -3156,10 +3156,11 @@ func (s *Id2MetaVerifyIntlResponse) SetBody(v *Id2MetaVerifyIntlResponseBody) *I
 }
 
 type InitializeRequest struct {
-	AppQualityCheck *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
-	Authorize       *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
-	CallbackToken   *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
-	CallbackUrl     *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	AppQualityCheck      *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
+	Authorize            *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	CallbackToken        *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
+	CallbackUrl          *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	ChameleonFrameEnable *string `json:"ChameleonFrameEnable,omitempty" xml:"ChameleonFrameEnable,omitempty"`
 	// example:
 	//
 	// *
@@ -3261,6 +3262,11 @@ func (s *InitializeRequest) SetCallbackToken(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetCallbackUrl(v string) *InitializeRequest {
 	s.CallbackUrl = &v
+	return s
+}
+
+func (s *InitializeRequest) SetChameleonFrameEnable(v string) *InitializeRequest {
+	s.ChameleonFrameEnable = &v
 	return s
 }
 
@@ -3430,10 +3436,11 @@ func (s *InitializeRequest) SetUseNFC(v string) *InitializeRequest {
 }
 
 type InitializeShrinkRequest struct {
-	AppQualityCheck *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
-	Authorize       *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
-	CallbackToken   *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
-	CallbackUrl     *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	AppQualityCheck      *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
+	Authorize            *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	CallbackToken        *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
+	CallbackUrl          *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	ChameleonFrameEnable *string `json:"ChameleonFrameEnable,omitempty" xml:"ChameleonFrameEnable,omitempty"`
 	// example:
 	//
 	// *
@@ -3535,6 +3542,11 @@ func (s *InitializeShrinkRequest) SetCallbackToken(v string) *InitializeShrinkRe
 
 func (s *InitializeShrinkRequest) SetCallbackUrl(v string) *InitializeShrinkRequest {
 	s.CallbackUrl = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetChameleonFrameEnable(v string) *InitializeShrinkRequest {
+	s.ChameleonFrameEnable = &v
 	return s
 }
 
@@ -5531,6 +5543,10 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 
 	if !tea.BoolValue(util.IsUnset(request.CallbackUrl)) {
 		query["CallbackUrl"] = request.CallbackUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChameleonFrameEnable)) {
+		query["ChameleonFrameEnable"] = request.ChameleonFrameEnable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Crop)) {
