@@ -11114,7 +11114,8 @@ type RunAgentRequest struct {
 	// false
 	UseDraft *bool `json:"useDraft,omitempty" xml:"useDraft,omitempty"`
 	// This parameter is required.
-	UserContent *string `json:"userContent,omitempty" xml:"userContent,omitempty"`
+	UserContent *string                `json:"userContent,omitempty" xml:"userContent,omitempty"`
+	UserInputs  map[string]interface{} `json:"userInputs,omitempty" xml:"userInputs,omitempty"`
 	// example:
 	//
 	// w4paqoezm2
@@ -11156,6 +11157,11 @@ func (s *RunAgentRequest) SetUseDraft(v bool) *RunAgentRequest {
 
 func (s *RunAgentRequest) SetUserContent(v string) *RunAgentRequest {
 	s.UserContent = &v
+	return s
+}
+
+func (s *RunAgentRequest) SetUserInputs(v map[string]interface{}) *RunAgentRequest {
+	s.UserInputs = v
 	return s
 }
 
@@ -16779,6 +16785,10 @@ func (client *Client) RunAgentWithOptions(workspaceId *string, request *RunAgent
 
 	if !tea.BoolValue(util.IsUnset(request.UserContent)) {
 		body["userContent"] = request.UserContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserInputs)) {
+		body["userInputs"] = request.UserInputs
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
