@@ -9,6 +9,162 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreateAudioAsrTaskRequest struct {
+	Input      *CreateAudioAsrTaskRequestInput  `json:"input,omitempty" xml:"input,omitempty" type:"Struct"`
+	Output     *CreateAudioAsrTaskRequestOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Parameters map[string]interface{}           `json:"parameters,omitempty" xml:"parameters,omitempty"`
+}
+
+func (s CreateAudioAsrTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAudioAsrTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAudioAsrTaskRequest) SetInput(v *CreateAudioAsrTaskRequestInput) *CreateAudioAsrTaskRequest {
+	s.Input = v
+	return s
+}
+
+func (s *CreateAudioAsrTaskRequest) SetOutput(v *CreateAudioAsrTaskRequestOutput) *CreateAudioAsrTaskRequest {
+	s.Output = v
+	return s
+}
+
+func (s *CreateAudioAsrTaskRequest) SetParameters(v map[string]interface{}) *CreateAudioAsrTaskRequest {
+	s.Parameters = v
+	return s
+}
+
+type CreateAudioAsrTaskRequestInput struct {
+	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
+	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
+	Oss      *string `json:"oss,omitempty" xml:"oss,omitempty"`
+}
+
+func (s CreateAudioAsrTaskRequestInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAudioAsrTaskRequestInput) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAudioAsrTaskRequestInput) SetContent(v string) *CreateAudioAsrTaskRequestInput {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateAudioAsrTaskRequestInput) SetFileName(v string) *CreateAudioAsrTaskRequestInput {
+	s.FileName = &v
+	return s
+}
+
+func (s *CreateAudioAsrTaskRequestInput) SetOss(v string) *CreateAudioAsrTaskRequestInput {
+	s.Oss = &v
+	return s
+}
+
+type CreateAudioAsrTaskRequestOutput struct {
+	Oss  *string `json:"oss,omitempty" xml:"oss,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateAudioAsrTaskRequestOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAudioAsrTaskRequestOutput) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAudioAsrTaskRequestOutput) SetOss(v string) *CreateAudioAsrTaskRequestOutput {
+	s.Oss = &v
+	return s
+}
+
+func (s *CreateAudioAsrTaskRequestOutput) SetType(v string) *CreateAudioAsrTaskRequestOutput {
+	s.Type = &v
+	return s
+}
+
+type CreateAudioAsrTaskResponseBody struct {
+	Latency   *int32                                `json:"latency,omitempty" xml:"latency,omitempty"`
+	RequestId *string                               `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	Result    *CreateAudioAsrTaskResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s CreateAudioAsrTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAudioAsrTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAudioAsrTaskResponseBody) SetLatency(v int32) *CreateAudioAsrTaskResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *CreateAudioAsrTaskResponseBody) SetRequestId(v string) *CreateAudioAsrTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAudioAsrTaskResponseBody) SetResult(v *CreateAudioAsrTaskResponseBodyResult) *CreateAudioAsrTaskResponseBody {
+	s.Result = v
+	return s
+}
+
+type CreateAudioAsrTaskResponseBodyResult struct {
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s CreateAudioAsrTaskResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAudioAsrTaskResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAudioAsrTaskResponseBodyResult) SetTaskId(v string) *CreateAudioAsrTaskResponseBodyResult {
+	s.TaskId = &v
+	return s
+}
+
+type CreateAudioAsrTaskResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAudioAsrTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAudioAsrTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAudioAsrTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAudioAsrTaskResponse) SetHeaders(v map[string]*string) *CreateAudioAsrTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAudioAsrTaskResponse) SetStatusCode(v int32) *CreateAudioAsrTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAudioAsrTaskResponse) SetBody(v *CreateAudioAsrTaskResponseBody) *CreateAudioAsrTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDocumentAnalyzeTaskRequest struct {
 	Document *CreateDocumentAnalyzeTaskRequestDocument `json:"document,omitempty" xml:"document,omitempty" type:"Struct"`
 	Output   *CreateDocumentAnalyzeTaskRequestOutput   `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
@@ -305,6 +461,325 @@ func (s *CreateImageAnalyzeTaskResponse) SetStatusCode(v int32) *CreateImageAnal
 }
 
 func (s *CreateImageAnalyzeTaskResponse) SetBody(v *CreateImageAnalyzeTaskResponseBody) *CreateImageAnalyzeTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateVideoSnapshotTaskRequest struct {
+	Input      *CreateVideoSnapshotTaskRequestInput  `json:"input,omitempty" xml:"input,omitempty" type:"Struct"`
+	Output     *CreateVideoSnapshotTaskRequestOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Parameters map[string]interface{}                `json:"parameters,omitempty" xml:"parameters,omitempty"`
+}
+
+func (s CreateVideoSnapshotTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoSnapshotTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoSnapshotTaskRequest) SetInput(v *CreateVideoSnapshotTaskRequestInput) *CreateVideoSnapshotTaskRequest {
+	s.Input = v
+	return s
+}
+
+func (s *CreateVideoSnapshotTaskRequest) SetOutput(v *CreateVideoSnapshotTaskRequestOutput) *CreateVideoSnapshotTaskRequest {
+	s.Output = v
+	return s
+}
+
+func (s *CreateVideoSnapshotTaskRequest) SetParameters(v map[string]interface{}) *CreateVideoSnapshotTaskRequest {
+	s.Parameters = v
+	return s
+}
+
+type CreateVideoSnapshotTaskRequestInput struct {
+	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
+	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
+	Oss      *string `json:"oss,omitempty" xml:"oss,omitempty"`
+}
+
+func (s CreateVideoSnapshotTaskRequestInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoSnapshotTaskRequestInput) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoSnapshotTaskRequestInput) SetContent(v string) *CreateVideoSnapshotTaskRequestInput {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateVideoSnapshotTaskRequestInput) SetFileName(v string) *CreateVideoSnapshotTaskRequestInput {
+	s.FileName = &v
+	return s
+}
+
+func (s *CreateVideoSnapshotTaskRequestInput) SetOss(v string) *CreateVideoSnapshotTaskRequestInput {
+	s.Oss = &v
+	return s
+}
+
+type CreateVideoSnapshotTaskRequestOutput struct {
+	Oss  *string `json:"oss,omitempty" xml:"oss,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateVideoSnapshotTaskRequestOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoSnapshotTaskRequestOutput) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoSnapshotTaskRequestOutput) SetOss(v string) *CreateVideoSnapshotTaskRequestOutput {
+	s.Oss = &v
+	return s
+}
+
+func (s *CreateVideoSnapshotTaskRequestOutput) SetType(v string) *CreateVideoSnapshotTaskRequestOutput {
+	s.Type = &v
+	return s
+}
+
+type CreateVideoSnapshotTaskResponseBody struct {
+	Latency   *int32                                     `json:"latency,omitempty" xml:"latency,omitempty"`
+	RequestId *string                                    `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	Result    *CreateVideoSnapshotTaskResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s CreateVideoSnapshotTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoSnapshotTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoSnapshotTaskResponseBody) SetLatency(v int32) *CreateVideoSnapshotTaskResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *CreateVideoSnapshotTaskResponseBody) SetRequestId(v string) *CreateVideoSnapshotTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVideoSnapshotTaskResponseBody) SetResult(v *CreateVideoSnapshotTaskResponseBodyResult) *CreateVideoSnapshotTaskResponseBody {
+	s.Result = v
+	return s
+}
+
+type CreateVideoSnapshotTaskResponseBodyResult struct {
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s CreateVideoSnapshotTaskResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoSnapshotTaskResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoSnapshotTaskResponseBodyResult) SetTaskId(v string) *CreateVideoSnapshotTaskResponseBodyResult {
+	s.TaskId = &v
+	return s
+}
+
+type CreateVideoSnapshotTaskResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVideoSnapshotTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateVideoSnapshotTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoSnapshotTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoSnapshotTaskResponse) SetHeaders(v map[string]*string) *CreateVideoSnapshotTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVideoSnapshotTaskResponse) SetStatusCode(v int32) *CreateVideoSnapshotTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateVideoSnapshotTaskResponse) SetBody(v *CreateVideoSnapshotTaskResponseBody) *CreateVideoSnapshotTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetAudioAsrTaskStatusRequest struct {
+	// This parameter is required.
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s GetAudioAsrTaskStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAudioAsrTaskStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAudioAsrTaskStatusRequest) SetTaskId(v string) *GetAudioAsrTaskStatusRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetAudioAsrTaskStatusResponseBody struct {
+	Latency   *int32                                   `json:"latency,omitempty" xml:"latency,omitempty"`
+	RequestId *string                                  `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	Result    *GetAudioAsrTaskStatusResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Usage     *GetAudioAsrTaskStatusResponseBodyUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s GetAudioAsrTaskStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAudioAsrTaskStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAudioAsrTaskStatusResponseBody) SetLatency(v int32) *GetAudioAsrTaskStatusResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *GetAudioAsrTaskStatusResponseBody) SetRequestId(v string) *GetAudioAsrTaskStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAudioAsrTaskStatusResponseBody) SetResult(v *GetAudioAsrTaskStatusResponseBodyResult) *GetAudioAsrTaskStatusResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetAudioAsrTaskStatusResponseBody) SetUsage(v *GetAudioAsrTaskStatusResponseBodyUsage) *GetAudioAsrTaskStatusResponseBody {
+	s.Usage = v
+	return s
+}
+
+type GetAudioAsrTaskStatusResponseBodyResult struct {
+	Data   []*GetAudioAsrTaskStatusResponseBodyResultData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Error  *string                                        `json:"error,omitempty" xml:"error,omitempty"`
+	Status *string                                        `json:"status,omitempty" xml:"status,omitempty"`
+	TaskId *string                                        `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s GetAudioAsrTaskStatusResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAudioAsrTaskStatusResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetAudioAsrTaskStatusResponseBodyResult) SetData(v []*GetAudioAsrTaskStatusResponseBodyResultData) *GetAudioAsrTaskStatusResponseBodyResult {
+	s.Data = v
+	return s
+}
+
+func (s *GetAudioAsrTaskStatusResponseBodyResult) SetError(v string) *GetAudioAsrTaskStatusResponseBodyResult {
+	s.Error = &v
+	return s
+}
+
+func (s *GetAudioAsrTaskStatusResponseBodyResult) SetStatus(v string) *GetAudioAsrTaskStatusResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAudioAsrTaskStatusResponseBodyResult) SetTaskId(v string) *GetAudioAsrTaskStatusResponseBodyResult {
+	s.TaskId = &v
+	return s
+}
+
+type GetAudioAsrTaskStatusResponseBodyResultData struct {
+	End   *float32 `json:"end,omitempty" xml:"end,omitempty"`
+	Start *float32 `json:"start,omitempty" xml:"start,omitempty"`
+	Text  *string  `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s GetAudioAsrTaskStatusResponseBodyResultData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAudioAsrTaskStatusResponseBodyResultData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAudioAsrTaskStatusResponseBodyResultData) SetEnd(v float32) *GetAudioAsrTaskStatusResponseBodyResultData {
+	s.End = &v
+	return s
+}
+
+func (s *GetAudioAsrTaskStatusResponseBodyResultData) SetStart(v float32) *GetAudioAsrTaskStatusResponseBodyResultData {
+	s.Start = &v
+	return s
+}
+
+func (s *GetAudioAsrTaskStatusResponseBodyResultData) SetText(v string) *GetAudioAsrTaskStatusResponseBodyResultData {
+	s.Text = &v
+	return s
+}
+
+type GetAudioAsrTaskStatusResponseBodyUsage struct {
+	Duration *float32 `json:"duration,omitempty" xml:"duration,omitempty"`
+}
+
+func (s GetAudioAsrTaskStatusResponseBodyUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAudioAsrTaskStatusResponseBodyUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetAudioAsrTaskStatusResponseBodyUsage) SetDuration(v float32) *GetAudioAsrTaskStatusResponseBodyUsage {
+	s.Duration = &v
+	return s
+}
+
+type GetAudioAsrTaskStatusResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAudioAsrTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAudioAsrTaskStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAudioAsrTaskStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAudioAsrTaskStatusResponse) SetHeaders(v map[string]*string) *GetAudioAsrTaskStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAudioAsrTaskStatusResponse) SetStatusCode(v int32) *GetAudioAsrTaskStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAudioAsrTaskStatusResponse) SetBody(v *GetAudioAsrTaskStatusResponseBody) *GetAudioAsrTaskStatusResponse {
 	s.Body = v
 	return s
 }
@@ -2162,11 +2637,177 @@ func (s *GetTextSparseEmbeddingResponse) SetBody(v *GetTextSparseEmbeddingRespon
 	return s
 }
 
-type GetWebSearchRequest struct {
+type GetVideoSnapshotTaskStatusRequest struct {
 	// This parameter is required.
-	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	TopK  *int64  `json:"top_k,omitempty" xml:"top_k,omitempty"`
-	Way   *string `json:"way,omitempty" xml:"way,omitempty"`
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s GetVideoSnapshotTaskStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoSnapshotTaskStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoSnapshotTaskStatusRequest) SetTaskId(v string) *GetVideoSnapshotTaskStatusRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetVideoSnapshotTaskStatusResponseBody struct {
+	Latency   *int32                                        `json:"latency,omitempty" xml:"latency,omitempty"`
+	RequestId *string                                       `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	Result    *GetVideoSnapshotTaskStatusResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Usage     *GetVideoSnapshotTaskStatusResponseBodyUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s GetVideoSnapshotTaskStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoSnapshotTaskStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoSnapshotTaskStatusResponseBody) SetLatency(v int32) *GetVideoSnapshotTaskStatusResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *GetVideoSnapshotTaskStatusResponseBody) SetRequestId(v string) *GetVideoSnapshotTaskStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVideoSnapshotTaskStatusResponseBody) SetResult(v *GetVideoSnapshotTaskStatusResponseBodyResult) *GetVideoSnapshotTaskStatusResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetVideoSnapshotTaskStatusResponseBody) SetUsage(v *GetVideoSnapshotTaskStatusResponseBodyUsage) *GetVideoSnapshotTaskStatusResponseBody {
+	s.Usage = v
+	return s
+}
+
+type GetVideoSnapshotTaskStatusResponseBodyResult struct {
+	Data   []*GetVideoSnapshotTaskStatusResponseBodyResultData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Error  *string                                             `json:"error,omitempty" xml:"error,omitempty"`
+	Status *string                                             `json:"status,omitempty" xml:"status,omitempty"`
+	TaskId *string                                             `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s GetVideoSnapshotTaskStatusResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoSnapshotTaskStatusResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoSnapshotTaskStatusResponseBodyResult) SetData(v []*GetVideoSnapshotTaskStatusResponseBodyResultData) *GetVideoSnapshotTaskStatusResponseBodyResult {
+	s.Data = v
+	return s
+}
+
+func (s *GetVideoSnapshotTaskStatusResponseBodyResult) SetError(v string) *GetVideoSnapshotTaskStatusResponseBodyResult {
+	s.Error = &v
+	return s
+}
+
+func (s *GetVideoSnapshotTaskStatusResponseBodyResult) SetStatus(v string) *GetVideoSnapshotTaskStatusResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetVideoSnapshotTaskStatusResponseBodyResult) SetTaskId(v string) *GetVideoSnapshotTaskStatusResponseBodyResult {
+	s.TaskId = &v
+	return s
+}
+
+type GetVideoSnapshotTaskStatusResponseBodyResultData struct {
+	FrameIndex *int64   `json:"frame_index,omitempty" xml:"frame_index,omitempty"`
+	FrameTime  *float32 `json:"frame_time,omitempty" xml:"frame_time,omitempty"`
+	Path       *string  `json:"path,omitempty" xml:"path,omitempty"`
+}
+
+func (s GetVideoSnapshotTaskStatusResponseBodyResultData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoSnapshotTaskStatusResponseBodyResultData) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoSnapshotTaskStatusResponseBodyResultData) SetFrameIndex(v int64) *GetVideoSnapshotTaskStatusResponseBodyResultData {
+	s.FrameIndex = &v
+	return s
+}
+
+func (s *GetVideoSnapshotTaskStatusResponseBodyResultData) SetFrameTime(v float32) *GetVideoSnapshotTaskStatusResponseBodyResultData {
+	s.FrameTime = &v
+	return s
+}
+
+func (s *GetVideoSnapshotTaskStatusResponseBodyResultData) SetPath(v string) *GetVideoSnapshotTaskStatusResponseBodyResultData {
+	s.Path = &v
+	return s
+}
+
+type GetVideoSnapshotTaskStatusResponseBodyUsage struct {
+	ImageCount *int64 `json:"image_count,omitempty" xml:"image_count,omitempty"`
+}
+
+func (s GetVideoSnapshotTaskStatusResponseBodyUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoSnapshotTaskStatusResponseBodyUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoSnapshotTaskStatusResponseBodyUsage) SetImageCount(v int64) *GetVideoSnapshotTaskStatusResponseBodyUsage {
+	s.ImageCount = &v
+	return s
+}
+
+type GetVideoSnapshotTaskStatusResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVideoSnapshotTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetVideoSnapshotTaskStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoSnapshotTaskStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoSnapshotTaskStatusResponse) SetHeaders(v map[string]*string) *GetVideoSnapshotTaskStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVideoSnapshotTaskStatusResponse) SetStatusCode(v int32) *GetVideoSnapshotTaskStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVideoSnapshotTaskStatusResponse) SetBody(v *GetVideoSnapshotTaskStatusResponseBody) *GetVideoSnapshotTaskStatusResponse {
+	s.Body = v
+	return s
+}
+
+type GetWebSearchRequest struct {
+	ContentType *string                       `json:"content_type,omitempty" xml:"content_type,omitempty"`
+	History     []*GetWebSearchRequestHistory `json:"history,omitempty" xml:"history,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Query        *string `json:"query,omitempty" xml:"query,omitempty"`
+	QueryRewrite *bool   `json:"query_rewrite,omitempty" xml:"query_rewrite,omitempty"`
+	TopK         *int64  `json:"top_k,omitempty" xml:"top_k,omitempty"`
+	Way          *string `json:"way,omitempty" xml:"way,omitempty"`
 }
 
 func (s GetWebSearchRequest) String() string {
@@ -2177,8 +2818,23 @@ func (s GetWebSearchRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetWebSearchRequest) SetContentType(v string) *GetWebSearchRequest {
+	s.ContentType = &v
+	return s
+}
+
+func (s *GetWebSearchRequest) SetHistory(v []*GetWebSearchRequestHistory) *GetWebSearchRequest {
+	s.History = v
+	return s
+}
+
 func (s *GetWebSearchRequest) SetQuery(v string) *GetWebSearchRequest {
 	s.Query = &v
+	return s
+}
+
+func (s *GetWebSearchRequest) SetQueryRewrite(v bool) *GetWebSearchRequest {
+	s.QueryRewrite = &v
 	return s
 }
 
@@ -2189,6 +2845,29 @@ func (s *GetWebSearchRequest) SetTopK(v int64) *GetWebSearchRequest {
 
 func (s *GetWebSearchRequest) SetWay(v string) *GetWebSearchRequest {
 	s.Way = &v
+	return s
+}
+
+type GetWebSearchRequestHistory struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Role    *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s GetWebSearchRequestHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebSearchRequestHistory) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebSearchRequestHistory) SetContent(v string) *GetWebSearchRequestHistory {
+	s.Content = &v
+	return s
+}
+
+func (s *GetWebSearchRequestHistory) SetRole(v string) *GetWebSearchRequestHistory {
+	s.Role = &v
 	return s
 }
 
@@ -2429,6 +3108,78 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 
 // Summary:
 //
+// 创建语音转录异步任务
+//
+// @param request - CreateAudioAsrTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAudioAsrTaskResponse
+func (client *Client) CreateAudioAsrTaskWithOptions(workspaceName *string, serviceId *string, request *CreateAudioAsrTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAudioAsrTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		body["input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Output)) {
+		body["output"] = request.Output
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		body["parameters"] = request.Parameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAudioAsrTask"),
+		Version:     tea.String("2024-05-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v3/openapi/workspaces/" + tea.StringValue(workspaceName) + "/audio-asr/" + tea.StringValue(serviceId) + "/async"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAudioAsrTaskResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建语音转录异步任务
+//
+// @param request - CreateAudioAsrTaskRequest
+//
+// @return CreateAudioAsrTaskResponse
+func (client *Client) CreateAudioAsrTask(workspaceName *string, serviceId *string, request *CreateAudioAsrTaskRequest) (_result *CreateAudioAsrTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAudioAsrTaskResponse{}
+	_body, _err := client.CreateAudioAsrTaskWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建文档解析异步提取任务
 //
 // @param request - CreateDocumentAnalyzeTaskRequest
@@ -2556,6 +3307,142 @@ func (client *Client) CreateImageAnalyzeTask(workspaceName *string, serviceId *s
 	headers := make(map[string]*string)
 	_result = &CreateImageAnalyzeTaskResponse{}
 	_body, _err := client.CreateImageAnalyzeTaskWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建语音转录异步任务
+//
+// @param request - CreateVideoSnapshotTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVideoSnapshotTaskResponse
+func (client *Client) CreateVideoSnapshotTaskWithOptions(workspaceName *string, serviceId *string, request *CreateVideoSnapshotTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateVideoSnapshotTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		body["input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Output)) {
+		body["output"] = request.Output
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		body["parameters"] = request.Parameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVideoSnapshotTask"),
+		Version:     tea.String("2024-05-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v3/openapi/workspaces/" + tea.StringValue(workspaceName) + "/video-snapshot/" + tea.StringValue(serviceId) + "/async"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateVideoSnapshotTaskResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建语音转录异步任务
+//
+// @param request - CreateVideoSnapshotTaskRequest
+//
+// @return CreateVideoSnapshotTaskResponse
+func (client *Client) CreateVideoSnapshotTask(workspaceName *string, serviceId *string, request *CreateVideoSnapshotTaskRequest) (_result *CreateVideoSnapshotTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateVideoSnapshotTaskResponse{}
+	_body, _err := client.CreateVideoSnapshotTaskWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取视频截帧异步提取任务状态
+//
+// @param request - GetAudioAsrTaskStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAudioAsrTaskStatusResponse
+func (client *Client) GetAudioAsrTaskStatusWithOptions(workspaceName *string, serviceId *string, request *GetAudioAsrTaskStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAudioAsrTaskStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["task_id"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAudioAsrTaskStatus"),
+		Version:     tea.String("2024-05-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v3/openapi/workspaces/" + tea.StringValue(workspaceName) + "/audio-asr/" + tea.StringValue(serviceId) + "/async/task-status"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAudioAsrTaskStatusResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取视频截帧异步提取任务状态
+//
+// @param request - GetAudioAsrTaskStatusRequest
+//
+// @return GetAudioAsrTaskStatusResponse
+func (client *Client) GetAudioAsrTaskStatus(workspaceName *string, serviceId *string, request *GetAudioAsrTaskStatusRequest) (_result *GetAudioAsrTaskStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAudioAsrTaskStatusResponse{}
+	_body, _err := client.GetAudioAsrTaskStatusWithOptions(workspaceName, serviceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3321,6 +4208,70 @@ func (client *Client) GetTextSparseEmbedding(workspaceName *string, serviceId *s
 
 // Summary:
 //
+// 获取视频截帧异步提取任务状态
+//
+// @param request - GetVideoSnapshotTaskStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoSnapshotTaskStatusResponse
+func (client *Client) GetVideoSnapshotTaskStatusWithOptions(workspaceName *string, serviceId *string, request *GetVideoSnapshotTaskStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetVideoSnapshotTaskStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["task_id"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVideoSnapshotTaskStatus"),
+		Version:     tea.String("2024-05-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v3/openapi/workspaces/" + tea.StringValue(workspaceName) + "/video-snapshot/" + tea.StringValue(serviceId) + "/async/task-status"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVideoSnapshotTaskStatusResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取视频截帧异步提取任务状态
+//
+// @param request - GetVideoSnapshotTaskStatusRequest
+//
+// @return GetVideoSnapshotTaskStatusResponse
+func (client *Client) GetVideoSnapshotTaskStatus(workspaceName *string, serviceId *string, request *GetVideoSnapshotTaskStatusRequest) (_result *GetVideoSnapshotTaskStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetVideoSnapshotTaskStatusResponse{}
+	_body, _err := client.GetVideoSnapshotTaskStatusWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 联网搜索
 //
 // @param request - GetWebSearchRequest
@@ -3336,8 +4287,20 @@ func (client *Client) GetWebSearchWithOptions(workspaceName *string, serviceId *
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContentType)) {
+		body["content_type"] = request.ContentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.History)) {
+		body["history"] = request.History
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Query)) {
 		body["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryRewrite)) {
+		body["query_rewrite"] = request.QueryRewrite
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TopK)) {
