@@ -6389,7 +6389,9 @@ type VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure s
 	// example:
 	//
 	// xxx001
-	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
+	FigureId   *string                                                                              `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
+	FigureName *string                                                                              `json:"FigureName,omitempty" xml:"FigureName,omitempty"`
+	Location   []*VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Repeated"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure) String() string {
@@ -6402,6 +6404,51 @@ func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigur
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure) SetFigureId(v string) *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure {
 	s.FigureId = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure) SetFigureName(v string) *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure {
+	s.FigureName = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure) SetLocation(v []*VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation) *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure {
+	s.Location = v
+	return s
+}
+
+type VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation struct {
+	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation) SetH(v int32) *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation {
+	s.H = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation) SetW(v int32) *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation {
+	s.W = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation) SetX(v int32) *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation {
+	s.X = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation) SetY(v int32) *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation {
+	s.Y = &v
 	return s
 }
 
