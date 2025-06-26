@@ -1,3 +1,6 @@
+2025-06-26 Version: v10.0.13
+- Generated golang 2017-11-10 for Ens.
+
 2025-06-19 Version: v10.0.12
 - Update API CreateLoadBalancer: add request parameters BillingCycle.
 - Update API CreateLoadBalancer: add request parameters LoadBalancerType.
