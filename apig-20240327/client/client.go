@@ -9,6 +9,122 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AgentServiceConfig struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://dashscope.aliyuncs.com/api/v1
+	Address           *string                            `json:"address,omitempty" xml:"address,omitempty"`
+	DashScopeConfig   *AgentServiceConfigDashScopeConfig `json:"dashScopeConfig,omitempty" xml:"dashScopeConfig,omitempty" type:"Struct"`
+	DifyConfig        *AgentServiceConfigDifyConfig      `json:"difyConfig,omitempty" xml:"difyConfig,omitempty" type:"Struct"`
+	EnableHealthCheck *bool                              `json:"enableHealthCheck,omitempty" xml:"enableHealthCheck,omitempty"`
+	Protocols         []*string                          `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+}
+
+func (s AgentServiceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AgentServiceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AgentServiceConfig) SetAddress(v string) *AgentServiceConfig {
+	s.Address = &v
+	return s
+}
+
+func (s *AgentServiceConfig) SetDashScopeConfig(v *AgentServiceConfigDashScopeConfig) *AgentServiceConfig {
+	s.DashScopeConfig = v
+	return s
+}
+
+func (s *AgentServiceConfig) SetDifyConfig(v *AgentServiceConfigDifyConfig) *AgentServiceConfig {
+	s.DifyConfig = v
+	return s
+}
+
+func (s *AgentServiceConfig) SetEnableHealthCheck(v bool) *AgentServiceConfig {
+	s.EnableHealthCheck = &v
+	return s
+}
+
+func (s *AgentServiceConfig) SetProtocols(v []*string) *AgentServiceConfig {
+	s.Protocols = v
+	return s
+}
+
+func (s *AgentServiceConfig) SetProvider(v string) *AgentServiceConfig {
+	s.Provider = &v
+	return s
+}
+
+type AgentServiceConfigDashScopeConfig struct {
+	AppCredentials []*AgentServiceConfigDashScopeConfigAppCredentials `json:"appCredentials,omitempty" xml:"appCredentials,omitempty" type:"Repeated"`
+}
+
+func (s AgentServiceConfigDashScopeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AgentServiceConfigDashScopeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AgentServiceConfigDashScopeConfig) SetAppCredentials(v []*AgentServiceConfigDashScopeConfigAppCredentials) *AgentServiceConfigDashScopeConfig {
+	s.AppCredentials = v
+	return s
+}
+
+type AgentServiceConfigDashScopeConfigAppCredentials struct {
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	AppId  *string `json:"appId,omitempty" xml:"appId,omitempty"`
+}
+
+func (s AgentServiceConfigDashScopeConfigAppCredentials) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AgentServiceConfigDashScopeConfigAppCredentials) GoString() string {
+	return s.String()
+}
+
+func (s *AgentServiceConfigDashScopeConfigAppCredentials) SetApiKey(v string) *AgentServiceConfigDashScopeConfigAppCredentials {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *AgentServiceConfigDashScopeConfigAppCredentials) SetAppId(v string) *AgentServiceConfigDashScopeConfigAppCredentials {
+	s.AppId = &v
+	return s
+}
+
+type AgentServiceConfigDifyConfig struct {
+	ApiKey  *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	BotType *string `json:"botType,omitempty" xml:"botType,omitempty"`
+}
+
+func (s AgentServiceConfigDifyConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AgentServiceConfigDifyConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AgentServiceConfigDifyConfig) SetApiKey(v string) *AgentServiceConfigDifyConfig {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *AgentServiceConfigDifyConfig) SetBotType(v string) *AgentServiceConfigDifyConfig {
+	s.BotType = &v
+	return s
+}
+
 type AiServiceConfig struct {
 	// example:
 	//
@@ -3947,9 +4063,10 @@ func (s *ResourceStatistic) SetResourceType(v string) *ResourceStatistic {
 }
 
 type Service struct {
-	Addresses       []*string        `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
-	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
-	CreateTimestamp *int64           `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	Addresses          []*string           `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
+	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
+	AiServiceConfig    *AiServiceConfig    `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
+	CreateTimestamp    *int64              `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
 	// example:
 	//
 	// gw-xxxx
@@ -3991,6 +4108,11 @@ func (s Service) GoString() string {
 
 func (s *Service) SetAddresses(v []*string) *Service {
 	s.Addresses = v
+	return s
+}
+
+func (s *Service) SetAgentServiceConfig(v *AgentServiceConfig) *Service {
+	s.AgentServiceConfig = v
 	return s
 }
 
@@ -5117,6 +5239,7 @@ func (s *CreateEnvironmentResponse) SetBody(v *CreateEnvironmentResponseBody) *C
 }
 
 type CreateHttpApiRequest struct {
+	AgentProtocols []*string `json:"agentProtocols,omitempty" xml:"agentProtocols,omitempty" type:"Repeated"`
 	// The AI API protocols. Valid value:
 	//
 	// 	- OpenAI/v1
@@ -5181,6 +5304,11 @@ func (s CreateHttpApiRequest) String() string {
 
 func (s CreateHttpApiRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateHttpApiRequest) SetAgentProtocols(v []*string) *CreateHttpApiRequest {
+	s.AgentProtocols = v
+	return s
 }
 
 func (s *CreateHttpApiRequest) SetAiProtocols(v []*string) *CreateHttpApiRequest {
@@ -6463,7 +6591,8 @@ func (s *CreateServiceRequest) SetSourceType(v string) *CreateServiceRequest {
 
 type CreateServiceRequestServiceConfigs struct {
 	// The list of domain names or fixed addresses.
-	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
+	Addresses          []*string           `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
+	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
 	// The AI service configurations.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
 	// The list of DNS service addresses.
@@ -6508,6 +6637,11 @@ func (s CreateServiceRequestServiceConfigs) GoString() string {
 
 func (s *CreateServiceRequestServiceConfigs) SetAddresses(v []*string) *CreateServiceRequestServiceConfigs {
 	s.Addresses = v
+	return s
+}
+
+func (s *CreateServiceRequestServiceConfigs) SetAgentServiceConfig(v *AgentServiceConfig) *CreateServiceRequestServiceConfigs {
+	s.AgentServiceConfig = v
 	return s
 }
 
@@ -7383,6 +7517,73 @@ func (s *DeletePolicyAttachmentResponse) SetStatusCode(v int32) *DeletePolicyAtt
 }
 
 func (s *DeletePolicyAttachmentResponse) SetBody(v *DeletePolicyAttachmentResponseBody) *DeletePolicyAttachmentResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteServiceResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 3C3B9A12-3868-5EB9-8BEA-F99E03DD125C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceResponseBody) SetCode(v string) *DeleteServiceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteServiceResponseBody) SetMessage(v string) *DeleteServiceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteServiceResponseBody) SetRequestId(v string) *DeleteServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteServiceResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceResponse) SetHeaders(v map[string]*string) *DeleteServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceResponse) SetStatusCode(v int32) *DeleteServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteServiceResponse) SetBody(v *DeleteServiceResponseBody) *DeleteServiceResponse {
 	s.Body = v
 	return s
 }
@@ -8856,21 +9057,21 @@ func (s *GetEnvironmentResponse) SetBody(v *GetEnvironmentResponseBody) *GetEnvi
 }
 
 type GetGatewayResponseBody struct {
-	// Response status code.
+	// The status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data.
+	// The returned data.
 	Data *GetGatewayResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// The response message returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -8907,94 +9108,103 @@ func (s *GetGatewayResponseBody) SetRequestId(v string) *GetGatewayResponseBody 
 }
 
 type GetGatewayResponseBodyData struct {
-	// Charge type
+	// The billing method. Valid values:
 	//
-	// - POSTPAY: Postpaid (pay-as-you-go)
+	// 	- POSTPAY: pay-as-you-go
 	//
-	// - PREPAY: Prepaid (subscription)
+	// 	- PREPAY: subscription
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// Source of gateway creation:
+	// The creation source of the instance. Valid values:
 	//
-	// - Console: Console.
+	// 	- Console
 	//
 	// example:
 	//
 	// Console
 	CreateFrom *string `json:"createFrom,omitempty" xml:"createFrom,omitempty"`
-	// Creation timestamp. Unit: milliseconds.
+	// The creation timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// List of environments associated with the gateway.
+	// The list of environments associated with the instance.
 	Environments []*GetGatewayResponseBodyDataEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
-	// Expiration timestamp for subscription. Unit: milliseconds.
+	// The time when the instance expires. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1719386834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	// Gateway ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// gw-cq2vundlhtg***
-	GatewayId   *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// the gateway type, which is categorized into the following two types:
+	//
+	// - API: indicates an API gateway
+	//
+	// - AI: Indicates an AI gateway
+	//
+	// example:
+	//
+	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// List of entry addresses for the gateway.
+	// The ingress addresses of the instance.
 	LoadBalancers []*GetGatewayResponseBodyDataLoadBalancers `json:"loadBalancers,omitempty" xml:"loadBalancers,omitempty" type:"Repeated"`
-	// Gateway name.
+	// The instance name.
 	//
 	// example:
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Number of gateway instance nodes.
+	// The node quantity of the instance.
 	//
 	// example:
 	//
 	// 2
 	Replicas *string `json:"replicas,omitempty" xml:"replicas,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aek2s3cvc4jzfxi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The security group of the gateway.
+	// The security group of the instance.
 	SecurityGroup *GetGatewayResponseBodyDataSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
-	// Gateway specification:
+	// The instance specification. Valid values:
 	//
-	// - apigw.small.x1: Small specification.
+	// 	- apigw.small.x1
 	//
 	// example:
 	//
 	// apigw.small.x1
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// Gateway status:
+	// The instance state. Valid values:
 	//
-	// - Running: Running.
+	// 	- Running: The instance is running.
 	//
-	// - Creating: Creating.
+	// 	- Creating: The instance is being created.
 	//
-	// - CreateFailed: Creation failed.
+	// 	- CreateFailed: The instance failed to be created.
 	//
-	// - Upgrading: Upgrading.
+	// 	- Upgrading: The instance is being upgraded.
 	//
-	// - UpgradeFailed: Upgrade failed.
+	// 	- UpgradeFailed: The instance failed to be upgraded.
 	//
-	// - Restarting: Restarting.
+	// 	- Restarting: The instance is being restarted.
 	//
-	// - RestartFailed: Restart failed.
+	// 	- RestartFailed: The instance failed to be restarted.
 	//
-	// - Deleting: Deleting.
+	// 	- Deleting: The instance is being released.
 	//
-	// - DeleteFailed: Deletion failed.
+	// 	- DeleteFailed: The instance failed to be released.
 	//
 	// example:
 	//
@@ -9002,29 +9212,29 @@ type GetGatewayResponseBodyData struct {
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The resource tags.
 	Tags []*GetGatewayResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// Target version of the gateway. When it is inconsistent with the current version, an upgrade can be performed.
+	// The destination version of the instance. If the value is inconsistent with the version value, you can upgrade the instance.
 	//
 	// example:
 	//
 	// 2.0.2
 	TargetVersion *string `json:"targetVersion,omitempty" xml:"targetVersion,omitempty"`
-	// Update timestamp. Unit: milliseconds.
+	// The last update timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1719386834548
 	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
-	// The virtual switch associated with the gateway.
+	// The vSwitch associated with the instance.
 	VSwitch *GetGatewayResponseBodyDataVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
-	// Gateway version.
+	// The instance version.
 	//
 	// example:
 	//
 	// 2.0.2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The VPC (Virtual Private Cloud) associated with the gateway.
+	// The VPC associated with the instance.
 	Vpc *GetGatewayResponseBodyDataVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
-	// List of availability zones associated with the gateway.
+	// The list of zones associated with the instance.
 	Zones []*GetGatewayResponseBodyDataZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
 }
 
@@ -9146,15 +9356,15 @@ type GetGatewayResponseBodyDataEnvironments struct {
 	//
 	// example:
 	//
-	// 默认环境
+	// Default environment
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// Environment ID.
+	// The environment ID.
 	//
 	// example:
 	//
 	// env-cp9uhudlht***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The environment name。
+	// The environment name.
 	//
 	// example:
 	//
@@ -9186,69 +9396,69 @@ func (s *GetGatewayResponseBodyDataEnvironments) SetName(v string) *GetGatewayRe
 }
 
 type GetGatewayResponseBodyDataLoadBalancers struct {
-	// The address of the load balancer.
+	// The load balancer IP address.
 	//
 	// example:
 	//
 	// nlb-xoh3pghr***.cn-hangzhou.nlb.aliyuncs.com
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
-	// The IP version of the protocol:
+	// The IP version of the address. Valid values:
 	//
-	// - ipv4: IPv4 type.
+	// 	- ipv4
 	//
-	// - ipv6: IPv6 type.
+	// 	- ipv6
 	//
 	// example:
 	//
 	// ipv4
 	AddressIpVersion *string `json:"addressIpVersion,omitempty" xml:"addressIpVersion,omitempty"`
-	// Load balancer address type:
+	// The load balancer address type. Valid values:
 	//
-	// - Internet: Public.
+	// 	- Internet
 	//
-	// - Intranet: Private.
+	// 	- Intranet
 	//
 	// example:
 	//
 	// Internet
 	AddressType *string `json:"addressType,omitempty" xml:"addressType,omitempty"`
-	// Whether it is the default entry address for the gateway.
+	// Indicates whether the address is the default ingress address of the instance.
 	//
 	// example:
 	//
 	// true
 	GatewayDefault *bool `json:"gatewayDefault,omitempty" xml:"gatewayDefault,omitempty"`
-	// Load balancer ID.
+	// The load balancer ID.
 	//
 	// example:
 	//
 	// nlb-xoh3pghru7c***
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
-	// The provision mode of the load balancer for the gateway:
+	// The mode in which the load balancer is provided. Valid values:
 	//
-	// - Managed: Managed by the Cloud Native API Gateway.
+	// 	- Managed: Cloud-native API Gateway manages and provides the load balancer.
 	//
 	// example:
 	//
 	// Managed
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// List of listening ports.
+	// The list of listened ports.
 	Ports []*GetGatewayResponseBodyDataLoadBalancersPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
-	// The status of the load balancer:
+	// The load balancer status. Valid values:
 	//
-	// - Ready: Available.
+	// 	- Ready: The load balancer is available.
 	//
-	// - NotCreate: Not associated with an instance.
+	// 	- NotCreate: The load balancer is not associated with the instance.
 	//
 	// example:
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The type of load balancer:
+	// The load balancer type. Valid values:
 	//
-	// - NLB: Network Load Balancer.
+	// 	- NLB: Network Load Balancer
 	//
-	// - CLB: Classic Load Balancer.
+	// 	- CLB: Classic Load Balancer
 	//
 	// example:
 	//
@@ -9310,17 +9520,17 @@ func (s *GetGatewayResponseBodyDataLoadBalancers) SetType(v string) *GetGatewayR
 }
 
 type GetGatewayResponseBodyDataLoadBalancersPorts struct {
-	// Port number.
+	// The port number.
 	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// Protocol:
+	// The protocol. Valid values:
 	//
-	// - TCP
+	// 	- TCP
 	//
-	// - UDP
+	// 	- UDP
 	//
 	// example:
 	//
@@ -9347,13 +9557,13 @@ func (s *GetGatewayResponseBodyDataLoadBalancersPorts) SetProtocol(v string) *Ge
 }
 
 type GetGatewayResponseBodyDataSecurityGroup struct {
-	// Security group name.
+	// The security group name.
 	//
 	// example:
 	//
 	// APIG-sg-gw-cq7ke5ll***
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Security group ID.
+	// The security group ID.
 	//
 	// example:
 	//
@@ -9380,13 +9590,13 @@ func (s *GetGatewayResponseBodyDataSecurityGroup) SetSecurityGroupId(v string) *
 }
 
 type GetGatewayResponseBodyDataTags struct {
-	// The tag key of the resource.
+	// The tag key.
 	//
 	// example:
 	//
 	// owner
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The tag value of the resource.
+	// The tag value.
 	//
 	// example:
 	//
@@ -9413,13 +9623,13 @@ func (s *GetGatewayResponseBodyDataTags) SetValue(v string) *GetGatewayResponseB
 }
 
 type GetGatewayResponseBodyDataVSwitch struct {
-	// Virtual switch name.
+	// The vSwitch name.
 	//
 	// example:
 	//
-	// 杭州VPC虚拟交换机
+	// HangzhouVPCvSwitch
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Virtual switch ID.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -9446,13 +9656,13 @@ func (s *GetGatewayResponseBodyDataVSwitch) SetVSwitchId(v string) *GetGatewayRe
 }
 
 type GetGatewayResponseBodyDataVpc struct {
-	// VPC gateway name.
+	// The VPC name.
 	//
 	// example:
 	//
-	// 杭州VPC
+	// HangzhouVPC
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// VPC network ID.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -9479,15 +9689,15 @@ func (s *GetGatewayResponseBodyDataVpc) SetVpcId(v string) *GetGatewayResponseBo
 }
 
 type GetGatewayResponseBodyDataZones struct {
-	// Availability zone name.
+	// The zone name.
 	//
 	// example:
 	//
-	// 杭州可用区E
+	// HangzhouZoneE
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Virtual switch.
+	// The vSwitch information.
 	VSwitch *GetGatewayResponseBodyDataZonesVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
-	// Availability zone ID.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -9519,13 +9729,13 @@ func (s *GetGatewayResponseBodyDataZones) SetZoneId(v string) *GetGatewayRespons
 }
 
 type GetGatewayResponseBodyDataZonesVSwitch struct {
-	// Virtual switch name.
+	// The vSwitch name.
 	//
 	// example:
 	//
-	// 杭州VPC虚拟交换机
+	// HangzhouVPCvSwitch
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Virtual switch ID.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -15599,6 +15809,7 @@ func (s *UpdateGatewayNameResponse) SetBody(v *UpdateGatewayNameResponseBody) *U
 }
 
 type UpdateHttpApiRequest struct {
+	AgentProtocols []*string `json:"agentProtocols,omitempty" xml:"agentProtocols,omitempty" type:"Repeated"`
 	// The AI protocols.
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
 	// The authentication configuration.
@@ -15636,6 +15847,11 @@ func (s UpdateHttpApiRequest) String() string {
 
 func (s UpdateHttpApiRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateHttpApiRequest) SetAgentProtocols(v []*string) *UpdateHttpApiRequest {
+	s.AgentProtocols = v
+	return s
 }
 
 func (s *UpdateHttpApiRequest) SetAiProtocols(v []*string) *UpdateHttpApiRequest {
@@ -16906,6 +17122,10 @@ func (client *Client) CreateHttpApiWithOptions(request *CreateHttpApiRequest, he
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentProtocols)) {
+		body["agentProtocols"] = request.AgentProtocols
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AiProtocols)) {
 		body["aiProtocols"] = request.AiProtocols
 	}
@@ -18003,6 +18223,56 @@ func (client *Client) DeletePolicyAttachment(policyAttachmentId *string) (_resul
 
 // Summary:
 //
+// 删除服务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceResponse
+func (client *Client) DeleteServiceWithOptions(serviceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteService"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除服务
+//
+// @return DeleteServiceResponse
+func (client *Client) DeleteService(serviceId *string) (_result *DeleteServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteServiceResponse{}
+	_body, _err := client.DeleteServiceWithOptions(serviceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Deploy HttpApi
 //
 // @param request - DeployHttpApiRequest
@@ -18361,7 +18631,7 @@ func (client *Client) GetEnvironment(environmentId *string, request *GetEnvironm
 
 // Summary:
 //
-// Get a gateway.
+// Queries the basic information about an instance, such as the virtual private cloud (VPC) and vSwitch to which the instance belongs and its ingress.
 //
 // @param headers - map
 //
@@ -18394,7 +18664,7 @@ func (client *Client) GetGatewayWithOptions(gatewayId *string, headers map[strin
 
 // Summary:
 //
-// Get a gateway.
+// Queries the basic information about an instance, such as the virtual private cloud (VPC) and vSwitch to which the instance belongs and its ingress.
 //
 // @return GetGatewayResponse
 func (client *Client) GetGateway(gatewayId *string) (_result *GetGatewayResponse, _err error) {
@@ -20562,6 +20832,10 @@ func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *Updat
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentProtocols)) {
+		body["agentProtocols"] = request.AgentProtocols
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AiProtocols)) {
 		body["aiProtocols"] = request.AiProtocols
 	}
