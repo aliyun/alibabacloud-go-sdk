@@ -8102,7 +8102,9 @@ type GetCustomSourceTopicAnalysisTaskResponseBodyData struct {
 	// example:
 	//
 	// SUCCESSED
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Rt     *int64            `json:"rt,omitempty" xml:"rt,omitempty"`
+	Usages map[string]*int64 `json:"usages,omitempty" xml:"usages,omitempty"`
 }
 
 func (s GetCustomSourceTopicAnalysisTaskResponseBodyData) String() string {
@@ -8140,6 +8142,16 @@ func (s *GetCustomSourceTopicAnalysisTaskResponseBodyData) SetParsedNewsSize(v i
 
 func (s *GetCustomSourceTopicAnalysisTaskResponseBodyData) SetStatus(v string) *GetCustomSourceTopicAnalysisTaskResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBodyData) SetRt(v int64) *GetCustomSourceTopicAnalysisTaskResponseBodyData {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetCustomSourceTopicAnalysisTaskResponseBodyData) SetUsages(v map[string]*int64) *GetCustomSourceTopicAnalysisTaskResponseBodyData {
+	s.Usages = v
 	return s
 }
 
@@ -45321,6 +45333,7 @@ func (s *SubmitCustomHotTopicBroadcastJobResponse) SetBody(v *SubmitCustomHotTop
 }
 
 type SubmitCustomSourceTopicAnalysisRequest struct {
+	AnalysisTypes []*string `json:"AnalysisTypes,omitempty" xml:"AnalysisTypes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// json
@@ -45348,6 +45361,11 @@ func (s SubmitCustomSourceTopicAnalysisRequest) String() string {
 
 func (s SubmitCustomSourceTopicAnalysisRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequest) SetAnalysisTypes(v []*string) *SubmitCustomSourceTopicAnalysisRequest {
+	s.AnalysisTypes = v
+	return s
 }
 
 func (s *SubmitCustomSourceTopicAnalysisRequest) SetFileType(v string) *SubmitCustomSourceTopicAnalysisRequest {
@@ -45382,6 +45400,7 @@ type SubmitCustomSourceTopicAnalysisRequestNews struct {
 	//
 	// 2024-01-22 10:29:00
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	Source  *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// example:
 	//
@@ -45409,6 +45428,11 @@ func (s *SubmitCustomSourceTopicAnalysisRequestNews) SetContent(v string) *Submi
 
 func (s *SubmitCustomSourceTopicAnalysisRequestNews) SetPubTime(v string) *SubmitCustomSourceTopicAnalysisRequestNews {
 	s.PubTime = &v
+	return s
+}
+
+func (s *SubmitCustomSourceTopicAnalysisRequestNews) SetSource(v string) *SubmitCustomSourceTopicAnalysisRequestNews {
+	s.Source = &v
 	return s
 }
 
@@ -45440,6 +45464,7 @@ func (s *SubmitCustomSourceTopicAnalysisRequestNewsComments) SetText(v string) *
 }
 
 type SubmitCustomSourceTopicAnalysisShrinkRequest struct {
+	AnalysisTypesShrink *string `json:"AnalysisTypes,omitempty" xml:"AnalysisTypes,omitempty"`
 	// example:
 	//
 	// json
@@ -45467,6 +45492,11 @@ func (s SubmitCustomSourceTopicAnalysisShrinkRequest) String() string {
 
 func (s SubmitCustomSourceTopicAnalysisShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitCustomSourceTopicAnalysisShrinkRequest) SetAnalysisTypesShrink(v string) *SubmitCustomSourceTopicAnalysisShrinkRequest {
+	s.AnalysisTypesShrink = &v
+	return s
 }
 
 func (s *SubmitCustomSourceTopicAnalysisShrinkRequest) SetFileType(v string) *SubmitCustomSourceTopicAnalysisShrinkRequest {
@@ -61187,11 +61217,19 @@ func (client *Client) SubmitCustomSourceTopicAnalysisWithOptions(tmpReq *SubmitC
 	}
 	request := &SubmitCustomSourceTopicAnalysisShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AnalysisTypes)) {
+		request.AnalysisTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AnalysisTypes, tea.String("AnalysisTypes"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.News)) {
 		request.NewsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.News, tea.String("News"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnalysisTypesShrink)) {
+		body["AnalysisTypes"] = request.AnalysisTypesShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FileType)) {
 		body["FileType"] = request.FileType
 	}
