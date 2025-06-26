@@ -83,6 +83,8 @@ func (s *AddDisasterRecoveryItemRequest) SetTopics(v []*AddDisasterRecoveryItemR
 }
 
 type AddDisasterRecoveryItemRequestTopics struct {
+	// Deprecated
+	//
 	// Consumer group ID, required for ACTIVE_ACTIVE bidirectional backup
 	//
 	// example:
@@ -502,11 +504,17 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CreateConsumerGroupRequest struct {
-	// consume retry policy
+	// The consumption retry policy of the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
 	//
 	// This parameter is required.
 	ConsumeRetryPolicy *CreateConsumerGroupRequestConsumeRetryPolicy `json:"consumeRetryPolicy,omitempty" xml:"consumeRetryPolicy,omitempty" type:"Struct"`
-	// The dynamic error message.
+	// The message delivery method of the consumer group.
+	//
+	// Valid values:
+	//
+	// 	- Concurrently: concurrent delivery
+	//
+	// 	- Orderly: ordered delivery
 	//
 	// This parameter is required.
 	//
@@ -514,13 +522,13 @@ type CreateConsumerGroupRequest struct {
 	//
 	// Concurrently
 	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
-	// Maximum received message tps
+	// The maximum number of messages that can be processed by consumers per second.
 	//
 	// example:
 	//
 	// 300
 	MaxReceiveTps *int64 `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
-	// The HTTP status code.
+	// The description of the consumer group.
 	//
 	// example:
 	//
@@ -559,13 +567,22 @@ func (s *CreateConsumerGroupRequest) SetRemark(v string) *CreateConsumerGroupReq
 type CreateConsumerGroupRequestConsumeRetryPolicy struct {
 	// The dead-letter topic.
 	//
-	// If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
+	// If a message still fails to be consumed after the maximum number of retries specified in the consumption retry policy is reached, the message is delivered to the dead-letter topic for subsequent business recovery or backtracking. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
 	//
 	// example:
 	//
 	// DLQ_mqtest
-	DeadLetterTargetTopic  *string `json:"deadLetterTargetTopic,omitempty" xml:"deadLetterTargetTopic,omitempty"`
-	FixedIntervalRetryTime *int32  `json:"fixedIntervalRetryTime,omitempty" xml:"fixedIntervalRetryTime,omitempty"`
+	DeadLetterTargetTopic *string `json:"deadLetterTargetTopic,omitempty" xml:"deadLetterTargetTopic,omitempty"`
+	// Fixed retry interval, unit: seconds.This option is effective when retryPolicy is FixedRetryPolicy.Value range：
+	//
+	//   - Concurrently:10-600
+	//
+	//   - Orderly:1-60
+	//
+	// example:
+	//
+	// 10
+	FixedIntervalRetryTime *int32 `json:"fixedIntervalRetryTime,omitempty" xml:"fixedIntervalRetryTime,omitempty"`
 	// The maximum number of retries.
 	//
 	// example:
@@ -576,9 +593,9 @@ type CreateConsumerGroupRequestConsumeRetryPolicy struct {
 	//
 	// Valid values:
 	//
-	// 	- FixedRetryPolicy: Failed messages are retried at a fixed interval.
+	// 	- FixedRetryPolicy: fixed-interval retry. This value is valid only if you set deliveryOrderType to Orderly.
 	//
-	// 	- DefaultRetryPolicy: Failed messages are retried at incremental intervals as the number of retries increases.
+	// 	- DefaultRetryPolicy: exponential backoff retry. This value is valid only if you set deliveryOrderType to Concurrently.
 	//
 	// This parameter is required.
 	//
@@ -835,7 +852,8 @@ type CreateDisasterRecoveryPlanRequestInstances struct {
 	// example:
 	//
 	// ACL_AUTH
-	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	AuthType        *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
 	// Endpoint URL, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ
 	//
 	// example:
@@ -930,6 +948,11 @@ func (s CreateDisasterRecoveryPlanRequestInstances) GoString() string {
 
 func (s *CreateDisasterRecoveryPlanRequestInstances) SetAuthType(v string) *CreateDisasterRecoveryPlanRequestInstances {
 	s.AuthType = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstances) SetConsumerGroupId(v string) *CreateDisasterRecoveryPlanRequestInstances {
+	s.ConsumerGroupId = &v
 	return s
 }
 
@@ -5376,6 +5399,8 @@ func (s *GetDisasterRecoveryItemResponseBodyData) SetUpdateTime(v string) *GetDi
 }
 
 type GetDisasterRecoveryItemResponseBodyDataTopics struct {
+	// Deprecated
+	//
 	// The consumer group ID.
 	//
 	// example:
@@ -5735,7 +5760,8 @@ type GetDisasterRecoveryPlanResponseBodyDataInstances struct {
 	// example:
 	//
 	// ACL_AUTH
-	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	AuthType        *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
 	// Endpoint URL, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ
 	//
 	// example:
@@ -5828,6 +5854,11 @@ func (s GetDisasterRecoveryPlanResponseBodyDataInstances) GoString() string {
 
 func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetAuthType(v string) *GetDisasterRecoveryPlanResponseBodyDataInstances {
 	s.AuthType = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetConsumerGroupId(v string) *GetDisasterRecoveryPlanResponseBodyDataInstances {
+	s.ConsumerGroupId = &v
 	return s
 }
 
@@ -11047,6 +11078,8 @@ func (s *ListDisasterRecoveryItemsResponseBodyDataList) SetUpdateTime(v string) 
 }
 
 type ListDisasterRecoveryItemsResponseBodyDataListTopics struct {
+	// Deprecated
+	//
 	// Consumer group ID
 	//
 	// example:
@@ -11518,7 +11551,8 @@ type ListDisasterRecoveryPlansResponseBodyDataListInstances struct {
 	// example:
 	//
 	// NO_AUTH
-	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	AuthType        *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
 	// Endpoint URL
 	//
 	// example:
@@ -11603,6 +11637,11 @@ func (s ListDisasterRecoveryPlansResponseBodyDataListInstances) GoString() strin
 
 func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetAuthType(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
 	s.AuthType = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetConsumerGroupId(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
+	s.ConsumerGroupId = &v
 	return s
 }
 
@@ -16827,6 +16866,8 @@ func (s *UpdateDisasterRecoveryItemRequest) SetTopics(v []*UpdateDisasterRecover
 }
 
 type UpdateDisasterRecoveryItemRequestTopics struct {
+	// Deprecated
+	//
 	// The ID of the consumer group. If you use the two-way backup mode, you must specify this parameter.
 	//
 	// example:
@@ -17130,7 +17171,8 @@ type UpdateDisasterRecoveryPlanRequestInstances struct {
 	// example:
 	//
 	// NO_AUTH
-	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	AuthType        *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
 	// The instance endpoint. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ.
 	//
 	// example:
@@ -17223,6 +17265,11 @@ func (s UpdateDisasterRecoveryPlanRequestInstances) GoString() string {
 
 func (s *UpdateDisasterRecoveryPlanRequestInstances) SetAuthType(v string) *UpdateDisasterRecoveryPlanRequestInstances {
 	s.AuthType = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstances) SetConsumerGroupId(v string) *UpdateDisasterRecoveryPlanRequestInstances {
+	s.ConsumerGroupId = &v
 	return s
 }
 
