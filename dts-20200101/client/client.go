@@ -47624,8 +47624,6 @@ type ModifySubscriptionRequest struct {
 	//
 	// >  You can call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the original objects of the task.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// {"dtstest":{"name":"dtstest","all":true}}
@@ -47641,13 +47639,15 @@ type ModifySubscriptionRequest struct {
 	// example:
 	//
 	// boss6pn1w******
-	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobId   *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Reserved *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
 	// Resource group ID.
 	//
 	// example:
@@ -47660,8 +47660,6 @@ type ModifySubscriptionRequest struct {
 	//
 	// 	- **false**: no
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// true
@@ -47671,8 +47669,6 @@ type ModifySubscriptionRequest struct {
 	// 	- **true**: yes
 	//
 	// 	- **false**: no
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -47703,8 +47699,18 @@ func (s *ModifySubscriptionRequest) SetDtsJobId(v string) *ModifySubscriptionReq
 	return s
 }
 
+func (s *ModifySubscriptionRequest) SetModifyType(v string) *ModifySubscriptionRequest {
+	s.ModifyType = &v
+	return s
+}
+
 func (s *ModifySubscriptionRequest) SetRegionId(v string) *ModifySubscriptionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifySubscriptionRequest) SetReserved(v string) *ModifySubscriptionRequest {
+	s.Reserved = &v
 	return s
 }
 
@@ -63103,8 +63109,16 @@ func (client *Client) ModifySubscriptionWithOptions(request *ModifySubscriptionR
 		query["DtsJobId"] = request.DtsJobId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ModifyType)) {
+		query["ModifyType"] = request.ModifyType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reserved)) {
+		query["Reserved"] = request.Reserved
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
