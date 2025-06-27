@@ -24063,7 +24063,8 @@ type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetri
 	// example:
 	//
 	// 3
-	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	MaxReplicas  *int32  `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	MetricSource *string `json:"MetricSource,omitempty" xml:"MetricSource,omitempty"`
 	// The list of metrics that are used to trigger the auto scaling policy.
 	Metrics []*DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
 	// The execution status of the metric-based auto scaling policy.
@@ -24073,7 +24074,10 @@ type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetri
 	// example:
 	//
 	// 1
-	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	MinReplicas       *int32                                                                                           `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	PrometheusMetrics []*DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricPrometheusMetrics `json:"PrometheusMetrics,omitempty" xml:"PrometheusMetrics,omitempty" type:"Repeated"`
+	PrometheusToken   *string                                                                                          `json:"PrometheusToken,omitempty" xml:"PrometheusToken,omitempty"`
+	PrometheusUrl     *string                                                                                          `json:"PrometheusUrl,omitempty" xml:"PrometheusUrl,omitempty"`
 	// Rules that determine the application scale-in.
 	ScaleDownRules *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules `json:"ScaleDownRules,omitempty" xml:"ScaleDownRules,omitempty" type:"Struct"`
 	// Rules that determine the application scale-out.
@@ -24093,6 +24097,11 @@ func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesM
 	return s
 }
 
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) SetMetricSource(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric {
+	s.MetricSource = &v
+	return s
+}
+
 func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) SetMetrics(v []*DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric {
 	s.Metrics = v
 	return s
@@ -24105,6 +24114,21 @@ func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesM
 
 func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) SetMinReplicas(v int32) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric {
 	s.MinReplicas = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) SetPrometheusMetrics(v []*DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricPrometheusMetrics) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric {
+	s.PrometheusMetrics = v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) SetPrometheusToken(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric {
+	s.PrometheusToken = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric) SetPrometheusUrl(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric {
+	s.PrometheusUrl = &v
 	return s
 }
 
@@ -24409,6 +24433,29 @@ func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesM
 
 func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics) SetNextScaleOutAverageUtilization(v int32) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics {
 	s.NextScaleOutAverageUtilization = &v
+	return s
+}
+
+type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricPrometheusMetrics struct {
+	PrometheusQuery   *string `json:"PrometheusQuery,omitempty" xml:"PrometheusQuery,omitempty"`
+	TargetMetricValue *string `json:"TargetMetricValue,omitempty" xml:"TargetMetricValue,omitempty"`
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricPrometheusMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricPrometheusMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricPrometheusMetrics) SetPrometheusQuery(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricPrometheusMetrics {
+	s.PrometheusQuery = &v
+	return s
+}
+
+func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricPrometheusMetrics) SetTargetMetricValue(v string) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricPrometheusMetrics {
+	s.TargetMetricValue = &v
 	return s
 }
 
