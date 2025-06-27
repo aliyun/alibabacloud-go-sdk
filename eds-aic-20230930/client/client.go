@@ -3678,6 +3678,73 @@ func (s *DeleteAppsResponse) SetBody(v *DeleteAppsResponseBody) *DeleteAppsRespo
 	return s
 }
 
+type DeleteBackupFileRequest struct {
+	// This parameter is required.
+	BackupFileIdList []*string `json:"BackupFileIdList,omitempty" xml:"BackupFileIdList,omitempty" type:"Repeated"`
+}
+
+func (s DeleteBackupFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupFileRequest) SetBackupFileIdList(v []*string) *DeleteBackupFileRequest {
+	s.BackupFileIdList = v
+	return s
+}
+
+type DeleteBackupFileResponseBody struct {
+	// example:
+	//
+	// 425F351C-3F8E-5218-A520-B6311D0D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBackupFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupFileResponseBody) SetRequestId(v string) *DeleteBackupFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBackupFileResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBackupFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteBackupFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupFileResponse) SetHeaders(v map[string]*string) *DeleteBackupFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBackupFileResponse) SetStatusCode(v int32) *DeleteBackupFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBackupFileResponse) SetBody(v *DeleteBackupFileResponseBody) *DeleteBackupFileResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteCloudPhoneNodesRequest struct {
 	// The cloud phone matrix IDs.
 	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
@@ -5072,7 +5139,8 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// example:
 	//
 	// p-0btrd5zj8epo****
-	PersistentAppInstanceId *string `json:"PersistentAppInstanceId,omitempty" xml:"PersistentAppInstanceId,omitempty"`
+	PersistentAppInstanceId *string                                                         `json:"PersistentAppInstanceId,omitempty" xml:"PersistentAppInstanceId,omitempty"`
+	PhoneDataInfo           *DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo `json:"PhoneDataInfo,omitempty" xml:"PhoneDataInfo,omitempty" type:"Struct"`
 	// The ID of the policy.
 	//
 	// example:
@@ -5271,6 +5339,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetPersistentAppInst
 	return s
 }
 
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetPhoneDataInfo(v *DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.PhoneDataInfo = v
+	return s
+}
+
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetPolicyGroupId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.PolicyGroupId = &v
 	return s
@@ -5420,6 +5493,29 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModelDisplayConfig) SetReso
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModelDisplayConfig) SetResolutionWidth(v int32) *DescribeAndroidInstancesResponseBodyInstanceModelDisplayConfig {
 	s.ResolutionWidth = &v
+	return s
+}
+
+type DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo struct {
+	PhoneDataId     *string `json:"PhoneDataId,omitempty" xml:"PhoneDataId,omitempty"`
+	PhoneDataVolume *int32  `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
+}
+
+func (s DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo) SetPhoneDataId(v string) *DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo {
+	s.PhoneDataId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo) SetPhoneDataVolume(v int32) *DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo {
+	s.PhoneDataVolume = &v
 	return s
 }
 
@@ -6587,7 +6683,8 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	// example:
 	//
 	// 25
-	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	PhoneCount    *int32                                                     `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	PhoneDataInfo *DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo `json:"PhoneDataInfo,omitempty" xml:"PhoneDataInfo,omitempty" type:"Struct"`
 	// The region ID.
 	//
 	// example:
@@ -6700,6 +6797,11 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetPhoneCount(v int32) *D
 	return s
 }
 
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetPhoneDataInfo(v *DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.PhoneDataInfo = v
+	return s
+}
+
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetRegionId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
 	s.RegionId = &v
 	return s
@@ -6755,6 +6857,29 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos) SetNetworkId(
 
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos) SetVSwitchId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos {
 	s.VSwitchId = &v
+	return s
+}
+
+type DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo struct {
+	PhoneDataId     *string `json:"PhoneDataId,omitempty" xml:"PhoneDataId,omitempty"`
+	PhoneDataVolume *int32  `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
+}
+
+func (s DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo) SetPhoneDataId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo {
+	s.PhoneDataId = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo) SetPhoneDataVolume(v int32) *DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo {
+	s.PhoneDataVolume = &v
 	return s
 }
 
@@ -14799,6 +14924,66 @@ func (client *Client) DeleteApps(request *DeleteAppsRequest) (_result *DeleteApp
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAppsResponse{}
 	_body, _err := client.DeleteAppsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除备份文件
+//
+// @param request - DeleteBackupFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackupFileResponse
+func (client *Client) DeleteBackupFileWithOptions(request *DeleteBackupFileRequest, runtime *util.RuntimeOptions) (_result *DeleteBackupFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupFileIdList)) {
+		query["BackupFileIdList"] = request.BackupFileIdList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBackupFile"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBackupFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除备份文件
+//
+// @param request - DeleteBackupFileRequest
+//
+// @return DeleteBackupFileResponse
+func (client *Client) DeleteBackupFile(request *DeleteBackupFileRequest) (_result *DeleteBackupFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBackupFileResponse{}
+	_body, _err := client.DeleteBackupFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
