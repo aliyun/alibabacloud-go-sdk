@@ -3217,13 +3217,13 @@ func (s *DescribeCACertificateCountResponse) SetBody(v *DescribeCACertificateCou
 }
 
 type DescribeCACertificateListRequest struct {
-	// CaStatus.
+	// Ca status.
 	//
-	// - issue：inUse.
+	// - issue: inUse.
 	//
-	// - forbidden ：forbidden.
+	// - forbidden: forbidden.
 	//
-	// - revoke：revoked.
+	// - revoke: revoked.
 	//
 	// example:
 	//
@@ -3231,11 +3231,11 @@ type DescribeCACertificateListRequest struct {
 	CaStatus *string `json:"CaStatus,omitempty" xml:"CaStatus,omitempty"`
 	// The type of the certificate. Valid values:
 	//
-	// - root：rootCA.
+	// - root: rootCA.
 	//
-	// - subRoot：subCA.
+	// - subRoot: subCA.
 	//
-	// - externalCa：import.
+	// - externalCa: import.
 	//
 	// example:
 	//
@@ -3257,11 +3257,11 @@ type DescribeCACertificateListRequest struct {
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	// The CA Issuer Type.
 	//
-	// - local：Private certificate.
+	// - local: Private certificate.
 	//
-	// - iTrusChina： Compliance CA.
+	// - iTrusChina: Compliance CA.
 	//
-	// - external：External Import.
+	// - external: External Import.
 	//
 	// example:
 	//
@@ -3275,9 +3275,9 @@ type DescribeCACertificateListRequest struct {
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
 	// valid time.
 	//
-	// - valid：means in the valid period.
+	// - valid: means in the valid period.
 	//
-	// - notValid：means expired.
+	// - notValid: means expired.
 	//
 	// example:
 	//
@@ -3456,6 +3456,7 @@ type DescribeCACertificateListResponseBodyCertificateList struct {
 	//
 	// CN
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	Gift        *int32  `json:"Gift,omitempty" xml:"Gift,omitempty"`
 	// The unique identifier of the CA certificate.
 	//
 	// example:
@@ -3556,6 +3557,7 @@ type DescribeCACertificateListResponseBodyCertificateList struct {
 	//
 	// C=CN,O=Alibaba Cloud Computing Co., Ltd.,OU=Security,L=Hangzhou,ST=Zhejiang,CN=Aliyun
 	SubjectDN *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
+	Trial     *int32  `json:"Trial,omitempty" xml:"Trial,omitempty"`
 	// The content of the CA certificate.
 	//
 	// example:
@@ -3610,6 +3612,11 @@ func (s *DescribeCACertificateListResponseBodyCertificateList) SetCommonName(v s
 
 func (s *DescribeCACertificateListResponseBodyCertificateList) SetCountryCode(v string) *DescribeCACertificateListResponseBodyCertificateList {
 	s.CountryCode = &v
+	return s
+}
+
+func (s *DescribeCACertificateListResponseBodyCertificateList) SetGift(v int32) *DescribeCACertificateListResponseBodyCertificateList {
+	s.Gift = &v
 	return s
 }
 
@@ -3680,6 +3687,11 @@ func (s *DescribeCACertificateListResponseBodyCertificateList) SetStatus(v strin
 
 func (s *DescribeCACertificateListResponseBodyCertificateList) SetSubjectDN(v string) *DescribeCACertificateListResponseBodyCertificateList {
 	s.SubjectDN = &v
+	return s
+}
+
+func (s *DescribeCACertificateListResponseBodyCertificateList) SetTrial(v int32) *DescribeCACertificateListResponseBodyCertificateList {
+	s.Trial = &v
 	return s
 }
 
