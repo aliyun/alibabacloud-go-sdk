@@ -2759,12 +2759,16 @@ func (s *AbolishPipelineRunResponse) SetBody(v *AbolishPipelineRunResponseBody) 
 }
 
 type AddEntityIntoMetaCollectionRequest struct {
+	// The entity ID. Currently, entities can only be tables. You can call the ListTables operation to query the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// maxcompute-table
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The collection ID. You can call the ListMetaCollections operation to query the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9749,7 +9753,8 @@ func (s *CreateFunctionResponse) SetBody(v *CreateFunctionResponseBody) *CreateF
 type CreateLineageRelationshipRequest struct {
 	DstEntity *LineageEntity `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
 	SrcEntity *LineageEntity `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
-	Task      *LineageTask   `json:"Task,omitempty" xml:"Task,omitempty"`
+	// The task information.
+	Task *LineageTask `json:"Task,omitempty" xml:"Task,omitempty"`
 }
 
 func (s CreateLineageRelationshipRequest) String() string {
@@ -9778,7 +9783,8 @@ func (s *CreateLineageRelationshipRequest) SetTask(v *LineageTask) *CreateLineag
 type CreateLineageRelationshipShrinkRequest struct {
 	DstEntityShrink *string `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
 	SrcEntityShrink *string `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
-	TaskShrink      *string `json:"Task,omitempty" xml:"Task,omitempty"`
+	// The task information.
+	TaskShrink *string `json:"Task,omitempty" xml:"Task,omitempty"`
 }
 
 func (s CreateLineageRelationshipShrinkRequest) String() string {
@@ -9805,6 +9811,8 @@ func (s *CreateLineageRelationshipShrinkRequest) SetTaskShrink(v string) *Create
 }
 
 type CreateLineageRelationshipResponseBody struct {
+	// The lineage ID.
+	//
 	// example:
 	//
 	// 110xxxx:custom-table.xxxxx:maxcompute-table.project.test_big_lineage_080901:custom-sqlxx.00001
@@ -9882,6 +9890,8 @@ type CreateMetaCollectionRequest struct {
 	//
 	// test_album
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the collection of an ancestor node.
+	//
 	// example:
 	//
 	// category.123
@@ -9923,6 +9933,8 @@ func (s *CreateMetaCollectionRequest) SetType(v string) *CreateMetaCollectionReq
 }
 
 type CreateMetaCollectionResponseBody struct {
+	// The ID of the created collection.
+	//
 	// example:
 	//
 	// category.123
@@ -12886,8 +12898,9 @@ type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	// example:
 	//
 	// 2
-	Parallelism *int32 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	Priority    *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Parallelism            *int32  `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	Priority               *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	PriorityWeightStrategy *string `json:"PriorityWeightStrategy,omitempty" xml:"PriorityWeightStrategy,omitempty"`
 	// The root task IDs.
 	//
 	// 	- If you set the Type parameter to SupplementData and the Mode parameter to a value other than Chain, the RootTaskIds parameter is required.
@@ -12963,6 +12976,11 @@ func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetParallelism(v in
 
 func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetPriority(v int32) *CreateWorkflowInstancesRequestDefaultRunProperties {
 	s.Priority = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetPriorityWeightStrategy(v string) *CreateWorkflowInstancesRequestDefaultRunProperties {
+	s.PriorityWeightStrategy = &v
 	return s
 }
 
@@ -14907,6 +14925,8 @@ func (s *DeleteFunctionResponse) SetBody(v *DeleteFunctionResponseBody) *DeleteF
 }
 
 type DeleteLineageRelationshipRequest struct {
+	// The lineage ID. For more information, see the response returned by the ListLineageRelationships operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14987,6 +15007,8 @@ func (s *DeleteLineageRelationshipResponse) SetBody(v *DeleteLineageRelationship
 }
 
 type DeleteMetaCollectionRequest struct {
+	// The collection ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18147,6 +18169,22 @@ func (s *GetBusinessResponse) SetBody(v *GetBusinessResponseBody) *GetBusinessRe
 }
 
 type GetCatalogRequest struct {
+	// Data catalog entity ID. Currently, only DLF and StarRocks types are supported. You can refer to the response of the ListCatalogs operation and [the description of metadata entity concepts.](https://help.aliyun.com/document_detail/2880092.html)
+	//
+	// 	- For the DLF type, the format is `dlf-catalog::catalog_id`.
+	//
+	// 	- For the StarRocks type, the format is `starrocks-catalog:(instance_id|encoded_jdbc_url):catalog_name`.
+	//
+	// >  Parameter descriptions:\\
+	//
+	// `catalog_id`: The DLF catalog ID.\\
+	//
+	// `instance_id`: The instance ID, required for the data source registered in instance mode.\\
+	//
+	// `encoded_jdbc_url`: The JDBC connection string that has been URL encoded, required for the data source registered via a connection string.\\
+	//
+	// `catalog_name`: The name of the StarRocks catalog.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18416,6 +18454,44 @@ func (s *GetCertificateResponse) SetBody(v *GetCertificateResponseBody) *GetCert
 }
 
 type GetColumnRequest struct {
+	// The ID. You can refer to the response of the ListColumns operation and the [description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+	//
+	// The format: `${EntityType}:${Instance ID or escaped URL}:${Catalog name}:${Database name}`. Use empty strings as placeholders for levels that do not exist.
+	//
+	// >  For the MaxCompute and DLF types, the instance ID level must be left empty. For the MaxCompute type, the instance ID level is represented by an empty string. The database name is the name of the MaxCompute project with schema enabled.
+	//
+	// >  The catalog identifier of the StarRocks is the catalog name, and the catalog identifier of the DLF type is the catalog ID. Other types do not support catalog levels and can use empty strings as placeholders.
+	//
+	// Examples of common ID formats
+	//
+	// `maxcompute-column:::project_name:[schema_name]:table_name:column_name`
+	//
+	// `dlf-column::catalog_id:database_name::table_name:column_name`
+	//
+	// `hms-column:instance_id::database_name::table_name:column_name`
+	//
+	// `holo-column:instance_id::database_name:schema_name:table_name:column_name`
+	//
+	// `mysql-column:(instance_id|encoded_jdbc_url)::database_name::table_name:column_name`
+	//
+	// > \\
+	//
+	// `instance_id`: the ID of the instance, which is required when the data source is registered in instance mode.\\
+	//
+	// `encoded_jdbc_url`: the URL-encoded JDBC connection string, which is required when the data source is registered via a connection string.\\
+	//
+	// `catalog_id`: The DLF catalog ID.\\
+	//
+	// `project_name`: The MaxCompute project name.\\
+	//
+	// `database_name`: The database name.\\
+	//
+	// `schema_name`: The schema name. For the MaxCompute type, this is required only if the project has enabled schema; otherwise, use an empty string as a placeholder.\\
+	//
+	// `table_name`: The table name.\\
+	//
+	// `column_name`: The field name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -22419,6 +22495,30 @@ func (s *GetDataSourceResponse) SetBody(v *GetDataSourceResponseBody) *GetDataSo
 }
 
 type GetDatabaseRequest struct {
+	// Database entity ID. You can refer to the response of the ListDatabases operation and [the description of metadata entity concepts.](https://help.aliyun.com/document_detail/2880092.html)
+	//
+	// The format is `${EntityType}:${Instance ID or encoded URL}:${Catalog identifier}:${Database name}`. Use empty strings as placeholders for non-existent levels.
+	//
+	// >  For StarRocks, the catalog identifier is the catalog name. For DLF, the catalog identifier is the catalog ID. For other types, catalog hierarchy is not supported, and an empty string can be used as a placeholder.
+	//
+	// Examples of common ID formats
+	//
+	// `dlf-database::catalog_id:database_name`
+	//
+	// `holo-database:instance_id::database_name`
+	//
+	// `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
+	//
+	// >  Parameter descriptions\\
+	//
+	// `catalog_id`: The DLF catalog ID.\\
+	//
+	// `instance_id`: The instance ID, required for a data source registered in instance mode.\\
+	//
+	// `encoded_jdbc_url`: The JDBC connection string that has been URL encoded. This parameter is required for the data source registered via a connection string.\\
+	//
+	// `database_name`: The database name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25653,6 +25753,8 @@ func (s *GetJobStatusResponse) SetBody(v *GetJobStatusResponseBody) *GetJobStatu
 }
 
 type GetLineageRelationshipRequest struct {
+	// The lineage ID. For more information, see the response returned by the ListLineageRelationships operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25730,6 +25832,8 @@ func (s *GetLineageRelationshipResponse) SetBody(v *GetLineageRelationshipRespon
 }
 
 type GetMetaCollectionRequest struct {
+	// The collection ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25752,6 +25856,7 @@ func (s *GetMetaCollectionRequest) SetId(v string) *GetMetaCollectionRequest {
 }
 
 type GetMetaCollectionResponseBody struct {
+	// The information about the collection.
 	MetaCollection *GetMetaCollectionResponseBodyMetaCollection `json:"MetaCollection,omitempty" xml:"MetaCollection,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -25790,6 +25895,8 @@ type GetMetaCollectionResponseBodyMetaCollection struct {
 	// 456789
 	CreateUser  *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The collection ID.
+	//
 	// example:
 	//
 	// category.123
@@ -25802,6 +25909,8 @@ type GetMetaCollectionResponseBodyMetaCollection struct {
 	//
 	// test_category
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the collection of the ancestor node. This parameter can be left empty.
+	//
 	// example:
 	//
 	// category.12
@@ -26463,6 +26572,8 @@ type GetPartitionRequest struct {
 	//
 	// ds=20250101
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The table ID. For more details, refer to the response of the ListTables operation and [description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27550,6 +27661,8 @@ func (s *GetProjectRoleResponse) SetBody(v *GetProjectRoleResponseBody) *GetProj
 }
 
 type GetRerunWorkflowInstancesResultRequest struct {
+	// The operation ID used to asynchronously query the result of the workflow instance rerun. This value is obtained from the RerunWorkflowInstances operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27572,11 +27685,14 @@ func (s *GetRerunWorkflowInstancesResultRequest) SetOperationId(v string) *GetRe
 }
 
 type GetRerunWorkflowInstancesResultResponseBody struct {
+	// The request ID, used for log tracing and troubleshooting.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetRerunWorkflowInstancesResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the workflow instance rerun.
+	Result *GetRerunWorkflowInstancesResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s GetRerunWorkflowInstancesResultResponseBody) String() string {
@@ -27598,7 +27714,14 @@ func (s *GetRerunWorkflowInstancesResultResponseBody) SetResult(v *GetRerunWorkf
 }
 
 type GetRerunWorkflowInstancesResultResponseBodyResult struct {
+	// The failure message. Returned if the rerun fails.
+	//
+	// example:
+	//
+	// Invalid Param xxx
 	FailureMessage *string `json:"FailureMessage,omitempty" xml:"FailureMessage,omitempty"`
+	// The status. NotRun Success Failure
+	//
 	// example:
 	//
 	// Success
@@ -28412,11 +28535,27 @@ func (s *GetRouteResponse) SetBody(v *GetRouteResponseBody) *GetRouteResponse {
 }
 
 type GetSchemaRequest struct {
-	// The schema ID. You can call the ListSchemas operation to query schema IDs. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	// The schema ID. You can call the ListSchemas operation to query the ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
 	//
-	// Configure this parameter in the `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}` format. If a level does not exist, leave the level empty.
+	// The common format of this parameter is `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}`. If a level does not exist, specify an empty string as a placeholder.
 	//
-	// >  If you want to query the information about a MaxCompute schema, specify an empty string at the Instance ID level as a placeholder and a MaxCompute project name at the Database name level. Make sure that the schema feature is enabled for the MaxCompute project.
+	// >  For MaxCompute tables, specify an empty string at the Instance ID level and a MaxCompute project name at the Database name level. Make sure that the three-layer model is enabled for the MaxCompute project.
+	//
+	// You can configure this parameter in one of the following formats based on your data source type:
+	//
+	// `maxcompute-schema:::project_name:schema_name` (Three-layer model is enabled for the MaxCompute project.)
+	//
+	// `holo-schema:instance_id::database_name:schema_name`
+	//
+	// > \\
+	//
+	// `instance_id`: the ID of a Hologres instance\\
+	//
+	// `database_name`: the name of a database\\
+	//
+	// `project_name`: the name of a MaxCompute project\\
+	//
+	// `schema_name`: the name of a schema
 	//
 	// This parameter is required.
 	//
@@ -28506,6 +28645,44 @@ func (s *GetSchemaResponse) SetBody(v *GetSchemaResponseBody) *GetSchemaResponse
 }
 
 type GetTableRequest struct {
+	// The table ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	//
+	// The common format of this parameter is `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}:${Table name}`. If a level does not exist, specify an empty string as a placeholder.
+	//
+	// >  For MaxCompute and DLF data sources, specify an empty string at the Instance ID level.
+	//
+	// >  For StarRocks data sources, specify a catalog name at the Catalog identifier level. For DLF data sources, specify a catalog ID at the Catalog identifier level. Other types of data sources do not support the Catalog identifier level. You can specify an empty string as a placeholder.
+	//
+	// >  For MaxCompute data sources, specify a MaxCompute project name at the Database name level. If the three-layer model is enabled for your MaxCompute project, you must specify a schema name at the Schema name level. Otherwise, you can specify an empty string as a placeholder.
+	//
+	// You can configure this parameter in one of the following formats based on your data source type:
+	//
+	// `maxcompute-table:::project_name:[schema_name]:table_name`
+	//
+	// `dlf-table::catalog_id:database_name::table_name`
+	//
+	// `hms-table:instance_id::database_name::table_name`
+	//
+	// `holo-table:instance_id::database_name:schema_name:table_name`
+	//
+	// `mysql-table:(instance_id|encoded_jdbc_url)::database_name::table_name`
+	//
+	// > \\
+	//
+	// `instance_id`: the ID of an instance. If the related data source is added to DataWorks in Alibaba Cloud instance mode, you must configure this parameter.\\
+	//
+	// `encoded_jdbc_url`: the JDBC connection string that is URL-encoded. If the related data source is added to DataWorks in connection string mode, you must configure this parameter.\\
+	//
+	// `catalog_id`: the ID of a DLF catalog.\\
+	//
+	// `project_name`: the name of a MaxCompute project.\\
+	//
+	// `database_name`: the name of a database.\\
+	//
+	// `schema_name`: the name of a schema. For a MaxCompute table, if the three-layer model is enabled for the MaxCompute project to which the table belongs, you must configure this parameter. Otherwise, you can specify an empty string for schema_name as a placeholder.\\
+	//
+	// `table_name`: the name of a table.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29914,7 +30091,7 @@ type GetTaskInstanceResponseBody struct {
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the instance.
+	// The details of the task instance.
 	TaskInstance *GetTaskInstanceResponseBodyTaskInstance `json:"TaskInstance,omitempty" xml:"TaskInstance,omitempty" type:"Struct"`
 }
 
@@ -30138,9 +30315,15 @@ type GetTaskInstanceResponseBodyTaskInstance struct {
 	// example:
 	//
 	// Scheduler
-	TriggerType         *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	WaitingResourceTime *int64  `json:"WaitingResourceTime,omitempty" xml:"WaitingResourceTime,omitempty"`
-	WaitingTriggerTime  *int64  `json:"WaitingTriggerTime,omitempty" xml:"WaitingTriggerTime,omitempty"`
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	WaitingResourceTime *int64 `json:"WaitingResourceTime,omitempty" xml:"WaitingResourceTime,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	WaitingTriggerTime *int64 `json:"WaitingTriggerTime,omitempty" xml:"WaitingTriggerTime,omitempty"`
 	// The ID of the workflow to which the instance belongs.
 	//
 	// example:
@@ -34044,6 +34227,20 @@ type ListCatalogsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The parent entity ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	//
+	// Only DLF and StarRocks data sources support this parameter.
+	//
+	// 	- For DLF data sources, you can call this API operation to query all catalogs. In this case, you must set the `ParentMetaEntityId` parameter to `dlf`.
+	//
+	// 	- For StarRocks data sources, you can call this API operation to query the catalogs in a specific instance. In this case, you can configure the `ParentMetaEntityId` parameter in the `starrocks:(instance_id|encoded_jdbc_url)` format.
+	//
+	// > \\
+	//
+	// `instance_id`: the ID of an instance. If the related data source is added to DataWorks in Alibaba Cloud instance mode, you must configure this parameter.\\
+	//
+	// `encoded_jdbc_url`: the JDBC connection string that is URL-encoded. If the related data source is added to DataWorks in connection string mode, you must configure this parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -34128,6 +34325,20 @@ type ListCatalogsShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The parent entity ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	//
+	// Only DLF and StarRocks data sources support this parameter.
+	//
+	// 	- For DLF data sources, you can call this API operation to query all catalogs. In this case, you must set the `ParentMetaEntityId` parameter to `dlf`.
+	//
+	// 	- For StarRocks data sources, you can call this API operation to query the catalogs in a specific instance. In this case, you can configure the `ParentMetaEntityId` parameter in the `starrocks:(instance_id|encoded_jdbc_url)` format.
+	//
+	// > \\
+	//
+	// `instance_id`: the ID of an instance. If the related data source is added to DataWorks in Alibaba Cloud instance mode, you must configure this parameter.\\
+	//
+	// `encoded_jdbc_url`: the JDBC connection string that is URL-encoded. If the related data source is added to DataWorks in connection string mode, you must configure this parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -34622,6 +34833,8 @@ type ListColumnsRequest struct {
 	//
 	// Position
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The ID of the table to which the columns belong. You can call the ListTables operation to query the ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41606,6 +41819,30 @@ type ListDatabasesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The parent entity ID. For more information, see [description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+	//
+	// The type of the parent entity can be found in the response of the ListCrawlerTypes operation.
+	//
+	// 	- If the parent entity is a catalog, the format of `ParentMetaEntityId` follows the response of the ListCatalogs API.
+	//
+	// 	- If the parent entity is a metadata crawler, the format of `ParentMetaEntityId` is `${CrawlerType}:${Instance ID or encoded URL}.`
+	//
+	// ParentMetaEntityId format examples
+	//
+	// `dlf-catalog::catalog_id`
+	//
+	// `holo:instance_id`
+	//
+	// `mysql:(instance_id|encoded_jdbc_url)`
+	//
+	// > \\
+	//
+	// `catalog_id`: The DLF catalog ID.\\
+	//
+	// `instance_id`: The instance ID, required for the data source registered in instance mode.\\
+	//
+	// `encoded_jdbc_url`: The JDBC connection string that has been URL encoded, required for the data source registered via a connection string.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45093,6 +45330,8 @@ type ListEntitiesInMetaCollectionRequest struct {
 	//
 	// dlf-table
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The collection ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -45166,6 +45405,7 @@ func (s *ListEntitiesInMetaCollectionRequest) SetSortBy(v string) *ListEntitiesI
 }
 
 type ListEntitiesInMetaCollectionResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListEntitiesInMetaCollectionResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -45194,6 +45434,7 @@ func (s *ListEntitiesInMetaCollectionResponseBody) SetRequestId(v string) *ListE
 }
 
 type ListEntitiesInMetaCollectionResponseBodyPagingInfo struct {
+	// The entities in the collection.
 	Entities []*ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -45244,6 +45485,8 @@ type ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities struct {
 	// 1737078994080
 	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The entity ID. Entities can only be tables. This parameter is left empty if the entity is deleted.
+	//
 	// example:
 	//
 	// dlf-table:123456789:test_catalog:test_database::test_table
@@ -45256,6 +45499,8 @@ type ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities struct {
 	//
 	// test_table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the entity.
+	//
 	// example:
 	//
 	// dlf-table
@@ -46974,6 +47219,8 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsResponseBody) *ListFunct
 }
 
 type ListLineageRelationshipsRequest struct {
+	// The destination entity ID. For more information, see the table ID or field ID in the response returned by the ListTables or ListColumns operation. You can also specify a custom entity ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -47010,6 +47257,8 @@ type ListLineageRelationshipsRequest struct {
 	//
 	// Name
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The source entity ID. For more information, see the table ID or field ID in the response returned by the ListTables or ListColumns operation. You can also specify a custom entity ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -47189,6 +47438,8 @@ func (s *ListLineageRelationshipsResponse) SetBody(v *ListLineageRelationshipsRe
 }
 
 type ListLineagesRequest struct {
+	// The destination entity ID. For more information, see the table ID or field ID in the response returned by the ListTables or ListColumns operation. You can also specify a custom entity ID.
+	//
 	// example:
 	//
 	// maxcompute-table:123456XXX::test_project::test_tbl
@@ -47227,6 +47478,8 @@ type ListLineagesRequest struct {
 	//
 	// Name
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The source entity ID. For more information, see the table ID or field ID in the response returned by the ListTables or ListColumns operation. You can also specify a custom entity ID.
+	//
 	// example:
 	//
 	// maxcompute-table:123456XXX::test_project::test_tbl
@@ -47463,6 +47716,8 @@ type ListMetaCollectionsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the collection of an ancestor node.
+	//
 	// example:
 	//
 	// category.123
@@ -47471,6 +47726,14 @@ type ListMetaCollectionsRequest struct {
 	//
 	// Name
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The type of the collection. Valid values:
+	//
+	// 	- Category
+	//
+	// 	- Album
+	//
+	// 	- AlbumCategory
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -47538,6 +47801,7 @@ func (s *ListMetaCollectionsRequest) SetType(v string) *ListMetaCollectionsReque
 }
 
 type ListMetaCollectionsResponseBody struct {
+	// The data.
 	Data *ListMetaCollectionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -47566,6 +47830,7 @@ func (s *ListMetaCollectionsResponseBody) SetRequestId(v string) *ListMetaCollec
 }
 
 type ListMetaCollectionsResponseBodyData struct {
+	// The collections.
 	MetaCollections []*ListMetaCollectionsResponseBodyDataMetaCollections `json:"MetaCollections,omitempty" xml:"MetaCollections,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -47611,6 +47876,8 @@ func (s *ListMetaCollectionsResponseBodyData) SetTotalCount(v int32) *ListMetaCo
 
 type ListMetaCollectionsResponseBodyDataMetaCollections struct {
 	Administrators []*string `json:"Administrators,omitempty" xml:"Administrators,omitempty" type:"Repeated"`
+	// The time when the collection was created. The value is a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1668568601000
@@ -47620,10 +47887,14 @@ type ListMetaCollectionsResponseBodyDataMetaCollections struct {
 	// 456789
 	CreateUser  *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the collection.
+	//
 	// example:
 	//
 	// category.123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the collection was modified. The value is a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1668568601000
@@ -47632,6 +47903,8 @@ type ListMetaCollectionsResponseBodyDataMetaCollections struct {
 	//
 	// test_category
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the collection of the ancestor node. This parameter can be left empty.
+	//
 	// example:
 	//
 	// category.1
@@ -50200,6 +50473,8 @@ type ListPartitionsRequest struct {
 	//
 	// CreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The ID of the table to which the partitions belong. You can call the ListTables operation to query the ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53702,26 +53977,46 @@ func (s *ListRoutesResponse) SetBody(v *ListRoutesResponseBody) *ListRoutesRespo
 }
 
 type ListSchemasRequest struct {
+	// The comment. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// test comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The name. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// abc
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The order in which schemas are sorted. Default value: Asc. Valid values:
+	//
+	// 	- Asc: ascending order
+	//
+	// 	- Desc: descending order
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The parent entity ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html). For the Hologres metadata crawler type, you can call the ListDatabases operation to query the settings of the `ParentMetaEntityId` parameter.
+	//
+	// Configure the `ParentMetaEntityId` parameter in the `${EntityType}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}` format. If a level does not exist, leave the level empty.
+	//
+	// >  If you want to query the information about a MaxCompute schema, specify an empty string at the Instance ID level as a placeholder and a MaxCompute project name at the Database name level. Make sure that the schema feature is enabled for the MaxCompute project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53730,11 +54025,22 @@ type ListSchemasRequest struct {
 	//
 	// holo-database:h-abc123xxx::test_db
 	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+	// The field used for sorting. Default value: CreateTime. Valid values:
+	//
+	// 	- CreateTime
+	//
+	// 	- ModifyTime
+	//
+	// 	- Name
+	//
+	// 	- Type
+	//
 	// example:
 	//
 	// CreateTime
-	SortBy *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Types  []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The types. Exact match is supported. If this parameter is left empty, all types are queried.
+	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
 func (s ListSchemasRequest) String() string {
@@ -53786,26 +54092,46 @@ func (s *ListSchemasRequest) SetTypes(v []*string) *ListSchemasRequest {
 }
 
 type ListSchemasShrinkRequest struct {
+	// The comment. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// test comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The name. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// abc
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The order in which schemas are sorted. Default value: Asc. Valid values:
+	//
+	// 	- Asc: ascending order
+	//
+	// 	- Desc: descending order
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The parent entity ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html). For the Hologres metadata crawler type, you can call the ListDatabases operation to query the settings of the `ParentMetaEntityId` parameter.
+	//
+	// Configure the `ParentMetaEntityId` parameter in the `${EntityType}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}` format. If a level does not exist, leave the level empty.
+	//
+	// >  If you want to query the information about a MaxCompute schema, specify an empty string at the Instance ID level as a placeholder and a MaxCompute project name at the Database name level. Make sure that the schema feature is enabled for the MaxCompute project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53814,10 +54140,21 @@ type ListSchemasShrinkRequest struct {
 	//
 	// holo-database:h-abc123xxx::test_db
 	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+	// The field used for sorting. Default value: CreateTime. Valid values:
+	//
+	// 	- CreateTime
+	//
+	// 	- ModifyTime
+	//
+	// 	- Name
+	//
+	// 	- Type
+	//
 	// example:
 	//
 	// CreateTime
-	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The types. Exact match is supported. If this parameter is left empty, all types are queried.
 	TypesShrink *string `json:"Types,omitempty" xml:"Types,omitempty"`
 }
 
@@ -53870,11 +54207,16 @@ func (s *ListSchemasShrinkRequest) SetTypesShrink(v string) *ListSchemasShrinkRe
 }
 
 type ListSchemasResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListSchemasResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 235BBA5E-3428-XXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -53909,11 +54251,14 @@ type ListSchemasResponseBodyPagingInfo struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Schemas  []*Schema `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The schemas.
+	Schemas []*Schema `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -53998,6 +54343,46 @@ type ListTablesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The parent metadata entity ID. You can refer to the responses of the ListDatabases or ListSchemas operation and [Description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+	//
+	// 	- The parent metadata entity is a database: The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
+	//
+	// 	- The parent metadata entity is a database schema:. The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}:${Schema Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
+	//
+	// >  The schema level in `ParentMetaEntityId` is supported only for database types that support schemas, such as MaxCompute (with schema enabled), Hologres, PostgreSQL, SQL Server, HybridDB for PostgreSQL, and Oracle.``
+	//
+	// >  For MaxCompute and DLF types, use empty strings as the instance ID. For MaxCompute, the database name is the same as the project name.
+	//
+	// >  For the StarRocks type, the catalog identifier is the catalog name. For the DLF type, it refers to the catalog ID. Other types do not support a catalog-level hierarchy and the catalog identifier must be replaced with an empty string as a placeholder.
+	//
+	// Examples of common ParentMetaEntityId formats
+	//
+	// `maxcompute-project:::project_name`
+	//
+	// `maxcompute-schema:::project_name:schema_name` (for MaxCompute projects with schema enabled)
+	//
+	// `dlf-database::catalog_id:database_name`
+	//
+	// `hms-database:instance_id::database_name`
+	//
+	// `holo-schema:instance_id::database_name:schema_name`
+	//
+	// `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
+	//
+	// > \\
+	//
+	// `instance_id`: The instance ID, required when the data source is registered in instance mode.\\
+	//
+	// `encoded_jdbc_url`: The JDBC connection string that has been URL encoded, required for the data source registered via a connection string.\\
+	//
+	// `catalog_id`: The DLF catalog ID.\\
+	//
+	// `project_name`: The MaxCompute project name.\\
+	//
+	// `database_name`: The database name.\\
+	//
+	// `schema_name`: The schema name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -54090,6 +54475,46 @@ type ListTablesShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The parent metadata entity ID. You can refer to the responses of the ListDatabases or ListSchemas operation and [Description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+	//
+	// 	- The parent metadata entity is a database: The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
+	//
+	// 	- The parent metadata entity is a database schema:. The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}:${Schema Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
+	//
+	// >  The schema level in `ParentMetaEntityId` is supported only for database types that support schemas, such as MaxCompute (with schema enabled), Hologres, PostgreSQL, SQL Server, HybridDB for PostgreSQL, and Oracle.``
+	//
+	// >  For MaxCompute and DLF types, use empty strings as the instance ID. For MaxCompute, the database name is the same as the project name.
+	//
+	// >  For the StarRocks type, the catalog identifier is the catalog name. For the DLF type, it refers to the catalog ID. Other types do not support a catalog-level hierarchy and the catalog identifier must be replaced with an empty string as a placeholder.
+	//
+	// Examples of common ParentMetaEntityId formats
+	//
+	// `maxcompute-project:::project_name`
+	//
+	// `maxcompute-schema:::project_name:schema_name` (for MaxCompute projects with schema enabled)
+	//
+	// `dlf-database::catalog_id:database_name`
+	//
+	// `hms-database:instance_id::database_name`
+	//
+	// `holo-schema:instance_id::database_name:schema_name`
+	//
+	// `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
+	//
+	// > \\
+	//
+	// `instance_id`: The instance ID, required when the data source is registered in instance mode.\\
+	//
+	// `encoded_jdbc_url`: The JDBC connection string that has been URL encoded, required for the data source registered via a connection string.\\
+	//
+	// `catalog_id`: The DLF catalog ID.\\
+	//
+	// `project_name`: The MaxCompute project name.\\
+	//
+	// `database_name`: The database name.\\
+	//
+	// `schema_name`: The schema name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -54578,6 +55003,9 @@ type ListTaskInstancesRequest struct {
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task for which the instance is generated.
 	//
@@ -54836,6 +55264,9 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task for which the instance is generated.
 	//
@@ -55018,7 +55449,7 @@ func (s *ListTaskInstancesShrinkRequest) SetWorkflowInstanceType(v string) *List
 }
 
 type ListTaskInstancesResponseBody struct {
-	// The pagination information.
+	// The pagination details.
 	PagingInfo *ListTaskInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -55059,7 +55490,7 @@ type ListTaskInstancesResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The instances.
+	// The list of task instances.
 	TaskInstances []*ListTaskInstancesResponseBodyPagingInfoTaskInstances `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -55213,8 +55644,11 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// The runtime information about the instance.
 	Runtime *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
 	// The information about the resource group with which the instance is associated.
-	RuntimeResource  *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	ScriptParameters *string                                                              `json:"ScriptParameters,omitempty" xml:"ScriptParameters,omitempty"`
+	RuntimeResource *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// example:
+	//
+	// para1=val1 para2=val2
+	ScriptParameters *string `json:"ScriptParameters,omitempty" xml:"ScriptParameters,omitempty"`
 	// The time when the instance started to run.
 	//
 	// example:
@@ -55302,9 +55736,15 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// example:
 	//
 	// Scheduler
-	TriggerType         *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	WaitingResourceTime *int64  `json:"WaitingResourceTime,omitempty" xml:"WaitingResourceTime,omitempty"`
-	WaitingTriggerTime  *int64  `json:"WaitingTriggerTime,omitempty" xml:"WaitingTriggerTime,omitempty"`
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	WaitingResourceTime *int64 `json:"WaitingResourceTime,omitempty" xml:"WaitingResourceTime,omitempty"`
+	// example:
+	//
+	// 1710239005403
+	WaitingTriggerTime *int64 `json:"WaitingTriggerTime,omitempty" xml:"WaitingTriggerTime,omitempty"`
 	// The ID of the workflow to which the instance belongs.
 	//
 	// example:
@@ -61162,10 +61602,14 @@ func (s *MoveWorkflowDefinitionResponse) SetBody(v *MoveWorkflowDefinitionRespon
 }
 
 type RemoveEntityFromMetaCollectionRequest struct {
+	// The entity ID. Currently, entities can only be tables. You can call the ListTables operation to query the ID.
+	//
 	// example:
 	//
 	// dlf-table:123456789:test_catalog:test_database::test_table
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The collection ID. You can call the ListMetaCollections operation to query the ID.
+	//
 	// example:
 	//
 	// category.123
@@ -61970,40 +62414,74 @@ func (s *RerunTaskInstancesResponse) SetBody(v *RerunTaskInstancesResponseBody) 
 }
 
 type RerunWorkflowInstancesRequest struct {
+	// The business date used for matching manual workflow instances.
+	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The end trigger time of the manual workflow instance used for matching. This parameter must be used together with the StartTriggerTime.
+	//
 	// example:
 	//
 	// 1710239005403
 	EndTriggerTime *int64 `json:"EndTriggerTime,omitempty" xml:"EndTriggerTime,omitempty"`
+	// The environment of the workspace. Valid values:
+	//
+	// Prod Dev
+	//
 	// example:
 	//
 	// Prod
-	EnvType *string                              `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Filter  *RerunWorkflowInstancesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	Ids     []*int64                             `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The match conditions for internal instances of manual workflow instances.
+	Filter *RerunWorkflowInstancesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// The instance IDs used for matching manual workflow instances.
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The manual workflow name, used for fuzzy matching.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The start trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with EndTriggerTime.
+	//
 	// example:
 	//
 	// 1710239005403
 	StartTriggerTime *int64 `json:"StartTriggerTime,omitempty" xml:"StartTriggerTime,omitempty"`
+	// The status used for matching manual workflow instances.
+	//
+	// Valid values:
+	//
+	// 	- Success
+	//
+	// 	- Failure
+	//
 	// example:
 	//
 	// Failure
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the workflow instance. Valid values:
+	//
+	// ManualWorkflow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ManualWorkflow
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The workflow ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62076,16 +62554,23 @@ func (s *RerunWorkflowInstancesRequest) SetWorkflowId(v int64) *RerunWorkflowIns
 }
 
 type RerunWorkflowInstancesRequestFilter struct {
+	// Specifies whether to rerun the matched instances and all downstream instances.
+	//
 	// example:
 	//
 	// false
-	RerunDownstreamEnabled *bool     `json:"RerunDownstreamEnabled,omitempty" xml:"RerunDownstreamEnabled,omitempty"`
-	TaskIds                []*int64  `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	TaskInstanceStatuses   []*string `json:"TaskInstanceStatuses,omitempty" xml:"TaskInstanceStatuses,omitempty" type:"Repeated"`
+	RerunDownstreamEnabled *bool `json:"RerunDownstreamEnabled,omitempty" xml:"RerunDownstreamEnabled,omitempty"`
+	// The internal task IDs used for matching manual workflow instances.
+	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// The statuses of internal tasks used for matching manual workflow instances.
+	TaskInstanceStatuses []*string `json:"TaskInstanceStatuses,omitempty" xml:"TaskInstanceStatuses,omitempty" type:"Repeated"`
+	// The internal task name used for matching the manual workflow instance.
+	//
 	// example:
 	//
 	// test
-	TaskName  *string   `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Match internal tasks within the manual workflow by type.
 	TaskTypes []*string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
 }
 
@@ -62123,40 +62608,74 @@ func (s *RerunWorkflowInstancesRequestFilter) SetTaskTypes(v []*string) *RerunWo
 }
 
 type RerunWorkflowInstancesShrinkRequest struct {
+	// The business date used for matching manual workflow instances.
+	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The end trigger time of the manual workflow instance used for matching. This parameter must be used together with the StartTriggerTime.
+	//
 	// example:
 	//
 	// 1710239005403
 	EndTriggerTime *int64 `json:"EndTriggerTime,omitempty" xml:"EndTriggerTime,omitempty"`
+	// The environment of the workspace. Valid values:
+	//
+	// Prod Dev
+	//
 	// example:
 	//
 	// Prod
-	EnvType      *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The match conditions for internal instances of manual workflow instances.
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	IdsShrink    *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The instance IDs used for matching manual workflow instances.
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The manual workflow name, used for fuzzy matching.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The start trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with EndTriggerTime.
+	//
 	// example:
 	//
 	// 1710239005403
 	StartTriggerTime *int64 `json:"StartTriggerTime,omitempty" xml:"StartTriggerTime,omitempty"`
+	// The status used for matching manual workflow instances.
+	//
+	// Valid values:
+	//
+	// 	- Success
+	//
+	// 	- Failure
+	//
 	// example:
 	//
 	// Failure
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the workflow instance. Valid values:
+	//
+	// ManualWorkflow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ManualWorkflow
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The workflow ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62229,10 +62748,14 @@ func (s *RerunWorkflowInstancesShrinkRequest) SetWorkflowId(v int64) *RerunWorkf
 }
 
 type RerunWorkflowInstancesResponseBody struct {
+	// The operation ID. You can use this value to query the creation result via the GetRerunWorkflowInstancesResult operation.
+	//
 	// example:
 	//
 	// e15ad21c-b0e9-4792-8f55-b037xxxxxxxx
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	// The request ID. Used for troubleshooting and log tracking.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
@@ -65369,6 +65892,8 @@ type UpdateColumnBusinessMetadataRequest struct {
 	//
 	// test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The column ID. You can call the ListColumns operation to query the ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -70012,11 +70537,14 @@ func (s *UpdateIDEEventResultResponse) SetBody(v *UpdateIDEEventResultResponseBo
 }
 
 type UpdateMetaCollectionRequest struct {
+	// The collection administrator IDs. This parameter is available only for data albums. The administrator must be an account within the same tenant.
 	Administrators []*string `json:"Administrators,omitempty" xml:"Administrators,omitempty" type:"Repeated"`
 	// example:
 	//
 	// new comment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The collection ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -70058,11 +70586,14 @@ func (s *UpdateMetaCollectionRequest) SetName(v string) *UpdateMetaCollectionReq
 }
 
 type UpdateMetaCollectionShrinkRequest struct {
+	// The collection administrator IDs. This parameter is available only for data albums. The administrator must be an account within the same tenant.
 	AdministratorsShrink *string `json:"Administrators,omitempty" xml:"Administrators,omitempty"`
 	// example:
 	//
 	// new comment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The collection ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -71062,6 +71593,8 @@ func (s *UpdateRouteResponse) SetBody(v *UpdateRouteResponseBody) *UpdateRouteRe
 }
 
 type UpdateTableBusinessMetadataRequest struct {
+	// The data table ID. You can call the ListTables operation to query the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -75706,7 +76239,7 @@ func (client *Client) CreateFunction(request *CreateFunctionRequest) (_result *C
 
 // Summary:
 //
-// 注册血缘关系
+// Creates a lineage between a source entity and a destination entity. Either the source or destination entity must be a custom entity.
 //
 // @param tmpReq - CreateLineageRelationshipRequest
 //
@@ -75770,7 +76303,7 @@ func (client *Client) CreateLineageRelationshipWithOptions(tmpReq *CreateLineage
 
 // Summary:
 //
-// 注册血缘关系
+// Creates a lineage between a source entity and a destination entity. Either the source or destination entity must be a custom entity.
 //
 // @param request - CreateLineageRelationshipRequest
 //
@@ -75788,7 +76321,7 @@ func (client *Client) CreateLineageRelationship(request *CreateLineageRelationsh
 
 // Summary:
 //
-// 创建集合
+// Creates a collection in Data Map. Collections include categories, subcategories, data albums, and categories that are created in the data albums.
 //
 // @param request - CreateMetaCollectionRequest
 //
@@ -75842,7 +76375,7 @@ func (client *Client) CreateMetaCollectionWithOptions(request *CreateMetaCollect
 
 // Summary:
 //
-// 创建集合
+// Creates a collection in Data Map. Collections include categories, subcategories, data albums, and categories that are created in the data albums.
 //
 // @param request - CreateMetaCollectionRequest
 //
@@ -80746,7 +81279,7 @@ func (client *Client) GetLineageRelationship(request *GetLineageRelationshipRequ
 
 // Summary:
 //
-// 请求collection详情
+// Queries the information about a collection in Data Map. Collections include categories and data albums.
 //
 // @param request - GetMetaCollectionRequest
 //
@@ -80784,7 +81317,7 @@ func (client *Client) GetMetaCollectionWithOptions(request *GetMetaCollectionReq
 
 // Summary:
 //
-// 请求collection详情
+// Queries the information about a collection in Data Map. Collections include categories and data albums.
 //
 // @param request - GetMetaCollectionRequest
 //
@@ -81242,7 +81775,7 @@ func (client *Client) GetProjectRole(request *GetProjectRoleRequest) (_result *G
 
 // Summary:
 //
-// 查询异步重跑工作流实例的结果
+// Query the result of asynchronous workflow instance reruns.
 //
 // @param request - GetRerunWorkflowInstancesResultRequest
 //
@@ -81284,7 +81817,7 @@ func (client *Client) GetRerunWorkflowInstancesResultWithOptions(request *GetRer
 
 // Summary:
 //
-// 查询异步重跑工作流实例的结果
+// Query the result of asynchronous workflow instance reruns.
 //
 // @param request - GetRerunWorkflowInstancesResultRequest
 //
@@ -84010,7 +84543,7 @@ func (client *Client) ListDownstreamTasks(request *ListDownstreamTasksRequest) (
 
 // Summary:
 //
-// 查询集合中的实体列表
+// Queries a list of entities in a collection in Data Map. Collections include categories and data albums. Entities can only be tables.
 //
 // @param request - ListEntitiesInMetaCollectionRequest
 //
@@ -84048,7 +84581,7 @@ func (client *Client) ListEntitiesInMetaCollectionWithOptions(request *ListEntit
 
 // Summary:
 //
-// 查询集合中的实体列表
+// Queries a list of entities in a collection in Data Map. Collections include categories and data albums. Entities can only be tables.
 //
 // @param request - ListEntitiesInMetaCollectionRequest
 //
@@ -84426,7 +84959,7 @@ func (client *Client) ListLineageRelationships(request *ListLineageRelationships
 
 // Summary:
 //
-// 查询实体血缘
+// Queries a list of ancestor and descendant entities of an entity in Data Map. You can specify whether to return the lineage between the entities.
 //
 // @param request - ListLineagesRequest
 //
@@ -84464,7 +84997,7 @@ func (client *Client) ListLineagesWithOptions(request *ListLineagesRequest, runt
 
 // Summary:
 //
-// 查询实体血缘
+// Queries a list of ancestor and descendant entities of an entity in Data Map. You can specify whether to return the lineage between the entities.
 //
 // @param request - ListLineagesRequest
 //
@@ -84482,7 +85015,7 @@ func (client *Client) ListLineages(request *ListLineagesRequest) (_result *ListL
 
 // Summary:
 //
-// 查询Collection列表
+// Queries a list of collections in Data Map. Collections include categories and data albums.
 //
 // @param request - ListMetaCollectionsRequest
 //
@@ -84520,7 +85053,7 @@ func (client *Client) ListMetaCollectionsWithOptions(request *ListMetaCollection
 
 // Summary:
 //
-// 查询Collection列表
+// Queries a list of collections in Data Map. Collections include categories and data albums.
 //
 // @param request - ListMetaCollectionsRequest
 //
@@ -85374,7 +85907,7 @@ func (client *Client) ListRoutes(request *ListRoutesRequest) (_result *ListRoute
 
 // Summary:
 //
-// 查询模式列表
+// Queries a list of schemas in a database or a MaxCompute project in Data Map. Only schemas of the MaxCompute and Hologres metadata crawler types are supported.
 //
 // @param tmpReq - ListSchemasRequest
 //
@@ -85418,7 +85951,7 @@ func (client *Client) ListSchemasWithOptions(tmpReq *ListSchemasRequest, runtime
 
 // Summary:
 //
-// 查询模式列表
+// Queries a list of schemas in a database or a MaxCompute project in Data Map. Only schemas of the MaxCompute and Hologres metadata crawler types are supported.
 //
 // @param request - ListSchemasRequest
 //
@@ -87064,7 +87597,7 @@ func (client *Client) RerunTaskInstances(request *RerunTaskInstancesRequest) (_r
 
 // Summary:
 //
-// 重跑工作流实例
+// Reruns workflow instances.
 //
 // @param tmpReq - RerunWorkflowInstancesRequest
 //
@@ -87156,7 +87689,7 @@ func (client *Client) RerunWorkflowInstancesWithOptions(tmpReq *RerunWorkflowIns
 
 // Summary:
 //
-// 重跑工作流实例
+// Reruns workflow instances.
 //
 // @param request - RerunWorkflowInstancesRequest
 //
@@ -89558,7 +90091,7 @@ func (client *Client) UpdateIDEEventResult(request *UpdateIDEEventResultRequest)
 
 // Summary:
 //
-// 更新集合
+// Updates the information about a collection in Data Map, including the collection name, description, and administrator. Collections include categories and data albums. If you want to update the information about a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
 //
 // @param tmpReq - UpdateMetaCollectionRequest
 //
@@ -89618,7 +90151,7 @@ func (client *Client) UpdateMetaCollectionWithOptions(tmpReq *UpdateMetaCollecti
 
 // Summary:
 //
-// 更新集合
+// Updates the information about a collection in Data Map, including the collection name, description, and administrator. Collections include categories and data albums. If you want to update the information about a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
 //
 // @param request - UpdateMetaCollectionRequest
 //
@@ -90123,7 +90656,7 @@ func (client *Client) UpdateRoute(request *UpdateRouteRequest) (_result *UpdateR
 
 // Summary:
 //
-// 更新数据表业务元数据
+// Updates the business metadata of a table in Data Map. Currently, only the usage notes of a table can be updated.
 //
 // @param request - UpdateTableBusinessMetadataRequest
 //
@@ -90169,7 +90702,7 @@ func (client *Client) UpdateTableBusinessMetadataWithOptions(request *UpdateTabl
 
 // Summary:
 //
-// 更新数据表业务元数据
+// Updates the business metadata of a table in Data Map. Currently, only the usage notes of a table can be updated.
 //
 // @param request - UpdateTableBusinessMetadataRequest
 //
