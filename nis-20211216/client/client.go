@@ -4377,7 +4377,8 @@ type GetNisNetworkMetricsRequest struct {
 	// example:
 	//
 	// TimestampAscending
-	ScanBy *string `json:"ScanBy,omitempty" xml:"ScanBy,omitempty"`
+	ScanBy      *string `json:"ScanBy,omitempty" xml:"ScanBy,omitempty"`
+	StepMinutes *int32  `json:"StepMinutes,omitempty" xml:"StepMinutes,omitempty"`
 	// example:
 	//
 	// false
@@ -4429,6 +4430,11 @@ func (s *GetNisNetworkMetricsRequest) SetResourceType(v string) *GetNisNetworkMe
 
 func (s *GetNisNetworkMetricsRequest) SetScanBy(v string) *GetNisNetworkMetricsRequest {
 	s.ScanBy = &v
+	return s
+}
+
+func (s *GetNisNetworkMetricsRequest) SetStepMinutes(v int32) *GetNisNetworkMetricsRequest {
+	s.StepMinutes = &v
 	return s
 }
 
@@ -4499,7 +4505,8 @@ type GetNisNetworkMetricsShrinkRequest struct {
 	// example:
 	//
 	// TimestampAscending
-	ScanBy *string `json:"ScanBy,omitempty" xml:"ScanBy,omitempty"`
+	ScanBy      *string `json:"ScanBy,omitempty" xml:"ScanBy,omitempty"`
+	StepMinutes *int32  `json:"StepMinutes,omitempty" xml:"StepMinutes,omitempty"`
 	// example:
 	//
 	// false
@@ -4551,6 +4558,11 @@ func (s *GetNisNetworkMetricsShrinkRequest) SetResourceType(v string) *GetNisNet
 
 func (s *GetNisNetworkMetricsShrinkRequest) SetScanBy(v string) *GetNisNetworkMetricsShrinkRequest {
 	s.ScanBy = &v
+	return s
+}
+
+func (s *GetNisNetworkMetricsShrinkRequest) SetStepMinutes(v int32) *GetNisNetworkMetricsShrinkRequest {
+	s.StepMinutes = &v
 	return s
 }
 
@@ -8550,6 +8562,10 @@ func (client *Client) GetNisNetworkMetricsWithOptions(tmpReq *GetNisNetworkMetri
 
 	if !tea.BoolValue(util.IsUnset(request.ScanBy)) {
 		query["ScanBy"] = request.ScanBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StepMinutes)) {
+		query["StepMinutes"] = request.StepMinutes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UseCrossAccount)) {
