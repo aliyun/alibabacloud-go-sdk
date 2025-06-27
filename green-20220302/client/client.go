@@ -4527,6 +4527,237 @@ func (s *ManualModerationResultResponse) SetBody(v *ManualModerationResultRespon
 	return s
 }
 
+type MultiModalGuardRequest struct {
+	// example:
+	//
+	// query_security_check
+	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+}
+
+func (s MultiModalGuardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MultiModalGuardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MultiModalGuardRequest) SetService(v string) *MultiModalGuardRequest {
+	s.Service = &v
+	return s
+}
+
+func (s *MultiModalGuardRequest) SetServiceParameters(v string) *MultiModalGuardRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+type MultiModalGuardResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *MultiModalGuardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s MultiModalGuardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MultiModalGuardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MultiModalGuardResponseBody) SetCode(v int32) *MultiModalGuardResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MultiModalGuardResponseBody) SetData(v *MultiModalGuardResponseBodyData) *MultiModalGuardResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *MultiModalGuardResponseBody) SetMessage(v string) *MultiModalGuardResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *MultiModalGuardResponseBody) SetRequestId(v string) *MultiModalGuardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type MultiModalGuardResponseBodyData struct {
+	// example:
+	//
+	// data1234
+	DataId *string                                  `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Detail []*MultiModalGuardResponseBodyDataDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pass
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+}
+
+func (s MultiModalGuardResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MultiModalGuardResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *MultiModalGuardResponseBodyData) SetDataId(v string) *MultiModalGuardResponseBodyData {
+	s.DataId = &v
+	return s
+}
+
+func (s *MultiModalGuardResponseBodyData) SetDetail(v []*MultiModalGuardResponseBodyDataDetail) *MultiModalGuardResponseBodyData {
+	s.Detail = v
+	return s
+}
+
+func (s *MultiModalGuardResponseBodyData) SetSuggestion(v string) *MultiModalGuardResponseBodyData {
+	s.Suggestion = &v
+	return s
+}
+
+type MultiModalGuardResponseBodyDataDetail struct {
+	// example:
+	//
+	// none
+	Level  *string                                        `json:"Level,omitempty" xml:"Level,omitempty"`
+	Result []*MultiModalGuardResponseBodyDataDetailResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pass
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// example:
+	//
+	// contentModeration
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s MultiModalGuardResponseBodyDataDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MultiModalGuardResponseBodyDataDetail) GoString() string {
+	return s.String()
+}
+
+func (s *MultiModalGuardResponseBodyDataDetail) SetLevel(v string) *MultiModalGuardResponseBodyDataDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *MultiModalGuardResponseBodyDataDetail) SetResult(v []*MultiModalGuardResponseBodyDataDetailResult) *MultiModalGuardResponseBodyDataDetail {
+	s.Result = v
+	return s
+}
+
+func (s *MultiModalGuardResponseBodyDataDetail) SetSuggestion(v string) *MultiModalGuardResponseBodyDataDetail {
+	s.Suggestion = &v
+	return s
+}
+
+func (s *MultiModalGuardResponseBodyDataDetail) SetType(v string) *MultiModalGuardResponseBodyDataDetail {
+	s.Type = &v
+	return s
+}
+
+type MultiModalGuardResponseBodyDataDetailResult struct {
+	// example:
+	//
+	// 0
+	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// {}
+	Ext interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// example:
+	//
+	// contraband_act
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// none
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+}
+
+func (s MultiModalGuardResponseBodyDataDetailResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MultiModalGuardResponseBodyDataDetailResult) GoString() string {
+	return s.String()
+}
+
+func (s *MultiModalGuardResponseBodyDataDetailResult) SetConfidence(v float32) *MultiModalGuardResponseBodyDataDetailResult {
+	s.Confidence = &v
+	return s
+}
+
+func (s *MultiModalGuardResponseBodyDataDetailResult) SetDescription(v string) *MultiModalGuardResponseBodyDataDetailResult {
+	s.Description = &v
+	return s
+}
+
+func (s *MultiModalGuardResponseBodyDataDetailResult) SetExt(v interface{}) *MultiModalGuardResponseBodyDataDetailResult {
+	s.Ext = v
+	return s
+}
+
+func (s *MultiModalGuardResponseBodyDataDetailResult) SetLabel(v string) *MultiModalGuardResponseBodyDataDetailResult {
+	s.Label = &v
+	return s
+}
+
+func (s *MultiModalGuardResponseBodyDataDetailResult) SetLevel(v string) *MultiModalGuardResponseBodyDataDetailResult {
+	s.Level = &v
+	return s
+}
+
+type MultiModalGuardResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MultiModalGuardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MultiModalGuardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MultiModalGuardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MultiModalGuardResponse) SetHeaders(v map[string]*string) *MultiModalGuardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MultiModalGuardResponse) SetStatusCode(v int32) *MultiModalGuardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MultiModalGuardResponse) SetBody(v *MultiModalGuardResponseBody) *MultiModalGuardResponse {
+	s.Body = v
+	return s
+}
+
 type TextModerationRequest struct {
 	// The type of the moderation service. Valid values: nickname_detection: user nickname chat_detection: chat interactions comment_detection: dynamic comments pgc_detection: professionally-generated content (PGC) teaching materials
 	//
@@ -7987,6 +8218,70 @@ func (client *Client) ManualModerationResult(request *ManualModerationResultRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ManualModerationResultResponse{}
 	_body, _err := client.ManualModerationResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步检测接口
+//
+// @param request - MultiModalGuardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MultiModalGuardResponse
+func (client *Client) MultiModalGuardWithOptions(request *MultiModalGuardRequest, runtime *util.RuntimeOptions) (_result *MultiModalGuardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		body["Service"] = request.Service
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MultiModalGuard"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MultiModalGuardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步检测接口
+//
+// @param request - MultiModalGuardRequest
+//
+// @return MultiModalGuardResponse
+func (client *Client) MultiModalGuard(request *MultiModalGuardRequest) (_result *MultiModalGuardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MultiModalGuardResponse{}
+	_body, _err := client.MultiModalGuardWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
