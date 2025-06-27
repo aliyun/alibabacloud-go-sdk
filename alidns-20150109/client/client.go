@@ -23257,6 +23257,7 @@ type DescribeDomainsResponseBodyDomainsDomain struct {
 	//
 	// rg-acf
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SlaveDnsStatus  *string `json:"SlaveDnsStatus,omitempty" xml:"SlaveDnsStatus,omitempty"`
 	// Indicates whether the domain name was added to favorites.
 	//
 	// example:
@@ -23365,6 +23366,11 @@ func (s *DescribeDomainsResponseBodyDomainsDomain) SetRemark(v string) *Describe
 
 func (s *DescribeDomainsResponseBodyDomainsDomain) SetResourceGroupId(v string) *DescribeDomainsResponseBodyDomainsDomain {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDomainsResponseBodyDomainsDomain) SetSlaveDnsStatus(v string) *DescribeDomainsResponseBodyDomainsDomain {
+	s.SlaveDnsStatus = &v
 	return s
 }
 
@@ -28200,7 +28206,8 @@ type DescribeInternetDnsLogsRequest struct {
 	// example:
 	//
 	// {"sourceIp":"59.82.XX.XX","queryType":"A"}
-	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
+	QueryCondition        *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
+	RecursionProtocolType *string `json:"RecursionProtocolType,omitempty" xml:"RecursionProtocolType,omitempty"`
 	// The start time of the query (timestamp, unit: milliseconds).
 	//
 	// example:
@@ -28254,6 +28261,11 @@ func (s *DescribeInternetDnsLogsRequest) SetPageSize(v int32) *DescribeInternetD
 
 func (s *DescribeInternetDnsLogsRequest) SetQueryCondition(v string) *DescribeInternetDnsLogsRequest {
 	s.QueryCondition = &v
+	return s
+}
+
+func (s *DescribeInternetDnsLogsRequest) SetRecursionProtocolType(v string) *DescribeInternetDnsLogsRequest {
+	s.RecursionProtocolType = &v
 	return s
 }
 
@@ -29628,13 +29640,14 @@ func (s *DescribePdnsAppKeysResponse) SetBody(v *DescribePdnsAppKeysResponseBody
 }
 
 type DescribePdnsOperateLogsRequest struct {
-	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	ActionType   *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	EndDate      *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	StartDate    *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribePdnsOperateLogsRequest) String() string {
@@ -29672,6 +29685,11 @@ func (s *DescribePdnsOperateLogsRequest) SetPageNumber(v int64) *DescribePdnsOpe
 
 func (s *DescribePdnsOperateLogsRequest) SetPageSize(v int64) *DescribePdnsOperateLogsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePdnsOperateLogsRequest) SetResourceType(v string) *DescribePdnsOperateLogsRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -31234,6 +31252,12 @@ func (s *DescribePdnsUdpIpSegmentsResponse) SetBody(v *DescribePdnsUdpIpSegments
 }
 
 type DescribePdnsUserInfoRequest struct {
+	// The language of the content within the request and response. Default value: **zh**. Valid value:
+	//
+	// 	- **zh**: Chinese.
+	//
+	// 	- **en**: English.
+	//
 	// example:
 	//
 	// en
@@ -31254,11 +31278,14 @@ func (s *DescribePdnsUserInfoRequest) SetLang(v string) *DescribePdnsUserInfoReq
 }
 
 type DescribePdnsUserInfoResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// FD552816-FCC8-4832-B4A2-2DA0C2BA1688
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UserInfo  *DescribePdnsUserInfoResponseBodyUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the user.
+	UserInfo *DescribePdnsUserInfoResponseBodyUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
 func (s DescribePdnsUserInfoResponseBody) String() string {
@@ -31280,35 +31307,50 @@ func (s *DescribePdnsUserInfoResponseBody) SetUserInfo(v *DescribePdnsUserInfoRe
 }
 
 type DescribePdnsUserInfoResponseBodyUserInfo struct {
+	// The enabled access security types.
+	//
 	// example:
 	//
 	// SECURE
 	AvailableAccessSecurityType *string `json:"AvailableAccessSecurityType,omitempty" xml:"AvailableAccessSecurityType,omitempty"`
+	// The enabled public recursive DNS service.
+	//
 	// example:
 	//
 	// HTTP,HTTPS
 	AvailableService *string `json:"AvailableService,omitempty" xml:"AvailableService,omitempty"`
+	// The configuration ID of the users in public recursive DNS.
+	//
 	// example:
 	//
 	// 10001
 	PdnsId *int64 `json:"PdnsId,omitempty" xml:"PdnsId,omitempty"`
+	// The SecretKey configured for a UDP-based CIDR block.
+	//
 	// example:
 	//
 	// 1c092d715b7a48de
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	// The type of the public recursive DNS service.
+	//
 	// example:
 	//
 	// normal
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The status of the public recursive DNS service.
+	//
 	// example:
 	//
 	// AVAILABLE
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The status of the traffic analysis switch for the user in public recursive DNS service.
+	//
 	// example:
 	//
 	// CLOSED
 	StatisticSwitchStatus *string `json:"StatisticSwitchStatus,omitempty" xml:"StatisticSwitchStatus,omitempty"`
-	StoppedService        *string `json:"StoppedService,omitempty" xml:"StoppedService,omitempty"`
+	// The disabled public recursive DNS service.
+	StoppedService *string `json:"StoppedService,omitempty" xml:"StoppedService,omitempty"`
 }
 
 func (s DescribePdnsUserInfoResponseBodyUserInfo) String() string {
@@ -55043,6 +55085,10 @@ func (client *Client) DescribeDNSSLBSubDomains(request *DescribeDNSSLBSubDomains
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询代理域名
+//
 // @param request - DescribeDnsCacheDomainsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -55093,6 +55139,10 @@ func (client *Client) DescribeDnsCacheDomainsWithOptions(request *DescribeDnsCac
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询代理域名
+//
 // @param request - DescribeDnsCacheDomainsRequest
 //
 // @return DescribeDnsCacheDomainsResponse
@@ -56335,6 +56385,10 @@ func (client *Client) DescribeDohAccountStatistics(request *DescribeDohAccountSt
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询DOH域名请求量数据
+//
 // @param request - DescribeDohDomainStatisticsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -56385,6 +56439,10 @@ func (client *Client) DescribeDohDomainStatisticsWithOptions(request *DescribeDo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询DOH域名请求量数据
+//
 // @param request - DescribeDohDomainStatisticsRequest
 //
 // @return DescribeDohDomainStatisticsResponse
@@ -58771,6 +58829,10 @@ func (client *Client) DescribeInstanceDomains(request *DescribeInstanceDomainsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询解析日志
+//
 // @param request - DescribeInternetDnsLogsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -58814,6 +58876,10 @@ func (client *Client) DescribeInternetDnsLogsWithOptions(request *DescribeIntern
 		query["QueryCondition"] = request.QueryCondition
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RecursionProtocolType)) {
+		query["RecursionProtocolType"] = request.RecursionProtocolType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
 		query["StartTimestamp"] = request.StartTimestamp
 	}
@@ -58841,6 +58907,10 @@ func (client *Client) DescribeInternetDnsLogsWithOptions(request *DescribeIntern
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询解析日志
+//
 // @param request - DescribeInternetDnsLogsRequest
 //
 // @return DescribeInternetDnsLogsResponse
@@ -59388,6 +59458,10 @@ func (client *Client) DescribePdnsOperateLogsWithOptions(request *DescribePdnsOp
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
@@ -59945,7 +60019,7 @@ func (client *Client) DescribePdnsUdpIpSegments(request *DescribePdnsUdpIpSegmen
 
 // Summary:
 //
-// 获取公共DNS用户信息
+// Queries the information about users in Alibaba Cloud Public DNS.
 //
 // @param request - DescribePdnsUserInfoRequest
 //
@@ -59987,7 +60061,7 @@ func (client *Client) DescribePdnsUserInfoWithOptions(request *DescribePdnsUserI
 
 // Summary:
 //
-// 获取公共DNS用户信息
+// Queries the information about users in Alibaba Cloud Public DNS.
 //
 // @param request - DescribePdnsUserInfoRequest
 //
@@ -60463,6 +60537,10 @@ func (client *Client) DescribeSubDomainRecords(request *DescribeSubDomainRecords
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询支持的所有线路
+//
 // @param request - DescribeSupportLinesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -60509,6 +60587,10 @@ func (client *Client) DescribeSupportLinesWithOptions(request *DescribeSupportLi
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询支持的所有线路
+//
 // @param request - DescribeSupportLinesRequest
 //
 // @return DescribeSupportLinesResponse
