@@ -7079,8 +7079,10 @@ type GetScanResultResponseBodyDataItems struct {
 	// example:
 	//
 	// 2023-08-11 09:00:19
-	GmtCreate   *string                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	ImageLabels []map[string]interface{} `json:"ImageLabels,omitempty" xml:"ImageLabels,omitempty" type:"Repeated"`
+	GmtCreate      *string                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GuardFileUrls  []*string                `json:"GuardFileUrls,omitempty" xml:"GuardFileUrls,omitempty" type:"Repeated"`
+	GuardImageUrls []*string                `json:"GuardImageUrls,omitempty" xml:"GuardImageUrls,omitempty" type:"Repeated"`
+	ImageLabels    []map[string]interface{} `json:"ImageLabels,omitempty" xml:"ImageLabels,omitempty" type:"Repeated"`
 	// example:
 	//
 	// baselineCheck
@@ -7094,9 +7096,11 @@ type GetScanResultResponseBodyDataItems struct {
 	// example:
 	//
 	// nonLabel
-	Labels     *string   `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	ManualOnly *bool     `json:"ManualOnly,omitempty" xml:"ManualOnly,omitempty"`
-	NoLabels   []*string `json:"NoLabels,omitempty" xml:"NoLabels,omitempty" type:"Repeated"`
+	Labels             *string   `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	MaliciousFileLevel *string   `json:"MaliciousFileLevel,omitempty" xml:"MaliciousFileLevel,omitempty"`
+	MaliciousUrlLevel  *string   `json:"MaliciousUrlLevel,omitempty" xml:"MaliciousUrlLevel,omitempty"`
+	ManualOnly         *bool     `json:"ManualOnly,omitempty" xml:"ManualOnly,omitempty"`
+	NoLabels           []*string `json:"NoLabels,omitempty" xml:"NoLabels,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -7246,6 +7250,16 @@ func (s *GetScanResultResponseBodyDataItems) SetGmtCreate(v string) *GetScanResu
 	return s
 }
 
+func (s *GetScanResultResponseBodyDataItems) SetGuardFileUrls(v []*string) *GetScanResultResponseBodyDataItems {
+	s.GuardFileUrls = v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetGuardImageUrls(v []*string) *GetScanResultResponseBodyDataItems {
+	s.GuardImageUrls = v
+	return s
+}
+
 func (s *GetScanResultResponseBodyDataItems) SetImageLabels(v []map[string]interface{}) *GetScanResultResponseBodyDataItems {
 	s.ImageLabels = v
 	return s
@@ -7263,6 +7277,16 @@ func (s *GetScanResultResponseBodyDataItems) SetImageUrl(v string) *GetScanResul
 
 func (s *GetScanResultResponseBodyDataItems) SetLabels(v string) *GetScanResultResponseBodyDataItems {
 	s.Labels = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetMaliciousFileLevel(v string) *GetScanResultResponseBodyDataItems {
+	s.MaliciousFileLevel = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetMaliciousUrlLevel(v string) *GetScanResultResponseBodyDataItems {
+	s.MaliciousUrlLevel = &v
 	return s
 }
 
@@ -7575,6 +7599,7 @@ type GetServiceConfResponseBody struct {
 	//
 	// baselineCheck
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	// example:
 	//
 	// True
@@ -7637,6 +7662,11 @@ func (s *GetServiceConfResponseBody) SetResourceType(v string) *GetServiceConfRe
 
 func (s *GetServiceConfResponseBody) SetServiceCode(v string) *GetServiceConfResponseBody {
 	s.ServiceCode = &v
+	return s
+}
+
+func (s *GetServiceConfResponseBody) SetServiceType(v string) *GetServiceConfResponseBody {
+	s.ServiceType = &v
 	return s
 }
 
@@ -11466,6 +11496,273 @@ func (s *ListServiceConfigsResponse) SetBody(v *ListServiceConfigsResponseBody) 
 	return s
 }
 
+type LlmStreamChatRequest struct {
+	Messages interface{} `json:"Messages,omitempty" xml:"Messages,omitempty"`
+	// example:
+	//
+	// 0.5
+	Temperature *float32 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
+	// example:
+	//
+	// 0.5
+	TopP *float32 `json:"TopP,omitempty" xml:"TopP,omitempty"`
+}
+
+func (s LlmStreamChatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LlmStreamChatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LlmStreamChatRequest) SetMessages(v interface{}) *LlmStreamChatRequest {
+	s.Messages = v
+	return s
+}
+
+func (s *LlmStreamChatRequest) SetTemperature(v float32) *LlmStreamChatRequest {
+	s.Temperature = &v
+	return s
+}
+
+func (s *LlmStreamChatRequest) SetTopP(v float32) *LlmStreamChatRequest {
+	s.TopP = &v
+	return s
+}
+
+type LlmStreamChatResponseBody struct {
+	Choices []*LlmStreamChatResponseBodyChoices `json:"Choices,omitempty" xml:"Choices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1750990728
+	Created *int64                          `json:"Created,omitempty" xml:"Created,omitempty"`
+	Error   *LlmStreamChatResponseBodyError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	// example:
+	//
+	// chatcmpl-777bce52-93d3-9f8c-89c3-e99884f4f57f
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// deepseek-v3
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// chat.completion.chunk
+	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
+	// example:
+	//
+	// 21d296d6-594e-97de-812f-925ec6e05673
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// null
+	SystemFingerprint *string `json:"SystemFingerprint,omitempty" xml:"SystemFingerprint,omitempty"`
+	// example:
+	//
+	// null
+	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+}
+
+func (s LlmStreamChatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LlmStreamChatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LlmStreamChatResponseBody) SetChoices(v []*LlmStreamChatResponseBodyChoices) *LlmStreamChatResponseBody {
+	s.Choices = v
+	return s
+}
+
+func (s *LlmStreamChatResponseBody) SetCreated(v int64) *LlmStreamChatResponseBody {
+	s.Created = &v
+	return s
+}
+
+func (s *LlmStreamChatResponseBody) SetError(v *LlmStreamChatResponseBodyError) *LlmStreamChatResponseBody {
+	s.Error = v
+	return s
+}
+
+func (s *LlmStreamChatResponseBody) SetId(v string) *LlmStreamChatResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *LlmStreamChatResponseBody) SetModel(v string) *LlmStreamChatResponseBody {
+	s.Model = &v
+	return s
+}
+
+func (s *LlmStreamChatResponseBody) SetObject(v string) *LlmStreamChatResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *LlmStreamChatResponseBody) SetRequestId(v string) *LlmStreamChatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *LlmStreamChatResponseBody) SetSystemFingerprint(v string) *LlmStreamChatResponseBody {
+	s.SystemFingerprint = &v
+	return s
+}
+
+func (s *LlmStreamChatResponseBody) SetUsage(v string) *LlmStreamChatResponseBody {
+	s.Usage = &v
+	return s
+}
+
+type LlmStreamChatResponseBodyChoices struct {
+	Delta *LlmStreamChatResponseBodyChoicesDelta `json:"Delta,omitempty" xml:"Delta,omitempty" type:"Struct"`
+	// example:
+	//
+	// stop
+	FinishReason *string `json:"FinishReason,omitempty" xml:"FinishReason,omitempty"`
+	// example:
+	//
+	// 0
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// null
+	Logprobs *string `json:"Logprobs,omitempty" xml:"Logprobs,omitempty"`
+}
+
+func (s LlmStreamChatResponseBodyChoices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LlmStreamChatResponseBodyChoices) GoString() string {
+	return s.String()
+}
+
+func (s *LlmStreamChatResponseBodyChoices) SetDelta(v *LlmStreamChatResponseBodyChoicesDelta) *LlmStreamChatResponseBodyChoices {
+	s.Delta = v
+	return s
+}
+
+func (s *LlmStreamChatResponseBodyChoices) SetFinishReason(v string) *LlmStreamChatResponseBodyChoices {
+	s.FinishReason = &v
+	return s
+}
+
+func (s *LlmStreamChatResponseBodyChoices) SetIndex(v int64) *LlmStreamChatResponseBodyChoices {
+	s.Index = &v
+	return s
+}
+
+func (s *LlmStreamChatResponseBodyChoices) SetLogprobs(v string) *LlmStreamChatResponseBodyChoices {
+	s.Logprobs = &v
+	return s
+}
+
+type LlmStreamChatResponseBodyChoicesDelta struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// assistant
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+}
+
+func (s LlmStreamChatResponseBodyChoicesDelta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LlmStreamChatResponseBodyChoicesDelta) GoString() string {
+	return s.String()
+}
+
+func (s *LlmStreamChatResponseBodyChoicesDelta) SetContent(v string) *LlmStreamChatResponseBodyChoicesDelta {
+	s.Content = &v
+	return s
+}
+
+func (s *LlmStreamChatResponseBodyChoicesDelta) SetRole(v string) *LlmStreamChatResponseBodyChoicesDelta {
+	s.Role = &v
+	return s
+}
+
+type LlmStreamChatResponseBodyError struct {
+	// example:
+	//
+	// data_inspection_failed
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Input data may contain inappropriate content.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// null
+	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// example:
+	//
+	// data_inspection_failed
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s LlmStreamChatResponseBodyError) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LlmStreamChatResponseBodyError) GoString() string {
+	return s.String()
+}
+
+func (s *LlmStreamChatResponseBodyError) SetCode(v string) *LlmStreamChatResponseBodyError {
+	s.Code = &v
+	return s
+}
+
+func (s *LlmStreamChatResponseBodyError) SetMessage(v string) *LlmStreamChatResponseBodyError {
+	s.Message = &v
+	return s
+}
+
+func (s *LlmStreamChatResponseBodyError) SetParam(v string) *LlmStreamChatResponseBodyError {
+	s.Param = &v
+	return s
+}
+
+func (s *LlmStreamChatResponseBodyError) SetType(v string) *LlmStreamChatResponseBodyError {
+	s.Type = &v
+	return s
+}
+
+type LlmStreamChatResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LlmStreamChatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s LlmStreamChatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LlmStreamChatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LlmStreamChatResponse) SetHeaders(v map[string]*string) *LlmStreamChatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LlmStreamChatResponse) SetStatusCode(v int32) *LlmStreamChatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LlmStreamChatResponse) SetBody(v *LlmStreamChatResponseBody) *LlmStreamChatResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyAnswerLibRequest struct {
 	// example:
 	//
@@ -13296,7 +13593,8 @@ type UpdateServiceConfigRequest struct {
 	// example:
 	//
 	// baselineCheck
-	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	ServiceCode   *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
 	// example:
 	//
 	// {}
@@ -13353,6 +13651,11 @@ func (s *UpdateServiceConfigRequest) SetSceneConfig(v string) *UpdateServiceConf
 
 func (s *UpdateServiceConfigRequest) SetServiceCode(v string) *UpdateServiceConfigRequest {
 	s.ServiceCode = &v
+	return s
+}
+
+func (s *UpdateServiceConfigRequest) SetServiceConfig(v string) *UpdateServiceConfigRequest {
+	s.ServiceConfig = &v
 	return s
 }
 
@@ -17928,6 +18231,74 @@ func (client *Client) ListServiceConfigs(request *ListServiceConfigsRequest) (_r
 
 // Summary:
 //
+// 使用SSE接口流式调用大模型
+//
+// @param request - LlmStreamChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LlmStreamChatResponse
+func (client *Client) LlmStreamChatWithOptions(request *LlmStreamChatRequest, runtime *util.RuntimeOptions) (_result *LlmStreamChatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Messages)) {
+		body["Messages"] = request.Messages
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Temperature)) {
+		body["Temperature"] = request.Temperature
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopP)) {
+		body["TopP"] = request.TopP
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LlmStreamChat"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LlmStreamChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 使用SSE接口流式调用大模型
+//
+// @param request - LlmStreamChatRequest
+//
+// @return LlmStreamChatResponse
+func (client *Client) LlmStreamChat(request *LlmStreamChatRequest) (_result *LlmStreamChatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LlmStreamChatResponse{}
+	_body, _err := client.LlmStreamChatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新代答库
 //
 // @param request - ModifyAnswerLibRequest
@@ -18890,6 +19261,10 @@ func (client *Client) UpdateServiceConfigWithOptions(request *UpdateServiceConfi
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
 		body["ServiceCode"] = request.ServiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceConfig)) {
+		body["ServiceConfig"] = request.ServiceConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VideoConfig)) {
