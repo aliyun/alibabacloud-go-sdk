@@ -2166,7 +2166,9 @@ type CreateDefenseTemplateRequest struct {
 	// example:
 	//
 	// user_default
-	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	TemplateType         *string   `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	UnbindResourceGroups []*string `json:"UnbindResourceGroups,omitempty" xml:"UnbindResourceGroups,omitempty" type:"Repeated"`
+	UnbindResources      []*string `json:"UnbindResources,omitempty" xml:"UnbindResources,omitempty" type:"Repeated"`
 }
 
 func (s CreateDefenseTemplateRequest) String() string {
@@ -2219,6 +2221,16 @@ func (s *CreateDefenseTemplateRequest) SetTemplateStatus(v int32) *CreateDefense
 
 func (s *CreateDefenseTemplateRequest) SetTemplateType(v string) *CreateDefenseTemplateRequest {
 	s.TemplateType = &v
+	return s
+}
+
+func (s *CreateDefenseTemplateRequest) SetUnbindResourceGroups(v []*string) *CreateDefenseTemplateRequest {
+	s.UnbindResourceGroups = v
+	return s
+}
+
+func (s *CreateDefenseTemplateRequest) SetUnbindResources(v []*string) *CreateDefenseTemplateRequest {
+	s.UnbindResources = v
 	return s
 }
 
@@ -14419,6 +14431,141 @@ func (s *DescribeDefenseResourceNamesResponse) SetBody(v *DescribeDefenseResourc
 	return s
 }
 
+type DescribeDefenseResourceOwnerUidRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn********60f
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a.com-waf,b.com-waf
+	ResourceNames *string `json:"ResourceNames,omitempty" xml:"ResourceNames,omitempty"`
+}
+
+func (s DescribeDefenseResourceOwnerUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDefenseResourceOwnerUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDefenseResourceOwnerUidRequest) SetInstanceId(v string) *DescribeDefenseResourceOwnerUidRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDefenseResourceOwnerUidRequest) SetRegionId(v string) *DescribeDefenseResourceOwnerUidRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDefenseResourceOwnerUidRequest) SetResourceManagerResourceGroupId(v string) *DescribeDefenseResourceOwnerUidRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDefenseResourceOwnerUidRequest) SetResourceNames(v string) *DescribeDefenseResourceOwnerUidRequest {
+	s.ResourceNames = &v
+	return s
+}
+
+type DescribeDefenseResourceOwnerUidResponseBody struct {
+	OwnerInfos []*DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos `json:"OwnerInfos,omitempty" xml:"OwnerInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7326952B-B83B-5B7C-84FA-77F3E17310A2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDefenseResourceOwnerUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDefenseResourceOwnerUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDefenseResourceOwnerUidResponseBody) SetOwnerInfos(v []*DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos) *DescribeDefenseResourceOwnerUidResponseBody {
+	s.OwnerInfos = v
+	return s
+}
+
+func (s *DescribeDefenseResourceOwnerUidResponseBody) SetRequestId(v string) *DescribeDefenseResourceOwnerUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos struct {
+	// example:
+	//
+	// 125************21
+	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// example:
+	//
+	// a.com-waf
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+}
+
+func (s DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos) SetOwnerUserId(v string) *DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos) SetResourceName(v string) *DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos {
+	s.ResourceName = &v
+	return s
+}
+
+type DescribeDefenseResourceOwnerUidResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDefenseResourceOwnerUidResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDefenseResourceOwnerUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDefenseResourceOwnerUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDefenseResourceOwnerUidResponse) SetHeaders(v map[string]*string) *DescribeDefenseResourceOwnerUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDefenseResourceOwnerUidResponse) SetStatusCode(v int32) *DescribeDefenseResourceOwnerUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDefenseResourceOwnerUidResponse) SetBody(v *DescribeDefenseResourceOwnerUidResponseBody) *DescribeDefenseResourceOwnerUidResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDefenseResourceTemplatesRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
@@ -15436,6 +15583,7 @@ func (s *DescribeDefenseRuleResponse) SetBody(v *DescribeDefenseRuleResponseBody
 }
 
 type DescribeDefenseRulesRequest struct {
+	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -15500,6 +15648,11 @@ func (s DescribeDefenseRulesRequest) String() string {
 
 func (s DescribeDefenseRulesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDefenseRulesRequest) SetDefenseType(v string) *DescribeDefenseRulesRequest {
+	s.DefenseType = &v
+	return s
 }
 
 func (s *DescribeDefenseRulesRequest) SetInstanceId(v string) *DescribeDefenseRulesRequest {
@@ -17015,7 +17168,7 @@ type DescribeDomainDetailResponseBodyListen struct {
 	// example:
 	//
 	// 123
-	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
 	// The type of the cipher suites. Valid values:
 	//
 	// 	- **1:*	- all cipher suites.
@@ -17156,7 +17309,7 @@ func (s DescribeDomainDetailResponseBodyListen) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainDetailResponseBodyListen) SetCertId(v int64) *DescribeDomainDetailResponseBodyListen {
+func (s *DescribeDomainDetailResponseBodyListen) SetCertId(v string) *DescribeDomainDetailResponseBodyListen {
 	s.CertId = &v
 	return s
 }
@@ -31967,6 +32120,8 @@ type DescribeTemplateResourcesRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
 	// 	- **cn-hangzhou:*	- the Chinese mainland.
@@ -31977,6 +32132,7 @@ type DescribeTemplateResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
@@ -32018,8 +32174,23 @@ func (s *DescribeTemplateResourcesRequest) SetInstanceId(v string) *DescribeTemp
 	return s
 }
 
+func (s *DescribeTemplateResourcesRequest) SetMaxResults(v int32) *DescribeTemplateResourcesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeTemplateResourcesRequest) SetNextToken(v string) *DescribeTemplateResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
 func (s *DescribeTemplateResourcesRequest) SetRegionId(v string) *DescribeTemplateResourcesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTemplateResourcesRequest) SetResource(v string) *DescribeTemplateResourcesRequest {
+	s.Resource = &v
 	return s
 }
 
@@ -32039,6 +32210,8 @@ func (s *DescribeTemplateResourcesRequest) SetTemplateId(v int64) *DescribeTempl
 }
 
 type DescribeTemplateResourcesResponseBody struct {
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -32046,7 +32219,8 @@ type DescribeTemplateResourcesResponseBody struct {
 	// C7BC9373-3960-53B0-8968-2B13454AE18F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array of protected objects or protected object groups that are associated to the protection rule template.
-	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	Resources  []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeTemplateResourcesResponseBody) String() string {
@@ -32057,6 +32231,16 @@ func (s DescribeTemplateResourcesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeTemplateResourcesResponseBody) SetMaxResults(v int32) *DescribeTemplateResourcesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeTemplateResourcesResponseBody) SetNextToken(v string) *DescribeTemplateResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
 func (s *DescribeTemplateResourcesResponseBody) SetRequestId(v string) *DescribeTemplateResourcesResponseBody {
 	s.RequestId = &v
 	return s
@@ -32064,6 +32248,11 @@ func (s *DescribeTemplateResourcesResponseBody) SetRequestId(v string) *Describe
 
 func (s *DescribeTemplateResourcesResponseBody) SetResources(v []*string) *DescribeTemplateResourcesResponseBody {
 	s.Resources = v
+	return s
+}
+
+func (s *DescribeTemplateResourcesResponseBody) SetTotalCount(v int32) *DescribeTemplateResourcesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -41686,6 +41875,14 @@ func (client *Client) CreateDefenseTemplateWithOptions(request *CreateDefenseTem
 		query["TemplateType"] = request.TemplateType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UnbindResourceGroups)) {
+		query["UnbindResourceGroups"] = request.UnbindResourceGroups
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnbindResources)) {
+		query["UnbindResources"] = request.UnbindResources
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -45827,6 +46024,78 @@ func (client *Client) DescribeDefenseResourceNames(request *DescribeDefenseResou
 
 // Summary:
 //
+// 查询防护对象和所属资源的关系
+//
+// @param request - DescribeDefenseResourceOwnerUidRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseResourceOwnerUidResponse
+func (client *Client) DescribeDefenseResourceOwnerUidWithOptions(request *DescribeDefenseResourceOwnerUidRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseResourceOwnerUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceNames)) {
+		query["ResourceNames"] = request.ResourceNames
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDefenseResourceOwnerUid"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDefenseResourceOwnerUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询防护对象和所属资源的关系
+//
+// @param request - DescribeDefenseResourceOwnerUidRequest
+//
+// @return DescribeDefenseResourceOwnerUidResponse
+func (client *Client) DescribeDefenseResourceOwnerUid(request *DescribeDefenseResourceOwnerUidRequest) (_result *DescribeDefenseResourceOwnerUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDefenseResourceOwnerUidResponse{}
+	_body, _err := client.DescribeDefenseResourceOwnerUidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the protection templates that are associated with a protected object or protected object group.
 //
 // @param request - DescribeDefenseResourceTemplatesRequest
@@ -46100,6 +46369,10 @@ func (client *Client) DescribeDefenseRulesWithOptions(request *DescribeDefenseRu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefenseType)) {
+		query["DefenseType"] = request.DefenseType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -50986,8 +51259,20 @@ func (client *Client) DescribeTemplateResourcesWithOptions(request *DescribeTemp
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
