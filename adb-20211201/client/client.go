@@ -31293,6 +31293,7 @@ type DescribeSQLPatternsRequest struct {
 	//
 	// 2022-09-06T03:06:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeSQLPatternsRequest) String() string {
@@ -31345,6 +31346,11 @@ func (s *DescribeSQLPatternsRequest) SetRegionId(v string) *DescribeSQLPatternsR
 
 func (s *DescribeSQLPatternsRequest) SetStartTime(v string) *DescribeSQLPatternsRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSQLPatternsRequest) SetUserName(v string) *DescribeSQLPatternsRequest {
+	s.UserName = &v
 	return s
 }
 
@@ -63497,6 +63503,10 @@ func (client *Client) DescribeSQLPatternsWithOptions(request *DescribeSQLPattern
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
 	}
 
 	req := &openapi.OpenApiRequest{
