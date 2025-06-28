@@ -1913,8 +1913,25 @@ func (s *CreateDBClusterResponse) SetBody(v *CreateDBClusterResponseBody) *Creat
 }
 
 type CreateDBResourceGroupRequest struct {
-	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterMode         *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-t7241****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The working mode of the resource group. Valid values:
+	//
+	// 	- **Disable*	- (default)
+	//
+	// 	- **AutoScale**
+	//
+	// example:
+	//
+	// AutoScale
+	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	// The resource specifications of a single compute cluster. Unit: ACU.
+	//
+	// example:
+	//
+	// 16ACU
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
@@ -1925,8 +1942,22 @@ type CreateDBResourceGroupRequest struct {
 	// example:
 	//
 	// am-bp1ub9grke1****
-	DBClusterId  *string                `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Engine       *string                `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The engine of the resource group. Valid values:
+	//
+	// 	- **AnalyticDB*	- (default)
+	//
+	// 	- **SparkWarehouse**
+	//
+	// example:
+	//
+	// AnalyticDB
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group. If you want to configure parameters for a specific Spark job, you can specify values for the parameters in the code editor when you submit the job.
+	//
+	// example:
+	//
+	// {\\"spark.adb.version\\":\\"3.5\\"}
 	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
@@ -1948,13 +1979,43 @@ type CreateDBResourceGroupRequest struct {
 	//
 	// 	- **batch**
 	//
+	// 	- **job**
+	//
 	// example:
 	//
 	// interactive
-	GroupType          *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	MaxClusterCount    *int32  `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The maximum number of compute clusters that are allowed in the resource group. Maximum value: 10.
+	//
+	// example:
+	//
+	// 2
+	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster. Unit: ACU.
+	//
+	// 	- When GroupType is set to interactive, set this parameter to a value in increments of 16ACU.
+	//
+	// 	- When GroupType is set to job, set this parameter to a value in increments of 8ACU.
+	//
+	// example:
+	//
+	// 32ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	MinClusterCount    *int32  `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	// The minimum number of compute clusters that are required in the resource group. Minimum value: 1.
+	//
+	// example:
+	//
+	// 1
+	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+	//
+	// 	- When GroupType is set to interactive, set this parameter to 16ACU.
+	//
+	// 	- When GroupType is set to job, set this parameter to 0ACU.
+	//
+	// example:
+	//
+	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
 	// The number of nodes. Default value: 0.
 	//
@@ -2066,8 +2127,25 @@ func (s *CreateDBResourceGroupRequest) SetResourceOwnerId(v int64) *CreateDBReso
 }
 
 type CreateDBResourceGroupShrinkRequest struct {
-	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterMode         *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-t7241****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The working mode of the resource group. Valid values:
+	//
+	// 	- **Disable*	- (default)
+	//
+	// 	- **AutoScale**
+	//
+	// example:
+	//
+	// AutoScale
+	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	// The resource specifications of a single compute cluster. Unit: ACU.
+	//
+	// example:
+	//
+	// 16ACU
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
@@ -2078,8 +2156,22 @@ type CreateDBResourceGroupShrinkRequest struct {
 	// example:
 	//
 	// am-bp1ub9grke1****
-	DBClusterId        *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The engine of the resource group. Valid values:
+	//
+	// 	- **AnalyticDB*	- (default)
+	//
+	// 	- **SparkWarehouse**
+	//
+	// example:
+	//
+	// AnalyticDB
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group. If you want to configure parameters for a specific Spark job, you can specify values for the parameters in the code editor when you submit the job.
+	//
+	// example:
+	//
+	// {\\"spark.adb.version\\":\\"3.5\\"}
 	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
@@ -2101,13 +2193,43 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// 	- **batch**
 	//
+	// 	- **job**
+	//
 	// example:
 	//
 	// interactive
-	GroupType          *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	MaxClusterCount    *int32  `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The maximum number of compute clusters that are allowed in the resource group. Maximum value: 10.
+	//
+	// example:
+	//
+	// 2
+	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster. Unit: ACU.
+	//
+	// 	- When GroupType is set to interactive, set this parameter to a value in increments of 16ACU.
+	//
+	// 	- When GroupType is set to job, set this parameter to a value in increments of 8ACU.
+	//
+	// example:
+	//
+	// 32ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	MinClusterCount    *int32  `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	// The minimum number of compute clusters that are required in the resource group. Minimum value: 1.
+	//
+	// example:
+	//
+	// 1
+	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+	//
+	// 	- When GroupType is set to interactive, set this parameter to 16ACU.
+	//
+	// 	- When GroupType is set to job, set this parameter to 0ACU.
+	//
+	// example:
+	//
+	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
 	// The number of nodes. Default value: 0.
 	//
@@ -14171,7 +14293,7 @@ type DescribeDBResourceGroupResponseBody struct {
 	//
 	// am-bp1ub9grke1****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The queried resource groups.
+	// The queried resource group.
 	GroupsInfo []*DescribeDBResourceGroupResponseBodyGroupsInfo `json:"GroupsInfo,omitempty" xml:"GroupsInfo,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -14205,18 +14327,58 @@ func (s *DescribeDBResourceGroupResponseBody) SetRequestId(v string) *DescribeDB
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
-	ClusterMode         *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	// The working mode of the resource group. Valid values:
+	//
+	// 	- **Disable*	- (default)
+	//
+	// 	- **AutoScale**
+	//
+	// example:
+	//
+	// AutoScale
+	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	// The resource specifications of a single compute cluster. Unit: ACU.
+	//
+	// example:
+	//
+	// 16ACU
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
-	ConnectionString    *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The endpoint of the resource group.
+	//
+	// >  This parameter is returned only when the value of Engine is SparkWarehouse.
+	//
+	// example:
+	//
+	// amv-bp1nw64y******.ads.aliyuncs.com
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The time when the resource group was created.
 	//
 	// example:
 	//
 	// 2022-10-09 16:57:35.241
-	CreateTime                *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ElasticMinComputeResource *string                `json:"ElasticMinComputeResource,omitempty" xml:"ElasticMinComputeResource,omitempty"`
-	Engine                    *string                `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineParams              map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The minimum amount of elastic computing resources. Unit: ACU.
+	//
+	// example:
+	//
+	// 16ACU
+	ElasticMinComputeResource *string `json:"ElasticMinComputeResource,omitempty" xml:"ElasticMinComputeResource,omitempty"`
+	// The engine of the resource group. Valid values:
+	//
+	// 	- **AnalyticDB*	- (default)
+	//
+	// 	- **SparkWarehouse**
+	//
+	// example:
+	//
+	// AnalyticDB
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group. If you want to configure parameters for a specific Spark job, you can specify values for the parameters in the code editor when you submit the job.
+	//
+	// example:
+	//
+	// {\\"spark.adb.version\\":\\"3.5\\"}
+	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
 	// example:
@@ -14225,11 +14387,11 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The query execution mode. Valid values:
 	//
-	// 	- **interactive**
+	// 	- **interactive*	- (default)
 	//
-	// 	- **batch*	- (default)
+	// 	- **batch**
 	//
-	// > For more information, see [Query execution modes](https://help.aliyun.com/document_detail/189502.html).
+	// 	- **job**
 	//
 	// example:
 	//
@@ -14242,20 +14404,75 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	// example:
 	//
 	// testb,testc
-	GroupUsers         *string `json:"GroupUsers,omitempty" xml:"GroupUsers,omitempty"`
-	MaxClusterCount    *int32  `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	GroupUsers *string `json:"GroupUsers,omitempty" xml:"GroupUsers,omitempty"`
+	// The maximum number of compute clusters that are allowed in the resource group. Maximum value: 10.
+	//
+	// example:
+	//
+	// 4
+	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster. Unit: ACU.
+	//
+	// 	- If the value of GroupType is **interactive**, the amount of reserved computing resources that are not allocated in the cluster is returned in increments of 16ACU.
+	//
+	// 	- If the value of GroupType is **job**, the amount of reserved computing resources that are not allocated in the cluster is returned in increments of 8ACU.
+	//
+	// example:
+	//
+	// 32ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	MinClusterCount    *int32  `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	// The minimum number of compute clusters that are required in the resource group. Minimum value: 1.
+	//
+	// example:
+	//
+	// 1
+	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+	//
+	// 	- If the value of GroupType is **interactive**, 16ACU is returned.
+	//
+	// 	- If the value of GroupType is **job**, 0ACU is returned.
+	//
+	// example:
+	//
+	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
 	// The number of nodes. Each node provides 16 cores and 64 GB memory.
 	//
 	// example:
 	//
 	// 2
-	NodeNum             *int32  `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
-	Port                *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	RunningClusterCount *int32  `json:"RunningClusterCount,omitempty" xml:"RunningClusterCount,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	// The port number of the resource group.
+	//
+	// >  This parameter is returned only when the value of Engine is SparkWarehouse.
+	//
+	// example:
+	//
+	// 3306
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The number of compute clusters running in the resource group.
+	//
+	// example:
+	//
+	// 2
+	RunningClusterCount *int32 `json:"RunningClusterCount,omitempty" xml:"RunningClusterCount,omitempty"`
+	// The status of the resource group. Valid values:
+	//
+	// 	- **Pending**
+	//
+	// 	- **Running**
+	//
+	// 	- **Scaling**
+	//
+	// 	- **Deleting**
+	//
+	// 	- **Deleted**
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time when the resource group was updated.
 	//
 	// example:
@@ -24262,6 +24479,7 @@ type DescribeSQLPatternsRequest struct {
 	//
 	// 2021-09-30T00:10:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeSQLPatternsRequest) String() string {
@@ -24314,6 +24532,11 @@ func (s *DescribeSQLPatternsRequest) SetRegionId(v string) *DescribeSQLPatternsR
 
 func (s *DescribeSQLPatternsRequest) SetStartTime(v string) *DescribeSQLPatternsRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSQLPatternsRequest) SetUserName(v string) *DescribeSQLPatternsRequest {
+	s.UserName = &v
 	return s
 }
 
@@ -34833,8 +35056,22 @@ type ModifyDBResourceGroupRequest struct {
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-t7241****
-	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterMode         *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The working mode of the resource group. Valid values:
+	//
+	// 	- **Disable*	- (default)
+	//
+	// 	- **AutoScale**
+	//
+	// example:
+	//
+	// AutoScale
+	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	// The resource specifications of a single compute cluster. Unit: ACU.
+	//
+	// example:
+	//
+	// 16ACU
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
@@ -34845,7 +35082,12 @@ type ModifyDBResourceGroupRequest struct {
 	// example:
 	//
 	// am-bp1ub9grke1****
-	DBClusterId  *string                `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group. If you want to configure parameters for a specific Spark job, you can specify values for the parameters in the code editor when you submit the job.
+	//
+	// example:
+	//
+	// {\\"spark.adb.version\\":\\"3.5\\"}
 	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
@@ -34857,19 +35099,49 @@ type ModifyDBResourceGroupRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The query execution mode. Valid values:
 	//
-	// 	- **interactive**
+	// 	- **interactive*	- (default)
 	//
 	// 	- **batch**
+	//
+	// 	- **job**
 	//
 	// >  For more information, see [Query execution modes](https://help.aliyun.com/document_detail/189502.html).
 	//
 	// example:
 	//
 	// batch
-	GroupType          *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	MaxClusterCount    *int32  `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The maximum number of compute clusters that are allowed in the resource group. Maximum value: 10.
+	//
+	// example:
+	//
+	// 4
+	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster. Unit: ACU.
+	//
+	// 	- When GroupType is set to interactive, set this parameter to a value in increments of 16ACU.
+	//
+	// 	- When GroupType is set to job, set this parameter to a value in increments of 8ACU.
+	//
+	// example:
+	//
+	// 48ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	MinClusterCount    *int32  `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	// The minimum number of compute clusters that are required in the resource group. Minimum value: 1.
+	//
+	// example:
+	//
+	// 1
+	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+	//
+	// 	- When GroupType is set to interactive, set this parameter to 16ACU.
+	//
+	// 	- When GroupType is set to job, set this parameter to 0ACU.
+	//
+	// example:
+	//
+	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
 	// The number of nodes. Default value: 0.
 	//
@@ -34988,8 +35260,22 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-t7241****
-	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterMode         *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The working mode of the resource group. Valid values:
+	//
+	// 	- **Disable*	- (default)
+	//
+	// 	- **AutoScale**
+	//
+	// example:
+	//
+	// AutoScale
+	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	// The resource specifications of a single compute cluster. Unit: ACU.
+	//
+	// example:
+	//
+	// 16ACU
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
@@ -35000,7 +35286,12 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	// example:
 	//
 	// am-bp1ub9grke1****
-	DBClusterId        *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group. If you want to configure parameters for a specific Spark job, you can specify values for the parameters in the code editor when you submit the job.
+	//
+	// example:
+	//
+	// {\\"spark.adb.version\\":\\"3.5\\"}
 	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
@@ -35012,19 +35303,49 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The query execution mode. Valid values:
 	//
-	// 	- **interactive**
+	// 	- **interactive*	- (default)
 	//
 	// 	- **batch**
+	//
+	// 	- **job**
 	//
 	// >  For more information, see [Query execution modes](https://help.aliyun.com/document_detail/189502.html).
 	//
 	// example:
 	//
 	// batch
-	GroupType          *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	MaxClusterCount    *int32  `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The maximum number of compute clusters that are allowed in the resource group. Maximum value: 10.
+	//
+	// example:
+	//
+	// 4
+	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
+	// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster. Unit: ACU.
+	//
+	// 	- When GroupType is set to interactive, set this parameter to a value in increments of 16ACU.
+	//
+	// 	- When GroupType is set to job, set this parameter to a value in increments of 8ACU.
+	//
+	// example:
+	//
+	// 48ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	MinClusterCount    *int32  `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	// The minimum number of compute clusters that are required in the resource group. Minimum value: 1.
+	//
+	// example:
+	//
+	// 1
+	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
+	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+	//
+	// 	- When GroupType is set to interactive, set this parameter to 16ACU.
+	//
+	// 	- When GroupType is set to job, set this parameter to 0ACU.
+	//
+	// example:
+	//
+	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
 	// The number of nodes. Default value: 0.
 	//
@@ -39160,13 +39481,19 @@ func (client *Client) CreateDBCluster(request *CreateDBClusterRequest) (_result 
 
 // Summary:
 //
-// Creates a resource group for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+// Creates a resource group for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// ## Precautions
+// This operation is suitable for the following editions:
 //
-// This operation is applicable only for elastic clusters of 32 cores or more.
+//   - **Enterprise Edition**.
+//
+//   - **Basic Edition**.
+//
+//   - **Data Lakehouse Edition**.
+//
+//   - **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more.
 //
 // @param tmpReq - CreateDBResourceGroupRequest
 //
@@ -39278,13 +39605,19 @@ func (client *Client) CreateDBResourceGroupWithOptions(tmpReq *CreateDBResourceG
 
 // Summary:
 //
-// Creates a resource group for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+// Creates a resource group for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// ## Precautions
+// This operation is suitable for the following editions:
 //
-// This operation is applicable only for elastic clusters of 32 cores or more.
+//   - **Enterprise Edition**.
+//
+//   - **Basic Edition**.
+//
+//   - **Data Lakehouse Edition**.
+//
+//   - **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more.
 //
 // @param request - CreateDBResourceGroupRequest
 //
@@ -42894,13 +43227,19 @@ func (client *Client) DescribeDBClusters(request *DescribeDBClustersRequest) (_r
 
 // Summary:
 //
-// Queries the information about a resource group for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+// Queries the information about a resource group for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// ###
+// This operation is suitable for the following editions:
 //
-// You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
+//   - **Enterprise Edition**.
+//
+//   - **Basic Edition**.
+//
+//   - **Data Lakehouse Edition**.
+//
+//   - **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more.
 //
 // @param request - DescribeDBResourceGroupRequest
 //
@@ -42962,13 +43301,19 @@ func (client *Client) DescribeDBResourceGroupWithOptions(request *DescribeDBReso
 
 // Summary:
 //
-// Queries the information about a resource group for an AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+// Queries the information about a resource group for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// ###
+// This operation is suitable for the following editions:
 //
-// You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
+//   - **Enterprise Edition**.
+//
+//   - **Basic Edition**.
+//
+//   - **Data Lakehouse Edition**.
+//
+//   - **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more.
 //
 // @param request - DescribeDBResourceGroupRequest
 //
@@ -45817,6 +46162,10 @@ func (client *Client) DescribeSQLPatternsWithOptions(request *DescribeSQLPattern
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -49662,11 +50011,15 @@ func (client *Client) ModifyDBClusterVip(request *ModifyDBClusterVipRequest) (_r
 //
 // Description:
 //
-// ## Precautions
+// This operation is suitable for the following editions:
 //
-//   - This operation is applicable only for elastic clusters of 32 cores or more.
+//   - **Enterprise Edition**.
 //
-//   - The number of nodes cannot be changed for the default resource group USER_DEFAULT.
+//   - **Basic Edition**.
+//
+//   - **Data Lakehouse Edition**.
+//
+//   - **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more. The number of nodes cannot be modified for the default resource group USER_DEFAULT.
 //
 // @param tmpReq - ModifyDBResourceGroupRequest
 //
@@ -49786,11 +50139,15 @@ func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceG
 //
 // Description:
 //
-// ## Precautions
+// This operation is suitable for the following editions:
 //
-//   - This operation is applicable only for elastic clusters of 32 cores or more.
+//   - **Enterprise Edition**.
 //
-//   - The number of nodes cannot be changed for the default resource group USER_DEFAULT.
+//   - **Basic Edition**.
+//
+//   - **Data Lakehouse Edition**.
+//
+//   - **Data Warehouse Edition in elastic mode**: 32 cores and 128 GB or more. The number of nodes cannot be modified for the default resource group USER_DEFAULT.
 //
 // @param request - ModifyDBResourceGroupRequest
 //
