@@ -2025,6 +2025,7 @@ type CreateCloudPhoneNodeRequest struct {
 	//
 	// cpm.gn6.gx1
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	StreamMode *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
 	// The resource tags.
 	Tag []*CreateCloudPhoneNodeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The vSwitch ID.
@@ -2125,6 +2126,11 @@ func (s *CreateCloudPhoneNodeRequest) SetServerShareDataVolume(v int32) *CreateC
 
 func (s *CreateCloudPhoneNodeRequest) SetServerType(v string) *CreateCloudPhoneNodeRequest {
 	s.ServerType = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetStreamMode(v int32) *CreateCloudPhoneNodeRequest {
+	s.StreamMode = &v
 	return s
 }
 
@@ -2334,6 +2340,7 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	//
 	// cpm.gn6.gx1
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	StreamMode *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
 	// The resource tags.
 	Tag []*CreateCloudPhoneNodeShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The vSwitch ID.
@@ -2434,6 +2441,11 @@ func (s *CreateCloudPhoneNodeShrinkRequest) SetServerShareDataVolume(v int32) *C
 
 func (s *CreateCloudPhoneNodeShrinkRequest) SetServerType(v string) *CreateCloudPhoneNodeShrinkRequest {
 	s.ServerType = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeShrinkRequest) SetStreamMode(v int32) *CreateCloudPhoneNodeShrinkRequest {
+	s.StreamMode = &v
 	return s
 }
 
@@ -5190,6 +5202,7 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	//
 	// connect
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	StreamMode    *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
 	// The tags.
 	Tags      []*DescribeAndroidInstancesResponseBodyInstanceModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	VSwitchId *string                                                  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -5381,6 +5394,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetRenderingType(v s
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetSessionStatus(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.SessionStatus = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetStreamMode(v int32) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.StreamMode = &v
 	return s
 }
 
@@ -8900,7 +8918,7 @@ func (s *DetachKeyPairResponse) SetBody(v *DetachKeyPairResponseBody) *DetachKey
 }
 
 type DisconnectAndroidInstanceRequest struct {
-	// This parameter is required.
+	EndUserId   *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 
@@ -8910,6 +8928,11 @@ func (s DisconnectAndroidInstanceRequest) String() string {
 
 func (s DisconnectAndroidInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DisconnectAndroidInstanceRequest) SetEndUserId(v string) *DisconnectAndroidInstanceRequest {
+	s.EndUserId = &v
+	return s
 }
 
 func (s *DisconnectAndroidInstanceRequest) SetInstanceIds(v []*string) *DisconnectAndroidInstanceRequest {
@@ -10685,7 +10708,8 @@ type ModifyCloudPhoneNodeRequest struct {
 	// example:
 	//
 	// cpn-0ugbptfu473fy****
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	StreamMode *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
 }
 
 func (s ModifyCloudPhoneNodeRequest) String() string {
@@ -10703,6 +10727,11 @@ func (s *ModifyCloudPhoneNodeRequest) SetNewNodeName(v string) *ModifyCloudPhone
 
 func (s *ModifyCloudPhoneNodeRequest) SetNodeId(v string) *ModifyCloudPhoneNodeRequest {
 	s.NodeId = &v
+	return s
+}
+
+func (s *ModifyCloudPhoneNodeRequest) SetStreamMode(v int32) *ModifyCloudPhoneNodeRequest {
+	s.StreamMode = &v
 	return s
 }
 
@@ -14414,6 +14443,10 @@ func (client *Client) CreateCloudPhoneNodeWithOptions(tmpReq *CreateCloudPhoneNo
 		query["ServerType"] = request.ServerType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StreamMode)) {
+		query["StreamMode"] = request.StreamMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
 	}
@@ -16446,6 +16479,10 @@ func (client *Client) DisconnectAndroidInstanceWithOptions(request *DisconnectAn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		query["EndUserId"] = request.EndUserId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
 		query["InstanceIds"] = request.InstanceIds
 	}
@@ -17377,7 +17414,19 @@ func (client *Client) ModifyCloudPhoneNodeWithOptions(request *ModifyCloudPhoneN
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewNodeName)) {
+		query["NewNodeName"] = request.NewNodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamMode)) {
+		query["StreamMode"] = request.StreamMode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17386,7 +17435,7 @@ func (client *Client) ModifyCloudPhoneNodeWithOptions(request *ModifyCloudPhoneN
 		Version:     tea.String("2023-09-30"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
