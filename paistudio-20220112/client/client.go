@@ -602,6 +602,29 @@ func (s *ConditionExpression) SetValues(v []*string) *ConditionExpression {
 	return s
 }
 
+type EniCacheConfig struct {
+	CachePoolSize *int32 `json:"CachePoolSize,omitempty" xml:"CachePoolSize,omitempty"`
+	Enabled       *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s EniCacheConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EniCacheConfig) GoString() string {
+	return s.String()
+}
+
+func (s *EniCacheConfig) SetCachePoolSize(v int32) *EniCacheConfig {
+	s.CachePoolSize = &v
+	return s
+}
+
+func (s *EniCacheConfig) SetEnabled(v bool) *EniCacheConfig {
+	s.Enabled = &v
+	return s
+}
+
 type Features struct {
 	Quota *FeaturesQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
 }
@@ -1155,6 +1178,7 @@ func (s *Location) SetLocationValue(v map[string]interface{}) *Location {
 }
 
 type MachineGroup struct {
+	Cpu       *int64  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	CreatorID *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
 	// example:
 	//
@@ -1168,10 +1192,14 @@ type MachineGroup struct {
 	GmtExpiredTime  *string `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	GmtStartedTime  *string `json:"GmtStartedTime,omitempty" xml:"GmtStartedTime,omitempty"`
+	Gpu             *int64  `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	GpuMemory       *int64  `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	GpuType         *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
 	// example:
 	//
 	// mg1
 	MachineGroupID      *string   `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
+	Memory              *int64    `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	OrderInstanceId     *string   `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
 	PaymentDuration     *string   `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
 	PaymentDurationUnit *string   `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
@@ -1179,6 +1207,7 @@ type MachineGroup struct {
 	ReasonCode          *string   `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	ReasonMessage       *string   `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
 	ResourceGroupID     *string   `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	ResourceType        *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Status              *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 	SupportedDrivers    []*string `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
 }
@@ -1189,6 +1218,11 @@ func (s MachineGroup) String() string {
 
 func (s MachineGroup) GoString() string {
 	return s.String()
+}
+
+func (s *MachineGroup) SetCpu(v int64) *MachineGroup {
+	s.Cpu = &v
+	return s
 }
 
 func (s *MachineGroup) SetCreatorID(v string) *MachineGroup {
@@ -1241,8 +1275,28 @@ func (s *MachineGroup) SetGmtStartedTime(v string) *MachineGroup {
 	return s
 }
 
+func (s *MachineGroup) SetGpu(v int64) *MachineGroup {
+	s.Gpu = &v
+	return s
+}
+
+func (s *MachineGroup) SetGpuMemory(v int64) *MachineGroup {
+	s.GpuMemory = &v
+	return s
+}
+
+func (s *MachineGroup) SetGpuType(v string) *MachineGroup {
+	s.GpuType = &v
+	return s
+}
+
 func (s *MachineGroup) SetMachineGroupID(v string) *MachineGroup {
 	s.MachineGroupID = &v
+	return s
+}
+
+func (s *MachineGroup) SetMemory(v int64) *MachineGroup {
+	s.Memory = &v
 	return s
 }
 
@@ -1278,6 +1332,11 @@ func (s *MachineGroup) SetReasonMessage(v string) *MachineGroup {
 
 func (s *MachineGroup) SetResourceGroupID(v string) *MachineGroup {
 	s.ResourceGroupID = &v
+	return s
+}
+
+func (s *MachineGroup) SetResourceType(v string) *MachineGroup {
+	s.ResourceType = &v
 	return s
 }
 
@@ -2548,8 +2607,10 @@ type QuotaConfig struct {
 	EnableGPUShare                 *bool                      `json:"EnableGPUShare,omitempty" xml:"EnableGPUShare,omitempty"`
 	EnablePreemptSubquotaWorkloads *bool                      `json:"EnablePreemptSubquotaWorkloads,omitempty" xml:"EnablePreemptSubquotaWorkloads,omitempty"`
 	EnableSubQuotaPreemption       *bool                      `json:"EnableSubQuotaPreemption,omitempty" xml:"EnableSubQuotaPreemption,omitempty"`
+	EniCacheConfig                 *EniCacheConfig            `json:"EniCacheConfig,omitempty" xml:"EniCacheConfig,omitempty"`
 	OversoldUsageInfo              *OversoldUsageConfig       `json:"OversoldUsageInfo,omitempty" xml:"OversoldUsageInfo,omitempty"`
 	ResourceSpecs                  []*WorkspaceSpecs          `json:"ResourceSpecs,omitempty" xml:"ResourceSpecs,omitempty" type:"Repeated"`
+	SandboxCacheConfig             *SandboxCacheConfig        `json:"SandboxCacheConfig,omitempty" xml:"SandboxCacheConfig,omitempty"`
 	SelfQuotaPreemptionConfig      *SelfQuotaPreemptionConfig `json:"SelfQuotaPreemptionConfig,omitempty" xml:"SelfQuotaPreemptionConfig,omitempty"`
 	SubQuotaPreemptionConfig       *SubQuotaPreemptionConfig  `json:"SubQuotaPreemptionConfig,omitempty" xml:"SubQuotaPreemptionConfig,omitempty"`
 	SupportGPUDrivers              []*string                  `json:"SupportGPUDrivers,omitempty" xml:"SupportGPUDrivers,omitempty" type:"Repeated"`
@@ -2598,6 +2659,11 @@ func (s *QuotaConfig) SetEnableSubQuotaPreemption(v bool) *QuotaConfig {
 	return s
 }
 
+func (s *QuotaConfig) SetEniCacheConfig(v *EniCacheConfig) *QuotaConfig {
+	s.EniCacheConfig = v
+	return s
+}
+
 func (s *QuotaConfig) SetOversoldUsageInfo(v *OversoldUsageConfig) *QuotaConfig {
 	s.OversoldUsageInfo = v
 	return s
@@ -2605,6 +2671,11 @@ func (s *QuotaConfig) SetOversoldUsageInfo(v *OversoldUsageConfig) *QuotaConfig 
 
 func (s *QuotaConfig) SetResourceSpecs(v []*WorkspaceSpecs) *QuotaConfig {
 	s.ResourceSpecs = v
+	return s
+}
+
+func (s *QuotaConfig) SetSandboxCacheConfig(v *SandboxCacheConfig) *QuotaConfig {
+	s.SandboxCacheConfig = v
 	return s
 }
 
@@ -3486,6 +3557,88 @@ func (s *ResourceGroupMetric) SetResourceGroupID(v string) *ResourceGroupMetric 
 	return s
 }
 
+type ResourceInfo struct {
+}
+
+func (s ResourceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceInfo) GoString() string {
+	return s.String()
+}
+
+type ResourceInfos struct {
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	EcsSpec      *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	GpuCardType  *string `json:"GpuCardType,omitempty" xml:"GpuCardType,omitempty"`
+	MachineModel *string `json:"MachineModel,omitempty" xml:"MachineModel,omitempty"`
+	MaxQuota     *int64  `json:"MaxQuota,omitempty" xml:"MaxQuota,omitempty"`
+	NetworkPodId *string `json:"NetworkPodId,omitempty" xml:"NetworkPodId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UsedQuota    *int64  `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
+	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ResourceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceInfos) SetClusterId(v string) *ResourceInfos {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ResourceInfos) SetEcsSpec(v string) *ResourceInfos {
+	s.EcsSpec = &v
+	return s
+}
+
+func (s *ResourceInfos) SetGpuCardType(v string) *ResourceInfos {
+	s.GpuCardType = &v
+	return s
+}
+
+func (s *ResourceInfos) SetMachineModel(v string) *ResourceInfos {
+	s.MachineModel = &v
+	return s
+}
+
+func (s *ResourceInfos) SetMaxQuota(v int64) *ResourceInfos {
+	s.MaxQuota = &v
+	return s
+}
+
+func (s *ResourceInfos) SetNetworkPodId(v string) *ResourceInfos {
+	s.NetworkPodId = &v
+	return s
+}
+
+func (s *ResourceInfos) SetRegionId(v string) *ResourceInfos {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ResourceInfos) SetUsedQuota(v int64) *ResourceInfos {
+	s.UsedQuota = &v
+	return s
+}
+
+func (s *ResourceInfos) SetUserId(v string) *ResourceInfos {
+	s.UserId = &v
+	return s
+}
+
+func (s *ResourceInfos) SetUserName(v string) *ResourceInfos {
+	s.UserName = &v
+	return s
+}
+
 type ResourceLimitDetails struct {
 	GCLevel                   *string                `json:"GCLevel,omitempty" xml:"GCLevel,omitempty"`
 	ResourceLimit             map[string]interface{} `json:"ResourceLimit,omitempty" xml:"ResourceLimit,omitempty"`
@@ -3641,6 +3794,23 @@ func (s Rules) GoString() string {
 
 func (s *Rules) SetScheduling(v *SchedulingRule) *Rules {
 	s.Scheduling = v
+	return s
+}
+
+type SandboxCacheConfig struct {
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s SandboxCacheConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SandboxCacheConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SandboxCacheConfig) SetEnabled(v bool) *SandboxCacheConfig {
+	s.Enabled = &v
 	return s
 }
 
@@ -10495,7 +10665,8 @@ type ListResourceGroupsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize         *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupIDs *string `json:"ResourceGroupIDs,omitempty" xml:"ResourceGroupIDs,omitempty"`
 	// example:
 	//
 	// Lingjun
@@ -10544,6 +10715,11 @@ func (s *ListResourceGroupsRequest) SetPageNumber(v int64) *ListResourceGroupsRe
 
 func (s *ListResourceGroupsRequest) SetPageSize(v int64) *ListResourceGroupsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequest) SetResourceGroupIDs(v string) *ListResourceGroupsRequest {
+	s.ResourceGroupIDs = &v
 	return s
 }
 
@@ -15870,6 +16046,10 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIDs)) {
+		query["ResourceGroupIDs"] = request.ResourceGroupIDs
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
