@@ -5449,7 +5449,8 @@ type GetSmsSignResponseBody struct {
 	// example:
 	//
 	// SIGN_100000077042023_17174665*****_ZM2kG
-	SignCode *string `json:"SignCode,omitempty" xml:"SignCode,omitempty"`
+	SignCode                  *string                                            `json:"SignCode,omitempty" xml:"SignCode,omitempty"`
+	SignIspRegisterDetailList []*GetSmsSignResponseBodySignIspRegisterDetailList `json:"SignIspRegisterDetailList,omitempty" xml:"SignIspRegisterDetailList,omitempty" type:"Repeated"`
 	// SMS signature name.
 	//
 	// example:
@@ -5580,6 +5581,11 @@ func (s *GetSmsSignResponseBody) SetSignCode(v string) *GetSmsSignResponseBody {
 	return s
 }
 
+func (s *GetSmsSignResponseBody) SetSignIspRegisterDetailList(v []*GetSmsSignResponseBodySignIspRegisterDetailList) *GetSmsSignResponseBody {
+	s.SignIspRegisterDetailList = v
+	return s
+}
+
 func (s *GetSmsSignResponseBody) SetSignName(v string) *GetSmsSignResponseBody {
 	s.SignName = &v
 	return s
@@ -5635,6 +5641,64 @@ func (s *GetSmsSignResponseBodyAuditInfo) SetAuditDate(v string) *GetSmsSignResp
 
 func (s *GetSmsSignResponseBodyAuditInfo) SetRejectInfo(v string) *GetSmsSignResponseBodyAuditInfo {
 	s.RejectInfo = &v
+	return s
+}
+
+type GetSmsSignResponseBodySignIspRegisterDetailList struct {
+	OperatorCode          *string                                                                 `json:"OperatorCode,omitempty" xml:"OperatorCode,omitempty"`
+	OperatorCompleteTime  *string                                                                 `json:"OperatorCompleteTime,omitempty" xml:"OperatorCompleteTime,omitempty"`
+	RegisterStatus        *int32                                                                  `json:"RegisterStatus,omitempty" xml:"RegisterStatus,omitempty"`
+	RegisterStatusReasons []*GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons `json:"RegisterStatusReasons,omitempty" xml:"RegisterStatusReasons,omitempty" type:"Repeated"`
+}
+
+func (s GetSmsSignResponseBodySignIspRegisterDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmsSignResponseBodySignIspRegisterDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmsSignResponseBodySignIspRegisterDetailList) SetOperatorCode(v string) *GetSmsSignResponseBodySignIspRegisterDetailList {
+	s.OperatorCode = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBodySignIspRegisterDetailList) SetOperatorCompleteTime(v string) *GetSmsSignResponseBodySignIspRegisterDetailList {
+	s.OperatorCompleteTime = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBodySignIspRegisterDetailList) SetRegisterStatus(v int32) *GetSmsSignResponseBodySignIspRegisterDetailList {
+	s.RegisterStatus = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBodySignIspRegisterDetailList) SetRegisterStatusReasons(v []*GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons) *GetSmsSignResponseBodySignIspRegisterDetailList {
+	s.RegisterStatusReasons = v
+	return s
+}
+
+type GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons struct {
+	ReasonCode     *string   `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonDescList []*string `json:"ReasonDescList,omitempty" xml:"ReasonDescList,omitempty" type:"Repeated"`
+}
+
+func (s GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons) SetReasonCode(v string) *GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons) SetReasonDescList(v []*string) *GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons {
+	s.ReasonDescList = v
 	return s
 }
 
