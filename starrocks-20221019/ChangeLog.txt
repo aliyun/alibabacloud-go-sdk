@@ -1,3 +1,11 @@
+2025-06-30 Version: v1.0.1
+- Update API ModifyCu: add request parameters PromotionOptionNo.
+- Update API ModifyDiskNumber: add request parameters PromotionOptionNo.
+- Update API ModifyDiskPerformanceLevel: add request parameters PromotionOptionNo.
+- Update API ModifyDiskSize: add request parameters PromotionOptionNo.
+- Update API ModifyNodeNumber: add request parameters PromotionOptionNo.
+
+
 2025-02-20 Version: v1.0.0
 - Update API ModifyCu: add param FastMode.
 - Update API ModifyDiskNumber: add param FastMode.

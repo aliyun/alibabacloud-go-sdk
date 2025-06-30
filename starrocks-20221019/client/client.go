@@ -110,6 +110,15 @@ func (s *ResourceSpec) SetStorageSize(v int32) *ResourceSpec {
 }
 
 type ModifyCuRequest struct {
+	// Specifies whether to restart compute nodes in quick restart mode. Default value: false. Valid values:
+	//
+	// 	- true: Compute nodes are restarted in quick restart mode in multiple batches. The batches are executed in parallel, and the nodes in each batch are restarted at the same time.
+	//
+	// 	- false: Compute nodes are restarted in rolling restart mode.
+	//
+	// example:
+	//
+	// true
 	FastMode *bool `json:"FastMode,omitempty" xml:"FastMode,omitempty"`
 	// The instance ID.
 	//
@@ -126,7 +135,8 @@ type ModifyCuRequest struct {
 	// example:
 	//
 	// ng-3d5ce6454354****
-	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupId       *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 	// The number of CUs to which you want to change.
 	//
 	// Valid values:
@@ -169,6 +179,11 @@ func (s *ModifyCuRequest) SetInstanceId(v string) *ModifyCuRequest {
 
 func (s *ModifyCuRequest) SetNodeGroupId(v string) *ModifyCuRequest {
 	s.NodeGroupId = &v
+	return s
+}
+
+func (s *ModifyCuRequest) SetPromotionOptionNo(v string) *ModifyCuRequest {
+	s.PromotionOptionNo = &v
 	return s
 }
 
@@ -505,6 +520,15 @@ func (s *ModifyCuPreCheckResponse) SetBody(v *ModifyCuPreCheckResponseBody) *Mod
 }
 
 type ModifyDiskNumberRequest struct {
+	// Specifies whether to restart compute nodes in quick restart mode. Default value: false. Valid values:
+	//
+	// 	- true: Compute nodes are restarted in quick restart mode in multiple batches. The batches are executed in parallel, and the nodes in each batch are restarted at the same time.
+	//
+	// 	- false: Compute nodes are restarted in rolling restart mode.
+	//
+	// example:
+	//
+	// true
 	FastMode *bool `json:"FastMode,omitempty" xml:"FastMode,omitempty"`
 	// The instance ID.
 	//
@@ -521,7 +545,8 @@ type ModifyDiskNumberRequest struct {
 	// example:
 	//
 	// ng-3d5ce6454354****
-	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupId       *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 	// The number of disks to which you want to change to.
 	//
 	// This parameter is required.
@@ -552,6 +577,11 @@ func (s *ModifyDiskNumberRequest) SetInstanceId(v string) *ModifyDiskNumberReque
 
 func (s *ModifyDiskNumberRequest) SetNodeGroupId(v string) *ModifyDiskNumberRequest {
 	s.NodeGroupId = &v
+	return s
+}
+
+func (s *ModifyDiskNumberRequest) SetPromotionOptionNo(v string) *ModifyDiskNumberRequest {
+	s.PromotionOptionNo = &v
 	return s
 }
 
@@ -693,7 +723,8 @@ type ModifyDiskPerformanceLevelRequest struct {
 	// example:
 	//
 	// ng-3d5ce6454354****
-	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupId       *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 	// The disk performance level to which you want to change.
 	//
 	// Valid values:
@@ -729,6 +760,11 @@ func (s *ModifyDiskPerformanceLevelRequest) SetInstanceId(v string) *ModifyDiskP
 
 func (s *ModifyDiskPerformanceLevelRequest) SetNodeGroupId(v string) *ModifyDiskPerformanceLevelRequest {
 	s.NodeGroupId = &v
+	return s
+}
+
+func (s *ModifyDiskPerformanceLevelRequest) SetPromotionOptionNo(v string) *ModifyDiskPerformanceLevelRequest {
+	s.PromotionOptionNo = &v
 	return s
 }
 
@@ -870,7 +906,8 @@ type ModifyDiskSizeRequest struct {
 	// example:
 	//
 	// ng-3d5ce6454354****
-	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupId       *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 	// The disk size to which you want to change to. Unit: GB.
 	//
 	// This parameter is required.
@@ -896,6 +933,11 @@ func (s *ModifyDiskSizeRequest) SetInstanceId(v string) *ModifyDiskSizeRequest {
 
 func (s *ModifyDiskSizeRequest) SetNodeGroupId(v string) *ModifyDiskSizeRequest {
 	s.NodeGroupId = &v
+	return s
+}
+
+func (s *ModifyDiskSizeRequest) SetPromotionOptionNo(v string) *ModifyDiskSizeRequest {
+	s.PromotionOptionNo = &v
 	return s
 }
 
@@ -1037,7 +1079,8 @@ type ModifyNodeNumberRequest struct {
 	// example:
 	//
 	// ng-3d5ce6454354****
-	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupId       *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 	// The number of nodes to which you want to change to.
 	//
 	// This parameter is required.
@@ -1063,6 +1106,11 @@ func (s *ModifyNodeNumberRequest) SetInstanceId(v string) *ModifyNodeNumberReque
 
 func (s *ModifyNodeNumberRequest) SetNodeGroupId(v string) *ModifyNodeNumberRequest {
 	s.NodeGroupId = &v
+	return s
+}
+
+func (s *ModifyNodeNumberRequest) SetPromotionOptionNo(v string) *ModifyNodeNumberRequest {
+	s.PromotionOptionNo = &v
 	return s
 }
 
@@ -1720,6 +1768,10 @@ type RestartInstanceResponseBody struct {
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxx",     "EncodedDiagnosticMessage": "xxx",     "AuthPrincipalType": "xxx",     "AuthPrincipalDisplayName": "xxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "sr:xxx"   }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The returned data.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code.
 	//
@@ -2199,21 +2251,21 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/en/product/ecs?_p_lc=1&spm=openapi-amp.newDocPublishment.0.0.47c9281fkIZGiB#pricing) of EMR Serverless StarRocks instances.
+// Before you call this operation, make sure that you understand the billing methods and [billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of EMR Serverless StarRocks instances.
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- You can modify the number of CUs for a warehouse of only StarRocks instances of Standard Edition.
+//   - You can modify the number of CUs for a warehouse of only StarRocks instances of Standard Edition.
 //
-// 	- You can increase the number of disks only for warehouses of the standard specifications.
+//   - You can increase the number of disks only for warehouses of the standard specifications.
 //
-// 	- The instance must be in the Running state.
+//   - The instance must be in the Running state.
 //
 // After you modify the number of CUs for a warehouse, the billing of CUs has the following changes:
 //
-// 	- Pay-as-you-go StarRocks instances: You are charged based on the number of CUs.
+//   - Pay-as-you-go StarRocks instances: You are charged based on the number of CUs.
 //
-// 	- Subscription StarRocks instances: You are charged additionally based on the price difference between the number of CUs before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
+//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the number of CUs before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
 //
 // @param request - ModifyCuRequest
 //
@@ -2240,6 +2292,10 @@ func (client *Client) ModifyCuWithOptions(request *ModifyCuRequest, headers map[
 		query["NodeGroupId"] = request.NodeGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PromotionOptionNo)) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Target)) {
 		query["Target"] = request.Target
 	}
@@ -2259,24 +2315,13 @@ func (client *Client) ModifyCuWithOptions(request *ModifyCuRequest, headers map[
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyCuResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyCuResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyCuResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -2285,21 +2330,21 @@ func (client *Client) ModifyCuWithOptions(request *ModifyCuRequest, headers map[
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/en/product/ecs?_p_lc=1&spm=openapi-amp.newDocPublishment.0.0.47c9281fkIZGiB#pricing) of EMR Serverless StarRocks instances.
+// Before you call this operation, make sure that you understand the billing methods and [billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of EMR Serverless StarRocks instances.
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- You can modify the number of CUs for a warehouse of only StarRocks instances of Standard Edition.
+//   - You can modify the number of CUs for a warehouse of only StarRocks instances of Standard Edition.
 //
-// 	- You can increase the number of disks only for warehouses of the standard specifications.
+//   - You can increase the number of disks only for warehouses of the standard specifications.
 //
-// 	- The instance must be in the Running state.
+//   - The instance must be in the Running state.
 //
 // After you modify the number of CUs for a warehouse, the billing of CUs has the following changes:
 //
-// 	- Pay-as-you-go StarRocks instances: You are charged based on the number of CUs.
+//   - Pay-as-you-go StarRocks instances: You are charged based on the number of CUs.
 //
-// 	- Subscription StarRocks instances: You are charged additionally based on the price difference between the number of CUs before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
+//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the number of CUs before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
 //
 // @param request - ModifyCuRequest
 //
@@ -2360,24 +2405,13 @@ func (client *Client) ModifyCuPreCheckWithOptions(request *ModifyCuPreCheckReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyCuPreCheckResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyCuPreCheckResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyCuPreCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -2405,19 +2439,19 @@ func (client *Client) ModifyCuPreCheck(request *ModifyCuPreCheckRequest) (_resul
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/en/product/ecs?_p_lc=1&spm=openapi-amp.newDocPublishment.0.0.47c9281fkIZGiB#pricing) of EMR Serverless StarRocks instances. Before you call this operation, take note of the following items:
+// Before you call this operation, make sure that you understand the billing methods and [billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of EMR Serverless StarRocks instances. Before you call this operation, take note of the following items:
 //
-// 	- You can increase the number of disks only for StarRocks instances of Standard Edition.
+//   - You can increase the number of disks only for StarRocks instances of Standard Edition.
 //
-// 	- You can increase the number of disks only for warehouses of the standard specifications.
+//   - You can increase the number of disks only for warehouses of the standard specifications.
 //
-// 	- The instance must be in the Running state.
+//   - The instance must be in the Running state.
 //
 // After you increase the number of disks for a warehouse, the billing of disks has the following changes:
 //
-// 	- Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk type.
+//   - Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk type.
 //
-// 	- Subscription StarRocks instances: You are charged additionally based on the price difference between the number of disks before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
+//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the number of disks before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
 //
 // @param request - ModifyDiskNumberRequest
 //
@@ -2444,6 +2478,10 @@ func (client *Client) ModifyDiskNumberWithOptions(request *ModifyDiskNumberReque
 		query["NodeGroupId"] = request.NodeGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PromotionOptionNo)) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Target)) {
 		query["Target"] = request.Target
 	}
@@ -2463,24 +2501,13 @@ func (client *Client) ModifyDiskNumberWithOptions(request *ModifyDiskNumberReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDiskNumberResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyDiskNumberResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyDiskNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -2489,19 +2516,19 @@ func (client *Client) ModifyDiskNumberWithOptions(request *ModifyDiskNumberReque
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/en/product/ecs?_p_lc=1&spm=openapi-amp.newDocPublishment.0.0.47c9281fkIZGiB#pricing) of EMR Serverless StarRocks instances. Before you call this operation, take note of the following items:
+// Before you call this operation, make sure that you understand the billing methods and [billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of EMR Serverless StarRocks instances. Before you call this operation, take note of the following items:
 //
-// 	- You can increase the number of disks only for StarRocks instances of Standard Edition.
+//   - You can increase the number of disks only for StarRocks instances of Standard Edition.
 //
-// 	- You can increase the number of disks only for warehouses of the standard specifications.
+//   - You can increase the number of disks only for warehouses of the standard specifications.
 //
-// 	- The instance must be in the Running state.
+//   - The instance must be in the Running state.
 //
 // After you increase the number of disks for a warehouse, the billing of disks has the following changes:
 //
-// 	- Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk type.
+//   - Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk type.
 //
-// 	- Subscription StarRocks instances: You are charged additionally based on the price difference between the number of disks before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
+//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the number of disks before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
 //
 // @param request - ModifyDiskNumberRequest
 //
@@ -2528,21 +2555,21 @@ func (client *Client) ModifyDiskNumber(request *ModifyDiskNumberRequest) (_resul
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- You can modify the disk performance level only for StarRocks instances of Standard Edition.
+//   - You can modify the disk performance level only for StarRocks instances of Standard Edition.
 //
-// 	- You can modify the disk performance level only for warehouses of the standard specifications.
+//   - You can modify the disk performance level only for warehouses of the standard specifications.
 //
-// 	- The instance must be in the Running state.
+//   - The instance must be in the Running state.
 //
-// 	- You cannot downgrade the performance level to PL0.
+//   - You cannot downgrade the performance level to PL0.
 //
-// 	- The performance level of an Enterprise SSD (ESSD) is limited by the ESSD disk size. If you cannot upgrade the performance level of an ESSD, expand the ESSD and try again. For more information, see [Enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
+//   - The performance level of an Enterprise SSD (ESSD) is limited by the ESSD disk size. If you cannot upgrade the performance level of an ESSD, expand the ESSD and try again. For more information, see [Enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
 //
 // After the disk performance level is changed, the billing of the disk has the following changes:
 //
-// 	- Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk type.
+//   - Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk type.
 //
-// 	- Subscription StarRocks instances: You are charged additionally based on the price difference between the disk performance level before and sfter the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
+//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the disk performance level before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
 //
 // @param request - ModifyDiskPerformanceLevelRequest
 //
@@ -2565,6 +2592,10 @@ func (client *Client) ModifyDiskPerformanceLevelWithOptions(request *ModifyDiskP
 		query["NodeGroupId"] = request.NodeGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PromotionOptionNo)) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Target)) {
 		query["Target"] = request.Target
 	}
@@ -2584,24 +2615,13 @@ func (client *Client) ModifyDiskPerformanceLevelWithOptions(request *ModifyDiskP
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDiskPerformanceLevelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyDiskPerformanceLevelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyDiskPerformanceLevelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -2614,21 +2634,21 @@ func (client *Client) ModifyDiskPerformanceLevelWithOptions(request *ModifyDiskP
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- You can modify the disk performance level only for StarRocks instances of Standard Edition.
+//   - You can modify the disk performance level only for StarRocks instances of Standard Edition.
 //
-// 	- You can modify the disk performance level only for warehouses of the standard specifications.
+//   - You can modify the disk performance level only for warehouses of the standard specifications.
 //
-// 	- The instance must be in the Running state.
+//   - The instance must be in the Running state.
 //
-// 	- You cannot downgrade the performance level to PL0.
+//   - You cannot downgrade the performance level to PL0.
 //
-// 	- The performance level of an Enterprise SSD (ESSD) is limited by the ESSD disk size. If you cannot upgrade the performance level of an ESSD, expand the ESSD and try again. For more information, see [Enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
+//   - The performance level of an Enterprise SSD (ESSD) is limited by the ESSD disk size. If you cannot upgrade the performance level of an ESSD, expand the ESSD and try again. For more information, see [Enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
 //
 // After the disk performance level is changed, the billing of the disk has the following changes:
 //
-// 	- Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk type.
+//   - Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk type.
 //
-// 	- Subscription StarRocks instances: You are charged additionally based on the price difference between the disk performance level before and sfter the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
+//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the disk performance level before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
 //
 // @param request - ModifyDiskPerformanceLevelRequest
 //
@@ -2651,19 +2671,19 @@ func (client *Client) ModifyDiskPerformanceLevel(request *ModifyDiskPerformanceL
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/en/product/ecs?_p_lc=1&spm=openapi-amp.newDocPublishment.0.0.47c9281fkIZGiB#pricing) of EMR Serverless StarRocks instances. Before you call this operation, take note of the following items:
+// Before you call this operation, make sure that you understand the billing methods and [billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of EMR Serverless StarRocks instances. Before you call this operation, take note of the following items:
 //
-// 	- You can expand the disk size only for StarRocks instances of Standard Edition.
+//   - You can expand the disk size only for StarRocks instances of Standard Edition.
 //
-// 	- You can expand the disk size only for warehouses of the standard specifications.
+//   - You can expand the disk size only for warehouses of the standard specifications.
 //
-// 	- The instance must be in the Running state.
+//   - The instance must be in the Running state.
 //
 // After you expand the disk size, the billing of disks has the following changes:
 //
-// 	- Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk size.
+//   - Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk size.
 //
-// 	- Subscription StarRocks instances: You are charged additionally based on the price difference between the disk size before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
+//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the disk size before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
 //
 // @param request - ModifyDiskSizeRequest
 //
@@ -2686,6 +2706,10 @@ func (client *Client) ModifyDiskSizeWithOptions(request *ModifyDiskSizeRequest, 
 		query["NodeGroupId"] = request.NodeGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PromotionOptionNo)) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Target)) {
 		query["Target"] = request.Target
 	}
@@ -2705,24 +2729,13 @@ func (client *Client) ModifyDiskSizeWithOptions(request *ModifyDiskSizeRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDiskSizeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyDiskSizeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyDiskSizeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -2731,19 +2744,19 @@ func (client *Client) ModifyDiskSizeWithOptions(request *ModifyDiskSizeRequest, 
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/en/product/ecs?_p_lc=1&spm=openapi-amp.newDocPublishment.0.0.47c9281fkIZGiB#pricing) of EMR Serverless StarRocks instances. Before you call this operation, take note of the following items:
+// Before you call this operation, make sure that you understand the billing methods and [billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of EMR Serverless StarRocks instances. Before you call this operation, take note of the following items:
 //
-// 	- You can expand the disk size only for StarRocks instances of Standard Edition.
+//   - You can expand the disk size only for StarRocks instances of Standard Edition.
 //
-// 	- You can expand the disk size only for warehouses of the standard specifications.
+//   - You can expand the disk size only for warehouses of the standard specifications.
 //
-// 	- The instance must be in the Running state.
+//   - The instance must be in the Running state.
 //
 // After you expand the disk size, the billing of disks has the following changes:
 //
-// 	- Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk size.
+//   - Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk size.
 //
-// 	- Subscription StarRocks instances: You are charged additionally based on the price difference between the disk size before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
+//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the disk size before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
 //
 // @param request - ModifyDiskSizeRequest
 //
@@ -2766,21 +2779,19 @@ func (client *Client) ModifyDiskSize(request *ModifyDiskSizeRequest) (_result *M
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/en/product/ecs?_p_lc=1&spm=openapi-amp.newDocPublishment.0.0.47c9281fkIZGiB#pricing) of EMR Serverless StarRocks instances.
+// Before you call this operation, make sure that you understand the billing methods and [billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of EMR Serverless StarRocks instances. Before you call this operation, take note of the following items:
 //
-// Before you call this operation, take note of the following items:
+//   - You can modify the number of nodes in a warehouse of only StarRocks instances of Standard Edition.
 //
-// 	- You can modify the number of nodes in a warehouse of only StarRocks instances of Standard Edition.
+//   - The instance must be in the Running state.
 //
-// 	- The instance must be in the Running state.
-//
-// 	- The number of frontend nodes (FEs) cannot be an even number, and you cannot reduce the number of FE nodes.
+//   - The number of frontend nodes (FEs) cannot be an even number, and you cannot reduce the number of FE nodes.
 //
 // After you modify the number of nodes in a warehouse, the billing of nodes has the following changes:
 //
-// 	- Pay-as-you-go StarRocks instances: You are charged based on the number of nodes.
+//   - Pay-as-you-go StarRocks instances: You are charged based on the number of nodes.
 //
-// 	- Subscription StarRocks instances: You are charged additionally based on the price difference between the number of nodes before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
+//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the number of nodes before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
 //
 // @param request - ModifyNodeNumberRequest
 //
@@ -2803,6 +2814,10 @@ func (client *Client) ModifyNodeNumberWithOptions(request *ModifyNodeNumberReque
 		query["NodeGroupId"] = request.NodeGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PromotionOptionNo)) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Target)) {
 		query["Target"] = request.Target
 	}
@@ -2822,24 +2837,13 @@ func (client *Client) ModifyNodeNumberWithOptions(request *ModifyNodeNumberReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyNodeNumberResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyNodeNumberResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyNodeNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -2848,21 +2852,19 @@ func (client *Client) ModifyNodeNumberWithOptions(request *ModifyNodeNumberReque
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/en/product/ecs?_p_lc=1&spm=openapi-amp.newDocPublishment.0.0.47c9281fkIZGiB#pricing) of EMR Serverless StarRocks instances.
+// Before you call this operation, make sure that you understand the billing methods and [billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of EMR Serverless StarRocks instances. Before you call this operation, take note of the following items:
 //
-// Before you call this operation, take note of the following items:
+//   - You can modify the number of nodes in a warehouse of only StarRocks instances of Standard Edition.
 //
-// 	- You can modify the number of nodes in a warehouse of only StarRocks instances of Standard Edition.
+//   - The instance must be in the Running state.
 //
-// 	- The instance must be in the Running state.
-//
-// 	- The number of frontend nodes (FEs) cannot be an even number, and you cannot reduce the number of FE nodes.
+//   - The number of frontend nodes (FEs) cannot be an even number, and you cannot reduce the number of FE nodes.
 //
 // After you modify the number of nodes in a warehouse, the billing of nodes has the following changes:
 //
-// 	- Pay-as-you-go StarRocks instances: You are charged based on the number of nodes.
+//   - Pay-as-you-go StarRocks instances: You are charged based on the number of nodes.
 //
-// 	- Subscription StarRocks instances: You are charged additionally based on the price difference between the number of nodes before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
+//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the number of nodes before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
 //
 // @param request - ModifyNodeNumberRequest
 //
@@ -2923,24 +2925,13 @@ func (client *Client) ModifyNodeNumberPreCheckWithOptions(request *ModifyNodeNum
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyNodeNumberPreCheckResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyNodeNumberPreCheckResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyNodeNumberPreCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3002,24 +2993,13 @@ func (client *Client) QueryUpgradableVersionsWithOptions(request *QueryUpgradabl
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryUpgradableVersionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryUpgradableVersionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryUpgradableVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3083,24 +3063,13 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ReleaseInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ReleaseInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ReleaseInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3172,24 +3141,13 @@ func (client *Client) RestartInstanceWithOptions(request *RestartInstanceRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RestartInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RestartInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RestartInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3255,24 +3213,13 @@ func (client *Client) UpdateInstanceNameWithOptions(request *UpdateInstanceNameR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateInstanceNameResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateInstanceNameResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateInstanceNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3346,24 +3293,13 @@ func (client *Client) UpgradeVersionWithOptions(request *UpgradeVersionRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpgradeVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpgradeVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpgradeVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
