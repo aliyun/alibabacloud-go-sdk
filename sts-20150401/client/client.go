@@ -74,6 +74,7 @@ type AssumeRoleRequest struct {
 	//
 	// alice
 	RoleSessionName *string `json:"RoleSessionName,omitempty" xml:"RoleSessionName,omitempty"`
+	SourceIdentity  *string `json:"SourceIdentity,omitempty" xml:"SourceIdentity,omitempty"`
 }
 
 func (s AssumeRoleRequest) String() string {
@@ -109,6 +110,11 @@ func (s *AssumeRoleRequest) SetRoleSessionName(v string) *AssumeRoleRequest {
 	return s
 }
 
+func (s *AssumeRoleRequest) SetSourceIdentity(v string) *AssumeRoleRequest {
+	s.SourceIdentity = &v
+	return s
+}
+
 type AssumeRoleResponseBody struct {
 	// The temporary identity that you use to assume the RAM role.
 	AssumedRoleUser *AssumeRoleResponseBodyAssumedRoleUser `json:"AssumedRoleUser,omitempty" xml:"AssumedRoleUser,omitempty" type:"Struct"`
@@ -119,7 +125,8 @@ type AssumeRoleResponseBody struct {
 	// example:
 	//
 	// 6894B13B-6D71-4EF5-88FA-F32781734A7F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceIdentity *string `json:"SourceIdentity,omitempty" xml:"SourceIdentity,omitempty"`
 }
 
 func (s AssumeRoleResponseBody) String() string {
@@ -142,6 +149,11 @@ func (s *AssumeRoleResponseBody) SetCredentials(v *AssumeRoleResponseBodyCredent
 
 func (s *AssumeRoleResponseBody) SetRequestId(v string) *AssumeRoleResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *AssumeRoleResponseBody) SetSourceIdentity(v string) *AssumeRoleResponseBody {
+	s.SourceIdentity = &v
 	return s
 }
 
@@ -385,7 +397,8 @@ type AssumeRoleWithOIDCResponseBody struct {
 	// example:
 	//
 	// 3D57EAD2-8723-1F26-B69C-F8707D8B565D
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SourceIdentity *string `json:"SourceIdentity,omitempty" xml:"SourceIdentity,omitempty"`
 }
 
 func (s AssumeRoleWithOIDCResponseBody) String() string {
@@ -413,6 +426,11 @@ func (s *AssumeRoleWithOIDCResponseBody) SetOIDCTokenInfo(v *AssumeRoleWithOIDCR
 
 func (s *AssumeRoleWithOIDCResponseBody) SetRequestId(v string) *AssumeRoleWithOIDCResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponseBody) SetSourceIdentity(v string) *AssumeRoleWithOIDCResponseBody {
+	s.SourceIdentity = &v
 	return s
 }
 
@@ -729,6 +747,7 @@ type AssumeRoleWithSAMLResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information in the SAML assertion.
 	SAMLAssertionInfo *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo `json:"SAMLAssertionInfo,omitempty" xml:"SAMLAssertionInfo,omitempty" type:"Struct"`
+	SourceIdentity    *string                                          `json:"SourceIdentity,omitempty" xml:"SourceIdentity,omitempty"`
 }
 
 func (s AssumeRoleWithSAMLResponseBody) String() string {
@@ -756,6 +775,11 @@ func (s *AssumeRoleWithSAMLResponseBody) SetRequestId(v string) *AssumeRoleWithS
 
 func (s *AssumeRoleWithSAMLResponseBody) SetSAMLAssertionInfo(v *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo) *AssumeRoleWithSAMLResponseBody {
 	s.SAMLAssertionInfo = v
+	return s
+}
+
+func (s *AssumeRoleWithSAMLResponseBody) SetSourceIdentity(v string) *AssumeRoleWithSAMLResponseBody {
+	s.SourceIdentity = &v
 	return s
 }
 
@@ -1178,6 +1202,10 @@ func (client *Client) AssumeRoleWithOptions(request *AssumeRoleRequest, runtime 
 		query["RoleSessionName"] = request.RoleSessionName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceIdentity)) {
+		query["SourceIdentity"] = request.SourceIdentity
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1192,24 +1220,13 @@ func (client *Client) AssumeRoleWithOptions(request *AssumeRoleRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AssumeRoleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AssumeRoleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AssumeRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -1315,24 +1332,13 @@ func (client *Client) AssumeRoleWithOIDCWithOptions(request *AssumeRoleWithOIDCR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AssumeRoleWithOIDCResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AssumeRoleWithOIDCResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AssumeRoleWithOIDCResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -1422,24 +1428,13 @@ func (client *Client) AssumeRoleWithSAMLWithOptions(request *AssumeRoleWithSAMLR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AssumeRoleWithSAMLResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AssumeRoleWithSAMLResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AssumeRoleWithSAMLResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -1492,24 +1487,13 @@ func (client *Client) GetCallerIdentityWithOptions(runtime *util.RuntimeOptions)
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetCallerIdentityResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetCallerIdentityResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetCallerIdentityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
