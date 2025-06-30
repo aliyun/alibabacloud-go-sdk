@@ -4675,6 +4675,7 @@ type InstallAgentForClusterRequest struct {
 	//
 	// c9d7f3fc3d42942afbcb65c1100ffb19d
 	ClusterId       *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	ConfigId        *string `json:"config_id,omitempty" xml:"config_id,omitempty"`
 	GrayscaleConfig *string `json:"grayscale_config,omitempty" xml:"grayscale_config,omitempty"`
 }
 
@@ -4698,6 +4699,11 @@ func (s *InstallAgentForClusterRequest) SetAgentVersion(v string) *InstallAgentF
 
 func (s *InstallAgentForClusterRequest) SetClusterId(v string) *InstallAgentForClusterRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *InstallAgentForClusterRequest) SetConfigId(v string) *InstallAgentForClusterRequest {
+	s.ConfigId = &v
 	return s
 }
 
@@ -5357,6 +5363,7 @@ type ListAgentInstallRecordsRequest struct {
 	PageSize      *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	PluginId      *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty"`
 	PluginVersion *string `json:"plugin_version,omitempty" xml:"plugin_version,omitempty"`
+	Region        *string `json:"region,omitempty" xml:"region,omitempty"`
 	Status        *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -5390,6 +5397,11 @@ func (s *ListAgentInstallRecordsRequest) SetPluginId(v string) *ListAgentInstall
 
 func (s *ListAgentInstallRecordsRequest) SetPluginVersion(v string) *ListAgentInstallRecordsRequest {
 	s.PluginVersion = &v
+	return s
+}
+
+func (s *ListAgentInstallRecordsRequest) SetRegion(v string) *ListAgentInstallRecordsRequest {
+	s.Region = &v
 	return s
 }
 
@@ -5751,6 +5763,7 @@ func (s *ListAgentsResponse) SetBody(v *ListAgentsResponseBody) *ListAgentsRespo
 }
 
 type ListClusterAgentInstallRecordsRequest struct {
+	AgentConfigId *string `json:"agent_config_id,omitempty" xml:"agent_config_id,omitempty"`
 	// example:
 	//
 	// cbd80af02b9d6454ebdc579c5e022d0c8
@@ -5779,6 +5792,11 @@ func (s ListClusterAgentInstallRecordsRequest) String() string {
 
 func (s ListClusterAgentInstallRecordsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListClusterAgentInstallRecordsRequest) SetAgentConfigId(v string) *ListClusterAgentInstallRecordsRequest {
+	s.AgentConfigId = &v
+	return s
 }
 
 func (s *ListClusterAgentInstallRecordsRequest) SetClusterId(v string) *ListClusterAgentInstallRecordsRequest {
@@ -5860,6 +5878,8 @@ func (s *ListClusterAgentInstallRecordsResponseBody) SetTotal(v int64) *ListClus
 }
 
 type ListClusterAgentInstallRecordsResponseBodyData struct {
+	AgentConfigId   *string `json:"agent_config_id,omitempty" xml:"agent_config_id,omitempty"`
+	AgentConfigName *string `json:"agent_config_name,omitempty" xml:"agent_config_name,omitempty"`
 	// example:
 	//
 	// cbf7a37bc905d4682a3338b3744810269
@@ -5889,6 +5909,16 @@ func (s ListClusterAgentInstallRecordsResponseBodyData) String() string {
 
 func (s ListClusterAgentInstallRecordsResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListClusterAgentInstallRecordsResponseBodyData) SetAgentConfigId(v string) *ListClusterAgentInstallRecordsResponseBodyData {
+	s.AgentConfigId = &v
+	return s
+}
+
+func (s *ListClusterAgentInstallRecordsResponseBodyData) SetAgentConfigName(v string) *ListClusterAgentInstallRecordsResponseBodyData {
+	s.AgentConfigName = &v
+	return s
 }
 
 func (s *ListClusterAgentInstallRecordsResponseBodyData) SetClusterId(v string) *ListClusterAgentInstallRecordsResponseBodyData {
@@ -11389,6 +11419,10 @@ func (client *Client) InstallAgentForClusterWithOptions(request *InstallAgentFor
 		body["cluster_id"] = request.ClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		body["config_id"] = request.ConfigId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GrayscaleConfig)) {
 		body["grayscale_config"] = request.GrayscaleConfig
 	}
@@ -11709,6 +11743,10 @@ func (client *Client) ListAgentInstallRecordsWithOptions(request *ListAgentInsta
 		query["plugin_version"] = request.PluginVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["region"] = request.Region
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["status"] = request.Status
 	}
@@ -11849,6 +11887,10 @@ func (client *Client) ListClusterAgentInstallRecordsWithOptions(request *ListClu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentConfigId)) {
+		query["agent_config_id"] = request.AgentConfigId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["cluster_id"] = request.ClusterId
 	}
