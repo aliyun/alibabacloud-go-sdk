@@ -1022,9 +1022,10 @@ type AddUserToDesktopGroupRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
-	UserOuPath    *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SimpleUserGroupId *string `json:"SimpleUserGroupId,omitempty" xml:"SimpleUserGroupId,omitempty"`
+	UserGroupName     *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
+	UserOuPath        *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
 }
 
 func (s AddUserToDesktopGroupRequest) String() string {
@@ -1057,6 +1058,11 @@ func (s *AddUserToDesktopGroupRequest) SetEndUserIds(v []*string) *AddUserToDesk
 
 func (s *AddUserToDesktopGroupRequest) SetRegionId(v string) *AddUserToDesktopGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *AddUserToDesktopGroupRequest) SetSimpleUserGroupId(v string) *AddUserToDesktopGroupRequest {
+	s.SimpleUserGroupId = &v
 	return s
 }
 
@@ -9579,7 +9585,8 @@ type CreateDesktopGroupRequest struct {
 	// example:
 	//
 	// SingleSession
-	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	SessionType       *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	SimpleUserGroupId *string `json:"SimpleUserGroupId,omitempty" xml:"SimpleUserGroupId,omitempty"`
 	// The ID of the automatic snapshot policy.
 	//
 	// example:
@@ -9896,6 +9903,11 @@ func (s *CreateDesktopGroupRequest) SetScaleStrategyId(v string) *CreateDesktopG
 
 func (s *CreateDesktopGroupRequest) SetSessionType(v string) *CreateDesktopGroupRequest {
 	s.SessionType = &v
+	return s
+}
+
+func (s *CreateDesktopGroupRequest) SetSimpleUserGroupId(v string) *CreateDesktopGroupRequest {
+	s.SimpleUserGroupId = &v
 	return s
 }
 
@@ -23615,6 +23627,7 @@ type DescribeDesktopGroupsRequest struct {
 	//
 	// testName
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
+	DesktopType      *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
 	// The IDs of the users who can access the cloud computer share.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The authorized users that you want to exclude.
@@ -23783,6 +23796,11 @@ func (s *DescribeDesktopGroupsRequest) SetDesktopGroupIds(v []*string) *Describe
 
 func (s *DescribeDesktopGroupsRequest) SetDesktopGroupName(v string) *DescribeDesktopGroupsRequest {
 	s.DesktopGroupName = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsRequest) SetDesktopType(v string) *DescribeDesktopGroupsRequest {
+	s.DesktopType = &v
 	return s
 }
 
@@ -24259,7 +24277,8 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	// example:
 	//
 	// 0
-	ResetType *int64 `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	ResetType         *int64  `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	SimpleUserGroupId *string `json:"SimpleUserGroupId,omitempty" xml:"SimpleUserGroupId,omitempty"`
 	// The status of the cloud computer share.
 	//
 	// Valid values:
@@ -24550,6 +24569,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetRatioThreshold(v flo
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetResetType(v int64) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.ResetType = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetSimpleUserGroupId(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.SimpleUserGroupId = &v
 	return s
 }
 
@@ -62165,9 +62189,10 @@ type RemoveUserFromDesktopGroupRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
-	UserOuPath    *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SimpleUserGroupId *string `json:"SimpleUserGroupId,omitempty" xml:"SimpleUserGroupId,omitempty"`
+	UserGroupName     *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
+	UserOuPath        *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
 }
 
 func (s RemoveUserFromDesktopGroupRequest) String() string {
@@ -62195,6 +62220,11 @@ func (s *RemoveUserFromDesktopGroupRequest) SetEndUserIds(v []*string) *RemoveUs
 
 func (s *RemoveUserFromDesktopGroupRequest) SetRegionId(v string) *RemoveUserFromDesktopGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *RemoveUserFromDesktopGroupRequest) SetSimpleUserGroupId(v string) *RemoveUserFromDesktopGroupRequest {
+	s.SimpleUserGroupId = &v
 	return s
 }
 
@@ -67059,6 +67089,10 @@ func (client *Client) AddUserToDesktopGroupWithOptions(request *AddUserToDesktop
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SimpleUserGroupId)) {
+		query["SimpleUserGroupId"] = request.SimpleUserGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserGroupName)) {
 		query["UserGroupName"] = request.UserGroupName
 	}
@@ -70459,6 +70493,10 @@ func (client *Client) CreateDesktopGroupWithOptions(request *CreateDesktopGroupR
 
 	if !tea.BoolValue(util.IsUnset(request.SessionType)) {
 		query["SessionType"] = request.SessionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SimpleUserGroupId)) {
+		query["SimpleUserGroupId"] = request.SimpleUserGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SnapshotPolicyId)) {
@@ -74612,6 +74650,10 @@ func (client *Client) DescribeDesktopGroupsWithOptions(request *DescribeDesktopG
 		query["DesktopGroupName"] = request.DesktopGroupName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DesktopType)) {
+		query["DesktopType"] = request.DesktopType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndUserIds)) {
 		query["EndUserIds"] = request.EndUserIds
 	}
@@ -75721,6 +75763,10 @@ func (client *Client) DescribeDirectories(request *DescribeDirectoriesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询EIP监控
+//
 // @param request - DescribeFlowMetricRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -75783,6 +75829,10 @@ func (client *Client) DescribeFlowMetricWithOptions(request *DescribeFlowMetricR
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询EIP监控
+//
 // @param request - DescribeFlowMetricRequest
 //
 // @return DescribeFlowMetricResponse
@@ -85399,6 +85449,10 @@ func (client *Client) RemoveUserFromDesktopGroupWithOptions(request *RemoveUserF
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SimpleUserGroupId)) {
+		query["SimpleUserGroupId"] = request.SimpleUserGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserGroupName)) {
