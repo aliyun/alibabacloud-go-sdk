@@ -31863,7 +31863,8 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	// example:
 	//
 	// 1234
-	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	WorkflowId         *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
 }
 
 func (s GetWorkflowInstanceResponseBodyWorkflowInstance) String() string {
@@ -31941,6 +31942,11 @@ func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetType(v string) *Get
 
 func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetWorkflowId(v int64) *GetWorkflowInstanceResponseBodyWorkflowInstance {
 	s.WorkflowId = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetWorkflowParameters(v string) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.WorkflowParameters = &v
 	return s
 }
 
@@ -59944,7 +59950,8 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	// example:
 	//
 	// 1234
-	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	WorkflowId         *int64  `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	WorkflowParameters *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
 }
 
 func (s ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) String() string {
@@ -60022,6 +60029,11 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetType(v
 
 func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetWorkflowId(v int64) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
 	s.WorkflowId = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetWorkflowParameters(v string) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.WorkflowParameters = &v
 	return s
 }
 
