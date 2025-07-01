@@ -918,6 +918,7 @@ type UnifiedSearchInput struct {
 	Category   *string          `json:"category,omitempty" xml:"category,omitempty"`
 	Contents   *RequestContents `json:"contents,omitempty" xml:"contents,omitempty"`
 	EngineType *string          `json:"engineType,omitempty" xml:"engineType,omitempty"`
+	Location   *string          `json:"location,omitempty" xml:"location,omitempty"`
 	Query      *string          `json:"query,omitempty" xml:"query,omitempty"`
 	TimeRange  *string          `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
@@ -942,6 +943,11 @@ func (s *UnifiedSearchInput) SetContents(v *RequestContents) *UnifiedSearchInput
 
 func (s *UnifiedSearchInput) SetEngineType(v string) *UnifiedSearchInput {
 	s.EngineType = &v
+	return s
+}
+
+func (s *UnifiedSearchInput) SetLocation(v string) *UnifiedSearchInput {
+	s.Location = &v
 	return s
 }
 
