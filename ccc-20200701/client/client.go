@@ -32765,6 +32765,7 @@ func (s *ListFlashSmsTemplatesResponseBody) SetRequestId(v string) *ListFlashSms
 }
 
 type ListFlashSmsTemplatesResponseBodyData struct {
+	TemplateDetails *string `json:"TemplateDetails,omitempty" xml:"TemplateDetails,omitempty"`
 	// example:
 	//
 	// 1715*****38
@@ -32778,6 +32779,11 @@ func (s ListFlashSmsTemplatesResponseBodyData) String() string {
 
 func (s ListFlashSmsTemplatesResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListFlashSmsTemplatesResponseBodyData) SetTemplateDetails(v string) *ListFlashSmsTemplatesResponseBodyData {
+	s.TemplateDetails = &v
+	return s
 }
 
 func (s *ListFlashSmsTemplatesResponseBodyData) SetTemplateId(v string) *ListFlashSmsTemplatesResponseBodyData {
@@ -76351,6 +76357,10 @@ func (client *Client) ListFlashSmsApplications(request *ListFlashSmsApplications
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取闪信模板列表
+//
 // @param request - ListFlashSmsTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -76397,6 +76407,10 @@ func (client *Client) ListFlashSmsTemplatesWithOptions(request *ListFlashSmsTemp
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取闪信模板列表
+//
 // @param request - ListFlashSmsTemplatesRequest
 //
 // @return ListFlashSmsTemplatesResponse
