@@ -612,6 +612,108 @@ func (s *CheckUsedPropertyValueResponse) SetBody(v *CheckUsedPropertyValueRespon
 	return s
 }
 
+type CreateGroupRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BizType   *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// root
+	ParentGroupId *string `json:"ParentGroupId,omitempty" xml:"ParentGroupId,omitempty"`
+	// example:
+	//
+	// co-0esnf80jab***
+	SolutionId *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+}
+
+func (s CreateGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupRequest) SetBizType(v string) *CreateGroupRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetGroupName(v string) *CreateGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetParentGroupId(v string) *CreateGroupRequest {
+	s.ParentGroupId = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetSolutionId(v string) *CreateGroupRequest {
+	s.SolutionId = &v
+	return s
+}
+
+type CreateGroupResponseBody struct {
+	// example:
+	//
+	// ug-12341234****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// AA8D67CB-345D-5CDA-986E-FFAC7D0****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupResponseBody) SetGroupId(v string) *CreateGroupResponseBody {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateGroupResponseBody) SetRequestId(v string) *CreateGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGroupResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupResponse) SetHeaders(v map[string]*string) *CreateGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGroupResponse) SetStatusCode(v int32) *CreateGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateGroupResponse) SetBody(v *CreateGroupResponseBody) *CreateGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateOrgRequest struct {
 	// This parameter is required.
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
@@ -1603,6 +1705,357 @@ func (s *DeleteUserPropertyValueResponse) SetStatusCode(v int32) *DeleteUserProp
 }
 
 func (s *DeleteUserPropertyValueResponse) SetBody(v *DeleteUserPropertyValueResponseBody) *DeleteUserPropertyValueResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeGroupUserRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// ug-12341234****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// co-0esnf80jab***
+	SolutionId *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+}
+
+func (s DescribeGroupUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupUserRequest) SetBizType(v string) *DescribeGroupUserRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeGroupUserRequest) SetGroupId(v string) *DescribeGroupUserRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeGroupUserRequest) SetSolutionId(v string) *DescribeGroupUserRequest {
+	s.SolutionId = &v
+	return s
+}
+
+type DescribeGroupUserResponseBody struct {
+	Groups []*DescribeGroupUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AA8D67CB-345D-5CDA-986E-FFAC7D0****
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Users     []*DescribeGroupUserResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+}
+
+func (s DescribeGroupUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupUserResponseBody) SetGroups(v []*DescribeGroupUserResponseBodyGroups) *DescribeGroupUserResponseBody {
+	s.Groups = v
+	return s
+}
+
+func (s *DescribeGroupUserResponseBody) SetRequestId(v string) *DescribeGroupUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeGroupUserResponseBody) SetUsers(v []*DescribeGroupUserResponseBodyUsers) *DescribeGroupUserResponseBody {
+	s.Users = v
+	return s
+}
+
+type DescribeGroupUserResponseBodyGroups struct {
+	// example:
+	//
+	// ug-91mvbosdjsdfh****
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// 1
+	UserCount *string `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
+}
+
+func (s DescribeGroupUserResponseBodyGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupUserResponseBodyGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupUserResponseBodyGroups) SetGroupId(v string) *DescribeGroupUserResponseBodyGroups {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeGroupUserResponseBodyGroups) SetGroupName(v string) *DescribeGroupUserResponseBodyGroups {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeGroupUserResponseBodyGroups) SetUserCount(v string) *DescribeGroupUserResponseBodyGroups {
+	s.UserCount = &v
+	return s
+}
+
+type DescribeGroupUserResponseBodyUsers struct {
+	// example:
+	//
+	// xx-xx-xx
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// https://avatar.****.com
+	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	// example:
+	//
+	// alex****@aliyun.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// alex****
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// 2024-08-26T02:59:22.000+00:00
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2024-08-26T02:59:22.000+00:00
+	GmtJoinGroup *string `json:"GmtJoinGroup,omitempty" xml:"GmtJoinGroup,omitempty"`
+	// example:
+	//
+	// 123
+	JobNumber *string `json:"JobNumber,omitempty" xml:"JobNumber,omitempty"`
+	// example:
+	//
+	// alex
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// example:
+	//
+	// 188888****
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+}
+
+func (s DescribeGroupUserResponseBodyUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupUserResponseBodyUsers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupUserResponseBodyUsers) SetAddress(v string) *DescribeGroupUserResponseBodyUsers {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeGroupUserResponseBodyUsers) SetAvatar(v string) *DescribeGroupUserResponseBodyUsers {
+	s.Avatar = &v
+	return s
+}
+
+func (s *DescribeGroupUserResponseBodyUsers) SetEmail(v string) *DescribeGroupUserResponseBodyUsers {
+	s.Email = &v
+	return s
+}
+
+func (s *DescribeGroupUserResponseBodyUsers) SetEndUserId(v string) *DescribeGroupUserResponseBodyUsers {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeGroupUserResponseBodyUsers) SetGmtCreated(v string) *DescribeGroupUserResponseBodyUsers {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeGroupUserResponseBodyUsers) SetGmtJoinGroup(v string) *DescribeGroupUserResponseBodyUsers {
+	s.GmtJoinGroup = &v
+	return s
+}
+
+func (s *DescribeGroupUserResponseBodyUsers) SetJobNumber(v string) *DescribeGroupUserResponseBodyUsers {
+	s.JobNumber = &v
+	return s
+}
+
+func (s *DescribeGroupUserResponseBodyUsers) SetNickName(v string) *DescribeGroupUserResponseBodyUsers {
+	s.NickName = &v
+	return s
+}
+
+func (s *DescribeGroupUserResponseBodyUsers) SetPhone(v string) *DescribeGroupUserResponseBodyUsers {
+	s.Phone = &v
+	return s
+}
+
+type DescribeGroupUserResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeGroupUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeGroupUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupUserResponse) SetHeaders(v map[string]*string) *DescribeGroupUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGroupUserResponse) SetStatusCode(v int32) *DescribeGroupUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeGroupUserResponse) SetBody(v *DescribeGroupUserResponseBody) *DescribeGroupUserResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeGroupsRequest struct {
+	// example:
+	//
+	// ENTERPRISE
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// ug-12341234****
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// co-0esnf80jab***
+	SolutionId *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+}
+
+func (s DescribeGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupsRequest) SetBizType(v string) *DescribeGroupsRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeGroupsRequest) SetGroupId(v string) *DescribeGroupsRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeGroupsRequest) SetGroupName(v string) *DescribeGroupsRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeGroupsRequest) SetSolutionId(v string) *DescribeGroupsRequest {
+	s.SolutionId = &v
+	return s
+}
+
+type DescribeGroupsResponseBody struct {
+	Groups []*DescribeGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupsResponseBody) SetGroups(v []*DescribeGroupsResponseBodyGroups) *DescribeGroupsResponseBody {
+	s.Groups = v
+	return s
+}
+
+func (s *DescribeGroupsResponseBody) SetRequestId(v string) *DescribeGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeGroupsResponseBodyGroups struct {
+	// example:
+	//
+	// ug-2412ojkwtybd****
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s DescribeGroupsResponseBodyGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupsResponseBodyGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetGroupId(v string) *DescribeGroupsResponseBodyGroups {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetGroupName(v string) *DescribeGroupsResponseBodyGroups {
+	s.GroupName = &v
+	return s
+}
+
+type DescribeGroupsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupsResponse) SetHeaders(v map[string]*string) *DescribeGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGroupsResponse) SetStatusCode(v int32) *DescribeGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeGroupsResponse) SetBody(v *DescribeGroupsResponseBody) *DescribeGroupsResponse {
 	s.Body = v
 	return s
 }
@@ -4946,6 +5399,84 @@ func (s *LockUsersResponse) SetBody(v *LockUsersResponseBody) *LockUsersResponse
 	return s
 }
 
+type ModifyGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ug-12341234****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// This parameter is required.
+	NewGroupName *string `json:"NewGroupName,omitempty" xml:"NewGroupName,omitempty"`
+}
+
+func (s ModifyGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGroupRequest) SetGroupId(v string) *ModifyGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ModifyGroupRequest) SetNewGroupName(v string) *ModifyGroupRequest {
+	s.NewGroupName = &v
+	return s
+}
+
+type ModifyGroupResponseBody struct {
+	// example:
+	//
+	// 868B8926-2E7A-5BE7-9897-E811E994****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGroupResponseBody) SetRequestId(v string) *ModifyGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyGroupResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGroupResponse) SetHeaders(v map[string]*string) *ModifyGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyGroupResponse) SetStatusCode(v int32) *ModifyGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyGroupResponse) SetBody(v *ModifyGroupResponseBody) *ModifyGroupResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyOrgRequest struct {
 	// This parameter is required.
 	//
@@ -5205,6 +5736,84 @@ func (s *MoveOrgResponse) SetBody(v *MoveOrgResponseBody) *MoveOrgResponse {
 	return s
 }
 
+type MoveUserOrgRequest struct {
+	// This parameter is required.
+	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// org-4mdgc1cocc59z****
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+}
+
+func (s MoveUserOrgRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveUserOrgRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MoveUserOrgRequest) SetEndUserIds(v []*string) *MoveUserOrgRequest {
+	s.EndUserIds = v
+	return s
+}
+
+func (s *MoveUserOrgRequest) SetOrgId(v string) *MoveUserOrgRequest {
+	s.OrgId = &v
+	return s
+}
+
+type MoveUserOrgResponseBody struct {
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s MoveUserOrgResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveUserOrgResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MoveUserOrgResponseBody) SetRequestId(v string) *MoveUserOrgResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type MoveUserOrgResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MoveUserOrgResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MoveUserOrgResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveUserOrgResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MoveUserOrgResponse) SetHeaders(v map[string]*string) *MoveUserOrgResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MoveUserOrgResponse) SetStatusCode(v int32) *MoveUserOrgResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MoveUserOrgResponse) SetBody(v *MoveUserOrgResponseBody) *MoveUserOrgResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySyncStatusByAliUidResponseBody struct {
 	// example:
 	//
@@ -5384,6 +5993,75 @@ func (s *QuerySyncStatusByAliUidResponse) SetStatusCode(v int32) *QuerySyncStatu
 }
 
 func (s *QuerySyncStatusByAliUidResponse) SetBody(v *QuerySyncStatusByAliUidResponseBody) *QuerySyncStatusByAliUidResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveGroupRequest struct {
+	// example:
+	//
+	// ug-12341234****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s RemoveGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveGroupRequest) SetGroupId(v string) *RemoveGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+type RemoveGroupResponseBody struct {
+	// example:
+	//
+	// 42FE70D8-4336-471B-8314-CCCFCE41****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveGroupResponseBody) SetRequestId(v string) *RemoveGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveGroupResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RemoveGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveGroupResponse) SetHeaders(v map[string]*string) *RemoveGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveGroupResponse) SetStatusCode(v int32) *RemoveGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveGroupResponse) SetBody(v *RemoveGroupResponseBody) *RemoveGroupResponse {
 	s.Body = v
 	return s
 }
@@ -6670,6 +7348,158 @@ func (s *UpdatePropertyResponse) SetBody(v *UpdatePropertyResponseBody) *UpdateP
 	return s
 }
 
+type UserBatchJoinGroupRequest struct {
+	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ug-12341234****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s UserBatchJoinGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserBatchJoinGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UserBatchJoinGroupRequest) SetEndUserIds(v []*string) *UserBatchJoinGroupRequest {
+	s.EndUserIds = v
+	return s
+}
+
+func (s *UserBatchJoinGroupRequest) SetGroupId(v string) *UserBatchJoinGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+type UserBatchJoinGroupResponseBody struct {
+	// example:
+	//
+	// 7A2C3803-C975-5871-A232-80A91009****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UserBatchJoinGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserBatchJoinGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UserBatchJoinGroupResponseBody) SetRequestId(v string) *UserBatchJoinGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UserBatchJoinGroupResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UserBatchJoinGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UserBatchJoinGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserBatchJoinGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UserBatchJoinGroupResponse) SetHeaders(v map[string]*string) *UserBatchJoinGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UserBatchJoinGroupResponse) SetStatusCode(v int32) *UserBatchJoinGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UserBatchJoinGroupResponse) SetBody(v *UserBatchJoinGroupResponseBody) *UserBatchJoinGroupResponse {
+	s.Body = v
+	return s
+}
+
+type UserBatchQuitGroupRequest struct {
+	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ug-lkuvalovhnlxvv****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s UserBatchQuitGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserBatchQuitGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UserBatchQuitGroupRequest) SetEndUserIds(v []*string) *UserBatchQuitGroupRequest {
+	s.EndUserIds = v
+	return s
+}
+
+func (s *UserBatchQuitGroupRequest) SetGroupId(v string) *UserBatchQuitGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+type UserBatchQuitGroupResponseBody struct {
+	// example:
+	//
+	// 890JNJNF-SADASSDFS-SDFSDF****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UserBatchQuitGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserBatchQuitGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UserBatchQuitGroupResponseBody) SetRequestId(v string) *UserBatchQuitGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UserBatchQuitGroupResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UserBatchQuitGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UserBatchQuitGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserBatchQuitGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UserBatchQuitGroupResponse) SetHeaders(v map[string]*string) *UserBatchQuitGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UserBatchQuitGroupResponse) SetStatusCode(v int32) *UserBatchQuitGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UserBatchQuitGroupResponse) SetBody(v *UserBatchQuitGroupResponseBody) *UserBatchQuitGroupResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -6971,6 +7801,78 @@ func (client *Client) CheckUsedPropertyValue(request *CheckUsedPropertyValueRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckUsedPropertyValueResponse{}
 	_body, _err := client.CheckUsedPropertyValueWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建角色.
+//
+// @param request - CreateGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupResponse
+func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtime *util.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentGroupId)) {
+		query["ParentGroupId"] = request.ParentGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SolutionId)) {
+		query["SolutionId"] = request.SolutionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGroup"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建角色.
+//
+// @param request - CreateGroupRequest
+//
+// @return CreateGroupResponse
+func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGroupResponse{}
+	_body, _err := client.CreateGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7393,6 +8295,146 @@ func (client *Client) DeleteUserPropertyValue(request *DeleteUserPropertyValueRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserPropertyValueResponse{}
 	_body, _err := client.DeleteUserPropertyValueWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 全量同步初始化
+//
+// @param request - DescribeGroupUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGroupUserResponse
+func (client *Client) DescribeGroupUserWithOptions(request *DescribeGroupUserRequest, runtime *util.RuntimeOptions) (_result *DescribeGroupUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SolutionId)) {
+		query["SolutionId"] = request.SolutionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGroupUser"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeGroupUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 全量同步初始化
+//
+// @param request - DescribeGroupUserRequest
+//
+// @return DescribeGroupUserResponse
+func (client *Client) DescribeGroupUser(request *DescribeGroupUserRequest) (_result *DescribeGroupUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeGroupUserResponse{}
+	_body, _err := client.DescribeGroupUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 全量同步初始化.
+//
+// @param request - DescribeGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGroupsResponse
+func (client *Client) DescribeGroupsWithOptions(request *DescribeGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SolutionId)) {
+		query["SolutionId"] = request.SolutionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGroups"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 全量同步初始化.
+//
+// @param request - DescribeGroupsRequest
+//
+// @return DescribeGroupsResponse
+func (client *Client) DescribeGroups(request *DescribeGroupsRequest) (_result *DescribeGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeGroupsResponse{}
+	_body, _err := client.DescribeGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8304,6 +9346,70 @@ func (client *Client) LockUsers(request *LockUsersRequest) (_result *LockUsersRe
 
 // Summary:
 //
+// 修改角色.
+//
+// @param request - ModifyGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyGroupResponse
+func (client *Client) ModifyGroupWithOptions(request *ModifyGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewGroupName)) {
+		query["NewGroupName"] = request.NewGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyGroup"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改角色.
+//
+// @param request - ModifyGroupRequest
+//
+// @return ModifyGroupResponse
+func (client *Client) ModifyGroup(request *ModifyGroupRequest) (_result *ModifyGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyGroupResponse{}
+	_body, _err := client.ModifyGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改组织
 //
 // @param request - ModifyOrgRequest
@@ -8500,6 +9606,70 @@ func (client *Client) MoveOrg(request *MoveOrgRequest) (_result *MoveOrgResponse
 
 // Summary:
 //
+// 移动用户组织
+//
+// @param request - MoveUserOrgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveUserOrgResponse
+func (client *Client) MoveUserOrgWithOptions(request *MoveUserOrgRequest, runtime *util.RuntimeOptions) (_result *MoveUserOrgResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndUserIds)) {
+		body["EndUserIds"] = request.EndUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		body["OrgId"] = request.OrgId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveUserOrg"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MoveUserOrgResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 移动用户组织
+//
+// @param request - MoveUserOrgRequest
+//
+// @return MoveUserOrgResponse
+func (client *Client) MoveUserOrg(request *MoveUserOrgRequest) (_result *MoveUserOrgResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MoveUserOrgResponse{}
+	_body, _err := client.MoveUserOrgWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询edu同步信息
 //
 // @param request - QuerySyncStatusByAliUidRequest
@@ -8538,6 +9708,66 @@ func (client *Client) QuerySyncStatusByAliUid() (_result *QuerySyncStatusByAliUi
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySyncStatusByAliUidResponse{}
 	_body, _err := client.QuerySyncStatusByAliUidWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除角色.
+//
+// @param request - RemoveGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveGroupResponse
+func (client *Client) RemoveGroupWithOptions(request *RemoveGroupRequest, runtime *util.RuntimeOptions) (_result *RemoveGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveGroup"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除角色.
+//
+// @param request - RemoveGroupRequest
+//
+// @return RemoveGroupResponse
+func (client *Client) RemoveGroup(request *RemoveGroupRequest) (_result *RemoveGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveGroupResponse{}
+	_body, _err := client.RemoveGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9171,6 +10401,134 @@ func (client *Client) UpdateProperty(request *UpdatePropertyRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePropertyResponse{}
 	_body, _err := client.UpdatePropertyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户批量分配角色
+//
+// @param request - UserBatchJoinGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UserBatchJoinGroupResponse
+func (client *Client) UserBatchJoinGroupWithOptions(request *UserBatchJoinGroupRequest, runtime *util.RuntimeOptions) (_result *UserBatchJoinGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndUserIds)) {
+		body["EndUserIds"] = request.EndUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UserBatchJoinGroup"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UserBatchJoinGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户批量分配角色
+//
+// @param request - UserBatchJoinGroupRequest
+//
+// @return UserBatchJoinGroupResponse
+func (client *Client) UserBatchJoinGroup(request *UserBatchJoinGroupRequest) (_result *UserBatchJoinGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UserBatchJoinGroupResponse{}
+	_body, _err := client.UserBatchJoinGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户批量移出角色
+//
+// @param request - UserBatchQuitGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UserBatchQuitGroupResponse
+func (client *Client) UserBatchQuitGroupWithOptions(request *UserBatchQuitGroupRequest, runtime *util.RuntimeOptions) (_result *UserBatchQuitGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndUserIds)) {
+		body["EndUserIds"] = request.EndUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UserBatchQuitGroup"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UserBatchQuitGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户批量移出角色
+//
+// @param request - UserBatchQuitGroupRequest
+//
+// @return UserBatchQuitGroupResponse
+func (client *Client) UserBatchQuitGroup(request *UserBatchQuitGroupRequest) (_result *UserBatchQuitGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UserBatchQuitGroupResponse{}
+	_body, _err := client.UserBatchQuitGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
