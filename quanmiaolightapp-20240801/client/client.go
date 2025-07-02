@@ -1113,6 +1113,188 @@ func (s *GetEnterpriseVocAnalysisTaskResponse) SetBody(v *GetEnterpriseVocAnalys
 	return s
 }
 
+type GetEssayCorrectionTaskRequest struct {
+	// example:
+	//
+	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s GetEssayCorrectionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEssayCorrectionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEssayCorrectionTaskRequest) SetTaskId(v string) *GetEssayCorrectionTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetEssayCorrectionTaskResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetEssayCorrectionTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 117F5ABE-CF02-5502-9A3F-E56BC9081A64
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetEssayCorrectionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEssayCorrectionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEssayCorrectionTaskResponseBody) SetCode(v string) *GetEssayCorrectionTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBody) SetData(v *GetEssayCorrectionTaskResponseBodyData) *GetEssayCorrectionTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBody) SetHttpStatusCode(v int32) *GetEssayCorrectionTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBody) SetMessage(v string) *GetEssayCorrectionTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBody) SetRequestId(v string) *GetEssayCorrectionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBody) SetSuccess(v bool) *GetEssayCorrectionTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetEssayCorrectionTaskResponseBodyData struct {
+	ErrorMessage *string                                          `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	Results      []*GetEssayCorrectionTaskResponseBodyDataResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// example:
+	//
+	// PENDING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s GetEssayCorrectionTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEssayCorrectionTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyData) SetErrorMessage(v string) *GetEssayCorrectionTaskResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyData) SetResults(v []*GetEssayCorrectionTaskResponseBodyDataResults) *GetEssayCorrectionTaskResponseBodyData {
+	s.Results = v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyData) SetStatus(v string) *GetEssayCorrectionTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetEssayCorrectionTaskResponseBodyDataResults struct {
+	// xxx
+	//
+	// example:
+	//
+	// 1
+	CustomId *string `json:"customId,omitempty" xml:"customId,omitempty"`
+	Result   *string `json:"result,omitempty" xml:"result,omitempty"`
+	// example:
+	//
+	// 58
+	Score *int32 `json:"score,omitempty" xml:"score,omitempty"`
+}
+
+func (s GetEssayCorrectionTaskResponseBodyDataResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEssayCorrectionTaskResponseBodyDataResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResults) SetCustomId(v string) *GetEssayCorrectionTaskResponseBodyDataResults {
+	s.CustomId = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResults) SetResult(v string) *GetEssayCorrectionTaskResponseBodyDataResults {
+	s.Result = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResults) SetScore(v int32) *GetEssayCorrectionTaskResponseBodyDataResults {
+	s.Score = &v
+	return s
+}
+
+type GetEssayCorrectionTaskResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEssayCorrectionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEssayCorrectionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEssayCorrectionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEssayCorrectionTaskResponse) SetHeaders(v map[string]*string) *GetEssayCorrectionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponse) SetStatusCode(v int32) *GetEssayCorrectionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponse) SetBody(v *GetEssayCorrectionTaskResponseBody) *GetEssayCorrectionTaskResponse {
+	s.Body = v
+	return s
+}
+
 type GetTagMiningAnalysisTaskRequest struct {
 	// example:
 	//
@@ -3811,6 +3993,286 @@ func (s *RunEnterpriseVocAnalysisResponse) SetBody(v *RunEnterpriseVocAnalysisRe
 	return s
 }
 
+type RunEssayCorrectionRequest struct {
+	// example:
+	//
+	// xxx
+	Answer  *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	Grade   *string `json:"grade,omitempty" xml:"grade,omitempty"`
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// xxx
+	OtherReviewPoints *string `json:"otherReviewPoints,omitempty" xml:"otherReviewPoints,omitempty"`
+	// example:
+	//
+	// xx
+	Question *string `json:"question,omitempty" xml:"question,omitempty"`
+	Subject  *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// example:
+	//
+	// 60
+	TotalScore *int32 `json:"totalScore,omitempty" xml:"totalScore,omitempty"`
+}
+
+func (s RunEssayCorrectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEssayCorrectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunEssayCorrectionRequest) SetAnswer(v string) *RunEssayCorrectionRequest {
+	s.Answer = &v
+	return s
+}
+
+func (s *RunEssayCorrectionRequest) SetGrade(v string) *RunEssayCorrectionRequest {
+	s.Grade = &v
+	return s
+}
+
+func (s *RunEssayCorrectionRequest) SetModelId(v string) *RunEssayCorrectionRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *RunEssayCorrectionRequest) SetOtherReviewPoints(v string) *RunEssayCorrectionRequest {
+	s.OtherReviewPoints = &v
+	return s
+}
+
+func (s *RunEssayCorrectionRequest) SetQuestion(v string) *RunEssayCorrectionRequest {
+	s.Question = &v
+	return s
+}
+
+func (s *RunEssayCorrectionRequest) SetSubject(v string) *RunEssayCorrectionRequest {
+	s.Subject = &v
+	return s
+}
+
+func (s *RunEssayCorrectionRequest) SetTotalScore(v int32) *RunEssayCorrectionRequest {
+	s.TotalScore = &v
+	return s
+}
+
+type RunEssayCorrectionResponseBody struct {
+	Header  *RunEssayCorrectionResponseBodyHeader  `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Payload *RunEssayCorrectionResponseBodyPayload `json:"payload,omitempty" xml:"payload,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 117F5ABE-CF02-5502-9A3F-E56BC9081A64
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s RunEssayCorrectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEssayCorrectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunEssayCorrectionResponseBody) SetHeader(v *RunEssayCorrectionResponseBodyHeader) *RunEssayCorrectionResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBody) SetPayload(v *RunEssayCorrectionResponseBodyPayload) *RunEssayCorrectionResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBody) SetRequestId(v string) *RunEssayCorrectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunEssayCorrectionResponseBodyHeader struct {
+	// example:
+	//
+	// AccessForbidden
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// task-finished
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// xxxx
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// xxxx
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// xxxxx
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s RunEssayCorrectionResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEssayCorrectionResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunEssayCorrectionResponseBodyHeader) SetErrorCode(v string) *RunEssayCorrectionResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyHeader) SetErrorMessage(v string) *RunEssayCorrectionResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyHeader) SetEvent(v string) *RunEssayCorrectionResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyHeader) SetSessionId(v string) *RunEssayCorrectionResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyHeader) SetTaskId(v string) *RunEssayCorrectionResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyHeader) SetTraceId(v string) *RunEssayCorrectionResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunEssayCorrectionResponseBodyPayload struct {
+	Output *RunEssayCorrectionResponseBodyPayloadOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Usage  *RunEssayCorrectionResponseBodyPayloadUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s RunEssayCorrectionResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEssayCorrectionResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunEssayCorrectionResponseBodyPayload) SetOutput(v *RunEssayCorrectionResponseBodyPayloadOutput) *RunEssayCorrectionResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyPayload) SetUsage(v *RunEssayCorrectionResponseBodyPayloadUsage) *RunEssayCorrectionResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunEssayCorrectionResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// 50
+	Score *int32  `json:"score,omitempty" xml:"score,omitempty"`
+	Text  *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s RunEssayCorrectionResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEssayCorrectionResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutput) SetScore(v int32) *RunEssayCorrectionResponseBodyPayloadOutput {
+	s.Score = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutput) SetText(v string) *RunEssayCorrectionResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunEssayCorrectionResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s RunEssayCorrectionResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEssayCorrectionResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadUsage) SetInputTokens(v int64) *RunEssayCorrectionResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunEssayCorrectionResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunEssayCorrectionResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunEssayCorrectionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunEssayCorrectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunEssayCorrectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEssayCorrectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunEssayCorrectionResponse) SetHeaders(v map[string]*string) *RunEssayCorrectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunEssayCorrectionResponse) SetStatusCode(v int32) *RunEssayCorrectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponse) SetBody(v *RunEssayCorrectionResponseBody) *RunEssayCorrectionResponse {
+	s.Body = v
+	return s
+}
+
 type RunHotTopicChatRequest struct {
 	Category        *string   `json:"category,omitempty" xml:"category,omitempty"`
 	GenerateOptions []*string `json:"generateOptions,omitempty" xml:"generateOptions,omitempty" type:"Repeated"`
@@ -5903,6 +6365,247 @@ func (s *RunNetworkContentAuditResponse) SetStatusCode(v int32) *RunNetworkConte
 }
 
 func (s *RunNetworkContentAuditResponse) SetBody(v *RunNetworkContentAuditResponseBody) *RunNetworkContentAuditResponse {
+	s.Body = v
+	return s
+}
+
+type RunOcrParseRequest struct {
+	// example:
+	//
+	// oss://default/aimiaobi-service-prod/aimiaobi/temp/public/government_service_experience_feedback_summary.txt
+	FileKey *string `json:"fileKey,omitempty" xml:"fileKey,omitempty"`
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// http://www.example.com/xxxx.txt
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s RunOcrParseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunOcrParseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunOcrParseRequest) SetFileKey(v string) *RunOcrParseRequest {
+	s.FileKey = &v
+	return s
+}
+
+func (s *RunOcrParseRequest) SetModelId(v string) *RunOcrParseRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *RunOcrParseRequest) SetUrl(v string) *RunOcrParseRequest {
+	s.Url = &v
+	return s
+}
+
+type RunOcrParseResponseBody struct {
+	Header  *RunOcrParseResponseBodyHeader  `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Payload *RunOcrParseResponseBodyPayload `json:"payload,omitempty" xml:"payload,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 117F5ABE-CF02-5502-9A3F-E56BC9081A64
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s RunOcrParseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunOcrParseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunOcrParseResponseBody) SetHeader(v *RunOcrParseResponseBodyHeader) *RunOcrParseResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunOcrParseResponseBody) SetPayload(v *RunOcrParseResponseBodyPayload) *RunOcrParseResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunOcrParseResponseBody) SetRequestId(v string) *RunOcrParseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunOcrParseResponseBodyHeader struct {
+	// example:
+	//
+	// AccessForbidden
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// task-finished
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// xxxx
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// xxxx
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// xxxxx
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s RunOcrParseResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunOcrParseResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunOcrParseResponseBodyHeader) SetErrorCode(v string) *RunOcrParseResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunOcrParseResponseBodyHeader) SetErrorMessage(v string) *RunOcrParseResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunOcrParseResponseBodyHeader) SetEvent(v string) *RunOcrParseResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunOcrParseResponseBodyHeader) SetSessionId(v string) *RunOcrParseResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunOcrParseResponseBodyHeader) SetTaskId(v string) *RunOcrParseResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunOcrParseResponseBodyHeader) SetTraceId(v string) *RunOcrParseResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunOcrParseResponseBodyPayload struct {
+	Output *RunOcrParseResponseBodyPayloadOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Usage  *RunOcrParseResponseBodyPayloadUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s RunOcrParseResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunOcrParseResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunOcrParseResponseBodyPayload) SetOutput(v *RunOcrParseResponseBodyPayloadOutput) *RunOcrParseResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunOcrParseResponseBodyPayload) SetUsage(v *RunOcrParseResponseBodyPayloadUsage) *RunOcrParseResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunOcrParseResponseBodyPayloadOutput struct {
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s RunOcrParseResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunOcrParseResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunOcrParseResponseBodyPayloadOutput) SetText(v string) *RunOcrParseResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunOcrParseResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s RunOcrParseResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunOcrParseResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunOcrParseResponseBodyPayloadUsage) SetInputTokens(v int64) *RunOcrParseResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunOcrParseResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunOcrParseResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunOcrParseResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunOcrParseResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunOcrParseResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunOcrParseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunOcrParseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunOcrParseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunOcrParseResponse) SetHeaders(v map[string]*string) *RunOcrParseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunOcrParseResponse) SetStatusCode(v int32) *RunOcrParseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunOcrParseResponse) SetBody(v *RunOcrParseResponseBody) *RunOcrParseResponse {
 	s.Body = v
 	return s
 }
@@ -9473,6 +10176,324 @@ func (s *SubmitEnterpriseVocAnalysisTaskResponse) SetBody(v *SubmitEnterpriseVoc
 	return s
 }
 
+type SubmitEssayCorrectionTaskRequest struct {
+	// example:
+	//
+	// 高中二年级
+	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
+	// example:
+	//
+	// xxx
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// xxx
+	OtherReviewPoints *string `json:"otherReviewPoints,omitempty" xml:"otherReviewPoints,omitempty"`
+	// example:
+	//
+	// xxx
+	Question *string `json:"question,omitempty" xml:"question,omitempty"`
+	// example:
+	//
+	// 语文
+	Subject *string                                  `json:"subject,omitempty" xml:"subject,omitempty"`
+	Tasks   []*SubmitEssayCorrectionTaskRequestTasks `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 60
+	TotalScore *int32 `json:"totalScore,omitempty" xml:"totalScore,omitempty"`
+}
+
+func (s SubmitEssayCorrectionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEssayCorrectionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEssayCorrectionTaskRequest) SetGrade(v string) *SubmitEssayCorrectionTaskRequest {
+	s.Grade = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequest) SetModelId(v string) *SubmitEssayCorrectionTaskRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequest) SetOtherReviewPoints(v string) *SubmitEssayCorrectionTaskRequest {
+	s.OtherReviewPoints = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequest) SetQuestion(v string) *SubmitEssayCorrectionTaskRequest {
+	s.Question = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequest) SetSubject(v string) *SubmitEssayCorrectionTaskRequest {
+	s.Subject = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequest) SetTasks(v []*SubmitEssayCorrectionTaskRequestTasks) *SubmitEssayCorrectionTaskRequest {
+	s.Tasks = v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequest) SetTotalScore(v int32) *SubmitEssayCorrectionTaskRequest {
+	s.TotalScore = &v
+	return s
+}
+
+type SubmitEssayCorrectionTaskRequestTasks struct {
+	// example:
+	//
+	// xxx
+	Answer *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	// example:
+	//
+	// 高中二年级
+	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
+	// example:
+	//
+	// xxx
+	OtherReviewPoints *string `json:"otherReviewPoints,omitempty" xml:"otherReviewPoints,omitempty"`
+	// example:
+	//
+	// xxx
+	Question *string `json:"question,omitempty" xml:"question,omitempty"`
+	// example:
+	//
+	// 语文
+	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// example:
+	//
+	// 60
+	TotalScore *int32 `json:"totalScore,omitempty" xml:"totalScore,omitempty"`
+}
+
+func (s SubmitEssayCorrectionTaskRequestTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEssayCorrectionTaskRequestTasks) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEssayCorrectionTaskRequestTasks) SetAnswer(v string) *SubmitEssayCorrectionTaskRequestTasks {
+	s.Answer = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequestTasks) SetGrade(v string) *SubmitEssayCorrectionTaskRequestTasks {
+	s.Grade = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequestTasks) SetOtherReviewPoints(v string) *SubmitEssayCorrectionTaskRequestTasks {
+	s.OtherReviewPoints = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequestTasks) SetQuestion(v string) *SubmitEssayCorrectionTaskRequestTasks {
+	s.Question = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequestTasks) SetSubject(v string) *SubmitEssayCorrectionTaskRequestTasks {
+	s.Subject = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequestTasks) SetTotalScore(v int32) *SubmitEssayCorrectionTaskRequestTasks {
+	s.TotalScore = &v
+	return s
+}
+
+type SubmitEssayCorrectionTaskShrinkRequest struct {
+	// example:
+	//
+	// 高中二年级
+	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
+	// example:
+	//
+	// xxx
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// xxx
+	OtherReviewPoints *string `json:"otherReviewPoints,omitempty" xml:"otherReviewPoints,omitempty"`
+	// example:
+	//
+	// xxx
+	Question *string `json:"question,omitempty" xml:"question,omitempty"`
+	// example:
+	//
+	// 语文
+	Subject     *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	TasksShrink *string `json:"tasks,omitempty" xml:"tasks,omitempty"`
+	// example:
+	//
+	// 60
+	TotalScore *int32 `json:"totalScore,omitempty" xml:"totalScore,omitempty"`
+}
+
+func (s SubmitEssayCorrectionTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEssayCorrectionTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEssayCorrectionTaskShrinkRequest) SetGrade(v string) *SubmitEssayCorrectionTaskShrinkRequest {
+	s.Grade = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskShrinkRequest) SetModelId(v string) *SubmitEssayCorrectionTaskShrinkRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskShrinkRequest) SetOtherReviewPoints(v string) *SubmitEssayCorrectionTaskShrinkRequest {
+	s.OtherReviewPoints = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskShrinkRequest) SetQuestion(v string) *SubmitEssayCorrectionTaskShrinkRequest {
+	s.Question = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskShrinkRequest) SetSubject(v string) *SubmitEssayCorrectionTaskShrinkRequest {
+	s.Subject = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskShrinkRequest) SetTasksShrink(v string) *SubmitEssayCorrectionTaskShrinkRequest {
+	s.TasksShrink = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskShrinkRequest) SetTotalScore(v int32) *SubmitEssayCorrectionTaskShrinkRequest {
+	s.TotalScore = &v
+	return s
+}
+
+type SubmitEssayCorrectionTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                    `json:"code,omitempty" xml:"code,omitempty"`
+	Data *SubmitEssayCorrectionTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s SubmitEssayCorrectionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEssayCorrectionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEssayCorrectionTaskResponseBody) SetCode(v string) *SubmitEssayCorrectionTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskResponseBody) SetData(v *SubmitEssayCorrectionTaskResponseBodyData) *SubmitEssayCorrectionTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskResponseBody) SetHttpStatusCode(v int32) *SubmitEssayCorrectionTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskResponseBody) SetMessage(v string) *SubmitEssayCorrectionTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskResponseBody) SetRequestId(v string) *SubmitEssayCorrectionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskResponseBody) SetSuccess(v bool) *SubmitEssayCorrectionTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitEssayCorrectionTaskResponseBodyData struct {
+	// example:
+	//
+	// 3feb69ed02d9b1a17d0f1a942675d300
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s SubmitEssayCorrectionTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEssayCorrectionTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEssayCorrectionTaskResponseBodyData) SetTaskId(v string) *SubmitEssayCorrectionTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitEssayCorrectionTaskResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitEssayCorrectionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitEssayCorrectionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEssayCorrectionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEssayCorrectionTaskResponse) SetHeaders(v map[string]*string) *SubmitEssayCorrectionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskResponse) SetStatusCode(v int32) *SubmitEssayCorrectionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskResponse) SetBody(v *SubmitEssayCorrectionTaskResponseBody) *SubmitEssayCorrectionTaskResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitTagMiningAnalysisTaskRequest struct {
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	// example:
@@ -11033,6 +12054,70 @@ func (client *Client) GetEnterpriseVocAnalysisTask(workspaceId *string, request 
 
 // Summary:
 //
+// 获取作业批改结果
+//
+// @param request - GetEssayCorrectionTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEssayCorrectionTaskResponse
+func (client *Client) GetEssayCorrectionTaskWithOptions(workspaceId *string, request *GetEssayCorrectionTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEssayCorrectionTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEssayCorrectionTask"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/getEssayCorrectionTask"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEssayCorrectionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取作业批改结果
+//
+// @param request - GetEssayCorrectionTaskRequest
+//
+// @return GetEssayCorrectionTaskResponse
+func (client *Client) GetEssayCorrectionTask(workspaceId *string, request *GetEssayCorrectionTaskRequest) (_result *GetEssayCorrectionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEssayCorrectionTaskResponse{}
+	_body, _err := client.GetEssayCorrectionTaskWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取挖掘分析任务结果
 //
 // @param request - GetTagMiningAnalysisTaskRequest
@@ -11537,6 +12622,94 @@ func (client *Client) RunEnterpriseVocAnalysis(workspaceId *string, request *Run
 
 // Summary:
 //
+// 作业批改
+//
+// @param request - RunEssayCorrectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunEssayCorrectionResponse
+func (client *Client) RunEssayCorrectionWithOptions(workspaceId *string, request *RunEssayCorrectionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunEssayCorrectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Answer)) {
+		body["answer"] = request.Answer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Grade)) {
+		body["grade"] = request.Grade
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtherReviewPoints)) {
+		body["otherReviewPoints"] = request.OtherReviewPoints
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Question)) {
+		body["question"] = request.Question
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subject)) {
+		body["subject"] = request.Subject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TotalScore)) {
+		body["totalScore"] = request.TotalScore
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunEssayCorrection"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/runEssayCorrection"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunEssayCorrectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 作业批改
+//
+// @param request - RunEssayCorrectionRequest
+//
+// @return RunEssayCorrectionResponse
+func (client *Client) RunEssayCorrection(workspaceId *string, request *RunEssayCorrectionRequest) (_result *RunEssayCorrectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunEssayCorrectionResponse{}
+	_body, _err := client.RunEssayCorrectionWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 轻应用-热点播报-问答
 //
 // @param tmpReq - RunHotTopicChatRequest
@@ -12008,6 +13181,78 @@ func (client *Client) RunNetworkContentAudit(workspaceId *string, request *RunNe
 	headers := make(map[string]*string)
 	_result = &RunNetworkContentAuditResponse{}
 	_body, _err := client.RunNetworkContentAuditWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 作业批改
+//
+// @param request - RunOcrParseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunOcrParseResponse
+func (client *Client) RunOcrParseWithOptions(workspaceId *string, request *RunOcrParseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunOcrParseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileKey)) {
+		body["fileKey"] = request.FileKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		body["url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunOcrParse"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/runOcrParse"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunOcrParseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 作业批改
+//
+// @param request - RunOcrParseRequest
+//
+// @return RunOcrParseResponse
+func (client *Client) RunOcrParse(workspaceId *string, request *RunOcrParseRequest) (_result *RunOcrParseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunOcrParseResponse{}
+	_body, _err := client.RunOcrParseWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12776,6 +14021,100 @@ func (client *Client) SubmitEnterpriseVocAnalysisTask(workspaceId *string, reque
 	headers := make(map[string]*string)
 	_result = &SubmitEnterpriseVocAnalysisTaskResponse{}
 	_body, _err := client.SubmitEnterpriseVocAnalysisTaskWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交批改任务
+//
+// @param tmpReq - SubmitEssayCorrectionTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitEssayCorrectionTaskResponse
+func (client *Client) SubmitEssayCorrectionTaskWithOptions(workspaceId *string, tmpReq *SubmitEssayCorrectionTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitEssayCorrectionTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitEssayCorrectionTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tasks)) {
+		request.TasksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tasks, tea.String("tasks"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Grade)) {
+		body["grade"] = request.Grade
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtherReviewPoints)) {
+		body["otherReviewPoints"] = request.OtherReviewPoints
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Question)) {
+		body["question"] = request.Question
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subject)) {
+		body["subject"] = request.Subject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TasksShrink)) {
+		body["tasks"] = request.TasksShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TotalScore)) {
+		body["totalScore"] = request.TotalScore
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitEssayCorrectionTask"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/submitEssayCorrectionTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitEssayCorrectionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交批改任务
+//
+// @param request - SubmitEssayCorrectionTaskRequest
+//
+// @return SubmitEssayCorrectionTaskResponse
+func (client *Client) SubmitEssayCorrectionTask(workspaceId *string, request *SubmitEssayCorrectionTaskRequest) (_result *SubmitEssayCorrectionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SubmitEssayCorrectionTaskResponse{}
+	_body, _err := client.SubmitEssayCorrectionTaskWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
