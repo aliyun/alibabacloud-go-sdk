@@ -10,26 +10,46 @@ import (
 )
 
 type AddIpamPoolCidrRequest struct {
+	// The CIDR block that you want to provision.
+	//
+	// >  Only IPv4 CIDR blocks are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 192.168.1.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the IPAM pool.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -72,6 +92,8 @@ func (s *AddIpamPoolCidrRequest) SetRegionId(v string) *AddIpamPoolCidrRequest {
 }
 
 type AddIpamPoolCidrResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 558BC336-8B88-53B0-B4AD-980EE900AB01
@@ -121,20 +143,34 @@ func (s *AddIpamPoolCidrResponse) SetBody(v *AddIpamPoolCidrResponseBody) *AddIp
 }
 
 type AssociateIpamResourceDiscoveryRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform the dry run. Valid values:
+	//
+	// 	- **true**: Performs a dry run without associating the resource discovery and IPAM instance. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and sends the request. After the request passes the check, an HTTP 2xx status code is returned and the resource discovery and IPAM instances are associated.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the IPAM.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-ccxbnsbhew0d6t****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// The ID of resource discovery instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -143,6 +179,8 @@ type AssociateIpamResourceDiscoveryRequest struct {
 	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
 	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The request region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -207,6 +245,8 @@ func (s *AssociateIpamResourceDiscoveryRequest) SetResourceOwnerId(v int64) *Ass
 }
 
 type AssociateIpamResourceDiscoveryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E897D16A-50EB-543F-B002-C5A26AB818FF
@@ -256,6 +296,8 @@ func (s *AssociateIpamResourceDiscoveryResponse) SetBody(v *AssociateIpamResourc
 }
 
 type ChangeResourceGroupRequest struct {
+	// The ID of the new resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -264,12 +306,16 @@ type ChangeResourceGroupRequest struct {
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the IPAM resource.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -278,6 +324,16 @@ type ChangeResourceGroupRequest struct {
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Resource type, with values:
+	//
+	// - Ipam:IPAM instance
+	//
+	// - IpamScope:IPAM scope
+	//
+	// - IpamPool:IPAM address pool
+	//
+	// - IpamResourceDiscovery:IPAM resource discovery
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -335,6 +391,8 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 }
 
 type ChangeResourceGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// BB2C39DE-CEB8-595A-981A-F2EFCBE7324E
@@ -384,39 +442,64 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CreateIpamRequest struct {
+	// The client token used to ensure the idempotence of the request. Use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The description of the IPAM.
+	//
+	// It must be 1 to 256 characters in length. Start with a letter but cannot start with `http://` or `https://`. If you do not specify a description, the description is empty by default.
+	//
 	// example:
 	//
 	// This is my first Ipam
 	IpamDescription *string `json:"IpamDescription,omitempty" xml:"IpamDescription,omitempty"`
+	// The name of the IPAM.
+	//
+	// It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// abc
 	IpamName *string `json:"IpamName,omitempty" xml:"IpamName,omitempty"`
+	// The effective regions of the IPAM.
+	//
 	// This parameter is required.
 	OperatingRegionList []*string `json:"OperatingRegionList,omitempty" xml:"OperatingRegionList,omitempty" type:"Repeated"`
 	OwnerAccount        *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID of the IPAM.
+	//
 	// example:
 	//
 	// rg-acfmxazb4ph6aiy****
-	ResourceGroupId      *string                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                 `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*CreateIpamRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tag list.
+	Tag []*CreateIpamRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateIpamRequest) String() string {
@@ -488,7 +571,21 @@ func (s *CreateIpamRequest) SetTag(v []*CreateIpamRequestTag) *CreateIpamRequest
 }
 
 type CreateIpamRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource. You can specify at most 20 tag keys. It cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceDept
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the resource. You can specify up to 20 tag values. You can specify empty strings as tag values.
+	//
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -511,25 +608,48 @@ func (s *CreateIpamRequestTag) SetValue(v string) *CreateIpamRequestTag {
 }
 
 type CreateIpamResponseBody struct {
+	// The ID of the default resource discovery association.
+	//
+	// example:
+	//
+	// ipam-res-disco-assoc-jt5fac8twugdbbgip****
 	DefaultResourceDiscoveryAssociationId *string `json:"DefaultResourceDiscoveryAssociationId,omitempty" xml:"DefaultResourceDiscoveryAssociationId,omitempty"`
-	DefaultResourceDiscoveryId            *string `json:"DefaultResourceDiscoveryId,omitempty" xml:"DefaultResourceDiscoveryId,omitempty"`
+	// The ID of the default resource discovery instance.
+	//
+	// example:
+	//
+	// ipam-res-disco-jt5f2af2u6nk2z321****
+	DefaultResourceDiscoveryId *string `json:"DefaultResourceDiscoveryId,omitempty" xml:"DefaultResourceDiscoveryId,omitempty"`
+	// The ID of the IPAM.
+	//
 	// example:
 	//
 	// ipam-ccxbnsbhew0d6t****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// The default private scope created by the system after the IPAM is created.
+	//
 	// example:
 	//
 	// ipam-scope-8wiontzmiy6cg0****
 	PrivateDefaultScopeId *string `json:"PrivateDefaultScopeId,omitempty" xml:"PrivateDefaultScopeId,omitempty"`
+	// The default public scope created by the system after the IPAM is created.
+	//
 	// example:
 	//
 	// ipam-scope-r5c5c7bmym1brc****
 	PublicDefaultScopeId *string `json:"PublicDefaultScopeId,omitempty" xml:"PublicDefaultScopeId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED39DCAC0
-	RequestId                         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceDiscoveryAssociationCount *int32  `json:"ResourceDiscoveryAssociationCount,omitempty" xml:"ResourceDiscoveryAssociationCount,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of discovered resources.
+	//
+	// example:
+	//
+	// 1
+	ResourceDiscoveryAssociationCount *int32 `json:"ResourceDiscoveryAssociationCount,omitempty" xml:"ResourceDiscoveryAssociationCount,omitempty"`
 }
 
 func (s CreateIpamResponseBody) String() string {
@@ -605,39 +725,78 @@ func (s *CreateIpamResponse) SetBody(v *CreateIpamResponseBody) *CreateIpamRespo
 }
 
 type CreateIpamPoolRequest struct {
+	// The default network mask assigned to the IPAM pool.
+	//
+	// An IPv4 mask must be **0 to 32*	- bits in length.
+	//
 	// example:
 	//
 	// 28
 	AllocationDefaultCidrMask *int32 `json:"AllocationDefaultCidrMask,omitempty" xml:"AllocationDefaultCidrMask,omitempty"`
+	// The maximum network mask assigned to the IPAM pool.
+	//
+	// An IPv4 mask must be **0 to 32*	- bits in length.
+	//
 	// example:
 	//
 	// 32
 	AllocationMaxCidrMask *int32 `json:"AllocationMaxCidrMask,omitempty" xml:"AllocationMaxCidrMask,omitempty"`
+	// The minimum network mask assigned to the IPAM pool.
+	//
+	// An IPv4 mask must be **0 to 32*	- bits in length.
+	//
 	// example:
 	//
 	// 8
 	AllocationMinCidrMask *int32 `json:"AllocationMinCidrMask,omitempty" xml:"AllocationMinCidrMask,omitempty"`
-	AutoImport            *bool  `json:"AutoImport,omitempty" xml:"AutoImport,omitempty"`
+	// Whether the pool has the auto-import feature enabled.
+	//
+	// example:
+	//
+	// true
+	AutoImport *bool `json:"AutoImport,omitempty" xml:"AutoImport,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The IP version. Only **IPv4*	- is supported.
+	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The description of the IPAM pool.
+	//
+	// It must be 2 to 256 characters in length. It must start with a letter, but cannot start with a `http://` or `https://`. This parameter is empty by default.
+	//
 	// example:
 	//
 	// test description
 	IpamPoolDescription *string `json:"IpamPoolDescription,omitempty" xml:"IpamPoolDescription,omitempty"`
+	// The name of the IPAM pool.
+	//
+	// It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// abc
 	IpamPoolName *string `json:"IpamPoolName,omitempty" xml:"IpamPoolName,omitempty"`
+	// The ID of the IPAM scope.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -646,24 +805,38 @@ type CreateIpamPoolRequest struct {
 	IpamScopeId  *string `json:"IpamScopeId,omitempty" xml:"IpamScopeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The effective region of the IPAM pool.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	PoolRegionId *string `json:"PoolRegionId,omitempty" xml:"PoolRegionId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the source IPAM pool.
+	//
+	// >  If you do not specify this parameter, the pool is a parent pool.
+	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
-	SourceIpamPoolId *string                     `json:"SourceIpamPoolId,omitempty" xml:"SourceIpamPoolId,omitempty"`
-	Tag              []*CreateIpamPoolRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SourceIpamPoolId *string `json:"SourceIpamPoolId,omitempty" xml:"SourceIpamPoolId,omitempty"`
+	// The tag list.
+	Tag []*CreateIpamPoolRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateIpamPoolRequest) String() string {
@@ -770,7 +943,21 @@ func (s *CreateIpamPoolRequest) SetTag(v []*CreateIpamPoolRequestTag) *CreateIpa
 }
 
 type CreateIpamPoolRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceDept
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -793,10 +980,14 @@ func (s *CreateIpamPoolRequestTag) SetValue(v string) *CreateIpamPoolRequestTag 
 }
 
 type CreateIpamPoolResponseBody struct {
+	// The ID of the IPAM pool.
+	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BB2C39DE-CEB8-595A-981A-F2EFCBE7324E
@@ -851,30 +1042,64 @@ func (s *CreateIpamPoolResponse) SetBody(v *CreateIpamPoolResponseBody) *CreateI
 }
 
 type CreateIpamPoolAllocationRequest struct {
+	// Enter a CIDR block to reserve a custom CIDR block.
+	//
+	// **Usage notes*	- Specify at least one of **Cidr*	- and **CidrMask*	- .
+	//
 	// example:
 	//
 	// 192.168.1.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// Enter a mask to reserve a custom CIDR block.
+	//
+	// **Usage notes*	- Specify at least one of **Cidr*	- and **CidrMask*	- .
+	//
 	// example:
 	//
 	// 24
 	CidrMask *int32 `json:"CidrMask,omitempty" xml:"CidrMask,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// **Usage notes*	- If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
-	DryRun                        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The description of the allocation.
+	//
+	// example:
+	//
+	// test description
 	IpamPoolAllocationDescription *string `json:"IpamPoolAllocationDescription,omitempty" xml:"IpamPoolAllocationDescription,omitempty"`
-	IpamPoolAllocationName        *string `json:"IpamPoolAllocationName,omitempty" xml:"IpamPoolAllocationName,omitempty"`
+	// The name of the allocation.
+	//
+	// example:
+	//
+	// test name
+	IpamPoolAllocationName *string `json:"IpamPoolAllocationName,omitempty" xml:"IpamPoolAllocationName,omitempty"`
+	// The ID of the IPAM pool.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// The region ID of the custom CIDR block that you want to reserve.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -932,18 +1157,26 @@ func (s *CreateIpamPoolAllocationRequest) SetRegionId(v string) *CreateIpamPoolA
 }
 
 type CreateIpamPoolAllocationResponseBody struct {
+	// The custom reserved CIDR block.
+	//
 	// example:
 	//
 	// 192.168.1.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The ID of the custom reserved CIDR block.
+	//
 	// example:
 	//
 	// ipam-pool-alloc-112za33e4****
 	IpamPoolAllocationId *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CE9CDAE5-341E-5D0B-AC8A-2BAC707D3EB2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The source CIDR block.
+	//
 	// example:
 	//
 	// 192.168.0.0/16
@@ -1008,39 +1241,62 @@ func (s *CreateIpamPoolAllocationResponse) SetBody(v *CreateIpamPoolAllocationRe
 }
 
 type CreateIpamResourceDiscoveryRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run, without sending the actual request. Valid value:
+	//
+	// 	- **true**: Performs the dry run without creating a custom resource discovery instance. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): Performs a dry run and the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and a custom resource discovery instance is created.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The description of resource discovery.
+	//
 	// example:
 	//
 	// description
 	IpamResourceDiscoveryDescription *string `json:"IpamResourceDiscoveryDescription,omitempty" xml:"IpamResourceDiscoveryDescription,omitempty"`
+	// The name of the resource discovery.
+	//
 	// example:
 	//
 	// name
 	IpamResourceDiscoveryName *string `json:"IpamResourceDiscoveryName,omitempty" xml:"IpamResourceDiscoveryName,omitempty"`
+	// The list of effective regions.
+	//
 	// This parameter is required.
 	OperatingRegionList []*string `json:"OperatingRegionList,omitempty" xml:"OperatingRegionList,omitempty" type:"Repeated"`
 	OwnerAccount        *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The request region.
+	//
+	// >  The request region is the managed region of the resource discovery instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aek2sermdd6****
-	ResourceGroupId      *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                                  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*CreateIpamResourceDiscoveryRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tag information.
+	Tag []*CreateIpamResourceDiscoveryRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateIpamResourceDiscoveryRequest) String() string {
@@ -1112,10 +1368,18 @@ func (s *CreateIpamResourceDiscoveryRequest) SetTag(v []*CreateIpamResourceDisco
 }
 
 type CreateIpamResourceDiscoveryRequestTag struct {
+	// The tag keys. You can specify at most 20 tag keys. It cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the resource. You can specify up to 20 tag values. You can specify empty strings as tag values.
+	//
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// FinanceJoshua
@@ -1141,10 +1405,14 @@ func (s *CreateIpamResourceDiscoveryRequestTag) SetValue(v string) *CreateIpamRe
 }
 
 type CreateIpamResourceDiscoveryResponseBody struct {
+	// The ID of the instance for resource discovery.
+	//
 	// example:
 	//
 	// ipam-res-disco-jt5f2af2u6nk2z321****
 	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BB2C39DE-CEB8-595A-981A-F2EFCBE7324E
@@ -1199,44 +1467,77 @@ func (s *CreateIpamResourceDiscoveryResponse) SetBody(v *CreateIpamResourceDisco
 }
 
 type CreateIpamScopeRequest struct {
+	// The client token used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false**: performs a dry run and the actual request. After the request passes the dry run, a 2xx HTTP status code is returned and the IPAM scope is created.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the IPAM.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-ccxbnsbhew0d6t****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// The description of the IPAM scope.
+	//
+	// It must be 1 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`. This parameter is empty by default.
+	//
 	// example:
 	//
 	// test description
 	IpamScopeDescription *string `json:"IpamScopeDescription,omitempty" xml:"IpamScopeDescription,omitempty"`
+	// The name of the IPAM scope.
+	//
+	// It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// test
 	IpamScopeName *string `json:"IpamScopeName,omitempty" xml:"IpamScopeName,omitempty"`
+	// The type of IPAM scope: **private**
+	//
+	//
+	// **Usage notes*	- You can create only private IPAM scopes.
+	//
 	// example:
 	//
 	// private
 	IpamScopeType *string `json:"IpamScopeType,omitempty" xml:"IpamScopeType,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*CreateIpamScopeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID of the IPAM scope.
+	//
+	// example:
+	//
+	// rg-acfmxazb4ph6aiy****
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tag list.
+	Tag []*CreateIpamScopeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateIpamScopeRequest) String() string {
@@ -1313,7 +1614,21 @@ func (s *CreateIpamScopeRequest) SetTag(v []*CreateIpamScopeRequestTag) *CreateI
 }
 
 type CreateIpamScopeRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource. You can specify at most 20 tag keys. It cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceDept
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the resource. You can specify up to 20 tag values. You can specify empty strings as tag values.
+	//
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1336,10 +1651,14 @@ func (s *CreateIpamScopeRequestTag) SetValue(v string) *CreateIpamScopeRequestTa
 }
 
 type CreateIpamScopeResponseBody struct {
+	// The ID of the IPAM scope.
+	//
 	// example:
 	//
 	// ipam-scope-glfmcyldpm8lsy****
 	IpamScopeId *string `json:"IpamScopeId,omitempty" xml:"IpamScopeId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E897D16A-50EB-543F-B002-C5A26AB818FF
@@ -1394,14 +1713,28 @@ func (s *CreateIpamScopeResponse) SetBody(v *CreateIpamScopeResponseBody) *Creat
 }
 
 type DeleteIpamRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// **
+	//
+	// **Usage notes*	- If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the IPAM.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1410,6 +1743,8 @@ type DeleteIpamRequest struct {
 	IpamId       *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1469,6 +1804,8 @@ func (s *DeleteIpamRequest) SetResourceOwnerId(v int64) *DeleteIpamRequest {
 }
 
 type DeleteIpamResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 30A20EE2-6223-5D0F-BF49-D7C78F206063
@@ -1518,14 +1855,28 @@ func (s *DeleteIpamResponse) SetBody(v *DeleteIpamResponseBody) *DeleteIpamRespo
 }
 
 type DeleteIpamPoolRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// **
+	//
+	// **Usage notes*	- If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, DryRunOperation is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the IPAM pool.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1534,6 +1885,8 @@ type DeleteIpamPoolRequest struct {
 	IpamPoolId   *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1593,6 +1946,8 @@ func (s *DeleteIpamPoolRequest) SetResourceOwnerId(v int64) *DeleteIpamPoolReque
 }
 
 type DeleteIpamPoolResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 57B7DCCA-F192-5528-8AF3-2FE1413228C9
@@ -1642,20 +1997,36 @@ func (s *DeleteIpamPoolResponse) SetBody(v *DeleteIpamPoolResponseBody) *DeleteI
 }
 
 type DeleteIpamPoolAllocationRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// **Usage notes*	- If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): sends the API request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the custom reserved CIDR block to be deleted.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-alloc-c4vhvr3b22mmc6****
 	IpamPoolAllocationId *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
+	// The region ID of the custom reserved CIDR block.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1693,6 +2064,8 @@ func (s *DeleteIpamPoolAllocationRequest) SetRegionId(v string) *DeleteIpamPoolA
 }
 
 type DeleteIpamPoolAllocationResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B90776C8-F703-51D5-893A-AD1CA699D535
@@ -1742,26 +2115,46 @@ func (s *DeleteIpamPoolAllocationResponse) SetBody(v *DeleteIpamPoolAllocationRe
 }
 
 type DeleteIpamPoolCidrRequest struct {
+	// The provisioned CIDR block to be deleted.
+	//
+	// >  Only IPv4 CIDR blocks are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 192.168.1.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the IPAM pool.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1804,6 +2197,8 @@ func (s *DeleteIpamPoolCidrRequest) SetRegionId(v string) *DeleteIpamPoolCidrReq
 }
 
 type DeleteIpamPoolCidrResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F28A239E-F88D-500E-ADE7-FA5E8CA3A170
@@ -1853,14 +2248,26 @@ func (s *DeleteIpamPoolCidrResponse) SetBody(v *DeleteIpamPoolCidrResponseBody) 
 }
 
 type DeleteIpamResourceDiscoveryRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform the dry run. Valid values:
+	//
+	// 	- **true**: Performs a dry run without deleting the resource discovery instance. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): Performs a dry run and the actual request. If the request passes the check, an HTTP 2xx status code is returned and the resource discovery instance is deleted.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of resource discovery instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1869,6 +2276,8 @@ type DeleteIpamResourceDiscoveryRequest struct {
 	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
 	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The request region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1928,6 +2337,8 @@ func (s *DeleteIpamResourceDiscoveryRequest) SetResourceOwnerId(v int64) *Delete
 }
 
 type DeleteIpamResourceDiscoveryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 9F8315CB-560E-5F1E-B069-6E44B440CAF8
@@ -1977,14 +2388,26 @@ func (s *DeleteIpamResourceDiscoveryResponse) SetBody(v *DeleteIpamResourceDisco
 }
 
 type DeleteIpamScopeRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 88144bdb-b190-4813-a3f5-66cc86694162
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the IPAM scope.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1993,6 +2416,8 @@ type DeleteIpamScopeRequest struct {
 	IpamScopeId  *string `json:"IpamScopeId,omitempty" xml:"IpamScopeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2052,6 +2477,8 @@ func (s *DeleteIpamScopeRequest) SetResourceOwnerId(v int64) *DeleteIpamScopeReq
 }
 
 type DeleteIpamScopeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 9F8315CB-560E-5F1E-B069-6E44B440CAF8
@@ -2101,20 +2528,34 @@ func (s *DeleteIpamScopeResponse) SetBody(v *DeleteIpamScopeResponseBody) *Delet
 }
 
 type DissociateIpamResourceDiscoveryRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: Performs a dry run without disassociating the resource discovery and IPAM instance. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): Performs a dry run and sends the request. After the request passes the check, an HTTP 2xx status code is returned and the resource discovery and IPAM instances are disassociated.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the IPAM.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-ccxbnsbhew0d6t****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// The ID of the resource discovery instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2123,6 +2564,8 @@ type DissociateIpamResourceDiscoveryRequest struct {
 	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
 	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The request region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2187,6 +2630,8 @@ func (s *DissociateIpamResourceDiscoveryRequest) SetResourceOwnerId(v int64) *Di
 }
 
 type DissociateIpamResourceDiscoveryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 86137597-443F-5B66-B9B6-8514E0C50B8F
@@ -2236,12 +2681,18 @@ func (s *DissociateIpamResourceDiscoveryResponse) SetBody(v *DissociateIpamResou
 }
 
 type GetIpamPoolAllocationRequest struct {
+	// The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-pool-alloc-112za33e4****
 	IpamPoolAllocationId *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
+	// The region of the IPAM pool.
+	//
+	// >  If the IPAM pool to which CIDR allocation belongs has the region attribute, this parameter is the region of the IPAM pool. If not, this parameter is the IPAM managed region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2269,58 +2720,102 @@ func (s *GetIpamPoolAllocationRequest) SetRegionId(v string) *GetIpamPoolAllocat
 }
 
 type GetIpamPoolAllocationResponseBody struct {
+	// The allocated CIDR block.
+	//
 	// example:
 	//
 	// 192.168.1.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2024-10-15T10:24:19+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the CIDR allocation of the IPAM pool.
+	//
+	// The description must be 1 to 256 characters in length and start with a letter, but cannot start with a `http://` or `https://`. This parameter is empty by default.
+	//
 	// example:
 	//
 	// ipam pool allocation description
 	IpamPoolAllocationDescription *string `json:"IpamPoolAllocationDescription,omitempty" xml:"IpamPoolAllocationDescription,omitempty"`
+	// The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+	//
 	// example:
 	//
 	// ipam-pool-alloc-112za33e4****
 	IpamPoolAllocationId *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
+	// The name of the CIDR allocation of the IPAM pool.
+	//
+	// It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// ipam pool allocation name
 	IpamPoolAllocationName *string `json:"IpamPoolAllocationName,omitempty" xml:"IpamPoolAllocationName,omitempty"`
+	// The ID of the IPAM pool.
+	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// The region of the IPAM pool.
+	//
+	// >  If the IPAM pool to which the CIDR block allocation belongs has the region attribute, this parameter is the region of the IPAM pool. If not, this parameter is the IPAM managed region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3748DEFF-68BE-5EED-9937-7C1D0C21BAB4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource to which the CIDR block is allocated.
+	//
 	// example:
 	//
 	// vpc-bp16qjewdsunr41m1****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
 	// example:
 	//
 	// 1616080591216318
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The effective region ID of the resource.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The type of the resource to which the CIDR block is allocated. Valid values:
+	//
+	// 	- **VPC**
+	//
+	// 	- **IpamPool**
+	//
+	// 	- **Custom**
+	//
 	// example:
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The source CIDR block.
+	//
 	// example:
 	//
 	// 192.168.0.0/16
 	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
+	// The instance state. Valid values:
+	//
+	// 	- **Created**
+	//
+	// 	- **Deleted**
+	//
 	// example:
 	//
 	// Created
@@ -2435,24 +2930,42 @@ func (s *GetIpamPoolAllocationResponse) SetBody(v *GetIpamPoolAllocationResponse
 }
 
 type GetIpamPoolNextAvailableCidrRequest struct {
+	// CIDR to be allocated.
+	//
+	// >  You must enter at least one of the CidrBlock and CidrMask fields.
+	//
 	// example:
 	//
 	// 172.68.0.0/26
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The length of the CIDR mask to be allocated.
+	//
+	// >  You must enter at least one of the CidrBlock and CidrMask fields.
+	//
 	// example:
 	//
 	// 26
 	CidrMask *int32 `json:"CidrMask,omitempty" xml:"CidrMask,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the IPAM pool.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// The region of the IPAM pool.
+	//
+	// >  If the IPAM pool has the region attribute, this parameter is set to the effective region of the IPAM pool. If not, this is set to the managed region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2495,10 +3008,14 @@ func (s *GetIpamPoolNextAvailableCidrRequest) SetRegionId(v string) *GetIpamPool
 }
 
 type GetIpamPoolNextAvailableCidrResponseBody struct {
+	// Available CIDR.
+	//
 	// example:
 	//
 	// 172.68.0.0/26
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 29FC6758-9B7C-5CC7-8CBF-4DD846FE7D82
@@ -2553,12 +3070,20 @@ func (s *GetIpamPoolNextAvailableCidrResponse) SetBody(v *GetIpamPoolNextAvailab
 }
 
 type GetVpcIpamServiceStatusRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2608,10 +3133,18 @@ func (s *GetVpcIpamServiceStatusRequest) SetResourceOwnerId(v int64) *GetVpcIpam
 }
 
 type GetVpcIpamServiceStatusResponseBody struct {
+	// Indicates whether IPAM is activated.
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2FEE9FFF-57EE-5832-BE88-9308352F3B68
@@ -2666,32 +3199,54 @@ func (s *GetVpcIpamServiceStatusResponse) SetBody(v *GetVpcIpamServiceStatusResp
 }
 
 type ListIpamDiscoveredResourceRequest struct {
+	// The ID of the resource discovery instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-res-disco-jt5f2af2u6nk2z321****
 	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	// The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the managed region of the IPAM pool.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region where resource discovery is performed.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// 	- **VPC**
+	//
+	// 	- **VSwitch**
+	//
 	// example:
 	//
 	// VPC
@@ -2737,23 +3292,38 @@ func (s *ListIpamDiscoveredResourceRequest) SetResourceType(v string) *ListIpamD
 }
 
 type ListIpamDiscoveredResourceResponseBody struct {
+	// The maximum number of entries on each page.
+	//
 	// example:
 	//
 	// 10
-	Count                   *int32                                                           `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The list of resources.
 	IpamDiscoveredResources []*ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources `json:"IpamDiscoveredResources,omitempty" xml:"IpamDiscoveredResources,omitempty" type:"Repeated"`
+	// The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, there is no next page.
+	//
+	// 	- If a value of **NextToken*	- is returned, it indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3748DEFF-68BE-5EED-9937-7C1D0C21BAB4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1000
@@ -2799,46 +3369,75 @@ func (s *ListIpamDiscoveredResourceResponseBody) SetTotalCount(v int64) *ListIpa
 }
 
 type ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources struct {
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 132193271328****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The CIDR block of the resource.
+	//
 	// example:
 	//
 	// 192.168.1.0/32
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the resource was discovered.
+	//
+	// >  If the resource has not been modified since it was created, the discovery time remains unchanged.
+	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
-	DiscoveryTime *string `json:"DiscoveryTime,omitempty" xml:"DiscoveryTime,omitempty"`
+	DiscoveryTime *string                                                                     `json:"DiscoveryTime,omitempty" xml:"DiscoveryTime,omitempty"`
+	IpCountDetail *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail `json:"IpCountDetail,omitempty" xml:"IpCountDetail,omitempty" type:"Struct"`
+	// The IP usage in decimal form.
+	//
 	// example:
 	//
 	// 0
 	IpUsage *string `json:"IpUsage,omitempty" xml:"IpUsage,omitempty"`
+	// The ID of resource discovery instance.
+	//
 	// example:
 	//
 	// ipam-res-disco-jt5f2af2u6nk2z321****
 	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	// The ID of the resource.
+	//
 	// example:
 	//
 	// vpc-uf611fp465c7dyb4z****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
 	// example:
 	//
 	// 132193271328****
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the region to which the resource belongs.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// 	- **VPC**
+	//
+	// 	- **VSwitch**
+	//
 	// example:
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The source CIDR block.
+	//
 	// example:
 	//
 	// 192.168.1.0/24
 	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
+	// The ID of the VPC to which the resource belongs.
+	//
 	// example:
 	//
 	// vpc-uf611fp465c7dyb4z****
@@ -2865,6 +3464,11 @@ func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetCidr(
 
 func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetDiscoveryTime(v string) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
 	s.DiscoveryTime = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetIpCountDetail(v *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
+	s.IpCountDetail = v
 	return s
 }
 
@@ -2908,6 +3512,35 @@ func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetVpcId
 	return s
 }
 
+type ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail struct {
+	FreeIpCount  *string `json:"FreeIpCount,omitempty" xml:"FreeIpCount,omitempty"`
+	TotalIpCount *string `json:"TotalIpCount,omitempty" xml:"TotalIpCount,omitempty"`
+	UsedIpCount  *string `json:"UsedIpCount,omitempty" xml:"UsedIpCount,omitempty"`
+}
+
+func (s ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail) SetFreeIpCount(v string) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail {
+	s.FreeIpCount = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail) SetTotalIpCount(v string) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail {
+	s.TotalIpCount = &v
+	return s
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail) SetUsedIpCount(v string) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail {
+	s.UsedIpCount = &v
+	return s
+}
+
 type ListIpamDiscoveredResourceResponse struct {
 	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -2938,26 +3571,52 @@ func (s *ListIpamDiscoveredResourceResponse) SetBody(v *ListIpamDiscoveredResour
 }
 
 type ListIpamPoolAllocationsRequest struct {
+	// Specifies whether to query allocations by specifying allocated CIDR blocks.
+	//
+	// **
+	//
+	// **Usage notes*	- Only IPv4 CIDR blocks are supported.
+	//
 	// example:
 	//
 	// 192.168.1.0/24
-	Cidr                   *string   `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	IpamPoolAllocationIds  []*string `json:"IpamPoolAllocationIds,omitempty" xml:"IpamPoolAllocationIds,omitempty" type:"Repeated"`
-	IpamPoolAllocationName *string   `json:"IpamPoolAllocationName,omitempty" xml:"IpamPoolAllocationName,omitempty"`
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The IDs of the instances to which CIDR blocks are allocated from the IPAM pool.
+	IpamPoolAllocationIds []*string `json:"IpamPoolAllocationIds,omitempty" xml:"IpamPoolAllocationIds,omitempty" type:"Repeated"`
+	// The name of  allocations.
+	//
+	// example:
+	//
+	// test name
+	IpamPoolAllocationName *string `json:"IpamPoolAllocationName,omitempty" xml:"IpamPoolAllocationName,omitempty"`
+	// The ID of the IPAM pool.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region where you want to perform the operation.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3010,20 +3669,38 @@ func (s *ListIpamPoolAllocationsRequest) SetRegionId(v string) *ListIpamPoolAllo
 }
 
 type ListIpamPoolAllocationsResponseBody struct {
-	Count               *int64                                                    `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of entries returned.
+	//
+	// example:
+	//
+	// 10
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The IDs of the instances to which CIDR blocks are allocated from the IPAM pool.
 	IpamPoolAllocations []*ListIpamPoolAllocationsResponseBodyIpamPoolAllocations `json:"IpamPoolAllocations,omitempty" xml:"IpamPoolAllocations,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3748DEFF-68BE-5EED-9937-7C1D0C21BAB4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1000
@@ -3069,48 +3746,90 @@ func (s *ListIpamPoolAllocationsResponseBody) SetTotalCount(v int64) *ListIpamPo
 }
 
 type ListIpamPoolAllocationsResponseBodyIpamPoolAllocations struct {
+	// The allocated CIDR block.
+	//
 	// example:
 	//
 	// 192.168.1.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2023-05-19T08:59:18Z
-	CreationTime                  *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the allocation.
+	//
+	// example:
+	//
+	// test description
 	IpamPoolAllocationDescription *string `json:"IpamPoolAllocationDescription,omitempty" xml:"IpamPoolAllocationDescription,omitempty"`
+	// The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+	//
 	// example:
 	//
 	// ipam-pool-alloc-112za33e4****
-	IpamPoolAllocationId   *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
+	IpamPoolAllocationId *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
+	// The name of the allocation.
+	//
+	// example:
+	//
+	// test name
 	IpamPoolAllocationName *string `json:"IpamPoolAllocationName,omitempty" xml:"IpamPoolAllocationName,omitempty"`
+	// The ID of the IPAM pool.
+	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// The region ID of the resource.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource to which the CIDR block is allocated.
+	//
 	// example:
 	//
 	// vpc-bp16qjewdsunr41m1****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
 	// example:
 	//
 	// 132193271328****
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The effective region ID of the resource.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The type of the resource to which the CIDR block is allocated. Valid values:
+	//
+	// 	- **VPC**
+	//
+	// 	- **IpamPool**
+	//
+	// 	- **Custom**
+	//
 	// example:
 	//
 	// Custom
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The source CIDR block.
+	//
 	// example:
 	//
 	// 192.168.0.0/16
 	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// 	- **Created**
+	//
+	// 	- **Deleted**
+	//
 	// example:
 	//
 	// Created
@@ -3220,24 +3939,42 @@ func (s *ListIpamPoolAllocationsResponse) SetBody(v *ListIpamPoolAllocationsResp
 }
 
 type ListIpamPoolCidrsRequest struct {
+	// The provisioned CIDR block that you want to query.
+	//
+	// >  Only IPv4 CIDR blocks are supported.
+	//
 	// example:
 	//
 	// 192.168.1.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The ID of the IPAM pool.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region where the IPAM instance is hosted.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3280,20 +4017,38 @@ func (s *ListIpamPoolCidrsRequest) SetRegionId(v string) *ListIpamPoolCidrsReque
 }
 
 type ListIpamPoolCidrsResponseBody struct {
-	Count         *int64                                        `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of entries returned.
+	//
+	// example:
+	//
+	// 10
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The IDs of IPAM pools.
 	IpamPoolCidrs []*ListIpamPoolCidrsResponseBodyIpamPoolCidrs `json:"IpamPoolCidrs,omitempty" xml:"IpamPoolCidrs,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9E7CCB95-62E0-534D-9B9A-71F27E8B71B1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1000
@@ -3339,14 +4094,24 @@ func (s *ListIpamPoolCidrsResponseBody) SetTotalCount(v int64) *ListIpamPoolCidr
 }
 
 type ListIpamPoolCidrsResponseBodyIpamPoolCidrs struct {
+	// The provisioned CIDR block.
+	//
 	// example:
 	//
 	// 192.168.1.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The ID of the IPAM pool.
+	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// The status of the CIDR block provisioned to the IPAM pool. Valid values:
+	//
+	// 	- **Created**
+	//
+	// 	- **Deleted**
+	//
 	// example:
 	//
 	// Created
@@ -3406,47 +4171,76 @@ func (s *ListIpamPoolCidrsResponse) SetBody(v *ListIpamPoolCidrsResponseBody) *L
 }
 
 type ListIpamPoolsRequest struct {
+	// The IDs of IPAM pools. Valid values of N: 1 to 100. A maximum of 100 IPAM pools can be queried at a time.
 	IpamPoolIds []*string `json:"IpamPoolIds,omitempty" xml:"IpamPoolIds,omitempty" type:"Repeated"`
+	// The name of the IPAM pool. You can enter at most 20 names.
+	//
+	// It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// test
 	IpamPoolName *string `json:"IpamPoolName,omitempty" xml:"IpamPoolName,omitempty"`
+	// The ID of the IPAM scope.
+	//
 	// example:
 	//
 	// ipam-scope-glfmcyldpm8lsy****
 	IpamScopeId *string `json:"IpamScopeId,omitempty" xml:"IpamScopeId,omitempty"`
-	IsShared    *bool   `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
+	// Whether it is a shared pool.
+	//
+	// example:
+	//
+	// true
+	IsShared *bool `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If NextToken is empty, no next page exists.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The effective region of the IPAM pool.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	PoolRegionId *string `json:"PoolRegionId,omitempty" xml:"PoolRegionId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the IPAM pool belongs.
+	//
 	// example:
 	//
 	// rg-aek2sermdd6****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the source IPAM pool.
+	//
 	// example:
 	//
 	// ipam-pool-lfnwi4jok1ss0g****
-	SourceIpamPoolId *string                     `json:"SourceIpamPoolId,omitempty" xml:"SourceIpamPoolId,omitempty"`
-	Tags             []*ListIpamPoolsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SourceIpamPoolId *string `json:"SourceIpamPoolId,omitempty" xml:"SourceIpamPoolId,omitempty"`
+	// The tag information.
+	Tags []*ListIpamPoolsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListIpamPoolsRequest) String() string {
@@ -3533,10 +4327,18 @@ func (s *ListIpamPoolsRequest) SetTags(v []*ListIpamPoolsRequestTags) *ListIpamP
 }
 
 type ListIpamPoolsRequestTags struct {
+	// The tag key. You can specify at most 20 tag keys. It cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. You can specify at most 20 tag values. It can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// FinanceJoshua
@@ -3562,20 +4364,38 @@ func (s *ListIpamPoolsRequestTags) SetValue(v string) *ListIpamPoolsRequestTags 
 }
 
 type ListIpamPoolsResponseBody struct {
-	Count     *int64                                `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of entries returned.
+	//
+	// example:
+	//
+	// 10
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The IPAM pools.
 	IpamPools []*ListIpamPoolsResponseBodyIpamPools `json:"IpamPools,omitempty" xml:"IpamPools,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B54867DE-83DC-56B4-A57E-69A03119D0B1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1000
@@ -3621,86 +4441,164 @@ func (s *ListIpamPoolsResponseBody) SetTotalCount(v int64) *ListIpamPoolsRespons
 }
 
 type ListIpamPoolsResponseBodyIpamPools struct {
+	// The default network mask assigned to the IPAM pool.
+	//
+	// An IPv4 mask must be **0 to 32*	- bits in length.
+	//
 	// example:
 	//
 	// 28
 	AllocationDefaultCidrMask *int32 `json:"AllocationDefaultCidrMask,omitempty" xml:"AllocationDefaultCidrMask,omitempty"`
+	// The maximum network mask assigned to the IPAM pool.
+	//
+	// An IPv4 mask must be **0 to 32*	- bits in length.
+	//
 	// example:
 	//
 	// 32
 	AllocationMaxCidrMask *int32 `json:"AllocationMaxCidrMask,omitempty" xml:"AllocationMaxCidrMask,omitempty"`
+	// The minimum network mask assigned to the IPAM pool.
+	//
+	// An IPv4 mask must be **0 to 32*	- bits in length.
+	//
 	// example:
 	//
 	// 8
 	AllocationMinCidrMask *int32 `json:"AllocationMinCidrMask,omitempty" xml:"AllocationMinCidrMask,omitempty"`
-	AutoImport            *bool  `json:"AutoImport,omitempty" xml:"AutoImport,omitempty"`
+	// Whether the pool has the auto-import feature enabled.
+	//
+	// example:
+	//
+	// true
+	AutoImport *bool `json:"AutoImport,omitempty" xml:"AutoImport,omitempty"`
+	// The time when the IPAM pool was created.
+	//
 	// example:
 	//
 	// 2023-04-19T16:49:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the pool is a subpool. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	HasSubPool *bool `json:"HasSubPool,omitempty" xml:"HasSubPool,omitempty"`
+	// The IP version. Only **IPv4*	- may be returned.
+	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The ID of the IPAM.
+	//
 	// example:
 	//
 	// ipam-b5mtlx3q7xcnyr****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// The description of the IPAM pool.
+	//
 	// example:
 	//
 	// test description
 	IpamPoolDescription *string `json:"IpamPoolDescription,omitempty" xml:"IpamPoolDescription,omitempty"`
+	// The ID of the IPAM pool.
+	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// The name of the IPAM pool.
+	//
 	// example:
 	//
 	// test
 	IpamPoolName *string `json:"IpamPoolName,omitempty" xml:"IpamPoolName,omitempty"`
+	// The ID of the region where the IPAM to which the IPAM pool belongs is hosted.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	IpamRegionId *string `json:"IpamRegionId,omitempty" xml:"IpamRegionId,omitempty"`
+	// The ID of the IPAM scope.
+	//
 	// example:
 	//
 	// ipam-scope-glfmcyldpm8lsy****
 	IpamScopeId *string `json:"IpamScopeId,omitempty" xml:"IpamScopeId,omitempty"`
+	// The type of the IPAM scope. Valid values:
+	//
+	// 	- **public**
+	//
+	// 	- **private**
+	//
 	// example:
 	//
 	// private
 	IpamScopeType *string `json:"IpamScopeType,omitempty" xml:"IpamScopeType,omitempty"`
-	IsShared      *bool   `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
+	// Whether it is a shared pool.
+	//
+	// example:
+	//
+	// true
+	IsShared *bool `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
+	// The Alibaba Cloud account of the owner for the IPAM pool.
+	//
 	// example:
 	//
 	// 1210123456******
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The depth of the IPAM pool. Valid values: **0 to 10**.
+	//
 	// example:
 	//
 	// 2
 	PoolDepth *int32 `json:"PoolDepth,omitempty" xml:"PoolDepth,omitempty"`
+	// The effective region of the IPAM pool. The ID of the effective region for the IPAM pool.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	PoolRegionId *string `json:"PoolRegionId,omitempty" xml:"PoolRegionId,omitempty"`
+	// The ID of the region where the operation is called.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the source IPAM pool.
+	//
 	// example:
 	//
 	// ipam-pool-lfnwi4jok1ss0g****
 	SourceIpamPoolId *string `json:"SourceIpamPoolId,omitempty" xml:"SourceIpamPoolId,omitempty"`
+	// The status of the IPAM pool. Valid values:
+	//
+	// 	- **Creating**
+	//
+	// 	- **Created**: indicates that the creation is complete.
+	//
+	// 	- **Modifying**
+	//
+	// 	- **Deleting**
+	//
+	// 	- **Deleted**
+	//
 	// example:
 	//
 	// Created
-	Status *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListIpamPoolsResponseBodyIpamPoolsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag list.
+	Tags []*ListIpamPoolsResponseBodyIpamPoolsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListIpamPoolsResponseBodyIpamPools) String() string {
@@ -3827,10 +4725,14 @@ func (s *ListIpamPoolsResponseBodyIpamPools) SetTags(v []*ListIpamPoolsResponseB
 }
 
 type ListIpamPoolsResponseBodyIpamPoolsTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// FinanceJoshua
@@ -3885,38 +4787,71 @@ func (s *ListIpamPoolsResponse) SetBody(v *ListIpamPoolsResponseBody) *ListIpamP
 }
 
 type ListIpamResourceCidrsRequest struct {
+	// The ID of the IPAM pool.
+	//
+	// >  You must specify at least one of **IpamScopeId*	- and **IpamPoolId**.
+	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// The ID of the IPAM scope.
+	//
+	// >  You must specify at least one of **IpamScopeId*	- and **IpamPoolId**.
+	//
 	// example:
 	//
 	// ipam-scope-glfmcyldpm8lsy****
 	IpamScopeId *string `json:"IpamScopeId,omitempty" xml:"IpamScopeId,omitempty"`
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region where the IPAM instance is hosted.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// vpc-bp16qjewdsunr41m1****
 	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of resource. Valid values:
+	//
+	// 	- **VPC**
+	//
+	// 	- **VSwitch**
+	//
 	// example:
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-bp1fjfnrg3av6zb9e****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListIpamResourceCidrsRequest) String() string {
@@ -3973,20 +4908,38 @@ func (s *ListIpamResourceCidrsRequest) SetVpcId(v string) *ListIpamResourceCidrs
 }
 
 type ListIpamResourceCidrsResponseBody struct {
-	Count             *int64                                                `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of entries returned.
+	//
+	// example:
+	//
+	// 10
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The list of resources in the IPAM pool.
 	IpamResourceCidrs []*ListIpamResourceCidrsResponseBodyIpamResourceCidrs `json:"IpamResourceCidrs,omitempty" xml:"IpamResourceCidrs,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 49A9DE56-B68C-5FFC-BC06-509D086F287C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1000
@@ -4032,72 +4985,139 @@ func (s *ListIpamResourceCidrsResponseBody) SetTotalCount(v int64) *ListIpamReso
 }
 
 type ListIpamResourceCidrsResponseBodyIpamResourceCidrs struct {
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 132193271328****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The CIDR block of the resource.
+	//
 	// example:
 	//
 	// 192.168.1.0/32
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// The compliance status of the resource.
+	//
+	// 	- **Compliant**
+	//
+	// 	- **Noncompliant**
+	//
+	// 	- **Ignored*	- Ignored resources are not monitored.
+	//
+	// 	- **Unmanaged**: The resource does not have a CIDR block allocated from the IPAM pool. IPAM does not monitor whether the CIDR block of the resource meets the allocation rules of the IP address pool.
+	//
 	// example:
 	//
 	// Compliant
-	ComplianceStatus *string `json:"ComplianceStatus,omitempty" xml:"ComplianceStatus,omitempty"`
+	ComplianceStatus *string                                                          `json:"ComplianceStatus,omitempty" xml:"ComplianceStatus,omitempty"`
+	IpCountDetail    *ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail `json:"IpCountDetail,omitempty" xml:"IpCountDetail,omitempty" type:"Struct"`
+	// The IP usage that is displayed in decimal form.
+	//
 	// example:
 	//
 	// 0
 	IpUsage *string `json:"IpUsage,omitempty" xml:"IpUsage,omitempty"`
+	// The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+	//
 	// example:
 	//
 	// ipam-pool-alloc-112za33e4****
 	IpamAllocationId *string `json:"IpamAllocationId,omitempty" xml:"IpamAllocationId,omitempty"`
+	// The ID of the IPAM.
+	//
 	// example:
 	//
 	// ipam-uq5dcfc2eqhpf4****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// The ID of the IPAM pool.
+	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t***
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// The ID of the IPAM scope.
+	//
 	// example:
 	//
 	// ipam-scope-glfmcyldpm8lsy****
 	IpamScopeId *string `json:"IpamScopeId,omitempty" xml:"IpamScopeId,omitempty"`
+	// The management status of the resource.
+	//
+	// 	- **Managed**: The resource has a CIDR block allocated from an IPAM pool. IPAM is monitoring whether the allocated CIDR block overlaps with other CIDR blocks and whether the allocated CIDR block meets the allocation rules.
+	//
+	// 	- **Unmanaged**: The resource does not have a CIDR block allocated from the IPAM pool. IPAM is monitoring whether the resource has CIDR blocks that meet the allocation rules. Monitor whether CIDR blocks overlap with each other.
+	//
+	// 	- **Ignored**: The resource is not monitored. Ignored resources are not monitored. If you ignore a resource, CIDR blocks allocated to the resource are returned to the IPAM pool and will not be automatically allocated to the resource (if automatic allocation rules are specified).
+	//
 	// example:
 	//
 	// Managed
-	ManagementStatus *string                                                            `json:"ManagementStatus,omitempty" xml:"ManagementStatus,omitempty"`
-	OverlapDetail    []*ListIpamResourceCidrsResponseBodyIpamResourceCidrsOverlapDetail `json:"OverlapDetail,omitempty" xml:"OverlapDetail,omitempty" type:"Repeated"`
+	ManagementStatus *string `json:"ManagementStatus,omitempty" xml:"ManagementStatus,omitempty"`
+	// List of resources that overlap with the current resource.
+	OverlapDetail []*ListIpamResourceCidrsResponseBodyIpamResourceCidrsOverlapDetail `json:"OverlapDetail,omitempty" xml:"OverlapDetail,omitempty" type:"Repeated"`
+	// The overlapping status of the resource.
+	//
+	// 	- **Nonoverlapping**
+	//
+	// 	- **Overlapping**
+	//
+	// 	- **Ignored*	- Ignored resources are not monitored.
+	//
 	// example:
 	//
 	// Nonoverlapping
 	OverlapStatus *string `json:"OverlapStatus,omitempty" xml:"OverlapStatus,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// vpc-bp16qjewdsunr41m1****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
 	// example:
 	//
 	// 132193271328****
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The effective region ID of the resource.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The type of resource. Valid values:
+	//
+	// 	- **VPC**
+	//
+	// 	- **VSwitch**
+	//
 	// example:
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The source CIDR block.
+	//
 	// example:
 	//
 	// 192.168.1.0/24
 	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
+	// The status of the resource in the IPAM pool. Valid values:
+	//
+	// 	- **Created**
+	//
+	// 	- **Deleted**
+	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-bp1fjfnrg3av6zb9e****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListIpamResourceCidrsResponseBodyIpamResourceCidrs) String() string {
@@ -4120,6 +5140,11 @@ func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) SetCidr(v string) *
 
 func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) SetComplianceStatus(v string) *ListIpamResourceCidrsResponseBodyIpamResourceCidrs {
 	s.ComplianceStatus = &v
+	return s
+}
+
+func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) SetIpCountDetail(v *ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail) *ListIpamResourceCidrsResponseBodyIpamResourceCidrs {
+	s.IpCountDetail = v
 	return s
 }
 
@@ -4198,9 +5223,53 @@ func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) SetVpcId(v string) 
 	return s
 }
 
+type ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail struct {
+	FreeIpCount  *string `json:"FreeIpCount,omitempty" xml:"FreeIpCount,omitempty"`
+	TotalIpCount *string `json:"TotalIpCount,omitempty" xml:"TotalIpCount,omitempty"`
+	UsedIpCount  *string `json:"UsedIpCount,omitempty" xml:"UsedIpCount,omitempty"`
+}
+
+func (s ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail) SetFreeIpCount(v string) *ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail {
+	s.FreeIpCount = &v
+	return s
+}
+
+func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail) SetTotalIpCount(v string) *ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail {
+	s.TotalIpCount = &v
+	return s
+}
+
+func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail) SetUsedIpCount(v string) *ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail {
+	s.UsedIpCount = &v
+	return s
+}
+
 type ListIpamResourceCidrsResponseBodyIpamResourceCidrsOverlapDetail struct {
-	OverlapResourceCidr   *string `json:"OverlapResourceCidr,omitempty" xml:"OverlapResourceCidr,omitempty"`
-	OverlapResourceId     *string `json:"OverlapResourceId,omitempty" xml:"OverlapResourceId,omitempty"`
+	// The CIDR that overlaps with the current resource.
+	//
+	// example:
+	//
+	// 192.168.1.0/24
+	OverlapResourceCidr *string `json:"OverlapResourceCidr,omitempty" xml:"OverlapResourceCidr,omitempty"`
+	// Instance ID that overlaps with the current resource.
+	//
+	// example:
+	//
+	// vpc-aq3fjgnig5av6jb8d****
+	OverlapResourceId *string `json:"OverlapResourceId,omitempty" xml:"OverlapResourceId,omitempty"`
+	// The region of instance that overlaps with the current resource.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	OverlapResourceRegion *string `json:"OverlapResourceRegion,omitempty" xml:"OverlapResourceRegion,omitempty"`
 }
 
@@ -4257,35 +5326,66 @@ func (s *ListIpamResourceCidrsResponse) SetBody(v *ListIpamResourceCidrsResponse
 }
 
 type ListIpamResourceDiscoveriesRequest struct {
+	// The IDs of resource discovery instances. Valid values of N: 1 to 100. A maximum of 100 resource discoveries can be queried at a time.
 	IpamResourceDiscoveryIds []*string `json:"IpamResourceDiscoveryIds,omitempty" xml:"IpamResourceDiscoveryIds,omitempty" type:"Repeated"`
+	// The name of the resource discovery.
+	//
+	// The name must be 1 to 128 characters in length and cannot start with http:// or https://.
+	//
 	// example:
 	//
 	// test
 	IpamResourceDiscoveryName *string `json:"IpamResourceDiscoveryName,omitempty" xml:"IpamResourceDiscoveryName,omitempty"`
-	IsShared                  *bool   `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
+	// Whether it is a shared resource discovery.
+	//
+	// example:
+	//
+	// true
+	IsShared *bool `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
+	// The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, there is no next page.
+	//
+	// 	- If a value of **NextToken*	- is returned, it indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where you want to query resource discovery. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group that resource discovery belongs.
+	//
 	// example:
 	//
 	// rg-aek2sermdd6****
-	ResourceGroupId      *string                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tags                 []*ListIpamResourceDiscoveriesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tag.
+	Tags []*ListIpamResourceDiscoveriesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The type of resource discovery.
+	//
+	// > Supported types:
+	//
+	// > - system: default resource discovery created by the system.
+	//
+	// > - custom: custom resource discovery created by users.
+	//
 	// example:
 	//
 	// system
@@ -4366,10 +5466,18 @@ func (s *ListIpamResourceDiscoveriesRequest) SetType(v string) *ListIpamResource
 }
 
 type ListIpamResourceDiscoveriesRequestTags struct {
+	// The key of the tag. You can specify at most 20 tag keys. It cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag. You can specify at most 20 tag values. The tag value cannot be an empty string.
+	//
+	// A tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// FinanceJoshua
@@ -4395,23 +5503,38 @@ func (s *ListIpamResourceDiscoveriesRequestTags) SetValue(v string) *ListIpamRes
 }
 
 type ListIpamResourceDiscoveriesResponseBody struct {
+	// The maximum number of entries on each page.
+	//
 	// example:
 	//
 	// 1
-	Count                   *int32                                                            `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The list of resource discovery instances.
 	IpamResourceDiscoveries []*ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries `json:"IpamResourceDiscoveries,omitempty" xml:"IpamResourceDiscoveries,omitempty" type:"Repeated"`
+	// The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, there is no next page.
+	//
+	// 	- If a value of **NextToken*	- is returned, it indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 86137597-443F-5B66-B9B6-8514E0C50B8F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -4457,41 +5580,82 @@ func (s *ListIpamResourceDiscoveriesResponseBody) SetTotalCount(v int64) *ListIp
 }
 
 type ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries struct {
+	// The time when the resource was discovered.
+	//
 	// example:
 	//
 	// 2022-07-01T02:05:23Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the resource discovery.
+	//
 	// example:
 	//
 	// test description
 	IpamResourceDiscoveryDescription *string `json:"IpamResourceDiscoveryDescription,omitempty" xml:"IpamResourceDiscoveryDescription,omitempty"`
+	// The ID of resource discovery instance.
+	//
 	// example:
 	//
 	// ipam-res-disco-jt5f2af2u6nk2z321****
 	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	// The name of the resource discovery.
+	//
 	// example:
 	//
 	// test
 	IpamResourceDiscoveryName *string `json:"IpamResourceDiscoveryName,omitempty" xml:"IpamResourceDiscoveryName,omitempty"`
+	// The status of the resource discovery instance. Valid values:
+	//
+	// 	- **Creating**
+	//
+	// 	- **Created**
+	//
+	// 	- **Modifying**
+	//
+	// 	- **Deleting**
+	//
+	// 	- **Deleted**
+	//
 	// example:
 	//
 	// Created
-	IpamResourceDiscoveryStatus *string   `json:"IpamResourceDiscoveryStatus,omitempty" xml:"IpamResourceDiscoveryStatus,omitempty"`
-	OperatingRegionList         []*string `json:"OperatingRegionList,omitempty" xml:"OperatingRegionList,omitempty" type:"Repeated"`
+	IpamResourceDiscoveryStatus *string `json:"IpamResourceDiscoveryStatus,omitempty" xml:"IpamResourceDiscoveryStatus,omitempty"`
+	// The list of resource discovery regions.
+	OperatingRegionList []*string `json:"OperatingRegionList,omitempty" xml:"OperatingRegionList,omitempty" type:"Repeated"`
+	// The Alibaba Cloud account that owns the resource discovery.
+	//
 	// example:
 	//
 	// 1210123456******
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the queried resource discovery instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group that resource discovery belongs.
+	//
 	// example:
 	//
 	// rg-aek2sermdd6****
-	ResourceGroupId *string                                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ShareType       *string                                                               `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	Tags            []*ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The sharing status of the resource.
+	//
+	// 	- If the value is empty, the resource is as an average instance.
+	//
+	// 	- If the value is Shared, the resource discovery comes from a shared source.
+	//
+	// 	- If the value is Sharing, the resource discovery is being shared.
+	//
+	// example:
+	//
+	// Shared
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The tag list.
+	Tags []*ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The type of resource discovery.
+	//
 	// example:
 	//
 	// system
@@ -4567,10 +5731,14 @@ func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetType
 }
 
 type ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// FinanceJoshua
@@ -4625,24 +5793,38 @@ func (s *ListIpamResourceDiscoveriesResponse) SetBody(v *ListIpamResourceDiscove
 }
 
 type ListIpamResourceDiscoveryAssociationsRequest struct {
+	// The ID of the IPAM.
+	//
 	// example:
 	//
 	// ipam-ccxbnsbhew0d6t****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// The ID of resource discovery instance.
+	//
 	// example:
 	//
 	// ipam-res-disco-jt5f2af2u6nk2z321****
 	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	// The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If this is your first or only query, this parameter is left empty.
+	//
+	// 	- If a next query is to be sent, the returned value is the value of NextToken that was returned last time this operation was called.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The request region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4707,23 +5889,38 @@ func (s *ListIpamResourceDiscoveryAssociationsRequest) SetResourceOwnerId(v int6
 }
 
 type ListIpamResourceDiscoveryAssociationsResponseBody struct {
+	// The number of entries on each page.
+	//
 	// example:
 	//
 	// 10
-	Count                             *int32                                                                                `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The list of associations.
 	IpamResourceDiscoveryAssociations []*ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations `json:"IpamResourceDiscoveryAssociations,omitempty" xml:"IpamResourceDiscoveryAssociations,omitempty" type:"Repeated"`
+	// The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, there is no next page.
+	//
+	// 	- If a value of **NextToken*	- is returned, it indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F28A239E-F88D-500E-ADE7-FA5E8CA3A170
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 20
@@ -4769,26 +5966,56 @@ func (s *ListIpamResourceDiscoveryAssociationsResponseBody) SetTotalCount(v int6
 }
 
 type ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations struct {
+	// The ID of the IPAM.
+	//
 	// example:
 	//
 	// ipam-ccxbnsbhew0d6t****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// The ID of resource discovery instance.
+	//
 	// example:
 	//
 	// ipam-res-disco-jt5f2af2u6nk2z321****
 	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource discovery belongs.
+	//
 	// example:
 	//
 	// 1210123456******
 	IpamResourceDiscoveryOwnerId *string `json:"IpamResourceDiscoveryOwnerId,omitempty" xml:"IpamResourceDiscoveryOwnerId,omitempty"`
+	// The status of the resource discovery instance. Valid values:
+	//
+	// 	- **Creating**
+	//
+	// 	- **Created**
+	//
+	// 	- **Modifying**
+	//
+	// 	- **Deleting**
+	//
+	// 	- **Deleted**
+	//
 	// example:
 	//
 	// Created
 	IpamResourceDiscoveryStatus *string `json:"IpamResourceDiscoveryStatus,omitempty" xml:"IpamResourceDiscoveryStatus,omitempty"`
+	// The type of resource discovery. Valid values:
+	//
+	// 	- **system**: default resource discovery created by the system.
+	//
+	// 	- **custom**: custom resource discovery created by users.
+	//
 	// example:
 	//
 	// custom
 	IpamResourceDiscoveryType *string `json:"IpamResourceDiscoveryType,omitempty" xml:"IpamResourceDiscoveryType,omitempty"`
+	// The status of the associations. Valid values:
+	//
+	// 	- **Created**
+	//
+	// 	- **Deleted**
+	//
 	// example:
 	//
 	// Created
@@ -4863,42 +6090,68 @@ func (s *ListIpamResourceDiscoveryAssociationsResponse) SetBody(v *ListIpamResou
 }
 
 type ListIpamScopesRequest struct {
+	// The ID of the IPAM.
+	//
 	// example:
 	//
 	// ipam-ccxbnsbhew0d6t****
-	IpamId       *string   `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// The IDs of IPAM scopes.
 	IpamScopeIds []*string `json:"IpamScopeIds,omitempty" xml:"IpamScopeIds,omitempty" type:"Repeated"`
+	// The name of the IPAM scope.
+	//
+	// It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// test
 	IpamScopeName *string `json:"IpamScopeName,omitempty" xml:"IpamScopeName,omitempty"`
+	// The type of the IPAM scope. Valid values:
+	//
+	// 	- **public**
+	//
+	// 	- **private**
+	//
 	// example:
 	//
 	// private
 	IpamScopeType *string `json:"IpamScopeType,omitempty" xml:"IpamScopeType,omitempty"`
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID of the IPAM scope.
+	//
 	// example:
 	//
 	// rg-aek2sermdd6****
-	ResourceGroupId      *string                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tags                 []*ListIpamScopesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tag list.
+	Tags []*ListIpamScopesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListIpamScopesRequest) String() string {
@@ -4975,10 +6228,18 @@ func (s *ListIpamScopesRequest) SetTags(v []*ListIpamScopesRequestTags) *ListIpa
 }
 
 type ListIpamScopesRequestTags struct {
+	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// FinanceJoshua
@@ -5004,20 +6265,38 @@ func (s *ListIpamScopesRequestTags) SetValue(v string) *ListIpamScopesRequestTag
 }
 
 type ListIpamScopesResponseBody struct {
-	Count      *int64                                  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of entries returned.
+	//
+	// example:
+	//
+	// 10
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The IPAM scopes.
 	IpamScopes []*ListIpamScopesResponseBodyIpamScopes `json:"IpamScopes,omitempty" xml:"IpamScopes,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8859C501-97E7-53D4-B94B-2A9E16003B22
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1000
@@ -5063,52 +6342,96 @@ func (s *ListIpamScopesResponseBody) SetTotalCount(v int64) *ListIpamScopesRespo
 }
 
 type ListIpamScopesResponseBodyIpamScopes struct {
+	// The time when the IPAM scope was created.
+	//
 	// example:
 	//
 	// 2022-04-18T03:12:37Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the IPAM.
+	//
 	// example:
 	//
 	// ipam-ccxbnsbhew0d6t****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// The description of the IPAM scope.
+	//
 	// example:
 	//
 	// test description
 	IpamScopeDescription *string `json:"IpamScopeDescription,omitempty" xml:"IpamScopeDescription,omitempty"`
+	// The ID of the IPAM scope.
+	//
 	// example:
 	//
 	// ipam-scope-glfmcyldpm8lsy****
 	IpamScopeId *string `json:"IpamScopeId,omitempty" xml:"IpamScopeId,omitempty"`
+	// The name of the IPAM scope.
+	//
 	// example:
 	//
 	// test
 	IpamScopeName *string `json:"IpamScopeName,omitempty" xml:"IpamScopeName,omitempty"`
+	// The type of the IPAM scope. Valid values:
+	//
+	// 	- **public**
+	//
+	// 	- **private**
+	//
 	// example:
 	//
 	// private
 	IpamScopeType *string `json:"IpamScopeType,omitempty" xml:"IpamScopeType,omitempty"`
+	// Indicates whether the scope is the default scope. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The Alibaba Cloud account that owns the IPAM scope.
+	//
 	// example:
 	//
 	// 1210123456******
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of pools in the IPAM scope.
+	//
 	// example:
 	//
 	// 2
 	PoolCount *int32 `json:"PoolCount,omitempty" xml:"PoolCount,omitempty"`
+	// The region ID of the IPAM.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The status of the IPAM scope. Valid values:
+	//
+	// 	- **Creating**
+	//
+	// 	- **Created**
+	//
+	// 	- **Deleting**
+	//
+	// 	- **Deleted**
+	//
 	// example:
 	//
 	// Created
-	Status *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListIpamScopesResponseBodyIpamScopesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag list.
+	Tags []*ListIpamScopesResponseBodyIpamScopesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListIpamScopesResponseBodyIpamScopes) String() string {
@@ -5185,10 +6508,14 @@ func (s *ListIpamScopesResponseBodyIpamScopes) SetTags(v []*ListIpamScopesRespon
 }
 
 type ListIpamScopesResponseBodyIpamScopesTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// FinanceDept
@@ -5271,7 +6598,7 @@ type ListIpamsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the IPAM pool is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -5392,6 +6719,8 @@ func (s *ListIpamsRequestTags) SetValue(v string) *ListIpamsRequestTags {
 }
 
 type ListIpamsResponseBody struct {
+	// The number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -5473,10 +6802,14 @@ type ListIpamsResponseBodyIpams struct {
 	//
 	// 2022-07-01T02:05:23Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Default resource discovery association ID.
+	//
 	// example:
 	//
 	// ipam-res-disco-assoc-jt5fac8twugdbbgip****
 	DefaultResourceDiscoveryAssociationId *string `json:"DefaultResourceDiscoveryAssociationId,omitempty" xml:"DefaultResourceDiscoveryAssociationId,omitempty"`
+	// Default resource discovery instance ID.
+	//
 	// example:
 	//
 	// ipam-res-disco-jt5f2af2u6nk2z321****
@@ -5539,6 +6872,8 @@ type ListIpamsResponseBodyIpams struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Number of resource discovery associations.
+	//
 	// example:
 	//
 	// 1
@@ -5710,32 +7045,52 @@ func (s *ListIpamsResponse) SetBody(v *ListIpamsResponseBody) *ListIpamsResponse
 }
 
 type ListTagResourcesRequest struct {
+	// The number of entries per page. Valid values: **1*	- to **50**. Default value: **10**.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- If a value is returned for NextToken, you must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource IDs.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// 	- **IPAM**
+	//
+	// 	- **IPAMSCOPE**
+	//
+	// 	- **IPAMPOOL**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// IPAM
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag list.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -5797,10 +7152,22 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
+	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// >  You must specify **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value**.
+	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// >  You must specify **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value**.
+	//
 	// example:
 	//
 	// FinanceJoshua
@@ -5826,14 +7193,23 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 672053AB-90C9-5693-AB96-458F137A5ED6
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resources to which the tags are added.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -5861,18 +7237,32 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
+	// The resource ID.
+	//
 	// example:
 	//
 	// ipam-uq5dcfc2eqhpf4****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// 	- **IPAM**
+	//
+	// 	- **IPAMSCOPE**
+	//
+	// 	- **IPAMPOOL**
+	//
 	// example:
 	//
 	// IPAM
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag key.
+	//
 	// example:
 	//
 	// FinanceDept
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// FinanceJoshua
@@ -5937,12 +7327,20 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type OpenVpcIpamServiceRequest struct {
+	// Client token, used to ensure the idempotence of requests.
+	//
+	// Generate a unique value for this parameter from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters.
+	//
+	// > If not specified, the system automatically uses the RequestId of the API request as the ClientToken identifier. The RequestId may differ for each API request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5992,14 +7390,20 @@ func (s *OpenVpcIpamServiceRequest) SetResourceOwnerId(v int64) *OpenVpcIpamServ
 }
 
 type OpenVpcIpamServiceResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Information returned upon successful IPAM activation.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 3F814C37-B032-5477-AF5A-2925D0593CD4
@@ -6061,22 +7465,36 @@ func (s *OpenVpcIpamServiceResponse) SetBody(v *OpenVpcIpamServiceResponseBody) 
 type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the resources.
+	//
 	// This parameter is required.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// 	- **IPAM**
+	//
+	// 	- **IPAMSCOPE**
+	//
+	// 	- **IPAMPOOL**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// IPAM
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags to add to the resources.
+	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -6130,10 +7548,18 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
+	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// FinanceJoshua
@@ -6159,6 +7585,8 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// BF872550-9700-52FD-839C-4D3F05543FA8
@@ -6208,29 +7636,48 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
+	// Specifies whether to remove all tags from the specified resource. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
 	// example:
 	//
 	// false
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource IDs.
+	//
 	// This parameter is required.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// 	- **IPAM**
+	//
+	// 	- **IPAMSCOPE**
+	//
+	// 	- **IPAMPOOL**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// IPAM
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The keys of the tags that you want to remove from the resource.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -6287,6 +7734,8 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 44C884BD-2D56-5637-A523-1FA920A01E7D
@@ -6336,37 +7785,61 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateIpamRequest struct {
+	// The effective region that you want to add.
 	AddOperatingRegion []*string `json:"AddOperatingRegion,omitempty" xml:"AddOperatingRegion,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The description of the IPAM.
+	//
+	// It must be 2 to 256 characters in length and must start with a letter. It cannot start with `http://` or `https://`. The default value is empty.
+	//
 	// example:
 	//
 	// test description
 	IpamDescription *string `json:"IpamDescription,omitempty" xml:"IpamDescription,omitempty"`
+	// The ID of the IPAM.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-ccxbnsbhew0d6t****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// The name of the IPAM.
+	//
+	// It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// test
 	IpamName     *string `json:"IpamName,omitempty" xml:"IpamName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The effective region that you want to remove.
 	RemoveOperatingRegion []*string `json:"RemoveOperatingRegion,omitempty" xml:"RemoveOperatingRegion,omitempty" type:"Repeated"`
 	ResourceOwnerAccount  *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6441,6 +7914,8 @@ func (s *UpdateIpamRequest) SetResourceOwnerId(v int64) *UpdateIpamRequest {
 }
 
 type UpdateIpamResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F4650E33-895C-53F0-9CD5-D1338F322DE8
@@ -6490,47 +7965,92 @@ func (s *UpdateIpamResponse) SetBody(v *UpdateIpamResponseBody) *UpdateIpamRespo
 }
 
 type UpdateIpamPoolRequest struct {
+	// The new default network mask for the IPAM pool.
+	//
+	// The mask must be **0 to 32*	- bits in length.
+	//
 	// example:
 	//
 	// 28
 	AllocationDefaultCidrMask *int32 `json:"AllocationDefaultCidrMask,omitempty" xml:"AllocationDefaultCidrMask,omitempty"`
+	// The new maximum network mask for the IPAM pool.
+	//
+	// The mask must be **0 to 32*	- bits in length.
+	//
 	// example:
 	//
 	// 32
 	AllocationMaxCidrMask *int32 `json:"AllocationMaxCidrMask,omitempty" xml:"AllocationMaxCidrMask,omitempty"`
+	// The new minimum network mask for the IPAM pool.
+	//
+	// The mask must be **0 to 32*	- bits in length.
+	//
 	// example:
 	//
 	// 8
 	AllocationMinCidrMask *int32 `json:"AllocationMinCidrMask,omitempty" xml:"AllocationMinCidrMask,omitempty"`
-	AutoImport            *bool  `json:"AutoImport,omitempty" xml:"AutoImport,omitempty"`
+	// Whether the pool has the auto-import feature enabled.
+	//
+	// example:
+	//
+	// true
+	AutoImport *bool `json:"AutoImport,omitempty" xml:"AutoImport,omitempty"`
+	// Specifies whether to delete the default network mask for the IPAM pool. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	ClearAllocationDefaultCidrMask *bool `json:"ClearAllocationDefaultCidrMask,omitempty" xml:"ClearAllocationDefaultCidrMask,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The new description of the IPAM pool.
+	//
+	// It must be 2 to 268 characters in length. It must start with a letter but cannot start with a `http://` or `https://`. This parameter is empty by default.
+	//
 	// example:
 	//
 	// test description
 	IpamPoolDescription *string `json:"IpamPoolDescription,omitempty" xml:"IpamPoolDescription,omitempty"`
+	// The ID of the IPAM pool.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// The new name of the IPAM pool.
+	//
+	// It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// test
 	IpamPoolName *string `json:"IpamPoolName,omitempty" xml:"IpamPoolName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6625,6 +8145,8 @@ func (s *UpdateIpamPoolRequest) SetResourceOwnerId(v int64) *UpdateIpamPoolReque
 }
 
 type UpdateIpamPoolResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 9DED57B9-7654-5B6D-93F7-BCA5839FEE38
@@ -6674,28 +8196,50 @@ func (s *UpdateIpamPoolResponse) SetBody(v *UpdateIpamPoolResponseBody) *UpdateI
 }
 
 type UpdateIpamPoolAllocationRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to precheck this request. Valid values:
+	//
+	// 	- **true**: performs a dry run without modifying the CIDR blocks of IPAM pools. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and the actual request. If the request passes the check, an HTTP 2xx status code is returned and the CIDR allocation information of the IPAM address pool is modified.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The description of the CIDR allocation of the IPAM pool.
+	//
+	// The description must be 1 to 256 characters in length and start with a letter, but cannot start with a `http://` or `https://`. This parameter is empty by default.
+	//
 	// example:
 	//
 	// test description
 	IpamPoolAllocationDescription *string `json:"IpamPoolAllocationDescription,omitempty" xml:"IpamPoolAllocationDescription,omitempty"`
+	// The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-pool-alloc-112za33e4****
 	IpamPoolAllocationId *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
+	// The name of the CIDR allocation of the IPAM pool.
+	//
+	// It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// test name
 	IpamPoolAllocationName *string `json:"IpamPoolAllocationName,omitempty" xml:"IpamPoolAllocationName,omitempty"`
+	// The ID of the region where you want to perform the operation. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6743,6 +8287,8 @@ func (s *UpdateIpamPoolAllocationRequest) SetRegionId(v string) *UpdateIpamPoolA
 }
 
 type UpdateIpamPoolAllocationResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F4650E33-895C-53F0-9CD5-D1338F322DE8
@@ -6792,37 +8338,57 @@ func (s *UpdateIpamPoolAllocationResponse) SetBody(v *UpdateIpamPoolAllocationRe
 }
 
 type UpdateIpamResourceDiscoveryRequest struct {
+	// The list of effective regions to add.
 	AddOperatingRegion []*string `json:"AddOperatingRegion,omitempty" xml:"AddOperatingRegion,omitempty" type:"Repeated"`
+	// The client token used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform the dry run. Valid values:
+	//
+	// 	- **true**: Performs a dry run without modifying the resource discovery instance. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	//
+	// 	- **false*	- (default): Performs a dry run and the actual request. If the request passes the check, an HTTP 2xx status code is returned and the resource discovery instance is modified.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The description of resource discovery.
+	//
 	// example:
 	//
 	// test description
 	IpamResourceDiscoveryDescription *string `json:"IpamResourceDiscoveryDescription,omitempty" xml:"IpamResourceDiscoveryDescription,omitempty"`
+	// The ID of resource discovery instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-res-disco-jt5f2af2u6nk2z321****
 	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	// The name of the resource discovery.
+	//
 	// example:
 	//
 	// test
 	IpamResourceDiscoveryName *string `json:"IpamResourceDiscoveryName,omitempty" xml:"IpamResourceDiscoveryName,omitempty"`
 	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The request region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of effective regions to remove.
 	RemoveOperatingRegion []*string `json:"RemoveOperatingRegion,omitempty" xml:"RemoveOperatingRegion,omitempty" type:"Repeated"`
 	ResourceOwnerAccount  *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6897,6 +8463,8 @@ func (s *UpdateIpamResourceDiscoveryRequest) SetResourceOwnerId(v int64) *Update
 }
 
 type UpdateIpamResourceDiscoveryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// BB2C39DE-CEB8-595A-981A-F2EFCBE7324E
@@ -6946,30 +8514,52 @@ func (s *UpdateIpamResourceDiscoveryResponse) SetBody(v *UpdateIpamResourceDisco
 }
 
 type UpdateIpamScopeRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, DryRunOperation is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The new description of the IPAM scope.
+	//
+	// It must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`. This parameter is empty by default.
+	//
 	// example:
 	//
 	// test description
 	IpamScopeDescription *string `json:"IpamScopeDescription,omitempty" xml:"IpamScopeDescription,omitempty"`
+	// The ID of the IPAM scope.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipam-scope-glfmcyldpm8lsy****
 	IpamScopeId *string `json:"IpamScopeId,omitempty" xml:"IpamScopeId,omitempty"`
+	// The new name of the IPAM scope.
+	//
+	// It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// test
 	IpamScopeName *string `json:"IpamScopeName,omitempty" xml:"IpamScopeName,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7039,6 +8629,8 @@ func (s *UpdateIpamScopeRequest) SetResourceOwnerId(v int64) *UpdateIpamScopeReq
 }
 
 type UpdateIpamScopeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// BA8054F5-852A-570A-ACFF-BCA63E0B02D5
@@ -7134,6 +8726,26 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Provisions a CIDR block to an IP Address Manager (IPAM) pool.
+//
+// Description:
+//
+//	  Before you provision a CIDR block, make sure that an IPAM pool is created. You can call the **CreateIpamPool*	- operation to create an IPAM pool.
+//
+//		- If no CIDR block is provisioned to a parent pool, you cannot provision CIDR blocks to its subpools.
+//
+//		- If a CIDR block is provisioned to a parent pool, you can provision CIDR blocks to its subpools and the CIDR blocks must be subsets of the CIDR block provisioned to the parent pool.
+//
+//		- If a CIDR block is provisioned to a parent pool and allocations are created, CIDR blocks provisioned to its subpools cannot overlap with existing allocated CIDR blocks.
+//
+//		- You can provision CIDR blocks to a pool only in the region where the IPAM is hosted.
+//
+//		- CIDR blocks provisioned to an IPAM pool cannot overlap with the CIDR blocks provisioned to other pools in the same scope.
+//
+//		- You can provision at most 50 CIDR blocks to each pool.
+//
 // @param request - AddIpamPoolCidrRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7179,26 +8791,35 @@ func (client *Client) AddIpamPoolCidrWithOptions(request *AddIpamPoolCidrRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddIpamPoolCidrResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddIpamPoolCidrResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddIpamPoolCidrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Provisions a CIDR block to an IP Address Manager (IPAM) pool.
+//
+// Description:
+//
+//	  Before you provision a CIDR block, make sure that an IPAM pool is created. You can call the **CreateIpamPool*	- operation to create an IPAM pool.
+//
+//		- If no CIDR block is provisioned to a parent pool, you cannot provision CIDR blocks to its subpools.
+//
+//		- If a CIDR block is provisioned to a parent pool, you can provision CIDR blocks to its subpools and the CIDR blocks must be subsets of the CIDR block provisioned to the parent pool.
+//
+//		- If a CIDR block is provisioned to a parent pool and allocations are created, CIDR blocks provisioned to its subpools cannot overlap with existing allocated CIDR blocks.
+//
+//		- You can provision CIDR blocks to a pool only in the region where the IPAM is hosted.
+//
+//		- CIDR blocks provisioned to an IPAM pool cannot overlap with the CIDR blocks provisioned to other pools in the same scope.
+//
+//		- You can provision at most 50 CIDR blocks to each pool.
+//
 // @param request - AddIpamPoolCidrRequest
 //
 // @return AddIpamPoolCidrResponse
@@ -7215,7 +8836,11 @@ func (client *Client) AddIpamPoolCidr(request *AddIpamPoolCidrRequest) (_result 
 
 // Summary:
 //
-// 关联资源发现和IPAM实例。
+// Associates resource discovery with an IPAM instance.
+//
+// Description:
+//
+//	The specified resource discovery instance can only be associated with one IPAM instance and associations cannot be duplicated.
 //
 // @param request - AssociateIpamResourceDiscoveryRequest
 //
@@ -7278,29 +8903,22 @@ func (client *Client) AssociateIpamResourceDiscoveryWithOptions(request *Associa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AssociateIpamResourceDiscoveryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AssociateIpamResourceDiscoveryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AssociateIpamResourceDiscoveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 关联资源发现和IPAM实例。
+// Associates resource discovery with an IPAM instance.
+//
+// Description:
+//
+//	The specified resource discovery instance can only be associated with one IPAM instance and associations cannot be duplicated.
 //
 // @param request - AssociateIpamResourceDiscoveryRequest
 //
@@ -7316,6 +8934,10 @@ func (client *Client) AssociateIpamResourceDiscovery(request *AssociateIpamResou
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the resource group of an IPAM resource.
+//
 // @param request - ChangeResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7373,26 +8995,19 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ChangeResourceGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ChangeResourceGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Changes the resource group of an IPAM resource.
+//
 // @param request - ChangeResourceGroupRequest
 //
 // @return ChangeResourceGroupResponse
@@ -7409,7 +9024,19 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// 创建IPAM实例。
+// Creates an IP Address Manager (IPAM).
+//
+// Description:
+//
+// - You can create only one IPAM with each Alibaba Cloud account in each region.
+//
+// - Only IPv4 IP addresses can be allocated.
+//
+// - When you create an IPAM instance:
+//
+//   - If there is no custom resource discovery in the region, the system creates a default resource discovery associated with the IPAM instance.
+//
+//   - If there is a custom resource discovery in the region, the system converts it to a default resource discovery and associates it with the IPAM instance.
 //
 // @param request - CreateIpamRequest
 //
@@ -7484,29 +9111,30 @@ func (client *Client) CreateIpamWithOptions(request *CreateIpamRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateIpamResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateIpamResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateIpamResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 创建IPAM实例。
+// Creates an IP Address Manager (IPAM).
+//
+// Description:
+//
+// - You can create only one IPAM with each Alibaba Cloud account in each region.
+//
+// - Only IPv4 IP addresses can be allocated.
+//
+// - When you create an IPAM instance:
+//
+//   - If there is no custom resource discovery in the region, the system creates a default resource discovery associated with the IPAM instance.
+//
+//   - If there is a custom resource discovery in the region, the system converts it to a default resource discovery and associates it with the IPAM instance.
 //
 // @param request - CreateIpamRequest
 //
@@ -7522,6 +9150,10 @@ func (client *Client) CreateIpam(request *CreateIpamRequest) (_result *CreateIpa
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an IP Address Manager (IPAM) pool.
+//
 // @param request - CreateIpamPoolRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7623,26 +9255,19 @@ func (client *Client) CreateIpamPoolWithOptions(request *CreateIpamPoolRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateIpamPoolResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateIpamPoolResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateIpamPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Creates an IP Address Manager (IPAM) pool.
+//
 // @param request - CreateIpamPoolRequest
 //
 // @return CreateIpamPoolResponse
@@ -7657,6 +9282,20 @@ func (client *Client) CreateIpamPool(request *CreateIpamPoolRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Reserves a custom CIDR block from an IP Address Manager (IPAM) pool.
+//
+// Description:
+//
+//	  Before you reserve a custom CIDR block, make sure that an IPAM pool is created and CIDR blocks are added to the pool. You can call **CreateIpamPool*	- to create an IPAM pool and call **AddIpamPoolCidr*	- to add CIDR blocks to the pool.
+//
+//		- When you specify Cidr or CidrMask to reserve a custom CIDR block, the mask must fall within the range specified by the IPAM pool.
+//
+//		- If the IPAM pool has the region attribute, you must reserve a custom CIDR block in the region to which the IPAM pool belongs.
+//
+//		- The custom CIDR block that you want to reserve cannot overlap with existing CIDR blocks created from the IPAM pool.
+//
 // @param request - CreateIpamPoolAllocationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7714,26 +9353,29 @@ func (client *Client) CreateIpamPoolAllocationWithOptions(request *CreateIpamPoo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateIpamPoolAllocationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateIpamPoolAllocationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateIpamPoolAllocationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Reserves a custom CIDR block from an IP Address Manager (IPAM) pool.
+//
+// Description:
+//
+//	  Before you reserve a custom CIDR block, make sure that an IPAM pool is created and CIDR blocks are added to the pool. You can call **CreateIpamPool*	- to create an IPAM pool and call **AddIpamPoolCidr*	- to add CIDR blocks to the pool.
+//
+//		- When you specify Cidr or CidrMask to reserve a custom CIDR block, the mask must fall within the range specified by the IPAM pool.
+//
+//		- If the IPAM pool has the region attribute, you must reserve a custom CIDR block in the region to which the IPAM pool belongs.
+//
+//		- The custom CIDR block that you want to reserve cannot overlap with existing CIDR blocks created from the IPAM pool.
+//
 // @param request - CreateIpamPoolAllocationRequest
 //
 // @return CreateIpamPoolAllocationResponse
@@ -7750,7 +9392,13 @@ func (client *Client) CreateIpamPoolAllocation(request *CreateIpamPoolAllocation
 
 // Summary:
 //
-// 创建自定义类型资源发现。
+// Creates a custom resource discovery instance.
+//
+// Description:
+//
+//	  Each Alibaba Cloud account can create only one resource discovery instance in each region.
+//
+//		- You can create only custom resource discovery instances.
 //
 // @param request - CreateIpamResourceDiscoveryRequest
 //
@@ -7825,29 +9473,24 @@ func (client *Client) CreateIpamResourceDiscoveryWithOptions(request *CreateIpam
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateIpamResourceDiscoveryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateIpamResourceDiscoveryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateIpamResourceDiscoveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 创建自定义类型资源发现。
+// Creates a custom resource discovery instance.
+//
+// Description:
+//
+//	  Each Alibaba Cloud account can create only one resource discovery instance in each region.
+//
+//		- You can create only custom resource discovery instances.
 //
 // @param request - CreateIpamResourceDiscoveryRequest
 //
@@ -7863,6 +9506,10 @@ func (client *Client) CreateIpamResourceDiscovery(request *CreateIpamResourceDis
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a public scope and private scope to respectively manage public and private IP addresses.
+//
 // @param request - CreateIpamScopeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7940,26 +9587,19 @@ func (client *Client) CreateIpamScopeWithOptions(request *CreateIpamScopeRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateIpamScopeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateIpamScopeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateIpamScopeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Creates a public scope and private scope to respectively manage public and private IP addresses.
+//
 // @param request - CreateIpamScopeRequest
 //
 // @return CreateIpamScopeResponse
@@ -7974,6 +9614,18 @@ func (client *Client) CreateIpamScope(request *CreateIpamScopeRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an IP Address Manager (IPAM).
+//
+// Description:
+//
+// ## [](#)Prerequisites
+//
+//   - Before you delete an IPAM, make sure that all IPAM pools of the IPAM are deleted. You can call **DeleteIpamPool*	- to delete IPAM pools.
+//
+//   - Before you delete an IPAM, make sure that all IPAM scopes of the IPAM are deleted. You can call **DeleteIpamScope*	- to delete IPAM scopes.
+//
 // @param request - DeleteIpamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8031,26 +9683,27 @@ func (client *Client) DeleteIpamWithOptions(request *DeleteIpamRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteIpamResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteIpamResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteIpamResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an IP Address Manager (IPAM).
+//
+// Description:
+//
+// ## [](#)Prerequisites
+//
+//   - Before you delete an IPAM, make sure that all IPAM pools of the IPAM are deleted. You can call **DeleteIpamPool*	- to delete IPAM pools.
+//
+//   - Before you delete an IPAM, make sure that all IPAM scopes of the IPAM are deleted. You can call **DeleteIpamScope*	- to delete IPAM scopes.
+//
 // @param request - DeleteIpamRequest
 //
 // @return DeleteIpamResponse
@@ -8065,6 +9718,20 @@ func (client *Client) DeleteIpam(request *DeleteIpamRequest) (_result *DeleteIpa
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an IP Address Manager (IPAM) scope.
+//
+// Description:
+//
+// ### [](#)Usage notes
+//
+//   - Before you delete a parent pool, make sure that all subpools of the parent pool are deleted.
+//
+//   - If an effective region is specified for a parent pool and IP addresses are allocated from the parent pool, you cannot delete the parent pool.
+//
+//   - If an effective region is specified for a subpool and IP addresses are allocated from the subpool, you cannot delete the subpool.
+//
 // @param request - DeleteIpamPoolRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8122,26 +9789,29 @@ func (client *Client) DeleteIpamPoolWithOptions(request *DeleteIpamPoolRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteIpamPoolResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteIpamPoolResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteIpamPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an IP Address Manager (IPAM) scope.
+//
+// Description:
+//
+// ### [](#)Usage notes
+//
+//   - Before you delete a parent pool, make sure that all subpools of the parent pool are deleted.
+//
+//   - If an effective region is specified for a parent pool and IP addresses are allocated from the parent pool, you cannot delete the parent pool.
+//
+//   - If an effective region is specified for a subpool and IP addresses are allocated from the subpool, you cannot delete the subpool.
+//
 // @param request - DeleteIpamPoolRequest
 //
 // @return DeleteIpamPoolResponse
@@ -8156,6 +9826,10 @@ func (client *Client) DeleteIpamPool(request *DeleteIpamPoolRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom reserved CIDR block from an IP Address Manager (IPAM) pool.
+//
 // @param request - DeleteIpamPoolAllocationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8197,26 +9871,19 @@ func (client *Client) DeleteIpamPoolAllocationWithOptions(request *DeleteIpamPoo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteIpamPoolAllocationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteIpamPoolAllocationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteIpamPoolAllocationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom reserved CIDR block from an IP Address Manager (IPAM) pool.
+//
 // @param request - DeleteIpamPoolAllocationRequest
 //
 // @return DeleteIpamPoolAllocationResponse
@@ -8231,6 +9898,20 @@ func (client *Client) DeleteIpamPoolAllocation(request *DeleteIpamPoolAllocation
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a CIDR block provisioned to an IP Address Manager (IPAM) pool.
+//
+// Description:
+//
+//	  If CIDR blocks are provisioned to a parent pool and its subpools, you must first delete the CIDR blocks provisioned to the subpools before you delete the ones provisioned to the parent pool.
+//
+//		- If CIDR blocks are provisioned only to the parent pool, directly delete them.
+//
+//		- If CIDR blocks are allocated from provisioned ones, you must first delete the allocated CIDR blocks before you delete the provisioned ones.
+//
+//		- You can delete CIDR blocks provisioned to an IPAM pool only in the region where the IPAM is hosted.
+//
 // @param request - DeleteIpamPoolCidrRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8276,26 +9957,29 @@ func (client *Client) DeleteIpamPoolCidrWithOptions(request *DeleteIpamPoolCidrR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteIpamPoolCidrResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteIpamPoolCidrResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteIpamPoolCidrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a CIDR block provisioned to an IP Address Manager (IPAM) pool.
+//
+// Description:
+//
+//	  If CIDR blocks are provisioned to a parent pool and its subpools, you must first delete the CIDR blocks provisioned to the subpools before you delete the ones provisioned to the parent pool.
+//
+//		- If CIDR blocks are provisioned only to the parent pool, directly delete them.
+//
+//		- If CIDR blocks are allocated from provisioned ones, you must first delete the allocated CIDR blocks before you delete the provisioned ones.
+//
+//		- You can delete CIDR blocks provisioned to an IPAM pool only in the region where the IPAM is hosted.
+//
 // @param request - DeleteIpamPoolCidrRequest
 //
 // @return DeleteIpamPoolCidrResponse
@@ -8312,7 +9996,11 @@ func (client *Client) DeleteIpamPoolCidr(request *DeleteIpamPoolCidrRequest) (_r
 
 // Summary:
 //
-// 删除自定义类型的资源发现。
+// Deletes a custom resource discovery instance.
+//
+// Description:
+//
+//	If a resource discovery instance is shared, it cannot be deleted.
 //
 // @param request - DeleteIpamResourceDiscoveryRequest
 //
@@ -8371,29 +10059,22 @@ func (client *Client) DeleteIpamResourceDiscoveryWithOptions(request *DeleteIpam
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteIpamResourceDiscoveryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteIpamResourceDiscoveryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteIpamResourceDiscoveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 删除自定义类型的资源发现。
+// Deletes a custom resource discovery instance.
+//
+// Description:
+//
+//	If a resource discovery instance is shared, it cannot be deleted.
 //
 // @param request - DeleteIpamResourceDiscoveryRequest
 //
@@ -8409,6 +10090,18 @@ func (client *Client) DeleteIpamResourceDiscovery(request *DeleteIpamResourceDis
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an IP Address Manager (IPAM) scope.
+//
+// Description:
+//
+// ### [](#)Usage notes
+//
+//   - You cannot delete the private scope and public scope created by the system.
+//
+//   - Before you delete an IPAM scope, make sure that all pools within the scope are deleted. You can call **DeleteIpamPool*	- to delete IPAM pools.
+//
 // @param request - DeleteIpamScopeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8466,26 +10159,27 @@ func (client *Client) DeleteIpamScopeWithOptions(request *DeleteIpamScopeRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteIpamScopeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteIpamScopeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteIpamScopeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an IP Address Manager (IPAM) scope.
+//
+// Description:
+//
+// ### [](#)Usage notes
+//
+//   - You cannot delete the private scope and public scope created by the system.
+//
+//   - Before you delete an IPAM scope, make sure that all pools within the scope are deleted. You can call **DeleteIpamPool*	- to delete IPAM pools.
+//
 // @param request - DeleteIpamScopeRequest
 //
 // @return DeleteIpamScopeResponse
@@ -8502,7 +10196,7 @@ func (client *Client) DeleteIpamScope(request *DeleteIpamScopeRequest) (_result 
 
 // Summary:
 //
-// 解关联资源发现和IPAM实例。
+// Disassociates resource discovery and IPAM instances.
 //
 // @param request - DissociateIpamResourceDiscoveryRequest
 //
@@ -8565,29 +10259,18 @@ func (client *Client) DissociateIpamResourceDiscoveryWithOptions(request *Dissoc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DissociateIpamResourceDiscoveryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DissociateIpamResourceDiscoveryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DissociateIpamResourceDiscoveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 解关联资源发现和IPAM实例。
+// Disassociates resource discovery and IPAM instances.
 //
 // @param request - DissociateIpamResourceDiscoveryRequest
 //
@@ -8605,7 +10288,7 @@ func (client *Client) DissociateIpamResourceDiscovery(request *DissociateIpamRes
 
 // Summary:
 //
-// 查询指定IPAM地址池CIDR分配的信息
+// Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
 //
 // @param request - GetIpamPoolAllocationRequest
 //
@@ -8632,29 +10315,18 @@ func (client *Client) GetIpamPoolAllocationWithOptions(request *GetIpamPoolAlloc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetIpamPoolAllocationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetIpamPoolAllocationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetIpamPoolAllocationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查询指定IPAM地址池CIDR分配的信息
+// Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
 //
 // @param request - GetIpamPoolAllocationRequest
 //
@@ -8672,7 +10344,7 @@ func (client *Client) GetIpamPoolAllocation(request *GetIpamPoolAllocationReques
 
 // Summary:
 //
-// 获取地址池可用CIDR。
+// Gets the available CIDR blocks of the IPAM pool.
 //
 // @param request - GetIpamPoolNextAvailableCidrRequest
 //
@@ -8699,29 +10371,18 @@ func (client *Client) GetIpamPoolNextAvailableCidrWithOptions(request *GetIpamPo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetIpamPoolNextAvailableCidrResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetIpamPoolNextAvailableCidrResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetIpamPoolNextAvailableCidrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取地址池可用CIDR。
+// Gets the available CIDR blocks of the IPAM pool.
 //
 // @param request - GetIpamPoolNextAvailableCidrRequest
 //
@@ -8739,7 +10400,7 @@ func (client *Client) GetIpamPoolNextAvailableCidr(request *GetIpamPoolNextAvail
 
 // Summary:
 //
-// 查询IPAM功能的开通状态。
+// Queries whether IP Address Manager (IPAM) is activated.
 //
 // @param request - GetVpcIpamServiceStatusRequest
 //
@@ -8790,29 +10451,18 @@ func (client *Client) GetVpcIpamServiceStatusWithOptions(request *GetVpcIpamServ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetVpcIpamServiceStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetVpcIpamServiceStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetVpcIpamServiceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查询IPAM功能的开通状态。
+// Queries whether IP Address Manager (IPAM) is activated.
 //
 // @param request - GetVpcIpamServiceStatusRequest
 //
@@ -8828,6 +10478,10 @@ func (client *Client) GetVpcIpamServiceStatus(request *GetVpcIpamServiceStatusRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries discovered resources.
+//
 // @param request - ListIpamDiscoveredResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8877,26 +10531,19 @@ func (client *Client) ListIpamDiscoveredResourceWithOptions(request *ListIpamDis
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListIpamDiscoveredResourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListIpamDiscoveredResourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListIpamDiscoveredResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries discovered resources.
+//
 // @param request - ListIpamDiscoveredResourceRequest
 //
 // @return ListIpamDiscoveredResourceResponse
@@ -8911,6 +10558,10 @@ func (client *Client) ListIpamDiscoveredResource(request *ListIpamDiscoveredReso
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
+//
 // @param request - ListIpamPoolAllocationsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8964,26 +10615,19 @@ func (client *Client) ListIpamPoolAllocationsWithOptions(request *ListIpamPoolAl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListIpamPoolAllocationsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListIpamPoolAllocationsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListIpamPoolAllocationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
+//
 // @param request - ListIpamPoolAllocationsRequest
 //
 // @return ListIpamPoolAllocationsResponse
@@ -8998,6 +10642,10 @@ func (client *Client) ListIpamPoolAllocations(request *ListIpamPoolAllocationsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries CIDR blocks provisioned to an IP Address Manager (IPAM) pool.
+//
 // @param request - ListIpamPoolCidrsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9043,26 +10691,19 @@ func (client *Client) ListIpamPoolCidrsWithOptions(request *ListIpamPoolCidrsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListIpamPoolCidrsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListIpamPoolCidrsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListIpamPoolCidrsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries CIDR blocks provisioned to an IP Address Manager (IPAM) pool.
+//
 // @param request - ListIpamPoolCidrsRequest
 //
 // @return ListIpamPoolCidrsResponse
@@ -9077,6 +10718,10 @@ func (client *Client) ListIpamPoolCidrs(request *ListIpamPoolCidrsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries IP Address Manager (IPAM) pools.
+//
 // @param request - ListIpamPoolsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9162,26 +10807,19 @@ func (client *Client) ListIpamPoolsWithOptions(request *ListIpamPoolsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListIpamPoolsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListIpamPoolsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListIpamPoolsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries IP Address Manager (IPAM) pools.
+//
 // @param request - ListIpamPoolsRequest
 //
 // @return ListIpamPoolsResponse
@@ -9196,6 +10834,10 @@ func (client *Client) ListIpamPools(request *ListIpamPoolsRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries resources in an IP Address Manager (IPAM) pool.
+//
 // @param request - ListIpamResourceCidrsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9257,26 +10899,19 @@ func (client *Client) ListIpamResourceCidrsWithOptions(request *ListIpamResource
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListIpamResourceCidrsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListIpamResourceCidrsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListIpamResourceCidrsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries resources in an IP Address Manager (IPAM) pool.
+//
 // @param request - ListIpamResourceCidrsRequest
 //
 // @return ListIpamResourceCidrsResponse
@@ -9293,7 +10928,7 @@ func (client *Client) ListIpamResourceCidrs(request *ListIpamResourceCidrsReques
 
 // Summary:
 //
-// 查询ipam资源发现实例
+// Queries IPAM resource discovery instances.
 //
 // @param request - ListIpamResourceDiscoveriesRequest
 //
@@ -9372,29 +11007,18 @@ func (client *Client) ListIpamResourceDiscoveriesWithOptions(request *ListIpamRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListIpamResourceDiscoveriesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListIpamResourceDiscoveriesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListIpamResourceDiscoveriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查询ipam资源发现实例
+// Queries IPAM resource discovery instances.
 //
 // @param request - ListIpamResourceDiscoveriesRequest
 //
@@ -9412,7 +11036,7 @@ func (client *Client) ListIpamResourceDiscoveries(request *ListIpamResourceDisco
 
 // Summary:
 //
-// 查看资源发现和IPAM的关联关系。
+// Queries the association between resource discovery and IPAM.
 //
 // @param request - ListIpamResourceDiscoveryAssociationsRequest
 //
@@ -9475,29 +11099,18 @@ func (client *Client) ListIpamResourceDiscoveryAssociationsWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListIpamResourceDiscoveryAssociationsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListIpamResourceDiscoveryAssociationsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListIpamResourceDiscoveryAssociationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查看资源发现和IPAM的关联关系。
+// Queries the association between resource discovery and IPAM.
 //
 // @param request - ListIpamResourceDiscoveryAssociationsRequest
 //
@@ -9513,6 +11126,10 @@ func (client *Client) ListIpamResourceDiscoveryAssociations(request *ListIpamRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries IP Address Manager (IPAM) scopes.
+//
 // @param request - ListIpamScopesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9590,26 +11207,19 @@ func (client *Client) ListIpamScopesWithOptions(request *ListIpamScopesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListIpamScopesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListIpamScopesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListIpamScopesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries IP Address Manager (IPAM) scopes.
+//
 // @param request - ListIpamScopesRequest
 //
 // @return ListIpamScopesResponse
@@ -9697,24 +11307,13 @@ func (client *Client) ListIpamsWithOptions(request *ListIpamsRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListIpamsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListIpamsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListIpamsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9737,7 +11336,19 @@ func (client *Client) ListIpams(request *ListIpamsRequest) (_result *ListIpamsRe
 
 // Summary:
 //
-// 查询资源标签列表
+// Queries a list of resource tags.
+//
+// Description:
+//
+// ### [](#)Usage notes
+//
+//   - You must specify **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value*	- in the request to specify the object that you want to query.
+//
+//   - **Tag.N*	- is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+//
+//   - If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
+//
+//   - If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -9804,29 +11415,30 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查询资源标签列表
+// Queries a list of resource tags.
+//
+// Description:
+//
+// ### [](#)Usage notes
+//
+//   - You must specify **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value*	- in the request to specify the object that you want to query.
+//
+//   - **Tag.N*	- is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+//
+//   - If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
+//
+//   - If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -9844,7 +11456,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 开通IPAM功能。
+// Activates IP Address Manager (IPAM).
 //
 // @param request - OpenVpcIpamServiceRequest
 //
@@ -9895,29 +11507,18 @@ func (client *Client) OpenVpcIpamServiceWithOptions(request *OpenVpcIpamServiceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &OpenVpcIpamServiceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &OpenVpcIpamServiceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &OpenVpcIpamServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 开通IPAM功能。
+// Activates IP Address Manager (IPAM).
 //
 // @param request - OpenVpcIpamServiceRequest
 //
@@ -9935,7 +11536,19 @@ func (client *Client) OpenVpcIpamService(request *OpenVpcIpamServiceRequest) (_r
 
 // Summary:
 //
-// 为资源实例绑定资源标签
+// Adds a tag to a resource.
+//
+// Description:
+//
+// ### [](#)Usage notes
+//
+// Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following items:
+//
+//   - Each tag key that is added to an instance must be unique.
+//
+//   - You cannot create tags without adding them to instances. All tags must be added to instances.
+//
+//   - You can add at most 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
 //
 // @param request - TagResourcesRequest
 //
@@ -9994,29 +11607,30 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 为资源实例绑定资源标签
+// Adds a tag to a resource.
+//
+// Description:
+//
+// ### [](#)Usage notes
+//
+// Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following items:
+//
+//   - Each tag key that is added to an instance must be unique.
+//
+//   - You cannot create tags without adding them to instances. All tags must be added to instances.
+//
+//   - You can add at most 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
 //
 // @param request - TagResourcesRequest
 //
@@ -10034,7 +11648,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 为资源解绑资源标签
+// Removes a tag from a resource.
 //
 // @param request - UntagResourcesRequest
 //
@@ -10097,29 +11711,18 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UntagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UntagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 为资源解绑资源标签
+// Removes a tag from a resource.
 //
 // @param request - UntagResourcesRequest
 //
@@ -10137,7 +11740,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 更新ipam
+// Updates an IP Address Manager (IPAM).
 //
 // @param request - UpdateIpamRequest
 //
@@ -10212,29 +11815,18 @@ func (client *Client) UpdateIpamWithOptions(request *UpdateIpamRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateIpamResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateIpamResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateIpamResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 更新ipam
+// Updates an IP Address Manager (IPAM).
 //
 // @param request - UpdateIpamRequest
 //
@@ -10250,6 +11842,10 @@ func (client *Client) UpdateIpam(request *UpdateIpamRequest) (_result *UpdateIpa
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the basic information about an IP Address Manager (IPAM) pool.
+//
 // @param request - UpdateIpamPoolRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10335,26 +11931,19 @@ func (client *Client) UpdateIpamPoolWithOptions(request *UpdateIpamPoolRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateIpamPoolResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateIpamPoolResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateIpamPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the basic information about an IP Address Manager (IPAM) pool.
+//
 // @param request - UpdateIpamPoolRequest
 //
 // @return UpdateIpamPoolResponse
@@ -10371,7 +11960,7 @@ func (client *Client) UpdateIpamPool(request *UpdateIpamPoolRequest) (_result *U
 
 // Summary:
 //
-// 更新IPAM地址池分配信息
+// Modifies CIDR block allocations of an IP Address Manager (IPAM) pool.
 //
 // @param request - UpdateIpamPoolAllocationRequest
 //
@@ -10422,29 +12011,18 @@ func (client *Client) UpdateIpamPoolAllocationWithOptions(request *UpdateIpamPoo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateIpamPoolAllocationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateIpamPoolAllocationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateIpamPoolAllocationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 更新IPAM地址池分配信息
+// Modifies CIDR block allocations of an IP Address Manager (IPAM) pool.
 //
 // @param request - UpdateIpamPoolAllocationRequest
 //
@@ -10462,7 +12040,13 @@ func (client *Client) UpdateIpamPoolAllocation(request *UpdateIpamPoolAllocation
 
 // Summary:
 //
-// 更新自定义类型资源发现。
+// Modifies a resource discovery instance.
+//
+// Description:
+//
+//	  You can add or remove effective regions only for custom resource discovery instances.
+//
+//		- When removing effective regions from a resource discovery instance, the managed region cannot be included.
 //
 // @param request - UpdateIpamResourceDiscoveryRequest
 //
@@ -10537,29 +12121,24 @@ func (client *Client) UpdateIpamResourceDiscoveryWithOptions(request *UpdateIpam
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateIpamResourceDiscoveryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateIpamResourceDiscoveryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateIpamResourceDiscoveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 更新自定义类型资源发现。
+// Modifies a resource discovery instance.
+//
+// Description:
+//
+//	  You can add or remove effective regions only for custom resource discovery instances.
+//
+//		- When removing effective regions from a resource discovery instance, the managed region cannot be included.
 //
 // @param request - UpdateIpamResourceDiscoveryRequest
 //
@@ -10575,6 +12154,10 @@ func (client *Client) UpdateIpamResourceDiscovery(request *UpdateIpamResourceDis
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the basic information about an IP Address Manager (IPAM) scope.
+//
 // @param request - UpdateIpamScopeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10640,26 +12223,19 @@ func (client *Client) UpdateIpamScopeWithOptions(request *UpdateIpamScopeRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateIpamScopeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateIpamScopeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateIpamScopeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the basic information about an IP Address Manager (IPAM) scope.
+//
 // @param request - UpdateIpamScopeRequest
 //
 // @return UpdateIpamScopeResponse
