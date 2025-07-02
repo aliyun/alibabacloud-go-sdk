@@ -3100,7 +3100,8 @@ type CreateARMServerInstancesRequest struct {
 	// example:
 	//
 	// yourImage ID
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId              *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceBillingCycle *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
 	// The specification of the Android in Container (AIC) instance. Examples:
 	//
 	// 	- aic.cf52r.c1.np
@@ -3181,8 +3182,6 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// 	- If you set PeriodUnit to Month, you can set Period to a value within the range of [1,9], or set the value to 12.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1
@@ -3194,8 +3193,6 @@ type CreateARMServerInstancesRequest struct {
 	// 	- If you set PeriodUnit to Day, you can set Period only to 3.
 	//
 	// 	- If you set PeriodUnit to Month, you can set Period to a value within the range of [1,9], or set the value to 12.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -3297,6 +3294,11 @@ func (s *CreateARMServerInstancesRequest) SetFrequency(v int32) *CreateARMServer
 
 func (s *CreateARMServerInstancesRequest) SetImageId(v string) *CreateARMServerInstancesRequest {
 	s.ImageId = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetInstanceBillingCycle(v string) *CreateARMServerInstancesRequest {
+	s.InstanceBillingCycle = &v
 	return s
 }
 
@@ -5493,15 +5495,11 @@ type CreateImageRequest struct {
 	//
 	// cn-beijing
 	TargetOSSRegionId *string `json:"TargetOSSRegionId,omitempty" xml:"TargetOSSRegionId,omitempty"`
-	// 创建镜像是否包含数据盘。
+	// Specifies whether to include data disk snapshots in the custom image.
 	//
 	// example:
 	//
-	// 取值
-	//
-	// true：附带数据盘
-	//
-	// false：默认值，不附带数据盘
+	// Value true false (default)
 	WithDataDisks *bool `json:"WithDataDisks,omitempty" xml:"WithDataDisks,omitempty"`
 }
 
@@ -19880,6 +19878,10 @@ func (s *DescribeEnsEipAddressesRequest) SetStandby(v string) *DescribeEnsEipAdd
 
 type DescribeEnsEipAddressesResponseBody struct {
 	// Details of the EIPs.
+	//
+	// example:
+	//
+	// [\\"106.14.194.193\\"]
 	EipAddresses *DescribeEnsEipAddressesResponseBodyEipAddresses `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty" type:"Struct"`
 	// The page number. Valid values: an integer that is greater than 0. Default value: 1.
 	//
@@ -19958,131 +19960,22 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddresses) SetEipAddress(v []*Des
 }
 
 type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress struct {
-	// The ID of the EIP.
-	//
-	// example:
-	//
-	// eip-5sainglpw7qfem3icir4s****
-	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The time when the EIP was created.
-	//
-	// example:
-	//
-	// 1624885274000
-	AllocationTime *string `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
-	// The peak bandwidth of the EIP. Default value: 5. Valid values: **5*	- to **10000**. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 50
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The billing method of the EIP. Valid values:
-	//
-	// 	- **PrePaid**: subscription.
-	//
-	// 	- **PostPaid**: pay-as-you-go
-	//
-	// example:
-	//
-	// PostPaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The description of the EIP.
-	//
-	// example:
-	//
-	// example
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the ENS node.
-	//
-	// example:
-	//
-	// cn-xian-telecom
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the instance that is associated with the EIP.
-	//
-	// example:
-	//
-	// lb-5sc3kum2e0sz34wbqrws9****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance that is associated with the EIP. Valid values:
-	//
-	// 	- **EnsInstance**: ENS instance in a VPC
-	//
-	// 	- **SlbInstance**: SLB instance
-	//
-	// example:
-	//
-	// SlbInstance
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The metering method of the EIP.
-	//
-	// 	- **95BandwidthByMonth**: Pay by monthly 95th percentile bandwidth
-	//
-	// 	- **PayByBandwidth**: Pay by bandwidth
-	//
-	// example:
-	//
-	// 95BandwidthByMonth
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The EIP.
-	//
-	// example:
-	//
-	// 10.10.10
-	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	// The running status of the EIP. This parameter is returned if the EIP is a secondary EIP. Valid values:
-	//
-	// 	- **Stopped**
-	//
-	// 	- **Running**
-	//
-	// 	- **Starting**
-	//
-	// 	- **Stopping**
-	//
-	// example:
-	//
-	// Stopped
-	IpStatus *string `json:"IpStatus,omitempty" xml:"IpStatus,omitempty"`
-	// The Internet service provider (ISP). Valid values:
-	//
-	// 	- **cmcc**: China Mobile
-	//
-	// 	- **unicom**: China Unicom
-	//
-	// 	- **telecom**: China Telecom
-	//
-	// example:
-	//
-	// cmcc
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The name of the EIP.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the EIP is a secondary EIP.
-	//
-	// example:
-	//
-	// true
-	Standby *bool `json:"Standby,omitempty" xml:"Standby,omitempty"`
-	// The status of the EIP. Valid values:
-	//
-	// 	- **Associating**
-	//
-	// 	- **Unassociating**
-	//
-	// 	- **InUse**
-	//
-	// 	- **Available**
-	//
-	// example:
-	//
-	// Available
-	Status *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	AllocationId       *string                                                        `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	AllocationTime     *string                                                        `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
+	Bandwidth          *int32                                                         `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	ChargeType         *string                                                        `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Description        *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnsRegionId        *string                                                        `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	InstanceId         *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType       *string                                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType *string                                                        `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	IpAddress          *string                                                        `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	IpStatus           *string                                                        `json:"IpStatus,omitempty" xml:"IpStatus,omitempty"`
+	Isp                *string                                                        `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	Name               *string                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Standby            *bool                                                          `json:"Standby,omitempty" xml:"Standby,omitempty"`
+	Status             *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags               *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) String() string {
@@ -20191,30 +20084,12 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags) SetTag(v
 }
 
 type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag struct {
-	// 标签键
-	//
-	// example:
-	//
-	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// Deprecated
-	//
-	// example:
-	//
-	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// Deprecated
-	//
-	// example:
-	//
-	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	// 标签值。
-	//
-	// example:
-	//
-	// TestValue
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag) String() string {
@@ -37498,7 +37373,7 @@ func (s *DescribeNetworksResponseBodyNetworksNetworkTags) SetTag(v []*DescribeNe
 }
 
 type DescribeNetworksResponseBodyNetworksNetworkTagsTag struct {
-	// 标签键。
+	// The key of the tag.
 	//
 	// example:
 	//
@@ -37516,7 +37391,7 @@ type DescribeNetworksResponseBodyNetworksNetworkTagsTag struct {
 	//
 	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	// 标签值。
+	// The bandwidth.
 	//
 	// example:
 	//
@@ -46248,7 +46123,7 @@ func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags) SetTag(v []*Describe
 }
 
 type DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag struct {
-	// 标签键。
+	// The tag key.
 	//
 	// example:
 	//
@@ -46266,7 +46141,7 @@ type DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag struct {
 	//
 	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	// 标签值。
+	// The request error rate.
 	//
 	// example:
 	//
@@ -64121,6 +63996,10 @@ func (client *Client) CreateARMServerInstancesWithOptions(request *CreateARMServ
 
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
 		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceBillingCycle)) {
+		query["InstanceBillingCycle"] = request.InstanceBillingCycle
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
