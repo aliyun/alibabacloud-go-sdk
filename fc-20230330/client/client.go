@@ -499,6 +499,64 @@ func (s *CertConfig) SetPrivateKey(v string) *CertConfig {
 	return s
 }
 
+type ChangeResourceGroupInput struct {
+	NewResourceGroupId *string `json:"newResourceGroupId,omitempty" xml:"newResourceGroupId,omitempty"`
+	ResourceId         *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	ResourceType       *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+}
+
+func (s ChangeResourceGroupInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupInput) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupInput) SetNewResourceGroupId(v string) *ChangeResourceGroupInput {
+	s.NewResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupInput) SetResourceId(v string) *ChangeResourceGroupInput {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupInput) SetResourceType(v string) *ChangeResourceGroupInput {
+	s.ResourceType = &v
+	return s
+}
+
+type ChangeResourceGroupOutput struct {
+	NewResourceGroupId *string `json:"newResourceGroupId,omitempty" xml:"newResourceGroupId,omitempty"`
+	OldResourceGroupId *string `json:"oldResourceGroupId,omitempty" xml:"oldResourceGroupId,omitempty"`
+	ResourceId         *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+}
+
+func (s ChangeResourceGroupOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupOutput) SetNewResourceGroupId(v string) *ChangeResourceGroupOutput {
+	s.NewResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupOutput) SetOldResourceGroupId(v string) *ChangeResourceGroupOutput {
+	s.OldResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupOutput) SetResourceId(v string) *ChangeResourceGroupOutput {
+	s.ResourceId = &v
+	return s
+}
+
 type ConcurrencyConfig struct {
 	// example:
 	//
@@ -684,9 +742,10 @@ type CreateFunctionInput struct {
 	// example:
 	//
 	// 512
-	MemorySize     *int32          `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	MemorySize      *int32          `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	NasConfig       *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig  *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	ResourceGroupId *string         `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// example:
 	//
 	// acs:ram::188077086902****:role/fc-test
@@ -696,7 +755,10 @@ type CreateFunctionInput struct {
 	// example:
 	//
 	// python3.10
-	Runtime         *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// example:
+	//
+	// MCP_SSE
 	SessionAffinity *string `json:"sessionAffinity,omitempty" xml:"sessionAffinity,omitempty"`
 	Tags            []*Tag  `json:"tags" xml:"tags" type:"Repeated"`
 	// example:
@@ -817,6 +879,11 @@ func (s *CreateFunctionInput) SetNasConfig(v *NASConfig) *CreateFunctionInput {
 
 func (s *CreateFunctionInput) SetOssMountConfig(v *OSSMountConfig) *CreateFunctionInput {
 	s.OssMountConfig = v
+	return s
+}
+
+func (s *CreateFunctionInput) SetResourceGroupId(v string) *CreateFunctionInput {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1802,9 +1869,10 @@ type Function struct {
 	// example:
 	//
 	// 512
-	MemorySize     *int32          `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	MemorySize      *int32          `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	NasConfig       *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig  *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	ResourceGroupId *string         `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// example:
 	//
 	// acs:ram::188077086902****:role/fc-test
@@ -1812,7 +1880,10 @@ type Function struct {
 	// example:
 	//
 	// python3.10
-	Runtime         *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// example:
+	//
+	// MCP_SSE
 	SessionAffinity *string `json:"sessionAffinity,omitempty" xml:"sessionAffinity,omitempty"`
 	// example:
 	//
@@ -1990,6 +2061,11 @@ func (s *Function) SetNasConfig(v *NASConfig) *Function {
 
 func (s *Function) SetOssMountConfig(v *OSSMountConfig) *Function {
 	s.OssMountConfig = v
+	return s
+}
+
+func (s *Function) SetResourceGroupId(v string) *Function {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -5111,8 +5187,11 @@ type UpdateFunctionInput struct {
 	// example:
 	//
 	// acs:ram::188077086902****:role/fc-test
-	Role            *string `json:"role,omitempty" xml:"role,omitempty"`
-	Runtime         *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Role    *string `json:"role,omitempty" xml:"role,omitempty"`
+	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// example:
+	//
+	// MCP_SSE
 	SessionAffinity *string `json:"sessionAffinity,omitempty" xml:"sessionAffinity,omitempty"`
 	// example:
 	//
@@ -7311,7 +7390,8 @@ type ListFunctionsRequest struct {
 	// example:
 	//
 	// my-func
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	Prefix          *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The runtime of the functions to retrieve.
 	//
 	// example:
@@ -7362,6 +7442,11 @@ func (s *ListFunctionsRequest) SetNextToken(v string) *ListFunctionsRequest {
 
 func (s *ListFunctionsRequest) SetPrefix(v string) *ListFunctionsRequest {
 	s.Prefix = &v
+	return s
+}
+
+func (s *ListFunctionsRequest) SetResourceGroupId(v string) *ListFunctionsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -7418,7 +7503,8 @@ type ListFunctionsShrinkRequest struct {
 	// example:
 	//
 	// my-func
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	Prefix          *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The runtime of the functions to retrieve.
 	//
 	// example:
@@ -7469,6 +7555,11 @@ func (s *ListFunctionsShrinkRequest) SetNextToken(v string) *ListFunctionsShrink
 
 func (s *ListFunctionsShrinkRequest) SetPrefix(v string) *ListFunctionsShrinkRequest {
 	s.Prefix = &v
+	return s
+}
+
+func (s *ListFunctionsShrinkRequest) SetResourceGroupId(v string) *ListFunctionsShrinkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -11265,6 +11356,10 @@ func (client *Client) ListFunctionsWithOptions(tmpReq *ListFunctionsRequest, hea
 
 	if !tea.BoolValue(util.IsUnset(request.Prefix)) {
 		query["prefix"] = request.Prefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["resourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Runtime)) {
