@@ -3186,6 +3186,7 @@ type CreateParamRequest struct {
 	//
 	// 4
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// example:
 	//
 	// house
@@ -3217,6 +3218,11 @@ func (s *CreateParamRequest) SetName(v string) *CreateParamRequest {
 
 func (s *CreateParamRequest) SetSceneId(v string) *CreateParamRequest {
 	s.SceneId = &v
+	return s
+}
+
+func (s *CreateParamRequest) SetType(v string) *CreateParamRequest {
+	s.Type = &v
 	return s
 }
 
@@ -6051,6 +6057,111 @@ func (s *DeleteTrafficControlTaskResponse) SetStatusCode(v int32) *DeleteTraffic
 }
 
 func (s *DeleteTrafficControlTaskResponse) SetBody(v *DeleteTrafficControlTaskResponseBody) *DeleteTrafficControlTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateAlgorithmCustomizationScriptRequest struct {
+	// example:
+	//
+	// EasyDeploy
+	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// example:
+	//
+	// pairec-test-xxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// {"item_table":"array"}
+	ModuleFieldTypes map[string]interface{} `json:"ModuleFieldTypes,omitempty" xml:"ModuleFieldTypes,omitempty"`
+}
+
+func (s GenerateAlgorithmCustomizationScriptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateAlgorithmCustomizationScriptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateAlgorithmCustomizationScriptRequest) SetDeployMode(v string) *GenerateAlgorithmCustomizationScriptRequest {
+	s.DeployMode = &v
+	return s
+}
+
+func (s *GenerateAlgorithmCustomizationScriptRequest) SetInstanceId(v string) *GenerateAlgorithmCustomizationScriptRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GenerateAlgorithmCustomizationScriptRequest) SetModuleFieldTypes(v map[string]interface{}) *GenerateAlgorithmCustomizationScriptRequest {
+	s.ModuleFieldTypes = v
+	return s
+}
+
+type GenerateAlgorithmCustomizationScriptResponseBody struct {
+	// example:
+	//
+	// 4
+	LogId *string `json:"LogId,omitempty" xml:"LogId,omitempty"`
+	// example:
+	//
+	// oss:xxxx
+	OssAddress *string `json:"OssAddress,omitempty" xml:"OssAddress,omitempty"`
+	// example:
+	//
+	// 6CF1E160-3F36-5E73-A170-C75504F05BBC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GenerateAlgorithmCustomizationScriptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateAlgorithmCustomizationScriptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateAlgorithmCustomizationScriptResponseBody) SetLogId(v string) *GenerateAlgorithmCustomizationScriptResponseBody {
+	s.LogId = &v
+	return s
+}
+
+func (s *GenerateAlgorithmCustomizationScriptResponseBody) SetOssAddress(v string) *GenerateAlgorithmCustomizationScriptResponseBody {
+	s.OssAddress = &v
+	return s
+}
+
+func (s *GenerateAlgorithmCustomizationScriptResponseBody) SetRequestId(v string) *GenerateAlgorithmCustomizationScriptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateAlgorithmCustomizationScriptResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateAlgorithmCustomizationScriptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateAlgorithmCustomizationScriptResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateAlgorithmCustomizationScriptResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateAlgorithmCustomizationScriptResponse) SetHeaders(v map[string]*string) *GenerateAlgorithmCustomizationScriptResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateAlgorithmCustomizationScriptResponse) SetStatusCode(v int32) *GenerateAlgorithmCustomizationScriptResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateAlgorithmCustomizationScriptResponse) SetBody(v *GenerateAlgorithmCustomizationScriptResponseBody) *GenerateAlgorithmCustomizationScriptResponse {
 	s.Body = v
 	return s
 }
@@ -14224,6 +14335,7 @@ func (s *ListLayersResponse) SetBody(v *ListLayersResponseBody) *ListLayersRespo
 }
 
 type ListParamsRequest struct {
+	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
 	// example:
 	//
 	// Daily
@@ -14260,6 +14372,11 @@ func (s ListParamsRequest) String() string {
 
 func (s ListParamsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListParamsRequest) SetEncrypted(v bool) *ListParamsRequest {
+	s.Encrypted = &v
+	return s
 }
 
 func (s *ListParamsRequest) SetEnvironment(v string) *ListParamsRequest {
@@ -23277,6 +23394,10 @@ func (client *Client) CreateParamWithOptions(request *CreateParamRequest, header
 		body["SceneId"] = request.SceneId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Value)) {
 		body["Value"] = request.Value
 	}
@@ -25341,6 +25462,78 @@ func (client *Client) DeleteTrafficControlTask(TrafficControlTaskId *string, req
 	headers := make(map[string]*string)
 	_result = &DeleteTrafficControlTaskResponse{}
 	_body, _err := client.DeleteTrafficControlTaskWithOptions(TrafficControlTaskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成算法定制脚本
+//
+// @param request - GenerateAlgorithmCustomizationScriptRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateAlgorithmCustomizationScriptResponse
+func (client *Client) GenerateAlgorithmCustomizationScriptWithOptions(AlgorithmCustomizationId *string, request *GenerateAlgorithmCustomizationScriptRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenerateAlgorithmCustomizationScriptResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeployMode)) {
+		body["DeployMode"] = request.DeployMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleFieldTypes)) {
+		body["ModuleFieldTypes"] = request.ModuleFieldTypes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateAlgorithmCustomizationScript"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/algorithmcustomizations/" + tea.StringValue(openapiutil.GetEncodeParam(AlgorithmCustomizationId)) + "/action/generatescript"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateAlgorithmCustomizationScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成算法定制脚本
+//
+// @param request - GenerateAlgorithmCustomizationScriptRequest
+//
+// @return GenerateAlgorithmCustomizationScriptResponse
+func (client *Client) GenerateAlgorithmCustomizationScript(AlgorithmCustomizationId *string, request *GenerateAlgorithmCustomizationScriptRequest) (_result *GenerateAlgorithmCustomizationScriptResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GenerateAlgorithmCustomizationScriptResponse{}
+	_body, _err := client.GenerateAlgorithmCustomizationScriptWithOptions(AlgorithmCustomizationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28069,6 +28262,10 @@ func (client *Client) ListParamsWithOptions(request *ListParamsRequest, headers 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Encrypted)) {
+		query["Encrypted"] = request.Encrypted
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Environment)) {
 		query["Environment"] = request.Environment
 	}

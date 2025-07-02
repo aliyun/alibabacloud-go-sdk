@@ -1,3 +1,9 @@
+2025-07-02 Version: v3.2.0
+- Support API GenerateAlgorithmCustomizationScript.
+- Update API CreateParam: add request parameters body.Type.
+- Update API ListParams: add request parameters Encrypted.
+
+
 2025-06-04 Version: v3.1.1
 - Update API CreateFeatureConsistencyCheckJobConfig: add request parameters body.ResourceConfig.
 - Update API GetFeatureConsistencyCheckJobConfig: add response parameters Body.ResourceConfig.
