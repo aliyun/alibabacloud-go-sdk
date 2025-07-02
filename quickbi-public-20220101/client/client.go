@@ -2792,7 +2792,7 @@ type CreateTicket4CopilotRequest struct {
 	//
 	// - 1: Alibaba Cloud Primary Account
 	//
-	// - 3: QuickBI Self-built Account
+	// - 3: Quick BI Self-built Account
 	//
 	// - 4: DingTalk
 	//
@@ -10157,6 +10157,9 @@ func (s *QueryApprovalInfoResponse) SetBody(v *QueryApprovalInfoResponseBody) *Q
 }
 
 type QueryAuditLogRequest struct {
+	// if can be null:
+	// true
+	AccessSourceFlag *string `json:"AccessSourceFlag,omitempty" xml:"AccessSourceFlag,omitempty"`
 	// End date of the query, format ("yyyyMMdd").
 	//
 	// This parameter is required.
@@ -10207,6 +10210,9 @@ type QueryAuditLogRequest struct {
 	//
 	// 20240504
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// if can be null:
+	// true
+	UserAccessDevice *string `json:"UserAccessDevice,omitempty" xml:"UserAccessDevice,omitempty"`
 	// Workspace ID, the ID of the workspace to which the logs to be queried belong.
 	//
 	// example:
@@ -10221,6 +10227,11 @@ func (s QueryAuditLogRequest) String() string {
 
 func (s QueryAuditLogRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryAuditLogRequest) SetAccessSourceFlag(v string) *QueryAuditLogRequest {
+	s.AccessSourceFlag = &v
+	return s
 }
 
 func (s *QueryAuditLogRequest) SetEndDate(v string) *QueryAuditLogRequest {
@@ -10250,6 +10261,11 @@ func (s *QueryAuditLogRequest) SetResourceType(v string) *QueryAuditLogRequest {
 
 func (s *QueryAuditLogRequest) SetStartDate(v string) *QueryAuditLogRequest {
 	s.StartDate = &v
+	return s
+}
+
+func (s *QueryAuditLogRequest) SetUserAccessDevice(v string) *QueryAuditLogRequest {
+	s.UserAccessDevice = &v
 	return s
 }
 
@@ -13551,7 +13567,7 @@ type QueryDatasetInfoResponseBody struct {
 	//
 	// a4d1a221d-41za1-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
+	// The dataset information.
 	Result *QueryDatasetInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The unique ID of the dataset.
 	//
@@ -13613,7 +13629,7 @@ type QueryDatasetInfoResponseBodyResult struct {
 	//
 	// opds_40
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// If it is a custom SQL table, this is the specific SQL.
+	// A list of all dimensions in the dataset.
 	DimensionList []*QueryDatasetInfoResponseBodyResultDimensionList `json:"DimensionList,omitempty" xml:"DimensionList,omitempty" type:"Repeated"`
 	// The unique ID of the metric.
 	Directory *QueryDatasetInfoResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
@@ -13651,9 +13667,18 @@ type QueryDatasetInfoResponseBodyResult struct {
 	//
 	// 1629450382000
 	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// The unique ID of the table to which the table belongs, which corresponds to the UniqueId of the CubeTypeList.
-	MeasureList             []*QueryDatasetInfoResponseBodyResultMeasureList `json:"MeasureList,omitempty" xml:"MeasureList,omitempty" type:"Repeated"`
-	OpenOfflineAcceleration *bool                                            `json:"OpenOfflineAcceleration,omitempty" xml:"OpenOfflineAcceleration,omitempty"`
+	// A list of all measures for the dataset.
+	MeasureList []*QueryDatasetInfoResponseBodyResultMeasureList `json:"MeasureList,omitempty" xml:"MeasureList,omitempty" type:"Repeated"`
+	// Whether to enable extraction acceleration. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	OpenOfflineAcceleration *bool `json:"OpenOfflineAcceleration,omitempty" xml:"OpenOfflineAcceleration,omitempty"`
 	// Test Space
 	//
 	// example:
@@ -13934,8 +13959,14 @@ type QueryDatasetInfoResponseBodyResultDimensionList struct {
 	//
 	// example_expression
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// Expression for the flattened calculation dimensions.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// example_expression
 	ExpressionV2 *string `json:"ExpressionV2,omitempty" xml:"ExpressionV2,omitempty"`
 	// Expression for a calculated dimension; valid only for calculated dimensions.
 	//
@@ -13943,6 +13974,8 @@ type QueryDatasetInfoResponseBodyResultDimensionList struct {
 	//
 	// city
 	FactColumn *string `json:"FactColumn,omitempty" xml:"FactColumn,omitempty"`
+	// The description of the field.
+	//
 	// example:
 	//
 	// hhhh
@@ -14122,8 +14155,14 @@ type QueryDatasetInfoResponseBodyResultMeasureList struct {
 	//
 	// example_expression
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// Expression for flattened computation metrics.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// example_expression
 	ExpressionV2 *string `json:"ExpressionV2,omitempty" xml:"ExpressionV2,omitempty"`
 	// The type of the measure. Valid values:
 	//
@@ -14135,9 +14174,11 @@ type QueryDatasetInfoResponseBodyResultMeasureList struct {
 	//
 	// profit_amt
 	FactColumn *string `json:"FactColumn,omitempty" xml:"FactColumn,omitempty"`
+	// The description of the field.
+	//
 	// example:
 	//
-	// hhhh
+	// asadsda
 	FieldDescription *string `json:"FieldDescription,omitempty" xml:"FieldDescription,omitempty"`
 	// An expression that calculates a measure; valid only for calculated measures.
 	//
@@ -22222,6 +22263,11 @@ func (s *SmartqAuthTransferResponse) SetBody(v *SmartqAuthTransferResponseBody) 
 }
 
 type SmartqAuthorizeRequest struct {
+	// Array of dataset IDs, separated by English commas. <notice>This parameter will be converted to the corresponding question resource ID for authorization. Therefore, if the input cubeId does not correspond to any question resource, an error indicating that the question resource does not exist will be reported. Please ensure the correctness of the cubeId.</notice>
+	//
+	// example:
+	//
+	// wasdasd*******1235235sd,ASDAS*********ASDAW123
 	CubeIds *string `json:"CubeIds,omitempty" xml:"CubeIds,omitempty"`
 	// Expiration time, with a default of seven days.
 	//
@@ -28037,6 +28083,10 @@ func (client *Client) QueryAuditLogWithOptions(request *QueryAuditLogRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessSourceFlag)) {
+		query["AccessSourceFlag"] = request.AccessSourceFlag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
 		query["EndDate"] = request.EndDate
 	}
@@ -28059,6 +28109,10 @@ func (client *Client) QueryAuditLogWithOptions(request *QueryAuditLogRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
 		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAccessDevice)) {
+		query["UserAccessDevice"] = request.UserAccessDevice
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
@@ -28800,9 +28854,9 @@ func (client *Client) QueryDatasetDetailInfo(request *QueryDatasetDetailInfoRequ
 //
 // Indicates whether the table is a custom SQL table. Valid values:
 //
-//   - true: custom SQL table
+// \\	- true: custom SQL table
 //
-//   - false: non-custom SQL table
+// \\	- false: non-custom SQL table
 //
 // @param request - QueryDatasetInfoRequest
 //
@@ -28846,9 +28900,9 @@ func (client *Client) QueryDatasetInfoWithOptions(request *QueryDatasetInfoReque
 //
 // Indicates whether the table is a custom SQL table. Valid values:
 //
-//   - true: custom SQL table
+// \\	- true: custom SQL table
 //
-//   - false: non-custom SQL table
+// \\	- false: non-custom SQL table
 //
 // @param request - QueryDatasetInfoRequest
 //
@@ -31024,7 +31078,7 @@ func (client *Client) SmartqAuthTransfer(request *SmartqAuthTransferRequest) (_r
 
 // Summary:
 //
-// Batch Management of Smart Q\\&A Authorizations
+// Batch Management of Smart Q\\\\\\&A Authorizations
 //
 // Description:
 //
@@ -31090,7 +31144,7 @@ func (client *Client) SmartqAuthorizeWithOptions(request *SmartqAuthorizeRequest
 
 // Summary:
 //
-// Batch Management of Smart Q\\&A Authorizations
+// Batch Management of Smart Q\\\\\\&A Authorizations
 //
 // Description:
 //
