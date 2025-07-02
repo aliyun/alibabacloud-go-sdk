@@ -15142,6 +15142,7 @@ type CreateReportResponseBody struct {
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *string `json:"result,omitempty" xml:"result,omitempty"`
 	// example:
 	//
 	// true
@@ -15158,6 +15159,11 @@ func (s CreateReportResponseBody) GoString() string {
 
 func (s *CreateReportResponseBody) SetRequestId(v string) *CreateReportResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateReportResponseBody) SetResult(v string) *CreateReportResponseBody {
+	s.Result = &v
 	return s
 }
 
@@ -50607,12 +50613,6 @@ type InsertContentWithOptionsRequest struct {
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// union_id
-	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
 	// example:
 	//
 	// [0,0]
@@ -50640,11 +50640,6 @@ func (s *InsertContentWithOptionsRequest) SetDocumentId(v string) *InsertContent
 
 func (s *InsertContentWithOptionsRequest) SetIndex(v int32) *InsertContentWithOptionsRequest {
 	s.Index = &v
-	return s
-}
-
-func (s *InsertContentWithOptionsRequest) SetOperatorId(v string) *InsertContentWithOptionsRequest {
-	s.OperatorId = &v
 	return s
 }
 
@@ -50695,12 +50690,6 @@ type InsertContentWithOptionsShrinkRequest struct {
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// union_id
-	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
 	// example:
 	//
 	// [0,0]
@@ -50728,11 +50717,6 @@ func (s *InsertContentWithOptionsShrinkRequest) SetDocumentId(v string) *InsertC
 
 func (s *InsertContentWithOptionsShrinkRequest) SetIndex(v int32) *InsertContentWithOptionsShrinkRequest {
 	s.Index = &v
-	return s
-}
-
-func (s *InsertContentWithOptionsShrinkRequest) SetOperatorId(v string) *InsertContentWithOptionsShrinkRequest {
-	s.OperatorId = &v
 	return s
 }
 
@@ -50818,6 +50802,317 @@ func (s *InsertContentWithOptionsResponse) SetStatusCode(v int32) *InsertContent
 }
 
 func (s *InsertContentWithOptionsResponse) SetBody(v *InsertContentWithOptionsResponseBody) *InsertContentWithOptionsResponse {
+	s.Body = v
+	return s
+}
+
+type InsertDropDownListHeaders struct {
+	CommonHeaders  map[string]*string                       `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *InsertDropDownListHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s InsertDropDownListHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertDropDownListHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsertDropDownListHeaders) SetCommonHeaders(v map[string]*string) *InsertDropDownListHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsertDropDownListHeaders) SetAccountContext(v *InsertDropDownListHeadersAccountContext) *InsertDropDownListHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type InsertDropDownListHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s InsertDropDownListHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertDropDownListHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *InsertDropDownListHeadersAccountContext) SetAccountId(v string) *InsertDropDownListHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type InsertDropDownListShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s InsertDropDownListShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertDropDownListShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsertDropDownListShrinkHeaders) SetCommonHeaders(v map[string]*string) *InsertDropDownListShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsertDropDownListShrinkHeaders) SetAccountContextShrink(v string) *InsertDropDownListShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type InsertDropDownListRequest struct {
+	// This parameter is required.
+	Options []*InsertDropDownListRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A3:C3
+	RangeAddress *string `json:"RangeAddress,omitempty" xml:"RangeAddress,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Sheet1
+	SheetId       *string                                 `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
+	TenantContext *InsertDropDownListRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// stxxxx
+	WorkbookId *string `json:"WorkbookId,omitempty" xml:"WorkbookId,omitempty"`
+}
+
+func (s InsertDropDownListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertDropDownListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertDropDownListRequest) SetOptions(v []*InsertDropDownListRequestOptions) *InsertDropDownListRequest {
+	s.Options = v
+	return s
+}
+
+func (s *InsertDropDownListRequest) SetRangeAddress(v string) *InsertDropDownListRequest {
+	s.RangeAddress = &v
+	return s
+}
+
+func (s *InsertDropDownListRequest) SetSheetId(v string) *InsertDropDownListRequest {
+	s.SheetId = &v
+	return s
+}
+
+func (s *InsertDropDownListRequest) SetTenantContext(v *InsertDropDownListRequestTenantContext) *InsertDropDownListRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *InsertDropDownListRequest) SetWorkbookId(v string) *InsertDropDownListRequest {
+	s.WorkbookId = &v
+	return s
+}
+
+type InsertDropDownListRequestOptions struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// #FF0000
+	Color *string `json:"Color,omitempty" xml:"Color,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s InsertDropDownListRequestOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertDropDownListRequestOptions) GoString() string {
+	return s.String()
+}
+
+func (s *InsertDropDownListRequestOptions) SetColor(v string) *InsertDropDownListRequestOptions {
+	s.Color = &v
+	return s
+}
+
+func (s *InsertDropDownListRequestOptions) SetValue(v string) *InsertDropDownListRequestOptions {
+	s.Value = &v
+	return s
+}
+
+type InsertDropDownListRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s InsertDropDownListRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertDropDownListRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *InsertDropDownListRequestTenantContext) SetTenantId(v string) *InsertDropDownListRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type InsertDropDownListShrinkRequest struct {
+	// This parameter is required.
+	OptionsShrink *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A3:C3
+	RangeAddress *string `json:"RangeAddress,omitempty" xml:"RangeAddress,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Sheet1
+	SheetId             *string `json:"SheetId,omitempty" xml:"SheetId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// stxxxx
+	WorkbookId *string `json:"WorkbookId,omitempty" xml:"WorkbookId,omitempty"`
+}
+
+func (s InsertDropDownListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertDropDownListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertDropDownListShrinkRequest) SetOptionsShrink(v string) *InsertDropDownListShrinkRequest {
+	s.OptionsShrink = &v
+	return s
+}
+
+func (s *InsertDropDownListShrinkRequest) SetRangeAddress(v string) *InsertDropDownListShrinkRequest {
+	s.RangeAddress = &v
+	return s
+}
+
+func (s *InsertDropDownListShrinkRequest) SetSheetId(v string) *InsertDropDownListShrinkRequest {
+	s.SheetId = &v
+	return s
+}
+
+func (s *InsertDropDownListShrinkRequest) SetTenantContextShrink(v string) *InsertDropDownListShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *InsertDropDownListShrinkRequest) SetWorkbookId(v string) *InsertDropDownListShrinkRequest {
+	s.WorkbookId = &v
+	return s
+}
+
+type InsertDropDownListResponseBody struct {
+	// example:
+	//
+	// A3:C3
+	A1Notation *string `json:"a1Notation,omitempty" xml:"a1Notation,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s InsertDropDownListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertDropDownListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsertDropDownListResponseBody) SetA1Notation(v string) *InsertDropDownListResponseBody {
+	s.A1Notation = &v
+	return s
+}
+
+func (s *InsertDropDownListResponseBody) SetRequestId(v string) *InsertDropDownListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsertDropDownListResponseBody) SetVendorRequestId(v string) *InsertDropDownListResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *InsertDropDownListResponseBody) SetVendorType(v string) *InsertDropDownListResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type InsertDropDownListResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InsertDropDownListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s InsertDropDownListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertDropDownListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsertDropDownListResponse) SetHeaders(v map[string]*string) *InsertDropDownListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsertDropDownListResponse) SetStatusCode(v int32) *InsertDropDownListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsertDropDownListResponse) SetBody(v *InsertDropDownListResponseBody) *InsertDropDownListResponse {
 	s.Body = v
 	return s
 }
@@ -74911,6 +75206,7 @@ type SaveContentResponseBody struct {
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *string `json:"result,omitempty" xml:"result,omitempty"`
 	// example:
 	//
 	// true
@@ -74927,6 +75223,11 @@ func (s SaveContentResponseBody) GoString() string {
 
 func (s *SaveContentResponseBody) SetRequestId(v string) *SaveContentResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *SaveContentResponseBody) SetResult(v string) *SaveContentResponseBody {
+	s.Result = &v
 	return s
 }
 
@@ -104214,10 +104515,6 @@ func (client *Client) InsertContentWithOptionsWithOptions(tmpReq *InsertContentW
 		body["Index"] = request.Index
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
-		body["OperatorId"] = request.OperatorId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.PathShrink)) {
 		body["Path"] = request.PathShrink
 	}
@@ -104271,6 +104568,111 @@ func (client *Client) InsertContentWithOptions(request *InsertContentWithOptions
 	headers := &InsertContentWithOptionsHeaders{}
 	_result = &InsertContentWithOptionsResponse{}
 	_body, _err := client.InsertContentWithOptionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 插入下拉列表
+//
+// @param tmpReq - InsertDropDownListRequest
+//
+// @param tmpHeader - InsertDropDownListHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsertDropDownListResponse
+func (client *Client) InsertDropDownListWithOptions(tmpReq *InsertDropDownListRequest, tmpHeader *InsertDropDownListHeaders, runtime *util.RuntimeOptions) (_result *InsertDropDownListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &InsertDropDownListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &InsertDropDownListShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Options)) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, tea.String("Options"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OptionsShrink)) {
+		body["Options"] = request.OptionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RangeAddress)) {
+		body["RangeAddress"] = request.RangeAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SheetId)) {
+		body["SheetId"] = request.SheetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkbookId)) {
+		body["WorkbookId"] = request.WorkbookId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsertDropDownList"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/documents/insertDropDownList"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsertDropDownListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 插入下拉列表
+//
+// @param request - InsertDropDownListRequest
+//
+// @return InsertDropDownListResponse
+func (client *Client) InsertDropDownList(request *InsertDropDownListRequest) (_result *InsertDropDownListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InsertDropDownListHeaders{}
+	_result = &InsertDropDownListResponse{}
+	_body, _err := client.InsertDropDownListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
