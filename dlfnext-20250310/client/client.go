@@ -1152,11 +1152,14 @@ func (s *PartitionSummary) SetUpdatedAt(v int64) *PartitionSummary {
 }
 
 type Permission struct {
-	Access       *string `json:"access,omitempty" xml:"access,omitempty"`
-	Database     *string `json:"database,omitempty" xml:"database,omitempty"`
-	Principal    *string `json:"principal,omitempty" xml:"principal,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	Table        *string `json:"table,omitempty" xml:"table,omitempty"`
+	Access       *string            `json:"access,omitempty" xml:"access,omitempty"`
+	Columns      *PermissionColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Struct"`
+	Database     *string            `json:"database,omitempty" xml:"database,omitempty"`
+	Function     *string            `json:"function,omitempty" xml:"function,omitempty"`
+	Principal    *string            `json:"principal,omitempty" xml:"principal,omitempty"`
+	ResourceType *string            `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Table        *string            `json:"table,omitempty" xml:"table,omitempty"`
+	View         *string            `json:"view,omitempty" xml:"view,omitempty"`
 }
 
 func (s Permission) String() string {
@@ -1172,8 +1175,18 @@ func (s *Permission) SetAccess(v string) *Permission {
 	return s
 }
 
+func (s *Permission) SetColumns(v *PermissionColumns) *Permission {
+	s.Columns = v
+	return s
+}
+
 func (s *Permission) SetDatabase(v string) *Permission {
 	s.Database = &v
+	return s
+}
+
+func (s *Permission) SetFunction(v string) *Permission {
+	s.Function = &v
 	return s
 }
 
@@ -1189,6 +1202,34 @@ func (s *Permission) SetResourceType(v string) *Permission {
 
 func (s *Permission) SetTable(v string) *Permission {
 	s.Table = &v
+	return s
+}
+
+func (s *Permission) SetView(v string) *Permission {
+	s.View = &v
+	return s
+}
+
+type PermissionColumns struct {
+	ColumnNames         []*string `json:"columnNames,omitempty" xml:"columnNames,omitempty" type:"Repeated"`
+	ExcludedColumnNames []*string `json:"excludedColumnNames,omitempty" xml:"excludedColumnNames,omitempty" type:"Repeated"`
+}
+
+func (s PermissionColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PermissionColumns) GoString() string {
+	return s.String()
+}
+
+func (s *PermissionColumns) SetColumnNames(v []*string) *PermissionColumns {
+	s.ColumnNames = v
+	return s
+}
+
+func (s *PermissionColumns) SetExcludedColumnNames(v []*string) *PermissionColumns {
+	s.ExcludedColumnNames = v
 	return s
 }
 
@@ -2827,6 +2868,7 @@ type ListPermissionsRequest struct {
 	//
 	// database_name
 	Database *string `json:"database,omitempty" xml:"database,omitempty"`
+	Function *string `json:"function,omitempty" xml:"function,omitempty"`
 	// example:
 	//
 	// 1000
@@ -2849,6 +2891,7 @@ type ListPermissionsRequest struct {
 	//
 	// table_name
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	View  *string `json:"view,omitempty" xml:"view,omitempty"`
 }
 
 func (s ListPermissionsRequest) String() string {
@@ -2861,6 +2904,11 @@ func (s ListPermissionsRequest) GoString() string {
 
 func (s *ListPermissionsRequest) SetDatabase(v string) *ListPermissionsRequest {
 	s.Database = &v
+	return s
+}
+
+func (s *ListPermissionsRequest) SetFunction(v string) *ListPermissionsRequest {
+	s.Function = &v
 	return s
 }
 
@@ -2886,6 +2934,11 @@ func (s *ListPermissionsRequest) SetResourceType(v string) *ListPermissionsReque
 
 func (s *ListPermissionsRequest) SetTable(v string) *ListPermissionsRequest {
 	s.Table = &v
+	return s
+}
+
+func (s *ListPermissionsRequest) SetView(v string) *ListPermissionsRequest {
+	s.View = &v
 	return s
 }
 
@@ -4791,6 +4844,10 @@ func (client *Client) ListPermissionsWithOptions(catalogId *string, request *Lis
 		query["database"] = request.Database
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Function)) {
+		query["function"] = request.Function
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["maxResults"] = request.MaxResults
 	}
@@ -4809,6 +4866,10 @@ func (client *Client) ListPermissionsWithOptions(catalogId *string, request *Lis
 
 	if !tea.BoolValue(util.IsUnset(request.Table)) {
 		query["table"] = request.Table
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.View)) {
+		query["view"] = request.View
 	}
 
 	req := &openapi.OpenApiRequest{
