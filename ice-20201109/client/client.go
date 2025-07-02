@@ -26,6 +26,7 @@ type AIAgentConfig struct {
 	TurnDetectionConfig      *AIAgentConfigTurnDetectionConfig `json:"TurnDetectionConfig,omitempty" xml:"TurnDetectionConfig,omitempty" type:"Struct"`
 	UserOfflineTimeout       *int32                            `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
 	UserOnlineTimeout        *int32                            `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	VcrConfig                *AIAgentConfigVcrConfig           `json:"VcrConfig,omitempty" xml:"VcrConfig,omitempty" type:"Struct"`
 	VoiceprintConfig         *AIAgentConfigVoiceprintConfig    `json:"VoiceprintConfig,omitempty" xml:"VoiceprintConfig,omitempty" type:"Struct"`
 	Volume                   *int64                            `json:"Volume,omitempty" xml:"Volume,omitempty"`
 	WakeUpQuery              *string                           `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
@@ -120,6 +121,11 @@ func (s *AIAgentConfig) SetUserOnlineTimeout(v int32) *AIAgentConfig {
 	return s
 }
 
+func (s *AIAgentConfig) SetVcrConfig(v *AIAgentConfigVcrConfig) *AIAgentConfig {
+	s.VcrConfig = v
+	return s
+}
+
 func (s *AIAgentConfig) SetVoiceprintConfig(v *AIAgentConfigVoiceprintConfig) *AIAgentConfig {
 	s.VoiceprintConfig = v
 	return s
@@ -144,6 +150,7 @@ type AIAgentConfigAsrConfig struct {
 	AsrHotWords   []*string `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
 	AsrLanguageId *string   `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
 	AsrMaxSilence *int32    `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	CustomParams  *string   `json:"CustomParams,omitempty" xml:"CustomParams,omitempty"`
 	VadLevel      *int32    `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
 }
 
@@ -167,6 +174,11 @@ func (s *AIAgentConfigAsrConfig) SetAsrLanguageId(v string) *AIAgentConfigAsrCon
 
 func (s *AIAgentConfigAsrConfig) SetAsrMaxSilence(v int32) *AIAgentConfigAsrConfig {
 	s.AsrMaxSilence = &v
+	return s
+}
+
+func (s *AIAgentConfigAsrConfig) SetCustomParams(v string) *AIAgentConfigAsrConfig {
+	s.CustomParams = &v
 	return s
 }
 
@@ -274,8 +286,9 @@ func (s *AIAgentConfigLlmConfigLlmHistory) SetRole(v string) *AIAgentConfigLlmCo
 }
 
 type AIAgentConfigTtsConfig struct {
-	VoiceId     *string   `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
-	VoiceIdList []*string `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
+	PronunciationRules []*AIAgentConfigTtsConfigPronunciationRules `json:"PronunciationRules,omitempty" xml:"PronunciationRules,omitempty" type:"Repeated"`
+	VoiceId            *string                                     `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceIdList        []*string                                   `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
 }
 
 func (s AIAgentConfigTtsConfig) String() string {
@@ -284,6 +297,11 @@ func (s AIAgentConfigTtsConfig) String() string {
 
 func (s AIAgentConfigTtsConfig) GoString() string {
 	return s.String()
+}
+
+func (s *AIAgentConfigTtsConfig) SetPronunciationRules(v []*AIAgentConfigTtsConfigPronunciationRules) *AIAgentConfigTtsConfig {
+	s.PronunciationRules = v
+	return s
 }
 
 func (s *AIAgentConfigTtsConfig) SetVoiceId(v string) *AIAgentConfigTtsConfig {
@@ -296,8 +314,39 @@ func (s *AIAgentConfigTtsConfig) SetVoiceIdList(v []*string) *AIAgentConfigTtsCo
 	return s
 }
 
+type AIAgentConfigTtsConfigPronunciationRules struct {
+	Pronunciation *string `json:"Pronunciation,omitempty" xml:"Pronunciation,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Word          *string `json:"Word,omitempty" xml:"Word,omitempty"`
+}
+
+func (s AIAgentConfigTtsConfigPronunciationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigTtsConfigPronunciationRules) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigTtsConfigPronunciationRules) SetPronunciation(v string) *AIAgentConfigTtsConfigPronunciationRules {
+	s.Pronunciation = &v
+	return s
+}
+
+func (s *AIAgentConfigTtsConfigPronunciationRules) SetType(v string) *AIAgentConfigTtsConfigPronunciationRules {
+	s.Type = &v
+	return s
+}
+
+func (s *AIAgentConfigTtsConfigPronunciationRules) SetWord(v string) *AIAgentConfigTtsConfigPronunciationRules {
+	s.Word = &v
+	return s
+}
+
 type AIAgentConfigTurnDetectionConfig struct {
-	TurnEndWords []*string `json:"TurnEndWords,omitempty" xml:"TurnEndWords,omitempty" type:"Repeated"`
+	Mode                 *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	SemanticWaitDuration *int32    `json:"SemanticWaitDuration,omitempty" xml:"SemanticWaitDuration,omitempty"`
+	TurnEndWords         []*string `json:"TurnEndWords,omitempty" xml:"TurnEndWords,omitempty" type:"Repeated"`
 }
 
 func (s AIAgentConfigTurnDetectionConfig) String() string {
@@ -308,8 +357,156 @@ func (s AIAgentConfigTurnDetectionConfig) GoString() string {
 	return s.String()
 }
 
+func (s *AIAgentConfigTurnDetectionConfig) SetMode(v string) *AIAgentConfigTurnDetectionConfig {
+	s.Mode = &v
+	return s
+}
+
+func (s *AIAgentConfigTurnDetectionConfig) SetSemanticWaitDuration(v int32) *AIAgentConfigTurnDetectionConfig {
+	s.SemanticWaitDuration = &v
+	return s
+}
+
 func (s *AIAgentConfigTurnDetectionConfig) SetTurnEndWords(v []*string) *AIAgentConfigTurnDetectionConfig {
 	s.TurnEndWords = v
+	return s
+}
+
+type AIAgentConfigVcrConfig struct {
+	Equipment          *AIAgentConfigVcrConfigEquipment          `json:"Equipment,omitempty" xml:"Equipment,omitempty" type:"Struct"`
+	HeadMotion         *AIAgentConfigVcrConfigHeadMotion         `json:"HeadMotion,omitempty" xml:"HeadMotion,omitempty" type:"Struct"`
+	InvalidFrameMotion *AIAgentConfigVcrConfigInvalidFrameMotion `json:"InvalidFrameMotion,omitempty" xml:"InvalidFrameMotion,omitempty" type:"Struct"`
+	PeopleCount        *AIAgentConfigVcrConfigPeopleCount        `json:"PeopleCount,omitempty" xml:"PeopleCount,omitempty" type:"Struct"`
+	StillFrameMotion   *AIAgentConfigVcrConfigStillFrameMotion   `json:"StillFrameMotion,omitempty" xml:"StillFrameMotion,omitempty" type:"Struct"`
+}
+
+func (s AIAgentConfigVcrConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigVcrConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigVcrConfig) SetEquipment(v *AIAgentConfigVcrConfigEquipment) *AIAgentConfigVcrConfig {
+	s.Equipment = v
+	return s
+}
+
+func (s *AIAgentConfigVcrConfig) SetHeadMotion(v *AIAgentConfigVcrConfigHeadMotion) *AIAgentConfigVcrConfig {
+	s.HeadMotion = v
+	return s
+}
+
+func (s *AIAgentConfigVcrConfig) SetInvalidFrameMotion(v *AIAgentConfigVcrConfigInvalidFrameMotion) *AIAgentConfigVcrConfig {
+	s.InvalidFrameMotion = v
+	return s
+}
+
+func (s *AIAgentConfigVcrConfig) SetPeopleCount(v *AIAgentConfigVcrConfigPeopleCount) *AIAgentConfigVcrConfig {
+	s.PeopleCount = v
+	return s
+}
+
+func (s *AIAgentConfigVcrConfig) SetStillFrameMotion(v *AIAgentConfigVcrConfigStillFrameMotion) *AIAgentConfigVcrConfig {
+	s.StillFrameMotion = v
+	return s
+}
+
+type AIAgentConfigVcrConfigEquipment struct {
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s AIAgentConfigVcrConfigEquipment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigVcrConfigEquipment) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigVcrConfigEquipment) SetEnabled(v bool) *AIAgentConfigVcrConfigEquipment {
+	s.Enabled = &v
+	return s
+}
+
+type AIAgentConfigVcrConfigHeadMotion struct {
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s AIAgentConfigVcrConfigHeadMotion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigVcrConfigHeadMotion) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigVcrConfigHeadMotion) SetEnabled(v bool) *AIAgentConfigVcrConfigHeadMotion {
+	s.Enabled = &v
+	return s
+}
+
+type AIAgentConfigVcrConfigInvalidFrameMotion struct {
+	CallbackDelay *int32 `json:"CallbackDelay,omitempty" xml:"CallbackDelay,omitempty"`
+	Enabled       *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s AIAgentConfigVcrConfigInvalidFrameMotion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigVcrConfigInvalidFrameMotion) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigVcrConfigInvalidFrameMotion) SetCallbackDelay(v int32) *AIAgentConfigVcrConfigInvalidFrameMotion {
+	s.CallbackDelay = &v
+	return s
+}
+
+func (s *AIAgentConfigVcrConfigInvalidFrameMotion) SetEnabled(v bool) *AIAgentConfigVcrConfigInvalidFrameMotion {
+	s.Enabled = &v
+	return s
+}
+
+type AIAgentConfigVcrConfigPeopleCount struct {
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s AIAgentConfigVcrConfigPeopleCount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigVcrConfigPeopleCount) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigVcrConfigPeopleCount) SetEnabled(v bool) *AIAgentConfigVcrConfigPeopleCount {
+	s.Enabled = &v
+	return s
+}
+
+type AIAgentConfigVcrConfigStillFrameMotion struct {
+	CallbackDelay *int32 `json:"CallbackDelay,omitempty" xml:"CallbackDelay,omitempty"`
+	Enabled       *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s AIAgentConfigVcrConfigStillFrameMotion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentConfigVcrConfigStillFrameMotion) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigVcrConfigStillFrameMotion) SetCallbackDelay(v int32) *AIAgentConfigVcrConfigStillFrameMotion {
+	s.CallbackDelay = &v
+	return s
+}
+
+func (s *AIAgentConfigVcrConfigStillFrameMotion) SetEnabled(v bool) *AIAgentConfigVcrConfigStillFrameMotion {
+	s.Enabled = &v
 	return s
 }
 
@@ -340,6 +537,7 @@ type AIAgentOutboundCallConfig struct {
 	AsrConfig                *AIAgentOutboundCallConfigAsrConfig           `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
 	EnableIntelligentSegment *bool                                         `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
 	Greeting                 *string                                       `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	GreetingDelay            *int32                                        `json:"GreetingDelay,omitempty" xml:"GreetingDelay,omitempty"`
 	InterruptConfig          *AIAgentOutboundCallConfigInterruptConfig     `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
 	LlmConfig                *AIAgentOutboundCallConfigLlmConfig           `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
 	TtsConfig                *AIAgentOutboundCallConfigTtsConfig           `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
@@ -369,6 +567,11 @@ func (s *AIAgentOutboundCallConfig) SetGreeting(v string) *AIAgentOutboundCallCo
 	return s
 }
 
+func (s *AIAgentOutboundCallConfig) SetGreetingDelay(v int32) *AIAgentOutboundCallConfig {
+	s.GreetingDelay = &v
+	return s
+}
+
 func (s *AIAgentOutboundCallConfig) SetInterruptConfig(v *AIAgentOutboundCallConfigInterruptConfig) *AIAgentOutboundCallConfig {
 	s.InterruptConfig = v
 	return s
@@ -393,6 +596,7 @@ type AIAgentOutboundCallConfigAsrConfig struct {
 	AsrHotWords   []*string `json:"AsrHotWords,omitempty" xml:"AsrHotWords,omitempty" type:"Repeated"`
 	AsrLanguageId *string   `json:"AsrLanguageId,omitempty" xml:"AsrLanguageId,omitempty"`
 	AsrMaxSilence *int32    `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	CustomParams  *string   `json:"CustomParams,omitempty" xml:"CustomParams,omitempty"`
 	VadLevel      *int32    `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
 }
 
@@ -416,6 +620,11 @@ func (s *AIAgentOutboundCallConfigAsrConfig) SetAsrLanguageId(v string) *AIAgent
 
 func (s *AIAgentOutboundCallConfigAsrConfig) SetAsrMaxSilence(v int32) *AIAgentOutboundCallConfigAsrConfig {
 	s.AsrMaxSilence = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAsrConfig) SetCustomParams(v string) *AIAgentOutboundCallConfigAsrConfig {
+	s.CustomParams = &v
 	return s
 }
 
@@ -506,8 +715,9 @@ func (s *AIAgentOutboundCallConfigLlmConfigLlmHistory) SetRole(v string) *AIAgen
 }
 
 type AIAgentOutboundCallConfigTtsConfig struct {
-	VoiceId     *string   `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
-	VoiceIdList []*string `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
+	PronunciationRules []*AIAgentOutboundCallConfigTtsConfigPronunciationRules `json:"PronunciationRules,omitempty" xml:"PronunciationRules,omitempty" type:"Repeated"`
+	VoiceId            *string                                                 `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceIdList        []*string                                               `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
 }
 
 func (s AIAgentOutboundCallConfigTtsConfig) String() string {
@@ -516,6 +726,11 @@ func (s AIAgentOutboundCallConfigTtsConfig) String() string {
 
 func (s AIAgentOutboundCallConfigTtsConfig) GoString() string {
 	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigTtsConfig) SetPronunciationRules(v []*AIAgentOutboundCallConfigTtsConfigPronunciationRules) *AIAgentOutboundCallConfigTtsConfig {
+	s.PronunciationRules = v
+	return s
 }
 
 func (s *AIAgentOutboundCallConfigTtsConfig) SetVoiceId(v string) *AIAgentOutboundCallConfigTtsConfig {
@@ -528,8 +743,39 @@ func (s *AIAgentOutboundCallConfigTtsConfig) SetVoiceIdList(v []*string) *AIAgen
 	return s
 }
 
+type AIAgentOutboundCallConfigTtsConfigPronunciationRules struct {
+	Pronunciation *string `json:"Pronunciation,omitempty" xml:"Pronunciation,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Word          *string `json:"Word,omitempty" xml:"Word,omitempty"`
+}
+
+func (s AIAgentOutboundCallConfigTtsConfigPronunciationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigTtsConfigPronunciationRules) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigTtsConfigPronunciationRules) SetPronunciation(v string) *AIAgentOutboundCallConfigTtsConfigPronunciationRules {
+	s.Pronunciation = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigTtsConfigPronunciationRules) SetType(v string) *AIAgentOutboundCallConfigTtsConfigPronunciationRules {
+	s.Type = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigTtsConfigPronunciationRules) SetWord(v string) *AIAgentOutboundCallConfigTtsConfigPronunciationRules {
+	s.Word = &v
+	return s
+}
+
 type AIAgentOutboundCallConfigTurnDetectionConfig struct {
-	TurnEndWords []*string `json:"TurnEndWords,omitempty" xml:"TurnEndWords,omitempty" type:"Repeated"`
+	Mode                 *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	SemanticWaitDuration *int32    `json:"SemanticWaitDuration,omitempty" xml:"SemanticWaitDuration,omitempty"`
+	TurnEndWords         []*string `json:"TurnEndWords,omitempty" xml:"TurnEndWords,omitempty" type:"Repeated"`
 }
 
 func (s AIAgentOutboundCallConfigTurnDetectionConfig) String() string {
@@ -538,6 +784,16 @@ func (s AIAgentOutboundCallConfigTurnDetectionConfig) String() string {
 
 func (s AIAgentOutboundCallConfigTurnDetectionConfig) GoString() string {
 	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigTurnDetectionConfig) SetMode(v string) *AIAgentOutboundCallConfigTurnDetectionConfig {
+	s.Mode = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigTurnDetectionConfig) SetSemanticWaitDuration(v int32) *AIAgentOutboundCallConfigTurnDetectionConfig {
+	s.SemanticWaitDuration = &v
+	return s
 }
 
 func (s *AIAgentOutboundCallConfigTurnDetectionConfig) SetTurnEndWords(v []*string) *AIAgentOutboundCallConfigTurnDetectionConfig {
@@ -6962,6 +7218,7 @@ type BatchGetMediaInfosRequest struct {
 	//
 	// FileInfo,DynamicMetaData
 	AdditionType *string `json:"AdditionType,omitempty" xml:"AdditionType,omitempty"`
+	AuthTimeout  *int64  `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
 	// The IDs of the media assets that you want to query. Separate the IDs with commas (,).
 	//
 	// example:
@@ -6980,6 +7237,11 @@ func (s BatchGetMediaInfosRequest) GoString() string {
 
 func (s *BatchGetMediaInfosRequest) SetAdditionType(v string) *BatchGetMediaInfosRequest {
 	s.AdditionType = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosRequest) SetAuthTimeout(v int64) *BatchGetMediaInfosRequest {
+	s.AuthTimeout = &v
 	return s
 }
 
@@ -11747,7 +12009,13 @@ func (s *CreateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetti
 }
 
 type CreateMediaLiveChannelRequestVideoSettings struct {
-	// The height of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
+	// The height of the output. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
+	//
+	// Valid values:
+	//
+	// 	- For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
+	//
+	// 	- For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
 	//
 	// example:
 	//
@@ -11769,8 +12037,25 @@ type CreateMediaLiveChannelRequestVideoSettings struct {
 	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
 	// The video encoding settings.
 	VideoCodecSetting *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting `json:"VideoCodecSetting,omitempty" xml:"VideoCodecSetting,omitempty" type:"Struct"`
-	VideoCodecType    *string                                                      `json:"VideoCodecType,omitempty" xml:"VideoCodecType,omitempty"`
-	// The width of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
+	// The video transcoding method. Valid values:
+	//
+	// 	- NORMAL: regular transcoding
+	//
+	// 	- NBHD: Narrowband HD™ transcoding
+	//
+	// If not specified, regular transcoding is used by default.
+	//
+	// example:
+	//
+	// NORMAL
+	VideoCodecType *string `json:"VideoCodecType,omitempty" xml:"VideoCodecType,omitempty"`
+	// The width of the output. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
+	//
+	// Valid values:
+	//
+	// 	- For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
+	//
+	// 	- For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
 	//
 	// example:
 	//
@@ -12168,7 +12453,7 @@ type CreateMediaLiveInputRequest struct {
 	//
 	// ["G6G4X5T4SZYPSTT5"]
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	// The input type. Valid values: RTMP_PUSH, RTMP_PULL, SRT_PUSH, and SRT_PULL.
+	// The input type. Valid values: RTMP_PUSH, RTMP_PULL, SRT_PUSH, SRT_PULL, and MEDIA_CONNECT.
 	//
 	// This parameter is required.
 	//
@@ -12207,9 +12492,19 @@ func (s *CreateMediaLiveInputRequest) SetType(v string) *CreateMediaLiveInputReq
 }
 
 type CreateMediaLiveInputRequestInputSettings struct {
-	FlowId         *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The ID of the flow from MediaConnect. This parameter is required when Type is set to MEDIA_CONNECT.
+	//
+	// example:
+	//
+	// ******81-9693-40dc-bbab-db5e49******
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The output name of the MediaConnect flow. This parameter is required when Type is set to MEDIA_CONNECT.
+	//
+	// example:
+	//
+	// myFlowOutputName
 	FlowOutputName *string `json:"FlowOutputName,omitempty" xml:"FlowOutputName,omitempty"`
-	// The source URL where the stream is pulled from. This parameter is required for PULL inputs.
+	// The source URL from which the stream is pulled. This parameter is required for PULL inputs.
 	//
 	// example:
 	//
@@ -12270,7 +12565,7 @@ type CreateMediaLiveInputShrinkRequest struct {
 	//
 	// ["G6G4X5T4SZYPSTT5"]
 	SecurityGroupIdsShrink *string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty"`
-	// The input type. Valid values: RTMP_PUSH, RTMP_PULL, SRT_PUSH, and SRT_PULL.
+	// The input type. Valid values: RTMP_PUSH, RTMP_PULL, SRT_PUSH, SRT_PULL, and MEDIA_CONNECT.
 	//
 	// This parameter is required.
 	//
@@ -29711,6 +30006,7 @@ func (s *GetMediaConvertJobResponse) SetBody(v *GetMediaConvertJobResponseBody) 
 }
 
 type GetMediaInfoRequest struct {
+	AuthTimeout *int64 `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
 	// The input URL of the media asset in another service. The URL must be registered in the IMS content library and bound to the ID of the media asset in IMS.
 	//
 	// 	- For a media asset from Object Storage Service (OSS), the URL may have one of the following formats:
@@ -29757,6 +30053,11 @@ func (s GetMediaInfoRequest) String() string {
 
 func (s GetMediaInfoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetMediaInfoRequest) SetAuthTimeout(v int64) *GetMediaInfoRequest {
+	s.AuthTimeout = &v
+	return s
 }
 
 func (s *GetMediaInfoRequest) SetInputURL(v string) *GetMediaInfoRequest {
@@ -33106,8 +33407,18 @@ type GetMediaLiveInputResponseBodyInputInputInfos struct {
 	// example:
 	//
 	// rtmp://domain/app/stream
-	DestHost       *string `json:"DestHost,omitempty" xml:"DestHost,omitempty"`
-	FlowId         *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	DestHost *string `json:"DestHost,omitempty" xml:"DestHost,omitempty"`
+	// The ID of the flow from MediaConnect.
+	//
+	// example:
+	//
+	// ******81-9693-40dc-bbab-db5e49******
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The output name of the MediaConnect flow.
+	//
+	// example:
+	//
+	// myFlowOutputName
 	FlowOutputName *string `json:"FlowOutputName,omitempty" xml:"FlowOutputName,omitempty"`
 	// The URL for input monitoring.
 	//
@@ -34298,6 +34609,7 @@ func (s *GetPipelineResponse) SetBody(v *GetPipelineResponseBody) *GetPipelineRe
 }
 
 type GetPlayInfoRequest struct {
+	AuthTimeout *int64 `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
 	// The input URL that you specified for the media asset when you registered the media asset. For more information, see [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html).
 	//
 	// >  You must specify at least one of the MediaId and InputURL parameters.
@@ -34318,6 +34630,11 @@ func (s GetPlayInfoRequest) String() string {
 
 func (s GetPlayInfoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetPlayInfoRequest) SetAuthTimeout(v int64) *GetPlayInfoRequest {
+	s.AuthTimeout = &v
+	return s
 }
 
 func (s *GetPlayInfoRequest) SetInputURL(v string) *GetPlayInfoRequest {
@@ -35087,6 +35404,7 @@ func (s *GetProjectExportJobResponseBodyProjectExportJob) SetUserData(v string) 
 }
 
 type GetProjectExportJobResponseBodyProjectExportJobExportResult struct {
+	ProjectUrl *string `json:"ProjectUrl,omitempty" xml:"ProjectUrl,omitempty"`
 	// example:
 	//
 	// {"VideoTracks":[{"VideoTrackClips":[{"Type":"Video","MediaId":"****4d7cf14dc7b83b0e801c****","MediaURL":"https://test-bucket.oss-cn-shanghai.aliyuncs.com/test.mp4","TimelineIn":0.0,"TimelineOut":5.0,"In":0.0,"Out":5.0,"Speed":1.0,"Duration":5.0,"VirginDuration":13.334,"Height":1.0,"Width":1.0,"X":0.0,"Y":0.0}]}]}
@@ -35099,6 +35417,11 @@ func (s GetProjectExportJobResponseBodyProjectExportJobExportResult) String() st
 
 func (s GetProjectExportJobResponseBodyProjectExportJobExportResult) GoString() string {
 	return s.String()
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJobExportResult) SetProjectUrl(v string) *GetProjectExportJobResponseBodyProjectExportJobExportResult {
+	s.ProjectUrl = &v
+	return s
 }
 
 func (s *GetProjectExportJobResponseBodyProjectExportJobExportResult) SetTimeline(v string) *GetProjectExportJobResponseBodyProjectExportJobExportResult {
@@ -44089,6 +44412,7 @@ func (s *ListAIAgentInstanceResponse) SetBody(v *ListAIAgentInstanceResponseBody
 }
 
 type ListAIAgentPhoneNumberRequest struct {
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
 	// example:
 	//
 	// 1
@@ -44097,6 +44421,7 @@ type ListAIAgentPhoneNumberRequest struct {
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status   *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAIAgentPhoneNumberRequest) String() string {
@@ -44107,6 +44432,11 @@ func (s ListAIAgentPhoneNumberRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListAIAgentPhoneNumberRequest) SetNumber(v string) *ListAIAgentPhoneNumberRequest {
+	s.Number = &v
+	return s
+}
+
 func (s *ListAIAgentPhoneNumberRequest) SetPageNumber(v int64) *ListAIAgentPhoneNumberRequest {
 	s.PageNumber = &v
 	return s
@@ -44114,6 +44444,11 @@ func (s *ListAIAgentPhoneNumberRequest) SetPageNumber(v int64) *ListAIAgentPhone
 
 func (s *ListAIAgentPhoneNumberRequest) SetPageSize(v int64) *ListAIAgentPhoneNumberRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAIAgentPhoneNumberRequest) SetStatus(v int32) *ListAIAgentPhoneNumberRequest {
+	s.Status = &v
 	return s
 }
 
@@ -52370,6 +52705,7 @@ func (s *ListLiveTranscodeTemplatesResponse) SetBody(v *ListLiveTranscodeTemplat
 }
 
 type ListMediaBasicInfosRequest struct {
+	AuthTimeout *int64 `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
 	// The business type of the media asset. Valid values:
 	//
 	// \\- subtitles
@@ -52492,6 +52828,11 @@ func (s ListMediaBasicInfosRequest) String() string {
 
 func (s ListMediaBasicInfosRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListMediaBasicInfosRequest) SetAuthTimeout(v int64) *ListMediaBasicInfosRequest {
+	s.AuthTimeout = &v
+	return s
 }
 
 func (s *ListMediaBasicInfosRequest) SetBusinessType(v string) *ListMediaBasicInfosRequest {
@@ -55717,8 +56058,18 @@ type ListMediaLiveInputsResponseBodyInputsInputInfos struct {
 	// example:
 	//
 	// rtmp://domain/app/stream
-	DestHost       *string `json:"DestHost,omitempty" xml:"DestHost,omitempty"`
-	FlowId         *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	DestHost *string `json:"DestHost,omitempty" xml:"DestHost,omitempty"`
+	// The ID of the flow from MediaConnect.
+	//
+	// example:
+	//
+	// ******81-9693-40dc-bbab-db5e49******
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The output name of the MediaConnect flow.
+	//
+	// example:
+	//
+	// myFlowOutputName
 	FlowOutputName *string `json:"FlowOutputName,omitempty" xml:"FlowOutputName,omitempty"`
 	// The URL for input monitoring.
 	//
@@ -74417,8 +74768,9 @@ type StartAIAgentOutboundCallRequest struct {
 	// example:
 	//
 	// 183*****333
-	CallerNumber *string                    `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
-	Config       *AIAgentOutboundCallConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	CallerNumber         *string                    `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
+	Config               *AIAgentOutboundCallConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	ImsAIAgentFreeObCall *string                    `json:"ImsAIAgentFreeObCall,omitempty" xml:"ImsAIAgentFreeObCall,omitempty"`
 	// example:
 	//
 	// f213fbc005e4f309379701645f4****
@@ -74454,6 +74806,11 @@ func (s *StartAIAgentOutboundCallRequest) SetConfig(v *AIAgentOutboundCallConfig
 	return s
 }
 
+func (s *StartAIAgentOutboundCallRequest) SetImsAIAgentFreeObCall(v string) *StartAIAgentOutboundCallRequest {
+	s.ImsAIAgentFreeObCall = &v
+	return s
+}
+
 func (s *StartAIAgentOutboundCallRequest) SetSessionId(v string) *StartAIAgentOutboundCallRequest {
 	s.SessionId = &v
 	return s
@@ -74482,8 +74839,9 @@ type StartAIAgentOutboundCallShrinkRequest struct {
 	// example:
 	//
 	// 183*****333
-	CallerNumber *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
-	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	CallerNumber         *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
+	ConfigShrink         *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	ImsAIAgentFreeObCall *string `json:"ImsAIAgentFreeObCall,omitempty" xml:"ImsAIAgentFreeObCall,omitempty"`
 	// example:
 	//
 	// f213fbc005e4f309379701645f4****
@@ -74516,6 +74874,11 @@ func (s *StartAIAgentOutboundCallShrinkRequest) SetCallerNumber(v string) *Start
 
 func (s *StartAIAgentOutboundCallShrinkRequest) SetConfigShrink(v string) *StartAIAgentOutboundCallShrinkRequest {
 	s.ConfigShrink = &v
+	return s
+}
+
+func (s *StartAIAgentOutboundCallShrinkRequest) SetImsAIAgentFreeObCall(v string) *StartAIAgentOutboundCallShrinkRequest {
+	s.ImsAIAgentFreeObCall = &v
 	return s
 }
 
@@ -78243,10 +78606,14 @@ func (s *SubmitDynamicImageJobResponse) SetBody(v *SubmitDynamicImageJobResponse
 }
 
 type SubmitHighlightExtractionJobRequest struct {
+	// The client token used to ensure the idempotency of the request.
+	//
 	// example:
 	//
 	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The input configuration.
+	//
 	// example:
 	//
 	// {
@@ -78283,6 +78650,8 @@ type SubmitHighlightExtractionJobRequest struct {
 	//
 	// }
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// The output configuration.
+	//
 	// example:
 	//
 	// {
@@ -78303,7 +78672,8 @@ type SubmitHighlightExtractionJobRequest struct {
 	//
 	// }
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user-defined data, including the business and callback configurations. For more information, see [UserData](~~357745#section-urj-v3f-0s1~~).
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitHighlightExtractionJobRequest) String() string {
@@ -78335,11 +78705,13 @@ func (s *SubmitHighlightExtractionJobRequest) SetUserData(v string) *SubmitHighl
 }
 
 type SubmitHighlightExtractionJobResponseBody struct {
+	// The ID of the highlight extraction task.
+	//
 	// example:
 	//
 	// ****cdb3e74639973036bc84****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -82474,6 +82846,8 @@ func (s *SubmitProjectExportJobResponse) SetBody(v *SubmitProjectExportJobRespon
 }
 
 type SubmitScreenMediaHighlightsJobRequest struct {
+	// The editing configuration. For detailed parameters, see [EditingConfig](~~2863940#9b05519d46e0x~~).
+	//
 	// example:
 	//
 	// {
@@ -82494,6 +82868,8 @@ type SubmitScreenMediaHighlightsJobRequest struct {
 	//
 	// }
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	// The input configuration. For detailed parameters, see [InputConfig](~~2863940#dda38bf6ec2pk~~).
+	//
 	// example:
 	//
 	// {
@@ -82508,6 +82884,8 @@ type SubmitScreenMediaHighlightsJobRequest struct {
 	//
 	// }
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// The output configuration. For detailed parameters, see [OutputConfig](~~2863940#4111a373d0xbz~~).
+	//
 	// example:
 	//
 	// {
@@ -82522,7 +82900,8 @@ type SubmitScreenMediaHighlightsJobRequest struct {
 	//
 	// }
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html).
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitScreenMediaHighlightsJobRequest) String() string {
@@ -82554,10 +82933,14 @@ func (s *SubmitScreenMediaHighlightsJobRequest) SetUserData(v string) *SubmitScr
 }
 
 type SubmitScreenMediaHighlightsJobResponseBody struct {
+	// The ID of the task.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****36-3C1E-4417-BDB2-1E034F****
@@ -96966,7 +97349,13 @@ func (s *UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetti
 }
 
 type UpdateMediaLiveChannelRequestVideoSettings struct {
-	// The height of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
+	// The height of the output. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
+	//
+	// Valid values:
+	//
+	// 	- For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
+	//
+	// 	- For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
 	//
 	// example:
 	//
@@ -96988,8 +97377,25 @@ type UpdateMediaLiveChannelRequestVideoSettings struct {
 	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
 	// The video encoding settings.
 	VideoCodecSetting *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting `json:"VideoCodecSetting,omitempty" xml:"VideoCodecSetting,omitempty" type:"Struct"`
-	VideoCodecType    *string                                                      `json:"VideoCodecType,omitempty" xml:"VideoCodecType,omitempty"`
-	// The width of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
+	// The video transcoding method. Valid values:
+	//
+	// 	- NORMAL: regular transcoding
+	//
+	// 	- NBHD: Narrowband HD™ transcoding
+	//
+	// If not specified, regular transcoding is used by default.
+	//
+	// example:
+	//
+	// NORMAL
+	VideoCodecType *string `json:"VideoCodecType,omitempty" xml:"VideoCodecType,omitempty"`
+	// The width of the output. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
+	//
+	// Valid values:
+	//
+	// 	- For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
+	//
+	// 	- For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
 	//
 	// example:
 	//
@@ -97428,9 +97834,19 @@ func (s *UpdateMediaLiveInputRequest) SetSecurityGroupIds(v []*string) *UpdateMe
 }
 
 type UpdateMediaLiveInputRequestInputSettings struct {
-	FlowId         *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The ID of the flow from MediaConnect. This parameter is required when Type is set to MEDIA_CONNECT.
+	//
+	// example:
+	//
+	// ******81-9693-40dc-bbab-db5e49******
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The output name of the MediaConnect flow. This parameter is required when Type is set to MEDIA_CONNECT.
+	//
+	// example:
+	//
+	// myFlowOutputName
 	FlowOutputName *string `json:"FlowOutputName,omitempty" xml:"FlowOutputName,omitempty"`
-	// The source URL where the stream is pulled from. This parameter is required for PULL inputs.
+	// The source URL from which the stream is pulled. This parameter is required for PULL inputs.
 	//
 	// example:
 	//
@@ -100238,6 +100654,10 @@ func (client *Client) BatchGetMediaInfosWithOptions(request *BatchGetMediaInfosR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AdditionType)) {
 		query["AdditionType"] = request.AdditionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthTimeout)) {
+		query["AuthTimeout"] = request.AuthTimeout
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MediaIds)) {
@@ -109330,6 +109750,10 @@ func (client *Client) GetMediaInfoWithOptions(request *GetMediaInfoRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthTimeout)) {
+		query["AuthTimeout"] = request.AuthTimeout
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InputURL)) {
 		query["InputURL"] = request.InputURL
 	}
@@ -109926,6 +110350,10 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthTimeout)) {
+		query["AuthTimeout"] = request.AuthTimeout
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InputURL)) {
 		query["InputURL"] = request.InputURL
 	}
@@ -111558,12 +111986,20 @@ func (client *Client) ListAIAgentPhoneNumberWithOptions(request *ListAIAgentPhon
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -113698,6 +114134,10 @@ func (client *Client) ListMediaBasicInfosWithOptions(request *ListMediaBasicInfo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthTimeout)) {
+		query["AuthTimeout"] = request.AuthTimeout
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
 		query["BusinessType"] = request.BusinessType
 	}
@@ -119098,6 +119538,10 @@ func (client *Client) StartAIAgentOutboundCallWithOptions(tmpReq *StartAIAgentOu
 		query["Config"] = request.ConfigShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ImsAIAgentFreeObCall)) {
+		query["ImsAIAgentFreeObCall"] = request.ImsAIAgentFreeObCall
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
 		query["SessionId"] = request.SessionId
 	}
@@ -120835,7 +121279,7 @@ func (client *Client) SubmitDynamicImageJob(request *SubmitDynamicImageJobReques
 
 // Summary:
 //
-// 提交高光提取任务
+// Submits a highlight extraction task.
 //
 // @param request - SubmitHighlightExtractionJobRequest
 //
@@ -120891,7 +121335,7 @@ func (client *Client) SubmitHighlightExtractionJobWithOptions(request *SubmitHig
 
 // Summary:
 //
-// 提交高光提取任务
+// Submits a highlight extraction task.
 //
 // @param request - SubmitHighlightExtractionJobRequest
 //
@@ -122079,7 +122523,7 @@ func (client *Client) SubmitProjectExportJob(request *SubmitProjectExportJobRequ
 
 // Summary:
 //
-// 提交高燃混剪任务
+// Submits a task to automatically recognize the highlight segments in the video input and compile them into a dramatic and engaging clip.
 //
 // @param request - SubmitScreenMediaHighlightsJobRequest
 //
@@ -122135,7 +122579,7 @@ func (client *Client) SubmitScreenMediaHighlightsJobWithOptions(request *SubmitS
 
 // Summary:
 //
-// 提交高燃混剪任务
+// Submits a task to automatically recognize the highlight segments in the video input and compile them into a dramatic and engaging clip.
 //
 // @param request - SubmitScreenMediaHighlightsJobRequest
 //
