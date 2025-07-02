@@ -564,8 +564,11 @@ func (s *AddOrUpdateDeviceSeatsResponse) SetBody(v *AddOrUpdateDeviceSeatsRespon
 
 type AddTerminalRequest struct {
 	Alias           *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	ClientType      *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	MainBizType     *string `json:"MainBizType,omitempty" xml:"MainBizType,omitempty"`
 	SerialNumber    *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	TerminalGroupId *string `json:"TerminalGroupId,omitempty" xml:"TerminalGroupId,omitempty"`
+	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s AddTerminalRequest) String() string {
@@ -581,6 +584,16 @@ func (s *AddTerminalRequest) SetAlias(v string) *AddTerminalRequest {
 	return s
 }
 
+func (s *AddTerminalRequest) SetClientType(v string) *AddTerminalRequest {
+	s.ClientType = &v
+	return s
+}
+
+func (s *AddTerminalRequest) SetMainBizType(v string) *AddTerminalRequest {
+	s.MainBizType = &v
+	return s
+}
+
 func (s *AddTerminalRequest) SetSerialNumber(v string) *AddTerminalRequest {
 	s.SerialNumber = &v
 	return s
@@ -588,6 +601,11 @@ func (s *AddTerminalRequest) SetSerialNumber(v string) *AddTerminalRequest {
 
 func (s *AddTerminalRequest) SetTerminalGroupId(v string) *AddTerminalRequest {
 	s.TerminalGroupId = &v
+	return s
+}
+
+func (s *AddTerminalRequest) SetUuid(v string) *AddTerminalRequest {
+	s.Uuid = &v
 	return s
 }
 
@@ -663,6 +681,7 @@ func (s *AddTerminalResponse) SetBody(v *AddTerminalResponseBody) *AddTerminalRe
 
 type AddTerminalsRequest struct {
 	AddTerminalParams []*AddTerminalsRequestAddTerminalParams `json:"AddTerminalParams,omitempty" xml:"AddTerminalParams,omitempty" type:"Repeated"`
+	MainBizType       *string                                 `json:"MainBizType,omitempty" xml:"MainBizType,omitempty"`
 }
 
 func (s AddTerminalsRequest) String() string {
@@ -675,6 +694,11 @@ func (s AddTerminalsRequest) GoString() string {
 
 func (s *AddTerminalsRequest) SetAddTerminalParams(v []*AddTerminalsRequestAddTerminalParams) *AddTerminalsRequest {
 	s.AddTerminalParams = v
+	return s
+}
+
+func (s *AddTerminalsRequest) SetMainBizType(v string) *AddTerminalsRequest {
+	s.MainBizType = &v
 	return s
 }
 
@@ -1177,6 +1201,7 @@ func (s *BindAccountLessLoginUserResponse) SetBody(v *BindAccountLessLoginUserRe
 
 type BindPasswordFreeLoginUserRequest struct {
 	EndUserId    *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	MainBizType  *string `json:"MainBizType,omitempty" xml:"MainBizType,omitempty"`
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
@@ -1191,6 +1216,11 @@ func (s BindPasswordFreeLoginUserRequest) GoString() string {
 
 func (s *BindPasswordFreeLoginUserRequest) SetEndUserId(v string) *BindPasswordFreeLoginUserRequest {
 	s.EndUserId = &v
+	return s
+}
+
+func (s *BindPasswordFreeLoginUserRequest) SetMainBizType(v string) *BindPasswordFreeLoginUserRequest {
+	s.MainBizType = &v
 	return s
 }
 
@@ -1278,13 +1308,17 @@ type CheckUuidValidRequest struct {
 	Bluetooth *string `json:"Bluetooth,omitempty" xml:"Bluetooth,omitempty"`
 	BuildId   *string `json:"BuildId,omitempty" xml:"BuildId,omitempty"`
 	// This parameter is required.
-	ChipId   *string `json:"ChipId,omitempty" xml:"ChipId,omitempty"`
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ChipId        *string `json:"ChipId,omitempty" xml:"ChipId,omitempty"`
+	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
 	// This parameter is required.
-	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	EtherMac *string `json:"EtherMac,omitempty" xml:"EtherMac,omitempty"`
+	CustomId      *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	EtherMac      *string `json:"EtherMac,omitempty" xml:"EtherMac,omitempty"`
+	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
+	LoginToken    *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
 	// This parameter is required.
-	SerialNo *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	SerialNo  *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// This parameter is required.
 	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	Wlan          *string `json:"Wlan,omitempty" xml:"Wlan,omitempty"`
@@ -1319,6 +1353,11 @@ func (s *CheckUuidValidRequest) SetClientId(v string) *CheckUuidValidRequest {
 	return s
 }
 
+func (s *CheckUuidValidRequest) SetClientVersion(v string) *CheckUuidValidRequest {
+	s.ClientVersion = &v
+	return s
+}
+
 func (s *CheckUuidValidRequest) SetCustomId(v string) *CheckUuidValidRequest {
 	s.CustomId = &v
 	return s
@@ -1329,8 +1368,23 @@ func (s *CheckUuidValidRequest) SetEtherMac(v string) *CheckUuidValidRequest {
 	return s
 }
 
+func (s *CheckUuidValidRequest) SetLoginRegionId(v string) *CheckUuidValidRequest {
+	s.LoginRegionId = &v
+	return s
+}
+
+func (s *CheckUuidValidRequest) SetLoginToken(v string) *CheckUuidValidRequest {
+	s.LoginToken = &v
+	return s
+}
+
 func (s *CheckUuidValidRequest) SetSerialNo(v string) *CheckUuidValidRequest {
 	s.SerialNo = &v
+	return s
+}
+
+func (s *CheckUuidValidRequest) SetSessionId(v string) *CheckUuidValidRequest {
+	s.SessionId = &v
 	return s
 }
 
@@ -1445,6 +1499,7 @@ type CreateAppOtaTaskRequest struct {
 	Status        *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
 	TaskType      *int32    `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	TenantId      *string   `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantIdList  []*string `json:"TenantIdList,omitempty" xml:"TenantIdList,omitempty" type:"Repeated"`
 }
 
 func (s CreateAppOtaTaskRequest) String() string {
@@ -1522,6 +1577,11 @@ func (s *CreateAppOtaTaskRequest) SetTaskType(v int32) *CreateAppOtaTaskRequest 
 
 func (s *CreateAppOtaTaskRequest) SetTenantId(v string) *CreateAppOtaTaskRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *CreateAppOtaTaskRequest) SetTenantIdList(v []*string) *CreateAppOtaTaskRequest {
+	s.TenantIdList = v
 	return s
 }
 
@@ -1607,25 +1667,26 @@ func (s *CreateAppOtaTaskResponse) SetBody(v *CreateAppOtaTaskResponseBody) *Cre
 }
 
 type CreateAppOtaVersionRequest struct {
-	AppVersion       *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	Arch             *string `json:"Arch,omitempty" xml:"Arch,omitempty"`
-	Channel          *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	ClientType       *int32  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	Creator          *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	DownloadUrl      *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	Md5              *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	Os               *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	OsType           *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	OtaType          *int32  `json:"OtaType,omitempty" xml:"OtaType,omitempty"`
-	Project          *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	ReleaseNote      *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	ReleaseNoteEn    *string `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
-	ReleaseNoteJp    *string `json:"ReleaseNoteJp,omitempty" xml:"ReleaseNoteJp,omitempty"`
-	Size             *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
-	SnapshotId       *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SnapshotRegionId *string `json:"SnapshotRegionId,omitempty" xml:"SnapshotRegionId,omitempty"`
-	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	VersionType      *string `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
+	AppVersion          *string   `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	Arch                *string   `json:"Arch,omitempty" xml:"Arch,omitempty"`
+	Channel             *string   `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	ClientType          *int32    `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	Creator             *string   `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	DownloadUrl         *string   `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	Md5                 *string   `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Os                  *string   `json:"Os,omitempty" xml:"Os,omitempty"`
+	OsType              *string   `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OtaType             *int32    `json:"OtaType,omitempty" xml:"OtaType,omitempty"`
+	Project             *string   `json:"Project,omitempty" xml:"Project,omitempty"`
+	RelationVersionUids []*string `json:"RelationVersionUids,omitempty" xml:"RelationVersionUids,omitempty" type:"Repeated"`
+	ReleaseNote         *string   `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	ReleaseNoteEn       *string   `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
+	ReleaseNoteJp       *string   `json:"ReleaseNoteJp,omitempty" xml:"ReleaseNoteJp,omitempty"`
+	Size                *int64    `json:"Size,omitempty" xml:"Size,omitempty"`
+	SnapshotId          *string   `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotRegionId    *string   `json:"SnapshotRegionId,omitempty" xml:"SnapshotRegionId,omitempty"`
+	Status              *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
+	VersionType         *string   `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
 }
 
 func (s CreateAppOtaVersionRequest) String() string {
@@ -1688,6 +1749,11 @@ func (s *CreateAppOtaVersionRequest) SetOtaType(v int32) *CreateAppOtaVersionReq
 
 func (s *CreateAppOtaVersionRequest) SetProject(v string) *CreateAppOtaVersionRequest {
 	s.Project = &v
+	return s
+}
+
+func (s *CreateAppOtaVersionRequest) SetRelationVersionUids(v []*string) *CreateAppOtaVersionRequest {
+	s.RelationVersionUids = v
 	return s
 }
 
@@ -2064,13 +2130,15 @@ func (s *DeleteLabelResponse) SetBody(v *DeleteLabelResponseBody) *DeleteLabelRe
 }
 
 type DescribeAppOtaVersionRequest struct {
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	Channel    *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	ClientType *int32  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	Creator    *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Project    *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	VersionUid *string `json:"VersionUid,omitempty" xml:"VersionUid,omitempty"`
+	AppVersion  *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	Channel     *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	ClientType  *int32  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	NullChannel *bool   `json:"NullChannel,omitempty" xml:"NullChannel,omitempty"`
+	OtaType     *int32  `json:"OtaType,omitempty" xml:"OtaType,omitempty"`
+	Project     *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	VersionUid  *string `json:"VersionUid,omitempty" xml:"VersionUid,omitempty"`
 }
 
 func (s DescribeAppOtaVersionRequest) String() string {
@@ -2098,6 +2166,16 @@ func (s *DescribeAppOtaVersionRequest) SetClientType(v int32) *DescribeAppOtaVer
 
 func (s *DescribeAppOtaVersionRequest) SetCreator(v string) *DescribeAppOtaVersionRequest {
 	s.Creator = &v
+	return s
+}
+
+func (s *DescribeAppOtaVersionRequest) SetNullChannel(v bool) *DescribeAppOtaVersionRequest {
+	s.NullChannel = &v
+	return s
+}
+
+func (s *DescribeAppOtaVersionRequest) SetOtaType(v int32) *DescribeAppOtaVersionRequest {
+	s.OtaType = &v
 	return s
 }
 
@@ -4196,6 +4274,7 @@ type GetDeviceOtaInfoResponseBodyDataVersion struct {
 	Version                                  *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	VersionCode                              *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 	VersionType                              *string `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
+	WyForceUpgrade                           *bool   `json:"WyForceUpgrade,omitempty" xml:"WyForceUpgrade,omitempty"`
 }
 
 func (s GetDeviceOtaInfoResponseBodyDataVersion) String() string {
@@ -4313,6 +4392,11 @@ func (s *GetDeviceOtaInfoResponseBodyDataVersion) SetVersionCode(v string) *GetD
 
 func (s *GetDeviceOtaInfoResponseBodyDataVersion) SetVersionType(v string) *GetDeviceOtaInfoResponseBodyDataVersion {
 	s.VersionType = &v
+	return s
+}
+
+func (s *GetDeviceOtaInfoResponseBodyDataVersion) SetWyForceUpgrade(v bool) *GetDeviceOtaInfoResponseBodyDataVersion {
+	s.WyForceUpgrade = &v
 	return s
 }
 
@@ -5297,6 +5381,331 @@ func (s *GetVersionDownloadUrlResponse) SetBody(v *GetVersionDownloadUrlResponse
 	return s
 }
 
+type ListBoundDevicesRequest struct {
+	AdDomain      *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	Alias         *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	ClientType    *int32  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	DirectoryId   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	EndUserId     *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	InManage      *bool   `json:"InManage,omitempty" xml:"InManage,omitempty"`
+	LastLoginUser *string `json:"LastLoginUser,omitempty" xml:"LastLoginUser,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SerialNo      *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	UserType      *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s ListBoundDevicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBoundDevicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBoundDevicesRequest) SetAdDomain(v string) *ListBoundDevicesRequest {
+	s.AdDomain = &v
+	return s
+}
+
+func (s *ListBoundDevicesRequest) SetAlias(v string) *ListBoundDevicesRequest {
+	s.Alias = &v
+	return s
+}
+
+func (s *ListBoundDevicesRequest) SetClientType(v int32) *ListBoundDevicesRequest {
+	s.ClientType = &v
+	return s
+}
+
+func (s *ListBoundDevicesRequest) SetDirectoryId(v string) *ListBoundDevicesRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *ListBoundDevicesRequest) SetEndUserId(v string) *ListBoundDevicesRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *ListBoundDevicesRequest) SetInManage(v bool) *ListBoundDevicesRequest {
+	s.InManage = &v
+	return s
+}
+
+func (s *ListBoundDevicesRequest) SetLastLoginUser(v string) *ListBoundDevicesRequest {
+	s.LastLoginUser = &v
+	return s
+}
+
+func (s *ListBoundDevicesRequest) SetPageNumber(v int32) *ListBoundDevicesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBoundDevicesRequest) SetPageSize(v int32) *ListBoundDevicesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBoundDevicesRequest) SetSerialNo(v string) *ListBoundDevicesRequest {
+	s.SerialNo = &v
+	return s
+}
+
+func (s *ListBoundDevicesRequest) SetUserType(v string) *ListBoundDevicesRequest {
+	s.UserType = &v
+	return s
+}
+
+func (s *ListBoundDevicesRequest) SetUuid(v string) *ListBoundDevicesRequest {
+	s.Uuid = &v
+	return s
+}
+
+type ListBoundDevicesResponseBody struct {
+	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListBoundDevicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListBoundDevicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBoundDevicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBoundDevicesResponseBody) SetCode(v string) *ListBoundDevicesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBody) SetData(v *ListBoundDevicesResponseBodyData) *ListBoundDevicesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBody) SetHttpStatusCode(v int32) *ListBoundDevicesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBody) SetMessage(v string) *ListBoundDevicesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBody) SetRequestId(v string) *ListBoundDevicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBody) SetSuccess(v bool) *ListBoundDevicesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListBoundDevicesResponseBodyData struct {
+	Devices    []*ListBoundDevicesResponseBodyDataDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
+	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListBoundDevicesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBoundDevicesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListBoundDevicesResponseBodyData) SetDevices(v []*ListBoundDevicesResponseBodyDataDevices) *ListBoundDevicesResponseBodyData {
+	s.Devices = v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyData) SetPageNumber(v int32) *ListBoundDevicesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyData) SetPageSize(v int32) *ListBoundDevicesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyData) SetTotalCount(v int32) *ListBoundDevicesResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListBoundDevicesResponseBodyDataDevices struct {
+	Alias                         *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	BoundTime                     *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
+	BuildId                       *string `json:"BuildId,omitempty" xml:"BuildId,omitempty"`
+	ClientType                    *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	ConnectionStatus              *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
+	DeviceMqttConnectionStatus    *int32  `json:"DeviceMqttConnectionStatus,omitempty" xml:"DeviceMqttConnectionStatus,omitempty"`
+	DeviceOs                      *string `json:"DeviceOs,omitempty" xml:"DeviceOs,omitempty"`
+	DevicePlatform                *string `json:"DevicePlatform,omitempty" xml:"DevicePlatform,omitempty"`
+	InManage                      *bool   `json:"InManage,omitempty" xml:"InManage,omitempty"`
+	LastLoginTime                 *string `json:"LastLoginTime,omitempty" xml:"LastLoginTime,omitempty"`
+	LastLoginUser                 *string `json:"LastLoginUser,omitempty" xml:"LastLoginUser,omitempty"`
+	LoginUser                     *string `json:"LoginUser,omitempty" xml:"LoginUser,omitempty"`
+	Model                         *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	PasswordFreeLoginUser         *string `json:"PasswordFreeLoginUser,omitempty" xml:"PasswordFreeLoginUser,omitempty"`
+	PasswordFreeLoginUserNickName *string `json:"PasswordFreeLoginUserNickName,omitempty" xml:"PasswordFreeLoginUserNickName,omitempty"`
+	PrivateIp                     *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	ProductName                   *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	PublicIp                      *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	SerialNo                      *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	Uuid                          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s ListBoundDevicesResponseBodyDataDevices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBoundDevicesResponseBodyDataDevices) GoString() string {
+	return s.String()
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetAlias(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.Alias = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetBoundTime(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.BoundTime = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetBuildId(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.BuildId = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetClientType(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.ClientType = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetConnectionStatus(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.ConnectionStatus = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetDeviceMqttConnectionStatus(v int32) *ListBoundDevicesResponseBodyDataDevices {
+	s.DeviceMqttConnectionStatus = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetDeviceOs(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.DeviceOs = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetDevicePlatform(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.DevicePlatform = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetInManage(v bool) *ListBoundDevicesResponseBodyDataDevices {
+	s.InManage = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetLastLoginTime(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.LastLoginTime = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetLastLoginUser(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.LastLoginUser = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetLoginUser(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.LoginUser = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetModel(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.Model = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetPasswordFreeLoginUser(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.PasswordFreeLoginUser = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetPasswordFreeLoginUserNickName(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.PasswordFreeLoginUserNickName = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetPrivateIp(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.PrivateIp = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetProductName(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.ProductName = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetPublicIp(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.PublicIp = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetSerialNo(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.SerialNo = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponseBodyDataDevices) SetUuid(v string) *ListBoundDevicesResponseBodyDataDevices {
+	s.Uuid = &v
+	return s
+}
+
+type ListBoundDevicesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListBoundDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListBoundDevicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBoundDevicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBoundDevicesResponse) SetHeaders(v map[string]*string) *ListBoundDevicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBoundDevicesResponse) SetStatusCode(v int32) *ListBoundDevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBoundDevicesResponse) SetBody(v *ListBoundDevicesResponseBody) *ListBoundDevicesResponse {
+	s.Body = v
+	return s
+}
+
 type ListDeviceOtaTaskByTenantRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -5665,6 +6074,7 @@ type ListDevicesRequest struct {
 	EndUserId      *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	LabelContent   *string `json:"LabelContent,omitempty" xml:"LabelContent,omitempty"`
 	LabelId        *string `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
+	LastLoginUser  *string `json:"LastLoginUser,omitempty" xml:"LastLoginUser,omitempty"`
 	LocationInfo   *string `json:"LocationInfo,omitempty" xml:"LocationInfo,omitempty"`
 	Model          *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -5734,6 +6144,11 @@ func (s *ListDevicesRequest) SetLabelContent(v string) *ListDevicesRequest {
 
 func (s *ListDevicesRequest) SetLabelId(v string) *ListDevicesRequest {
 	s.LabelId = &v
+	return s
+}
+
+func (s *ListDevicesRequest) SetLastLoginUser(v string) *ListDevicesRequest {
+	s.LastLoginUser = &v
 	return s
 }
 
@@ -7223,7 +7638,8 @@ func (s *ListTerminalResponse) SetBody(v *ListTerminalResponseBody) *ListTermina
 }
 
 type ListTerminalsRequest struct {
-	InManage *bool `json:"InManage,omitempty" xml:"InManage,omitempty"`
+	InManage    *bool   `json:"InManage,omitempty" xml:"InManage,omitempty"`
+	MainBizType *string `json:"MainBizType,omitempty" xml:"MainBizType,omitempty"`
 	// example:
 	//
 	// 200
@@ -7256,6 +7672,11 @@ func (s ListTerminalsRequest) GoString() string {
 
 func (s *ListTerminalsRequest) SetInManage(v bool) *ListTerminalsRequest {
 	s.InManage = &v
+	return s
+}
+
+func (s *ListTerminalsRequest) SetMainBizType(v string) *ListTerminalsRequest {
+	s.MainBizType = &v
 	return s
 }
 
@@ -7693,6 +8114,331 @@ func (s *ListTrustDevicesResponse) SetStatusCode(v int32) *ListTrustDevicesRespo
 }
 
 func (s *ListTrustDevicesResponse) SetBody(v *ListTrustDevicesResponseBody) *ListTrustDevicesResponse {
+	s.Body = v
+	return s
+}
+
+type ListUnbindDevicesRequest struct {
+	AdDomain      *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	Alias         *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	ClientType    *int32  `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	DirectoryId   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	EndUserId     *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	InManage      *bool   `json:"InManage,omitempty" xml:"InManage,omitempty"`
+	LastLoginUser *string `json:"LastLoginUser,omitempty" xml:"LastLoginUser,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SerialNo      *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	UserType      *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s ListUnbindDevicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUnbindDevicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUnbindDevicesRequest) SetAdDomain(v string) *ListUnbindDevicesRequest {
+	s.AdDomain = &v
+	return s
+}
+
+func (s *ListUnbindDevicesRequest) SetAlias(v string) *ListUnbindDevicesRequest {
+	s.Alias = &v
+	return s
+}
+
+func (s *ListUnbindDevicesRequest) SetClientType(v int32) *ListUnbindDevicesRequest {
+	s.ClientType = &v
+	return s
+}
+
+func (s *ListUnbindDevicesRequest) SetDirectoryId(v string) *ListUnbindDevicesRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *ListUnbindDevicesRequest) SetEndUserId(v string) *ListUnbindDevicesRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *ListUnbindDevicesRequest) SetInManage(v bool) *ListUnbindDevicesRequest {
+	s.InManage = &v
+	return s
+}
+
+func (s *ListUnbindDevicesRequest) SetLastLoginUser(v string) *ListUnbindDevicesRequest {
+	s.LastLoginUser = &v
+	return s
+}
+
+func (s *ListUnbindDevicesRequest) SetPageNumber(v int32) *ListUnbindDevicesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUnbindDevicesRequest) SetPageSize(v int32) *ListUnbindDevicesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUnbindDevicesRequest) SetSerialNo(v string) *ListUnbindDevicesRequest {
+	s.SerialNo = &v
+	return s
+}
+
+func (s *ListUnbindDevicesRequest) SetUserType(v string) *ListUnbindDevicesRequest {
+	s.UserType = &v
+	return s
+}
+
+func (s *ListUnbindDevicesRequest) SetUuid(v string) *ListUnbindDevicesRequest {
+	s.Uuid = &v
+	return s
+}
+
+type ListUnbindDevicesResponseBody struct {
+	Code           *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListUnbindDevicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListUnbindDevicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUnbindDevicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUnbindDevicesResponseBody) SetCode(v string) *ListUnbindDevicesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBody) SetData(v *ListUnbindDevicesResponseBodyData) *ListUnbindDevicesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBody) SetHttpStatusCode(v int32) *ListUnbindDevicesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBody) SetMessage(v string) *ListUnbindDevicesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBody) SetRequestId(v string) *ListUnbindDevicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBody) SetSuccess(v bool) *ListUnbindDevicesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListUnbindDevicesResponseBodyData struct {
+	Devices    []*ListUnbindDevicesResponseBodyDataDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
+	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListUnbindDevicesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUnbindDevicesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListUnbindDevicesResponseBodyData) SetDevices(v []*ListUnbindDevicesResponseBodyDataDevices) *ListUnbindDevicesResponseBodyData {
+	s.Devices = v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyData) SetPageNumber(v int32) *ListUnbindDevicesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyData) SetPageSize(v int32) *ListUnbindDevicesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyData) SetTotalCount(v int32) *ListUnbindDevicesResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListUnbindDevicesResponseBodyDataDevices struct {
+	Alias                         *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	BoundTime                     *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
+	BuildId                       *string `json:"BuildId,omitempty" xml:"BuildId,omitempty"`
+	ClientType                    *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	ConnectionStatus              *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
+	DeviceMqttConnectionStatus    *int32  `json:"DeviceMqttConnectionStatus,omitempty" xml:"DeviceMqttConnectionStatus,omitempty"`
+	DeviceOs                      *string `json:"DeviceOs,omitempty" xml:"DeviceOs,omitempty"`
+	DevicePlatform                *string `json:"DevicePlatform,omitempty" xml:"DevicePlatform,omitempty"`
+	InManage                      *bool   `json:"InManage,omitempty" xml:"InManage,omitempty"`
+	LastLoginTime                 *string `json:"LastLoginTime,omitempty" xml:"LastLoginTime,omitempty"`
+	LastLoginUser                 *string `json:"LastLoginUser,omitempty" xml:"LastLoginUser,omitempty"`
+	LoginUser                     *string `json:"LoginUser,omitempty" xml:"LoginUser,omitempty"`
+	Model                         *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	PasswordFreeLoginUser         *string `json:"PasswordFreeLoginUser,omitempty" xml:"PasswordFreeLoginUser,omitempty"`
+	PasswordFreeLoginUserNickName *string `json:"PasswordFreeLoginUserNickName,omitempty" xml:"PasswordFreeLoginUserNickName,omitempty"`
+	PrivateIp                     *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	ProductName                   *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	PublicIp                      *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	SerialNo                      *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	Uuid                          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s ListUnbindDevicesResponseBodyDataDevices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUnbindDevicesResponseBodyDataDevices) GoString() string {
+	return s.String()
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetAlias(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.Alias = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetBoundTime(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.BoundTime = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetBuildId(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.BuildId = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetClientType(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.ClientType = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetConnectionStatus(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.ConnectionStatus = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetDeviceMqttConnectionStatus(v int32) *ListUnbindDevicesResponseBodyDataDevices {
+	s.DeviceMqttConnectionStatus = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetDeviceOs(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.DeviceOs = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetDevicePlatform(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.DevicePlatform = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetInManage(v bool) *ListUnbindDevicesResponseBodyDataDevices {
+	s.InManage = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetLastLoginTime(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.LastLoginTime = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetLastLoginUser(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.LastLoginUser = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetLoginUser(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.LoginUser = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetModel(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.Model = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetPasswordFreeLoginUser(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.PasswordFreeLoginUser = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetPasswordFreeLoginUserNickName(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.PasswordFreeLoginUserNickName = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetPrivateIp(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.PrivateIp = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetProductName(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.ProductName = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetPublicIp(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.PublicIp = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetSerialNo(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.SerialNo = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponseBodyDataDevices) SetUuid(v string) *ListUnbindDevicesResponseBodyDataDevices {
+	s.Uuid = &v
+	return s
+}
+
+type ListUnbindDevicesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUnbindDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUnbindDevicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUnbindDevicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUnbindDevicesResponse) SetHeaders(v map[string]*string) *ListUnbindDevicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUnbindDevicesResponse) SetStatusCode(v int32) *ListUnbindDevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUnbindDevicesResponse) SetBody(v *ListUnbindDevicesResponseBody) *ListUnbindDevicesResponse {
 	s.Body = v
 	return s
 }
@@ -8658,7 +9404,8 @@ func (s *RegisterDeviceResponseBody) SetRequestId(v string) *RegisterDeviceRespo
 }
 
 type RegisterDeviceResponseBodyData struct {
-	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	NewUpgrade *bool   `json:"NewUpgrade,omitempty" xml:"NewUpgrade,omitempty"`
+	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s RegisterDeviceResponseBodyData) String() string {
@@ -8667,6 +9414,11 @@ func (s RegisterDeviceResponseBodyData) String() string {
 
 func (s RegisterDeviceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *RegisterDeviceResponseBodyData) SetNewUpgrade(v bool) *RegisterDeviceResponseBodyData {
+	s.NewUpgrade = &v
+	return s
 }
 
 func (s *RegisterDeviceResponseBodyData) SetUuid(v string) *RegisterDeviceResponseBodyData {
@@ -9180,31 +9932,32 @@ func (s *ReportUserFbAcIssueResponse) SetBody(v *ReportUserFbAcIssueResponseBody
 }
 
 type ReportUserFbIssueRequest struct {
-	AppId         *string                             `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ClientId      *string                             `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientModel   *string                             `json:"ClientModel,omitempty" xml:"ClientModel,omitempty"`
-	ClientOsName  *string                             `json:"ClientOsName,omitempty" xml:"ClientOsName,omitempty"`
-	ClientSn      *string                             `json:"ClientSn,omitempty" xml:"ClientSn,omitempty"`
-	ClientVersion *string                             `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	CustomerId    *string                             `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
-	Description   *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	DesktopId     *string                             `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	DesktopType   *int32                              `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	ErrorCode     *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg      *string                             `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	FbType        *int32                              `json:"FbType,omitempty" xml:"FbType,omitempty"`
-	FileList      []*ReportUserFbIssueRequestFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
-	IssueLabel    *string                             `json:"IssueLabel,omitempty" xml:"IssueLabel,omitempty"`
-	OccurTime     *int64                              `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
-	ReservedA     *string                             `json:"ReservedA,omitempty" xml:"ReservedA,omitempty"`
-	ReservedB     *string                             `json:"ReservedB,omitempty" xml:"ReservedB,omitempty"`
-	TelNo         *string                             `json:"TelNo,omitempty" xml:"TelNo,omitempty"`
-	Title         *string                             `json:"Title,omitempty" xml:"Title,omitempty"`
-	UserEmail     *string                             `json:"UserEmail,omitempty" xml:"UserEmail,omitempty"`
-	UserId        *string                             `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName      *string                             `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	WorkspaceId   *string                             `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WyId          *string                             `json:"WyId,omitempty" xml:"WyId,omitempty"`
+	AppId            *string                             `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ClientAppVersion *string                             `json:"ClientAppVersion,omitempty" xml:"ClientAppVersion,omitempty"`
+	ClientId         *string                             `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientModel      *string                             `json:"ClientModel,omitempty" xml:"ClientModel,omitempty"`
+	ClientOsName     *string                             `json:"ClientOsName,omitempty" xml:"ClientOsName,omitempty"`
+	ClientSn         *string                             `json:"ClientSn,omitempty" xml:"ClientSn,omitempty"`
+	ClientVersion    *string                             `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	CustomerId       *string                             `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	Description      *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	DesktopId        *string                             `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	DesktopType      *int32                              `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
+	ErrorCode        *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg         *string                             `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	FbType           *int32                              `json:"FbType,omitempty" xml:"FbType,omitempty"`
+	FileList         []*ReportUserFbIssueRequestFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	IssueLabel       *string                             `json:"IssueLabel,omitempty" xml:"IssueLabel,omitempty"`
+	OccurTime        *int64                              `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
+	ReservedA        *string                             `json:"ReservedA,omitempty" xml:"ReservedA,omitempty"`
+	ReservedB        *string                             `json:"ReservedB,omitempty" xml:"ReservedB,omitempty"`
+	TelNo            *string                             `json:"TelNo,omitempty" xml:"TelNo,omitempty"`
+	Title            *string                             `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserEmail        *string                             `json:"UserEmail,omitempty" xml:"UserEmail,omitempty"`
+	UserId           *string                             `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName         *string                             `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	WorkspaceId      *string                             `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WyId             *string                             `json:"WyId,omitempty" xml:"WyId,omitempty"`
 }
 
 func (s ReportUserFbIssueRequest) String() string {
@@ -9217,6 +9970,11 @@ func (s ReportUserFbIssueRequest) GoString() string {
 
 func (s *ReportUserFbIssueRequest) SetAppId(v string) *ReportUserFbIssueRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *ReportUserFbIssueRequest) SetClientAppVersion(v string) *ReportUserFbIssueRequest {
+	s.ClientAppVersion = &v
 	return s
 }
 
@@ -9389,31 +10147,32 @@ func (s *ReportUserFbIssueRequestFileList) SetSessionId(v string) *ReportUserFbI
 }
 
 type ReportUserFbIssueShrinkRequest struct {
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ClientId       *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientModel    *string `json:"ClientModel,omitempty" xml:"ClientModel,omitempty"`
-	ClientOsName   *string `json:"ClientOsName,omitempty" xml:"ClientOsName,omitempty"`
-	ClientSn       *string `json:"ClientSn,omitempty" xml:"ClientSn,omitempty"`
-	ClientVersion  *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	CustomerId     *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DesktopId      *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	DesktopType    *int32  `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg       *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	FbType         *int32  `json:"FbType,omitempty" xml:"FbType,omitempty"`
-	FileListShrink *string `json:"FileList,omitempty" xml:"FileList,omitempty"`
-	IssueLabel     *string `json:"IssueLabel,omitempty" xml:"IssueLabel,omitempty"`
-	OccurTime      *int64  `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
-	ReservedA      *string `json:"ReservedA,omitempty" xml:"ReservedA,omitempty"`
-	ReservedB      *string `json:"ReservedB,omitempty" xml:"ReservedB,omitempty"`
-	TelNo          *string `json:"TelNo,omitempty" xml:"TelNo,omitempty"`
-	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	UserEmail      *string `json:"UserEmail,omitempty" xml:"UserEmail,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName       *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	WorkspaceId    *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WyId           *string `json:"WyId,omitempty" xml:"WyId,omitempty"`
+	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ClientAppVersion *string `json:"ClientAppVersion,omitempty" xml:"ClientAppVersion,omitempty"`
+	ClientId         *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientModel      *string `json:"ClientModel,omitempty" xml:"ClientModel,omitempty"`
+	ClientOsName     *string `json:"ClientOsName,omitempty" xml:"ClientOsName,omitempty"`
+	ClientSn         *string `json:"ClientSn,omitempty" xml:"ClientSn,omitempty"`
+	ClientVersion    *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	CustomerId       *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DesktopId        *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	DesktopType      *int32  `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
+	ErrorCode        *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg         *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	FbType           *int32  `json:"FbType,omitempty" xml:"FbType,omitempty"`
+	FileListShrink   *string `json:"FileList,omitempty" xml:"FileList,omitempty"`
+	IssueLabel       *string `json:"IssueLabel,omitempty" xml:"IssueLabel,omitempty"`
+	OccurTime        *int64  `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
+	ReservedA        *string `json:"ReservedA,omitempty" xml:"ReservedA,omitempty"`
+	ReservedB        *string `json:"ReservedB,omitempty" xml:"ReservedB,omitempty"`
+	TelNo            *string `json:"TelNo,omitempty" xml:"TelNo,omitempty"`
+	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserEmail        *string `json:"UserEmail,omitempty" xml:"UserEmail,omitempty"`
+	UserId           *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName         *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	WorkspaceId      *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WyId             *string `json:"WyId,omitempty" xml:"WyId,omitempty"`
 }
 
 func (s ReportUserFbIssueShrinkRequest) String() string {
@@ -9426,6 +10185,11 @@ func (s ReportUserFbIssueShrinkRequest) GoString() string {
 
 func (s *ReportUserFbIssueShrinkRequest) SetAppId(v string) *ReportUserFbIssueShrinkRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *ReportUserFbIssueShrinkRequest) SetClientAppVersion(v string) *ReportUserFbIssueShrinkRequest {
+	s.ClientAppVersion = &v
 	return s
 }
 
@@ -9672,11 +10436,12 @@ func (s *SendOpsMessageToTerminalsRequest) SetWaitForAck(v bool) *SendOpsMessage
 }
 
 type SendOpsMessageToTerminalsResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           []*SendOpsMessageToTerminalsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SendOpsMessageToTerminalsResponseBody) String() string {
@@ -9689,6 +10454,11 @@ func (s SendOpsMessageToTerminalsResponseBody) GoString() string {
 
 func (s *SendOpsMessageToTerminalsResponseBody) SetCode(v string) *SendOpsMessageToTerminalsResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *SendOpsMessageToTerminalsResponseBody) SetData(v []*SendOpsMessageToTerminalsResponseBodyData) *SendOpsMessageToTerminalsResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -9709,6 +10479,47 @@ func (s *SendOpsMessageToTerminalsResponseBody) SetRequestId(v string) *SendOpsM
 
 func (s *SendOpsMessageToTerminalsResponseBody) SetSuccess(v bool) *SendOpsMessageToTerminalsResponseBody {
 	s.Success = &v
+	return s
+}
+
+type SendOpsMessageToTerminalsResponseBodyData struct {
+	FailReason   *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s SendOpsMessageToTerminalsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendOpsMessageToTerminalsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SendOpsMessageToTerminalsResponseBodyData) SetFailReason(v string) *SendOpsMessageToTerminalsResponseBodyData {
+	s.FailReason = &v
+	return s
+}
+
+func (s *SendOpsMessageToTerminalsResponseBodyData) SetResult(v string) *SendOpsMessageToTerminalsResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+func (s *SendOpsMessageToTerminalsResponseBodyData) SetSerialNumber(v string) *SendOpsMessageToTerminalsResponseBodyData {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *SendOpsMessageToTerminalsResponseBodyData) SetSuccess(v bool) *SendOpsMessageToTerminalsResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+func (s *SendOpsMessageToTerminalsResponseBodyData) SetUuid(v string) *SendOpsMessageToTerminalsResponseBodyData {
+	s.Uuid = &v
 	return s
 }
 
@@ -10109,6 +10920,7 @@ func (s *UnbindDeviceSeatsResponse) SetBody(v *UnbindDeviceSeatsResponseBody) *U
 }
 
 type UnbindPasswordFreeLoginUserRequest struct {
+	MainBizType  *string `json:"MainBizType,omitempty" xml:"MainBizType,omitempty"`
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
@@ -10119,6 +10931,11 @@ func (s UnbindPasswordFreeLoginUserRequest) String() string {
 
 func (s UnbindPasswordFreeLoginUserRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UnbindPasswordFreeLoginUserRequest) SetMainBizType(v string) *UnbindPasswordFreeLoginUserRequest {
+	s.MainBizType = &v
+	return s
 }
 
 func (s *UnbindPasswordFreeLoginUserRequest) SetSerialNumber(v string) *UnbindPasswordFreeLoginUserRequest {
@@ -10534,30 +11351,48 @@ func (s *UpdateLabelResponse) SetBody(v *UpdateLabelResponseBody) *UpdateLabelRe
 }
 
 type UpdateTerminalPolicyRequest struct {
-	BackgroundModeTitle     *string `json:"BackgroundModeTitle,omitempty" xml:"BackgroundModeTitle,omitempty"`
-	DisplayLayout           *string `json:"DisplayLayout,omitempty" xml:"DisplayLayout,omitempty"`
-	DisplayResolution       *string `json:"DisplayResolution,omitempty" xml:"DisplayResolution,omitempty"`
-	DisplayScaleRatio       *string `json:"DisplayScaleRatio,omitempty" xml:"DisplayScaleRatio,omitempty"`
-	EnableAutoLockScreen    *int32  `json:"EnableAutoLockScreen,omitempty" xml:"EnableAutoLockScreen,omitempty"`
-	EnableAutoLogin         *int32  `json:"EnableAutoLogin,omitempty" xml:"EnableAutoLogin,omitempty"`
-	EnableBackgroundMode    *int32  `json:"EnableBackgroundMode,omitempty" xml:"EnableBackgroundMode,omitempty"`
-	EnableBluetooth         *int32  `json:"EnableBluetooth,omitempty" xml:"EnableBluetooth,omitempty"`
-	EnableModifyPassword    *int32  `json:"EnableModifyPassword,omitempty" xml:"EnableModifyPassword,omitempty"`
-	EnableScheduledReboot   *int32  `json:"EnableScheduledReboot,omitempty" xml:"EnableScheduledReboot,omitempty"`
-	EnableScheduledShutdown *int32  `json:"EnableScheduledShutdown,omitempty" xml:"EnableScheduledShutdown,omitempty"`
-	EnableSwitchPersonal    *int32  `json:"EnableSwitchPersonal,omitempty" xml:"EnableSwitchPersonal,omitempty"`
-	EnableWlan              *int32  `json:"EnableWlan,omitempty" xml:"EnableWlan,omitempty"`
-	IdleTimeout             *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	IdleTimeoutAction       *int32  `json:"IdleTimeoutAction,omitempty" xml:"IdleTimeoutAction,omitempty"`
-	Name                    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PowerButtonDefine       *int32  `json:"PowerButtonDefine,omitempty" xml:"PowerButtonDefine,omitempty"`
-	PowerButtonDefineForAs  *int32  `json:"PowerButtonDefineForAs,omitempty" xml:"PowerButtonDefineForAs,omitempty"`
-	PowerButtonDefineForNs  *int32  `json:"PowerButtonDefineForNs,omitempty" xml:"PowerButtonDefineForNs,omitempty"`
-	PowerOnBehavior         *int32  `json:"PowerOnBehavior,omitempty" xml:"PowerOnBehavior,omitempty"`
-	ScheduledReboot         *string `json:"ScheduledReboot,omitempty" xml:"ScheduledReboot,omitempty"`
-	ScheduledShutdown       *string `json:"ScheduledShutdown,omitempty" xml:"ScheduledShutdown,omitempty"`
-	SettingLock             *int32  `json:"SettingLock,omitempty" xml:"SettingLock,omitempty"`
-	TerminalPolicyId        *string `json:"TerminalPolicyId,omitempty" xml:"TerminalPolicyId,omitempty"`
+	AllowManualLockScreen      *int32    `json:"AllowManualLockScreen,omitempty" xml:"AllowManualLockScreen,omitempty"`
+	BackgroundModeTitle        *string   `json:"BackgroundModeTitle,omitempty" xml:"BackgroundModeTitle,omitempty"`
+	CustomScreenCastRes        *bool     `json:"CustomScreenCastRes,omitempty" xml:"CustomScreenCastRes,omitempty"`
+	DisplayLayout              *string   `json:"DisplayLayout,omitempty" xml:"DisplayLayout,omitempty"`
+	DisplayResolution          *string   `json:"DisplayResolution,omitempty" xml:"DisplayResolution,omitempty"`
+	DisplayScaleRatio          *string   `json:"DisplayScaleRatio,omitempty" xml:"DisplayScaleRatio,omitempty"`
+	EnableAutoLockScreen       *int32    `json:"EnableAutoLockScreen,omitempty" xml:"EnableAutoLockScreen,omitempty"`
+	EnableAutoLogin            *int32    `json:"EnableAutoLogin,omitempty" xml:"EnableAutoLogin,omitempty"`
+	EnableBackgroundMode       *int32    `json:"EnableBackgroundMode,omitempty" xml:"EnableBackgroundMode,omitempty"`
+	EnableBluetooth            *int32    `json:"EnableBluetooth,omitempty" xml:"EnableBluetooth,omitempty"`
+	EnableControlPanel         *int32    `json:"EnableControlPanel,omitempty" xml:"EnableControlPanel,omitempty"`
+	EnableImmersiveMode        *int32    `json:"EnableImmersiveMode,omitempty" xml:"EnableImmersiveMode,omitempty"`
+	EnableLockScreenHotKey     *int32    `json:"EnableLockScreenHotKey,omitempty" xml:"EnableLockScreenHotKey,omitempty"`
+	EnableModifyPassword       *int32    `json:"EnableModifyPassword,omitempty" xml:"EnableModifyPassword,omitempty"`
+	EnableScanLogin            *int32    `json:"EnableScanLogin,omitempty" xml:"EnableScanLogin,omitempty"`
+	EnableScheduledReboot      *int32    `json:"EnableScheduledReboot,omitempty" xml:"EnableScheduledReboot,omitempty"`
+	EnableScheduledShutdown    *int32    `json:"EnableScheduledShutdown,omitempty" xml:"EnableScheduledShutdown,omitempty"`
+	EnableSmsLogin             *int32    `json:"EnableSmsLogin,omitempty" xml:"EnableSmsLogin,omitempty"`
+	EnableSwitchPersonal       *int32    `json:"EnableSwitchPersonal,omitempty" xml:"EnableSwitchPersonal,omitempty"`
+	EnableWlan                 *int32    `json:"EnableWlan,omitempty" xml:"EnableWlan,omitempty"`
+	FollowCloudReboot          *int32    `json:"FollowCloudReboot,omitempty" xml:"FollowCloudReboot,omitempty"`
+	FollowCloudShutdown        *int32    `json:"FollowCloudShutdown,omitempty" xml:"FollowCloudShutdown,omitempty"`
+	FollowTerminalReboot       *int32    `json:"FollowTerminalReboot,omitempty" xml:"FollowTerminalReboot,omitempty"`
+	FollowTerminalShutdown     *int32    `json:"FollowTerminalShutdown,omitempty" xml:"FollowTerminalShutdown,omitempty"`
+	ForceSetPinCode            *int32    `json:"ForceSetPinCode,omitempty" xml:"ForceSetPinCode,omitempty"`
+	IdleTimeout                *int32    `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	IdleTimeoutAction          *int32    `json:"IdleTimeoutAction,omitempty" xml:"IdleTimeoutAction,omitempty"`
+	LockScreenPasswordRequired *int32    `json:"LockScreenPasswordRequired,omitempty" xml:"LockScreenPasswordRequired,omitempty"`
+	LockScreenTimeout          *int32    `json:"LockScreenTimeout,omitempty" xml:"LockScreenTimeout,omitempty"`
+	MainBizType                *string   `json:"MainBizType,omitempty" xml:"MainBizType,omitempty"`
+	Name                       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	PowerButtonDefine          *int32    `json:"PowerButtonDefine,omitempty" xml:"PowerButtonDefine,omitempty"`
+	PowerButtonDefineForAs     *int32    `json:"PowerButtonDefineForAs,omitempty" xml:"PowerButtonDefineForAs,omitempty"`
+	PowerButtonDefineForNs     *int32    `json:"PowerButtonDefineForNs,omitempty" xml:"PowerButtonDefineForNs,omitempty"`
+	PowerOnBehavior            *int32    `json:"PowerOnBehavior,omitempty" xml:"PowerOnBehavior,omitempty"`
+	RunningMode                *string   `json:"RunningMode,omitempty" xml:"RunningMode,omitempty"`
+	ScheduledReboot            *string   `json:"ScheduledReboot,omitempty" xml:"ScheduledReboot,omitempty"`
+	ScheduledShutdown          *string   `json:"ScheduledShutdown,omitempty" xml:"ScheduledShutdown,omitempty"`
+	ScreenCastResPaths         []*string `json:"ScreenCastResPaths,omitempty" xml:"ScreenCastResPaths,omitempty" type:"Repeated"`
+	SettingLock                *int32    `json:"SettingLock,omitempty" xml:"SettingLock,omitempty"`
+	TerminalPolicyId           *string   `json:"TerminalPolicyId,omitempty" xml:"TerminalPolicyId,omitempty"`
+	UnlockMethod               *int32    `json:"UnlockMethod,omitempty" xml:"UnlockMethod,omitempty"`
 }
 
 func (s UpdateTerminalPolicyRequest) String() string {
@@ -10568,8 +11403,18 @@ func (s UpdateTerminalPolicyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateTerminalPolicyRequest) SetAllowManualLockScreen(v int32) *UpdateTerminalPolicyRequest {
+	s.AllowManualLockScreen = &v
+	return s
+}
+
 func (s *UpdateTerminalPolicyRequest) SetBackgroundModeTitle(v string) *UpdateTerminalPolicyRequest {
 	s.BackgroundModeTitle = &v
+	return s
+}
+
+func (s *UpdateTerminalPolicyRequest) SetCustomScreenCastRes(v bool) *UpdateTerminalPolicyRequest {
+	s.CustomScreenCastRes = &v
 	return s
 }
 
@@ -10608,8 +11453,28 @@ func (s *UpdateTerminalPolicyRequest) SetEnableBluetooth(v int32) *UpdateTermina
 	return s
 }
 
+func (s *UpdateTerminalPolicyRequest) SetEnableControlPanel(v int32) *UpdateTerminalPolicyRequest {
+	s.EnableControlPanel = &v
+	return s
+}
+
+func (s *UpdateTerminalPolicyRequest) SetEnableImmersiveMode(v int32) *UpdateTerminalPolicyRequest {
+	s.EnableImmersiveMode = &v
+	return s
+}
+
+func (s *UpdateTerminalPolicyRequest) SetEnableLockScreenHotKey(v int32) *UpdateTerminalPolicyRequest {
+	s.EnableLockScreenHotKey = &v
+	return s
+}
+
 func (s *UpdateTerminalPolicyRequest) SetEnableModifyPassword(v int32) *UpdateTerminalPolicyRequest {
 	s.EnableModifyPassword = &v
+	return s
+}
+
+func (s *UpdateTerminalPolicyRequest) SetEnableScanLogin(v int32) *UpdateTerminalPolicyRequest {
+	s.EnableScanLogin = &v
 	return s
 }
 
@@ -10623,6 +11488,11 @@ func (s *UpdateTerminalPolicyRequest) SetEnableScheduledShutdown(v int32) *Updat
 	return s
 }
 
+func (s *UpdateTerminalPolicyRequest) SetEnableSmsLogin(v int32) *UpdateTerminalPolicyRequest {
+	s.EnableSmsLogin = &v
+	return s
+}
+
 func (s *UpdateTerminalPolicyRequest) SetEnableSwitchPersonal(v int32) *UpdateTerminalPolicyRequest {
 	s.EnableSwitchPersonal = &v
 	return s
@@ -10633,6 +11503,31 @@ func (s *UpdateTerminalPolicyRequest) SetEnableWlan(v int32) *UpdateTerminalPoli
 	return s
 }
 
+func (s *UpdateTerminalPolicyRequest) SetFollowCloudReboot(v int32) *UpdateTerminalPolicyRequest {
+	s.FollowCloudReboot = &v
+	return s
+}
+
+func (s *UpdateTerminalPolicyRequest) SetFollowCloudShutdown(v int32) *UpdateTerminalPolicyRequest {
+	s.FollowCloudShutdown = &v
+	return s
+}
+
+func (s *UpdateTerminalPolicyRequest) SetFollowTerminalReboot(v int32) *UpdateTerminalPolicyRequest {
+	s.FollowTerminalReboot = &v
+	return s
+}
+
+func (s *UpdateTerminalPolicyRequest) SetFollowTerminalShutdown(v int32) *UpdateTerminalPolicyRequest {
+	s.FollowTerminalShutdown = &v
+	return s
+}
+
+func (s *UpdateTerminalPolicyRequest) SetForceSetPinCode(v int32) *UpdateTerminalPolicyRequest {
+	s.ForceSetPinCode = &v
+	return s
+}
+
 func (s *UpdateTerminalPolicyRequest) SetIdleTimeout(v int32) *UpdateTerminalPolicyRequest {
 	s.IdleTimeout = &v
 	return s
@@ -10640,6 +11535,21 @@ func (s *UpdateTerminalPolicyRequest) SetIdleTimeout(v int32) *UpdateTerminalPol
 
 func (s *UpdateTerminalPolicyRequest) SetIdleTimeoutAction(v int32) *UpdateTerminalPolicyRequest {
 	s.IdleTimeoutAction = &v
+	return s
+}
+
+func (s *UpdateTerminalPolicyRequest) SetLockScreenPasswordRequired(v int32) *UpdateTerminalPolicyRequest {
+	s.LockScreenPasswordRequired = &v
+	return s
+}
+
+func (s *UpdateTerminalPolicyRequest) SetLockScreenTimeout(v int32) *UpdateTerminalPolicyRequest {
+	s.LockScreenTimeout = &v
+	return s
+}
+
+func (s *UpdateTerminalPolicyRequest) SetMainBizType(v string) *UpdateTerminalPolicyRequest {
+	s.MainBizType = &v
 	return s
 }
 
@@ -10668,6 +11578,11 @@ func (s *UpdateTerminalPolicyRequest) SetPowerOnBehavior(v int32) *UpdateTermina
 	return s
 }
 
+func (s *UpdateTerminalPolicyRequest) SetRunningMode(v string) *UpdateTerminalPolicyRequest {
+	s.RunningMode = &v
+	return s
+}
+
 func (s *UpdateTerminalPolicyRequest) SetScheduledReboot(v string) *UpdateTerminalPolicyRequest {
 	s.ScheduledReboot = &v
 	return s
@@ -10678,6 +11593,11 @@ func (s *UpdateTerminalPolicyRequest) SetScheduledShutdown(v string) *UpdateTerm
 	return s
 }
 
+func (s *UpdateTerminalPolicyRequest) SetScreenCastResPaths(v []*string) *UpdateTerminalPolicyRequest {
+	s.ScreenCastResPaths = v
+	return s
+}
+
 func (s *UpdateTerminalPolicyRequest) SetSettingLock(v int32) *UpdateTerminalPolicyRequest {
 	s.SettingLock = &v
 	return s
@@ -10685,6 +11605,11 @@ func (s *UpdateTerminalPolicyRequest) SetSettingLock(v int32) *UpdateTerminalPol
 
 func (s *UpdateTerminalPolicyRequest) SetTerminalPolicyId(v string) *UpdateTerminalPolicyRequest {
 	s.TerminalPolicyId = &v
+	return s
+}
+
+func (s *UpdateTerminalPolicyRequest) SetUnlockMethod(v int32) *UpdateTerminalPolicyRequest {
+	s.UnlockMethod = &v
 	return s
 }
 
@@ -11253,12 +12178,24 @@ func (client *Client) AddTerminalWithOptions(request *AddTerminalRequest, runtim
 		body["Alias"] = request.Alias
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientType)) {
+		body["ClientType"] = request.ClientType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MainBizType)) {
+		body["MainBizType"] = request.MainBizType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
 		body["SerialNumber"] = request.SerialNumber
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TerminalGroupId)) {
 		body["TerminalGroupId"] = request.TerminalGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		body["Uuid"] = request.Uuid
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -11320,6 +12257,10 @@ func (client *Client) AddTerminalsWithOptions(request *AddTerminalsRequest, runt
 	bodyFlat := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AddTerminalParams)) {
 		bodyFlat["AddTerminalParams"] = request.AddTerminalParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MainBizType)) {
+		body["MainBizType"] = request.MainBizType
 	}
 
 	body = tea.ToMap(body,
@@ -11652,6 +12593,10 @@ func (client *Client) BindPasswordFreeLoginUserWithOptions(request *BindPassword
 		body["EndUserId"] = request.EndUserId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MainBizType)) {
+		body["MainBizType"] = request.MainBizType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
 		body["SerialNumber"] = request.SerialNumber
 	}
@@ -11732,6 +12677,10 @@ func (client *Client) CheckUuidValidWithOptions(request *CheckUuidValidRequest, 
 		body["ClientId"] = request.ClientId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientVersion)) {
+		body["ClientVersion"] = request.ClientVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CustomId)) {
 		body["CustomId"] = request.CustomId
 	}
@@ -11740,8 +12689,20 @@ func (client *Client) CheckUuidValidWithOptions(request *CheckUuidValidRequest, 
 		body["EtherMac"] = request.EtherMac
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LoginRegionId)) {
+		body["LoginRegionId"] = request.LoginRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginToken)) {
+		body["LoginToken"] = request.LoginToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SerialNo)) {
 		body["SerialNo"] = request.SerialNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
@@ -11868,6 +12829,10 @@ func (client *Client) CreateAppOtaTaskWithOptions(request *CreateAppOtaTaskReque
 		query["TenantId"] = request.TenantId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TenantIdList)) {
+		query["TenantIdList"] = request.TenantIdList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11966,6 +12931,10 @@ func (client *Client) CreateAppOtaVersionWithOptions(request *CreateAppOtaVersio
 
 	if !tea.BoolValue(util.IsUnset(request.Project)) {
 		query["Project"] = request.Project
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationVersionUids)) {
+		query["RelationVersionUids"] = request.RelationVersionUids
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ReleaseNote)) {
@@ -12268,6 +13237,14 @@ func (client *Client) DescribeAppOtaVersionWithOptions(request *DescribeAppOtaVe
 
 	if !tea.BoolValue(util.IsUnset(request.Creator)) {
 		query["Creator"] = request.Creator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NullChannel)) {
+		query["NullChannel"] = request.NullChannel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtaType)) {
+		query["OtaType"] = request.OtaType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Project)) {
@@ -13661,6 +14638,110 @@ func (client *Client) GetVersionDownloadUrl(request *GetVersionDownloadUrlReques
 
 // Summary:
 //
+// 获取用户已绑定的可信设备列表
+//
+// @param request - ListBoundDevicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBoundDevicesResponse
+func (client *Client) ListBoundDevicesWithOptions(request *ListBoundDevicesRequest, runtime *util.RuntimeOptions) (_result *ListBoundDevicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdDomain)) {
+		body["AdDomain"] = request.AdDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Alias)) {
+		body["Alias"] = request.Alias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientType)) {
+		body["ClientType"] = request.ClientType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		body["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		body["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InManage)) {
+		body["InManage"] = request.InManage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LastLoginUser)) {
+		body["LastLoginUser"] = request.LastLoginUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SerialNo)) {
+		body["SerialNo"] = request.SerialNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		body["UserType"] = request.UserType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		body["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBoundDevices"),
+		Version:     tea.String("2021-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBoundDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户已绑定的可信设备列表
+//
+// @param request - ListBoundDevicesRequest
+//
+// @return ListBoundDevicesResponse
+func (client *Client) ListBoundDevices(request *ListBoundDevicesRequest) (_result *ListBoundDevicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBoundDevicesResponse{}
+	_body, _err := client.ListBoundDevicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取租户ota任务
 //
 // @param request - ListDeviceOtaTaskByTenantRequest
@@ -13832,6 +14913,10 @@ func (client *Client) ListDevicesWithOptions(request *ListDevicesRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.DevicePlatform)) {
 		query["DevicePlatform"] = request.DevicePlatform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LastLoginUser)) {
+		query["LastLoginUser"] = request.LastLoginUser
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LocationInfo)) {
@@ -14307,6 +15392,10 @@ func (client *Client) ListTerminalsWithOptions(request *ListTerminalsRequest, ru
 		body["InManage"] = request.InManage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MainBizType)) {
+		body["MainBizType"] = request.MainBizType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		body["MaxResults"] = request.MaxResults
 	}
@@ -14448,6 +15537,110 @@ func (client *Client) ListTrustDevices(request *ListTrustDevicesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTrustDevicesResponse{}
 	_body, _err := client.ListTrustDevicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户未绑定的可信设备列表
+//
+// @param request - ListUnbindDevicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUnbindDevicesResponse
+func (client *Client) ListUnbindDevicesWithOptions(request *ListUnbindDevicesRequest, runtime *util.RuntimeOptions) (_result *ListUnbindDevicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdDomain)) {
+		body["AdDomain"] = request.AdDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Alias)) {
+		body["Alias"] = request.Alias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientType)) {
+		body["ClientType"] = request.ClientType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		body["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		body["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InManage)) {
+		body["InManage"] = request.InManage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LastLoginUser)) {
+		body["LastLoginUser"] = request.LastLoginUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SerialNo)) {
+		body["SerialNo"] = request.SerialNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		body["UserType"] = request.UserType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		body["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUnbindDevices"),
+		Version:     tea.String("2021-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUnbindDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户未绑定的可信设备列表
+//
+// @param request - ListUnbindDevicesRequest
+//
+// @return ListUnbindDevicesResponse
+func (client *Client) ListUnbindDevices(request *ListUnbindDevicesRequest) (_result *ListUnbindDevicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUnbindDevicesResponse{}
+	_body, _err := client.ListUnbindDevicesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15218,6 +16411,10 @@ func (client *Client) ReportUserFbIssueWithOptions(tmpReq *ReportUserFbIssueRequ
 		body["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientAppVersion)) {
+		body["ClientAppVersion"] = request.ClientAppVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
 		body["ClientId"] = request.ClientId
 	}
@@ -15721,6 +16918,10 @@ func (client *Client) UnbindPasswordFreeLoginUserWithOptions(request *UnbindPass
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MainBizType)) {
+		body["MainBizType"] = request.MainBizType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
 		body["SerialNumber"] = request.SerialNumber
 	}
@@ -15997,8 +17198,16 @@ func (client *Client) UpdateTerminalPolicyWithOptions(request *UpdateTerminalPol
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowManualLockScreen)) {
+		body["AllowManualLockScreen"] = request.AllowManualLockScreen
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BackgroundModeTitle)) {
 		body["BackgroundModeTitle"] = request.BackgroundModeTitle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomScreenCastRes)) {
+		body["CustomScreenCastRes"] = request.CustomScreenCastRes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DisplayLayout)) {
@@ -16029,8 +17238,24 @@ func (client *Client) UpdateTerminalPolicyWithOptions(request *UpdateTerminalPol
 		body["EnableBluetooth"] = request.EnableBluetooth
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableControlPanel)) {
+		body["EnableControlPanel"] = request.EnableControlPanel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableImmersiveMode)) {
+		body["EnableImmersiveMode"] = request.EnableImmersiveMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableLockScreenHotKey)) {
+		body["EnableLockScreenHotKey"] = request.EnableLockScreenHotKey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnableModifyPassword)) {
 		body["EnableModifyPassword"] = request.EnableModifyPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableScanLogin)) {
+		body["EnableScanLogin"] = request.EnableScanLogin
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnableScheduledReboot)) {
@@ -16041,6 +17266,10 @@ func (client *Client) UpdateTerminalPolicyWithOptions(request *UpdateTerminalPol
 		body["EnableScheduledShutdown"] = request.EnableScheduledShutdown
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableSmsLogin)) {
+		body["EnableSmsLogin"] = request.EnableSmsLogin
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnableSwitchPersonal)) {
 		body["EnableSwitchPersonal"] = request.EnableSwitchPersonal
 	}
@@ -16049,12 +17278,44 @@ func (client *Client) UpdateTerminalPolicyWithOptions(request *UpdateTerminalPol
 		body["EnableWlan"] = request.EnableWlan
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FollowCloudReboot)) {
+		body["FollowCloudReboot"] = request.FollowCloudReboot
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FollowCloudShutdown)) {
+		body["FollowCloudShutdown"] = request.FollowCloudShutdown
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FollowTerminalReboot)) {
+		body["FollowTerminalReboot"] = request.FollowTerminalReboot
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FollowTerminalShutdown)) {
+		body["FollowTerminalShutdown"] = request.FollowTerminalShutdown
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceSetPinCode)) {
+		body["ForceSetPinCode"] = request.ForceSetPinCode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
 		body["IdleTimeout"] = request.IdleTimeout
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IdleTimeoutAction)) {
 		body["IdleTimeoutAction"] = request.IdleTimeoutAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LockScreenPasswordRequired)) {
+		body["LockScreenPasswordRequired"] = request.LockScreenPasswordRequired
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LockScreenTimeout)) {
+		body["LockScreenTimeout"] = request.LockScreenTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MainBizType)) {
+		body["MainBizType"] = request.MainBizType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -16077,12 +17338,21 @@ func (client *Client) UpdateTerminalPolicyWithOptions(request *UpdateTerminalPol
 		body["PowerOnBehavior"] = request.PowerOnBehavior
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RunningMode)) {
+		body["RunningMode"] = request.RunningMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ScheduledReboot)) {
 		body["ScheduledReboot"] = request.ScheduledReboot
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ScheduledShutdown)) {
 		body["ScheduledShutdown"] = request.ScheduledShutdown
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ScreenCastResPaths)) {
+		bodyFlat["ScreenCastResPaths"] = request.ScreenCastResPaths
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SettingLock)) {
@@ -16093,6 +17363,12 @@ func (client *Client) UpdateTerminalPolicyWithOptions(request *UpdateTerminalPol
 		body["TerminalPolicyId"] = request.TerminalPolicyId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UnlockMethod)) {
+		body["UnlockMethod"] = request.UnlockMethod
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
