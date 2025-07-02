@@ -391,6 +391,29 @@ func (s *AckNodeSelectorTaints) SetValue(v string) *AckNodeSelectorTaints {
 	return s
 }
 
+type AdviseSummary struct {
+	MemoryUtilizationRate *DoubleMetric `json:"MemoryUtilizationRate,omitempty" xml:"MemoryUtilizationRate,omitempty"`
+	VcoreUtilizationRate  *DoubleMetric `json:"VcoreUtilizationRate,omitempty" xml:"VcoreUtilizationRate,omitempty"`
+}
+
+func (s AdviseSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AdviseSummary) GoString() string {
+	return s.String()
+}
+
+func (s *AdviseSummary) SetMemoryUtilizationRate(v *DoubleMetric) *AdviseSummary {
+	s.MemoryUtilizationRate = v
+	return s
+}
+
+func (s *AdviseSummary) SetVcoreUtilizationRate(v *DoubleMetric) *AdviseSummary {
+	s.VcoreUtilizationRate = v
+	return s
+}
+
 type ApiTemplate struct {
 	// 接口名。
 	//
@@ -2326,6 +2349,137 @@ func (s *ConvertNodeGroupParam) SetPaymentType(v string) *ConvertNodeGroupParam 
 	return s
 }
 
+type CostInstanceType struct {
+	// CPU核数。
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// 数据盘列表。
+	DataDisks []*DataDisk `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	// 实例类型列表。
+	//
+	// example:
+	//
+	// ["ecs.g6.4xlarge"]
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// 内存大小。
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// 系统盘信息。
+	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
+}
+
+func (s CostInstanceType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CostInstanceType) GoString() string {
+	return s.String()
+}
+
+func (s *CostInstanceType) SetCpu(v int32) *CostInstanceType {
+	s.Cpu = &v
+	return s
+}
+
+func (s *CostInstanceType) SetDataDisks(v []*DataDisk) *CostInstanceType {
+	s.DataDisks = v
+	return s
+}
+
+func (s *CostInstanceType) SetInstanceType(v string) *CostInstanceType {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CostInstanceType) SetMemory(v int32) *CostInstanceType {
+	s.Memory = &v
+	return s
+}
+
+func (s *CostInstanceType) SetSystemDisk(v *SystemDisk) *CostInstanceType {
+	s.SystemDisk = v
+	return s
+}
+
+type CostNodeGroupConfig struct {
+	// 实例类型列表。
+	InstanceTypes []*CostInstanceType `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	// 最大节点数限制。
+	//
+	// example:
+	//
+	// 100
+	MaximalNodeCount *int32 `json:"MaximalNodeCount,omitempty" xml:"MaximalNodeCount,omitempty"`
+	// 最小节点数限制。
+	//
+	// example:
+	//
+	// 0
+	MinimalNodeCount *int32 `json:"MinimalNodeCount,omitempty" xml:"MinimalNodeCount,omitempty"`
+	// 节点数。
+	//
+	// example:
+	//
+	// 1
+	NodeCount     *int32  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	// 节点组类型。取值范围：
+	//
+	// - MASTER：管理类型节点组。
+	//
+	// - CORE：存储类型节点组。
+	//
+	// - TASK：计算类型节点组。
+	//
+	// example:
+	//
+	// CORE
+	NodeGroupType *string `json:"NodeGroupType,omitempty" xml:"NodeGroupType,omitempty"`
+	// 付费类型。
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+}
+
+func (s CostNodeGroupConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CostNodeGroupConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CostNodeGroupConfig) SetInstanceTypes(v []*CostInstanceType) *CostNodeGroupConfig {
+	s.InstanceTypes = v
+	return s
+}
+
+func (s *CostNodeGroupConfig) SetMaximalNodeCount(v int32) *CostNodeGroupConfig {
+	s.MaximalNodeCount = &v
+	return s
+}
+
+func (s *CostNodeGroupConfig) SetMinimalNodeCount(v int32) *CostNodeGroupConfig {
+	s.MinimalNodeCount = &v
+	return s
+}
+
+func (s *CostNodeGroupConfig) SetNodeCount(v int32) *CostNodeGroupConfig {
+	s.NodeCount = &v
+	return s
+}
+
+func (s *CostNodeGroupConfig) SetNodeGroupName(v string) *CostNodeGroupConfig {
+	s.NodeGroupName = &v
+	return s
+}
+
+func (s *CostNodeGroupConfig) SetNodeGroupType(v string) *CostNodeGroupConfig {
+	s.NodeGroupType = &v
+	return s
+}
+
+func (s *CostNodeGroupConfig) SetPaymentType(v string) *CostNodeGroupConfig {
+	s.PaymentType = &v
+	return s
+}
+
 type CostOptimizedConfig struct {
 	// 按量实例个数的最小值。节点组所需要按量实例个数的最小值，取值范围：0~1000。当按量实例个数少于该值时，将优先创建按量实例。
 	//
@@ -2892,6 +3046,29 @@ func (s *DiskSize) SetSize(v int32) *DiskSize {
 	return s
 }
 
+type DoubleMetric struct {
+	Unit  *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	Value *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DoubleMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DoubleMetric) GoString() string {
+	return s.String()
+}
+
+func (s *DoubleMetric) SetUnit(v string) *DoubleMetric {
+	s.Unit = &v
+	return s
+}
+
+func (s *DoubleMetric) SetValue(v float64) *DoubleMetric {
+	s.Value = &v
+	return s
+}
+
 type FailedReason struct {
 	// 错误码。
 	//
@@ -3298,6 +3475,29 @@ func (s *InstanceType) SetLocalStorageCapacity(v int64) *InstanceType {
 
 func (s *InstanceType) SetOptimized(v bool) *InstanceType {
 	s.Optimized = &v
+	return s
+}
+
+type IntegerMetric struct {
+	Unit  *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s IntegerMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IntegerMetric) GoString() string {
+	return s.String()
+}
+
+func (s *IntegerMetric) SetUnit(v string) *IntegerMetric {
+	s.Unit = &v
+	return s
+}
+
+func (s *IntegerMetric) SetValue(v int32) *IntegerMetric {
+	s.Value = &v
 	return s
 }
 
@@ -3969,6 +4169,10 @@ type NodeGroup struct {
 	//
 	// ["sg-hp3abbae8lb6lmb1****"]
 	AdditionalSecurityGroupIds []*string `json:"AdditionalSecurityGroupIds,omitempty" xml:"AdditionalSecurityGroupIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	CompensateWithOnDemand *bool `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
 	// 成本优化模式配置。
 	CostOptimizedConfig *CostOptimizedConfig `json:"CostOptimizedConfig,omitempty" xml:"CostOptimizedConfig,omitempty"`
 	// 数据盘列表。
@@ -4122,6 +4326,11 @@ func (s *NodeGroup) SetAdditionalSecurityGroupIds(v []*string) *NodeGroup {
 	return s
 }
 
+func (s *NodeGroup) SetCompensateWithOnDemand(v bool) *NodeGroup {
+	s.CompensateWithOnDemand = &v
+	return s
+}
+
 func (s *NodeGroup) SetCostOptimizedConfig(v *CostOptimizedConfig) *NodeGroup {
 	s.CostOptimizedConfig = v
 	return s
@@ -4240,7 +4449,11 @@ type NodeGroupConfig struct {
 	// ["sg-hp3abbae8lb6lmb1****"]
 	AdditionalSecurityGroupIds []*string          `json:"AdditionalSecurityGroupIds,omitempty" xml:"AdditionalSecurityGroupIds,omitempty" type:"Repeated"`
 	AutoScalingPolicy          *AutoScalingPolicy `json:"AutoScalingPolicy,omitempty" xml:"AutoScalingPolicy,omitempty"`
-	ComponentTags              []*string          `json:"ComponentTags,omitempty" xml:"ComponentTags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	CompensateWithOnDemand *bool     `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
+	ComponentTags          []*string `json:"ComponentTags,omitempty" xml:"ComponentTags,omitempty" type:"Repeated"`
 	// 成本优化模式配置。
 	CostOptimizedConfig *CostOptimizedConfig `json:"CostOptimizedConfig,omitempty" xml:"CostOptimizedConfig,omitempty"`
 	// 数据盘。当前数据盘只支持一种磁盘类型，即数组元数个数N的取值范围：1~1。
@@ -4395,6 +4608,11 @@ func (s *NodeGroupConfig) SetAdditionalSecurityGroupIds(v []*string) *NodeGroupC
 
 func (s *NodeGroupConfig) SetAutoScalingPolicy(v *AutoScalingPolicy) *NodeGroupConfig {
 	s.AutoScalingPolicy = v
+	return s
+}
+
+func (s *NodeGroupConfig) SetCompensateWithOnDemand(v bool) *NodeGroupConfig {
+	s.CompensateWithOnDemand = &v
 	return s
 }
 
@@ -5580,6 +5798,41 @@ func (s *ResizeDiskNodeGroupParam) SetRollingRestart(v bool) *ResizeDiskNodeGrou
 	return s
 }
 
+type ResourceSummary struct {
+	InefficientTaskRate   *DoubleMetric  `json:"InefficientTaskRate,omitempty" xml:"InefficientTaskRate,omitempty"`
+	MemoryUtilizationRate *DoubleMetric  `json:"MemoryUtilizationRate,omitempty" xml:"MemoryUtilizationRate,omitempty"`
+	OriginalTotalVcore    *IntegerMetric `json:"OriginalTotalVcore,omitempty" xml:"OriginalTotalVcore,omitempty"`
+	VcoreUtilizationRate  *DoubleMetric  `json:"VcoreUtilizationRate,omitempty" xml:"VcoreUtilizationRate,omitempty"`
+}
+
+func (s ResourceSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceSummary) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceSummary) SetInefficientTaskRate(v *DoubleMetric) *ResourceSummary {
+	s.InefficientTaskRate = v
+	return s
+}
+
+func (s *ResourceSummary) SetMemoryUtilizationRate(v *DoubleMetric) *ResourceSummary {
+	s.MemoryUtilizationRate = v
+	return s
+}
+
+func (s *ResourceSummary) SetOriginalTotalVcore(v *IntegerMetric) *ResourceSummary {
+	s.OriginalTotalVcore = v
+	return s
+}
+
+func (s *ResourceSummary) SetVcoreUtilizationRate(v *DoubleMetric) *ResourceSummary {
+	s.VcoreUtilizationRate = v
+	return s
+}
+
 type ScalingActivity struct {
 	Cause            *string `json:"Cause,omitempty" xml:"Cause,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -6180,6 +6433,68 @@ func (s *ScalingGroupConfigPrivatePoolOptions) SetId(v string) *ScalingGroupConf
 
 func (s *ScalingGroupConfigPrivatePoolOptions) SetMatchCriteria(v string) *ScalingGroupConfigPrivatePoolOptions {
 	s.MatchCriteria = &v
+	return s
+}
+
+type ScalingPolicy struct {
+	ClusterId       *string                    `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Constraints     *ManagedScalingConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	Disabled        *bool                      `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	NodeGroupId     *string                    `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupName   *string                    `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	ScalingPolicyId *string                    `json:"ScalingPolicyId,omitempty" xml:"ScalingPolicyId,omitempty"`
+	// example:
+	//
+	// AUTO / MANAGED
+	ScalingPolicyType *string        `json:"ScalingPolicyType,omitempty" xml:"ScalingPolicyType,omitempty"`
+	ScalingRules      []*ScalingRule `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
+}
+
+func (s ScalingPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScalingPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ScalingPolicy) SetClusterId(v string) *ScalingPolicy {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ScalingPolicy) SetConstraints(v *ManagedScalingConstraints) *ScalingPolicy {
+	s.Constraints = v
+	return s
+}
+
+func (s *ScalingPolicy) SetDisabled(v bool) *ScalingPolicy {
+	s.Disabled = &v
+	return s
+}
+
+func (s *ScalingPolicy) SetNodeGroupId(v string) *ScalingPolicy {
+	s.NodeGroupId = &v
+	return s
+}
+
+func (s *ScalingPolicy) SetNodeGroupName(v string) *ScalingPolicy {
+	s.NodeGroupName = &v
+	return s
+}
+
+func (s *ScalingPolicy) SetScalingPolicyId(v string) *ScalingPolicy {
+	s.ScalingPolicyId = &v
+	return s
+}
+
+func (s *ScalingPolicy) SetScalingPolicyType(v string) *ScalingPolicy {
+	s.ScalingPolicyType = &v
+	return s
+}
+
+func (s *ScalingPolicy) SetScalingRules(v []*ScalingRule) *ScalingPolicy {
+	s.ScalingRules = v
 	return s
 }
 
@@ -7744,7 +8059,7 @@ type CreateApiTemplateRequest struct {
 	//
 	// example:
 	//
-	// DATALAKE模板
+	// DATALAKE template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -7855,13 +8170,13 @@ func (s *CreateApiTemplateResponse) SetBody(v *CreateApiTemplateResponseBody) *C
 }
 
 type CreateClusterRequest struct {
-	// The application configurations. Number of elements in the array: 1 to 1000.
+	// The service configurations. Number of elements in the array: 1 to 1,000.
 	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
 	// The services. Number of elements in the array: 1 to 100.
 	//
 	// This parameter is required.
 	Applications []*Application `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// The bootstrap actions. Number of elements in the array: 1 to 10.
+	// The array of bootstrap scripts. Number of elements in the array: 1 to 10.
 	BootstrapScripts []*Script `json:"BootstrapScripts,omitempty" xml:"BootstrapScripts,omitempty" type:"Repeated"`
 	// The idempotent client token. If you call the same ClientToken multiple times, the returned results are the same. Only one cluster can be created with the same ClientToken.
 	//
@@ -7927,11 +8242,11 @@ type CreateClusterRequest struct {
 	//
 	// Emr cluster for ETL
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The attributes of all ECS instances.
+	// The node attributes. The basic attributes of all ECS nodes in the cluster.
 	//
 	// This parameter is required.
 	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
-	// The node groups. Number of elements in the array: 1 to 100.
+	// The array of configurations of the node groups. Number of elements in the array: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -7985,7 +8300,7 @@ type CreateClusterRequest struct {
 	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
 	// The subscription configurations. This parameter takes effect only if you set the PaymentType parameter to Subscription.
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	// The tags. Number of elements in the array: 0 to 20.
+	// The tag. Number of elements in the array: 0 to 20.
 	//
 	// example:
 	//
@@ -8301,11 +8616,11 @@ type CreateScriptRequest struct {
 	//
 	// BOOTSTRAP
 	ScriptType *string `json:"ScriptType,omitempty" xml:"ScriptType,omitempty"`
-	// The common scripts or bootstrap actions.
+	// The list of scripts.
 	//
 	// This parameter is required.
 	Scripts []*Script `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
-	// The timeout period for manually running a common script. You cannot specify the timeout period for a bootstrap action.
+	// The timeout period for a manual execution script. You cannot specify a timeout period for a bootstrap action.
 	TimeoutSecs *string `json:"TimeoutSecs,omitempty" xml:"TimeoutSecs,omitempty"`
 }
 
@@ -8558,7 +8873,7 @@ type DecreaseNodesRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The number of nodes to scale in. The number of nodes to be scaled in. The value should be less than the number of surviving nodes in the current node group.
+	// The number of nodes to scale out. The number of nodes to be scaled out. The value should be less than the number of surviving nodes in the current node group.
 	//
 	// example:
 	//
@@ -9036,7 +9351,7 @@ func (s *DeleteScriptResponse) SetBody(v *DeleteScriptResponseBody) *DeleteScrip
 }
 
 type DeleteUsersRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -9044,12 +9359,15 @@ type DeleteUsersRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The usernames. Number of elements in the array: 0 to 10.
 	UserNames []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
 }
 
@@ -9077,7 +9395,7 @@ func (s *DeleteUsersRequest) SetUserNames(v []*string) *DeleteUsersRequest {
 }
 
 type DeleteUsersShrinkRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -9085,12 +9403,15 @@ type DeleteUsersShrinkRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The usernames. Number of elements in the array: 0 to 10.
 	UserNamesShrink *string `json:"UserNames,omitempty" xml:"UserNames,omitempty"`
 }
 
@@ -9118,10 +9439,14 @@ func (s *DeleteUsersShrinkRequest) SetUserNamesShrink(v string) *DeleteUsersShri
 }
 
 type DeleteUsersResponseBody struct {
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -9777,7 +10102,12 @@ type GetAutoScalingActivityResponseBodyScalingActivity struct {
 	//
 	// op-13c37a77c505****
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	PolicyType  *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The policy type.
+	//
+	// example:
+	//
+	// AUTO
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	// The description of the scaling rule.
 	RuleDetail *ScalingRule `json:"RuleDetail,omitempty" xml:"RuleDetail,omitempty"`
 	// The name of the scaling rule.
@@ -9963,7 +10293,7 @@ type GetAutoScalingPolicyResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the auto scaling policy.
+	// The auto scaling policy.
 	ScalingPolicy *GetAutoScalingPolicyResponseBodyScalingPolicy `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty" type:"Struct"`
 }
 
@@ -10326,7 +10656,7 @@ func (s *GetClusterCloneMetaRequest) SetRegionId(v string) *GetClusterCloneMetaR
 }
 
 type GetClusterCloneMetaResponseBody struct {
-	// The metadata of the cluster that you want to clone.
+	// Cluster clone metadata.
 	ClusterCloneMeta *GetClusterCloneMetaResponseBodyClusterCloneMeta `json:"ClusterCloneMeta,omitempty" xml:"ClusterCloneMeta,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -10357,9 +10687,9 @@ func (s *GetClusterCloneMetaResponseBody) SetRequestId(v string) *GetClusterClon
 type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
 	// The modified configuration items.
 	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
-	// The services.
+	// The cluster applications.
 	Applications []*Application `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// The bootstrap actions. Number of elements in the array: 1 to 10.
+	// An array of bootstrap scripts. The number of elements in the array: 1 to 10.
 	BootstrapScripts []*Script `json:"BootstrapScripts,omitempty" xml:"BootstrapScripts,omitempty" type:"Repeated"`
 	// The cluster ID.
 	//
@@ -10446,10 +10776,14 @@ type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
 	// 	- False
 	//
 	// 	- True
+	//
+	// example:
+	//
+	// True
 	ExistCloneConfig *bool `json:"ExistCloneConfig,omitempty" xml:"ExistCloneConfig,omitempty"`
 	// The node attributes.
 	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
-	// The node groups. Number of elements in the array: 1 to 100.
+	// The node groups. The number of elements in the array: 1 to 100.
 	NodeGroups []*NodeGroup `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
 	// The billing method of the cluster. Valid values:
 	//
@@ -10493,7 +10827,7 @@ type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
 	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
 	// The subscription configurations.
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	// The tags.
+	// The list of cluster tags.
 	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -14534,10 +14868,6 @@ type GetDoctorHBaseTableResponseBodyDataAnalysis struct {
 	// null
 	ReadRequestHotspotRegionList []*string `json:"ReadRequestHotspotRegionList,omitempty" xml:"ReadRequestHotspotRegionList,omitempty" type:"Repeated"`
 	// Description of read imbalance.
-	//
-	// example:
-	//
-	// read request unbalance is <p class=\\"report-detail-topic\\">表分区总数量为14，分区平均读请求数量为5032486，以下分区存在读请求热点访问：</p><ul class=\\"report-detail-ul\\"><li class=\\".report-detail-li\\">RegionServer： emr-worker-4 Region Id： 4ac818a3ab3fd727490a5b4d4dac7667 读请求数量： 15485664</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： 021b387ae92959def65041e25eade3aa 读请求数量： 7731980</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： d58f33abfe857e5fd0045eaa31c93df8 读请求数量： 7705237</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： 4ca84757a7d0948b8552cfeebefa25a9 读请求数量： 7703492</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-4 Region Id： 1018192dae42995fc75c6d5b5981a9b7 读请求数量： 7695284</li></ul><p style=\\"line-height： 16px; font-size： 16px; margin： 0 auto\\">&nbsp;</p>
 	ReadRequestUnbalanceSuggestion *string `json:"ReadRequestUnbalanceSuggestion,omitempty" xml:"ReadRequestUnbalanceSuggestion,omitempty"`
 	// List of read/write hotspot regions.
 	//
@@ -14546,10 +14876,6 @@ type GetDoctorHBaseTableResponseBodyDataAnalysis struct {
 	// null
 	RequestHotspotRegionList []*string `json:"RequestHotspotRegionList,omitempty" xml:"RequestHotspotRegionList,omitempty" type:"Repeated"`
 	// Description of read/write imbalance.
-	//
-	// example:
-	//
-	// read request unbalance is <p class=\\"report-detail-topic\\">表分区总数量为14，分区平均读请求数量为5032486，以下分区存在读请求热点访问：</p><ul class=\\"report-detail-ul\\"><li class=\\".report-detail-li\\">RegionServer： emr-worker-4 Region Id： 4ac818a3ab3fd727490a5b4d4dac7667 读请求数量： 15485664</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： 021b387ae92959def65041e25eade3aa 读请求数量： 7731980</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： d58f33abfe857e5fd0045eaa31c93df8 读请求数量： 7705237</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： 4ca84757a7d0948b8552cfeebefa25a9 读请求数量： 7703492</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-4 Region Id： 1018192dae42995fc75c6d5b5981a9b7 读请求数量： 7695284</li></ul><p style=\\"line-height： 16px; font-size： 16px; margin： 0 auto\\">&nbsp;</p>
 	RequestUnbalanceSuggestion *string `json:"RequestUnbalanceSuggestion,omitempty" xml:"RequestUnbalanceSuggestion,omitempty"`
 	// Table score.
 	//
@@ -14564,10 +14890,6 @@ type GetDoctorHBaseTableResponseBodyDataAnalysis struct {
 	// null
 	WriteRequestHotspotRegionList []*string `json:"WriteRequestHotspotRegionList,omitempty" xml:"WriteRequestHotspotRegionList,omitempty" type:"Repeated"`
 	// Description of write imbalance.
-	//
-	// example:
-	//
-	// write request unbalance is <p class=\\"report-detail-topic\\">表分区总数量为15，分区平均写请求数量为769954，以下分区存在写请求热点访问：</p><ul class=\\"report-detail-ul\\"><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： 4a938c08750869c47b7a92edeeec2ccc 写请求数量： 2115051</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： b4d21974df92bdf3589e63e4da1fc923 写请求数量： 1592509</li><li class=\\".report-detail-li\\">RegionServer： emr-worker-2 Region Id： 25eb6717470f4ddbabe9187ff0fc0cb3 写请求数量： 1585420</li></ul><p style=\\"line-height： 16px; font-size： 16px; margin： 0 auto\\">&nbsp;</p>
 	WriteRequestUnbalanceSuggestion *string `json:"WriteRequestUnbalanceSuggestion,omitempty" xml:"WriteRequestUnbalanceSuggestion,omitempty"`
 }
 
@@ -21137,359 +21459,6 @@ func (s *GetDoctorHDFSDirectoryResponse) SetStatusCode(v int32) *GetDoctorHDFSDi
 }
 
 func (s *GetDoctorHDFSDirectoryResponse) SetBody(v *GetDoctorHDFSDirectoryResponseBody) *GetDoctorHDFSDirectoryResponse {
-	s.Body = v
-	return s
-}
-
-type GetDoctorHDFSUGIRequest struct {
-	// The cluster ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// c-b933c5aac8fe****
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-01-01
-	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// Set this parameter based on the value of Type.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// DW
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The region ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The filter condition. Valid values:
-	//
-	// 	- user
-	//
-	// 	- group
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// user
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s GetDoctorHDFSUGIRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDoctorHDFSUGIRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDoctorHDFSUGIRequest) SetClusterId(v string) *GetDoctorHDFSUGIRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIRequest) SetDateTime(v string) *GetDoctorHDFSUGIRequest {
-	s.DateTime = &v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIRequest) SetName(v string) *GetDoctorHDFSUGIRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIRequest) SetRegionId(v string) *GetDoctorHDFSUGIRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIRequest) SetType(v string) *GetDoctorHDFSUGIRequest {
-	s.Type = &v
-	return s
-}
-
-type GetDoctorHDFSUGIResponseBody struct {
-	// The results of HDFS analysis.
-	Data *GetDoctorHDFSUGIResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetDoctorHDFSUGIResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDoctorHDFSUGIResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDoctorHDFSUGIResponseBody) SetData(v *GetDoctorHDFSUGIResponseBodyData) *GetDoctorHDFSUGIResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIResponseBody) SetRequestId(v string) *GetDoctorHDFSUGIResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetDoctorHDFSUGIResponseBodyData struct {
-	// The metric information.
-	Metrics *GetDoctorHDFSUGIResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
-}
-
-func (s GetDoctorHDFSUGIResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDoctorHDFSUGIResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyData) SetMetrics(v *GetDoctorHDFSUGIResponseBodyDataMetrics) *GetDoctorHDFSUGIResponseBodyData {
-	s.Metrics = v
-	return s
-}
-
-type GetDoctorHDFSUGIResponseBodyDataMetrics struct {
-	// The total data size.
-	TotalDataSize *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
-	// The total number of directories.
-	TotalDirCount *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount `json:"TotalDirCount,omitempty" xml:"TotalDirCount,omitempty" type:"Struct"`
-	// The total number of files.
-	TotalFileCount *GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
-}
-
-func (s GetDoctorHDFSUGIResponseBodyDataMetrics) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDoctorHDFSUGIResponseBodyDataMetrics) GoString() string {
-	return s.String()
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetrics) SetTotalDataSize(v *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize) *GetDoctorHDFSUGIResponseBodyDataMetrics {
-	s.TotalDataSize = v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetrics) SetTotalDirCount(v *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount) *GetDoctorHDFSUGIResponseBodyDataMetrics {
-	s.TotalDirCount = v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetrics) SetTotalFileCount(v *GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount) *GetDoctorHDFSUGIResponseBodyDataMetrics {
-	s.TotalFileCount = v
-	return s
-}
-
-type GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize struct {
-	// The description of the metric.
-	//
-	// example:
-	//
-	// Total data size in megabytes (MB)
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the metric.
-	//
-	// example:
-	//
-	// totalDataSize
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The unit.
-	//
-	// example:
-	//
-	// MB
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	// The value of the metric.
-	//
-	// example:
-	//
-	// 40440503
-	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize) GoString() string {
-	return s.String()
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize) SetDescription(v string) *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize {
-	s.Description = &v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize) SetName(v string) *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize {
-	s.Name = &v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize) SetUnit(v string) *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize {
-	s.Unit = &v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize) SetValue(v int64) *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize {
-	s.Value = &v
-	return s
-}
-
-type GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount struct {
-	// The description of the metric.
-	//
-	// example:
-	//
-	// Number of total dirs
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the metric.
-	//
-	// example:
-	//
-	// totalDirCount
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The unit of the metric.
-	//
-	// example:
-	//
-	// ”“
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	// The value of the metric.
-	//
-	// example:
-	//
-	// 123
-	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount) GoString() string {
-	return s.String()
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount) SetDescription(v string) *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount {
-	s.Description = &v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount) SetName(v string) *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount {
-	s.Name = &v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount) SetUnit(v string) *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount {
-	s.Unit = &v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount) SetValue(v int64) *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount {
-	s.Value = &v
-	return s
-}
-
-type GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount struct {
-	// The description of the metric.
-	//
-	// example:
-	//
-	// Number of total files
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the metric.
-	//
-	// example:
-	//
-	// totalFileCount
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The unit of the metric.
-	//
-	// example:
-	//
-	// ”“
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	// The value of the metric.
-	//
-	// example:
-	//
-	// 34
-	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount) GoString() string {
-	return s.String()
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount) SetDescription(v string) *GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount {
-	s.Description = &v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount) SetName(v string) *GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount {
-	s.Name = &v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount) SetUnit(v string) *GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount {
-	s.Unit = &v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount) SetValue(v int64) *GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount {
-	s.Value = &v
-	return s
-}
-
-type GetDoctorHDFSUGIResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetDoctorHDFSUGIResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetDoctorHDFSUGIResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDoctorHDFSUGIResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDoctorHDFSUGIResponse) SetHeaders(v map[string]*string) *GetDoctorHDFSUGIResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIResponse) SetStatusCode(v int32) *GetDoctorHDFSUGIResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetDoctorHDFSUGIResponse) SetBody(v *GetDoctorHDFSUGIResponseBody) *GetDoctorHDFSUGIResponse {
 	s.Body = v
 	return s
 }
@@ -31016,7 +30985,7 @@ func (s *GetDoctorReportComponentSummaryRequest) SetRegionId(v string) *GetDocto
 }
 
 type GetDoctorReportComponentSummaryResponseBody struct {
-	// Report content.
+	// The content of the report.
 	Data *GetDoctorReportComponentSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Request ID.
 	//
@@ -31052,32 +31021,8 @@ type GetDoctorReportComponentSummaryResponseBodyData struct {
 	// 88
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	// Optimization suggestions.
-	//
-	// example:
-	//
-	// 计算健康度分数为 88 ，集群处于健康状态，继续保持
-	//
-	// 计算任务扫描
-	//
-	// 对集群中 1518 个计算任务进行了扫描，包含 209 个任务处于不健康状态 ，596 个任务处于亚健康状态 ，713 个任务处于健康状态。
-	//
-	// 其中：
-	//
-	//        Tez 任务 1518 个，加权平均分为 88 ，内存使用量占整体集群的 100.0% ，CPU 使用量占整体集群的 100.0% ，其中 209 个任务处于不健康状态，596 个任务处于亚健康状态；
-	//
-	// 可在下面的任务明细列表中点击\\"\\"查看详情\\"\\"，查看存在的具体问题及解决方案。其中\\"\\"低分任务算力内存时 (GB*Sec)Top20 \\"\\"表根据内存时使用量进行排序，由于大任务对集群整体影响可能更大，建议优先关注。
-	//
-	// 内存利用率较低
-	//
-	// 集群整体内存利用率为 47.8% ，内存利用率较低，计算资源存在浪费，建议优先对内存算力时较大且内存利用率较低的 TOP 任务进行优化
-	//
-	// 其中，Tez作业平均内存利用率为 47.8%
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	// Report summary.
-	//
-	// example:
-	//
-	// <h4> [计算检测]  计算健康度分数为 88 ，健康度良好，继续加油 </h4><p style=\\"\\"text-indent：2em\\"\\">集群中大部分任务保持健康状态 </p><p style=\\"\\"text-indent：2em\\"\\">集群内存利用率为： 47.8% 偏低 </p>
+	// The summary of the report.
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
@@ -31356,7 +31301,7 @@ func (s *GetOperationResponse) SetBody(v *GetOperationResponseBody) *GetOperatio
 }
 
 type IncreaseNodesRequest struct {
-	// The application configurations. You can specify a maximum of 1,000 items.
+	// The application configurations. Number of elements in the array: 1 to 1,000.
 	//
 	// example:
 	//
@@ -31392,7 +31337,7 @@ type IncreaseNodesRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The number of nodes. The number of incremental nodes for this scale-out. Valid values: 1 to 500.
+	// The number of nodes to add.Valid values: 1 to 500.
 	//
 	// This parameter is required.
 	//
@@ -31427,7 +31372,8 @@ type IncreaseNodesRequest struct {
 	// example:
 	//
 	// Month
-	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
+	PaymentDurationUnit *string      `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
+	Promotions          []*Promotion `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
 	// The ID of the region in which you want to create the instance.
 	//
 	// This parameter is required.
@@ -31488,6 +31434,11 @@ func (s *IncreaseNodesRequest) SetPaymentDuration(v int32) *IncreaseNodesRequest
 
 func (s *IncreaseNodesRequest) SetPaymentDurationUnit(v string) *IncreaseNodesRequest {
 	s.PaymentDurationUnit = &v
+	return s
+}
+
+func (s *IncreaseNodesRequest) SetPromotions(v []*Promotion) *IncreaseNodesRequest {
+	s.Promotions = v
 	return s
 }
 
@@ -31780,7 +31731,7 @@ func (s *ListApiTemplatesRequest) SetTemplateName(v string) *ListApiTemplatesReq
 type ListApiTemplatesResponseBody struct {
 	// Deprecated
 	//
-	// The API operation templates.
+	// The array of API templates.
 	ApiTemplates []*ApiTemplate `json:"ApiTemplates,omitempty" xml:"ApiTemplates,omitempty" type:"Repeated"`
 	// 本次请求所返回的最大记录条数。
 	//
@@ -31891,7 +31842,7 @@ type ListApplicationConfigsRequest struct {
 	//
 	// hdfs-site.xml
 	ConfigFileName *string `json:"ConfigFileName,omitempty" xml:"ConfigFileName,omitempty"`
-	// The name of the configuration item.
+	// The key of the configuration item.
 	//
 	// example:
 	//
@@ -32858,7 +32809,7 @@ func (s *ListAutoScalingActivitiesResponse) SetBody(v *ListAutoScalingActivities
 }
 
 type ListClustersRequest struct {
-	// The IDs of the clusters. You can specify a maximum of 100 items.
+	// The cluster IDs. Number of elements in the array: 1 to 100.
 	//
 	// example:
 	//
@@ -32870,13 +32821,13 @@ type ListClustersRequest struct {
 	//
 	// emrtest
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The states of clusters. You can specify a maximum of 100 items.
+	// The states of the clusters. Number of elements in the array: 1 to 100.
 	//
 	// example:
 	//
 	// ["HADOOP"]
 	ClusterStates []*string `json:"ClusterStates,omitempty" xml:"ClusterStates,omitempty" type:"Repeated"`
-	// The types of the clusters. You can specify a maximum of 100 items.
+	// The list of cluster types. Number of elements in the array: 1 to 100.
 	//
 	// example:
 	//
@@ -32902,58 +32853,6 @@ type ListClustersRequest struct {
 	PaymentTypes []*string `json:"PaymentTypes,omitempty" xml:"PaymentTypes,omitempty" type:"Repeated"`
 	// The region ID.
 	//
-	// Valid values:
-	//
-	// 	- cn-qingdao
-	//
-	// 	- cn-beijing
-	//
-	// 	- cn-zhangjiakou
-	//
-	// 	- cn-huhehaote
-	//
-	// 	- cn-hangzhou
-	//
-	// 	- cn-shanghai
-	//
-	// 	- cn-shenzhen
-	//
-	// 	- cn-chengdu
-	//
-	// 	- cn-hongkong
-	//
-	// 	- cn-wulanchabu
-	//
-	// 	- cn-heyuan-acdr-1
-	//
-	// 	- cn-qingdao-acdr-ut-1
-	//
-	// 	- ap-northeast-1
-	//
-	// 	- ap-southeast-1
-	//
-	// 	- ap-southeast-2
-	//
-	// 	- ap-southeast-3
-	//
-	// 	- ap-southeast-5
-	//
-	// 	- ap-south-1
-	//
-	// 	- us-east-1
-	//
-	// 	- us-west-1
-	//
-	// 	- me-east-1
-	//
-	// 	- me-central-1
-	//
-	// 	- eu-central-1
-	//
-	// 	- eu-west-1
-	//
-	// 	- cn-north-2-gov-1
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -32966,7 +32865,7 @@ type ListClustersRequest struct {
 	//
 	// rg-acfmzabjyop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags. Number of elements in the array: 1 to 20.
+	// The tag list. Number of elements in the array: 1 to 20.
 	//
 	// example:
 	//
@@ -33180,6 +33079,7 @@ type ListComponentInstancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListComponentInstancesRequest) String() string {
@@ -33232,6 +33132,11 @@ func (s *ListComponentInstancesRequest) SetNodeNames(v []*string) *ListComponent
 
 func (s *ListComponentInstancesRequest) SetRegionId(v string) *ListComponentInstancesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListComponentInstancesRequest) SetZoneId(v string) *ListComponentInstancesRequest {
+	s.ZoneId = &v
 	return s
 }
 
@@ -33407,6 +33312,7 @@ type ListComponentInstancesResponseBodyComponentInstances struct {
 	//
 	// core1-1
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListComponentInstancesResponseBodyComponentInstances) String() string {
@@ -33459,6 +33365,11 @@ func (s *ListComponentInstancesResponseBodyComponentInstances) SetNodeId(v strin
 
 func (s *ListComponentInstancesResponseBodyComponentInstances) SetNodeName(v string) *ListComponentInstancesResponseBodyComponentInstances {
 	s.NodeName = &v
+	return s
+}
+
+func (s *ListComponentInstancesResponseBodyComponentInstances) SetZoneId(v string) *ListComponentInstancesResponseBodyComponentInstances {
+	s.ZoneId = &v
 	return s
 }
 
@@ -36220,7 +36131,7 @@ func (s *ListDoctorHBaseTablesRequest) SetTableNames(v []*string) *ListDoctorHBa
 }
 
 type ListDoctorHBaseTablesResponseBody struct {
-	// The response parameters.
+	// The data returned.
 	Data []*ListDoctorHBaseTablesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The maximum number of entries returned.
 	//
@@ -36656,7 +36567,7 @@ type ListDoctorHBaseTablesResponseBodyDataMetricsColdConfigDay struct {
 	//
 	// example:
 	//
-	// dat
+	// day
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 	// The value of the metric.
 	//
@@ -40788,7 +40699,7 @@ type ListDoctorHiveDatabasesResponseBodyDataMetrics struct {
 	TinyFileDayGrowthCount *ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileDayGrowthCount `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
 	// The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
 	TinyFileRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileRatio `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
-	// The daily incremental of the total data volume.
+	// The daily increment of the total data volume.
 	TotalDataDayGrowthSize *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataDayGrowthSize `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
 	// The total amount of data.
 	TotalDataSize *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
@@ -48303,6 +48214,7 @@ type ListNodeGroupsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListNodeGroupsRequest) String() string {
@@ -48350,6 +48262,11 @@ func (s *ListNodeGroupsRequest) SetNodeGroupTypes(v []*string) *ListNodeGroupsRe
 
 func (s *ListNodeGroupsRequest) SetRegionId(v string) *ListNodeGroupsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListNodeGroupsRequest) SetZoneId(v string) *ListNodeGroupsRequest {
+	s.ZoneId = &v
 	return s
 }
 
@@ -48509,7 +48426,7 @@ type ListNodesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of tags to be bound.
+	// The tags.
 	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -48589,7 +48506,7 @@ type ListNodesResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Details about nodes.
+	// The node list.
 	Nodes []*Node `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -48895,7 +48812,7 @@ type ListScriptsRequest struct {
 	//
 	// BOOTSTRAP
 	ScriptType *string `json:"ScriptType,omitempty" xml:"ScriptType,omitempty"`
-	// The status of the script. Only common scripts are supported.
+	// The script status list.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 
@@ -49239,7 +49156,7 @@ type ListTagResourcesRequest struct {
 	//
 	// cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The array of tags. The number of array elements N. Valid values: 1 to 20.
+	// An array of tags. The number of elements in the array. Valid values: 1 to 20.
 	//
 	// example:
 	//
@@ -49432,7 +49349,7 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListUsersRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -49440,19 +49357,19 @@ type ListUsersRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// The maximum number of entries to return.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -49460,12 +49377,13 @@ type ListUsersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 用户名，支持模糊搜索。
+	// The username. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test
-	UserName  *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The usernames. Number of elements in the array: 0 to 20.
 	UserNames []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
 }
 
@@ -49510,35 +49428,41 @@ func (s *ListUsersRequest) SetUserNames(v []*string) *ListUsersRequest {
 type ListUsersResponseBody struct {
 	// Deprecated
 	//
+	// Indicates whether the user is an admin user. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// False
 	IsAdmin *bool `json:"IsAdmin,omitempty" xml:"IsAdmin,omitempty"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries returned.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// 200
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// 用户列表。
+	// The users.
 	Users []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -49581,41 +49505,37 @@ func (s *ListUsersResponseBody) SetUsers(v []*ListUsersResponseBodyUsers) *ListU
 }
 
 type ListUsersResponseBodyUsers struct {
-	// 创建时间。
+	// The creation time.
 	//
 	// example:
 	//
 	// 1509338726362
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 备注。
+	// The remarks.
 	//
 	// example:
 	//
 	// 添加test用户
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Keytab内容Base64编码。
+	// The Base64-encoded content of the keytab file.
 	//
 	// example:
 	//
 	// DBEDASDF==
 	KeytabHex *string `json:"KeytabHex,omitempty" xml:"KeytabHex,omitempty"`
-	// LDAP链接。
-	//
-	// ldap://emr-header-1.cluster-50018****:10389
+	// The Lightweight Directory Access Protocol (LDAP) link.
 	//
 	// example:
 	//
 	// ldap://master-1-1.c-c6ce2d16d118****.cn-hangzhou.emr.aliyuncs.com:10389
 	LdapUrl *string `json:"LdapUrl,omitempty" xml:"LdapUrl,omitempty"`
-	// 用户ID。
+	// The user ID.
 	//
 	// example:
 	//
 	// 125046002175****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 用户名称。
-	//
-	// test
+	// The username.
 	//
 	// example:
 	//
@@ -49691,7 +49611,7 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 }
 
 type PutAutoScalingPolicyRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -49699,9 +49619,9 @@ type PutAutoScalingPolicyRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The maximum and minimum numbers of nodes in a node group.
+	// The constraints on the maximum and minimum numbers of nodes in a node group.
 	Constraints *ScalingConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	// 节点组ID。节点组 Id-针对 ACK 集群，此字段为空。
+	// The ID of the node group.
 	//
 	// This parameter is required.
 	//
@@ -49709,7 +49629,7 @@ type PutAutoScalingPolicyRequest struct {
 	//
 	// ng-869471354ecd****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -49717,7 +49637,7 @@ type PutAutoScalingPolicyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The auto scaling rules. Number of elements in the array: 0 to 100.
+	// The description list of auto scaling rules. Number of elements in the array: 0 to 100.
 	ScalingRules []*ScalingRule `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
 }
 
@@ -49755,7 +49675,7 @@ func (s *PutAutoScalingPolicyRequest) SetScalingRules(v []*ScalingRule) *PutAuto
 }
 
 type PutAutoScalingPolicyResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
@@ -49801,6 +49721,101 @@ func (s *PutAutoScalingPolicyResponse) SetStatusCode(v int32) *PutAutoScalingPol
 }
 
 func (s *PutAutoScalingPolicyResponse) SetBody(v *PutAutoScalingPolicyResponseBody) *PutAutoScalingPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type PutManagedScalingPolicyRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c-b933c5aac8fe****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The constrains on the maximum and minimum numbers of nodes in a node group.
+	Constraints *ManagedScalingConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s PutManagedScalingPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutManagedScalingPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutManagedScalingPolicyRequest) SetClusterId(v string) *PutManagedScalingPolicyRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *PutManagedScalingPolicyRequest) SetConstraints(v *ManagedScalingConstraints) *PutManagedScalingPolicyRequest {
+	s.Constraints = v
+	return s
+}
+
+func (s *PutManagedScalingPolicyRequest) SetRegionId(v string) *PutManagedScalingPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type PutManagedScalingPolicyResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PutManagedScalingPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutManagedScalingPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PutManagedScalingPolicyResponseBody) SetRequestId(v string) *PutManagedScalingPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PutManagedScalingPolicyResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PutManagedScalingPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PutManagedScalingPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutManagedScalingPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutManagedScalingPolicyResponse) SetHeaders(v map[string]*string) *PutManagedScalingPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutManagedScalingPolicyResponse) SetStatusCode(v int32) *PutManagedScalingPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PutManagedScalingPolicyResponse) SetBody(v *PutManagedScalingPolicyResponseBody) *PutManagedScalingPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -50262,11 +50277,11 @@ func (s *RunApplicationActionResponse) SetBody(v *RunApplicationActionResponseBo
 type RunClusterRequest struct {
 	// The application configurations. Number of elements in the array: 1 to 1000.
 	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
-	// The services. Number of elements in the array: 1 to 100.
+	// The list of services. Number of elements in the array: 1 to 100.
 	//
 	// This parameter is required.
 	Applications []*Application `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// The bootstrap actions. Number of elements in the array: 1 to 10.
+	// The array of bootstrap scripts. Number of elements in the array: 1 to 10.
 	BootstrapScripts []*Script `json:"BootstrapScripts,omitempty" xml:"BootstrapScripts,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request. The same ClientToken value for multiple calls to the RunCluster operation results in identical responses. Only one cluster can be created by using the same ClientToken value.
 	//
@@ -50332,9 +50347,9 @@ type RunClusterRequest struct {
 	//
 	// Emr cluster for ETL
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The attributes of all ECS instances.
+	// The node attributes. The basic attributes of all ECS nodes in the cluster.
 	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
-	// The node groups. Number of elements in the array: 1 to 100.
+	// The array of configurations of the node groups. Number of elements in the array: 1 to 100.
 	//
 	// This parameter is required.
 	NodeGroups []*NodeGroupConfig `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
@@ -50349,7 +50364,8 @@ type RunClusterRequest struct {
 	// example:
 	//
 	// PayAsYouGo
-	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PaymentType *string      `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	Promotions  []*Promotion `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -50382,9 +50398,9 @@ type RunClusterRequest struct {
 	//
 	// NORMAL
 	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
-	// The subscription configurations. This parameter takes effect only if you set the PaymentType parameter to Subscription.
+	// The subscription configurations. This parameter is required when the PaymentType parameter is set to Subscription.
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	// The tags. Number of elements in the array: 0 to 20.
+	// The tag. Number of elements in the array: 0 to 20.
 	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -50456,6 +50472,11 @@ func (s *RunClusterRequest) SetPaymentType(v string) *RunClusterRequest {
 	return s
 }
 
+func (s *RunClusterRequest) SetPromotions(v []*Promotion) *RunClusterRequest {
+	s.Promotions = v
+	return s
+}
+
 func (s *RunClusterRequest) SetRegionId(v string) *RunClusterRequest {
 	s.RegionId = &v
 	return s
@@ -50489,11 +50510,11 @@ func (s *RunClusterRequest) SetTags(v []*Tag) *RunClusterRequest {
 type RunClusterShrinkRequest struct {
 	// The application configurations. Number of elements in the array: 1 to 1000.
 	ApplicationConfigsShrink *string `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty"`
-	// The services. Number of elements in the array: 1 to 100.
+	// The list of services. Number of elements in the array: 1 to 100.
 	//
 	// This parameter is required.
 	ApplicationsShrink *string `json:"Applications,omitempty" xml:"Applications,omitempty"`
-	// The bootstrap actions. Number of elements in the array: 1 to 10.
+	// The array of bootstrap scripts. Number of elements in the array: 1 to 10.
 	BootstrapScriptsShrink *string `json:"BootstrapScripts,omitempty" xml:"BootstrapScripts,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. The same ClientToken value for multiple calls to the RunCluster operation results in identical responses. Only one cluster can be created by using the same ClientToken value.
 	//
@@ -50559,9 +50580,9 @@ type RunClusterShrinkRequest struct {
 	//
 	// Emr cluster for ETL
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The attributes of all ECS instances.
+	// The node attributes. The basic attributes of all ECS nodes in the cluster.
 	NodeAttributesShrink *string `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
-	// The node groups. Number of elements in the array: 1 to 100.
+	// The array of configurations of the node groups. Number of elements in the array: 1 to 100.
 	//
 	// This parameter is required.
 	NodeGroupsShrink *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
@@ -50576,7 +50597,8 @@ type RunClusterShrinkRequest struct {
 	// example:
 	//
 	// PayAsYouGo
-	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PaymentType      *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PromotionsShrink *string `json:"Promotions,omitempty" xml:"Promotions,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -50609,9 +50631,9 @@ type RunClusterShrinkRequest struct {
 	//
 	// NORMAL
 	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
-	// The subscription configurations. This parameter takes effect only if you set the PaymentType parameter to Subscription.
+	// The subscription configurations. This parameter is required when the PaymentType parameter is set to Subscription.
 	SubscriptionConfigShrink *string `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	// The tags. Number of elements in the array: 0 to 20.
+	// The tag. Number of elements in the array: 0 to 20.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -50680,6 +50702,11 @@ func (s *RunClusterShrinkRequest) SetNodeGroupsShrink(v string) *RunClusterShrin
 
 func (s *RunClusterShrinkRequest) SetPaymentType(v string) *RunClusterShrinkRequest {
 	s.PaymentType = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetPromotionsShrink(v string) *RunClusterShrinkRequest {
+	s.PromotionsShrink = &v
 	return s
 }
 
@@ -51048,7 +51075,7 @@ type UpdateApiTemplateRequest struct {
 	//
 	// CreateCluster
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -51056,13 +51083,13 @@ type UpdateApiTemplateRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源组ID。
+	// Resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmzabjyop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 集群模板id。
+	// Template ID (it is recommended to use the parameter TemplateId).
 	//
 	// This parameter is required.
 	//
@@ -51070,13 +51097,13 @@ type UpdateApiTemplateRequest struct {
 	//
 	// AT-****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 集群模板名字。
+	// The name of the template.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// DATALAKE模板
+	// datalakeTest1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -51119,13 +51146,15 @@ func (s *UpdateApiTemplateRequest) SetTemplateName(v string) *UpdateApiTemplateR
 }
 
 type UpdateApiTemplateResponseBody struct {
-	// 请求ID。
+	// Request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Deprecated
+	//
+	// Template ID (to be deprecated).
 	//
 	// example:
 	//
@@ -51702,7 +51731,7 @@ func (s *UpdateScriptResponse) SetBody(v *UpdateScriptResponseBody) *UpdateScrip
 }
 
 type UpdateUserAttributeRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -51710,19 +51739,19 @@ type UpdateUserAttributeRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 用户备注。
+	// The remarks of the user.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 用户密码。
+	// The user password.
 	//
 	// example:
 	//
 	// 1234
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -51732,12 +51761,14 @@ type UpdateUserAttributeRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Deprecated
 	//
-	// 用户ID。
+	// The user ID.
 	//
 	// example:
 	//
 	// 125046002175****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// yun****
@@ -51785,11 +51816,13 @@ func (s *UpdateUserAttributeRequest) SetUserName(v string) *UpdateUserAttributeR
 type UpdateUserAttributeResponseBody struct {
 	// Deprecated
 	//
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
@@ -51984,24 +52017,13 @@ func (client *Client) CreateApiTemplateWithOptions(request *CreateApiTemplateReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateApiTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateApiTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateApiTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -52123,24 +52145,13 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -52206,24 +52217,13 @@ func (client *Client) CreateNodeGroupWithOptions(request *CreateNodeGroupRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateNodeGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateNodeGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateNodeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -52297,24 +52297,13 @@ func (client *Client) CreateScriptWithOptions(request *CreateScriptRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateScriptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateScriptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -52337,7 +52326,11 @@ func (client *Client) CreateScript(request *CreateScriptRequest) (_result *Creat
 
 // Summary:
 //
-// 创建用户
+// Creates multiple users at a time.
+//
+// Description:
+//
+// You can call this operation to create multiple users at a time.
 //
 // @param request - CreateUsersRequest
 //
@@ -52376,29 +52369,22 @@ func (client *Client) CreateUsersWithOptions(request *CreateUsersRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 创建用户
+// Creates multiple users at a time.
+//
+// Description:
+//
+// You can call this operation to create multiple users at a time.
 //
 // @param request - CreateUsersRequest
 //
@@ -52416,7 +52402,7 @@ func (client *Client) CreateUsers(request *CreateUsersRequest) (_result *CreateU
 
 // Summary:
 //
-// Perform a scale-out operation on the target node group.
+// Performs a scale-out operation on the target node group.
 //
 // @param request - DecreaseNodesRequest
 //
@@ -52471,29 +52457,18 @@ func (client *Client) DecreaseNodesWithOptions(request *DecreaseNodesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DecreaseNodesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DecreaseNodesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DecreaseNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Perform a scale-out operation on the target node group.
+// Performs a scale-out operation on the target node group.
 //
 // @param request - DecreaseNodesRequest
 //
@@ -52512,10 +52487,6 @@ func (client *Client) DecreaseNodes(request *DecreaseNodesRequest) (_result *Dec
 // Summary:
 //
 // Deletes an API operation template.
-//
-// Description:
-//
-// 创建集群模板
 //
 // @param request - DeleteApiTemplateRequest
 //
@@ -52558,33 +52529,18 @@ func (client *Client) DeleteApiTemplateWithOptions(request *DeleteApiTemplateReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteApiTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteApiTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteApiTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
 // Deletes an API operation template.
-//
-// Description:
-//
-// 创建集群模板
 //
 // @param request - DeleteApiTemplateRequest
 //
@@ -52633,24 +52589,13 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteClusterRequest
@@ -52712,24 +52657,13 @@ func (client *Client) DeleteScriptWithOptions(request *DeleteScriptRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteScriptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteScriptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -52750,6 +52684,14 @@ func (client *Client) DeleteScript(request *DeleteScriptRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes multiple users at a time.
+//
+// Description:
+//
+// Deletes multiple users at a time.
+//
 // @param tmpReq - DeleteUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -52795,26 +52737,23 @@ func (client *Client) DeleteUsersWithOptions(tmpReq *DeleteUsersRequest, runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Deletes multiple users at a time.
+//
+// Description:
+//
+// Deletes multiple users at a time.
+//
 // @param request - DeleteUsersRequest
 //
 // @return DeleteUsersResponse
@@ -52866,24 +52805,13 @@ func (client *Client) GetApiTemplateWithOptions(request *GetApiTemplateRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetApiTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetApiTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetApiTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -52945,24 +52873,13 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetApplicationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetApplicationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Description:
@@ -52985,7 +52902,7 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 
 // Summary:
 //
-// 获取弹性伸缩活动详情。
+// Queries the information about an auto scaling activity.
 //
 // @param request - GetAutoScalingActivityRequest
 //
@@ -53024,29 +52941,18 @@ func (client *Client) GetAutoScalingActivityWithOptions(request *GetAutoScalingA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAutoScalingActivityResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAutoScalingActivityResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAutoScalingActivityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取弹性伸缩活动详情。
+// Queries the information about an auto scaling activity.
 //
 // @param request - GetAutoScalingActivityRequest
 //
@@ -53064,7 +52970,7 @@ func (client *Client) GetAutoScalingActivity(request *GetAutoScalingActivityRequ
 
 // Summary:
 //
-// null
+// Queries custom auto scaling rules.
 //
 // @param request - GetAutoScalingPolicyRequest
 //
@@ -53103,29 +53009,18 @@ func (client *Client) GetAutoScalingPolicyWithOptions(request *GetAutoScalingPol
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAutoScalingPolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAutoScalingPolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAutoScalingPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// null
+// Queries custom auto scaling rules.
 //
 // @param request - GetAutoScalingPolicyRequest
 //
@@ -53178,24 +53073,13 @@ func (client *Client) GetClusterWithOptions(request *GetClusterRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -53253,24 +53137,13 @@ func (client *Client) GetClusterCloneMetaWithOptions(request *GetClusterCloneMet
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetClusterCloneMetaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetClusterCloneMetaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetClusterCloneMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -53340,24 +53213,13 @@ func (client *Client) GetDoctorApplicationWithOptions(request *GetDoctorApplicat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDoctorApplicationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDoctorApplicationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDoctorApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -53431,24 +53293,13 @@ func (client *Client) GetDoctorComputeSummaryWithOptions(request *GetDoctorCompu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDoctorComputeSummaryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDoctorComputeSummaryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDoctorComputeSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -53518,24 +53369,13 @@ func (client *Client) GetDoctorHBaseClusterWithOptions(request *GetDoctorHBaseCl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDoctorHBaseClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDoctorHBaseClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDoctorHBaseClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -53566,7 +53406,7 @@ func (client *Client) GetDoctorHBaseCluster(request *GetDoctorHBaseClusterReques
 //
 // Description:
 //
-// List Doctor HBase Regions
+// # List Doctor HBase Regions
 //
 // @param request - GetDoctorHBaseRegionRequest
 //
@@ -53609,24 +53449,13 @@ func (client *Client) GetDoctorHBaseRegionWithOptions(request *GetDoctorHBaseReg
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDoctorHBaseRegionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDoctorHBaseRegionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDoctorHBaseRegionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -53635,7 +53464,7 @@ func (client *Client) GetDoctorHBaseRegionWithOptions(request *GetDoctorHBaseReg
 //
 // Description:
 //
-// List Doctor HBase Regions
+// # List Doctor HBase Regions
 //
 // @param request - GetDoctorHBaseRegionRequest
 //
@@ -53700,24 +53529,13 @@ func (client *Client) GetDoctorHBaseRegionServerWithOptions(request *GetDoctorHB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDoctorHBaseRegionServerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDoctorHBaseRegionServerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDoctorHBaseRegionServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -53791,24 +53609,13 @@ func (client *Client) GetDoctorHBaseTableWithOptions(request *GetDoctorHBaseTabl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDoctorHBaseTableResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDoctorHBaseTableResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDoctorHBaseTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -53878,24 +53685,13 @@ func (client *Client) GetDoctorHDFSClusterWithOptions(request *GetDoctorHDFSClus
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDoctorHDFSClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDoctorHDFSClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDoctorHDFSClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -53969,24 +53765,13 @@ func (client *Client) GetDoctorHDFSDirectoryWithOptions(request *GetDoctorHDFSDi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDoctorHDFSDirectoryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDoctorHDFSDirectoryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDoctorHDFSDirectoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -54004,101 +53789,6 @@ func (client *Client) GetDoctorHDFSDirectory(request *GetDoctorHDFSDirectoryRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDoctorHDFSDirectoryResponse{}
 	_body, _err := client.GetDoctorHDFSDirectoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the analysis results of Hadoop Distributed File System (HDFS) storage resources for a specific owner or group on E-MapReduce (EMR) Doctor.
-//
-// Description:
-//
-// get Doctor HDFS UGI
-//
-// @param request - GetDoctorHDFSUGIRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetDoctorHDFSUGIResponse
-func (client *Client) GetDoctorHDFSUGIWithOptions(request *GetDoctorHDFSUGIRequest, runtime *util.RuntimeOptions) (_result *GetDoctorHDFSUGIResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DateTime)) {
-		query["DateTime"] = request.DateTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDoctorHDFSUGI"),
-		Version:     tea.String("2021-03-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDoctorHDFSUGIResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDoctorHDFSUGIResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	}
-
-}
-
-// Summary:
-//
-// Obtains the analysis results of Hadoop Distributed File System (HDFS) storage resources for a specific owner or group on E-MapReduce (EMR) Doctor.
-//
-// Description:
-//
-// get Doctor HDFS UGI
-//
-// @param request - GetDoctorHDFSUGIRequest
-//
-// @return GetDoctorHDFSUGIResponse
-func (client *Client) GetDoctorHDFSUGI(request *GetDoctorHDFSUGIRequest) (_result *GetDoctorHDFSUGIResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDoctorHDFSUGIResponse{}
-	_body, _err := client.GetDoctorHDFSUGIWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -54151,24 +53841,13 @@ func (client *Client) GetDoctorHiveClusterWithOptions(request *GetDoctorHiveClus
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDoctorHiveClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDoctorHiveClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDoctorHiveClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -54242,24 +53921,13 @@ func (client *Client) GetDoctorHiveDatabaseWithOptions(request *GetDoctorHiveDat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDoctorHiveDatabaseResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDoctorHiveDatabaseResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDoctorHiveDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -54333,24 +54001,13 @@ func (client *Client) GetDoctorHiveTableWithOptions(request *GetDoctorHiveTableR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDoctorHiveTableResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDoctorHiveTableResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDoctorHiveTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -54381,7 +54038,7 @@ func (client *Client) GetDoctorHiveTable(request *GetDoctorHiveTableRequest) (_r
 //
 // Description:
 //
-// Get realtime job by yarn
+// # Get realtime job by yarn
 //
 // @param request - GetDoctorJobRequest
 //
@@ -54420,24 +54077,13 @@ func (client *Client) GetDoctorJobWithOptions(request *GetDoctorJobRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDoctorJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDoctorJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDoctorJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -54446,7 +54092,7 @@ func (client *Client) GetDoctorJobWithOptions(request *GetDoctorJobRequest, runt
 //
 // Description:
 //
-// Get realtime job by yarn
+// # Get realtime job by yarn
 //
 // @param request - GetDoctorJobRequest
 //
@@ -54511,24 +54157,13 @@ func (client *Client) GetDoctorReportComponentSummaryWithOptions(request *GetDoc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDoctorReportComponentSummaryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDoctorReportComponentSummaryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDoctorReportComponentSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -54598,24 +54233,13 @@ func (client *Client) GetNodeGroupWithOptions(request *GetNodeGroupRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetNodeGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetNodeGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetNodeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -54681,24 +54305,13 @@ func (client *Client) GetOperationWithOptions(request *GetOperationRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetOperationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetOperationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetOperationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -54721,7 +54334,7 @@ func (client *Client) GetOperation(request *GetOperationRequest) (_result *GetOp
 
 // Summary:
 //
-// Scale out the node group.
+// Scales out the node group.
 //
 // @param request - IncreaseNodesRequest
 //
@@ -54770,6 +54383,10 @@ func (client *Client) IncreaseNodesWithOptions(request *IncreaseNodesRequest, ru
 		query["PaymentDurationUnit"] = request.PaymentDurationUnit
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Promotions)) {
+		query["Promotions"] = request.Promotions
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -54788,29 +54405,18 @@ func (client *Client) IncreaseNodesWithOptions(request *IncreaseNodesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &IncreaseNodesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &IncreaseNodesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &IncreaseNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Scale out the node group.
+// Scales out the node group.
 //
 // @param request - IncreaseNodesRequest
 //
@@ -54828,7 +54434,7 @@ func (client *Client) IncreaseNodes(request *IncreaseNodesRequest) (_result *Inc
 
 // Summary:
 //
-// Add an EMR resource to the target resource group. A resource can belong to only one resource group.
+// Adds an EMR resource to a resource group. A resource can belong to only one resource group.
 //
 // @param request - JoinResourceGroupRequest
 //
@@ -54871,29 +54477,18 @@ func (client *Client) JoinResourceGroupWithOptions(request *JoinResourceGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &JoinResourceGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &JoinResourceGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &JoinResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Add an EMR resource to the target resource group. A resource can belong to only one resource group.
+// Adds an EMR resource to a resource group. A resource can belong to only one resource group.
 //
 // @param request - JoinResourceGroupRequest
 //
@@ -54970,24 +54565,13 @@ func (client *Client) ListApiTemplatesWithOptions(request *ListApiTemplatesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListApiTemplatesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListApiTemplatesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListApiTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -55008,6 +54592,10 @@ func (client *Client) ListApiTemplates(request *ListApiTemplatesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of the application.
+//
 // Description:
 //
 // 查询应用配置。
@@ -55077,26 +54665,19 @@ func (client *Client) ListApplicationConfigsWithOptions(request *ListApplication
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListApplicationConfigsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListApplicationConfigsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListApplicationConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of the application.
+//
 // Description:
 //
 // 查询应用配置。
@@ -55115,6 +54696,10 @@ func (client *Client) ListApplicationConfigs(request *ListApplicationConfigsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of applications.
+//
 // @param request - ListApplicationsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -55160,26 +54745,19 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListApplicationsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListApplicationsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListApplicationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of applications.
+//
 // @param request - ListApplicationsRequest
 //
 // @return ListApplicationsResponse
@@ -55196,7 +54774,7 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 
 // Summary:
 //
-// 查询弹性伸缩活动列表。
+// Queries a list of auto scaling activities.
 //
 // @param request - ListAutoScalingActivitiesRequest
 //
@@ -55267,29 +54845,18 @@ func (client *Client) ListAutoScalingActivitiesWithOptions(request *ListAutoScal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAutoScalingActivitiesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAutoScalingActivitiesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAutoScalingActivitiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查询弹性伸缩活动列表。
+// Queries a list of auto scaling activities.
 //
 // @param request - ListAutoScalingActivitiesRequest
 //
@@ -55374,24 +54941,13 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListClustersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListClustersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListClustersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -55412,10 +54968,6 @@ func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListC
 	return _result, _err
 }
 
-// Description:
-//
-// 查询组件实例列表。
-//
 // @param request - ListComponentInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -55463,6 +55015,10 @@ func (client *Client) ListComponentInstancesWithOptions(request *ListComponentIn
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -55477,30 +55033,15 @@ func (client *Client) ListComponentInstancesWithOptions(request *ListComponentIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListComponentInstancesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListComponentInstancesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListComponentInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
-// Description:
-//
-// 查询组件实例列表。
-//
 // @param request - ListComponentInstancesRequest
 //
 // @return ListComponentInstancesResponse
@@ -55568,24 +55109,13 @@ func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListComponentsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListComponentsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListComponentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListComponentsRequest
@@ -55679,24 +55209,13 @@ func (client *Client) ListDoctorApplicationsWithOptions(request *ListDoctorAppli
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDoctorApplicationsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDoctorApplicationsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDoctorApplicationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -55786,24 +55305,13 @@ func (client *Client) ListDoctorComputeSummaryWithOptions(request *ListDoctorCom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDoctorComputeSummaryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDoctorComputeSummaryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDoctorComputeSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -55893,24 +55401,13 @@ func (client *Client) ListDoctorHBaseRegionServersWithOptions(request *ListDocto
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDoctorHBaseRegionServersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDoctorHBaseRegionServersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDoctorHBaseRegionServersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -56000,24 +55497,13 @@ func (client *Client) ListDoctorHBaseTablesWithOptions(request *ListDoctorHBaseT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDoctorHBaseTablesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDoctorHBaseTablesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDoctorHBaseTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -56103,24 +55589,13 @@ func (client *Client) ListDoctorHDFSDirectoriesWithOptions(request *ListDoctorHD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDoctorHDFSDirectoriesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDoctorHDFSDirectoriesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDoctorHDFSDirectoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Description:
@@ -56206,24 +55681,13 @@ func (client *Client) ListDoctorHDFSUGIWithOptions(request *ListDoctorHDFSUGIReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDoctorHDFSUGIResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDoctorHDFSUGIResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDoctorHDFSUGIResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -56313,24 +55777,13 @@ func (client *Client) ListDoctorHiveDatabasesWithOptions(request *ListDoctorHive
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDoctorHiveDatabasesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDoctorHiveDatabasesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDoctorHiveDatabasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -56420,24 +55873,13 @@ func (client *Client) ListDoctorHiveTablesWithOptions(request *ListDoctorHiveTab
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDoctorHiveTablesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDoctorHiveTablesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDoctorHiveTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -56543,24 +55985,13 @@ func (client *Client) ListDoctorJobsWithOptions(request *ListDoctorJobsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDoctorJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDoctorJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDoctorJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -56654,24 +56085,13 @@ func (client *Client) ListDoctorJobsStatsWithOptions(request *ListDoctorJobsStat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDoctorJobsStatsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDoctorJobsStatsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDoctorJobsStatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -56745,24 +56165,13 @@ func (client *Client) ListDoctorReportsWithOptions(request *ListDoctorReportsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDoctorReportsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDoctorReportsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDoctorReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -56860,24 +56269,13 @@ func (client *Client) ListInstanceTypesWithOptions(request *ListInstanceTypesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListInstanceTypesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListInstanceTypesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListInstanceTypesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -56945,6 +56343,10 @@ func (client *Client) ListNodeGroupsWithOptions(request *ListNodeGroupsRequest, 
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -56959,24 +56361,13 @@ func (client *Client) ListNodeGroupsWithOptions(request *ListNodeGroupsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListNodeGroupsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListNodeGroupsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListNodeGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -57070,24 +56461,13 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListNodesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListNodesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -57153,24 +56533,13 @@ func (client *Client) ListReleaseVersionsWithOptions(request *ListReleaseVersion
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListReleaseVersionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListReleaseVersionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListReleaseVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -57256,24 +56625,13 @@ func (client *Client) ListScriptsWithOptions(request *ListScriptsRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListScriptsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListScriptsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListScriptsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -57347,24 +56705,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -57385,6 +56732,14 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a user.
+//
+// Description:
+//
+// Queries a user.
+//
 // @param request - ListUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -57434,26 +56789,23 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries a user.
+//
+// Description:
+//
+// Queries a user.
+//
 // @param request - ListUsersRequest
 //
 // @return ListUsersResponse
@@ -57470,7 +56822,7 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 
 // Summary:
 //
-// Configures auto scaling rules.
+// Adds a custom auto scaling rule.
 //
 // Description:
 //
@@ -57521,29 +56873,18 @@ func (client *Client) PutAutoScalingPolicyWithOptions(request *PutAutoScalingPol
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PutAutoScalingPolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PutAutoScalingPolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PutAutoScalingPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Configures auto scaling rules.
+// Adds a custom auto scaling rule.
 //
 // Description:
 //
@@ -57563,6 +56904,70 @@ func (client *Client) PutAutoScalingPolicy(request *PutAutoScalingPolicyRequest)
 	return _result, _err
 }
 
+// @param request - PutManagedScalingPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutManagedScalingPolicyResponse
+func (client *Client) PutManagedScalingPolicyWithOptions(request *PutManagedScalingPolicyRequest, runtime *util.RuntimeOptions) (_result *PutManagedScalingPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Constraints)) {
+		query["Constraints"] = request.Constraints
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutManagedScalingPolicy"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PutManagedScalingPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - PutManagedScalingPolicyRequest
+//
+// @return PutManagedScalingPolicyResponse
+func (client *Client) PutManagedScalingPolicy(request *PutManagedScalingPolicyRequest) (_result *PutManagedScalingPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PutManagedScalingPolicyResponse{}
+	_body, _err := client.PutManagedScalingPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes an auto scaling policy.
+//
 // @param request - RemoveAutoScalingPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -57600,26 +57005,19 @@ func (client *Client) RemoveAutoScalingPolicyWithOptions(request *RemoveAutoScal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveAutoScalingPolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemoveAutoScalingPolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemoveAutoScalingPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Removes an auto scaling policy.
+//
 // @param request - RemoveAutoScalingPolicyRequest
 //
 // @return RemoveAutoScalingPolicyResponse
@@ -57675,24 +57073,13 @@ func (client *Client) RunApiTemplateWithOptions(request *RunApiTemplateRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunApiTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunApiTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunApiTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - RunApiTemplateRequest
@@ -57774,24 +57161,13 @@ func (client *Client) RunApplicationActionWithOptions(request *RunApplicationAct
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunApplicationActionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunApplicationActionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunApplicationActionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -57852,6 +57228,10 @@ func (client *Client) RunClusterWithOptions(tmpReq *RunClusterRequest, runtime *
 		request.NodeGroupsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeGroups, tea.String("NodeGroups"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Promotions)) {
+		request.PromotionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Promotions, tea.String("Promotions"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.SubscriptionConfig)) {
 		request.SubscriptionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubscriptionConfig, tea.String("SubscriptionConfig"), tea.String("json"))
 	}
@@ -57861,6 +57241,10 @@ func (client *Client) RunClusterWithOptions(tmpReq *RunClusterRequest, runtime *
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PromotionsShrink)) {
+		query["Promotions"] = request.PromotionsShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -57949,24 +57333,13 @@ func (client *Client) RunClusterWithOptions(tmpReq *RunClusterRequest, runtime *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -57993,7 +57366,7 @@ func (client *Client) RunCluster(request *RunClusterRequest) (_result *RunCluste
 
 // Summary:
 //
-// Bind tags to a specified EMR cluster.
+// Binds tags to a specified EMR cluster.
 //
 // @param request - TagResourcesRequest
 //
@@ -58036,29 +57409,18 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Bind tags to a specified EMR cluster.
+// Binds tags to a specified EMR cluster.
 //
 // @param request - TagResourcesRequest
 //
@@ -58123,24 +57485,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UntagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UntagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -58218,24 +57569,13 @@ func (client *Client) UpdateApiTemplateWithOptions(request *UpdateApiTemplateReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateApiTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateApiTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateApiTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -58260,6 +57600,10 @@ func (client *Client) UpdateApiTemplate(request *UpdateApiTemplateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the application configurations.
+//
 // @param request - UpdateApplicationConfigsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -58330,26 +57674,19 @@ func (client *Client) UpdateApplicationConfigsWithOptions(request *UpdateApplica
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateApplicationConfigsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateApplicationConfigsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateApplicationConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Updates the application configurations.
+//
 // @param request - UpdateApplicationConfigsRequest
 //
 // @return UpdateApplicationConfigsResponse
@@ -58366,7 +57703,7 @@ func (client *Client) UpdateApplicationConfigs(request *UpdateApplicationConfigs
 
 // Summary:
 //
-// Update cluster attributes.
+// Updates cluster attributes.
 //
 // @param request - UpdateClusterAttributeRequest
 //
@@ -58413,29 +57750,18 @@ func (client *Client) UpdateClusterAttributeWithOptions(request *UpdateClusterAt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateClusterAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateClusterAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateClusterAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Update cluster attributes.
+// Updates cluster attributes.
 //
 // @param request - UpdateClusterAttributeRequest
 //
@@ -58506,24 +57832,13 @@ func (client *Client) UpdateScriptWithOptions(tmpReq *UpdateScriptRequest, runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateScriptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateScriptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -58544,6 +57859,14 @@ func (client *Client) UpdateScript(request *UpdateScriptRequest) (_result *Updat
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information about a user.
+//
+// Description:
+//
+// Updates the information about a user.
+//
 // @param request - UpdateUserAttributeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -58593,26 +57916,23 @@ func (client *Client) UpdateUserAttributeWithOptions(request *UpdateUserAttribut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateUserAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateUserAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateUserAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information about a user.
+//
+// Description:
+//
+// Updates the information about a user.
+//
 // @param request - UpdateUserAttributeRequest
 //
 // @return UpdateUserAttributeResponse
