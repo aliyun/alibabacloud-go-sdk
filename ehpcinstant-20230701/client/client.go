@@ -1899,9 +1899,8 @@ func (s *GetAppVersionsResponse) SetBody(v *GetAppVersionsResponseBody) *GetAppV
 }
 
 type GetImageRequest struct {
-	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
-	// This parameter is required.
-	//
+	AdditionalRegionIds []*string `json:"AdditionalRegionIds,omitempty" xml:"AdditionalRegionIds,omitempty" type:"Repeated"`
+	ImageCategory       *string   `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
 	// example:
 	//
 	// m-2ze74g5mvy4pjg*****
@@ -1917,6 +1916,11 @@ func (s GetImageRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetImageRequest) SetAdditionalRegionIds(v []*string) *GetImageRequest {
+	s.AdditionalRegionIds = v
+	return s
+}
+
 func (s *GetImageRequest) SetImageCategory(v string) *GetImageRequest {
 	s.ImageCategory = &v
 	return s
@@ -1928,6 +1932,44 @@ func (s *GetImageRequest) SetImageId(v string) *GetImageRequest {
 }
 
 func (s *GetImageRequest) SetImageType(v string) *GetImageRequest {
+	s.ImageType = &v
+	return s
+}
+
+type GetImageShrinkRequest struct {
+	AdditionalRegionIdsShrink *string `json:"AdditionalRegionIds,omitempty" xml:"AdditionalRegionIds,omitempty"`
+	ImageCategory             *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	// example:
+	//
+	// m-2ze74g5mvy4pjg*****
+	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+}
+
+func (s GetImageShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageShrinkRequest) SetAdditionalRegionIdsShrink(v string) *GetImageShrinkRequest {
+	s.AdditionalRegionIdsShrink = &v
+	return s
+}
+
+func (s *GetImageShrinkRequest) SetImageCategory(v string) *GetImageShrinkRequest {
+	s.ImageCategory = &v
+	return s
+}
+
+func (s *GetImageShrinkRequest) SetImageId(v string) *GetImageShrinkRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *GetImageShrinkRequest) SetImageType(v string) *GetImageShrinkRequest {
 	s.ImageType = &v
 	return s
 }
@@ -1977,8 +2019,9 @@ func (s *GetImageResponseBody) SetTotalCount(v int32) *GetImageResponseBody {
 }
 
 type GetImageResponseBodyImage struct {
-	AppId              *string                                      `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ContainerImageSpec *GetImageResponseBodyImageContainerImageSpec `json:"ContainerImageSpec,omitempty" xml:"ContainerImageSpec,omitempty" type:"Struct"`
+	AdditionalRegionsInfo []*GetImageResponseBodyImageAdditionalRegionsInfo `json:"AdditionalRegionsInfo,omitempty" xml:"AdditionalRegionsInfo,omitempty" type:"Repeated"`
+	AppId                 *string                                           `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ContainerImageSpec    *GetImageResponseBodyImageContainerImageSpec      `json:"ContainerImageSpec,omitempty" xml:"ContainerImageSpec,omitempty" type:"Struct"`
 	// example:
 	//
 	// 2022-12-23T09:51:39Z
@@ -2013,6 +2056,11 @@ func (s GetImageResponseBodyImage) String() string {
 
 func (s GetImageResponseBodyImage) GoString() string {
 	return s.String()
+}
+
+func (s *GetImageResponseBodyImage) SetAdditionalRegionsInfo(v []*GetImageResponseBodyImageAdditionalRegionsInfo) *GetImageResponseBodyImage {
+	s.AdditionalRegionsInfo = v
+	return s
 }
 
 func (s *GetImageResponseBodyImage) SetAppId(v string) *GetImageResponseBodyImage {
@@ -2067,6 +2115,35 @@ func (s *GetImageResponseBodyImage) SetVMImageSpec(v *GetImageResponseBodyImageV
 
 func (s *GetImageResponseBodyImage) SetVersion(v string) *GetImageResponseBodyImage {
 	s.Version = &v
+	return s
+}
+
+type GetImageResponseBodyImageAdditionalRegionsInfo struct {
+	ImageId  *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetImageResponseBodyImageAdditionalRegionsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageResponseBodyImageAdditionalRegionsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageResponseBodyImageAdditionalRegionsInfo) SetImageId(v string) *GetImageResponseBodyImageAdditionalRegionsInfo {
+	s.ImageId = &v
+	return s
+}
+
+func (s *GetImageResponseBodyImageAdditionalRegionsInfo) SetRegionId(v string) *GetImageResponseBodyImageAdditionalRegionsInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetImageResponseBodyImageAdditionalRegionsInfo) SetStatus(v string) *GetImageResponseBodyImageAdditionalRegionsInfo {
+	s.Status = &v
 	return s
 }
 
@@ -6099,17 +6176,27 @@ func (client *Client) GetAppVersions(request *GetAppVersionsRequest) (_result *G
 //
 // 查询托管侧镜像详情。
 //
-// @param request - GetImageRequest
+// @param tmpReq - GetImageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetImageResponse
-func (client *Client) GetImageWithOptions(request *GetImageRequest, runtime *util.RuntimeOptions) (_result *GetImageResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetImageWithOptions(tmpReq *GetImageRequest, runtime *util.RuntimeOptions) (_result *GetImageResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GetImageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AdditionalRegionIds)) {
+		request.AdditionalRegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AdditionalRegionIds, tea.String("AdditionalRegionIds"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdditionalRegionIdsShrink)) {
+		query["AdditionalRegionIds"] = request.AdditionalRegionIdsShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageCategory)) {
 		query["ImageCategory"] = request.ImageCategory
 	}
