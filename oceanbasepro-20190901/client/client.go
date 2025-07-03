@@ -14137,6 +14137,10 @@ type DescribeInstanceResponseBodyInstance struct {
 	//
 	// NORMAL
 	InstanceRole *string `json:"InstanceRole,omitempty" xml:"InstanceRole,omitempty"`
+	// example:
+	//
+	// 10000
+	Iops *int32 `json:"Iops,omitempty" xml:"Iops,omitempty"`
 	// Indicates whether the OBServer version is the latest.
 	//
 	// example:
@@ -14435,6 +14439,11 @@ func (s *DescribeInstanceResponseBodyInstance) SetInstanceName(v string) *Descri
 
 func (s *DescribeInstanceResponseBodyInstance) SetInstanceRole(v string) *DescribeInstanceResponseBodyInstance {
 	s.InstanceRole = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstance) SetIops(v int32) *DescribeInstanceResponseBodyInstance {
+	s.Iops = &v
 	return s
 }
 
@@ -18080,6 +18089,10 @@ type DescribeInstancesResponseBodyInstances struct {
 	//
 	// CLUSTER
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 10000
+	Iops *int32 `json:"Iops,omitempty" xml:"Iops,omitempty"`
 	// The time period in UTC for the daily routine maintenance of the cluster.
 	//
 	// example:
@@ -18355,6 +18368,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstanceRole(v string) *Desc
 
 func (s *DescribeInstancesResponseBodyInstances) SetInstanceType(v string) *DescribeInstancesResponseBodyInstances {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetIops(v int32) *DescribeInstancesResponseBodyInstances {
+	s.Iops = &v
 	return s
 }
 
@@ -18924,7 +18942,8 @@ type DescribeMetricsDataRequest struct {
 	// example:
 	//
 	// 5
-	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Limit       *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	MetricScope *string `json:"MetricScope,omitempty" xml:"MetricScope,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -18978,6 +18997,11 @@ func (s *DescribeMetricsDataRequest) SetLabels(v string) *DescribeMetricsDataReq
 
 func (s *DescribeMetricsDataRequest) SetLimit(v string) *DescribeMetricsDataRequest {
 	s.Limit = &v
+	return s
+}
+
+func (s *DescribeMetricsDataRequest) SetMetricScope(v string) *DescribeMetricsDataRequest {
+	s.MetricScope = &v
 	return s
 }
 
@@ -38244,7 +38268,8 @@ type DescribeSqlAuditStatRequest struct {
 	// example:
 	//
 	// ob317v4uif****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
 	// example:
 	//
 	// 1
@@ -38281,6 +38306,11 @@ func (s *DescribeSqlAuditStatRequest) SetInstanceId(v string) *DescribeSqlAuditS
 	return s
 }
 
+func (s *DescribeSqlAuditStatRequest) SetOperatorType(v string) *DescribeSqlAuditStatRequest {
+	s.OperatorType = &v
+	return s
+}
+
 func (s *DescribeSqlAuditStatRequest) SetPageNumber(v int32) *DescribeSqlAuditStatRequest {
 	s.PageNumber = &v
 	return s
@@ -38308,7 +38338,8 @@ type DescribeSqlAuditStatResponseBody struct {
 	// example:
 	//
 	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSqlAuditStatResponseBody) String() string {
@@ -38326,6 +38357,11 @@ func (s *DescribeSqlAuditStatResponseBody) SetData(v []*DescribeSqlAuditStatResp
 
 func (s *DescribeSqlAuditStatResponseBody) SetRequestId(v string) *DescribeSqlAuditStatResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBody) SetTotalCount(v int64) *DescribeSqlAuditStatResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -38899,6 +38935,10 @@ type DescribeTenantResponseBodyTenant struct {
 	//
 	// KAFKA_PUBLIC
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 10000
+	Iops *int32 `json:"Iops,omitempty" xml:"Iops,omitempty"`
 	// Indicates whether the table name is case-sensitive. Valid values:
 	//
 	// 	- **1**: The table name is case-insensitive.
@@ -39161,6 +39201,11 @@ func (s *DescribeTenantResponseBodyTenant) SetEnableReadWriteSplit(v bool) *Desc
 
 func (s *DescribeTenantResponseBodyTenant) SetInstanceType(v string) *DescribeTenantResponseBodyTenant {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenant) SetIops(v int32) *DescribeTenantResponseBodyTenant {
+	s.Iops = &v
 	return s
 }
 
@@ -42096,6 +42141,10 @@ type DescribeTenantsResponseBodyTenants struct {
 	//
 	// true
 	EnableReadOnlyReplica *bool `json:"EnableReadOnlyReplica,omitempty" xml:"EnableReadOnlyReplica,omitempty"`
+	// example:
+	//
+	// 10000
+	Iops *int32 `json:"Iops,omitempty" xml:"Iops,omitempty"`
 	// The total memory size of the tenant, in GB.
 	//
 	// example:
@@ -42239,6 +42288,11 @@ func (s *DescribeTenantsResponseBodyTenants) SetDescription(v string) *DescribeT
 
 func (s *DescribeTenantsResponseBodyTenants) SetEnableReadOnlyReplica(v bool) *DescribeTenantsResponseBodyTenants {
 	s.EnableReadOnlyReplica = &v
+	return s
+}
+
+func (s *DescribeTenantsResponseBodyTenants) SetIops(v int32) *DescribeTenantsResponseBodyTenants {
+	s.Iops = &v
 	return s
 }
 
@@ -52096,6 +52150,10 @@ type ModifyTenantResourceRequest struct {
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 10000
+	Iops *string `json:"Iops,omitempty" xml:"Iops,omitempty"`
 	// The size of the log disk allocated to the tenant, in GB.
 	//
 	// example:
@@ -52143,6 +52201,11 @@ func (s *ModifyTenantResourceRequest) SetCpu(v int32) *ModifyTenantResourceReque
 
 func (s *ModifyTenantResourceRequest) SetInstanceId(v string) *ModifyTenantResourceRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyTenantResourceRequest) SetIops(v string) *ModifyTenantResourceRequest {
+	s.Iops = &v
 	return s
 }
 
@@ -60557,6 +60620,10 @@ func (client *Client) DescribeMetricsDataWithOptions(request *DescribeMetricsDat
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MetricScope)) {
+		body["MetricScope"] = request.MetricScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ReplicaType)) {
 		body["ReplicaType"] = request.ReplicaType
 	}
@@ -63026,6 +63093,10 @@ func (client *Client) DescribeSqlAuditStatWithOptions(request *DescribeSqlAuditS
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorType)) {
+		body["OperatorType"] = request.OperatorType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -65874,6 +65945,10 @@ func (client *Client) ModifyTenantResourceWithOptions(request *ModifyTenantResou
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Iops)) {
+		body["Iops"] = request.Iops
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LogDisk)) {
