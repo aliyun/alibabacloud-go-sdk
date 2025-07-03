@@ -15032,6 +15032,7 @@ func (s *ListZonesResponseBodyData) SetItems(v []*ListZonesResponseBodyDataItems
 }
 
 type ListZonesResponseBodyDataItems struct {
+	SupportQat *string `json:"supportQat,omitempty" xml:"supportQat,omitempty"`
 	// 可用区ID。
 	//
 	// example:
@@ -15046,6 +15047,11 @@ func (s ListZonesResponseBodyDataItems) String() string {
 
 func (s ListZonesResponseBodyDataItems) GoString() string {
 	return s.String()
+}
+
+func (s *ListZonesResponseBodyDataItems) SetSupportQat(v string) *ListZonesResponseBodyDataItems {
+	s.SupportQat = &v
+	return s
 }
 
 func (s *ListZonesResponseBodyDataItems) SetZoneId(v string) *ListZonesResponseBodyDataItems {
