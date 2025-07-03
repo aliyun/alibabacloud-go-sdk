@@ -470,6 +470,493 @@ func (s *AddRecordTemplateResponse) SetBody(v *AddRecordTemplateResponseBody) *A
 	return s
 }
 
+type CreateAppAgentTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId     *string                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AsrConfig *CreateAppAgentTemplateRequestAsrConfig `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2
+	ChatMode *int32  `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// example:
+	//
+	// 2
+	InterruptMode *int32                                  `json:"InterruptMode,omitempty" xml:"InterruptMode,omitempty"`
+	LlmConfig     *CreateAppAgentTemplateRequestLlmConfig `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 智能体模版
+	Name      *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	TtsConfig *CreateAppAgentTemplateRequestTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateAppAgentTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppAgentTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppAgentTemplateRequest) SetAppId(v string) *CreateAppAgentTemplateRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequest) SetAsrConfig(v *CreateAppAgentTemplateRequestAsrConfig) *CreateAppAgentTemplateRequest {
+	s.AsrConfig = v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequest) SetChatMode(v int32) *CreateAppAgentTemplateRequest {
+	s.ChatMode = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequest) SetGreeting(v string) *CreateAppAgentTemplateRequest {
+	s.Greeting = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequest) SetInterruptMode(v int32) *CreateAppAgentTemplateRequest {
+	s.InterruptMode = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequest) SetLlmConfig(v *CreateAppAgentTemplateRequestLlmConfig) *CreateAppAgentTemplateRequest {
+	s.LlmConfig = v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequest) SetName(v string) *CreateAppAgentTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequest) SetTtsConfig(v *CreateAppAgentTemplateRequestTtsConfig) *CreateAppAgentTemplateRequest {
+	s.TtsConfig = v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequest) SetType(v int32) *CreateAppAgentTemplateRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateAppAgentTemplateRequestAsrConfig struct {
+	// example:
+	//
+	// 300
+	MaxSentenceSilence *int32 `json:"MaxSentenceSilence,omitempty" xml:"MaxSentenceSilence,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// STT
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	WordWeights []*CreateAppAgentTemplateRequestAsrConfigWordWeights `json:"WordWeights,omitempty" xml:"WordWeights,omitempty" type:"Repeated"`
+}
+
+func (s CreateAppAgentTemplateRequestAsrConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppAgentTemplateRequestAsrConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppAgentTemplateRequestAsrConfig) SetMaxSentenceSilence(v int32) *CreateAppAgentTemplateRequestAsrConfig {
+	s.MaxSentenceSilence = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestAsrConfig) SetName(v string) *CreateAppAgentTemplateRequestAsrConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestAsrConfig) SetWordWeights(v []*CreateAppAgentTemplateRequestAsrConfigWordWeights) *CreateAppAgentTemplateRequestAsrConfig {
+	s.WordWeights = v
+	return s
+}
+
+type CreateAppAgentTemplateRequestAsrConfigWordWeights struct {
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 苹果
+	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
+}
+
+func (s CreateAppAgentTemplateRequestAsrConfigWordWeights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppAgentTemplateRequestAsrConfigWordWeights) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppAgentTemplateRequestAsrConfigWordWeights) SetLang(v string) *CreateAppAgentTemplateRequestAsrConfigWordWeights {
+	s.Lang = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestAsrConfigWordWeights) SetWeight(v int32) *CreateAppAgentTemplateRequestAsrConfigWordWeights {
+	s.Weight = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestAsrConfigWordWeights) SetWord(v string) *CreateAppAgentTemplateRequestAsrConfigWordWeights {
+	s.Word = &v
+	return s
+}
+
+type CreateAppAgentTemplateRequestLlmConfig struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ak-1213123123132123131
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// example:
+	//
+	// 5
+	HistoryDepth *int32 `json:"HistoryDepth,omitempty" xml:"HistoryDepth,omitempty"`
+	// example:
+	//
+	// 1024
+	MaxToken *int32 `json:"MaxToken,omitempty" xml:"MaxToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// 0.9
+	Temperature *float32 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
+	// example:
+	//
+	// 0.8
+	TopP *float32 `json:"TopP,omitempty" xml:"TopP,omitempty"`
+	// example:
+	//
+	// https://llm.example.aliyuns.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// thirdparty
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s CreateAppAgentTemplateRequestLlmConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppAgentTemplateRequestLlmConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppAgentTemplateRequestLlmConfig) SetApiKey(v string) *CreateAppAgentTemplateRequestLlmConfig {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestLlmConfig) SetHistoryDepth(v int32) *CreateAppAgentTemplateRequestLlmConfig {
+	s.HistoryDepth = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestLlmConfig) SetMaxToken(v int32) *CreateAppAgentTemplateRequestLlmConfig {
+	s.MaxToken = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestLlmConfig) SetName(v string) *CreateAppAgentTemplateRequestLlmConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestLlmConfig) SetPrompt(v string) *CreateAppAgentTemplateRequestLlmConfig {
+	s.Prompt = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestLlmConfig) SetTemperature(v float32) *CreateAppAgentTemplateRequestLlmConfig {
+	s.Temperature = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestLlmConfig) SetTopP(v float32) *CreateAppAgentTemplateRequestLlmConfig {
+	s.TopP = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestLlmConfig) SetUrl(v string) *CreateAppAgentTemplateRequestLlmConfig {
+	s.Url = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestLlmConfig) SetVendor(v string) *CreateAppAgentTemplateRequestLlmConfig {
+	s.Vendor = &v
+	return s
+}
+
+type CreateAppAgentTemplateRequestTtsConfig struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ak-1213123123132123131
+	ApiKey         *string  `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	FilterBrackets []*int32 `json:"FilterBrackets,omitempty" xml:"FilterBrackets,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Tts
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 0.8
+	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
+	// example:
+	//
+	// 0.8
+	Rate *float32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// example:
+	//
+	// aliyun
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// example:
+	//
+	// longcheng
+	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// example:
+	//
+	// 70
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s CreateAppAgentTemplateRequestTtsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppAgentTemplateRequestTtsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppAgentTemplateRequestTtsConfig) SetApiKey(v string) *CreateAppAgentTemplateRequestTtsConfig {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestTtsConfig) SetFilterBrackets(v []*int32) *CreateAppAgentTemplateRequestTtsConfig {
+	s.FilterBrackets = v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestTtsConfig) SetName(v string) *CreateAppAgentTemplateRequestTtsConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestTtsConfig) SetPitch(v float32) *CreateAppAgentTemplateRequestTtsConfig {
+	s.Pitch = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestTtsConfig) SetRate(v float32) *CreateAppAgentTemplateRequestTtsConfig {
+	s.Rate = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestTtsConfig) SetVendor(v string) *CreateAppAgentTemplateRequestTtsConfig {
+	s.Vendor = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestTtsConfig) SetVoice(v string) *CreateAppAgentTemplateRequestTtsConfig {
+	s.Voice = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestTtsConfig) SetVolume(v int32) *CreateAppAgentTemplateRequestTtsConfig {
+	s.Volume = &v
+	return s
+}
+
+type CreateAppAgentTemplateShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AsrConfigShrink *string `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty"`
+	// example:
+	//
+	// 2
+	ChatMode *int32  `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// example:
+	//
+	// 2
+	InterruptMode   *int32  `json:"InterruptMode,omitempty" xml:"InterruptMode,omitempty"`
+	LlmConfigShrink *string `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 智能体模版
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TtsConfigShrink *string `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateAppAgentTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppAgentTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppAgentTemplateShrinkRequest) SetAppId(v string) *CreateAppAgentTemplateShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateShrinkRequest) SetAsrConfigShrink(v string) *CreateAppAgentTemplateShrinkRequest {
+	s.AsrConfigShrink = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateShrinkRequest) SetChatMode(v int32) *CreateAppAgentTemplateShrinkRequest {
+	s.ChatMode = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateShrinkRequest) SetGreeting(v string) *CreateAppAgentTemplateShrinkRequest {
+	s.Greeting = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateShrinkRequest) SetInterruptMode(v int32) *CreateAppAgentTemplateShrinkRequest {
+	s.InterruptMode = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateShrinkRequest) SetLlmConfigShrink(v string) *CreateAppAgentTemplateShrinkRequest {
+	s.LlmConfigShrink = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateShrinkRequest) SetName(v string) *CreateAppAgentTemplateShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateShrinkRequest) SetTtsConfigShrink(v string) *CreateAppAgentTemplateShrinkRequest {
+	s.TtsConfigShrink = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateShrinkRequest) SetType(v int32) *CreateAppAgentTemplateShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateAppAgentTemplateResponseBody struct {
+	// example:
+	//
+	// 1223131213231313213
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 6159ba01-6687-4fb2-a831-f0cd8d188648
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAppAgentTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppAgentTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppAgentTemplateResponseBody) SetId(v string) *CreateAppAgentTemplateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateResponseBody) SetRequestId(v string) *CreateAppAgentTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAppAgentTemplateResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppAgentTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAppAgentTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppAgentTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppAgentTemplateResponse) SetHeaders(v map[string]*string) *CreateAppAgentTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAppAgentTemplateResponse) SetStatusCode(v int32) *CreateAppAgentTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateResponse) SetBody(v *CreateAppAgentTemplateResponseBody) *CreateAppAgentTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAppLayoutRequest struct {
 	// This parameter is required.
 	//
@@ -1738,6 +2225,99 @@ func (s *CreateMPULayoutResponse) SetBody(v *CreateMPULayoutResponseBody) *Creat
 	return s
 }
 
+type DeleteAppAgentTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1213123142124124124214
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteAppAgentTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppAgentTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppAgentTemplateRequest) SetAppId(v string) *DeleteAppAgentTemplateRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteAppAgentTemplateRequest) SetId(v string) *DeleteAppAgentTemplateRequest {
+	s.Id = &v
+	return s
+}
+
+type DeleteAppAgentTemplateResponseBody struct {
+	// example:
+	//
+	// 1223131213231313213
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAppAgentTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppAgentTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppAgentTemplateResponseBody) SetId(v string) *DeleteAppAgentTemplateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteAppAgentTemplateResponseBody) SetRequestId(v string) *DeleteAppAgentTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAppAgentTemplateResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAppAgentTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAppAgentTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppAgentTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppAgentTemplateResponse) SetHeaders(v map[string]*string) *DeleteAppAgentTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAppAgentTemplateResponse) SetStatusCode(v int32) *DeleteAppAgentTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAppAgentTemplateResponse) SetBody(v *DeleteAppAgentTemplateResponseBody) *DeleteAppAgentTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAppLayoutRequest struct {
 	// This parameter is required.
 	//
@@ -2872,6 +3452,576 @@ func (s *DescribeAllCallbackResponse) SetStatusCode(v int32) *DescribeAllCallbac
 }
 
 func (s *DescribeAllCallbackResponse) SetBody(v *DescribeAllCallbackResponseBody) *DescribeAllCallbackResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAppAgentFunctionStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s DescribeAppAgentFunctionStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppAgentFunctionStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentFunctionStatusRequest) SetAppId(v string) *DescribeAppAgentFunctionStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+type DescribeAppAgentFunctionStatusResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// disable
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s DescribeAppAgentFunctionStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppAgentFunctionStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentFunctionStatusResponseBody) SetRequestId(v string) *DescribeAppAgentFunctionStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAppAgentFunctionStatusResponseBody) SetResult(v string) *DescribeAppAgentFunctionStatusResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DescribeAppAgentFunctionStatusResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppAgentFunctionStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAppAgentFunctionStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppAgentFunctionStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentFunctionStatusResponse) SetHeaders(v map[string]*string) *DescribeAppAgentFunctionStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppAgentFunctionStatusResponse) SetStatusCode(v int32) *DescribeAppAgentFunctionStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAppAgentFunctionStatusResponse) SetBody(v *DescribeAppAgentFunctionStatusResponseBody) *DescribeAppAgentFunctionStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAppAgentTemplatesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 123121414122313121313
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 智能体模版
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeAppAgentTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppAgentTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentTemplatesRequest) SetAppId(v string) *DescribeAppAgentTemplatesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesRequest) SetId(v string) *DescribeAppAgentTemplatesRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesRequest) SetName(v string) *DescribeAppAgentTemplatesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesRequest) SetPageNum(v int32) *DescribeAppAgentTemplatesRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesRequest) SetPageSize(v int32) *DescribeAppAgentTemplatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeAppAgentTemplatesResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 30D41049-D02D-1C21-86AE-B3E5FD805C27
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Templates []*DescribeAppAgentTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s DescribeAppAgentTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppAgentTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentTemplatesResponseBody) SetRequestId(v string) *DescribeAppAgentTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBody) SetTemplates(v []*DescribeAppAgentTemplatesResponseBodyTemplates) *DescribeAppAgentTemplatesResponseBody {
+	s.Templates = v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBody) SetTotalNum(v int64) *DescribeAppAgentTemplatesResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBody) SetTotalPage(v int64) *DescribeAppAgentTemplatesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type DescribeAppAgentTemplatesResponseBodyTemplates struct {
+	AsrConfig *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	ChatMode *int32 `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	// example:
+	//
+	// 2020-09-04T06:22:15Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 你好，机器人。
+	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// example:
+	//
+	// wv7N****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1
+	InterruptMode *int32                                                   `json:"InterruptMode,omitempty" xml:"InterruptMode,omitempty"`
+	LlmConfig     *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 测试
+	Name      *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	TtsConfig *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetAsrConfig(v *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.AsrConfig = v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetChatMode(v int32) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.ChatMode = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetCreateTime(v string) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetGreeting(v string) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.Greeting = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetId(v string) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetInterruptMode(v int32) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.InterruptMode = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetLlmConfig(v *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.LlmConfig = v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetName(v string) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetTtsConfig(v *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.TtsConfig = v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetType(v int32) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.Type = &v
+	return s
+}
+
+type DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig struct {
+	// example:
+	//
+	// 300
+	MaxSentenceSilence *int32  `json:"MaxSentenceSilence,omitempty" xml:"MaxSentenceSilence,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ecfadace11114cf08a7f07aceee798ad
+	VocabularyId *string                                                               `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
+	WordWeights  []*DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights `json:"WordWeights,omitempty" xml:"WordWeights,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) SetMaxSentenceSilence(v int32) *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig {
+	s.MaxSentenceSilence = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) SetName(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) SetVocabularyId(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig {
+	s.VocabularyId = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) SetWordWeights(v []*DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights) *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig {
+	s.WordWeights = v
+	return s
+}
+
+type DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights struct {
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 1
+	Weight *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Word   *string `json:"Word,omitempty" xml:"Word,omitempty"`
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights) SetLang(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights) SetWeight(v int32) *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights {
+	s.Weight = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights) SetWord(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights {
+	s.Word = &v
+	return s
+}
+
+type DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig struct {
+	// example:
+	//
+	// qW8GpBOdHK/pv9gdUSVLvQ==
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// example:
+	//
+	// 8
+	HistoryDepth *int32 `json:"HistoryDepth,omitempty" xml:"HistoryDepth,omitempty"`
+	// example:
+	//
+	// 1024
+	MaxToken *int32 `json:"MaxToken,omitempty" xml:"MaxToken,omitempty"`
+	// example:
+	//
+	// deepseek-r1
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// llm
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// 0.8
+	Temperature *float32 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
+	// example:
+	//
+	// 0.8
+	TopP *float32 `json:"TopP,omitempty" xml:"TopP,omitempty"`
+	// example:
+	//
+	// https://test.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// aliyun
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) SetApiKey(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) SetHistoryDepth(v int32) *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig {
+	s.HistoryDepth = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) SetMaxToken(v int32) *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig {
+	s.MaxToken = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) SetModel(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig {
+	s.Model = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) SetName(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) SetPrompt(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig {
+	s.Prompt = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) SetTemperature(v float32) *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig {
+	s.Temperature = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) SetTopP(v float32) *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig {
+	s.TopP = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) SetUrl(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig {
+	s.Url = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) SetVendor(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig {
+	s.Vendor = &v
+	return s
+}
+
+type DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig struct {
+	// example:
+	//
+	// N5448VFGI2mXJU8a/A03VQ==
+	ApiKey         *string  `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	FilterBrackets []*int32 `json:"FilterBrackets,omitempty" xml:"FilterBrackets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cosyvoice-v1
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// Tts
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 0.8
+	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
+	// example:
+	//
+	// 50
+	Rate *float32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// example:
+	//
+	// aliyun
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// example:
+	//
+	// longwan
+	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// example:
+	//
+	// 50
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig) SetApiKey(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig) SetFilterBrackets(v []*int32) *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig {
+	s.FilterBrackets = v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig) SetModel(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig {
+	s.Model = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig) SetName(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig) SetPitch(v float32) *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig {
+	s.Pitch = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig) SetRate(v float32) *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig {
+	s.Rate = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig) SetVendor(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig {
+	s.Vendor = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig) SetVoice(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig {
+	s.Voice = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig) SetVolume(v int32) *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig {
+	s.Volume = &v
+	return s
+}
+
+type DescribeAppAgentTemplatesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppAgentTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAppAgentTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppAgentTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentTemplatesResponse) SetHeaders(v map[string]*string) *DescribeAppAgentTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponse) SetStatusCode(v int32) *DescribeAppAgentTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponse) SetBody(v *DescribeAppAgentTemplatesResponseBody) *DescribeAppAgentTemplatesResponse {
 	s.Body = v
 	return s
 }
@@ -15302,6 +16452,131 @@ func (s *EnableAutoLiveStreamRuleResponse) SetBody(v *EnableAutoLiveStreamRuleRe
 	return s
 }
 
+type GetAgentRequest struct {
+	// example:
+	//
+	// aec****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 1234
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// yourTaskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetAgentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAgentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentRequest) SetAppId(v string) *GetAgentRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetAgentRequest) SetChannelId(v string) *GetAgentRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *GetAgentRequest) SetTaskId(v string) *GetAgentRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetAgentResponseBody struct {
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 6159ba01-6687-4fb2-a831-f0cd8d188648
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1751513144838
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1751513144838
+	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+}
+
+func (s GetAgentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAgentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentResponseBody) SetMessage(v string) *GetAgentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAgentResponseBody) SetRequestId(v string) *GetAgentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAgentResponseBody) SetStartTime(v string) *GetAgentResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetAgentResponseBody) SetStatus(v string) *GetAgentResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAgentResponseBody) SetStopTime(v string) *GetAgentResponseBody {
+	s.StopTime = &v
+	return s
+}
+
+type GetAgentResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAgentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAgentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentResponse) SetHeaders(v map[string]*string) *GetAgentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAgentResponse) SetStatusCode(v int32) *GetAgentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAgentResponse) SetBody(v *GetAgentResponseBody) *GetAgentResponse {
+	s.Body = v
+	return s
+}
+
 type GetMPUTaskStatusRequest struct {
 	// This parameter is required.
 	//
@@ -15483,6 +16758,596 @@ func (s *ModifyAppResponse) SetStatusCode(v int32) *ModifyAppResponse {
 }
 
 func (s *ModifyAppResponse) SetBody(v *ModifyAppResponseBody) *ModifyAppResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyAppAgentFunctionStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s ModifyAppAgentFunctionStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppAgentFunctionStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentFunctionStatusRequest) SetAppId(v string) *ModifyAppAgentFunctionStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+type ModifyAppAgentFunctionStatusResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 6159ba01-6687-4fb2-a831-f0cd8d188648
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAppAgentFunctionStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppAgentFunctionStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentFunctionStatusResponseBody) SetRequestId(v string) *ModifyAppAgentFunctionStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAppAgentFunctionStatusResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAppAgentFunctionStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAppAgentFunctionStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppAgentFunctionStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentFunctionStatusResponse) SetHeaders(v map[string]*string) *ModifyAppAgentFunctionStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAppAgentFunctionStatusResponse) SetStatusCode(v int32) *ModifyAppAgentFunctionStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAppAgentFunctionStatusResponse) SetBody(v *ModifyAppAgentFunctionStatusResponseBody) *ModifyAppAgentFunctionStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyAppAgentTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId     *string                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AsrConfig *ModifyAppAgentTemplateRequestAsrConfig `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2
+	ChatMode *int32  `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1231231312312131231
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 2
+	InterruptMode *int32                                  `json:"InterruptMode,omitempty" xml:"InterruptMode,omitempty"`
+	LlmConfig     *ModifyAppAgentTemplateRequestLlmConfig `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 智能体模版
+	Name      *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	TtsConfig *ModifyAppAgentTemplateRequestTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ModifyAppAgentTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppAgentTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentTemplateRequest) SetAppId(v string) *ModifyAppAgentTemplateRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequest) SetAsrConfig(v *ModifyAppAgentTemplateRequestAsrConfig) *ModifyAppAgentTemplateRequest {
+	s.AsrConfig = v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequest) SetChatMode(v int32) *ModifyAppAgentTemplateRequest {
+	s.ChatMode = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequest) SetGreeting(v string) *ModifyAppAgentTemplateRequest {
+	s.Greeting = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequest) SetId(v string) *ModifyAppAgentTemplateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequest) SetInterruptMode(v int32) *ModifyAppAgentTemplateRequest {
+	s.InterruptMode = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequest) SetLlmConfig(v *ModifyAppAgentTemplateRequestLlmConfig) *ModifyAppAgentTemplateRequest {
+	s.LlmConfig = v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequest) SetName(v string) *ModifyAppAgentTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequest) SetTtsConfig(v *ModifyAppAgentTemplateRequestTtsConfig) *ModifyAppAgentTemplateRequest {
+	s.TtsConfig = v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequest) SetType(v int32) *ModifyAppAgentTemplateRequest {
+	s.Type = &v
+	return s
+}
+
+type ModifyAppAgentTemplateRequestAsrConfig struct {
+	// example:
+	//
+	// 500
+	MaxSentenceSilence *int32 `json:"MaxSentenceSilence,omitempty" xml:"MaxSentenceSilence,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// STT
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 0bb1776b1745123332074d1b6b
+	VocabularyId *string                                              `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
+	WordWeights  []*ModifyAppAgentTemplateRequestAsrConfigWordWeights `json:"WordWeights,omitempty" xml:"WordWeights,omitempty" type:"Repeated"`
+}
+
+func (s ModifyAppAgentTemplateRequestAsrConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppAgentTemplateRequestAsrConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentTemplateRequestAsrConfig) SetMaxSentenceSilence(v int32) *ModifyAppAgentTemplateRequestAsrConfig {
+	s.MaxSentenceSilence = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestAsrConfig) SetName(v string) *ModifyAppAgentTemplateRequestAsrConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestAsrConfig) SetVocabularyId(v string) *ModifyAppAgentTemplateRequestAsrConfig {
+	s.VocabularyId = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestAsrConfig) SetWordWeights(v []*ModifyAppAgentTemplateRequestAsrConfigWordWeights) *ModifyAppAgentTemplateRequestAsrConfig {
+	s.WordWeights = v
+	return s
+}
+
+type ModifyAppAgentTemplateRequestAsrConfigWordWeights struct {
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 苹果
+	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
+}
+
+func (s ModifyAppAgentTemplateRequestAsrConfigWordWeights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppAgentTemplateRequestAsrConfigWordWeights) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentTemplateRequestAsrConfigWordWeights) SetLang(v string) *ModifyAppAgentTemplateRequestAsrConfigWordWeights {
+	s.Lang = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestAsrConfigWordWeights) SetWeight(v int32) *ModifyAppAgentTemplateRequestAsrConfigWordWeights {
+	s.Weight = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestAsrConfigWordWeights) SetWord(v string) *ModifyAppAgentTemplateRequestAsrConfigWordWeights {
+	s.Word = &v
+	return s
+}
+
+type ModifyAppAgentTemplateRequestLlmConfig struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ak-1213123123132123131
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// example:
+	//
+	// 8
+	HistoryDepth *int32 `json:"HistoryDepth,omitempty" xml:"HistoryDepth,omitempty"`
+	// example:
+	//
+	// 1024
+	MaxToken *int32 `json:"MaxToken,omitempty" xml:"MaxToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// 0.7
+	Temperature *float32 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
+	// example:
+	//
+	// 0.8
+	TopP *float32 `json:"TopP,omitempty" xml:"TopP,omitempty"`
+	// example:
+	//
+	// https://llm.example.aliyuns.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// thirdparty
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s ModifyAppAgentTemplateRequestLlmConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppAgentTemplateRequestLlmConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentTemplateRequestLlmConfig) SetApiKey(v string) *ModifyAppAgentTemplateRequestLlmConfig {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestLlmConfig) SetHistoryDepth(v int32) *ModifyAppAgentTemplateRequestLlmConfig {
+	s.HistoryDepth = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestLlmConfig) SetMaxToken(v int32) *ModifyAppAgentTemplateRequestLlmConfig {
+	s.MaxToken = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestLlmConfig) SetName(v string) *ModifyAppAgentTemplateRequestLlmConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestLlmConfig) SetPrompt(v string) *ModifyAppAgentTemplateRequestLlmConfig {
+	s.Prompt = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestLlmConfig) SetTemperature(v float32) *ModifyAppAgentTemplateRequestLlmConfig {
+	s.Temperature = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestLlmConfig) SetTopP(v float32) *ModifyAppAgentTemplateRequestLlmConfig {
+	s.TopP = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestLlmConfig) SetUrl(v string) *ModifyAppAgentTemplateRequestLlmConfig {
+	s.Url = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestLlmConfig) SetVendor(v string) *ModifyAppAgentTemplateRequestLlmConfig {
+	s.Vendor = &v
+	return s
+}
+
+type ModifyAppAgentTemplateRequestTtsConfig struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ak-1213123123132123131
+	ApiKey         *string  `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	FilterBrackets []*int32 `json:"FilterBrackets,omitempty" xml:"FilterBrackets,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Tts
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 0.8
+	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
+	// example:
+	//
+	// 0.8
+	Rate *float32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aliyun
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// example:
+	//
+	// longwan
+	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// example:
+	//
+	// 50
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s ModifyAppAgentTemplateRequestTtsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppAgentTemplateRequestTtsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentTemplateRequestTtsConfig) SetApiKey(v string) *ModifyAppAgentTemplateRequestTtsConfig {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestTtsConfig) SetFilterBrackets(v []*int32) *ModifyAppAgentTemplateRequestTtsConfig {
+	s.FilterBrackets = v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestTtsConfig) SetName(v string) *ModifyAppAgentTemplateRequestTtsConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestTtsConfig) SetPitch(v float32) *ModifyAppAgentTemplateRequestTtsConfig {
+	s.Pitch = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestTtsConfig) SetRate(v float32) *ModifyAppAgentTemplateRequestTtsConfig {
+	s.Rate = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestTtsConfig) SetVendor(v string) *ModifyAppAgentTemplateRequestTtsConfig {
+	s.Vendor = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestTtsConfig) SetVoice(v string) *ModifyAppAgentTemplateRequestTtsConfig {
+	s.Voice = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestTtsConfig) SetVolume(v int32) *ModifyAppAgentTemplateRequestTtsConfig {
+	s.Volume = &v
+	return s
+}
+
+type ModifyAppAgentTemplateShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AsrConfigShrink *string `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty"`
+	// example:
+	//
+	// 2
+	ChatMode *int32  `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1231231312312131231
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 2
+	InterruptMode   *int32  `json:"InterruptMode,omitempty" xml:"InterruptMode,omitempty"`
+	LlmConfigShrink *string `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 智能体模版
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TtsConfigShrink *string `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ModifyAppAgentTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppAgentTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) SetAppId(v string) *ModifyAppAgentTemplateShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) SetAsrConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest {
+	s.AsrConfigShrink = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) SetChatMode(v int32) *ModifyAppAgentTemplateShrinkRequest {
+	s.ChatMode = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) SetGreeting(v string) *ModifyAppAgentTemplateShrinkRequest {
+	s.Greeting = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) SetId(v string) *ModifyAppAgentTemplateShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) SetInterruptMode(v int32) *ModifyAppAgentTemplateShrinkRequest {
+	s.InterruptMode = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) SetLlmConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest {
+	s.LlmConfigShrink = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) SetName(v string) *ModifyAppAgentTemplateShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) SetTtsConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest {
+	s.TtsConfigShrink = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) SetType(v int32) *ModifyAppAgentTemplateShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type ModifyAppAgentTemplateResponseBody struct {
+	// example:
+	//
+	// 1223131213231313213
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAppAgentTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppAgentTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentTemplateResponseBody) SetId(v string) *ModifyAppAgentTemplateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateResponseBody) SetRequestId(v string) *ModifyAppAgentTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAppAgentTemplateResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAppAgentTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAppAgentTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppAgentTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentTemplateResponse) SetHeaders(v map[string]*string) *ModifyAppAgentTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateResponse) SetStatusCode(v int32) *ModifyAppAgentTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateResponse) SetBody(v *ModifyAppAgentTemplateResponseBody) *ModifyAppAgentTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -16939,6 +18804,128 @@ func (s *ModifyMPULayoutResponse) SetBody(v *ModifyMPULayoutResponseBody) *Modif
 	return s
 }
 
+type NotifyAgentRequest struct {
+	// example:
+	//
+	// aec****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// yourChannelId
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// {\\"color\\":\\"blue\\"}
+	CustomAttribute *string `json:"CustomAttribute,omitempty" xml:"CustomAttribute,omitempty"`
+	// example:
+	//
+	// true
+	Interruptable *bool   `json:"Interruptable,omitempty" xml:"Interruptable,omitempty"`
+	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// yourTaskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s NotifyAgentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NotifyAgentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *NotifyAgentRequest) SetAppId(v string) *NotifyAgentRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *NotifyAgentRequest) SetChannelId(v string) *NotifyAgentRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *NotifyAgentRequest) SetCustomAttribute(v string) *NotifyAgentRequest {
+	s.CustomAttribute = &v
+	return s
+}
+
+func (s *NotifyAgentRequest) SetInterruptable(v bool) *NotifyAgentRequest {
+	s.Interruptable = &v
+	return s
+}
+
+func (s *NotifyAgentRequest) SetMessage(v string) *NotifyAgentRequest {
+	s.Message = &v
+	return s
+}
+
+func (s *NotifyAgentRequest) SetPriority(v int32) *NotifyAgentRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *NotifyAgentRequest) SetTaskId(v string) *NotifyAgentRequest {
+	s.TaskId = &v
+	return s
+}
+
+type NotifyAgentResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s NotifyAgentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NotifyAgentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *NotifyAgentResponseBody) SetRequestId(v string) *NotifyAgentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type NotifyAgentResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *NotifyAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s NotifyAgentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NotifyAgentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *NotifyAgentResponse) SetHeaders(v map[string]*string) *NotifyAgentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *NotifyAgentResponse) SetStatusCode(v int32) *NotifyAgentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *NotifyAgentResponse) SetBody(v *NotifyAgentResponseBody) *NotifyAgentResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveTerminalsRequest struct {
 	// This parameter is required.
 	//
@@ -17250,6 +19237,499 @@ func (s *RemoveUsersResponse) SetStatusCode(v int32) *RemoveUsersResponse {
 }
 
 func (s *RemoveUsersResponse) SetBody(v *RemoveUsersResponseBody) *RemoveUsersResponse {
+	s.Body = v
+	return s
+}
+
+type StartAgentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aoe****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourChannelId
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	RtcConfig *StartAgentRequestRtcConfig `json:"RtcConfig,omitempty" xml:"RtcConfig,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourTaskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 76dasgb****
+	TemplateId      *string                           `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	VoiceChatConfig *StartAgentRequestVoiceChatConfig `json:"VoiceChatConfig,omitempty" xml:"VoiceChatConfig,omitempty" type:"Struct"`
+}
+
+func (s StartAgentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAgentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartAgentRequest) SetAppId(v string) *StartAgentRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StartAgentRequest) SetChannelId(v string) *StartAgentRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *StartAgentRequest) SetRtcConfig(v *StartAgentRequestRtcConfig) *StartAgentRequest {
+	s.RtcConfig = v
+	return s
+}
+
+func (s *StartAgentRequest) SetTaskId(v string) *StartAgentRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *StartAgentRequest) SetTemplateId(v string) *StartAgentRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *StartAgentRequest) SetVoiceChatConfig(v *StartAgentRequestVoiceChatConfig) *StartAgentRequest {
+	s.VoiceChatConfig = v
+	return s
+}
+
+type StartAgentRequestRtcConfig struct {
+	TargetUserIds []*string `json:"TargetUserIds,omitempty" xml:"TargetUserIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 423341
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s StartAgentRequestRtcConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAgentRequestRtcConfig) GoString() string {
+	return s.String()
+}
+
+func (s *StartAgentRequestRtcConfig) SetTargetUserIds(v []*string) *StartAgentRequestRtcConfig {
+	s.TargetUserIds = v
+	return s
+}
+
+func (s *StartAgentRequestRtcConfig) SetUserId(v string) *StartAgentRequestRtcConfig {
+	s.UserId = &v
+	return s
+}
+
+type StartAgentRequestVoiceChatConfig struct {
+	ASRConfig *StartAgentRequestVoiceChatConfigASRConfig `json:"ASRConfig,omitempty" xml:"ASRConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	ChatMode *int32  `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// example:
+	//
+	// 1
+	InterruptMode *int32                                     `json:"InterruptMode,omitempty" xml:"InterruptMode,omitempty"`
+	LLMConfig     *StartAgentRequestVoiceChatConfigLLMConfig `json:"LLMConfig,omitempty" xml:"LLMConfig,omitempty" type:"Struct"`
+	TTSConfig     *StartAgentRequestVoiceChatConfigTTSConfig `json:"TTSConfig,omitempty" xml:"TTSConfig,omitempty" type:"Struct"`
+}
+
+func (s StartAgentRequestVoiceChatConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAgentRequestVoiceChatConfig) GoString() string {
+	return s.String()
+}
+
+func (s *StartAgentRequestVoiceChatConfig) SetASRConfig(v *StartAgentRequestVoiceChatConfigASRConfig) *StartAgentRequestVoiceChatConfig {
+	s.ASRConfig = v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfig) SetChatMode(v int32) *StartAgentRequestVoiceChatConfig {
+	s.ChatMode = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfig) SetGreeting(v string) *StartAgentRequestVoiceChatConfig {
+	s.Greeting = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfig) SetInterruptMode(v int32) *StartAgentRequestVoiceChatConfig {
+	s.InterruptMode = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfig) SetLLMConfig(v *StartAgentRequestVoiceChatConfigLLMConfig) *StartAgentRequestVoiceChatConfig {
+	s.LLMConfig = v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfig) SetTTSConfig(v *StartAgentRequestVoiceChatConfigTTSConfig) *StartAgentRequestVoiceChatConfig {
+	s.TTSConfig = v
+	return s
+}
+
+type StartAgentRequestVoiceChatConfigASRConfig struct {
+	LanguageHints []*string `json:"LanguageHints,omitempty" xml:"LanguageHints,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 800
+	MaxSentenceSilence *int32 `json:"MaxSentenceSilence,omitempty" xml:"MaxSentenceSilence,omitempty"`
+	// example:
+	//
+	// false
+	SemanticPunctuationEnabled *bool `json:"SemanticPunctuationEnabled,omitempty" xml:"SemanticPunctuationEnabled,omitempty"`
+	// example:
+	//
+	// zh
+	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// example:
+	//
+	// vocab-xxx-24ee19fa8cfb4d52902170a0xxxxxxxx
+	VocabularyId *string `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
+}
+
+func (s StartAgentRequestVoiceChatConfigASRConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAgentRequestVoiceChatConfigASRConfig) GoString() string {
+	return s.String()
+}
+
+func (s *StartAgentRequestVoiceChatConfigASRConfig) SetLanguageHints(v []*string) *StartAgentRequestVoiceChatConfigASRConfig {
+	s.LanguageHints = v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigASRConfig) SetMaxSentenceSilence(v int32) *StartAgentRequestVoiceChatConfigASRConfig {
+	s.MaxSentenceSilence = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigASRConfig) SetSemanticPunctuationEnabled(v bool) *StartAgentRequestVoiceChatConfigASRConfig {
+	s.SemanticPunctuationEnabled = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigASRConfig) SetSourceLanguage(v string) *StartAgentRequestVoiceChatConfigASRConfig {
+	s.SourceLanguage = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigASRConfig) SetVocabularyId(v string) *StartAgentRequestVoiceChatConfigASRConfig {
+	s.VocabularyId = &v
+	return s
+}
+
+type StartAgentRequestVoiceChatConfigLLMConfig struct {
+	// example:
+	//
+	// xxxxxxxxxxx
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// example:
+	//
+	// 3
+	HistoryDepth *int32 `json:"HistoryDepth,omitempty" xml:"HistoryDepth,omitempty"`
+	// example:
+	//
+	// 500
+	MaxToken *int32 `json:"MaxToken,omitempty" xml:"MaxToken,omitempty"`
+	// example:
+	//
+	// qwen-plus
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// xxxx
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// 0.7
+	Temperature *float64 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
+	// example:
+	//
+	// 0.8
+	TopP *float64 `json:"TopP,omitempty" xml:"TopP,omitempty"`
+	// example:
+	//
+	// https://xxxxx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// aliyun
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s StartAgentRequestVoiceChatConfigLLMConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAgentRequestVoiceChatConfigLLMConfig) GoString() string {
+	return s.String()
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetApiKey(v string) *StartAgentRequestVoiceChatConfigLLMConfig {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetHistoryDepth(v int32) *StartAgentRequestVoiceChatConfigLLMConfig {
+	s.HistoryDepth = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetMaxToken(v int32) *StartAgentRequestVoiceChatConfigLLMConfig {
+	s.MaxToken = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetModel(v string) *StartAgentRequestVoiceChatConfigLLMConfig {
+	s.Model = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetPrompt(v string) *StartAgentRequestVoiceChatConfigLLMConfig {
+	s.Prompt = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetTemperature(v float64) *StartAgentRequestVoiceChatConfigLLMConfig {
+	s.Temperature = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetTopP(v float64) *StartAgentRequestVoiceChatConfigLLMConfig {
+	s.TopP = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetUrl(v string) *StartAgentRequestVoiceChatConfigLLMConfig {
+	s.Url = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetVendor(v string) *StartAgentRequestVoiceChatConfigLLMConfig {
+	s.Vendor = &v
+	return s
+}
+
+type StartAgentRequestVoiceChatConfigTTSConfig struct {
+	// example:
+	//
+	// xxxxxx
+	ApiKey         *string  `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	FilterBrackets []*int32 `json:"FilterBrackets,omitempty" xml:"FilterBrackets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cosyvoice-v1
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// 1
+	Pitch *float64 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
+	// example:
+	//
+	// 1
+	Rate *float64 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// example:
+	//
+	// aliyun
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// example:
+	//
+	// longxiaoxia
+	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// example:
+	//
+	// 50
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s StartAgentRequestVoiceChatConfigTTSConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAgentRequestVoiceChatConfigTTSConfig) GoString() string {
+	return s.String()
+}
+
+func (s *StartAgentRequestVoiceChatConfigTTSConfig) SetApiKey(v string) *StartAgentRequestVoiceChatConfigTTSConfig {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigTTSConfig) SetFilterBrackets(v []*int32) *StartAgentRequestVoiceChatConfigTTSConfig {
+	s.FilterBrackets = v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigTTSConfig) SetModel(v string) *StartAgentRequestVoiceChatConfigTTSConfig {
+	s.Model = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigTTSConfig) SetPitch(v float64) *StartAgentRequestVoiceChatConfigTTSConfig {
+	s.Pitch = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigTTSConfig) SetRate(v float64) *StartAgentRequestVoiceChatConfigTTSConfig {
+	s.Rate = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigTTSConfig) SetVendor(v string) *StartAgentRequestVoiceChatConfigTTSConfig {
+	s.Vendor = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigTTSConfig) SetVoice(v string) *StartAgentRequestVoiceChatConfigTTSConfig {
+	s.Voice = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigTTSConfig) SetVolume(v int32) *StartAgentRequestVoiceChatConfigTTSConfig {
+	s.Volume = &v
+	return s
+}
+
+type StartAgentShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aoe****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourChannelId
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	RtcConfigShrink *string `json:"RtcConfig,omitempty" xml:"RtcConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourTaskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 76dasgb****
+	TemplateId            *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	VoiceChatConfigShrink *string `json:"VoiceChatConfig,omitempty" xml:"VoiceChatConfig,omitempty"`
+}
+
+func (s StartAgentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAgentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartAgentShrinkRequest) SetAppId(v string) *StartAgentShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StartAgentShrinkRequest) SetChannelId(v string) *StartAgentShrinkRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *StartAgentShrinkRequest) SetRtcConfigShrink(v string) *StartAgentShrinkRequest {
+	s.RtcConfigShrink = &v
+	return s
+}
+
+func (s *StartAgentShrinkRequest) SetTaskId(v string) *StartAgentShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *StartAgentShrinkRequest) SetTemplateId(v string) *StartAgentShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *StartAgentShrinkRequest) SetVoiceChatConfigShrink(v string) *StartAgentShrinkRequest {
+	s.VoiceChatConfigShrink = &v
+	return s
+}
+
+type StartAgentResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 6159ba01-6687-4fb2-a831-f0cd8d188648
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartAgentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAgentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartAgentResponseBody) SetRequestId(v string) *StartAgentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartAgentResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartAgentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAgentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartAgentResponse) SetHeaders(v map[string]*string) *StartAgentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartAgentResponse) SetStatusCode(v int32) *StartAgentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartAgentResponse) SetBody(v *StartAgentResponseBody) *StartAgentResponse {
 	s.Body = v
 	return s
 }
@@ -25003,6 +27483,101 @@ func (s *StartStreamingOutResponse) SetBody(v *StartStreamingOutResponseBody) *S
 	return s
 }
 
+type StopAgentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aec****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourChannelId
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourTaskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s StopAgentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAgentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopAgentRequest) SetAppId(v string) *StopAgentRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StopAgentRequest) SetChannelId(v string) *StopAgentRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *StopAgentRequest) SetTaskId(v string) *StopAgentRequest {
+	s.TaskId = &v
+	return s
+}
+
+type StopAgentResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopAgentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAgentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopAgentResponseBody) SetRequestId(v string) *StopAgentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopAgentResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopAgentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAgentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopAgentResponse) SetHeaders(v map[string]*string) *StopAgentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopAgentResponse) SetStatusCode(v int32) *StopAgentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopAgentResponse) SetBody(v *StopAgentResponseBody) *StopAgentResponse {
+	s.Body = v
+	return s
+}
+
 type StopCategoryCallbackRequest struct {
 	// This parameter is required.
 	//
@@ -25700,6 +28275,186 @@ func (s *StopStreamingOutResponse) SetStatusCode(v int32) *StopStreamingOutRespo
 }
 
 func (s *StopStreamingOutResponse) SetBody(v *StopStreamingOutResponseBody) *StopStreamingOutResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAgentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4eah****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourChannelId
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourTaskId
+	TaskId          *string                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	VoiceChatConfig *UpdateAgentRequestVoiceChatConfig `json:"VoiceChatConfig,omitempty" xml:"VoiceChatConfig,omitempty" type:"Struct"`
+}
+
+func (s UpdateAgentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAgentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAgentRequest) SetAppId(v string) *UpdateAgentRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAgentRequest) SetChannelId(v string) *UpdateAgentRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *UpdateAgentRequest) SetTaskId(v string) *UpdateAgentRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *UpdateAgentRequest) SetVoiceChatConfig(v *UpdateAgentRequestVoiceChatConfig) *UpdateAgentRequest {
+	s.VoiceChatConfig = v
+	return s
+}
+
+type UpdateAgentRequestVoiceChatConfig struct {
+	// example:
+	//
+	// 2
+	ChatMode *int32 `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	// example:
+	//
+	// 2
+	InterruptMode *int32 `json:"InterruptMode,omitempty" xml:"InterruptMode,omitempty"`
+}
+
+func (s UpdateAgentRequestVoiceChatConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAgentRequestVoiceChatConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAgentRequestVoiceChatConfig) SetChatMode(v int32) *UpdateAgentRequestVoiceChatConfig {
+	s.ChatMode = &v
+	return s
+}
+
+func (s *UpdateAgentRequestVoiceChatConfig) SetInterruptMode(v int32) *UpdateAgentRequestVoiceChatConfig {
+	s.InterruptMode = &v
+	return s
+}
+
+type UpdateAgentShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4eah****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourChannelId
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yourTaskId
+	TaskId                *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	VoiceChatConfigShrink *string `json:"VoiceChatConfig,omitempty" xml:"VoiceChatConfig,omitempty"`
+}
+
+func (s UpdateAgentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAgentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAgentShrinkRequest) SetAppId(v string) *UpdateAgentShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAgentShrinkRequest) SetChannelId(v string) *UpdateAgentShrinkRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *UpdateAgentShrinkRequest) SetTaskId(v string) *UpdateAgentShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *UpdateAgentShrinkRequest) SetVoiceChatConfigShrink(v string) *UpdateAgentShrinkRequest {
+	s.VoiceChatConfigShrink = &v
+	return s
+}
+
+type UpdateAgentResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 760bad53276431c499e30dc36f6b26be
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateAgentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAgentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAgentResponseBody) SetRequestId(v string) *UpdateAgentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateAgentResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAgentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAgentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAgentResponse) SetHeaders(v map[string]*string) *UpdateAgentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAgentResponse) SetStatusCode(v int32) *UpdateAgentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAgentResponse) SetBody(v *UpdateAgentResponseBody) *UpdateAgentResponse {
 	s.Body = v
 	return s
 }
@@ -32665,6 +35420,112 @@ func (client *Client) AddRecordTemplate(request *AddRecordTemplateRequest) (_res
 
 // Summary:
 //
+// 创建应用智能体模版
+//
+// @param tmpReq - CreateAppAgentTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppAgentTemplateResponse
+func (client *Client) CreateAppAgentTemplateWithOptions(tmpReq *CreateAppAgentTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateAppAgentTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateAppAgentTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AsrConfig)) {
+		request.AsrConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AsrConfig, tea.String("AsrConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.LlmConfig)) {
+		request.LlmConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LlmConfig, tea.String("LlmConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TtsConfig)) {
+		request.TtsConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TtsConfig, tea.String("TtsConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AsrConfigShrink)) {
+		query["AsrConfig"] = request.AsrConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatMode)) {
+		query["ChatMode"] = request.ChatMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Greeting)) {
+		query["Greeting"] = request.Greeting
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InterruptMode)) {
+		query["InterruptMode"] = request.InterruptMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LlmConfigShrink)) {
+		query["LlmConfig"] = request.LlmConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TtsConfigShrink)) {
+		query["TtsConfig"] = request.TtsConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAppAgentTemplate"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAppAgentTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用智能体模版
+//
+// @param request - CreateAppAgentTemplateRequest
+//
+// @return CreateAppAgentTemplateResponse
+func (client *Client) CreateAppAgentTemplate(request *CreateAppAgentTemplateRequest) (_result *CreateAppAgentTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAppAgentTemplateResponse{}
+	_body, _err := client.CreateAppAgentTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增app自定义布局
 //
 // @param tmpReq - CreateAppLayoutRequest
@@ -33176,6 +36037,70 @@ func (client *Client) CreateMPULayout(request *CreateMPULayoutRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMPULayoutResponse{}
 	_body, _err := client.CreateMPULayoutWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除应用智能体模版
+//
+// @param request - DeleteAppAgentTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppAgentTemplateResponse
+func (client *Client) DeleteAppAgentTemplateWithOptions(request *DeleteAppAgentTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteAppAgentTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAppAgentTemplate"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAppAgentTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除应用智能体模版
+//
+// @param request - DeleteAppAgentTemplateRequest
+//
+// @return DeleteAppAgentTemplateResponse
+func (client *Client) DeleteAppAgentTemplate(request *DeleteAppAgentTemplateRequest) (_result *DeleteAppAgentTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAppAgentTemplateResponse{}
+	_body, _err := client.DeleteAppAgentTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33811,6 +36736,142 @@ func (client *Client) DescribeAllCallback() (_result *DescribeAllCallbackRespons
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAllCallbackResponse{}
 	_body, _err := client.DescribeAllCallbackWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用智能体开关
+//
+// @param request - DescribeAppAgentFunctionStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppAgentFunctionStatusResponse
+func (client *Client) DescribeAppAgentFunctionStatusWithOptions(request *DescribeAppAgentFunctionStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeAppAgentFunctionStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAppAgentFunctionStatus"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAppAgentFunctionStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用智能体开关
+//
+// @param request - DescribeAppAgentFunctionStatusRequest
+//
+// @return DescribeAppAgentFunctionStatusResponse
+func (client *Client) DescribeAppAgentFunctionStatus(request *DescribeAppAgentFunctionStatusRequest) (_result *DescribeAppAgentFunctionStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppAgentFunctionStatusResponse{}
+	_body, _err := client.DescribeAppAgentFunctionStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用智能体模版列表
+//
+// @param request - DescribeAppAgentTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppAgentTemplatesResponse
+func (client *Client) DescribeAppAgentTemplatesWithOptions(request *DescribeAppAgentTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeAppAgentTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAppAgentTemplates"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAppAgentTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用智能体模版列表
+//
+// @param request - DescribeAppAgentTemplatesRequest
+//
+// @return DescribeAppAgentTemplatesResponse
+func (client *Client) DescribeAppAgentTemplates(request *DescribeAppAgentTemplatesRequest) (_result *DescribeAppAgentTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppAgentTemplatesResponse{}
+	_body, _err := client.DescribeAppAgentTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37810,6 +40871,74 @@ func (client *Client) EnableAutoLiveStreamRule(request *EnableAutoLiveStreamRule
 	return _result, _err
 }
 
+// Summary:
+//
+// GetAgent。
+//
+// @param request - GetAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentResponse
+func (client *Client) GetAgentWithOptions(request *GetAgentRequest, runtime *util.RuntimeOptions) (_result *GetAgentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAgent"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// GetAgent。
+//
+// @param request - GetAgentRequest
+//
+// @return GetAgentResponse
+func (client *Client) GetAgent(request *GetAgentRequest) (_result *GetAgentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAgentResponse{}
+	_body, _err := client.GetAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - GetMPUTaskStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -37931,6 +41060,176 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAppResponse{}
 	_body, _err := client.ModifyAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用智能体开关
+//
+// @param request - ModifyAppAgentFunctionStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppAgentFunctionStatusResponse
+func (client *Client) ModifyAppAgentFunctionStatusWithOptions(request *ModifyAppAgentFunctionStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyAppAgentFunctionStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAppAgentFunctionStatus"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAppAgentFunctionStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用智能体开关
+//
+// @param request - ModifyAppAgentFunctionStatusRequest
+//
+// @return ModifyAppAgentFunctionStatusResponse
+func (client *Client) ModifyAppAgentFunctionStatus(request *ModifyAppAgentFunctionStatusRequest) (_result *ModifyAppAgentFunctionStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAppAgentFunctionStatusResponse{}
+	_body, _err := client.ModifyAppAgentFunctionStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新应用智能体模版
+//
+// @param tmpReq - ModifyAppAgentTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppAgentTemplateResponse
+func (client *Client) ModifyAppAgentTemplateWithOptions(tmpReq *ModifyAppAgentTemplateRequest, runtime *util.RuntimeOptions) (_result *ModifyAppAgentTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyAppAgentTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AsrConfig)) {
+		request.AsrConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AsrConfig, tea.String("AsrConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.LlmConfig)) {
+		request.LlmConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LlmConfig, tea.String("LlmConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TtsConfig)) {
+		request.TtsConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TtsConfig, tea.String("TtsConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AsrConfigShrink)) {
+		query["AsrConfig"] = request.AsrConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatMode)) {
+		query["ChatMode"] = request.ChatMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Greeting)) {
+		query["Greeting"] = request.Greeting
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InterruptMode)) {
+		query["InterruptMode"] = request.InterruptMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LlmConfigShrink)) {
+		query["LlmConfig"] = request.LlmConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TtsConfigShrink)) {
+		query["TtsConfig"] = request.TtsConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAppAgentTemplate"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAppAgentTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新应用智能体模版
+//
+// @param request - ModifyAppAgentTemplateRequest
+//
+// @return ModifyAppAgentTemplateResponse
+func (client *Client) ModifyAppAgentTemplate(request *ModifyAppAgentTemplateRequest) (_result *ModifyAppAgentTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAppAgentTemplateResponse{}
+	_body, _err := client.ModifyAppAgentTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38560,6 +41859,90 @@ func (client *Client) ModifyMPULayout(request *ModifyMPULayoutRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// # NotifyAgent
+//
+// @param request - NotifyAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return NotifyAgentResponse
+func (client *Client) NotifyAgentWithOptions(request *NotifyAgentRequest, runtime *util.RuntimeOptions) (_result *NotifyAgentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomAttribute)) {
+		query["CustomAttribute"] = request.CustomAttribute
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interruptable)) {
+		query["Interruptable"] = request.Interruptable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		query["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("NotifyAgent"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &NotifyAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # NotifyAgent
+//
+// @param request - NotifyAgentRequest
+//
+// @return NotifyAgentResponse
+func (client *Client) NotifyAgent(request *NotifyAgentRequest) (_result *NotifyAgentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &NotifyAgentResponse{}
+	_body, _err := client.NotifyAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - RemoveTerminalsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -38685,6 +42068,96 @@ func (client *Client) RemoveUsers(request *RemoveUsersRequest) (_result *RemoveU
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveUsersResponse{}
 	_body, _err := client.RemoveUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动AI Agent
+//
+// @param tmpReq - StartAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartAgentResponse
+func (client *Client) StartAgentWithOptions(tmpReq *StartAgentRequest, runtime *util.RuntimeOptions) (_result *StartAgentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StartAgentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RtcConfig)) {
+		request.RtcConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RtcConfig, tea.String("RtcConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.VoiceChatConfig)) {
+		request.VoiceChatConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VoiceChatConfig, tea.String("VoiceChatConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RtcConfigShrink)) {
+		query["RtcConfig"] = request.RtcConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceChatConfigShrink)) {
+		query["VoiceChatConfig"] = request.VoiceChatConfigShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartAgent"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动AI Agent
+//
+// @param request - StartAgentRequest
+//
+// @return StartAgentResponse
+func (client *Client) StartAgent(request *StartAgentRequest) (_result *StartAgentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartAgentResponse{}
+	_body, _err := client.StartAgentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39479,6 +42952,74 @@ func (client *Client) StartStreamingOut(request *StartStreamingOutRequest) (_res
 
 // Summary:
 //
+// 停止AI Agent
+//
+// @param request - StopAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopAgentResponse
+func (client *Client) StopAgentWithOptions(request *StopAgentRequest, runtime *util.RuntimeOptions) (_result *StopAgentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopAgent"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止AI Agent
+//
+// @param request - StopAgentRequest
+//
+// @return StopAgentResponse
+func (client *Client) StopAgent(request *StopAgentRequest) (_result *StopAgentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopAgentResponse{}
+	_body, _err := client.StopAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 关闭某个事件回调
 //
 // @param tmpReq - StopCategoryCallbackRequest
@@ -39932,6 +43473,84 @@ func (client *Client) StopStreamingOut(request *StopStreamingOutRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &StopStreamingOutResponse{}
 	_body, _err := client.StopStreamingOutWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新AI Agent
+//
+// @param tmpReq - UpdateAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAgentResponse
+func (client *Client) UpdateAgentWithOptions(tmpReq *UpdateAgentRequest, runtime *util.RuntimeOptions) (_result *UpdateAgentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateAgentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.VoiceChatConfig)) {
+		request.VoiceChatConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VoiceChatConfig, tea.String("VoiceChatConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceChatConfigShrink)) {
+		query["VoiceChatConfig"] = request.VoiceChatConfigShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAgent"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新AI Agent
+//
+// @param request - UpdateAgentRequest
+//
+// @return UpdateAgentResponse
+func (client *Client) UpdateAgent(request *UpdateAgentRequest) (_result *UpdateAgentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAgentResponse{}
+	_body, _err := client.UpdateAgentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
