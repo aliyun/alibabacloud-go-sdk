@@ -85,16 +85,23 @@ func (s *AssociateDefaultFilterResponse) SetBody(v *AssociateDefaultFilterRespon
 }
 
 type CreateDeliveryChannelRequest struct {
+	// The description of the delivery channel.
 	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	// The effective scope of the delivery channel.
+	//
 	// This parameter is required.
 	DeliveryChannelFilter *CreateDeliveryChannelRequestDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// The name of the delivery channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-delivery
-	DeliveryChannelName      *string                                               `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	ResourceChangeDelivery   *CreateDeliveryChannelRequestResourceChangeDelivery   `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The configurations for delivery of resource configuration change events.
+	ResourceChangeDelivery *CreateDeliveryChannelRequestResourceChangeDelivery `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	// The configurations for delivery of scheduled resource snapshots.
 	ResourceSnapshotDelivery *CreateDeliveryChannelRequestResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
 }
 
@@ -132,6 +139,11 @@ func (s *CreateDeliveryChannelRequest) SetResourceSnapshotDelivery(v *CreateDeli
 }
 
 type CreateDeliveryChannelRequestDeliveryChannelFilter struct {
+	// An array of effective resource types for the delivery channel.
+	//
+	// 	- Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+	//
+	// 	- If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -149,8 +161,24 @@ func (s *CreateDeliveryChannelRequestDeliveryChannelFilter) SetResourceTypes(v [
 }
 
 type CreateDeliveryChannelRequestResourceChangeDelivery struct {
+	// The Simple Log Service configurations.
 	SlsProperties *CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
-	TargetArn     *string                                                          `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The ARN of the delivery destination.
+	//
+	// 	- If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with resourcecenter-.
+	//
+	// 	- If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with resourcecenter-.
+	//
+	// example:
+	//
+	// acs:log:cn-hangzhou: 191142248777****:project/delivery/logstore/resourcecenter-sls
+	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The type of the delivery destination.
+	//
+	// Valid values:
+	//
+	// 	- `SLS`
+	//
 	// example:
 	//
 	// SLS
@@ -181,6 +209,15 @@ func (s *CreateDeliveryChannelRequestResourceChangeDelivery) SetTargetType(v str
 }
 
 type CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties struct {
+	// The ARN of the destination to which large files are delivered.
+	//
+	// 	- If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object.
+	//
+	// 	- You need to set this parameter to the ARN of a bucket whose name is prefixed with resourcecenter-.
+	//
+	// example:
+	//
+	// acs:oss:cn-hangzhou:191142248777****:resourcecenter-oss
 	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
 }
 
@@ -198,16 +235,38 @@ func (s *CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties) SetOve
 }
 
 type CreateDeliveryChannelRequestResourceSnapshotDelivery struct {
+	// The custom expression.
+	//
 	// example:
 	//
 	// select 	- from resources limit 100;
 	CustomExpression *string `json:"CustomExpression,omitempty" xml:"CustomExpression,omitempty"`
+	// The delivery time.
+	//
 	// example:
 	//
 	// 09:00Z
-	DeliveryTime  *string                                                            `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	// The Simple Log Service configurations.
 	SlsProperties *CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
-	TargetArn     *string                                                            `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+	//
+	// 	- If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with resourcecenter-.
+	//
+	// 	- If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with resourcecenter-.
+	//
+	// example:
+	//
+	// acs:log:cn-hangzhou: 191142248777****:project/delivery/logstore/resourcecenter-sls
+	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The type of the delivery destination.
+	//
+	// Valid values:
+	//
+	// 	- `OSS` for standard delivery
+	//
+	// 	- `OSS` or `SLS` for custom delivery
+	//
 	// example:
 	//
 	// OSS
@@ -248,6 +307,17 @@ func (s *CreateDeliveryChannelRequestResourceSnapshotDelivery) SetTargetType(v s
 }
 
 type CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties struct {
+	// The ARN of the destination to which large files are delivered.
+	//
+	// 	- If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object.
+	//
+	// 	- You need to set this parameter to the ARN of a bucket whose name is prefixed with resourcecenter-.
+	//
+	// 	- This parameter takes effect only if you use custom delivery for scheduled resource snapshots. You do not need to configure this parameter if you use standard delivery for scheduled resource snapshots.
+	//
+	// example:
+	//
+	// acs:oss:cn-hangzhou:191142248777****:resourcecenter-oss
 	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
 }
 
@@ -265,10 +335,14 @@ func (s *CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) SetO
 }
 
 type CreateDeliveryChannelResponseBody struct {
+	// The ID of the delivery channel.
+	//
 	// example:
 	//
 	// dc-0bzhsqpnk***
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 42A89312-0616-591E-B614-07BC87D3D***
@@ -429,16 +503,23 @@ func (s *CreateFilterResponse) SetBody(v *CreateFilterResponseBody) *CreateFilte
 }
 
 type CreateMultiAccountDeliveryChannelRequest struct {
+	// The description of the delivery channel.
 	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	// The effective scope of the delivery channel.
+	//
 	// This parameter is required.
 	DeliveryChannelFilter *CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// The name of the delivery channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-multi-account-delivery
-	DeliveryChannelName      *string                                                           `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	ResourceChangeDelivery   *CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery   `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The configurations for delivery of resource configuration change events.
+	ResourceChangeDelivery *CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	// The configurations for delivery of scheduled resource snapshots.
 	ResourceSnapshotDelivery *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
 }
 
@@ -476,8 +557,11 @@ func (s *CreateMultiAccountDeliveryChannelRequest) SetResourceSnapshotDelivery(v
 }
 
 type CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter struct {
+	// An array of effective account scopes for the delivery channel.
+	//
 	// This parameter is required.
 	AccountScopes []*string `json:"AccountScopes,omitempty" xml:"AccountScopes,omitempty" type:"Repeated"`
+	// The effective resource types of the delivery channel.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -500,8 +584,22 @@ func (s *CreateMultiAccountDeliveryChannelRequestDeliveryChannelFilter) SetResou
 }
 
 type CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery struct {
+	// The Simple Log Service configurations.
 	SlsProperties *CreateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
-	TargetArn     *string                                                                      `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The ARN of the delivery destination. Valid values:
+	//
+	// 	- If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	//
+	// 	- If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+	//
+	// example:
+	//
+	// acs:log:cn-hangzhou: 1911422487776***:project/delivery/logstore/resourcecenter-sls
+	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The type of the delivery destination.
+	//
+	// Set the value to `SLS`.
+	//
 	// example:
 	//
 	// SLS
@@ -532,6 +630,13 @@ func (s *CreateMultiAccountDeliveryChannelRequestResourceChangeDelivery) SetTarg
 }
 
 type CreateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties struct {
+	// The ARN of the destination to which large files are delivered.
+	//
+	// If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. You need to set this parameter to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	//
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
 	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
 }
 
@@ -549,16 +654,36 @@ func (s *CreateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProper
 }
 
 type CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery struct {
+	// The custom expression.
+	//
 	// example:
 	//
 	// select 	- from resources limit 100;
 	CustomExpression *string `json:"CustomExpression,omitempty" xml:"CustomExpression,omitempty"`
+	// The delivery time.
+	//
 	// example:
 	//
 	// 09:00Z
-	DeliveryTime  *string                                                                        `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	// The Simple Log Service configurations.
 	SlsProperties *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
-	TargetArn     *string                                                                        `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the delivery destination. Valid values:
+	//
+	// 	- If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with `resourcecenter-`. Example: `acs:oss:cn-hangzhou:191142248777****:resourcecenter-oss`.
+	//
+	// 	- If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with `resourcecenter-`. Example: `acs:log:cn-hangzhou: 191142248777****:project/delivery/logstore/resourcecenter-sls`.
+	//
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
+	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The type of the delivery destination. Valid values:
+	//
+	// 	- `OSS` for standard delivery
+	//
+	// 	- `OSS` or `SLS` for custom delivery
+	//
 	// example:
 	//
 	// OSS
@@ -599,6 +724,15 @@ func (s *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) SetTa
 }
 
 type CreateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties struct {
+	// The ARN of the destination to which large files are delivered.
+	//
+	// If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. You need to set this parameter to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	//
+	// >  This parameter takes effect only if you use custom delivery for scheduled resource snapshots. You do not need to configure this parameter if you use standard delivery for scheduled resource snapshots.
+	//
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
 	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
 }
 
@@ -616,10 +750,14 @@ func (s *CreateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProp
 }
 
 type CreateMultiAccountDeliveryChannelResponseBody struct {
+	// The ID of the delivery channel.
+	//
 	// example:
 	//
 	// dc-6q79dm4o9***
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 994BFEFE-4BB5-5A27-8917-4583DEEF2***
@@ -792,6 +930,8 @@ func (s *CreateSavedQueryResponse) SetBody(v *CreateSavedQueryResponseBody) *Cre
 }
 
 type DeleteDeliveryChannelRequest struct {
+	// The ID of the delivery channel.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -814,6 +954,8 @@ func (s *DeleteDeliveryChannelRequest) SetDeliveryChannelId(v string) *DeleteDel
 }
 
 type DeleteDeliveryChannelResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// AD5F848D-CCDC-5464-93E1-4BA50A482***
@@ -938,6 +1080,8 @@ func (s *DeleteFilterResponse) SetBody(v *DeleteFilterResponseBody) *DeleteFilte
 }
 
 type DeleteMultiAccountDeliveryChannelRequest struct {
+	// The ID of the delivery channel.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -960,6 +1104,8 @@ func (s *DeleteMultiAccountDeliveryChannelRequest) SetDeliveryChannelId(v string
 }
 
 type DeleteMultiAccountDeliveryChannelResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 3C5CDBF6-4DB7-53E9-ADDC-5919E3FAC***
@@ -1759,6 +1905,8 @@ func (s *ExecuteSQLQueryResponse) SetBody(v *ExecuteSQLQueryResponseBody) *Execu
 }
 
 type GetDeliveryChannelRequest struct {
+	// The ID of the delivery channel.
+	//
 	// example:
 	//
 	// dc-6q79dm4o9***
@@ -1779,21 +1927,31 @@ func (s *GetDeliveryChannelRequest) SetDeliveryChannelId(v string) *GetDeliveryC
 }
 
 type GetDeliveryChannelResponseBody struct {
-	DeliveryChannelDescription *string                                              `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
-	DeliveryChannelFilter      *GetDeliveryChannelResponseBodyDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// The description of the delivery channel.
+	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	// The effective scope of the delivery channel.
+	DeliveryChannelFilter *GetDeliveryChannelResponseBodyDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// The ID of the delivery channel.
+	//
 	// example:
 	//
 	// dc-6q79dm4o9***
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	//
 	// example:
 	//
 	// test-delivery-channel
 	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 17502A1B-7026-5551-8E1C-CCABD0CBC***
-	RequestId                *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceChangeDelivery   *GetDeliveryChannelResponseBodyResourceChangeDelivery   `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations for delivery of resource configuration change events.
+	ResourceChangeDelivery *GetDeliveryChannelResponseBodyResourceChangeDelivery `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	// The configurations for delivery of scheduled resource snapshots.
 	ResourceSnapshotDelivery *GetDeliveryChannelResponseBodyResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
 }
 
@@ -1841,6 +1999,7 @@ func (s *GetDeliveryChannelResponseBody) SetResourceSnapshotDelivery(v *GetDeliv
 }
 
 type GetDeliveryChannelResponseBodyDeliveryChannelFilter struct {
+	// The effective resource types of the delivery channel.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -1858,11 +2017,16 @@ func (s *GetDeliveryChannelResponseBodyDeliveryChannelFilter) SetResourceTypes(v
 }
 
 type GetDeliveryChannelResponseBodyResourceChangeDelivery struct {
+	// The Simple Log Service configurations.
 	SlsProperties *GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	// The ARN of the delivery destination.
+	//
 	// example:
 	//
 	// acs:log:cn-hangzhou: 1911422487776***:project/delivery/logstore/resourcecenter-sls
 	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The type of the destination.
+	//
 	// example:
 	//
 	// SLS
@@ -1893,6 +2057,8 @@ func (s *GetDeliveryChannelResponseBodyResourceChangeDelivery) SetTargetType(v s
 }
 
 type GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties struct {
+	// The Alibaba Cloud Resource Name (ARN) of the destination to which large files are delivered.
+	//
 	// example:
 	//
 	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
@@ -1913,19 +2079,28 @@ func (s *GetDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties) SetO
 }
 
 type GetDeliveryChannelResponseBodyResourceSnapshotDelivery struct {
+	// The custom expression.
+	//
 	// example:
 	//
 	// select 	- from resources limit 100;
 	CustomExpression *string `json:"CustomExpression,omitempty" xml:"CustomExpression,omitempty"`
+	// The delivery time.
+	//
 	// example:
 	//
 	// 09:00Z
-	DeliveryTime  *string                                                              `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	// The Simple Log Service configurations.
 	SlsProperties *GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	// The ARN of the delivery destination.
+	//
 	// example:
 	//
 	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
 	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The type of the destination.
+	//
 	// example:
 	//
 	// OSS
@@ -1966,6 +2141,8 @@ func (s *GetDeliveryChannelResponseBodyResourceSnapshotDelivery) SetTargetType(v
 }
 
 type GetDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties struct {
+	// The ARN of the destination to which large files are delivered.
+	//
 	// example:
 	//
 	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
@@ -2015,6 +2192,8 @@ func (s *GetDeliveryChannelResponse) SetBody(v *GetDeliveryChannelResponseBody) 
 }
 
 type GetDeliveryChannelStatisticsRequest struct {
+	// The ID of the delivery channel.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2037,7 +2216,10 @@ func (s *GetDeliveryChannelStatisticsRequest) SetDeliveryChannelId(v string) *Ge
 }
 
 type GetDeliveryChannelStatisticsResponseBody struct {
+	// The statistics on the delivery channel.
 	DeliveryChannelStatistics *GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics `json:"DeliveryChannelStatistics,omitempty" xml:"DeliveryChannelStatistics,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 80DF0610-504C-56D7-BDCF-7C92FD687***
@@ -2063,18 +2245,26 @@ func (s *GetDeliveryChannelStatisticsResponseBody) SetRequestId(v string) *GetDe
 }
 
 type GetDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics struct {
+	// The ID of the delivery channel.
+	//
 	// example:
 	//
 	// dc-6q79dm4o9***
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	//
 	// example:
 	//
 	// test-delivery-channel
 	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The last delivery time of resource configuration change events.
+	//
 	// example:
 	//
 	// 2025-06-03T16:05:15Z
 	LatestChangeDeliveryTime *string `json:"LatestChangeDeliveryTime,omitempty" xml:"LatestChangeDeliveryTime,omitempty"`
+	// The last delivery time of scheduled resource snapshots.
+	//
 	// example:
 	//
 	// 2025-06-03T16:00:00Z
@@ -2316,6 +2506,8 @@ func (s *GetExampleQueryResponse) SetBody(v *GetExampleQueryResponseBody) *GetEx
 }
 
 type GetMultiAccountDeliveryChannelRequest struct {
+	// The ID of the delivery channel.
+	//
 	// example:
 	//
 	// dc-6q79dm4o9***
@@ -2336,21 +2528,31 @@ func (s *GetMultiAccountDeliveryChannelRequest) SetDeliveryChannelId(v string) *
 }
 
 type GetMultiAccountDeliveryChannelResponseBody struct {
-	DeliveryChannelDescription *string                                                          `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
-	DeliveryChannelFilter      *GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// The description of the delivery channel.
+	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	// The effective scope of the delivery channel.
+	DeliveryChannelFilter *GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// The ID of the delivery channel.
+	//
 	// example:
 	//
 	// dc-6q79dm4o9***
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	//
 	// example:
 	//
 	// test-delivery-channel
 	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE3EAB47-D3A6-5FEA-8353-31C8C0D36***
-	RequestId                *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceChangeDelivery   *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery   `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations for delivery of resource configuration change events.
+	ResourceChangeDelivery *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	// The configurations for delivery of scheduled resource snapshots.
 	ResourceSnapshotDelivery *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
 }
 
@@ -2398,7 +2600,9 @@ func (s *GetMultiAccountDeliveryChannelResponseBody) SetResourceSnapshotDelivery
 }
 
 type GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter struct {
+	// The effective account scopes of the delivery channel.
 	AccountScopes []*string `json:"AccountScopes,omitempty" xml:"AccountScopes,omitempty" type:"Repeated"`
+	// The effective resource types of the delivery channel.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -2421,11 +2625,16 @@ func (s *GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter) SetRes
 }
 
 type GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery struct {
+	// The Simple Log Service configurations.
 	SlsProperties *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	// The ARN of the delivery destination.
+	//
 	// example:
 	//
 	// acs:log:cn-hangzhou: 1911422487776***:project/delivery/logstore/resourcecenter-sls
 	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The type of the destination.
+	//
 	// example:
 	//
 	// SLS
@@ -2456,6 +2665,8 @@ func (s *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery) SetTa
 }
 
 type GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProperties struct {
+	// The Alibaba Cloud Resource Name (ARN) of the destination to which large files are delivered.
+	//
 	// example:
 	//
 	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
@@ -2476,19 +2687,28 @@ func (s *GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsProp
 }
 
 type GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery struct {
+	// The custom expression.
+	//
 	// example:
 	//
 	// select 	- from resources limit 100;
 	CustomExpression *string `json:"CustomExpression,omitempty" xml:"CustomExpression,omitempty"`
+	// The delivery time.
+	//
 	// example:
 	//
 	// 09:00Z
-	DeliveryTime  *string                                                                          `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	// The Simple Log Service configurations.
 	SlsProperties *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
+	// The ARN of the delivery destination.
+	//
 	// example:
 	//
 	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
 	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The type of the destination.
+	//
 	// example:
 	//
 	// OSS
@@ -2529,6 +2749,8 @@ func (s *GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery) Set
 }
 
 type GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsProperties struct {
+	// The ARN of the destination to which large files are delivered.
+	//
 	// example:
 	//
 	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
@@ -2578,6 +2800,8 @@ func (s *GetMultiAccountDeliveryChannelResponse) SetBody(v *GetMultiAccountDeliv
 }
 
 type GetMultiAccountDeliveryChannelStatisticsRequest struct {
+	// The ID of the delivery channel.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2600,7 +2824,10 @@ func (s *GetMultiAccountDeliveryChannelStatisticsRequest) SetDeliveryChannelId(v
 }
 
 type GetMultiAccountDeliveryChannelStatisticsResponseBody struct {
+	// The statistics on the delivery channel.
 	DeliveryChannelStatistics *GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics `json:"DeliveryChannelStatistics,omitempty" xml:"DeliveryChannelStatistics,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 80DF0610-504C-56D7-BDCF-7C92FD687***
@@ -2626,18 +2853,26 @@ func (s *GetMultiAccountDeliveryChannelStatisticsResponseBody) SetRequestId(v st
 }
 
 type GetMultiAccountDeliveryChannelStatisticsResponseBodyDeliveryChannelStatistics struct {
+	// The ID of the delivery channel.
+	//
 	// example:
 	//
 	// dc-6q79dm4o9***
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	//
 	// example:
 	//
 	// test-multi-account-delivery
 	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The last delivery time of resource configuration change events.
+	//
 	// example:
 	//
 	// 2025-06-03T16:05:15Z
 	LatestChangeDeliveryTime *string `json:"LatestChangeDeliveryTime,omitempty" xml:"LatestChangeDeliveryTime,omitempty"`
+	// The last delivery time of scheduled resource snapshots.
+	//
 	// example:
 	//
 	// 2025-06-03T16:00:00Z
@@ -3102,6 +3337,210 @@ func (s *GetMultiAccountResourceConfigurationResponse) SetStatusCode(v int32) *G
 }
 
 func (s *GetMultiAccountResourceConfigurationResponse) SetBody(v *GetMultiAccountResourceConfigurationResponseBody) *GetMultiAccountResourceConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type GetMultiAccountResourceCountsRequest struct {
+	Filter []*GetMultiAccountResourceCountsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ResourceType
+	GroupByKey *string `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
+	// example:
+	//
+	// rd-r4****
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s GetMultiAccountResourceCountsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountResourceCountsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountResourceCountsRequest) SetFilter(v []*GetMultiAccountResourceCountsRequestFilter) *GetMultiAccountResourceCountsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *GetMultiAccountResourceCountsRequest) SetGroupByKey(v string) *GetMultiAccountResourceCountsRequest {
+	s.GroupByKey = &v
+	return s
+}
+
+func (s *GetMultiAccountResourceCountsRequest) SetScope(v string) *GetMultiAccountResourceCountsRequest {
+	s.Scope = &v
+	return s
+}
+
+type GetMultiAccountResourceCountsRequestFilter struct {
+	// example:
+	//
+	// RegionId
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// Equals
+	MatchType *string   `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	Value     []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s GetMultiAccountResourceCountsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountResourceCountsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountResourceCountsRequestFilter) SetKey(v string) *GetMultiAccountResourceCountsRequestFilter {
+	s.Key = &v
+	return s
+}
+
+func (s *GetMultiAccountResourceCountsRequestFilter) SetMatchType(v string) *GetMultiAccountResourceCountsRequestFilter {
+	s.MatchType = &v
+	return s
+}
+
+func (s *GetMultiAccountResourceCountsRequestFilter) SetValue(v []*string) *GetMultiAccountResourceCountsRequestFilter {
+	s.Value = v
+	return s
+}
+
+type GetMultiAccountResourceCountsResponseBody struct {
+	Filters []*GetMultiAccountResourceCountsResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ResourceType
+	GroupByKey *string `json:"GroupByKey,omitempty" xml:"GroupByKey,omitempty"`
+	// example:
+	//
+	// EFA806B9-7F36-55AB-8B7A-D680C2C5EE57
+	RequestId      *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceCounts []*GetMultiAccountResourceCountsResponseBodyResourceCounts `json:"ResourceCounts,omitempty" xml:"ResourceCounts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rd-r4****
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s GetMultiAccountResourceCountsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountResourceCountsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountResourceCountsResponseBody) SetFilters(v []*GetMultiAccountResourceCountsResponseBodyFilters) *GetMultiAccountResourceCountsResponseBody {
+	s.Filters = v
+	return s
+}
+
+func (s *GetMultiAccountResourceCountsResponseBody) SetGroupByKey(v string) *GetMultiAccountResourceCountsResponseBody {
+	s.GroupByKey = &v
+	return s
+}
+
+func (s *GetMultiAccountResourceCountsResponseBody) SetRequestId(v string) *GetMultiAccountResourceCountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMultiAccountResourceCountsResponseBody) SetResourceCounts(v []*GetMultiAccountResourceCountsResponseBodyResourceCounts) *GetMultiAccountResourceCountsResponseBody {
+	s.ResourceCounts = v
+	return s
+}
+
+func (s *GetMultiAccountResourceCountsResponseBody) SetScope(v string) *GetMultiAccountResourceCountsResponseBody {
+	s.Scope = &v
+	return s
+}
+
+type GetMultiAccountResourceCountsResponseBodyFilters struct {
+	// example:
+	//
+	// RegionId
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s GetMultiAccountResourceCountsResponseBodyFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountResourceCountsResponseBodyFilters) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountResourceCountsResponseBodyFilters) SetKey(v string) *GetMultiAccountResourceCountsResponseBodyFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *GetMultiAccountResourceCountsResponseBodyFilters) SetValues(v []*string) *GetMultiAccountResourceCountsResponseBodyFilters {
+	s.Values = v
+	return s
+}
+
+type GetMultiAccountResourceCountsResponseBodyResourceCounts struct {
+	// example:
+	//
+	// 2
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// ACS::ECS::NetworkInterface
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s GetMultiAccountResourceCountsResponseBodyResourceCounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountResourceCountsResponseBodyResourceCounts) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountResourceCountsResponseBodyResourceCounts) SetCount(v int64) *GetMultiAccountResourceCountsResponseBodyResourceCounts {
+	s.Count = &v
+	return s
+}
+
+func (s *GetMultiAccountResourceCountsResponseBodyResourceCounts) SetGroupName(v string) *GetMultiAccountResourceCountsResponseBodyResourceCounts {
+	s.GroupName = &v
+	return s
+}
+
+type GetMultiAccountResourceCountsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMultiAccountResourceCountsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMultiAccountResourceCountsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountResourceCountsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountResourceCountsResponse) SetHeaders(v map[string]*string) *GetMultiAccountResourceCountsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMultiAccountResourceCountsResponse) SetStatusCode(v int32) *GetMultiAccountResourceCountsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMultiAccountResourceCountsResponse) SetBody(v *GetMultiAccountResourceCountsResponseBody) *GetMultiAccountResourceCountsResponse {
 	s.Body = v
 	return s
 }
@@ -3881,10 +4320,20 @@ func (s *GetSavedQueryResponse) SetBody(v *GetSavedQueryResponseBody) *GetSavedQ
 }
 
 type ListDeliveryChannelsRequest struct {
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// If the total number of entries returned for the current request exceeds the value of the MaxResults parameter, the entries are truncated. In this case, you can use the token to initiate another request and obtain the remaining entries.
+	//
 	// example:
 	//
 	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
@@ -3910,17 +4359,24 @@ func (s *ListDeliveryChannelsRequest) SetNextToken(v string) *ListDeliveryChanne
 }
 
 type ListDeliveryChannelsResponseBody struct {
+	// The delivery channels.
 	DeliveryChannels []*ListDeliveryChannelsResponseBodyDeliveryChannels `json:"DeliveryChannels,omitempty" xml:"DeliveryChannels,omitempty" type:"Repeated"`
+	// The maximum number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 17502A1B-7026-5551-8E1C-CCABD0CBC***
@@ -3956,15 +4412,22 @@ func (s *ListDeliveryChannelsResponseBody) SetRequestId(v string) *ListDeliveryC
 }
 
 type ListDeliveryChannelsResponseBodyDeliveryChannels struct {
+	// The time when the delivery channel was created.
+	//
 	// example:
 	//
 	// 2024-06-20T08:46:29Z
-	CreateTime                 *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the delivery channel.
 	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	// The ID of the delivery channel.
+	//
 	// example:
 	//
 	// dc-4m6ffpkgu***
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	//
 	// example:
 	//
 	// test-delivery-channel
@@ -4312,10 +4775,20 @@ func (s *ListFiltersResponse) SetBody(v *ListFiltersResponseBody) *ListFiltersRe
 }
 
 type ListMultiAccountDeliveryChannelsRequest struct {
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// If the total number of entries returned for the current request exceeds the value of the MaxResults parameter, the entries are truncated. In this case, you can use the token to initiate another request and obtain the remaining entries.
+	//
 	// example:
 	//
 	// AAAAARfZmVDe9NvRXloR5+8CK9nNJufMdRA7W1miLC1P****
@@ -4341,17 +4814,24 @@ func (s *ListMultiAccountDeliveryChannelsRequest) SetNextToken(v string) *ListMu
 }
 
 type ListMultiAccountDeliveryChannelsResponseBody struct {
+	// The delivery channels.
 	DeliveryChannels []*ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels `json:"DeliveryChannels,omitempty" xml:"DeliveryChannels,omitempty" type:"Repeated"`
+	// The maximum number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 17502A1B-7026-5551-8E1C-CCABD0CBC***
@@ -4387,15 +4867,22 @@ func (s *ListMultiAccountDeliveryChannelsResponseBody) SetRequestId(v string) *L
 }
 
 type ListMultiAccountDeliveryChannelsResponseBodyDeliveryChannels struct {
+	// The time when the delivery channel was created.
+	//
 	// example:
 	//
 	// 2023-08-17T00:23:55Z
-	CreateTime                 *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the delivery channel.
 	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	// The ID of the delivery channel.
+	//
 	// example:
 	//
 	// dc-0bzhsqpnk***
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	//
 	// example:
 	//
 	// test-multi-account-delivery-channel
@@ -7274,19 +7761,27 @@ func (s *SearchResourcesResponse) SetBody(v *SearchResourcesResponseBody) *Searc
 }
 
 type UpdateDeliveryChannelRequest struct {
-	DeliveryChannelDescription *string                                            `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
-	DeliveryChannelFilter      *UpdateDeliveryChannelRequestDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// The description of the delivery channel.
+	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	// The effective scope of the delivery channel.
+	DeliveryChannelFilter *UpdateDeliveryChannelRequestDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// The ID of the delivery channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dc-4m6ffpkgu***
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	//
 	// example:
 	//
 	// test-delivery-channel
-	DeliveryChannelName      *string                                               `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	ResourceChangeDelivery   *UpdateDeliveryChannelRequestResourceChangeDelivery   `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The configurations for delivery of resource configuration change events.
+	ResourceChangeDelivery *UpdateDeliveryChannelRequestResourceChangeDelivery `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	// The configurations for delivery of scheduled resource snapshots.
 	ResourceSnapshotDelivery *UpdateDeliveryChannelRequestResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
 }
 
@@ -7329,6 +7824,7 @@ func (s *UpdateDeliveryChannelRequest) SetResourceSnapshotDelivery(v *UpdateDeli
 }
 
 type UpdateDeliveryChannelRequestDeliveryChannelFilter struct {
+	// The effective resource types of the delivery channel.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -7346,12 +7842,32 @@ func (s *UpdateDeliveryChannelRequestDeliveryChannelFilter) SetResourceTypes(v [
 }
 
 type UpdateDeliveryChannelRequestResourceChangeDelivery struct {
+	// Specifies whether to enable delivery of resource configuration change events. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	Enabled       *string                                                          `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The Simple Log Service configurations.
 	SlsProperties *UpdateDeliveryChannelRequestResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
-	TargetArn     *string                                                          `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The ARN of the delivery destination. Valid values:
+	//
+	// 	- If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	//
+	// 	- If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+	//
+	// example:
+	//
+	// acs:log:cn-hangzhou: 1911422487776***:project/delivery/logstore/resourcecenter-sls
+	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The type of the delivery destination.
+	//
+	// Set the value to `SLS`.
+	//
 	// example:
 	//
 	// SLS
@@ -7387,6 +7903,13 @@ func (s *UpdateDeliveryChannelRequestResourceChangeDelivery) SetTargetType(v str
 }
 
 type UpdateDeliveryChannelRequestResourceChangeDeliverySlsProperties struct {
+	// The ARN of the destination to which large files are delivered.
+	//
+	// If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. You need to set this parameter to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	//
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
 	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
 }
 
@@ -7404,20 +7927,46 @@ func (s *UpdateDeliveryChannelRequestResourceChangeDeliverySlsProperties) SetOve
 }
 
 type UpdateDeliveryChannelRequestResourceSnapshotDelivery struct {
+	// The custom expression.
+	//
 	// example:
 	//
 	// select 	- from resources limit 100;
 	CustomExpression *string `json:"CustomExpression,omitempty" xml:"CustomExpression,omitempty"`
+	// The delivery time.
+	//
 	// example:
 	//
 	// 09:00Z
 	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	// Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	Enabled       *string                                                            `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The Simple Log Service configurations.
 	SlsProperties *UpdateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
-	TargetArn     *string                                                            `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the delivery destination. Valid values:
+	//
+	// 	- If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with `resourcecenter-`. Example: `acs:oss:cn-hangzhou:191142248777****:resourcecenter-oss`.
+	//
+	// 	- If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with `resourcecenter-`. Example: `acs:log:cn-hangzhou: 191142248777****:project/delivery/logstore/resourcecenter-sls`.
+	//
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
+	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The type of the delivery destination. Valid values:
+	//
+	// 	- `OSS` for standard delivery
+	//
+	// 	- `OSS` or `SLS` for custom delivery
+	//
 	// example:
 	//
 	// OSS
@@ -7463,6 +8012,15 @@ func (s *UpdateDeliveryChannelRequestResourceSnapshotDelivery) SetTargetType(v s
 }
 
 type UpdateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties struct {
+	// The ARN of the destination to which large files are delivered.
+	//
+	// If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. You need to set this parameter to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	//
+	// >  This parameter takes effect only if you use custom delivery for scheduled resource snapshots. You do not need to configure this parameter if you use standard delivery for scheduled resource snapshots.
+	//
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
 	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
 }
 
@@ -7480,6 +8038,8 @@ func (s *UpdateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties) SetO
 }
 
 type UpdateDeliveryChannelResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// AD5F848D-CCDC-5464-93E1-4BA50A482***
@@ -7635,19 +8195,27 @@ func (s *UpdateFilterResponse) SetBody(v *UpdateFilterResponseBody) *UpdateFilte
 }
 
 type UpdateMultiAccountDeliveryChannelRequest struct {
-	DeliveryChannelDescription *string                                                        `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
-	DeliveryChannelFilter      *UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// The description of the delivery channel.
+	DeliveryChannelDescription *string `json:"DeliveryChannelDescription,omitempty" xml:"DeliveryChannelDescription,omitempty"`
+	// The effective scope of the delivery channel.
+	DeliveryChannelFilter *UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter `json:"DeliveryChannelFilter,omitempty" xml:"DeliveryChannelFilter,omitempty" type:"Struct"`
+	// The ID of the delivery channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dc-4m6ffpkgu***
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	//
 	// example:
 	//
 	// test-multi-account-delivery-channel
-	DeliveryChannelName      *string                                                           `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	ResourceChangeDelivery   *UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery   `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The configurations for delivery of resource configuration change events.
+	ResourceChangeDelivery *UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery `json:"ResourceChangeDelivery,omitempty" xml:"ResourceChangeDelivery,omitempty" type:"Struct"`
+	// The configurations for delivery of scheduled resource snapshots.
 	ResourceSnapshotDelivery *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery `json:"ResourceSnapshotDelivery,omitempty" xml:"ResourceSnapshotDelivery,omitempty" type:"Struct"`
 }
 
@@ -7690,7 +8258,9 @@ func (s *UpdateMultiAccountDeliveryChannelRequest) SetResourceSnapshotDelivery(v
 }
 
 type UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter struct {
+	// An array of effective account scopes for the delivery channel.
 	AccountScopes []*string `json:"AccountScopes,omitempty" xml:"AccountScopes,omitempty" type:"Repeated"`
+	// The effective resource types of the delivery channel.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -7713,12 +8283,32 @@ func (s *UpdateMultiAccountDeliveryChannelRequestDeliveryChannelFilter) SetResou
 }
 
 type UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery struct {
+	// Specifies whether to enable delivery of resource configuration change events. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	Enabled       *string                                                                      `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The Simple Log Service configurations.
 	SlsProperties *UpdateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
-	TargetArn     *string                                                                      `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The ARN of the delivery destination. Valid values:
+	//
+	// 	- If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	//
+	// 	- If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+	//
+	// example:
+	//
+	// acs:log:cn-hangzhou: 1911422487776***:project/delivery/logstore/resourcecenter-sls
+	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The type of the delivery destination.
+	//
+	// Set the value to `SLS`.
+	//
 	// example:
 	//
 	// SLS
@@ -7754,6 +8344,13 @@ func (s *UpdateMultiAccountDeliveryChannelRequestResourceChangeDelivery) SetTarg
 }
 
 type UpdateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProperties struct {
+	// The ARN of the destination to which large files are delivered.
+	//
+	// If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. You need to set this parameter to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	//
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
 	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
 }
 
@@ -7771,20 +8368,46 @@ func (s *UpdateMultiAccountDeliveryChannelRequestResourceChangeDeliverySlsProper
 }
 
 type UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery struct {
+	// The custom expression.
+	//
 	// example:
 	//
 	// select 	- from resources limit 100;
 	CustomExpression *string `json:"CustomExpression,omitempty" xml:"CustomExpression,omitempty"`
+	// The delivery time.
+	//
 	// example:
 	//
 	// 09:00Z
 	DeliveryTime *string `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	// Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	Enabled       *string                                                                        `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The Simple Log Service configurations.
 	SlsProperties *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties `json:"SlsProperties,omitempty" xml:"SlsProperties,omitempty" type:"Struct"`
-	TargetArn     *string                                                                        `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the delivery destination. Valid values:
+	//
+	// 	- If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with `resourcecenter-`. Example: `acs:oss:cn-hangzhou:191142248777****:resourcecenter-oss`.
+	//
+	// 	- If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with `resourcecenter-`. Example: `acs:log:cn-hangzhou: 191142248777****:project/delivery/logstore/resourcecenter-sls`.
+	//
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
+	TargetArn *string `json:"TargetArn,omitempty" xml:"TargetArn,omitempty"`
+	// The type of the delivery destination. Valid values:
+	//
+	// 	- `OSS` for standard delivery
+	//
+	// 	- `OSS` or `SLS` for custom delivery
+	//
 	// example:
 	//
 	// OSS
@@ -7830,6 +8453,15 @@ func (s *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDelivery) SetTa
 }
 
 type UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProperties struct {
+	// The ARN of the destination to which large files are delivered.
+	//
+	// If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. You need to set this parameter to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	//
+	// >  This parameter takes effect only if you use custom delivery for scheduled resource snapshots. You do not need to configure this parameter if you use standard delivery for scheduled resource snapshots.
+	//
+	// example:
+	//
+	// acs:oss:cn-hangzhou:1911422487776***:resourcecenter-oss
 	OversizedDataOssTargetArn *string `json:"OversizedDataOssTargetArn,omitempty" xml:"OversizedDataOssTargetArn,omitempty"`
 }
 
@@ -7847,6 +8479,8 @@ func (s *UpdateMultiAccountDeliveryChannelRequestResourceSnapshotDeliverySlsProp
 }
 
 type UpdateMultiAccountDeliveryChannelResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 36A3D9BE-B607-5993-B546-7E19EF65D***
@@ -8120,7 +8754,17 @@ func (client *Client) AssociateDefaultFilter(request *AssociateDefaultFilterRequ
 
 // Summary:
 //
-// 创建投递渠道
+// Creates a single-account delivery channel.
+//
+// Description:
+//
+// Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+//
+// Scheduled resource snapshots support the following delivery scenarios:
+//
+//   - Standard delivery: Leave the ResourceSnapshotDelivery.CustomExpression parameter empty.
+//
+//   - Custom delivery: Set the ResourceSnapshotDelivery.CustomExpression parameter to an appropriate value.
 //
 // @param request - CreateDeliveryChannelRequest
 //
@@ -8178,7 +8822,17 @@ func (client *Client) CreateDeliveryChannelWithOptions(request *CreateDeliveryCh
 
 // Summary:
 //
-// 创建投递渠道
+// Creates a single-account delivery channel.
+//
+// Description:
+//
+// Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+//
+// Scheduled resource snapshots support the following delivery scenarios:
+//
+//   - Standard delivery: Leave the ResourceSnapshotDelivery.CustomExpression parameter empty.
+//
+//   - Custom delivery: Set the ResourceSnapshotDelivery.CustomExpression parameter to an appropriate value.
 //
 // @param request - CreateDeliveryChannelRequest
 //
@@ -8260,7 +8914,17 @@ func (client *Client) CreateFilter(request *CreateFilterRequest) (_result *Creat
 
 // Summary:
 //
-// 创建多账号投递渠道
+// Creates a multi-account delivery channel.
+//
+// Description:
+//
+// In Resource Center, you can create multi-account delivery channels by using the management account of your resource directory or the delegated administrator account of Resource Center to deliver resource configuration change events and scheduled resource snapshots within the members in your resource directory to Object Storage Service (OSS) or Simple Log Service. Then, other Alibaba Cloud services consume standardized resource information from OSS or Simple Log Service.
+//
+// Scheduled resource snapshots support the following delivery scenarios:
+//
+//   - Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+//
+//   - Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
 //
 // @param request - CreateMultiAccountDeliveryChannelRequest
 //
@@ -8318,7 +8982,17 @@ func (client *Client) CreateMultiAccountDeliveryChannelWithOptions(request *Crea
 
 // Summary:
 //
-// 创建多账号投递渠道
+// Creates a multi-account delivery channel.
+//
+// Description:
+//
+// In Resource Center, you can create multi-account delivery channels by using the management account of your resource directory or the delegated administrator account of Resource Center to deliver resource configuration change events and scheduled resource snapshots within the members in your resource directory to Object Storage Service (OSS) or Simple Log Service. Then, other Alibaba Cloud services consume standardized resource information from OSS or Simple Log Service.
+//
+// Scheduled resource snapshots support the following delivery scenarios:
+//
+//   - Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+//
+//   - Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
 //
 // @param request - CreateMultiAccountDeliveryChannelRequest
 //
@@ -8404,7 +9078,7 @@ func (client *Client) CreateSavedQuery(request *CreateSavedQueryRequest) (_resul
 
 // Summary:
 //
-// 删除投递渠道
+// Deletes a single-account delivery channel.
 //
 // @param request - DeleteDeliveryChannelRequest
 //
@@ -8446,7 +9120,7 @@ func (client *Client) DeleteDeliveryChannelWithOptions(request *DeleteDeliveryCh
 
 // Summary:
 //
-// 删除投递渠道
+// Deletes a single-account delivery channel.
 //
 // @param request - DeleteDeliveryChannelRequest
 //
@@ -8524,7 +9198,7 @@ func (client *Client) DeleteFilter(request *DeleteFilterRequest) (_result *Delet
 
 // Summary:
 //
-// 删除多账号投递渠道
+// Deletes a multi-account delivery channel.
 //
 // @param request - DeleteMultiAccountDeliveryChannelRequest
 //
@@ -8566,7 +9240,7 @@ func (client *Client) DeleteMultiAccountDeliveryChannelWithOptions(request *Dele
 
 // Summary:
 //
-// 删除多账号投递渠道
+// Deletes a multi-account delivery channel.
 //
 // @param request - DeleteMultiAccountDeliveryChannelRequest
 //
@@ -9031,7 +9705,7 @@ func (client *Client) ExecuteSQLQuery(request *ExecuteSQLQueryRequest) (_result 
 
 // Summary:
 //
-// 查询投递渠道
+// Queries the information about a single-account delivery channel.
 //
 // @param request - GetDeliveryChannelRequest
 //
@@ -9073,7 +9747,7 @@ func (client *Client) GetDeliveryChannelWithOptions(request *GetDeliveryChannelR
 
 // Summary:
 //
-// 查询投递渠道
+// Queries the information about a single-account delivery channel.
 //
 // @param request - GetDeliveryChannelRequest
 //
@@ -9091,7 +9765,7 @@ func (client *Client) GetDeliveryChannel(request *GetDeliveryChannelRequest) (_r
 
 // Summary:
 //
-// 查询投递渠道统计信息
+// Queries the statistics on a single-account delivery channel.
 //
 // @param request - GetDeliveryChannelStatisticsRequest
 //
@@ -9133,7 +9807,7 @@ func (client *Client) GetDeliveryChannelStatisticsWithOptions(request *GetDelive
 
 // Summary:
 //
-// 查询投递渠道统计信息
+// Queries the statistics on a single-account delivery channel.
 //
 // @param request - GetDeliveryChannelStatisticsRequest
 //
@@ -9211,7 +9885,7 @@ func (client *Client) GetExampleQuery(request *GetExampleQueryRequest) (_result 
 
 // Summary:
 //
-// 查询多账号投递渠道
+// Queries the information about a multi-account delivery channel.
 //
 // @param request - GetMultiAccountDeliveryChannelRequest
 //
@@ -9253,7 +9927,7 @@ func (client *Client) GetMultiAccountDeliveryChannelWithOptions(request *GetMult
 
 // Summary:
 //
-// 查询多账号投递渠道
+// Queries the information about a multi-account delivery channel.
 //
 // @param request - GetMultiAccountDeliveryChannelRequest
 //
@@ -9271,7 +9945,7 @@ func (client *Client) GetMultiAccountDeliveryChannel(request *GetMultiAccountDel
 
 // Summary:
 //
-// 查询多账号投递渠道统计信息
+// Queries the statistics on a multi-account delivery channel.
 //
 // @param request - GetMultiAccountDeliveryChannelStatisticsRequest
 //
@@ -9313,7 +9987,7 @@ func (client *Client) GetMultiAccountDeliveryChannelStatisticsWithOptions(reques
 
 // Summary:
 //
-// 查询多账号投递渠道统计信息
+// Queries the statistics on a multi-account delivery channel.
 //
 // @param request - GetMultiAccountDeliveryChannelStatisticsRequest
 //
@@ -9441,6 +10115,74 @@ func (client *Client) GetMultiAccountResourceConfiguration(request *GetMultiAcco
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMultiAccountResourceConfigurationResponse{}
 	_body, _err := client.GetMultiAccountResourceConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取多账号资源数量
+//
+// @param request - GetMultiAccountResourceCountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMultiAccountResourceCountsResponse
+func (client *Client) GetMultiAccountResourceCountsWithOptions(request *GetMultiAccountResourceCountsRequest, runtime *util.RuntimeOptions) (_result *GetMultiAccountResourceCountsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupByKey)) {
+		query["GroupByKey"] = request.GroupByKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMultiAccountResourceCounts"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMultiAccountResourceCountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取多账号资源数量
+//
+// @param request - GetMultiAccountResourceCountsRequest
+//
+// @return GetMultiAccountResourceCountsResponse
+func (client *Client) GetMultiAccountResourceCounts(request *GetMultiAccountResourceCountsRequest) (_result *GetMultiAccountResourceCountsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMultiAccountResourceCountsResponse{}
+	_body, _err := client.GetMultiAccountResourceCountsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9689,7 +10431,7 @@ func (client *Client) GetSavedQuery(request *GetSavedQueryRequest) (_result *Get
 
 // Summary:
 //
-// 列出投递渠道
+// Queries a list of single-account delivery channels.
 //
 // @param request - ListDeliveryChannelsRequest
 //
@@ -9735,7 +10477,7 @@ func (client *Client) ListDeliveryChannelsWithOptions(request *ListDeliveryChann
 
 // Summary:
 //
-// 列出投递渠道
+// Queries a list of single-account delivery channels.
 //
 // @param request - ListDeliveryChannelsRequest
 //
@@ -9864,7 +10606,7 @@ func (client *Client) ListFilters() (_result *ListFiltersResponse, _err error) {
 
 // Summary:
 //
-// 列出多账号投递渠道
+// Queries a list of multi-account delivery channels.
 //
 // @param request - ListMultiAccountDeliveryChannelsRequest
 //
@@ -9910,7 +10652,7 @@ func (client *Client) ListMultiAccountDeliveryChannelsWithOptions(request *ListM
 
 // Summary:
 //
-// 列出多账号投递渠道
+// Queries a list of multi-account delivery channels.
 //
 // @param request - ListMultiAccountDeliveryChannelsRequest
 //
@@ -10844,7 +11586,17 @@ func (client *Client) SearchResources(request *SearchResourcesRequest) (_result 
 
 // Summary:
 //
-// 更新投递渠道
+// Updates a single-account delivery channel.
+//
+// Description:
+//
+// Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+//
+// Scheduled resource snapshots support the following delivery scenarios:
+//
+//   - Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+//
+//   - Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
 //
 // @param request - UpdateDeliveryChannelRequest
 //
@@ -10906,7 +11658,17 @@ func (client *Client) UpdateDeliveryChannelWithOptions(request *UpdateDeliveryCh
 
 // Summary:
 //
-// 更新投递渠道
+// Updates a single-account delivery channel.
+//
+// Description:
+//
+// Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+//
+// Scheduled resource snapshots support the following delivery scenarios:
+//
+//   - Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+//
+//   - Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
 //
 // @param request - UpdateDeliveryChannelRequest
 //
@@ -10988,7 +11750,17 @@ func (client *Client) UpdateFilter(request *UpdateFilterRequest) (_result *Updat
 
 // Summary:
 //
-// 更新多账号投递渠道
+// Updates a multi-account delivery channel.
+//
+// Description:
+//
+// Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+//
+// Scheduled resource snapshots support the following delivery scenarios:
+//
+//   - Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+//
+//   - Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
 //
 // @param request - UpdateMultiAccountDeliveryChannelRequest
 //
@@ -11050,7 +11822,17 @@ func (client *Client) UpdateMultiAccountDeliveryChannelWithOptions(request *Upda
 
 // Summary:
 //
-// 更新多账号投递渠道
+// Updates a multi-account delivery channel.
+//
+// Description:
+//
+// Resource delivery supports the delivery of resource configuration change events and scheduled resource snapshots.
+//
+// Scheduled resource snapshots support the following delivery scenarios:
+//
+//   - Standard delivery: Leave the `ResourceSnapshotDelivery.CustomExpression` parameter empty.
+//
+//   - Custom delivery: Set the `ResourceSnapshotDelivery.CustomExpression` parameter to an appropriate value.
 //
 // @param request - UpdateMultiAccountDeliveryChannelRequest
 //
