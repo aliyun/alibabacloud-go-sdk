@@ -9098,11 +9098,7 @@ func (s *AbortChangeOrderResponse) SetBody(v *AbortChangeOrderResponseBody) *Abo
 }
 
 type BatchStartApplicationsRequest struct {
-	// The returned message.
-	//
-	// 	- **success*	- is returned when the request succeeds.
-	//
-	// 	- An error code is returned when the request fails.
+	// The IDs of the applications that you want to start. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
@@ -9311,7 +9307,9 @@ func (s *BatchStartApplicationsResponse) SetBody(v *BatchStartApplicationsRespon
 }
 
 type BatchStopApplicationsRequest struct {
-	// The ID of the request.
+	// The ID of the application that you want to stop.
+	//
+	// > If you want to stop multiple applications at the same time, separate the IDs with commas (,).
 	//
 	// example:
 	//
@@ -9760,7 +9758,16 @@ type BindSlbRequest struct {
 	// example:
 	//
 	// [{"port":80,"targetPort":8080,"protocol":"TCP"}]
-	Internet              *string `json:"Internet,omitempty" xml:"Internet,omitempty"`
+	Internet *string `json:"Internet,omitempty" xml:"Internet,omitempty"`
+	// The billing method of an Internet-facing SLB instance. The following billing methods are supported:
+	//
+	// 	- **PayBySpec**: Pay-by-specification.
+	//
+	// 	- **PayByCLCU**: Pay-by-CLCU.
+	//
+	// example:
+	//
+	// PayBySpec
 	InternetSlbChargeType *string `json:"InternetSlbChargeType,omitempty" xml:"InternetSlbChargeType,omitempty"`
 	// lb-bp1tg0k6d9nqaw7l1\\*\\*\\*\\*
 	//
@@ -9773,7 +9780,16 @@ type BindSlbRequest struct {
 	// example:
 	//
 	// [{"port":80,"targetPort":8080,"protocol":"TCP"}]
-	Intranet              *string `json:"Intranet,omitempty" xml:"Intranet,omitempty"`
+	Intranet *string `json:"Intranet,omitempty" xml:"Intranet,omitempty"`
+	// The billing method of an Internal-facing SLB instance. The following billing methods are supported:
+	//
+	// 	- **PayBySpec**: Pay-by-specification.
+	//
+	// 	- **PayByCLCU**: Pay-by-CLCU.
+	//
+	// example:
+	//
+	// PayBySpec
 	IntranetSlbChargeType *string `json:"IntranetSlbChargeType,omitempty" xml:"IntranetSlbChargeType,omitempty"`
 	// lb-bp1tg0k6d9nqaw7l1\\*\\*\\*\\*
 	//
@@ -10176,14 +10192,19 @@ type CreateApplicationRequest struct {
 	//
 	// This is a test description.
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	// test
+	// The name of the application. The name can contain digits, letters, and hyphens (-). The name must start with a letter and cannot end with a hyphen (-). It cannot exceed 36 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
-	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Select micro_service, which is the application.
+	//
+	// example:
+	//
+	// micro_service
 	AppSource *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
 	// true
 	//
@@ -10191,13 +10212,24 @@ type CreateApplicationRequest struct {
 	//
 	// true
 	AssociateEip *bool `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
-	// true
+	// Specifies whether to automatically configure the network environment. Valid values:
+	//
+	// 	- **true**: SAE automatically configures the network environment when you create the application. If you set this parameter to true, the values of the **NamespaceId**, **VpcId**, **vSwitchId**, and **SecurityGroupId*	- parameters are ignored.
+	//
+	// 	- **false**: SAE configures the network environment based on your settings when you create the application.
+	//
+	// >  If you select **true**, other **NamespaceId*	- will be ignored.
 	//
 	// example:
 	//
 	// true
-	AutoConfig *bool   `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty"`
-	BaseAppId  *string `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
+	AutoConfig *bool `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty"`
+	// The ID of the basic application.
+	//
+	// example:
+	//
+	// ee99cce6-1c8e-4bfa-96c3-3e2fa9de8a41
+	BaseAppId *string `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
 	// sleep
 	//
 	// example:
@@ -10227,27 +10259,83 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// [{"hostName":"samplehost","ip":"127.0.0.1"}]
-	CustomHostAlias        *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	// example:
+	//
+	// internet
 	CustomImageNetworkType *string `json:"CustomImageNetworkType,omitempty" xml:"CustomImageNetworkType,omitempty"`
 	// true
 	//
 	// example:
 	//
 	// true
-	Deploy   *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
-	DiskSize *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	Dotnet   *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
+	Deploy *bool `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	// example:
+	//
+	// 50
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// . NET Framework version number:
+	//
+	// 	- .NET 3.1
+	//
+	// 	- .NET 5.0
+	//
+	// 	- .NET 6.0
+	//
+	// 	- .NET 7.0
+	//
+	// 	- .NET 8.0
+	//
+	// example:
+	//
+	// .NET 3.1
+	Dotnet *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
 	// 3.5.3
 	//
 	// example:
 	//
 	// 3.5.3
-	EdasContainerVersion          *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EnableCpuBurst                *bool   `json:"EnableCpuBurst,omitempty" xml:"EnableCpuBurst,omitempty"`
-	EnableEbpf                    *string `json:"EnableEbpf,omitempty" xml:"EnableEbpf,omitempty"`
-	EnableNewArms                 *bool   `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
-	EnableSidecarResourceIsolated *bool   `json:"EnableSidecarResourceIsolated,omitempty" xml:"EnableSidecarResourceIsolated,omitempty"`
-	// [{"name":"envtmp","value":"0"}]
+	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	// example:
+	//
+	// true
+	EnableCpuBurst *bool `json:"EnableCpuBurst,omitempty" xml:"EnableCpuBurst,omitempty"`
+	// example:
+	//
+	// false
+	EnableEbpf *string `json:"EnableEbpf,omitempty" xml:"EnableEbpf,omitempty"`
+	// Indicates whether to enable the new ARMS feature:
+	//
+	// 	- true: enables this parameter.
+	//
+	// 	- false: disables this parameter.
+	//
+	// example:
+	//
+	// false
+	EnableNewArms    *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
+	EnablePrometheus *bool `json:"EnablePrometheus,omitempty" xml:"EnablePrometheus,omitempty"`
+	// example:
+	//
+	// true
+	EnableSidecarResourceIsolated *bool `json:"EnableSidecarResourceIsolated,omitempty" xml:"EnableSidecarResourceIsolated,omitempty"`
+	// The environment variables. You can configure custom environment variables or reference a ConfigMap. Before you can reference a ConfigMap, you must create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
+	//
+	// 	- Custom configuration
+	//
+	//     	- **name**: the name of the environment variable.
+	//
+	//     	- **value**: the value of the environment variable. The priority of the custom configuration is higher than valueFrom.
+	//
+	// 	- Reference a ConfigMap (valueFrom)
+	//
+	//     	- **name**: the name of the environment variable. You can reference one or all keys. To reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+	//
+	//     	- **valueFrom**: the reference of the environment variable. Valid value: `configMapRef`.
+	//
+	//     	- **configMapId**: the ID of the ConfigMap.
+	//
+	//     	- **key**: the key. If you want to reference all key values, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -10265,6 +10353,7 @@ type CreateApplicationRequest struct {
 	// registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
 	ImageUrl             *string                `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	InitContainersConfig []*InitContainerConfig `json:"InitContainersConfig,omitempty" xml:"InitContainersConfig,omitempty" type:"Repeated"`
+	IsStateful           *bool                  `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
 	// custom-args
 	//
 	// example:
@@ -10302,8 +10391,16 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// "0"
-	MicroRegistration        *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
-	MicroRegistrationConfig  *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	MicroRegistration *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	// The Registry configurations.
+	//
+	// example:
+	//
+	// {\\"instanceId\\":\\"mse-cn-zvp2bh6h70r\\",\\"namespace\\":\\"4c0aa74f-57cb-423c-b6af-5d9f2d0e3dbd\\"}
+	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	// example:
+	//
+	// {"enable": true,"mseLosslessRule": {"delayTime": 0,"enable": false,"notice": false,"warmupTime": 120}}
 	MicroserviceEngineConfig *string `json:"MicroserviceEngineConfig,omitempty" xml:"MicroserviceEngineConfig,omitempty"`
 	// [{mountPath: "/tmp", nasPath: "/"}]
 	//
@@ -10332,9 +10429,15 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// KSAK****
-	NasId         *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	// example:
+	//
+	// pro
 	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
-	OidcRoleName  *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
+	// example:
+	//
+	// sae-test
+	OidcRoleName *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
 	// xxxxxx
 	//
 	// example:
@@ -10436,16 +10539,36 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// 1
-	Replicas        *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SaeVersion      *string `json:"SaeVersion,omitempty" xml:"SaeVersion,omitempty"`
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// example:
+	//
+	// UNLL
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The SAE version. Supported versions:
+	//
+	// 	- **v1**
+	//
+	// 	- **v2**
+	//
+	// example:
+	//
+	// v1
+	SaeVersion *string `json:"SaeVersion,omitempty" xml:"SaeVersion,omitempty"`
+	// example:
+	//
+	// [{“secretId":10,”key":"test","mountPath":"/tmp"}]
 	SecretMountDesc *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
 	// sg-wz969ngg2e49q5i4\\*\\*\\*\\*
 	//
 	// example:
 	//
 	// sg-wz969ngg2e49q5i4****
-	SecurityGroupId         *string                   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The canary tag configured for the application.
+	//
+	// example:
+	//
+	// {\\"alicloud.service.tag\\":\\"g1\\"}
 	ServiceTags             *string                   `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
 	SidecarContainersConfig []*SidecarContainerConfig `json:"SidecarContainersConfig,omitempty" xml:"SidecarContainersConfig,omitempty" type:"Repeated"`
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
@@ -10453,7 +10576,10 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
-	SlsConfigs   *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	// example:
+	//
+	// {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
 	StartupProbe *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
 	// 30
 	//
@@ -10612,6 +10738,11 @@ func (s *CreateApplicationRequest) SetEnableNewArms(v bool) *CreateApplicationRe
 	return s
 }
 
+func (s *CreateApplicationRequest) SetEnablePrometheus(v bool) *CreateApplicationRequest {
+	s.EnablePrometheus = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetEnableSidecarResourceIsolated(v bool) *CreateApplicationRequest {
 	s.EnableSidecarResourceIsolated = &v
 	return s
@@ -10639,6 +10770,11 @@ func (s *CreateApplicationRequest) SetImageUrl(v string) *CreateApplicationReque
 
 func (s *CreateApplicationRequest) SetInitContainersConfig(v []*InitContainerConfig) *CreateApplicationRequest {
 	s.InitContainersConfig = v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetIsStateful(v bool) *CreateApplicationRequest {
+	s.IsStateful = &v
 	return s
 }
 
@@ -10906,14 +11042,19 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// This is a test description.
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	// test
+	// The name of the application. The name can contain digits, letters, and hyphens (-). The name must start with a letter and cannot end with a hyphen (-). It cannot exceed 36 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
-	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Select micro_service, which is the application.
+	//
+	// example:
+	//
+	// micro_service
 	AppSource *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
 	// true
 	//
@@ -10921,13 +11062,24 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// true
 	AssociateEip *bool `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
-	// true
+	// Specifies whether to automatically configure the network environment. Valid values:
+	//
+	// 	- **true**: SAE automatically configures the network environment when you create the application. If you set this parameter to true, the values of the **NamespaceId**, **VpcId**, **vSwitchId**, and **SecurityGroupId*	- parameters are ignored.
+	//
+	// 	- **false**: SAE configures the network environment based on your settings when you create the application.
+	//
+	// >  If you select **true**, other **NamespaceId*	- will be ignored.
 	//
 	// example:
 	//
 	// true
-	AutoConfig *bool   `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty"`
-	BaseAppId  *string `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
+	AutoConfig *bool `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty"`
+	// The ID of the basic application.
+	//
+	// example:
+	//
+	// ee99cce6-1c8e-4bfa-96c3-3e2fa9de8a41
+	BaseAppId *string `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
 	// sleep
 	//
 	// example:
@@ -10957,27 +11109,83 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// [{"hostName":"samplehost","ip":"127.0.0.1"}]
-	CustomHostAlias        *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	// example:
+	//
+	// internet
 	CustomImageNetworkType *string `json:"CustomImageNetworkType,omitempty" xml:"CustomImageNetworkType,omitempty"`
 	// true
 	//
 	// example:
 	//
 	// true
-	Deploy   *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
-	DiskSize *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	Dotnet   *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
+	Deploy *bool `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	// example:
+	//
+	// 50
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// . NET Framework version number:
+	//
+	// 	- .NET 3.1
+	//
+	// 	- .NET 5.0
+	//
+	// 	- .NET 6.0
+	//
+	// 	- .NET 7.0
+	//
+	// 	- .NET 8.0
+	//
+	// example:
+	//
+	// .NET 3.1
+	Dotnet *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
 	// 3.5.3
 	//
 	// example:
 	//
 	// 3.5.3
-	EdasContainerVersion          *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EnableCpuBurst                *bool   `json:"EnableCpuBurst,omitempty" xml:"EnableCpuBurst,omitempty"`
-	EnableEbpf                    *string `json:"EnableEbpf,omitempty" xml:"EnableEbpf,omitempty"`
-	EnableNewArms                 *bool   `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
-	EnableSidecarResourceIsolated *bool   `json:"EnableSidecarResourceIsolated,omitempty" xml:"EnableSidecarResourceIsolated,omitempty"`
-	// [{"name":"envtmp","value":"0"}]
+	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	// example:
+	//
+	// true
+	EnableCpuBurst *bool `json:"EnableCpuBurst,omitempty" xml:"EnableCpuBurst,omitempty"`
+	// example:
+	//
+	// false
+	EnableEbpf *string `json:"EnableEbpf,omitempty" xml:"EnableEbpf,omitempty"`
+	// Indicates whether to enable the new ARMS feature:
+	//
+	// 	- true: enables this parameter.
+	//
+	// 	- false: disables this parameter.
+	//
+	// example:
+	//
+	// false
+	EnableNewArms    *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
+	EnablePrometheus *bool `json:"EnablePrometheus,omitempty" xml:"EnablePrometheus,omitempty"`
+	// example:
+	//
+	// true
+	EnableSidecarResourceIsolated *bool `json:"EnableSidecarResourceIsolated,omitempty" xml:"EnableSidecarResourceIsolated,omitempty"`
+	// The environment variables. You can configure custom environment variables or reference a ConfigMap. Before you can reference a ConfigMap, you must create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
+	//
+	// 	- Custom configuration
+	//
+	//     	- **name**: the name of the environment variable.
+	//
+	//     	- **value**: the value of the environment variable. The priority of the custom configuration is higher than valueFrom.
+	//
+	// 	- Reference a ConfigMap (valueFrom)
+	//
+	//     	- **name**: the name of the environment variable. You can reference one or all keys. To reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+	//
+	//     	- **valueFrom**: the reference of the environment variable. Valid value: `configMapRef`.
+	//
+	//     	- **configMapId**: the ID of the ConfigMap.
+	//
+	//     	- **key**: the key. If you want to reference all key values, you do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -10995,6 +11203,7 @@ type CreateApplicationShrinkRequest struct {
 	// registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
 	ImageUrl                   *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	InitContainersConfigShrink *string `json:"InitContainersConfig,omitempty" xml:"InitContainersConfig,omitempty"`
+	IsStateful                 *bool   `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
 	// custom-args
 	//
 	// example:
@@ -11032,8 +11241,16 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// "0"
-	MicroRegistration        *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
-	MicroRegistrationConfig  *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	MicroRegistration *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	// The Registry configurations.
+	//
+	// example:
+	//
+	// {\\"instanceId\\":\\"mse-cn-zvp2bh6h70r\\",\\"namespace\\":\\"4c0aa74f-57cb-423c-b6af-5d9f2d0e3dbd\\"}
+	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	// example:
+	//
+	// {"enable": true,"mseLosslessRule": {"delayTime": 0,"enable": false,"notice": false,"warmupTime": 120}}
 	MicroserviceEngineConfig *string `json:"MicroserviceEngineConfig,omitempty" xml:"MicroserviceEngineConfig,omitempty"`
 	// [{mountPath: "/tmp", nasPath: "/"}]
 	//
@@ -11062,9 +11279,15 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// KSAK****
-	NasId         *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	// example:
+	//
+	// pro
 	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
-	OidcRoleName  *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
+	// example:
+	//
+	// sae-test
+	OidcRoleName *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
 	// xxxxxx
 	//
 	// example:
@@ -11166,16 +11389,36 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// 1
-	Replicas        *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SaeVersion      *string `json:"SaeVersion,omitempty" xml:"SaeVersion,omitempty"`
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// example:
+	//
+	// UNLL
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The SAE version. Supported versions:
+	//
+	// 	- **v1**
+	//
+	// 	- **v2**
+	//
+	// example:
+	//
+	// v1
+	SaeVersion *string `json:"SaeVersion,omitempty" xml:"SaeVersion,omitempty"`
+	// example:
+	//
+	// [{“secretId":10,”key":"test","mountPath":"/tmp"}]
 	SecretMountDesc *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
 	// sg-wz969ngg2e49q5i4\\*\\*\\*\\*
 	//
 	// example:
 	//
 	// sg-wz969ngg2e49q5i4****
-	SecurityGroupId               *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The canary tag configured for the application.
+	//
+	// example:
+	//
+	// {\\"alicloud.service.tag\\":\\"g1\\"}
 	ServiceTags                   *string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
 	SidecarContainersConfigShrink *string `json:"SidecarContainersConfig,omitempty" xml:"SidecarContainersConfig,omitempty"`
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
@@ -11183,7 +11426,10 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
-	SlsConfigs   *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	// example:
+	//
+	// {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
 	StartupProbe *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
 	// 30
 	//
@@ -11342,6 +11588,11 @@ func (s *CreateApplicationShrinkRequest) SetEnableNewArms(v bool) *CreateApplica
 	return s
 }
 
+func (s *CreateApplicationShrinkRequest) SetEnablePrometheus(v bool) *CreateApplicationShrinkRequest {
+	s.EnablePrometheus = &v
+	return s
+}
+
 func (s *CreateApplicationShrinkRequest) SetEnableSidecarResourceIsolated(v bool) *CreateApplicationShrinkRequest {
 	s.EnableSidecarResourceIsolated = &v
 	return s
@@ -11369,6 +11620,11 @@ func (s *CreateApplicationShrinkRequest) SetImageUrl(v string) *CreateApplicatio
 
 func (s *CreateApplicationShrinkRequest) SetInitContainersConfigShrink(v string) *CreateApplicationShrinkRequest {
 	s.InitContainersConfigShrink = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetIsStateful(v bool) *CreateApplicationShrinkRequest {
+	s.IsStateful = &v
 	return s
 }
 
@@ -15066,12 +15322,16 @@ func (s *CreateOrUpdateSwimmingLaneGroupResponse) SetBody(v *CreateOrUpdateSwimm
 }
 
 type CreateSecretRequest struct {
+	// The ID of the namespace where the Secret resides. If the namespace is the default namespace, you need to only enter the region ID, such as `cn-beijing`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The Secret data.
+	//
 	// This parameter is required.
 	SecretData *CreateSecretRequestSecretData `json:"SecretData,omitempty" xml:"SecretData,omitempty" type:"Struct"`
 	// This parameter is required.
@@ -15117,7 +15377,17 @@ func (s *CreateSecretRequest) SetSecretType(v string) *CreateSecretRequest {
 }
 
 type CreateSecretRequestSecretData struct {
+	// The information about the key-value pairs of the Secret. This parameter is required. The following formats are supported:
+	//
+	// {"Data":"{"k1":"v1", "k2":"v2"}"}
+	//
+	// k specifies a key and v specifies a value.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {".dockerconfigjson":"eyJhdXRocyI6eyJyZWdpc3RyeS12cGMuY24tYmVpamluZy5hbGl5dW5jcy5jb20iOnsidXNlcm5hbWUiOiJ1c2VybmFtZSIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhdXRoIjoiZFhObGNtNWhiV1U2Y0dGemMzZHZjbVE9In0sInJlZ2lzdHJ5LmNuLWJlaWppbmcuYWxpeXVuY3MuY29tIjp7InVzZXJuYW1lIjoidXNlcm5hbWUiLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYXV0aCI6ImRYTmxjbTVoYldVNmNHRnpjM2R2Y21RPSJ9fX0="}
 	SecretData *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
 }
 
@@ -15135,12 +15405,16 @@ func (s *CreateSecretRequestSecretData) SetSecretData(v string) *CreateSecretReq
 }
 
 type CreateSecretShrinkRequest struct {
+	// The ID of the namespace where the Secret resides. If the namespace is the default namespace, you need to only enter the region ID, such as `cn-beijing`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The Secret data.
+	//
 	// This parameter is required.
 	SecretDataShrink *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
 	// This parameter is required.
@@ -15639,14 +15913,50 @@ func (s *DeleteApplicationScalingRuleRequest) SetScalingRuleName(v string) *Dele
 }
 
 type DeleteApplicationScalingRuleResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code. Valid values:
+	//
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	//
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The message returned. Valid values:
+	//
+	// 	- If the request was successful, **success*	- is returned.
+	//
+	// 	- If the request failed, an error code is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the auto scaling policy was deleted. Valid values:
+	//
+	// 	- **true**: The policy was deleted.
+	//
+	// 	- **false**: The policy failed to be deleted.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// example:
 	//
 	// 0a98a02315955564772843261e****
@@ -17441,6 +17751,24 @@ type DeployApplicationRequest struct {
 	//
 	// [{"configMapId":16,"key":"test","mountPath":"/tmp"}]
 	ConfigMapMountDesc *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
+	// The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
+	//
+	// 	- **500**
+	//
+	// 	- **1000**
+	//
+	// 	- **2000**
+	//
+	// 	- **4000**
+	//
+	// 	- **8000**
+	//
+	// 	- **12000**
+	//
+	// 	- **16000**
+	//
+	// 	- **32000**
+	//
 	// example:
 	//
 	// 1000
@@ -17455,6 +17783,12 @@ type DeployApplicationRequest struct {
 	//
 	// [{"hostName":"samplehost","ip":"127.0.0.1"}]
 	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	// Custom image type. To it to empty string to use pre-built image.
+	//
+	// - internet: Public network image
+	//
+	// - intranet: Private network image
+	//
 	// example:
 	//
 	// internet
@@ -17469,6 +17803,18 @@ type DeployApplicationRequest struct {
 	//
 	// true
 	Deploy *string `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	// The version of .NET
+	//
+	// - .NET 3.1
+	//
+	// - .NET 5.0
+	//
+	// - .NET 6.0
+	//
+	// - .NET 7.0
+	//
+	// - .NET 8.0
+	//
 	// example:
 	//
 	// .NET 3.1
@@ -17489,6 +17835,12 @@ type DeployApplicationRequest struct {
 	//
 	// false
 	EnableAhas *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	// Enable CPU Burst.
+	//
+	// true: enable
+	//
+	// false: disable
+	//
 	// example:
 	//
 	// true
@@ -17503,10 +17855,23 @@ type DeployApplicationRequest struct {
 	//
 	// false
 	EnableGreyTagRoute *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	// Enable new ARMS features.
+	//
+	// - true: enable
+	//
+	// - false: disable
+	//
 	// example:
 	//
 	// true
-	EnableNewArms *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
+	EnableNewArms    *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
+	EnablePrometheus *bool `json:"EnablePrometheus,omitempty" xml:"EnablePrometheus,omitempty"`
+	// Enable Sidecar resource isolation.
+	//
+	// true: enable
+	//
+	// false: disable
+	//
 	// example:
 	//
 	// true
@@ -17529,6 +17894,16 @@ type DeployApplicationRequest struct {
 	//
 	//     	- **key**: the key. If you want to reference all keys, do not configure this parameter.
 	//
+	// 	- Reference secret dictionary
+	//
+	//     	- **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-secret-all-<Secret dictionary name>`. Example: `sae-sys-secret-all-test1`.
+	//
+	//     	- **valueFrom**: the reference of the environment variable. Set the value to `secretRef`.
+	//
+	//     	- **secretId**: the secret dictionary ID.
+	//
+	//     	- **key**: the key. If you want to reference all keys, do not configure this parameter.
+	//
 	// example:
 	//
 	// [{"name":"envtmp","value":"0"}]
@@ -17545,7 +17920,8 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
-	ImageUrl             *string                `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// Initialize container configuration.
 	InitContainersConfig []*InitContainerConfig `json:"InitContainersConfig,omitempty" xml:"InitContainersConfig,omitempty" type:"Repeated"`
 	// The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
 	//
@@ -17625,6 +18001,28 @@ type DeployApplicationRequest struct {
 	//
 	// {"exec":{"command":["sleep","5s"]},"initialDelaySeconds":10,"timeoutSeconds":11}
 	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	// The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
+	//
+	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
+	//
+	// 	- This parameter is set to **2048*	- if the Cpu parameter is set to 500, 1000, or 2000.
+	//
+	// 	- This parameter is set to **4096*	- if the Cpu parameter is set to 1000, 2000, or 4000.
+	//
+	// 	- This parameter is set to **8192*	- if the Cpu parameter is set to 2000, 4000, or 8,000.
+	//
+	// 	- This parameter is set to **12288*	- if the Cpu parameter is set to 12000.
+	//
+	// 	- This parameter is set to **16384*	- if the Cpu parameter is set to 4000, 8000, or 16000.
+	//
+	// 	- This parameter is set to **24576*	- if the Cpu parameter is set to 12000.
+	//
+	// 	- This parameter is set to **32768*	- if the Cpu parameter is set to 16000.
+	//
+	// 	- This parameter is set to **65536*	- if the Cpu parameter is set to 8000, 16000, or 32000.
+	//
+	// 	- This parameter is set to **131072*	- if the Cpu parameter is set to 32000.
+	//
 	// example:
 	//
 	// 1024
@@ -17641,10 +18039,44 @@ type DeployApplicationRequest struct {
 	//
 	// "0"
 	MicroRegistration *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	// Select the edition of Nacos.
+	//
+	// - 0: SAE built-in Nacos. Unable to get the configuration of SAE built-in Nacos.
+	//
+	// - 1: Self-built Nacos from users.
+	//
+	// - 2: MSE enterprise Nacos.
+	//
 	// example:
 	//
 	// {\\"instanceId\\":\\"mse-cn-zvp2bh6h70r\\",\\"namespace\\":\\"4c0aa74f-57cb-423c-b6af-5d9f2d0e3dbd\\"}
 	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	// Configure Microservices Governance
+	//
+	// Whether to enable microservices governance (enable):
+	//
+	// - true: Enable
+	//
+	// - false: Disable
+	//
+	// Configure lossless online/offline deployment (mseLosslessRule):
+	//
+	// delayTime: Delay duration (unit: seconds)
+	//
+	// enable: Whether to enable lossless deployment
+	//
+	// - true: Enable
+	//
+	// - false: Disable
+	//
+	// notice: Whether to enable notifications
+	//
+	// - true: Enable
+	//
+	// - false: Disable
+	//
+	// warmupTime: Small-traffic warm-up duration (unit: seconds)
+	//
 	// example:
 	//
 	// {"enable": true,"mseLosslessRule": {"delayTime": 0,"enable": false,"notice": false,"warmupTime": 120}}
@@ -17707,6 +18139,14 @@ type DeployApplicationRequest struct {
 	//
 	// 10d3b4****
 	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	// SAE edition.
+	//
+	// - lite: the lightweight edition.
+	//
+	// - std: the standard edition.
+	//
+	// - pro: the professional edition.
+	//
 	// example:
 	//
 	// pro
@@ -17749,6 +18189,44 @@ type DeployApplicationRequest struct {
 	//
 	// [{"bucketName": "oss-bucket", "bucketPath": "data/user.data", "mountPath": "/usr/data/user.data", "readOnly": true}]
 	OssMountDescs *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
+	// The package type.
+	//
+	// When using Java, FatJar, War and Image are supported.
+	//
+	// When using Python, PythonZip and Image are supported.
+	//
+	// When using PHP, the followings are supported:
+	//
+	// - PhpZip
+	//
+	// - IMAGE_PHP_5_4
+	//
+	// - IMAGE_PHP_5_4_ALPINE
+	//
+	// - IMAGE_PHP_5_5
+	//
+	// - IMAGE_PHP_5_5_ALPINE
+	//
+	// - IMAGE_PHP_5_6
+	//
+	// - IMAGE_PHP_5_6_ALPINE
+	//
+	// - IMAGE_PHP_7_0
+	//
+	// - IMAGE_PHP_7_0_ALPINE
+	//
+	// - IMAGE_PHP_7_1
+	//
+	// - IMAGE_PHP_7_1_ALPINE
+	//
+	// - IMAGE_PHP_7_2
+	//
+	// - IMAGE_PHP_7_2_ALPINE
+	//
+	// - IMAGE_PHP_7_3
+	//
+	// - IMAGE_PHP_7_3_ALPINE
+	//
 	// example:
 	//
 	// FatJar
@@ -17765,6 +18243,8 @@ type DeployApplicationRequest struct {
 	//
 	// 1.0.1
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// The dependent PHP version of PHP package. Image is not supported.
+	//
 	// example:
 	//
 	// PHP-FPM 7.0
@@ -17833,18 +18313,34 @@ type DeployApplicationRequest struct {
 	//
 	// {"exec":{"command":["sleep","6s"]},"initialDelaySeconds":15,"timeoutSeconds":12}
 	Readiness *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	// The number of instances.
+	//
 	// example:
 	//
 	// 1
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// Secret Mount Description
+	//
+	// Use the secret dictionaries created in the Namespace Secret Dictionary page to inject information into containers. Parameter descriptions are as follows:
+	//
+	// - secretId: Secret instance ID. Obtain via the ListSecrets interface.
+	//
+	// - key: Key-value pair. Note: Set the parameter sae-sys-secret-all to mount all keys.
+	//
+	// - mountPath: Mount path.
+	//
 	// example:
 	//
 	// [{“secretId":10,”key":"test","mountPath":"/tmp"}]
 	SecretMountDesc *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
+	// Security group ID.
+	//
 	// example:
 	//
 	// sg-wz969ngg2e49q5i4****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The gray-release tag of the application.
+	//
 	// example:
 	//
 	// {\\"alicloud.service.tag\\":\\"g1\\"}
@@ -17877,10 +18373,43 @@ type DeployApplicationRequest struct {
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
 	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	// Check Failure: Indicates that the application failed to start. The system will report the exception and automatically restart it.
+	//
+	// Note:
+	//
+	// Supports exec, httpGet, and tcpSocket methods. For specific examples, see Liveness Parameters.
+	//
+	// Only one method can be selected for health checks.
+	//
 	// example:
 	//
 	// {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
-	StartupProbe             *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
+	StartupProbe *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
+	// Configure K8s Service-based Service Registration/Discovery and Full-Chain Grayscale Capabilities
+	//
+	// - enable: Whether to enable full-link grayscale based on K8s Service (set to "true" to enable; set to "false" to disable).
+	//
+	// - namespaceId: Namespace ID
+	//
+	// - portAndProtocol: Listener port and protocol. Format: {"Port:Protocol Type":"Container Port"}
+	//
+	// - portProtocols: Define service ports and protocols
+	//
+	// port: Port
+	//
+	// protocol: Protocol
+	//
+	// targetPort: Container port
+	//
+	// - pvtzDiscoveryName: Service discovery name
+	//
+	// - serviceId: Service ID
+	//
+	// - serviceName: Service name
+	//
+	// example:
+	//
+	// {\\"enable\\":\\"false\\",\\"namespaceId\\":\\"cn-beijing:test\\",\\"portAndProtocol\\":{\\"2000:TCP\\":\\"18081\\"},\\"portProtocols\\":[{\\"port\\":2000,\\"protocol\\":\\"TCP\\",\\"targetPort\\":18081}],\\"pvtzDiscoveryName\\":\\"cn-beijing-1421801774382676\\",\\"serviceId\\":\\"3513\\",\\"serviceName\\":\\"demo-gray.test\\"}
 	SwimlanePvtzDiscoverySvc *string `json:"SwimlanePvtzDiscoverySvc,omitempty" xml:"SwimlanePvtzDiscoverySvc,omitempty"`
 	// The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
 	//
@@ -17936,6 +18465,8 @@ type DeployApplicationRequest struct {
 	//
 	// {"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}
 	UpdateStrategy *string `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
+	// The ID of the vSwitch, where the EIP of the application instances resides. The vSwitch must reside in the VPC above.
+	//
 	// example:
 	//
 	// vsw-bp12mw1f8k3jgygk9****
@@ -18065,6 +18596,11 @@ func (s *DeployApplicationRequest) SetEnableGreyTagRoute(v bool) *DeployApplicat
 
 func (s *DeployApplicationRequest) SetEnableNewArms(v bool) *DeployApplicationRequest {
 	s.EnableNewArms = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetEnablePrometheus(v bool) *DeployApplicationRequest {
+	s.EnablePrometheus = &v
 	return s
 }
 
@@ -18433,6 +18969,24 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// [{"configMapId":16,"key":"test","mountPath":"/tmp"}]
 	ConfigMapMountDesc *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
+	// The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
+	//
+	// 	- **500**
+	//
+	// 	- **1000**
+	//
+	// 	- **2000**
+	//
+	// 	- **4000**
+	//
+	// 	- **8000**
+	//
+	// 	- **12000**
+	//
+	// 	- **16000**
+	//
+	// 	- **32000**
+	//
 	// example:
 	//
 	// 1000
@@ -18447,6 +19001,12 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// [{"hostName":"samplehost","ip":"127.0.0.1"}]
 	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	// Custom image type. To it to empty string to use pre-built image.
+	//
+	// - internet: Public network image
+	//
+	// - intranet: Private network image
+	//
 	// example:
 	//
 	// internet
@@ -18461,6 +19021,18 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// true
 	Deploy *string `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	// The version of .NET
+	//
+	// - .NET 3.1
+	//
+	// - .NET 5.0
+	//
+	// - .NET 6.0
+	//
+	// - .NET 7.0
+	//
+	// - .NET 8.0
+	//
 	// example:
 	//
 	// .NET 3.1
@@ -18481,6 +19053,12 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// false
 	EnableAhas *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	// Enable CPU Burst.
+	//
+	// true: enable
+	//
+	// false: disable
+	//
 	// example:
 	//
 	// true
@@ -18495,10 +19073,23 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// false
 	EnableGreyTagRoute *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	// Enable new ARMS features.
+	//
+	// - true: enable
+	//
+	// - false: disable
+	//
 	// example:
 	//
 	// true
-	EnableNewArms *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
+	EnableNewArms    *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
+	EnablePrometheus *bool `json:"EnablePrometheus,omitempty" xml:"EnablePrometheus,omitempty"`
+	// Enable Sidecar resource isolation.
+	//
+	// true: enable
+	//
+	// false: disable
+	//
 	// example:
 	//
 	// true
@@ -18521,6 +19112,16 @@ type DeployApplicationShrinkRequest struct {
 	//
 	//     	- **key**: the key. If you want to reference all keys, do not configure this parameter.
 	//
+	// 	- Reference secret dictionary
+	//
+	//     	- **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-secret-all-<Secret dictionary name>`. Example: `sae-sys-secret-all-test1`.
+	//
+	//     	- **valueFrom**: the reference of the environment variable. Set the value to `secretRef`.
+	//
+	//     	- **secretId**: the secret dictionary ID.
+	//
+	//     	- **key**: the key. If you want to reference all keys, do not configure this parameter.
+	//
 	// example:
 	//
 	// [{"name":"envtmp","value":"0"}]
@@ -18537,7 +19138,8 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
-	ImageUrl                   *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// Initialize container configuration.
 	InitContainersConfigShrink *string `json:"InitContainersConfig,omitempty" xml:"InitContainersConfig,omitempty"`
 	// The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
 	//
@@ -18617,6 +19219,28 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// {"exec":{"command":["sleep","5s"]},"initialDelaySeconds":10,"timeoutSeconds":11}
 	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
+	// The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
+	//
+	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
+	//
+	// 	- This parameter is set to **2048*	- if the Cpu parameter is set to 500, 1000, or 2000.
+	//
+	// 	- This parameter is set to **4096*	- if the Cpu parameter is set to 1000, 2000, or 4000.
+	//
+	// 	- This parameter is set to **8192*	- if the Cpu parameter is set to 2000, 4000, or 8,000.
+	//
+	// 	- This parameter is set to **12288*	- if the Cpu parameter is set to 12000.
+	//
+	// 	- This parameter is set to **16384*	- if the Cpu parameter is set to 4000, 8000, or 16000.
+	//
+	// 	- This parameter is set to **24576*	- if the Cpu parameter is set to 12000.
+	//
+	// 	- This parameter is set to **32768*	- if the Cpu parameter is set to 16000.
+	//
+	// 	- This parameter is set to **65536*	- if the Cpu parameter is set to 8000, 16000, or 32000.
+	//
+	// 	- This parameter is set to **131072*	- if the Cpu parameter is set to 32000.
+	//
 	// example:
 	//
 	// 1024
@@ -18633,10 +19257,44 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// "0"
 	MicroRegistration *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	// Select the edition of Nacos.
+	//
+	// - 0: SAE built-in Nacos. Unable to get the configuration of SAE built-in Nacos.
+	//
+	// - 1: Self-built Nacos from users.
+	//
+	// - 2: MSE enterprise Nacos.
+	//
 	// example:
 	//
 	// {\\"instanceId\\":\\"mse-cn-zvp2bh6h70r\\",\\"namespace\\":\\"4c0aa74f-57cb-423c-b6af-5d9f2d0e3dbd\\"}
 	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	// Configure Microservices Governance
+	//
+	// Whether to enable microservices governance (enable):
+	//
+	// - true: Enable
+	//
+	// - false: Disable
+	//
+	// Configure lossless online/offline deployment (mseLosslessRule):
+	//
+	// delayTime: Delay duration (unit: seconds)
+	//
+	// enable: Whether to enable lossless deployment
+	//
+	// - true: Enable
+	//
+	// - false: Disable
+	//
+	// notice: Whether to enable notifications
+	//
+	// - true: Enable
+	//
+	// - false: Disable
+	//
+	// warmupTime: Small-traffic warm-up duration (unit: seconds)
+	//
 	// example:
 	//
 	// {"enable": true,"mseLosslessRule": {"delayTime": 0,"enable": false,"notice": false,"warmupTime": 120}}
@@ -18699,6 +19357,14 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// 10d3b4****
 	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	// SAE edition.
+	//
+	// - lite: the lightweight edition.
+	//
+	// - std: the standard edition.
+	//
+	// - pro: the professional edition.
+	//
 	// example:
 	//
 	// pro
@@ -18741,6 +19407,44 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// [{"bucketName": "oss-bucket", "bucketPath": "data/user.data", "mountPath": "/usr/data/user.data", "readOnly": true}]
 	OssMountDescs *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
+	// The package type.
+	//
+	// When using Java, FatJar, War and Image are supported.
+	//
+	// When using Python, PythonZip and Image are supported.
+	//
+	// When using PHP, the followings are supported:
+	//
+	// - PhpZip
+	//
+	// - IMAGE_PHP_5_4
+	//
+	// - IMAGE_PHP_5_4_ALPINE
+	//
+	// - IMAGE_PHP_5_5
+	//
+	// - IMAGE_PHP_5_5_ALPINE
+	//
+	// - IMAGE_PHP_5_6
+	//
+	// - IMAGE_PHP_5_6_ALPINE
+	//
+	// - IMAGE_PHP_7_0
+	//
+	// - IMAGE_PHP_7_0_ALPINE
+	//
+	// - IMAGE_PHP_7_1
+	//
+	// - IMAGE_PHP_7_1_ALPINE
+	//
+	// - IMAGE_PHP_7_2
+	//
+	// - IMAGE_PHP_7_2_ALPINE
+	//
+	// - IMAGE_PHP_7_3
+	//
+	// - IMAGE_PHP_7_3_ALPINE
+	//
 	// example:
 	//
 	// FatJar
@@ -18757,6 +19461,8 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// 1.0.1
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// The dependent PHP version of PHP package. Image is not supported.
+	//
 	// example:
 	//
 	// PHP-FPM 7.0
@@ -18825,18 +19531,34 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// {"exec":{"command":["sleep","6s"]},"initialDelaySeconds":15,"timeoutSeconds":12}
 	Readiness *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	// The number of instances.
+	//
 	// example:
 	//
 	// 1
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// Secret Mount Description
+	//
+	// Use the secret dictionaries created in the Namespace Secret Dictionary page to inject information into containers. Parameter descriptions are as follows:
+	//
+	// - secretId: Secret instance ID. Obtain via the ListSecrets interface.
+	//
+	// - key: Key-value pair. Note: Set the parameter sae-sys-secret-all to mount all keys.
+	//
+	// - mountPath: Mount path.
+	//
 	// example:
 	//
 	// [{“secretId":10,”key":"test","mountPath":"/tmp"}]
 	SecretMountDesc *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
+	// Security group ID.
+	//
 	// example:
 	//
 	// sg-wz969ngg2e49q5i4****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The gray-release tag of the application.
+	//
 	// example:
 	//
 	// {\\"alicloud.service.tag\\":\\"g1\\"}
@@ -18869,10 +19591,43 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
 	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	// Check Failure: Indicates that the application failed to start. The system will report the exception and automatically restart it.
+	//
+	// Note:
+	//
+	// Supports exec, httpGet, and tcpSocket methods. For specific examples, see Liveness Parameters.
+	//
+	// Only one method can be selected for health checks.
+	//
 	// example:
 	//
 	// {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
-	StartupProbe             *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
+	StartupProbe *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
+	// Configure K8s Service-based Service Registration/Discovery and Full-Chain Grayscale Capabilities
+	//
+	// - enable: Whether to enable full-link grayscale based on K8s Service (set to "true" to enable; set to "false" to disable).
+	//
+	// - namespaceId: Namespace ID
+	//
+	// - portAndProtocol: Listener port and protocol. Format: {"Port:Protocol Type":"Container Port"}
+	//
+	// - portProtocols: Define service ports and protocols
+	//
+	// port: Port
+	//
+	// protocol: Protocol
+	//
+	// targetPort: Container port
+	//
+	// - pvtzDiscoveryName: Service discovery name
+	//
+	// - serviceId: Service ID
+	//
+	// - serviceName: Service name
+	//
+	// example:
+	//
+	// {\\"enable\\":\\"false\\",\\"namespaceId\\":\\"cn-beijing:test\\",\\"portAndProtocol\\":{\\"2000:TCP\\":\\"18081\\"},\\"portProtocols\\":[{\\"port\\":2000,\\"protocol\\":\\"TCP\\",\\"targetPort\\":18081}],\\"pvtzDiscoveryName\\":\\"cn-beijing-1421801774382676\\",\\"serviceId\\":\\"3513\\",\\"serviceName\\":\\"demo-gray.test\\"}
 	SwimlanePvtzDiscoverySvc *string `json:"SwimlanePvtzDiscoverySvc,omitempty" xml:"SwimlanePvtzDiscoverySvc,omitempty"`
 	// The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
 	//
@@ -18928,6 +19683,8 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// {"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}
 	UpdateStrategy *string `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
+	// The ID of the vSwitch, where the EIP of the application instances resides. The vSwitch must reside in the VPC above.
+	//
 	// example:
 	//
 	// vsw-bp12mw1f8k3jgygk9****
@@ -19057,6 +19814,11 @@ func (s *DeployApplicationShrinkRequest) SetEnableGreyTagRoute(v bool) *DeployAp
 
 func (s *DeployApplicationShrinkRequest) SetEnableNewArms(v bool) *DeployApplicationShrinkRequest {
 	s.EnableNewArms = &v
+	return s
+}
+
+func (s *DeployApplicationShrinkRequest) SetEnablePrometheus(v bool) *DeployApplicationShrinkRequest {
+	s.EnablePrometheus = &v
 	return s
 }
 
@@ -20296,6 +21058,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	EnableGreyTagRoute *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
 	EnableIdle         *bool `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
 	EnableNewArms      *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
+	EnablePrometheus   *bool `json:"EnablePrometheus,omitempty" xml:"EnablePrometheus,omitempty"`
 	// The environment variables. Variable description:
 	//
 	// 	- **name**: the name of the environment variable.
@@ -20319,6 +21082,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// docker.io/library/nginx:1.14.2
 	ImageUrl             *string                                                          `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	InitContainersConfig []*DescribeApplicationConfigResponseBodyDataInitContainersConfig `json:"InitContainersConfig,omitempty" xml:"InitContainersConfig,omitempty" type:"Repeated"`
+	IsStateful           *bool                                                            `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
 	// The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
 	//
 	// example:
@@ -20894,6 +21658,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetEnableNewArms(v bool) *De
 	return s
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) SetEnablePrometheus(v bool) *DescribeApplicationConfigResponseBodyData {
+	s.EnablePrometheus = &v
+	return s
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) SetEnvs(v string) *DescribeApplicationConfigResponseBodyData {
 	s.Envs = &v
 	return s
@@ -20921,6 +21690,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetImageUrl(v string) *Descr
 
 func (s *DescribeApplicationConfigResponseBodyData) SetInitContainersConfig(v []*DescribeApplicationConfigResponseBodyDataInitContainersConfig) *DescribeApplicationConfigResponseBodyData {
 	s.InitContainersConfig = v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetIsStateful(v bool) *DescribeApplicationConfigResponseBodyData {
+	s.IsStateful = &v
 	return s
 }
 
@@ -21660,7 +22434,7 @@ func (s *DescribeApplicationConfigResponse) SetBody(v *DescribeApplicationConfig
 }
 
 type DescribeApplicationGroupsRequest struct {
-	// d700e680-aa4d-4ec1-afc2-6566b5ff\\*\\*\\*\\*
+	// The ID of the application.
 	//
 	// This parameter is required.
 	//
@@ -21668,13 +22442,13 @@ type DescribeApplicationGroupsRequest struct {
 	//
 	// d700e680-aa4d-4ec1-afc2-6566b5ff****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 1
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 10
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -21708,13 +22482,13 @@ func (s *DescribeApplicationGroupsRequest) SetPageSize(v int32) *DescribeApplica
 type DescribeApplicationGroupsResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// 	- **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: indicates that the request was invalid.
+	// 	- **4xx**: The call failed.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -21722,11 +22496,11 @@ type DescribeApplicationGroupsResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about the instance groups of the application.
 	Data []*DescribeApplicationGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message.
 	//
@@ -21734,23 +22508,23 @@ type DescribeApplicationGroupsResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the information about instance groups of an application was obtained. Valid values:
+	// Indicates whether the instance groups of an application were obtained. Valid values:
 	//
-	// 	- **true**: indicates that the information was obtained.
+	// 	- **true**: The instance groups were obtained.
 	//
-	// 	- **false**: indicates that the information could not be obtained.
+	// 	- **false**: The instance groups failed to be obtained.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -21802,47 +22576,47 @@ func (s *DescribeApplicationGroupsResponseBody) SetTraceId(v string) *DescribeAp
 }
 
 type DescribeApplicationGroupsResponseBodyData struct {
-	// The version of the container, such as Ali-Tomcat, in which a High-speed Service Framework (HSF) application runs.
+	// The version of the container, such as Ali-Tomcat, in which an application that is developed based on High-speed Service Framework (HSF) is deployed.
 	//
 	// example:
 	//
 	// 3.5.3
 	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	// The ID of the group.
+	// The ID of the instance group.
 	//
 	// example:
 	//
 	// b2a8a925-477a-eswa-b823-d5e22500****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the group.
+	// The name of the instance group.
 	//
 	// example:
 	//
 	// _DEFAULT_GROUP
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the group.
+	// The type of the instance group.
 	//
 	// example:
 	//
 	// 0
 	GroupType *int32 `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The address of the image. This parameter is required when the **PackageType*	- parameter is set to **Image**.
+	// The URL of the image. This parameter is returned only if the **PackageType*	- parameter is set to **Image**.
 	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/demo/nginx:latest
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The version of the Java development kit (JDK) on which the deployment package of the application depends. This parameter is invalid when the **PackageType*	- parameter is set to **Image**.
+	// The version of the JDK on which the deployment package of the application depends. This parameter is not returned if the **PackageType*	- parameter is set to **Image**.
 	//
 	// example:
 	//
 	// Open JDK 8
 	Jdk *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	// The type of the application deployment package. Valid values:
+	// The type of the deployment package. Valid values:
 	//
-	// 	- When you use a Java package, set this value to **FatJar**, **War**, or **Image**.
+	// 	- If you deploy a Java application, the value of this parameter can be **FatJar**, **War**, or **Image**.
 	//
-	// 	- When you use a PHP package, the following values are valid:
+	// 	- If you deploy a PHP application, the value of this parameter can be one of the following values:
 	//
 	//     	- **PhpZip**
 	//
@@ -21878,13 +22652,13 @@ type DescribeApplicationGroupsResponseBodyData struct {
 	//
 	// Image
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The address of the deployment package. This parameter is required when the **PackageType*	- parameter is set to **FatJar**, **War**, or **PhpZip**.
+	// The URL of the deployment package. This parameter is returned only if the **PackageType*	- parameter is set to **FatJar**, **War**, or **PhpZip**.
 	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/demo/nginx:latest
 	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	// The version of the deployment package. This parameter is required when the **PackageType*	- parameter is set to **FatJar**, **War**, or **PhpZip**. The parameter value will be automatically generated when you use an image to deploy the application and specify the **ImageUrl*	- parameter.
+	// The version of the deployment package. This parameter is returned only if the **PackageType*	- parameter is set to **FatJar**, **War**, or **PhpZip**. The value of this parameter is automatically generated only if the **ImageUrl*	- is returned.
 	//
 	// example:
 	//
@@ -21903,7 +22677,7 @@ type DescribeApplicationGroupsResponseBodyData struct {
 	//
 	// 1
 	RunningInstances *int32 `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
-	// The version of the Apache Tomcat container on which the deployment package of the application depends. This parameter is invalid when the **PackageType*	- parameter is set to **Image**.
+	// The version of the Tomcat container on which the deployment package depends. This parameter is not returned if the **PackageType*	- parameter is set to **Image**.
 	//
 	// example:
 	//
@@ -22288,14 +23062,22 @@ type DescribeApplicationInstancesRequest struct {
 	// example:
 	//
 	// b2a8a925-477a-4ed7-b825-d5e22500****
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the application instance.
+	//
+	// example:
+	//
+	// demo-faaca66c-5959-45cc-b3bf-d26093b2e9c0******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 10
 	//
 	// example:
 	//
 	// 10
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 85750d48-6cfc-4dbf-8ea0-840397******
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	// true
 	//
@@ -22363,7 +23145,7 @@ type DescribeApplicationInstancesResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the application instances.
+	// The details of the application instance.
 	Data *DescribeApplicationInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -22451,7 +23233,7 @@ type DescribeApplicationInstancesResponseBodyData struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of application instances.
+	// The application instances.
 	Instances []*DescribeApplicationInstancesResponseBodyDataInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The number of entries returned on each page.
 	//
@@ -22502,7 +23284,10 @@ type DescribeApplicationInstancesResponseBodyDataInstances struct {
 	//
 	// 1558442609000
 	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	DebugStatus     *bool  `json:"DebugStatus,omitempty" xml:"DebugStatus,omitempty"`
+	// example:
+	//
+	// False
+	DebugStatus *bool `json:"DebugStatus,omitempty" xml:"DebugStatus,omitempty"`
 	// The elastic IP address (EIP).
 	//
 	// example:
@@ -22596,17 +23381,31 @@ type DescribeApplicationInstancesResponseBodyDataInstances struct {
 	// example:
 	//
 	// b2a8a925-477a-4ed7-b825-d5e22500****
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the main container.
+	//
+	// example:
+	//
+	// Running
 	MainContainerStatus *string `json:"MainContainerStatus,omitempty" xml:"MainContainerStatus,omitempty"`
 	// The version of the package.
 	//
 	// example:
 	//
 	// 1609939496200
-	PackageVersion          *string                                                                         `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// The status of the sidecar container.
 	SidecarContainersStatus []*DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus `json:"SidecarContainersStatus,omitempty" xml:"SidecarContainersStatus,omitempty" type:"Repeated"`
-	Timestamp               *int64                                                                          `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	UnhealthyMessage        *string                                                                         `json:"UnhealthyMessage,omitempty" xml:"UnhealthyMessage,omitempty"`
+	// example:
+	//
+	// 1750061980000
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// If the health check of an application instance fails, the detailed failure cause or error message is returned. If the health check of an application instance passes, no response is returned.
+	//
+	// example:
+	//
+	// Null
+	UnhealthyMessage *string `json:"UnhealthyMessage,omitempty" xml:"UnhealthyMessage,omitempty"`
 	// The ID of the zone where the instance is deployed.
 	//
 	// example:
@@ -22709,9 +23508,24 @@ func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetVSwitchId(v s
 }
 
 type DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus struct {
-	ContainerId     *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	// The ID of the sidecar container.
+	//
+	// example:
+	//
+	// sidecar-test-01
+	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	// The status of the container.
+	//
+	// example:
+	//
+	// Running
 	ContainerStatus *string `json:"ContainerStatus,omitempty" xml:"ContainerStatus,omitempty"`
-	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The URL of the image.
+	//
+	// example:
+	//
+	// registry.cn-beijing.aliyuncs.com/sae-dev-test/******
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 }
 
 func (s DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus) String() string {
@@ -31238,11 +32052,11 @@ type DescribeNamespaceListRequest struct {
 	//
 	// true
 	ContainCustom *bool `json:"ContainCustom,omitempty" xml:"ContainCustom,omitempty"`
-	// Specifies whether to exclude hybrid cloud namespaces from the result. Valid values:
+	// Indicates whether hybrid cloud namespaces are excluded. Valid values:
 	//
-	// - **true**: The system excludes hybrid cloud namespaces from the result.
+	// 	- **true**: Hybrid cloud namespaces are excluded.
 	//
-	// - **false**: The system does not exclude hybrid cloud namespaces from the result.
+	// 	- **false**: Hybrid cloud namespaces are included.
 	//
 	// example:
 	//
@@ -31283,7 +32097,7 @@ type DescribeNamespaceListResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The namespaces.
+	// The list of namespaces.
 	Data []*DescribeNamespaceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code. Valid values:
 	//
@@ -34276,16 +35090,52 @@ func (s *DisableApplicationScalingRuleRequest) SetScalingRuleName(v string) *Dis
 }
 
 type DisableApplicationScalingRuleResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error codes. Valid values:
+	//
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	//
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, **success*	- is returned.
+	//
+	// 	- If the request failed, an error code is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the trace. The ID is used to query the details of a request.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the auto scaling policy was disabled. Valid values:
+	//
+	// 	- **true**: The auto scaling policy was disabled.
+	//
+	// 	- **false**: The auto scaling policy failed to be disabled.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// example:
 	//
 	// 0a98a02315955564772843261e****
@@ -35062,7 +35912,8 @@ type GetApplicationResponseBodyApplication struct {
 	// example:
 	//
 	// i-8ps2o182102o1jv05bys
-	Instances *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	Instances  *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	IsStateful *bool  `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
 	// The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
 	//
 	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
@@ -35188,6 +36039,11 @@ func (s *GetApplicationResponseBodyApplication) SetCpu(v int32) *GetApplicationR
 
 func (s *GetApplicationResponseBodyApplication) SetInstances(v int32) *GetApplicationResponseBodyApplication {
 	s.Instances = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetIsStateful(v bool) *GetApplicationResponseBodyApplication {
+	s.IsStateful = &v
 	return s
 }
 
@@ -39092,6 +39948,7 @@ type ListApplicationsRequest struct {
 	//
 	// demo-app
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+	IsStateful *string `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
 	// 1
 	//
 	// example:
@@ -39158,6 +40015,11 @@ func (s *ListApplicationsRequest) SetFieldType(v string) *ListApplicationsReques
 
 func (s *ListApplicationsRequest) SetFieldValue(v string) *ListApplicationsRequest {
 	s.FieldValue = &v
+	return s
+}
+
+func (s *ListApplicationsRequest) SetIsStateful(v string) *ListApplicationsRequest {
+	s.IsStateful = &v
 	return s
 }
 
@@ -45433,13 +46295,13 @@ func (s *ListWebCustomDomainsResponse) SetBody(v *ListWebCustomDomainBody) *List
 }
 
 type OpenSaeServiceResponseBody struct {
-	// The ID of the order.
+	// PushEvent
 	//
 	// example:
 	//
 	// 20485646575****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// enableWAF
 	//
 	// example:
 	//
@@ -46267,7 +47129,7 @@ func (s *RescaleApplicationResponse) SetBody(v *RescaleApplicationResponseBody) 
 }
 
 type RescaleApplicationVerticallyRequest struct {
-	// The application ID.
+	// The app ID.
 	//
 	// This parameter is required.
 	//
@@ -46275,26 +47137,46 @@ type RescaleApplicationVerticallyRequest struct {
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The destination CPU specification. Unit: millicore.
+	// Target CPU specification. Unit: millicore.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1000
-	Cpu      *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The disk size. Unit: GB.
+	//
+	// example:
+	//
+	// 20
 	DiskSize *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The destination memory size. Unit: MB.
+	// Target memory specification. Unit: MB.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2048
-	Memory                           *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	AutoEnableApplicationScalingRule *bool   `json:"autoEnableApplicationScalingRule,omitempty" xml:"autoEnableApplicationScalingRule,omitempty"`
-	MinReadyInstanceRatio            *int32  `json:"minReadyInstanceRatio,omitempty" xml:"minReadyInstanceRatio,omitempty"`
-	MinReadyInstances                *int32  `json:"minReadyInstances,omitempty" xml:"minReadyInstances,omitempty"`
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// Enable application scale rules automatically.
+	//
+	// example:
+	//
+	// true
+	AutoEnableApplicationScalingRule *bool `json:"autoEnableApplicationScalingRule,omitempty" xml:"autoEnableApplicationScalingRule,omitempty"`
+	// The ratio of minimum ready instances.
+	//
+	// example:
+	//
+	// 50
+	MinReadyInstanceRatio *int32 `json:"minReadyInstanceRatio,omitempty" xml:"minReadyInstanceRatio,omitempty"`
+	// Minimum ready instances.
+	//
+	// example:
+	//
+	// 1
+	MinReadyInstances *int32 `json:"minReadyInstances,omitempty" xml:"minReadyInstances,omitempty"`
 }
 
 func (s RescaleApplicationVerticallyRequest) String() string {
@@ -46341,13 +47223,13 @@ func (s *RescaleApplicationVerticallyRequest) SetMinReadyInstances(v int32) *Res
 }
 
 type RescaleApplicationVerticallyResponseBody struct {
-	// The HTTP status code. Take note of the following rules:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: The call was successful.
+	// 	- **2xx**: The request was successful.
 	//
-	// 	- **3xx**: The call was redirected.
+	// 	- **3xx**: The request was redirected.
 	//
-	// 	- **4xx**: The call failed.
+	// 	- **4xx**: The request failed.
 	//
 	// 	- **5xx**: A server error occurred.
 	//
@@ -46355,41 +47237,41 @@ type RescaleApplicationVerticallyResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response.
+	// Data returned.
 	Data *RescaleApplicationVerticallyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed. Take note of the following rules:
+	// The error code. Valid values:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned if the request succeeds.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- The **ErrorCode*	- parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	//
 	// example:
 	//
 	// Null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned for the operation.
+	// Messages returned for additional information.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// AB521DBB-FA78-42E6-803F-A862EA4F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the instance specifications are changed. Take note of the following rules:
+	// Indicates whether the update of instance specifications was successful. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: Updated.
 	//
-	// 	- **false**
+	// 	- **false**: Failed to update.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// Trace ID for request information.
 	//
 	// example:
 	//
@@ -46441,7 +47323,7 @@ func (s *RescaleApplicationVerticallyResponseBody) SetTraceId(v string) *Rescale
 }
 
 type RescaleApplicationVerticallyResponseBodyData struct {
-	// The ID of the change order.
+	// The ticked ID of updates.
 	//
 	// example:
 	//
@@ -46499,8 +47381,17 @@ type RestartApplicationRequest struct {
 	// example:
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
-	AppId                            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AutoEnableApplicationScalingRule *bool   `json:"AutoEnableApplicationScalingRule,omitempty" xml:"AutoEnableApplicationScalingRule,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Specifies whether to automatically enable an auto scaling policy for the application. Valid values:
+	//
+	// 	- **true**: enabled.
+	//
+	// 	- **false**: disabled
+	//
+	// example:
+	//
+	// false
+	AutoEnableApplicationScalingRule *bool `json:"AutoEnableApplicationScalingRule,omitempty" xml:"AutoEnableApplicationScalingRule,omitempty"`
 	// The percentage of the minimum number of available instances. Take note of the following rules:
 	//
 	// 	- If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. Default value: -1.
@@ -47667,7 +48558,11 @@ type SuspendJobRequest struct {
 	//
 	// ee1a7a07-abcb-4652-a1d3-2d57f415****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Specifies whether to suspend the job template.
+	// Start or suspend a job template.
+	//
+	// 	- true: Start a job template.
+	//
+	// 	- false: Suspend a job template.
 	//
 	// This parameter is required.
 	//
@@ -47833,13 +48728,13 @@ func (s *SuspendJobResponse) SetBody(v *SuspendJobResponseBody) *SuspendJobRespo
 }
 
 type TagResourcesRequest struct {
-	// application
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The IDs of resources. Separate multiple resource IDs with comma (,). This parameter is required if you do not specify the **Tags*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -47847,7 +48742,7 @@ type TagResourcesRequest struct {
 	//
 	// ["d42921c4-5433-4abd-8075-0e536f8b****"]
 	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	// [{"key":"k1","value":"v1"}]
+	// The type of the resource. Set the value to `application`.
 	//
 	// This parameter is required.
 	//
@@ -47855,7 +48750,15 @@ type TagResourcesRequest struct {
 	//
 	// application
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// ["d42921c4-5433-4abd-8075-0e536f8b\\*\\*\\*\\*"]
+	// The tag in the format of a key-value pair. This parameter is required if you do not specify the **ResourceIds*	- parameter. The following parameters are involved:
+	//
+	// 	- **key**: the tag key. It cannot exceed 128 characters in length.
+	//
+	// 	- **value**: the tag value. It cannot exceed 128 characters in length.
+	//
+	// Tag keys and tag values are case-sensitive. If you specify multiple tags, the system adds all the tags to the specified resources. Each tag key on a resource can have only one tag value. If you create a tag that has the same key as an existing tag, the value of the existing tag is overwritten.
+	//
+	// Tag keys and tag values cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -47892,53 +48795,59 @@ func (s *TagResourcesRequest) SetTags(v string) *TagResourcesRequest {
 }
 
 type TagResourcesResponseBody struct {
-	// Indicates whether tags were added to the specified resources successfully. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **true**: indicates that tags were added to the specified resources successfully.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **false**: indicates that tags could not be added to the specified resources.
+	// 	- **3xx**: The call was redirected.
+	//
+	// 	- **4xx**: The call failed.
+	//
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error code.
-	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
-	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// Indicates that the operation was successful.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code. Valid values:
+	// The error code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
-	//
-	// 	- **4xx**: indicates that the request was invalid.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// The returned message. Valid values:
+	//
+	// 	- success: If the call is successful, **success*	- is returned.
+	//
+	// 	- An error code: If the call fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned message.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether tags were added to the specified resources. Valid values:
+	//
+	// 	- **true**: The tags were added.
+	//
+	// 	- **false**: The tags failed to be added.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Indicates that the operation was successful.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -48436,13 +49345,17 @@ func (s *UnbindSlbResponse) SetBody(v *UnbindSlbResponseBody) *UnbindSlbResponse
 }
 
 type UntagResourcesRequest struct {
-	// false
+	// Specifies whether to remove all the specified tags. This parameter takes effect only if the TagKeys parameter is specified. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// example:
 	//
 	// false
 	DeleteAll *bool `json:"DeleteAll,omitempty" xml:"DeleteAll,omitempty"`
-	// cn-beijing
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -48450,7 +49363,7 @@ type UntagResourcesRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// ["d42921c4-5433-4abd-8075-0e536f8b\\*\\*\\*\\*"]
+	// The IDs of resources. Separate multiple resource IDs with comma (,).
 	//
 	// This parameter is required.
 	//
@@ -48458,7 +49371,7 @@ type UntagResourcesRequest struct {
 	//
 	// ["d42921c4-5433-4abd-8075-0e536f8b****"]
 	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	// application
+	// The type of the resource. Set the value to `application`.
 	//
 	// This parameter is required.
 	//
@@ -48466,7 +49379,7 @@ type UntagResourcesRequest struct {
 	//
 	// application
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// ["k1","k2"]
+	// The tag keys. Separate multiple tag keys with commas (,).
 	//
 	// example:
 	//
@@ -48510,37 +49423,41 @@ func (s *UntagResourcesRequest) SetTagKeys(v string) *UntagResourcesRequest {
 type UntagResourcesResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// 	- **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: indicates that the request was invalid.
+	// 	- **4xx**: The call failed.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned result.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The returned message. Valid values:
+	//
+	// 	- success: If the call is successful, **success*	- is returned.
+	//
+	// 	- An error code: If the call fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -48550,13 +49467,13 @@ type UntagResourcesResponseBody struct {
 	//
 	// 	- **true**: The tags were removed.
 	//
-	// 	- **false**: The tags could not be removed.
+	// 	- **false**: The tags failed to be removed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query details of a request.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -52830,7 +53747,7 @@ func (client *Client) AbortChangeOrder(request *AbortChangeOrderRequest) (_resul
 
 // Summary:
 //
-// cn-shanghai
+// Starts multiple applications at a time.
 //
 // @param request - BatchStartApplicationsRequest
 //
@@ -52883,7 +53800,7 @@ func (client *Client) BatchStartApplicationsWithOptions(request *BatchStartAppli
 
 // Summary:
 //
-// cn-shanghai
+// Starts multiple applications at a time.
 //
 // @param request - BatchStartApplicationsRequest
 //
@@ -52902,7 +53819,7 @@ func (client *Client) BatchStartApplications(request *BatchStartApplicationsRequ
 
 // Summary:
 //
-// Stops multiple applications at a time.
+// Stop applications in batches.
 //
 // @param request - BatchStopApplicationsRequest
 //
@@ -52955,7 +53872,7 @@ func (client *Client) BatchStopApplicationsWithOptions(request *BatchStopApplica
 
 // Summary:
 //
-// Stops multiple applications at a time.
+// Stop applications in batches.
 //
 // @param request - BatchStopApplicationsRequest
 //
@@ -53200,6 +54117,10 @@ func (client *Client) ConfirmPipelineBatch(request *ConfirmPipelineBatchRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an application.
+//
 // @param tmpReq - CreateApplicationRequest
 //
 // @param headers - map
@@ -53291,6 +54212,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["EnableNewArms"] = request.EnableNewArms
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnablePrometheus)) {
+		query["EnablePrometheus"] = request.EnablePrometheus
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Envs)) {
 		query["Envs"] = request.Envs
 	}
@@ -53305,6 +54230,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
 		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsStateful)) {
+		query["IsStateful"] = request.IsStateful
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JarStartArgs)) {
@@ -53553,6 +54482,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an application.
+//
 // @param request - CreateApplicationRequest
 //
 // @return CreateApplicationResponse
@@ -54568,7 +55501,7 @@ func (client *Client) CreateOrUpdateSwimmingLaneGroup(request *CreateOrUpdateSwi
 
 // Summary:
 //
-// # Null
+// Creates a Secret in a namespace.
 //
 // @param tmpReq - CreateSecretRequest
 //
@@ -54631,7 +55564,7 @@ func (client *Client) CreateSecretWithOptions(tmpReq *CreateSecretRequest, heade
 
 // Summary:
 //
-// # Null
+// Creates a Secret in a namespace.
 //
 // @param request - CreateSecretRequest
 //
@@ -55833,6 +56766,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 		query["EnableNewArms"] = request.EnableNewArms
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnablePrometheus)) {
+		query["EnablePrometheus"] = request.EnablePrometheus
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Envs)) {
 		query["Envs"] = request.Envs
 	}
@@ -56262,6 +57199,10 @@ func (client *Client) DescribeApplicationConfig(request *DescribeApplicationConf
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the instance groups of an application.
+//
 // @param request - DescribeApplicationGroupsRequest
 //
 // @param headers - map
@@ -56311,6 +57252,10 @@ func (client *Client) DescribeApplicationGroupsWithOptions(request *DescribeAppl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the instance groups of an application.
+//
 // @param request - DescribeApplicationGroupsRequest
 //
 // @return DescribeApplicationGroupsResponse
@@ -56396,7 +57341,7 @@ func (client *Client) DescribeApplicationImage(request *DescribeApplicationImage
 
 // Summary:
 //
-// Queries application instances.
+// Queries a list of application instances.
 //
 // @param request - DescribeApplicationInstancesRequest
 //
@@ -56465,7 +57410,7 @@ func (client *Client) DescribeApplicationInstancesWithOptions(request *DescribeA
 
 // Summary:
 //
-// Queries application instances.
+// Queries a list of application instances.
 //
 // @param request - DescribeApplicationInstancesRequest
 //
@@ -57726,6 +58671,10 @@ func (client *Client) DescribeNamespaceList(request *DescribeNamespaceListReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the information about resources in a namespace.
+//
 // @param request - DescribeNamespaceResourcesRequest
 //
 // @param headers - map
@@ -57771,6 +58720,10 @@ func (client *Client) DescribeNamespaceResourcesWithOptions(request *DescribeNam
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the information about resources in a namespace.
+//
 // @param request - DescribeNamespaceResourcesRequest
 //
 // @return DescribeNamespaceResourcesResponse
@@ -59965,6 +60918,10 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 		query["FieldValue"] = request.FieldValue
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsStateful)) {
+		query["IsStateful"] = request.IsStateful
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
 		query["NamespaceId"] = request.NamespaceId
 	}
@@ -61424,7 +62381,7 @@ func (client *Client) ListWebCustomDomains(request *ListWebCustomDomainsRequest)
 
 // Summary:
 //
-// Activates the Serverless App Engine (SAE) service for free.
+// Activates Serverless App Engine (SAE) for free.
 //
 // Description:
 //
@@ -61461,7 +62418,7 @@ func (client *Client) OpenSaeServiceWithOptions(headers map[string]*string, runt
 
 // Summary:
 //
-// Activates the Serverless App Engine (SAE) service for free.
+// Activates Serverless App Engine (SAE) for free.
 //
 // Description:
 //
@@ -61619,7 +62576,7 @@ func (client *Client) QueryResourceStatics(request *QueryResourceStaticsRequest)
 
 // Summary:
 //
-// Reduces capacity by instance IDs.
+// Scales in an application based on instance IDs.
 //
 // @param request - ReduceApplicationCapacityByInstanceIdsRequest
 //
@@ -61668,7 +62625,7 @@ func (client *Client) ReduceApplicationCapacityByInstanceIdsWithOptions(request 
 
 // Summary:
 //
-// Reduces capacity by instance IDs.
+// Scales in an application based on instance IDs.
 //
 // @param request - ReduceApplicationCapacityByInstanceIdsRequest
 //
@@ -61687,7 +62644,7 @@ func (client *Client) ReduceApplicationCapacityByInstanceIds(request *ReduceAppl
 
 // Summary:
 //
-// Scales an application.
+// Rescale an application.
 //
 // @param request - RescaleApplicationRequest
 //
@@ -61748,7 +62705,7 @@ func (client *Client) RescaleApplicationWithOptions(request *RescaleApplicationR
 
 // Summary:
 //
-// Scales an application.
+// Rescale an application.
 //
 // @param request - RescaleApplicationRequest
 //
@@ -62223,7 +63180,7 @@ func (client *Client) StartWebApplication(ApplicationId *string, request *StartW
 
 // Summary:
 //
-// 0099b7be-5f5b-4512-a7fc-56049ef1\\*\\*\\*\\*
+// Stops an application.
 //
 // @param request - StopApplicationRequest
 //
@@ -62268,7 +63225,7 @@ func (client *Client) StopApplicationWithOptions(request *StopApplicationRequest
 
 // Summary:
 //
-// 0099b7be-5f5b-4512-a7fc-56049ef1\\*\\*\\*\\*
+// Stops an application.
 //
 // @param request - StopApplicationRequest
 //
@@ -62359,7 +63316,7 @@ func (client *Client) StopWebApplication(ApplicationId *string, request *StopWeb
 
 // Summary:
 //
-// Suspends a job.
+// Suspends one or more jobs.
 //
 // @param request - SuspendJobRequest
 //
@@ -62408,7 +63365,7 @@ func (client *Client) SuspendJobWithOptions(request *SuspendJobRequest, headers 
 
 // Summary:
 //
-// Suspends a job.
+// Suspends one or more jobs.
 //
 // @param request - SuspendJobRequest
 //
@@ -62427,7 +63384,7 @@ func (client *Client) SuspendJob(request *SuspendJobRequest) (_result *SuspendJo
 
 // Summary:
 //
-// cn-beijing
+// Adds tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -62484,7 +63441,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 
 // Summary:
 //
-// cn-beijing
+// Adds tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -62649,6 +63606,10 @@ func (client *Client) UnbindSlb(request *UnbindSlbRequest) (_result *UnbindSlbRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources.
+//
 // @param request - UntagResourcesRequest
 //
 // @param headers - map
@@ -62706,6 +63667,10 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources.
+//
 // @param request - UntagResourcesRequest
 //
 // @return UntagResourcesResponse
