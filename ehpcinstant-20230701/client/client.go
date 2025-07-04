@@ -1181,8 +1181,9 @@ func (s *CreatePoolResponse) SetBody(v *CreatePoolResponseBody) *CreatePoolRespo
 }
 
 type DeleteJobsRequest struct {
-	ExecutorIds []*string                   `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
-	JobSpec     []*DeleteJobsRequestJobSpec `json:"JobSpec,omitempty" xml:"JobSpec,omitempty" type:"Repeated"`
+	ExecutorIds  []*string                   `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
+	JobScheduler *string                     `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
+	JobSpec      []*DeleteJobsRequestJobSpec `json:"JobSpec,omitempty" xml:"JobSpec,omitempty" type:"Repeated"`
 }
 
 func (s DeleteJobsRequest) String() string {
@@ -1195,6 +1196,11 @@ func (s DeleteJobsRequest) GoString() string {
 
 func (s *DeleteJobsRequest) SetExecutorIds(v []*string) *DeleteJobsRequest {
 	s.ExecutorIds = v
+	return s
+}
+
+func (s *DeleteJobsRequest) SetJobScheduler(v string) *DeleteJobsRequest {
+	s.JobScheduler = &v
 	return s
 }
 
@@ -1257,6 +1263,7 @@ func (s *DeleteJobsRequestJobSpecTaskSpec) SetTaskName(v string) *DeleteJobsRequ
 
 type DeleteJobsShrinkRequest struct {
 	ExecutorIdsShrink *string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty"`
+	JobScheduler      *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
 	JobSpecShrink     *string `json:"JobSpec,omitempty" xml:"JobSpec,omitempty"`
 }
 
@@ -1270,6 +1277,11 @@ func (s DeleteJobsShrinkRequest) GoString() string {
 
 func (s *DeleteJobsShrinkRequest) SetExecutorIdsShrink(v string) *DeleteJobsShrinkRequest {
 	s.ExecutorIdsShrink = &v
+	return s
+}
+
+func (s *DeleteJobsShrinkRequest) SetJobScheduler(v string) *DeleteJobsShrinkRequest {
+	s.JobScheduler = &v
 	return s
 }
 
@@ -5837,6 +5849,10 @@ func (client *Client) DeleteJobsWithOptions(tmpReq *DeleteJobsRequest, runtime *
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ExecutorIdsShrink)) {
 		query["ExecutorIds"] = request.ExecutorIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobScheduler)) {
+		query["JobScheduler"] = request.JobScheduler
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JobSpecShrink)) {
