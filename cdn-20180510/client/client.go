@@ -30676,7 +30676,8 @@ type PushObjectCacheRequest struct {
 	// example:
 	//
 	// domestic
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	Area            *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	ConsistencyHash *bool   `json:"ConsistencyHash,omitempty" xml:"ConsistencyHash,omitempty"`
 	// Specifies whether to prefetch content to L2 points of presence (POPs). Valid values:
 	//
 	// 	- **true**: prefetches content to L2 POPs.
@@ -30735,6 +30736,11 @@ func (s PushObjectCacheRequest) GoString() string {
 
 func (s *PushObjectCacheRequest) SetArea(v string) *PushObjectCacheRequest {
 	s.Area = &v
+	return s
+}
+
+func (s *PushObjectCacheRequest) SetConsistencyHash(v bool) *PushObjectCacheRequest {
+	s.ConsistencyHash = &v
 	return s
 }
 
@@ -31379,13 +31385,7 @@ type SetCdnDomainSSLCertificateRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Specifies whether the certificate is issued in canary releases. If you set this parameter to **staging**, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
-	//
-	// example:
-	//
-	// staging
-	Env     *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The private key. Specify the private key only if you want to enable the SSL certificate.
 	//
 	// example:
@@ -31443,11 +31443,6 @@ func (s *SetCdnDomainSSLCertificateRequest) SetCertType(v string) *SetCdnDomainS
 
 func (s *SetCdnDomainSSLCertificateRequest) SetDomainName(v string) *SetCdnDomainSSLCertificateRequest {
 	s.DomainName = &v
-	return s
-}
-
-func (s *SetCdnDomainSSLCertificateRequest) SetEnv(v string) *SetCdnDomainSSLCertificateRequest {
-	s.Env = &v
 	return s
 }
 
@@ -46153,6 +46148,10 @@ func (client *Client) PushObjectCacheWithOptions(request *PushObjectCacheRequest
 		query["Area"] = request.Area
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ConsistencyHash)) {
+		query["ConsistencyHash"] = request.ConsistencyHash
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.L2Preload)) {
 		query["L2Preload"] = request.L2Preload
 	}
@@ -46707,10 +46706,6 @@ func (client *Client) SetCdnDomainSSLCertificateWithOptions(request *SetCdnDomai
 
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Env)) {
-		query["Env"] = request.Env
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
