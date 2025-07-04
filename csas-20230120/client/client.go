@@ -2555,53 +2555,113 @@ func (s *CreatePrivateAccessApplicationResponse) SetBody(v *CreatePrivateAccessA
 }
 
 type CreatePrivateAccessPolicyRequest struct {
+	// Set of application IDs for the private access policy. Up to 100 application IDs can be entered. Required when **ApplicationType*	- is **Application**. Mutually exclusive with **TagIds**.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
+	// Application type of the private access policy. Values:
+	//
+	// - **Application**: Application.
+	//
+	// - **Tag**: Tag.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Application
-	ApplicationType       *string                                                 `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	CustomUserAttributes  []*CreatePrivateAccessPolicyRequestCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
-	Description           *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	DeviceAttributeAction *string                                                 `json:"DeviceAttributeAction,omitempty" xml:"DeviceAttributeAction,omitempty"`
-	DeviceAttributeId     *string                                                 `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// Set of custom user groups for the private access policy. Required when the user group type is **Custom**. Mutually exclusive with the user group ID set. Up to 10 custom user groups can be entered.
+	CustomUserAttributes []*CreatePrivateAccessPolicyRequestCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
+	// Description of the private access policy. The length is 1 to 128 characters, supporting Chinese and uppercase and lowercase English letters, and can include numbers, periods (.), underscores (_), hyphens (-), and spaces.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The execution policy for not meeting the security baseline. Values:
+	//
+	// - **Block**: Block.
+	//
+	// - **Observe**: Observe.
+	//
+	// example:
+	//
+	// Block
+	DeviceAttributeAction *string `json:"DeviceAttributeAction,omitempty" xml:"DeviceAttributeAction,omitempty"`
+	// The ID of the security baseline policy.
+	//
+	// example:
+	//
+	// dag-d3f64e8bdd4a****
+	DeviceAttributeId *string `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
+	// Name of the private access policy. The length is 1 to 128 characters, supporting Chinese and uppercase and lowercase English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// private_access_policy_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Action of the private access policy. Values:
+	//
+	// - **Block**: Block.
+	//
+	// - **Allow**: Allow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Allow
 	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// The priority of the private access policy. The number 1 indicates the highest priority. Range: 1~1000, with the maximum value being the total number of private access policies.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The status of the private access policy. Values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 内网访问标签ID集合。最多可输入100个内网访问标签ID。当**ApplicationType**为**Tag时**，必填。和**ApplicationIds**互斥。
-	TagIds                 []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	TriggerTemplateId      *string   `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
+	// Set of tag IDs for the private access policy. Up to 100 tag IDs can be entered. Required when **ApplicationType*	- is **Tag**. Mutually exclusive with **ApplicationIds**.
+	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	// The trigger template ID.
+	//
+	// example:
+	//
+	// dag-d3f64e8bdd4a****
+	TriggerTemplateId *string `json:"TriggerTemplateId,omitempty" xml:"TriggerTemplateId,omitempty"`
+	// The ID of the trusted process group.
 	TrustedProcessGroupIds []*string `json:"TrustedProcessGroupIds,omitempty" xml:"TrustedProcessGroupIds,omitempty" type:"Repeated"`
-	TrustedProcessStatus   *string   `json:"TrustedProcessStatus,omitempty" xml:"TrustedProcessStatus,omitempty"`
-	TrustedSoftwareIds     []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
-	UserGroupIds           []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// 内网访问策略的用户组类型。取值：
+	// The switch status of the trusted process. Values:
 	//
-	// - **Normal**：普通用户组。
+	// - **Enabled**: Enabled.
 	//
-	// - **Custom**：自定义用户组。
+	// - **Disabled**: Disabled.
+	//
+	// example:
+	//
+	// Enabled
+	TrustedProcessStatus *string `json:"TrustedProcessStatus,omitempty" xml:"TrustedProcessStatus,omitempty"`
+	// The ID of the trusted software.
+	TrustedSoftwareIds []*string `json:"TrustedSoftwareIds,omitempty" xml:"TrustedSoftwareIds,omitempty" type:"Repeated"`
+	// Set of user group IDs for the private access policy. Required when the user group type is **Normal**. Mutually exclusive with the custom user group set. Up to 2000 user group IDs can be entered.
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	// User group type of the private access policy. Values:
+	//
+	// - **Normal**: Normal user group.
+	//
+	// - **Custom**: Custom user group.
 	//
 	// This parameter is required.
 	//
@@ -2705,19 +2765,50 @@ func (s *CreatePrivateAccessPolicyRequest) SetUserGroupMode(v string) *CreatePri
 }
 
 type CreatePrivateAccessPolicyRequestCustomUserAttributes struct {
+	// The ID of the identity source for the custom user group. Required when the custom user group type is **department**.
+	//
 	// example:
 	//
 	// 12
 	IdpId *int32 `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// Relation of the custom user group. Values:
+	//
+	// - **Equal**: Equal.
+	//
+	// - **Unequal**: Not equal.
+	//
 	// example:
 	//
 	// Equal
 	Relation *string `json:"Relation,omitempty" xml:"Relation,omitempty"`
+	// Type of the custom user group. Values:
+	//
+	// - **username**: Username.
+	//
+	// - **department**: Department.
+	//
+	// - **email**: Email.
+	//
+	// - **telephone**: Telephone.
+	//
 	// example:
 	//
 	// department
 	UserGroupType *string `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Value of the custom user group attribute.
+	//
+	// - When the user group type is **username**, it represents the value of the username. The length is 1 to 128 characters, supporting Chinese and uppercase and lowercase English letters, and can include numbers, periods (.), underscores (_), hyphens (-), asterisks (*), at (@) symbols, and spaces.
+	//
+	// - When the user group type is **department**, it represents the value of the department. For example: OU=Department1,OU=SASE DingTalk.
+	//
+	// - When the user group type is **email**, it represents the value of the email. For example: username@example.com.
+	//
+	// - When the user group type is **telephone**, it represents the value of the telephone. For example: 13900001234.
+	//
+	// example:
+	//
+	// OU=部门1,OU=SASE钉钉
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreatePrivateAccessPolicyRequestCustomUserAttributes) String() string {
@@ -2749,10 +2840,14 @@ func (s *CreatePrivateAccessPolicyRequestCustomUserAttributes) SetValue(v string
 }
 
 type CreatePrivateAccessPolicyResponseBody struct {
+	// The ID of the private access policy.
+	//
 	// example:
 	//
 	// pa-policy-867ef4007c8a****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The ID of the current request.
+	//
 	// example:
 	//
 	// EFE7EBB2-449D-5BBB-B381-CA7839BC1649
@@ -8522,6 +8617,7 @@ type GetPrivateAccessApplicationResponseBodyApplication struct {
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	AutoGenerated *int32  `json:"AutoGenerated,omitempty" xml:"AutoGenerated,omitempty"`
 	// The browser access mode. Valid values:
 	//
 	// 	- **Enabled**
@@ -8607,6 +8703,11 @@ func (s *GetPrivateAccessApplicationResponseBodyApplication) SetAddresses(v []*s
 
 func (s *GetPrivateAccessApplicationResponseBodyApplication) SetApplicationId(v string) *GetPrivateAccessApplicationResponseBodyApplication {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *GetPrivateAccessApplicationResponseBodyApplication) SetAutoGenerated(v int32) *GetPrivateAccessApplicationResponseBodyApplication {
+	s.AutoGenerated = &v
 	return s
 }
 
@@ -16146,6 +16247,7 @@ type ListPrivateAccessApplicationsResponseBodyApplications struct {
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId       *string   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	AutoGenerated       *int32    `json:"AutoGenerated,omitempty" xml:"AutoGenerated,omitempty"`
 	BrowserAccessStatus *string   `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
 	ConnectorIds        []*string `json:"ConnectorIds,omitempty" xml:"ConnectorIds,omitempty" type:"Repeated"`
 	// example:
@@ -16187,6 +16289,11 @@ func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetAddresses(v [
 
 func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetApplicationId(v string) *ListPrivateAccessApplicationsResponseBodyApplications {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationsResponseBodyApplications) SetAutoGenerated(v int32) *ListPrivateAccessApplicationsResponseBodyApplications {
+	s.AutoGenerated = &v
 	return s
 }
 
@@ -26272,7 +26379,11 @@ func (client *Client) CreatePrivateAccessApplication(request *CreatePrivateAcces
 
 // Summary:
 //
-// 创建内网访问策略
+// # Create Private Access Policy
+//
+// Description:
+//
+// By default, up to 500 private access policies can be created.
 //
 // @param request - CreatePrivateAccessPolicyRequest
 //
@@ -26381,7 +26492,11 @@ func (client *Client) CreatePrivateAccessPolicyWithOptions(request *CreatePrivat
 
 // Summary:
 //
-// 创建内网访问策略
+// # Create Private Access Policy
+//
+// Description:
+//
+// By default, up to 500 private access policies can be created.
 //
 // @param request - CreatePrivateAccessPolicyRequest
 //
@@ -30415,7 +30530,47 @@ func (client *Client) ListPrivateAccessApplicationsWithOptions(request *ListPriv
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessModes)) {
+		query["AccessModes"] = request.AccessModes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplicationIds)) {
+		query["ApplicationIds"] = request.ApplicationIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectorId)) {
+		query["ConnectorId"] = request.ConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagId)) {
+		query["TagId"] = request.TagId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30424,7 +30579,7 @@ func (client *Client) ListPrivateAccessApplicationsWithOptions(request *ListPriv
 		Version:     tea.String("2023-01-20"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
