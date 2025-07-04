@@ -3464,6 +3464,8 @@ type CreateClusterRequest struct {
 	//
 	// none
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
+	// Deprecated
+	//
 	// The custom subject alternative names (SANs) for the API server certificate to accept requests from specified IP addresses or domain names. Separate multiple IP addresses and domain names with commas (,).
 	//
 	// example:
@@ -3498,6 +3500,8 @@ type CreateClusterRequest struct {
 	//
 	// true
 	DisableRollback *bool `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
+	// Deprecated
+	//
 	// Specifies whether to enable the RAM Roles for Service Accounts (RRSA) feature.
 	//
 	// example:
@@ -3523,7 +3527,8 @@ type CreateClusterRequest struct {
 	// example:
 	//
 	// true
-	EndpointPublicAccess *bool `json:"endpoint_public_access,omitempty" xml:"endpoint_public_access,omitempty"`
+	EndpointPublicAccess *bool     `json:"endpoint_public_access,omitempty" xml:"endpoint_public_access,omitempty"`
+	ExtraSans            []*string `json:"extra_sans,omitempty" xml:"extra_sans,omitempty" type:"Repeated"`
 	// Deprecated
 	//
 	// [**Deprecated**] When you configure a node pool, you cannot add existing nodes to the cluster. If you want to add existing nodes, you must first create a node pool and then call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
@@ -4031,7 +4036,8 @@ type CreateClusterRequest struct {
 	// example:
 	//
 	// rg-acfm3mkrure****
-	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	ResourceGroupId *string                         `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	RrsaConfig      *CreateClusterRequestRrsaConfig `json:"rrsa_config,omitempty" xml:"rrsa_config,omitempty" type:"Struct"`
 	// The container runtime. The default container runtime is Docker. containerd and Sandboxed-Container are also supported.
 	//
 	// For more information about how to select a proper container runtime, see [Comparison among Docker, containerd, and Sandboxed-Container](https://help.aliyun.com/document_detail/160313.html).
@@ -4483,6 +4489,11 @@ func (s *CreateClusterRequest) SetEndpointPublicAccess(v bool) *CreateClusterReq
 	return s
 }
 
+func (s *CreateClusterRequest) SetExtraSans(v []*string) *CreateClusterRequest {
+	s.ExtraSans = v
+	return s
+}
+
 func (s *CreateClusterRequest) SetFormatDisk(v bool) *CreateClusterRequest {
 	s.FormatDisk = &v
 	return s
@@ -4700,6 +4711,11 @@ func (s *CreateClusterRequest) SetRegionId(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetResourceGroupId(v string) *CreateClusterRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetRrsaConfig(v *CreateClusterRequestRrsaConfig) *CreateClusterRequest {
+	s.RrsaConfig = v
 	return s
 }
 
@@ -5222,6 +5238,23 @@ func (s *CreateClusterRequestOperationPolicyClusterAutoUpgrade) SetChannel(v str
 }
 
 func (s *CreateClusterRequestOperationPolicyClusterAutoUpgrade) SetEnabled(v bool) *CreateClusterRequestOperationPolicyClusterAutoUpgrade {
+	s.Enabled = &v
+	return s
+}
+
+type CreateClusterRequestRrsaConfig struct {
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s CreateClusterRequestRrsaConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestRrsaConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestRrsaConfig) SetEnabled(v bool) *CreateClusterRequestRrsaConfig {
 	s.Enabled = &v
 	return s
 }
@@ -33532,6 +33565,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 		body["endpoint_public_access"] = request.EndpointPublicAccess
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExtraSans)) {
+		body["extra_sans"] = request.ExtraSans
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FormatDisk)) {
 		body["format_disk"] = request.FormatDisk
 	}
@@ -33706,6 +33743,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		body["resource_group_id"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RrsaConfig)) {
+		body["rrsa_config"] = request.RrsaConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Runtime)) {
