@@ -14,6 +14,239 @@ import (
 	"io"
 )
 
+type AddressVerifyIntlRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// “0”
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	DefaultCity *string `json:"DefaultCity,omitempty" xml:"DefaultCity,omitempty"`
+	// This parameter is required.
+	DefaultCountry  *string `json:"DefaultCountry,omitempty" xml:"DefaultCountry,omitempty"`
+	DefaultDistrict *string `json:"DefaultDistrict,omitempty" xml:"DefaultDistrict,omitempty"`
+	DefaultProvince *string `json:"DefaultProvince,omitempty" xml:"DefaultProvince,omitempty"`
+	// example:
+	//
+	// “31.2304”
+	Latitude *string `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	// example:
+	//
+	// “121.4737”
+	Longitude *string `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1872334****
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ADD_VERIFY_PRO
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOME
+	VerifyType *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
+}
+
+func (s AddressVerifyIntlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddressVerifyIntlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddressVerifyIntlRequest) SetAddressType(v string) *AddressVerifyIntlRequest {
+	s.AddressType = &v
+	return s
+}
+
+func (s *AddressVerifyIntlRequest) SetDefaultCity(v string) *AddressVerifyIntlRequest {
+	s.DefaultCity = &v
+	return s
+}
+
+func (s *AddressVerifyIntlRequest) SetDefaultCountry(v string) *AddressVerifyIntlRequest {
+	s.DefaultCountry = &v
+	return s
+}
+
+func (s *AddressVerifyIntlRequest) SetDefaultDistrict(v string) *AddressVerifyIntlRequest {
+	s.DefaultDistrict = &v
+	return s
+}
+
+func (s *AddressVerifyIntlRequest) SetDefaultProvince(v string) *AddressVerifyIntlRequest {
+	s.DefaultProvince = &v
+	return s
+}
+
+func (s *AddressVerifyIntlRequest) SetLatitude(v string) *AddressVerifyIntlRequest {
+	s.Latitude = &v
+	return s
+}
+
+func (s *AddressVerifyIntlRequest) SetLongitude(v string) *AddressVerifyIntlRequest {
+	s.Longitude = &v
+	return s
+}
+
+func (s *AddressVerifyIntlRequest) SetMobile(v string) *AddressVerifyIntlRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *AddressVerifyIntlRequest) SetProductCode(v string) *AddressVerifyIntlRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *AddressVerifyIntlRequest) SetText(v string) *AddressVerifyIntlRequest {
+	s.Text = &v
+	return s
+}
+
+func (s *AddressVerifyIntlRequest) SetVerifyType(v string) *AddressVerifyIntlRequest {
+	s.VerifyType = &v
+	return s
+}
+
+type AddressVerifyIntlResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 86C40EC3-5940-5F47-995C-BFE90B70E540
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *AddressVerifyIntlResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s AddressVerifyIntlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddressVerifyIntlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddressVerifyIntlResponseBody) SetCode(v string) *AddressVerifyIntlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddressVerifyIntlResponseBody) SetMessage(v string) *AddressVerifyIntlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddressVerifyIntlResponseBody) SetRequestId(v string) *AddressVerifyIntlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddressVerifyIntlResponseBody) SetResultObject(v *AddressVerifyIntlResponseBodyResultObject) *AddressVerifyIntlResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type AddressVerifyIntlResponseBodyResultObject struct {
+	// example:
+	//
+	// 0-3000
+	AddressInfo *string `json:"AddressInfo,omitempty" xml:"AddressInfo,omitempty"`
+	// example:
+	//
+	// CMCC
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// example:
+	//
+	// Y
+	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// example:
+	//
+	// 200
+	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	// example:
+	//
+	// hksb7ba1b28130d24e015d69********
+	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s AddressVerifyIntlResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddressVerifyIntlResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *AddressVerifyIntlResponseBodyResultObject) SetAddressInfo(v string) *AddressVerifyIntlResponseBodyResultObject {
+	s.AddressInfo = &v
+	return s
+}
+
+func (s *AddressVerifyIntlResponseBodyResultObject) SetIspName(v string) *AddressVerifyIntlResponseBodyResultObject {
+	s.IspName = &v
+	return s
+}
+
+func (s *AddressVerifyIntlResponseBodyResultObject) SetPassed(v string) *AddressVerifyIntlResponseBodyResultObject {
+	s.Passed = &v
+	return s
+}
+
+func (s *AddressVerifyIntlResponseBodyResultObject) SetSubCode(v string) *AddressVerifyIntlResponseBodyResultObject {
+	s.SubCode = &v
+	return s
+}
+
+func (s *AddressVerifyIntlResponseBodyResultObject) SetTransactionId(v string) *AddressVerifyIntlResponseBodyResultObject {
+	s.TransactionId = &v
+	return s
+}
+
+type AddressVerifyIntlResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddressVerifyIntlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddressVerifyIntlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddressVerifyIntlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddressVerifyIntlResponse) SetHeaders(v map[string]*string) *AddressVerifyIntlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddressVerifyIntlResponse) SetStatusCode(v int32) *AddressVerifyIntlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddressVerifyIntlResponse) SetBody(v *AddressVerifyIntlResponseBody) *AddressVerifyIntlResponse {
+	s.Body = v
+	return s
+}
+
 type BankMetaVerifyIntlRequest struct {
 	// This parameter is required.
 	BankCard    *string `json:"BankCard,omitempty" xml:"BankCard,omitempty"`
@@ -4038,6 +4271,106 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 地址核验
+//
+// @param request - AddressVerifyIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddressVerifyIntlResponse
+func (client *Client) AddressVerifyIntlWithOptions(request *AddressVerifyIntlRequest, runtime *util.RuntimeOptions) (_result *AddressVerifyIntlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
+		query["AddressType"] = request.AddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultCity)) {
+		query["DefaultCity"] = request.DefaultCity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultCountry)) {
+		query["DefaultCountry"] = request.DefaultCountry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultDistrict)) {
+		query["DefaultDistrict"] = request.DefaultDistrict
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultProvince)) {
+		query["DefaultProvince"] = request.DefaultProvince
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Latitude)) {
+		query["Latitude"] = request.Latitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Longitude)) {
+		query["Longitude"] = request.Longitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		query["Text"] = request.Text
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyType)) {
+		query["VerifyType"] = request.VerifyType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddressVerifyIntl"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddressVerifyIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 地址核验
+//
+// @param request - AddressVerifyIntlRequest
+//
+// @return AddressVerifyIntlResponse
+func (client *Client) AddressVerifyIntl(request *AddressVerifyIntlRequest) (_result *AddressVerifyIntlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddressVerifyIntlResponse{}
+	_body, _err := client.AddressVerifyIntlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
