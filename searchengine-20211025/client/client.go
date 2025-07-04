@@ -2217,6 +2217,7 @@ type CreateIndexRequestDataSourceInfo struct {
 	ProcessPartitionCount *int32 `json:"processPartitionCount,omitempty" xml:"processPartitionCount,omitempty"`
 	// The configurations of the SARO data source.
 	SaroConfig *CreateIndexRequestDataSourceInfoSaroConfig `json:"saroConfig,omitempty" xml:"saroConfig,omitempty" type:"Struct"`
+	Scene      *string                                     `json:"scene,omitempty" xml:"scene,omitempty"`
 	// The type of the data source. Valid values:
 	//
 	// 	- odps
@@ -2278,6 +2279,11 @@ func (s *CreateIndexRequestDataSourceInfo) SetProcessPartitionCount(v int32) *Cr
 
 func (s *CreateIndexRequestDataSourceInfo) SetSaroConfig(v *CreateIndexRequestDataSourceInfoSaroConfig) *CreateIndexRequestDataSourceInfo {
 	s.SaroConfig = v
+	return s
+}
+
+func (s *CreateIndexRequestDataSourceInfo) SetScene(v string) *CreateIndexRequestDataSourceInfo {
+	s.Scene = &v
 	return s
 }
 
@@ -3364,6 +3370,7 @@ type CreateTableRequest struct {
 	//
 	// {}
 	RawSchema *string `json:"rawSchema,omitempty" xml:"rawSchema,omitempty"`
+	Scene     *string `json:"scene,omitempty" xml:"scene,omitempty"`
 	// The index schema.
 	VectorIndex []*CreateTableRequestVectorIndex `json:"vectorIndex,omitempty" xml:"vectorIndex,omitempty" type:"Repeated"`
 	// Specifies whether to perform only a dry run, without performing the actual request. The system only checks the validity of the data source. Valid values:
@@ -3423,6 +3430,11 @@ func (s *CreateTableRequest) SetPrimaryKey(v string) *CreateTableRequest {
 
 func (s *CreateTableRequest) SetRawSchema(v string) *CreateTableRequest {
 	s.RawSchema = &v
+	return s
+}
+
+func (s *CreateTableRequest) SetScene(v string) *CreateTableRequest {
+	s.Scene = &v
 	return s
 }
 
@@ -23732,6 +23744,10 @@ func (client *Client) CreateTableWithOptions(instanceId *string, request *Create
 
 	if !tea.BoolValue(util.IsUnset(request.RawSchema)) {
 		body["rawSchema"] = request.RawSchema
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		body["scene"] = request.Scene
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VectorIndex)) {
