@@ -15299,10 +15299,13 @@ func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateS
 }
 
 type CreateTemplateRequest struct {
+	AutoPay   *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// example:
 	//
 	// 1
 	BizType      *string                              `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	ChargeType   *string                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	DataDiskList []*CreateTemplateRequestDataDiskList `json:"DataDiskList,omitempty" xml:"DataDiskList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -15312,11 +15315,14 @@ type CreateTemplateRequest struct {
 	// example:
 	//
 	// desktopimage-windows-server-2022-64-asp
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// example:
 	//
 	// pg-8hlryfn331******
-	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PolicyGroupId       *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PostPaidAfterUsedUp *bool   `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
 	// example:
 	//
 	// CloudDesktop
@@ -15342,6 +15348,7 @@ type CreateTemplateRequest struct {
 	//
 	// ccg-0caoeogrk9m5****
 	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+	UserDuration *int32  `json:"UserDuration,omitempty" xml:"UserDuration,omitempty"`
 }
 
 func (s CreateTemplateRequest) String() string {
@@ -15352,8 +15359,23 @@ func (s CreateTemplateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateTemplateRequest) SetAutoPay(v bool) *CreateTemplateRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetAutoRenew(v bool) *CreateTemplateRequest {
+	s.AutoRenew = &v
+	return s
+}
+
 func (s *CreateTemplateRequest) SetBizType(v string) *CreateTemplateRequest {
 	s.BizType = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetChargeType(v string) *CreateTemplateRequest {
+	s.ChargeType = &v
 	return s
 }
 
@@ -15377,8 +15399,23 @@ func (s *CreateTemplateRequest) SetImageId(v string) *CreateTemplateRequest {
 	return s
 }
 
+func (s *CreateTemplateRequest) SetPeriod(v int32) *CreateTemplateRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetPeriodUnit(v string) *CreateTemplateRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
 func (s *CreateTemplateRequest) SetPolicyGroupId(v string) *CreateTemplateRequest {
 	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetPostPaidAfterUsedUp(v bool) *CreateTemplateRequest {
+	s.PostPaidAfterUsedUp = &v
 	return s
 }
 
@@ -15424,6 +15461,11 @@ func (s *CreateTemplateRequest) SetTemplateName(v string) *CreateTemplateRequest
 
 func (s *CreateTemplateRequest) SetTimerGroupId(v string) *CreateTemplateRequest {
 	s.TimerGroupId = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetUserDuration(v int32) *CreateTemplateRequest {
+	s.UserDuration = &v
 	return s
 }
 
@@ -41508,6 +41550,9 @@ func (s *DescribeTemplatesResponseBody) SetTotalCount(v int32) *DescribeTemplate
 }
 
 type DescribeTemplatesResponseBodyData struct {
+	AutoPay      *bool                                            `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew    *bool                                            `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ChargeType   *string                                          `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	DataDiskList []*DescribeTemplatesResponseBodyDataDataDiskList `json:"DataDiskList,omitempty" xml:"DataDiskList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -41529,11 +41574,14 @@ type DescribeTemplatesResponseBodyData struct {
 	// example:
 	//
 	// User
-	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	ImageType  *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// example:
 	//
 	// pg-0caoeogkhz*****
-	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PolicyGroupId       *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PostPaidAfterUsedUp *bool   `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
 	// example:
 	//
 	// CLOUD_DESKTOP
@@ -41570,6 +41618,7 @@ type DescribeTemplatesResponseBodyData struct {
 	//
 	// bcc-dweha*****
 	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+	UserDuration *string `json:"UserDuration,omitempty" xml:"UserDuration,omitempty"`
 }
 
 func (s DescribeTemplatesResponseBodyData) String() string {
@@ -41578,6 +41627,21 @@ func (s DescribeTemplatesResponseBodyData) String() string {
 
 func (s DescribeTemplatesResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetAutoPay(v bool) *DescribeTemplatesResponseBodyData {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetAutoRenew(v bool) *DescribeTemplatesResponseBodyData {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetChargeType(v string) *DescribeTemplatesResponseBodyData {
+	s.ChargeType = &v
+	return s
 }
 
 func (s *DescribeTemplatesResponseBodyData) SetDataDiskList(v []*DescribeTemplatesResponseBodyDataDataDiskList) *DescribeTemplatesResponseBodyData {
@@ -41615,8 +41679,23 @@ func (s *DescribeTemplatesResponseBodyData) SetImageType(v string) *DescribeTemp
 	return s
 }
 
+func (s *DescribeTemplatesResponseBodyData) SetPeriod(v int32) *DescribeTemplatesResponseBodyData {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetPeriodUnit(v string) *DescribeTemplatesResponseBodyData {
+	s.PeriodUnit = &v
+	return s
+}
+
 func (s *DescribeTemplatesResponseBodyData) SetPolicyGroupId(v string) *DescribeTemplatesResponseBodyData {
 	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetPostPaidAfterUsedUp(v bool) *DescribeTemplatesResponseBodyData {
+	s.PostPaidAfterUsedUp = &v
 	return s
 }
 
@@ -41677,6 +41756,11 @@ func (s *DescribeTemplatesResponseBodyData) SetTemplateType(v string) *DescribeT
 
 func (s *DescribeTemplatesResponseBodyData) SetTimerGroupId(v string) *DescribeTemplatesResponseBodyData {
 	s.TimerGroupId = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetUserDuration(v string) *DescribeTemplatesResponseBodyData {
+	s.UserDuration = &v
 	return s
 }
 
@@ -60089,6 +60173,9 @@ func (s *ModifyResourceCenterPolicyResponse) SetBody(v *ModifyResourceCenterPoli
 }
 
 type ModifyTemplateRequest struct {
+	AutoPay    *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew  *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// example:
 	//
 	// zh-CN
@@ -60100,12 +60187,15 @@ type ModifyTemplateRequest struct {
 	// example:
 	//
 	// m-gx2x1dhsmusr2****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// example:
 	//
 	// pg-gx2x1dhsmthe9****
-	PolicyGroupId    *string                                  `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	RegionConfigList []*ModifyTemplateRequestRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
+	PolicyGroupId       *string                                  `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PostPaidAfterUsedUp *bool                                    `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
+	RegionConfigList    []*ModifyTemplateRequestRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// rg-a5fqjjqaejt***
@@ -60131,6 +60221,7 @@ type ModifyTemplateRequest struct {
 	//
 	// bcc-dweha*****
 	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+	UserDuration *int32  `json:"UserDuration,omitempty" xml:"UserDuration,omitempty"`
 }
 
 func (s ModifyTemplateRequest) String() string {
@@ -60139,6 +60230,21 @@ func (s ModifyTemplateRequest) String() string {
 
 func (s ModifyTemplateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyTemplateRequest) SetAutoPay(v bool) *ModifyTemplateRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetAutoRenew(v bool) *ModifyTemplateRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetChargeType(v string) *ModifyTemplateRequest {
+	s.ChargeType = &v
+	return s
 }
 
 func (s *ModifyTemplateRequest) SetDefaultLanguage(v string) *ModifyTemplateRequest {
@@ -60156,8 +60262,23 @@ func (s *ModifyTemplateRequest) SetImageId(v string) *ModifyTemplateRequest {
 	return s
 }
 
+func (s *ModifyTemplateRequest) SetPeriod(v int32) *ModifyTemplateRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetPeriodUnit(v string) *ModifyTemplateRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
 func (s *ModifyTemplateRequest) SetPolicyGroupId(v string) *ModifyTemplateRequest {
 	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetPostPaidAfterUsedUp(v bool) *ModifyTemplateRequest {
+	s.PostPaidAfterUsedUp = &v
 	return s
 }
 
@@ -60203,6 +60324,11 @@ func (s *ModifyTemplateRequest) SetTemplateName(v string) *ModifyTemplateRequest
 
 func (s *ModifyTemplateRequest) SetTimerGroupId(v string) *ModifyTemplateRequest {
 	s.TimerGroupId = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetUserDuration(v int32) *ModifyTemplateRequest {
+	s.UserDuration = &v
 	return s
 }
 
@@ -63517,6 +63643,7 @@ type RunCommandRequest struct {
 	//
 	// ipconfig
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	CommandRole    *string `json:"CommandRole,omitempty" xml:"CommandRole,omitempty"`
 	// The encoding mode of the command content. Valid values:
 	//
 	// 	- PlainText: The command content is not encoded.
@@ -63581,6 +63708,11 @@ func (s RunCommandRequest) GoString() string {
 
 func (s *RunCommandRequest) SetCommandContent(v string) *RunCommandRequest {
 	s.CommandContent = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetCommandRole(v string) *RunCommandRequest {
+	s.CommandRole = &v
 	return s
 }
 
@@ -71931,8 +72063,20 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		body["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		body["AutoRenew"] = request.AutoRenew
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BizType)) {
 		body["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		body["ChargeType"] = request.ChargeType
 	}
 
 	bodyFlat := map[string]interface{}{}
@@ -71952,8 +72096,20 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 		body["ImageId"] = request.ImageId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		body["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		body["PeriodUnit"] = request.PeriodUnit
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PolicyGroupId)) {
 		body["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PostPaidAfterUsedUp)) {
+		body["PostPaidAfterUsedUp"] = request.PostPaidAfterUsedUp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
@@ -71990,6 +72146,10 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.TimerGroupId)) {
 		body["TimerGroupId"] = request.TimerGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDuration)) {
+		body["UserDuration"] = request.UserDuration
 	}
 
 	body = tea.ToMap(body,
@@ -84663,12 +84823,19 @@ func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SiteConfigList)) {
-		query["SiteConfigList"] = request.SiteConfigList
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		body["AutoPay"] = request.AutoPay
 	}
 
-	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		body["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		body["ChargeType"] = request.ChargeType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DefaultLanguage)) {
 		body["DefaultLanguage"] = request.DefaultLanguage
 	}
@@ -84681,8 +84848,20 @@ func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, 
 		body["ImageId"] = request.ImageId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		body["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		body["PeriodUnit"] = request.PeriodUnit
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PolicyGroupId)) {
 		body["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PostPaidAfterUsedUp)) {
+		body["PostPaidAfterUsedUp"] = request.PostPaidAfterUsedUp
 	}
 
 	bodyFlat := map[string]interface{}{}
@@ -84696,6 +84875,10 @@ func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceTagList)) {
 		bodyFlat["ResourceTagList"] = request.ResourceTagList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteConfigList)) {
+		bodyFlat["SiteConfigList"] = request.SiteConfigList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SystemDiskPerformanceLevel)) {
@@ -84718,11 +84901,14 @@ func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, 
 		body["TimerGroupId"] = request.TimerGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserDuration)) {
+		body["UserDuration"] = request.UserDuration
+	}
+
 	body = tea.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyTemplate"),
@@ -86257,6 +86443,10 @@ func (client *Client) RunCommandWithOptions(request *RunCommandRequest, runtime 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CommandContent)) {
 		query["CommandContent"] = request.CommandContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommandRole)) {
+		query["CommandRole"] = request.CommandRole
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ContentEncoding)) {
