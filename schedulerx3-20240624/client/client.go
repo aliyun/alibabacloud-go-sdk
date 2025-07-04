@@ -205,7 +205,8 @@ type CreateClusterRequest struct {
 	// example:
 	//
 	// xxljob
-	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	EngineType *string                    `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	Tag        []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter is required.
 	VSwitches []*CreateClusterRequestVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// VPC id
@@ -241,6 +242,11 @@ func (s *CreateClusterRequest) SetEngineType(v string) *CreateClusterRequest {
 	return s
 }
 
+func (s *CreateClusterRequest) SetTag(v []*CreateClusterRequestTag) *CreateClusterRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateClusterRequest) SetVSwitches(v []*CreateClusterRequestVSwitches) *CreateClusterRequest {
 	s.VSwitches = v
 	return s
@@ -248,6 +254,29 @@ func (s *CreateClusterRequest) SetVSwitches(v []*CreateClusterRequestVSwitches) 
 
 func (s *CreateClusterRequest) SetVpcId(v string) *CreateClusterRequest {
 	s.VpcId = &v
+	return s
+}
+
+type CreateClusterRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateClusterRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestTag) SetKey(v string) *CreateClusterRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateClusterRequestTag) SetValue(v string) *CreateClusterRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -302,7 +331,8 @@ type CreateClusterShrinkRequest struct {
 	// example:
 	//
 	// xxljob
-	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	EngineType *string                          `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	Tag        []*CreateClusterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter is required.
 	VSwitchesShrink *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
 	// VPC id
@@ -338,6 +368,11 @@ func (s *CreateClusterShrinkRequest) SetEngineType(v string) *CreateClusterShrin
 	return s
 }
 
+func (s *CreateClusterShrinkRequest) SetTag(v []*CreateClusterShrinkRequestTag) *CreateClusterShrinkRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateClusterShrinkRequest) SetVSwitchesShrink(v string) *CreateClusterShrinkRequest {
 	s.VSwitchesShrink = &v
 	return s
@@ -345,6 +380,29 @@ func (s *CreateClusterShrinkRequest) SetVSwitchesShrink(v string) *CreateCluster
 
 func (s *CreateClusterShrinkRequest) SetVpcId(v string) *CreateClusterShrinkRequest {
 	s.VpcId = &v
+	return s
+}
+
+type CreateClusterShrinkRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateClusterShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterShrinkRequestTag) SetKey(v string) *CreateClusterShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateClusterShrinkRequestTag) SetValue(v string) *CreateClusterShrinkRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -1790,6 +1848,7 @@ type GetClusterResponseBodyData struct {
 	//
 	// 2
 	Status           *int32                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags             map[string]interface{}                 `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	VSwitches        []*GetClusterResponseBodyDataVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	VersionLifecycle *string                                `json:"VersionLifecycle,omitempty" xml:"VersionLifecycle,omitempty"`
 	// VPC ID
@@ -1890,6 +1949,11 @@ func (s *GetClusterResponseBodyData) SetSpm(v int32) *GetClusterResponseBodyData
 
 func (s *GetClusterResponseBodyData) SetStatus(v int32) *GetClusterResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *GetClusterResponseBodyData) SetTags(v map[string]interface{}) *GetClusterResponseBodyData {
+	s.Tags = v
 	return s
 }
 
@@ -2929,6 +2993,156 @@ func (s *GetJobExecutionProgressResponse) SetBody(v *GetJobExecutionProgressResp
 	return s
 }
 
+type GetJobExecutionThreadDumpRequest struct {
+	// example:
+	//
+	// xxl-job-executor-sample
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// xxljob-b6ec1xxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// http://192.168.0.215:9966/
+	ExecutorAddr *string `json:"ExecutorAddr,omitempty" xml:"ExecutorAddr,omitempty"`
+	// example:
+	//
+	// 1310630367761285120
+	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+}
+
+func (s GetJobExecutionThreadDumpRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobExecutionThreadDumpRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobExecutionThreadDumpRequest) SetAppName(v string) *GetJobExecutionThreadDumpRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetJobExecutionThreadDumpRequest) SetClusterId(v string) *GetJobExecutionThreadDumpRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetJobExecutionThreadDumpRequest) SetExecutorAddr(v string) *GetJobExecutionThreadDumpRequest {
+	s.ExecutorAddr = &v
+	return s
+}
+
+func (s *GetJobExecutionThreadDumpRequest) SetJobExecutionId(v string) *GetJobExecutionThreadDumpRequest {
+	s.JobExecutionId = &v
+	return s
+}
+
+type GetJobExecutionThreadDumpResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// -
+	Data *GetJobExecutionThreadDumpResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Parameter error: appId is null.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 3835AA29-2298-5434-BC53-9CC377CDFD2C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetJobExecutionThreadDumpResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobExecutionThreadDumpResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobExecutionThreadDumpResponseBody) SetCode(v int32) *GetJobExecutionThreadDumpResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetJobExecutionThreadDumpResponseBody) SetData(v *GetJobExecutionThreadDumpResponseBodyData) *GetJobExecutionThreadDumpResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetJobExecutionThreadDumpResponseBody) SetMessage(v string) *GetJobExecutionThreadDumpResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetJobExecutionThreadDumpResponseBody) SetRequestId(v string) *GetJobExecutionThreadDumpResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetJobExecutionThreadDumpResponseBody) SetSuccess(v bool) *GetJobExecutionThreadDumpResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetJobExecutionThreadDumpResponseBodyData struct {
+	// example:
+	//
+	// \\"Thread-7\\" Id=67 TIMED_WAITING\\n\\tat java.base@17.0.5/java.lang.Thread.sleep(Native Method)\\n\\tat app//com.xxl.job.executor.service.jobhandler.SampleXxlJob.shardingJobHandler(SampleXxlJob.java:73)\\n\\tat java.base@17.0.5/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\\n\\tat java.base@17.0.5/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)\\n\\tat java.base@17.0.5/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\\n\\tat java.base@17.0.5/java.lang.reflect.Method.invoke(Method.java:568)\\n\\tat app//com.xxl.job.core.handler.impl.MethodJobHandler.execute(MethodJobHandler.java:29)\\n\\tat app//com.xxl.job.core.thread.JobThread.run(JobThread.java:152)\\n
+	Dump *string `json:"Dump,omitempty" xml:"Dump,omitempty"`
+}
+
+func (s GetJobExecutionThreadDumpResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobExecutionThreadDumpResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobExecutionThreadDumpResponseBodyData) SetDump(v string) *GetJobExecutionThreadDumpResponseBodyData {
+	s.Dump = &v
+	return s
+}
+
+type GetJobExecutionThreadDumpResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobExecutionThreadDumpResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetJobExecutionThreadDumpResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobExecutionThreadDumpResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobExecutionThreadDumpResponse) SetHeaders(v map[string]*string) *GetJobExecutionThreadDumpResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetJobExecutionThreadDumpResponse) SetStatusCode(v int32) *GetJobExecutionThreadDumpResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetJobExecutionThreadDumpResponse) SetBody(v *GetJobExecutionThreadDumpResponseBody) *GetJobExecutionThreadDumpResponse {
+	s.Body = v
+	return s
+}
+
 type GetLogRequest struct {
 	// example:
 	//
@@ -3122,6 +3336,320 @@ func (s *GetLogResponse) SetStatusCode(v int32) *GetLogResponse {
 }
 
 func (s *GetLogResponse) SetBody(v *GetLogResponseBody) *GetLogResponse {
+	s.Body = v
+	return s
+}
+
+type GetLogEventRequest struct {
+	// example:
+	//
+	// xxl-job-executor-perf-test-241
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxljob-684d02ee5a6
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 1721636220
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// INFO
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 101
+	JobExecutionId *int64 `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+	// example:
+	//
+	// test
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// test_partition_tbl
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// false
+	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	// example:
+	//
+	// 1721268302000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetLogEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogEventRequest) SetAppName(v string) *GetLogEventRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetLogEventRequest) SetClusterId(v string) *GetLogEventRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetLogEventRequest) SetEndTime(v int64) *GetLogEventRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetLogEventRequest) SetEvent(v string) *GetLogEventRequest {
+	s.Event = &v
+	return s
+}
+
+func (s *GetLogEventRequest) SetJobExecutionId(v int64) *GetLogEventRequest {
+	s.JobExecutionId = &v
+	return s
+}
+
+func (s *GetLogEventRequest) SetJobName(v string) *GetLogEventRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *GetLogEventRequest) SetKeyword(v string) *GetLogEventRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *GetLogEventRequest) SetPageNum(v int32) *GetLogEventRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *GetLogEventRequest) SetPageSize(v int32) *GetLogEventRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetLogEventRequest) SetReverse(v bool) *GetLogEventRequest {
+	s.Reverse = &v
+	return s
+}
+
+func (s *GetLogEventRequest) SetStartTime(v int64) *GetLogEventRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetLogEventResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// -
+	Data *GetLogEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Parameter check error
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// BAC1ADB5-EEB5-5834-93D8-522E067AF8D9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetLogEventResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogEventResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogEventResponseBody) SetCode(v int32) *GetLogEventResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetLogEventResponseBody) SetData(v *GetLogEventResponseBodyData) *GetLogEventResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetLogEventResponseBody) SetMessage(v string) *GetLogEventResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetLogEventResponseBody) SetRequestId(v string) *GetLogEventResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLogEventResponseBody) SetSuccess(v bool) *GetLogEventResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetLogEventResponseBodyData struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// -
+	Records []*GetLogEventResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 33
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetLogEventResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogEventResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogEventResponseBodyData) SetPageNumber(v int32) *GetLogEventResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetLogEventResponseBodyData) SetPageSize(v int32) *GetLogEventResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetLogEventResponseBodyData) SetRecords(v []*GetLogEventResponseBodyDataRecords) *GetLogEventResponseBodyData {
+	s.Records = v
+	return s
+}
+
+func (s *GetLogEventResponseBodyData) SetTotal(v int64) *GetLogEventResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type GetLogEventResponseBodyDataRecords struct {
+	// example:
+	//
+	// portal-dev
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// hello word
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// info
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 101
+	JobExecutionId *string `json:"JobExecutionId,omitempty" xml:"JobExecutionId,omitempty"`
+	// example:
+	//
+	// test
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// 2024-10-31 16:43:51
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 030225016025_9357_60125@127.0.0.1:51363
+	WorkerAddr *string `json:"WorkerAddr,omitempty" xml:"WorkerAddr,omitempty"`
+}
+
+func (s GetLogEventResponseBodyDataRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogEventResponseBodyDataRecords) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogEventResponseBodyDataRecords) SetAppName(v string) *GetLogEventResponseBodyDataRecords {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetLogEventResponseBodyDataRecords) SetContent(v string) *GetLogEventResponseBodyDataRecords {
+	s.Content = &v
+	return s
+}
+
+func (s *GetLogEventResponseBodyDataRecords) SetEvent(v string) *GetLogEventResponseBodyDataRecords {
+	s.Event = &v
+	return s
+}
+
+func (s *GetLogEventResponseBodyDataRecords) SetJobExecutionId(v string) *GetLogEventResponseBodyDataRecords {
+	s.JobExecutionId = &v
+	return s
+}
+
+func (s *GetLogEventResponseBodyDataRecords) SetJobName(v string) *GetLogEventResponseBodyDataRecords {
+	s.JobName = &v
+	return s
+}
+
+func (s *GetLogEventResponseBodyDataRecords) SetTime(v string) *GetLogEventResponseBodyDataRecords {
+	s.Time = &v
+	return s
+}
+
+func (s *GetLogEventResponseBodyDataRecords) SetWorkerAddr(v string) *GetLogEventResponseBodyDataRecords {
+	s.WorkerAddr = &v
+	return s
+}
+
+type GetLogEventResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLogEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLogEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogEventResponse) SetHeaders(v map[string]*string) *GetLogEventResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLogEventResponse) SetStatusCode(v int32) *GetLogEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLogEventResponse) SetBody(v *GetLogEventResponseBody) *GetLogEventResponse {
 	s.Body = v
 	return s
 }
@@ -4396,7 +4924,8 @@ type ListClustersRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tag      []*ListClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListClustersRequest) String() string {
@@ -4424,6 +4953,34 @@ func (s *ListClustersRequest) SetPageNum(v int32) *ListClustersRequest {
 
 func (s *ListClustersRequest) SetPageSize(v int32) *ListClustersRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListClustersRequest) SetTag(v []*ListClustersRequestTag) *ListClustersRequest {
+	s.Tag = v
+	return s
+}
+
+type ListClustersRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListClustersRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClustersRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListClustersRequestTag) SetKey(v string) *ListClustersRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListClustersRequestTag) SetValue(v string) *ListClustersRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -4575,6 +5132,7 @@ type ListClustersResponseBodyDataRecords struct {
 	//
 	// 1
 	Status           *int32                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags             map[string]interface{}                          `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	VSwitches        []*ListClustersResponseBodyDataRecordsVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	VersionLifecycle *string                                         `json:"VersionLifecycle,omitempty" xml:"VersionLifecycle,omitempty"`
 	// VPC ID
@@ -4655,6 +5213,11 @@ func (s *ListClustersResponseBodyDataRecords) SetSpInstanceId(v string) *ListClu
 
 func (s *ListClustersResponseBodyDataRecords) SetStatus(v int32) *ListClustersResponseBodyDataRecords {
 	s.Status = &v
+	return s
+}
+
+func (s *ListClustersResponseBodyDataRecords) SetTags(v map[string]interface{}) *ListClustersResponseBodyDataRecords {
+	s.Tags = v
 	return s
 }
 
@@ -8929,6 +9492,11 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 		request.VSwitchesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VSwitches, tea.String("VSwitches"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
 		body["ClusterName"] = request.ClusterName
@@ -8951,7 +9519,8 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateCluster"),
@@ -9667,6 +10236,62 @@ func (client *Client) GetJobExecutionProgress(request *GetJobExecutionProgressRe
 
 // Summary:
 //
+// 查询任务的线程堆栈
+//
+// @param request - GetJobExecutionThreadDumpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobExecutionThreadDumpResponse
+func (client *Client) GetJobExecutionThreadDumpWithOptions(request *GetJobExecutionThreadDumpRequest, runtime *util.RuntimeOptions) (_result *GetJobExecutionThreadDumpResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobExecutionThreadDump"),
+		Version:     tea.String("2024-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetJobExecutionThreadDumpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询任务的线程堆栈
+//
+// @param request - GetJobExecutionThreadDumpRequest
+//
+// @return GetJobExecutionThreadDumpResponse
+func (client *Client) GetJobExecutionThreadDump(request *GetJobExecutionThreadDumpRequest) (_result *GetJobExecutionThreadDumpResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetJobExecutionThreadDumpResponse{}
+	_body, _err := client.GetJobExecutionThreadDumpWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询日志
 //
 // @param request - GetLogRequest
@@ -9714,6 +10339,62 @@ func (client *Client) GetLog(request *GetLogRequest) (_result *GetLogResponse, _
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLogResponse{}
 	_body, _err := client.GetLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询事件
+//
+// @param request - GetLogEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLogEventResponse
+func (client *Client) GetLogEventWithOptions(request *GetLogEventRequest, runtime *util.RuntimeOptions) (_result *GetLogEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLogEvent"),
+		Version:     tea.String("2024-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLogEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询事件
+//
+// @param request - GetLogEventRequest
+//
+// @return GetLogEventResponse
+func (client *Client) GetLogEvent(request *GetLogEventRequest) (_result *GetLogEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLogEventResponse{}
+	_body, _err := client.GetLogEventWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9977,6 +10658,10 @@ func (client *Client) ListAppNames(request *ListAppNamesRequest) (_result *ListA
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取应用列表
+//
 // @param request - ListAppsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10011,6 +10696,10 @@ func (client *Client) ListAppsWithOptions(request *ListAppsRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取应用列表
+//
 // @param request - ListAppsRequest
 //
 // @return ListAppsResponse
