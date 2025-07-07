@@ -951,6 +951,7 @@ type CreateDiskReplicaGroupRequest struct {
 	//
 	// cn-shanghai-e
 	DestinationZoneId *string `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
+	EnableRtc         *bool   `json:"EnableRtc,omitempty" xml:"EnableRtc,omitempty"`
 	// The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
@@ -1019,6 +1020,11 @@ func (s *CreateDiskReplicaGroupRequest) SetDestinationRegionId(v string) *Create
 
 func (s *CreateDiskReplicaGroupRequest) SetDestinationZoneId(v string) *CreateDiskReplicaGroupRequest {
 	s.DestinationZoneId = &v
+	return s
+}
+
+func (s *CreateDiskReplicaGroupRequest) SetEnableRtc(v bool) *CreateDiskReplicaGroupRequest {
+	s.EnableRtc = &v
 	return s
 }
 
@@ -1221,7 +1227,8 @@ type CreateDiskReplicaPairRequest struct {
 	// example:
 	//
 	// d-iq80sgp4d0xbk24q****
-	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	DiskId    *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	EnableRtc *bool   `json:"EnableRtc,omitempty" xml:"EnableRtc,omitempty"`
 	// The name of the replication pair. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
@@ -1327,6 +1334,11 @@ func (s *CreateDiskReplicaPairRequest) SetDestinationZoneId(v string) *CreateDis
 
 func (s *CreateDiskReplicaPairRequest) SetDiskId(v string) *CreateDiskReplicaPairRequest {
 	s.DiskId = &v
+	return s
+}
+
+func (s *CreateDiskReplicaPairRequest) SetEnableRtc(v bool) *CreateDiskReplicaPairRequest {
+	s.EnableRtc = &v
 	return s
 }
 
@@ -4843,6 +4855,7 @@ type DescribeDiskReplicaGroupsResponseBodyReplicaGroups struct {
 	//
 	// cn-shanghai-e
 	DestinationZoneId *string `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
+	EnableRtc         *bool   `json:"EnableRtc,omitempty" xml:"EnableRtc,omitempty"`
 	// The name of the replication pair-consistent group.
 	//
 	// example:
@@ -4998,6 +5011,11 @@ func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetDestinationRegio
 
 func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetDestinationZoneId(v string) *DescribeDiskReplicaGroupsResponseBodyReplicaGroups {
 	s.DestinationZoneId = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetEnableRtc(v bool) *DescribeDiskReplicaGroupsResponseBodyReplicaGroups {
+	s.EnableRtc = &v
 	return s
 }
 
@@ -5552,6 +5570,7 @@ type DescribeDiskReplicaPairsResponseBodyReplicaPairs struct {
 	//
 	// cn-shanghai-b
 	DestinationZoneId *string `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
+	EnableRtc         *bool   `json:"EnableRtc,omitempty" xml:"EnableRtc,omitempty"`
 	// The time when the replication pair expires. The value of this parameter is a timestamp. Unit: seconds.
 	//
 	// example:
@@ -5758,6 +5777,11 @@ func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairs) SetDestinationRegion(
 
 func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairs) SetDestinationZoneId(v string) *DescribeDiskReplicaPairsResponseBodyReplicaPairs {
 	s.DestinationZoneId = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairs) SetEnableRtc(v bool) *DescribeDiskReplicaPairsResponseBodyReplicaPairs {
+	s.EnableRtc = &v
 	return s
 }
 
@@ -10366,6 +10390,7 @@ type ModifyDiskReplicaGroupRequest struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableRtc   *bool   `json:"EnableRtc,omitempty" xml:"EnableRtc,omitempty"`
 	// The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
@@ -10416,6 +10441,11 @@ func (s *ModifyDiskReplicaGroupRequest) SetClientToken(v string) *ModifyDiskRepl
 
 func (s *ModifyDiskReplicaGroupRequest) SetDescription(v string) *ModifyDiskReplicaGroupRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModifyDiskReplicaGroupRequest) SetEnableRtc(v bool) *ModifyDiskReplicaGroupRequest {
+	s.EnableRtc = &v
 	return s
 }
 
@@ -10511,6 +10541,7 @@ type ModifyDiskReplicaPairRequest struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableRtc   *bool   `json:"EnableRtc,omitempty" xml:"EnableRtc,omitempty"`
 	// The name of the replication pair.
 	//
 	// example:
@@ -10561,6 +10592,11 @@ func (s *ModifyDiskReplicaPairRequest) SetClientToken(v string) *ModifyDiskRepli
 
 func (s *ModifyDiskReplicaPairRequest) SetDescription(v string) *ModifyDiskReplicaPairRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModifyDiskReplicaPairRequest) SetEnableRtc(v bool) *ModifyDiskReplicaPairRequest {
+	s.EnableRtc = &v
 	return s
 }
 
@@ -13918,6 +13954,10 @@ func (client *Client) CreateDiskReplicaGroupWithOptions(request *CreateDiskRepli
 		query["DestinationZoneId"] = request.DestinationZoneId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableRtc)) {
+		query["EnableRtc"] = request.EnableRtc
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
 		query["GroupName"] = request.GroupName
 	}
@@ -14058,6 +14098,10 @@ func (client *Client) CreateDiskReplicaPairWithOptions(request *CreateDiskReplic
 
 	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
 		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableRtc)) {
+		query["EnableRtc"] = request.EnableRtc
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PairName)) {
@@ -16815,6 +16859,10 @@ func (client *Client) ModifyDiskReplicaGroupWithOptions(request *ModifyDiskRepli
 		query["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableRtc)) {
+		query["EnableRtc"] = request.EnableRtc
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
 		query["GroupName"] = request.GroupName
 	}
@@ -16913,6 +16961,10 @@ func (client *Client) ModifyDiskReplicaPairWithOptions(request *ModifyDiskReplic
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableRtc)) {
+		query["EnableRtc"] = request.EnableRtc
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PairName)) {
