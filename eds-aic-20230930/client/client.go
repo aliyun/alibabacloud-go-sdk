@@ -1994,7 +1994,8 @@ type CreateCloudPhoneNodeRequest struct {
 	// example:
 	//
 	// 25
-	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	PhoneCount      *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
 	// The resolution height. Unit: pixel.
 	//
 	// example:
@@ -2106,6 +2107,11 @@ func (s *CreateCloudPhoneNodeRequest) SetPeriodUnit(v string) *CreateCloudPhoneN
 
 func (s *CreateCloudPhoneNodeRequest) SetPhoneCount(v int32) *CreateCloudPhoneNodeRequest {
 	s.PhoneCount = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetPhoneDataVolume(v int32) *CreateCloudPhoneNodeRequest {
+	s.PhoneDataVolume = &v
 	return s
 }
 
@@ -2309,7 +2315,8 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	// example:
 	//
 	// 25
-	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	PhoneCount      *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
 	// The resolution height. Unit: pixel.
 	//
 	// example:
@@ -2421,6 +2428,11 @@ func (s *CreateCloudPhoneNodeShrinkRequest) SetPeriodUnit(v string) *CreateCloud
 
 func (s *CreateCloudPhoneNodeShrinkRequest) SetPhoneCount(v int32) *CreateCloudPhoneNodeShrinkRequest {
 	s.PhoneCount = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeShrinkRequest) SetPhoneDataVolume(v int32) *CreateCloudPhoneNodeShrinkRequest {
+	s.PhoneDataVolume = &v
 	return s
 }
 
@@ -14425,6 +14437,10 @@ func (client *Client) CreateCloudPhoneNodeWithOptions(tmpReq *CreateCloudPhoneNo
 
 	if !tea.BoolValue(util.IsUnset(request.PhoneCount)) {
 		query["PhoneCount"] = request.PhoneCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneDataVolume)) {
+		query["PhoneDataVolume"] = request.PhoneDataVolume
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResolutionHeight)) {
