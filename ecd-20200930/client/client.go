@@ -10463,6 +10463,7 @@ type CreateDesktopsRequest struct {
 	//
 	// 23141
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	QosRuleId   *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -10674,6 +10675,11 @@ func (s *CreateDesktopsRequest) SetPolicyGroupId(v string) *CreateDesktopsReques
 
 func (s *CreateDesktopsRequest) SetPromotionId(v string) *CreateDesktopsRequest {
 	s.PromotionId = &v
+	return s
+}
+
+func (s *CreateDesktopsRequest) SetQosRuleId(v string) *CreateDesktopsRequest {
+	s.QosRuleId = &v
 	return s
 }
 
@@ -11486,6 +11492,7 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// 23141
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	QosRuleId   *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -11697,6 +11704,11 @@ func (s *CreateDesktopsShrinkRequest) SetPolicyGroupId(v string) *CreateDesktops
 
 func (s *CreateDesktopsShrinkRequest) SetPromotionId(v string) *CreateDesktopsShrinkRequest {
 	s.PromotionId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetQosRuleId(v string) *CreateDesktopsShrinkRequest {
+	s.QosRuleId = &v
 	return s
 }
 
@@ -25633,7 +25645,8 @@ type DescribeDesktopSessionsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The state of the session.
 	//
 	// Valid values:
@@ -25725,6 +25738,11 @@ func (s *DescribeDesktopSessionsRequest) SetPageSize(v int32) *DescribeDesktopSe
 
 func (s *DescribeDesktopSessionsRequest) SetRegionId(v string) *DescribeDesktopSessionsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsRequest) SetResourceGroupId(v string) *DescribeDesktopSessionsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -25873,7 +25891,8 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	// example:
 	//
 	// ASP
-	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	ProtocolType   *string                                                      `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	ResourceGroups []*DescribeDesktopSessionsResponseBodySessionsResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
 	// The end time of the session.
 	//
 	// example:
@@ -26001,6 +26020,11 @@ func (s *DescribeDesktopSessionsResponseBodySessions) SetProtocolType(v string) 
 	return s
 }
 
+func (s *DescribeDesktopSessionsResponseBodySessions) SetResourceGroups(v []*DescribeDesktopSessionsResponseBodySessionsResourceGroups) *DescribeDesktopSessionsResponseBodySessions {
+	s.ResourceGroups = v
+	return s
+}
+
 func (s *DescribeDesktopSessionsResponseBodySessions) SetSessionEndTime(v string) *DescribeDesktopSessionsResponseBodySessions {
 	s.SessionEndTime = &v
 	return s
@@ -26028,6 +26052,29 @@ func (s *DescribeDesktopSessionsResponseBodySessions) SetSubPayType(v string) *D
 
 func (s *DescribeDesktopSessionsResponseBodySessions) SetTotalConnectionTime(v int64) *DescribeDesktopSessionsResponseBodySessions {
 	s.TotalConnectionTime = &v
+	return s
+}
+
+type DescribeDesktopSessionsResponseBodySessionsResourceGroups struct {
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeDesktopSessionsResponseBodySessionsResourceGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopSessionsResponseBodySessionsResourceGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessionsResourceGroups) SetId(v string) *DescribeDesktopSessionsResponseBodySessionsResourceGroups {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsResponseBodySessionsResourceGroups) SetName(v string) *DescribeDesktopSessionsResponseBodySessionsResourceGroups {
+	s.Name = &v
 	return s
 }
 
@@ -35117,6 +35164,7 @@ type DescribeOfficeSitesRequest struct {
 	//
 	// REGISTERED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeOfficeSitesRequest) String() string {
@@ -35159,6 +35207,11 @@ func (s *DescribeOfficeSitesRequest) SetSecurityProtection(v string) *DescribeOf
 
 func (s *DescribeOfficeSitesRequest) SetStatus(v string) *DescribeOfficeSitesRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesRequest) SetVpcId(v string) *DescribeOfficeSitesRequest {
+	s.VpcId = &v
 	return s
 }
 
@@ -70975,6 +71028,10 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 		query["PromotionId"] = request.PromotionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.QosRuleId)) {
+		query["QosRuleId"] = request.QosRuleId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -75262,6 +75319,10 @@ func (client *Client) DescribeDesktopSessionsWithOptions(request *DescribeDeskto
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SessionStatus)) {
 		query["SessionStatus"] = request.SessionStatus
 	}
@@ -77048,6 +77109,10 @@ func (client *Client) DescribeOfficeSitesWithOptions(request *DescribeOfficeSite
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
 	}
 
 	req := &openapi.OpenApiRequest{
