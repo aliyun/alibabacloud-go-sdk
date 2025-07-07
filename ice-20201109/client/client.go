@@ -1542,11 +1542,14 @@ type AppInfoDTO struct {
 	// example:
 	//
 	// 1-普通应用，2-内嵌SDK.
-	AppType   *int32                 `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	GmtCreate *string                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	ItemId    *string                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	Platforms []*AppInfoDTOPlatforms `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
-	UserId    *int64                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	AppType          *int32                 `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CreationTime     *string                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	GmtCreate        *string                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified      *string                `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	ItemId           *string                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ModificationTime *string                `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	Platforms        []*AppInfoDTOPlatforms `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
+	UserId           *int64                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AppInfoDTO) String() string {
@@ -1567,13 +1570,28 @@ func (s *AppInfoDTO) SetAppType(v int32) *AppInfoDTO {
 	return s
 }
 
+func (s *AppInfoDTO) SetCreationTime(v string) *AppInfoDTO {
+	s.CreationTime = &v
+	return s
+}
+
 func (s *AppInfoDTO) SetGmtCreate(v string) *AppInfoDTO {
 	s.GmtCreate = &v
 	return s
 }
 
+func (s *AppInfoDTO) SetGmtModified(v string) *AppInfoDTO {
+	s.GmtModified = &v
+	return s
+}
+
 func (s *AppInfoDTO) SetItemId(v string) *AppInfoDTO {
 	s.ItemId = &v
+	return s
+}
+
+func (s *AppInfoDTO) SetModificationTime(v string) *AppInfoDTO {
+	s.ModificationTime = &v
 	return s
 }
 
@@ -36418,6 +36436,8 @@ func (s *GetSmartHandleJobRequest) SetJobId(v string) *GetSmartHandleJobRequest 
 }
 
 type GetSmartHandleJobResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The job ID.
 	//
 	// example:
@@ -36470,6 +36490,16 @@ func (s GetSmartHandleJobResponseBody) String() string {
 
 func (s GetSmartHandleJobResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetSmartHandleJobResponseBody) SetErrorCode(v string) *GetSmartHandleJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetSmartHandleJobResponseBody) SetErrorMessage(v string) *GetSmartHandleJobResponseBody {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *GetSmartHandleJobResponseBody) SetJobId(v string) *GetSmartHandleJobResponseBody {
