@@ -7555,56 +7555,90 @@ func (s *DescribeLensServiceStatusResponse) SetBody(v *DescribeLensServiceStatus
 }
 
 type DescribeMetricDataRequest struct {
-	// Aggregation method in time dimension. Valid values:
+	// Aggregation method over time. Possible values include:
 	//
-	// - SUM
+	// - SUM_OVER_TIME
 	//
-	// - COUNT
+	// - COUNT_OVER_TIME
 	//
-	// - AVG
+	// - AVG_OVER_TIME
 	//
-	// - MAX
+	// - MAX_OVER_TIME
 	//
-	// - MIN
+	// - MIN_OVER_TIME
+	//
+	// - SUM_OVER_TIME_LCRO: Sum over a left-closed, right-open interval
+	//
+	// - AVG_OVER_TIME_LCRO: Average over a left-closed, right-open interval
+	//
+	// - SUM_OVER_TIME_LORC: Sum over a left-open, right-closed interval
+	//
+	// - AVG_OVER_TIME_LORC: Average over a left-open, right-closed interval
 	//
 	// example:
 	//
-	// SUM
-	AggreOps         *string `json:"AggreOps,omitempty" xml:"AggreOps,omitempty"`
+	// AVG_OVER_TIME
+	AggreOps *string `json:"AggreOps,omitempty" xml:"AggreOps,omitempty"`
+	// Aggregation method between lines. Possible values include:
+	//
+	// - NON: No aggregation
+	//
+	// - SUM: Sum
+	//
+	// - AVG: Average
+	//
+	// - COUNT: Count
+	//
+	// - MAX: Maximum
+	//
+	// - MIN: Minimum
+	//
+	// example:
+	//
+	// NON
 	AggreOverLineOps *string `json:"AggreOverLineOps,omitempty" xml:"AggreOverLineOps,omitempty"`
-	// The dimension map in the JSON format. A dimension is a key-value pair. Valid dimension key: diskId.
+	// Dimension map, in JSON format, representing the dimensions being queried. The currently available keys are:
+	//
+	// - DiskId: Cloud disk name, e.g., d-xxx.
+	//
+	// - DeviceType: Type of cloud disk, system indicates system disk, data indicates data disk.
+	//
+	// - DeviceCategory: Category of cloud disk, e.g., cloud_essd.
+	//
+	// - EcsInstanceId: Name of the ECS instance where the disk is located, e.g., i-xxx.
+	//
+	// The returned results are the intersection of all dimension filter conditions.
 	//
 	// example:
 	//
-	// {"diskId":["d-bp14xxxx","d-bp11xxxx"]}
+	// {"DiskId":["d-bp14xxxx","d-bp11xxxx"], "DeviceCategory": ["cloud_essd"]}
 	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The end of the time range to query. The specified time must be later than the current time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time point for obtaining metric data. It should not be later than the current moment. Represented according to the ISO 8601 standard, using UTC +0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2023-11-21T02:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the metric. Valid values:
+	EndTime       *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GroupByLabels []*string `json:"GroupByLabels,omitempty" xml:"GroupByLabels,omitempty" type:"Repeated"`
+	// Metric name. Possible values include:
 	//
-	// 	- disk_bps_percent
 	//
-	// 	- disk_iops_percent
 	//
-	// 	- disk_read_block_size
+	// - disk_bps_percent
 	//
-	// 	- disk_read_bps
+	// - disk_iops_percent
 	//
-	// 	- disk_read_iops
+	// - disk_read_block_size
 	//
-	// 	- disk_read_latency
+	// - disk_read_bps
 	//
-	// 	- disk_write_block_size
+	// - disk_read_iops
 	//
-	// 	- disk_write_bps
+	// - disk_write_block_size
 	//
-	// 	- disk_write_iops
+	// - disk_write_bps
 	//
-	// 	- disk_write_latency
+	// - disk_write_iops
 	//
 	// This parameter is required.
 	//
@@ -7612,19 +7646,27 @@ type DescribeMetricDataRequest struct {
 	//
 	// disk_bps_percent
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The interval at which metric data is collected. Unit: seconds. Default value: 60. Valid values: 60, 300, 600, and 3600, which support queries for time ranges of up to 2 hours, 2 hours, 1 day, and 7 days, respectively. For example, if you set Period to 60, the end time is less than 2 hours from the end time.
+	// The interval for obtaining metric data. Unit: seconds. The default value is 5 seconds. Possible values include:
+	//
+	// - 5: 5s precision query, can query up to 12 hours of data
+	//
+	// - 10: 10s precision query, can query up to 24 hours of data
+	//
+	// - 60: 60s precision query, can query up to 7 days of data
+	//
+	// - 3600: 3600s precision query, can query up to 30 days of data
 	//
 	// example:
 	//
 	// 60
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The region ID.
+	// Region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. You can specify a point in time that is up to one year apart from the current time. If StartTime and EndTime are both unspecified, the monitoring metric data of the last Period value is queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time point for obtaining metric data. The earliest selectable time is one year before the current moment. When both StartTime and EndTime parameters are empty, it defaults to querying the most recent period\\"s monitoring metrics. Represented according to the ISO 8601 standard, using UTC +0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -7660,6 +7702,11 @@ func (s *DescribeMetricDataRequest) SetEndTime(v string) *DescribeMetricDataRequ
 	return s
 }
 
+func (s *DescribeMetricDataRequest) SetGroupByLabels(v []*string) *DescribeMetricDataRequest {
+	s.GroupByLabels = v
+	return s
+}
+
 func (s *DescribeMetricDataRequest) SetMetricName(v string) *DescribeMetricDataRequest {
 	s.MetricName = &v
 	return s
@@ -7680,22 +7727,196 @@ func (s *DescribeMetricDataRequest) SetStartTime(v string) *DescribeMetricDataRe
 	return s
 }
 
+type DescribeMetricDataShrinkRequest struct {
+	// Aggregation method over time. Possible values include:
+	//
+	// - SUM_OVER_TIME
+	//
+	// - COUNT_OVER_TIME
+	//
+	// - AVG_OVER_TIME
+	//
+	// - MAX_OVER_TIME
+	//
+	// - MIN_OVER_TIME
+	//
+	// - SUM_OVER_TIME_LCRO: Sum over a left-closed, right-open interval
+	//
+	// - AVG_OVER_TIME_LCRO: Average over a left-closed, right-open interval
+	//
+	// - SUM_OVER_TIME_LORC: Sum over a left-open, right-closed interval
+	//
+	// - AVG_OVER_TIME_LORC: Average over a left-open, right-closed interval
+	//
+	// example:
+	//
+	// AVG_OVER_TIME
+	AggreOps *string `json:"AggreOps,omitempty" xml:"AggreOps,omitempty"`
+	// Aggregation method between lines. Possible values include:
+	//
+	// - NON: No aggregation
+	//
+	// - SUM: Sum
+	//
+	// - AVG: Average
+	//
+	// - COUNT: Count
+	//
+	// - MAX: Maximum
+	//
+	// - MIN: Minimum
+	//
+	// example:
+	//
+	// NON
+	AggreOverLineOps *string `json:"AggreOverLineOps,omitempty" xml:"AggreOverLineOps,omitempty"`
+	// Dimension map, in JSON format, representing the dimensions being queried. The currently available keys are:
+	//
+	// - DiskId: Cloud disk name, e.g., d-xxx.
+	//
+	// - DeviceType: Type of cloud disk, system indicates system disk, data indicates data disk.
+	//
+	// - DeviceCategory: Category of cloud disk, e.g., cloud_essd.
+	//
+	// - EcsInstanceId: Name of the ECS instance where the disk is located, e.g., i-xxx.
+	//
+	// The returned results are the intersection of all dimension filter conditions.
+	//
+	// example:
+	//
+	// {"DiskId":["d-bp14xxxx","d-bp11xxxx"], "DeviceCategory": ["cloud_essd"]}
+	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	// The end time point for obtaining metric data. It should not be later than the current moment. Represented according to the ISO 8601 standard, using UTC +0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2023-11-21T02:00:00Z
+	EndTime             *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GroupByLabelsShrink *string `json:"GroupByLabels,omitempty" xml:"GroupByLabels,omitempty"`
+	// Metric name. Possible values include:
+	//
+	//
+	//
+	// - disk_bps_percent
+	//
+	// - disk_iops_percent
+	//
+	// - disk_read_block_size
+	//
+	// - disk_read_bps
+	//
+	// - disk_read_iops
+	//
+	// - disk_write_block_size
+	//
+	// - disk_write_bps
+	//
+	// - disk_write_iops
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// disk_bps_percent
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The interval for obtaining metric data. Unit: seconds. The default value is 5 seconds. Possible values include:
+	//
+	// - 5: 5s precision query, can query up to 12 hours of data
+	//
+	// - 10: 10s precision query, can query up to 24 hours of data
+	//
+	// - 60: 60s precision query, can query up to 7 days of data
+	//
+	// - 3600: 3600s precision query, can query up to 30 days of data
+	//
+	// example:
+	//
+	// 60
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// Region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time point for obtaining metric data. The earliest selectable time is one year before the current moment. When both StartTime and EndTime parameters are empty, it defaults to querying the most recent period\\"s monitoring metrics. Represented according to the ISO 8601 standard, using UTC +0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2023-11-21T01:50:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeMetricDataShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricDataShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricDataShrinkRequest) SetAggreOps(v string) *DescribeMetricDataShrinkRequest {
+	s.AggreOps = &v
+	return s
+}
+
+func (s *DescribeMetricDataShrinkRequest) SetAggreOverLineOps(v string) *DescribeMetricDataShrinkRequest {
+	s.AggreOverLineOps = &v
+	return s
+}
+
+func (s *DescribeMetricDataShrinkRequest) SetDimensions(v string) *DescribeMetricDataShrinkRequest {
+	s.Dimensions = &v
+	return s
+}
+
+func (s *DescribeMetricDataShrinkRequest) SetEndTime(v string) *DescribeMetricDataShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeMetricDataShrinkRequest) SetGroupByLabelsShrink(v string) *DescribeMetricDataShrinkRequest {
+	s.GroupByLabelsShrink = &v
+	return s
+}
+
+func (s *DescribeMetricDataShrinkRequest) SetMetricName(v string) *DescribeMetricDataShrinkRequest {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeMetricDataShrinkRequest) SetPeriod(v int32) *DescribeMetricDataShrinkRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeMetricDataShrinkRequest) SetRegionId(v string) *DescribeMetricDataShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeMetricDataShrinkRequest) SetStartTime(v string) *DescribeMetricDataShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
 type DescribeMetricDataResponseBody struct {
-	// The disk monitoring data.
+	// Collection of monitoring data for the cloud disk.
 	DataList []*DescribeMetricDataResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 11B55F58-D3A4-4A9B-9596-342420D0****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of data entries queried.
+	// Total number of data points queried.
 	//
 	// example:
 	//
-	// 3
-	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Warnings   []*string `json:"Warnings,omitempty" xml:"Warnings,omitempty" type:"Repeated"`
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// List of warning messages.
+	Warnings []*string `json:"Warnings,omitempty" xml:"Warnings,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMetricDataResponseBody) String() string {
@@ -7727,37 +7948,13 @@ func (s *DescribeMetricDataResponseBody) SetWarnings(v []*string) *DescribeMetri
 }
 
 type DescribeMetricDataResponseBodyDataList struct {
-	// The datapoints that consist of consecutive timestamps in seconds and metric values that were recorded at these time points.
+	// List of monitoring data, consisting of a series of consecutive second-level timestamps and the corresponding metric values at those times.
 	//
 	// example:
 	//
-	// {
-	//
-	//         "1699258861": 1,
-	//
-	//         "1699259461": 0,
-	//
-	//         "1699260061": 0,
-	//
-	//         "1699260661": 0,
-	//
-	//         "1699261261": 0,
-	//
-	//         "1699261861": 0,
-	//
-	//         "1699262461": 0,
-	//
-	//         "1699263061": 0,
-	//
-	//         "1699263661": 0,
-	//
-	//         "1699264261": 0,
-	//
-	//         "1699264861": 0
-	//
-	// }
+	// {"1699258861": 1,"1699259461": 0}
 	Datapoints interface{} `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
-	// The tags.
+	// Labels.
 	//
 	// example:
 	//
@@ -9529,12 +9726,6 @@ func (s *GetReportResponse) SetBody(v *GetReportResponseBody) *GetReportResponse
 
 type ListReportsRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// App name.
-	//
-	// example:
-	//
-	// App1
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// Maximum number of items for Token-based pagination.
 	//
 	// example:
@@ -9577,11 +9768,6 @@ func (s ListReportsRequest) GoString() string {
 
 func (s *ListReportsRequest) SetAppId(v string) *ListReportsRequest {
 	s.AppId = &v
-	return s
-}
-
-func (s *ListReportsRequest) SetAppName(v string) *ListReportsRequest {
-	s.AppName = &v
 	return s
 }
 
@@ -15490,18 +15676,24 @@ func (client *Client) DescribeLensServiceStatus() (_result *DescribeLensServiceS
 
 // Summary:
 //
-// Queries the statistics about a metric of Elastic Block Storage (EBS) disks.
+// # Query single metric monitoring information
 //
-// @param request - DescribeMetricDataRequest
+// @param tmpReq - DescribeMetricDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeMetricDataResponse
-func (client *Client) DescribeMetricDataWithOptions(request *DescribeMetricDataRequest, runtime *util.RuntimeOptions) (_result *DescribeMetricDataResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeMetricDataWithOptions(tmpReq *DescribeMetricDataRequest, runtime *util.RuntimeOptions) (_result *DescribeMetricDataResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DescribeMetricDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.GroupByLabels)) {
+		request.GroupByLabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GroupByLabels, tea.String("GroupByLabels"), tea.String("simple"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AggreOps)) {
 		query["AggreOps"] = request.AggreOps
@@ -15517,6 +15709,10 @@ func (client *Client) DescribeMetricDataWithOptions(request *DescribeMetricDataR
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupByLabelsShrink)) {
+		query["GroupByLabels"] = request.GroupByLabelsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MetricName)) {
@@ -15560,7 +15756,7 @@ func (client *Client) DescribeMetricDataWithOptions(request *DescribeMetricDataR
 
 // Summary:
 //
-// Queries the statistics about a metric of Elastic Block Storage (EBS) disks.
+// # Query single metric monitoring information
 //
 // @param request - DescribeMetricDataRequest
 //
@@ -16354,10 +16550,6 @@ func (client *Client) ListReportsWithOptions(request *ListReportsRequest, runtim
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppName)) {
-		body["AppName"] = request.AppName
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
 	}
