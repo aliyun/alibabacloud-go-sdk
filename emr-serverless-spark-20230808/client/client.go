@@ -1455,6 +1455,475 @@ func (s *CancelJobRunResponse) SetBody(v *CancelJobRunResponseBody) *CancelJobRu
 	return s
 }
 
+type CreateLivyComputeRequest struct {
+	// example:
+	//
+	// Token
+	AuthType               *string                                         `json:"authType,omitempty" xml:"authType,omitempty"`
+	AutoStartConfiguration *CreateLivyComputeRequestAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
+	AutoStopConfiguration  *CreateLivyComputeRequestAutoStopConfiguration  `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	CpuLimit *string `json:"cpuLimit,omitempty" xml:"cpuLimit,omitempty"`
+	// example:
+	//
+	// esr-4.3.0 (Spark 3.5.2, Scala 2.12)
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// example:
+	//
+	// true
+	EnablePublic *bool `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
+	// example:
+	//
+	// ev-ctfq0fem1hkhgv4hapng
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// example:
+	//
+	// false
+	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "sparkDefaultsConf": "spark.driver.cores     1\\nspark.driver.memory    4g\\nspark.executor.cores   1\\nspark.executor.memory  4g\\n",
+	//
+	//   "sparkBlackListConf": "spark.driver.cores\\nspark.driver.memory",
+	//
+	//   "livyConf": "livy.server.session.timeout  1h\\n",
+	//
+	//   "livyClientConf": "livy.rsc.sql.num-rows  1000\\n"
+	//
+	// }
+	LivyServerConf *string `json:"livyServerConf,omitempty" xml:"livyServerConf,omitempty"`
+	// example:
+	//
+	// 0.8.0
+	LivyVersion *string `json:"livyVersion,omitempty" xml:"livyVersion,omitempty"`
+	// example:
+	//
+	// 4Gi
+	MemoryLimit *string `json:"memoryLimit,omitempty" xml:"memoryLimit,omitempty"`
+	// example:
+	//
+	// testGateway
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// test
+	NetworkName *string `json:"networkName,omitempty" xml:"networkName,omitempty"`
+	// example:
+	//
+	// root_queue
+	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// example:
+	//
+	// esr-4.3.0 (Spark 3.5.2, Scala 2.12, Java Runtime)
+	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s CreateLivyComputeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLivyComputeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLivyComputeRequest) SetAuthType(v string) *CreateLivyComputeRequest {
+	s.AuthType = &v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetAutoStartConfiguration(v *CreateLivyComputeRequestAutoStartConfiguration) *CreateLivyComputeRequest {
+	s.AutoStartConfiguration = v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetAutoStopConfiguration(v *CreateLivyComputeRequestAutoStopConfiguration) *CreateLivyComputeRequest {
+	s.AutoStopConfiguration = v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetCpuLimit(v string) *CreateLivyComputeRequest {
+	s.CpuLimit = &v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetDisplayReleaseVersion(v string) *CreateLivyComputeRequest {
+	s.DisplayReleaseVersion = &v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetEnablePublic(v bool) *CreateLivyComputeRequest {
+	s.EnablePublic = &v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetEnvironmentId(v string) *CreateLivyComputeRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetFusion(v bool) *CreateLivyComputeRequest {
+	s.Fusion = &v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetLivyServerConf(v string) *CreateLivyComputeRequest {
+	s.LivyServerConf = &v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetLivyVersion(v string) *CreateLivyComputeRequest {
+	s.LivyVersion = &v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetMemoryLimit(v string) *CreateLivyComputeRequest {
+	s.MemoryLimit = &v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetName(v string) *CreateLivyComputeRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetNetworkName(v string) *CreateLivyComputeRequest {
+	s.NetworkName = &v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetQueueName(v string) *CreateLivyComputeRequest {
+	s.QueueName = &v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetReleaseVersion(v string) *CreateLivyComputeRequest {
+	s.ReleaseVersion = &v
+	return s
+}
+
+func (s *CreateLivyComputeRequest) SetRegionId(v string) *CreateLivyComputeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateLivyComputeRequestAutoStartConfiguration struct {
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+}
+
+func (s CreateLivyComputeRequestAutoStartConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLivyComputeRequestAutoStartConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLivyComputeRequestAutoStartConfiguration) SetEnable(v bool) *CreateLivyComputeRequestAutoStartConfiguration {
+	s.Enable = &v
+	return s
+}
+
+type CreateLivyComputeRequestAutoStopConfiguration struct {
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// 300
+	IdleTimeoutMinutes *int64 `json:"idleTimeoutMinutes,omitempty" xml:"idleTimeoutMinutes,omitempty"`
+}
+
+func (s CreateLivyComputeRequestAutoStopConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLivyComputeRequestAutoStopConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLivyComputeRequestAutoStopConfiguration) SetEnable(v bool) *CreateLivyComputeRequestAutoStopConfiguration {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateLivyComputeRequestAutoStopConfiguration) SetIdleTimeoutMinutes(v int64) *CreateLivyComputeRequestAutoStopConfiguration {
+	s.IdleTimeoutMinutes = &v
+	return s
+}
+
+type CreateLivyComputeResponseBody struct {
+	// example:
+	//
+	// 1000000
+	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Data *CreateLivyComputeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateLivyComputeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLivyComputeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLivyComputeResponseBody) SetCode(v string) *CreateLivyComputeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateLivyComputeResponseBody) SetData(v *CreateLivyComputeResponseBodyData) *CreateLivyComputeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateLivyComputeResponseBody) SetMessage(v string) *CreateLivyComputeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateLivyComputeResponseBody) SetRequestId(v string) *CreateLivyComputeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateLivyComputeResponseBodyData struct {
+	// example:
+	//
+	// lc-i8xogcdfa4fk3yn1
+	LivyComputeId *string `json:"livyComputeId,omitempty" xml:"livyComputeId,omitempty"`
+}
+
+func (s CreateLivyComputeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLivyComputeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLivyComputeResponseBodyData) SetLivyComputeId(v string) *CreateLivyComputeResponseBodyData {
+	s.LivyComputeId = &v
+	return s
+}
+
+type CreateLivyComputeResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLivyComputeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateLivyComputeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLivyComputeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLivyComputeResponse) SetHeaders(v map[string]*string) *CreateLivyComputeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLivyComputeResponse) SetStatusCode(v int32) *CreateLivyComputeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLivyComputeResponse) SetBody(v *CreateLivyComputeResponseBody) *CreateLivyComputeResponse {
+	s.Body = v
+	return s
+}
+
+type CreateLivyComputeTokenRequest struct {
+	AutoExpireConfiguration *CreateLivyComputeTokenRequestAutoExpireConfiguration `json:"autoExpireConfiguration,omitempty" xml:"autoExpireConfiguration,omitempty" type:"Struct"`
+	// example:
+	//
+	// mytoken
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// gs3fy75w4o7hqe5s
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s CreateLivyComputeTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLivyComputeTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLivyComputeTokenRequest) SetAutoExpireConfiguration(v *CreateLivyComputeTokenRequestAutoExpireConfiguration) *CreateLivyComputeTokenRequest {
+	s.AutoExpireConfiguration = v
+	return s
+}
+
+func (s *CreateLivyComputeTokenRequest) SetName(v string) *CreateLivyComputeTokenRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateLivyComputeTokenRequest) SetToken(v string) *CreateLivyComputeTokenRequest {
+	s.Token = &v
+	return s
+}
+
+func (s *CreateLivyComputeTokenRequest) SetRegionId(v string) *CreateLivyComputeTokenRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateLivyComputeTokenRequestAutoExpireConfiguration struct {
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// 7
+	ExpireDays *int32 `json:"expireDays,omitempty" xml:"expireDays,omitempty"`
+}
+
+func (s CreateLivyComputeTokenRequestAutoExpireConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLivyComputeTokenRequestAutoExpireConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLivyComputeTokenRequestAutoExpireConfiguration) SetEnable(v bool) *CreateLivyComputeTokenRequestAutoExpireConfiguration {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateLivyComputeTokenRequestAutoExpireConfiguration) SetExpireDays(v int32) *CreateLivyComputeTokenRequestAutoExpireConfiguration {
+	s.ExpireDays = &v
+	return s
+}
+
+type CreateLivyComputeTokenResponseBody struct {
+	// example:
+	//
+	// 1000000
+	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Data *CreateLivyComputeTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateLivyComputeTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLivyComputeTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLivyComputeTokenResponseBody) SetCode(v string) *CreateLivyComputeTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateLivyComputeTokenResponseBody) SetData(v *CreateLivyComputeTokenResponseBodyData) *CreateLivyComputeTokenResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateLivyComputeTokenResponseBody) SetMessage(v string) *CreateLivyComputeTokenResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateLivyComputeTokenResponseBody) SetRequestId(v string) *CreateLivyComputeTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateLivyComputeTokenResponseBodyData struct {
+	// Token ID。
+	//
+	// example:
+	//
+	// lctk-xxxxxxxx
+	TokenId *string `json:"tokenId,omitempty" xml:"tokenId,omitempty"`
+}
+
+func (s CreateLivyComputeTokenResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLivyComputeTokenResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLivyComputeTokenResponseBodyData) SetTokenId(v string) *CreateLivyComputeTokenResponseBodyData {
+	s.TokenId = &v
+	return s
+}
+
+type CreateLivyComputeTokenResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLivyComputeTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateLivyComputeTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLivyComputeTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLivyComputeTokenResponse) SetHeaders(v map[string]*string) *CreateLivyComputeTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLivyComputeTokenResponse) SetStatusCode(v int32) *CreateLivyComputeTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLivyComputeTokenResponse) SetBody(v *CreateLivyComputeTokenResponseBody) *CreateLivyComputeTokenResponse {
+	s.Body = v
+	return s
+}
+
 type CreateProcessDefinitionWithScheduleRequest struct {
 	// The email address to receive alerts.
 	//
@@ -2528,11 +2997,11 @@ func (s *CreateProcessDefinitionWithScheduleResponse) SetBody(v *CreateProcessDe
 type CreateSessionClusterRequest struct {
 	// The Spark configurations.
 	ApplicationConfigs []*CreateSessionClusterRequestApplicationConfigs `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty" type:"Repeated"`
-	// The automatic startup configuration.
+	// Specifies whether to enable automatic startup.
 	//
-	// *
+	// 	- true
 	//
-	// *
+	// 	- false
 	AutoStartConfiguration *CreateSessionClusterRequestAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
 	// The automatic termination configuration.
 	AutoStopConfiguration *CreateSessionClusterRequestAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
@@ -3298,6 +3767,180 @@ func (s *CreateWorkspaceResponse) SetBody(v *CreateWorkspaceResponseBody) *Creat
 	return s
 }
 
+type DeleteLivyComputeRequest struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s DeleteLivyComputeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLivyComputeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLivyComputeRequest) SetRegionId(v string) *DeleteLivyComputeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteLivyComputeResponseBody struct {
+	// example:
+	//
+	// 1000000
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteLivyComputeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLivyComputeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLivyComputeResponseBody) SetCode(v string) *DeleteLivyComputeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteLivyComputeResponseBody) SetMessage(v string) *DeleteLivyComputeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteLivyComputeResponseBody) SetRequestId(v string) *DeleteLivyComputeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteLivyComputeResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteLivyComputeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteLivyComputeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLivyComputeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLivyComputeResponse) SetHeaders(v map[string]*string) *DeleteLivyComputeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLivyComputeResponse) SetStatusCode(v int32) *DeleteLivyComputeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLivyComputeResponse) SetBody(v *DeleteLivyComputeResponseBody) *DeleteLivyComputeResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLivyComputeTokenRequest struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s DeleteLivyComputeTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLivyComputeTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLivyComputeTokenRequest) SetRegionId(v string) *DeleteLivyComputeTokenRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteLivyComputeTokenResponseBody struct {
+	// example:
+	//
+	// 1000000
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteLivyComputeTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLivyComputeTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLivyComputeTokenResponseBody) SetCode(v string) *DeleteLivyComputeTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteLivyComputeTokenResponseBody) SetMessage(v string) *DeleteLivyComputeTokenResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteLivyComputeTokenResponseBody) SetRequestId(v string) *DeleteLivyComputeTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteLivyComputeTokenResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteLivyComputeTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteLivyComputeTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLivyComputeTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLivyComputeTokenResponse) SetHeaders(v map[string]*string) *DeleteLivyComputeTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLivyComputeTokenResponse) SetStatusCode(v int32) *DeleteLivyComputeTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLivyComputeTokenResponse) SetBody(v *DeleteLivyComputeTokenResponseBody) *DeleteLivyComputeTokenResponse {
+	s.Body = v
+	return s
+}
+
 type EditWorkspaceQueueRequest struct {
 	Environments []*string                              `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
 	ResourceSpec *EditWorkspaceQueueRequestResourceSpec `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
@@ -4001,6 +4644,548 @@ func (s *GetJobRunResponse) SetBody(v *GetJobRunResponseBody) *GetJobRunResponse
 	return s
 }
 
+type GetLivyComputeRequest struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s GetLivyComputeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLivyComputeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLivyComputeRequest) SetRegionId(v string) *GetLivyComputeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetLivyComputeResponseBody struct {
+	// example:
+	//
+	// 1000000
+	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetLivyComputeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetLivyComputeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLivyComputeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLivyComputeResponseBody) SetCode(v string) *GetLivyComputeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBody) SetData(v *GetLivyComputeResponseBodyData) *GetLivyComputeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetLivyComputeResponseBody) SetMessage(v string) *GetLivyComputeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBody) SetRequestId(v string) *GetLivyComputeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetLivyComputeResponseBodyData struct {
+	// example:
+	//
+	// Token
+	AuthType              *string                                              `json:"authType,omitempty" xml:"authType,omitempty"`
+	AutoStopConfiguration *GetLivyComputeResponseBodyDataAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	// example:
+	//
+	// lc-xxxxxxxxxxxxx
+	ComputeId *string `json:"computeId,omitempty" xml:"computeId,omitempty"`
+	// example:
+	//
+	// 1
+	CpuLimit *string `json:"cpuLimit,omitempty" xml:"cpuLimit,omitempty"`
+	// example:
+	//
+	// alice
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// example:
+	//
+	// esr-4.3.0 (Spark 3.5.2, Scala 2.12)
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// example:
+	//
+	// true
+	EnablePublic *bool `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
+	// example:
+	//
+	// emr-spark-livy-gateway-cn-hangzhou.data.aliyun.com/api/v1/workspace/w-xxxxxxxxx/livycompute/lc-xxxxxxxxxxx
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// example:
+	//
+	// emr-spark-livy-gateway-cn-hangzhou-internal.aliyun.com/api/v1/workspace/w-xxxxxxxxx/livycompute/lc-xxxxxxxxxxx
+	EndpointInner *string `json:"endpointInner,omitempty" xml:"endpointInner,omitempty"`
+	// example:
+	//
+	// ev-cq31c7tlhtgm9nrrlj4g
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// example:
+	//
+	// false
+	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// example:
+	//
+	// 1749456094000
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "sparkDefaultsConf": "spark.driver.cores     1\\nspark.driver.memory    4g\\nspark.executor.cores   1\\nspark.executor.memory  4g\\n",
+	//
+	//   "sparkBlackListConf": "spark.driver.cores\\nspark.driver.memory",
+	//
+	//   "livyConf": "livy.server.session.timeout  1h\\n",
+	//
+	//   "livyClientConf": "livy.rsc.sql.num-rows  1000\\n"
+	//
+	// }
+	LivyServerConf *string `json:"livyServerConf,omitempty" xml:"livyServerConf,omitempty"`
+	// example:
+	//
+	// 0.8.0
+	LivyVersion *string `json:"livyVersion,omitempty" xml:"livyVersion,omitempty"`
+	// example:
+	//
+	// 4Gi
+	MemoryLimit *string `json:"memoryLimit,omitempty" xml:"memoryLimit,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// test
+	NetworkName *string `json:"networkName,omitempty" xml:"networkName,omitempty"`
+	// example:
+	//
+	// root_queue
+	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// example:
+	//
+	// 10000001
+	RamUserId *string `json:"ramUserId,omitempty" xml:"ramUserId,omitempty"`
+	// example:
+	//
+	// esr-4.3.0 (Spark 3.5.2, Scala 2.12, Java Runtime)
+	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// example:
+	//
+	// 1749456094000
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s GetLivyComputeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLivyComputeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetLivyComputeResponseBodyData) SetAuthType(v string) *GetLivyComputeResponseBodyData {
+	s.AuthType = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetAutoStopConfiguration(v *GetLivyComputeResponseBodyDataAutoStopConfiguration) *GetLivyComputeResponseBodyData {
+	s.AutoStopConfiguration = v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetComputeId(v string) *GetLivyComputeResponseBodyData {
+	s.ComputeId = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetCpuLimit(v string) *GetLivyComputeResponseBodyData {
+	s.CpuLimit = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetCreatedBy(v string) *GetLivyComputeResponseBodyData {
+	s.CreatedBy = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetDisplayReleaseVersion(v string) *GetLivyComputeResponseBodyData {
+	s.DisplayReleaseVersion = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetEnablePublic(v bool) *GetLivyComputeResponseBodyData {
+	s.EnablePublic = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetEndpoint(v string) *GetLivyComputeResponseBodyData {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetEndpointInner(v string) *GetLivyComputeResponseBodyData {
+	s.EndpointInner = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetEnvironmentId(v string) *GetLivyComputeResponseBodyData {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetFusion(v bool) *GetLivyComputeResponseBodyData {
+	s.Fusion = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetGmtCreate(v int64) *GetLivyComputeResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetLivyServerConf(v string) *GetLivyComputeResponseBodyData {
+	s.LivyServerConf = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetLivyVersion(v string) *GetLivyComputeResponseBodyData {
+	s.LivyVersion = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetMemoryLimit(v string) *GetLivyComputeResponseBodyData {
+	s.MemoryLimit = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetName(v string) *GetLivyComputeResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetNetworkName(v string) *GetLivyComputeResponseBodyData {
+	s.NetworkName = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetQueueName(v string) *GetLivyComputeResponseBodyData {
+	s.QueueName = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetRamUserId(v string) *GetLivyComputeResponseBodyData {
+	s.RamUserId = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetReleaseVersion(v string) *GetLivyComputeResponseBodyData {
+	s.ReleaseVersion = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetStartTime(v int64) *GetLivyComputeResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyData) SetStatus(v string) *GetLivyComputeResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetLivyComputeResponseBodyDataAutoStopConfiguration struct {
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// 300
+	IdleTimeoutMinutes *int64 `json:"idleTimeoutMinutes,omitempty" xml:"idleTimeoutMinutes,omitempty"`
+}
+
+func (s GetLivyComputeResponseBodyDataAutoStopConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLivyComputeResponseBodyDataAutoStopConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetLivyComputeResponseBodyDataAutoStopConfiguration) SetEnable(v bool) *GetLivyComputeResponseBodyDataAutoStopConfiguration {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetLivyComputeResponseBodyDataAutoStopConfiguration) SetIdleTimeoutMinutes(v int64) *GetLivyComputeResponseBodyDataAutoStopConfiguration {
+	s.IdleTimeoutMinutes = &v
+	return s
+}
+
+type GetLivyComputeResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLivyComputeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLivyComputeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLivyComputeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLivyComputeResponse) SetHeaders(v map[string]*string) *GetLivyComputeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLivyComputeResponse) SetStatusCode(v int32) *GetLivyComputeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLivyComputeResponse) SetBody(v *GetLivyComputeResponseBody) *GetLivyComputeResponse {
+	s.Body = v
+	return s
+}
+
+type GetLivyComputeTokenRequest struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s GetLivyComputeTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLivyComputeTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLivyComputeTokenRequest) SetRegionId(v string) *GetLivyComputeTokenRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetLivyComputeTokenResponseBody struct {
+	// example:
+	//
+	// 1000000
+	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetLivyComputeTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 484D9DDA-300D-525E-AF7A-0CCCA5C64A7A
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetLivyComputeTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLivyComputeTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLivyComputeTokenResponseBody) SetCode(v string) *GetLivyComputeTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetLivyComputeTokenResponseBody) SetData(v *GetLivyComputeTokenResponseBodyData) *GetLivyComputeTokenResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetLivyComputeTokenResponseBody) SetMessage(v string) *GetLivyComputeTokenResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetLivyComputeTokenResponseBody) SetRequestId(v string) *GetLivyComputeTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetLivyComputeTokenResponseBodyData struct {
+	AutoExpireConfiguration *GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration `json:"autoExpireConfiguration,omitempty" xml:"autoExpireConfiguration,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1749456094000
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// alice
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// example:
+	//
+	// 1749457994000
+	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// example:
+	//
+	// 1749456098000
+	LastUsedTime *int64 `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// d25561157a635bb
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// Token ID。
+	//
+	// example:
+	//
+	// lctk-xxxxxxxxxx
+	TokenId *string `json:"tokenId,omitempty" xml:"tokenId,omitempty"`
+}
+
+func (s GetLivyComputeTokenResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLivyComputeTokenResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetLivyComputeTokenResponseBodyData) SetAutoExpireConfiguration(v *GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration) *GetLivyComputeTokenResponseBodyData {
+	s.AutoExpireConfiguration = v
+	return s
+}
+
+func (s *GetLivyComputeTokenResponseBodyData) SetCreateTime(v int64) *GetLivyComputeTokenResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetLivyComputeTokenResponseBodyData) SetCreatedBy(v string) *GetLivyComputeTokenResponseBodyData {
+	s.CreatedBy = &v
+	return s
+}
+
+func (s *GetLivyComputeTokenResponseBodyData) SetExpireTime(v int64) *GetLivyComputeTokenResponseBodyData {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GetLivyComputeTokenResponseBodyData) SetLastUsedTime(v int64) *GetLivyComputeTokenResponseBodyData {
+	s.LastUsedTime = &v
+	return s
+}
+
+func (s *GetLivyComputeTokenResponseBodyData) SetName(v string) *GetLivyComputeTokenResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetLivyComputeTokenResponseBodyData) SetToken(v string) *GetLivyComputeTokenResponseBodyData {
+	s.Token = &v
+	return s
+}
+
+func (s *GetLivyComputeTokenResponseBodyData) SetTokenId(v string) *GetLivyComputeTokenResponseBodyData {
+	s.TokenId = &v
+	return s
+}
+
+type GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration struct {
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// 7
+	ExpireDays *int32 `json:"expireDays,omitempty" xml:"expireDays,omitempty"`
+}
+
+func (s GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration) SetEnable(v bool) *GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration) SetExpireDays(v int32) *GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration {
+	s.ExpireDays = &v
+	return s
+}
+
+type GetLivyComputeTokenResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLivyComputeTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLivyComputeTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLivyComputeTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLivyComputeTokenResponse) SetHeaders(v map[string]*string) *GetLivyComputeTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLivyComputeTokenResponse) SetStatusCode(v int32) *GetLivyComputeTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLivyComputeTokenResponse) SetBody(v *GetLivyComputeTokenResponseBody) *GetLivyComputeTokenResponse {
+	s.Body = v
+	return s
+}
+
 type GetSessionClusterRequest struct {
 	// The region ID.
 	//
@@ -4030,7 +5215,7 @@ type GetSessionClusterResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The session.
+	// The session object.
 	SessionCluster *GetSessionClusterResponseBodySessionCluster `json:"sessionCluster,omitempty" xml:"sessionCluster,omitempty" type:"Struct"`
 }
 
@@ -4706,6 +5891,12 @@ type GetTemplateRequest struct {
 	RegionId      *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	TemplateBizId *string `json:"templateBizId,omitempty" xml:"templateBizId,omitempty"`
 	// The template type.
+	//
+	// Valid values:
+	//
+	// 	- TASK
+	//
+	// 	- SESSION
 	//
 	// example:
 	//
@@ -5483,7 +6674,7 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// 1684119314000
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	// The tags.
+	// The tags of the job.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The total number of CPU cores allocated to the job multiplied by the running duration (seconds).
 	//
@@ -6496,6 +7687,403 @@ func (s *ListKyuubiTokenResponse) SetStatusCode(v int32) *ListKyuubiTokenRespons
 }
 
 func (s *ListKyuubiTokenResponse) SetBody(v *ListKyuubiTokenResponseBody) *ListKyuubiTokenResponse {
+	s.Body = v
+	return s
+}
+
+type ListLivyComputeRequest struct {
+	// example:
+	//
+	// ev-cq31c7tlhtgm9nrrlj4g
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s ListLivyComputeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLivyComputeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLivyComputeRequest) SetEnvironmentId(v string) *ListLivyComputeRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListLivyComputeRequest) SetRegionId(v string) *ListLivyComputeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListLivyComputeResponseBody struct {
+	// example:
+	//
+	// 1000000
+	Code *string                          `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListLivyComputeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListLivyComputeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLivyComputeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLivyComputeResponseBody) SetCode(v string) *ListLivyComputeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListLivyComputeResponseBody) SetData(v *ListLivyComputeResponseBodyData) *ListLivyComputeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListLivyComputeResponseBody) SetMessage(v string) *ListLivyComputeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListLivyComputeResponseBody) SetRequestId(v string) *ListLivyComputeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListLivyComputeResponseBodyData struct {
+	LivyComputes []*ListLivyComputeResponseBodyDataLivyComputes `json:"livyComputes,omitempty" xml:"livyComputes,omitempty" type:"Repeated"`
+}
+
+func (s ListLivyComputeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLivyComputeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListLivyComputeResponseBodyData) SetLivyComputes(v []*ListLivyComputeResponseBodyDataLivyComputes) *ListLivyComputeResponseBodyData {
+	s.LivyComputes = v
+	return s
+}
+
+type ListLivyComputeResponseBodyDataLivyComputes struct {
+	// example:
+	//
+	// lc-xxxxxxxxxxxx
+	ComputeId *string `json:"computeId,omitempty" xml:"computeId,omitempty"`
+	// example:
+	//
+	// alice
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// example:
+	//
+	// emr-spark-livy-gateway-cn-hangzhou.data.aliyun.com/api/v1/workspace/w-xxxxxxxxx/livycompute/lc-xxxxxxxxxxx
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// example:
+	//
+	// emr-spark-livy-gateway-cn-hangzhou-internal.aliyun.com/api/v1/workspace/w-xxxxxxxxx/livycompute/lc-xxxxxxxxxxx
+	EndpointInner *string `json:"endpointInner,omitempty" xml:"endpointInner,omitempty"`
+	// example:
+	//
+	// 1749456094000
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// root_queue
+	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// example:
+	//
+	// 1749456094000
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s ListLivyComputeResponseBodyDataLivyComputes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLivyComputeResponseBodyDataLivyComputes) GoString() string {
+	return s.String()
+}
+
+func (s *ListLivyComputeResponseBodyDataLivyComputes) SetComputeId(v string) *ListLivyComputeResponseBodyDataLivyComputes {
+	s.ComputeId = &v
+	return s
+}
+
+func (s *ListLivyComputeResponseBodyDataLivyComputes) SetCreatedBy(v string) *ListLivyComputeResponseBodyDataLivyComputes {
+	s.CreatedBy = &v
+	return s
+}
+
+func (s *ListLivyComputeResponseBodyDataLivyComputes) SetEndpoint(v string) *ListLivyComputeResponseBodyDataLivyComputes {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *ListLivyComputeResponseBodyDataLivyComputes) SetEndpointInner(v string) *ListLivyComputeResponseBodyDataLivyComputes {
+	s.EndpointInner = &v
+	return s
+}
+
+func (s *ListLivyComputeResponseBodyDataLivyComputes) SetGmtCreate(v int64) *ListLivyComputeResponseBodyDataLivyComputes {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListLivyComputeResponseBodyDataLivyComputes) SetName(v string) *ListLivyComputeResponseBodyDataLivyComputes {
+	s.Name = &v
+	return s
+}
+
+func (s *ListLivyComputeResponseBodyDataLivyComputes) SetQueueName(v string) *ListLivyComputeResponseBodyDataLivyComputes {
+	s.QueueName = &v
+	return s
+}
+
+func (s *ListLivyComputeResponseBodyDataLivyComputes) SetStartTime(v int64) *ListLivyComputeResponseBodyDataLivyComputes {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListLivyComputeResponseBodyDataLivyComputes) SetStatus(v string) *ListLivyComputeResponseBodyDataLivyComputes {
+	s.Status = &v
+	return s
+}
+
+type ListLivyComputeResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLivyComputeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListLivyComputeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLivyComputeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLivyComputeResponse) SetHeaders(v map[string]*string) *ListLivyComputeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLivyComputeResponse) SetStatusCode(v int32) *ListLivyComputeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLivyComputeResponse) SetBody(v *ListLivyComputeResponseBody) *ListLivyComputeResponse {
+	s.Body = v
+	return s
+}
+
+type ListLivyComputeTokenRequest struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s ListLivyComputeTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLivyComputeTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLivyComputeTokenRequest) SetRegionId(v string) *ListLivyComputeTokenRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListLivyComputeTokenResponseBody struct {
+	// example:
+	//
+	// 1000000
+	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListLivyComputeTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListLivyComputeTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLivyComputeTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLivyComputeTokenResponseBody) SetCode(v string) *ListLivyComputeTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListLivyComputeTokenResponseBody) SetData(v *ListLivyComputeTokenResponseBodyData) *ListLivyComputeTokenResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListLivyComputeTokenResponseBody) SetMessage(v string) *ListLivyComputeTokenResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListLivyComputeTokenResponseBody) SetRequestId(v string) *ListLivyComputeTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListLivyComputeTokenResponseBodyData struct {
+	Tokens []*ListLivyComputeTokenResponseBodyDataTokens `json:"tokens,omitempty" xml:"tokens,omitempty" type:"Repeated"`
+}
+
+func (s ListLivyComputeTokenResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLivyComputeTokenResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListLivyComputeTokenResponseBodyData) SetTokens(v []*ListLivyComputeTokenResponseBodyDataTokens) *ListLivyComputeTokenResponseBodyData {
+	s.Tokens = v
+	return s
+}
+
+type ListLivyComputeTokenResponseBodyDataTokens struct {
+	// example:
+	//
+	// 1749456094000
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// alice
+	Createdby *string `json:"createdby,omitempty" xml:"createdby,omitempty"`
+	// example:
+	//
+	// 1749456994000
+	ExpireTime *int64 `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// example:
+	//
+	// 1749456098000
+	LastUsedTime *int64 `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 5d37843fb6f1e8
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// Token ID。
+	//
+	// example:
+	//
+	// lctk-xxxxxxxxxxx
+	TokenId *string `json:"tokenId,omitempty" xml:"tokenId,omitempty"`
+}
+
+func (s ListLivyComputeTokenResponseBodyDataTokens) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLivyComputeTokenResponseBodyDataTokens) GoString() string {
+	return s.String()
+}
+
+func (s *ListLivyComputeTokenResponseBodyDataTokens) SetCreateTime(v int64) *ListLivyComputeTokenResponseBodyDataTokens {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListLivyComputeTokenResponseBodyDataTokens) SetCreatedby(v string) *ListLivyComputeTokenResponseBodyDataTokens {
+	s.Createdby = &v
+	return s
+}
+
+func (s *ListLivyComputeTokenResponseBodyDataTokens) SetExpireTime(v int64) *ListLivyComputeTokenResponseBodyDataTokens {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *ListLivyComputeTokenResponseBodyDataTokens) SetLastUsedTime(v int64) *ListLivyComputeTokenResponseBodyDataTokens {
+	s.LastUsedTime = &v
+	return s
+}
+
+func (s *ListLivyComputeTokenResponseBodyDataTokens) SetName(v string) *ListLivyComputeTokenResponseBodyDataTokens {
+	s.Name = &v
+	return s
+}
+
+func (s *ListLivyComputeTokenResponseBodyDataTokens) SetToken(v string) *ListLivyComputeTokenResponseBodyDataTokens {
+	s.Token = &v
+	return s
+}
+
+func (s *ListLivyComputeTokenResponseBodyDataTokens) SetTokenId(v string) *ListLivyComputeTokenResponseBodyDataTokens {
+	s.TokenId = &v
+	return s
+}
+
+type ListLivyComputeTokenResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLivyComputeTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListLivyComputeTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLivyComputeTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLivyComputeTokenResponse) SetHeaders(v map[string]*string) *ListLivyComputeTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLivyComputeTokenResponse) SetStatusCode(v int32) *ListLivyComputeTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLivyComputeTokenResponse) SetBody(v *ListLivyComputeTokenResponseBody) *ListLivyComputeTokenResponse {
 	s.Body = v
 	return s
 }
@@ -8566,6 +10154,146 @@ func (s *ListWorkspacesResponse) SetBody(v *ListWorkspacesResponseBody) *ListWor
 	return s
 }
 
+type RefreshLivyComputeTokenRequest struct {
+	AutoExpireConfiguration *RefreshLivyComputeTokenRequestAutoExpireConfiguration `json:"autoExpireConfiguration,omitempty" xml:"autoExpireConfiguration,omitempty" type:"Struct"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// fe86812667f04v343
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s RefreshLivyComputeTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshLivyComputeTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshLivyComputeTokenRequest) SetAutoExpireConfiguration(v *RefreshLivyComputeTokenRequestAutoExpireConfiguration) *RefreshLivyComputeTokenRequest {
+	s.AutoExpireConfiguration = v
+	return s
+}
+
+func (s *RefreshLivyComputeTokenRequest) SetName(v string) *RefreshLivyComputeTokenRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *RefreshLivyComputeTokenRequest) SetToken(v string) *RefreshLivyComputeTokenRequest {
+	s.Token = &v
+	return s
+}
+
+func (s *RefreshLivyComputeTokenRequest) SetRegionId(v string) *RefreshLivyComputeTokenRequest {
+	s.RegionId = &v
+	return s
+}
+
+type RefreshLivyComputeTokenRequestAutoExpireConfiguration struct {
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// 7
+	ExpireDays *int32 `json:"expireDays,omitempty" xml:"expireDays,omitempty"`
+}
+
+func (s RefreshLivyComputeTokenRequestAutoExpireConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshLivyComputeTokenRequestAutoExpireConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshLivyComputeTokenRequestAutoExpireConfiguration) SetEnable(v bool) *RefreshLivyComputeTokenRequestAutoExpireConfiguration {
+	s.Enable = &v
+	return s
+}
+
+func (s *RefreshLivyComputeTokenRequestAutoExpireConfiguration) SetExpireDays(v int32) *RefreshLivyComputeTokenRequestAutoExpireConfiguration {
+	s.ExpireDays = &v
+	return s
+}
+
+type RefreshLivyComputeTokenResponseBody struct {
+	// example:
+	//
+	// 1000000
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s RefreshLivyComputeTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshLivyComputeTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshLivyComputeTokenResponseBody) SetCode(v string) *RefreshLivyComputeTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RefreshLivyComputeTokenResponseBody) SetMessage(v string) *RefreshLivyComputeTokenResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RefreshLivyComputeTokenResponseBody) SetRequestId(v string) *RefreshLivyComputeTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RefreshLivyComputeTokenResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshLivyComputeTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RefreshLivyComputeTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshLivyComputeTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshLivyComputeTokenResponse) SetHeaders(v map[string]*string) *RefreshLivyComputeTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshLivyComputeTokenResponse) SetStatusCode(v int32) *RefreshLivyComputeTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RefreshLivyComputeTokenResponse) SetBody(v *RefreshLivyComputeTokenResponseBody) *RefreshLivyComputeTokenResponse {
+	s.Body = v
+	return s
+}
+
 type StartJobRunRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -8834,6 +10562,93 @@ func (s *StartJobRunResponse) SetStatusCode(v int32) *StartJobRunResponse {
 }
 
 func (s *StartJobRunResponse) SetBody(v *StartJobRunResponseBody) *StartJobRunResponse {
+	s.Body = v
+	return s
+}
+
+type StartLivyComputeRequest struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s StartLivyComputeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartLivyComputeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartLivyComputeRequest) SetRegionId(v string) *StartLivyComputeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StartLivyComputeResponseBody struct {
+	// example:
+	//
+	// 1000000
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s StartLivyComputeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartLivyComputeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartLivyComputeResponseBody) SetCode(v string) *StartLivyComputeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StartLivyComputeResponseBody) SetMessage(v string) *StartLivyComputeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StartLivyComputeResponseBody) SetRequestId(v string) *StartLivyComputeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartLivyComputeResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartLivyComputeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartLivyComputeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartLivyComputeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartLivyComputeResponse) SetHeaders(v map[string]*string) *StartLivyComputeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartLivyComputeResponse) SetStatusCode(v int32) *StartLivyComputeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartLivyComputeResponse) SetBody(v *StartLivyComputeResponseBody) *StartLivyComputeResponse {
 	s.Body = v
 	return s
 }
@@ -9177,6 +10992,93 @@ func (s *StartSessionClusterResponse) SetBody(v *StartSessionClusterResponseBody
 	return s
 }
 
+type StopLivyComputeRequest struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s StopLivyComputeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopLivyComputeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopLivyComputeRequest) SetRegionId(v string) *StopLivyComputeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StopLivyComputeResponseBody struct {
+	// example:
+	//
+	// 1000000
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 484D9DDA-300D-525E-AF7A-0CCCA5C64A7A
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s StopLivyComputeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopLivyComputeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopLivyComputeResponseBody) SetCode(v string) *StopLivyComputeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StopLivyComputeResponseBody) SetMessage(v string) *StopLivyComputeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StopLivyComputeResponseBody) SetRequestId(v string) *StopLivyComputeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopLivyComputeResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopLivyComputeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopLivyComputeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopLivyComputeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopLivyComputeResponse) SetHeaders(v map[string]*string) *StopLivyComputeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopLivyComputeResponse) SetStatusCode(v int32) *StopLivyComputeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopLivyComputeResponse) SetBody(v *StopLivyComputeResponseBody) *StopLivyComputeResponse {
+	s.Body = v
+	return s
+}
+
 type StopSessionClusterRequest struct {
 	// The queue name.
 	//
@@ -9352,6 +11254,278 @@ func (s *TerminateSqlStatementResponse) SetStatusCode(v int32) *TerminateSqlStat
 }
 
 func (s *TerminateSqlStatementResponse) SetBody(v *TerminateSqlStatementResponseBody) *TerminateSqlStatementResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateLivyComputeRequest struct {
+	// example:
+	//
+	// Token
+	AuthType               *string                                         `json:"authType,omitempty" xml:"authType,omitempty"`
+	AutoStartConfiguration *UpdateLivyComputeRequestAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
+	AutoStopConfiguration  *UpdateLivyComputeRequestAutoStopConfiguration  `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	CpuLimit *string `json:"cpuLimit,omitempty" xml:"cpuLimit,omitempty"`
+	// example:
+	//
+	// esr-4.3.0 (Spark 3.5.2, Scala 2.12)
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	EnablePublic          *bool   `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
+	// example:
+	//
+	// ev-cq146allhtgkulp5smk0
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// example:
+	//
+	// false
+	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "sparkDefaultsConf": "spark.driver.cores     1\\nspark.driver.memory    4g\\nspark.executor.cores   1\\nspark.executor.memory  4g\\n",
+	//
+	//   "sparkBlackListConf": "spark.driver.cores\\nspark.driver.memory",
+	//
+	//   "livyConf": "livy.server.session.timeout  1h\\n",
+	//
+	//   "livyClientConf": "livy.rsc.sql.num-rows  1000\\n"
+	//
+	// }
+	LivyServerConf *string `json:"livyServerConf,omitempty" xml:"livyServerConf,omitempty"`
+	// example:
+	//
+	// 0.8.0
+	LivyVersion *string `json:"livyVersion,omitempty" xml:"livyVersion,omitempty"`
+	// example:
+	//
+	// 4Gi
+	MemoryLimit *string `json:"memoryLimit,omitempty" xml:"memoryLimit,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// test
+	NetworkName *string `json:"networkName,omitempty" xml:"networkName,omitempty"`
+	// example:
+	//
+	// root_queue
+	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// example:
+	//
+	// esr-4.3.0 (Spark 3.5.2, Scala 2.12, Java Runtime)
+	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s UpdateLivyComputeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLivyComputeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLivyComputeRequest) SetAuthType(v string) *UpdateLivyComputeRequest {
+	s.AuthType = &v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetAutoStartConfiguration(v *UpdateLivyComputeRequestAutoStartConfiguration) *UpdateLivyComputeRequest {
+	s.AutoStartConfiguration = v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetAutoStopConfiguration(v *UpdateLivyComputeRequestAutoStopConfiguration) *UpdateLivyComputeRequest {
+	s.AutoStopConfiguration = v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetCpuLimit(v string) *UpdateLivyComputeRequest {
+	s.CpuLimit = &v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetDisplayReleaseVersion(v string) *UpdateLivyComputeRequest {
+	s.DisplayReleaseVersion = &v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetEnablePublic(v bool) *UpdateLivyComputeRequest {
+	s.EnablePublic = &v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetEnvironmentId(v string) *UpdateLivyComputeRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetFusion(v bool) *UpdateLivyComputeRequest {
+	s.Fusion = &v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetLivyServerConf(v string) *UpdateLivyComputeRequest {
+	s.LivyServerConf = &v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetLivyVersion(v string) *UpdateLivyComputeRequest {
+	s.LivyVersion = &v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetMemoryLimit(v string) *UpdateLivyComputeRequest {
+	s.MemoryLimit = &v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetName(v string) *UpdateLivyComputeRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetNetworkName(v string) *UpdateLivyComputeRequest {
+	s.NetworkName = &v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetQueueName(v string) *UpdateLivyComputeRequest {
+	s.QueueName = &v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetReleaseVersion(v string) *UpdateLivyComputeRequest {
+	s.ReleaseVersion = &v
+	return s
+}
+
+func (s *UpdateLivyComputeRequest) SetRegionId(v string) *UpdateLivyComputeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateLivyComputeRequestAutoStartConfiguration struct {
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+}
+
+func (s UpdateLivyComputeRequestAutoStartConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLivyComputeRequestAutoStartConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLivyComputeRequestAutoStartConfiguration) SetEnable(v bool) *UpdateLivyComputeRequestAutoStartConfiguration {
+	s.Enable = &v
+	return s
+}
+
+type UpdateLivyComputeRequestAutoStopConfiguration struct {
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// 300
+	IdleTimeoutMinutes *int64 `json:"idleTimeoutMinutes,omitempty" xml:"idleTimeoutMinutes,omitempty"`
+}
+
+func (s UpdateLivyComputeRequestAutoStopConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLivyComputeRequestAutoStopConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLivyComputeRequestAutoStopConfiguration) SetEnable(v bool) *UpdateLivyComputeRequestAutoStopConfiguration {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateLivyComputeRequestAutoStopConfiguration) SetIdleTimeoutMinutes(v int64) *UpdateLivyComputeRequestAutoStopConfiguration {
+	s.IdleTimeoutMinutes = &v
+	return s
+}
+
+type UpdateLivyComputeResponseBody struct {
+	// example:
+	//
+	// 1000000
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateLivyComputeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLivyComputeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLivyComputeResponseBody) SetCode(v string) *UpdateLivyComputeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateLivyComputeResponseBody) SetMessage(v string) *UpdateLivyComputeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateLivyComputeResponseBody) SetRequestId(v string) *UpdateLivyComputeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateLivyComputeResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateLivyComputeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateLivyComputeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLivyComputeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLivyComputeResponse) SetHeaders(v map[string]*string) *UpdateLivyComputeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLivyComputeResponse) SetStatusCode(v int32) *UpdateLivyComputeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLivyComputeResponse) SetBody(v *UpdateLivyComputeResponseBody) *UpdateLivyComputeResponse {
 	s.Body = v
 	return s
 }
@@ -10818,6 +12992,210 @@ func (client *Client) CancelJobRun(workspaceId *string, jobRunId *string, reques
 
 // Summary:
 //
+// 创建Livy compute
+//
+// @param request - CreateLivyComputeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLivyComputeResponse
+func (client *Client) CreateLivyComputeWithOptions(workspaceBizId *string, request *CreateLivyComputeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLivyComputeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthType)) {
+		body["authType"] = request.AuthType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoStartConfiguration)) {
+		body["autoStartConfiguration"] = request.AutoStartConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoStopConfiguration)) {
+		body["autoStopConfiguration"] = request.AutoStopConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuLimit)) {
+		body["cpuLimit"] = request.CpuLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayReleaseVersion)) {
+		body["displayReleaseVersion"] = request.DisplayReleaseVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnablePublic)) {
+		body["enablePublic"] = request.EnablePublic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		body["environmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fusion)) {
+		body["fusion"] = request.Fusion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LivyServerConf)) {
+		body["livyServerConf"] = request.LivyServerConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LivyVersion)) {
+		body["livyVersion"] = request.LivyVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemoryLimit)) {
+		body["memoryLimit"] = request.MemoryLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkName)) {
+		body["networkName"] = request.NetworkName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueName)) {
+		body["queueName"] = request.QueueName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseVersion)) {
+		body["releaseVersion"] = request.ReleaseVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLivyCompute"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceBizId)) + "/livycompute"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateLivyComputeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Livy compute
+//
+// @param request - CreateLivyComputeRequest
+//
+// @return CreateLivyComputeResponse
+func (client *Client) CreateLivyCompute(workspaceBizId *string, request *CreateLivyComputeRequest) (_result *CreateLivyComputeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateLivyComputeResponse{}
+	_body, _err := client.CreateLivyComputeWithOptions(workspaceBizId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Livy Compute的token
+//
+// @param request - CreateLivyComputeTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLivyComputeTokenResponse
+func (client *Client) CreateLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, request *CreateLivyComputeTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLivyComputeTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoExpireConfiguration)) {
+		body["autoExpireConfiguration"] = request.AutoExpireConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		body["token"] = request.Token
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLivyComputeToken"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceBizId)) + "/livycompute/" + tea.StringValue(openapiutil.GetEncodeParam(livyComputeId)) + "/token"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateLivyComputeTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Livy Compute的token
+//
+// @param request - CreateLivyComputeTokenRequest
+//
+// @return CreateLivyComputeTokenResponse
+func (client *Client) CreateLivyComputeToken(workspaceBizId *string, livyComputeId *string, request *CreateLivyComputeTokenRequest) (_result *CreateLivyComputeTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateLivyComputeTokenResponse{}
+	_body, _err := client.CreateLivyComputeTokenWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a workflow.
 //
 // @param tmpReq - CreateProcessDefinitionWithScheduleRequest
@@ -11294,6 +13672,134 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 
 // Summary:
 //
+// 删除livy compute
+//
+// @param request - DeleteLivyComputeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLivyComputeResponse
+func (client *Client) DeleteLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *DeleteLivyComputeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLivyComputeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLivyCompute"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceBizId)) + "/livycompute/" + tea.StringValue(openapiutil.GetEncodeParam(livyComputeId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLivyComputeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除livy compute
+//
+// @param request - DeleteLivyComputeRequest
+//
+// @return DeleteLivyComputeResponse
+func (client *Client) DeleteLivyCompute(workspaceBizId *string, livyComputeId *string, request *DeleteLivyComputeRequest) (_result *DeleteLivyComputeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteLivyComputeResponse{}
+	_body, _err := client.DeleteLivyComputeWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Livy Compute的token
+//
+// @param request - DeleteLivyComputeTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLivyComputeTokenResponse
+func (client *Client) DeleteLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, tokenId *string, request *DeleteLivyComputeTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLivyComputeTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLivyComputeToken"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceBizId)) + "/livycompute/" + tea.StringValue(openapiutil.GetEncodeParam(livyComputeId)) + "/token/" + tea.StringValue(openapiutil.GetEncodeParam(tokenId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLivyComputeTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Livy Compute的token
+//
+// @param request - DeleteLivyComputeTokenRequest
+//
+// @return DeleteLivyComputeTokenResponse
+func (client *Client) DeleteLivyComputeToken(workspaceBizId *string, livyComputeId *string, tokenId *string, request *DeleteLivyComputeTokenRequest) (_result *DeleteLivyComputeTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteLivyComputeTokenResponse{}
+	_body, _err := client.DeleteLivyComputeTokenWithOptions(workspaceBizId, livyComputeId, tokenId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the queue of a workspace.
 //
 // @param request - EditWorkspaceQueueRequest
@@ -11571,6 +14077,134 @@ func (client *Client) GetJobRun(workspaceId *string, jobRunId *string, request *
 	headers := make(map[string]*string)
 	_result = &GetJobRunResponse{}
 	_body, _err := client.GetJobRunWithOptions(workspaceId, jobRunId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取livy compute
+//
+// @param request - GetLivyComputeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLivyComputeResponse
+func (client *Client) GetLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *GetLivyComputeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLivyComputeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLivyCompute"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceBizId)) + "/livycompute/" + tea.StringValue(openapiutil.GetEncodeParam(livyComputeId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLivyComputeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取livy compute
+//
+// @param request - GetLivyComputeRequest
+//
+// @return GetLivyComputeResponse
+func (client *Client) GetLivyCompute(workspaceBizId *string, livyComputeId *string, request *GetLivyComputeRequest) (_result *GetLivyComputeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetLivyComputeResponse{}
+	_body, _err := client.GetLivyComputeWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取livy compute token
+//
+// @param request - GetLivyComputeTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLivyComputeTokenResponse
+func (client *Client) GetLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, tokenId *string, request *GetLivyComputeTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLivyComputeTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLivyComputeToken"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceBizId)) + "/livycompute/" + tea.StringValue(openapiutil.GetEncodeParam(livyComputeId)) + "/token/" + tea.StringValue(openapiutil.GetEncodeParam(tokenId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLivyComputeTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取livy compute token
+//
+// @param request - GetLivyComputeTokenRequest
+//
+// @return GetLivyComputeTokenResponse
+func (client *Client) GetLivyComputeToken(workspaceBizId *string, livyComputeId *string, tokenId *string, request *GetLivyComputeTokenRequest) (_result *GetLivyComputeTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetLivyComputeTokenResponse{}
+	_body, _err := client.GetLivyComputeTokenWithOptions(workspaceBizId, livyComputeId, tokenId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12208,6 +14842,138 @@ func (client *Client) ListKyuubiToken(workspaceId *string, kyuubiServiceId *stri
 
 // Summary:
 //
+// 列出livy compute
+//
+// @param request - ListLivyComputeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLivyComputeResponse
+func (client *Client) ListLivyComputeWithOptions(workspaceBizId *string, request *ListLivyComputeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLivyComputeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["environmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLivyCompute"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceBizId)) + "/livycompute"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLivyComputeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出livy compute
+//
+// @param request - ListLivyComputeRequest
+//
+// @return ListLivyComputeResponse
+func (client *Client) ListLivyCompute(workspaceBizId *string, request *ListLivyComputeRequest) (_result *ListLivyComputeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListLivyComputeResponse{}
+	_body, _err := client.ListLivyComputeWithOptions(workspaceBizId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出livy compute token
+//
+// @param request - ListLivyComputeTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLivyComputeTokenResponse
+func (client *Client) ListLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, request *ListLivyComputeTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLivyComputeTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLivyComputeToken"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceBizId)) + "/livycompute/" + tea.StringValue(openapiutil.GetEncodeParam(livyComputeId)) + "/token"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLivyComputeTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出livy compute token
+//
+// @param request - ListLivyComputeTokenRequest
+//
+// @return ListLivyComputeTokenResponse
+func (client *Client) ListLivyComputeToken(workspaceBizId *string, livyComputeId *string, request *ListLivyComputeTokenRequest) (_result *ListLivyComputeTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListLivyComputeTokenResponse{}
+	_body, _err := client.ListLivyComputeTokenWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get Log Content
 //
 // @param request - ListLogContentsRequest
@@ -12610,6 +15376,84 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
+// 更新Livy Compute的token
+//
+// @param request - RefreshLivyComputeTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshLivyComputeTokenResponse
+func (client *Client) RefreshLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, tokenId *string, request *RefreshLivyComputeTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RefreshLivyComputeTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoExpireConfiguration)) {
+		body["autoExpireConfiguration"] = request.AutoExpireConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		body["token"] = request.Token
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshLivyComputeToken"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceBizId)) + "/livycompute/" + tea.StringValue(openapiutil.GetEncodeParam(livyComputeId)) + "/token/" + tea.StringValue(openapiutil.GetEncodeParam(tokenId))),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefreshLivyComputeTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Livy Compute的token
+//
+// @param request - RefreshLivyComputeTokenRequest
+//
+// @return RefreshLivyComputeTokenResponse
+func (client *Client) RefreshLivyComputeToken(workspaceBizId *string, livyComputeId *string, tokenId *string, request *RefreshLivyComputeTokenRequest) (_result *RefreshLivyComputeTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RefreshLivyComputeTokenResponse{}
+	_body, _err := client.RefreshLivyComputeTokenWithOptions(workspaceBizId, livyComputeId, tokenId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts a Spark job.
 //
 // @param request - StartJobRunRequest
@@ -12715,6 +15559,70 @@ func (client *Client) StartJobRun(workspaceId *string, request *StartJobRunReque
 	headers := make(map[string]*string)
 	_result = &StartJobRunResponse{}
 	_body, _err := client.StartJobRunWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动livy compute
+//
+// @param request - StartLivyComputeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartLivyComputeResponse
+func (client *Client) StartLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *StartLivyComputeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartLivyComputeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartLivyCompute"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceBizId)) + "/livycompute/" + tea.StringValue(openapiutil.GetEncodeParam(livyComputeId)) + "/start"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartLivyComputeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动livy compute
+//
+// @param request - StartLivyComputeRequest
+//
+// @return StartLivyComputeResponse
+func (client *Client) StartLivyCompute(workspaceBizId *string, livyComputeId *string, request *StartLivyComputeRequest) (_result *StartLivyComputeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartLivyComputeResponse{}
+	_body, _err := client.StartLivyComputeWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12902,6 +15810,70 @@ func (client *Client) StartSessionCluster(workspaceId *string, request *StartSes
 
 // Summary:
 //
+// 停止livy compute
+//
+// @param request - StopLivyComputeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopLivyComputeResponse
+func (client *Client) StopLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *StopLivyComputeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopLivyComputeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopLivyCompute"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceBizId)) + "/livycompute/" + tea.StringValue(openapiutil.GetEncodeParam(livyComputeId)) + "/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopLivyComputeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止livy compute
+//
+// @param request - StopLivyComputeRequest
+//
+// @return StopLivyComputeResponse
+func (client *Client) StopLivyCompute(workspaceBizId *string, livyComputeId *string, request *StopLivyComputeRequest) (_result *StopLivyComputeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopLivyComputeResponse{}
+	_body, _err := client.StopLivyComputeWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Stops a session.
 //
 // @param request - StopSessionClusterRequest
@@ -13031,6 +16003,132 @@ func (client *Client) TerminateSqlStatement(workspaceId *string, statementId *st
 	headers := make(map[string]*string)
 	_result = &TerminateSqlStatementResponse{}
 	_body, _err := client.TerminateSqlStatementWithOptions(workspaceId, statementId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新livy compute
+//
+// @param request - UpdateLivyComputeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLivyComputeResponse
+func (client *Client) UpdateLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *UpdateLivyComputeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLivyComputeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthType)) {
+		body["authType"] = request.AuthType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoStartConfiguration)) {
+		body["autoStartConfiguration"] = request.AutoStartConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoStopConfiguration)) {
+		body["autoStopConfiguration"] = request.AutoStopConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuLimit)) {
+		body["cpuLimit"] = request.CpuLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayReleaseVersion)) {
+		body["displayReleaseVersion"] = request.DisplayReleaseVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnablePublic)) {
+		body["enablePublic"] = request.EnablePublic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		body["environmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fusion)) {
+		body["fusion"] = request.Fusion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LivyServerConf)) {
+		body["livyServerConf"] = request.LivyServerConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LivyVersion)) {
+		body["livyVersion"] = request.LivyVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemoryLimit)) {
+		body["memoryLimit"] = request.MemoryLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkName)) {
+		body["networkName"] = request.NetworkName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueName)) {
+		body["queueName"] = request.QueueName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseVersion)) {
+		body["releaseVersion"] = request.ReleaseVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLivyCompute"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceBizId)) + "/livycompute/" + tea.StringValue(openapiutil.GetEncodeParam(livyComputeId))),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLivyComputeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新livy compute
+//
+// @param request - UpdateLivyComputeRequest
+//
+// @return UpdateLivyComputeResponse
+func (client *Client) UpdateLivyCompute(workspaceBizId *string, livyComputeId *string, request *UpdateLivyComputeRequest) (_result *UpdateLivyComputeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateLivyComputeResponse{}
+	_body, _err := client.UpdateLivyComputeWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
