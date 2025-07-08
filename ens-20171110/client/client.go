@@ -13632,6 +13632,7 @@ func (s *DescribeAICImagesResponseBody) SetTotalCount(v int32) *DescribeAICImage
 }
 
 type DescribeAICImagesResponseBodyImages struct {
+	AndroidVersion *string `json:"AndroidVersion,omitempty" xml:"AndroidVersion,omitempty"`
 	// The time when the image was created.
 	//
 	// example:
@@ -13676,6 +13677,11 @@ func (s DescribeAICImagesResponseBodyImages) String() string {
 
 func (s DescribeAICImagesResponseBodyImages) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAICImagesResponseBodyImages) SetAndroidVersion(v string) *DescribeAICImagesResponseBodyImages {
+	s.AndroidVersion = &v
+	return s
 }
 
 func (s *DescribeAICImagesResponseBodyImages) SetCreationTime(v string) *DescribeAICImagesResponseBodyImages {
@@ -55460,6 +55466,210 @@ func (s *RemoveSDGResponse) SetBody(v *RemoveSDGResponseBody) *RemoveSDGResponse
 	return s
 }
 
+type RemoveSDGsRequest struct {
+	// This parameter is required.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	SdgIds      []*string `json:"SdgIds,omitempty" xml:"SdgIds,omitempty" type:"Repeated"`
+}
+
+func (s RemoveSDGsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveSDGsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveSDGsRequest) SetInstanceIds(v []*string) *RemoveSDGsRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *RemoveSDGsRequest) SetSdgIds(v []*string) *RemoveSDGsRequest {
+	s.SdgIds = v
+	return s
+}
+
+type RemoveSDGsShrinkRequest struct {
+	// This parameter is required.
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	SdgIdsShrink      *string `json:"SdgIds,omitempty" xml:"SdgIds,omitempty"`
+}
+
+func (s RemoveSDGsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveSDGsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveSDGsShrinkRequest) SetInstanceIdsShrink(v string) *RemoveSDGsShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *RemoveSDGsShrinkRequest) SetSdgIdsShrink(v string) *RemoveSDGsShrinkRequest {
+	s.SdgIdsShrink = &v
+	return s
+}
+
+type RemoveSDGsResponseBody struct {
+	Data *RemoveSDGsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 903819D9-D18B-5C59-8DFD-20D56FD2DAE4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveSDGsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveSDGsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveSDGsResponseBody) SetData(v *RemoveSDGsResponseBodyData) *RemoveSDGsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RemoveSDGsResponseBody) SetRequestId(v string) *RemoveSDGsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveSDGsResponseBodyData struct {
+	// example:
+	//
+	// success
+	Message *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result  *RemoveSDGsResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RemoveSDGsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveSDGsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveSDGsResponseBodyData) SetMessage(v string) *RemoveSDGsResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *RemoveSDGsResponseBodyData) SetResult(v *RemoveSDGsResponseBodyDataResult) *RemoveSDGsResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *RemoveSDGsResponseBodyData) SetSuccess(v bool) *RemoveSDGsResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type RemoveSDGsResponseBodyDataResult struct {
+	// example:
+	//
+	// 0
+	FailedCount *int64                                         `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedItems []*RemoveSDGsResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SuccessCount *int64 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s RemoveSDGsResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveSDGsResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveSDGsResponseBodyDataResult) SetFailedCount(v int64) *RemoveSDGsResponseBodyDataResult {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *RemoveSDGsResponseBodyDataResult) SetFailedItems(v []*RemoveSDGsResponseBodyDataResultFailedItems) *RemoveSDGsResponseBodyDataResult {
+	s.FailedItems = v
+	return s
+}
+
+func (s *RemoveSDGsResponseBodyDataResult) SetSuccessCount(v int64) *RemoveSDGsResponseBodyDataResult {
+	s.SuccessCount = &v
+	return s
+}
+
+type RemoveSDGsResponseBodyDataResultFailedItems struct {
+	// example:
+	//
+	// sdg not found
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// aic-xxxxx-0
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s RemoveSDGsResponseBodyDataResultFailedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveSDGsResponseBodyDataResultFailedItems) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveSDGsResponseBodyDataResultFailedItems) SetErrMessage(v string) *RemoveSDGsResponseBodyDataResultFailedItems {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *RemoveSDGsResponseBodyDataResultFailedItems) SetInstanceId(v string) *RemoveSDGsResponseBodyDataResultFailedItems {
+	s.InstanceId = &v
+	return s
+}
+
+type RemoveSDGsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveSDGsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RemoveSDGsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveSDGsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveSDGsResponse) SetHeaders(v map[string]*string) *RemoveSDGsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveSDGsResponse) SetStatusCode(v int32) *RemoveSDGsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveSDGsResponse) SetBody(v *RemoveSDGsResponseBody) *RemoveSDGsResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveVSwitchesFromEpnInstanceRequest struct {
 	// The ID of theEPN instance.
 	//
@@ -80964,6 +81174,80 @@ func (client *Client) RemoveSDG(request *RemoveSDGRequest) (_result *RemoveSDGRe
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveSDGResponse{}
 	_body, _err := client.RemoveSDGWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 可移除所有版本的sdg，恢复为本地盘挂载
+//
+// @param tmpReq - RemoveSDGsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveSDGsResponse
+func (client *Client) RemoveSDGsWithOptions(tmpReq *RemoveSDGsRequest, runtime *util.RuntimeOptions) (_result *RemoveSDGsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RemoveSDGsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SdgIds)) {
+		request.SdgIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SdgIds, tea.String("SdgIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SdgIdsShrink)) {
+		query["SdgIds"] = request.SdgIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveSDGs"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveSDGsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 可移除所有版本的sdg，恢复为本地盘挂载
+//
+// @param request - RemoveSDGsRequest
+//
+// @return RemoveSDGsResponse
+func (client *Client) RemoveSDGs(request *RemoveSDGsRequest) (_result *RemoveSDGsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveSDGsResponse{}
+	_body, _err := client.RemoveSDGsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
