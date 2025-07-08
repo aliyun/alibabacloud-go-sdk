@@ -8261,7 +8261,8 @@ func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsRe
 }
 
 type StartAIAnalysisRequest struct {
-	AnalysisTool *string `json:"analysisTool,omitempty" xml:"analysisTool,omitempty"`
+	AnalysisTool   *string   `json:"analysisTool,omitempty" xml:"analysisTool,omitempty"`
+	AnalysisParams []*string `json:"analysis_params,omitempty" xml:"analysis_params,omitempty" type:"Repeated"`
 	// example:
 	//
 	// ecs_sysom
@@ -8269,11 +8270,16 @@ type StartAIAnalysisRequest struct {
 	// example:
 	//
 	// python_test
-	Comms *string `json:"comms,omitempty" xml:"comms,omitempty"`
+	Comms     *string `json:"comms,omitempty" xml:"comms,omitempty"`
+	CreatedBy *string `json:"created_by,omitempty" xml:"created_by,omitempty"`
 	// example:
 	//
 	// i-wz9dej066kii4goqxxxx
-	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	Instance       *string  `json:"instance,omitempty" xml:"instance,omitempty"`
+	InstanceType   *string  `json:"instance_type,omitempty" xml:"instance_type,omitempty"`
+	IterationFunc  *string  `json:"iteration_func,omitempty" xml:"iteration_func,omitempty"`
+	IterationMod   *string  `json:"iteration_mod,omitempty" xml:"iteration_mod,omitempty"`
+	IterationRange []*int32 `json:"iteration_range,omitempty" xml:"iteration_range,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2421,36547,10043
@@ -8285,7 +8291,8 @@ type StartAIAnalysisRequest struct {
 	// example:
 	//
 	// 2000
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	Timeout *int32  `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	Uid     *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s StartAIAnalysisRequest) String() string {
@@ -8301,6 +8308,11 @@ func (s *StartAIAnalysisRequest) SetAnalysisTool(v string) *StartAIAnalysisReque
 	return s
 }
 
+func (s *StartAIAnalysisRequest) SetAnalysisParams(v []*string) *StartAIAnalysisRequest {
+	s.AnalysisParams = v
+	return s
+}
+
 func (s *StartAIAnalysisRequest) SetChannel(v string) *StartAIAnalysisRequest {
 	s.Channel = &v
 	return s
@@ -8311,8 +8323,33 @@ func (s *StartAIAnalysisRequest) SetComms(v string) *StartAIAnalysisRequest {
 	return s
 }
 
+func (s *StartAIAnalysisRequest) SetCreatedBy(v string) *StartAIAnalysisRequest {
+	s.CreatedBy = &v
+	return s
+}
+
 func (s *StartAIAnalysisRequest) SetInstance(v string) *StartAIAnalysisRequest {
 	s.Instance = &v
+	return s
+}
+
+func (s *StartAIAnalysisRequest) SetInstanceType(v string) *StartAIAnalysisRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *StartAIAnalysisRequest) SetIterationFunc(v string) *StartAIAnalysisRequest {
+	s.IterationFunc = &v
+	return s
+}
+
+func (s *StartAIAnalysisRequest) SetIterationMod(v string) *StartAIAnalysisRequest {
+	s.IterationMod = &v
+	return s
+}
+
+func (s *StartAIAnalysisRequest) SetIterationRange(v []*int32) *StartAIAnalysisRequest {
+	s.IterationRange = v
 	return s
 }
 
@@ -8328,6 +8365,11 @@ func (s *StartAIAnalysisRequest) SetRegion(v string) *StartAIAnalysisRequest {
 
 func (s *StartAIAnalysisRequest) SetTimeout(v int32) *StartAIAnalysisRequest {
 	s.Timeout = &v
+	return s
+}
+
+func (s *StartAIAnalysisRequest) SetUid(v string) *StartAIAnalysisRequest {
+	s.Uid = &v
 	return s
 }
 
@@ -8422,6 +8464,205 @@ func (s *StartAIAnalysisResponse) SetStatusCode(v int32) *StartAIAnalysisRespons
 }
 
 func (s *StartAIAnalysisResponse) SetBody(v *StartAIAnalysisResponseBody) *StartAIAnalysisResponse {
+	s.Body = v
+	return s
+}
+
+type StartAIDiffAnalysisRequest struct {
+	// This parameter is required.
+	Task1 *StartAIDiffAnalysisRequestTask1 `json:"task1,omitempty" xml:"task1,omitempty" type:"Struct"`
+	// This parameter is required.
+	Task2 *StartAIDiffAnalysisRequestTask2 `json:"task2,omitempty" xml:"task2,omitempty" type:"Struct"`
+}
+
+func (s StartAIDiffAnalysisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAIDiffAnalysisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartAIDiffAnalysisRequest) SetTask1(v *StartAIDiffAnalysisRequestTask1) *StartAIDiffAnalysisRequest {
+	s.Task1 = v
+	return s
+}
+
+func (s *StartAIDiffAnalysisRequest) SetTask2(v *StartAIDiffAnalysisRequestTask2) *StartAIDiffAnalysisRequest {
+	s.Task2 = v
+	return s
+}
+
+type StartAIDiffAnalysisRequestTask1 struct {
+	// example:
+	//
+	// 16896fa8-37f6-4c70-bb32-67fa9817d426
+	AnalysisId *string   `json:"analysisId,omitempty" xml:"analysisId,omitempty"`
+	Pids       []*string `json:"pids,omitempty" xml:"pids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4660551334179.955
+	StepEnd *float32 `json:"step_end,omitempty" xml:"step_end,omitempty"`
+	// example:
+	//
+	// 4660550379415.497
+	StepStart *float32 `json:"step_start,omitempty" xml:"step_start,omitempty"`
+}
+
+func (s StartAIDiffAnalysisRequestTask1) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAIDiffAnalysisRequestTask1) GoString() string {
+	return s.String()
+}
+
+func (s *StartAIDiffAnalysisRequestTask1) SetAnalysisId(v string) *StartAIDiffAnalysisRequestTask1 {
+	s.AnalysisId = &v
+	return s
+}
+
+func (s *StartAIDiffAnalysisRequestTask1) SetPids(v []*string) *StartAIDiffAnalysisRequestTask1 {
+	s.Pids = v
+	return s
+}
+
+func (s *StartAIDiffAnalysisRequestTask1) SetStepEnd(v float32) *StartAIDiffAnalysisRequestTask1 {
+	s.StepEnd = &v
+	return s
+}
+
+func (s *StartAIDiffAnalysisRequestTask1) SetStepStart(v float32) *StartAIDiffAnalysisRequestTask1 {
+	s.StepStart = &v
+	return s
+}
+
+type StartAIDiffAnalysisRequestTask2 struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 16896fa8-37f6-4c70-bb32-67fa9817d426
+	AnalysisId *string `json:"analysisId,omitempty" xml:"analysisId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 452651:python3 ./test.py
+	Pids []*string `json:"pids,omitempty" xml:"pids,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4660551334179.955
+	StepEnd *float32 `json:"step_end,omitempty" xml:"step_end,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4660550379415.497
+	StepStart *float32 `json:"step_start,omitempty" xml:"step_start,omitempty"`
+}
+
+func (s StartAIDiffAnalysisRequestTask2) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAIDiffAnalysisRequestTask2) GoString() string {
+	return s.String()
+}
+
+func (s *StartAIDiffAnalysisRequestTask2) SetAnalysisId(v string) *StartAIDiffAnalysisRequestTask2 {
+	s.AnalysisId = &v
+	return s
+}
+
+func (s *StartAIDiffAnalysisRequestTask2) SetPids(v []*string) *StartAIDiffAnalysisRequestTask2 {
+	s.Pids = v
+	return s
+}
+
+func (s *StartAIDiffAnalysisRequestTask2) SetStepEnd(v float32) *StartAIDiffAnalysisRequestTask2 {
+	s.StepEnd = &v
+	return s
+}
+
+func (s *StartAIDiffAnalysisRequestTask2) SetStepStart(v float32) *StartAIDiffAnalysisRequestTask2 {
+	s.StepStart = &v
+	return s
+}
+
+type StartAIDiffAnalysisResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2D693121-C925-5154-8DF6-C09A8B369822
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s StartAIDiffAnalysisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAIDiffAnalysisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartAIDiffAnalysisResponseBody) SetCode(v string) *StartAIDiffAnalysisResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StartAIDiffAnalysisResponseBody) SetData(v string) *StartAIDiffAnalysisResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *StartAIDiffAnalysisResponseBody) SetMessage(v string) *StartAIDiffAnalysisResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StartAIDiffAnalysisResponseBody) SetRequestId(v string) *StartAIDiffAnalysisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartAIDiffAnalysisResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartAIDiffAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartAIDiffAnalysisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAIDiffAnalysisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartAIDiffAnalysisResponse) SetHeaders(v map[string]*string) *StartAIDiffAnalysisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartAIDiffAnalysisResponse) SetStatusCode(v int32) *StartAIDiffAnalysisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartAIDiffAnalysisResponse) SetBody(v *StartAIDiffAnalysisResponseBody) *StartAIDiffAnalysisResponse {
 	s.Body = v
 	return s
 }
@@ -12811,6 +13052,10 @@ func (client *Client) StartAIAnalysisWithOptions(request *StartAIAnalysisRequest
 		body["analysisTool"] = request.AnalysisTool
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AnalysisParams)) {
+		body["analysis_params"] = request.AnalysisParams
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Channel)) {
 		body["channel"] = request.Channel
 	}
@@ -12819,8 +13064,28 @@ func (client *Client) StartAIAnalysisWithOptions(request *StartAIAnalysisRequest
 		body["comms"] = request.Comms
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CreatedBy)) {
+		body["created_by"] = request.CreatedBy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Instance)) {
 		body["instance"] = request.Instance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["instance_type"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IterationFunc)) {
+		body["iteration_func"] = request.IterationFunc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IterationMod)) {
+		body["iteration_mod"] = request.IterationMod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IterationRange)) {
+		body["iteration_range"] = request.IterationRange
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Pids)) {
@@ -12833,6 +13098,10 @@ func (client *Client) StartAIAnalysisWithOptions(request *StartAIAnalysisRequest
 
 	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
 		body["timeout"] = request.Timeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		body["uid"] = request.Uid
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -12871,6 +13140,74 @@ func (client *Client) StartAIAnalysis(request *StartAIAnalysisRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &StartAIAnalysisResponse{}
 	_body, _err := client.StartAIAnalysisWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看AI Infra差分分析结果
+//
+// @param request - StartAIDiffAnalysisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartAIDiffAnalysisResponse
+func (client *Client) StartAIDiffAnalysisWithOptions(request *StartAIDiffAnalysisRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartAIDiffAnalysisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Task1)) {
+		body["task1"] = request.Task1
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Task2)) {
+		body["task2"] = request.Task2
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartAIDiffAnalysis"),
+		Version:     tea.String("2023-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/appObserv/aiAnalysis/diffAnalysis"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartAIDiffAnalysisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看AI Infra差分分析结果
+//
+// @param request - StartAIDiffAnalysisRequest
+//
+// @return StartAIDiffAnalysisResponse
+func (client *Client) StartAIDiffAnalysis(request *StartAIDiffAnalysisRequest) (_result *StartAIDiffAnalysisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartAIDiffAnalysisResponse{}
+	_body, _err := client.StartAIDiffAnalysisWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
