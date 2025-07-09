@@ -564,8 +564,7 @@ type CreateAppAgentTemplateRequestAsrConfig struct {
 	// example:
 	//
 	// STT
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// This parameter is required.
+	Name        *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
 	WordWeights []*CreateAppAgentTemplateRequestAsrConfigWordWeights `json:"WordWeights,omitempty" xml:"WordWeights,omitempty" type:"Repeated"`
 }
 

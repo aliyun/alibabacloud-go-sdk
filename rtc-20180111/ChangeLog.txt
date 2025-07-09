@@ -1,3 +1,6 @@
+2025-07-09 Version: v6.2.1
+- Generated golang 2018-01-11 for rtc.
+
 2025-07-03 Version: v6.2.0
 - Support API CreateAppAgentTemplate.
 - Support API DeleteAppAgentTemplate.
