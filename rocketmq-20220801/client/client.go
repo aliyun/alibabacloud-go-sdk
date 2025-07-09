@@ -1667,8 +1667,6 @@ type CreateInstanceRequestProductInfo struct {
 	MessageRetentionTime *int32 `json:"messageRetentionTime,omitempty" xml:"messageRetentionTime,omitempty"`
 	// The computing specification that specifies the messaging transactions per second (TPS) of the instance. For more information, see [Instance editions](https://help.aliyun.com/document_detail/444715.html).
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// rmq.s2.2xlarge
