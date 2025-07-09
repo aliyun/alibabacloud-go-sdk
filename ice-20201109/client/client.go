@@ -17644,7 +17644,8 @@ type DeleteMediaFromSearchLibRequest struct {
 	// example:
 	//
 	// {}
-	MsgBody *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	MsgBody   *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The name of the search library. Default value: ims-default-search-lib.
 	//
 	// example:
@@ -17668,6 +17669,11 @@ func (s *DeleteMediaFromSearchLibRequest) SetMediaId(v string) *DeleteMediaFromS
 
 func (s *DeleteMediaFromSearchLibRequest) SetMsgBody(v string) *DeleteMediaFromSearchLibRequest {
 	s.MsgBody = &v
+	return s
+}
+
+func (s *DeleteMediaFromSearchLibRequest) SetNamespace(v string) *DeleteMediaFromSearchLibRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -43840,7 +43846,8 @@ type InsertMediaToSearchLibRequest struct {
 	// example:
 	//
 	// {}
-	MsgBody *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	MsgBody   *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The name of the search library. Default value: ims-default-search-lib.
 	//
 	// example:
@@ -43879,6 +43886,11 @@ func (s *InsertMediaToSearchLibRequest) SetMediaType(v string) *InsertMediaToSea
 
 func (s *InsertMediaToSearchLibRequest) SetMsgBody(v string) *InsertMediaToSearchLibRequest {
 	s.MsgBody = &v
+	return s
+}
+
+func (s *InsertMediaToSearchLibRequest) SetNamespace(v string) *InsertMediaToSearchLibRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -69901,7 +69913,8 @@ type SearchIndexJobRerunRequest struct {
 	// example:
 	//
 	// ******b48fb04483915d4f2cd8******,******c48fb37407365d4f2cd8******
-	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+	MediaIds  *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The search library.
 	//
 	// example:
@@ -69932,6 +69945,11 @@ func (s SearchIndexJobRerunRequest) GoString() string {
 
 func (s *SearchIndexJobRerunRequest) SetMediaIds(v string) *SearchIndexJobRerunRequest {
 	s.MediaIds = &v
+	return s
+}
+
+func (s *SearchIndexJobRerunRequest) SetNamespace(v string) *SearchIndexJobRerunRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -98291,7 +98309,8 @@ type UpdateMediaToSearchLibRequest struct {
 	// example:
 	//
 	// {}
-	MsgBody *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	MsgBody   *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The name of the search library. Default value: ims-default-search-lib.
 	//
 	// example:
@@ -98315,6 +98334,11 @@ func (s *UpdateMediaToSearchLibRequest) SetMediaId(v string) *UpdateMediaToSearc
 
 func (s *UpdateMediaToSearchLibRequest) SetMsgBody(v string) *UpdateMediaToSearchLibRequest {
 	s.MsgBody = &v
+	return s
+}
+
+func (s *UpdateMediaToSearchLibRequest) SetNamespace(v string) *UpdateMediaToSearchLibRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -105278,6 +105302,10 @@ func (client *Client) DeleteMediaFromSearchLibWithOptions(request *DeleteMediaFr
 		query["MsgBody"] = request.MsgBody
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
 		query["SearchLibName"] = request.SearchLibName
 	}
@@ -111776,6 +111804,10 @@ func (client *Client) InsertMediaToSearchLibWithOptions(request *InsertMediaToSe
 		query["MsgBody"] = request.MsgBody
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
 		query["SearchLibName"] = request.SearchLibName
 	}
@@ -117922,6 +117954,10 @@ func (client *Client) SearchIndexJobRerunWithOptions(request *SearchIndexJobReru
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.MediaIds)) {
 		query["MediaIds"] = request.MediaIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
@@ -125942,6 +125978,10 @@ func (client *Client) UpdateMediaToSearchLibWithOptions(request *UpdateMediaToSe
 
 	if !tea.BoolValue(util.IsUnset(request.MsgBody)) {
 		query["MsgBody"] = request.MsgBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
