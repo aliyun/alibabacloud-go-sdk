@@ -2087,18 +2087,19 @@ func (s *OpenStructMvBaseTableDetailModel) SetTableName(v string) *OpenStructMvB
 }
 
 type OpenStructMvDetailModel struct {
-	BaseTableNames      [][]*string `json:"BaseTableNames,omitempty" xml:"BaseTableNames,omitempty" type:"Repeated"`
-	ExplicitHit         *int64      `json:"ExplicitHit,omitempty" xml:"ExplicitHit,omitempty"`
-	FirstRefreshTime    *string     `json:"FirstRefreshTime,omitempty" xml:"FirstRefreshTime,omitempty"`
-	ImplicitHit         *int64      `json:"ImplicitHit,omitempty" xml:"ImplicitHit,omitempty"`
-	IsInactive          *bool       `json:"IsInactive,omitempty" xml:"IsInactive,omitempty"`
-	LocalSize           *int64      `json:"LocalSize,omitempty" xml:"LocalSize,omitempty"`
-	QueryRewriteEnabled *bool       `json:"QueryRewriteEnabled,omitempty" xml:"QueryRewriteEnabled,omitempty"`
-	RefreshInterval     *string     `json:"RefreshInterval,omitempty" xml:"RefreshInterval,omitempty"`
-	RefreshState        *string     `json:"RefreshState,omitempty" xml:"RefreshState,omitempty"`
-	RemoteSize          *int64      `json:"RemoteSize,omitempty" xml:"RemoteSize,omitempty"`
-	ResourceGroup       *string     `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	UpdatedAt           *string     `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+	BaseTableInfos      []*OpenStructMvDetailModelBaseTableInfos `json:"BaseTableInfos,omitempty" xml:"BaseTableInfos,omitempty" type:"Repeated"`
+	BaseTableNames      [][]*string                              `json:"BaseTableNames,omitempty" xml:"BaseTableNames,omitempty" type:"Repeated"`
+	ExplicitHit         *int64                                   `json:"ExplicitHit,omitempty" xml:"ExplicitHit,omitempty"`
+	FirstRefreshTime    *string                                  `json:"FirstRefreshTime,omitempty" xml:"FirstRefreshTime,omitempty"`
+	ImplicitHit         *int64                                   `json:"ImplicitHit,omitempty" xml:"ImplicitHit,omitempty"`
+	IsInactive          *bool                                    `json:"IsInactive,omitempty" xml:"IsInactive,omitempty"`
+	LocalSize           *int64                                   `json:"LocalSize,omitempty" xml:"LocalSize,omitempty"`
+	QueryRewriteEnabled *bool                                    `json:"QueryRewriteEnabled,omitempty" xml:"QueryRewriteEnabled,omitempty"`
+	RefreshInterval     *string                                  `json:"RefreshInterval,omitempty" xml:"RefreshInterval,omitempty"`
+	RefreshState        *string                                  `json:"RefreshState,omitempty" xml:"RefreshState,omitempty"`
+	RemoteSize          *int64                                   `json:"RemoteSize,omitempty" xml:"RemoteSize,omitempty"`
+	ResourceGroup       *string                                  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	UpdatedAt           *string                                  `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
 }
 
 func (s OpenStructMvDetailModel) String() string {
@@ -2107,6 +2108,11 @@ func (s OpenStructMvDetailModel) String() string {
 
 func (s OpenStructMvDetailModel) GoString() string {
 	return s.String()
+}
+
+func (s *OpenStructMvDetailModel) SetBaseTableInfos(v []*OpenStructMvDetailModelBaseTableInfos) *OpenStructMvDetailModel {
+	s.BaseTableInfos = v
+	return s
 }
 
 func (s *OpenStructMvDetailModel) SetBaseTableNames(v [][]*string) *OpenStructMvDetailModel {
@@ -2166,6 +2172,35 @@ func (s *OpenStructMvDetailModel) SetResourceGroup(v string) *OpenStructMvDetail
 
 func (s *OpenStructMvDetailModel) SetUpdatedAt(v string) *OpenStructMvDetailModel {
 	s.UpdatedAt = &v
+	return s
+}
+
+type OpenStructMvDetailModelBaseTableInfos struct {
+	BaseTableIsMv *bool   `json:"BaseTableIsMv,omitempty" xml:"BaseTableIsMv,omitempty"`
+	SchemaName    *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName     *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s OpenStructMvDetailModelBaseTableInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenStructMvDetailModelBaseTableInfos) GoString() string {
+	return s.String()
+}
+
+func (s *OpenStructMvDetailModelBaseTableInfos) SetBaseTableIsMv(v bool) *OpenStructMvDetailModelBaseTableInfos {
+	s.BaseTableIsMv = &v
+	return s
+}
+
+func (s *OpenStructMvDetailModelBaseTableInfos) SetSchemaName(v string) *OpenStructMvDetailModelBaseTableInfos {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *OpenStructMvDetailModelBaseTableInfos) SetTableName(v string) *OpenStructMvDetailModelBaseTableInfos {
+	s.TableName = &v
 	return s
 }
 
@@ -2264,15 +2299,16 @@ func (s *OpenStructMvRecommendTaskModel) SetTaskName(v string) *OpenStructMvReco
 }
 
 type OpenStructRefreshJobModel struct {
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Processid       *string `json:"Processid,omitempty" xml:"Processid,omitempty"`
-	RefreshInterval *string `json:"RefreshInterval,omitempty" xml:"RefreshInterval,omitempty"`
-	RefreshModel    *string `json:"RefreshModel,omitempty" xml:"RefreshModel,omitempty"`
-	ResourceGroup   *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	SchemaName      *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Processid          *string `json:"Processid,omitempty" xml:"Processid,omitempty"`
+	RefreshInterval    *string `json:"RefreshInterval,omitempty" xml:"RefreshInterval,omitempty"`
+	RefreshModel       *string `json:"RefreshModel,omitempty" xml:"RefreshModel,omitempty"`
+	ResourceGroup      *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	ScheduledStartTime *string `json:"ScheduledStartTime,omitempty" xml:"ScheduledStartTime,omitempty"`
+	SchemaName         *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s OpenStructRefreshJobModel) String() string {
@@ -2310,6 +2346,11 @@ func (s *OpenStructRefreshJobModel) SetRefreshModel(v string) *OpenStructRefresh
 
 func (s *OpenStructRefreshJobModel) SetResourceGroup(v string) *OpenStructRefreshJobModel {
 	s.ResourceGroup = &v
+	return s
+}
+
+func (s *OpenStructRefreshJobModel) SetScheduledStartTime(v string) *OpenStructRefreshJobModel {
+	s.ScheduledStartTime = &v
 	return s
 }
 
@@ -2445,7 +2486,9 @@ type ApplyAdviceByIdRequest struct {
 	// example:
 	//
 	// 0baf1f52-53df-487f-8292-99a03716****
-	AdviceId *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
+	AdviceId         *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
+	ApplyType        *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	BuildImmediately *bool   `json:"BuildImmediately,omitempty" xml:"BuildImmediately,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -2479,6 +2522,16 @@ func (s *ApplyAdviceByIdRequest) SetAdviceDate(v int64) *ApplyAdviceByIdRequest 
 
 func (s *ApplyAdviceByIdRequest) SetAdviceId(v string) *ApplyAdviceByIdRequest {
 	s.AdviceId = &v
+	return s
+}
+
+func (s *ApplyAdviceByIdRequest) SetApplyType(v string) *ApplyAdviceByIdRequest {
+	s.ApplyType = &v
+	return s
+}
+
+func (s *ApplyAdviceByIdRequest) SetBuildImmediately(v bool) *ApplyAdviceByIdRequest {
+	s.BuildImmediately = &v
 	return s
 }
 
@@ -2632,7 +2685,9 @@ type BatchApplyAdviceByIdListRequest struct {
 	// example:
 	//
 	// c2589ff3-e86c-4f19-80c8-2aeb7dd9****,53414470-ebf4-4a53-a312-8a1ad8fd****,6e8dce84-fec8-4b0b-9c04-b0cea12c****,b3b9703d-55ca-47e0-96dd-6a4a9dbf****
-	AdviceIdList *string `json:"AdviceIdList,omitempty" xml:"AdviceIdList,omitempty"`
+	AdviceIdList     *string `json:"AdviceIdList,omitempty" xml:"AdviceIdList,omitempty"`
+	ApplyType        *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	BuildImmediately *bool   `json:"BuildImmediately,omitempty" xml:"BuildImmediately,omitempty"`
 	// The cluster ID.
 	//
 	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
@@ -2668,6 +2723,16 @@ func (s *BatchApplyAdviceByIdListRequest) SetAdviceDate(v int64) *BatchApplyAdvi
 
 func (s *BatchApplyAdviceByIdListRequest) SetAdviceIdList(v string) *BatchApplyAdviceByIdListRequest {
 	s.AdviceIdList = &v
+	return s
+}
+
+func (s *BatchApplyAdviceByIdListRequest) SetApplyType(v string) *BatchApplyAdviceByIdListRequest {
+	s.ApplyType = &v
+	return s
+}
+
+func (s *BatchApplyAdviceByIdListRequest) SetBuildImmediately(v bool) *BatchApplyAdviceByIdListRequest {
+	s.BuildImmediately = &v
 	return s
 }
 
@@ -13631,7 +13696,8 @@ type DescribeAppliedAdvicesResponseBodyItems struct {
 	// example:
 	//
 	// build table `schema1`.`table1`
-	BuildSQL *string `json:"BuildSQL,omitempty" xml:"BuildSQL,omitempty"`
+	BuildSQL    *string `json:"BuildSQL,omitempty" xml:"BuildSQL,omitempty"`
+	IndexFields *string `json:"IndexFields,omitempty" xml:"IndexFields,omitempty"`
 	// The status of the suggestion execution job. Valid values:
 	//
 	// 	- **SUCCEED**
@@ -13728,6 +13794,11 @@ func (s *DescribeAppliedAdvicesResponseBodyItems) SetBenefit(v string) *Describe
 
 func (s *DescribeAppliedAdvicesResponseBodyItems) SetBuildSQL(v string) *DescribeAppliedAdvicesResponseBodyItems {
 	s.BuildSQL = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetIndexFields(v string) *DescribeAppliedAdvicesResponseBodyItems {
+	s.IndexFields = &v
 	return s
 }
 
@@ -17544,7 +17615,8 @@ type DescribeAvailableAdvicesResponseBodyItems struct {
 	// example:
 	//
 	// 0.4 GB of storage saved
-	Benefit *string `json:"Benefit,omitempty" xml:"Benefit,omitempty"`
+	Benefit     *string `json:"Benefit,omitempty" xml:"Benefit,omitempty"`
+	IndexFields *string `json:"IndexFields,omitempty" xml:"IndexFields,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
 	//
 	// example:
@@ -17620,6 +17692,11 @@ func (s *DescribeAvailableAdvicesResponseBodyItems) SetAdviceType(v string) *Des
 
 func (s *DescribeAvailableAdvicesResponseBodyItems) SetBenefit(v string) *DescribeAvailableAdvicesResponseBodyItems {
 	s.Benefit = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBodyItems) SetIndexFields(v string) *DescribeAvailableAdvicesResponseBodyItems {
+	s.IndexFields = &v
 	return s
 }
 
@@ -54647,6 +54724,14 @@ func (client *Client) ApplyAdviceByIdWithOptions(request *ApplyAdviceByIdRequest
 		query["AdviceId"] = request.AdviceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ApplyType)) {
+		query["ApplyType"] = request.ApplyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuildImmediately)) {
+		query["BuildImmediately"] = request.BuildImmediately
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
 	}
@@ -54789,6 +54874,14 @@ func (client *Client) BatchApplyAdviceByIdListWithOptions(request *BatchApplyAdv
 
 	if !tea.BoolValue(util.IsUnset(request.AdviceIdList)) {
 		query["AdviceIdList"] = request.AdviceIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplyType)) {
+		query["ApplyType"] = request.ApplyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuildImmediately)) {
+		query["BuildImmediately"] = request.BuildImmediately
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
