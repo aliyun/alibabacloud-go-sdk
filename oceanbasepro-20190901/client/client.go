@@ -19662,7 +19662,7 @@ type DescribeOasAnomalySQLListResponseBodyData struct {
 	// example:
 	//
 	// 2023-04-12T04:38:38Z
-	LastExecutedTime *float64 `json:"LastExecutedTime,omitempty" xml:"LastExecutedTime,omitempty"`
+	LastExecutedTime *string `json:"LastExecutedTime,omitempty" xml:"LastExecutedTime,omitempty"`
 	// Risk level.
 	//
 	// example:
@@ -19779,7 +19779,7 @@ func (s *DescribeOasAnomalySQLListResponseBodyData) SetExecutions(v float64) *De
 	return s
 }
 
-func (s *DescribeOasAnomalySQLListResponseBodyData) SetLastExecutedTime(v float64) *DescribeOasAnomalySQLListResponseBodyData {
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetLastExecutedTime(v string) *DescribeOasAnomalySQLListResponseBodyData {
 	s.LastExecutedTime = &v
 	return s
 }
@@ -20475,7 +20475,7 @@ type DescribeOasSQLHistoryListResponseBodyData struct {
 	// example:
 	//
 	// 9978.75
-	AvgAffectedRows *int64 `json:"AvgAffectedRows,omitempty" xml:"AvgAffectedRows,omitempty"`
+	AvgAffectedRows *float64 `json:"AvgAffectedRows,omitempty" xml:"AvgAffectedRows,omitempty"`
 	// Average Application event wait time (in milliseconds) during the client waiting period.
 	//
 	// example:
@@ -20487,19 +20487,19 @@ type DescribeOasSQLHistoryListResponseBodyData struct {
 	// example:
 	//
 	// 0.0
-	AvgBlockCacheHit *int64 `json:"AvgBlockCacheHit,omitempty" xml:"AvgBlockCacheHit,omitempty"`
+	AvgBlockCacheHit *float64 `json:"AvgBlockCacheHit,omitempty" xml:"AvgBlockCacheHit,omitempty"`
 	// Average BlockIndexCache hit count during the execution period.
 	//
 	// example:
 	//
 	// 0.0
-	AvgBlockIndexCacheHit *int64 `json:"AvgBlockIndexCacheHit,omitempty" xml:"AvgBlockIndexCacheHit,omitempty"`
+	AvgBlockIndexCacheHit *float64 `json:"AvgBlockIndexCacheHit,omitempty" xml:"AvgBlockIndexCacheHit,omitempty"`
 	// Average BloomFilterCache hit count during the execution period.
 	//
 	// example:
 	//
 	// 0.0
-	AvgBloomFilterCacheHit *int64 `json:"AvgBloomFilterCacheHit,omitempty" xml:"AvgBloomFilterCacheHit,omitempty"`
+	AvgBloomFilterCacheHit *float64 `json:"AvgBloomFilterCacheHit,omitempty" xml:"AvgBloomFilterCacheHit,omitempty"`
 	// Average Concurrency event wait time (in milliseconds) during the execution period.
 	//
 	// example:
@@ -20529,7 +20529,7 @@ type DescribeOasSQLHistoryListResponseBodyData struct {
 	// example:
 	//
 	// 0.0
-	AvgDiskReads *int64 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
+	AvgDiskReads *float64 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
 	// Average response time (in milliseconds) during the execution period.
 	//
 	// example:
@@ -20565,13 +20565,13 @@ type DescribeOasSQLHistoryListResponseBodyData struct {
 	// example:
 	//
 	// 0.0
-	AvgLogicalReads *int64 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
+	AvgLogicalReads *float64 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
 	// Average Memstore read rows during the execution period.
 	//
 	// example:
 	//
 	// 0.0
-	AvgMemstoreReadRows *int64 `json:"AvgMemstoreReadRows,omitempty" xml:"AvgMemstoreReadRows,omitempty"`
+	AvgMemstoreReadRows *float64 `json:"AvgMemstoreReadRows,omitempty" xml:"AvgMemstoreReadRows,omitempty"`
 	// Average network transmission time (in milliseconds) during the execution period.
 	//
 	// example:
@@ -20601,19 +20601,19 @@ type DescribeOasSQLHistoryListResponseBodyData struct {
 	// example:
 	//
 	// 0.0
-	AvgReturnRows *int64 `json:"AvgReturnRows,omitempty" xml:"AvgReturnRows,omitempty"`
+	AvgReturnRows *float64 `json:"AvgReturnRows,omitempty" xml:"AvgReturnRows,omitempty"`
 	// Average RowCache hit count during the execution period.
 	//
 	// example:
 	//
 	// 0.0
-	AvgRowCacheHit *int64 `json:"AvgRowCacheHit,omitempty" xml:"AvgRowCacheHit,omitempty"`
+	AvgRowCacheHit *float64 `json:"AvgRowCacheHit,omitempty" xml:"AvgRowCacheHit,omitempty"`
 	// Average number of RPC sent during the execution.
 	//
 	// example:
 	//
 	// 8.0
-	AvgRpcCount *int64 `json:"AvgRpcCount,omitempty" xml:"AvgRpcCount,omitempty"`
+	AvgRpcCount *float64 `json:"AvgRpcCount,omitempty" xml:"AvgRpcCount,omitempty"`
 	// Average Schedule event wait time (in milliseconds) during the scheduling period.
 	//
 	// example:
@@ -20625,7 +20625,7 @@ type DescribeOasSQLHistoryListResponseBodyData struct {
 	// example:
 	//
 	// 0.0
-	AvgSsstoreReadRows *int64 `json:"AvgSsstoreReadRows,omitempty" xml:"AvgSsstoreReadRows,omitempty"`
+	AvgSsstoreReadRows *float64 `json:"AvgSsstoreReadRows,omitempty" xml:"AvgSsstoreReadRows,omitempty"`
 	// Average number of threads used of the SQL during the execution period.
 	//
 	// example:
@@ -20775,43 +20775,43 @@ type DescribeOasSQLHistoryListResponseBodyData struct {
 	// example:
 	//
 	// 0
-	RetCode4012Count *float64 `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
+	RetCode4012Count *int64 `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
 	// Number of occurrences of code 4013 during the execution period.
 	//
 	// example:
 	//
 	// 0
-	RetCode4013Count *float64 `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
+	RetCode4013Count *int64 `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
 	// Number of occurrences of code 5001 during the execution period.
 	//
 	// example:
 	//
 	// 0
-	RetCode5001Count *float64 `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
+	RetCode5001Count *int64 `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
 	// Number of occurrences of code 5024 during the execution period.
 	//
 	// example:
 	//
 	// 0
-	RetCode5024Count *float64 `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
+	RetCode5024Count *int64 `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
 	// Number of occurrences of code 5167 during the execution period.
 	//
 	// example:
 	//
 	// 0
-	RetCode5167Count *float64 `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
+	RetCode5167Count *int64 `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
 	// Number of occurrences of code 5217 during the execution period.
 	//
 	// example:
 	//
 	// 0
-	RetCode5217Count *float64 `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
+	RetCode5217Count *int64 `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
 	// Number of occurrences of code 6002 during the execution period.
 	//
 	// example:
 	//
 	// 0
-	RetCode6002Count *float64 `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
+	RetCode6002Count *int64 `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
 	// Total number of retries during the execution period.
 	//
 	// example:
@@ -20900,7 +20900,7 @@ func (s DescribeOasSQLHistoryListResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgAffectedRows(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgAffectedRows(v float64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.AvgAffectedRows = &v
 	return s
 }
@@ -20910,17 +20910,17 @@ func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgApplicationWaitTime(v 
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgBlockCacheHit(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgBlockCacheHit(v float64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.AvgBlockCacheHit = &v
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgBlockIndexCacheHit(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgBlockIndexCacheHit(v float64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.AvgBlockIndexCacheHit = &v
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgBloomFilterCacheHit(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgBloomFilterCacheHit(v float64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.AvgBloomFilterCacheHit = &v
 	return s
 }
@@ -20945,7 +20945,7 @@ func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgDecodeTime(v float64) 
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgDiskReads(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgDiskReads(v float64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.AvgDiskReads = &v
 	return s
 }
@@ -20975,12 +20975,12 @@ func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgGetPlanTime(v float64)
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgLogicalReads(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgLogicalReads(v float64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.AvgLogicalReads = &v
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgMemstoreReadRows(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgMemstoreReadRows(v float64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.AvgMemstoreReadRows = &v
 	return s
 }
@@ -21005,17 +21005,17 @@ func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgQueueTime(v float64) *
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgReturnRows(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgReturnRows(v float64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.AvgReturnRows = &v
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgRowCacheHit(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgRowCacheHit(v float64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.AvgRowCacheHit = &v
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgRpcCount(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgRpcCount(v float64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.AvgRpcCount = &v
 	return s
 }
@@ -21025,7 +21025,7 @@ func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgScheduleTime(v float64
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgSsstoreReadRows(v int64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetAvgSsstoreReadRows(v float64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.AvgSsstoreReadRows = &v
 	return s
 }
@@ -21150,37 +21150,37 @@ func (s *DescribeOasSQLHistoryListResponseBodyData) SetRemotePlans(v int64) *Des
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode4012Count(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode4012Count(v int64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.RetCode4012Count = &v
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode4013Count(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode4013Count(v int64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.RetCode4013Count = &v
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode5001Count(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode5001Count(v int64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.RetCode5001Count = &v
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode5024Count(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode5024Count(v int64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.RetCode5024Count = &v
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode5167Count(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode5167Count(v int64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.RetCode5167Count = &v
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode5217Count(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode5217Count(v int64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.RetCode5217Count = &v
 	return s
 }
 
-func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode6002Count(v float64) *DescribeOasSQLHistoryListResponseBodyData {
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetRetCode6002Count(v int64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.RetCode6002Count = &v
 	return s
 }
@@ -22509,13 +22509,13 @@ type DescribeOasSlowSQLListResponseBodyData struct {
 	// example:
 	//
 	// 1
-	Executions *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	Executions *int64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
 	// Average number of partition accessed during the execution period.
 	//
 	// example:
 	//
 	// 0
-	FailCount *float64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	FailCount *int64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
 	// Error percentage during the execution period.
 	//
 	// example:
@@ -22599,7 +22599,7 @@ type DescribeOasSlowSQLListResponseBodyData struct {
 	// example:
 	//
 	// 0
-	MissPlans *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
+	MissPlans *int64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
 	// Remote plan percentage during the execution period.
 	//
 	// example:
@@ -22611,7 +22611,7 @@ type DescribeOasSlowSQLListResponseBodyData struct {
 	// example:
 	//
 	// 0
-	RemotePlans *float64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	RemotePlans *int64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
 	// Number of occurrences of code 4012 during the execution period.
 	//
 	// example:
@@ -22629,37 +22629,37 @@ type DescribeOasSlowSQLListResponseBodyData struct {
 	// example:
 	//
 	// 0
-	RetCode5001Count *float64 `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
+	RetCode5001Count *int64 `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
 	// Number of occurrences of code 5024 during the execution period.
 	//
 	// example:
 	//
 	// 0
-	RetCode5024Count *float64 `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
+	RetCode5024Count *int64 `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
 	// Number of occurrences of code 5167 during the execution period.
 	//
 	// example:
 	//
 	// 0
-	RetCode5167Count *float64 `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
+	RetCode5167Count *int64 `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
 	// Number of occurrences of code 5217 during the execution period.
 	//
 	// example:
 	//
 	// 0
-	RetCode5217Count *float64 `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
+	RetCode5217Count *int64 `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
 	// Number of occurrences of code 6002 during the execution period.
 	//
 	// example:
 	//
 	// 0
-	RetCode6002Count *float64 `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
+	RetCode6002Count *int64 `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
 	// Total number of retries during the execution period.
 	//
 	// example:
 	//
 	// 5
-	RetryCount *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RetryCount *int64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
 	// RPC count during the execution period.
 	//
 	// example:
@@ -22943,12 +22943,12 @@ func (s *DescribeOasSlowSQLListResponseBodyData) SetExecPs(v float64) *DescribeO
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyData) SetExecutions(v float64) *DescribeOasSlowSQLListResponseBodyData {
+func (s *DescribeOasSlowSQLListResponseBodyData) SetExecutions(v int64) *DescribeOasSlowSQLListResponseBodyData {
 	s.Executions = &v
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyData) SetFailCount(v float64) *DescribeOasSlowSQLListResponseBodyData {
+func (s *DescribeOasSlowSQLListResponseBodyData) SetFailCount(v int64) *DescribeOasSlowSQLListResponseBodyData {
 	s.FailCount = &v
 	return s
 }
@@ -23018,7 +23018,7 @@ func (s *DescribeOasSlowSQLListResponseBodyData) SetMissPlanPercentage(v float64
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyData) SetMissPlans(v float64) *DescribeOasSlowSQLListResponseBodyData {
+func (s *DescribeOasSlowSQLListResponseBodyData) SetMissPlans(v int64) *DescribeOasSlowSQLListResponseBodyData {
 	s.MissPlans = &v
 	return s
 }
@@ -23028,7 +23028,7 @@ func (s *DescribeOasSlowSQLListResponseBodyData) SetRemotePlanPercentage(v float
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyData) SetRemotePlans(v float64) *DescribeOasSlowSQLListResponseBodyData {
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRemotePlans(v int64) *DescribeOasSlowSQLListResponseBodyData {
 	s.RemotePlans = &v
 	return s
 }
@@ -23043,32 +23043,32 @@ func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode4013Count(v int64) *D
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode5001Count(v float64) *DescribeOasSlowSQLListResponseBodyData {
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode5001Count(v int64) *DescribeOasSlowSQLListResponseBodyData {
 	s.RetCode5001Count = &v
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode5024Count(v float64) *DescribeOasSlowSQLListResponseBodyData {
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode5024Count(v int64) *DescribeOasSlowSQLListResponseBodyData {
 	s.RetCode5024Count = &v
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode5167Count(v float64) *DescribeOasSlowSQLListResponseBodyData {
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode5167Count(v int64) *DescribeOasSlowSQLListResponseBodyData {
 	s.RetCode5167Count = &v
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode5217Count(v float64) *DescribeOasSlowSQLListResponseBodyData {
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode5217Count(v int64) *DescribeOasSlowSQLListResponseBodyData {
 	s.RetCode5217Count = &v
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode6002Count(v float64) *DescribeOasSlowSQLListResponseBodyData {
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode6002Count(v int64) *DescribeOasSlowSQLListResponseBodyData {
 	s.RetCode6002Count = &v
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyData) SetRetryCount(v float64) *DescribeOasSlowSQLListResponseBodyData {
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetryCount(v int64) *DescribeOasSlowSQLListResponseBodyData {
 	s.RetryCount = &v
 	return s
 }
@@ -23198,8 +23198,8 @@ type DescribeOasSlowSQLListResponseBodyDataSqlList struct {
 	DbName                      *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	DistPlanPercentage          *float64 `json:"DistPlanPercentage,omitempty" xml:"DistPlanPercentage,omitempty"`
 	ExecPs                      *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
-	Executions                  *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
-	FailCount                   *float64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	Executions                  *int64   `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	FailCount                   *int64   `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
 	FailPercentage              *float64 `json:"FailPercentage,omitempty" xml:"FailPercentage,omitempty"`
 	Inner                       *bool    `json:"Inner,omitempty" xml:"Inner,omitempty"`
 	LocalPlanPercentage         *float64 `json:"LocalPlanPercentage,omitempty" xml:"LocalPlanPercentage,omitempty"`
@@ -23213,9 +23213,9 @@ type DescribeOasSlowSQLListResponseBodyDataSqlList struct {
 	MaxUserIoWaitTime           *float64 `json:"MaxUserIoWaitTime,omitempty" xml:"MaxUserIoWaitTime,omitempty"`
 	MaxWaitTime                 *float64 `json:"MaxWaitTime,omitempty" xml:"MaxWaitTime,omitempty"`
 	MissPlanPercentage          *float64 `json:"MissPlanPercentage,omitempty" xml:"MissPlanPercentage,omitempty"`
-	MissPlans                   *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
+	MissPlans                   *int64   `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
 	RemotePlanPercentage        *float64 `json:"RemotePlanPercentage,omitempty" xml:"RemotePlanPercentage,omitempty"`
-	RemotePlans                 *float64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	RemotePlans                 *int64   `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
 	RetCode4012Count            *int64   `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
 	RetCode4013Count            *int64   `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
 	RetCode5001Count            *int64   `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
@@ -23223,7 +23223,7 @@ type DescribeOasSlowSQLListResponseBodyDataSqlList struct {
 	RetCode5167Count            *int64   `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
 	RetCode5217Count            *int64   `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
 	RetCode6002Count            *int64   `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
-	RetryCount                  *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RetryCount                  *int64   `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
 	RpcCount                    *float64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
 	Server                      *string  `json:"Server,omitempty" xml:"Server,omitempty"`
 	ServerIp                    *string  `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
@@ -23421,12 +23421,12 @@ func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetExecPs(v float64) *De
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetExecutions(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetExecutions(v int64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
 	s.Executions = &v
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetFailCount(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetFailCount(v int64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
 	s.FailCount = &v
 	return s
 }
@@ -23496,7 +23496,7 @@ func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetMissPlanPercentage(v 
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetMissPlans(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetMissPlans(v int64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
 	s.MissPlans = &v
 	return s
 }
@@ -23506,7 +23506,7 @@ func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRemotePlanPercentage(
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRemotePlans(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRemotePlans(v int64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
 	s.RemotePlans = &v
 	return s
 }
@@ -23546,7 +23546,7 @@ func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRetCode6002Count(v in
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRetryCount(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRetryCount(v int64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
 	s.RetryCount = &v
 	return s
 }
@@ -24114,7 +24114,7 @@ type DescribeOasTopSQLListResponseBodyData struct {
 	// example:
 	//
 	// 0
-	FailCount *float64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	FailCount *int64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
 	// Error percentage during the execution period.
 	//
 	// example:
@@ -24199,8 +24199,8 @@ type DescribeOasTopSQLListResponseBodyData struct {
 	// example:
 	//
 	// 0
-	MissPlans *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
-	ObDbId    *string  `json:"ObDbId,omitempty" xml:"ObDbId,omitempty"`
+	MissPlans *int64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
+	ObDbId    *int64 `json:"ObDbId,omitempty" xml:"ObDbId,omitempty"`
 	// Remote plan percentage during the execution period.
 	//
 	// example:
@@ -24212,7 +24212,7 @@ type DescribeOasTopSQLListResponseBodyData struct {
 	// example:
 	//
 	// 0
-	RemotePlans *float64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	RemotePlans *int64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
 	// Number of occurrences of the code 4012 during the execution period.
 	//
 	// example:
@@ -24260,7 +24260,7 @@ type DescribeOasTopSQLListResponseBodyData struct {
 	// example:
 	//
 	// 0
-	RetryCount *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RetryCount *int64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
 	// RPC count during the execution period.
 	//
 	// example:
@@ -24555,7 +24555,7 @@ func (s *DescribeOasTopSQLListResponseBodyData) SetExecutions(v int64) *Describe
 	return s
 }
 
-func (s *DescribeOasTopSQLListResponseBodyData) SetFailCount(v float64) *DescribeOasTopSQLListResponseBodyData {
+func (s *DescribeOasTopSQLListResponseBodyData) SetFailCount(v int64) *DescribeOasTopSQLListResponseBodyData {
 	s.FailCount = &v
 	return s
 }
@@ -24630,12 +24630,12 @@ func (s *DescribeOasTopSQLListResponseBodyData) SetMissPlanPercentage(v float64)
 	return s
 }
 
-func (s *DescribeOasTopSQLListResponseBodyData) SetMissPlans(v float64) *DescribeOasTopSQLListResponseBodyData {
+func (s *DescribeOasTopSQLListResponseBodyData) SetMissPlans(v int64) *DescribeOasTopSQLListResponseBodyData {
 	s.MissPlans = &v
 	return s
 }
 
-func (s *DescribeOasTopSQLListResponseBodyData) SetObDbId(v string) *DescribeOasTopSQLListResponseBodyData {
+func (s *DescribeOasTopSQLListResponseBodyData) SetObDbId(v int64) *DescribeOasTopSQLListResponseBodyData {
 	s.ObDbId = &v
 	return s
 }
@@ -24645,7 +24645,7 @@ func (s *DescribeOasTopSQLListResponseBodyData) SetRemotePlanPercentage(v float6
 	return s
 }
 
-func (s *DescribeOasTopSQLListResponseBodyData) SetRemotePlans(v float64) *DescribeOasTopSQLListResponseBodyData {
+func (s *DescribeOasTopSQLListResponseBodyData) SetRemotePlans(v int64) *DescribeOasTopSQLListResponseBodyData {
 	s.RemotePlans = &v
 	return s
 }
@@ -24685,7 +24685,7 @@ func (s *DescribeOasTopSQLListResponseBodyData) SetRetCode6002Count(v int64) *De
 	return s
 }
 
-func (s *DescribeOasTopSQLListResponseBodyData) SetRetryCount(v float64) *DescribeOasTopSQLListResponseBodyData {
+func (s *DescribeOasTopSQLListResponseBodyData) SetRetryCount(v int64) *DescribeOasTopSQLListResponseBodyData {
 	s.RetryCount = &v
 	return s
 }
@@ -24840,7 +24840,7 @@ type DescribeOasTopSQLListResponseBodyDataSqlList struct {
 	DistPlanPercentage          *float64 `json:"DistPlanPercentage,omitempty" xml:"DistPlanPercentage,omitempty"`
 	ExecPs                      *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
 	Executions                  *int64   `json:"Executions,omitempty" xml:"Executions,omitempty"`
-	FailCount                   *float64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	FailCount                   *int64   `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
 	FailPercentage              *float64 `json:"FailPercentage,omitempty" xml:"FailPercentage,omitempty"`
 	Inner                       *bool    `json:"Inner,omitempty" xml:"Inner,omitempty"`
 	LocalPlanPercentage         *float64 `json:"LocalPlanPercentage,omitempty" xml:"LocalPlanPercentage,omitempty"`
@@ -24854,9 +24854,9 @@ type DescribeOasTopSQLListResponseBodyDataSqlList struct {
 	MaxUserIoWaitTime           *float64 `json:"MaxUserIoWaitTime,omitempty" xml:"MaxUserIoWaitTime,omitempty"`
 	MaxWaitTime                 *float64 `json:"MaxWaitTime,omitempty" xml:"MaxWaitTime,omitempty"`
 	MissPlanPercentage          *float64 `json:"MissPlanPercentage,omitempty" xml:"MissPlanPercentage,omitempty"`
-	MissPlans                   *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
+	MissPlans                   *int64   `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
 	RemotePlanPercentage        *float64 `json:"RemotePlanPercentage,omitempty" xml:"RemotePlanPercentage,omitempty"`
-	RemotePlans                 *float64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	RemotePlans                 *int64   `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
 	RetCode4012Count            *int64   `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
 	RetCode4013Count            *int64   `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
 	RetCode5001Count            *int64   `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
@@ -24864,7 +24864,7 @@ type DescribeOasTopSQLListResponseBodyDataSqlList struct {
 	RetCode5167Count            *int64   `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
 	RetCode5217Count            *int64   `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
 	RetCode6002Count            *int64   `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
-	RetryCount                  *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RetryCount                  *int64   `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
 	RpcCount                    *float64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
 	Server                      *string  `json:"Server,omitempty" xml:"Server,omitempty"`
 	ServerIp                    *string  `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
@@ -25072,7 +25072,7 @@ func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetExecutions(v int64) *D
 	return s
 }
 
-func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetFailCount(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetFailCount(v int64) *DescribeOasTopSQLListResponseBodyDataSqlList {
 	s.FailCount = &v
 	return s
 }
@@ -25142,7 +25142,7 @@ func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetMissPlanPercentage(v f
 	return s
 }
 
-func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetMissPlans(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetMissPlans(v int64) *DescribeOasTopSQLListResponseBodyDataSqlList {
 	s.MissPlans = &v
 	return s
 }
@@ -25152,7 +25152,7 @@ func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRemotePlanPercentage(v
 	return s
 }
 
-func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRemotePlans(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRemotePlans(v int64) *DescribeOasTopSQLListResponseBodyDataSqlList {
 	s.RemotePlans = &v
 	return s
 }
@@ -25192,7 +25192,7 @@ func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRetCode6002Count(v int
 	return s
 }
 
-func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRetryCount(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRetryCount(v int64) *DescribeOasTopSQLListResponseBodyDataSqlList {
 	s.RetryCount = &v
 	return s
 }
@@ -26346,11 +26346,8 @@ type DescribeProcessStatsCompositionResponseBodyDataAllProcessList struct {
 	// example:
 	//
 	// c1
-	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// example:
-	//
-	// true
-	DynamicSql *string `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	Database   *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	DynamicSql *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
 	// The definition of this parameter varies based on whether the SQL statement is executed.
 	//
 	// 	- When the request is accepted and the result is not returned to the client, this parameter indicates the time interval between the time when the request is accepted and the current time, in seconds.
@@ -26453,7 +26450,7 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessList) SetDatab
 	return s
 }
 
-func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessList) SetDynamicSql(v string) *DescribeProcessStatsCompositionResponseBodyDataAllProcessList {
+func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessList) SetDynamicSql(v bool) *DescribeProcessStatsCompositionResponseBodyDataAllProcessList {
 	s.DynamicSql = &v
 	return s
 }
@@ -26524,14 +26521,11 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessList) SetUser(
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlLists struct {
-	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	Command  *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	CpuTime  *int64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
-	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// example:
-	//
-	// true
-	DynamicSql     *string                                                                                       `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	ClientIp       *string                                                                                       `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	Command        *string                                                                                       `json:"Command,omitempty" xml:"Command,omitempty"`
+	CpuTime        *int64                                                                                        `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	Database       *string                                                                                       `json:"Database,omitempty" xml:"Database,omitempty"`
+	DynamicSql     *bool                                                                                         `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
 	ExecuteTime    *int64                                                                                        `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
 	PlanId         *string                                                                                       `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	ProcessSqlList []*DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlListsProcessSqlList `json:"ProcessSqlList,omitempty" xml:"ProcessSqlList,omitempty" type:"Repeated"`
@@ -26574,7 +26568,7 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSql
 	return s
 }
 
-func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlLists) SetDynamicSql(v string) *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlLists {
+func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlLists) SetDynamicSql(v bool) *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlLists {
 	s.DynamicSql = &v
 	return s
 }
@@ -26644,7 +26638,7 @@ type DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlList
 	Command     *string `json:"Command,omitempty" xml:"Command,omitempty"`
 	CpuTime     *int64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
 	Database    *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	DynamicSql  *string `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	DynamicSql  *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
 	ExecuteTime *int64  `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
 	PlanId      *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	ProxySessId *string `json:"ProxySessId,omitempty" xml:"ProxySessId,omitempty"`
@@ -26686,7 +26680,7 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSql
 	return s
 }
 
-func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlListsProcessSqlList) SetDynamicSql(v string) *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlListsProcessSqlList {
+func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlListsProcessSqlList) SetDynamicSql(v bool) *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlListsProcessSqlList {
 	s.DynamicSql = &v
 	return s
 }
@@ -35104,7 +35098,7 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// 10000.0
-	AffectedRows *float64 `json:"AffectedRows,omitempty" xml:"AffectedRows,omitempty"`
+	AffectedRows *int64 `json:"AffectedRows,omitempty" xml:"AffectedRows,omitempty"`
 	// Application event waiting time (in milliseconds).
 	//
 	// example:
@@ -35140,7 +35134,7 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// 4****
-	ClientPort *string `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
+	ClientPort *int32 `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
 	// Concurrency event waiting time (in milliseconds).
 	//
 	// example:
@@ -35200,7 +35194,7 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// 0
-	ExpectedWorkerCount *float64 `json:"ExpectedWorkerCount,omitempty" xml:"ExpectedWorkerCount,omitempty"`
+	ExpectedWorkerCount *int64 `json:"ExpectedWorkerCount,omitempty" xml:"ExpectedWorkerCount,omitempty"`
 	// The full SQL text.
 	//
 	// > This parameter is unavailable.
@@ -35232,7 +35226,7 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// 0
-	MemstoreReadRows *float64 `json:"MemstoreReadRows,omitempty" xml:"MemstoreReadRows,omitempty"`
+	MemstoreReadRows *int64 `json:"MemstoreReadRows,omitempty" xml:"MemstoreReadRows,omitempty"`
 	// Network transmission time (in milliseconds).
 	//
 	// example:
@@ -35250,19 +35244,19 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// 11006111****4828
-	ObDbId *float64 `json:"ObDbId,omitempty" xml:"ObDbId,omitempty"`
+	ObDbId *int64 `json:"ObDbId,omitempty" xml:"ObDbId,omitempty"`
 	// Server  ID.
 	//
 	// example:
 	//
 	// 2
-	ObServerId *float64 `json:"ObServerId,omitempty" xml:"ObServerId,omitempty"`
+	ObServerId *int64 `json:"ObServerId,omitempty" xml:"ObServerId,omitempty"`
 	// User ID.
 	//
 	// example:
 	//
 	// 100010
-	ObUserId *float64 `json:"ObUserId,omitempty" xml:"ObUserId,omitempty"`
+	ObUserId *int64 `json:"ObUserId,omitempty" xml:"ObUserId,omitempty"`
 	// The parameter value of the SQL statement.
 	//
 	// example:
@@ -35274,13 +35268,13 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// 1.0
-	PartitionCount *float64 `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
+	PartitionCount *int64 `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
 	// The execution plan ID.
 	//
 	// example:
 	//
 	// 590****
-	PlanId *float64 `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanId *int64 `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	// Plan type.
 	//
 	// example:
@@ -35298,7 +35292,7 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// EE205C00-30E4-****-****-87E3A8A2AA0C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *int64 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// SQL request time.
 	//
 	// example:
@@ -35310,19 +35304,19 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// 0
-	RetCode *float64 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
 	// Retry count.
 	//
 	// example:
 	//
 	// 0
-	RetryCount *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RetryCount *int64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
 	// Average returned rows during the execution period.
 	//
 	// example:
 	//
 	// 0.0
-	ReturnRows *float64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
+	ReturnRows *int64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
 	// RowCache hit count.
 	//
 	// example:
@@ -35334,7 +35328,7 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// 8.0
-	RpcCount *float64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
+	RpcCount *int64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
 	// Schedule event waiting time (in milliseconds).
 	//
 	// example:
@@ -35364,7 +35358,7 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// 986190
-	SsstoreReadRows *float64 `json:"SsstoreReadRows,omitempty" xml:"SsstoreReadRows,omitempty"`
+	SsstoreReadRows *int64 `json:"SsstoreReadRows,omitempty" xml:"SsstoreReadRows,omitempty"`
 	// Parameterized SQL text.
 	//
 	// example:
@@ -35394,7 +35388,7 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// 0
-	UsedWorkerCount *float64 `json:"UsedWorkerCount,omitempty" xml:"UsedWorkerCount,omitempty"`
+	UsedWorkerCount *int64 `json:"UsedWorkerCount,omitempty" xml:"UsedWorkerCount,omitempty"`
 	// UserIO event waiting time (in milliseconds).
 	//
 	// example:
@@ -35412,7 +35406,7 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// 0.0
-	WaitCount *float64 `json:"WaitCount,omitempty" xml:"WaitCount,omitempty"`
+	WaitCount *int64 `json:"WaitCount,omitempty" xml:"WaitCount,omitempty"`
 	// Longest wait event during the execution period.
 	//
 	// example:
@@ -35435,7 +35429,7 @@ func (s DescribeSQLSamplesResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetAffectedRows(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetAffectedRows(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.AffectedRows = &v
 	return s
 }
@@ -35465,7 +35459,7 @@ func (s *DescribeSQLSamplesResponseBodyData) SetClientIp(v string) *DescribeSQLS
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetClientPort(v string) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetClientPort(v int32) *DescribeSQLSamplesResponseBodyData {
 	s.ClientPort = &v
 	return s
 }
@@ -35515,7 +35509,7 @@ func (s *DescribeSQLSamplesResponseBodyData) SetExecutorRpc(v bool) *DescribeSQL
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetExpectedWorkerCount(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetExpectedWorkerCount(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.ExpectedWorkerCount = &v
 	return s
 }
@@ -35540,7 +35534,7 @@ func (s *DescribeSQLSamplesResponseBodyData) SetInner(v bool) *DescribeSQLSample
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetMemstoreReadRows(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetMemstoreReadRows(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.MemstoreReadRows = &v
 	return s
 }
@@ -35555,17 +35549,17 @@ func (s *DescribeSQLSamplesResponseBodyData) SetNetWaitTime(v float64) *Describe
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetObDbId(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetObDbId(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.ObDbId = &v
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetObServerId(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetObServerId(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.ObServerId = &v
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetObUserId(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetObUserId(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.ObUserId = &v
 	return s
 }
@@ -35575,12 +35569,12 @@ func (s *DescribeSQLSamplesResponseBodyData) SetParamsValue(v string) *DescribeS
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetPartitionCount(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetPartitionCount(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.PartitionCount = &v
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetPlanId(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetPlanId(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.PlanId = &v
 	return s
 }
@@ -35595,7 +35589,7 @@ func (s *DescribeSQLSamplesResponseBodyData) SetQueueTime(v float64) *DescribeSQ
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetRequestId(v string) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetRequestId(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.RequestId = &v
 	return s
 }
@@ -35605,17 +35599,17 @@ func (s *DescribeSQLSamplesResponseBodyData) SetRequestTime(v string) *DescribeS
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetRetCode(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetRetCode(v int32) *DescribeSQLSamplesResponseBodyData {
 	s.RetCode = &v
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetRetryCount(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetRetryCount(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.RetryCount = &v
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetReturnRows(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetReturnRows(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.ReturnRows = &v
 	return s
 }
@@ -35625,7 +35619,7 @@ func (s *DescribeSQLSamplesResponseBodyData) SetRowCacheHit(v float64) *Describe
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetRpcCount(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetRpcCount(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.RpcCount = &v
 	return s
 }
@@ -35650,7 +35644,7 @@ func (s *DescribeSQLSamplesResponseBodyData) SetSqlType(v string) *DescribeSQLSa
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetSsstoreReadRows(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetSsstoreReadRows(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.SsstoreReadRows = &v
 	return s
 }
@@ -35675,7 +35669,7 @@ func (s *DescribeSQLSamplesResponseBodyData) SetTransHash(v string) *DescribeSQL
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetUsedWorkerCount(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetUsedWorkerCount(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.UsedWorkerCount = &v
 	return s
 }
@@ -35690,7 +35684,7 @@ func (s *DescribeSQLSamplesResponseBodyData) SetUserName(v string) *DescribeSQLS
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetWaitCount(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetWaitCount(v int64) *DescribeSQLSamplesResponseBodyData {
 	s.WaitCount = &v
 	return s
 }
@@ -35934,7 +35928,7 @@ type DescribeSQLTuningAdvicesResponseBodyDataColumns struct {
 	// example:
 	//
 	// 100
-	Ndv *float32 `json:"Ndv,omitempty" xml:"Ndv,omitempty"`
+	Ndv *float64 `json:"Ndv,omitempty" xml:"Ndv,omitempty"`
 }
 
 func (s DescribeSQLTuningAdvicesResponseBodyDataColumns) String() string {
@@ -35960,7 +35954,7 @@ func (s *DescribeSQLTuningAdvicesResponseBodyDataColumns) SetMinValue(v string) 
 	return s
 }
 
-func (s *DescribeSQLTuningAdvicesResponseBodyDataColumns) SetNdv(v float32) *DescribeSQLTuningAdvicesResponseBodyDataColumns {
+func (s *DescribeSQLTuningAdvicesResponseBodyDataColumns) SetNdv(v float64) *DescribeSQLTuningAdvicesResponseBodyDataColumns {
 	s.Ndv = &v
 	return s
 }
@@ -36318,7 +36312,7 @@ type DescribeSampleSqlRawTextsRequest struct {
 	// example:
 	//
 	// 20
-	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// SQL ID。
 	//
 	// This parameter is required.
@@ -36371,7 +36365,7 @@ func (s *DescribeSampleSqlRawTextsRequest) SetInstanceId(v string) *DescribeSamp
 	return s
 }
 
-func (s *DescribeSampleSqlRawTextsRequest) SetLimit(v string) *DescribeSampleSqlRawTextsRequest {
+func (s *DescribeSampleSqlRawTextsRequest) SetLimit(v int32) *DescribeSampleSqlRawTextsRequest {
 	s.Limit = &v
 	return s
 }

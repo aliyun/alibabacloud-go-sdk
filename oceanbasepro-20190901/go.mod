@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/oceanbasepro-20190901/v10
+module github.com/alibabacloud-go/oceanbasepro-20190901/v11
 
 go 1.14
 
