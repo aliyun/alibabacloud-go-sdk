@@ -10,13 +10,13 @@ import (
 )
 
 type AddShardingNodeRequest struct {
-	// Specifies whether to enable automatic payment. Valid values:
+	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
+	// 	- **true**: enables auto-renewal. Make sure that your account has sufficient balance.
 	//
-	// 	- **false**: disables automatic payment. In this case, you must manually renew the instance in the console before the instance expires. For more information, see [Renewal](https://help.aliyun.com/document_detail/26352.html).
+	// 	- **false**: disables auto-renewal. You must manually renew the instance in the console before the instance expires. For more information, see [Instance renewal](https://help.aliyun.com/document_detail/26352.html).
 	//
-	// > The default value is **true**.
+	// >  Default value: **true**.
 	//
 	// example:
 	//
@@ -755,7 +755,7 @@ type CreateAccountRequest struct {
 	//
 	// 	- The name can be up to 100 characters in length.
 	//
-	// 	- The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://help.aliyun.com/document_detail/92665.html#title-84o-mok-b6h) section.
+	// 	- The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts#section-u3q-817-om3) section.
 	//
 	// This parameter is required.
 	//
@@ -950,6 +950,7 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 }
 
 type CreateBackupRequest struct {
+	BackupRetentionPeriod *int64 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// The ID of the instance.
 	//
 	// This parameter is required.
@@ -971,6 +972,11 @@ func (s CreateBackupRequest) String() string {
 
 func (s CreateBackupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateBackupRequest) SetBackupRetentionPeriod(v int64) *CreateBackupRequest {
+	s.BackupRetentionPeriod = &v
+	return s
 }
 
 func (s *CreateBackupRequest) SetInstanceId(v string) *CreateBackupRequest {
@@ -1255,6 +1261,8 @@ func (s *CreateGlobalDistributeCacheRequest) SetSeedSubInstanceId(v string) *Cre
 }
 
 type CreateGlobalDistributeCacheResponseBody struct {
+	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -1269,6 +1277,16 @@ func (s CreateGlobalDistributeCacheResponseBody) String() string {
 
 func (s CreateGlobalDistributeCacheResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateGlobalDistributeCacheResponseBody) SetGlobalInstanceId(v string) *CreateGlobalDistributeCacheResponseBody {
+	s.GlobalInstanceId = &v
+	return s
+}
+
+func (s *CreateGlobalDistributeCacheResponseBody) SetInstanceId(v string) *CreateGlobalDistributeCacheResponseBody {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *CreateGlobalDistributeCacheResponseBody) SetRequestId(v string) *CreateGlobalDistributeCacheResponseBody {
@@ -4303,6 +4321,112 @@ func (s *DeleteAccountResponse) SetStatusCode(v int32) *DeleteAccountResponse {
 }
 
 func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAccountResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteBackupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 521****66
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp1zxszhcgatnx****
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteBackupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupRequest) SetBackupId(v string) *DeleteBackupRequest {
+	s.BackupId = &v
+	return s
+}
+
+func (s *DeleteBackupRequest) SetInstanceId(v string) *DeleteBackupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteBackupRequest) SetOwnerAccount(v string) *DeleteBackupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteBackupRequest) SetOwnerId(v int64) *DeleteBackupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteBackupRequest) SetResourceOwnerAccount(v string) *DeleteBackupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteBackupRequest) SetResourceOwnerId(v int64) *DeleteBackupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteBackupResponseBody struct {
+	// example:
+	//
+	// F14475F4-644E-51EA-B1E8-E4D442093D0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBackupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupResponseBody) SetRequestId(v string) *DeleteBackupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBackupResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBackupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteBackupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupResponse) SetHeaders(v map[string]*string) *DeleteBackupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBackupResponse) SetStatusCode(v int32) *DeleteBackupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBackupResponse) SetBody(v *DeleteBackupResponseBody) *DeleteBackupResponse {
 	s.Body = v
 	return s
 }
@@ -8228,7 +8352,7 @@ func (s *DescribeBackupsRequest) SetStartTime(v string) *DescribeBackupsRequest 
 type DescribeBackupsResponseBody struct {
 	// The following parameters are no longer used. Ignore the parameters.
 	AccessDeniedDetail *DescribeBackupsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// Details of the backup files.
+	// The queried backup sets.
 	Backups *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
 	// This parameter does not take effect. Ignore this parameter.
 	//
@@ -8463,7 +8587,7 @@ type DescribeBackupsResponseBodyBackupsBackup struct {
 	BackupId *int64 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The internal download URL of the backup file.
 	//
-	// >  You can use this URL to download the backup file from an Elastic Compute Service (ECS) instance that is connected to the ApsaraDB for Redis instance. The ECS instance must belong to the same classic network or reside in the same virtual private cloud (VPC) as the ApsaraDB for Redis instance.
+	// >  You can use this URL to download the backup file from an Elastic Compute Service (ECS) instance that is connected to the Tair instance. The ECS instance must belong to the same classic network or reside in the same virtual private cloud (VPC) as the Tair instance.
 	//
 	// example:
 	//
@@ -8532,7 +8656,8 @@ type DescribeBackupsResponseBodyBackupsBackup struct {
 	// example:
 	//
 	// 4.0
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	EngineVersion    *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpectExpireTime *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
 	// The node ID.
 	//
 	// >  If the instance uses the standard architecture, this parameter returns the instance ID.
@@ -8619,6 +8744,11 @@ func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupType(v string) *Desc
 
 func (s *DescribeBackupsResponseBodyBackupsBackup) SetEngineVersion(v string) *DescribeBackupsResponseBodyBackupsBackup {
 	s.EngineVersion = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetExpectExpireTime(v string) *DescribeBackupsResponseBodyBackupsBackup {
+	s.ExpectExpireTime = &v
 	return s
 }
 
@@ -9497,6 +9627,7 @@ type DescribeClusterBackupListResponseBodyClusterBackups struct {
 	//
 	// OK
 	ClusterBackupStatus *string `json:"ClusterBackupStatus,omitempty" xml:"ClusterBackupStatus,omitempty"`
+	ExpectExpireTime    *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
 	// Indicates whether the backup set is valid. A value of 0 indicates that shard-level backups failed or have not been completed.
 	//
 	// example:
@@ -9557,6 +9688,11 @@ func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetClusterBackupSt
 
 func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetClusterBackupStatus(v string) *DescribeClusterBackupListResponseBodyClusterBackups {
 	s.ClusterBackupStatus = &v
+	return s
+}
+
+func (s *DescribeClusterBackupListResponseBodyClusterBackups) SetExpectExpireTime(v string) *DescribeClusterBackupListResponseBodyClusterBackups {
+	s.ExpectExpireTime = &v
 	return s
 }
 
@@ -13062,7 +13198,13 @@ type DescribeHistoryMonitorValuesRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The interval at which to collect monitoring data. Unit: minutes. Set the value to `01m`.
+	// This parameter is deprecated. Set the value to `01m`.
+	//
+	// The **interval at which a query is performed*	- is automatically determined based on the start time and end time of the query. For example, if the query time range is less than or equal to 10 minutes, data is aggregated at a frequency of every 5 seconds and the results are returned at 5-second intervals.
+	//
+	// > 	- The query result is aligned with the data aggregation frequency. If the specified StartTime value does not coincide with a point in time for data aggregation, the system returns the latest point in time for data aggregation as the first point in time. For example, if you set the StartTime parameter to 2022-01-20T12:01:48Z, the first point in time returned is 2022-01-20T12:01:45Z.
+	//
+	// > 	- If the number of data shards is greater than or equal to 32, the minimum data aggregation frequency is 1 minute.
 	//
 	// This parameter is required.
 	//
@@ -13082,11 +13224,9 @@ type DescribeHistoryMonitorValuesRequest struct {
 	//
 	// For more information about monitoring metrics and their descriptions, see [Additional description of MonitorKeys](https://www.alibabacloud.com/help/zh/redis/developer-reference/api-r-kvstore-2015-01-01-describehistorymonitorvalues-redis#monitorKeys-note).
 	//
-	// >
+	// > 	- This parameter is empty by default, which indicates that the UsedMemory and quotaMemory metrics are returned.
 	//
-	// 	- This parameter is empty by default, which indicates that the UsedMemory and quotaMemory metrics are returned.
-	//
-	// 	- To ensure query efficiency, we recommend that you specify no more than five metrics for a single node at a time, and specify only a single metric when you query aggregate metrics.
+	// > 	- To ensure query efficiency, we recommend that you specify no more than five metrics for a single node at a time, and specify only a single metric when you query aggregate metrics.
 	//
 	// example:
 	//
@@ -13094,7 +13234,7 @@ type DescribeHistoryMonitorValuesRequest struct {
 	MonitorKeys *string `json:"MonitorKeys,omitempty" xml:"MonitorKeys,omitempty"`
 	// The ID of the node in the instance. You can set this parameter to query the data of a specified node.
 	//
-	// 	- This parameter is available only for read/write splitting or cluster instances of ApsaraDB for Redis.
+	// 	- This parameter is available only for read/write splitting or cluster instances of Tair.
 	//
 	// 	- You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/473786.html) operation to query node IDs.
 	//
@@ -13123,6 +13263,7 @@ type DescribeHistoryMonitorValuesRequest struct {
 	//
 	// 2022-11-06T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeHistoryMonitorValuesRequest) String() string {
@@ -13190,6 +13331,11 @@ func (s *DescribeHistoryMonitorValuesRequest) SetSecurityToken(v string) *Descri
 
 func (s *DescribeHistoryMonitorValuesRequest) SetStartTime(v string) *DescribeHistoryMonitorValuesRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeHistoryMonitorValuesRequest) SetType(v string) *DescribeHistoryMonitorValuesRequest {
+	s.Type = &v
 	return s
 }
 
@@ -17858,7 +18004,7 @@ func (s *DescribeMonitorItemsRequest) SetSecurityToken(v string) *DescribeMonito
 type DescribeMonitorItemsResponseBody struct {
 	// The returned metrics.
 	//
-	// > 	- **memoryUsage**, **GetQps**, and **PutQps*	- are supported only by ApsaraDB for Redis instances that use Redis 4.0 or later. **GetQps*	- and **PutQps*	- require the latest minor version. You can upgrade the major version or minor version of the instance as needed. For more information, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html) and [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
+	// > 	- **memoryUsage**, **GetQps**, and **PutQps*	- are supported only by Tair instances that use Redis 4.0 or later. **GetQps*	- and **PutQps*	- require the latest minor version. You can upgrade the major version or minor version of the instance as needed. For more information, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html) and [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
 	//
 	// > 	- When you use instances of Redis 2.8, if the **hit_rate*	- metric is not displayed, you must upgrade the minor version of the instance. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
 	MonitorItems *DescribeMonitorItemsResponseBodyMonitorItems `json:"MonitorItems,omitempty" xml:"MonitorItems,omitempty" type:"Struct"`
@@ -19929,21 +20075,23 @@ type DescribePriceRequest struct {
 	//
 	// true
 	ForceUpgrade *bool `json:"ForceUpgrade,omitempty" xml:"ForceUpgrade,omitempty"`
-	// The instance type.
+	// The instance type.***	- **To view the instance type, perform the following steps:**
 	//
-	// **To view the instance type, perform the following steps:**
+	// 1.  In the [Instance specifications](https://help.aliyun.com/document_detail/26350.html) topic, click the link in the **References for instance specifications*	- column corresponding to the instance type that you want to view.
 	//
-	// 1.  In the [Overview](https://help.aliyun.com/document_detail/26350.html) topic, click the link in the **Reference*	- column corresponding to the instance type that you want to view.
+	// 2.  In the instance type table of the specification documentation, find the instance type in the **InstanceClass*	- column.
 	//
-	// 2.  In the instance type table of the page that appears, find the instance type in the **InstanceClass*	- column.
+	// >  If you want to query new instances, in addition to key parameters, you must also specify at least the following parameters:
 	//
-	// When you query cloud-native cluster instances, you must set this parameter to one of the following values and use the Instances parameter to specify the instance type that you want to query.
+	// 	- To query a classic instance, specify this parameter.
 	//
-	// 	- ApsaraDB for Redis cluster instances: redis.cluster.sharding.common.ce
+	// 	- To query a cloud-native standard instance, specify this parameter.
 	//
-	// 	- Tair DRAM-based cluster instances: tair.rdb.cluster.sharding.common
+	// 	- To query a cloud-native cluster instance, specify this parameter and the **ShardCount*	- parameter.
 	//
-	// 	- Tair persistent memory-based cluster instances: tair.scm.cluster.sharding.common.ce
+	// 	- To query a cloud-native read/write splitting instance, specify this parameter and the **Instances*	- parameter.
+	//
+	// 	- To query multiple instances of different specifications or to query a Tair ESSD-based instance that has a custom storage type and storage capacity, specify the Instances parameter. In this case, you do not need to specify the InstanceClass parameter.
 	//
 	// example:
 	//
@@ -19957,7 +20105,7 @@ type DescribePriceRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// A JSON string that contains information about one or more cloud-native cluster instances. For more information, see the "Additional description of the Instances parameter" section of this topic.
+	// If you want to query cloud-native read/write splitting instances, Tair ESSD-based instances, or instances of different specifications, you must specify this parameter as a JSON string. For more information, see the **Additional description of the Instances parameter*	- section.
 	//
 	// example:
 	//
@@ -20001,7 +20149,7 @@ type DescribePriceRequest struct {
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription duration. Unit: months. Valid values: **1**, 2, 3, 4, 5, 6, 7, 8, **9**, **12**, **24**, and **36**.
+	// The subscription duration. Unit: month. Valid values: **1**, 2, 3, 4, 5, 6, 7, 8, **9**, **12**, **24**, and **36**.
 	//
 	// example:
 	//
@@ -20013,7 +20161,7 @@ type DescribePriceRequest struct {
 	//
 	// 1
 	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -20022,13 +20170,13 @@ type DescribePriceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The number of shards. This parameter is applicable only to cloud-native cluster instances. You can use this parameter to customize the number of shards.
+	// The number of data shards in the cloud-native cluster instance.
 	//
 	// example:
 	//
 	// 2
 	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
-	// The zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) operation to query the most recent zone list.
+	// The zone ID. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) operation to query the zone ID.
 	//
 	// example:
 	//
@@ -20157,13 +20305,13 @@ func (s *DescribePriceRequest) SetZoneId(v string) *DescribePriceRequest {
 type DescribePriceResponseBody struct {
 	// The information about the order.
 	Order *DescribePriceResponseBodyOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// The parameters of the order. This parameter is returned when OrderParamOut is set to `true`.
+	// The parameters of the order. When OrderParamOut is set to `true`, this parameter is returned.
 	//
 	// example:
 	//
 	// String
 	OrderParams *string `json:"OrderParams,omitempty" xml:"OrderParams,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -20171,7 +20319,7 @@ type DescribePriceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Details about promotion rules.
 	Rules *DescribePriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	// The rules that match the coupon.
+	// The orders that match the coupons.
 	SubOrders *DescribePriceResponseBodySubOrders `json:"SubOrders,omitempty" xml:"SubOrders,omitempty" type:"Struct"`
 }
 
@@ -20237,13 +20385,13 @@ type DescribePriceResponseBodyOrder struct {
 	//
 	// 0.1
 	HandlingFeeAmount *string `json:"HandlingFeeAmount,omitempty" xml:"HandlingFeeAmount,omitempty"`
-	// Indicates whether the contract promotion is hit.
+	// Indicates whether eligibility for the contracted discount is met.
 	//
 	// example:
 	//
 	// false
 	IsContractActivity *bool `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
-	// The order information.
+	// The information about the order.
 	//
 	// example:
 	//
@@ -20265,7 +20413,7 @@ type DescribePriceResponseBodyOrder struct {
 	//
 	// ****
 	StandDiscountPrice *int64 `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	// The discount.
+	// The discounted price.
 	//
 	// example:
 	//
@@ -20381,13 +20529,13 @@ type DescribePriceResponseBodyOrderCouponsCoupon struct {
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The description of the coupon.
+	// The coupon description.
 	//
 	// example:
 	//
 	// coupondemo
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the coupon was selected.
+	// Indicates whether the coupon is selected.
 	//
 	// example:
 	//
@@ -20444,19 +20592,19 @@ type DescribePriceResponseBodyOrderDepreciateInfo struct {
 	CheapStandAmount *int64 `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
 	// The activity information.
 	ContractActivity *DescribePriceResponseBodyOrderDepreciateInfoContractActivity `json:"ContractActivity,omitempty" xml:"ContractActivity,omitempty" type:"Struct"`
-	// The price difference displayed in the total order amount.
+	// The promotional offer (displayed in the total order amount).
 	//
 	// example:
 	//
 	// **
 	Differential *int64 `json:"Differential,omitempty" xml:"Differential,omitempty"`
-	// The name of the price difference.
+	// The name of the promotional offer.
 	//
 	// example:
 	//
 	// XXXXX
 	DifferentialName *string `json:"DifferentialName,omitempty" xml:"DifferentialName,omitempty"`
-	// Indicates whether the contract promotion is hit.
+	// Indicates whether eligibility for the contracted discount is met.
 	//
 	// example:
 	//
@@ -20557,13 +20705,13 @@ type DescribePriceResponseBodyOrderDepreciateInfoContractActivity struct {
 	//
 	// example:
 	//
-	// 合同优惠_整单_xxx折
+	// contract promotion_order_xxx discount
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
-	// The price after the promotion.
+	// The preferential price.
 	FinalFee *float64 `json:"FinalFee,omitempty" xml:"FinalFee,omitempty"`
 	// The total discount amount.
 	FinalPromFee *float64 `json:"FinalPromFee,omitempty" xml:"FinalPromFee,omitempty"`
-	// The promotion ID.
+	// The promotion code.
 	//
 	// example:
 	//
@@ -20674,7 +20822,7 @@ func (s *DescribePriceResponseBodyRules) SetRule(v []*DescribePriceResponseBodyR
 }
 
 type DescribePriceResponseBodyRulesRule struct {
-	// The name of the promotion rule.
+	// The name of the rule.
 	//
 	// example:
 	//
@@ -20771,23 +20919,23 @@ type DescribePriceResponseBodySubOrdersSubOrder struct {
 	//
 	// 0.21
 	OriginalAmount *string `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// The promotion details.
+	// Details about promotions.
 	PromDetailList *DescribePriceResponseBodySubOrdersSubOrderPromDetailList `json:"PromDetailList,omitempty" xml:"PromDetailList,omitempty" type:"Struct"`
-	// The rule IDs.
+	// The hit rule IDs.
 	RuleIds *DescribePriceResponseBodySubOrdersSubOrderRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	// The discount.
+	// The discounted price.
 	//
 	// example:
 	//
 	// ****
 	StandDiscountPrice *int64 `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	// The discount.
+	// The discounted price.
 	//
 	// example:
 	//
 	// ****
 	StandPrice *int64 `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
-	// The final price of the order.
+	// The transaction price of the order.
 	//
 	// example:
 	//
@@ -20998,13 +21146,13 @@ type DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity st
 	//
 	// ****
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
-	// The discounted price.
+	// The preferential price.
 	//
 	// example:
 	//
 	// ****
 	FinalFee *float64 `json:"FinalFee,omitempty" xml:"FinalFee,omitempty"`
-	// The transaction price.
+	// The total discount amount.
 	//
 	// example:
 	//
@@ -21016,7 +21164,7 @@ type DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivity st
 	//
 	// ****
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
-	// The promotion ID.
+	// The promotion IDs.
 	OptionIds *DescribePriceResponseBodySubOrdersSubOrderDepreciateInfoContractActivityOptionIds `json:"OptionIds,omitempty" xml:"OptionIds,omitempty" type:"Struct"`
 	// The original price.
 	//
@@ -21156,13 +21304,13 @@ type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance stru
 	//
 	// ****
 	PricingModule *bool `json:"PricingModule,omitempty" xml:"PricingModule,omitempty"`
-	// The discount.
+	// The discounted price.
 	//
 	// example:
 	//
 	// ****
 	StandPrice *float64 `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
-	// The original price of the product.
+	// The original price of the instance.
 	//
 	// example:
 	//
@@ -21461,7 +21609,11 @@ type DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromoti
 	//
 	// ****
 	CanPromFee *string `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
-	// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+	// Indicates whether coupons are used. Valid values:
+	//
+	// 	- default or null (default): Coupons are used.
+	//
+	// 	- youhuiquan_promotion_option_id_for_blank: Coupons are not used.
 	//
 	// example:
 	//
@@ -21497,7 +21649,7 @@ type DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromoti
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// Indicates whether
+	// Indicates whether the promotion option is selected.
 	//
 	// example:
 	//
@@ -21599,13 +21751,13 @@ type DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail struct {
 	//
 	// ****
 	DerivedPromType *string `json:"DerivedPromType,omitempty" xml:"DerivedPromType,omitempty"`
-	// The transaction price.
+	// The discount amount.
 	//
 	// example:
 	//
 	// ****
 	FinalPromFee *float64 `json:"FinalPromFee,omitempty" xml:"FinalPromFee,omitempty"`
-	// The code of the coupon.
+	// The coupon code.
 	//
 	// example:
 	//
@@ -21617,7 +21769,7 @@ type DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail struct {
 	//
 	// ****
 	PromType *string `json:"PromType,omitempty" xml:"PromType,omitempty"`
-	// The coupon code.
+	// The promotion code.
 	//
 	// example:
 	//
@@ -21629,7 +21781,7 @@ type DescribePriceResponseBodySubOrdersSubOrderPromDetailListPromDetail struct {
 	//
 	// ****
 	PromotionId *int64 `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The name of the promotional activity.
+	// The promotion name.
 	//
 	// example:
 	//
@@ -24774,6 +24926,7 @@ func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstances) SetDBIn
 type DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
 	ArchitectureType *string                                                                                `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	ChargeType       *string                                                                                `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ComputeUnitNum   *int32                                                                                 `json:"ComputeUnitNum,omitempty" xml:"ComputeUnitNum,omitempty"`
 	ConnectionString *string                                                                                `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	CreateTime       *string                                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	EndTime          *string                                                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -24784,12 +24937,12 @@ type DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAtt
 	InstanceType     *string                                                                                `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	IsDelete         *int32                                                                                 `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
 	IsOrderCompleted *string                                                                                `json:"IsOrderCompleted,omitempty" xml:"IsOrderCompleted,omitempty"`
+	Model            *string                                                                                `json:"Model,omitempty" xml:"Model,omitempty"`
+	ModelServiceNum  *int32                                                                                 `json:"ModelServiceNum,omitempty" xml:"ModelServiceNum,omitempty"`
 	NetworkType      *string                                                                                `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	PrivateIp        *string                                                                                `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
 	RegionId         *string                                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReserveGpuNum    *int32                                                                                 `json:"ReserveGpuNum,omitempty" xml:"ReserveGpuNum,omitempty"`
 	ResourceGroupId  *string                                                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupId  *string                                                                                `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	Storage          *int64                                                                                 `json:"Storage,omitempty" xml:"Storage,omitempty"`
 	Tags             *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	VSwitchId        *string                                                                                `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -24813,6 +24966,11 @@ func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanc
 
 func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetChargeType(v string) *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetComputeUnitNum(v int32) *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
+	s.ComputeUnitNum = &v
 	return s
 }
 
@@ -24866,6 +25024,16 @@ func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanc
 	return s
 }
 
+func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetModel(v string) *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
+	s.Model = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetModelServiceNum(v int32) *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
+	s.ModelServiceNum = &v
+	return s
+}
+
 func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetNetworkType(v string) *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
 	s.NetworkType = &v
 	return s
@@ -24881,18 +25049,8 @@ func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanc
 	return s
 }
 
-func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetReserveGpuNum(v int32) *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
-	s.ReserveGpuNum = &v
-	return s
-}
-
 func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetResourceGroupId(v string) *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
 	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetSecurityGroupId(v string) *DescribeTairKVCacheInferInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
-	s.SecurityGroupId = &v
 	return s
 }
 
@@ -25217,6 +25375,7 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstances) SetTairInferIns
 type DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO struct {
 	Capacity        *int64                                                                          `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	ChargeType      *string                                                                         `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ComputeUnitNum  *int32                                                                          `json:"ComputeUnitNum,omitempty" xml:"ComputeUnitNum,omitempty"`
 	CreateTime      *string                                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DestroyTime     *string                                                                         `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
 	EndTime         *string                                                                         `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -25225,14 +25384,14 @@ type DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO 
 	InstanceName    *string                                                                         `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceStatus  *string                                                                         `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	InstanceType    *string                                                                         `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	ModuleName      *string                                                                         `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	Model           *string                                                                         `json:"Model,omitempty" xml:"Model,omitempty"`
+	ModelServiceNum *int32                                                                          `json:"ModelServiceNum,omitempty" xml:"ModelServiceNum,omitempty"`
 	NetworkType     *string                                                                         `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	PrivateIp       *string                                                                         `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
 	RegionId        *string                                                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReserveGpuNum   *int32                                                                          `json:"ReserveGpuNum,omitempty" xml:"ReserveGpuNum,omitempty"`
 	ResourceGroupId *string                                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tags            *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	UsedGpuNum      *int32                                                                          `json:"UsedGpuNum,omitempty" xml:"UsedGpuNum,omitempty"`
+	VNodeName       *string                                                                         `json:"VNodeName,omitempty" xml:"VNodeName,omitempty"`
 	VSwitchId       *string                                                                         `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcId           *string                                                                         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	ZoneId          *string                                                                         `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -25253,6 +25412,11 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstance
 
 func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetChargeType(v string) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetComputeUnitNum(v int32) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
+	s.ComputeUnitNum = &v
 	return s
 }
 
@@ -25296,8 +25460,13 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstance
 	return s
 }
 
-func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetModuleName(v string) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
-	s.ModuleName = &v
+func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetModel(v string) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
+	s.Model = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetModelServiceNum(v int32) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
+	s.ModelServiceNum = &v
 	return s
 }
 
@@ -25316,11 +25485,6 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstance
 	return s
 }
 
-func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetReserveGpuNum(v int32) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
-	s.ReserveGpuNum = &v
-	return s
-}
-
 func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetResourceGroupId(v string) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
 	s.ResourceGroupId = &v
 	return s
@@ -25331,8 +25495,8 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstance
 	return s
 }
 
-func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetUsedGpuNum(v int32) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
-	s.UsedGpuNum = &v
+func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetVNodeName(v string) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
+	s.VNodeName = &v
 	return s
 }
 
@@ -25416,363 +25580,6 @@ func (s *DescribeTairKVCacheInferInstancesResponse) SetStatusCode(v int32) *Desc
 }
 
 func (s *DescribeTairKVCacheInferInstancesResponse) SetBody(v *DescribeTairKVCacheInferInstancesResponseBody) *DescribeTairKVCacheInferInstancesResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeTasksRequest struct {
-	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 2020-11-26T01:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query instance IDs.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// r-bp1zxszhcgatnx****
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than **0*	- and does not exceed the maximum value of the Integer data type. Default value: **1**.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
-	//
-	// example:
-	//
-	// 30
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 2020-11-20T01:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the task. Separate multiple values with commas (,). Valid values:
-	//
-	// 	- **0**: The task is pending.
-	//
-	// 	- **1**: The task is running.
-	//
-	// 	- **2**: The task is complete.
-	//
-	// 	- **4**: The task is closed.
-	//
-	// 	- **7**: The task is paused.
-	//
-	// 	- **8**: The task is interrupted.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 2
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeTasksRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTasksRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTasksRequest) SetEndTime(v string) *DescribeTasksRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeTasksRequest) SetInstanceId(v string) *DescribeTasksRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeTasksRequest) SetOwnerAccount(v string) *DescribeTasksRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *DescribeTasksRequest) SetOwnerId(v int64) *DescribeTasksRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeTasksRequest) SetPageNumber(v int32) *DescribeTasksRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeTasksRequest) SetPageSize(v int32) *DescribeTasksRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeTasksRequest) SetResourceOwnerAccount(v string) *DescribeTasksRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DescribeTasksRequest) SetResourceOwnerId(v int64) *DescribeTasksRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeTasksRequest) SetSecurityToken(v string) *DescribeTasksRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeTasksRequest) SetStartTime(v string) *DescribeTasksRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeTasksRequest) SetStatus(v string) *DescribeTasksRequest {
-	s.Status = &v
-	return s
-}
-
-type DescribeTasksResponseBody struct {
-	// The details of the task.
-	Items []*DescribeTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
-	//
-	// example:
-	//
-	// 30
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 608FAEC9-485E-4C65-82DE-2E5B955E****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
-	//
-	// example:
-	//
-	// 2
-	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
-}
-
-func (s DescribeTasksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTasksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTasksResponseBody) SetItems(v []*DescribeTasksResponseBodyItems) *DescribeTasksResponseBody {
-	s.Items = v
-	return s
-}
-
-func (s *DescribeTasksResponseBody) SetPageNumber(v int32) *DescribeTasksResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeTasksResponseBody) SetPageSize(v int32) *DescribeTasksResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeTasksResponseBody) SetRequestId(v string) *DescribeTasksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeTasksResponseBody) SetTotalRecordCount(v int32) *DescribeTasksResponseBody {
-	s.TotalRecordCount = &v
-	return s
-}
-
-type DescribeTasksResponseBodyItems struct {
-	// The beginning time of the task. The time follows the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-11-13T06:16:54Z
-	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The name of the subtask.
-	//
-	// example:
-	//
-	// init_redis
-	CurrentStepName *string `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
-	// The end time of the task. The time follows the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-11-13T06:17:18Z
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The progress of the task. Unit: %.
-	//
-	// example:
-	//
-	// 100
-	Progress *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The estimated remaining duration of the task. Unit: seconds.
-	//
-	// >  If the task is not running, this parameter is not returned or the returned value is **0**.
-	//
-	// example:
-	//
-	// 60
-	Remain *int32 `json:"Remain,omitempty" xml:"Remain,omitempty"`
-	// The status of the task. Valid values:
-	//
-	// 	- **0**: The task is pending.
-	//
-	// 	- **1**: The task is running.
-	//
-	// 	- **2**: The task is complete.
-	//
-	// 	- **4**: The task is closed.
-	//
-	// 	- **7**: The task is paused.
-	//
-	// 	- **8**: The task is interrupted.
-	//
-	// example:
-	//
-	// 2
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The progress of the subtask.
-	//
-	// >  If the subtask does not exist, this parameter is not returned.
-	//
-	// example:
-	//
-	// 3/3
-	StepProgressInfo *string `json:"StepProgressInfo,omitempty" xml:"StepProgressInfo,omitempty"`
-	// The information about the subtask in the JSON format. This includes the expected remaining duration (**remain**), the name of the subtask (**name**), and the task progress (**progress**).
-	//
-	// >  If the subtask does not exist, this parameter is not returned.
-	//
-	// example:
-	//
-	// [{\\"remain\\":0,\\"name\\":\\"init_instance\\",\\"progress\\":100},{\\"remain\\":107,\\"name\\":\\"init_redis\\",\\"progress\\":12.3},{\\"remain\\":1881,\\"name\\":\\"init_config\\",\\"progress\\":0}]
-	StepsInfo *string `json:"StepsInfo,omitempty" xml:"StepsInfo,omitempty"`
-	// The identifier of the task.
-	//
-	// example:
-	//
-	// ModifyDBInstanceParameter
-	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
-	// The ID of the task.
-	//
-	// example:
-	//
-	// 32302****
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s DescribeTasksResponseBodyItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTasksResponseBodyItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTasksResponseBodyItems) SetBeginTime(v string) *DescribeTasksResponseBodyItems {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *DescribeTasksResponseBodyItems) SetCurrentStepName(v string) *DescribeTasksResponseBodyItems {
-	s.CurrentStepName = &v
-	return s
-}
-
-func (s *DescribeTasksResponseBodyItems) SetFinishTime(v string) *DescribeTasksResponseBodyItems {
-	s.FinishTime = &v
-	return s
-}
-
-func (s *DescribeTasksResponseBodyItems) SetProgress(v float32) *DescribeTasksResponseBodyItems {
-	s.Progress = &v
-	return s
-}
-
-func (s *DescribeTasksResponseBodyItems) SetRemain(v int32) *DescribeTasksResponseBodyItems {
-	s.Remain = &v
-	return s
-}
-
-func (s *DescribeTasksResponseBodyItems) SetStatus(v string) *DescribeTasksResponseBodyItems {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeTasksResponseBodyItems) SetStepProgressInfo(v string) *DescribeTasksResponseBodyItems {
-	s.StepProgressInfo = &v
-	return s
-}
-
-func (s *DescribeTasksResponseBodyItems) SetStepsInfo(v string) *DescribeTasksResponseBodyItems {
-	s.StepsInfo = &v
-	return s
-}
-
-func (s *DescribeTasksResponseBodyItems) SetTaskAction(v string) *DescribeTasksResponseBodyItems {
-	s.TaskAction = &v
-	return s
-}
-
-func (s *DescribeTasksResponseBodyItems) SetTaskId(v string) *DescribeTasksResponseBodyItems {
-	s.TaskId = &v
-	return s
-}
-
-type DescribeTasksResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeTasksResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeTasksResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeTasksResponse) SetHeaders(v map[string]*string) *DescribeTasksResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeTasksResponse) SetStatusCode(v int32) *DescribeTasksResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeTasksResponse) SetBody(v *DescribeTasksResponseBody) *DescribeTasksResponse {
 	s.Body = v
 	return s
 }
@@ -28403,6 +28210,121 @@ func (s *ModifyAuditLogConfigResponse) SetBody(v *ModifyAuditLogConfigResponseBo
 	return s
 }
 
+type ModifyBackupExpireTimeRequest struct {
+	// example:
+	//
+	// 521****66
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2025-07-06T07:25:57Z
+	ExpectExpireTime *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp1zxszhcgatnx****
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ModifyBackupExpireTimeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupExpireTimeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupExpireTimeRequest) SetBackupId(v string) *ModifyBackupExpireTimeRequest {
+	s.BackupId = &v
+	return s
+}
+
+func (s *ModifyBackupExpireTimeRequest) SetExpectExpireTime(v string) *ModifyBackupExpireTimeRequest {
+	s.ExpectExpireTime = &v
+	return s
+}
+
+func (s *ModifyBackupExpireTimeRequest) SetInstanceId(v string) *ModifyBackupExpireTimeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyBackupExpireTimeRequest) SetOwnerAccount(v string) *ModifyBackupExpireTimeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyBackupExpireTimeRequest) SetOwnerId(v int64) *ModifyBackupExpireTimeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyBackupExpireTimeRequest) SetResourceOwnerAccount(v string) *ModifyBackupExpireTimeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyBackupExpireTimeRequest) SetResourceOwnerId(v int64) *ModifyBackupExpireTimeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ModifyBackupExpireTimeResponseBody struct {
+	// example:
+	//
+	// B560AAD5-5027-51AD-A0D4-FA4DB1A76F40
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyBackupExpireTimeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupExpireTimeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupExpireTimeResponseBody) SetRequestId(v string) *ModifyBackupExpireTimeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyBackupExpireTimeResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyBackupExpireTimeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyBackupExpireTimeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBackupExpireTimeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupExpireTimeResponse) SetHeaders(v map[string]*string) *ModifyBackupExpireTimeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyBackupExpireTimeResponse) SetStatusCode(v int32) *ModifyBackupExpireTimeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyBackupExpireTimeResponse) SetBody(v *ModifyBackupExpireTimeResponseBody) *ModifyBackupExpireTimeResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyBackupPolicyRequest struct {
 	// The number of days for which you want to retain data backup files. Valid values: 7 to 730. Default value: 7.
 	//
@@ -28410,13 +28332,13 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 7
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// Enables or disables the data flashback feature for the instance. Valid values:
+	// Specifies whether to enable the data flashback feature for the instance. Valid values:
 	//
-	// 	- **1**: enables the data flashback feature. You must also enable AOF persistence by setting `appendonly` to `yes` in the parameter settings of the instance. Then, you can use the data flashback feature.
+	// 	- **1**: enables the data flashback feature. You must also enable append-only file (AOF) persistence by setting `appendonly` to `yes` in the parameter settings of the instance. Then, you can use the data flashback feature.
 	//
 	// 	- **0*	- (default): disables the data flashback feature.
 	//
-	// >  This parameter is available only for ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based and persistent memory-optimized instances. For more information, see [Data flashback](https://help.aliyun.com/document_detail/443784.html).
+	// >  This parameter is available only for Tair (Enterprise Edition) DRAM-based and persistent memory-optimized instances. For more information, see [Data flashback](https://help.aliyun.com/document_detail/148479.html).
 	//
 	// example:
 	//
@@ -29738,17 +29660,15 @@ func (s *ModifyInstanceBandwidthResponse) SetBody(v *ModifyInstanceBandwidthResp
 }
 
 type ModifyInstanceConfigRequest struct {
-	// The instance parameter settings that you want to modify. Specify this parameter in the JSON format. The new value of a parameter overwrites the original value.
+	// 需修改的实例参数，格式为JSON，修改后的值会覆盖原来的值。例如您只希望修改**maxmemory-policy**参数为**noeviction**，您可以传入`{"maxmemory-policy":"noeviction"}`。
 	//
-	// **
-	//
-	// **Description*	- For more information, see [Supported parameters](https://help.aliyun.com/document_detail/259681.html).
+	// > 关于各参数的详细说明，请参见[参数说明](https://help.aliyun.com/document_detail/259681.html)。
 	//
 	// example:
 	//
 	// {"maxmemory-policy":"volatile-lru","zset-max-ziplist-entries":128,"zset-max-ziplist-value":64,"hash-max-ziplist-entries":512,"set-max-intset-entries":512}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the instance.
+	// 实例ID。
 	//
 	// This parameter is required.
 	//
@@ -29758,41 +29678,65 @@ type ModifyInstanceConfigRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The Sentinel-compatible mode, which is applicable to non-cluster instances. For more information about the parameter, see the relevant documentation.
+	// 哨兵兼容模式，适用于非集群实例。取值说明：
+	//
+	// 	- **no**（默认）：未开启
+	//
+	// 	- **yes**：开启
+	//
+	// > 更多信息请参见[Sentinel兼容模式](https://help.aliyun.com/document_detail/178911.html)。
 	//
 	// example:
 	//
 	// yes
 	ParamNoLooseSentinelEnabled *string `json:"ParamNoLooseSentinelEnabled,omitempty" xml:"ParamNoLooseSentinelEnabled,omitempty"`
-	// Specifies whether to allow Sentinel commands to be run without requiring a password when the Sentinel mode is enabled. Valid values: Valid values: yes and no. Default value: no. After you set this parameter to yes, you can run Sentinel commands in a virtual private cloud (VPC) without the need to enable the password-free access feature.
+	// 开启哨兵模式时，是否允许免密执行Sentinel相关命令，取值说明：
+	//
+	// 	- **no**（默认）：关闭。
+	//
+	// 	- **yes**：开启。开启后，可以在任意连接上免密执行Sentinel命令以及使用SENTINEL命令监听+switch-master通道。
 	//
 	// example:
 	//
 	// ****
 	ParamNoLooseSentinelPasswordFreeAccess *string `json:"ParamNoLooseSentinelPasswordFreeAccess,omitempty" xml:"ParamNoLooseSentinelPasswordFreeAccess,omitempty"`
-	// After you enable the Sentinel mode and set the ParamNoLooseSentinelPasswordFreeAccess parameter to yes, you can use this parameter to specify an additional list of commands that can be run without requiring a password. By default, this parameter is empty. After you configure this parameter, you can run the specified commands without a password on any connection. Proceed with caution. The commands must be written in lowercase letters. Separate multiple commands with commas (,).
+	// 启用哨兵模式及ParamNoLooseSentinelPasswordFreeAccess参数后，可通过本参数添加额外的免密命令列表（默认为空）。
+	//
+	// > 	- 设置后可在任意连接上无需密码执行对应命令，请谨慎操作。
+	//
+	// > 	- 命令需使用小写字母，多个命令以英文逗号(,)分隔。
 	//
 	// example:
 	//
 	// ****
 	ParamNoLooseSentinelPasswordFreeCommands *string `json:"ParamNoLooseSentinelPasswordFreeCommands,omitempty" xml:"ParamNoLooseSentinelPasswordFreeCommands,omitempty"`
-	// The synchronization mode.
+	// 同步模式：
 	//
-	// 	- **semisync**
+	// 	- **async**（默认）：异步
 	//
-	// 	- **async**
+	// 	- **semisync**：半同步
 	//
 	// example:
 	//
 	// async
 	ParamReplMode *string `json:"ParamReplMode,omitempty" xml:"ParamReplMode,omitempty"`
-	// The degradation threshold time of the semi-synchronous replication mode. This parameter is required only when semi-synchronous replication is enabled. Unit: milliseconds. Valid values: 10 to 60000.
+	// 半同步模式的降级阈值。仅半同步支持配置该参数，单位为ms，取值范围为10~60000，默认为500。
+	//
+	// > 	- 当同步延迟超出该阈值时，同步模式会自动转为异步，当同步延迟消除后，同步模式会自动转换为半同步。
+	//
+	// > 	- 仅Tair企业版实例支持，该功能公测中。
 	//
 	// example:
 	//
-	// ****
+	// 500
 	ParamSemisyncReplTimeout *string `json:"ParamSemisyncReplTimeout,omitempty" xml:"ParamSemisyncReplTimeout,omitempty"`
-	// The Sentinel-compatible mode, which is applicable to cluster instances in proxy mode or read/write splitting instances. For more information about the parameter, see the relevant documentation.
+	// 哨兵兼容模式，适用于集群架构代理连接模式或读写分离架构的实例，取值说明：
+	//
+	// 	- **0**（默认）：未开启
+	//
+	// 	- **1**：开启
+	//
+	// > 更多信息请参见[Sentinel兼容模式](https://help.aliyun.com/document_detail/178911.html)。
 	//
 	// example:
 	//
@@ -29877,7 +29821,7 @@ func (s *ModifyInstanceConfigRequest) SetSecurityToken(v string) *ModifyInstance
 }
 
 type ModifyInstanceConfigResponseBody struct {
-	// The ID of the request.
+	// 请求ID。
 	//
 	// example:
 	//
@@ -31457,9 +31401,7 @@ type ModifyInstanceVpcAuthModeRequest struct {
 	//
 	// 	- **Close**: enables password-free access.
 	//
-	// **
-	//
-	// **Description*	- Default value: **Open**.
+	// >  Default value: **Open**.
 	//
 	// This parameter is required.
 	//
@@ -34022,7 +33964,7 @@ func (s *RestartTairKVCacheCustomInstanceResponse) SetBody(v *RestartTairKVCache
 }
 
 type RestoreInstanceRequest struct {
-	// The ID of the backup file. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation to query the IDs of backup files.
+	// The ID of the backup file. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html)operation to query the IDs of backup files.
 	//
 	// example:
 	//
@@ -36007,8 +35949,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-guangzhou":                tea.String("r-kvstore.aliyuncs.com"),
 		"cn-hangzhou-finance":         tea.String("r-kvstore.aliyuncs.com"),
 		"cn-shanghai-finance-1":       tea.String("r-kvstore.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       tea.String("r-kvstore.aliyuncs.com"),
-		"cn-north-2-gov-1":            tea.String("r-kvstore.aliyuncs.com"),
 		"ap-northeast-2-pop":          tea.String("r-kvstore.aliyuncs.com"),
 		"cn-beijing-finance-1":        tea.String("r-kvstore.aliyuncs.com"),
 		"cn-beijing-finance-pop":      tea.String("r-kvstore.aliyuncs.com"),
@@ -36074,7 +36014,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds one or more data shards to an ApsaraDB for Redis cluster instance.
+// Adds one or more data shards to a Tair cluster instance.
 //
 // Description:
 //
@@ -36157,29 +36097,18 @@ func (client *Client) AddShardingNodeWithOptions(request *AddShardingNodeRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddShardingNodeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddShardingNodeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddShardingNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Adds one or more data shards to an ApsaraDB for Redis cluster instance.
+// Adds one or more data shards to a Tair cluster instance.
 //
 // Description:
 //
@@ -36274,24 +36203,13 @@ func (client *Client) AllocateDirectConnectionWithOptions(request *AllocateDirec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AllocateDirectConnectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AllocateDirectConnectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AllocateDirectConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36391,24 +36309,13 @@ func (client *Client) AllocateInstancePublicConnectionWithOptions(request *Alloc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AllocateInstancePublicConnectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AllocateInstancePublicConnectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AllocateInstancePublicConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36496,24 +36403,13 @@ func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CancelActiveOperationTasksResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CancelActiveOperationTasksResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CancelActiveOperationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36607,24 +36503,13 @@ func (client *Client) CheckCloudResourceAuthorizedWithOptions(request *CheckClou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CheckCloudResourceAuthorizedResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CheckCloudResourceAuthorizedResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CheckCloudResourceAuthorizedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36738,24 +36623,13 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAccountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAccountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36805,6 +36679,10 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupRetentionPeriod)) {
+		query["BackupRetentionPeriod"] = request.BackupRetentionPeriod
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -36843,24 +36721,13 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateBackupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateBackupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateBackupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36942,24 +36809,13 @@ func (client *Client) CreateCacheAnalysisTaskWithOptions(request *CreateCacheAna
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateCacheAnalysisTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateCacheAnalysisTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateCacheAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37055,24 +36911,13 @@ func (client *Client) CreateGlobalDistributeCacheWithOptions(request *CreateGlob
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateGlobalDistributeCacheResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateGlobalDistributeCacheResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateGlobalDistributeCacheResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37168,24 +37013,13 @@ func (client *Client) CreateGlobalSecurityIPGroupWithOptions(request *CreateGlob
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateGlobalSecurityIPGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateGlobalSecurityIPGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateGlobalSecurityIPGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37435,24 +37269,13 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37576,24 +37399,13 @@ func (client *Client) CreateInstancesWithOptions(request *CreateInstancesRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateInstancesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateInstancesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37701,24 +37513,13 @@ func (client *Client) CreateParameterGroupWithOptions(request *CreateParameterGr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateParameterGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateParameterGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateParameterGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37876,24 +37677,13 @@ func (client *Client) CreateTCInstanceWithOptions(request *CreateTCInstanceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateTCInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateTCInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateTCInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38139,24 +37929,13 @@ func (client *Client) CreateTairInstanceWithOptions(request *CreateTairInstanceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateTairInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateTairInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateTairInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38256,24 +38035,13 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAccountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAccountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38293,6 +38061,86 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccountResponse{}
 	_body, _err := client.DeleteAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定备份集
+//
+// @param request - DeleteBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackupResponse
+func (client *Client) DeleteBackupWithOptions(request *DeleteBackupRequest, runtime *util.RuntimeOptions) (_result *DeleteBackupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBackup"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBackupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定备份集
+//
+// @param request - DeleteBackupRequest
+//
+// @return DeleteBackupResponse
+func (client *Client) DeleteBackup(request *DeleteBackupRequest) (_result *DeleteBackupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBackupResponse{}
+	_body, _err := client.DeleteBackupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38369,24 +38217,13 @@ func (client *Client) DeleteGlobalSecurityIPGroupWithOptions(request *DeleteGlob
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteGlobalSecurityIPGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteGlobalSecurityIPGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteGlobalSecurityIPGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38480,24 +38317,13 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38583,24 +38409,13 @@ func (client *Client) DeleteParameterGroupWithOptions(request *DeleteParameterGr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteParameterGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteParameterGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteParameterGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38700,24 +38515,13 @@ func (client *Client) DeleteShardingNodeWithOptions(request *DeleteShardingNodeR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteShardingNodeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteShardingNodeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteShardingNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38809,24 +38613,13 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAccountsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAccountsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38924,24 +38717,13 @@ func (client *Client) DescribeActiveOperationTaskWithOptions(request *DescribeAc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeActiveOperationTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeActiveOperationTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeActiveOperationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39059,24 +38841,13 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeActiveOperationTasksResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeActiveOperationTasksResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeActiveOperationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39158,24 +38929,13 @@ func (client *Client) DescribeAuditLogConfigWithOptions(request *DescribeAuditLo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAuditLogConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAuditLogConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAuditLogConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39293,24 +39053,13 @@ func (client *Client) DescribeAuditRecordsWithOptions(request *DescribeAuditReco
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAuditRecordsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAuditRecordsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAuditRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39428,24 +39177,13 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAvailableResourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAvailableResourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAvailableResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39519,24 +39257,13 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeBackupPolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeBackupPolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeBackupPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39618,24 +39345,13 @@ func (client *Client) DescribeBackupTasksWithOptions(request *DescribeBackupTask
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeBackupTasksResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeBackupTasksResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeBackupTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39658,7 +39374,7 @@ func (client *Client) DescribeBackupTasks(request *DescribeBackupTasksRequest) (
 
 // Summary:
 //
-// Queries the backup files of the ApsaraDB for Redis instance.
+// Queries the backup files of the Tair (Redis OSS-compatible) instance.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -39737,29 +39453,18 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeBackupsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeBackupsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeBackupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Queries the backup files of the ApsaraDB for Redis instance.
+// Queries the backup files of the Tair (Redis OSS-compatible) instance.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -39858,24 +39563,13 @@ func (client *Client) DescribeCacheAnalysisReportWithOptions(request *DescribeCa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCacheAnalysisReportResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCacheAnalysisReportResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCacheAnalysisReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39985,24 +39679,13 @@ func (client *Client) DescribeCacheAnalysisReportListWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCacheAnalysisReportListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCacheAnalysisReportListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCacheAnalysisReportListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40066,24 +39749,13 @@ func (client *Client) DescribeClusterBackupListWithOptions(request *DescribeClus
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeClusterBackupListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeClusterBackupListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeClusterBackupListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40173,24 +39845,13 @@ func (client *Client) DescribeClusterMemberInfoWithOptions(request *DescribeClus
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeClusterMemberInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeClusterMemberInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeClusterMemberInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40268,24 +39929,13 @@ func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDBInstanceNetInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDBInstanceNetInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDBInstanceNetInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40359,24 +40009,13 @@ func (client *Client) DescribeDBNodeDirectVipInfoWithOptions(request *DescribeDB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDBNodeDirectVipInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDBNodeDirectVipInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDBNodeDirectVipInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40498,24 +40137,13 @@ func (client *Client) DescribeDedicatedClusterInstanceListWithOptions(request *D
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDedicatedClusterInstanceListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDedicatedClusterInstanceListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDedicatedClusterInstanceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40603,24 +40231,13 @@ func (client *Client) DescribeEncryptionKeyWithOptions(request *DescribeEncrypti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeEncryptionKeyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeEncryptionKeyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeEncryptionKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40706,24 +40323,13 @@ func (client *Client) DescribeEncryptionKeyListWithOptions(request *DescribeEncr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeEncryptionKeyListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeEncryptionKeyListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeEncryptionKeyListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40809,24 +40415,13 @@ func (client *Client) DescribeEngineVersionWithOptions(request *DescribeEngineVe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeEngineVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeEngineVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeEngineVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40924,24 +40519,13 @@ func (client *Client) DescribeGlobalDistributeCacheWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeGlobalDistributeCacheResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeGlobalDistributeCacheResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeGlobalDistributeCacheResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40997,24 +40581,13 @@ func (client *Client) DescribeGlobalSecurityIPGroupWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeGlobalSecurityIPGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeGlobalSecurityIPGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeGlobalSecurityIPGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41064,24 +40637,13 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelationWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeGlobalSecurityIPGroupRelationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeGlobalSecurityIPGroupRelationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeGlobalSecurityIPGroupRelationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41104,11 +40666,11 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelation(request *DescribeGlo
 
 // Summary:
 //
-// Queries the performance monitoring data of an ApsaraDB for Redis instance.
+// Queries the performance monitoring data of a Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
-// You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
+// You can also query the performance monitoring data of an instance in the Tair console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
 //
 // @param request - DescribeHistoryMonitorValuesRequest
 //
@@ -41169,6 +40731,10 @@ func (client *Client) DescribeHistoryMonitorValuesWithOptions(request *DescribeH
 		query["StartTime"] = request.StartTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -41183,33 +40749,22 @@ func (client *Client) DescribeHistoryMonitorValuesWithOptions(request *DescribeH
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeHistoryMonitorValuesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeHistoryMonitorValuesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeHistoryMonitorValuesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Queries the performance monitoring data of an ApsaraDB for Redis instance.
+// Queries the performance monitoring data of a Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
-// You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
+// You can also query the performance monitoring data of an instance in the Tair console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
 //
 // @param request - DescribeHistoryMonitorValuesRequest
 //
@@ -41314,24 +40869,13 @@ func (client *Client) DescribeHistoryTasksWithOptions(request *DescribeHistoryTa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeHistoryTasksResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeHistoryTasksResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeHistoryTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41405,24 +40949,13 @@ func (client *Client) DescribeInstanceAttributeWithOptions(request *DescribeInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeInstanceAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeInstanceAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41508,24 +41041,13 @@ func (client *Client) DescribeInstanceAutoRenewalAttributeWithOptions(request *D
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeInstanceAutoRenewalAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeInstanceAutoRenewalAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeInstanceAutoRenewalAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41605,24 +41127,13 @@ func (client *Client) DescribeInstanceConfigWithOptions(request *DescribeInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeInstanceConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeInstanceConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeInstanceConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41714,24 +41225,13 @@ func (client *Client) DescribeInstanceSSLWithOptions(request *DescribeInstanceSS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeInstanceSSLResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeInstanceSSLResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeInstanceSSLResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -41823,24 +41323,13 @@ func (client *Client) DescribeInstanceTDEStatusWithOptions(request *DescribeInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeInstanceTDEStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeInstanceTDEStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeInstanceTDEStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42000,24 +41489,13 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeInstancesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeInstancesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42157,24 +41635,13 @@ func (client *Client) DescribeInstancesOverviewWithOptions(request *DescribeInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeInstancesOverviewResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeInstancesOverviewResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeInstancesOverviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42262,24 +41729,13 @@ func (client *Client) DescribeIntranetAttributeWithOptions(request *DescribeIntr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeIntranetAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeIntranetAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeIntranetAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42361,24 +41817,13 @@ func (client *Client) DescribeLogicInstanceTopologyWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeLogicInstanceTopologyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeLogicInstanceTopologyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeLogicInstanceTopologyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42405,13 +41850,13 @@ func (client *Client) DescribeLogicInstanceTopology(request *DescribeLogicInstan
 
 // Summary:
 //
-// Queries the metrics of an ApsaraDB for Redis instance.
+// Queries the metrics of a Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
-// >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](https://help.aliyun.com/document_detail/189893.html).
+// >  To improve user experience, Tair has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation of Tair (Redis OSS-compatible) is phased out](https://help.aliyun.com/document_detail/189893.html).
 //
-// After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
+// After you call this operation to retrieve a list of metrics for a specified instance, you can call the [DescribeHistoryMonitorValues](https://help.aliyun.com/document_detail/473827.html) operation to query the monitoring history of the instance.
 //
 // @param request - DescribeMonitorItemsRequest
 //
@@ -42458,35 +41903,24 @@ func (client *Client) DescribeMonitorItemsWithOptions(request *DescribeMonitorIt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeMonitorItemsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeMonitorItemsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeMonitorItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Queries the metrics of an ApsaraDB for Redis instance.
+// Queries the metrics of a Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
-// >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](https://help.aliyun.com/document_detail/189893.html).
+// >  To improve user experience, Tair has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation of Tair (Redis OSS-compatible) is phased out](https://help.aliyun.com/document_detail/189893.html).
 //
-// After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
+// After you call this operation to retrieve a list of metrics for a specified instance, you can call the [DescribeHistoryMonitorValues](https://help.aliyun.com/document_detail/473827.html) operation to query the monitoring history of the instance.
 //
 // @param request - DescribeMonitorItemsRequest
 //
@@ -42559,24 +41993,13 @@ func (client *Client) DescribeParameterGroupWithOptions(request *DescribeParamet
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeParameterGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeParameterGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeParameterGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42658,24 +42081,13 @@ func (client *Client) DescribeParameterGroupSupportParamWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeParameterGroupSupportParamResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeParameterGroupSupportParamResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeParameterGroupSupportParamResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42725,24 +42137,13 @@ func (client *Client) DescribeParameterGroupTemplateListWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeParameterGroupTemplateListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeParameterGroupTemplateListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeParameterGroupTemplateListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42820,24 +42221,13 @@ func (client *Client) DescribeParameterGroupsWithOptions(request *DescribeParame
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeParameterGroupsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeParameterGroupsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeParameterGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42927,24 +42317,13 @@ func (client *Client) DescribeParameterModificationHistoryWithOptions(request *D
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeParameterModificationHistoryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeParameterModificationHistoryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeParameterModificationHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43038,24 +42417,13 @@ func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribePar
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeParameterTemplatesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeParameterTemplatesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeParameterTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43147,24 +42515,13 @@ func (client *Client) DescribeParametersWithOptions(request *DescribeParametersR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeParametersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeParametersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeParametersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43193,7 +42550,7 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 
 // Summary:
 //
-// Queries the fees that you must pay when you create, upgrade, or renew an ApsaraDB for Redis instance.
+// Queries the fees that you must pay when you create, upgrade, or renew a Tair (Redis OSS-compatible) instance.
 //
 // @param request - DescribePriceRequest
 //
@@ -43308,29 +42665,18 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribePriceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribePriceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribePriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Queries the fees that you must pay when you create, upgrade, or renew an ApsaraDB for Redis instance.
+// Queries the fees that you must pay when you create, upgrade, or renew a Tair (Redis OSS-compatible) instance.
 //
 // @param request - DescribePriceRequest
 //
@@ -43399,24 +42745,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRegionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRegionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43502,24 +42837,13 @@ func (client *Client) DescribeRoleZoneInfoWithOptions(request *DescribeRoleZoneI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRoleZoneInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRoleZoneInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRoleZoneInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43643,24 +42967,13 @@ func (client *Client) DescribeRunningLogRecordsWithOptions(request *DescribeRunn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRunningLogRecordsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRunningLogRecordsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRunningLogRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43689,7 +43002,7 @@ func (client *Client) DescribeRunningLogRecords(request *DescribeRunningLogRecor
 
 // Summary:
 //
-// Queries the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+// Queries the security groups that are added to the whitelists of a Tair (Redis OSS-compatible) instance.
 //
 // @param request - DescribeSecurityGroupConfigurationRequest
 //
@@ -43740,29 +43053,18 @@ func (client *Client) DescribeSecurityGroupConfigurationWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeSecurityGroupConfigurationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeSecurityGroupConfigurationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeSecurityGroupConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Queries the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+// Queries the security groups that are added to the whitelists of a Tair (Redis OSS-compatible) instance.
 //
 // @param request - DescribeSecurityGroupConfigurationRequest
 //
@@ -43780,7 +43082,7 @@ func (client *Client) DescribeSecurityGroupConfiguration(request *DescribeSecuri
 
 // Summary:
 //
-// Queries the IP address whitelists of an ApsaraDB for Redis instance.
+// Queries the IP address whitelists of a Tair (Redis OSS-compatible) instance.
 //
 // @param request - DescribeSecurityIpsRequest
 //
@@ -43831,29 +43133,18 @@ func (client *Client) DescribeSecurityIpsWithOptions(request *DescribeSecurityIp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeSecurityIpsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeSecurityIpsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeSecurityIpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Queries the IP address whitelists of an ApsaraDB for Redis instance.
+// Queries the IP address whitelists of a Tair (Redis OSS-compatible) instance.
 //
 // @param request - DescribeSecurityIpsRequest
 //
@@ -43966,24 +43257,13 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeSlowLogRecordsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeSlowLogRecordsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeSlowLogRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44037,24 +43317,13 @@ func (client *Client) DescribeTairKVCacheCustomInstanceAttributeWithOptions(requ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeTairKVCacheCustomInstanceAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeTairKVCacheCustomInstanceAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeTairKVCacheCustomInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44104,24 +43373,13 @@ func (client *Client) DescribeTairKVCacheCustomInstanceHistoryMonitorValuesWithO
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44171,24 +43429,13 @@ func (client *Client) DescribeTairKVCacheCustomInstancesWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeTairKVCacheCustomInstancesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeTairKVCacheCustomInstancesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeTairKVCacheCustomInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44238,24 +43485,13 @@ func (client *Client) DescribeTairKVCacheInferInstanceAttributeWithOptions(reque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeTairKVCacheInferInstanceAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeTairKVCacheInferInstanceAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeTairKVCacheInferInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44305,24 +43541,13 @@ func (client *Client) DescribeTairKVCacheInferInstancesWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeTairKVCacheInferInstancesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeTairKVCacheInferInstancesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeTairKVCacheInferInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44336,125 +43561,6 @@ func (client *Client) DescribeTairKVCacheInferInstances(request *DescribeTairKVC
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTairKVCacheInferInstancesResponse{}
 	_body, _err := client.DescribeTairKVCacheInferInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all tasks that are performed on a Tair (Redis OSS-compatible) instance within a specified period of time.
-//
-// Description:
-//
-// You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the Tair (Redis OSS-compatible) console and click the Tasks icon in the upper-right corner of the **Instance Information*	- page to view the progress of the current task.
-//
-// @param request - DescribeTasksRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeTasksResponse
-func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
-		query["SecurityToken"] = request.SecurityToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeTasks"),
-		Version:     tea.String("2015-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeTasksResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeTasksResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	}
-
-}
-
-// Summary:
-//
-// Queries all tasks that are performed on a Tair (Redis OSS-compatible) instance within a specified period of time.
-//
-// Description:
-//
-// You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the Tair (Redis OSS-compatible) console and click the Tasks icon in the upper-right corner of the **Instance Information*	- page to view the progress of the current task.
-//
-// @param request - DescribeTasksRequest
-//
-// @return DescribeTasksResponse
-func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *DescribeTasksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeTasksResponse{}
-	_body, _err := client.DescribeTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44519,24 +43625,13 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeZonesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeZonesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44652,24 +43747,13 @@ func (client *Client) EnableAdditionalBandwidthWithOptions(request *EnableAdditi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EnableAdditionalBandwidthResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EnableAdditionalBandwidthResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EnableAdditionalBandwidthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44759,24 +43843,13 @@ func (client *Client) FlushExpireKeysWithOptions(request *FlushExpireKeysRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &FlushExpireKeysResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &FlushExpireKeysResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &FlushExpireKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44856,24 +43929,13 @@ func (client *Client) FlushInstanceWithOptions(request *FlushInstanceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &FlushInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &FlushInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &FlushInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44953,24 +44015,13 @@ func (client *Client) FlushInstanceForDBWithOptions(request *FlushInstanceForDBR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &FlushInstanceForDBResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &FlushInstanceForDBResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &FlushInstanceForDBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45070,24 +44121,13 @@ func (client *Client) GrantAccountPrivilegeWithOptions(request *GrantAccountPriv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GrantAccountPrivilegeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GrantAccountPrivilegeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GrantAccountPrivilegeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45118,11 +44158,11 @@ func (client *Client) GrantAccountPrivilege(request *GrantAccountPrivilegeReques
 
 // Summary:
 //
-// Assigns a service-linked role to ApsaraDB for Redis.
+// Assigns a service-linked role to Tair (Redis OSS-compatible).
 //
 // Description:
 //
-// The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](https://help.aliyun.com/document_detail/184337.html).
+// The log management feature of Tair (Redis OSS-compatible) requires the resources of [Simple Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature, you can call this operation to assign the AliyunServiceRoleForKvstore service-linked role to Tair (Redis OSS-compatible). For more information, see [Service-linked role of Tair (Redis OSS-compatible)](https://help.aliyun.com/document_detail/184337.html).
 //
 // @param request - InitializeKvstorePermissionRequest
 //
@@ -45173,33 +44213,22 @@ func (client *Client) InitializeKvstorePermissionWithOptions(request *Initialize
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &InitializeKvstorePermissionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &InitializeKvstorePermissionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &InitializeKvstorePermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Assigns a service-linked role to ApsaraDB for Redis.
+// Assigns a service-linked role to Tair (Redis OSS-compatible).
 //
 // Description:
 //
-// The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](https://help.aliyun.com/document_detail/184337.html).
+// The log management feature of Tair (Redis OSS-compatible) requires the resources of [Simple Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature, you can call this operation to assign the AliyunServiceRoleForKvstore service-linked role to Tair (Redis OSS-compatible). For more information, see [Service-linked role of Tair (Redis OSS-compatible)](https://help.aliyun.com/document_detail/184337.html).
 //
 // @param request - InitializeKvstorePermissionRequest
 //
@@ -45284,24 +44313,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45383,24 +44401,13 @@ func (client *Client) LockDBInstanceWriteWithOptions(request *LockDBInstanceWrit
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &LockDBInstanceWriteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &LockDBInstanceWriteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &LockDBInstanceWriteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45478,24 +44485,13 @@ func (client *Client) MasterNodeShutDownFailOverWithOptions(request *MasterNodeS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &MasterNodeShutDownFailOverResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &MasterNodeShutDownFailOverResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &MasterNodeShutDownFailOverResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45611,24 +44607,13 @@ func (client *Client) MigrateToOtherZoneWithOptions(request *MigrateToOtherZoneR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &MigrateToOtherZoneResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &MigrateToOtherZoneResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &MigrateToOtherZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45728,24 +44713,13 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAccountDescriptionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAccountDescriptionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAccountDescriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45839,24 +44813,13 @@ func (client *Client) ModifyAccountPasswordWithOptions(request *ModifyAccountPas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAccountPasswordResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAccountPasswordResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAccountPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45938,24 +44901,13 @@ func (client *Client) ModifyActiveOperationTaskWithOptions(request *ModifyActive
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyActiveOperationTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyActiveOperationTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyActiveOperationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46041,24 +44993,13 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyActiveOperationTasksResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyActiveOperationTasksResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyActiveOperationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46150,24 +45091,13 @@ func (client *Client) ModifyAuditLogConfigWithOptions(request *ModifyAuditLogCon
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAuditLogConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAuditLogConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAuditLogConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46200,7 +45130,91 @@ func (client *Client) ModifyAuditLogConfig(request *ModifyAuditLogConfigRequest)
 
 // Summary:
 //
-// Modifies the automatic backup policy of an ApsaraDB for Redis instance.
+// 修改备份集过期时间
+//
+// @param request - ModifyBackupExpireTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBackupExpireTimeResponse
+func (client *Client) ModifyBackupExpireTimeWithOptions(request *ModifyBackupExpireTimeRequest, runtime *util.RuntimeOptions) (_result *ModifyBackupExpireTimeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpectExpireTime)) {
+		query["ExpectExpireTime"] = request.ExpectExpireTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBackupExpireTime"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyBackupExpireTimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改备份集过期时间
+//
+// @param request - ModifyBackupExpireTimeRequest
+//
+// @return ModifyBackupExpireTimeResponse
+func (client *Client) ModifyBackupExpireTime(request *ModifyBackupExpireTimeRequest) (_result *ModifyBackupExpireTimeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyBackupExpireTimeResponse{}
+	_body, _err := client.ModifyBackupExpireTimeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the automatic backup policy of a Tair (Redis OSS-compatible) instance.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -46267,29 +45281,18 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyBackupPolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyBackupPolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyBackupPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Modifies the automatic backup policy of an ApsaraDB for Redis instance.
+// Modifies the automatic backup policy of a Tair (Redis OSS-compatible) instance.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -46362,24 +45365,13 @@ func (client *Client) ModifyDBInstanceAutoUpgradeWithOptions(request *ModifyDBIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDBInstanceAutoUpgradeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyDBInstanceAutoUpgradeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyDBInstanceAutoUpgradeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46473,24 +45465,13 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDBInstanceConnectionStringResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyDBInstanceConnectionStringResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyDBInstanceConnectionStringResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46584,24 +45565,13 @@ func (client *Client) ModifyGlobalSecurityIPGroupWithOptions(request *ModifyGlob
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyGlobalSecurityIPGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyGlobalSecurityIPGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyGlobalSecurityIPGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46687,24 +45657,13 @@ func (client *Client) ModifyGlobalSecurityIPGroupNameWithOptions(request *Modify
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyGlobalSecurityIPGroupNameResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyGlobalSecurityIPGroupNameResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyGlobalSecurityIPGroupNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46790,24 +45749,13 @@ func (client *Client) ModifyGlobalSecurityIPGroupRelationWithOptions(request *Mo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyGlobalSecurityIPGroupRelationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyGlobalSecurityIPGroupRelationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyGlobalSecurityIPGroupRelationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46897,24 +45845,13 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstanceAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46941,7 +45878,7 @@ func (client *Client) ModifyInstanceAttribute(request *ModifyInstanceAttributeRe
 
 // Summary:
 //
-// Enables or disables auto-renewal for an ApsaraDB for Redis instance.
+// Enables or disables auto-renewal for a Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
@@ -47008,29 +45945,18 @@ func (client *Client) ModifyInstanceAutoRenewalAttributeWithOptions(request *Mod
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceAutoRenewalAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstanceAutoRenewalAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstanceAutoRenewalAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Enables or disables auto-renewal for an ApsaraDB for Redis instance.
+// Enables or disables auto-renewal for a Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
@@ -47113,24 +46039,13 @@ func (client *Client) ModifyInstanceBandwidthWithOptions(request *ModifyInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceBandwidthResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstanceBandwidthResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstanceBandwidthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47159,7 +46074,7 @@ func (client *Client) ModifyInstanceBandwidth(request *ModifyInstanceBandwidthRe
 
 // Summary:
 //
-// Modifies the parameter settings of an ApsaraDB for Redis instance.
+// Modifies the parameter settings of a Tair (Redis OSS-compatible) instance.
 //
 // @param request - ModifyInstanceConfigRequest
 //
@@ -47238,29 +46153,18 @@ func (client *Client) ModifyInstanceConfigWithOptions(request *ModifyInstanceCon
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstanceConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstanceConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Modifies the parameter settings of an ApsaraDB for Redis instance.
+// Modifies the parameter settings of a Tair (Redis OSS-compatible) instance.
 //
 // @param request - ModifyInstanceConfigRequest
 //
@@ -47341,24 +46245,13 @@ func (client *Client) ModifyInstanceMaintainTimeWithOptions(request *ModifyInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceMaintainTimeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstanceMaintainTimeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstanceMaintainTimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47448,24 +46341,13 @@ func (client *Client) ModifyInstanceMajorVersionWithOptions(request *ModifyInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceMajorVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstanceMajorVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstanceMajorVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47561,24 +46443,13 @@ func (client *Client) ModifyInstanceMinorVersionWithOptions(request *ModifyInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceMinorVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstanceMinorVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstanceMinorVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47676,24 +46547,13 @@ func (client *Client) ModifyInstanceNetExpireTimeWithOptions(request *ModifyInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceNetExpireTimeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstanceNetExpireTimeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstanceNetExpireTimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47785,24 +46645,13 @@ func (client *Client) ModifyInstanceParameterWithOptions(request *ModifyInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceParameterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstanceParameterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstanceParameterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47886,24 +46735,13 @@ func (client *Client) ModifyInstanceSSLWithOptions(request *ModifyInstanceSSLReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceSSLResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstanceSSLResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstanceSSLResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48067,24 +46905,13 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceSpecResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstanceSpecResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstanceSpecResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48182,24 +47009,13 @@ func (client *Client) ModifyInstanceTDEWithOptions(request *ModifyInstanceTDEReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceTDEResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstanceTDEResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstanceTDEResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48226,13 +47042,13 @@ func (client *Client) ModifyInstanceTDE(request *ModifyInstanceTDERequest) (_res
 
 // Summary:
 //
-// Enables or disables password-free access for an ApsaraDB for Redis instance. This way, you can connect to a database in a convenient and secure manner.
+// Enables or disables password-free access for a Tair (Redis OSS-compatible) instance. This way, you can connect to a database in a convenient and secure manner.
 //
 // Description:
 //
-// When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
+// When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the Tair instance without a password. You can also use the username and password to connect to the Tair instance.
 //
-// > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
+// > The Tair instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
 //
 // @param request - ModifyInstanceVpcAuthModeRequest
 //
@@ -48287,35 +47103,24 @@ func (client *Client) ModifyInstanceVpcAuthModeWithOptions(request *ModifyInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceVpcAuthModeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstanceVpcAuthModeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstanceVpcAuthModeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Enables or disables password-free access for an ApsaraDB for Redis instance. This way, you can connect to a database in a convenient and secure manner.
+// Enables or disables password-free access for a Tair (Redis OSS-compatible) instance. This way, you can connect to a database in a convenient and secure manner.
 //
 // Description:
 //
-// When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
+// When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the Tair instance without a password. You can also use the username and password to connect to the Tair instance.
 //
-// > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
+// > The Tair instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
 //
 // @param request - ModifyInstanceVpcAuthModeRequest
 //
@@ -48398,24 +47203,13 @@ func (client *Client) ModifyIntranetAttributeWithOptions(request *ModifyIntranet
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyIntranetAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyIntranetAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyIntranetAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48515,24 +47309,13 @@ func (client *Client) ModifyParameterGroupWithOptions(request *ModifyParameterGr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyParameterGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyParameterGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyParameterGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48620,24 +47403,13 @@ func (client *Client) ModifyResourceGroupWithOptions(request *ModifyResourceGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyResourceGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyResourceGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48666,11 +47438,11 @@ func (client *Client) ModifyResourceGroup(request *ModifyResourceGroupRequest) (
 
 // Summary:
 //
-// Resets the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+// Resets the security groups that are added to the whitelists of a Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
-// > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the **SecurityGroupId*	- parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
+// > After you call this operation, the security groups that are added to the whitelists of the Tair instance are deleted, and the security group specified by the **SecurityGroupId*	- parameter is added to the whitelists. For more information about how to reset security groups in the Tair console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
 //
 // @param request - ModifySecurityGroupConfigurationRequest
 //
@@ -48725,33 +47497,22 @@ func (client *Client) ModifySecurityGroupConfigurationWithOptions(request *Modif
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifySecurityGroupConfigurationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifySecurityGroupConfigurationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifySecurityGroupConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Resets the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+// Resets the security groups that are added to the whitelists of a Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
-// > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the **SecurityGroupId*	- parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
+// > After you call this operation, the security groups that are added to the whitelists of the Tair instance are deleted, and the security group specified by the **SecurityGroupId*	- parameter is added to the whitelists. For more information about how to reset security groups in the Tair console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
 //
 // @param request - ModifySecurityGroupConfigurationRequest
 //
@@ -48840,24 +47601,13 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifySecurityIpsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifySecurityIpsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifySecurityIpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -48943,24 +47693,13 @@ func (client *Client) ModifyTairKVCacheCustomInstanceAttributeWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyTairKVCacheCustomInstanceAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyTairKVCacheCustomInstanceAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyTairKVCacheCustomInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -49042,24 +47781,13 @@ func (client *Client) ModifyTaskInfoWithOptions(request *ModifyTaskInfoRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyTaskInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyTaskInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyTaskInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -49137,24 +47865,13 @@ func (client *Client) ReleaseDirectConnectionWithOptions(request *ReleaseDirectC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ReleaseDirectConnectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ReleaseDirectConnectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ReleaseDirectConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -49240,24 +47957,13 @@ func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *Releas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ReleaseInstancePublicConnectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ReleaseInstancePublicConnectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ReleaseInstancePublicConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -49339,24 +48045,13 @@ func (client *Client) RemoveSubInstanceWithOptions(request *RemoveSubInstanceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveSubInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemoveSubInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemoveSubInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -49454,24 +48149,13 @@ func (client *Client) RenewAdditionalBandwidthWithOptions(request *RenewAddition
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RenewAdditionalBandwidthResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RenewAdditionalBandwidthResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RenewAdditionalBandwidthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -49589,24 +48273,13 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RenewInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RenewInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RenewInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -49700,24 +48373,13 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResetAccountPasswordResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ResetAccountPasswordResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ResetAccountPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -49803,24 +48465,13 @@ func (client *Client) ResetTairKVCacheCustomInstancePasswordWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResetTairKVCacheCustomInstancePasswordResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ResetTairKVCacheCustomInstancePasswordResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ResetTairKVCacheCustomInstancePasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -49906,24 +48557,13 @@ func (client *Client) ResizeTairKVCacheCustomInstanceDiskWithOptions(request *Re
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResizeTairKVCacheCustomInstanceDiskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ResizeTairKVCacheCustomInstanceDiskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ResizeTairKVCacheCustomInstanceDiskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -50005,24 +48645,13 @@ func (client *Client) RestartInstanceWithOptions(request *RestartInstanceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RestartInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RestartInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RestartInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -50096,24 +48725,13 @@ func (client *Client) RestartTairKVCacheCustomInstanceWithOptions(request *Resta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RestartTairKVCacheCustomInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RestartTairKVCacheCustomInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RestartTairKVCacheCustomInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -50136,7 +48754,7 @@ func (client *Client) RestartTairKVCacheCustomInstance(request *RestartTairKVCac
 
 // Summary:
 //
-// Restores the data in a backup file to a specified ApsaraDB for Redis instance.
+// Restores the data in a backup file to a specified Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
@@ -50213,29 +48831,18 @@ func (client *Client) RestoreInstanceWithOptions(request *RestoreInstanceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RestoreInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RestoreInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RestoreInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Restores the data in a backup file to a specified ApsaraDB for Redis instance.
+// Restores the data in a backup file to a specified Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
@@ -50310,24 +48917,13 @@ func (client *Client) StartTairKVCacheCustomInstanceWithOptions(request *StartTa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartTairKVCacheCustomInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartTairKVCacheCustomInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartTairKVCacheCustomInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -50401,24 +48997,13 @@ func (client *Client) StopTairKVCacheCustomInstanceWithOptions(request *StopTair
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopTairKVCacheCustomInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopTairKVCacheCustomInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopTairKVCacheCustomInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -50516,24 +49101,13 @@ func (client *Client) SwitchInstanceHAWithOptions(request *SwitchInstanceHAReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SwitchInstanceHAResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SwitchInstanceHAResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SwitchInstanceHAResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -50629,24 +49203,13 @@ func (client *Client) SwitchInstanceProxyWithOptions(request *SwitchInstanceProx
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SwitchInstanceProxyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SwitchInstanceProxyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SwitchInstanceProxyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -50718,24 +49281,13 @@ func (client *Client) SwitchInstanceZoneFailOverWithOptions(request *SwitchInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SwitchInstanceZoneFailOverResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SwitchInstanceZoneFailOverResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SwitchInstanceZoneFailOverResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -50829,24 +49381,13 @@ func (client *Client) SwitchNetworkWithOptions(request *SwitchNetworkRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SwitchNetworkResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SwitchNetworkResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SwitchNetworkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -50932,24 +49473,13 @@ func (client *Client) SyncDtsStatusWithOptions(request *SyncDtsStatusRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SyncDtsStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SyncDtsStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SyncDtsStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -51047,24 +49577,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -51182,24 +49701,13 @@ func (client *Client) TransformInstanceChargeTypeWithOptions(request *TransformI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TransformInstanceChargeTypeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TransformInstanceChargeTypeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TransformInstanceChargeTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -51303,24 +49811,13 @@ func (client *Client) TransformToPrePaidWithOptions(request *TransformToPrePaidR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TransformToPrePaidResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TransformToPrePaidResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TransformToPrePaidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -51400,24 +49897,13 @@ func (client *Client) UnlockDBInstanceWriteWithOptions(request *UnlockDBInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UnlockDBInstanceWriteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UnlockDBInstanceWriteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UnlockDBInstanceWriteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -51511,24 +49997,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UntagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UntagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
