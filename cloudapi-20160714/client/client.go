@@ -19357,6 +19357,7 @@ type DescribeAppResponseBody struct {
 	//
 	// Estimated on October 15, 2021 at 10:20:27
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Disabled    *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
 	// 扩展信息
 	//
 	// example:
@@ -19402,6 +19403,11 @@ func (s *DescribeAppResponseBody) SetCreatedTime(v string) *DescribeAppResponseB
 
 func (s *DescribeAppResponseBody) SetDescription(v string) *DescribeAppResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeAppResponseBody) SetDisabled(v bool) *DescribeAppResponseBody {
+	s.Disabled = &v
 	return s
 }
 
@@ -19723,6 +19729,7 @@ type DescribeAppAttributesResponseBodyAppsAppAttribute struct {
 	//
 	// App test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Disabled    *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
 	// 扩展信息
 	//
 	// example:
@@ -19764,6 +19771,11 @@ func (s *DescribeAppAttributesResponseBodyAppsAppAttribute) SetCreatedTime(v str
 
 func (s *DescribeAppAttributesResponseBodyAppsAppAttribute) SetDescription(v string) *DescribeAppAttributesResponseBodyAppsAppAttribute {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeAppAttributesResponseBodyAppsAppAttribute) SetDisabled(v bool) *DescribeAppAttributesResponseBodyAppsAppAttribute {
+	s.Disabled = &v
 	return s
 }
 
@@ -42058,6 +42070,7 @@ type ModifyAppRequest struct {
 	//
 	// modidyTest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Disabled    *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
 	// 扩展信息
 	//
 	// example:
@@ -42093,6 +42106,11 @@ func (s *ModifyAppRequest) SetAppName(v string) *ModifyAppRequest {
 
 func (s *ModifyAppRequest) SetDescription(v string) *ModifyAppRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModifyAppRequest) SetDisabled(v bool) *ModifyAppRequest {
+	s.Disabled = &v
 	return s
 }
 
@@ -63287,6 +63305,10 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Disabled)) {
+		query["Disabled"] = request.Disabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Extend)) {
