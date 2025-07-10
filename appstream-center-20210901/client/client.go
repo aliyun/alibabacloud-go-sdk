@@ -9430,7 +9430,10 @@ type RenewAppInstanceGroupRequest struct {
 	// example:
 	//
 	// 17440009****
-	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionId *string   `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	RenewAmount *int32    `json:"RenewAmount,omitempty" xml:"RenewAmount,omitempty"`
+	RenewMode   *string   `json:"RenewMode,omitempty" xml:"RenewMode,omitempty"`
+	RenewNodes  []*string `json:"RenewNodes,omitempty" xml:"RenewNodes,omitempty" type:"Repeated"`
 }
 
 func (s RenewAppInstanceGroupRequest) String() string {
@@ -9468,6 +9471,152 @@ func (s *RenewAppInstanceGroupRequest) SetProductType(v string) *RenewAppInstanc
 
 func (s *RenewAppInstanceGroupRequest) SetPromotionId(v string) *RenewAppInstanceGroupRequest {
 	s.PromotionId = &v
+	return s
+}
+
+func (s *RenewAppInstanceGroupRequest) SetRenewAmount(v int32) *RenewAppInstanceGroupRequest {
+	s.RenewAmount = &v
+	return s
+}
+
+func (s *RenewAppInstanceGroupRequest) SetRenewMode(v string) *RenewAppInstanceGroupRequest {
+	s.RenewMode = &v
+	return s
+}
+
+func (s *RenewAppInstanceGroupRequest) SetRenewNodes(v []*string) *RenewAppInstanceGroupRequest {
+	s.RenewNodes = v
+	return s
+}
+
+type RenewAppInstanceGroupShrinkRequest struct {
+	// The ID of the delivery group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// Specifies whether to enable automatic payment.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false: manual payment. This is the default value.
+	//
+	// example:
+	//
+	// false
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The subscription duration of resources. This parameter must be configured together with `PeriodUnit`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration. This parameter must be configured together with `Period`. The following items describe valid values for the combinations of `Period` and `PeriodUnit`:
+	//
+	// 	- 1 Week
+	//
+	// 	- 1 Month
+	//
+	// 	- 2 Month
+	//
+	// 	- 3 Month
+	//
+	// 	- 6 Month
+	//
+	// 	- 1 Year
+	//
+	// 	- 2 Year
+	//
+	// 	- 3 Year
+	//
+	// >  The value of this parameter is case-insensitive. For example, `Week` is valid and `week` is invalid. If you specify a value combination other than the preceding combinations, such as `2 Week`, the operation can still be called. However, an error occurs when you place the order.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Week
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The promotion ID. You can call the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation to obtain the ID.
+	//
+	// example:
+	//
+	// 17440009****
+	PromotionId      *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	RenewAmount      *int32  `json:"RenewAmount,omitempty" xml:"RenewAmount,omitempty"`
+	RenewMode        *string `json:"RenewMode,omitempty" xml:"RenewMode,omitempty"`
+	RenewNodesShrink *string `json:"RenewNodes,omitempty" xml:"RenewNodes,omitempty"`
+}
+
+func (s RenewAppInstanceGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewAppInstanceGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenewAppInstanceGroupShrinkRequest) SetAppInstanceGroupId(v string) *RenewAppInstanceGroupShrinkRequest {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *RenewAppInstanceGroupShrinkRequest) SetAutoPay(v bool) *RenewAppInstanceGroupShrinkRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *RenewAppInstanceGroupShrinkRequest) SetPeriod(v int32) *RenewAppInstanceGroupShrinkRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *RenewAppInstanceGroupShrinkRequest) SetPeriodUnit(v string) *RenewAppInstanceGroupShrinkRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *RenewAppInstanceGroupShrinkRequest) SetProductType(v string) *RenewAppInstanceGroupShrinkRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *RenewAppInstanceGroupShrinkRequest) SetPromotionId(v string) *RenewAppInstanceGroupShrinkRequest {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *RenewAppInstanceGroupShrinkRequest) SetRenewAmount(v int32) *RenewAppInstanceGroupShrinkRequest {
+	s.RenewAmount = &v
+	return s
+}
+
+func (s *RenewAppInstanceGroupShrinkRequest) SetRenewMode(v string) *RenewAppInstanceGroupShrinkRequest {
+	s.RenewMode = &v
+	return s
+}
+
+func (s *RenewAppInstanceGroupShrinkRequest) SetRenewNodesShrink(v string) *RenewAppInstanceGroupShrinkRequest {
+	s.RenewNodesShrink = &v
 	return s
 }
 
@@ -12817,16 +12966,22 @@ func (client *Client) PageListAppInstanceGroupUser(request *PageListAppInstanceG
 //
 // Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
 //
-// @param request - RenewAppInstanceGroupRequest
+// @param tmpReq - RenewAppInstanceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenewAppInstanceGroupResponse
-func (client *Client) RenewAppInstanceGroupWithOptions(request *RenewAppInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *RenewAppInstanceGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) RenewAppInstanceGroupWithOptions(tmpReq *RenewAppInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *RenewAppInstanceGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &RenewAppInstanceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RenewNodes)) {
+		request.RenewNodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RenewNodes, tea.String("RenewNodes"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppInstanceGroupId)) {
 		query["AppInstanceGroupId"] = request.AppInstanceGroupId
@@ -12850,6 +13005,18 @@ func (client *Client) RenewAppInstanceGroupWithOptions(request *RenewAppInstance
 
 	if !tea.BoolValue(util.IsUnset(request.PromotionId)) {
 		query["PromotionId"] = request.PromotionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenewAmount)) {
+		query["RenewAmount"] = request.RenewAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenewMode)) {
+		query["RenewMode"] = request.RenewMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenewNodesShrink)) {
+		query["RenewNodes"] = request.RenewNodesShrink
 	}
 
 	req := &openapi.OpenApiRequest{
