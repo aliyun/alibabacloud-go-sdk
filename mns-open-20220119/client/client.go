@@ -243,6 +243,8 @@ func (s *AuthorizeEndpointAclResponse) SetBody(v *AuthorizeEndpointAclResponseBo
 }
 
 type CreateEventRuleRequest struct {
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeliveryMode *string `json:"DeliveryMode,omitempty" xml:"DeliveryMode,omitempty"`
 	// This parameter is required.
 	Endpoints []*CreateEventRuleRequestEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// This parameter is required.
@@ -269,6 +271,16 @@ func (s CreateEventRuleRequest) String() string {
 
 func (s CreateEventRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateEventRuleRequest) SetClientToken(v string) *CreateEventRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateEventRuleRequest) SetDeliveryMode(v string) *CreateEventRuleRequest {
+	s.DeliveryMode = &v
+	return s
 }
 
 func (s *CreateEventRuleRequest) SetEndpoints(v []*CreateEventRuleRequestEndpoints) *CreateEventRuleRequest {
@@ -330,6 +342,8 @@ func (s *CreateEventRuleRequestEndpoints) SetEndpointValue(v string) *CreateEven
 }
 
 type CreateEventRuleShrinkRequest struct {
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeliveryMode *string `json:"DeliveryMode,omitempty" xml:"DeliveryMode,omitempty"`
 	// This parameter is required.
 	EndpointsShrink *string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
 	// This parameter is required.
@@ -356,6 +370,16 @@ func (s CreateEventRuleShrinkRequest) String() string {
 
 func (s CreateEventRuleShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateEventRuleShrinkRequest) SetClientToken(v string) *CreateEventRuleShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateEventRuleShrinkRequest) SetDeliveryMode(v string) *CreateEventRuleShrinkRequest {
+	s.DeliveryMode = &v
+	return s
 }
 
 func (s *CreateEventRuleShrinkRequest) SetEndpointsShrink(v string) *CreateEventRuleShrinkRequest {
@@ -525,7 +549,8 @@ type CreateQueueRequest struct {
 	// 06273500-249F-5863-121D-74D51123****
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	// The tags.
-	Tag []*CreateQueueRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag                   []*CreateQueueRequestTag                 `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TenantRateLimitPolicy *CreateQueueRequestTenantRateLimitPolicy `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty" type:"Struct"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
 	//
 	// example:
@@ -579,6 +604,11 @@ func (s *CreateQueueRequest) SetQueueName(v string) *CreateQueueRequest {
 
 func (s *CreateQueueRequest) SetTag(v []*CreateQueueRequestTag) *CreateQueueRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *CreateQueueRequest) SetTenantRateLimitPolicy(v *CreateQueueRequestTenantRateLimitPolicy) *CreateQueueRequest {
+	s.TenantRateLimitPolicy = v
 	return s
 }
 
@@ -664,6 +694,29 @@ func (s *CreateQueueRequestTag) SetValue(v string) *CreateQueueRequestTag {
 	return s
 }
 
+type CreateQueueRequestTenantRateLimitPolicy struct {
+	Enabled              *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaxReceivesPerSecond *int32 `json:"MaxReceivesPerSecond,omitempty" xml:"MaxReceivesPerSecond,omitempty"`
+}
+
+func (s CreateQueueRequestTenantRateLimitPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQueueRequestTenantRateLimitPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQueueRequestTenantRateLimitPolicy) SetEnabled(v bool) *CreateQueueRequestTenantRateLimitPolicy {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateQueueRequestTenantRateLimitPolicy) SetMaxReceivesPerSecond(v int32) *CreateQueueRequestTenantRateLimitPolicy {
+	s.MaxReceivesPerSecond = &v
+	return s
+}
+
 type CreateQueueShrinkRequest struct {
 	// The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
 	//
@@ -712,7 +765,8 @@ type CreateQueueShrinkRequest struct {
 	// 06273500-249F-5863-121D-74D51123****
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	// The tags.
-	Tag []*CreateQueueShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag                         []*CreateQueueShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TenantRateLimitPolicyShrink *string                        `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
 	//
 	// example:
@@ -766,6 +820,11 @@ func (s *CreateQueueShrinkRequest) SetQueueName(v string) *CreateQueueShrinkRequ
 
 func (s *CreateQueueShrinkRequest) SetTag(v []*CreateQueueShrinkRequestTag) *CreateQueueShrinkRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *CreateQueueShrinkRequest) SetTenantRateLimitPolicyShrink(v string) *CreateQueueShrinkRequest {
+	s.TenantRateLimitPolicyShrink = &v
 	return s
 }
 
@@ -2247,7 +2306,8 @@ type GetQueueAttributesResponseBodyData struct {
 	// demo-queue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	// The tag.
-	Tags []*GetQueueAttributesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Tags                  []*GetQueueAttributesResponseBodyDataTags                `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TenantRateLimitPolicy *GetQueueAttributesResponseBodyDataTenantRateLimitPolicy `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty" type:"Struct"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
 	//
 	// example:
@@ -2326,6 +2386,11 @@ func (s *GetQueueAttributesResponseBodyData) SetQueueName(v string) *GetQueueAtt
 
 func (s *GetQueueAttributesResponseBodyData) SetTags(v []*GetQueueAttributesResponseBodyDataTags) *GetQueueAttributesResponseBodyData {
 	s.Tags = v
+	return s
+}
+
+func (s *GetQueueAttributesResponseBodyData) SetTenantRateLimitPolicy(v *GetQueueAttributesResponseBodyDataTenantRateLimitPolicy) *GetQueueAttributesResponseBodyData {
+	s.TenantRateLimitPolicy = v
 	return s
 }
 
@@ -2408,6 +2473,29 @@ func (s *GetQueueAttributesResponseBodyDataTags) SetTagKey(v string) *GetQueueAt
 
 func (s *GetQueueAttributesResponseBodyDataTags) SetTagValue(v string) *GetQueueAttributesResponseBodyDataTags {
 	s.TagValue = &v
+	return s
+}
+
+type GetQueueAttributesResponseBodyDataTenantRateLimitPolicy struct {
+	Enabled              *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaxReceivesPerSecond *int32 `json:"MaxReceivesPerSecond,omitempty" xml:"MaxReceivesPerSecond,omitempty"`
+}
+
+func (s GetQueueAttributesResponseBodyDataTenantRateLimitPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueueAttributesResponseBodyDataTenantRateLimitPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueueAttributesResponseBodyDataTenantRateLimitPolicy) SetEnabled(v bool) *GetQueueAttributesResponseBodyDataTenantRateLimitPolicy {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetQueueAttributesResponseBodyDataTenantRateLimitPolicy) SetMaxReceivesPerSecond(v int32) *GetQueueAttributesResponseBodyDataTenantRateLimitPolicy {
+	s.MaxReceivesPerSecond = &v
 	return s
 }
 
@@ -2604,7 +2692,8 @@ type GetSubscriptionAttributesResponseBodyData struct {
 	// example:
 	//
 	// MySubscription
-	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	SubscriptionName      *string                                                         `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	TenantRateLimitPolicy *GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty" type:"Struct"`
 	// The name of the topic.
 	//
 	// example:
@@ -2667,6 +2756,11 @@ func (s *GetSubscriptionAttributesResponseBodyData) SetSubscriptionName(v string
 	return s
 }
 
+func (s *GetSubscriptionAttributesResponseBodyData) SetTenantRateLimitPolicy(v *GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy) *GetSubscriptionAttributesResponseBodyData {
+	s.TenantRateLimitPolicy = v
+	return s
+}
+
 func (s *GetSubscriptionAttributesResponseBodyData) SetTopicName(v string) *GetSubscriptionAttributesResponseBodyData {
 	s.TopicName = &v
 	return s
@@ -2707,6 +2801,29 @@ func (s *GetSubscriptionAttributesResponseBodyDataDlqPolicy) SetDeadLetterTarget
 
 func (s *GetSubscriptionAttributesResponseBodyDataDlqPolicy) SetEnabled(v bool) *GetSubscriptionAttributesResponseBodyDataDlqPolicy {
 	s.Enabled = &v
+	return s
+}
+
+type GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy struct {
+	Enabled              *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaxReceivesPerSecond *int32 `json:"MaxReceivesPerSecond,omitempty" xml:"MaxReceivesPerSecond,omitempty"`
+}
+
+func (s GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy) SetEnabled(v bool) *GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy) SetMaxReceivesPerSecond(v int32) *GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy {
+	s.MaxReceivesPerSecond = &v
 	return s
 }
 
@@ -4566,7 +4683,8 @@ type SetQueueAttributesRequest struct {
 	// example:
 	//
 	// testqueue
-	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	QueueName             *string                                         `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	TenantRateLimitPolicy *SetQueueAttributesRequestTenantRateLimitPolicy `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty" type:"Struct"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
 	//
 	// example:
@@ -4615,6 +4733,11 @@ func (s *SetQueueAttributesRequest) SetPollingWaitSeconds(v int64) *SetQueueAttr
 
 func (s *SetQueueAttributesRequest) SetQueueName(v string) *SetQueueAttributesRequest {
 	s.QueueName = &v
+	return s
+}
+
+func (s *SetQueueAttributesRequest) SetTenantRateLimitPolicy(v *SetQueueAttributesRequestTenantRateLimitPolicy) *SetQueueAttributesRequest {
+	s.TenantRateLimitPolicy = v
 	return s
 }
 
@@ -4667,6 +4790,29 @@ func (s *SetQueueAttributesRequestDlqPolicy) SetMaxReceiveCount(v int32) *SetQue
 	return s
 }
 
+type SetQueueAttributesRequestTenantRateLimitPolicy struct {
+	Enabled              *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaxReceivesPerSecond *int32 `json:"MaxReceivesPerSecond,omitempty" xml:"MaxReceivesPerSecond,omitempty"`
+}
+
+func (s SetQueueAttributesRequestTenantRateLimitPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetQueueAttributesRequestTenantRateLimitPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *SetQueueAttributesRequestTenantRateLimitPolicy) SetEnabled(v bool) *SetQueueAttributesRequestTenantRateLimitPolicy {
+	s.Enabled = &v
+	return s
+}
+
+func (s *SetQueueAttributesRequestTenantRateLimitPolicy) SetMaxReceivesPerSecond(v int32) *SetQueueAttributesRequestTenantRateLimitPolicy {
+	s.MaxReceivesPerSecond = &v
+	return s
+}
+
 type SetQueueAttributesShrinkRequest struct {
 	// The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
 	//
@@ -4711,7 +4857,8 @@ type SetQueueAttributesShrinkRequest struct {
 	// example:
 	//
 	// testqueue
-	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	QueueName                   *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	TenantRateLimitPolicyShrink *string `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
 	//
 	// example:
@@ -4760,6 +4907,11 @@ func (s *SetQueueAttributesShrinkRequest) SetPollingWaitSeconds(v int64) *SetQue
 
 func (s *SetQueueAttributesShrinkRequest) SetQueueName(v string) *SetQueueAttributesShrinkRequest {
 	s.QueueName = &v
+	return s
+}
+
+func (s *SetQueueAttributesShrinkRequest) SetTenantRateLimitPolicyShrink(v string) *SetQueueAttributesShrinkRequest {
+	s.TenantRateLimitPolicyShrink = &v
 	return s
 }
 
@@ -4930,7 +5082,8 @@ type SetSubscriptionAttributesRequest struct {
 	// example:
 	//
 	// MySubscription
-	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	SubscriptionName      *string                                                `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	TenantRateLimitPolicy *SetSubscriptionAttributesRequestTenantRateLimitPolicy `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty" type:"Struct"`
 	// The name of the topic.
 	//
 	// This parameter is required.
@@ -4961,6 +5114,11 @@ func (s *SetSubscriptionAttributesRequest) SetNotifyStrategy(v string) *SetSubsc
 
 func (s *SetSubscriptionAttributesRequest) SetSubscriptionName(v string) *SetSubscriptionAttributesRequest {
 	s.SubscriptionName = &v
+	return s
+}
+
+func (s *SetSubscriptionAttributesRequest) SetTenantRateLimitPolicy(v *SetSubscriptionAttributesRequestTenantRateLimitPolicy) *SetSubscriptionAttributesRequest {
+	s.TenantRateLimitPolicy = v
 	return s
 }
 
@@ -5002,6 +5160,29 @@ func (s *SetSubscriptionAttributesRequestDlqPolicy) SetEnabled(v bool) *SetSubsc
 	return s
 }
 
+type SetSubscriptionAttributesRequestTenantRateLimitPolicy struct {
+	Enabled              *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaxReceivesPerSecond *int32 `json:"MaxReceivesPerSecond,omitempty" xml:"MaxReceivesPerSecond,omitempty"`
+}
+
+func (s SetSubscriptionAttributesRequestTenantRateLimitPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSubscriptionAttributesRequestTenantRateLimitPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *SetSubscriptionAttributesRequestTenantRateLimitPolicy) SetEnabled(v bool) *SetSubscriptionAttributesRequestTenantRateLimitPolicy {
+	s.Enabled = &v
+	return s
+}
+
+func (s *SetSubscriptionAttributesRequestTenantRateLimitPolicy) SetMaxReceivesPerSecond(v int32) *SetSubscriptionAttributesRequestTenantRateLimitPolicy {
+	s.MaxReceivesPerSecond = &v
+	return s
+}
+
 type SetSubscriptionAttributesShrinkRequest struct {
 	// The dead-letter queue policy.
 	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
@@ -5022,7 +5203,8 @@ type SetSubscriptionAttributesShrinkRequest struct {
 	// example:
 	//
 	// MySubscription
-	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	SubscriptionName            *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	TenantRateLimitPolicyShrink *string `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty"`
 	// The name of the topic.
 	//
 	// This parameter is required.
@@ -5053,6 +5235,11 @@ func (s *SetSubscriptionAttributesShrinkRequest) SetNotifyStrategy(v string) *Se
 
 func (s *SetSubscriptionAttributesShrinkRequest) SetSubscriptionName(v string) *SetSubscriptionAttributesShrinkRequest {
 	s.SubscriptionName = &v
+	return s
+}
+
+func (s *SetSubscriptionAttributesShrinkRequest) SetTenantRateLimitPolicyShrink(v string) *SetSubscriptionAttributesShrinkRequest {
+	s.TenantRateLimitPolicyShrink = &v
 	return s
 }
 
@@ -5397,7 +5584,9 @@ func (s *SetTopicAttributesResponse) SetBody(v *SetTopicAttributesResponseBody) 
 
 type SubscribeRequest struct {
 	// The dead-letter queue policy.
-	DlqPolicy *SubscribeRequestDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
+	DlqPolicy       *SubscribeRequestDlqPolicy       `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
+	DmAttributes    *SubscribeRequestDmAttributes    `json:"DmAttributes,omitempty" xml:"DmAttributes,omitempty" type:"Struct"`
+	DysmsAttributes *SubscribeRequestDysmsAttributes `json:"DysmsAttributes,omitempty" xml:"DysmsAttributes,omitempty" type:"Struct"`
 	// The receiver endpoint. The format of the endpoint varies based on the terminal type.
 	//
 	// 	- If you set PushType to http, set Endpoint to an `HTTP URL that starts with http:// or https://`.
@@ -5415,7 +5604,8 @@ type SubscribeRequest struct {
 	// example:
 	//
 	// http://example.com
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Endpoint        *string                          `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	KafkaAttributes *SubscribeRequestKafkaAttributes `json:"KafkaAttributes,omitempty" xml:"KafkaAttributes,omitempty" type:"Struct"`
 	// The tag that is used to filter messages. Only messages that have the same tag can be pushed. Set the value to a string of no more than 16 characters.
 	//
 	// By default, no tag is specified to filter messages.
@@ -5472,7 +5662,8 @@ type SubscribeRequest struct {
 	// example:
 	//
 	// testSubscription
-	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	SubscriptionName      *string                                `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	TenantRateLimitPolicy *SubscribeRequestTenantRateLimitPolicy `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty" type:"Struct"`
 	// The name of the topic.
 	//
 	// This parameter is required.
@@ -5496,8 +5687,23 @@ func (s *SubscribeRequest) SetDlqPolicy(v *SubscribeRequestDlqPolicy) *Subscribe
 	return s
 }
 
+func (s *SubscribeRequest) SetDmAttributes(v *SubscribeRequestDmAttributes) *SubscribeRequest {
+	s.DmAttributes = v
+	return s
+}
+
+func (s *SubscribeRequest) SetDysmsAttributes(v *SubscribeRequestDysmsAttributes) *SubscribeRequest {
+	s.DysmsAttributes = v
+	return s
+}
+
 func (s *SubscribeRequest) SetEndpoint(v string) *SubscribeRequest {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *SubscribeRequest) SetKafkaAttributes(v *SubscribeRequestKafkaAttributes) *SubscribeRequest {
+	s.KafkaAttributes = v
 	return s
 }
 
@@ -5528,6 +5734,11 @@ func (s *SubscribeRequest) SetStsRoleArn(v string) *SubscribeRequest {
 
 func (s *SubscribeRequest) SetSubscriptionName(v string) *SubscribeRequest {
 	s.SubscriptionName = &v
+	return s
+}
+
+func (s *SubscribeRequest) SetTenantRateLimitPolicy(v *SubscribeRequestTenantRateLimitPolicy) *SubscribeRequest {
+	s.TenantRateLimitPolicy = v
 	return s
 }
 
@@ -5569,9 +5780,97 @@ func (s *SubscribeRequestDlqPolicy) SetEnabled(v bool) *SubscribeRequestDlqPolic
 	return s
 }
 
+type SubscribeRequestDmAttributes struct {
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	Subject     *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+}
+
+func (s SubscribeRequestDmAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeRequestDmAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeRequestDmAttributes) SetAccountName(v string) *SubscribeRequestDmAttributes {
+	s.AccountName = &v
+	return s
+}
+
+func (s *SubscribeRequestDmAttributes) SetSubject(v string) *SubscribeRequestDmAttributes {
+	s.Subject = &v
+	return s
+}
+
+type SubscribeRequestDysmsAttributes struct {
+	SignName     *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s SubscribeRequestDysmsAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeRequestDysmsAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeRequestDysmsAttributes) SetSignName(v string) *SubscribeRequestDysmsAttributes {
+	s.SignName = &v
+	return s
+}
+
+func (s *SubscribeRequestDysmsAttributes) SetTemplateCode(v string) *SubscribeRequestDysmsAttributes {
+	s.TemplateCode = &v
+	return s
+}
+
+type SubscribeRequestKafkaAttributes struct {
+	BusinessMode *string `json:"BusinessMode,omitempty" xml:"BusinessMode,omitempty"`
+}
+
+func (s SubscribeRequestKafkaAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeRequestKafkaAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeRequestKafkaAttributes) SetBusinessMode(v string) *SubscribeRequestKafkaAttributes {
+	s.BusinessMode = &v
+	return s
+}
+
+type SubscribeRequestTenantRateLimitPolicy struct {
+	Enabled              *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MaxReceivesPerSecond *int32 `json:"MaxReceivesPerSecond,omitempty" xml:"MaxReceivesPerSecond,omitempty"`
+}
+
+func (s SubscribeRequestTenantRateLimitPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeRequestTenantRateLimitPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeRequestTenantRateLimitPolicy) SetEnabled(v bool) *SubscribeRequestTenantRateLimitPolicy {
+	s.Enabled = &v
+	return s
+}
+
+func (s *SubscribeRequestTenantRateLimitPolicy) SetMaxReceivesPerSecond(v int32) *SubscribeRequestTenantRateLimitPolicy {
+	s.MaxReceivesPerSecond = &v
+	return s
+}
+
 type SubscribeShrinkRequest struct {
 	// The dead-letter queue policy.
-	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
+	DlqPolicyShrink       *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
+	DmAttributesShrink    *string `json:"DmAttributes,omitempty" xml:"DmAttributes,omitempty"`
+	DysmsAttributesShrink *string `json:"DysmsAttributes,omitempty" xml:"DysmsAttributes,omitempty"`
 	// The receiver endpoint. The format of the endpoint varies based on the terminal type.
 	//
 	// 	- If you set PushType to http, set Endpoint to an `HTTP URL that starts with http:// or https://`.
@@ -5589,7 +5888,8 @@ type SubscribeShrinkRequest struct {
 	// example:
 	//
 	// http://example.com
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Endpoint              *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	KafkaAttributesShrink *string `json:"KafkaAttributes,omitempty" xml:"KafkaAttributes,omitempty"`
 	// The tag that is used to filter messages. Only messages that have the same tag can be pushed. Set the value to a string of no more than 16 characters.
 	//
 	// By default, no tag is specified to filter messages.
@@ -5646,7 +5946,8 @@ type SubscribeShrinkRequest struct {
 	// example:
 	//
 	// testSubscription
-	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	SubscriptionName            *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	TenantRateLimitPolicyShrink *string `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty"`
 	// The name of the topic.
 	//
 	// This parameter is required.
@@ -5670,8 +5971,23 @@ func (s *SubscribeShrinkRequest) SetDlqPolicyShrink(v string) *SubscribeShrinkRe
 	return s
 }
 
+func (s *SubscribeShrinkRequest) SetDmAttributesShrink(v string) *SubscribeShrinkRequest {
+	s.DmAttributesShrink = &v
+	return s
+}
+
+func (s *SubscribeShrinkRequest) SetDysmsAttributesShrink(v string) *SubscribeShrinkRequest {
+	s.DysmsAttributesShrink = &v
+	return s
+}
+
 func (s *SubscribeShrinkRequest) SetEndpoint(v string) *SubscribeShrinkRequest {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *SubscribeShrinkRequest) SetKafkaAttributesShrink(v string) *SubscribeShrinkRequest {
+	s.KafkaAttributesShrink = &v
 	return s
 }
 
@@ -5702,6 +6018,11 @@ func (s *SubscribeShrinkRequest) SetStsRoleArn(v string) *SubscribeShrinkRequest
 
 func (s *SubscribeShrinkRequest) SetSubscriptionName(v string) *SubscribeShrinkRequest {
 	s.SubscriptionName = &v
+	return s
+}
+
+func (s *SubscribeShrinkRequest) SetTenantRateLimitPolicyShrink(v string) *SubscribeShrinkRequest {
+	s.TenantRateLimitPolicyShrink = &v
 	return s
 }
 
@@ -6145,6 +6466,14 @@ func (client *Client) CreateEventRuleWithOptions(tmpReq *CreateEventRuleRequest,
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryMode)) {
+		query["DeliveryMode"] = request.DeliveryMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndpointsShrink)) {
 		query["Endpoints"] = request.EndpointsShrink
 	}
@@ -6226,6 +6555,10 @@ func (client *Client) CreateQueueWithOptions(tmpReq *CreateQueueRequest, runtime
 		request.DlqPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DlqPolicy, tea.String("DlqPolicy"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantRateLimitPolicy)) {
+		request.TenantRateLimitPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantRateLimitPolicy, tea.String("TenantRateLimitPolicy"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DelaySeconds)) {
 		query["DelaySeconds"] = request.DelaySeconds
@@ -6257,6 +6590,10 @@ func (client *Client) CreateQueueWithOptions(tmpReq *CreateQueueRequest, runtime
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantRateLimitPolicyShrink)) {
+		query["TenantRateLimitPolicy"] = request.TenantRateLimitPolicyShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VisibilityTimeout)) {
@@ -7252,6 +7589,10 @@ func (client *Client) SetQueueAttributesWithOptions(tmpReq *SetQueueAttributesRe
 		request.DlqPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DlqPolicy, tea.String("DlqPolicy"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantRateLimitPolicy)) {
+		request.TenantRateLimitPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantRateLimitPolicy, tea.String("TenantRateLimitPolicy"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DelaySeconds)) {
 		query["DelaySeconds"] = request.DelaySeconds
@@ -7279,6 +7620,10 @@ func (client *Client) SetQueueAttributesWithOptions(tmpReq *SetQueueAttributesRe
 
 	if !tea.BoolValue(util.IsUnset(request.QueueName)) {
 		query["QueueName"] = request.QueueName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantRateLimitPolicyShrink)) {
+		query["TenantRateLimitPolicy"] = request.TenantRateLimitPolicyShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VisibilityTimeout)) {
@@ -7346,6 +7691,10 @@ func (client *Client) SetSubscriptionAttributesWithOptions(tmpReq *SetSubscripti
 		request.DlqPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DlqPolicy, tea.String("DlqPolicy"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantRateLimitPolicy)) {
+		request.TenantRateLimitPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantRateLimitPolicy, tea.String("TenantRateLimitPolicy"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DlqPolicyShrink)) {
 		query["DlqPolicy"] = request.DlqPolicyShrink
@@ -7357,6 +7706,10 @@ func (client *Client) SetSubscriptionAttributesWithOptions(tmpReq *SetSubscripti
 
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionName)) {
 		query["SubscriptionName"] = request.SubscriptionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantRateLimitPolicyShrink)) {
+		query["TenantRateLimitPolicy"] = request.TenantRateLimitPolicyShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TopicName)) {
@@ -7492,13 +7845,41 @@ func (client *Client) SubscribeWithOptions(tmpReq *SubscribeRequest, runtime *ut
 		request.DlqPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DlqPolicy, tea.String("DlqPolicy"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.DmAttributes)) {
+		request.DmAttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DmAttributes, tea.String("DmAttributes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.DysmsAttributes)) {
+		request.DysmsAttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DysmsAttributes, tea.String("DysmsAttributes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.KafkaAttributes)) {
+		request.KafkaAttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KafkaAttributes, tea.String("KafkaAttributes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantRateLimitPolicy)) {
+		request.TenantRateLimitPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantRateLimitPolicy, tea.String("TenantRateLimitPolicy"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DlqPolicyShrink)) {
 		query["DlqPolicy"] = request.DlqPolicyShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DmAttributesShrink)) {
+		query["DmAttributes"] = request.DmAttributesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DysmsAttributesShrink)) {
+		query["DysmsAttributes"] = request.DysmsAttributesShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Endpoint)) {
 		query["Endpoint"] = request.Endpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KafkaAttributesShrink)) {
+		query["KafkaAttributes"] = request.KafkaAttributesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MessageTag)) {
@@ -7523,6 +7904,10 @@ func (client *Client) SubscribeWithOptions(tmpReq *SubscribeRequest, runtime *ut
 
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionName)) {
 		query["SubscriptionName"] = request.SubscriptionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantRateLimitPolicyShrink)) {
+		query["TenantRateLimitPolicy"] = request.TenantRateLimitPolicyShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TopicName)) {
