@@ -5,12 +5,11 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
-	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
-	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
+	xml "github.com/alibabacloud-go/tea-xml/service"
 	"github.com/alibabacloud-go/tea/tea"
+	credential "github.com/aliyun/credentials-go/credentials"
 	"io"
 )
 
@@ -7324,6 +7323,188 @@ func (s *CreateStreamingJobResponse) SetBody(v *CreateStreamingJobResponseBody) 
 	return s
 }
 
+type CreateSupabaseProjectRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Pw123456
+	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88888888****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// PL0
+	DiskPerformanceLevel *string `json:"DiskPerformanceLevel,omitempty" xml:"DiskPerformanceLevel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// saas_iot_x86_modbustcp_lqt01
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1C1G
+	ProjectSpec *string `json:"ProjectSpec,omitempty" xml:"ProjectSpec,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 127.0.0.1
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// example:
+	//
+	// 2
+	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-bp1cpq8mr64paltkb****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp*******************
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateSupabaseProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSupabaseProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSupabaseProjectRequest) SetAccountPassword(v string) *CreateSupabaseProjectRequest {
+	s.AccountPassword = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetClientToken(v string) *CreateSupabaseProjectRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetDiskPerformanceLevel(v string) *CreateSupabaseProjectRequest {
+	s.DiskPerformanceLevel = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetProjectName(v string) *CreateSupabaseProjectRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetProjectSpec(v string) *CreateSupabaseProjectRequest {
+	s.ProjectSpec = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetRegionId(v string) *CreateSupabaseProjectRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetSecurityIPList(v string) *CreateSupabaseProjectRequest {
+	s.SecurityIPList = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetStorageSize(v int64) *CreateSupabaseProjectRequest {
+	s.StorageSize = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetVSwitchId(v string) *CreateSupabaseProjectRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetVpcId(v string) *CreateSupabaseProjectRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetZoneId(v string) *CreateSupabaseProjectRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateSupabaseProjectResponseBody struct {
+	// example:
+	//
+	// sbp-180****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSupabaseProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSupabaseProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSupabaseProjectResponseBody) SetProjectId(v string) *CreateSupabaseProjectResponseBody {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectResponseBody) SetRequestId(v string) *CreateSupabaseProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSupabaseProjectResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSupabaseProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSupabaseProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSupabaseProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSupabaseProjectResponse) SetHeaders(v map[string]*string) *CreateSupabaseProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSupabaseProjectResponse) SetStatusCode(v int32) *CreateSupabaseProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectResponse) SetBody(v *CreateSupabaseProjectResponseBody) *CreateSupabaseProjectResponse {
+	s.Body = v
+	return s
+}
+
 type CreateVectorIndexRequest struct {
 	// Collection name.
 	//
@@ -10158,6 +10339,86 @@ func (s *DeleteStreamingJobResponse) SetStatusCode(v int32) *DeleteStreamingJobR
 }
 
 func (s *DeleteStreamingJobResponse) SetBody(v *DeleteStreamingJobResponseBody) *DeleteStreamingJobResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSupabaseProjectRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sbp-1****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteSupabaseProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSupabaseProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSupabaseProjectRequest) SetProjectId(v string) *DeleteSupabaseProjectRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DeleteSupabaseProjectRequest) SetRegionId(v string) *DeleteSupabaseProjectRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteSupabaseProjectResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteSupabaseProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSupabaseProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSupabaseProjectResponseBody) SetRequestId(v string) *DeleteSupabaseProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteSupabaseProjectResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSupabaseProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSupabaseProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSupabaseProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSupabaseProjectResponse) SetHeaders(v map[string]*string) *DeleteSupabaseProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSupabaseProjectResponse) SetStatusCode(v int32) *DeleteSupabaseProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSupabaseProjectResponse) SetBody(v *DeleteSupabaseProjectResponseBody) *DeleteSupabaseProjectResponse {
 	s.Body = v
 	return s
 }
@@ -30121,6 +30382,479 @@ func (s *GetStatementResultResponse) SetBody(v *GetStatementResultResponseBody) 
 	return s
 }
 
+type GetSupabaseProjectRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sbp-263****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetSupabaseProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupabaseProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupabaseProjectRequest) SetProjectId(v string) *GetSupabaseProjectRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetSupabaseProjectRequest) SetRegionId(v string) *GetSupabaseProjectRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetSupabaseProjectResponseBody struct {
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// xxpassword
+	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
+	// example:
+	//
+	// username
+	DashboardUserName *string `json:"DashboardUserName,omitempty" xml:"DashboardUserName,omitempty"`
+	// example:
+	//
+	// PL0
+	DiskPerformanceLevel *string `json:"DiskPerformanceLevel,omitempty" xml:"DiskPerformanceLevel,omitempty"`
+	// example:
+	//
+	// postgres
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 15
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// example:
+	//
+	// 192.168.0.11
+	PrivateConnectUrl *string `json:"PrivateConnectUrl,omitempty" xml:"PrivateConnectUrl,omitempty"`
+	// example:
+	//
+	// sbp-545434
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// supabase_project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 1C1G
+	ProjectSpec *string `json:"ProjectSpec,omitempty" xml:"ProjectSpec,omitempty"`
+	// example:
+	//
+	// 10.154.11.10
+	PublicConnectUrl *string `json:"PublicConnectUrl,omitempty" xml:"PublicConnectUrl,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2
+	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// example:
+	//
+	// vsw-bp1cpq8mr64paltkb****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-bp*******************
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s GetSupabaseProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupabaseProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupabaseProjectResponseBody) SetCreateTime(v string) *GetSupabaseProjectResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetDashboardPassword(v string) *GetSupabaseProjectResponseBody {
+	s.DashboardPassword = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetDashboardUserName(v string) *GetSupabaseProjectResponseBody {
+	s.DashboardUserName = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetDiskPerformanceLevel(v string) *GetSupabaseProjectResponseBody {
+	s.DiskPerformanceLevel = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetEngine(v string) *GetSupabaseProjectResponseBody {
+	s.Engine = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetEngineVersion(v string) *GetSupabaseProjectResponseBody {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetPrivateConnectUrl(v string) *GetSupabaseProjectResponseBody {
+	s.PrivateConnectUrl = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetProjectId(v string) *GetSupabaseProjectResponseBody {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetProjectName(v string) *GetSupabaseProjectResponseBody {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetProjectSpec(v string) *GetSupabaseProjectResponseBody {
+	s.ProjectSpec = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetPublicConnectUrl(v string) *GetSupabaseProjectResponseBody {
+	s.PublicConnectUrl = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetRegionId(v string) *GetSupabaseProjectResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetRequestId(v string) *GetSupabaseProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetSecurityIpList(v string) *GetSupabaseProjectResponseBody {
+	s.SecurityIpList = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetStatus(v string) *GetSupabaseProjectResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetStorageSize(v int64) *GetSupabaseProjectResponseBody {
+	s.StorageSize = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetVSwitchId(v string) *GetSupabaseProjectResponseBody {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetVpcId(v string) *GetSupabaseProjectResponseBody {
+	s.VpcId = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponseBody) SetZoneId(v string) *GetSupabaseProjectResponseBody {
+	s.ZoneId = &v
+	return s
+}
+
+type GetSupabaseProjectResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSupabaseProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSupabaseProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupabaseProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupabaseProjectResponse) SetHeaders(v map[string]*string) *GetSupabaseProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSupabaseProjectResponse) SetStatusCode(v int32) *GetSupabaseProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSupabaseProjectResponse) SetBody(v *GetSupabaseProjectResponseBody) *GetSupabaseProjectResponse {
+	s.Body = v
+	return s
+}
+
+type GetSupabaseProjectApiKeysRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sbp-481****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetSupabaseProjectApiKeysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupabaseProjectApiKeysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupabaseProjectApiKeysRequest) SetProjectId(v string) *GetSupabaseProjectApiKeysRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetSupabaseProjectApiKeysRequest) SetRegionId(v string) *GetSupabaseProjectApiKeysRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetSupabaseProjectApiKeysResponseBody struct {
+	ApiKeys []*GetSupabaseProjectApiKeysResponseBodyApiKeys `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSupabaseProjectApiKeysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupabaseProjectApiKeysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupabaseProjectApiKeysResponseBody) SetApiKeys(v []*GetSupabaseProjectApiKeysResponseBodyApiKeys) *GetSupabaseProjectApiKeysResponseBody {
+	s.ApiKeys = v
+	return s
+}
+
+func (s *GetSupabaseProjectApiKeysResponseBody) SetRequestId(v string) *GetSupabaseProjectApiKeysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSupabaseProjectApiKeysResponseBodyApiKeys struct {
+	// example:
+	//
+	// Tmz2Z59caMDeq/Xi9vuc****
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// example:
+	//
+	// anon key
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetSupabaseProjectApiKeysResponseBodyApiKeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupabaseProjectApiKeysResponseBodyApiKeys) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupabaseProjectApiKeysResponseBodyApiKeys) SetApiKey(v string) *GetSupabaseProjectApiKeysResponseBodyApiKeys {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *GetSupabaseProjectApiKeysResponseBodyApiKeys) SetName(v string) *GetSupabaseProjectApiKeysResponseBodyApiKeys {
+	s.Name = &v
+	return s
+}
+
+type GetSupabaseProjectApiKeysResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSupabaseProjectApiKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSupabaseProjectApiKeysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupabaseProjectApiKeysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupabaseProjectApiKeysResponse) SetHeaders(v map[string]*string) *GetSupabaseProjectApiKeysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSupabaseProjectApiKeysResponse) SetStatusCode(v int32) *GetSupabaseProjectApiKeysResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSupabaseProjectApiKeysResponse) SetBody(v *GetSupabaseProjectApiKeysResponseBody) *GetSupabaseProjectApiKeysResponse {
+	s.Body = v
+	return s
+}
+
+type GetSupabaseProjectDashboardAccountRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sbp-4ptxp5mp****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetSupabaseProjectDashboardAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupabaseProjectDashboardAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupabaseProjectDashboardAccountRequest) SetProjectId(v string) *GetSupabaseProjectDashboardAccountRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetSupabaseProjectDashboardAccountRequest) SetRegionId(v string) *GetSupabaseProjectDashboardAccountRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetSupabaseProjectDashboardAccountResponseBody struct {
+	// example:
+	//
+	// xxpassword
+	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
+	// example:
+	//
+	// xxuser
+	DashboardUsername *string `json:"DashboardUsername,omitempty" xml:"DashboardUsername,omitempty"`
+	// example:
+	//
+	// sbp-twmoe9bakow
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// supabase_prod
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSupabaseProjectDashboardAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupabaseProjectDashboardAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupabaseProjectDashboardAccountResponseBody) SetDashboardPassword(v string) *GetSupabaseProjectDashboardAccountResponseBody {
+	s.DashboardPassword = &v
+	return s
+}
+
+func (s *GetSupabaseProjectDashboardAccountResponseBody) SetDashboardUsername(v string) *GetSupabaseProjectDashboardAccountResponseBody {
+	s.DashboardUsername = &v
+	return s
+}
+
+func (s *GetSupabaseProjectDashboardAccountResponseBody) SetProjectId(v string) *GetSupabaseProjectDashboardAccountResponseBody {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetSupabaseProjectDashboardAccountResponseBody) SetProjectName(v string) *GetSupabaseProjectDashboardAccountResponseBody {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetSupabaseProjectDashboardAccountResponseBody) SetRequestId(v string) *GetSupabaseProjectDashboardAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSupabaseProjectDashboardAccountResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSupabaseProjectDashboardAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSupabaseProjectDashboardAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSupabaseProjectDashboardAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSupabaseProjectDashboardAccountResponse) SetHeaders(v map[string]*string) *GetSupabaseProjectDashboardAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSupabaseProjectDashboardAccountResponse) SetStatusCode(v int32) *GetSupabaseProjectDashboardAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSupabaseProjectDashboardAccountResponse) SetBody(v *GetSupabaseProjectDashboardAccountResponseBody) *GetSupabaseProjectDashboardAccountResponse {
+	s.Body = v
+	return s
+}
+
 type GetUploadDocumentJobRequest struct {
 	// The name of the document collection.
 	//
@@ -35408,6 +36142,330 @@ func (s *ListStreamingJobsResponse) SetBody(v *ListStreamingJobsResponseBody) *L
 	return s
 }
 
+type ListSupabaseProjectsRequest struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListSupabaseProjectsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSupabaseProjectsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSupabaseProjectsRequest) SetMaxResults(v int32) *ListSupabaseProjectsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsRequest) SetNextToken(v string) *ListSupabaseProjectsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsRequest) SetRegionId(v string) *ListSupabaseProjectsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListSupabaseProjectsResponseBody struct {
+	Items []*ListSupabaseProjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 50
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s ListSupabaseProjectsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSupabaseProjectsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSupabaseProjectsResponseBody) SetItems(v []*ListSupabaseProjectsResponseBodyItems) *ListSupabaseProjectsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBody) SetMaxResults(v int32) *ListSupabaseProjectsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBody) SetNextToken(v string) *ListSupabaseProjectsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBody) SetPageNumber(v int32) *ListSupabaseProjectsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBody) SetPageRecordCount(v int32) *ListSupabaseProjectsResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBody) SetRequestId(v string) *ListSupabaseProjectsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBody) SetTotalRecordCount(v int32) *ListSupabaseProjectsResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type ListSupabaseProjectsResponseBodyItems struct {
+	// example:
+	//
+	// 2021-10-09T04:54:08Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// xxpassword
+	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
+	// example:
+	//
+	// null
+	DashboardUserName *string `json:"DashboardUserName,omitempty" xml:"DashboardUserName,omitempty"`
+	// example:
+	//
+	// PL0
+	DiskPerformanceLevel *string `json:"DiskPerformanceLevel,omitempty" xml:"DiskPerformanceLevel,omitempty"`
+	// example:
+	//
+	// gpdb
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 6.0
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// example:
+	//
+	// Postpaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// 192.168.0.1
+	PrivateConnectUrl *string `json:"PrivateConnectUrl,omitempty" xml:"PrivateConnectUrl,omitempty"`
+	// example:
+	//
+	// sbp-12***
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// supabase_project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 1C1G
+	ProjectSpec *string `json:"ProjectSpec,omitempty" xml:"ProjectSpec,omitempty"`
+	// example:
+	//
+	// 10.154.11.10
+	PublicConnectUrl *string `json:"PublicConnectUrl,omitempty" xml:"PublicConnectUrl,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2
+	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// vSwitch ID。
+	//
+	// example:
+	//
+	// vsw-bp1cpq8mr64paltkb****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// VPC ID。
+	//
+	// example:
+	//
+	// vpc-bp19ame5m1r3oejns****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s ListSupabaseProjectsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSupabaseProjectsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetCreateTime(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetDashboardPassword(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.DashboardPassword = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetDashboardUserName(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.DashboardUserName = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetDiskPerformanceLevel(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.DiskPerformanceLevel = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetEngine(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.Engine = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetEngineVersion(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetPayType(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.PayType = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetPrivateConnectUrl(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.PrivateConnectUrl = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetProjectId(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetProjectName(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetProjectSpec(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.ProjectSpec = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetPublicConnectUrl(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.PublicConnectUrl = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetRegionId(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetSecurityIPList(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.SecurityIPList = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetStatus(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetStorageSize(v int64) *ListSupabaseProjectsResponseBodyItems {
+	s.StorageSize = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetVSwitchId(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetVpcId(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.VpcId = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetZoneId(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.ZoneId = &v
+	return s
+}
+
+type ListSupabaseProjectsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSupabaseProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSupabaseProjectsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSupabaseProjectsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSupabaseProjectsResponse) SetHeaders(v map[string]*string) *ListSupabaseProjectsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponse) SetStatusCode(v int32) *ListSupabaseProjectsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsResponse) SetBody(v *ListSupabaseProjectsResponseBody) *ListSupabaseProjectsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTablesRequest struct {
 	// The instance ID.
 	//
@@ -40263,6 +41321,97 @@ func (s *ModifyStreamingJobResponse) SetBody(v *ModifyStreamingJobResponseBody) 
 	return s
 }
 
+type ModifySupabaseProjectSecurityIpsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sbp-407****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 127.0.0.1
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+}
+
+func (s ModifySupabaseProjectSecurityIpsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySupabaseProjectSecurityIpsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySupabaseProjectSecurityIpsRequest) SetProjectId(v string) *ModifySupabaseProjectSecurityIpsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ModifySupabaseProjectSecurityIpsRequest) SetRegionId(v string) *ModifySupabaseProjectSecurityIpsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifySupabaseProjectSecurityIpsRequest) SetSecurityIPList(v string) *ModifySupabaseProjectSecurityIpsRequest {
+	s.SecurityIPList = &v
+	return s
+}
+
+type ModifySupabaseProjectSecurityIpsResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifySupabaseProjectSecurityIpsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySupabaseProjectSecurityIpsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySupabaseProjectSecurityIpsResponseBody) SetRequestId(v string) *ModifySupabaseProjectSecurityIpsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifySupabaseProjectSecurityIpsResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifySupabaseProjectSecurityIpsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifySupabaseProjectSecurityIpsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySupabaseProjectSecurityIpsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySupabaseProjectSecurityIpsResponse) SetHeaders(v map[string]*string) *ModifySupabaseProjectSecurityIpsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifySupabaseProjectSecurityIpsResponse) SetStatusCode(v int32) *ModifySupabaseProjectSecurityIpsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifySupabaseProjectSecurityIpsResponse) SetBody(v *ModifySupabaseProjectSecurityIpsResponseBody) *ModifySupabaseProjectSecurityIpsResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyVectorConfigurationRequest struct {
 	// The instance ID.
 	//
@@ -43552,6 +44701,97 @@ func (s *ResetIMVMonitorDataResponse) SetStatusCode(v int32) *ResetIMVMonitorDat
 }
 
 func (s *ResetIMVMonitorDataResponse) SetBody(v *ResetIMVMonitorDataResponseBody) *ResetIMVMonitorDataResponse {
+	s.Body = v
+	return s
+}
+
+type ResetSupabaseProjectPasswordRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Pw123456
+	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sbp-tyarplz****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ResetSupabaseProjectPasswordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetSupabaseProjectPasswordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResetSupabaseProjectPasswordRequest) SetAccountPassword(v string) *ResetSupabaseProjectPasswordRequest {
+	s.AccountPassword = &v
+	return s
+}
+
+func (s *ResetSupabaseProjectPasswordRequest) SetProjectId(v string) *ResetSupabaseProjectPasswordRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ResetSupabaseProjectPasswordRequest) SetRegionId(v string) *ResetSupabaseProjectPasswordRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ResetSupabaseProjectPasswordResponseBody struct {
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResetSupabaseProjectPasswordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetSupabaseProjectPasswordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResetSupabaseProjectPasswordResponseBody) SetRequestId(v string) *ResetSupabaseProjectPasswordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResetSupabaseProjectPasswordResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetSupabaseProjectPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ResetSupabaseProjectPasswordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetSupabaseProjectPasswordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResetSupabaseProjectPasswordResponse) SetHeaders(v map[string]*string) *ResetSupabaseProjectPasswordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResetSupabaseProjectPasswordResponse) SetStatusCode(v int32) *ResetSupabaseProjectPasswordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResetSupabaseProjectPasswordResponse) SetBody(v *ResetSupabaseProjectPasswordResponseBody) *ResetSupabaseProjectPasswordResponse {
 	s.Body = v
 	return s
 }
@@ -48185,6 +49425,64 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	return nil
 }
 
+func (client *Client) _postOSSObject(bucketName *string, data map[string]interface{}) (_result map[string]interface{}, _err error) {
+	request_ := tea.NewRequest()
+	form, _err := util.AssertAsMap(data)
+	if _err != nil {
+		return _result, _err
+	}
+
+	boundary := fileform.GetBoundary()
+	host, _err := util.AssertAsString(form["host"])
+	if _err != nil {
+		return _result, _err
+	}
+
+	request_.Protocol = tea.String("HTTPS")
+	request_.Method = tea.String("POST")
+	request_.Pathname = tea.String("/")
+	request_.Headers = map[string]*string{
+		"host":       host,
+		"date":       util.GetDateUTCString(),
+		"user-agent": util.GetUserAgent(tea.String("")),
+	}
+	request_.Headers["content-type"] = tea.String("multipart/form-data; boundary=" + tea.StringValue(boundary))
+	request_.Body = fileform.ToFileForm(form, boundary)
+	response_, _err := tea.DoRequest(request_, nil)
+	if _err != nil {
+		return _result, _err
+	}
+	var respMap map[string]interface{}
+	bodyStr, _err := util.ReadAsString(response_.Body)
+	if _err != nil {
+		return _result, _err
+	}
+
+	if tea.BoolValue(util.Is4xx(response_.StatusCode)) || tea.BoolValue(util.Is5xx(response_.StatusCode)) {
+		respMap = xml.ParseXml(bodyStr, nil)
+		err, _err := util.AssertAsMap(respMap["Error"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		_err = tea.NewSDKError(map[string]interface{}{
+			"code":    err["Code"],
+			"message": err["Message"],
+			"data": map[string]interface{}{
+				"httpCode":  tea.IntValue(response_.StatusCode),
+				"requestId": err["RequestId"],
+				"hostId":    err["HostId"],
+			},
+		})
+		return _result, _err
+	}
+
+	respMap = xml.ParseXml(bodyStr, nil)
+	_result = make(map[string]interface{})
+	_err = tea.Convert(tea.ToMap(respMap), &_result)
+	return _result, _err
+}
+
 func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
 	if !tea.BoolValue(util.Empty(endpoint)) {
 		_result = endpoint
@@ -51060,6 +52358,106 @@ func (client *Client) CreateStreamingJob(request *CreateStreamingJobRequest) (_r
 
 // Summary:
 //
+// 创建supabase project
+//
+// @param request - CreateSupabaseProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSupabaseProjectResponse
+func (client *Client) CreateSupabaseProjectWithOptions(request *CreateSupabaseProjectRequest, runtime *util.RuntimeOptions) (_result *CreateSupabaseProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountPassword)) {
+		query["AccountPassword"] = request.AccountPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskPerformanceLevel)) {
+		query["DiskPerformanceLevel"] = request.DiskPerformanceLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectSpec)) {
+		query["ProjectSpec"] = request.ProjectSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
+		query["StorageSize"] = request.StorageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSupabaseProject"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSupabaseProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建supabase project
+//
+// @param request - CreateSupabaseProjectRequest
+//
+// @return CreateSupabaseProjectResponse
+func (client *Client) CreateSupabaseProject(request *CreateSupabaseProjectRequest) (_result *CreateSupabaseProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSupabaseProjectResponse{}
+	_body, _err := client.CreateSupabaseProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create Vector Index
 //
 // @param request - CreateVectorIndexRequest
@@ -52675,6 +54073,70 @@ func (client *Client) DeleteStreamingJob(request *DeleteStreamingJobRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteStreamingJobResponse{}
 	_body, _err := client.DeleteStreamingJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Supabase实例
+//
+// @param request - DeleteSupabaseProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSupabaseProjectResponse
+func (client *Client) DeleteSupabaseProjectWithOptions(request *DeleteSupabaseProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteSupabaseProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSupabaseProject"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSupabaseProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Supabase实例
+//
+// @param request - DeleteSupabaseProjectRequest
+//
+// @return DeleteSupabaseProjectResponse
+func (client *Client) DeleteSupabaseProject(request *DeleteSupabaseProjectRequest) (_result *DeleteSupabaseProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSupabaseProjectResponse{}
+	_body, _err := client.DeleteSupabaseProjectWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -58926,6 +60388,198 @@ func (client *Client) GetStatementResult(request *GetStatementResultRequest) (_r
 
 // Summary:
 //
+// 查询Supabase实例详情
+//
+// @param request - GetSupabaseProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSupabaseProjectResponse
+func (client *Client) GetSupabaseProjectWithOptions(request *GetSupabaseProjectRequest, runtime *util.RuntimeOptions) (_result *GetSupabaseProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSupabaseProject"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSupabaseProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Supabase实例详情
+//
+// @param request - GetSupabaseProjectRequest
+//
+// @return GetSupabaseProjectResponse
+func (client *Client) GetSupabaseProject(request *GetSupabaseProjectRequest) (_result *GetSupabaseProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSupabaseProjectResponse{}
+	_body, _err := client.GetSupabaseProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Supabase实例 API Keys
+//
+// @param request - GetSupabaseProjectApiKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSupabaseProjectApiKeysResponse
+func (client *Client) GetSupabaseProjectApiKeysWithOptions(request *GetSupabaseProjectApiKeysRequest, runtime *util.RuntimeOptions) (_result *GetSupabaseProjectApiKeysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSupabaseProjectApiKeys"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSupabaseProjectApiKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Supabase实例 API Keys
+//
+// @param request - GetSupabaseProjectApiKeysRequest
+//
+// @return GetSupabaseProjectApiKeysResponse
+func (client *Client) GetSupabaseProjectApiKeys(request *GetSupabaseProjectApiKeysRequest) (_result *GetSupabaseProjectApiKeysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSupabaseProjectApiKeysResponse{}
+	_body, _err := client.GetSupabaseProjectApiKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Supabase项目dashboard账号信息
+//
+// @param request - GetSupabaseProjectDashboardAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSupabaseProjectDashboardAccountResponse
+func (client *Client) GetSupabaseProjectDashboardAccountWithOptions(request *GetSupabaseProjectDashboardAccountRequest, runtime *util.RuntimeOptions) (_result *GetSupabaseProjectDashboardAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSupabaseProjectDashboardAccount"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSupabaseProjectDashboardAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Supabase项目dashboard账号信息
+//
+// @param request - GetSupabaseProjectDashboardAccountRequest
+//
+// @return GetSupabaseProjectDashboardAccountResponse
+func (client *Client) GetSupabaseProjectDashboardAccount(request *GetSupabaseProjectDashboardAccountRequest) (_result *GetSupabaseProjectDashboardAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSupabaseProjectDashboardAccountResponse{}
+	_body, _err := client.GetSupabaseProjectDashboardAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the progress and result of an asynchronous document upload job based on the job ID.
 //
 // Description:
@@ -60585,6 +62239,74 @@ func (client *Client) ListStreamingJobs(request *ListStreamingJobsRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListStreamingJobsResponse{}
 	_body, _err := client.ListStreamingJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Supabase实例列表
+//
+// @param request - ListSupabaseProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSupabaseProjectsResponse
+func (client *Client) ListSupabaseProjectsWithOptions(request *ListSupabaseProjectsRequest, runtime *util.RuntimeOptions) (_result *ListSupabaseProjectsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSupabaseProjects"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSupabaseProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Supabase实例列表
+//
+// @param request - ListSupabaseProjectsRequest
+//
+// @return ListSupabaseProjectsResponse
+func (client *Client) ListSupabaseProjects(request *ListSupabaseProjectsRequest) (_result *ListSupabaseProjectsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSupabaseProjectsResponse{}
+	_body, _err := client.ListSupabaseProjectsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62818,6 +64540,74 @@ func (client *Client) ModifyStreamingJob(request *ModifyStreamingJobRequest) (_r
 
 // Summary:
 //
+// 修改supabase项目白名单
+//
+// @param request - ModifySupabaseProjectSecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySupabaseProjectSecurityIpsResponse
+func (client *Client) ModifySupabaseProjectSecurityIpsWithOptions(request *ModifySupabaseProjectSecurityIpsRequest, runtime *util.RuntimeOptions) (_result *ModifySupabaseProjectSecurityIpsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifySupabaseProjectSecurityIps"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifySupabaseProjectSecurityIpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改supabase项目白名单
+//
+// @param request - ModifySupabaseProjectSecurityIpsRequest
+//
+// @return ModifySupabaseProjectSecurityIpsResponse
+func (client *Client) ModifySupabaseProjectSecurityIps(request *ModifySupabaseProjectSecurityIpsRequest) (_result *ModifySupabaseProjectSecurityIpsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifySupabaseProjectSecurityIpsResponse{}
+	_body, _err := client.ModifySupabaseProjectSecurityIpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the vector engine optimization configuration of an AnalyticDB for PostgreSQL instance.
 //
 // @param request - ModifyVectorConfigurationRequest
@@ -63346,22 +65136,24 @@ func (client *Client) QueryContent(request *QueryContentRequest) (_result *Query
 
 func (client *Client) QueryContentAdvance(request *QueryContentAdvanceRequest, runtime *util.RuntimeOptions) (_result *QueryContentResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	var credentialModel *credential.CredentialModel
+	if tea.BoolValue(util.IsUnset(client.Credential)) {
+		_err = tea.NewSDKError(map[string]interface{}{
+			"code":    "InvalidCredentials",
+			"message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.",
+		})
+		return _result, _err
+	}
+
+	credentialModel, _err = client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
-	}
-
-	credentialType := client.Credential.GetType()
+	accessKeyId := credentialModel.AccessKeyId
+	accessKeySecret := credentialModel.AccessKeySecret
+	securityToken := credentialModel.SecurityToken
+	credentialType := credentialModel.Type
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
@@ -63380,70 +65172,78 @@ func (client *Client) QueryContentAdvance(request *QueryContentAdvanceRequest, r
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("gpdb"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  tea.String("gpdb"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapi.Params{
+		Action:      tea.String("AuthorizeFileUpload"),
+		Version:     tea.String("2019-12-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
-
+	authResponse := map[string]interface{}{}
 	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := tea.Bool(false)
+	authResponseBody := make(map[string]*string)
 	queryContentReq := &QueryContentRequest{}
 	openapiutil.Convert(request, queryContentReq)
 	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		tmpResp0, _err := authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
+		authResponse, _err = util.AssertAsMap(tmpResp0)
 		if _err != nil {
 			return _result, _err
 		}
 
+		tmpBody, _err = util.AssertAsMap(authResponse["body"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		useAccelerate, _err = util.AssertAsBoolean(tmpBody["UseAccelerate"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		authResponseBody = util.StringifyMapValue(tmpBody)
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.FileUrlObject,
 			ContentType: tea.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], useAccelerate, client.EndpointType)),
+			"OSSAccessKeyId":        tea.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                tea.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             tea.StringValue(authResponseBody["Signature"]),
+			"key":                   tea.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		queryContentReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		queryContentReq.FileUrl = tea.String("http://" + tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(authResponseBody["Endpoint"]) + "/" + tea.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	queryContentResp, _err := client.QueryContentWithOptions(queryContentReq, runtime)
@@ -63812,6 +65612,74 @@ func (client *Client) ResetIMVMonitorData(request *ResetIMVMonitorDataRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetIMVMonitorDataResponse{}
 	_body, _err := client.ResetIMVMonitorDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重置supabase数据库密码
+//
+// @param request - ResetSupabaseProjectPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetSupabaseProjectPasswordResponse
+func (client *Client) ResetSupabaseProjectPasswordWithOptions(request *ResetSupabaseProjectPasswordRequest, runtime *util.RuntimeOptions) (_result *ResetSupabaseProjectPasswordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountPassword)) {
+		query["AccountPassword"] = request.AccountPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResetSupabaseProjectPassword"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResetSupabaseProjectPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重置supabase数据库密码
+//
+// @param request - ResetSupabaseProjectPasswordRequest
+//
+// @return ResetSupabaseProjectPasswordResponse
+func (client *Client) ResetSupabaseProjectPassword(request *ResetSupabaseProjectPasswordRequest) (_result *ResetSupabaseProjectPasswordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResetSupabaseProjectPasswordResponse{}
+	_body, _err := client.ResetSupabaseProjectPasswordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -65403,22 +67271,24 @@ func (client *Client) UploadDocumentAsync(request *UploadDocumentAsyncRequest) (
 
 func (client *Client) UploadDocumentAsyncAdvance(request *UploadDocumentAsyncAdvanceRequest, runtime *util.RuntimeOptions) (_result *UploadDocumentAsyncResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	var credentialModel *credential.CredentialModel
+	if tea.BoolValue(util.IsUnset(client.Credential)) {
+		_err = tea.NewSDKError(map[string]interface{}{
+			"code":    "InvalidCredentials",
+			"message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.",
+		})
+		return _result, _err
+	}
+
+	credentialModel, _err = client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
-	}
-
-	credentialType := client.Credential.GetType()
+	accessKeyId := credentialModel.AccessKeyId
+	accessKeySecret := credentialModel.AccessKeySecret
+	securityToken := credentialModel.SecurityToken
+	credentialType := credentialModel.Type
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
@@ -65437,70 +67307,78 @@ func (client *Client) UploadDocumentAsyncAdvance(request *UploadDocumentAsyncAdv
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("gpdb"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  tea.String("gpdb"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapi.Params{
+		Action:      tea.String("AuthorizeFileUpload"),
+		Version:     tea.String("2019-12-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
-
+	authResponse := map[string]interface{}{}
 	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := tea.Bool(false)
+	authResponseBody := make(map[string]*string)
 	uploadDocumentAsyncReq := &UploadDocumentAsyncRequest{}
 	openapiutil.Convert(request, uploadDocumentAsyncReq)
 	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		tmpResp0, _err := authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
+		authResponse, _err = util.AssertAsMap(tmpResp0)
 		if _err != nil {
 			return _result, _err
 		}
 
+		tmpBody, _err = util.AssertAsMap(authResponse["body"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		useAccelerate, _err = util.AssertAsBoolean(tmpBody["UseAccelerate"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		authResponseBody = util.StringifyMapValue(tmpBody)
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.FileUrlObject,
 			ContentType: tea.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], useAccelerate, client.EndpointType)),
+			"OSSAccessKeyId":        tea.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                tea.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             tea.StringValue(authResponseBody["Signature"]),
+			"key":                   tea.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		uploadDocumentAsyncReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		uploadDocumentAsyncReq.FileUrl = tea.String("http://" + tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(authResponseBody["Endpoint"]) + "/" + tea.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	uploadDocumentAsyncResp, _err := client.UploadDocumentAsyncWithOptions(uploadDocumentAsyncReq, runtime)
@@ -65836,22 +67714,24 @@ func (client *Client) UpsertCollectionDataAsync(request *UpsertCollectionDataAsy
 
 func (client *Client) UpsertCollectionDataAsyncAdvance(request *UpsertCollectionDataAsyncAdvanceRequest, runtime *util.RuntimeOptions) (_result *UpsertCollectionDataAsyncResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	var credentialModel *credential.CredentialModel
+	if tea.BoolValue(util.IsUnset(client.Credential)) {
+		_err = tea.NewSDKError(map[string]interface{}{
+			"code":    "InvalidCredentials",
+			"message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.",
+		})
+		return _result, _err
+	}
+
+	credentialModel, _err = client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
-	}
-
-	credentialType := client.Credential.GetType()
+	accessKeyId := credentialModel.AccessKeyId
+	accessKeySecret := credentialModel.AccessKeySecret
+	securityToken := credentialModel.SecurityToken
+	credentialType := credentialModel.Type
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
@@ -65870,70 +67750,78 @@ func (client *Client) UpsertCollectionDataAsyncAdvance(request *UpsertCollection
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("gpdb"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  tea.String("gpdb"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapi.Params{
+		Action:      tea.String("AuthorizeFileUpload"),
+		Version:     tea.String("2019-12-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
-
+	authResponse := map[string]interface{}{}
 	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := tea.Bool(false)
+	authResponseBody := make(map[string]*string)
 	upsertCollectionDataAsyncReq := &UpsertCollectionDataAsyncRequest{}
 	openapiutil.Convert(request, upsertCollectionDataAsyncReq)
 	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		tmpResp0, _err := authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
+		authResponse, _err = util.AssertAsMap(tmpResp0)
 		if _err != nil {
 			return _result, _err
 		}
 
+		tmpBody, _err = util.AssertAsMap(authResponse["body"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		useAccelerate, _err = util.AssertAsBoolean(tmpBody["UseAccelerate"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		authResponseBody = util.StringifyMapValue(tmpBody)
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.FileUrlObject,
 			ContentType: tea.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], useAccelerate, client.EndpointType)),
+			"OSSAccessKeyId":        tea.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                tea.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             tea.StringValue(authResponseBody["Signature"]),
+			"key":                   tea.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		upsertCollectionDataAsyncReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		upsertCollectionDataAsyncReq.FileUrl = tea.String("http://" + tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(authResponseBody["Endpoint"]) + "/" + tea.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	upsertCollectionDataAsyncResp, _err := client.UpsertCollectionDataAsyncWithOptions(upsertCollectionDataAsyncReq, runtime)
