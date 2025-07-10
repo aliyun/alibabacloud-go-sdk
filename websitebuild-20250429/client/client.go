@@ -10,16 +10,13 @@ import (
 )
 
 type CreateLogoTaskRequest struct {
+	LogoVersion    *string `json:"LogoVersion,omitempty" xml:"LogoVersion,omitempty"`
 	NegativePrompt *string `json:"NegativePrompt,omitempty" xml:"NegativePrompt,omitempty"`
 	// example:
 	//
 	// {\\"ehpcutilParam\\":\\"sched job_submit --commandline \\\\\\"/ehpcdata/data/usersTest/huangqiaoyi-1725933699384/huangqiaoyi-1725933699384.slurm\\\\\\" --runasuser TestGfjnSimworks\\"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	Prompt     *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// example:
-	//
-	// 1.0.2
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateLogoTaskRequest) String() string {
@@ -28,6 +25,11 @@ func (s CreateLogoTaskRequest) String() string {
 
 func (s CreateLogoTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateLogoTaskRequest) SetLogoVersion(v string) *CreateLogoTaskRequest {
+	s.LogoVersion = &v
+	return s
 }
 
 func (s *CreateLogoTaskRequest) SetNegativePrompt(v string) *CreateLogoTaskRequest {
@@ -42,11 +44,6 @@ func (s *CreateLogoTaskRequest) SetParameters(v string) *CreateLogoTaskRequest {
 
 func (s *CreateLogoTaskRequest) SetPrompt(v string) *CreateLogoTaskRequest {
 	s.Prompt = &v
-	return s
-}
-
-func (s *CreateLogoTaskRequest) SetVersion(v string) *CreateLogoTaskRequest {
-	s.Version = &v
 	return s
 }
 
@@ -567,6 +564,10 @@ func (client *Client) CreateLogoTaskWithOptions(request *CreateLogoTaskRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LogoVersion)) {
+		query["LogoVersion"] = request.LogoVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NegativePrompt)) {
 		query["NegativePrompt"] = request.NegativePrompt
 	}
@@ -577,10 +578,6 @@ func (client *Client) CreateLogoTaskWithOptions(request *CreateLogoTaskRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
 		query["Prompt"] = request.Prompt
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{

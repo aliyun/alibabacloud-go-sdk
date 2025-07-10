@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/websitebuild-20250429
+module github.com/alibabacloud-go/websitebuild-20250429/v2
 
 go 1.14
 
