@@ -5082,8 +5082,9 @@ type TextModerationPlusResponseBodyData struct {
 	// example:
 	//
 	// text1234
-	DataId       *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	ManualTaskId *string `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
+	DataId           *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DetectedLanguage *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
+	ManualTaskId     *string `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
 	// The results.
 	Result []*TextModerationPlusResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Risk Level
@@ -5105,7 +5106,8 @@ type TextModerationPlusResponseBodyData struct {
 	// S0
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
 	// The result of sensitivity data detect
-	SensitiveResult []*TextModerationPlusResponseBodyDataSensitiveResult `json:"SensitiveResult,omitempty" xml:"SensitiveResult,omitempty" type:"Repeated"`
+	SensitiveResult   []*TextModerationPlusResponseBodyDataSensitiveResult `json:"SensitiveResult,omitempty" xml:"SensitiveResult,omitempty" type:"Repeated"`
+	TranslatedContent *string                                              `json:"TranslatedContent,omitempty" xml:"TranslatedContent,omitempty"`
 }
 
 func (s TextModerationPlusResponseBodyData) String() string {
@@ -5136,6 +5138,11 @@ func (s *TextModerationPlusResponseBodyData) SetDataId(v string) *TextModeration
 	return s
 }
 
+func (s *TextModerationPlusResponseBodyData) SetDetectedLanguage(v string) *TextModerationPlusResponseBodyData {
+	s.DetectedLanguage = &v
+	return s
+}
+
 func (s *TextModerationPlusResponseBodyData) SetManualTaskId(v string) *TextModerationPlusResponseBodyData {
 	s.ManualTaskId = &v
 	return s
@@ -5163,6 +5170,11 @@ func (s *TextModerationPlusResponseBodyData) SetSensitiveLevel(v string) *TextMo
 
 func (s *TextModerationPlusResponseBodyData) SetSensitiveResult(v []*TextModerationPlusResponseBodyDataSensitiveResult) *TextModerationPlusResponseBodyData {
 	s.SensitiveResult = v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyData) SetTranslatedContent(v string) *TextModerationPlusResponseBodyData {
+	s.TranslatedContent = &v
 	return s
 }
 
