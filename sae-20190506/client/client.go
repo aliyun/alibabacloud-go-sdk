@@ -43334,7 +43334,8 @@ type ListJobsResponseBodyDataApplications struct {
 	// example:
 	//
 	// 0
-	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	Failed   *int64  `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	// Indicates whether the latest change order was executed. Valid values:
 	//
 	// 	- **0**: The latest change order failed to be executed.
@@ -43466,6 +43467,11 @@ func (s *ListJobsResponseBodyDataApplications) SetCpu(v int32) *ListJobsResponse
 
 func (s *ListJobsResponseBodyDataApplications) SetFailed(v int64) *ListJobsResponseBodyDataApplications {
 	s.Failed = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataApplications) SetImageUrl(v string) *ListJobsResponseBodyDataApplications {
+	s.ImageUrl = &v
 	return s
 }
 
