@@ -9220,6 +9220,385 @@ func (s *CopyDentryResponse) SetBody(v *CopyDentryResponseBody) *CopyDentryRespo
 	return s
 }
 
+type CreateAlidingAssistantHeaders struct {
+	CommonHeaders  map[string]*string                           `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *CreateAlidingAssistantHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s CreateAlidingAssistantHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlidingAssistantHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlidingAssistantHeaders) SetCommonHeaders(v map[string]*string) *CreateAlidingAssistantHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateAlidingAssistantHeaders) SetAccountContext(v *CreateAlidingAssistantHeadersAccountContext) *CreateAlidingAssistantHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type CreateAlidingAssistantHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s CreateAlidingAssistantHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlidingAssistantHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlidingAssistantHeadersAccountContext) SetAccountId(v string) *CreateAlidingAssistantHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type CreateAlidingAssistantShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s CreateAlidingAssistantShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlidingAssistantShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlidingAssistantShrinkHeaders) SetCommonHeaders(v map[string]*string) *CreateAlidingAssistantShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateAlidingAssistantShrinkHeaders) SetAccountContextShrink(v string) *CreateAlidingAssistantShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type CreateAlidingAssistantRequest struct {
+	// example:
+	//
+	// f5cb37a0fb44441ab7b74c6f4a679dd3
+	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	// This parameter is required.
+	Description *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	Ext         map[string]*string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// @lADPDetfgMsFFUvNAkjNAkg
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// This parameter is required.
+	Instructions *string `json:"Instructions,omitempty" xml:"Instructions,omitempty"`
+	// This parameter is required.
+	Name             *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	RecommendPrompts []*string `json:"RecommendPrompts,omitempty" xml:"RecommendPrompts,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11
+	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// chatBot-123
+	SourceIdentityId *string                                     `json:"SourceIdentityId,omitempty" xml:"SourceIdentityId,omitempty"`
+	TenantContext    *CreateAlidingAssistantRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	WelcomeContent *string `json:"WelcomeContent,omitempty" xml:"WelcomeContent,omitempty"`
+}
+
+func (s CreateAlidingAssistantRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlidingAssistantRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlidingAssistantRequest) SetAppCode(v string) *CreateAlidingAssistantRequest {
+	s.AppCode = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantRequest) SetDescription(v string) *CreateAlidingAssistantRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantRequest) SetExt(v map[string]*string) *CreateAlidingAssistantRequest {
+	s.Ext = v
+	return s
+}
+
+func (s *CreateAlidingAssistantRequest) SetIcon(v string) *CreateAlidingAssistantRequest {
+	s.Icon = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantRequest) SetInstructions(v string) *CreateAlidingAssistantRequest {
+	s.Instructions = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantRequest) SetName(v string) *CreateAlidingAssistantRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantRequest) SetRecommendPrompts(v []*string) *CreateAlidingAssistantRequest {
+	s.RecommendPrompts = v
+	return s
+}
+
+func (s *CreateAlidingAssistantRequest) SetSource(v int32) *CreateAlidingAssistantRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantRequest) SetSourceIdentityId(v string) *CreateAlidingAssistantRequest {
+	s.SourceIdentityId = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantRequest) SetTenantContext(v *CreateAlidingAssistantRequestTenantContext) *CreateAlidingAssistantRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *CreateAlidingAssistantRequest) SetWelcomeContent(v string) *CreateAlidingAssistantRequest {
+	s.WelcomeContent = &v
+	return s
+}
+
+type CreateAlidingAssistantRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s CreateAlidingAssistantRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlidingAssistantRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlidingAssistantRequestTenantContext) SetTenantId(v string) *CreateAlidingAssistantRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type CreateAlidingAssistantShrinkRequest struct {
+	// example:
+	//
+	// f5cb37a0fb44441ab7b74c6f4a679dd3
+	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	// This parameter is required.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExtShrink   *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// @lADPDetfgMsFFUvNAkjNAkg
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// This parameter is required.
+	Instructions *string `json:"Instructions,omitempty" xml:"Instructions,omitempty"`
+	// This parameter is required.
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RecommendPromptsShrink *string `json:"RecommendPrompts,omitempty" xml:"RecommendPrompts,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11
+	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// chatBot-123
+	SourceIdentityId    *string `json:"SourceIdentityId,omitempty" xml:"SourceIdentityId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	WelcomeContent *string `json:"WelcomeContent,omitempty" xml:"WelcomeContent,omitempty"`
+}
+
+func (s CreateAlidingAssistantShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlidingAssistantShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlidingAssistantShrinkRequest) SetAppCode(v string) *CreateAlidingAssistantShrinkRequest {
+	s.AppCode = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantShrinkRequest) SetDescription(v string) *CreateAlidingAssistantShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantShrinkRequest) SetExtShrink(v string) *CreateAlidingAssistantShrinkRequest {
+	s.ExtShrink = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantShrinkRequest) SetIcon(v string) *CreateAlidingAssistantShrinkRequest {
+	s.Icon = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantShrinkRequest) SetInstructions(v string) *CreateAlidingAssistantShrinkRequest {
+	s.Instructions = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantShrinkRequest) SetName(v string) *CreateAlidingAssistantShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantShrinkRequest) SetRecommendPromptsShrink(v string) *CreateAlidingAssistantShrinkRequest {
+	s.RecommendPromptsShrink = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantShrinkRequest) SetSource(v int32) *CreateAlidingAssistantShrinkRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantShrinkRequest) SetSourceIdentityId(v string) *CreateAlidingAssistantShrinkRequest {
+	s.SourceIdentityId = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantShrinkRequest) SetTenantContextShrink(v string) *CreateAlidingAssistantShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantShrinkRequest) SetWelcomeContent(v string) *CreateAlidingAssistantShrinkRequest {
+	s.WelcomeContent = &v
+	return s
+}
+
+type CreateAlidingAssistantResponseBody struct {
+	// example:
+	//
+	// 123456
+	AlidingAssistantId *string `json:"alidingAssistantId,omitempty" xml:"alidingAssistantId,omitempty"`
+	AppCode            *string `json:"appCode,omitempty" xml:"appCode,omitempty"`
+	// example:
+	//
+	// https://www.baidu.com
+	JumpUrl           *string `json:"jumpUrl,omitempty" xml:"jumpUrl,omitempty"`
+	ProcessInstanceId *string `json:"processInstanceId,omitempty" xml:"processInstanceId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s CreateAlidingAssistantResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlidingAssistantResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlidingAssistantResponseBody) SetAlidingAssistantId(v string) *CreateAlidingAssistantResponseBody {
+	s.AlidingAssistantId = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantResponseBody) SetAppCode(v string) *CreateAlidingAssistantResponseBody {
+	s.AppCode = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantResponseBody) SetJumpUrl(v string) *CreateAlidingAssistantResponseBody {
+	s.JumpUrl = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantResponseBody) SetProcessInstanceId(v string) *CreateAlidingAssistantResponseBody {
+	s.ProcessInstanceId = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantResponseBody) SetRequestId(v string) *CreateAlidingAssistantResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantResponseBody) SetVendorRequestId(v string) *CreateAlidingAssistantResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantResponseBody) SetVendorType(v string) *CreateAlidingAssistantResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type CreateAlidingAssistantResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAlidingAssistantResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAlidingAssistantResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAlidingAssistantResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAlidingAssistantResponse) SetHeaders(v map[string]*string) *CreateAlidingAssistantResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAlidingAssistantResponse) SetStatusCode(v int32) *CreateAlidingAssistantResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAlidingAssistantResponse) SetBody(v *CreateAlidingAssistantResponseBody) *CreateAlidingAssistantResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDeliveryPlanHeaders struct {
 	CommonHeaders  map[string]*string                       `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *CreateDeliveryPlanHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -20618,6 +20997,226 @@ func (s *CreateWorkspaceDocResponse) SetBody(v *CreateWorkspaceDocResponseBody) 
 	return s
 }
 
+type DeleteAlidingAssistantHeaders struct {
+	CommonHeaders  map[string]*string                           `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *DeleteAlidingAssistantHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s DeleteAlidingAssistantHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlidingAssistantHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlidingAssistantHeaders) SetCommonHeaders(v map[string]*string) *DeleteAlidingAssistantHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteAlidingAssistantHeaders) SetAccountContext(v *DeleteAlidingAssistantHeadersAccountContext) *DeleteAlidingAssistantHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type DeleteAlidingAssistantHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s DeleteAlidingAssistantHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlidingAssistantHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlidingAssistantHeadersAccountContext) SetAccountId(v string) *DeleteAlidingAssistantHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type DeleteAlidingAssistantShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s DeleteAlidingAssistantShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlidingAssistantShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlidingAssistantShrinkHeaders) SetCommonHeaders(v map[string]*string) *DeleteAlidingAssistantShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteAlidingAssistantShrinkHeaders) SetAccountContextShrink(v string) *DeleteAlidingAssistantShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type DeleteAlidingAssistantRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	AssistantId   *string                                     `json:"AssistantId,omitempty" xml:"AssistantId,omitempty"`
+	TenantContext *DeleteAlidingAssistantRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s DeleteAlidingAssistantRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlidingAssistantRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlidingAssistantRequest) SetAssistantId(v string) *DeleteAlidingAssistantRequest {
+	s.AssistantId = &v
+	return s
+}
+
+func (s *DeleteAlidingAssistantRequest) SetTenantContext(v *DeleteAlidingAssistantRequestTenantContext) *DeleteAlidingAssistantRequest {
+	s.TenantContext = v
+	return s
+}
+
+type DeleteAlidingAssistantRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s DeleteAlidingAssistantRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlidingAssistantRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlidingAssistantRequestTenantContext) SetTenantId(v string) *DeleteAlidingAssistantRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type DeleteAlidingAssistantShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	AssistantId         *string `json:"AssistantId,omitempty" xml:"AssistantId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s DeleteAlidingAssistantShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlidingAssistantShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlidingAssistantShrinkRequest) SetAssistantId(v string) *DeleteAlidingAssistantShrinkRequest {
+	s.AssistantId = &v
+	return s
+}
+
+func (s *DeleteAlidingAssistantShrinkRequest) SetTenantContextShrink(v string) *DeleteAlidingAssistantShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type DeleteAlidingAssistantResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s DeleteAlidingAssistantResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlidingAssistantResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlidingAssistantResponseBody) SetRequestId(v string) *DeleteAlidingAssistantResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAlidingAssistantResponseBody) SetSuccess(v bool) *DeleteAlidingAssistantResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteAlidingAssistantResponseBody) SetVendorRequestId(v string) *DeleteAlidingAssistantResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *DeleteAlidingAssistantResponseBody) SetVendorType(v string) *DeleteAlidingAssistantResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type DeleteAlidingAssistantResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAlidingAssistantResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAlidingAssistantResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlidingAssistantResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlidingAssistantResponse) SetHeaders(v map[string]*string) *DeleteAlidingAssistantResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAlidingAssistantResponse) SetStatusCode(v int32) *DeleteAlidingAssistantResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAlidingAssistantResponse) SetBody(v *DeleteAlidingAssistantResponseBody) *DeleteAlidingAssistantResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteColumnsHeaders struct {
 	CommonHeaders  map[string]*string                  `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *DeleteColumnsHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -26900,6 +27499,235 @@ func (s *GetActivityListResponse) SetStatusCode(v int32) *GetActivityListRespons
 }
 
 func (s *GetActivityListResponse) SetBody(v *GetActivityListResponseBody) *GetActivityListResponse {
+	s.Body = v
+	return s
+}
+
+type GetAlidingAssistantInfoHeaders struct {
+	CommonHeaders  map[string]*string                            `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetAlidingAssistantInfoHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetAlidingAssistantInfoHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlidingAssistantInfoHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlidingAssistantInfoHeaders) SetCommonHeaders(v map[string]*string) *GetAlidingAssistantInfoHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetAlidingAssistantInfoHeaders) SetAccountContext(v *GetAlidingAssistantInfoHeadersAccountContext) *GetAlidingAssistantInfoHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetAlidingAssistantInfoHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetAlidingAssistantInfoHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlidingAssistantInfoHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlidingAssistantInfoHeadersAccountContext) SetAccountId(v string) *GetAlidingAssistantInfoHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetAlidingAssistantInfoShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetAlidingAssistantInfoShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlidingAssistantInfoShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlidingAssistantInfoShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetAlidingAssistantInfoShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetAlidingAssistantInfoShrinkHeaders) SetAccountContextShrink(v string) *GetAlidingAssistantInfoShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetAlidingAssistantInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	AssistantId   *string                                      `json:"AssistantId,omitempty" xml:"AssistantId,omitempty"`
+	TenantContext *GetAlidingAssistantInfoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetAlidingAssistantInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlidingAssistantInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlidingAssistantInfoRequest) SetAssistantId(v string) *GetAlidingAssistantInfoRequest {
+	s.AssistantId = &v
+	return s
+}
+
+func (s *GetAlidingAssistantInfoRequest) SetTenantContext(v *GetAlidingAssistantInfoRequestTenantContext) *GetAlidingAssistantInfoRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetAlidingAssistantInfoRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetAlidingAssistantInfoRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlidingAssistantInfoRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlidingAssistantInfoRequestTenantContext) SetTenantId(v string) *GetAlidingAssistantInfoRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetAlidingAssistantInfoShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	AssistantId         *string `json:"AssistantId,omitempty" xml:"AssistantId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetAlidingAssistantInfoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlidingAssistantInfoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlidingAssistantInfoShrinkRequest) SetAssistantId(v string) *GetAlidingAssistantInfoShrinkRequest {
+	s.AssistantId = &v
+	return s
+}
+
+func (s *GetAlidingAssistantInfoShrinkRequest) SetTenantContextShrink(v string) *GetAlidingAssistantInfoShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetAlidingAssistantInfoResponseBody struct {
+	// example:
+	//
+	// 1
+	ApprovalStatus *int32 `json:"approvalStatus,omitempty" xml:"approvalStatus,omitempty"`
+	// example:
+	//
+	// 123
+	ProcessInstanceId *string `json:"processInstanceId,omitempty" xml:"processInstanceId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetAlidingAssistantInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlidingAssistantInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlidingAssistantInfoResponseBody) SetApprovalStatus(v int32) *GetAlidingAssistantInfoResponseBody {
+	s.ApprovalStatus = &v
+	return s
+}
+
+func (s *GetAlidingAssistantInfoResponseBody) SetProcessInstanceId(v string) *GetAlidingAssistantInfoResponseBody {
+	s.ProcessInstanceId = &v
+	return s
+}
+
+func (s *GetAlidingAssistantInfoResponseBody) SetRequestId(v string) *GetAlidingAssistantInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAlidingAssistantInfoResponseBody) SetVendorRequestId(v string) *GetAlidingAssistantInfoResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetAlidingAssistantInfoResponseBody) SetVendorType(v string) *GetAlidingAssistantInfoResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetAlidingAssistantInfoResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAlidingAssistantInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAlidingAssistantInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlidingAssistantInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlidingAssistantInfoResponse) SetHeaders(v map[string]*string) *GetAlidingAssistantInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAlidingAssistantInfoResponse) SetStatusCode(v int32) *GetAlidingAssistantInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAlidingAssistantInfoResponse) SetBody(v *GetAlidingAssistantInfoResponseBody) *GetAlidingAssistantInfoResponse {
 	s.Body = v
 	return s
 }
@@ -83520,6 +84348,346 @@ func (s *UnsubscribeEventResponse) SetBody(v *UnsubscribeEventResponseBody) *Uns
 	return s
 }
 
+type UpdateAlidingAssistantHeaders struct {
+	CommonHeaders  map[string]*string                           `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *UpdateAlidingAssistantHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s UpdateAlidingAssistantHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlidingAssistantHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlidingAssistantHeaders) SetCommonHeaders(v map[string]*string) *UpdateAlidingAssistantHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateAlidingAssistantHeaders) SetAccountContext(v *UpdateAlidingAssistantHeadersAccountContext) *UpdateAlidingAssistantHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type UpdateAlidingAssistantHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s UpdateAlidingAssistantHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlidingAssistantHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlidingAssistantHeadersAccountContext) SetAccountId(v string) *UpdateAlidingAssistantHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type UpdateAlidingAssistantShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s UpdateAlidingAssistantShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlidingAssistantShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlidingAssistantShrinkHeaders) SetCommonHeaders(v map[string]*string) *UpdateAlidingAssistantShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateAlidingAssistantShrinkHeaders) SetAccountContextShrink(v string) *UpdateAlidingAssistantShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type UpdateAlidingAssistantRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	AssistantId *string            `json:"AssistantId,omitempty" xml:"AssistantId,omitempty"`
+	Description *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	Ext         map[string]*string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// example:
+	//
+	// fallbackContent
+	FallbackContent *string            `json:"FallbackContent,omitempty" xml:"FallbackContent,omitempty"`
+	Feature         map[string]*string `json:"Feature,omitempty" xml:"Feature,omitempty"`
+	// example:
+	//
+	// @lADPDetfgMsFFUvNAkjNAkg
+	Icon             *string                                     `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Instructions     *string                                     `json:"Instructions,omitempty" xml:"Instructions,omitempty"`
+	Name             *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	RecommendPrompts []*string                                   `json:"RecommendPrompts,omitempty" xml:"RecommendPrompts,omitempty" type:"Repeated"`
+	TenantContext    *UpdateAlidingAssistantRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	WelcomeContent   *string                                     `json:"WelcomeContent,omitempty" xml:"WelcomeContent,omitempty"`
+}
+
+func (s UpdateAlidingAssistantRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlidingAssistantRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlidingAssistantRequest) SetAssistantId(v string) *UpdateAlidingAssistantRequest {
+	s.AssistantId = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantRequest) SetDescription(v string) *UpdateAlidingAssistantRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantRequest) SetExt(v map[string]*string) *UpdateAlidingAssistantRequest {
+	s.Ext = v
+	return s
+}
+
+func (s *UpdateAlidingAssistantRequest) SetFallbackContent(v string) *UpdateAlidingAssistantRequest {
+	s.FallbackContent = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantRequest) SetFeature(v map[string]*string) *UpdateAlidingAssistantRequest {
+	s.Feature = v
+	return s
+}
+
+func (s *UpdateAlidingAssistantRequest) SetIcon(v string) *UpdateAlidingAssistantRequest {
+	s.Icon = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantRequest) SetInstructions(v string) *UpdateAlidingAssistantRequest {
+	s.Instructions = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantRequest) SetName(v string) *UpdateAlidingAssistantRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantRequest) SetRecommendPrompts(v []*string) *UpdateAlidingAssistantRequest {
+	s.RecommendPrompts = v
+	return s
+}
+
+func (s *UpdateAlidingAssistantRequest) SetTenantContext(v *UpdateAlidingAssistantRequestTenantContext) *UpdateAlidingAssistantRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *UpdateAlidingAssistantRequest) SetWelcomeContent(v string) *UpdateAlidingAssistantRequest {
+	s.WelcomeContent = &v
+	return s
+}
+
+type UpdateAlidingAssistantRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s UpdateAlidingAssistantRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlidingAssistantRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlidingAssistantRequestTenantContext) SetTenantId(v string) *UpdateAlidingAssistantRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type UpdateAlidingAssistantShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	AssistantId *string `json:"AssistantId,omitempty" xml:"AssistantId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExtShrink   *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// example:
+	//
+	// fallbackContent
+	FallbackContent *string `json:"FallbackContent,omitempty" xml:"FallbackContent,omitempty"`
+	FeatureShrink   *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
+	// example:
+	//
+	// @lADPDetfgMsFFUvNAkjNAkg
+	Icon                   *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Instructions           *string `json:"Instructions,omitempty" xml:"Instructions,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RecommendPromptsShrink *string `json:"RecommendPrompts,omitempty" xml:"RecommendPrompts,omitempty"`
+	TenantContextShrink    *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	WelcomeContent         *string `json:"WelcomeContent,omitempty" xml:"WelcomeContent,omitempty"`
+}
+
+func (s UpdateAlidingAssistantShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlidingAssistantShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlidingAssistantShrinkRequest) SetAssistantId(v string) *UpdateAlidingAssistantShrinkRequest {
+	s.AssistantId = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantShrinkRequest) SetDescription(v string) *UpdateAlidingAssistantShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantShrinkRequest) SetExtShrink(v string) *UpdateAlidingAssistantShrinkRequest {
+	s.ExtShrink = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantShrinkRequest) SetFallbackContent(v string) *UpdateAlidingAssistantShrinkRequest {
+	s.FallbackContent = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantShrinkRequest) SetFeatureShrink(v string) *UpdateAlidingAssistantShrinkRequest {
+	s.FeatureShrink = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantShrinkRequest) SetIcon(v string) *UpdateAlidingAssistantShrinkRequest {
+	s.Icon = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantShrinkRequest) SetInstructions(v string) *UpdateAlidingAssistantShrinkRequest {
+	s.Instructions = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantShrinkRequest) SetName(v string) *UpdateAlidingAssistantShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantShrinkRequest) SetRecommendPromptsShrink(v string) *UpdateAlidingAssistantShrinkRequest {
+	s.RecommendPromptsShrink = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantShrinkRequest) SetTenantContextShrink(v string) *UpdateAlidingAssistantShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantShrinkRequest) SetWelcomeContent(v string) *UpdateAlidingAssistantShrinkRequest {
+	s.WelcomeContent = &v
+	return s
+}
+
+type UpdateAlidingAssistantResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s UpdateAlidingAssistantResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlidingAssistantResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlidingAssistantResponseBody) SetRequestId(v string) *UpdateAlidingAssistantResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantResponseBody) SetSuccess(v bool) *UpdateAlidingAssistantResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantResponseBody) SetVendorRequestId(v string) *UpdateAlidingAssistantResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantResponseBody) SetVendorType(v string) *UpdateAlidingAssistantResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type UpdateAlidingAssistantResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAlidingAssistantResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAlidingAssistantResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlidingAssistantResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlidingAssistantResponse) SetHeaders(v map[string]*string) *UpdateAlidingAssistantResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAlidingAssistantResponse) SetStatusCode(v int32) *UpdateAlidingAssistantResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAlidingAssistantResponse) SetBody(v *UpdateAlidingAssistantResponseBody) *UpdateAlidingAssistantResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateConvExtensionHeaders struct {
 	CommonHeaders  map[string]*string                        `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *UpdateConvExtensionHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -92889,6 +94057,131 @@ func (client *Client) CopyDentry(request *CopyDentryRequest) (_result *CopyDentr
 	return _result, _err
 }
 
+// @param tmpReq - CreateAlidingAssistantRequest
+//
+// @param tmpHeader - CreateAlidingAssistantHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAlidingAssistantResponse
+func (client *Client) CreateAlidingAssistantWithOptions(tmpReq *CreateAlidingAssistantRequest, tmpHeader *CreateAlidingAssistantHeaders, runtime *util.RuntimeOptions) (_result *CreateAlidingAssistantResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateAlidingAssistantShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &CreateAlidingAssistantShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ext)) {
+		request.ExtShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ext, tea.String("Ext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RecommendPrompts)) {
+		request.RecommendPromptsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecommendPrompts, tea.String("RecommendPrompts"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppCode)) {
+		body["AppCode"] = request.AppCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtShrink)) {
+		body["Ext"] = request.ExtShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Icon)) {
+		body["Icon"] = request.Icon
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instructions)) {
+		body["Instructions"] = request.Instructions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecommendPromptsShrink)) {
+		body["RecommendPrompts"] = request.RecommendPromptsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		body["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIdentityId)) {
+		body["SourceIdentityId"] = request.SourceIdentityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WelcomeContent)) {
+		body["WelcomeContent"] = request.WelcomeContent
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAlidingAssistant"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/aiagent/createAlidingAssistant"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAlidingAssistantResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateAlidingAssistantRequest
+//
+// @return CreateAlidingAssistantResponse
+func (client *Client) CreateAlidingAssistant(request *CreateAlidingAssistantRequest) (_result *CreateAlidingAssistantResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateAlidingAssistantHeaders{}
+	_result = &CreateAlidingAssistantResponse{}
+	_body, _err := client.CreateAlidingAssistantWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // 发布钉钉投放活动
@@ -95756,6 +97049,87 @@ func (client *Client) CreateWorkspaceDoc(request *CreateWorkspaceDocRequest) (_r
 	return _result, _err
 }
 
+// @param tmpReq - DeleteAlidingAssistantRequest
+//
+// @param tmpHeader - DeleteAlidingAssistantHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAlidingAssistantResponse
+func (client *Client) DeleteAlidingAssistantWithOptions(tmpReq *DeleteAlidingAssistantRequest, tmpHeader *DeleteAlidingAssistantHeaders, runtime *util.RuntimeOptions) (_result *DeleteAlidingAssistantResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteAlidingAssistantShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &DeleteAlidingAssistantShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssistantId)) {
+		body["AssistantId"] = request.AssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAlidingAssistant"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/aiagent/deleteAlidingAssistant"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAlidingAssistantResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteAlidingAssistantRequest
+//
+// @return DeleteAlidingAssistantResponse
+func (client *Client) DeleteAlidingAssistant(request *DeleteAlidingAssistantRequest) (_result *DeleteAlidingAssistantResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteAlidingAssistantHeaders{}
+	_result = &DeleteAlidingAssistantResponse{}
+	_body, _err := client.DeleteAlidingAssistantWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // 删除指定列
@@ -98314,6 +99688,95 @@ func (client *Client) GetActivityList(request *GetActivityListRequest) (_result 
 	headers := &GetActivityListHeaders{}
 	_result = &GetActivityListResponse{}
 	_body, _err := client.GetActivityListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取阿里钉ai助理信息
+//
+// @param tmpReq - GetAlidingAssistantInfoRequest
+//
+// @param tmpHeader - GetAlidingAssistantInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAlidingAssistantInfoResponse
+func (client *Client) GetAlidingAssistantInfoWithOptions(tmpReq *GetAlidingAssistantInfoRequest, tmpHeader *GetAlidingAssistantInfoHeaders, runtime *util.RuntimeOptions) (_result *GetAlidingAssistantInfoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetAlidingAssistantInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetAlidingAssistantInfoShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssistantId)) {
+		body["AssistantId"] = request.AssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAlidingAssistantInfo"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/aiagent/getAlidingAssistantInfo"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAlidingAssistantInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取阿里钉ai助理信息
+//
+// @param request - GetAlidingAssistantInfoRequest
+//
+// @return GetAlidingAssistantInfoResponse
+func (client *Client) GetAlidingAssistantInfo(request *GetAlidingAssistantInfoRequest) (_result *GetAlidingAssistantInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetAlidingAssistantInfoHeaders{}
+	_result = &GetAlidingAssistantInfoResponse{}
+	_body, _err := client.GetAlidingAssistantInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -113458,6 +114921,135 @@ func (client *Client) UnsubscribeEvent(request *UnsubscribeEventRequest) (_resul
 	headers := &UnsubscribeEventHeaders{}
 	_result = &UnsubscribeEventResponse{}
 	_body, _err := client.UnsubscribeEventWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - UpdateAlidingAssistantRequest
+//
+// @param tmpHeader - UpdateAlidingAssistantHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAlidingAssistantResponse
+func (client *Client) UpdateAlidingAssistantWithOptions(tmpReq *UpdateAlidingAssistantRequest, tmpHeader *UpdateAlidingAssistantHeaders, runtime *util.RuntimeOptions) (_result *UpdateAlidingAssistantResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateAlidingAssistantShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &UpdateAlidingAssistantShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ext)) {
+		request.ExtShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ext, tea.String("Ext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Feature)) {
+		request.FeatureShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Feature, tea.String("Feature"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RecommendPrompts)) {
+		request.RecommendPromptsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecommendPrompts, tea.String("RecommendPrompts"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssistantId)) {
+		body["AssistantId"] = request.AssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtShrink)) {
+		body["Ext"] = request.ExtShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FallbackContent)) {
+		body["FallbackContent"] = request.FallbackContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureShrink)) {
+		body["Feature"] = request.FeatureShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Icon)) {
+		body["Icon"] = request.Icon
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instructions)) {
+		body["Instructions"] = request.Instructions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecommendPromptsShrink)) {
+		body["RecommendPrompts"] = request.RecommendPromptsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WelcomeContent)) {
+		body["WelcomeContent"] = request.WelcomeContent
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAlidingAssistant"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/aiagent/updateAlidingAssistant"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAlidingAssistantResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateAlidingAssistantRequest
+//
+// @return UpdateAlidingAssistantResponse
+func (client *Client) UpdateAlidingAssistant(request *UpdateAlidingAssistantRequest) (_result *UpdateAlidingAssistantResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateAlidingAssistantHeaders{}
+	_result = &UpdateAlidingAssistantResponse{}
+	_body, _err := client.UpdateAlidingAssistantWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
