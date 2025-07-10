@@ -11436,6 +11436,7 @@ type DescribeRenderingInstanceResponseBody struct {
 	//
 	// cn-xxx.ecr.aliyuncs.com
 	Hostname     *string                                              `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	InternalIp   *string                                              `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
 	Isp          *string                                              `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	PortMappings []*DescribeRenderingInstanceResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
 	// example:
@@ -11482,6 +11483,11 @@ func (s *DescribeRenderingInstanceResponseBody) SetEgressIp(v string) *DescribeR
 
 func (s *DescribeRenderingInstanceResponseBody) SetHostname(v string) *DescribeRenderingInstanceResponseBody {
 	s.Hostname = &v
+	return s
+}
+
+func (s *DescribeRenderingInstanceResponseBody) SetInternalIp(v string) *DescribeRenderingInstanceResponseBody {
+	s.InternalIp = &v
 	return s
 }
 
@@ -19489,13 +19495,15 @@ type InstallCloudAppRequest struct {
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// This parameter is required.
-	//
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
-	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	RenderingInstanceId  *string   `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	RenderingInstanceIds []*string `json:"RenderingInstanceIds,omitempty" xml:"RenderingInstanceIds,omitempty" type:"Repeated"`
 }
 
 func (s InstallCloudAppRequest) String() string {
@@ -19511,16 +19519,95 @@ func (s *InstallCloudAppRequest) SetAppId(v string) *InstallCloudAppRequest {
 	return s
 }
 
+func (s *InstallCloudAppRequest) SetPageNumber(v int32) *InstallCloudAppRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *InstallCloudAppRequest) SetPageSize(v int32) *InstallCloudAppRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *InstallCloudAppRequest) SetProjectId(v string) *InstallCloudAppRequest {
+	s.ProjectId = &v
+	return s
+}
+
 func (s *InstallCloudAppRequest) SetRenderingInstanceId(v string) *InstallCloudAppRequest {
 	s.RenderingInstanceId = &v
 	return s
 }
 
+func (s *InstallCloudAppRequest) SetRenderingInstanceIds(v []*string) *InstallCloudAppRequest {
+	s.RenderingInstanceIds = v
+	return s
+}
+
+type InstallCloudAppShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// render-9f8c57355d224ad7beaf95e145f22111
+	RenderingInstanceId        *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	RenderingInstanceIdsShrink *string `json:"RenderingInstanceIds,omitempty" xml:"RenderingInstanceIds,omitempty"`
+}
+
+func (s InstallCloudAppShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallCloudAppShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InstallCloudAppShrinkRequest) SetAppId(v string) *InstallCloudAppShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *InstallCloudAppShrinkRequest) SetPageNumber(v int32) *InstallCloudAppShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *InstallCloudAppShrinkRequest) SetPageSize(v int32) *InstallCloudAppShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *InstallCloudAppShrinkRequest) SetProjectId(v string) *InstallCloudAppShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *InstallCloudAppShrinkRequest) SetRenderingInstanceId(v string) *InstallCloudAppShrinkRequest {
+	s.RenderingInstanceId = &v
+	return s
+}
+
+func (s *InstallCloudAppShrinkRequest) SetRenderingInstanceIdsShrink(v string) *InstallCloudAppShrinkRequest {
+	s.RenderingInstanceIdsShrink = &v
+	return s
+}
+
 type InstallCloudAppResponseBody struct {
+	FailedInstanceCount *int32                                        `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
+	FailedInstances     []*InstallCloudAppResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId            *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessInstanceCount *int32                                         `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
+	SuccessInstances     []*InstallCloudAppResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
 func (s InstallCloudAppResponseBody) String() string {
@@ -19531,8 +19618,74 @@ func (s InstallCloudAppResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *InstallCloudAppResponseBody) SetFailedInstanceCount(v int32) *InstallCloudAppResponseBody {
+	s.FailedInstanceCount = &v
+	return s
+}
+
+func (s *InstallCloudAppResponseBody) SetFailedInstances(v []*InstallCloudAppResponseBodyFailedInstances) *InstallCloudAppResponseBody {
+	s.FailedInstances = v
+	return s
+}
+
 func (s *InstallCloudAppResponseBody) SetRequestId(v string) *InstallCloudAppResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *InstallCloudAppResponseBody) SetSuccessInstanceCount(v int32) *InstallCloudAppResponseBody {
+	s.SuccessInstanceCount = &v
+	return s
+}
+
+func (s *InstallCloudAppResponseBody) SetSuccessInstances(v []*InstallCloudAppResponseBodySuccessInstances) *InstallCloudAppResponseBody {
+	s.SuccessInstances = v
+	return s
+}
+
+type InstallCloudAppResponseBodyFailedInstances struct {
+	ErrCode             *int32  `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage          *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+}
+
+func (s InstallCloudAppResponseBodyFailedInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallCloudAppResponseBodyFailedInstances) GoString() string {
+	return s.String()
+}
+
+func (s *InstallCloudAppResponseBodyFailedInstances) SetErrCode(v int32) *InstallCloudAppResponseBodyFailedInstances {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *InstallCloudAppResponseBodyFailedInstances) SetErrMessage(v string) *InstallCloudAppResponseBodyFailedInstances {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *InstallCloudAppResponseBodyFailedInstances) SetRenderingInstanceId(v string) *InstallCloudAppResponseBodyFailedInstances {
+	s.RenderingInstanceId = &v
+	return s
+}
+
+type InstallCloudAppResponseBodySuccessInstances struct {
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+}
+
+func (s InstallCloudAppResponseBodySuccessInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallCloudAppResponseBodySuccessInstances) GoString() string {
+	return s.String()
+}
+
+func (s *InstallCloudAppResponseBodySuccessInstances) SetRenderingInstanceId(v string) *InstallCloudAppResponseBodySuccessInstances {
+	s.RenderingInstanceId = &v
 	return s
 }
 
@@ -19578,6 +19731,7 @@ type ListCloudAppInstallationsRequest struct {
 	//
 	// 1.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
 	// 1
@@ -19585,11 +19739,13 @@ type ListCloudAppInstallationsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListCloudAppInstallationsRequest) String() string {
@@ -19615,6 +19771,11 @@ func (s *ListCloudAppInstallationsRequest) SetAppVersion(v string) *ListCloudApp
 	return s
 }
 
+func (s *ListCloudAppInstallationsRequest) SetEndTime(v string) *ListCloudAppInstallationsRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *ListCloudAppInstallationsRequest) SetPageNumber(v int64) *ListCloudAppInstallationsRequest {
 	s.PageNumber = &v
 	return s
@@ -19625,8 +19786,18 @@ func (s *ListCloudAppInstallationsRequest) SetPageSize(v int64) *ListCloudAppIns
 	return s
 }
 
+func (s *ListCloudAppInstallationsRequest) SetProjectId(v string) *ListCloudAppInstallationsRequest {
+	s.ProjectId = &v
+	return s
+}
+
 func (s *ListCloudAppInstallationsRequest) SetRenderingInstanceId(v string) *ListCloudAppInstallationsRequest {
 	s.RenderingInstanceId = &v
+	return s
+}
+
+func (s *ListCloudAppInstallationsRequest) SetStartTime(v string) *ListCloudAppInstallationsRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -19808,6 +19979,7 @@ type ListCloudAppsRequest struct {
 	//
 	// 1.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
 	// 1
@@ -19815,7 +19987,9 @@ type ListCloudAppsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PkgType   *string `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListCloudAppsRequest) String() string {
@@ -19841,6 +20015,11 @@ func (s *ListCloudAppsRequest) SetAppVersion(v string) *ListCloudAppsRequest {
 	return s
 }
 
+func (s *ListCloudAppsRequest) SetEndTime(v string) *ListCloudAppsRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *ListCloudAppsRequest) SetPageNumber(v int64) *ListCloudAppsRequest {
 	s.PageNumber = &v
 	return s
@@ -19848,6 +20027,16 @@ func (s *ListCloudAppsRequest) SetPageNumber(v int64) *ListCloudAppsRequest {
 
 func (s *ListCloudAppsRequest) SetPageSize(v int64) *ListCloudAppsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListCloudAppsRequest) SetPkgType(v string) *ListCloudAppsRequest {
+	s.PkgType = &v
+	return s
+}
+
+func (s *ListCloudAppsRequest) SetStartTime(v string) *ListCloudAppsRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -19921,6 +20110,8 @@ type ListCloudAppsResponseBodyCloudApps struct {
 	//
 	// demo
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PkgFormat   *string `json:"PkgFormat,omitempty" xml:"PkgFormat,omitempty"`
+	PkgType     *string `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
 	// example:
 	//
 	// Success
@@ -19964,6 +20155,16 @@ func (s *ListCloudAppsResponseBodyCloudApps) SetAppVersion(v string) *ListCloudA
 
 func (s *ListCloudAppsResponseBodyCloudApps) SetDescription(v string) *ListCloudAppsResponseBodyCloudApps {
 	s.Description = &v
+	return s
+}
+
+func (s *ListCloudAppsResponseBodyCloudApps) SetPkgFormat(v string) *ListCloudAppsResponseBodyCloudApps {
+	s.PkgFormat = &v
+	return s
+}
+
+func (s *ListCloudAppsResponseBodyCloudApps) SetPkgType(v string) *ListCloudAppsResponseBodyCloudApps {
+	s.PkgType = &v
 	return s
 }
 
@@ -20017,6 +20218,7 @@ func (s *ListCloudAppsResponse) SetBody(v *ListCloudAppsResponseBody) *ListCloud
 }
 
 type ListFilePushStatusesRequest struct {
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
 	// f-1671accd4dafdag3er256cvgewt13f7141db2f7
@@ -20037,6 +20239,7 @@ type ListFilePushStatusesRequest struct {
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListFilePushStatusesRequest) String() string {
@@ -20045,6 +20248,11 @@ func (s ListFilePushStatusesRequest) String() string {
 
 func (s ListFilePushStatusesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListFilePushStatusesRequest) SetEndTime(v string) *ListFilePushStatusesRequest {
+	s.EndTime = &v
+	return s
 }
 
 func (s *ListFilePushStatusesRequest) SetFileId(v string) *ListFilePushStatusesRequest {
@@ -20069,6 +20277,11 @@ func (s *ListFilePushStatusesRequest) SetPageSize(v int64) *ListFilePushStatuses
 
 func (s *ListFilePushStatusesRequest) SetRenderingInstanceId(v string) *ListFilePushStatusesRequest {
 	s.RenderingInstanceId = &v
+	return s
+}
+
+func (s *ListFilePushStatusesRequest) SetStartTime(v string) *ListFilePushStatusesRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -20229,6 +20442,7 @@ func (s *ListFilePushStatusesResponse) SetBody(v *ListFilePushStatusesResponseBo
 }
 
 type ListFilesRequest struct {
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
 	// f-1671accd4dafdag3er256cvgewt13f7141db2f7
@@ -20244,7 +20458,8 @@ type ListFilesRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListFilesRequest) String() string {
@@ -20253,6 +20468,11 @@ func (s ListFilesRequest) String() string {
 
 func (s ListFilesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListFilesRequest) SetEndTime(v string) *ListFilesRequest {
+	s.EndTime = &v
+	return s
 }
 
 func (s *ListFilesRequest) SetFileId(v string) *ListFilesRequest {
@@ -20272,6 +20492,11 @@ func (s *ListFilesRequest) SetPageNumber(v int64) *ListFilesRequest {
 
 func (s *ListFilesRequest) SetPageSize(v int64) *ListFilesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetStartTime(v string) *ListFilesRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -20438,6 +20663,7 @@ func (s *ListFilesResponse) SetBody(v *ListFilesResponseBody) *ListFilesResponse
 }
 
 type ListPublicKeysRequest struct {
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
 	// g-test
@@ -20454,7 +20680,8 @@ type ListPublicKeysRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListPublicKeysRequest) String() string {
@@ -20463,6 +20690,11 @@ func (s ListPublicKeysRequest) String() string {
 
 func (s ListPublicKeysRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListPublicKeysRequest) SetEndTime(v string) *ListPublicKeysRequest {
+	s.EndTime = &v
+	return s
 }
 
 func (s *ListPublicKeysRequest) SetKeyGroup(v string) *ListPublicKeysRequest {
@@ -20487,6 +20719,11 @@ func (s *ListPublicKeysRequest) SetPageNumber(v int64) *ListPublicKeysRequest {
 
 func (s *ListPublicKeysRequest) SetPageSize(v int64) *ListPublicKeysRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListPublicKeysRequest) SetStartTime(v string) *ListPublicKeysRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -20637,6 +20874,7 @@ type ListRenderingDataPackagesRequest struct {
 	//
 	// dp-449ea3d16c0841b8bf33ec5bbc86a152
 	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
 	// 1
@@ -20648,7 +20886,8 @@ type ListRenderingDataPackagesRequest struct {
 	// example:
 	//
 	// 20
-	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size      *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// example:
 	//
 	// available
@@ -20673,6 +20912,11 @@ func (s *ListRenderingDataPackagesRequest) SetDataPackageId(v string) *ListRende
 	return s
 }
 
+func (s *ListRenderingDataPackagesRequest) SetEndTime(v string) *ListRenderingDataPackagesRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *ListRenderingDataPackagesRequest) SetPageNumber(v int32) *ListRenderingDataPackagesRequest {
 	s.PageNumber = &v
 	return s
@@ -20685,6 +20929,11 @@ func (s *ListRenderingDataPackagesRequest) SetPageSize(v int32) *ListRenderingDa
 
 func (s *ListRenderingDataPackagesRequest) SetSize(v int32) *ListRenderingDataPackagesRequest {
 	s.Size = &v
+	return s
+}
+
+func (s *ListRenderingDataPackagesRequest) SetStartTime(v string) *ListRenderingDataPackagesRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -20840,6 +21089,7 @@ func (s *ListRenderingDataPackagesResponse) SetBody(v *ListRenderingDataPackages
 }
 
 type ListRenderingInstanceGatewayRequest struct {
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
 	// render-xxx
@@ -20856,6 +21106,7 @@ type ListRenderingInstanceGatewayRequest struct {
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListRenderingInstanceGatewayRequest) String() string {
@@ -20864,6 +21115,11 @@ func (s ListRenderingInstanceGatewayRequest) String() string {
 
 func (s ListRenderingInstanceGatewayRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListRenderingInstanceGatewayRequest) SetEndTime(v string) *ListRenderingInstanceGatewayRequest {
+	s.EndTime = &v
+	return s
 }
 
 func (s *ListRenderingInstanceGatewayRequest) SetGatewayInstanceId(v string) *ListRenderingInstanceGatewayRequest {
@@ -20883,6 +21139,11 @@ func (s *ListRenderingInstanceGatewayRequest) SetPageSize(v int64) *ListRenderin
 
 func (s *ListRenderingInstanceGatewayRequest) SetRenderingInstanceId(v string) *ListRenderingInstanceGatewayRequest {
 	s.RenderingInstanceId = &v
+	return s
+}
+
+func (s *ListRenderingInstanceGatewayRequest) SetStartTime(v string) *ListRenderingInstanceGatewayRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -21025,6 +21286,7 @@ func (s *ListRenderingInstanceGatewayResponse) SetBody(v *ListRenderingInstanceG
 }
 
 type ListRenderingInstancesRequest struct {
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
 	// 1
@@ -21041,6 +21303,7 @@ type ListRenderingInstancesRequest struct {
 	//
 	// crs.cp.l1
 	RenderingSpec *string `json:"RenderingSpec,omitempty" xml:"RenderingSpec,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StorageSize   *int32  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 }
 
@@ -21050,6 +21313,11 @@ func (s ListRenderingInstancesRequest) String() string {
 
 func (s ListRenderingInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListRenderingInstancesRequest) SetEndTime(v string) *ListRenderingInstancesRequest {
+	s.EndTime = &v
+	return s
 }
 
 func (s *ListRenderingInstancesRequest) SetPageNumber(v int32) *ListRenderingInstancesRequest {
@@ -21069,6 +21337,11 @@ func (s *ListRenderingInstancesRequest) SetRenderingInstanceId(v string) *ListRe
 
 func (s *ListRenderingInstancesRequest) SetRenderingSpec(v string) *ListRenderingInstancesRequest {
 	s.RenderingSpec = &v
+	return s
+}
+
+func (s *ListRenderingInstancesRequest) SetStartTime(v string) *ListRenderingInstancesRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -21186,6 +21459,7 @@ func (s *ListRenderingInstancesResponse) SetBody(v *ListRenderingInstancesRespon
 }
 
 type ListRenderingProjectInstancesRequest struct {
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
 	// 1
@@ -21204,6 +21478,7 @@ type ListRenderingProjectInstancesRequest struct {
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// example:
 	//
 	// Idle
@@ -21216,6 +21491,11 @@ func (s ListRenderingProjectInstancesRequest) String() string {
 
 func (s ListRenderingProjectInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListRenderingProjectInstancesRequest) SetEndTime(v string) *ListRenderingProjectInstancesRequest {
+	s.EndTime = &v
+	return s
 }
 
 func (s *ListRenderingProjectInstancesRequest) SetPageNumber(v int32) *ListRenderingProjectInstancesRequest {
@@ -21235,6 +21515,11 @@ func (s *ListRenderingProjectInstancesRequest) SetProjectId(v string) *ListRende
 
 func (s *ListRenderingProjectInstancesRequest) SetRenderingInstanceId(v string) *ListRenderingProjectInstancesRequest {
 	s.RenderingInstanceId = &v
+	return s
+}
+
+func (s *ListRenderingProjectInstancesRequest) SetStartTime(v string) *ListRenderingProjectInstancesRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -21378,6 +21663,7 @@ func (s *ListRenderingProjectInstancesResponse) SetBody(v *ListRenderingProjectI
 }
 
 type ListRenderingProjectsRequest struct {
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
 	// 1
@@ -21394,6 +21680,7 @@ type ListRenderingProjectsRequest struct {
 	//
 	// idata_content
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListRenderingProjectsRequest) String() string {
@@ -21402,6 +21689,11 @@ func (s ListRenderingProjectsRequest) String() string {
 
 func (s ListRenderingProjectsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListRenderingProjectsRequest) SetEndTime(v string) *ListRenderingProjectsRequest {
+	s.EndTime = &v
+	return s
 }
 
 func (s *ListRenderingProjectsRequest) SetPageNumber(v int32) *ListRenderingProjectsRequest {
@@ -21421,6 +21713,11 @@ func (s *ListRenderingProjectsRequest) SetProjectId(v string) *ListRenderingProj
 
 func (s *ListRenderingProjectsRequest) SetProjectName(v string) *ListRenderingProjectsRequest {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *ListRenderingProjectsRequest) SetStartTime(v string) *ListRenderingProjectsRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -21579,6 +21876,7 @@ type ListRenderingSessionsRequest struct {
 	//
 	// ae7990f4-203d-494b-a5ea-e0babe9fa13d
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
 	// 1
@@ -21598,6 +21896,7 @@ type ListRenderingSessionsRequest struct {
 	//
 	// session-i205217481741918129226
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// example:
 	//
 	// SessionStarting
@@ -21619,6 +21918,11 @@ func (s *ListRenderingSessionsRequest) SetAppId(v string) *ListRenderingSessions
 
 func (s *ListRenderingSessionsRequest) SetClientId(v string) *ListRenderingSessionsRequest {
 	s.ClientId = &v
+	return s
+}
+
+func (s *ListRenderingSessionsRequest) SetEndTime(v string) *ListRenderingSessionsRequest {
+	s.EndTime = &v
 	return s
 }
 
@@ -21644,6 +21948,11 @@ func (s *ListRenderingSessionsRequest) SetRenderingInstanceId(v string) *ListRen
 
 func (s *ListRenderingSessionsRequest) SetSessionId(v string) *ListRenderingSessionsRequest {
 	s.SessionId = &v
+	return s
+}
+
+func (s *ListRenderingSessionsRequest) SetStartTime(v string) *ListRenderingSessionsRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -26851,13 +27160,15 @@ type UninstallCloudAppRequest struct {
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// This parameter is required.
-	//
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
-	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	RenderingInstanceId  *string   `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	RenderingInstanceIds []*string `json:"RenderingInstanceIds,omitempty" xml:"RenderingInstanceIds,omitempty" type:"Repeated"`
 }
 
 func (s UninstallCloudAppRequest) String() string {
@@ -26873,16 +27184,95 @@ func (s *UninstallCloudAppRequest) SetAppId(v string) *UninstallCloudAppRequest 
 	return s
 }
 
+func (s *UninstallCloudAppRequest) SetPageNumber(v int32) *UninstallCloudAppRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *UninstallCloudAppRequest) SetPageSize(v int32) *UninstallCloudAppRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *UninstallCloudAppRequest) SetProjectId(v string) *UninstallCloudAppRequest {
+	s.ProjectId = &v
+	return s
+}
+
 func (s *UninstallCloudAppRequest) SetRenderingInstanceId(v string) *UninstallCloudAppRequest {
 	s.RenderingInstanceId = &v
 	return s
 }
 
+func (s *UninstallCloudAppRequest) SetRenderingInstanceIds(v []*string) *UninstallCloudAppRequest {
+	s.RenderingInstanceIds = v
+	return s
+}
+
+type UninstallCloudAppShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// render-9f8c57355d224ad7beaf95e145f22111
+	RenderingInstanceId        *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	RenderingInstanceIdsShrink *string `json:"RenderingInstanceIds,omitempty" xml:"RenderingInstanceIds,omitempty"`
+}
+
+func (s UninstallCloudAppShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallCloudAppShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallCloudAppShrinkRequest) SetAppId(v string) *UninstallCloudAppShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UninstallCloudAppShrinkRequest) SetPageNumber(v int32) *UninstallCloudAppShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *UninstallCloudAppShrinkRequest) SetPageSize(v int32) *UninstallCloudAppShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *UninstallCloudAppShrinkRequest) SetProjectId(v string) *UninstallCloudAppShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UninstallCloudAppShrinkRequest) SetRenderingInstanceId(v string) *UninstallCloudAppShrinkRequest {
+	s.RenderingInstanceId = &v
+	return s
+}
+
+func (s *UninstallCloudAppShrinkRequest) SetRenderingInstanceIdsShrink(v string) *UninstallCloudAppShrinkRequest {
+	s.RenderingInstanceIdsShrink = &v
+	return s
+}
+
 type UninstallCloudAppResponseBody struct {
+	FailedInstanceCount *int32                                          `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
+	FailedInstances     []*UninstallCloudAppResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId            *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessInstanceCount *int32                                           `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
+	SuccessInstances     []*UninstallCloudAppResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
 func (s UninstallCloudAppResponseBody) String() string {
@@ -26893,8 +27283,74 @@ func (s UninstallCloudAppResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UninstallCloudAppResponseBody) SetFailedInstanceCount(v int32) *UninstallCloudAppResponseBody {
+	s.FailedInstanceCount = &v
+	return s
+}
+
+func (s *UninstallCloudAppResponseBody) SetFailedInstances(v []*UninstallCloudAppResponseBodyFailedInstances) *UninstallCloudAppResponseBody {
+	s.FailedInstances = v
+	return s
+}
+
 func (s *UninstallCloudAppResponseBody) SetRequestId(v string) *UninstallCloudAppResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UninstallCloudAppResponseBody) SetSuccessInstanceCount(v int32) *UninstallCloudAppResponseBody {
+	s.SuccessInstanceCount = &v
+	return s
+}
+
+func (s *UninstallCloudAppResponseBody) SetSuccessInstances(v []*UninstallCloudAppResponseBodySuccessInstances) *UninstallCloudAppResponseBody {
+	s.SuccessInstances = v
+	return s
+}
+
+type UninstallCloudAppResponseBodyFailedInstances struct {
+	ErrCode             *int32  `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage          *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+}
+
+func (s UninstallCloudAppResponseBodyFailedInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallCloudAppResponseBodyFailedInstances) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallCloudAppResponseBodyFailedInstances) SetErrCode(v int32) *UninstallCloudAppResponseBodyFailedInstances {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *UninstallCloudAppResponseBodyFailedInstances) SetErrMessage(v string) *UninstallCloudAppResponseBodyFailedInstances {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *UninstallCloudAppResponseBodyFailedInstances) SetRenderingInstanceId(v string) *UninstallCloudAppResponseBodyFailedInstances {
+	s.RenderingInstanceId = &v
+	return s
+}
+
+type UninstallCloudAppResponseBodySuccessInstances struct {
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+}
+
+func (s UninstallCloudAppResponseBodySuccessInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallCloudAppResponseBodySuccessInstances) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallCloudAppResponseBodySuccessInstances) SetRenderingInstanceId(v string) *UninstallCloudAppResponseBodySuccessInstances {
+	s.RenderingInstanceId = &v
 	return s
 }
 
@@ -27786,7 +28242,9 @@ type UploadCloudAppRequest struct {
 	// example:
 	//
 	// 0CFBB7BD10CDD7279642ADAB8FEF3DEE
-	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Md5       *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	PkgFormat *string `json:"PkgFormat,omitempty" xml:"PkgFormat,omitempty"`
+	PkgType   *string `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
 }
 
 func (s UploadCloudAppRequest) String() string {
@@ -27819,6 +28277,16 @@ func (s *UploadCloudAppRequest) SetDownloadUrl(v string) *UploadCloudAppRequest 
 
 func (s *UploadCloudAppRequest) SetMd5(v string) *UploadCloudAppRequest {
 	s.Md5 = &v
+	return s
+}
+
+func (s *UploadCloudAppRequest) SetPkgFormat(v string) *UploadCloudAppRequest {
+	s.PkgFormat = &v
+	return s
+}
+
+func (s *UploadCloudAppRequest) SetPkgType(v string) *UploadCloudAppRequest {
+	s.PkgType = &v
 	return s
 }
 
@@ -35889,23 +36357,45 @@ func (client *Client) GotoPreset(request *GotoPresetRequest) (_result *GotoPrese
 //
 // 安装云应用
 //
-// @param request - InstallCloudAppRequest
+// @param tmpReq - InstallCloudAppRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InstallCloudAppResponse
-func (client *Client) InstallCloudAppWithOptions(request *InstallCloudAppRequest, runtime *util.RuntimeOptions) (_result *InstallCloudAppResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) InstallCloudAppWithOptions(tmpReq *InstallCloudAppRequest, runtime *util.RuntimeOptions) (_result *InstallCloudAppResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &InstallCloudAppShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RenderingInstanceIds)) {
+		request.RenderingInstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RenderingInstanceIds, tea.String("RenderingInstanceIds"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
 		query["RenderingInstanceId"] = request.RenderingInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceIdsShrink)) {
+		query["RenderingInstanceIds"] = request.RenderingInstanceIdsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -36252,6 +36742,10 @@ func (client *Client) ListRenderingDataPackagesWithOptions(request *ListRenderin
 		query["DataPackageId"] = request.DataPackageId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -36262,6 +36756,10 @@ func (client *Client) ListRenderingDataPackagesWithOptions(request *ListRenderin
 
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
 		query["Size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
@@ -36324,6 +36822,10 @@ func (client *Client) ListRenderingInstanceGatewayWithOptions(request *ListRende
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GatewayInstanceId)) {
 		query["GatewayInstanceId"] = request.GatewayInstanceId
 	}
@@ -36338,6 +36840,10 @@ func (client *Client) ListRenderingInstanceGatewayWithOptions(request *ListRende
 
 	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
 		query["RenderingInstanceId"] = request.RenderingInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -36458,6 +36964,10 @@ func (client *Client) ListRenderingProjectInstancesWithOptions(request *ListRend
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -36472,6 +36982,10 @@ func (client *Client) ListRenderingProjectInstancesWithOptions(request *ListRend
 
 	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
 		query["RenderingInstanceId"] = request.RenderingInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.State)) {
@@ -36548,6 +37062,10 @@ func (client *Client) ListRenderingProjectsWithOptions(request *ListRenderingPro
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -36562,6 +37080,10 @@ func (client *Client) ListRenderingProjectsWithOptions(request *ListRenderingPro
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -36644,6 +37166,10 @@ func (client *Client) ListRenderingSessionsWithOptions(request *ListRenderingSes
 		query["ClientId"] = request.ClientId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -36662,6 +37188,10 @@ func (client *Client) ListRenderingSessionsWithOptions(request *ListRenderingSes
 
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
 		query["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.State)) {
@@ -39830,23 +40360,45 @@ func (client *Client) UnbindTemplate(request *UnbindTemplateRequest) (_result *U
 //
 // 卸载云应用
 //
-// @param request - UninstallCloudAppRequest
+// @param tmpReq - UninstallCloudAppRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UninstallCloudAppResponse
-func (client *Client) UninstallCloudAppWithOptions(request *UninstallCloudAppRequest, runtime *util.RuntimeOptions) (_result *UninstallCloudAppResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UninstallCloudAppWithOptions(tmpReq *UninstallCloudAppRequest, runtime *util.RuntimeOptions) (_result *UninstallCloudAppResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UninstallCloudAppShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RenderingInstanceIds)) {
+		request.RenderingInstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RenderingInstanceIds, tea.String("RenderingInstanceIds"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
 		query["RenderingInstanceId"] = request.RenderingInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceIdsShrink)) {
+		query["RenderingInstanceIds"] = request.RenderingInstanceIdsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -40407,6 +40959,14 @@ func (client *Client) UploadCloudAppWithOptions(request *UploadCloudAppRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Md5)) {
 		query["Md5"] = request.Md5
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PkgFormat)) {
+		query["PkgFormat"] = request.PkgFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PkgType)) {
+		query["PkgType"] = request.PkgType
 	}
 
 	req := &openapi.OpenApiRequest{
