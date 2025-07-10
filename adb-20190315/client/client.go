@@ -139,7 +139,9 @@ type ApplyAdviceByIdRequest struct {
 	// example:
 	//
 	// 0baf1f52-53df-487f-8292-99a03716****
-	AdviceId *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
+	AdviceId         *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
+	ApplyType        *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	BuildImmediately *bool   `json:"BuildImmediately,omitempty" xml:"BuildImmediately,omitempty"`
 	// The cluster ID.
 	//
 	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
@@ -177,6 +179,16 @@ func (s *ApplyAdviceByIdRequest) SetAdviceDate(v int64) *ApplyAdviceByIdRequest 
 
 func (s *ApplyAdviceByIdRequest) SetAdviceId(v string) *ApplyAdviceByIdRequest {
 	s.AdviceId = &v
+	return s
+}
+
+func (s *ApplyAdviceByIdRequest) SetApplyType(v string) *ApplyAdviceByIdRequest {
+	s.ApplyType = &v
+	return s
+}
+
+func (s *ApplyAdviceByIdRequest) SetBuildImmediately(v bool) *ApplyAdviceByIdRequest {
+	s.BuildImmediately = &v
 	return s
 }
 
@@ -369,7 +381,9 @@ type BatchApplyAdviceByIdListRequest struct {
 	// example:
 	//
 	// c2589ff3-e86c-4f19-80c8-2aeb7dd9****,53414470-ebf4-4a53-a312-8a1ad8fd****,6e8dce84-fec8-4b0b-9c04-b0cea12c****,b3b9703d-55ca-47e0-96dd-6a4a9dbf****
-	AdviceIdList *string `json:"AdviceIdList,omitempty" xml:"AdviceIdList,omitempty"`
+	AdviceIdList     *string `json:"AdviceIdList,omitempty" xml:"AdviceIdList,omitempty"`
+	ApplyType        *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	BuildImmediately *bool   `json:"BuildImmediately,omitempty" xml:"BuildImmediately,omitempty"`
 	// The cluster ID.
 	//
 	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
@@ -405,6 +419,16 @@ func (s *BatchApplyAdviceByIdListRequest) SetAdviceDate(v int64) *BatchApplyAdvi
 
 func (s *BatchApplyAdviceByIdListRequest) SetAdviceIdList(v string) *BatchApplyAdviceByIdListRequest {
 	s.AdviceIdList = &v
+	return s
+}
+
+func (s *BatchApplyAdviceByIdListRequest) SetApplyType(v string) *BatchApplyAdviceByIdListRequest {
+	s.ApplyType = &v
+	return s
+}
+
+func (s *BatchApplyAdviceByIdListRequest) SetBuildImmediately(v bool) *BatchApplyAdviceByIdListRequest {
+	s.BuildImmediately = &v
 	return s
 }
 
@@ -6045,7 +6069,8 @@ type DescribeAppliedAdvicesResponseBodyItems struct {
 	// example:
 	//
 	// build table `schema1`.`table1`
-	BuildSQL *string `json:"BuildSQL,omitempty" xml:"BuildSQL,omitempty"`
+	BuildSQL    *string `json:"BuildSQL,omitempty" xml:"BuildSQL,omitempty"`
+	IndexFields *string `json:"IndexFields,omitempty" xml:"IndexFields,omitempty"`
 	// The state of the suggestion execution job. Valid values:
 	//
 	// 	- **SUCCEED**
@@ -6142,6 +6167,11 @@ func (s *DescribeAppliedAdvicesResponseBodyItems) SetBenefit(v string) *Describe
 
 func (s *DescribeAppliedAdvicesResponseBodyItems) SetBuildSQL(v string) *DescribeAppliedAdvicesResponseBodyItems {
 	s.BuildSQL = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetIndexFields(v string) *DescribeAppliedAdvicesResponseBodyItems {
+	s.IndexFields = &v
 	return s
 }
 
@@ -7452,7 +7482,8 @@ type DescribeAvailableAdvicesResponseBodyItems struct {
 	// example:
 	//
 	// 0.4 GB of storage saved
-	Benefit *string `json:"Benefit,omitempty" xml:"Benefit,omitempty"`
+	Benefit     *string `json:"Benefit,omitempty" xml:"Benefit,omitempty"`
+	IndexFields *string `json:"IndexFields,omitempty" xml:"IndexFields,omitempty"`
 	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
@@ -7528,6 +7559,11 @@ func (s *DescribeAvailableAdvicesResponseBodyItems) SetAdviceType(v string) *Des
 
 func (s *DescribeAvailableAdvicesResponseBodyItems) SetBenefit(v string) *DescribeAvailableAdvicesResponseBodyItems {
 	s.Benefit = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBodyItems) SetIndexFields(v string) *DescribeAvailableAdvicesResponseBodyItems {
+	s.IndexFields = &v
 	return s
 }
 
@@ -38604,6 +38640,14 @@ func (client *Client) ApplyAdviceByIdWithOptions(request *ApplyAdviceByIdRequest
 		query["AdviceId"] = request.AdviceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ApplyType)) {
+		query["ApplyType"] = request.ApplyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuildImmediately)) {
+		query["BuildImmediately"] = request.BuildImmediately
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
 	}
@@ -38758,6 +38802,14 @@ func (client *Client) BatchApplyAdviceByIdListWithOptions(request *BatchApplyAdv
 
 	if !tea.BoolValue(util.IsUnset(request.AdviceIdList)) {
 		query["AdviceIdList"] = request.AdviceIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplyType)) {
+		query["ApplyType"] = request.ApplyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuildImmediately)) {
+		query["BuildImmediately"] = request.BuildImmediately
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
