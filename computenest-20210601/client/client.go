@@ -1117,7 +1117,8 @@ type CreateServiceInstanceRequest struct {
 	// example:
 	//
 	// service-0e6fca6a51a54420****
-	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId         *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
 	// The service version.
 	//
 	// example:
@@ -1226,6 +1227,11 @@ func (s *CreateServiceInstanceRequest) SetResourceGroupId(v string) *CreateServi
 
 func (s *CreateServiceInstanceRequest) SetServiceId(v string) *CreateServiceInstanceRequest {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetServiceInstanceId(v string) *CreateServiceInstanceRequest {
+	s.ServiceInstanceId = &v
 	return s
 }
 
@@ -1556,7 +1562,8 @@ type CreateServiceInstanceShrinkRequest struct {
 	// example:
 	//
 	// service-0e6fca6a51a54420****
-	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId         *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
 	// The service version.
 	//
 	// example:
@@ -1665,6 +1672,11 @@ func (s *CreateServiceInstanceShrinkRequest) SetResourceGroupId(v string) *Creat
 
 func (s *CreateServiceInstanceShrinkRequest) SetServiceId(v string) *CreateServiceInstanceShrinkRequest {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetServiceInstanceId(v string) *CreateServiceInstanceShrinkRequest {
+	s.ServiceInstanceId = &v
 	return s
 }
 
@@ -4376,7 +4388,7 @@ type GetServiceInstanceResponseBody struct {
 	//
 	// [{"StackId": "stack-xxx"}]
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// The information about the service to which the service instance belongs.
+	// The information about the cloud service.
 	Service *GetServiceInstanceResponseBodyService `json:"Service,omitempty" xml:"Service,omitempty" type:"Struct"`
 	// The ID of the service instance.
 	//
@@ -4441,7 +4453,8 @@ type GetServiceInstanceResponseBody struct {
 	// example:
 	//
 	// 158927391332*****
-	SupplierUid *int64 `json:"SupplierUid,omitempty" xml:"SupplierUid,omitempty"`
+	SupplierUid           *int64 `json:"SupplierUid,omitempty" xml:"SupplierUid,omitempty"`
+	SupportTrialToPrivate *bool  `json:"SupportTrialToPrivate,omitempty" xml:"SupportTrialToPrivate,omitempty"`
 	// The tags.
 	Tags []*GetServiceInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The template name.
@@ -4619,6 +4632,11 @@ func (s *GetServiceInstanceResponseBody) SetStatusDetail(v string) *GetServiceIn
 
 func (s *GetServiceInstanceResponseBody) SetSupplierUid(v int64) *GetServiceInstanceResponseBody {
 	s.SupplierUid = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBody) SetSupportTrialToPrivate(v bool) *GetServiceInstanceResponseBody {
+	s.SupportTrialToPrivate = &v
 	return s
 }
 
@@ -4911,7 +4929,12 @@ type GetServiceInstanceResponseBodyService struct {
 	// example:
 	//
 	// ros
-	DeployType        *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// Operation info.
+	//
+	// example:
+	//
+	// {"SupportBackup":false,"PrometheusConfigMap":{},"ModifyParametersConfig":[{"TemplateName":"国内版","Operation":[{"Name":"套餐变配","Description":"套餐变配","Type":"Custom","SupportPredefinedParameters":true,"EnableLogging":false},{"Name":"参数变配","Description":"参数变配","Type":"Custom","SupportPredefinedParameters":false,"EnableLogging":false,"Parameters":["DataDiskSize"]}]}]}
 	OperationMetadata *string `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
 	// The time when the service version was published.
 	//
@@ -4985,71 +5008,11 @@ type GetServiceInstanceResponseBodyService struct {
 	//
 	// http://example.com
 	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
-	// The upgradable service version.
+	// The service versions that can be updated.
 	UpgradableServiceInfos []*GetServiceInstanceResponseBodyServiceUpgradableServiceInfos `json:"UpgradableServiceInfos,omitempty" xml:"UpgradableServiceInfos,omitempty" type:"Repeated"`
 	// The service version that can be updated.
 	UpgradableServiceVersions []*string `json:"UpgradableServiceVersions,omitempty" xml:"UpgradableServiceVersions,omitempty" type:"Repeated"`
 	// The metadata about the upgrade.
-	//
-	// example:
-	//
-	// {
-	//
-	//   "Type": "OOS",
-	//
-	//   "Description": "Changelog or something description",
-	//
-	//   "SupportUpgradeFromVersions": [1, 2],
-	//
-	//   "UpgradeSteps": {
-	//
-	//     "PreUpgradeStage": {
-	//
-	//       "Description": "初始化数据库",
-	//
-	//       "Type": "RunCommand",
-	//
-	//       "ResourceName": "EcsRole1",
-	//
-	//       "CommandType": "runShellScript",
-	//
-	//       "CommandContent": "echo hello"
-	//
-	//     },
-	//
-	//     "UpgradeStage": [{
-	//
-	//       "Description": "更新EcsRole1实例",
-	//
-	//       "Type": "RunCommand",
-	//
-	//       "ResourceName": "EcsRole1",
-	//
-	//       "ArtifactsDownloadDirectory": "/home/admin",
-	//
-	//       "CommandType": "runShellScript",
-	//
-	//       "CommandContent": "echo hello"
-	//
-	//     }],
-	//
-	//     "PostUpgradeStage": {
-	//
-	//       "Description": "部署后post check",
-	//
-	//       "Type": "None/RunCommand",
-	//
-	//       "ResourceName": "EcsRole1",
-	//
-	//       "CommandType": "runShellScript",
-	//
-	//       "CommandContent": "echo hello"
-	//
-	//     }
-	//
-	//   }
-	//
-	// }
 	UpgradeMetadata *string `json:"UpgradeMetadata,omitempty" xml:"UpgradeMetadata,omitempty"`
 	// The service version.
 	//
@@ -5214,13 +5177,13 @@ func (s *GetServiceInstanceResponseBodyServiceServiceInfos) SetShortDescription(
 }
 
 type GetServiceInstanceResponseBodyServiceUpgradableServiceInfos struct {
-	// An upgradable service version.
+	// The service version.
 	//
 	// example:
 	//
 	// draft
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The version name of an upgradable service version.
+	// The version name.
 	//
 	// example:
 	//
@@ -8864,7 +8827,8 @@ type ListServiceInstancesResponseBodyServiceInstances struct {
 	// example:
 	//
 	// deploy successfully
-	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
+	StatusDetail          *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
+	SupportTrialToPrivate *bool   `json:"SupportTrialToPrivate,omitempty" xml:"SupportTrialToPrivate,omitempty"`
 	// The custom tags.
 	Tags []*ListServiceInstancesResponseBodyServiceInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The template name.
@@ -8996,6 +8960,11 @@ func (s *ListServiceInstancesResponseBodyServiceInstances) SetStatus(v string) *
 
 func (s *ListServiceInstancesResponseBodyServiceInstances) SetStatusDetail(v string) *ListServiceInstancesResponseBodyServiceInstances {
 	s.StatusDetail = &v
+	return s
+}
+
+func (s *ListServiceInstancesResponseBodyServiceInstances) SetSupportTrialToPrivate(v bool) *ListServiceInstancesResponseBodyServiceInstances {
+	s.SupportTrialToPrivate = &v
 	return s
 }
 
@@ -13177,6 +13146,10 @@ func (client *Client) CreateServiceInstanceWithOptions(tmpReq *CreateServiceInst
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
 		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
