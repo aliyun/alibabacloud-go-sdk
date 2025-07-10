@@ -7486,6 +7486,8 @@ type EnrichRequestJourneyParamListSegmentParamList struct {
 	ArrivalAirport *string `json:"arrival_airport,omitempty" xml:"arrival_airport,omitempty"`
 	// arrival city code (capitalized)
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MFM
@@ -7510,11 +7512,15 @@ type EnrichRequestJourneyParamListSegmentParamList struct {
 	DepartureAirport *string `json:"departure_airport,omitempty" xml:"departure_airport,omitempty"`
 	// departure city code (capitalized)
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// SHA
 	DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
 	// departure time in string format (yyyy-MM-dd HH:mm:ss)
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
