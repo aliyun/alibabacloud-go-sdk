@@ -23503,6 +23503,11 @@ type ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvalua
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// true
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The resource ID.
 	//
 	// example:
@@ -23564,6 +23569,11 @@ func (s *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEv
 
 func (s *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetRegionId(v string) *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetResourceGroupId(v string) *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -28460,6 +28470,11 @@ type ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResul
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// true
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The resource ID.
 	//
 	// example:
@@ -28521,6 +28536,11 @@ func (s *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationR
 
 func (s *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetRegionId(v string) *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) SetResourceGroupId(v string) *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier {
+	s.ResourceGroupId = &v
 	return s
 }
 
