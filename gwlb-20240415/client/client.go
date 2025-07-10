@@ -245,6 +245,16 @@ type CreateListenerRequest struct {
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The tags. You can specify at most 20 tags in each call.
 	Tag []*CreateListenerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The timeout period of an idle TCP connection. Unit: seconds.
+	//
+	// Default value: **350**.
+	//
+	// Valid values: **60*	- to **6000**.
+	//
+	// example:
+	//
+	// 350
+	TcpIdleTimeout *int32 `json:"TcpIdleTimeout,omitempty" xml:"TcpIdleTimeout,omitempty"`
 }
 
 func (s CreateListenerRequest) String() string {
@@ -282,6 +292,11 @@ func (s *CreateListenerRequest) SetServerGroupId(v string) *CreateListenerReques
 
 func (s *CreateListenerRequest) SetTag(v []*CreateListenerRequestTag) *CreateListenerRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *CreateListenerRequest) SetTcpIdleTimeout(v int32) *CreateListenerRequest {
+	s.TcpIdleTimeout = &v
 	return s
 }
 
@@ -423,7 +438,7 @@ type CreateLoadBalancerRequest struct {
 	//
 	// rg-acfmwbufq6q3****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tag keys. You can specify at most 20 tags in each call.
+	// The tags that are added to the instance.
 	Tag []*CreateLoadBalancerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The virtual private cloud (VPC) ID.
 	//
@@ -490,13 +505,13 @@ func (s *CreateLoadBalancerRequest) SetZoneMappings(v []*CreateLoadBalancerReque
 type CreateLoadBalancerRequestTag struct {
 	// The tag key. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// It can be up to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// testTagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+	// The tag value. It can be up to 256 characters in length and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -644,11 +659,11 @@ type CreateServerGroupRequest struct {
 	//
 	// False
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The configurations of the health check feature.
+	// The health check configurations.
 	HealthCheckConfig *CreateServerGroupRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
-	// The backend protocol. Valid values:
+	// The backend protocol. Valid value:
 	//
-	// 	- **GENEVE**(default)
+	// 	- **GENEVE*	- (default)
 	//
 	// example:
 	//
@@ -671,7 +686,16 @@ type CreateServerGroupRequest struct {
 	// example:
 	//
 	// 5TCH
-	Scheduler          *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// Specifies how GWLB processes requests over existing connections when a backend server is not running as expected. Valid values:
+	//
+	// 	- **NoRebalance*	- (default): GWLB continues to forward requests over existing connections to the unavailable backend server.
+	//
+	// 	- **Rebalance**: GWLB forwards requests over existing connections to the remaining healthy backend servers.
+	//
+	// example:
+	//
+	// NoRebalance
 	ServerFailoverMode *string `json:"ServerFailoverMode,omitempty" xml:"ServerFailoverMode,omitempty"`
 	// The server group name.
 	//
@@ -681,11 +705,11 @@ type CreateServerGroupRequest struct {
 	//
 	// testServerGroupName
 	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
-	// The type of server group. Valid values:
+	// The type of the server group. Valid values:
 	//
-	// 	- **Instance*	- (default): allows you to specify servers of the **Ecs**, **Eni**, or **Eci*	- type.
+	// 	- **Instance*	- (default): allows you to specify resources of the **Ecs**, **Eni**, or **Eci*	- type.
 	//
-	// 	- **Ip**: allows you to add servers of by specifying IP addresses.
+	// 	- **Ip**: allows you to add servers by specifying their IP addresses.
 	//
 	// example:
 	//
@@ -819,7 +843,7 @@ func (s *CreateServerGroupRequestConnectionDrainConfig) SetConnectionDrainTimeou
 }
 
 type CreateServerGroupRequestHealthCheckConfig struct {
-	// The backend server port that is used for health checks.
+	// The backend server port used for health checks.
 	//
 	// Valid values: **1*	- to **65535**.
 	//
@@ -829,9 +853,9 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	// 80
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The maximum timeout period of a health check response.
+	// The maximum timeout period for a health check response.
 	//
-	// Unit: seconds
+	// Unit: seconds.
 	//
 	// Valid values: **1*	- to **300**.
 	//
@@ -841,19 +865,19 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	// 5
 	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// The domain name that you want to use for health checks. Valid values:
+	// The domain name used for health checks. Valid values:
 	//
 	// 	- **$SERVER_IP*	- (default): the private IP address of a backend server.
 	//
 	// 	- **domain**: a domain name. The domain name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), and periods (.).
 	//
-	// > This parameter takes effect only if you set **HealthCheckProtocol*	- to **HTTP**.
+	// >  This parameter takes effect only if you set **HealthCheckProtocol*	- to **HTTP**.
 	//
 	// example:
 	//
 	// $SERVER_IP
 	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// Specifies whether to enable the health check feature. Valid values:
+	// Specifies whether to enable health checks. Valid values:
 	//
 	// 	- **true*	- (default)
 	//
@@ -867,7 +891,7 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	HealthCheckHttpCode []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
 	// The interval at which health checks are performed.
 	//
-	// Unit: seconds
+	// Unit: seconds.
 	//
 	// Valid values: **1*	- to **50**.
 	//
@@ -877,29 +901,29 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	// 10
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The URL that is used for health checks.
+	// The path used for health checks.
 	//
-	// The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( ) \\	- [ ] @ $ ^ : \\" , + =
+	// It must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( ) \\	- [ ] @ $ ^ : \\" , + =
 	//
-	// The URL must start with a forward slash (/).
+	// It must start with a forward slash (/).
 	//
-	// > This parameter takes effect only if you set **HealthCheckProtocol*	- to **HTTP**.
+	// >  This parameter takes effect only if you set **HealthCheckProtocol*	- to **HTTP**.
 	//
 	// example:
 	//
 	// /test/index.html
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	// The protocol that is used for health checks. Valid values:
+	// The protocol used for health checks. Valid values:
 	//
 	// 	- **TCP*	- (default): GWLB performs TCP health checks by sending SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
 	//
-	// 	- **HTTP**: GWLB performs HTTP health checks to check whether backend servers are healthy by sending HEAD or GET requests which simulate access from browsers.
+	// 	- **HTTP**: GWLB performs HTTP health checks to check whether backend servers are healthy by sending GET requests which simulate access from browsers.
 	//
 	// example:
 	//
 	// TCP
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail*	- to **success**.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from **fail*	- to **success**.
 	//
 	// Valid values: **2*	- to **10**.
 	//
@@ -909,7 +933,7 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	// 2
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success*	- to **fail**.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from **success*	- to **fail**.
 	//
 	// Valid values: **2*	- to **10**.
 	//
@@ -1717,6 +1741,12 @@ type GetListenerAttributeResponseBody struct {
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The tags.
 	Tags []*GetListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The timeout period of an idle TCP connection. Unit: seconds.
+	//
+	// example:
+	//
+	// 350
+	TcpIdleTimeout *int32 `json:"TcpIdleTimeout,omitempty" xml:"TcpIdleTimeout,omitempty"`
 }
 
 func (s GetListenerAttributeResponseBody) String() string {
@@ -1764,6 +1794,11 @@ func (s *GetListenerAttributeResponseBody) SetServerGroupId(v string) *GetListen
 
 func (s *GetListenerAttributeResponseBody) SetTags(v []*GetListenerAttributeResponseBodyTags) *GetListenerAttributeResponseBody {
 	s.Tags = v
+	return s
+}
+
+func (s *GetListenerAttributeResponseBody) SetTcpIdleTimeout(v int32) *GetListenerAttributeResponseBody {
+	s.TcpIdleTimeout = &v
 	return s
 }
 
@@ -2298,8 +2333,17 @@ type GetLoadBalancerAttributeResponseBody struct {
 	// rg-acfmx7pmxcy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
-	Tags        []*GetLoadBalancerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TrafficMode *string                                     `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
+	Tags []*GetLoadBalancerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Traffic processing mode. Valid values:
+	//
+	// 	- **LoadBalance**: load balancing mode. GWLB forwards traffic to backend servers.
+	//
+	// 	- **ByPass**: bypass mode. GWLB directly returns traffic to the GWLB endpoint without forwarding it to the backend servers.
+	//
+	// example:
+	//
+	// LoadBalance
+	TrafficMode *string `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
 	// The VPC ID.
 	//
 	// example:
@@ -2726,6 +2770,12 @@ type ListListenersResponseBodyListeners struct {
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The tags.
 	Tags []*ListListenersResponseBodyListenersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The timeout period of an idle TCP connection. Unit: seconds.
+	//
+	// example:
+	//
+	// 350
+	TcpIdleTimeout *int32 `json:"TcpIdleTimeout,omitempty" xml:"TcpIdleTimeout,omitempty"`
 }
 
 func (s ListListenersResponseBodyListeners) String() string {
@@ -2763,6 +2813,11 @@ func (s *ListListenersResponseBodyListeners) SetServerGroupId(v string) *ListLis
 
 func (s *ListListenersResponseBodyListeners) SetTags(v []*ListListenersResponseBodyListenersTags) *ListListenersResponseBodyListeners {
 	s.Tags = v
+	return s
+}
+
+func (s *ListListenersResponseBodyListeners) SetTcpIdleTimeout(v int32) *ListListenersResponseBodyListeners {
+	s.TcpIdleTimeout = &v
 	return s
 }
 
@@ -2829,15 +2884,15 @@ func (s *ListListenersResponse) SetBody(v *ListListenersResponseBody) *ListListe
 }
 
 type ListLoadBalancersRequest struct {
-	// The IP version. Valid values:
+	// The IP version of the NLB instance. Valid values:
 	//
-	// 	- **Ipv4**: IPv4
+	// 	- **Ipv4**
 	//
 	// Enumeration values:
 	//
 	// 	- IPv4: IPv4
 	//
-	// 	- DualStack: DualStack
+	// 	- DualStack: dual-stack
 	//
 	// example:
 	//
@@ -2900,8 +2955,17 @@ type ListLoadBalancersRequest struct {
 	// 1
 	Skip *int32 `json:"Skip,omitempty" xml:"Skip,omitempty"`
 	// The tags. You can specify at most 20 tags in each call.
-	Tag         []*ListLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	TrafficMode *string                        `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
+	Tag []*ListLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Specifies the traffic processing mode. Valid values:
+	//
+	// 	- **LoadBalance**: load balancing mode. GWLB continues to forward traffic to backend servers.
+	//
+	// 	- **ByPass**: bypass mode. GWLB directly returns traffic to the GWLB endpoint without forwarding it to the backend servers.
+	//
+	// example:
+	//
+	// LoadBalance
+	TrafficMode *string `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
 	// The virtual private cloud (VPC) IDs. You can query at most 20 IDs in each call.
 	VpcIds []*string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty" type:"Repeated"`
 	// The zone IDs. You can query at most 20 zone IDs in each call.
@@ -3662,9 +3726,9 @@ type ListServerGroupsRequest struct {
 	ServerGroupNames []*string `json:"ServerGroupNames,omitempty" xml:"ServerGroupNames,omitempty" type:"Repeated"`
 	// The server group type. Valid values:
 	//
-	// 	- **Instance**: allows you to specify servers of the **Ecs**, **Eni**, or **Eci*	- type.
+	// 	- **Instance**: allows you to specify resources of the **Ecs**, **Eni**, or **Eci*	- type.
 	//
-	// 	- **Ip**: allows you to add servers of by specifying IP addresses.
+	// 	- **Ip**: allows you to add servers by specifying IP addresses.
 	//
 	// example:
 	//
@@ -3886,7 +3950,16 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	// example:
 	//
 	// 2
-	ServerCount        *int32  `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
+	ServerCount *int32 `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
+	// Specifies how GWLB processes requests over existing connections when a backend server is not running as expected. Valid values:
+	//
+	// 	- **NoRebalance**: GWLB continues to forward requests over existing connections to the unhealthy backend server.
+	//
+	// 	- **Rebalance**: GWLB forwards requests over existing connections to the remaining healthy backend servers.
+	//
+	// example:
+	//
+	// NoRebalance
 	ServerFailoverMode *string `json:"ServerFailoverMode,omitempty" xml:"ServerFailoverMode,omitempty"`
 	// The server group ID.
 	//
@@ -5167,6 +5240,14 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// sgp-sp8d2r6y7t0xtl****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The timeout period of an idle TCP connection. Unit: seconds.
+	//
+	// Valid values: **60*	- to **6000**.
+	//
+	// example:
+	//
+	// 350
+	TcpIdleTimeout *int32 `json:"TcpIdleTimeout,omitempty" xml:"TcpIdleTimeout,omitempty"`
 }
 
 func (s UpdateListenerAttributeRequest) String() string {
@@ -5199,6 +5280,11 @@ func (s *UpdateListenerAttributeRequest) SetListenerId(v string) *UpdateListener
 
 func (s *UpdateListenerAttributeRequest) SetServerGroupId(v string) *UpdateListenerAttributeRequest {
 	s.ServerGroupId = &v
+	return s
+}
+
+func (s *UpdateListenerAttributeRequest) SetTcpIdleTimeout(v int32) *UpdateListenerAttributeRequest {
+	s.TcpIdleTimeout = &v
 	return s
 }
 
@@ -5290,7 +5376,16 @@ type UpdateLoadBalancerAttributeRequest struct {
 	//
 	// testGwlbName
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	TrafficMode      *string `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
+	// Specifies the traffic processing mode. Valid values:
+	//
+	// 	- **LoadBalance**: load balancing mode. In this mode, GWLB forwards traffic to backend servers.
+	//
+	// 	- **ByPass**: bypass mode. GWLB returns traffic directly to the GWLB endpoint instead of forwarding the traffic to backend servers.
+	//
+	// example:
+	//
+	// LoadBalance
+	TrafficMode *string `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
 }
 
 func (s UpdateLoadBalancerAttributeRequest) String() string {
@@ -5551,20 +5646,29 @@ type UpdateServerGroupAttributeRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The configurations of the health check feature.
+	// The health check configuration.
 	HealthCheckConfig *UpdateServerGroupAttributeRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
 	// The scheduling algorithm. Valid values:
 	//
 	// 	- **5TCH**: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
 	//
-	// 	- **3TCH**: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+	// 	- **3TCH**: indicates consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
 	//
 	// 	- **2TCH**: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
 	//
 	// example:
 	//
 	// 5TCH
-	Scheduler          *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// Specifies how GWLB processes requests over existing connections when a backend server is not running as expected. Valid values:
+	//
+	// 	- **NoRebalance**: GWLB continues to forward requests over existing connections to the unavailable backend server.
+	//
+	// 	- **Rebalance**: GWLB forwards requests over existing connections to the remaining healthy backend servers.
+	//
+	// example:
+	//
+	// NoRebalance
 	ServerFailoverMode *string `json:"ServerFailoverMode,omitempty" xml:"ServerFailoverMode,omitempty"`
 	// The server group ID.
 	//
@@ -5674,17 +5778,17 @@ func (s *UpdateServerGroupAttributeRequestConnectionDrainConfig) SetConnectionDr
 }
 
 type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
-	// The backend server port that is used by health checks.
+	// The backend server port that is used for health checks.
 	//
-	// Valid values: 1 to 65535.
+	// Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
 	// 80
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The maximum timeout period of a health check response.
+	// The maximum timeout period for a health check response.
 	//
-	// Unit: seconds
+	// Unit: seconds.
 	//
 	// Valid values: **1*	- to **300**.
 	//
@@ -5692,19 +5796,19 @@ type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
 	//
 	// 5
 	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// The domain name that is used for health checks. Valid values:
+	// The domain name used for health checks. Valid values:
 	//
 	// 	- **$SERVER_IP**: the internal IP address of a backend server.
 	//
 	// 	- **domain**: a domain name. The domain name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), and periods (.).
 	//
-	// > This parameter takes effect only if you set **HealthCheckProtocol*	- to **HTTP**.
+	// >  This parameter takes effect only if you set **HealthCheckProtocol*	- to **HTTP**.
 	//
 	// example:
 	//
 	// $SERVER_IP
 	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// Specifies whether to enable the health check feature. Valid values:
+	// Specifies whether to enable health checks. Valid values:
 	//
 	// 	- **true**
 	//
@@ -5718,7 +5822,7 @@ type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
 	HealthCheckHttpCode []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
 	// The interval at which health checks are performed.
 	//
-	// Unit: seconds
+	// Unit: seconds.
 	//
 	// Valid values: **1*	- to **50**.
 	//
@@ -5726,11 +5830,11 @@ type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
 	//
 	// 10
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The URL that is used for health checks.
+	// The URL used for health checks.
 	//
-	// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: ` - / . % ? # &  `The URL must start with a forward slash (/).
+	// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: ` - / . % ? # &  `It must start with a forward slash (/).
 	//
-	// > This parameter takes effect only if you set **HealthCheckProtocol*	- to **HTTP**.
+	// >  This parameter takes effect only if you set **HealthCheckProtocol*	- to **HTTP**.
 	//
 	// example:
 	//
@@ -5740,13 +5844,13 @@ type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
 	//
 	// 	- **TCP**: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
 	//
-	// 	- **HTTP**: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
+	// 	- **HTTP**: HTTP health checks simulate a process that uses a web browser to access resources by sending GET requests to an instance. These requests are used to check whether the instance is healthy.
 	//
 	// example:
 	//
 	// TCP
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail*	- to **success**.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from **fail*	- to **success**.
 	//
 	// Valid values: **2*	- to **10**.
 	//
@@ -5754,7 +5858,7 @@ type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
 	//
 	// 2
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success*	- to **fail**.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from **success*	- to **fail**.
 	//
 	// Valid values: **2*	- to **10**.
 	//
@@ -6075,6 +6179,10 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 		bodyFlat["Tag"] = request.Tag
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TcpIdleTimeout)) {
+		body["TcpIdleTimeout"] = request.TcpIdleTimeout
+	}
+
 	body = tea.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
@@ -6132,15 +6240,15 @@ func (client *Client) CreateListener(request *CreateListenerRequest) (_result *C
 //
 // Description:
 //
-// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
+// *Ensure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation.**
 //
 //   - When you create a GWLB instance, the service-linked role AliyunServiceRoleForGwlb is automatically created.
 //
-//   - CreateLoadBalancer is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of a GWLB instance.
+//   - **CreateLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2853555.html) operation to query the status of a GWLB instance.
 //
-//   - If the GWLB instance is in the Provisioning state, the GWLB instance is being created.
+//   - If the GWLB instance is in the **Provisioning*	- state, the GWLB instance is being created.
 //
-//   - If the GWLB instance is in the Active state, the GWLB instance is created.
+//   - If the GWLB instance is in the **Active*	- state, the GWLB instance is created.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -6217,15 +6325,15 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 //
 // Description:
 //
-// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
+// *Ensure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation.**
 //
 //   - When you create a GWLB instance, the service-linked role AliyunServiceRoleForGwlb is automatically created.
 //
-//   - CreateLoadBalancer is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of a GWLB instance.
+//   - **CreateLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2853555.html) operation to query the status of a GWLB instance.
 //
-//   - If the GWLB instance is in the Provisioning state, the GWLB instance is being created.
+//   - If the GWLB instance is in the **Provisioning*	- state, the GWLB instance is being created.
 //
-//   - If the GWLB instance is in the Active state, the GWLB instance is created.
+//   - If the GWLB instance is in the **Active*	- state, the GWLB instance is created.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -7762,6 +7870,10 @@ func (client *Client) UpdateListenerAttributeWithOptions(request *UpdateListener
 		body["ServerGroupId"] = request.ServerGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TcpIdleTimeout)) {
+		body["TcpIdleTimeout"] = request.TcpIdleTimeout
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -7909,15 +8021,15 @@ func (client *Client) UpdateLoadBalancerAttribute(request *UpdateLoadBalancerAtt
 //
 // Description:
 //
-// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
+// *Ensure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation.**
 //
-// UpdateLoadBalancerZones is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of the GWLB instance.
+// **UpdateLoadBalancerZones*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2853555.html) operation to query the status of the GWLB instance.
 //
-//   - If the GWLB instance is in the Configuring state, the GWLB instance is being modified.
+//   - If the GWLB instance is in the **Configuring*	- state, the GWLB instance is being modified.
 //
-//   - If the GWLB instance is in the Active state, the GWLB instance is modified.
+//   - If the GWLB instance is in the **Active*	- state, the GWLB instance is modified.
 //
-// >  Before you call this operation, make sure that all zone parameters, including the current zones and the zones that you want to add, are specified. If you do not specify the current zones, the current zones are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of a GWLB instance.
+// >  Before you initiate a call, ensure that all zones, including the current zones and the zones that you want to add, are specified. The zones that you do not specify are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of your GWLB instance.
 //
 // @param request - UpdateLoadBalancerZonesRequest
 //
@@ -7978,15 +8090,15 @@ func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBala
 //
 // Description:
 //
-// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
+// *Ensure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation.**
 //
-// UpdateLoadBalancerZones is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of the GWLB instance.
+// **UpdateLoadBalancerZones*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2853555.html) operation to query the status of the GWLB instance.
 //
-//   - If the GWLB instance is in the Configuring state, the GWLB instance is being modified.
+//   - If the GWLB instance is in the **Configuring*	- state, the GWLB instance is being modified.
 //
-//   - If the GWLB instance is in the Active state, the GWLB instance is modified.
+//   - If the GWLB instance is in the **Active*	- state, the GWLB instance is modified.
 //
-// >  Before you call this operation, make sure that all zone parameters, including the current zones and the zones that you want to add, are specified. If you do not specify the current zones, the current zones are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of a GWLB instance.
+// >  Before you initiate a call, ensure that all zones, including the current zones and the zones that you want to add, are specified. The zones that you do not specify are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of your GWLB instance.
 //
 // @param request - UpdateLoadBalancerZonesRequest
 //
