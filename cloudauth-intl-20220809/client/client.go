@@ -5,12 +5,11 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
-	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
-	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
+	xml "github.com/alibabacloud-go/tea-xml/service"
 	"github.com/alibabacloud-go/tea/tea"
+	credential "github.com/aliyun/credentials-go/credentials"
 	"io"
 )
 
@@ -3400,6 +3399,8 @@ type InitializeRequest struct {
 	Crop          *string   `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	DateOfBirth   *string   `json:"DateOfBirth,omitempty" xml:"DateOfBirth,omitempty"`
 	DateOfExpiry  *string   `json:"DateOfExpiry,omitempty" xml:"DateOfExpiry,omitempty"`
+	DocName       *string   `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	DocNo         *string   `json:"DocNo,omitempty" xml:"DocNo,omitempty"`
 	DocPageConfig []*string `json:"DocPageConfig,omitempty" xml:"DocPageConfig,omitempty" type:"Repeated"`
 	DocScanMode   *string   `json:"DocScanMode,omitempty" xml:"DocScanMode,omitempty"`
 	// example:
@@ -3515,6 +3516,16 @@ func (s *InitializeRequest) SetDateOfBirth(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetDateOfExpiry(v string) *InitializeRequest {
 	s.DateOfExpiry = &v
+	return s
+}
+
+func (s *InitializeRequest) SetDocName(v string) *InitializeRequest {
+	s.DocName = &v
+	return s
+}
+
+func (s *InitializeRequest) SetDocNo(v string) *InitializeRequest {
+	s.DocNo = &v
 	return s
 }
 
@@ -3680,6 +3691,8 @@ type InitializeShrinkRequest struct {
 	Crop                *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	DateOfBirth         *string `json:"DateOfBirth,omitempty" xml:"DateOfBirth,omitempty"`
 	DateOfExpiry        *string `json:"DateOfExpiry,omitempty" xml:"DateOfExpiry,omitempty"`
+	DocName             *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	DocNo               *string `json:"DocNo,omitempty" xml:"DocNo,omitempty"`
 	DocPageConfigShrink *string `json:"DocPageConfig,omitempty" xml:"DocPageConfig,omitempty"`
 	DocScanMode         *string `json:"DocScanMode,omitempty" xml:"DocScanMode,omitempty"`
 	// example:
@@ -3795,6 +3808,16 @@ func (s *InitializeShrinkRequest) SetDateOfBirth(v string) *InitializeShrinkRequ
 
 func (s *InitializeShrinkRequest) SetDateOfExpiry(v string) *InitializeShrinkRequest {
 	s.DateOfExpiry = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetDocName(v string) *InitializeShrinkRequest {
+	s.DocName = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetDocNo(v string) *InitializeShrinkRequest {
+	s.DocNo = &v
 	return s
 }
 
@@ -4257,6 +4280,64 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	}
 
 	return nil
+}
+
+func (client *Client) _postOSSObject(bucketName *string, data map[string]interface{}) (_result map[string]interface{}, _err error) {
+	request_ := tea.NewRequest()
+	form, _err := util.AssertAsMap(data)
+	if _err != nil {
+		return _result, _err
+	}
+
+	boundary := fileform.GetBoundary()
+	host, _err := util.AssertAsString(form["host"])
+	if _err != nil {
+		return _result, _err
+	}
+
+	request_.Protocol = tea.String("HTTPS")
+	request_.Method = tea.String("POST")
+	request_.Pathname = tea.String("/")
+	request_.Headers = map[string]*string{
+		"host":       host,
+		"date":       util.GetDateUTCString(),
+		"user-agent": util.GetUserAgent(tea.String("")),
+	}
+	request_.Headers["content-type"] = tea.String("multipart/form-data; boundary=" + tea.StringValue(boundary))
+	request_.Body = fileform.ToFileForm(form, boundary)
+	response_, _err := tea.DoRequest(request_, nil)
+	if _err != nil {
+		return _result, _err
+	}
+	var respMap map[string]interface{}
+	bodyStr, _err := util.ReadAsString(response_.Body)
+	if _err != nil {
+		return _result, _err
+	}
+
+	if tea.BoolValue(util.Is4xx(response_.StatusCode)) || tea.BoolValue(util.Is5xx(response_.StatusCode)) {
+		respMap = xml.ParseXml(bodyStr, nil)
+		err, _err := util.AssertAsMap(respMap["Error"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		_err = tea.NewSDKError(map[string]interface{}{
+			"code":    err["Code"],
+			"message": err["Message"],
+			"data": map[string]interface{}{
+				"httpCode":  tea.IntValue(response_.StatusCode),
+				"requestId": err["RequestId"],
+				"hostId":    err["HostId"],
+			},
+		})
+		return _result, _err
+	}
+
+	respMap = xml.ParseXml(bodyStr, nil)
+	_result = make(map[string]interface{})
+	_err = tea.Convert(tea.ToMap(respMap), &_result)
+	return _result, _err
 }
 
 func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
@@ -4790,22 +4871,24 @@ func (client *Client) CredentialVerifyIntl(request *CredentialVerifyIntlRequest)
 
 func (client *Client) CredentialVerifyIntlAdvance(request *CredentialVerifyIntlAdvanceRequest, runtime *util.RuntimeOptions) (_result *CredentialVerifyIntlResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	var credentialModel *credential.CredentialModel
+	if tea.BoolValue(util.IsUnset(client.Credential)) {
+		_err = tea.NewSDKError(map[string]interface{}{
+			"code":    "InvalidCredentials",
+			"message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.",
+		})
+		return _result, _err
+	}
+
+	credentialModel, _err = client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
-	}
-
-	credentialType := client.Credential.GetType()
+	accessKeyId := credentialModel.AccessKeyId
+	accessKeySecret := credentialModel.AccessKeySecret
+	securityToken := credentialModel.SecurityToken
+	credentialType := credentialModel.Type
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
@@ -4824,70 +4907,78 @@ func (client *Client) CredentialVerifyIntlAdvance(request *CredentialVerifyIntlA
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("Cloudauth-intl"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  tea.String("Cloudauth-intl"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapi.Params{
+		Action:      tea.String("AuthorizeFileUpload"),
+		Version:     tea.String("2019-12-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
-
+	authResponse := map[string]interface{}{}
 	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := tea.Bool(false)
+	authResponseBody := make(map[string]*string)
 	credentialVerifyIntlReq := &CredentialVerifyIntlRequest{}
 	openapiutil.Convert(request, credentialVerifyIntlReq)
 	if !tea.BoolValue(util.IsUnset(request.ImageFileObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		tmpResp0, _err := authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
+		authResponse, _err = util.AssertAsMap(tmpResp0)
 		if _err != nil {
 			return _result, _err
 		}
 
+		tmpBody, _err = util.AssertAsMap(authResponse["body"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		useAccelerate, _err = util.AssertAsBoolean(tmpBody["UseAccelerate"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		authResponseBody = util.StringifyMapValue(tmpBody)
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.ImageFileObject,
 			ContentType: tea.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], useAccelerate, client.EndpointType)),
+			"OSSAccessKeyId":        tea.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                tea.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             tea.StringValue(authResponseBody["Signature"]),
+			"key":                   tea.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		credentialVerifyIntlReq.ImageFile = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		credentialVerifyIntlReq.ImageFile = tea.String("http://" + tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(authResponseBody["Endpoint"]) + "/" + tea.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	credentialVerifyIntlResp, _err := client.CredentialVerifyIntlWithOptions(credentialVerifyIntlReq, runtime)
@@ -5892,6 +5983,14 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 
 	if !tea.BoolValue(util.IsUnset(request.DateOfExpiry)) {
 		query["DateOfExpiry"] = request.DateOfExpiry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocName)) {
+		query["DocName"] = request.DocName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocNo)) {
+		query["DocNo"] = request.DocNo
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DocPageConfigShrink)) {
