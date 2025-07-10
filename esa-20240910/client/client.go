@@ -5,12 +5,11 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
 	fileform "github.com/alibabacloud-go/tea-fileform/service"
-	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
-	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
+	xml "github.com/alibabacloud-go/tea-xml/service"
 	"github.com/alibabacloud-go/tea/tea"
+	credential "github.com/aliyun/credentials-go/credentials"
 	"io"
 )
 
@@ -12058,7 +12057,8 @@ type CreateRoutineRouteRequest struct {
 	// example:
 	//
 	// on
-	Bypass *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
+	Bypass   *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
+	Fallback *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
 	// example:
 	//
 	// on
@@ -12099,6 +12099,11 @@ func (s CreateRoutineRouteRequest) GoString() string {
 
 func (s *CreateRoutineRouteRequest) SetBypass(v string) *CreateRoutineRouteRequest {
 	s.Bypass = &v
+	return s
+}
+
+func (s *CreateRoutineRouteRequest) SetFallback(v string) *CreateRoutineRouteRequest {
+	s.Fallback = &v
 	return s
 }
 
@@ -24246,6 +24251,238 @@ func (s *DescribeSiteTopDataResponse) SetBody(v *DescribeSiteTopDataResponseBody
 	return s
 }
 
+type DescribeUrlObservationDataRequest struct {
+	// example:
+	//
+	// PC
+	ClientPlatform *string `json:"ClientPlatform,omitempty" xml:"ClientPlatform,omitempty"`
+	// example:
+	//
+	// 2023-04-19T15:59:59Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// TTFB
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 54362329990032
+	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 2023-04-08T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// example.com/test
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s DescribeUrlObservationDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUrlObservationDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUrlObservationDataRequest) SetClientPlatform(v string) *DescribeUrlObservationDataRequest {
+	s.ClientPlatform = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataRequest) SetEndTime(v string) *DescribeUrlObservationDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataRequest) SetMetric(v string) *DescribeUrlObservationDataRequest {
+	s.Metric = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataRequest) SetSiteId(v string) *DescribeUrlObservationDataRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataRequest) SetStartTime(v string) *DescribeUrlObservationDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataRequest) SetUrl(v string) *DescribeUrlObservationDataRequest {
+	s.Url = &v
+	return s
+}
+
+type DescribeUrlObservationDataResponseBody struct {
+	// example:
+	//
+	// 2023-04-19T15:59:59Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2022-11-06T16:00:00Z
+	StartTime     *string                                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UrlDetailData []*DescribeUrlObservationDataResponseBodyUrlDetailData `json:"UrlDetailData,omitempty" xml:"UrlDetailData,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUrlObservationDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUrlObservationDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUrlObservationDataResponseBody) SetEndTime(v string) *DescribeUrlObservationDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataResponseBody) SetRequestId(v string) *DescribeUrlObservationDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataResponseBody) SetStartTime(v string) *DescribeUrlObservationDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataResponseBody) SetUrlDetailData(v []*DescribeUrlObservationDataResponseBodyUrlDetailData) *DescribeUrlObservationDataResponseBody {
+	s.UrlDetailData = v
+	return s
+}
+
+type DescribeUrlObservationDataResponseBodyUrlDetailData struct {
+	// example:
+	//
+	// 0.5
+	CLS *float32 `json:"CLS,omitempty" xml:"CLS,omitempty"`
+	// example:
+	//
+	// PC
+	ClientPlatform *string `json:"ClientPlatform,omitempty" xml:"ClientPlatform,omitempty"`
+	// example:
+	//
+	// CN
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// example:
+	//
+	// 123
+	FCP *float32 `json:"FCP,omitempty" xml:"FCP,omitempty"`
+	// example:
+	//
+	// 123
+	FID *float32 `json:"FID,omitempty" xml:"FID,omitempty"`
+	// example:
+	//
+	// 123
+	INP *float32 `json:"INP,omitempty" xml:"INP,omitempty"`
+	// example:
+	//
+	// 123
+	LCP *float32 `json:"LCP,omitempty" xml:"LCP,omitempty"`
+	// example:
+	//
+	// 123
+	TTFB *float32 `json:"TTFB,omitempty" xml:"TTFB,omitempty"`
+	// example:
+	//
+	// example.com/test
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s DescribeUrlObservationDataResponseBodyUrlDetailData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUrlObservationDataResponseBodyUrlDetailData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUrlObservationDataResponseBodyUrlDetailData) SetCLS(v float32) *DescribeUrlObservationDataResponseBodyUrlDetailData {
+	s.CLS = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataResponseBodyUrlDetailData) SetClientPlatform(v string) *DescribeUrlObservationDataResponseBodyUrlDetailData {
+	s.ClientPlatform = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataResponseBodyUrlDetailData) SetCountry(v string) *DescribeUrlObservationDataResponseBodyUrlDetailData {
+	s.Country = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataResponseBodyUrlDetailData) SetFCP(v float32) *DescribeUrlObservationDataResponseBodyUrlDetailData {
+	s.FCP = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataResponseBodyUrlDetailData) SetFID(v float32) *DescribeUrlObservationDataResponseBodyUrlDetailData {
+	s.FID = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataResponseBodyUrlDetailData) SetINP(v float32) *DescribeUrlObservationDataResponseBodyUrlDetailData {
+	s.INP = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataResponseBodyUrlDetailData) SetLCP(v float32) *DescribeUrlObservationDataResponseBodyUrlDetailData {
+	s.LCP = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataResponseBodyUrlDetailData) SetTTFB(v float32) *DescribeUrlObservationDataResponseBodyUrlDetailData {
+	s.TTFB = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataResponseBodyUrlDetailData) SetUrl(v string) *DescribeUrlObservationDataResponseBodyUrlDetailData {
+	s.Url = &v
+	return s
+}
+
+type DescribeUrlObservationDataResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUrlObservationDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeUrlObservationDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUrlObservationDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUrlObservationDataResponse) SetHeaders(v map[string]*string) *DescribeUrlObservationDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUrlObservationDataResponse) SetStatusCode(v int32) *DescribeUrlObservationDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUrlObservationDataResponse) SetBody(v *DescribeUrlObservationDataResponseBody) *DescribeUrlObservationDataResponse {
+	s.Body = v
+	return s
+}
+
 type DisableCustomScenePolicyRequest struct {
 	// The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
 	//
@@ -27774,6 +28011,8 @@ func (s *GetEdgeContainerAppResourceStatusResponseBody) SetRequestId(v string) *
 }
 
 type GetEdgeContainerAppResourceStatusResponseBodyRegions struct {
+	IsOffline *bool `json:"IsOffline,omitempty" xml:"IsOffline,omitempty"`
+	IsStaging *bool `json:"IsStaging,omitempty" xml:"IsStaging,omitempty"`
 	// example:
 	//
 	// unicom
@@ -27798,6 +28037,16 @@ func (s GetEdgeContainerAppResourceStatusResponseBodyRegions) String() string {
 
 func (s GetEdgeContainerAppResourceStatusResponseBodyRegions) GoString() string {
 	return s.String()
+}
+
+func (s *GetEdgeContainerAppResourceStatusResponseBodyRegions) SetIsOffline(v bool) *GetEdgeContainerAppResourceStatusResponseBodyRegions {
+	s.IsOffline = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResourceStatusResponseBodyRegions) SetIsStaging(v bool) *GetEdgeContainerAppResourceStatusResponseBodyRegions {
+	s.IsStaging = &v
+	return s
 }
 
 func (s *GetEdgeContainerAppResourceStatusResponseBodyRegions) SetIsp(v string) *GetEdgeContainerAppResourceStatusResponseBodyRegions {
@@ -36090,6 +36339,7 @@ type GetRoutineRouteResponseBody struct {
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	Fallback   *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
 	// example:
 	//
 	// simple
@@ -36144,6 +36394,11 @@ func (s *GetRoutineRouteResponseBody) SetConfigId(v int64) *GetRoutineRouteRespo
 
 func (s *GetRoutineRouteResponseBody) SetConfigType(v string) *GetRoutineRouteResponseBody {
 	s.ConfigType = &v
+	return s
+}
+
+func (s *GetRoutineRouteResponseBody) SetFallback(v string) *GetRoutineRouteResponseBody {
+	s.Fallback = &v
 	return s
 }
 
@@ -53911,6 +54166,7 @@ type ListRoutineRoutesResponseBodyConfigs struct {
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	Fallback   *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
 	// example:
 	//
 	// simple
@@ -53969,6 +54225,11 @@ func (s *ListRoutineRoutesResponseBodyConfigs) SetConfigId(v int64) *ListRoutine
 
 func (s *ListRoutineRoutesResponseBodyConfigs) SetConfigType(v string) *ListRoutineRoutesResponseBodyConfigs {
 	s.ConfigType = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) SetFallback(v string) *ListRoutineRoutesResponseBodyConfigs {
+	s.Fallback = &v
 	return s
 }
 
@@ -54948,6 +55209,7 @@ type ListSiteRoutesResponseBodyConfigs struct {
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	Fallback   *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
 	// example:
 	//
 	// simple
@@ -54998,6 +55260,11 @@ func (s *ListSiteRoutesResponseBodyConfigs) SetConfigId(v int64) *ListSiteRoutes
 
 func (s *ListSiteRoutesResponseBodyConfigs) SetConfigType(v string) *ListSiteRoutesResponseBodyConfigs {
 	s.ConfigType = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBodyConfigs) SetFallback(v string) *ListSiteRoutesResponseBodyConfigs {
+	s.Fallback = &v
 	return s
 }
 
@@ -70632,7 +70899,8 @@ type UpdateRoutineRouteRequest struct {
 	// example:
 	//
 	// 35281609698****
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Fallback *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
 	// example:
 	//
 	// on
@@ -70676,6 +70944,11 @@ func (s *UpdateRoutineRouteRequest) SetBypass(v string) *UpdateRoutineRouteReque
 
 func (s *UpdateRoutineRouteRequest) SetConfigId(v int64) *UpdateRoutineRouteRequest {
 	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateRoutineRouteRequest) SetFallback(v string) *UpdateRoutineRouteRequest {
+	s.Fallback = &v
 	return s
 }
 
@@ -75063,6 +75336,64 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	return nil
 }
 
+func (client *Client) _postOSSObject(bucketName *string, data map[string]interface{}) (_result map[string]interface{}, _err error) {
+	request_ := tea.NewRequest()
+	form, _err := util.AssertAsMap(data)
+	if _err != nil {
+		return _result, _err
+	}
+
+	boundary := fileform.GetBoundary()
+	host, _err := util.AssertAsString(form["host"])
+	if _err != nil {
+		return _result, _err
+	}
+
+	request_.Protocol = tea.String("HTTPS")
+	request_.Method = tea.String("POST")
+	request_.Pathname = tea.String("/")
+	request_.Headers = map[string]*string{
+		"host":       host,
+		"date":       util.GetDateUTCString(),
+		"user-agent": util.GetUserAgent(tea.String("")),
+	}
+	request_.Headers["content-type"] = tea.String("multipart/form-data; boundary=" + tea.StringValue(boundary))
+	request_.Body = fileform.ToFileForm(form, boundary)
+	response_, _err := tea.DoRequest(request_, nil)
+	if _err != nil {
+		return _result, _err
+	}
+	var respMap map[string]interface{}
+	bodyStr, _err := util.ReadAsString(response_.Body)
+	if _err != nil {
+		return _result, _err
+	}
+
+	if tea.BoolValue(util.Is4xx(response_.StatusCode)) || tea.BoolValue(util.Is5xx(response_.StatusCode)) {
+		respMap = xml.ParseXml(bodyStr, nil)
+		err, _err := util.AssertAsMap(respMap["Error"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		_err = tea.NewSDKError(map[string]interface{}{
+			"code":    err["Code"],
+			"message": err["Message"],
+			"data": map[string]interface{}{
+				"httpCode":  tea.IntValue(response_.StatusCode),
+				"requestId": err["RequestId"],
+				"hostId":    err["HostId"],
+			},
+		})
+		return _result, _err
+	}
+
+	respMap = xml.ParseXml(bodyStr, nil)
+	_result = make(map[string]interface{})
+	_err = tea.Convert(tea.ToMap(respMap), &_result)
+	return _result, _err
+}
+
 func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
 	if !tea.BoolValue(util.Empty(endpoint)) {
 		_result = endpoint
@@ -75710,22 +76041,24 @@ func (client *Client) BatchDeleteKvWithHighCapacity(request *BatchDeleteKvWithHi
 
 func (client *Client) BatchDeleteKvWithHighCapacityAdvance(request *BatchDeleteKvWithHighCapacityAdvanceRequest, runtime *util.RuntimeOptions) (_result *BatchDeleteKvWithHighCapacityResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	var credentialModel *credential.CredentialModel
+	if tea.BoolValue(util.IsUnset(client.Credential)) {
+		_err = tea.NewSDKError(map[string]interface{}{
+			"code":    "InvalidCredentials",
+			"message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.",
+		})
+		return _result, _err
+	}
+
+	credentialModel, _err = client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
-	}
-
-	credentialType := client.Credential.GetType()
+	accessKeyId := credentialModel.AccessKeyId
+	accessKeySecret := credentialModel.AccessKeySecret
+	securityToken := credentialModel.SecurityToken
+	credentialType := credentialModel.Type
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
@@ -75744,70 +76077,78 @@ func (client *Client) BatchDeleteKvWithHighCapacityAdvance(request *BatchDeleteK
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("ESA"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  tea.String("ESA"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapi.Params{
+		Action:      tea.String("AuthorizeFileUpload"),
+		Version:     tea.String("2019-12-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
-
+	authResponse := map[string]interface{}{}
 	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := tea.Bool(false)
+	authResponseBody := make(map[string]*string)
 	batchDeleteKvWithHighCapacityReq := &BatchDeleteKvWithHighCapacityRequest{}
 	openapiutil.Convert(request, batchDeleteKvWithHighCapacityReq)
 	if !tea.BoolValue(util.IsUnset(request.UrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		tmpResp0, _err := authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
+		authResponse, _err = util.AssertAsMap(tmpResp0)
 		if _err != nil {
 			return _result, _err
 		}
 
+		tmpBody, _err = util.AssertAsMap(authResponse["body"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		useAccelerate, _err = util.AssertAsBoolean(tmpBody["UseAccelerate"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		authResponseBody = util.StringifyMapValue(tmpBody)
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.UrlObject,
 			ContentType: tea.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], useAccelerate, client.EndpointType)),
+			"OSSAccessKeyId":        tea.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                tea.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             tea.StringValue(authResponseBody["Signature"]),
+			"key":                   tea.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		batchDeleteKvWithHighCapacityReq.Url = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		batchDeleteKvWithHighCapacityReq.Url = tea.String("http://" + tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(authResponseBody["Endpoint"]) + "/" + tea.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	batchDeleteKvWithHighCapacityResp, _err := client.BatchDeleteKvWithHighCapacityWithOptions(batchDeleteKvWithHighCapacityReq, runtime)
@@ -76209,22 +76550,24 @@ func (client *Client) BatchPutKvWithHighCapacity(request *BatchPutKvWithHighCapa
 
 func (client *Client) BatchPutKvWithHighCapacityAdvance(request *BatchPutKvWithHighCapacityAdvanceRequest, runtime *util.RuntimeOptions) (_result *BatchPutKvWithHighCapacityResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	var credentialModel *credential.CredentialModel
+	if tea.BoolValue(util.IsUnset(client.Credential)) {
+		_err = tea.NewSDKError(map[string]interface{}{
+			"code":    "InvalidCredentials",
+			"message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.",
+		})
+		return _result, _err
+	}
+
+	credentialModel, _err = client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
-	}
-
-	credentialType := client.Credential.GetType()
+	accessKeyId := credentialModel.AccessKeyId
+	accessKeySecret := credentialModel.AccessKeySecret
+	securityToken := credentialModel.SecurityToken
+	credentialType := credentialModel.Type
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
@@ -76243,70 +76586,78 @@ func (client *Client) BatchPutKvWithHighCapacityAdvance(request *BatchPutKvWithH
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("ESA"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  tea.String("ESA"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapi.Params{
+		Action:      tea.String("AuthorizeFileUpload"),
+		Version:     tea.String("2019-12-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
-
+	authResponse := map[string]interface{}{}
 	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := tea.Bool(false)
+	authResponseBody := make(map[string]*string)
 	batchPutKvWithHighCapacityReq := &BatchPutKvWithHighCapacityRequest{}
 	openapiutil.Convert(request, batchPutKvWithHighCapacityReq)
 	if !tea.BoolValue(util.IsUnset(request.UrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		tmpResp0, _err := authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
+		authResponse, _err = util.AssertAsMap(tmpResp0)
 		if _err != nil {
 			return _result, _err
 		}
 
+		tmpBody, _err = util.AssertAsMap(authResponse["body"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		useAccelerate, _err = util.AssertAsBoolean(tmpBody["UseAccelerate"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		authResponseBody = util.StringifyMapValue(tmpBody)
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.UrlObject,
 			ContentType: tea.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], useAccelerate, client.EndpointType)),
+			"OSSAccessKeyId":        tea.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                tea.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             tea.StringValue(authResponseBody["Signature"]),
+			"key":                   tea.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		batchPutKvWithHighCapacityReq.Url = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		batchPutKvWithHighCapacityReq.Url = tea.String("http://" + tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(authResponseBody["Endpoint"]) + "/" + tea.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	batchPutKvWithHighCapacityResp, _err := client.BatchPutKvWithHighCapacityWithOptions(batchPutKvWithHighCapacityReq, runtime)
@@ -79152,6 +79503,10 @@ func (client *Client) CreateRoutineRouteWithOptions(request *CreateRoutineRouteR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Bypass)) {
 		query["Bypass"] = request.Bypass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fallback)) {
+		query["Fallback"] = request.Fallback
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RouteEnable)) {
@@ -84402,6 +84757,86 @@ func (client *Client) DescribeSiteTopData(request *DescribeSiteTopDataRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSiteTopDataResponse{}
 	_body, _err := client.DescribeSiteTopDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网页观测质量数据
+//
+// @param request - DescribeUrlObservationDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUrlObservationDataResponse
+func (client *Client) DescribeUrlObservationDataWithOptions(request *DescribeUrlObservationDataRequest, runtime *util.RuntimeOptions) (_result *DescribeUrlObservationDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientPlatform)) {
+		query["ClientPlatform"] = request.ClientPlatform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metric)) {
+		query["Metric"] = request.Metric
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUrlObservationData"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUrlObservationDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网页观测质量数据
+//
+// @param request - DescribeUrlObservationDataRequest
+//
+// @return DescribeUrlObservationDataResponse
+func (client *Client) DescribeUrlObservationData(request *DescribeUrlObservationDataRequest) (_result *DescribeUrlObservationDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUrlObservationDataResponse{}
+	_body, _err := client.DescribeUrlObservationDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -93736,22 +94171,24 @@ func (client *Client) PutKvWithHighCapacity(request *PutKvWithHighCapacityReques
 
 func (client *Client) PutKvWithHighCapacityAdvance(request *PutKvWithHighCapacityAdvanceRequest, runtime *util.RuntimeOptions) (_result *PutKvWithHighCapacityResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	var credentialModel *credential.CredentialModel
+	if tea.BoolValue(util.IsUnset(client.Credential)) {
+		_err = tea.NewSDKError(map[string]interface{}{
+			"code":    "InvalidCredentials",
+			"message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.",
+		})
+		return _result, _err
+	}
+
+	credentialModel, _err = client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
-	}
-
-	credentialType := client.Credential.GetType()
+	accessKeyId := credentialModel.AccessKeyId
+	accessKeySecret := credentialModel.AccessKeySecret
+	securityToken := credentialModel.SecurityToken
+	credentialType := credentialModel.Type
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
@@ -93770,70 +94207,78 @@ func (client *Client) PutKvWithHighCapacityAdvance(request *PutKvWithHighCapacit
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("ESA"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  tea.String("ESA"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapi.Params{
+		Action:      tea.String("AuthorizeFileUpload"),
+		Version:     tea.String("2019-12-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
-
+	authResponse := map[string]interface{}{}
 	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := tea.Bool(false)
+	authResponseBody := make(map[string]*string)
 	putKvWithHighCapacityReq := &PutKvWithHighCapacityRequest{}
 	openapiutil.Convert(request, putKvWithHighCapacityReq)
 	if !tea.BoolValue(util.IsUnset(request.UrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		tmpResp0, _err := authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
+		authResponse, _err = util.AssertAsMap(tmpResp0)
 		if _err != nil {
 			return _result, _err
 		}
 
+		tmpBody, _err = util.AssertAsMap(authResponse["body"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		useAccelerate, _err = util.AssertAsBoolean(tmpBody["UseAccelerate"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		authResponseBody = util.StringifyMapValue(tmpBody)
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.UrlObject,
 			ContentType: tea.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], useAccelerate, client.EndpointType)),
+			"OSSAccessKeyId":        tea.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                tea.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             tea.StringValue(authResponseBody["Signature"]),
+			"key":                   tea.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		putKvWithHighCapacityReq.Url = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		putKvWithHighCapacityReq.Url = tea.String("http://" + tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(authResponseBody["Endpoint"]) + "/" + tea.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	putKvWithHighCapacityResp, _err := client.PutKvWithHighCapacityWithOptions(putKvWithHighCapacityReq, runtime)
@@ -97424,6 +97869,10 @@ func (client *Client) UpdateRoutineRouteWithOptions(request *UpdateRoutineRouteR
 		query["ConfigId"] = request.ConfigId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Fallback)) {
+		query["Fallback"] = request.Fallback
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RouteEnable)) {
 		query["RouteEnable"] = request.RouteEnable
 	}
@@ -99245,22 +99694,24 @@ func (client *Client) UploadFile(request *UploadFileRequest) (_result *UploadFil
 
 func (client *Client) UploadFileAdvance(request *UploadFileAdvanceRequest, runtime *util.RuntimeOptions) (_result *UploadFileResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	var credentialModel *credential.CredentialModel
+	if tea.BoolValue(util.IsUnset(client.Credential)) {
+		_err = tea.NewSDKError(map[string]interface{}{
+			"code":    "InvalidCredentials",
+			"message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.",
+		})
+		return _result, _err
+	}
+
+	credentialModel, _err = client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
-	}
-
-	credentialType := client.Credential.GetType()
+	accessKeyId := credentialModel.AccessKeyId
+	accessKeySecret := credentialModel.AccessKeySecret
+	securityToken := credentialModel.SecurityToken
+	credentialType := credentialModel.Type
 	openPlatformEndpoint := client.OpenPlatformEndpoint
 	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
@@ -99279,70 +99730,78 @@ func (client *Client) UploadFileAdvance(request *UploadFileAdvanceRequest, runti
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("ESA"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  tea.String("ESA"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapi.Params{
+		Action:      tea.String("AuthorizeFileUpload"),
+		Version:     tea.String("2019-12-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
-
+	authResponse := map[string]interface{}{}
 	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := tea.Bool(false)
+	authResponseBody := make(map[string]*string)
 	uploadFileReq := &UploadFileRequest{}
 	openapiutil.Convert(request, uploadFileReq)
 	if !tea.BoolValue(util.IsUnset(request.UrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		tmpResp0, _err := authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
+		authResponse, _err = util.AssertAsMap(tmpResp0)
 		if _err != nil {
 			return _result, _err
 		}
 
+		tmpBody, _err = util.AssertAsMap(authResponse["body"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		useAccelerate, _err = util.AssertAsBoolean(tmpBody["UseAccelerate"])
+		if _err != nil {
+			return _result, _err
+		}
+
+		authResponseBody = util.StringifyMapValue(tmpBody)
 		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.UrlObject,
 			ContentType: tea.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], useAccelerate, client.EndpointType)),
+			"OSSAccessKeyId":        tea.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                tea.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             tea.StringValue(authResponseBody["Signature"]),
+			"key":                   tea.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		uploadFileReq.Url = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		uploadFileReq.Url = tea.String("http://" + tea.StringValue(authResponseBody["Bucket"]) + "." + tea.StringValue(authResponseBody["Endpoint"]) + "/" + tea.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	uploadFileResp, _err := client.UploadFileWithOptions(uploadFileReq, runtime)
