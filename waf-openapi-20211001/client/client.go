@@ -4737,6 +4737,117 @@ func (s *DeleteDefenseRuleResponse) SetBody(v *DeleteDefenseRuleResponseBody) *D
 	return s
 }
 
+type DeleteDefenseRuleBlockIpRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-9lb37yxse05
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 36998
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4057
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DeleteDefenseRuleBlockIpRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDefenseRuleBlockIpRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDefenseRuleBlockIpRequest) SetInstanceId(v string) *DeleteDefenseRuleBlockIpRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteDefenseRuleBlockIpRequest) SetRegionId(v string) *DeleteDefenseRuleBlockIpRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteDefenseRuleBlockIpRequest) SetResourceManagerResourceGroupId(v string) *DeleteDefenseRuleBlockIpRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DeleteDefenseRuleBlockIpRequest) SetRuleId(v int64) *DeleteDefenseRuleBlockIpRequest {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DeleteDefenseRuleBlockIpRequest) SetTemplateId(v int64) *DeleteDefenseRuleBlockIpRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DeleteDefenseRuleBlockIpResponseBody struct {
+	// example:
+	//
+	// 9D11AC3A-A10C-56E7-A342-E87EC892BAE2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDefenseRuleBlockIpResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDefenseRuleBlockIpResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDefenseRuleBlockIpResponseBody) SetRequestId(v string) *DeleteDefenseRuleBlockIpResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDefenseRuleBlockIpResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDefenseRuleBlockIpResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDefenseRuleBlockIpResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDefenseRuleBlockIpResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDefenseRuleBlockIpResponse) SetHeaders(v map[string]*string) *DeleteDefenseRuleBlockIpResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDefenseRuleBlockIpResponse) SetStatusCode(v int32) *DeleteDefenseRuleBlockIpResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDefenseRuleBlockIpResponse) SetBody(v *DeleteDefenseRuleBlockIpResponseBody) *DeleteDefenseRuleBlockIpResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDefenseTemplateRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
@@ -4865,8 +4976,6 @@ type DeleteDomainRequest struct {
 	// share
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The domain name that you want to delete.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -16934,12 +17043,11 @@ func (s *DescribeDomainDNSRecordResponse) SetBody(v *DescribeDomainDNSRecordResp
 type DescribeDomainDetailRequest struct {
 	// The domain name that you want to query.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// www.aliyundoc.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The ID of the WAF instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -16975,6 +17083,11 @@ func (s *DescribeDomainDetailRequest) SetDomain(v string) *DescribeDomainDetailR
 	return s
 }
 
+func (s *DescribeDomainDetailRequest) SetDomainId(v string) *DescribeDomainDetailRequest {
+	s.DomainId = &v
+	return s
+}
+
 func (s *DescribeDomainDetailRequest) SetInstanceId(v string) *DescribeDomainDetailRequest {
 	s.InstanceId = &v
 	return s
@@ -16999,7 +17112,8 @@ type DescribeDomainDetailResponseBody struct {
 	// example:
 	//
 	// www.aliyundoc.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The configurations of the listeners.
 	Listen *DescribeDomainDetailResponseBodyListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
 	// The configurations of the forwarding rule.
@@ -17033,7 +17147,7 @@ type DescribeDomainDetailResponseBody struct {
 	// example:
 	//
 	// 1
-	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDomainDetailResponseBody) String() string {
@@ -17056,6 +17170,11 @@ func (s *DescribeDomainDetailResponseBody) SetCname(v string) *DescribeDomainDet
 
 func (s *DescribeDomainDetailResponseBody) SetDomain(v string) *DescribeDomainDetailResponseBody {
 	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBody) SetDomainId(v string) *DescribeDomainDetailResponseBody {
+	s.DomainId = &v
 	return s
 }
 
@@ -17084,7 +17203,7 @@ func (s *DescribeDomainDetailResponseBody) SetSM2CertDetail(v *DescribeDomainDet
 	return s
 }
 
-func (s *DescribeDomainDetailResponseBody) SetStatus(v int64) *DescribeDomainDetailResponseBody {
+func (s *DescribeDomainDetailResponseBody) SetStatus(v int32) *DescribeDomainDetailResponseBody {
 	s.Status = &v
 	return s
 }
@@ -18047,7 +18166,8 @@ type DescribeDomainsResponseBodyDomains struct {
 	// example:
 	//
 	// www.aliyundoc.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The configurations of the listeners.
 	ListenPorts *DescribeDomainsResponseBodyDomainsListenPorts `json:"ListenPorts,omitempty" xml:"ListenPorts,omitempty" type:"Struct"`
 	// The ID of the resource group.
@@ -18094,6 +18214,11 @@ func (s *DescribeDomainsResponseBodyDomains) SetCname(v string) *DescribeDomains
 
 func (s *DescribeDomainsResponseBodyDomains) SetDomain(v string) *DescribeDomainsResponseBodyDomains {
 	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainsResponseBodyDomains) SetDomainId(v string) *DescribeDomainsResponseBodyDomains {
+	s.DomainId = &v
 	return s
 }
 
@@ -37757,12 +37882,11 @@ type ModifyDomainRequest struct {
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The domain name whose access configurations you want to modify.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// www.aliyundoc.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The ID of the WAF instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -37810,6 +37934,11 @@ func (s *ModifyDomainRequest) SetAccessType(v string) *ModifyDomainRequest {
 
 func (s *ModifyDomainRequest) SetDomain(v string) *ModifyDomainRequest {
 	s.Domain = &v
+	return s
+}
+
+func (s *ModifyDomainRequest) SetDomainId(v string) *ModifyDomainRequest {
+	s.DomainId = &v
 	return s
 }
 
@@ -38359,12 +38488,11 @@ type ModifyDomainShrinkRequest struct {
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The domain name whose access configurations you want to modify.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// www.aliyundoc.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The ID of the WAF instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -38412,6 +38540,11 @@ func (s *ModifyDomainShrinkRequest) SetAccessType(v string) *ModifyDomainShrinkR
 
 func (s *ModifyDomainShrinkRequest) SetDomain(v string) *ModifyDomainShrinkRequest {
 	s.Domain = &v
+	return s
+}
+
+func (s *ModifyDomainShrinkRequest) SetDomainId(v string) *ModifyDomainShrinkRequest {
+	s.DomainId = &v
 	return s
 }
 
@@ -42904,6 +43037,82 @@ func (client *Client) DeleteDefenseRule(request *DeleteDefenseRuleRequest) (_res
 
 // Summary:
 //
+// 更新防护规则封禁Ip
+//
+// @param request - DeleteDefenseRuleBlockIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDefenseRuleBlockIpResponse
+func (client *Client) DeleteDefenseRuleBlockIpWithOptions(request *DeleteDefenseRuleBlockIpRequest, runtime *util.RuntimeOptions) (_result *DeleteDefenseRuleBlockIpResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDefenseRuleBlockIp"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDefenseRuleBlockIpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新防护规则封禁Ip
+//
+// @param request - DeleteDefenseRuleBlockIpRequest
+//
+// @return DeleteDefenseRuleBlockIpResponse
+func (client *Client) DeleteDefenseRuleBlockIp(request *DeleteDefenseRuleBlockIpRequest) (_result *DeleteDefenseRuleBlockIpResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDefenseRuleBlockIpResponse{}
+	_body, _err := client.DeleteDefenseRuleBlockIpWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a protection rule template.
 //
 // @param request - DeleteDefenseTemplateRequest
@@ -46799,6 +47008,10 @@ func (client *Client) DescribeDomainDetailWithOptions(request *DescribeDomainDet
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Domain)) {
 		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
@@ -53755,6 +53968,10 @@ func (client *Client) ModifyDomainWithOptions(tmpReq *ModifyDomainRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.Domain)) {
 		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
