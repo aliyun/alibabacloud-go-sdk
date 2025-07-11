@@ -9321,6 +9321,7 @@ type CreateDesktopGroupRequest struct {
 	//
 	// zh-CN
 	DefaultLanguage *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
+	DeleteDuration  *int64  `json:"DeleteDuration,omitempty" xml:"DeleteDuration,omitempty"`
 	// The name of the shared group. The name can be up to 30 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
 	//
 	// example:
@@ -9758,6 +9759,11 @@ func (s *CreateDesktopGroupRequest) SetDefaultInitDesktopCount(v int32) *CreateD
 
 func (s *CreateDesktopGroupRequest) SetDefaultLanguage(v string) *CreateDesktopGroupRequest {
 	s.DefaultLanguage = &v
+	return s
+}
+
+func (s *CreateDesktopGroupRequest) SetDeleteDuration(v int64) *CreateDesktopGroupRequest {
+	s.DeleteDuration = &v
 	return s
 }
 
@@ -24560,7 +24566,8 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	// example:
 	//
 	// 2022-03-17T16:00:00Z
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ExpiredTime  *string   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ExpiredTimes []*string `json:"ExpiredTimes,omitempty" xml:"ExpiredTimes,omitempty" type:"Repeated"`
 	// The number of GPUs.
 	//
 	// example:
@@ -24947,6 +24954,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetEndUserCount(v int32
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetExpiredTime(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetExpiredTimes(v []*string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.ExpiredTimes = v
 	return s
 }
 
@@ -29250,6 +29262,7 @@ type DescribeDesktopsInGroupResponseBodyPaidDesktops struct {
 	EndUserName *string `json:"EndUserName,omitempty" xml:"EndUserName,omitempty"`
 	// The usernames of the end users who are connected to the cloud computers in the cloud computer share. If no end users are connected, no values are returned for this parameter.
 	EndUserNames []*string `json:"EndUserNames,omitempty" xml:"EndUserNames,omitempty" type:"Repeated"`
+	ExpiredTime  *string   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The image version.
 	//
 	// example:
@@ -29424,6 +29437,11 @@ func (s *DescribeDesktopsInGroupResponseBodyPaidDesktops) SetEndUserName(v strin
 
 func (s *DescribeDesktopsInGroupResponseBodyPaidDesktops) SetEndUserNames(v []*string) *DescribeDesktopsInGroupResponseBodyPaidDesktops {
 	s.EndUserNames = v
+	return s
+}
+
+func (s *DescribeDesktopsInGroupResponseBodyPaidDesktops) SetExpiredTime(v string) *DescribeDesktopsInGroupResponseBodyPaidDesktops {
+	s.ExpiredTime = &v
 	return s
 }
 
@@ -47759,7 +47777,8 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	// example:
 	//
 	// 2021-12-31T15:59Z
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ExpiredTime  *string   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ExpiredTimes []*string `json:"ExpiredTimes,omitempty" xml:"ExpiredTimes,omitempty" type:"Repeated"`
 	// The number of vGPUs.
 	//
 	// example:
@@ -47862,6 +47881,7 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	//
 	// SIMPLE
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
+	OsType         *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The ID of the cloud computer template.
 	//
 	// example:
@@ -47919,7 +47939,8 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	// example:
 	//
 	// true
-	ProfileFollowSwitch *bool `json:"ProfileFollowSwitch,omitempty" xml:"ProfileFollowSwitch,omitempty"`
+	ProfileFollowSwitch *bool   `json:"ProfileFollowSwitch,omitempty" xml:"ProfileFollowSwitch,omitempty"`
+	ProtocolType        *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The threshold for the ratio of connected sessions, which triggers automatic scaling of cloud computers within the multi-session many-to-many share. To calculate the ratio of connected sessions, use the following formula:
 	//
 	// `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`.
@@ -48094,6 +48115,11 @@ func (s *GetDesktopGroupDetailResponseBodyDesktops) SetExpiredTime(v string) *Ge
 	return s
 }
 
+func (s *GetDesktopGroupDetailResponseBodyDesktops) SetExpiredTimes(v []*string) *GetDesktopGroupDetailResponseBodyDesktops {
+	s.ExpiredTimes = v
+	return s
+}
+
 func (s *GetDesktopGroupDetailResponseBodyDesktops) SetGpuCount(v float32) *GetDesktopGroupDetailResponseBodyDesktops {
 	s.GpuCount = &v
 	return s
@@ -48164,6 +48190,11 @@ func (s *GetDesktopGroupDetailResponseBodyDesktops) SetOfficeSiteType(v string) 
 	return s
 }
 
+func (s *GetDesktopGroupDetailResponseBodyDesktops) SetOsType(v string) *GetDesktopGroupDetailResponseBodyDesktops {
+	s.OsType = &v
+	return s
+}
+
 func (s *GetDesktopGroupDetailResponseBodyDesktops) SetOwnBundleId(v string) *GetDesktopGroupDetailResponseBodyDesktops {
 	s.OwnBundleId = &v
 	return s
@@ -48206,6 +48237,11 @@ func (s *GetDesktopGroupDetailResponseBodyDesktops) SetPolicyGroupNames(v []*str
 
 func (s *GetDesktopGroupDetailResponseBodyDesktops) SetProfileFollowSwitch(v bool) *GetDesktopGroupDetailResponseBodyDesktops {
 	s.ProfileFollowSwitch = &v
+	return s
+}
+
+func (s *GetDesktopGroupDetailResponseBodyDesktops) SetProtocolType(v string) *GetDesktopGroupDetailResponseBodyDesktops {
+	s.ProtocolType = &v
 	return s
 }
 
@@ -56184,6 +56220,7 @@ type ModifyDesktopGroupRequest struct {
 	//
 	// 600000
 	ConnectDuration *int64 `json:"ConnectDuration,omitempty" xml:"ConnectDuration,omitempty"`
+	DeleteDuration  *int64 `json:"DeleteDuration,omitempty" xml:"DeleteDuration,omitempty"`
 	// The ID of the cloud computer share.
 	//
 	// This parameter is required.
@@ -56376,6 +56413,11 @@ func (s *ModifyDesktopGroupRequest) SetComments(v string) *ModifyDesktopGroupReq
 
 func (s *ModifyDesktopGroupRequest) SetConnectDuration(v int64) *ModifyDesktopGroupRequest {
 	s.ConnectDuration = &v
+	return s
+}
+
+func (s *ModifyDesktopGroupRequest) SetDeleteDuration(v int64) *ModifyDesktopGroupRequest {
+	s.DeleteDuration = &v
 	return s
 }
 
@@ -71397,6 +71439,10 @@ func (client *Client) CreateDesktopGroupWithOptions(request *CreateDesktopGroupR
 		query["DefaultLanguage"] = request.DefaultLanguage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeleteDuration)) {
+		query["DeleteDuration"] = request.DeleteDuration
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DesktopGroupName)) {
 		query["DesktopGroupName"] = request.DesktopGroupName
 	}
@@ -83864,6 +83910,10 @@ func (client *Client) ModifyDesktopGroupWithOptions(request *ModifyDesktopGroupR
 
 	if !tea.BoolValue(util.IsUnset(request.ConnectDuration)) {
 		query["ConnectDuration"] = request.ConnectDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeleteDuration)) {
+		query["DeleteDuration"] = request.DeleteDuration
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DesktopGroupId)) {
