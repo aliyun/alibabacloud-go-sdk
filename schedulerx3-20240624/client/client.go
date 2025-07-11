@@ -29,7 +29,8 @@ type CreateAppRequest struct {
 	// example:
 	//
 	// true
-	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	EnableLog          *bool  `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	LabelRouteStrategy *int32 `json:"LabelRouteStrategy,omitempty" xml:"LabelRouteStrategy,omitempty"`
 	// example:
 	//
 	// 10
@@ -63,6 +64,11 @@ func (s *CreateAppRequest) SetClusterId(v string) *CreateAppRequest {
 
 func (s *CreateAppRequest) SetEnableLog(v bool) *CreateAppRequest {
 	s.EnableLog = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetLabelRouteStrategy(v int32) *CreateAppRequest {
+	s.LabelRouteStrategy = &v
 	return s
 }
 
@@ -1660,6 +1666,246 @@ func (s *ExportJobsResponse) SetStatusCode(v int32) *ExportJobsResponse {
 }
 
 func (s *ExportJobsResponse) SetBody(v []byte) *ExportJobsResponse {
+	s.Body = v
+	return s
+}
+
+type GetAppRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-app
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxljob-d6a5243b6fa
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s GetAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppRequest) SetAppName(v string) *GetAppRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetAppRequest) SetClusterId(v string) *GetAppRequest {
+	s.ClusterId = &v
+	return s
+}
+
+type GetAppResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// -
+	Data *GetAppResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Not found: appName not found.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D0DE9C33-992A-580B-89C4-B609A292748D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppResponseBody) SetCode(v int32) *GetAppResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAppResponseBody) SetData(v *GetAppResponseBodyData) *GetAppResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAppResponseBody) SetMessage(v string) *GetAppResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAppResponseBody) SetRequestId(v string) *GetAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAppResponseBody) SetSuccess(v bool) *GetAppResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAppResponseBodyData struct {
+	// AccessToken。
+	//
+	// example:
+	//
+	// 2f4ddeab8e344ed68e0402cf9b8502ffv3
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// example:
+	//
+	// test-app
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 18582193685027xx
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// true
+	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	// example:
+	//
+	// 2
+	ExecutorNum *int64 `json:"ExecutorNum,omitempty" xml:"ExecutorNum,omitempty"`
+	// example:
+	//
+	// 3402
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 100
+	JobNum             *int32 `json:"JobNum,omitempty" xml:"JobNum,omitempty"`
+	LabelRouteStrategy *int32 `json:"LabelRouteStrategy,omitempty" xml:"LabelRouteStrategy,omitempty"`
+	// example:
+	//
+	// http://28.***.***.3:80
+	Leader *string `json:"Leader,omitempty" xml:"Leader,omitempty"`
+	// example:
+	//
+	// 100
+	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// example:
+	//
+	// 1000
+	MaxJobs *int32  `json:"MaxJobs,omitempty" xml:"MaxJobs,omitempty"`
+	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 18582193685027xx
+	Updater *string `json:"Updater,omitempty" xml:"Updater,omitempty"`
+}
+
+func (s GetAppResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppResponseBodyData) SetAccessToken(v string) *GetAppResponseBodyData {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetAppResponseBodyData) SetAppName(v string) *GetAppResponseBodyData {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetAppResponseBodyData) SetCreator(v string) *GetAppResponseBodyData {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetAppResponseBodyData) SetEnableLog(v bool) *GetAppResponseBodyData {
+	s.EnableLog = &v
+	return s
+}
+
+func (s *GetAppResponseBodyData) SetExecutorNum(v int64) *GetAppResponseBodyData {
+	s.ExecutorNum = &v
+	return s
+}
+
+func (s *GetAppResponseBodyData) SetId(v int64) *GetAppResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetAppResponseBodyData) SetJobNum(v int32) *GetAppResponseBodyData {
+	s.JobNum = &v
+	return s
+}
+
+func (s *GetAppResponseBodyData) SetLabelRouteStrategy(v int32) *GetAppResponseBodyData {
+	s.LabelRouteStrategy = &v
+	return s
+}
+
+func (s *GetAppResponseBodyData) SetLeader(v string) *GetAppResponseBodyData {
+	s.Leader = &v
+	return s
+}
+
+func (s *GetAppResponseBodyData) SetMaxConcurrency(v int32) *GetAppResponseBodyData {
+	s.MaxConcurrency = &v
+	return s
+}
+
+func (s *GetAppResponseBodyData) SetMaxJobs(v int32) *GetAppResponseBodyData {
+	s.MaxJobs = &v
+	return s
+}
+
+func (s *GetAppResponseBodyData) SetTitle(v string) *GetAppResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *GetAppResponseBodyData) SetUpdater(v string) *GetAppResponseBodyData {
+	s.Updater = &v
+	return s
+}
+
+type GetAppResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppResponse) SetHeaders(v map[string]*string) *GetAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAppResponse) SetStatusCode(v int32) *GetAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAppResponse) SetBody(v *GetAppResponseBody) *GetAppResponse {
 	s.Body = v
 	return s
 }
@@ -4686,7 +4932,8 @@ type ListAppsResponseBodyDataRecords struct {
 	// example:
 	//
 	// 10
-	JobNum *int32 `json:"JobNum,omitempty" xml:"JobNum,omitempty"`
+	JobNum             *int32 `json:"JobNum,omitempty" xml:"JobNum,omitempty"`
+	LabelRouteStrategy *int32 `json:"LabelRouteStrategy,omitempty" xml:"LabelRouteStrategy,omitempty"`
 	// example:
 	//
 	// http://28.5.128.3:80
@@ -4746,6 +4993,11 @@ func (s *ListAppsResponseBodyDataRecords) SetId(v int64) *ListAppsResponseBodyDa
 
 func (s *ListAppsResponseBodyDataRecords) SetJobNum(v int32) *ListAppsResponseBodyDataRecords {
 	s.JobNum = &v
+	return s
+}
+
+func (s *ListAppsResponseBodyDataRecords) SetLabelRouteStrategy(v int32) *ListAppsResponseBodyDataRecords {
+	s.LabelRouteStrategy = &v
 	return s
 }
 
@@ -5919,6 +6171,242 @@ func (s *ListJobExecutionsResponse) SetStatusCode(v int32) *ListJobExecutionsRes
 }
 
 func (s *ListJobExecutionsResponse) SetBody(v *ListJobExecutionsResponseBody) *ListJobExecutionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListJobScriptHistoryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-app
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxljob-b6ec1xxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 74
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// eCKqVlS5FKF5EWGGOo8EgQ==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListJobScriptHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobScriptHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobScriptHistoryRequest) SetAppName(v string) *ListJobScriptHistoryRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryRequest) SetClusterId(v string) *ListJobScriptHistoryRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryRequest) SetJobId(v int64) *ListJobScriptHistoryRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryRequest) SetMaxResults(v int32) *ListJobScriptHistoryRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryRequest) SetNextToken(v string) *ListJobScriptHistoryRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListJobScriptHistoryResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// -
+	Data *ListJobScriptHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// not support query script history, please upgrade engine version to 2.2.2+
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 5EF879D0-3B43-5AD1-9BF7-52418F9C5E73
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListJobScriptHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobScriptHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobScriptHistoryResponseBody) SetCode(v int32) *ListJobScriptHistoryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBody) SetData(v *ListJobScriptHistoryResponseBodyData) *ListJobScriptHistoryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBody) SetMaxResults(v int32) *ListJobScriptHistoryResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBody) SetMessage(v string) *ListJobScriptHistoryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBody) SetRequestId(v string) *ListJobScriptHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBody) SetSuccess(v bool) *ListJobScriptHistoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListJobScriptHistoryResponseBodyData struct {
+	// example:
+	//
+	// eCKqVlS5FKF5EWGGOo8EgQ==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// -
+	Records []*ListJobScriptHistoryResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 21
+	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListJobScriptHistoryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobScriptHistoryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobScriptHistoryResponseBodyData) SetNextToken(v string) *ListJobScriptHistoryResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBodyData) SetRecords(v []*ListJobScriptHistoryResponseBodyDataRecords) *ListJobScriptHistoryResponseBodyData {
+	s.Records = v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBodyData) SetTotal(v string) *ListJobScriptHistoryResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListJobScriptHistoryResponseBodyDataRecords struct {
+	// example:
+	//
+	// 2025-06-29 15:56:36
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1963096506470832
+	Creator       *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	ScriptContent *string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty"`
+	// example:
+	//
+	// init version
+	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
+}
+
+func (s ListJobScriptHistoryResponseBodyDataRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobScriptHistoryResponseBodyDataRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobScriptHistoryResponseBodyDataRecords) SetCreateTime(v string) *ListJobScriptHistoryResponseBodyDataRecords {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBodyDataRecords) SetCreator(v string) *ListJobScriptHistoryResponseBodyDataRecords {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBodyDataRecords) SetScriptContent(v string) *ListJobScriptHistoryResponseBodyDataRecords {
+	s.ScriptContent = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBodyDataRecords) SetVersionDescription(v string) *ListJobScriptHistoryResponseBodyDataRecords {
+	s.VersionDescription = &v
+	return s
+}
+
+type ListJobScriptHistoryResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJobScriptHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListJobScriptHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobScriptHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobScriptHistoryResponse) SetHeaders(v map[string]*string) *ListJobScriptHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponse) SetStatusCode(v int32) *ListJobScriptHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponse) SetBody(v *ListJobScriptHistoryResponseBody) *ListJobScriptHistoryResponse {
 	s.Body = v
 	return s
 }
@@ -8519,7 +9007,8 @@ type UpdateAppRequest struct {
 	// example:
 	//
 	// true
-	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	EnableLog          *bool  `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	LabelRouteStrategy *int32 `json:"LabelRouteStrategy,omitempty" xml:"LabelRouteStrategy,omitempty"`
 	// example:
 	//
 	// 10
@@ -8553,6 +9042,11 @@ func (s *UpdateAppRequest) SetClusterId(v string) *UpdateAppRequest {
 
 func (s *UpdateAppRequest) SetEnableLog(v bool) *UpdateAppRequest {
 	s.EnableLog = &v
+	return s
+}
+
+func (s *UpdateAppRequest) SetLabelRouteStrategy(v int32) *UpdateAppRequest {
+	s.LabelRouteStrategy = &v
 	return s
 }
 
@@ -9345,6 +9839,143 @@ func (s *UpdateJobResponse) SetBody(v *UpdateJobResponseBody) *UpdateJobResponse
 	return s
 }
 
+type UpdateJobScriptRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-app
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxljob-b6ec1xxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 74
+	JobId         *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	ScriptContent *string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// init version
+	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
+}
+
+func (s UpdateJobScriptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobScriptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobScriptRequest) SetAppName(v string) *UpdateJobScriptRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *UpdateJobScriptRequest) SetClusterId(v string) *UpdateJobScriptRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateJobScriptRequest) SetJobId(v int64) *UpdateJobScriptRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *UpdateJobScriptRequest) SetScriptContent(v string) *UpdateJobScriptRequest {
+	s.ScriptContent = &v
+	return s
+}
+
+func (s *UpdateJobScriptRequest) SetVersionDescription(v string) *UpdateJobScriptRequest {
+	s.VersionDescription = &v
+	return s
+}
+
+type UpdateJobScriptResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// not support update script, please upgrade engine version to 2.2.2+
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 29ED6209-5DE6-5E1D-89B0-B7B1D823A1BF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateJobScriptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobScriptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobScriptResponseBody) SetCode(v int32) *UpdateJobScriptResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateJobScriptResponseBody) SetMessage(v string) *UpdateJobScriptResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateJobScriptResponseBody) SetRequestId(v string) *UpdateJobScriptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateJobScriptResponseBody) SetSuccess(v bool) *UpdateJobScriptResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateJobScriptResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateJobScriptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateJobScriptResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobScriptResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobScriptResponse) SetHeaders(v map[string]*string) *UpdateJobScriptResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateJobScriptResponse) SetStatusCode(v int32) *UpdateJobScriptResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateJobScriptResponse) SetBody(v *UpdateJobScriptResponseBody) *UpdateJobScriptResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -9421,6 +10052,10 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.EnableLog)) {
 		body["EnableLog"] = request.EnableLog
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelRouteStrategy)) {
+		body["LabelRouteStrategy"] = request.LabelRouteStrategy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxConcurrency)) {
@@ -9987,6 +10622,70 @@ func (client *Client) ExportJobs(request *ExportJobsRequest) (_result *ExportJob
 	runtime := &util.RuntimeOptions{}
 	_result = &ExportJobsResponse{}
 	_body, _err := client.ExportJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定应用
+//
+// @param request - GetAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppResponse
+func (client *Client) GetAppWithOptions(request *GetAppRequest, runtime *util.RuntimeOptions) (_result *GetAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApp"),
+		Version:     tea.String("2024-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定应用
+//
+// @param request - GetAppRequest
+//
+// @return GetAppResponse
+func (client *Client) GetApp(request *GetAppRequest) (_result *GetAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAppResponse{}
+	_body, _err := client.GetAppWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10940,6 +11639,82 @@ func (client *Client) ListJobExecutions(request *ListJobExecutionsRequest) (_res
 
 // Summary:
 //
+// 获取任务脚本历史列表
+//
+// @param request - ListJobScriptHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobScriptHistoryResponse
+func (client *Client) ListJobScriptHistoryWithOptions(request *ListJobScriptHistoryRequest, runtime *util.RuntimeOptions) (_result *ListJobScriptHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobScriptHistory"),
+		Version:     tea.String("2024-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListJobScriptHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务脚本历史列表
+//
+// @param request - ListJobScriptHistoryRequest
+//
+// @return ListJobScriptHistoryResponse
+func (client *Client) ListJobScriptHistory(request *ListJobScriptHistoryRequest) (_result *ListJobScriptHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListJobScriptHistoryResponse{}
+	_body, _err := client.ListJobScriptHistoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取任务列表
 //
 // @param request - ListJobsRequest
@@ -11837,6 +12612,10 @@ func (client *Client) UpdateAppWithOptions(request *UpdateAppRequest, runtime *u
 		body["EnableLog"] = request.EnableLog
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LabelRouteStrategy)) {
+		body["LabelRouteStrategy"] = request.LabelRouteStrategy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxConcurrency)) {
 		body["MaxConcurrency"] = request.MaxConcurrency
 	}
@@ -12097,6 +12876,82 @@ func (client *Client) UpdateJob(request *UpdateJobRequest) (_result *UpdateJobRe
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateJobResponse{}
 	_body, _err := client.UpdateJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新任务脚本内容
+//
+// @param request - UpdateJobScriptRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateJobScriptResponse
+func (client *Client) UpdateJobScriptWithOptions(request *UpdateJobScriptRequest, runtime *util.RuntimeOptions) (_result *UpdateJobScriptResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		body["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptContent)) {
+		body["ScriptContent"] = request.ScriptContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionDescription)) {
+		body["VersionDescription"] = request.VersionDescription
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateJobScript"),
+		Version:     tea.String("2024-06-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateJobScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新任务脚本内容
+//
+// @param request - UpdateJobScriptRequest
+//
+// @return UpdateJobScriptResponse
+func (client *Client) UpdateJobScript(request *UpdateJobScriptRequest) (_result *UpdateJobScriptResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateJobScriptResponse{}
+	_body, _err := client.UpdateJobScriptWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
