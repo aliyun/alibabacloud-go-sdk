@@ -4090,6 +4090,99 @@ func (s *InitializeResponse) SetBody(v *InitializeResponseBody) *InitializeRespo
 	return s
 }
 
+type KeepaliveIntlResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 4EB35****87EBA1
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *KeepaliveIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s KeepaliveIntlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KeepaliveIntlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *KeepaliveIntlResponseBody) SetCode(v string) *KeepaliveIntlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *KeepaliveIntlResponseBody) SetMessage(v string) *KeepaliveIntlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *KeepaliveIntlResponseBody) SetRequestId(v string) *KeepaliveIntlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *KeepaliveIntlResponseBody) SetResult(v *KeepaliveIntlResponseBodyResult) *KeepaliveIntlResponseBody {
+	s.Result = v
+	return s
+}
+
+type KeepaliveIntlResponseBodyResult struct {
+	// example:
+	//
+	// SUCCESS
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s KeepaliveIntlResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KeepaliveIntlResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *KeepaliveIntlResponseBodyResult) SetResult(v string) *KeepaliveIntlResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type KeepaliveIntlResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *KeepaliveIntlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s KeepaliveIntlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KeepaliveIntlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *KeepaliveIntlResponse) SetHeaders(v map[string]*string) *KeepaliveIntlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *KeepaliveIntlResponse) SetStatusCode(v int32) *KeepaliveIntlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *KeepaliveIntlResponse) SetBody(v *KeepaliveIntlResponseBody) *KeepaliveIntlResponse {
+	s.Body = v
+	return s
+}
+
 type Mobile3MetaVerifyIntlRequest struct {
 	// example:
 	//
@@ -6149,6 +6242,53 @@ func (client *Client) Initialize(request *InitializeRequest) (_result *Initializ
 	runtime := &util.RuntimeOptions{}
 	_result = &InitializeResponse{}
 	_body, _err := client.InitializeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户端连接保持
+//
+// @param request - KeepaliveIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return KeepaliveIntlResponse
+func (client *Client) KeepaliveIntlWithOptions(runtime *util.RuntimeOptions) (_result *KeepaliveIntlResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("KeepaliveIntl"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &KeepaliveIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户端连接保持
+//
+// @return KeepaliveIntlResponse
+func (client *Client) KeepaliveIntl() (_result *KeepaliveIntlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &KeepaliveIntlResponse{}
+	_body, _err := client.KeepaliveIntlWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
