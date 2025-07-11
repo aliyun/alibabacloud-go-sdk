@@ -4608,7 +4608,8 @@ type CreateRenderingDataPackageRequest struct {
 	// example:
 	//
 	// testdescription
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceBillingCycle *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -4632,6 +4633,11 @@ func (s *CreateRenderingDataPackageRequest) SetCategory(v string) *CreateRenderi
 
 func (s *CreateRenderingDataPackageRequest) SetDescription(v string) *CreateRenderingDataPackageRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateRenderingDataPackageRequest) SetInstanceBillingCycle(v string) *CreateRenderingDataPackageRequest {
+	s.InstanceBillingCycle = &v
 	return s
 }
 
@@ -30962,6 +30968,10 @@ func (client *Client) CreateRenderingDataPackageWithOptions(request *CreateRende
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceBillingCycle)) {
+		query["InstanceBillingCycle"] = request.InstanceBillingCycle
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
