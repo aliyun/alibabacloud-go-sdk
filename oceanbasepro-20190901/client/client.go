@@ -19618,13 +19618,13 @@ type DescribeOasAnomalySQLListResponseBodyData struct {
 	// example:
 	//
 	// 25
-	AvgLogicalReads *float32 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
+	AvgLogicalReads *float64 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
 	// The average number of retries.
 	//
 	// example:
 	//
 	// 4
-	AvgRetryCount *float32 `json:"AvgRetryCount,omitempty" xml:"AvgRetryCount,omitempty"`
+	AvgRetryCount *float64 `json:"AvgRetryCount,omitempty" xml:"AvgRetryCount,omitempty"`
 	// CPU time of the suspicious SQL.
 	//
 	// example:
@@ -19696,13 +19696,13 @@ type DescribeOasAnomalySQLListResponseBodyData struct {
 	// example:
 	//
 	// 11452126.36
-	SumElapsedTime *string `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
+	SumElapsedTime *float64 `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
 	// The total number of retries.
 	//
 	// example:
 	//
 	// 6
-	SumRetryCount *float32 `json:"SumRetryCount,omitempty" xml:"SumRetryCount,omitempty"`
+	SumRetryCount *float64 `json:"SumRetryCount,omitempty" xml:"SumRetryCount,omitempty"`
 	// Username.
 	//
 	// example:
@@ -19739,12 +19739,12 @@ func (s *DescribeOasAnomalySQLListResponseBodyData) SetAvgGetPlanTime(v float64)
 	return s
 }
 
-func (s *DescribeOasAnomalySQLListResponseBodyData) SetAvgLogicalReads(v float32) *DescribeOasAnomalySQLListResponseBodyData {
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetAvgLogicalReads(v float64) *DescribeOasAnomalySQLListResponseBodyData {
 	s.AvgLogicalReads = &v
 	return s
 }
 
-func (s *DescribeOasAnomalySQLListResponseBodyData) SetAvgRetryCount(v float32) *DescribeOasAnomalySQLListResponseBodyData {
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetAvgRetryCount(v float64) *DescribeOasAnomalySQLListResponseBodyData {
 	s.AvgRetryCount = &v
 	return s
 }
@@ -19814,12 +19814,12 @@ func (s *DescribeOasAnomalySQLListResponseBodyData) SetSumDbTime(v float64) *Des
 	return s
 }
 
-func (s *DescribeOasAnomalySQLListResponseBodyData) SetSumElapsedTime(v string) *DescribeOasAnomalySQLListResponseBodyData {
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetSumElapsedTime(v float64) *DescribeOasAnomalySQLListResponseBodyData {
 	s.SumElapsedTime = &v
 	return s
 }
 
-func (s *DescribeOasAnomalySQLListResponseBodyData) SetSumRetryCount(v float32) *DescribeOasAnomalySQLListResponseBodyData {
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetSumRetryCount(v float64) *DescribeOasAnomalySQLListResponseBodyData {
 	s.SumRetryCount = &v
 	return s
 }
@@ -19859,13 +19859,13 @@ type DescribeOasAnomalySQLListResponseBodyDataSqlList struct {
 	// example:
 	//
 	// 25
-	AvgLogicalReads *float32 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
+	AvgLogicalReads *float64 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
 	// The average number of retries.
 	//
 	// example:
 	//
 	// 4
-	AvgRetryCount *float32 `json:"AvgRetryCount,omitempty" xml:"AvgRetryCount,omitempty"`
+	AvgRetryCount *float64 `json:"AvgRetryCount,omitempty" xml:"AvgRetryCount,omitempty"`
 	// The total CPU time.
 	//
 	// example:
@@ -19935,13 +19935,13 @@ type DescribeOasAnomalySQLListResponseBodyDataSqlList struct {
 	// example:
 	//
 	// 11452126.36
-	SumElapsedTime *string `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
+	SumElapsedTime *float64 `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
 	// The total number of retries.
 	//
 	// example:
 	//
 	// 6
-	SumRetryCount *float32 `json:"SumRetryCount,omitempty" xml:"SumRetryCount,omitempty"`
+	SumRetryCount *float64 `json:"SumRetryCount,omitempty" xml:"SumRetryCount,omitempty"`
 	// The username.
 	//
 	// example:
@@ -19978,12 +19978,12 @@ func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetAvgGetPlanTime(v f
 	return s
 }
 
-func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetAvgLogicalReads(v float32) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetAvgLogicalReads(v float64) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
 	s.AvgLogicalReads = &v
 	return s
 }
 
-func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetAvgRetryCount(v float32) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetAvgRetryCount(v float64) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
 	s.AvgRetryCount = &v
 	return s
 }
@@ -20043,12 +20043,12 @@ func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetSumDbTime(v float6
 	return s
 }
 
-func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetSumElapsedTime(v string) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetSumElapsedTime(v float64) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
 	s.SumElapsedTime = &v
 	return s
 }
 
-func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetSumRetryCount(v float32) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetSumRetryCount(v float64) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
 	s.SumRetryCount = &v
 	return s
 }
@@ -26257,7 +26257,7 @@ type DescribeProcessStatsCompositionResponseBodyData struct {
 	// example:
 	//
 	// 60
-	ActiveSessionCount *int32 `json:"ActiveSessionCount,omitempty" xml:"ActiveSessionCount,omitempty"`
+	ActiveSessionCount *int64 `json:"ActiveSessionCount,omitempty" xml:"ActiveSessionCount,omitempty"`
 	// The details of all sessions.
 	AllProcessList []*DescribeProcessStatsCompositionResponseBodyDataAllProcessList `json:"AllProcessList,omitempty" xml:"AllProcessList,omitempty" type:"Repeated"`
 	// The number of sessions in the SLEEP state.
@@ -26265,7 +26265,7 @@ type DescribeProcessStatsCompositionResponseBodyData struct {
 	// example:
 	//
 	// 30
-	IdleSessionCount *int32 `json:"IdleSessionCount,omitempty" xml:"IdleSessionCount,omitempty"`
+	IdleSessionCount *int64 `json:"IdleSessionCount,omitempty" xml:"IdleSessionCount,omitempty"`
 	// The version of OceanBase Database.
 	//
 	// example:
@@ -26279,7 +26279,7 @@ type DescribeProcessStatsCompositionResponseBodyData struct {
 	// example:
 	//
 	// 100
-	TotalSessionCount *int32 `json:"TotalSessionCount,omitempty" xml:"TotalSessionCount,omitempty"`
+	TotalSessionCount *int64 `json:"TotalSessionCount,omitempty" xml:"TotalSessionCount,omitempty"`
 }
 
 func (s DescribeProcessStatsCompositionResponseBodyData) String() string {
@@ -26290,7 +26290,7 @@ func (s DescribeProcessStatsCompositionResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeProcessStatsCompositionResponseBodyData) SetActiveSessionCount(v int32) *DescribeProcessStatsCompositionResponseBodyData {
+func (s *DescribeProcessStatsCompositionResponseBodyData) SetActiveSessionCount(v int64) *DescribeProcessStatsCompositionResponseBodyData {
 	s.ActiveSessionCount = &v
 	return s
 }
@@ -26300,7 +26300,7 @@ func (s *DescribeProcessStatsCompositionResponseBodyData) SetAllProcessList(v []
 	return s
 }
 
-func (s *DescribeProcessStatsCompositionResponseBodyData) SetIdleSessionCount(v int32) *DescribeProcessStatsCompositionResponseBodyData {
+func (s *DescribeProcessStatsCompositionResponseBodyData) SetIdleSessionCount(v int64) *DescribeProcessStatsCompositionResponseBodyData {
 	s.IdleSessionCount = &v
 	return s
 }
@@ -26315,7 +26315,7 @@ func (s *DescribeProcessStatsCompositionResponseBodyData) SetSessionStatistics(v
 	return s
 }
 
-func (s *DescribeProcessStatsCompositionResponseBodyData) SetTotalSessionCount(v int32) *DescribeProcessStatsCompositionResponseBodyData {
+func (s *DescribeProcessStatsCompositionResponseBodyData) SetTotalSessionCount(v int64) *DescribeProcessStatsCompositionResponseBodyData {
 	s.TotalSessionCount = &v
 	return s
 }
@@ -26363,7 +26363,7 @@ type DescribeProcessStatsCompositionResponseBodyDataAllProcessList struct {
 	// example:
 	//
 	// 1898
-	PlanId          *string                                                                         `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanId          *int64                                                                          `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	ProcessSqlLists []*DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlLists `json:"ProcessSqlLists,omitempty" xml:"ProcessSqlLists,omitempty" type:"Repeated"`
 	// The session ID of the client. If an OceanBase Database Proxy (ODP) is used for connection, the session ID of the ODP is returned.
 	//
@@ -26460,7 +26460,7 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessList) SetExecu
 	return s
 }
 
-func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessList) SetPlanId(v string) *DescribeProcessStatsCompositionResponseBodyDataAllProcessList {
+func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessList) SetPlanId(v int64) *DescribeProcessStatsCompositionResponseBodyDataAllProcessList {
 	s.PlanId = &v
 	return s
 }
@@ -26527,7 +26527,7 @@ type DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlList
 	Database       *string                                                                                       `json:"Database,omitempty" xml:"Database,omitempty"`
 	DynamicSql     *bool                                                                                         `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
 	ExecuteTime    *int64                                                                                        `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	PlanId         *string                                                                                       `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanId         *int64                                                                                        `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	ProcessSqlList []*DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlListsProcessSqlList `json:"ProcessSqlList,omitempty" xml:"ProcessSqlList,omitempty" type:"Repeated"`
 	ProxySessId    *string                                                                                       `json:"ProxySessId,omitempty" xml:"ProxySessId,omitempty"`
 	ServerIp       *string                                                                                       `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
@@ -26578,7 +26578,7 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSql
 	return s
 }
 
-func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlLists) SetPlanId(v string) *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlLists {
+func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlLists) SetPlanId(v int64) *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlLists {
 	s.PlanId = &v
 	return s
 }
@@ -26640,7 +26640,7 @@ type DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlList
 	Database    *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	DynamicSql  *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
 	ExecuteTime *int64  `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	PlanId      *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanId      *int64  `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
 	ProxySessId *string `json:"ProxySessId,omitempty" xml:"ProxySessId,omitempty"`
 	ServerIp    *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	SessionId   *int64  `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
@@ -26690,7 +26690,7 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSql
 	return s
 }
 
-func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlListsProcessSqlList) SetPlanId(v string) *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlListsProcessSqlList {
+func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlListsProcessSqlList) SetPlanId(v int64) *DescribeProcessStatsCompositionResponseBodyDataAllProcessListProcessSqlListsProcessSqlList {
 	s.PlanId = &v
 	return s
 }
