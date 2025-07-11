@@ -773,6 +773,7 @@ type CreateArtifactRequestArtifactBuildProperty struct {
 	//
 	// ./file/Dockerfile
 	DockerfilePath *string `json:"DockerfilePath,omitempty" xml:"DockerfilePath,omitempty"`
+	EnableGpu      *bool   `json:"EnableGpu,omitempty" xml:"EnableGpu,omitempty"`
 	// The region ID where the source mirror image is located.
 	//
 	// >  This parameter is available only if the deployment package is a ecs image type.
@@ -838,6 +839,11 @@ func (s *CreateArtifactRequestArtifactBuildProperty) SetCommandType(v string) *C
 
 func (s *CreateArtifactRequestArtifactBuildProperty) SetDockerfilePath(v string) *CreateArtifactRequestArtifactBuildProperty {
 	s.DockerfilePath = &v
+	return s
+}
+
+func (s *CreateArtifactRequestArtifactBuildProperty) SetEnableGpu(v bool) *CreateArtifactRequestArtifactBuildProperty {
+	s.EnableGpu = &v
 	return s
 }
 
@@ -20180,6 +20186,7 @@ type UpdateArtifactRequestArtifactBuildProperty struct {
 	//
 	// ./file/Dockerfile
 	DockerfilePath *string `json:"DockerfilePath,omitempty" xml:"DockerfilePath,omitempty"`
+	EnableGpu      *bool   `json:"EnableGpu,omitempty" xml:"EnableGpu,omitempty"`
 	// The region ID where the source mirror image is located.
 	//
 	// >  This parameter is available only if the deployment package is a ecs image type.
@@ -20211,7 +20218,8 @@ type UpdateArtifactRequestArtifactBuildProperty struct {
 	// ubuntu_22_04_x64_20G_alibase_20240926.vhd
 	//
 	// OOS Common Parameter Name：aliyun/services/computenest/images/aliyun_3_2104_python_3_11
-	SourceImageId *string `json:"SourceImageId,omitempty" xml:"SourceImageId,omitempty"`
+	SourceImageId  *string `json:"SourceImageId,omitempty" xml:"SourceImageId,omitempty"`
+	SystemDiskSize *int64  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 }
 
 func (s UpdateArtifactRequestArtifactBuildProperty) String() string {
@@ -20247,6 +20255,11 @@ func (s *UpdateArtifactRequestArtifactBuildProperty) SetDockerfilePath(v string)
 	return s
 }
 
+func (s *UpdateArtifactRequestArtifactBuildProperty) SetEnableGpu(v bool) *UpdateArtifactRequestArtifactBuildProperty {
+	s.EnableGpu = &v
+	return s
+}
+
 func (s *UpdateArtifactRequestArtifactBuildProperty) SetRegionId(v string) *UpdateArtifactRequestArtifactBuildProperty {
 	s.RegionId = &v
 	return s
@@ -20259,6 +20272,11 @@ func (s *UpdateArtifactRequestArtifactBuildProperty) SetSourceContainerImage(v s
 
 func (s *UpdateArtifactRequestArtifactBuildProperty) SetSourceImageId(v string) *UpdateArtifactRequestArtifactBuildProperty {
 	s.SourceImageId = &v
+	return s
+}
+
+func (s *UpdateArtifactRequestArtifactBuildProperty) SetSystemDiskSize(v int64) *UpdateArtifactRequestArtifactBuildProperty {
+	s.SystemDiskSize = &v
 	return s
 }
 
