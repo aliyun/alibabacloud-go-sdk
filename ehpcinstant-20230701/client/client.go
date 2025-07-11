@@ -3174,6 +3174,7 @@ func (s *ListExecutorsRequest) SetPageSize(v int32) *ListExecutorsRequest {
 
 type ListExecutorsRequestFilter struct {
 	ExecutorIds []*string `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
+	Image       *string   `json:"Image,omitempty" xml:"Image,omitempty"`
 	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -3187,7 +3188,8 @@ type ListExecutorsRequestFilter struct {
 	// example:
 	//
 	// 1703820113
-	TimeCreatedBefore *int32 `json:"TimeCreatedBefore,omitempty" xml:"TimeCreatedBefore,omitempty"`
+	TimeCreatedBefore *int32  `json:"TimeCreatedBefore,omitempty" xml:"TimeCreatedBefore,omitempty"`
+	VswitchId         *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s ListExecutorsRequestFilter) String() string {
@@ -3200,6 +3202,11 @@ func (s ListExecutorsRequestFilter) GoString() string {
 
 func (s *ListExecutorsRequestFilter) SetExecutorIds(v []*string) *ListExecutorsRequestFilter {
 	s.ExecutorIds = v
+	return s
+}
+
+func (s *ListExecutorsRequestFilter) SetImage(v string) *ListExecutorsRequestFilter {
+	s.Image = &v
 	return s
 }
 
@@ -3225,6 +3232,11 @@ func (s *ListExecutorsRequestFilter) SetTimeCreatedAfter(v int32) *ListExecutors
 
 func (s *ListExecutorsRequestFilter) SetTimeCreatedBefore(v int32) *ListExecutorsRequestFilter {
 	s.TimeCreatedBefore = &v
+	return s
+}
+
+func (s *ListExecutorsRequestFilter) SetVswitchId(v string) *ListExecutorsRequestFilter {
+	s.VswitchId = &v
 	return s
 }
 
