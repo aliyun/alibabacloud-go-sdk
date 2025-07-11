@@ -12358,6 +12358,346 @@ func (s *CreateDiskEncryptionServiceResponse) SetBody(v *CreateDiskEncryptionSer
 	return s
 }
 
+type CreateDriveRequest struct {
+	// example:
+	//
+	// 1202****
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// test01
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// dom-aaaa****
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// example:
+	//
+	// test01
+	DriveName *string `json:"DriveName,omitempty" xml:"DriveName,omitempty"`
+	// example:
+	//
+	// 1234****
+	ExternalDomainId *string `json:"ExternalDomainId,omitempty" xml:"ExternalDomainId,omitempty"`
+	// example:
+	//
+	// -
+	ProfileRoaming *bool `json:"ProfileRoaming,omitempty" xml:"ProfileRoaming,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// NAS
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// USER_PROFILE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// user01
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateDriveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDriveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDriveRequest) SetAliUid(v int64) *CreateDriveRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetDescription(v string) *CreateDriveRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetDomainId(v string) *CreateDriveRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetDriveName(v string) *CreateDriveRequest {
+	s.DriveName = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetExternalDomainId(v string) *CreateDriveRequest {
+	s.ExternalDomainId = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetProfileRoaming(v bool) *CreateDriveRequest {
+	s.ProfileRoaming = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetRegionId(v string) *CreateDriveRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetResourceType(v string) *CreateDriveRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetType(v string) *CreateDriveRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetUserId(v string) *CreateDriveRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateDriveResponseBody struct {
+	// example:
+	//
+	// 200
+	Code  *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Drive *CreateDriveResponseBodyDrive `json:"Drive,omitempty" xml:"Drive,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7AA****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDriveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDriveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDriveResponseBody) SetCode(v string) *CreateDriveResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetDrive(v *CreateDriveResponseBodyDrive) *CreateDriveResponseBody {
+	s.Drive = v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetMessage(v string) *CreateDriveResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetRequestId(v string) *CreateDriveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetSuccess(v bool) *CreateDriveResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDriveResponseBodyDrive struct {
+	// example:
+	//
+	// 1202****
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// test****
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// dom-aaaa****
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// example:
+	//
+	// dri-aaaa****
+	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	// example:
+	//
+	// 1100****
+	ExternalDriveId *string `json:"ExternalDriveId,omitempty" xml:"ExternalDriveId,omitempty"`
+	// example:
+	//
+	// user01@cn-hangzhou.120****
+	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// example:
+	//
+	// 2025-07-02T08:42:26.000+00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2025-07-07T02:46:04.000+00:00
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// ID。
+	//
+	// example:
+	//
+	// 1
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// test****
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// -
+	ProfileRoaming *bool `json:"ProfileRoaming,omitempty" xml:"ProfileRoaming,omitempty"`
+	// example:
+	//
+	// NORMAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 536870912000
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// example:
+	//
+	// USER_PROFILE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 243175936
+	UsedSize *int64 `json:"UsedSize,omitempty" xml:"UsedSize,omitempty"`
+	// example:
+	//
+	// user01
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateDriveResponseBodyDrive) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDriveResponseBodyDrive) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDriveResponseBodyDrive) SetAliUid(v string) *CreateDriveResponseBodyDrive {
+	s.AliUid = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetDescription(v string) *CreateDriveResponseBodyDrive {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetDomainId(v string) *CreateDriveResponseBodyDrive {
+	s.DomainId = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetDriveId(v string) *CreateDriveResponseBodyDrive {
+	s.DriveId = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetExternalDriveId(v string) *CreateDriveResponseBodyDrive {
+	s.ExternalDriveId = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetExternalUserId(v string) *CreateDriveResponseBodyDrive {
+	s.ExternalUserId = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetGmtCreate(v string) *CreateDriveResponseBodyDrive {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetGmtModified(v string) *CreateDriveResponseBodyDrive {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetId(v string) *CreateDriveResponseBodyDrive {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetName(v string) *CreateDriveResponseBodyDrive {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetProfileRoaming(v bool) *CreateDriveResponseBodyDrive {
+	s.ProfileRoaming = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetStatus(v string) *CreateDriveResponseBodyDrive {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetTotalSize(v int64) *CreateDriveResponseBodyDrive {
+	s.TotalSize = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetType(v string) *CreateDriveResponseBodyDrive {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetUsedSize(v int64) *CreateDriveResponseBodyDrive {
+	s.UsedSize = &v
+	return s
+}
+
+func (s *CreateDriveResponseBodyDrive) SetUserId(v string) *CreateDriveResponseBodyDrive {
+	s.UserId = &v
+	return s
+}
+
+type CreateDriveResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDriveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDriveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDriveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDriveResponse) SetHeaders(v map[string]*string) *CreateDriveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDriveResponse) SetStatusCode(v int32) *CreateDriveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDriveResponse) SetBody(v *CreateDriveResponseBody) *CreateDriveResponse {
+	s.Body = v
+	return s
+}
+
 type CreateImageRequest struct {
 	// Specifies whether to clear private data of users. If you set AutoCleanUserdata to `true`, the custom image clears the data directories, excluding the `Administrator` and `Public` directories, in the `C:\\Users` directory.
 	//
@@ -16912,6 +17252,120 @@ func (s *DeleteDirectoriesResponse) SetStatusCode(v int32) *DeleteDirectoriesRes
 }
 
 func (s *DeleteDirectoriesResponse) SetBody(v *DeleteDirectoriesResponseBody) *DeleteDirectoriesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDriveRequest struct {
+	// example:
+	//
+	// dri-aaaa****
+	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteDriveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveRequest) SetDriveId(v string) *DeleteDriveRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *DeleteDriveRequest) SetRegionId(v string) *DeleteDriveRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteDriveResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7AA****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDriveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveResponseBody) SetCode(v string) *DeleteDriveResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDriveResponseBody) SetData(v bool) *DeleteDriveResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteDriveResponseBody) SetMessage(v string) *DeleteDriveResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDriveResponseBody) SetRequestId(v string) *DeleteDriveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDriveResponseBody) SetSuccess(v bool) *DeleteDriveResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDriveResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDriveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDriveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveResponse) SetHeaders(v map[string]*string) *DeleteDriveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDriveResponse) SetStatusCode(v int32) *DeleteDriveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDriveResponse) SetBody(v *DeleteDriveResponseBody) *DeleteDriveResponse {
 	s.Body = v
 	return s
 }
@@ -30591,6 +31045,385 @@ func (s *DescribeDirectoriesResponse) SetStatusCode(v int32) *DescribeDirectorie
 }
 
 func (s *DescribeDirectoriesResponse) SetBody(v *DescribeDirectoriesResponseBody) *DescribeDirectoriesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDrivesRequest struct {
+	DomainIds []*string `json:"DomainIds,omitempty" xml:"DomainIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAA****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// NAS
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// user01
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeDrivesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrivesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrivesRequest) SetDomainIds(v []*string) *DescribeDrivesRequest {
+	s.DomainIds = v
+	return s
+}
+
+func (s *DescribeDrivesRequest) SetMaxResults(v int32) *DescribeDrivesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeDrivesRequest) SetNextToken(v string) *DescribeDrivesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDrivesRequest) SetRegionId(v string) *DescribeDrivesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDrivesRequest) SetResourceType(v string) *DescribeDrivesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeDrivesRequest) SetUserId(v string) *DescribeDrivesRequest {
+	s.UserId = &v
+	return s
+}
+
+type DescribeDrivesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 2
+	Count  *int32                              `json:"Count,omitempty" xml:"Count,omitempty"`
+	Drives []*DescribeDrivesResponseBodyDrives `json:"Drives,omitempty" xml:"Drives,omitempty" type:"Repeated"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// AAAA****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// B7AA****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeDrivesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrivesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrivesResponseBody) SetCode(v string) *DescribeDrivesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBody) SetCount(v int32) *DescribeDrivesResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBody) SetDrives(v []*DescribeDrivesResponseBodyDrives) *DescribeDrivesResponseBody {
+	s.Drives = v
+	return s
+}
+
+func (s *DescribeDrivesResponseBody) SetMessage(v string) *DescribeDrivesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBody) SetNextToken(v string) *DescribeDrivesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBody) SetRequestId(v string) *DescribeDrivesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBody) SetSuccess(v bool) *DescribeDrivesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeDrivesResponseBodyDrives struct {
+	// example:
+	//
+	// 1202****
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// test****
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1
+	DesktopGroupCount *int32                                           `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
+	DesktopGroups     []*DescribeDrivesResponseBodyDrivesDesktopGroups `json:"DesktopGroups,omitempty" xml:"DesktopGroups,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dom-aaaa****
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// example:
+	//
+	// dri-aaaa****
+	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	// example:
+	//
+	// true
+	EnableProfileManagement *bool `json:"EnableProfileManagement,omitempty" xml:"EnableProfileManagement,omitempty"`
+	// example:
+	//
+	// 0976****
+	ExternalDomainId *string `json:"ExternalDomainId,omitempty" xml:"ExternalDomainId,omitempty"`
+	// example:
+	//
+	// 1100****
+	ExternalDriveId *string `json:"ExternalDriveId,omitempty" xml:"ExternalDriveId,omitempty"`
+	// example:
+	//
+	// user01@cn-hangzhou.120****
+	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// example:
+	//
+	// 2025-07-02T08:42:26.000+00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2025-07-07T02:46:04.000+00:00
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 1
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// test****
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// -
+	ProfileRoaming *bool `json:"ProfileRoaming,omitempty" xml:"ProfileRoaming,omitempty"`
+	// example:
+	//
+	// NORMAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 536870912000
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// example:
+	//
+	// USER_PROFILE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 243175936
+	UsedSize *int64 `json:"UsedSize,omitempty" xml:"UsedSize,omitempty"`
+	// example:
+	//
+	// user01
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeDrivesResponseBodyDrives) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrivesResponseBodyDrives) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetAliUid(v int64) *DescribeDrivesResponseBodyDrives {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetDescription(v string) *DescribeDrivesResponseBodyDrives {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetDesktopGroupCount(v int32) *DescribeDrivesResponseBodyDrives {
+	s.DesktopGroupCount = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetDesktopGroups(v []*DescribeDrivesResponseBodyDrivesDesktopGroups) *DescribeDrivesResponseBodyDrives {
+	s.DesktopGroups = v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetDomainId(v string) *DescribeDrivesResponseBodyDrives {
+	s.DomainId = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetDriveId(v string) *DescribeDrivesResponseBodyDrives {
+	s.DriveId = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetEnableProfileManagement(v bool) *DescribeDrivesResponseBodyDrives {
+	s.EnableProfileManagement = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetExternalDomainId(v string) *DescribeDrivesResponseBodyDrives {
+	s.ExternalDomainId = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetExternalDriveId(v string) *DescribeDrivesResponseBodyDrives {
+	s.ExternalDriveId = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetExternalUserId(v string) *DescribeDrivesResponseBodyDrives {
+	s.ExternalUserId = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetGmtCreate(v string) *DescribeDrivesResponseBodyDrives {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetGmtModified(v string) *DescribeDrivesResponseBodyDrives {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetId(v string) *DescribeDrivesResponseBodyDrives {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetName(v string) *DescribeDrivesResponseBodyDrives {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetProfileRoaming(v bool) *DescribeDrivesResponseBodyDrives {
+	s.ProfileRoaming = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetStatus(v string) *DescribeDrivesResponseBodyDrives {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetTotalSize(v int64) *DescribeDrivesResponseBodyDrives {
+	s.TotalSize = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetType(v string) *DescribeDrivesResponseBodyDrives {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetUsedSize(v int64) *DescribeDrivesResponseBodyDrives {
+	s.UsedSize = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrives) SetUserId(v string) *DescribeDrivesResponseBodyDrives {
+	s.UserId = &v
+	return s
+}
+
+type DescribeDrivesResponseBodyDrivesDesktopGroups struct {
+	// example:
+	//
+	// dg-aaaa****
+	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	// example:
+	//
+	// group01
+	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
+}
+
+func (s DescribeDrivesResponseBodyDrivesDesktopGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrivesResponseBodyDrivesDesktopGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrivesResponseBodyDrivesDesktopGroups) SetDesktopGroupId(v string) *DescribeDrivesResponseBodyDrivesDesktopGroups {
+	s.DesktopGroupId = &v
+	return s
+}
+
+func (s *DescribeDrivesResponseBodyDrivesDesktopGroups) SetDesktopGroupName(v string) *DescribeDrivesResponseBodyDrivesDesktopGroups {
+	s.DesktopGroupName = &v
+	return s
+}
+
+type DescribeDrivesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDrivesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDrivesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDrivesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDrivesResponse) SetHeaders(v map[string]*string) *DescribeDrivesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDrivesResponse) SetStatusCode(v int32) *DescribeDrivesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDrivesResponse) SetBody(v *DescribeDrivesResponseBody) *DescribeDrivesResponse {
 	s.Body = v
 	return s
 }
@@ -71203,6 +72036,102 @@ func (client *Client) CreateDiskEncryptionService(request *CreateDiskEncryptionS
 
 // Summary:
 //
+// 创建网盘
+//
+// @param request - CreateDriveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDriveResponse
+func (client *Client) CreateDriveWithOptions(request *CreateDriveRequest, runtime *util.RuntimeOptions) (_result *CreateDriveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		query["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DriveName)) {
+		query["DriveName"] = request.DriveName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalDomainId)) {
+		query["ExternalDomainId"] = request.ExternalDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProfileRoaming)) {
+		query["ProfileRoaming"] = request.ProfileRoaming
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDrive"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDriveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建网盘
+//
+// @param request - CreateDriveRequest
+//
+// @return CreateDriveResponse
+func (client *Client) CreateDrive(request *CreateDriveRequest) (_result *CreateDriveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDriveResponse{}
+	_body, _err := client.CreateDriveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a custom image based on a deployed cloud computer. Then, you can use the custom image to create cloud computers that have the same configurations. This prevents the repeated settings when you create cloud computers.
 //
 // @param request - CreateImageRequest
@@ -73025,6 +73954,70 @@ func (client *Client) DeleteDirectories(request *DeleteDirectoriesRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDirectoriesResponse{}
 	_body, _err := client.DeleteDirectoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除网盘
+//
+// @param request - DeleteDriveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDriveResponse
+func (client *Client) DeleteDriveWithOptions(request *DeleteDriveRequest, runtime *util.RuntimeOptions) (_result *DeleteDriveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
+		query["DriveId"] = request.DriveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDrive"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDriveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除网盘
+//
+// @param request - DeleteDriveRequest
+//
+// @return DeleteDriveResponse
+func (client *Client) DeleteDrive(request *DeleteDriveRequest) (_result *DeleteDriveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDriveResponse{}
+	_body, _err := client.DeleteDriveWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -75977,6 +76970,86 @@ func (client *Client) DescribeDirectories(request *DescribeDirectoriesRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDirectoriesResponse{}
 	_body, _err := client.DescribeDirectoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网盘列表
+//
+// @param request - DescribeDrivesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrivesResponse
+func (client *Client) DescribeDrivesWithOptions(request *DescribeDrivesRequest, runtime *util.RuntimeOptions) (_result *DescribeDrivesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainIds)) {
+		query["DomainIds"] = request.DomainIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDrives"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDrivesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网盘列表
+//
+// @param request - DescribeDrivesRequest
+//
+// @return DescribeDrivesResponse
+func (client *Client) DescribeDrives(request *DescribeDrivesRequest) (_result *DescribeDrivesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDrivesResponse{}
+	_body, _err := client.DescribeDrivesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
