@@ -531,1171 +531,6 @@ func (s *AddChatappPhoneNumberResponse) SetBody(v *AddChatappPhoneNumberResponse
 	return s
 }
 
-type BeeBotAssociateRequest struct {
-	// The ID of a bot instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	ChatBotInstanceId *string `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
-	// The space ID of the user within the independent software vendor (ISV) account.
-	//
-	// example:
-	//
-	// 293483938849493
-	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The ISV verification code, which is used to verify whether the user is authorized by ISV.
-	//
-	// example:
-	//
-	// ksiekdki39ksks93939
-	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The list of codes for answers from different perspectives.
-	Perspective []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
-	// The number of recommended questions. The value ranges from 1 to 10.
-	//
-	// example:
-	//
-	// 3
-	RecommendNum *int32 `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
-	// The ID of the session, which is used to identify the session and store context information in the session.
-	//
-	// example:
-	//
-	// 2334324234
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The input of the visitor.
-	//
-	// example:
-	//
-	// hello
-	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
-}
-
-func (s BeeBotAssociateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotAssociateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotAssociateRequest) SetChatBotInstanceId(v string) *BeeBotAssociateRequest {
-	s.ChatBotInstanceId = &v
-	return s
-}
-
-func (s *BeeBotAssociateRequest) SetCustSpaceId(v string) *BeeBotAssociateRequest {
-	s.CustSpaceId = &v
-	return s
-}
-
-func (s *BeeBotAssociateRequest) SetIsvCode(v string) *BeeBotAssociateRequest {
-	s.IsvCode = &v
-	return s
-}
-
-func (s *BeeBotAssociateRequest) SetPerspective(v []*string) *BeeBotAssociateRequest {
-	s.Perspective = v
-	return s
-}
-
-func (s *BeeBotAssociateRequest) SetRecommendNum(v int32) *BeeBotAssociateRequest {
-	s.RecommendNum = &v
-	return s
-}
-
-func (s *BeeBotAssociateRequest) SetSessionId(v string) *BeeBotAssociateRequest {
-	s.SessionId = &v
-	return s
-}
-
-func (s *BeeBotAssociateRequest) SetUtterance(v string) *BeeBotAssociateRequest {
-	s.Utterance = &v
-	return s
-}
-
-type BeeBotAssociateShrinkRequest struct {
-	// The ID of a bot instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	ChatBotInstanceId *string `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
-	// The space ID of the user within the independent software vendor (ISV) account.
-	//
-	// example:
-	//
-	// 293483938849493
-	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The ISV verification code, which is used to verify whether the user is authorized by ISV.
-	//
-	// example:
-	//
-	// ksiekdki39ksks93939
-	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The list of codes for answers from different perspectives.
-	PerspectiveShrink *string `json:"Perspective,omitempty" xml:"Perspective,omitempty"`
-	// The number of recommended questions. The value ranges from 1 to 10.
-	//
-	// example:
-	//
-	// 3
-	RecommendNum *int32 `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
-	// The ID of the session, which is used to identify the session and store context information in the session.
-	//
-	// example:
-	//
-	// 2334324234
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The input of the visitor.
-	//
-	// example:
-	//
-	// hello
-	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
-}
-
-func (s BeeBotAssociateShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotAssociateShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotAssociateShrinkRequest) SetChatBotInstanceId(v string) *BeeBotAssociateShrinkRequest {
-	s.ChatBotInstanceId = &v
-	return s
-}
-
-func (s *BeeBotAssociateShrinkRequest) SetCustSpaceId(v string) *BeeBotAssociateShrinkRequest {
-	s.CustSpaceId = &v
-	return s
-}
-
-func (s *BeeBotAssociateShrinkRequest) SetIsvCode(v string) *BeeBotAssociateShrinkRequest {
-	s.IsvCode = &v
-	return s
-}
-
-func (s *BeeBotAssociateShrinkRequest) SetPerspectiveShrink(v string) *BeeBotAssociateShrinkRequest {
-	s.PerspectiveShrink = &v
-	return s
-}
-
-func (s *BeeBotAssociateShrinkRequest) SetRecommendNum(v int32) *BeeBotAssociateShrinkRequest {
-	s.RecommendNum = &v
-	return s
-}
-
-func (s *BeeBotAssociateShrinkRequest) SetSessionId(v string) *BeeBotAssociateShrinkRequest {
-	s.SessionId = &v
-	return s
-}
-
-func (s *BeeBotAssociateShrinkRequest) SetUtterance(v string) *BeeBotAssociateShrinkRequest {
-	s.Utterance = &v
-	return s
-}
-
-type BeeBotAssociateResponseBody struct {
-	// The access denied for detailed information.
-	//
-	// example:
-	//
-	// None
-	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// If OK is returned, the request is successful.
-	//
-	// example:
-	//
-	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
-	Data *BeeBotAssociateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
-	//
-	// example:
-	//
-	// None
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 90E63D28-E31D-1EB2-8939-A9486641****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s BeeBotAssociateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotAssociateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotAssociateResponseBody) SetAccessDeniedDetail(v string) *BeeBotAssociateResponseBody {
-	s.AccessDeniedDetail = &v
-	return s
-}
-
-func (s *BeeBotAssociateResponseBody) SetCode(v string) *BeeBotAssociateResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *BeeBotAssociateResponseBody) SetData(v *BeeBotAssociateResponseBodyData) *BeeBotAssociateResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *BeeBotAssociateResponseBody) SetMessage(v string) *BeeBotAssociateResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *BeeBotAssociateResponseBody) SetRequestId(v string) *BeeBotAssociateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type BeeBotAssociateResponseBodyData struct {
-	// The list of associated recommendations.
-	Associate []*BeeBotAssociateResponseBodyDataAssociate `json:"Associate,omitempty" xml:"Associate,omitempty" type:"Repeated"`
-	// The ID of the response message.
-	//
-	// example:
-	//
-	// 1eb47d7a1706429081e90c83c62c2f00
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The ID of the session.
-	//
-	// example:
-	//
-	// 93f11165a2a24289a6f869760e8cb3f3
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-}
-
-func (s BeeBotAssociateResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotAssociateResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotAssociateResponseBodyData) SetAssociate(v []*BeeBotAssociateResponseBodyDataAssociate) *BeeBotAssociateResponseBodyData {
-	s.Associate = v
-	return s
-}
-
-func (s *BeeBotAssociateResponseBodyData) SetMessageId(v string) *BeeBotAssociateResponseBodyData {
-	s.MessageId = &v
-	return s
-}
-
-func (s *BeeBotAssociateResponseBodyData) SetSessionId(v string) *BeeBotAssociateResponseBodyData {
-	s.SessionId = &v
-	return s
-}
-
-type BeeBotAssociateResponseBodyDataAssociate struct {
-	// The metadata.
-	//
-	// example:
-	//
-	// {}
-	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	// The title of the related question.
-	//
-	// example:
-	//
-	// Policy on Withdrawal of Housing Provident Fund
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-}
-
-func (s BeeBotAssociateResponseBodyDataAssociate) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotAssociateResponseBodyDataAssociate) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotAssociateResponseBodyDataAssociate) SetMeta(v string) *BeeBotAssociateResponseBodyDataAssociate {
-	s.Meta = &v
-	return s
-}
-
-func (s *BeeBotAssociateResponseBodyDataAssociate) SetTitle(v string) *BeeBotAssociateResponseBodyDataAssociate {
-	s.Title = &v
-	return s
-}
-
-type BeeBotAssociateResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *BeeBotAssociateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s BeeBotAssociateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotAssociateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotAssociateResponse) SetHeaders(v map[string]*string) *BeeBotAssociateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BeeBotAssociateResponse) SetStatusCode(v int32) *BeeBotAssociateResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *BeeBotAssociateResponse) SetBody(v *BeeBotAssociateResponseBody) *BeeBotAssociateResponse {
-	s.Body = v
-	return s
-}
-
-type BeeBotChatRequest struct {
-	// Indicates whether the answer is in plain text or rich text.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	ChatBotInstanceId *string `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
-	// The metadata.
-	//
-	// example:
-	//
-	// 293483938849493
-	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The source of the answer.
-	//
-	// example:
-	//
-	// intent
-	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// The source of the answer.
-	//
-	// example:
-	//
-	// ksiekdki39ksks93939
-	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The hit statement.
-	//
-	// example:
-	//
-	// 1
-	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// Beijing
-	Perspective []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
-	// The information about the slot.
-	//
-	// example:
-	//
-	// 861500000000
-	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
-	// Beijing
-	//
-	// example:
-	//
-	// nick
-	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
-	// The title of the related knowledge.
-	//
-	// example:
-	//
-	// en
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The title of the hit question.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 659216218162179
-	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
-	// The node name. When AnswerSource is set to BotFramework, a value is returned for this parameter.
-	//
-	// example:
-	//
-	// {\\"skills\\":\\"chat_search\\",\\"accessToken\\":\\"73f4d5c8e8c334d9b538890bca68ac9a\\",\\"senderStaffId\\":\\"1697204021326\\",\\"senderCorpId\\":\\"dingee291fb2828058b9\\"}
-	VendorParam map[string]interface{} `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
-}
-
-func (s BeeBotChatRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotChatRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotChatRequest) SetChatBotInstanceId(v string) *BeeBotChatRequest {
-	s.ChatBotInstanceId = &v
-	return s
-}
-
-func (s *BeeBotChatRequest) SetCustSpaceId(v string) *BeeBotChatRequest {
-	s.CustSpaceId = &v
-	return s
-}
-
-func (s *BeeBotChatRequest) SetIntentName(v string) *BeeBotChatRequest {
-	s.IntentName = &v
-	return s
-}
-
-func (s *BeeBotChatRequest) SetIsvCode(v string) *BeeBotChatRequest {
-	s.IsvCode = &v
-	return s
-}
-
-func (s *BeeBotChatRequest) SetKnowledgeId(v string) *BeeBotChatRequest {
-	s.KnowledgeId = &v
-	return s
-}
-
-func (s *BeeBotChatRequest) SetPerspective(v []*string) *BeeBotChatRequest {
-	s.Perspective = v
-	return s
-}
-
-func (s *BeeBotChatRequest) SetSenderId(v string) *BeeBotChatRequest {
-	s.SenderId = &v
-	return s
-}
-
-func (s *BeeBotChatRequest) SetSenderNick(v string) *BeeBotChatRequest {
-	s.SenderNick = &v
-	return s
-}
-
-func (s *BeeBotChatRequest) SetSessionId(v string) *BeeBotChatRequest {
-	s.SessionId = &v
-	return s
-}
-
-func (s *BeeBotChatRequest) SetUtterance(v string) *BeeBotChatRequest {
-	s.Utterance = &v
-	return s
-}
-
-func (s *BeeBotChatRequest) SetVendorParam(v map[string]interface{}) *BeeBotChatRequest {
-	s.VendorParam = v
-	return s
-}
-
-type BeeBotChatShrinkRequest struct {
-	// Indicates whether the answer is in plain text or rich text.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	ChatBotInstanceId *string `json:"ChatBotInstanceId,omitempty" xml:"ChatBotInstanceId,omitempty"`
-	// The metadata.
-	//
-	// example:
-	//
-	// 293483938849493
-	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The source of the answer.
-	//
-	// example:
-	//
-	// intent
-	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// The source of the answer.
-	//
-	// example:
-	//
-	// ksiekdki39ksks93939
-	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The hit statement.
-	//
-	// example:
-	//
-	// 1
-	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// Beijing
-	PerspectiveShrink *string `json:"Perspective,omitempty" xml:"Perspective,omitempty"`
-	// The information about the slot.
-	//
-	// example:
-	//
-	// 861500000000
-	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
-	// Beijing
-	//
-	// example:
-	//
-	// nick
-	SenderNick *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
-	// The title of the related knowledge.
-	//
-	// example:
-	//
-	// en
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The title of the hit question.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 659216218162179
-	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
-	// The node name. When AnswerSource is set to BotFramework, a value is returned for this parameter.
-	//
-	// example:
-	//
-	// {\\"skills\\":\\"chat_search\\",\\"accessToken\\":\\"73f4d5c8e8c334d9b538890bca68ac9a\\",\\"senderStaffId\\":\\"1697204021326\\",\\"senderCorpId\\":\\"dingee291fb2828058b9\\"}
-	VendorParamShrink *string `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
-}
-
-func (s BeeBotChatShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotChatShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotChatShrinkRequest) SetChatBotInstanceId(v string) *BeeBotChatShrinkRequest {
-	s.ChatBotInstanceId = &v
-	return s
-}
-
-func (s *BeeBotChatShrinkRequest) SetCustSpaceId(v string) *BeeBotChatShrinkRequest {
-	s.CustSpaceId = &v
-	return s
-}
-
-func (s *BeeBotChatShrinkRequest) SetIntentName(v string) *BeeBotChatShrinkRequest {
-	s.IntentName = &v
-	return s
-}
-
-func (s *BeeBotChatShrinkRequest) SetIsvCode(v string) *BeeBotChatShrinkRequest {
-	s.IsvCode = &v
-	return s
-}
-
-func (s *BeeBotChatShrinkRequest) SetKnowledgeId(v string) *BeeBotChatShrinkRequest {
-	s.KnowledgeId = &v
-	return s
-}
-
-func (s *BeeBotChatShrinkRequest) SetPerspectiveShrink(v string) *BeeBotChatShrinkRequest {
-	s.PerspectiveShrink = &v
-	return s
-}
-
-func (s *BeeBotChatShrinkRequest) SetSenderId(v string) *BeeBotChatShrinkRequest {
-	s.SenderId = &v
-	return s
-}
-
-func (s *BeeBotChatShrinkRequest) SetSenderNick(v string) *BeeBotChatShrinkRequest {
-	s.SenderNick = &v
-	return s
-}
-
-func (s *BeeBotChatShrinkRequest) SetSessionId(v string) *BeeBotChatShrinkRequest {
-	s.SessionId = &v
-	return s
-}
-
-func (s *BeeBotChatShrinkRequest) SetUtterance(v string) *BeeBotChatShrinkRequest {
-	s.Utterance = &v
-	return s
-}
-
-func (s *BeeBotChatShrinkRequest) SetVendorParamShrink(v string) *BeeBotChatShrinkRequest {
-	s.VendorParamShrink = &v
-	return s
-}
-
-type BeeBotChatResponseBody struct {
-	// Access denied for detailed information.
-	//
-	// example:
-	//
-	// None
-	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The content of the text message.
-	//
-	// example:
-	//
-	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of the recommended knowledge. When AnswerType is set to Recommend, the list of the recommended knowledge is returned by the bot for this parameter.
-	Data *BeeBotChatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Indicates whether the answer is in plain text or rich text.
-	//
-	// example:
-	//
-	// none
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The passthrough parameter.
-	//
-	// example:
-	//
-	// 90E63D28-E31D-1EB2-8939-A94866411B2O
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s BeeBotChatResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotChatResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotChatResponseBody) SetAccessDeniedDetail(v string) *BeeBotChatResponseBody {
-	s.AccessDeniedDetail = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBody) SetCode(v string) *BeeBotChatResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBody) SetData(v *BeeBotChatResponseBodyData) *BeeBotChatResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *BeeBotChatResponseBody) SetMessage(v string) *BeeBotChatResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBody) SetRequestId(v string) *BeeBotChatResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type BeeBotChatResponseBodyData struct {
-	// The ID of the recommended knowledge.
-	//
-	// example:
-	//
-	// ab6be8af-cee4-40c3-9919-2ac7461d7d98
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The source of the recommended answer. When AnswerType is set to Recommend, a value is returned for this parameter.
-	Messages []*BeeBotChatResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	// The source of the recommended answer.
-	//
-	// example:
-	//
-	// 1234
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-}
-
-func (s BeeBotChatResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotChatResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotChatResponseBodyData) SetMessageId(v string) *BeeBotChatResponseBodyData {
-	s.MessageId = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyData) SetMessages(v []*BeeBotChatResponseBodyDataMessages) *BeeBotChatResponseBodyData {
-	s.Messages = v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyData) SetSessionId(v string) *BeeBotChatResponseBodyData {
-	s.SessionId = &v
-	return s
-}
-
-type BeeBotChatResponseBodyDataMessages struct {
-	// When AnswerType is Recommended, this field indicates the source of the recommended answer.
-	//
-	// example:
-	//
-	// KNOWLEDGE
-	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// The type of this message.
-	//
-	// example:
-	//
-	// Text
-	AnswerType *string `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
-	// When AnswerType is Knowledge, this field contains the Knowledge object returned by the robot.
-	Knowledge *BeeBotChatResponseBodyDataMessagesKnowledge `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
-	// When AnswerType is Recommended, this field contains a list of Recommendations returned by the robot.
-	Recommends []*BeeBotChatResponseBodyDataMessagesRecommends `json:"Recommends,omitempty" xml:"Recommends,omitempty" type:"Repeated"`
-	// When AnswerType is Text, this field contains the Text object returned by the robot.
-	Text *BeeBotChatResponseBodyDataMessagesText `json:"Text,omitempty" xml:"Text,omitempty" type:"Struct"`
-}
-
-func (s BeeBotChatResponseBodyDataMessages) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotChatResponseBodyDataMessages) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotChatResponseBodyDataMessages) SetAnswerSource(v string) *BeeBotChatResponseBodyDataMessages {
-	s.AnswerSource = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessages) SetAnswerType(v string) *BeeBotChatResponseBodyDataMessages {
-	s.AnswerType = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessages) SetKnowledge(v *BeeBotChatResponseBodyDataMessagesKnowledge) *BeeBotChatResponseBodyDataMessages {
-	s.Knowledge = v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessages) SetRecommends(v []*BeeBotChatResponseBodyDataMessagesRecommends) *BeeBotChatResponseBodyDataMessages {
-	s.Recommends = v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessages) SetText(v *BeeBotChatResponseBodyDataMessagesText) *BeeBotChatResponseBodyDataMessages {
-	s.Text = v
-	return s
-}
-
-type BeeBotChatResponseBodyDataMessagesKnowledge struct {
-	// Distinguish answer types.
-	//
-	// example:
-	//
-	// KnowledgeBase
-	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// Knowledge category.
-	//
-	// example:
-	//
-	// provident fund.
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Hit the content of the problem.
-	//
-	// example:
-	//
-	// Provident fund withdrawal, please search for provident fund withdrawal on the homepage and submit the form for handling the matter.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Indication of plain/rich text answers.
-	//
-	// example:
-	//
-	// PLAIN_TEXT
-	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// Hit statement.
-	//
-	// example:
-	//
-	// provident fund
-	HitStatement *string `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
-	// The ID of the hit problem in the knowledge base.
-	//
-	// example:
-	//
-	// 735898
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Related knowledge list.
-	RelatedKnowledges []*BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges `json:"RelatedKnowledges,omitempty" xml:"RelatedKnowledges,omitempty" type:"Repeated"`
-	// Introduction to hit problems.
-	//
-	// example:
-	//
-	// Withdrawal of housing provident fund
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// Hit the title of the problem.
-	//
-	// example:
-	//
-	// Withdrawal of housing provident fund.
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-}
-
-func (s BeeBotChatResponseBodyDataMessagesKnowledge) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotChatResponseBodyDataMessagesKnowledge) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetAnswerSource(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
-	s.AnswerSource = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetCategory(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
-	s.Category = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetContent(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
-	s.Content = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetContentType(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
-	s.ContentType = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetHitStatement(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
-	s.HitStatement = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetId(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
-	s.Id = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetRelatedKnowledges(v []*BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges) *BeeBotChatResponseBodyDataMessagesKnowledge {
-	s.RelatedKnowledges = v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetSummary(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
-	s.Summary = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesKnowledge) SetTitle(v string) *BeeBotChatResponseBodyDataMessagesKnowledge {
-	s.Title = &v
-	return s
-}
-
-type BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges struct {
-	// The ID of knowledge associated with knowledge.
-	//
-	// example:
-	//
-	// 735899
-	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// The title of related knowledge.
-	//
-	// example:
-	//
-	// Withdrawal of housing provident fund.
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-}
-
-func (s BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges) SetKnowledgeId(v string) *BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges {
-	s.KnowledgeId = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges) SetTitle(v string) *BeeBotChatResponseBodyDataMessagesKnowledgeRelatedKnowledges {
-	s.Title = &v
-	return s
-}
-
-type BeeBotChatResponseBodyDataMessagesRecommends struct {
-	// Clarify the identification of the source.
-	//
-	// example:
-	//
-	// KNOWLEDGE
-	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// Clarify the knowledge ID.
-	//
-	// example:
-	//
-	// 4548
-	KnowledgeId *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// Clarify the content, which may be the entities of graph Q&A, the knowledge titles of knowledge Q&A, or the column values of table Q&A.
-	//
-	// example:
-	//
-	// Test plain text.
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-}
-
-func (s BeeBotChatResponseBodyDataMessagesRecommends) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotChatResponseBodyDataMessagesRecommends) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesRecommends) SetAnswerSource(v string) *BeeBotChatResponseBodyDataMessagesRecommends {
-	s.AnswerSource = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesRecommends) SetKnowledgeId(v string) *BeeBotChatResponseBodyDataMessagesRecommends {
-	s.KnowledgeId = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesRecommends) SetTitle(v string) *BeeBotChatResponseBodyDataMessagesRecommends {
-	s.Title = &v
-	return s
-}
-
-type BeeBotChatResponseBodyDataMessagesText struct {
-	// Distinguish answer types.
-	//
-	// example:
-	//
-	// BotFramework
-	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// The content of the text message.
-	//
-	// example:
-	//
-	// May I ask where you want to check the weather?
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Indication of plain/rich text answers.
-	//
-	// example:
-	//
-	// PLAIN_TEXT
-	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// When AnswerSource is BotFramework, this field returns the name of the dialogue unit.
-	//
-	// example:
-	//
-	// Example: Checking Weather
-	DialogName *string `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
-	// This field returns transparent parameters.
-	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// When AnswerSource is BotFramework, this field returns a transparent parameter.
-	ExternalFlags map[string]interface{} `json:"ExternalFlags,omitempty" xml:"ExternalFlags,omitempty"`
-	// Hit statement.
-	//
-	// example:
-	//
-	// Check the weather.
-	HitStatement *string `json:"HitStatement,omitempty" xml:"HitStatement,omitempty"`
-	// When AnswerSource is BotFramework, this field returns the intent name.
-	//
-	// example:
-	//
-	// Check weather intention.
-	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
-	// Metadata.
-	//
-	// example:
-	//
-	// [[{\\"columnName\\":\\"name\\",\\"stringValue\\":\\"wangshanshan\\"}]]
-	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// When AnswerSource is BotFramework, this field returns the node ID.
-	//
-	// example:
-	//
-	// 1410-c7a72a78.__city
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// When AnswerSource is BotFramework, this field returns the node name.
-	//
-	// example:
-	//
-	// Example: Checking Weather Check the weather and fill in the slots__ city
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// Slot information list.
-	Slots []*BeeBotChatResponseBodyDataMessagesTextSlots `json:"Slots,omitempty" xml:"Slots,omitempty" type:"Repeated"`
-	// Custom Chat Topic Title.
-	//
-	// example:
-	//
-	// greet.
-	UserDefinedChatTitle *string `json:"UserDefinedChatTitle,omitempty" xml:"UserDefinedChatTitle,omitempty"`
-}
-
-func (s BeeBotChatResponseBodyDataMessagesText) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotChatResponseBodyDataMessagesText) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesText) SetAnswerSource(v string) *BeeBotChatResponseBodyDataMessagesText {
-	s.AnswerSource = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesText) SetContent(v string) *BeeBotChatResponseBodyDataMessagesText {
-	s.Content = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesText) SetContentType(v string) *BeeBotChatResponseBodyDataMessagesText {
-	s.ContentType = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesText) SetDialogName(v string) *BeeBotChatResponseBodyDataMessagesText {
-	s.DialogName = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesText) SetExt(v map[string]interface{}) *BeeBotChatResponseBodyDataMessagesText {
-	s.Ext = v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesText) SetExternalFlags(v map[string]interface{}) *BeeBotChatResponseBodyDataMessagesText {
-	s.ExternalFlags = v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesText) SetHitStatement(v string) *BeeBotChatResponseBodyDataMessagesText {
-	s.HitStatement = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesText) SetIntentName(v string) *BeeBotChatResponseBodyDataMessagesText {
-	s.IntentName = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesText) SetMetaData(v string) *BeeBotChatResponseBodyDataMessagesText {
-	s.MetaData = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesText) SetNodeId(v string) *BeeBotChatResponseBodyDataMessagesText {
-	s.NodeId = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesText) SetNodeName(v string) *BeeBotChatResponseBodyDataMessagesText {
-	s.NodeName = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesText) SetSlots(v []*BeeBotChatResponseBodyDataMessagesTextSlots) *BeeBotChatResponseBodyDataMessagesText {
-	s.Slots = v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesText) SetUserDefinedChatTitle(v string) *BeeBotChatResponseBodyDataMessagesText {
-	s.UserDefinedChatTitle = &v
-	return s
-}
-
-type BeeBotChatResponseBodyDataMessagesTextSlots struct {
-	// Whether it hits.
-	//
-	// example:
-	//
-	// false
-	Hit *bool `json:"Hit,omitempty" xml:"Hit,omitempty"`
-	// Name.
-	//
-	// example:
-	//
-	// Check weather intentions. city
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Original value.
-	//
-	// example:
-	//
-	// Beijing
-	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// Specific values.
-	//
-	// example:
-	//
-	// Beijing
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s BeeBotChatResponseBodyDataMessagesTextSlots) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotChatResponseBodyDataMessagesTextSlots) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesTextSlots) SetHit(v bool) *BeeBotChatResponseBodyDataMessagesTextSlots {
-	s.Hit = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesTextSlots) SetName(v string) *BeeBotChatResponseBodyDataMessagesTextSlots {
-	s.Name = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesTextSlots) SetOrigin(v string) *BeeBotChatResponseBodyDataMessagesTextSlots {
-	s.Origin = &v
-	return s
-}
-
-func (s *BeeBotChatResponseBodyDataMessagesTextSlots) SetValue(v string) *BeeBotChatResponseBodyDataMessagesTextSlots {
-	s.Value = &v
-	return s
-}
-
-type BeeBotChatResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *BeeBotChatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s BeeBotChatResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BeeBotChatResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BeeBotChatResponse) SetHeaders(v map[string]*string) *BeeBotChatResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BeeBotChatResponse) SetStatusCode(v int32) *BeeBotChatResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *BeeBotChatResponse) SetBody(v *BeeBotChatResponseBody) *BeeBotChatResponse {
-	s.Body = v
-	return s
-}
-
 type ChatappBindWabaRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -2689,6 +1524,11 @@ func (s *ChatappSyncPhoneNumberRequest) SetResourceOwnerId(v int64) *ChatappSync
 }
 
 type ChatappSyncPhoneNumberResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -2706,7 +1546,7 @@ type ChatappSyncPhoneNumberResponseBody struct {
 	//
 	// None.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Details of the phone numbers.
+	// The phone numbers.
 	PhoneNumbers []*ChatappSyncPhoneNumberResponseBodyPhoneNumbers `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -2714,6 +1554,12 @@ type ChatappSyncPhoneNumberResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// 	- **true**: The call was successful.
+	//
+	// 	- **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -2759,12 +1605,24 @@ func (s *ChatappSyncPhoneNumberResponseBody) SetSuccess(v bool) *ChatappSyncPhon
 }
 
 type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {
-	// The verification status.
+	// The verification state of the phone number.
+	//
+	// Valid values:
+	//
+	// 	- REVOKED: The review application is revoked.
+	//
+	// 	- MORE_INFORMATION_REQUESTED: More information needs to be provided.
+	//
+	// 	- VERIFIED: The phone number passes the verification.
+	//
+	// 	- REJECTED: The phone number fails to pass the verification.
 	//
 	// example:
 	//
 	// VERIFIED
 	CodeVerificationStatus *string `json:"CodeVerificationStatus,omitempty" xml:"CodeVerificationStatus,omitempty"`
+	// Indicates whether it is a WhatsApp Official Business Account (OBA).
+	//
 	// example:
 	//
 	// N
@@ -2793,13 +1651,45 @@ type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {
 	//
 	// 8613800001234
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The quality rating of the phone number. Valid values: GREEN, YELLOW, and RED.
+	// The quality rating of the phone number.
+	//
+	// Valid values:
+	//
+	// 	- RED
+	//
+	// 	- YELLOW
+	//
+	// 	- GREEN
 	//
 	// example:
 	//
 	// GREEN
 	QualityRating *string `json:"QualityRating,omitempty" xml:"QualityRating,omitempty"`
-	// The status of the phone number.
+	// The state of the phone number.
+	//
+	// Valid values:
+	//
+	// 	- MIGRATED
+	//
+	// 	- FLAGGED
+	//
+	// 	- DISCONNECTED
+	//
+	// 	- UNVERIFIED
+	//
+	// 	- BANNED
+	//
+	// 	- RATE_LIMITED
+	//
+	// 	- PENDING
+	//
+	// 	- CONNECTED
+	//
+	// 	- UNKNOWN
+	//
+	// 	- DELETED
+	//
+	// 	- RESTRICTED
 	//
 	// example:
 	//
@@ -2817,7 +1707,7 @@ type ChatappSyncPhoneNumberResponseBodyPhoneNumbers struct {
 	//
 	// alicom-09399200-queue
 	StatusQueue *string `json:"StatusQueue,omitempty" xml:"StatusQueue,omitempty"`
-	// The callback URL to which MO messages are sent by using HTTP callbacks.
+	// The URL that receives the MO messages.
 	//
 	// example:
 	//
@@ -3002,6 +1892,11 @@ func (s *ChatappVerifyAndRegisterRequest) SetVerifyCode(v string) *ChatappVerify
 }
 
 type ChatappVerifyAndRegisterResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -3025,6 +1920,12 @@ type ChatappVerifyAndRegisterResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// 	- **true**: The call was successful.
+	//
+	// 	- **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -3089,6 +1990,703 @@ func (s *ChatappVerifyAndRegisterResponse) SetStatusCode(v int32) *ChatappVerify
 }
 
 func (s *ChatappVerifyAndRegisterResponse) SetBody(v *ChatappVerifyAndRegisterResponseBody) *ChatappVerifyAndRegisterResponse {
+	s.Body = v
+	return s
+}
+
+type CreateChatFlowRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow trigger type
+	//
+	// example:
+	//
+	// TriggeredByWhatsApp
+	FlowTriggerType *string `json:"FlowTriggerType,omitempty" xml:"FlowTriggerType,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Flow remarks
+	//
+	// example:
+	//
+	// ChatFlow for WhatsApp Customer Service Auto-Reply.
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Flow title
+	//
+	// example:
+	//
+	// Auto Reply
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s CreateChatFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatFlowRequest) SetBizCode(v string) *CreateChatFlowRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *CreateChatFlowRequest) SetBizExtend(v map[string]interface{}) *CreateChatFlowRequest {
+	s.BizExtend = v
+	return s
+}
+
+func (s *CreateChatFlowRequest) SetFlowTriggerType(v string) *CreateChatFlowRequest {
+	s.FlowTriggerType = &v
+	return s
+}
+
+func (s *CreateChatFlowRequest) SetOwnerId(v int64) *CreateChatFlowRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateChatFlowRequest) SetRemark(v string) *CreateChatFlowRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateChatFlowRequest) SetResourceOwnerAccount(v string) *CreateChatFlowRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateChatFlowRequest) SetResourceOwnerId(v int64) *CreateChatFlowRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateChatFlowRequest) SetTitle(v string) *CreateChatFlowRequest {
+	s.Title = &v
+	return s
+}
+
+type CreateChatFlowShrinkRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow trigger type
+	//
+	// example:
+	//
+	// TriggeredByWhatsApp
+	FlowTriggerType *string `json:"FlowTriggerType,omitempty" xml:"FlowTriggerType,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Flow remarks
+	//
+	// example:
+	//
+	// ChatFlow for WhatsApp Customer Service Auto-Reply.
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Flow title
+	//
+	// example:
+	//
+	// Auto Reply
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s CreateChatFlowShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatFlowShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatFlowShrinkRequest) SetBizCode(v string) *CreateChatFlowShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *CreateChatFlowShrinkRequest) SetBizExtendShrink(v string) *CreateChatFlowShrinkRequest {
+	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *CreateChatFlowShrinkRequest) SetFlowTriggerType(v string) *CreateChatFlowShrinkRequest {
+	s.FlowTriggerType = &v
+	return s
+}
+
+func (s *CreateChatFlowShrinkRequest) SetOwnerId(v int64) *CreateChatFlowShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateChatFlowShrinkRequest) SetRemark(v string) *CreateChatFlowShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateChatFlowShrinkRequest) SetResourceOwnerAccount(v string) *CreateChatFlowShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateChatFlowShrinkRequest) SetResourceOwnerId(v int64) *CreateChatFlowShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateChatFlowShrinkRequest) SetTitle(v string) *CreateChatFlowShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+type CreateChatFlowResponseBody struct {
+	// Access denied details, this field is returned only when RAM verification fails.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Error code
+	//
+	// example:
+	//
+	// 示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data object.
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request ID.
+	//
+	// example:
+	//
+	// 示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Response data
+	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
+	// Whether the call was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateChatFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatFlowResponseBody) SetAccessDeniedDetail(v string) *CreateChatFlowResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreateChatFlowResponseBody) SetCode(v string) *CreateChatFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateChatFlowResponseBody) SetData(v map[string]interface{}) *CreateChatFlowResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateChatFlowResponseBody) SetMessage(v string) *CreateChatFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateChatFlowResponseBody) SetRequestId(v string) *CreateChatFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateChatFlowResponseBody) SetResponse(v map[string]interface{}) *CreateChatFlowResponseBody {
+	s.Response = v
+	return s
+}
+
+func (s *CreateChatFlowResponseBody) SetSuccess(v bool) *CreateChatFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateChatFlowResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateChatFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateChatFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatFlowResponse) SetHeaders(v map[string]*string) *CreateChatFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateChatFlowResponse) SetStatusCode(v int32) *CreateChatFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateChatFlowResponse) SetBody(v *CreateChatFlowResponseBody) *CreateChatFlowResponse {
+	s.Body = v
+	return s
+}
+
+type CreateChatFlowByImportRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// 示例值示例值
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Imported flow DSL data
+	//
+	// example:
+	//
+	// 示例值示例值
+	FlowViewModel *string `json:"FlowViewModel,omitempty" xml:"FlowViewModel,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Flow remarks
+	//
+	// example:
+	//
+	// 示例值示例值
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Flow title
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s CreateChatFlowByImportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatFlowByImportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatFlowByImportRequest) SetBizCode(v string) *CreateChatFlowByImportRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportRequest) SetBizExtend(v map[string]interface{}) *CreateChatFlowByImportRequest {
+	s.BizExtend = v
+	return s
+}
+
+func (s *CreateChatFlowByImportRequest) SetFlowViewModel(v string) *CreateChatFlowByImportRequest {
+	s.FlowViewModel = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportRequest) SetOwnerId(v int64) *CreateChatFlowByImportRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportRequest) SetRemark(v string) *CreateChatFlowByImportRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportRequest) SetResourceOwnerAccount(v string) *CreateChatFlowByImportRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportRequest) SetResourceOwnerId(v int64) *CreateChatFlowByImportRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportRequest) SetTitle(v string) *CreateChatFlowByImportRequest {
+	s.Title = &v
+	return s
+}
+
+type CreateChatFlowByImportShrinkRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// 示例值示例值
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Imported flow DSL data
+	//
+	// example:
+	//
+	// 示例值示例值
+	FlowViewModel *string `json:"FlowViewModel,omitempty" xml:"FlowViewModel,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Flow remarks
+	//
+	// example:
+	//
+	// 示例值示例值
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Flow title
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s CreateChatFlowByImportShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatFlowByImportShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatFlowByImportShrinkRequest) SetBizCode(v string) *CreateChatFlowByImportShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportShrinkRequest) SetBizExtendShrink(v string) *CreateChatFlowByImportShrinkRequest {
+	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportShrinkRequest) SetFlowViewModel(v string) *CreateChatFlowByImportShrinkRequest {
+	s.FlowViewModel = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportShrinkRequest) SetOwnerId(v int64) *CreateChatFlowByImportShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportShrinkRequest) SetRemark(v string) *CreateChatFlowByImportShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportShrinkRequest) SetResourceOwnerAccount(v string) *CreateChatFlowByImportShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportShrinkRequest) SetResourceOwnerId(v int64) *CreateChatFlowByImportShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportShrinkRequest) SetTitle(v string) *CreateChatFlowByImportShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+type CreateChatFlowByImportResponseBody struct {
+	// Access denied details.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Request status code.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data object.
+	//
+	// example:
+	//
+	// 无
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// 示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request was successful
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateChatFlowByImportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatFlowByImportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatFlowByImportResponseBody) SetAccessDeniedDetail(v string) *CreateChatFlowByImportResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportResponseBody) SetCode(v string) *CreateChatFlowByImportResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportResponseBody) SetData(v map[string]interface{}) *CreateChatFlowByImportResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateChatFlowByImportResponseBody) SetMessage(v string) *CreateChatFlowByImportResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportResponseBody) SetRequestId(v string) *CreateChatFlowByImportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportResponseBody) SetSuccess(v bool) *CreateChatFlowByImportResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateChatFlowByImportResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateChatFlowByImportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateChatFlowByImportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatFlowByImportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatFlowByImportResponse) SetHeaders(v map[string]*string) *CreateChatFlowByImportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateChatFlowByImportResponse) SetStatusCode(v int32) *CreateChatFlowByImportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateChatFlowByImportResponse) SetBody(v *CreateChatFlowByImportResponseBody) *CreateChatFlowByImportResponse {
+	s.Body = v
+	return s
+}
+
+type CreateChatFlowLogSettingRequest struct {
+	// Process code.
+	//
+	// example:
+	//
+	// 示例值
+	FlowCode             *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateChatFlowLogSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatFlowLogSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatFlowLogSettingRequest) SetFlowCode(v string) *CreateChatFlowLogSettingRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *CreateChatFlowLogSettingRequest) SetOwnerId(v int64) *CreateChatFlowLogSettingRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateChatFlowLogSettingRequest) SetResourceOwnerAccount(v string) *CreateChatFlowLogSettingRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateChatFlowLogSettingRequest) SetResourceOwnerId(v int64) *CreateChatFlowLogSettingRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateChatFlowLogSettingResponseBody struct {
+	// Access denied details.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
+	//
+	// example:
+	//
+	// 无
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Values: true for success, false for failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateChatFlowLogSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatFlowLogSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatFlowLogSettingResponseBody) SetAccessDeniedDetail(v string) *CreateChatFlowLogSettingResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreateChatFlowLogSettingResponseBody) SetCode(v string) *CreateChatFlowLogSettingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateChatFlowLogSettingResponseBody) SetData(v map[string]interface{}) *CreateChatFlowLogSettingResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateChatFlowLogSettingResponseBody) SetMessage(v string) *CreateChatFlowLogSettingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateChatFlowLogSettingResponseBody) SetRequestId(v string) *CreateChatFlowLogSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateChatFlowLogSettingResponseBody) SetSuccess(v bool) *CreateChatFlowLogSettingResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateChatFlowLogSettingResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateChatFlowLogSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateChatFlowLogSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatFlowLogSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatFlowLogSettingResponse) SetHeaders(v map[string]*string) *CreateChatFlowLogSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateChatFlowLogSettingResponse) SetStatusCode(v int32) *CreateChatFlowLogSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateChatFlowLogSettingResponse) SetBody(v *CreateChatFlowLogSettingResponseBody) *CreateChatFlowLogSettingResponse {
 	s.Body = v
 	return s
 }
@@ -4585,6 +4183,280 @@ func (s *CreateFlowResponse) SetBody(v *CreateFlowResponseBody) *CreateFlowRespo
 	return s
 }
 
+type CreateFlowVersionRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// The flow version to be copied.
+	//
+	// example:
+	//
+	// 1
+	FlowVersionCopyFrom *string `json:"FlowVersionCopyFrom,omitempty" xml:"FlowVersionCopyFrom,omitempty"`
+	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Version remarks.
+	//
+	// example:
+	//
+	// Fix Send WhatsApp Message Error
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateFlowVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowVersionRequest) SetBizCode(v string) *CreateFlowVersionRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *CreateFlowVersionRequest) SetBizExtend(v map[string]interface{}) *CreateFlowVersionRequest {
+	s.BizExtend = v
+	return s
+}
+
+func (s *CreateFlowVersionRequest) SetFlowCode(v string) *CreateFlowVersionRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *CreateFlowVersionRequest) SetFlowVersionCopyFrom(v string) *CreateFlowVersionRequest {
+	s.FlowVersionCopyFrom = &v
+	return s
+}
+
+func (s *CreateFlowVersionRequest) SetOwnerId(v int64) *CreateFlowVersionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateFlowVersionRequest) SetRemark(v string) *CreateFlowVersionRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateFlowVersionRequest) SetResourceOwnerAccount(v string) *CreateFlowVersionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateFlowVersionRequest) SetResourceOwnerId(v int64) *CreateFlowVersionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateFlowVersionShrinkRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// The flow version to be copied.
+	//
+	// example:
+	//
+	// 1
+	FlowVersionCopyFrom *string `json:"FlowVersionCopyFrom,omitempty" xml:"FlowVersionCopyFrom,omitempty"`
+	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Version remarks.
+	//
+	// example:
+	//
+	// Fix Send WhatsApp Message Error
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateFlowVersionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowVersionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowVersionShrinkRequest) SetBizCode(v string) *CreateFlowVersionShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *CreateFlowVersionShrinkRequest) SetBizExtendShrink(v string) *CreateFlowVersionShrinkRequest {
+	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *CreateFlowVersionShrinkRequest) SetFlowCode(v string) *CreateFlowVersionShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *CreateFlowVersionShrinkRequest) SetFlowVersionCopyFrom(v string) *CreateFlowVersionShrinkRequest {
+	s.FlowVersionCopyFrom = &v
+	return s
+}
+
+func (s *CreateFlowVersionShrinkRequest) SetOwnerId(v int64) *CreateFlowVersionShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateFlowVersionShrinkRequest) SetRemark(v string) *CreateFlowVersionShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateFlowVersionShrinkRequest) SetResourceOwnerAccount(v string) *CreateFlowVersionShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateFlowVersionShrinkRequest) SetResourceOwnerId(v int64) *CreateFlowVersionShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateFlowVersionResponseBody struct {
+	// Details of access denial; this field is only returned when RAM verification fails.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Request status code.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Content of the returned data.
+	//
+	// example:
+	//
+	// 无
+	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
+	// Indicates whether the operation was successful. Values: true for success, false for failure.
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateFlowVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowVersionResponseBody) SetAccessDeniedDetail(v string) *CreateFlowVersionResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreateFlowVersionResponseBody) SetCode(v string) *CreateFlowVersionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateFlowVersionResponseBody) SetMessage(v string) *CreateFlowVersionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateFlowVersionResponseBody) SetRequestId(v string) *CreateFlowVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFlowVersionResponseBody) SetResponse(v map[string]interface{}) *CreateFlowVersionResponseBody {
+	s.Response = v
+	return s
+}
+
+func (s *CreateFlowVersionResponseBody) SetSuccess(v bool) *CreateFlowVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateFlowVersionResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFlowVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateFlowVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowVersionResponse) SetHeaders(v map[string]*string) *CreateFlowVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFlowVersionResponse) SetStatusCode(v int32) *CreateFlowVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFlowVersionResponse) SetBody(v *CreateFlowVersionResponseBody) *CreateFlowVersionResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePhoneMessageQrdlRequest struct {
 	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
@@ -4799,6 +4671,236 @@ func (s *CreatePhoneMessageQrdlResponse) SetStatusCode(v int32) *CreatePhoneMess
 }
 
 func (s *CreatePhoneMessageQrdlResponse) SetBody(v *CreatePhoneMessageQrdlResponseBody) *CreatePhoneMessageQrdlResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteChatFlowRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Process code.
+	//
+	// example:
+	//
+	// 示例值
+	FlowCode             *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteChatFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatFlowRequest) SetBizCode(v string) *DeleteChatFlowRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *DeleteChatFlowRequest) SetBizExtend(v map[string]interface{}) *DeleteChatFlowRequest {
+	s.BizExtend = v
+	return s
+}
+
+func (s *DeleteChatFlowRequest) SetFlowCode(v string) *DeleteChatFlowRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *DeleteChatFlowRequest) SetOwnerId(v int64) *DeleteChatFlowRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteChatFlowRequest) SetResourceOwnerAccount(v string) *DeleteChatFlowRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteChatFlowRequest) SetResourceOwnerId(v int64) *DeleteChatFlowRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteChatFlowShrinkRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Process code.
+	//
+	// example:
+	//
+	// 示例值
+	FlowCode             *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteChatFlowShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatFlowShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatFlowShrinkRequest) SetBizCode(v string) *DeleteChatFlowShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *DeleteChatFlowShrinkRequest) SetBizExtendShrink(v string) *DeleteChatFlowShrinkRequest {
+	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *DeleteChatFlowShrinkRequest) SetFlowCode(v string) *DeleteChatFlowShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *DeleteChatFlowShrinkRequest) SetOwnerId(v int64) *DeleteChatFlowShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteChatFlowShrinkRequest) SetResourceOwnerAccount(v string) *DeleteChatFlowShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteChatFlowShrinkRequest) SetResourceOwnerId(v int64) *DeleteChatFlowShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteChatFlowResponseBody struct {
+	// Access denied details, this field is returned only when RAM verification fails.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Error code
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request ID.
+	//
+	// example:
+	//
+	// 示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Response data
+	//
+	// example:
+	//
+	// 无
+	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
+	// Whether the call was successful.
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteChatFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatFlowResponseBody) SetAccessDeniedDetail(v string) *DeleteChatFlowResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteChatFlowResponseBody) SetCode(v string) *DeleteChatFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteChatFlowResponseBody) SetMessage(v string) *DeleteChatFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteChatFlowResponseBody) SetRequestId(v string) *DeleteChatFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteChatFlowResponseBody) SetResponse(v map[string]interface{}) *DeleteChatFlowResponseBody {
+	s.Response = v
+	return s
+}
+
+func (s *DeleteChatFlowResponseBody) SetSuccess(v bool) *DeleteChatFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteChatFlowResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteChatFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteChatFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteChatFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteChatFlowResponse) SetHeaders(v map[string]*string) *DeleteChatFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteChatFlowResponse) SetStatusCode(v int32) *DeleteChatFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteChatFlowResponse) SetBody(v *DeleteChatFlowResponseBody) *DeleteChatFlowResponse {
 	s.Body = v
 	return s
 }
@@ -5711,6 +5813,258 @@ func (s *DeleteFlowResponse) SetBody(v *DeleteFlowResponseBody) *DeleteFlowRespo
 	return s
 }
 
+type DeleteFlowVersionRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 1
+	FlowVersion          *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteFlowVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFlowVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFlowVersionRequest) SetBizCode(v string) *DeleteFlowVersionRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *DeleteFlowVersionRequest) SetBizExtend(v map[string]interface{}) *DeleteFlowVersionRequest {
+	s.BizExtend = v
+	return s
+}
+
+func (s *DeleteFlowVersionRequest) SetFlowCode(v string) *DeleteFlowVersionRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *DeleteFlowVersionRequest) SetFlowVersion(v string) *DeleteFlowVersionRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *DeleteFlowVersionRequest) SetOwnerId(v int64) *DeleteFlowVersionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteFlowVersionRequest) SetResourceOwnerAccount(v string) *DeleteFlowVersionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteFlowVersionRequest) SetResourceOwnerId(v int64) *DeleteFlowVersionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteFlowVersionShrinkRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 1
+	FlowVersion          *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteFlowVersionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFlowVersionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFlowVersionShrinkRequest) SetBizCode(v string) *DeleteFlowVersionShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *DeleteFlowVersionShrinkRequest) SetBizExtendShrink(v string) *DeleteFlowVersionShrinkRequest {
+	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *DeleteFlowVersionShrinkRequest) SetFlowCode(v string) *DeleteFlowVersionShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *DeleteFlowVersionShrinkRequest) SetFlowVersion(v string) *DeleteFlowVersionShrinkRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *DeleteFlowVersionShrinkRequest) SetOwnerId(v int64) *DeleteFlowVersionShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteFlowVersionShrinkRequest) SetResourceOwnerAccount(v string) *DeleteFlowVersionShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteFlowVersionShrinkRequest) SetResourceOwnerId(v int64) *DeleteFlowVersionShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteFlowVersionResponseBody struct {
+	// Detailed reason for access denial.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Content of the returned data.
+	//
+	// example:
+	//
+	// 无
+	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
+	// Indicates whether the operation was successful. Values: true: success; false: failure.
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteFlowVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFlowVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFlowVersionResponseBody) SetAccessDeniedDetail(v string) *DeleteFlowVersionResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteFlowVersionResponseBody) SetCode(v string) *DeleteFlowVersionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteFlowVersionResponseBody) SetMessage(v string) *DeleteFlowVersionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteFlowVersionResponseBody) SetRequestId(v string) *DeleteFlowVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFlowVersionResponseBody) SetResponse(v map[string]interface{}) *DeleteFlowVersionResponseBody {
+	s.Response = v
+	return s
+}
+
+func (s *DeleteFlowVersionResponseBody) SetSuccess(v bool) *DeleteFlowVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteFlowVersionResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFlowVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteFlowVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFlowVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFlowVersionResponse) SetHeaders(v map[string]*string) *DeleteFlowVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFlowVersionResponse) SetStatusCode(v int32) *DeleteFlowVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFlowVersionResponse) SetBody(v *DeleteFlowVersionResponseBody) *DeleteFlowVersionResponse {
+	s.Body = v
+	return s
+}
+
 type DeletePhoneMessageQrdlRequest struct {
 	// The space ID of the RAM user within the independent software vendor (ISV) account.
 	//
@@ -6057,6 +6411,1350 @@ func (s *EnableWhatsappROIMetricResponse) SetStatusCode(v int32) *EnableWhatsapp
 }
 
 func (s *EnableWhatsappROIMetricResponse) SetBody(v *EnableWhatsappROIMetricResponseBody) *EnableWhatsappROIMetricResponse {
+	s.Body = v
+	return s
+}
+
+type FlowBindPhoneRequest struct {
+	// Message channel Code
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	ChannelCode *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
+	// Message channel Type
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// Flow code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 1
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Phone numbers or PageIds under the channel instance, etc.
+	PhoneNumbers         []*string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// WABA account ID, or PageId for other channel types, etc.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
+}
+
+func (s FlowBindPhoneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlowBindPhoneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FlowBindPhoneRequest) SetChannelCode(v string) *FlowBindPhoneRequest {
+	s.ChannelCode = &v
+	return s
+}
+
+func (s *FlowBindPhoneRequest) SetChannelType(v string) *FlowBindPhoneRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *FlowBindPhoneRequest) SetFlowCode(v string) *FlowBindPhoneRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *FlowBindPhoneRequest) SetFlowVersion(v string) *FlowBindPhoneRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *FlowBindPhoneRequest) SetOwnerId(v int64) *FlowBindPhoneRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *FlowBindPhoneRequest) SetPhoneNumbers(v []*string) *FlowBindPhoneRequest {
+	s.PhoneNumbers = v
+	return s
+}
+
+func (s *FlowBindPhoneRequest) SetResourceOwnerAccount(v string) *FlowBindPhoneRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *FlowBindPhoneRequest) SetResourceOwnerId(v int64) *FlowBindPhoneRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *FlowBindPhoneRequest) SetWabaId(v string) *FlowBindPhoneRequest {
+	s.WabaId = &v
+	return s
+}
+
+type FlowBindPhoneShrinkRequest struct {
+	// Message channel Code
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	ChannelCode *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
+	// Message channel Type
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// Flow code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 1
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Phone numbers or PageIds under the channel instance, etc.
+	PhoneNumbersShrink   *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// WABA account ID, or PageId for other channel types, etc.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
+}
+
+func (s FlowBindPhoneShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlowBindPhoneShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FlowBindPhoneShrinkRequest) SetChannelCode(v string) *FlowBindPhoneShrinkRequest {
+	s.ChannelCode = &v
+	return s
+}
+
+func (s *FlowBindPhoneShrinkRequest) SetChannelType(v string) *FlowBindPhoneShrinkRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *FlowBindPhoneShrinkRequest) SetFlowCode(v string) *FlowBindPhoneShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *FlowBindPhoneShrinkRequest) SetFlowVersion(v string) *FlowBindPhoneShrinkRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *FlowBindPhoneShrinkRequest) SetOwnerId(v int64) *FlowBindPhoneShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *FlowBindPhoneShrinkRequest) SetPhoneNumbersShrink(v string) *FlowBindPhoneShrinkRequest {
+	s.PhoneNumbersShrink = &v
+	return s
+}
+
+func (s *FlowBindPhoneShrinkRequest) SetResourceOwnerAccount(v string) *FlowBindPhoneShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *FlowBindPhoneShrinkRequest) SetResourceOwnerId(v int64) *FlowBindPhoneShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *FlowBindPhoneShrinkRequest) SetWabaId(v string) *FlowBindPhoneShrinkRequest {
+	s.WabaId = &v
+	return s
+}
+
+type FlowBindPhoneResponseBody struct {
+	// Details of access denial; this field is returned only when RAM verification fails.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error description message.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Return result.
+	//
+	// example:
+	//
+	// false
+	Model *bool `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Values: true: success; false: failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s FlowBindPhoneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlowBindPhoneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FlowBindPhoneResponseBody) SetAccessDeniedDetail(v string) *FlowBindPhoneResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *FlowBindPhoneResponseBody) SetCode(v string) *FlowBindPhoneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FlowBindPhoneResponseBody) SetMessage(v string) *FlowBindPhoneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FlowBindPhoneResponseBody) SetModel(v bool) *FlowBindPhoneResponseBody {
+	s.Model = &v
+	return s
+}
+
+func (s *FlowBindPhoneResponseBody) SetRequestId(v string) *FlowBindPhoneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FlowBindPhoneResponseBody) SetSuccess(v bool) *FlowBindPhoneResponseBody {
+	s.Success = &v
+	return s
+}
+
+type FlowBindPhoneResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FlowBindPhoneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s FlowBindPhoneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlowBindPhoneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FlowBindPhoneResponse) SetHeaders(v map[string]*string) *FlowBindPhoneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FlowBindPhoneResponse) SetStatusCode(v int32) *FlowBindPhoneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FlowBindPhoneResponse) SetBody(v *FlowBindPhoneResponseBody) *FlowBindPhoneResponse {
+	s.Body = v
+	return s
+}
+
+type FlowRebindPhoneRequest struct {
+	// Message channel code
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	ChannelCode *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
+	// Message channel type
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// Flow code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 示例值
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Phone numbers or PageIds under the channel instance, etc.
+	PhoneNumbers         []*string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// WABA account ID, or PageId for other channel types, etc.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
+}
+
+func (s FlowRebindPhoneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlowRebindPhoneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FlowRebindPhoneRequest) SetChannelCode(v string) *FlowRebindPhoneRequest {
+	s.ChannelCode = &v
+	return s
+}
+
+func (s *FlowRebindPhoneRequest) SetChannelType(v string) *FlowRebindPhoneRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *FlowRebindPhoneRequest) SetFlowCode(v string) *FlowRebindPhoneRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *FlowRebindPhoneRequest) SetFlowVersion(v string) *FlowRebindPhoneRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *FlowRebindPhoneRequest) SetOwnerId(v int64) *FlowRebindPhoneRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *FlowRebindPhoneRequest) SetPhoneNumbers(v []*string) *FlowRebindPhoneRequest {
+	s.PhoneNumbers = v
+	return s
+}
+
+func (s *FlowRebindPhoneRequest) SetResourceOwnerAccount(v string) *FlowRebindPhoneRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *FlowRebindPhoneRequest) SetResourceOwnerId(v int64) *FlowRebindPhoneRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *FlowRebindPhoneRequest) SetWabaId(v string) *FlowRebindPhoneRequest {
+	s.WabaId = &v
+	return s
+}
+
+type FlowRebindPhoneShrinkRequest struct {
+	// Message channel code
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	ChannelCode *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
+	// Message channel type
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// Flow code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 示例值
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Phone numbers or PageIds under the channel instance, etc.
+	PhoneNumbersShrink   *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// WABA account ID, or PageId for other channel types, etc.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
+}
+
+func (s FlowRebindPhoneShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlowRebindPhoneShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FlowRebindPhoneShrinkRequest) SetChannelCode(v string) *FlowRebindPhoneShrinkRequest {
+	s.ChannelCode = &v
+	return s
+}
+
+func (s *FlowRebindPhoneShrinkRequest) SetChannelType(v string) *FlowRebindPhoneShrinkRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *FlowRebindPhoneShrinkRequest) SetFlowCode(v string) *FlowRebindPhoneShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *FlowRebindPhoneShrinkRequest) SetFlowVersion(v string) *FlowRebindPhoneShrinkRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *FlowRebindPhoneShrinkRequest) SetOwnerId(v int64) *FlowRebindPhoneShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *FlowRebindPhoneShrinkRequest) SetPhoneNumbersShrink(v string) *FlowRebindPhoneShrinkRequest {
+	s.PhoneNumbersShrink = &v
+	return s
+}
+
+func (s *FlowRebindPhoneShrinkRequest) SetResourceOwnerAccount(v string) *FlowRebindPhoneShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *FlowRebindPhoneShrinkRequest) SetResourceOwnerId(v int64) *FlowRebindPhoneShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *FlowRebindPhoneShrinkRequest) SetWabaId(v string) *FlowRebindPhoneShrinkRequest {
+	s.WabaId = &v
+	return s
+}
+
+type FlowRebindPhoneResponseBody struct {
+	// Access denied details.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request result data.
+	//
+	// example:
+	//
+	// false
+	Model *bool `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the operation was successful. Values: true: success; false: failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s FlowRebindPhoneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlowRebindPhoneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FlowRebindPhoneResponseBody) SetAccessDeniedDetail(v string) *FlowRebindPhoneResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *FlowRebindPhoneResponseBody) SetCode(v string) *FlowRebindPhoneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FlowRebindPhoneResponseBody) SetMessage(v string) *FlowRebindPhoneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FlowRebindPhoneResponseBody) SetModel(v bool) *FlowRebindPhoneResponseBody {
+	s.Model = &v
+	return s
+}
+
+func (s *FlowRebindPhoneResponseBody) SetRequestId(v string) *FlowRebindPhoneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FlowRebindPhoneResponseBody) SetSuccess(v bool) *FlowRebindPhoneResponseBody {
+	s.Success = &v
+	return s
+}
+
+type FlowRebindPhoneResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FlowRebindPhoneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s FlowRebindPhoneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlowRebindPhoneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FlowRebindPhoneResponse) SetHeaders(v map[string]*string) *FlowRebindPhoneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FlowRebindPhoneResponse) SetStatusCode(v int32) *FlowRebindPhoneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FlowRebindPhoneResponse) SetBody(v *FlowRebindPhoneResponseBody) *FlowRebindPhoneResponse {
+	s.Body = v
+	return s
+}
+
+type FlowUnbindPhoneRequest struct {
+	// Message channel type
+	//
+	// example:
+	//
+	// 示例值示例值
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// Flow code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Phone numbers or PageIds under the channel instance, etc.
+	PhoneNumbers         []*string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s FlowUnbindPhoneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlowUnbindPhoneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FlowUnbindPhoneRequest) SetChannelType(v string) *FlowUnbindPhoneRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneRequest) SetFlowCode(v string) *FlowUnbindPhoneRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneRequest) SetFlowVersion(v string) *FlowUnbindPhoneRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneRequest) SetOwnerId(v int64) *FlowUnbindPhoneRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneRequest) SetPhoneNumbers(v []*string) *FlowUnbindPhoneRequest {
+	s.PhoneNumbers = v
+	return s
+}
+
+func (s *FlowUnbindPhoneRequest) SetResourceOwnerAccount(v string) *FlowUnbindPhoneRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneRequest) SetResourceOwnerId(v int64) *FlowUnbindPhoneRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type FlowUnbindPhoneShrinkRequest struct {
+	// Message channel type
+	//
+	// example:
+	//
+	// 示例值示例值
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// Flow code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Phone numbers or PageIds under the channel instance, etc.
+	PhoneNumbersShrink   *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s FlowUnbindPhoneShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlowUnbindPhoneShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FlowUnbindPhoneShrinkRequest) SetChannelType(v string) *FlowUnbindPhoneShrinkRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneShrinkRequest) SetFlowCode(v string) *FlowUnbindPhoneShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneShrinkRequest) SetFlowVersion(v string) *FlowUnbindPhoneShrinkRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneShrinkRequest) SetOwnerId(v int64) *FlowUnbindPhoneShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneShrinkRequest) SetPhoneNumbersShrink(v string) *FlowUnbindPhoneShrinkRequest {
+	s.PhoneNumbersShrink = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneShrinkRequest) SetResourceOwnerAccount(v string) *FlowUnbindPhoneShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneShrinkRequest) SetResourceOwnerId(v int64) *FlowUnbindPhoneShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type FlowUnbindPhoneResponseBody struct {
+	// Access denied details, this field is returned only when RAM verification fails.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Request status code.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request result data.
+	//
+	// example:
+	//
+	// false
+	Model *bool `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Whether the operation was successful. Values: true: success; false: failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s FlowUnbindPhoneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlowUnbindPhoneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FlowUnbindPhoneResponseBody) SetAccessDeniedDetail(v string) *FlowUnbindPhoneResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneResponseBody) SetCode(v string) *FlowUnbindPhoneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneResponseBody) SetMessage(v string) *FlowUnbindPhoneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneResponseBody) SetModel(v bool) *FlowUnbindPhoneResponseBody {
+	s.Model = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneResponseBody) SetSuccess(v bool) *FlowUnbindPhoneResponseBody {
+	s.Success = &v
+	return s
+}
+
+type FlowUnbindPhoneResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FlowUnbindPhoneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s FlowUnbindPhoneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlowUnbindPhoneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FlowUnbindPhoneResponse) SetHeaders(v map[string]*string) *FlowUnbindPhoneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FlowUnbindPhoneResponse) SetStatusCode(v int32) *FlowUnbindPhoneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FlowUnbindPhoneResponse) SetBody(v *FlowUnbindPhoneResponseBody) *FlowUnbindPhoneResponse {
+	s.Body = v
+	return s
+}
+
+type GetChatFlowMetricRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version.
+	//
+	// example:
+	//
+	// 1
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	// Start timestamp in seconds.
+	//
+	// example:
+	//
+	// 1751299200
+	From *int64 `json:"From,omitempty" xml:"From,omitempty"`
+	// Metric name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nodeUsageStatistics
+	MetricName           *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// End timestamp in seconds.
+	//
+	// example:
+	//
+	// 1751385599
+	To *int64 `json:"To,omitempty" xml:"To,omitempty"`
+}
+
+func (s GetChatFlowMetricRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatFlowMetricRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatFlowMetricRequest) SetBizCode(v string) *GetChatFlowMetricRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *GetChatFlowMetricRequest) SetBizExtend(v map[string]interface{}) *GetChatFlowMetricRequest {
+	s.BizExtend = v
+	return s
+}
+
+func (s *GetChatFlowMetricRequest) SetFlowCode(v string) *GetChatFlowMetricRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *GetChatFlowMetricRequest) SetFlowVersion(v string) *GetChatFlowMetricRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *GetChatFlowMetricRequest) SetFrom(v int64) *GetChatFlowMetricRequest {
+	s.From = &v
+	return s
+}
+
+func (s *GetChatFlowMetricRequest) SetMetricName(v string) *GetChatFlowMetricRequest {
+	s.MetricName = &v
+	return s
+}
+
+func (s *GetChatFlowMetricRequest) SetOwnerId(v int64) *GetChatFlowMetricRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetChatFlowMetricRequest) SetResourceOwnerAccount(v string) *GetChatFlowMetricRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetChatFlowMetricRequest) SetResourceOwnerId(v int64) *GetChatFlowMetricRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetChatFlowMetricRequest) SetTo(v int64) *GetChatFlowMetricRequest {
+	s.To = &v
+	return s
+}
+
+type GetChatFlowMetricShrinkRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version.
+	//
+	// example:
+	//
+	// 1
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	// Start timestamp in seconds.
+	//
+	// example:
+	//
+	// 1751299200
+	From *int64 `json:"From,omitempty" xml:"From,omitempty"`
+	// Metric name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nodeUsageStatistics
+	MetricName           *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// End timestamp in seconds.
+	//
+	// example:
+	//
+	// 1751385599
+	To *int64 `json:"To,omitempty" xml:"To,omitempty"`
+}
+
+func (s GetChatFlowMetricShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatFlowMetricShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatFlowMetricShrinkRequest) SetBizCode(v string) *GetChatFlowMetricShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *GetChatFlowMetricShrinkRequest) SetBizExtendShrink(v string) *GetChatFlowMetricShrinkRequest {
+	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *GetChatFlowMetricShrinkRequest) SetFlowCode(v string) *GetChatFlowMetricShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *GetChatFlowMetricShrinkRequest) SetFlowVersion(v string) *GetChatFlowMetricShrinkRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *GetChatFlowMetricShrinkRequest) SetFrom(v int64) *GetChatFlowMetricShrinkRequest {
+	s.From = &v
+	return s
+}
+
+func (s *GetChatFlowMetricShrinkRequest) SetMetricName(v string) *GetChatFlowMetricShrinkRequest {
+	s.MetricName = &v
+	return s
+}
+
+func (s *GetChatFlowMetricShrinkRequest) SetOwnerId(v int64) *GetChatFlowMetricShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetChatFlowMetricShrinkRequest) SetResourceOwnerAccount(v string) *GetChatFlowMetricShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetChatFlowMetricShrinkRequest) SetResourceOwnerId(v int64) *GetChatFlowMetricShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetChatFlowMetricShrinkRequest) SetTo(v int64) *GetChatFlowMetricShrinkRequest {
+	s.To = &v
+	return s
+}
+
+type GetChatFlowMetricResponseBody struct {
+	// Details of access denial.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data object.
+	//
+	// example:
+	//
+	// 无
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request ID.
+	//
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Values: true: success; false: failure.
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetChatFlowMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatFlowMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatFlowMetricResponseBody) SetAccessDeniedDetail(v string) *GetChatFlowMetricResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetChatFlowMetricResponseBody) SetCode(v string) *GetChatFlowMetricResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetChatFlowMetricResponseBody) SetData(v map[string]interface{}) *GetChatFlowMetricResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetChatFlowMetricResponseBody) SetMessage(v string) *GetChatFlowMetricResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetChatFlowMetricResponseBody) SetRequestId(v string) *GetChatFlowMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetChatFlowMetricResponseBody) SetSuccess(v bool) *GetChatFlowMetricResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetChatFlowMetricResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChatFlowMetricResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetChatFlowMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatFlowMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatFlowMetricResponse) SetHeaders(v map[string]*string) *GetChatFlowMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetChatFlowMetricResponse) SetStatusCode(v int32) *GetChatFlowMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetChatFlowMetricResponse) SetBody(v *GetChatFlowMetricResponseBody) *GetChatFlowMetricResponse {
+	s.Body = v
+	return s
+}
+
+type GetChatFlowTemplateRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Template ID
+	//
+	// example:
+	//
+	// 2
+	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetChatFlowTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatFlowTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatFlowTemplateRequest) SetBizCode(v string) *GetChatFlowTemplateRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *GetChatFlowTemplateRequest) SetId(v int64) *GetChatFlowTemplateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetChatFlowTemplateRequest) SetOwnerId(v int64) *GetChatFlowTemplateRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetChatFlowTemplateRequest) SetResourceOwnerAccount(v string) *GetChatFlowTemplateRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetChatFlowTemplateRequest) SetResourceOwnerId(v int64) *GetChatFlowTemplateRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetChatFlowTemplateResponseBody struct {
+	// Access denied details, this field is returned only when RAM verification fails.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// System returned error code. For more details on error codes, please refer to the error code documentation.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
+	Data *GetChatFlowTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request ID.
+	//
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Values: true: success; false: failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetChatFlowTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatFlowTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatFlowTemplateResponseBody) SetAccessDeniedDetail(v string) *GetChatFlowTemplateResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetChatFlowTemplateResponseBody) SetCode(v string) *GetChatFlowTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetChatFlowTemplateResponseBody) SetData(v *GetChatFlowTemplateResponseBodyData) *GetChatFlowTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetChatFlowTemplateResponseBody) SetMessage(v string) *GetChatFlowTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetChatFlowTemplateResponseBody) SetRequestId(v string) *GetChatFlowTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetChatFlowTemplateResponseBody) SetSuccess(v bool) *GetChatFlowTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetChatFlowTemplateResponseBodyData struct {
+	// Content of the returned data.
+	//
+	// example:
+	//
+	// 无
+	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
+}
+
+func (s GetChatFlowTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatFlowTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatFlowTemplateResponseBodyData) SetResponse(v map[string]interface{}) *GetChatFlowTemplateResponseBodyData {
+	s.Response = v
+	return s
+}
+
+type GetChatFlowTemplateResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChatFlowTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetChatFlowTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatFlowTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatFlowTemplateResponse) SetHeaders(v map[string]*string) *GetChatFlowTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetChatFlowTemplateResponse) SetStatusCode(v int32) *GetChatFlowTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetChatFlowTemplateResponse) SetBody(v *GetChatFlowTemplateResponseBody) *GetChatFlowTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -8010,6 +9708,11 @@ func (s *GetChatappVerifyCodeRequest) SetResourceOwnerId(v int64) *GetChatappVer
 }
 
 type GetChatappVerifyCodeResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
@@ -8033,6 +9736,12 @@ type GetChatappVerifyCodeResponseBody struct {
 	//
 	// 1612C226-E271-4CFE-9F18-4066D550F91B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// 	- **true**: The call was successful.
+	//
+	// 	- **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -10654,6 +12363,725 @@ func (s *IsvGetAppIdResponse) SetBody(v *IsvGetAppIdResponseBody) *IsvGetAppIdRe
 	return s
 }
 
+type ListBindingRelationsForFlowVersionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// WHATSAPP
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode             *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListBindingRelationsForFlowVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBindingRelationsForFlowVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBindingRelationsForFlowVersionRequest) SetChannelType(v string) *ListBindingRelationsForFlowVersionRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *ListBindingRelationsForFlowVersionRequest) SetFlowCode(v string) *ListBindingRelationsForFlowVersionRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *ListBindingRelationsForFlowVersionRequest) SetOwnerId(v int64) *ListBindingRelationsForFlowVersionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListBindingRelationsForFlowVersionRequest) SetResourceOwnerAccount(v string) *ListBindingRelationsForFlowVersionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListBindingRelationsForFlowVersionRequest) SetResourceOwnerId(v int64) *ListBindingRelationsForFlowVersionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListBindingRelationsForFlowVersionResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Code *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListBindingRelationsForFlowVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBindingRelationsForFlowVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBindingRelationsForFlowVersionResponseBody) SetAccessDeniedDetail(v string) *ListBindingRelationsForFlowVersionResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListBindingRelationsForFlowVersionResponseBody) SetCode(v string) *ListBindingRelationsForFlowVersionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListBindingRelationsForFlowVersionResponseBody) SetData(v []map[string]interface{}) *ListBindingRelationsForFlowVersionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListBindingRelationsForFlowVersionResponseBody) SetMessage(v string) *ListBindingRelationsForFlowVersionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListBindingRelationsForFlowVersionResponseBody) SetRequestId(v string) *ListBindingRelationsForFlowVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBindingRelationsForFlowVersionResponseBody) SetSuccess(v bool) *ListBindingRelationsForFlowVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListBindingRelationsForFlowVersionResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListBindingRelationsForFlowVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListBindingRelationsForFlowVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBindingRelationsForFlowVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBindingRelationsForFlowVersionResponse) SetHeaders(v map[string]*string) *ListBindingRelationsForFlowVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBindingRelationsForFlowVersionResponse) SetStatusCode(v int32) *ListBindingRelationsForFlowVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBindingRelationsForFlowVersionResponse) SetBody(v *ListBindingRelationsForFlowVersionResponseBody) *ListBindingRelationsForFlowVersionResponse {
+	s.Body = v
+	return s
+}
+
+type ListChatFlowRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow trigger type, enum values:
+	//
+	// - TriggeredManually
+	//
+	// - TriggeredByWhatsApp
+	//
+	// - TriggeredByInstagram
+	//
+	// - TriggeredByViber
+	//
+	// - TriggeredByMessenger
+	//
+	// example:
+	//
+	// 示例值
+	FlowTriggerType *string `json:"FlowTriggerType,omitempty" xml:"FlowTriggerType,omitempty"`
+	// Search keyword.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Page number
+	//
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Page size.
+	//
+	// example:
+	//
+	// 20
+	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Whether to return the online status
+	//
+	// example:
+	//
+	// true
+	ReturnWithOnlineVersion *bool `json:"ReturnWithOnlineVersion,omitempty" xml:"ReturnWithOnlineVersion,omitempty"`
+	// Flow status
+	//
+	// example:
+	//
+	// NORMAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListChatFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatFlowRequest) SetBizCode(v string) *ListChatFlowRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *ListChatFlowRequest) SetBizExtend(v map[string]interface{}) *ListChatFlowRequest {
+	s.BizExtend = v
+	return s
+}
+
+func (s *ListChatFlowRequest) SetFlowTriggerType(v string) *ListChatFlowRequest {
+	s.FlowTriggerType = &v
+	return s
+}
+
+func (s *ListChatFlowRequest) SetKeyword(v string) *ListChatFlowRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListChatFlowRequest) SetOwnerId(v int64) *ListChatFlowRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListChatFlowRequest) SetPageNo(v int64) *ListChatFlowRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListChatFlowRequest) SetPageSize(v int64) *ListChatFlowRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListChatFlowRequest) SetResourceOwnerAccount(v string) *ListChatFlowRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListChatFlowRequest) SetResourceOwnerId(v int64) *ListChatFlowRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListChatFlowRequest) SetReturnWithOnlineVersion(v bool) *ListChatFlowRequest {
+	s.ReturnWithOnlineVersion = &v
+	return s
+}
+
+func (s *ListChatFlowRequest) SetStatus(v string) *ListChatFlowRequest {
+	s.Status = &v
+	return s
+}
+
+type ListChatFlowShrinkRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow trigger type, enum values:
+	//
+	// - TriggeredManually
+	//
+	// - TriggeredByWhatsApp
+	//
+	// - TriggeredByInstagram
+	//
+	// - TriggeredByViber
+	//
+	// - TriggeredByMessenger
+	//
+	// example:
+	//
+	// 示例值
+	FlowTriggerType *string `json:"FlowTriggerType,omitempty" xml:"FlowTriggerType,omitempty"`
+	// Search keyword.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Page number
+	//
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Page size.
+	//
+	// example:
+	//
+	// 20
+	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Whether to return the online status
+	//
+	// example:
+	//
+	// true
+	ReturnWithOnlineVersion *bool `json:"ReturnWithOnlineVersion,omitempty" xml:"ReturnWithOnlineVersion,omitempty"`
+	// Flow status
+	//
+	// example:
+	//
+	// NORMAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListChatFlowShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatFlowShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatFlowShrinkRequest) SetBizCode(v string) *ListChatFlowShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *ListChatFlowShrinkRequest) SetBizExtendShrink(v string) *ListChatFlowShrinkRequest {
+	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *ListChatFlowShrinkRequest) SetFlowTriggerType(v string) *ListChatFlowShrinkRequest {
+	s.FlowTriggerType = &v
+	return s
+}
+
+func (s *ListChatFlowShrinkRequest) SetKeyword(v string) *ListChatFlowShrinkRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListChatFlowShrinkRequest) SetOwnerId(v int64) *ListChatFlowShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListChatFlowShrinkRequest) SetPageNo(v int64) *ListChatFlowShrinkRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListChatFlowShrinkRequest) SetPageSize(v int64) *ListChatFlowShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListChatFlowShrinkRequest) SetResourceOwnerAccount(v string) *ListChatFlowShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListChatFlowShrinkRequest) SetResourceOwnerId(v int64) *ListChatFlowShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListChatFlowShrinkRequest) SetReturnWithOnlineVersion(v bool) *ListChatFlowShrinkRequest {
+	s.ReturnWithOnlineVersion = &v
+	return s
+}
+
+func (s *ListChatFlowShrinkRequest) SetStatus(v string) *ListChatFlowShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+type ListChatFlowResponseBody struct {
+	// Access denied details, this field is returned only when RAM verification fails.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// System error code. For more details on error codes, please refer to the error code documentation.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Response data
+	//
+	// example:
+	//
+	// 无
+	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
+	// Whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListChatFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatFlowResponseBody) SetAccessDeniedDetail(v string) *ListChatFlowResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListChatFlowResponseBody) SetCode(v string) *ListChatFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListChatFlowResponseBody) SetMessage(v string) *ListChatFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListChatFlowResponseBody) SetRequestId(v string) *ListChatFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListChatFlowResponseBody) SetResponse(v map[string]interface{}) *ListChatFlowResponseBody {
+	s.Response = v
+	return s
+}
+
+func (s *ListChatFlowResponseBody) SetSuccess(v bool) *ListChatFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListChatFlowResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChatFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListChatFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatFlowResponse) SetHeaders(v map[string]*string) *ListChatFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListChatFlowResponse) SetStatusCode(v int32) *ListChatFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListChatFlowResponse) SetBody(v *ListChatFlowResponseBody) *ListChatFlowResponse {
+	s.Body = v
+	return s
+}
+
+type ListChatFlowTemplateRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Search keyword.
+	//
+	// example:
+	//
+	// LLM
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Page number
+	//
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Number of records per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Trigger type, with the following enum values:
+	//
+	// - TriggeredManually
+	//
+	// - TriggeredByWhatsApp
+	//
+	// - TriggeredByInstagram
+	//
+	// - TriggeredByViber
+	//
+	// - TriggeredByMessenger
+	//
+	// example:
+	//
+	// TriggeredByWhatsApp
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s ListChatFlowTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatFlowTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatFlowTemplateRequest) SetBizCode(v string) *ListChatFlowTemplateRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *ListChatFlowTemplateRequest) SetKeyword(v string) *ListChatFlowTemplateRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListChatFlowTemplateRequest) SetOwnerId(v int64) *ListChatFlowTemplateRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListChatFlowTemplateRequest) SetPageNo(v int64) *ListChatFlowTemplateRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListChatFlowTemplateRequest) SetPageSize(v int64) *ListChatFlowTemplateRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListChatFlowTemplateRequest) SetResourceOwnerAccount(v string) *ListChatFlowTemplateRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListChatFlowTemplateRequest) SetResourceOwnerId(v int64) *ListChatFlowTemplateRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListChatFlowTemplateRequest) SetTriggerType(v string) *ListChatFlowTemplateRequest {
+	s.TriggerType = &v
+	return s
+}
+
+type ListChatFlowTemplateResponseBody struct {
+	// Access denied details.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data object.
+	Data *ListChatFlowTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Values: true: success; false: failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListChatFlowTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatFlowTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatFlowTemplateResponseBody) SetAccessDeniedDetail(v string) *ListChatFlowTemplateResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListChatFlowTemplateResponseBody) SetCode(v string) *ListChatFlowTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListChatFlowTemplateResponseBody) SetData(v *ListChatFlowTemplateResponseBodyData) *ListChatFlowTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListChatFlowTemplateResponseBody) SetMessage(v string) *ListChatFlowTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListChatFlowTemplateResponseBody) SetRequestId(v string) *ListChatFlowTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListChatFlowTemplateResponseBody) SetSuccess(v bool) *ListChatFlowTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListChatFlowTemplateResponseBodyData struct {
+	// Content of the returned data.
+	//
+	// example:
+	//
+	// 无
+	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
+}
+
+func (s ListChatFlowTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatFlowTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatFlowTemplateResponseBodyData) SetResponse(v map[string]interface{}) *ListChatFlowTemplateResponseBodyData {
+	s.Response = v
+	return s
+}
+
+type ListChatFlowTemplateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChatFlowTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListChatFlowTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatFlowTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatFlowTemplateResponse) SetHeaders(v map[string]*string) *ListChatFlowTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListChatFlowTemplateResponse) SetStatusCode(v int32) *ListChatFlowTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListChatFlowTemplateResponse) SetBody(v *ListChatFlowTemplateResponseBody) *ListChatFlowTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type ListChatGroupRequest struct {
 	// This parameter is required.
 	//
@@ -11363,13 +13791,13 @@ func (s *ListChatGroupParticipantsResponse) SetBody(v *ListChatGroupParticipants
 }
 
 type ListChatappTemplateRequest struct {
-	// The review status of the message template. Valid values:
+	// The review state of the template. Valid values:
 	//
-	// 	- **pass**: The message template is approved.
+	// 	- **pass**: The template is approved.
 	//
-	// 	- **fail**: The message template is rejected.
+	// 	- **fail**: The template is rejected.
 	//
-	// 	- **auditing**: The message template is being reviewed.
+	// 	- **auditing**: The template is being reviewed.
 	//
 	// 	- **unaudit**: The review is suspended.
 	//
@@ -11377,17 +13805,19 @@ type ListChatappTemplateRequest struct {
 	//
 	// pass
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// The category of the message template.
+	//
 	// example:
 	//
 	// AUTHENTICATION
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Template encoding.
+	// The code of the message template.
 	//
 	// example:
 	//
 	// 838888822*****
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The space ID of the user under the ISV account.
+	// The space ID of the RAM user within the ISV account.
 	//
 	// example:
 	//
@@ -11395,7 +13825,7 @@ type ListChatappTemplateRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
-	// The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+	// The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
 	//
@@ -11403,7 +13833,7 @@ type ListChatappTemplateRequest struct {
 	//
 	// 65921621816****
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	// The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
+	// The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
 	//
 	// example:
 	//
@@ -11415,7 +13845,7 @@ type ListChatappTemplateRequest struct {
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The name of the message template.
+	// The name of the template.
 	//
 	// example:
 	//
@@ -11435,8 +13865,6 @@ type ListChatappTemplateRequest struct {
 	// 	- **WHATSAPP**
 	//
 	// 	- **VIBER**
-	//
-	// 	- LINE: the Line message template. This type of message template will be released later.
 	//
 	// example:
 	//
@@ -11555,13 +13983,13 @@ func (s *ListChatappTemplateRequestPage) SetSize(v int32) *ListChatappTemplateRe
 }
 
 type ListChatappTemplateShrinkRequest struct {
-	// The review status of the message template. Valid values:
+	// The review state of the template. Valid values:
 	//
-	// 	- **pass**: The message template is approved.
+	// 	- **pass**: The template is approved.
 	//
-	// 	- **fail**: The message template is rejected.
+	// 	- **fail**: The template is rejected.
 	//
-	// 	- **auditing**: The message template is being reviewed.
+	// 	- **auditing**: The template is being reviewed.
 	//
 	// 	- **unaudit**: The review is suspended.
 	//
@@ -11569,17 +13997,19 @@ type ListChatappTemplateShrinkRequest struct {
 	//
 	// pass
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// The category of the message template.
+	//
 	// example:
 	//
 	// AUTHENTICATION
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Template encoding.
+	// The code of the message template.
 	//
 	// example:
 	//
 	// 838888822*****
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The space ID of the user under the ISV account.
+	// The space ID of the RAM user within the ISV account.
 	//
 	// example:
 	//
@@ -11587,7 +14017,7 @@ type ListChatappTemplateShrinkRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
-	// The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+	// The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
 	//
 	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
 	//
@@ -11595,7 +14025,7 @@ type ListChatappTemplateShrinkRequest struct {
 	//
 	// 65921621816****
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	// The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
+	// The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
 	//
 	// example:
 	//
@@ -11607,7 +14037,7 @@ type ListChatappTemplateShrinkRequest struct {
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The name of the message template.
+	// The name of the template.
 	//
 	// example:
 	//
@@ -11627,8 +14057,6 @@ type ListChatappTemplateShrinkRequest struct {
 	// 	- **WHATSAPP**
 	//
 	// 	- **VIBER**
-	//
-	// 	- LINE: the Line message template. This type of message template will be released later.
 	//
 	// example:
 	//
@@ -11726,7 +14154,7 @@ type ListChatappTemplateResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of the templates.
+	// The message templates.
 	ListTemplate []*ListChatappTemplateResponseBodyListTemplate `json:"ListTemplate,omitempty" xml:"ListTemplate,omitempty" type:"Repeated"`
 	// The error message returned.
 	//
@@ -11740,11 +14168,17 @@ type ListChatappTemplateResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -11796,13 +14230,13 @@ func (s *ListChatappTemplateResponseBody) SetTotal(v int32) *ListChatappTemplate
 }
 
 type ListChatappTemplateResponseBodyListTemplate struct {
-	// The review state of the message template. Valid values:
+	// The review state of the template. Valid values:
 	//
-	// 	- **pass**: The message template is approved.
+	// 	- **pass**: The template is approved.
 	//
-	// 	- **fail**: The message template is rejected.
+	// 	- **fail**: The template is rejected.
 	//
-	// 	- **auditing**: The message template is being reviewed.
+	// 	- **auditing**: The template is being reviewed.
 	//
 	// 	- **unaudit**: The review is suspended.
 	//
@@ -11810,33 +14244,33 @@ type ListChatappTemplateResponseBodyListTemplate struct {
 	//
 	// pass
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// The category of the WhatsApp template. Valid values:
+	// The category of the WhatsApp message template. Valid values:
 	//
-	// 	- **UTILITY**: utility template
+	// 	- **UTILITY**
 	//
-	// 	- **MARKETING**: marketing template
+	// 	- **MARKETING**
 	//
-	// 	- **AUTHENTICATION**: authentication template
+	// 	- **AUTHENTICATION**
 	//
 	// The category of the Viber template. Valid values:
 	//
 	// 	- **text**: template that contains only text
 	//
-	// 	- **image**: template that contains only an image
+	// 	- **image**: template that contains only images
 	//
-	// 	- **text_image_button**: template that contains text, an image, and a button
+	// 	- **text_image_button**: template that contains text, images, and buttons
 	//
-	// 	- **text_button**: template that contains text and a button
+	// 	- **text_button**: template that contains text and buttons
 	//
-	// 	- **document**: template that contains only a document
+	// 	- **document**: template that contains only documents
 	//
-	// 	- **video**: template that contains only a video
+	// 	- **video**: template that contains only videos
 	//
-	// 	- **text_video**: template that contains text and a video
+	// 	- **text_video**: template that contains text and videos
 	//
-	// 	- **text_video_button**: template that contains text, a video, and a button
+	// 	- **text_video_button**: template that contains text, videos, and buttons
 	//
-	// 	- **text_image**: template that contains text and an image
+	// 	- **text_image**: template that contains text and images
 	//
 	// example:
 	//
@@ -11854,7 +14288,7 @@ type ListChatappTemplateResponseBodyListTemplate struct {
 	//
 	// 1711006633000
 	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	// The reason for the review failure.
+	// The reason why the template was rejected.
 	//
 	// example:
 	//
@@ -12190,21 +14624,316 @@ func (s *ListFlowResponse) SetBody(v *ListFlowResponseBody) *ListFlowResponse {
 	return s
 }
 
-type ListPhoneMessageQrdlRequest struct {
-	// The space ID of the user within the independent software vendor (ISV) account.
+type ListFlowVersionRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
 	//
 	// example:
 	//
-	// 9383883
-	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The phone number. Add the country code before the phone number.
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
 	//
+	// example:
+	//
+	// {}
+	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Current page number.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Page size.
+	//
+	// example:
+	//
+	// 5
+	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Flow version status.
+	//
+	// example:
+	//
+	// DRAFT
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListFlowVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowVersionRequest) SetBizCode(v string) *ListFlowVersionRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *ListFlowVersionRequest) SetBizExtend(v map[string]interface{}) *ListFlowVersionRequest {
+	s.BizExtend = v
+	return s
+}
+
+func (s *ListFlowVersionRequest) SetFlowCode(v string) *ListFlowVersionRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *ListFlowVersionRequest) SetOwnerId(v int64) *ListFlowVersionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListFlowVersionRequest) SetPageNo(v int64) *ListFlowVersionRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListFlowVersionRequest) SetPageSize(v int64) *ListFlowVersionRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFlowVersionRequest) SetResourceOwnerAccount(v string) *ListFlowVersionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListFlowVersionRequest) SetResourceOwnerId(v int64) *ListFlowVersionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListFlowVersionRequest) SetStatus(v string) *ListFlowVersionRequest {
+	s.Status = &v
+	return s
+}
+
+type ListFlowVersionShrinkRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Current page number.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Page size.
+	//
+	// example:
+	//
+	// 5
+	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Flow version status.
+	//
+	// example:
+	//
+	// DRAFT
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListFlowVersionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowVersionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowVersionShrinkRequest) SetBizCode(v string) *ListFlowVersionShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *ListFlowVersionShrinkRequest) SetBizExtendShrink(v string) *ListFlowVersionShrinkRequest {
+	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *ListFlowVersionShrinkRequest) SetFlowCode(v string) *ListFlowVersionShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *ListFlowVersionShrinkRequest) SetOwnerId(v int64) *ListFlowVersionShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListFlowVersionShrinkRequest) SetPageNo(v int64) *ListFlowVersionShrinkRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListFlowVersionShrinkRequest) SetPageSize(v int64) *ListFlowVersionShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFlowVersionShrinkRequest) SetResourceOwnerAccount(v string) *ListFlowVersionShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListFlowVersionShrinkRequest) SetResourceOwnerId(v int64) *ListFlowVersionShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListFlowVersionShrinkRequest) SetStatus(v string) *ListFlowVersionShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+type ListFlowVersionResponseBody struct {
+	// Details of access denied.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Content of the returned data.
+	//
+	// example:
+	//
+	// 无
+	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
+	// Whether the operation was successful. Values: true: success; false: failure.
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListFlowVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowVersionResponseBody) SetAccessDeniedDetail(v string) *ListFlowVersionResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListFlowVersionResponseBody) SetCode(v string) *ListFlowVersionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListFlowVersionResponseBody) SetMessage(v string) *ListFlowVersionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListFlowVersionResponseBody) SetRequestId(v string) *ListFlowVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFlowVersionResponseBody) SetResponse(v map[string]interface{}) *ListFlowVersionResponseBody {
+	s.Response = v
+	return s
+}
+
+func (s *ListFlowVersionResponseBody) SetSuccess(v bool) *ListFlowVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListFlowVersionResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFlowVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListFlowVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowVersionResponse) SetHeaders(v map[string]*string) *ListFlowVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFlowVersionResponse) SetStatusCode(v int32) *ListFlowVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFlowVersionResponse) SetBody(v *ListFlowVersionResponseBody) *ListFlowVersionResponse {
+	s.Body = v
+	return s
+}
+
+type ListPhoneMessageQrdlRequest struct {
+	// example:
+	//
+	// 示例值
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 861380000
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// 示例值
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ListPhoneMessageQrdlRequest) String() string {
@@ -12220,12 +14949,28 @@ func (s *ListPhoneMessageQrdlRequest) SetCustSpaceId(v string) *ListPhoneMessage
 	return s
 }
 
+func (s *ListPhoneMessageQrdlRequest) SetOwnerId(v int64) *ListPhoneMessageQrdlRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *ListPhoneMessageQrdlRequest) SetPhoneNumber(v string) *ListPhoneMessageQrdlRequest {
 	s.PhoneNumber = &v
 	return s
 }
 
+func (s *ListPhoneMessageQrdlRequest) SetResourceOwnerAccount(v string) *ListPhoneMessageQrdlRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListPhoneMessageQrdlRequest) SetResourceOwnerId(v int64) *ListPhoneMessageQrdlRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
 type ListPhoneMessageQrdlResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// If OK is returned, the request was successful.
 	//
 	// example:
@@ -12254,6 +14999,11 @@ func (s ListPhoneMessageQrdlResponseBody) String() string {
 
 func (s ListPhoneMessageQrdlResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListPhoneMessageQrdlResponseBody) SetAccessDeniedDetail(v string) *ListPhoneMessageQrdlResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *ListPhoneMessageQrdlResponseBody) SetCode(v string) *ListPhoneMessageQrdlResponseBody {
@@ -14801,6 +17551,554 @@ func (s *ModifyPhoneBusinessProfileResponse) SetBody(v *ModifyPhoneBusinessProfi
 	return s
 }
 
+type OfflineFlowVersionRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 1
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Flow remarks
+	//
+	// example:
+	//
+	// We don\\"t need this old version.
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s OfflineFlowVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OfflineFlowVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OfflineFlowVersionRequest) SetBizCode(v string) *OfflineFlowVersionRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *OfflineFlowVersionRequest) SetBizExtend(v map[string]interface{}) *OfflineFlowVersionRequest {
+	s.BizExtend = v
+	return s
+}
+
+func (s *OfflineFlowVersionRequest) SetFlowCode(v string) *OfflineFlowVersionRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *OfflineFlowVersionRequest) SetFlowVersion(v string) *OfflineFlowVersionRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *OfflineFlowVersionRequest) SetOwnerId(v int64) *OfflineFlowVersionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *OfflineFlowVersionRequest) SetRemark(v string) *OfflineFlowVersionRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *OfflineFlowVersionRequest) SetResourceOwnerAccount(v string) *OfflineFlowVersionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *OfflineFlowVersionRequest) SetResourceOwnerId(v int64) *OfflineFlowVersionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type OfflineFlowVersionShrinkRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 1
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Flow remarks
+	//
+	// example:
+	//
+	// We don\\"t need this old version.
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s OfflineFlowVersionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OfflineFlowVersionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OfflineFlowVersionShrinkRequest) SetBizCode(v string) *OfflineFlowVersionShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *OfflineFlowVersionShrinkRequest) SetBizExtendShrink(v string) *OfflineFlowVersionShrinkRequest {
+	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *OfflineFlowVersionShrinkRequest) SetFlowCode(v string) *OfflineFlowVersionShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *OfflineFlowVersionShrinkRequest) SetFlowVersion(v string) *OfflineFlowVersionShrinkRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *OfflineFlowVersionShrinkRequest) SetOwnerId(v int64) *OfflineFlowVersionShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *OfflineFlowVersionShrinkRequest) SetRemark(v string) *OfflineFlowVersionShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *OfflineFlowVersionShrinkRequest) SetResourceOwnerAccount(v string) *OfflineFlowVersionShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *OfflineFlowVersionShrinkRequest) SetResourceOwnerId(v int64) *OfflineFlowVersionShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type OfflineFlowVersionResponseBody struct {
+	// Access denied details; this field is only returned when RAM verification fails.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Content of the returned data.
+	//
+	// example:
+	//
+	// 无
+	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
+	// Indicates whether the operation was successful. true means success, false means failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s OfflineFlowVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OfflineFlowVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OfflineFlowVersionResponseBody) SetAccessDeniedDetail(v string) *OfflineFlowVersionResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *OfflineFlowVersionResponseBody) SetCode(v string) *OfflineFlowVersionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *OfflineFlowVersionResponseBody) SetMessage(v string) *OfflineFlowVersionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *OfflineFlowVersionResponseBody) SetRequestId(v string) *OfflineFlowVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OfflineFlowVersionResponseBody) SetResponse(v map[string]interface{}) *OfflineFlowVersionResponseBody {
+	s.Response = v
+	return s
+}
+
+func (s *OfflineFlowVersionResponseBody) SetSuccess(v bool) *OfflineFlowVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type OfflineFlowVersionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OfflineFlowVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s OfflineFlowVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OfflineFlowVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OfflineFlowVersionResponse) SetHeaders(v map[string]*string) *OfflineFlowVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OfflineFlowVersionResponse) SetStatusCode(v int32) *OfflineFlowVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OfflineFlowVersionResponse) SetBody(v *OfflineFlowVersionResponseBody) *OfflineFlowVersionResponse {
+	s.Body = v
+	return s
+}
+
+type OnlineFlowVersionRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 1
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Remark
+	//
+	// example:
+	//
+	// Let\\"s go online.
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s OnlineFlowVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OnlineFlowVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OnlineFlowVersionRequest) SetBizCode(v string) *OnlineFlowVersionRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *OnlineFlowVersionRequest) SetBizExtend(v map[string]interface{}) *OnlineFlowVersionRequest {
+	s.BizExtend = v
+	return s
+}
+
+func (s *OnlineFlowVersionRequest) SetFlowCode(v string) *OnlineFlowVersionRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *OnlineFlowVersionRequest) SetFlowVersion(v string) *OnlineFlowVersionRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *OnlineFlowVersionRequest) SetOwnerId(v int64) *OnlineFlowVersionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *OnlineFlowVersionRequest) SetRemark(v string) *OnlineFlowVersionRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *OnlineFlowVersionRequest) SetResourceOwnerAccount(v string) *OnlineFlowVersionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *OnlineFlowVersionRequest) SetResourceOwnerId(v int64) *OnlineFlowVersionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type OnlineFlowVersionShrinkRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 1
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Remark
+	//
+	// example:
+	//
+	// Let\\"s go online.
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s OnlineFlowVersionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OnlineFlowVersionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OnlineFlowVersionShrinkRequest) SetBizCode(v string) *OnlineFlowVersionShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *OnlineFlowVersionShrinkRequest) SetBizExtendShrink(v string) *OnlineFlowVersionShrinkRequest {
+	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *OnlineFlowVersionShrinkRequest) SetFlowCode(v string) *OnlineFlowVersionShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *OnlineFlowVersionShrinkRequest) SetFlowVersion(v string) *OnlineFlowVersionShrinkRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *OnlineFlowVersionShrinkRequest) SetOwnerId(v int64) *OnlineFlowVersionShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *OnlineFlowVersionShrinkRequest) SetRemark(v string) *OnlineFlowVersionShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *OnlineFlowVersionShrinkRequest) SetResourceOwnerAccount(v string) *OnlineFlowVersionShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *OnlineFlowVersionShrinkRequest) SetResourceOwnerId(v int64) *OnlineFlowVersionShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type OnlineFlowVersionResponseBody struct {
+	// Details of access denial.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// 示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Content of the returned data.
+	//
+	// example:
+	//
+	// 无
+	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
+	// Indicates whether the operation was successful. true means success, false means failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s OnlineFlowVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OnlineFlowVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OnlineFlowVersionResponseBody) SetAccessDeniedDetail(v string) *OnlineFlowVersionResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *OnlineFlowVersionResponseBody) SetCode(v string) *OnlineFlowVersionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *OnlineFlowVersionResponseBody) SetMessage(v string) *OnlineFlowVersionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *OnlineFlowVersionResponseBody) SetRequestId(v string) *OnlineFlowVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OnlineFlowVersionResponseBody) SetResponse(v map[string]interface{}) *OnlineFlowVersionResponseBody {
+	s.Response = v
+	return s
+}
+
+func (s *OnlineFlowVersionResponseBody) SetSuccess(v bool) *OnlineFlowVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type OnlineFlowVersionResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OnlineFlowVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s OnlineFlowVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OnlineFlowVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OnlineFlowVersionResponse) SetHeaders(v map[string]*string) *OnlineFlowVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OnlineFlowVersionResponse) SetStatusCode(v int32) *OnlineFlowVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OnlineFlowVersionResponse) SetBody(v *OnlineFlowVersionResponseBody) *OnlineFlowVersionResponse {
+	s.Body = v
+	return s
+}
+
 type PublishFlowRequest struct {
 	// The space ID of the user within the independent software vendor (ISV) account.
 	//
@@ -15060,13 +18358,13 @@ type QueryChatappBindWabaResponseBodyData struct {
 	AccountReviewStatus *string `json:"AccountReviewStatus,omitempty" xml:"AccountReviewStatus,omitempty"`
 	// WABA related information.
 	AuthInternationalRateEligibility map[string]interface{} `json:"AuthInternationalRateEligibility,omitempty" xml:"AuthInternationalRateEligibility,omitempty"`
-	// The ID of the business platform.
+	// The business ID.
 	//
 	// example:
 	//
 	// 19293988***
 	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// The name of the business platform.
+	// The business name.
 	//
 	// example:
 	//
@@ -15084,6 +18382,8 @@ type QueryChatappBindWabaResponseBodyData struct {
 	//
 	// 20393988393993***
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The Marketing Messaging Lite status.
+	//
 	// example:
 	//
 	// Y
@@ -15288,6 +18588,12 @@ type QueryChatappPhoneNumbersResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -15335,10 +18641,22 @@ func (s *QueryChatappPhoneNumbersResponseBody) SetSuccess(v bool) *QueryChatappP
 type QueryChatappPhoneNumbersResponseBodyPhoneNumbers struct {
 	// The verification status of the phone number.
 	//
+	// Valid values:
+	//
+	// 	- REVOKED: The review application is revoked.
+	//
+	// 	- MORE_INFORMATION_REQUESTED: More information needs to be provided.
+	//
+	// 	- VERIFIED: The phone number passes the verification.
+	//
+	// 	- REJECTED: The phone number fails to pass the verification.
+	//
 	// example:
 	//
 	// VERIFIED
 	CodeVerificationStatus *string `json:"CodeVerificationStatus,omitempty" xml:"CodeVerificationStatus,omitempty"`
+	// Indicates whether it is a WhatsApp Official Business Account (OBA).
+	//
 	// example:
 	//
 	// N
@@ -15363,13 +18681,13 @@ type QueryChatappPhoneNumbersResponseBodyPhoneNumbers struct {
 	//
 	// TIER_10
 	MessagingLimitTier *string `json:"MessagingLimitTier,omitempty" xml:"MessagingLimitTier,omitempty"`
-	// The status of the business name.
+	// The review status of the name.
 	//
 	// example:
 	//
 	// Approval
 	NameStatus *string `json:"NameStatus,omitempty" xml:"NameStatus,omitempty"`
-	// The review status of the new business name.
+	// The review status of the new display name of the enterprise.
 	//
 	// example:
 	//
@@ -15385,13 +18703,13 @@ type QueryChatappPhoneNumbersResponseBodyPhoneNumbers struct {
 	//
 	// Valid values:
 	//
-	// 	- RED
+	// 	- RED: low
 	//
-	// 	- YELLOW
+	// 	- YELLOW: medium
 	//
-	// 	- UNKNOWN
+	// 	- UNKNOWN: unknown
 	//
-	// 	- GREEN
+	// 	- GREEN: high
 	//
 	// example:
 	//
@@ -15427,7 +18745,7 @@ type QueryChatappPhoneNumbersResponseBodyPhoneNumbers struct {
 	//
 	// CONNECTED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The callback URL to which status reports are sent by using HTTP callbacks.
+	// The URL that receives the status reports.
 	//
 	// example:
 	//
@@ -15439,19 +18757,19 @@ type QueryChatappPhoneNumbersResponseBodyPhoneNumbers struct {
 	//
 	// Alicom-Queue-****-ChatAppStatus
 	StatusQueue *string `json:"StatusQueue,omitempty" xml:"StatusQueue,omitempty"`
-	// The callback URL to which MO messages are sent by using HTTP callbacks.
+	// The URL that receives the MO messages.
 	//
 	// example:
 	//
 	// https://ali.com/inbound
 	UpCallbackUrl *string `json:"UpCallbackUrl,omitempty" xml:"UpCallbackUrl,omitempty"`
-	// The mobile originated (MO) message notification queue.
+	// The mobile originated (MO) message queue.
 	//
 	// example:
 	//
 	// Alicom-Queue-****-ChatAppInbound
 	UpQueue *string `json:"UpQueue,omitempty" xml:"UpQueue,omitempty"`
-	// The name of the company with which the phone number is associated.
+	// The display name of the enterprise to which the phone number belongs.
 	//
 	// example:
 	//
@@ -16028,6 +19346,656 @@ func (s *QueryWabaBusinessInfoResponse) SetStatusCode(v int32) *QueryWabaBusines
 }
 
 func (s *QueryWabaBusinessInfoResponse) SetBody(v *QueryWabaBusinessInfoResponseBody) *QueryWabaBusinessInfoResponse {
+	s.Body = v
+	return s
+}
+
+type ReadChatFlowRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// 示例值
+	FlowCode             *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ReadChatFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadChatFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReadChatFlowRequest) SetBizCode(v string) *ReadChatFlowRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *ReadChatFlowRequest) SetBizExtend(v map[string]interface{}) *ReadChatFlowRequest {
+	s.BizExtend = v
+	return s
+}
+
+func (s *ReadChatFlowRequest) SetFlowCode(v string) *ReadChatFlowRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *ReadChatFlowRequest) SetOwnerId(v int64) *ReadChatFlowRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ReadChatFlowRequest) SetResourceOwnerAccount(v string) *ReadChatFlowRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ReadChatFlowRequest) SetResourceOwnerId(v int64) *ReadChatFlowRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ReadChatFlowShrinkRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// 示例值
+	FlowCode             *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ReadChatFlowShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadChatFlowShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReadChatFlowShrinkRequest) SetBizCode(v string) *ReadChatFlowShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *ReadChatFlowShrinkRequest) SetBizExtendShrink(v string) *ReadChatFlowShrinkRequest {
+	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *ReadChatFlowShrinkRequest) SetFlowCode(v string) *ReadChatFlowShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *ReadChatFlowShrinkRequest) SetOwnerId(v int64) *ReadChatFlowShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ReadChatFlowShrinkRequest) SetResourceOwnerAccount(v string) *ReadChatFlowShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ReadChatFlowShrinkRequest) SetResourceOwnerId(v int64) *ReadChatFlowShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ReadChatFlowResponseBody struct {
+	// Detailed reason for access denial.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Content of the returned data.
+	//
+	// example:
+	//
+	// 无
+	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
+	// Indicates whether the operation was successful. Values: true for success, false for failure.
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReadChatFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadChatFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReadChatFlowResponseBody) SetAccessDeniedDetail(v string) *ReadChatFlowResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ReadChatFlowResponseBody) SetCode(v string) *ReadChatFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ReadChatFlowResponseBody) SetMessage(v string) *ReadChatFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ReadChatFlowResponseBody) SetRequestId(v string) *ReadChatFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReadChatFlowResponseBody) SetResponse(v map[string]interface{}) *ReadChatFlowResponseBody {
+	s.Response = v
+	return s
+}
+
+func (s *ReadChatFlowResponseBody) SetSuccess(v bool) *ReadChatFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReadChatFlowResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReadChatFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReadChatFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadChatFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReadChatFlowResponse) SetHeaders(v map[string]*string) *ReadChatFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReadChatFlowResponse) SetStatusCode(v int32) *ReadChatFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReadChatFlowResponse) SetBody(v *ReadChatFlowResponseBody) *ReadChatFlowResponse {
+	s.Body = v
+	return s
+}
+
+type ReadChatFlowLogSettingRequest struct {
+	// Process code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode             *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ReadChatFlowLogSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadChatFlowLogSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReadChatFlowLogSettingRequest) SetFlowCode(v string) *ReadChatFlowLogSettingRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *ReadChatFlowLogSettingRequest) SetOwnerId(v int64) *ReadChatFlowLogSettingRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ReadChatFlowLogSettingRequest) SetResourceOwnerAccount(v string) *ReadChatFlowLogSettingRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ReadChatFlowLogSettingRequest) SetResourceOwnerId(v int64) *ReadChatFlowLogSettingRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ReadChatFlowLogSettingResponseBody struct {
+	// Access denied details.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
+	//
+	// example:
+	//
+	// 无
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the operation was successful. Values: true: success; false: failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReadChatFlowLogSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadChatFlowLogSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReadChatFlowLogSettingResponseBody) SetAccessDeniedDetail(v string) *ReadChatFlowLogSettingResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ReadChatFlowLogSettingResponseBody) SetCode(v string) *ReadChatFlowLogSettingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ReadChatFlowLogSettingResponseBody) SetData(v map[string]interface{}) *ReadChatFlowLogSettingResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ReadChatFlowLogSettingResponseBody) SetMessage(v string) *ReadChatFlowLogSettingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ReadChatFlowLogSettingResponseBody) SetRequestId(v string) *ReadChatFlowLogSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReadChatFlowLogSettingResponseBody) SetSuccess(v bool) *ReadChatFlowLogSettingResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReadChatFlowLogSettingResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReadChatFlowLogSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReadChatFlowLogSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadChatFlowLogSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReadChatFlowLogSettingResponse) SetHeaders(v map[string]*string) *ReadChatFlowLogSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReadChatFlowLogSettingResponse) SetStatusCode(v int32) *ReadChatFlowLogSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReadChatFlowLogSettingResponse) SetBody(v *ReadChatFlowLogSettingResponseBody) *ReadChatFlowLogSettingResponse {
+	s.Body = v
+	return s
+}
+
+type ReadFlowVersionRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 1
+	FlowVersion          *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Flow version status.
+	//
+	// example:
+	//
+	// DRAFT
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ReadFlowVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadFlowVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReadFlowVersionRequest) SetBizCode(v string) *ReadFlowVersionRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *ReadFlowVersionRequest) SetBizExtend(v map[string]interface{}) *ReadFlowVersionRequest {
+	s.BizExtend = v
+	return s
+}
+
+func (s *ReadFlowVersionRequest) SetFlowCode(v string) *ReadFlowVersionRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *ReadFlowVersionRequest) SetFlowVersion(v string) *ReadFlowVersionRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *ReadFlowVersionRequest) SetOwnerId(v int64) *ReadFlowVersionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ReadFlowVersionRequest) SetResourceOwnerAccount(v string) *ReadFlowVersionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ReadFlowVersionRequest) SetResourceOwnerId(v int64) *ReadFlowVersionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ReadFlowVersionRequest) SetStatus(v string) *ReadFlowVersionRequest {
+	s.Status = &v
+	return s
+}
+
+type ReadFlowVersionShrinkRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 1
+	FlowVersion          *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Flow version status.
+	//
+	// example:
+	//
+	// DRAFT
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ReadFlowVersionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadFlowVersionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReadFlowVersionShrinkRequest) SetBizCode(v string) *ReadFlowVersionShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *ReadFlowVersionShrinkRequest) SetBizExtendShrink(v string) *ReadFlowVersionShrinkRequest {
+	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *ReadFlowVersionShrinkRequest) SetFlowCode(v string) *ReadFlowVersionShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *ReadFlowVersionShrinkRequest) SetFlowVersion(v string) *ReadFlowVersionShrinkRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *ReadFlowVersionShrinkRequest) SetOwnerId(v int64) *ReadFlowVersionShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ReadFlowVersionShrinkRequest) SetResourceOwnerAccount(v string) *ReadFlowVersionShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ReadFlowVersionShrinkRequest) SetResourceOwnerId(v int64) *ReadFlowVersionShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ReadFlowVersionShrinkRequest) SetStatus(v string) *ReadFlowVersionShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+type ReadFlowVersionResponseBody struct {
+	// Access denied details; this field is only returned when RAM verification fails.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Content of the returned data.
+	//
+	// example:
+	//
+	// 无
+	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
+	// Indicates whether the operation was successful. Values: true: success; false: failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReadFlowVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadFlowVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReadFlowVersionResponseBody) SetAccessDeniedDetail(v string) *ReadFlowVersionResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ReadFlowVersionResponseBody) SetCode(v string) *ReadFlowVersionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ReadFlowVersionResponseBody) SetMessage(v string) *ReadFlowVersionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ReadFlowVersionResponseBody) SetRequestId(v string) *ReadFlowVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReadFlowVersionResponseBody) SetResponse(v map[string]interface{}) *ReadFlowVersionResponseBody {
+	s.Response = v
+	return s
+}
+
+func (s *ReadFlowVersionResponseBody) SetSuccess(v bool) *ReadFlowVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReadFlowVersionResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReadFlowVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReadFlowVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadFlowVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReadFlowVersionResponse) SetHeaders(v map[string]*string) *ReadFlowVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReadFlowVersionResponse) SetStatusCode(v int32) *ReadFlowVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReadFlowVersionResponse) SetBody(v *ReadFlowVersionResponseBody) *ReadFlowVersionResponse {
 	s.Body = v
 	return s
 }
@@ -18392,6 +22360,454 @@ func (s *UpdateAccountWebhookResponse) SetBody(v *UpdateAccountWebhookResponseBo
 	return s
 }
 
+type UpdateChatFlowRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Process code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf8c70
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Process remarks
+	//
+	// example:
+	//
+	// This is Customer Service WhatsApp Auto-Reply Flow
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Process title
+	//
+	// example:
+	//
+	// Customer Service WhatsApp Auto-Reply Flow
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateChatFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChatFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChatFlowRequest) SetBizCode(v string) *UpdateChatFlowRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *UpdateChatFlowRequest) SetBizExtend(v map[string]interface{}) *UpdateChatFlowRequest {
+	s.BizExtend = v
+	return s
+}
+
+func (s *UpdateChatFlowRequest) SetFlowCode(v string) *UpdateChatFlowRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *UpdateChatFlowRequest) SetOwnerId(v int64) *UpdateChatFlowRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateChatFlowRequest) SetRemark(v string) *UpdateChatFlowRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateChatFlowRequest) SetResourceOwnerAccount(v string) *UpdateChatFlowRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateChatFlowRequest) SetResourceOwnerId(v int64) *UpdateChatFlowRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateChatFlowRequest) SetTitle(v string) *UpdateChatFlowRequest {
+	s.Title = &v
+	return s
+}
+
+type UpdateChatFlowShrinkRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Process code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf8c70
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Process remarks
+	//
+	// example:
+	//
+	// This is Customer Service WhatsApp Auto-Reply Flow
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Process title
+	//
+	// example:
+	//
+	// Customer Service WhatsApp Auto-Reply Flow
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateChatFlowShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChatFlowShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChatFlowShrinkRequest) SetBizCode(v string) *UpdateChatFlowShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *UpdateChatFlowShrinkRequest) SetBizExtendShrink(v string) *UpdateChatFlowShrinkRequest {
+	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *UpdateChatFlowShrinkRequest) SetFlowCode(v string) *UpdateChatFlowShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *UpdateChatFlowShrinkRequest) SetOwnerId(v int64) *UpdateChatFlowShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateChatFlowShrinkRequest) SetRemark(v string) *UpdateChatFlowShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateChatFlowShrinkRequest) SetResourceOwnerAccount(v string) *UpdateChatFlowShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateChatFlowShrinkRequest) SetResourceOwnerId(v int64) *UpdateChatFlowShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateChatFlowShrinkRequest) SetTitle(v string) *UpdateChatFlowShrinkRequest {
+	s.Title = &v
+	return s
+}
+
+type UpdateChatFlowResponseBody struct {
+	// Details of access denial; this field is only returned when RAM verification fails.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Content of the returned data.
+	//
+	// example:
+	//
+	// 无
+	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
+	// Indicates whether the operation was successful. Values: true: success; false: failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateChatFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChatFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChatFlowResponseBody) SetAccessDeniedDetail(v string) *UpdateChatFlowResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateChatFlowResponseBody) SetCode(v string) *UpdateChatFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateChatFlowResponseBody) SetMessage(v string) *UpdateChatFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateChatFlowResponseBody) SetRequestId(v string) *UpdateChatFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateChatFlowResponseBody) SetResponse(v map[string]interface{}) *UpdateChatFlowResponseBody {
+	s.Response = v
+	return s
+}
+
+func (s *UpdateChatFlowResponseBody) SetSuccess(v bool) *UpdateChatFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateChatFlowResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateChatFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateChatFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChatFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChatFlowResponse) SetHeaders(v map[string]*string) *UpdateChatFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateChatFlowResponse) SetStatusCode(v int32) *UpdateChatFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateChatFlowResponse) SetBody(v *UpdateChatFlowResponseBody) *UpdateChatFlowResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateChatFlowLogSettingRequest struct {
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Setting ID.
+	//
+	// example:
+	//
+	// 100
+	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Log enable status, enum values:
+	//
+	// - ENABLED: Enabled, enables log writing
+	//
+	// - DISABLED: Create or retain related resources, but do not enable log writing
+	//
+	// - DELETED: Delete, and decide whether to delete related resources based on options
+	//
+	// example:
+	//
+	// ENABLED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateChatFlowLogSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChatFlowLogSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChatFlowLogSettingRequest) SetFlowCode(v string) *UpdateChatFlowLogSettingRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *UpdateChatFlowLogSettingRequest) SetId(v int64) *UpdateChatFlowLogSettingRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateChatFlowLogSettingRequest) SetOwnerId(v int64) *UpdateChatFlowLogSettingRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateChatFlowLogSettingRequest) SetResourceOwnerAccount(v string) *UpdateChatFlowLogSettingRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateChatFlowLogSettingRequest) SetResourceOwnerId(v int64) *UpdateChatFlowLogSettingRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateChatFlowLogSettingRequest) SetStatus(v string) *UpdateChatFlowLogSettingRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateChatFlowLogSettingResponseBody struct {
+	// Access denied details, this field is returned only when RAM verification fails.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data object.
+	//
+	// example:
+	//
+	// 无
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the operation was successful. Values: true: success; false: failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateChatFlowLogSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChatFlowLogSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChatFlowLogSettingResponseBody) SetAccessDeniedDetail(v string) *UpdateChatFlowLogSettingResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateChatFlowLogSettingResponseBody) SetCode(v string) *UpdateChatFlowLogSettingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateChatFlowLogSettingResponseBody) SetData(v map[string]interface{}) *UpdateChatFlowLogSettingResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateChatFlowLogSettingResponseBody) SetMessage(v string) *UpdateChatFlowLogSettingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateChatFlowLogSettingResponseBody) SetRequestId(v string) *UpdateChatFlowLogSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateChatFlowLogSettingResponseBody) SetSuccess(v bool) *UpdateChatFlowLogSettingResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateChatFlowLogSettingResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateChatFlowLogSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateChatFlowLogSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateChatFlowLogSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateChatFlowLogSettingResponse) SetHeaders(v map[string]*string) *UpdateChatFlowLogSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateChatFlowLogSettingResponse) SetStatusCode(v int32) *UpdateChatFlowLogSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateChatFlowLogSettingResponse) SetBody(v *UpdateChatFlowLogSettingResponseBody) *UpdateChatFlowLogSettingResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateChatGroupRequest struct {
 	// This parameter is required.
 	//
@@ -19215,6 +23631,302 @@ func (s *UpdateFlowJSONAssetResponse) SetStatusCode(v int32) *UpdateFlowJSONAsse
 }
 
 func (s *UpdateFlowJSONAssetResponse) SetBody(v *UpdateFlowJSONAssetResponseBody) *UpdateFlowJSONAssetResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateFlowVersionRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 1
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	// DSL data of the flow version
+	//
+	// example:
+	//
+	// {}
+	FlowViewModel *string `json:"FlowViewModel,omitempty" xml:"FlowViewModel,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Version remarks
+	//
+	// example:
+	//
+	// Fix Send WhatsApp Message Error
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s UpdateFlowVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFlowVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFlowVersionRequest) SetBizCode(v string) *UpdateFlowVersionRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *UpdateFlowVersionRequest) SetBizExtend(v map[string]interface{}) *UpdateFlowVersionRequest {
+	s.BizExtend = v
+	return s
+}
+
+func (s *UpdateFlowVersionRequest) SetFlowCode(v string) *UpdateFlowVersionRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *UpdateFlowVersionRequest) SetFlowVersion(v string) *UpdateFlowVersionRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *UpdateFlowVersionRequest) SetFlowViewModel(v string) *UpdateFlowVersionRequest {
+	s.FlowViewModel = &v
+	return s
+}
+
+func (s *UpdateFlowVersionRequest) SetOwnerId(v int64) *UpdateFlowVersionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateFlowVersionRequest) SetRemark(v string) *UpdateFlowVersionRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateFlowVersionRequest) SetResourceOwnerAccount(v string) *UpdateFlowVersionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateFlowVersionRequest) SetResourceOwnerId(v int64) *UpdateFlowVersionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type UpdateFlowVersionShrinkRequest struct {
+	// Business tenant code, default is “ALICOM_OPAAS”.
+	//
+	// example:
+	//
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Business extension information, default is “{}”.
+	//
+	// example:
+	//
+	// {}
+	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// Flow code.
+	//
+	// example:
+	//
+	// f4912c16943b4dfba44bd6fedacf****
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// Flow version
+	//
+	// example:
+	//
+	// 1
+	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	// DSL data of the flow version
+	//
+	// example:
+	//
+	// {}
+	FlowViewModel *string `json:"FlowViewModel,omitempty" xml:"FlowViewModel,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Version remarks
+	//
+	// example:
+	//
+	// Fix Send WhatsApp Message Error
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s UpdateFlowVersionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFlowVersionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFlowVersionShrinkRequest) SetBizCode(v string) *UpdateFlowVersionShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *UpdateFlowVersionShrinkRequest) SetBizExtendShrink(v string) *UpdateFlowVersionShrinkRequest {
+	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *UpdateFlowVersionShrinkRequest) SetFlowCode(v string) *UpdateFlowVersionShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *UpdateFlowVersionShrinkRequest) SetFlowVersion(v string) *UpdateFlowVersionShrinkRequest {
+	s.FlowVersion = &v
+	return s
+}
+
+func (s *UpdateFlowVersionShrinkRequest) SetFlowViewModel(v string) *UpdateFlowVersionShrinkRequest {
+	s.FlowViewModel = &v
+	return s
+}
+
+func (s *UpdateFlowVersionShrinkRequest) SetOwnerId(v int64) *UpdateFlowVersionShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateFlowVersionShrinkRequest) SetRemark(v string) *UpdateFlowVersionShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateFlowVersionShrinkRequest) SetResourceOwnerAccount(v string) *UpdateFlowVersionShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateFlowVersionShrinkRequest) SetResourceOwnerId(v int64) *UpdateFlowVersionShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type UpdateFlowVersionResponseBody struct {
+	// Details of access denial.
+	//
+	// example:
+	//
+	// 无
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// 示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Content of the returned data.
+	//
+	// example:
+	//
+	// 无
+	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
+	// Indicates whether the operation was successful. Values: true for success, false for failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateFlowVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFlowVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFlowVersionResponseBody) SetAccessDeniedDetail(v string) *UpdateFlowVersionResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateFlowVersionResponseBody) SetCode(v string) *UpdateFlowVersionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateFlowVersionResponseBody) SetMessage(v string) *UpdateFlowVersionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateFlowVersionResponseBody) SetRequestId(v string) *UpdateFlowVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateFlowVersionResponseBody) SetResponse(v map[string]interface{}) *UpdateFlowVersionResponseBody {
+	s.Response = v
+	return s
+}
+
+func (s *UpdateFlowVersionResponseBody) SetSuccess(v bool) *UpdateFlowVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateFlowVersionResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFlowVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateFlowVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFlowVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFlowVersionResponse) SetHeaders(v map[string]*string) *UpdateFlowVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFlowVersionResponse) SetStatusCode(v int32) *UpdateFlowVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateFlowVersionResponse) SetBody(v *UpdateFlowVersionResponseBody) *UpdateFlowVersionResponse {
 	s.Body = v
 	return s
 }
@@ -20073,222 +24785,6 @@ func (client *Client) AddChatappPhoneNumber(request *AddChatappPhoneNumberReques
 
 // Summary:
 //
-// Associates FAQs in the knowledge base.
-//
-// Description:
-//
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param tmpReq - BeeBotAssociateRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return BeeBotAssociateResponse
-func (client *Client) BeeBotAssociateWithOptions(tmpReq *BeeBotAssociateRequest, runtime *util.RuntimeOptions) (_result *BeeBotAssociateResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &BeeBotAssociateShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Perspective)) {
-		request.PerspectiveShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Perspective, tea.String("Perspective"), tea.String("json"))
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ChatBotInstanceId)) {
-		body["ChatBotInstanceId"] = request.ChatBotInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
-		body["CustSpaceId"] = request.CustSpaceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
-		body["IsvCode"] = request.IsvCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PerspectiveShrink)) {
-		body["Perspective"] = request.PerspectiveShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RecommendNum)) {
-		body["RecommendNum"] = request.RecommendNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
-		body["SessionId"] = request.SessionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Utterance)) {
-		body["Utterance"] = request.Utterance
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("BeeBotAssociate"),
-		Version:     tea.String("2020-06-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &BeeBotAssociateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates FAQs in the knowledge base.
-//
-// Description:
-//
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - BeeBotAssociateRequest
-//
-// @return BeeBotAssociateResponse
-func (client *Client) BeeBotAssociate(request *BeeBotAssociateRequest) (_result *BeeBotAssociateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BeeBotAssociateResponse{}
-	_body, _err := client.BeeBotAssociateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Conducts sessions with the bot based on its unique identifier (ID).
-//
-// Description:
-//
-// The ID of the session.
-//
-// @param tmpReq - BeeBotChatRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return BeeBotChatResponse
-func (client *Client) BeeBotChatWithOptions(tmpReq *BeeBotChatRequest, runtime *util.RuntimeOptions) (_result *BeeBotChatResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &BeeBotChatShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Perspective)) {
-		request.PerspectiveShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Perspective, tea.String("Perspective"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.VendorParam)) {
-		request.VendorParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VendorParam, tea.String("VendorParam"), tea.String("json"))
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ChatBotInstanceId)) {
-		body["ChatBotInstanceId"] = request.ChatBotInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
-		body["CustSpaceId"] = request.CustSpaceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IntentName)) {
-		body["IntentName"] = request.IntentName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
-		body["IsvCode"] = request.IsvCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.KnowledgeId)) {
-		body["KnowledgeId"] = request.KnowledgeId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PerspectiveShrink)) {
-		body["Perspective"] = request.PerspectiveShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SenderId)) {
-		body["SenderId"] = request.SenderId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SenderNick)) {
-		body["SenderNick"] = request.SenderNick
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
-		body["SessionId"] = request.SessionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Utterance)) {
-		body["Utterance"] = request.Utterance
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VendorParamShrink)) {
-		body["VendorParam"] = request.VendorParamShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("BeeBotChat"),
-		Version:     tea.String("2020-06-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &BeeBotChatResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Conducts sessions with the bot based on its unique identifier (ID).
-//
-// Description:
-//
-// The ID of the session.
-//
-// @param request - BeeBotChatRequest
-//
-// @return BeeBotChatResponse
-func (client *Client) BeeBotChat(request *BeeBotChatRequest) (_result *BeeBotChatResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BeeBotChatResponse{}
-	_body, _err := client.BeeBotChatWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Binds the WhatsApp Business account with ChatApp.
 //
 // Description:
@@ -20909,6 +25405,266 @@ func (client *Client) ChatappVerifyAndRegister(request *ChatappVerifyAndRegister
 
 // Summary:
 //
+// # Create Chatflow
+//
+// @param tmpReq - CreateChatFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateChatFlowResponse
+func (client *Client) CreateChatFlowWithOptions(tmpReq *CreateChatFlowRequest, runtime *util.RuntimeOptions) (_result *CreateChatFlowResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateChatFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizExtend)) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, tea.String("BizExtend"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizExtendShrink)) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowTriggerType)) {
+		query["FlowTriggerType"] = request.FlowTriggerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateChatFlow"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateChatFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Create Chatflow
+//
+// @param request - CreateChatFlowRequest
+//
+// @return CreateChatFlowResponse
+func (client *Client) CreateChatFlow(request *CreateChatFlowRequest) (_result *CreateChatFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateChatFlowResponse{}
+	_body, _err := client.CreateChatFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Import and create flow
+//
+// @param tmpReq - CreateChatFlowByImportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateChatFlowByImportResponse
+func (client *Client) CreateChatFlowByImportWithOptions(tmpReq *CreateChatFlowByImportRequest, runtime *util.RuntimeOptions) (_result *CreateChatFlowByImportResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateChatFlowByImportShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizExtend)) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, tea.String("BizExtend"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizExtendShrink)) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowViewModel)) {
+		query["FlowViewModel"] = request.FlowViewModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateChatFlowByImport"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateChatFlowByImportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Import and create flow
+//
+// @param request - CreateChatFlowByImportRequest
+//
+// @return CreateChatFlowByImportResponse
+func (client *Client) CreateChatFlowByImport(request *CreateChatFlowByImportRequest) (_result *CreateChatFlowByImportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateChatFlowByImportResponse{}
+	_body, _err := client.CreateChatFlowByImportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Create chatFlow log setting
+//
+// @param request - CreateChatFlowLogSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateChatFlowLogSettingResponse
+func (client *Client) CreateChatFlowLogSettingWithOptions(request *CreateChatFlowLogSettingRequest, runtime *util.RuntimeOptions) (_result *CreateChatFlowLogSettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateChatFlowLogSetting"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateChatFlowLogSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Create chatFlow log setting
+//
+// @param request - CreateChatFlowLogSettingRequest
+//
+// @return CreateChatFlowLogSettingResponse
+func (client *Client) CreateChatFlowLogSetting(request *CreateChatFlowLogSettingRequest) (_result *CreateChatFlowLogSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateChatFlowLogSettingResponse{}
+	_body, _err := client.CreateChatFlowLogSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // The ID of the number.
 //
 // Description:
@@ -21201,6 +25957,100 @@ func (client *Client) CreateFlow(request *CreateFlowRequest) (_result *CreateFlo
 
 // Summary:
 //
+// # CreateFlowVersion
+//
+// @param tmpReq - CreateFlowVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFlowVersionResponse
+func (client *Client) CreateFlowVersionWithOptions(tmpReq *CreateFlowVersionRequest, runtime *util.RuntimeOptions) (_result *CreateFlowVersionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateFlowVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizExtend)) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, tea.String("BizExtend"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizExtendShrink)) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowVersionCopyFrom)) {
+		query["FlowVersionCopyFrom"] = request.FlowVersionCopyFrom
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFlowVersion"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFlowVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateFlowVersion
+//
+// @param request - CreateFlowVersionRequest
+//
+// @return CreateFlowVersionResponse
+func (client *Client) CreateFlowVersion(request *CreateFlowVersionRequest) (_result *CreateFlowVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFlowVersionResponse{}
+	_body, _err := client.CreateFlowVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a quick-response (QR) code that contains a message.
 //
 // @param request - CreatePhoneMessageQrdlRequest
@@ -21264,6 +26114,92 @@ func (client *Client) CreatePhoneMessageQrdl(request *CreatePhoneMessageQrdlRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePhoneMessageQrdlResponse{}
 	_body, _err := client.CreatePhoneMessageQrdlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete Process
+//
+// @param tmpReq - DeleteChatFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteChatFlowResponse
+func (client *Client) DeleteChatFlowWithOptions(tmpReq *DeleteChatFlowRequest, runtime *util.RuntimeOptions) (_result *DeleteChatFlowResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteChatFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizExtend)) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, tea.String("BizExtend"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizExtendShrink)) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteChatFlow"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteChatFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete Process
+//
+// @param request - DeleteChatFlowRequest
+//
+// @return DeleteChatFlowResponse
+func (client *Client) DeleteChatFlow(request *DeleteChatFlowRequest) (_result *DeleteChatFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteChatFlowResponse{}
+	_body, _err := client.DeleteChatFlowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21715,6 +26651,96 @@ func (client *Client) DeleteFlow(request *DeleteFlowRequest) (_result *DeleteFlo
 
 // Summary:
 //
+// # Delete Flow Version
+//
+// @param tmpReq - DeleteFlowVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFlowVersionResponse
+func (client *Client) DeleteFlowVersionWithOptions(tmpReq *DeleteFlowVersionRequest, runtime *util.RuntimeOptions) (_result *DeleteFlowVersionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteFlowVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizExtend)) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, tea.String("BizExtend"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizExtendShrink)) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowVersion)) {
+		query["FlowVersion"] = request.FlowVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFlowVersion"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFlowVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete Flow Version
+//
+// @param request - DeleteFlowVersionRequest
+//
+// @return DeleteFlowVersionResponse
+func (client *Client) DeleteFlowVersion(request *DeleteFlowVersionRequest) (_result *DeleteFlowVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteFlowVersionResponse{}
+	_body, _err := client.DeleteFlowVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a quick-response (QR) code that contains a message.
 //
 // @param request - DeletePhoneMessageQrdlRequest
@@ -21910,6 +26936,470 @@ func (client *Client) EnableWhatsappROIMetric(request *EnableWhatsappROIMetricRe
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableWhatsappROIMetricResponse{}
 	_body, _err := client.EnableWhatsappROIMetricWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Bind phone numbers to flow
+//
+// @param tmpReq - FlowBindPhoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlowBindPhoneResponse
+func (client *Client) FlowBindPhoneWithOptions(tmpReq *FlowBindPhoneRequest, runtime *util.RuntimeOptions) (_result *FlowBindPhoneResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &FlowBindPhoneShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PhoneNumbers)) {
+		request.PhoneNumbersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PhoneNumbers, tea.String("PhoneNumbers"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelCode)) {
+		query["ChannelCode"] = request.ChannelCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowVersion)) {
+		query["FlowVersion"] = request.FlowVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumbersShrink)) {
+		query["PhoneNumbers"] = request.PhoneNumbersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WabaId)) {
+		query["WabaId"] = request.WabaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FlowBindPhone"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FlowBindPhoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Bind phone numbers to flow
+//
+// @param request - FlowBindPhoneRequest
+//
+// @return FlowBindPhoneResponse
+func (client *Client) FlowBindPhone(request *FlowBindPhoneRequest) (_result *FlowBindPhoneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FlowBindPhoneResponse{}
+	_body, _err := client.FlowBindPhoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Rebind phone number for flow
+//
+// @param tmpReq - FlowRebindPhoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlowRebindPhoneResponse
+func (client *Client) FlowRebindPhoneWithOptions(tmpReq *FlowRebindPhoneRequest, runtime *util.RuntimeOptions) (_result *FlowRebindPhoneResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &FlowRebindPhoneShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PhoneNumbers)) {
+		request.PhoneNumbersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PhoneNumbers, tea.String("PhoneNumbers"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelCode)) {
+		query["ChannelCode"] = request.ChannelCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowVersion)) {
+		query["FlowVersion"] = request.FlowVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumbersShrink)) {
+		query["PhoneNumbers"] = request.PhoneNumbersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WabaId)) {
+		query["WabaId"] = request.WabaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FlowRebindPhone"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FlowRebindPhoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Rebind phone number for flow
+//
+// @param request - FlowRebindPhoneRequest
+//
+// @return FlowRebindPhoneResponse
+func (client *Client) FlowRebindPhone(request *FlowRebindPhoneRequest) (_result *FlowRebindPhoneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FlowRebindPhoneResponse{}
+	_body, _err := client.FlowRebindPhoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Unbind phone number from flow
+//
+// @param tmpReq - FlowUnbindPhoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlowUnbindPhoneResponse
+func (client *Client) FlowUnbindPhoneWithOptions(tmpReq *FlowUnbindPhoneRequest, runtime *util.RuntimeOptions) (_result *FlowUnbindPhoneResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &FlowUnbindPhoneShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PhoneNumbers)) {
+		request.PhoneNumbersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PhoneNumbers, tea.String("PhoneNumbers"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowVersion)) {
+		query["FlowVersion"] = request.FlowVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumbersShrink)) {
+		query["PhoneNumbers"] = request.PhoneNumbersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FlowUnbindPhone"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FlowUnbindPhoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Unbind phone number from flow
+//
+// @param request - FlowUnbindPhoneRequest
+//
+// @return FlowUnbindPhoneResponse
+func (client *Client) FlowUnbindPhone(request *FlowUnbindPhoneRequest) (_result *FlowUnbindPhoneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FlowUnbindPhoneResponse{}
+	_body, _err := client.FlowUnbindPhoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get ChatFlow Runtime Data
+//
+// @param tmpReq - GetChatFlowMetricRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChatFlowMetricResponse
+func (client *Client) GetChatFlowMetricWithOptions(tmpReq *GetChatFlowMetricRequest, runtime *util.RuntimeOptions) (_result *GetChatFlowMetricResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetChatFlowMetricShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizExtend)) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, tea.String("BizExtend"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizExtendShrink)) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowVersion)) {
+		query["FlowVersion"] = request.FlowVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricName)) {
+		query["MetricName"] = request.MetricName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		query["To"] = request.To
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetChatFlowMetric"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetChatFlowMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get ChatFlow Runtime Data
+//
+// @param request - GetChatFlowMetricRequest
+//
+// @return GetChatFlowMetricResponse
+func (client *Client) GetChatFlowMetric(request *GetChatFlowMetricRequest) (_result *GetChatFlowMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetChatFlowMetricResponse{}
+	_body, _err := client.GetChatFlowMetricWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query chatFlow template
+//
+// @param request - GetChatFlowTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChatFlowTemplateResponse
+func (client *Client) GetChatFlowTemplateWithOptions(request *GetChatFlowTemplateRequest, runtime *util.RuntimeOptions) (_result *GetChatFlowTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetChatFlowTemplate"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetChatFlowTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query chatFlow template
+//
+// @param request - GetChatFlowTemplateRequest
+//
+// @return GetChatFlowTemplateResponse
+func (client *Client) GetChatFlowTemplate(request *GetChatFlowTemplateRequest) (_result *GetChatFlowTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetChatFlowTemplateResponse{}
+	_body, _err := client.GetChatFlowTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23369,6 +28859,276 @@ func (client *Client) IsvGetAppId(request *IsvGetAppIdRequest) (_result *IsvGetA
 
 // Summary:
 //
+// 根据flowCode查询已绑定列表
+//
+// @param request - ListBindingRelationsForFlowVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBindingRelationsForFlowVersionResponse
+func (client *Client) ListBindingRelationsForFlowVersionWithOptions(request *ListBindingRelationsForFlowVersionRequest, runtime *util.RuntimeOptions) (_result *ListBindingRelationsForFlowVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBindingRelationsForFlowVersion"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBindingRelationsForFlowVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据flowCode查询已绑定列表
+//
+// @param request - ListBindingRelationsForFlowVersionRequest
+//
+// @return ListBindingRelationsForFlowVersionResponse
+func (client *Client) ListBindingRelationsForFlowVersion(request *ListBindingRelationsForFlowVersionRequest) (_result *ListBindingRelationsForFlowVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBindingRelationsForFlowVersionResponse{}
+	_body, _err := client.ListBindingRelationsForFlowVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # List Flows
+//
+// @param tmpReq - ListChatFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChatFlowResponse
+func (client *Client) ListChatFlowWithOptions(tmpReq *ListChatFlowRequest, runtime *util.RuntimeOptions) (_result *ListChatFlowResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListChatFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizExtend)) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, tea.String("BizExtend"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizExtendShrink)) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowTriggerType)) {
+		query["FlowTriggerType"] = request.FlowTriggerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnWithOnlineVersion)) {
+		query["ReturnWithOnlineVersion"] = request.ReturnWithOnlineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListChatFlow"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListChatFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # List Flows
+//
+// @param request - ListChatFlowRequest
+//
+// @return ListChatFlowResponse
+func (client *Client) ListChatFlow(request *ListChatFlowRequest) (_result *ListChatFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListChatFlowResponse{}
+	_body, _err := client.ListChatFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ChatFlow Template List
+//
+// @param request - ListChatFlowTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChatFlowTemplateResponse
+func (client *Client) ListChatFlowTemplateWithOptions(request *ListChatFlowTemplateRequest, runtime *util.RuntimeOptions) (_result *ListChatFlowTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerType)) {
+		query["TriggerType"] = request.TriggerType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListChatFlowTemplate"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListChatFlowTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ChatFlow Template List
+//
+// @param request - ListChatFlowTemplateRequest
+//
+// @return ListChatFlowTemplateResponse
+func (client *Client) ListChatFlowTemplate(request *ListChatFlowTemplateRequest) (_result *ListChatFlowTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListChatFlowTemplateResponse{}
+	_body, _err := client.ListChatFlowTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # ListChatGroup
 //
 // @param tmpReq - ListChatGroupRequest
@@ -23769,6 +29529,104 @@ func (client *Client) ListFlow(request *ListFlowRequest) (_result *ListFlowRespo
 
 // Summary:
 //
+// # List Flow Versions
+//
+// @param tmpReq - ListFlowVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFlowVersionResponse
+func (client *Client) ListFlowVersionWithOptions(tmpReq *ListFlowVersionRequest, runtime *util.RuntimeOptions) (_result *ListFlowVersionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListFlowVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizExtend)) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, tea.String("BizExtend"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizExtendShrink)) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFlowVersion"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFlowVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # List Flow Versions
+//
+// @param request - ListFlowVersionRequest
+//
+// @return ListFlowVersionResponse
+func (client *Client) ListFlowVersion(request *ListFlowVersionRequest) (_result *ListFlowVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListFlowVersionResponse{}
+	_body, _err := client.ListFlowVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a list of quick-response (QR) codes that contain messages.
 //
 // @param request - ListPhoneMessageQrdlRequest
@@ -23781,17 +29639,29 @@ func (client *Client) ListPhoneMessageQrdlWithOptions(request *ListPhoneMessageQ
 	if _err != nil {
 		return _result, _err
 	}
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
-		body["CustSpaceId"] = request.CustSpaceId
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
-		body["PhoneNumber"] = request.PhoneNumber
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListPhoneMessageQrdl"),
@@ -24455,6 +30325,194 @@ func (client *Client) ModifyPhoneBusinessProfile(request *ModifyPhoneBusinessPro
 
 // Summary:
 //
+// # Offline Flow Version
+//
+// @param tmpReq - OfflineFlowVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OfflineFlowVersionResponse
+func (client *Client) OfflineFlowVersionWithOptions(tmpReq *OfflineFlowVersionRequest, runtime *util.RuntimeOptions) (_result *OfflineFlowVersionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &OfflineFlowVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizExtend)) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, tea.String("BizExtend"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizExtendShrink)) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowVersion)) {
+		query["FlowVersion"] = request.FlowVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OfflineFlowVersion"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OfflineFlowVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Offline Flow Version
+//
+// @param request - OfflineFlowVersionRequest
+//
+// @return OfflineFlowVersionResponse
+func (client *Client) OfflineFlowVersion(request *OfflineFlowVersionRequest) (_result *OfflineFlowVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OfflineFlowVersionResponse{}
+	_body, _err := client.OfflineFlowVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Online Flow Version
+//
+// @param tmpReq - OnlineFlowVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OnlineFlowVersionResponse
+func (client *Client) OnlineFlowVersionWithOptions(tmpReq *OnlineFlowVersionRequest, runtime *util.RuntimeOptions) (_result *OnlineFlowVersionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &OnlineFlowVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizExtend)) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, tea.String("BizExtend"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizExtendShrink)) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowVersion)) {
+		query["FlowVersion"] = request.FlowVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OnlineFlowVersion"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OnlineFlowVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Online Flow Version
+//
+// @param request - OnlineFlowVersionRequest
+//
+// @return OnlineFlowVersionResponse
+func (client *Client) OnlineFlowVersion(request *OnlineFlowVersionRequest) (_result *OnlineFlowVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OnlineFlowVersionResponse{}
+	_body, _err := client.OnlineFlowVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Publishes a Flow.
 //
 // Description:
@@ -24858,6 +30916,258 @@ func (client *Client) QueryWabaBusinessInfo(request *QueryWabaBusinessInfoReques
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryWabaBusinessInfoResponse{}
 	_body, _err := client.QueryWabaBusinessInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Retrieve Flow
+//
+// @param tmpReq - ReadChatFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReadChatFlowResponse
+func (client *Client) ReadChatFlowWithOptions(tmpReq *ReadChatFlowRequest, runtime *util.RuntimeOptions) (_result *ReadChatFlowResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ReadChatFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizExtend)) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, tea.String("BizExtend"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizExtendShrink)) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReadChatFlow"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReadChatFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Retrieve Flow
+//
+// @param request - ReadChatFlowRequest
+//
+// @return ReadChatFlowResponse
+func (client *Client) ReadChatFlow(request *ReadChatFlowRequest) (_result *ReadChatFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReadChatFlowResponse{}
+	_body, _err := client.ReadChatFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # View chatFlow log settings
+//
+// @param request - ReadChatFlowLogSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReadChatFlowLogSettingResponse
+func (client *Client) ReadChatFlowLogSettingWithOptions(request *ReadChatFlowLogSettingRequest, runtime *util.RuntimeOptions) (_result *ReadChatFlowLogSettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReadChatFlowLogSetting"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReadChatFlowLogSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # View chatFlow log settings
+//
+// @param request - ReadChatFlowLogSettingRequest
+//
+// @return ReadChatFlowLogSettingResponse
+func (client *Client) ReadChatFlowLogSetting(request *ReadChatFlowLogSettingRequest) (_result *ReadChatFlowLogSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReadChatFlowLogSettingResponse{}
+	_body, _err := client.ReadChatFlowLogSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get Flow Version
+//
+// @param tmpReq - ReadFlowVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReadFlowVersionResponse
+func (client *Client) ReadFlowVersionWithOptions(tmpReq *ReadFlowVersionRequest, runtime *util.RuntimeOptions) (_result *ReadFlowVersionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ReadFlowVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizExtend)) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, tea.String("BizExtend"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizExtendShrink)) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowVersion)) {
+		query["FlowVersion"] = request.FlowVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReadFlowVersion"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReadFlowVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get Flow Version
+//
+// @param request - ReadFlowVersionRequest
+//
+// @return ReadFlowVersionResponse
+func (client *Client) ReadFlowVersion(request *ReadFlowVersionRequest) (_result *ReadFlowVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReadFlowVersionResponse{}
+	_body, _err := client.ReadFlowVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25483,6 +31793,180 @@ func (client *Client) UpdateAccountWebhook(request *UpdateAccountWebhookRequest)
 
 // Summary:
 //
+// # Get Process
+//
+// @param tmpReq - UpdateChatFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateChatFlowResponse
+func (client *Client) UpdateChatFlowWithOptions(tmpReq *UpdateChatFlowRequest, runtime *util.RuntimeOptions) (_result *UpdateChatFlowResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateChatFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizExtend)) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, tea.String("BizExtend"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizExtendShrink)) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateChatFlow"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateChatFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get Process
+//
+// @param request - UpdateChatFlowRequest
+//
+// @return UpdateChatFlowResponse
+func (client *Client) UpdateChatFlow(request *UpdateChatFlowRequest) (_result *UpdateChatFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateChatFlowResponse{}
+	_body, _err := client.UpdateChatFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Modify chatFlow log settings
+//
+// @param request - UpdateChatFlowLogSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateChatFlowLogSettingResponse
+func (client *Client) UpdateChatFlowLogSettingWithOptions(request *UpdateChatFlowLogSettingRequest, runtime *util.RuntimeOptions) (_result *UpdateChatFlowLogSettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateChatFlowLogSetting"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateChatFlowLogSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Modify chatFlow log settings
+//
+// @param request - UpdateChatFlowLogSettingRequest
+//
+// @return UpdateChatFlowLogSettingResponse
+func (client *Client) UpdateChatFlowLogSetting(request *UpdateChatFlowLogSettingRequest) (_result *UpdateChatFlowLogSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateChatFlowLogSettingResponse{}
+	_body, _err := client.UpdateChatFlowLogSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # UpdateChatGroup
 //
 // @param request - UpdateChatGroupRequest
@@ -25844,6 +32328,104 @@ func (client *Client) UpdateFlowJSONAsset(request *UpdateFlowJSONAssetRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateFlowJSONAssetResponse{}
 	_body, _err := client.UpdateFlowJSONAssetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update flow version, used for updating the flow DSL on the canvas
+//
+// @param tmpReq - UpdateFlowVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFlowVersionResponse
+func (client *Client) UpdateFlowVersionWithOptions(tmpReq *UpdateFlowVersionRequest, runtime *util.RuntimeOptions) (_result *UpdateFlowVersionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateFlowVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizExtend)) {
+		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, tea.String("BizExtend"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		query["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizExtendShrink)) {
+		query["BizExtend"] = request.BizExtendShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowCode)) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowVersion)) {
+		query["FlowVersion"] = request.FlowVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowViewModel)) {
+		query["FlowViewModel"] = request.FlowViewModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFlowVersion"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFlowVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update flow version, used for updating the flow DSL on the canvas
+//
+// @param request - UpdateFlowVersionRequest
+//
+// @return UpdateFlowVersionResponse
+func (client *Client) UpdateFlowVersion(request *UpdateFlowVersionRequest) (_result *UpdateFlowVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateFlowVersionResponse{}
+	_body, _err := client.UpdateFlowVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/cams-20200606/v3
+module github.com/alibabacloud-go/cams-20200606/v4
 
 go 1.14
 
