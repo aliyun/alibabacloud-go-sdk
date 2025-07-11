@@ -19798,12 +19798,11 @@ func (s *DescribeFreeUserEventsResponse) SetBody(v *DescribeFreeUserEventsRespon
 type DescribeHybridCloudClusterRuleRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1
-	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId             *int64  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
 	// The ID of the WAF instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
@@ -19834,8 +19833,6 @@ type DescribeHybridCloudClusterRuleRequest struct {
 	//
 	// 	- **pullin**: The traffic redirection rule of the hybrid cloud cluster.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// pullin
@@ -19852,6 +19849,11 @@ func (s DescribeHybridCloudClusterRuleRequest) GoString() string {
 
 func (s *DescribeHybridCloudClusterRuleRequest) SetClusterId(v int64) *DescribeHybridCloudClusterRuleRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRuleRequest) SetClusterRuleResourceId(v string) *DescribeHybridCloudClusterRuleRequest {
+	s.ClusterRuleResourceId = &v
 	return s
 }
 
@@ -19905,6 +19907,7 @@ func (s *DescribeHybridCloudClusterRuleResponseBody) SetRequestId(v string) *Des
 }
 
 type DescribeHybridCloudClusterRuleResponseBodyClusterRule struct {
+	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
 	// The configuration of the rule.
 	//
 	// example:
@@ -19937,6 +19940,11 @@ func (s DescribeHybridCloudClusterRuleResponseBodyClusterRule) String() string {
 
 func (s DescribeHybridCloudClusterRuleResponseBodyClusterRule) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeHybridCloudClusterRuleResponseBodyClusterRule) SetClusterRuleResourceId(v string) *DescribeHybridCloudClusterRuleResponseBodyClusterRule {
+	s.ClusterRuleResourceId = &v
+	return s
 }
 
 func (s *DescribeHybridCloudClusterRuleResponseBodyClusterRule) SetRuleConfig(v string) *DescribeHybridCloudClusterRuleResponseBodyClusterRule {
@@ -38924,12 +38932,11 @@ func (s *ModifyHybridCloudClusterBypassStatusResponse) SetBody(v *ModifyHybridCl
 type ModifyHybridCloudClusterRuleRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1018
-	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId             *int64  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
 	// The ID of the WAF instance.
 	//
 	// >  You can call the DescribeInstanceInfo operation to query the ID of the WAF instance.[](~~140857~~)
@@ -38968,8 +38975,6 @@ type ModifyHybridCloudClusterRuleRequest struct {
 	//
 	// 	- **off**: disables the rule.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// on
@@ -38977,8 +38982,6 @@ type ModifyHybridCloudClusterRuleRequest struct {
 	// The type of the rule. Valid values:
 	//
 	// 	- **pullin**: The traffic redirection rule.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -38996,6 +38999,11 @@ func (s ModifyHybridCloudClusterRuleRequest) GoString() string {
 
 func (s *ModifyHybridCloudClusterRuleRequest) SetClusterId(v int64) *ModifyHybridCloudClusterRuleRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudClusterRuleRequest) SetClusterRuleResourceId(v string) *ModifyHybridCloudClusterRuleRequest {
+	s.ClusterRuleResourceId = &v
 	return s
 }
 
@@ -54196,6 +54204,10 @@ func (client *Client) ModifyHybridCloudClusterRuleWithOptions(request *ModifyHyb
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterRuleResourceId)) {
+		query["ClusterRuleResourceId"] = request.ClusterRuleResourceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
