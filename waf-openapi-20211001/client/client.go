@@ -3202,6 +3202,146 @@ func (s *CreateDomainResponse) SetBody(v *CreateDomainResponseBody) *CreateDomai
 	return s
 }
 
+type CreateHybridCloudClusterRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// example:
+	//
+	// {\\"check_mode\\": \\"all\\", \\"type\\": \\"exact\\", \\"substance\\": \\"122\\"}
+	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// on
+	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pullin
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+}
+
+func (s CreateHybridCloudClusterRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridCloudClusterRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridCloudClusterRuleRequest) SetClusterId(v int64) *CreateHybridCloudClusterRuleRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateHybridCloudClusterRuleRequest) SetInstanceId(v string) *CreateHybridCloudClusterRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateHybridCloudClusterRuleRequest) SetRegionId(v string) *CreateHybridCloudClusterRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateHybridCloudClusterRuleRequest) SetResourceManagerResourceGroupId(v string) *CreateHybridCloudClusterRuleRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *CreateHybridCloudClusterRuleRequest) SetRuleConfig(v string) *CreateHybridCloudClusterRuleRequest {
+	s.RuleConfig = &v
+	return s
+}
+
+func (s *CreateHybridCloudClusterRuleRequest) SetRuleStatus(v string) *CreateHybridCloudClusterRuleRequest {
+	s.RuleStatus = &v
+	return s
+}
+
+func (s *CreateHybridCloudClusterRuleRequest) SetRuleType(v string) *CreateHybridCloudClusterRuleRequest {
+	s.RuleType = &v
+	return s
+}
+
+type CreateHybridCloudClusterRuleResponseBody struct {
+	// example:
+	//
+	// hdbc-clusterrule-*******m0w
+	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
+	// example:
+	//
+	// 66A98669-CC6E-4F3E-*****-3014697B11AE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateHybridCloudClusterRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridCloudClusterRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridCloudClusterRuleResponseBody) SetClusterRuleResourceId(v string) *CreateHybridCloudClusterRuleResponseBody {
+	s.ClusterRuleResourceId = &v
+	return s
+}
+
+func (s *CreateHybridCloudClusterRuleResponseBody) SetRequestId(v string) *CreateHybridCloudClusterRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateHybridCloudClusterRuleResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHybridCloudClusterRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateHybridCloudClusterRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridCloudClusterRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridCloudClusterRuleResponse) SetHeaders(v map[string]*string) *CreateHybridCloudClusterRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHybridCloudClusterRuleResponse) SetStatusCode(v int32) *CreateHybridCloudClusterRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHybridCloudClusterRuleResponse) SetBody(v *CreateHybridCloudClusterRuleResponseBody) *CreateHybridCloudClusterRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateHybridCloudGroupRequest struct {
 	// The region in which the node resides. Specify the parameter in the Carrier code-Continent code-City code format.
 	//
@@ -5091,6 +5231,106 @@ func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
 }
 
 func (s *DeleteDomainResponse) SetBody(v *DeleteDomainResponseBody) *DeleteDomainResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHybridCloudClusterRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hdbc-clusterrule-*******m0w
+	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DeleteHybridCloudClusterRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHybridCloudClusterRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHybridCloudClusterRuleRequest) SetClusterRuleResourceId(v string) *DeleteHybridCloudClusterRuleRequest {
+	s.ClusterRuleResourceId = &v
+	return s
+}
+
+func (s *DeleteHybridCloudClusterRuleRequest) SetInstanceId(v string) *DeleteHybridCloudClusterRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteHybridCloudClusterRuleRequest) SetRegionId(v string) *DeleteHybridCloudClusterRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteHybridCloudClusterRuleRequest) SetResourceManagerResourceGroupId(v string) *DeleteHybridCloudClusterRuleRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DeleteHybridCloudClusterRuleResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteHybridCloudClusterRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHybridCloudClusterRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHybridCloudClusterRuleResponseBody) SetRequestId(v string) *DeleteHybridCloudClusterRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteHybridCloudClusterRuleResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHybridCloudClusterRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteHybridCloudClusterRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHybridCloudClusterRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHybridCloudClusterRuleResponse) SetHeaders(v map[string]*string) *DeleteHybridCloudClusterRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHybridCloudClusterRuleResponse) SetStatusCode(v int32) *DeleteHybridCloudClusterRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHybridCloudClusterRuleResponse) SetBody(v *DeleteHybridCloudClusterRuleResponseBody) *DeleteHybridCloudClusterRuleResponse {
 	s.Body = v
 	return s
 }
@@ -19987,6 +20227,233 @@ func (s *DescribeHybridCloudClusterRuleResponse) SetStatusCode(v int32) *Describ
 }
 
 func (s *DescribeHybridCloudClusterRuleResponse) SetBody(v *DescribeHybridCloudClusterRuleResponseBody) *DescribeHybridCloudClusterRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHybridCloudClusterRulesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 428
+	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	RuleContent *string `json:"RuleContent,omitempty" xml:"RuleContent,omitempty"`
+	// example:
+	//
+	// exact
+	RuleMatchType *string `json:"RuleMatchType,omitempty" xml:"RuleMatchType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pullin
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+}
+
+func (s DescribeHybridCloudClusterRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudClusterRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudClusterRulesRequest) SetClusterId(v int64) *DescribeHybridCloudClusterRulesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesRequest) SetInstanceId(v string) *DescribeHybridCloudClusterRulesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesRequest) SetPageNumber(v int32) *DescribeHybridCloudClusterRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesRequest) SetPageSize(v int32) *DescribeHybridCloudClusterRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesRequest) SetRegionId(v string) *DescribeHybridCloudClusterRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesRequest) SetResourceManagerResourceGroupId(v string) *DescribeHybridCloudClusterRulesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesRequest) SetRuleContent(v string) *DescribeHybridCloudClusterRulesRequest {
+	s.RuleContent = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesRequest) SetRuleMatchType(v string) *DescribeHybridCloudClusterRulesRequest {
+	s.RuleMatchType = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesRequest) SetRuleType(v string) *DescribeHybridCloudClusterRulesRequest {
+	s.RuleType = &v
+	return s
+}
+
+type DescribeHybridCloudClusterRulesResponseBody struct {
+	Data []*DescribeHybridCloudClusterRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeHybridCloudClusterRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudClusterRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudClusterRulesResponseBody) SetData(v []*DescribeHybridCloudClusterRulesResponseBodyData) *DescribeHybridCloudClusterRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesResponseBody) SetRequestId(v string) *DescribeHybridCloudClusterRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesResponseBody) SetTotalCount(v int64) *DescribeHybridCloudClusterRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeHybridCloudClusterRulesResponseBodyData struct {
+	// example:
+	//
+	// 1099
+	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// hdbc-clusterrule-*****khzre0ym0w
+	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
+	// example:
+	//
+	// {\\"check_mode\\": \\"all\\", \\"type\\": \\"exact\\", \\"substance\\": \\"122\\"}
+	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	// example:
+	//
+	// pullin
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// example:
+	//
+	// 1
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s DescribeHybridCloudClusterRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudClusterRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudClusterRulesResponseBodyData) SetClusterId(v int64) *DescribeHybridCloudClusterRulesResponseBodyData {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesResponseBodyData) SetClusterRuleResourceId(v string) *DescribeHybridCloudClusterRulesResponseBodyData {
+	s.ClusterRuleResourceId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesResponseBodyData) SetRuleConfig(v string) *DescribeHybridCloudClusterRulesResponseBodyData {
+	s.RuleConfig = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesResponseBodyData) SetRuleType(v string) *DescribeHybridCloudClusterRulesResponseBodyData {
+	s.RuleType = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesResponseBodyData) SetStatus(v string) *DescribeHybridCloudClusterRulesResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesResponseBodyData) SetVersion(v int64) *DescribeHybridCloudClusterRulesResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type DescribeHybridCloudClusterRulesResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHybridCloudClusterRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeHybridCloudClusterRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudClusterRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudClusterRulesResponse) SetHeaders(v map[string]*string) *DescribeHybridCloudClusterRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesResponse) SetStatusCode(v int32) *DescribeHybridCloudClusterRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRulesResponse) SetBody(v *DescribeHybridCloudClusterRulesResponseBody) *DescribeHybridCloudClusterRulesResponse {
 	s.Body = v
 	return s
 }
@@ -42165,6 +42632,90 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 
 // Summary:
 //
+// 新增集群规则信息
+//
+// @param request - CreateHybridCloudClusterRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHybridCloudClusterRuleResponse
+func (client *Client) CreateHybridCloudClusterRuleWithOptions(request *CreateHybridCloudClusterRuleRequest, runtime *util.RuntimeOptions) (_result *CreateHybridCloudClusterRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleConfig)) {
+		query["RuleConfig"] = request.RuleConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleStatus)) {
+		query["RuleStatus"] = request.RuleStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
+		query["RuleType"] = request.RuleType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHybridCloudClusterRule"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHybridCloudClusterRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增集群规则信息
+//
+// @param request - CreateHybridCloudClusterRuleRequest
+//
+// @return CreateHybridCloudClusterRuleResponse
+func (client *Client) CreateHybridCloudClusterRule(request *CreateHybridCloudClusterRuleRequest) (_result *CreateHybridCloudClusterRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHybridCloudClusterRuleResponse{}
+	_body, _err := client.CreateHybridCloudClusterRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a node group for a hybrid cloud cluster.
 //
 // @param request - CreateHybridCloudGroupRequest
@@ -43260,6 +43811,78 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDomainResponse{}
 	_body, _err := client.DeleteDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除集群规则信息
+//
+// @param request - DeleteHybridCloudClusterRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHybridCloudClusterRuleResponse
+func (client *Client) DeleteHybridCloudClusterRuleWithOptions(request *DeleteHybridCloudClusterRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteHybridCloudClusterRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterRuleResourceId)) {
+		query["ClusterRuleResourceId"] = request.ClusterRuleResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHybridCloudClusterRule"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHybridCloudClusterRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除集群规则信息
+//
+// @param request - DeleteHybridCloudClusterRuleRequest
+//
+// @return DeleteHybridCloudClusterRuleResponse
+func (client *Client) DeleteHybridCloudClusterRule(request *DeleteHybridCloudClusterRuleRequest) (_result *DeleteHybridCloudClusterRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHybridCloudClusterRuleResponse{}
+	_body, _err := client.DeleteHybridCloudClusterRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47784,6 +48407,98 @@ func (client *Client) DescribeHybridCloudClusterRule(request *DescribeHybridClou
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHybridCloudClusterRuleResponse{}
 	_body, _err := client.DescribeHybridCloudClusterRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 集群规则列表
+//
+// @param request - DescribeHybridCloudClusterRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudClusterRulesResponse
+func (client *Client) DescribeHybridCloudClusterRulesWithOptions(request *DescribeHybridCloudClusterRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridCloudClusterRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleContent)) {
+		query["RuleContent"] = request.RuleContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleMatchType)) {
+		query["RuleMatchType"] = request.RuleMatchType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
+		query["RuleType"] = request.RuleType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHybridCloudClusterRules"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHybridCloudClusterRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 集群规则列表
+//
+// @param request - DescribeHybridCloudClusterRulesRequest
+//
+// @return DescribeHybridCloudClusterRulesResponse
+func (client *Client) DescribeHybridCloudClusterRules(request *DescribeHybridCloudClusterRulesRequest) (_result *DescribeHybridCloudClusterRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHybridCloudClusterRulesResponse{}
+	_body, _err := client.DescribeHybridCloudClusterRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
