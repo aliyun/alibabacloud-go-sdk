@@ -50931,6 +50931,194 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
+type ListTransferFilesRequest struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// trt-03tdwg4tcuwdzv****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ListTransferFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransferFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransferFilesRequest) SetMaxResults(v int32) *ListTransferFilesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransferFilesRequest) SetNextToken(v string) *ListTransferFilesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTransferFilesRequest) SetTaskId(v string) *ListTransferFilesRequest {
+	s.TaskId = &v
+	return s
+}
+
+type ListTransferFilesResponseBody struct {
+	Files []*ListTransferFilesResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListTransferFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransferFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransferFilesResponseBody) SetFiles(v []*ListTransferFilesResponseBodyFiles) *ListTransferFilesResponseBody {
+	s.Files = v
+	return s
+}
+
+func (s *ListTransferFilesResponseBody) SetMaxResults(v int32) *ListTransferFilesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransferFilesResponseBody) SetNextToken(v string) *ListTransferFilesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTransferFilesResponseBody) SetRequestId(v string) *ListTransferFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListTransferFilesResponseBodyFiles struct {
+	// example:
+	//
+	// https://app-center-icon-pre-hangzhou.oss-cn-hangzhou.aliyuncs.com/tenant****
+	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	// example:
+	//
+	// trf-a213msf****
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OssFileName *string `json:"OssFileName,omitempty" xml:"OssFileName,omitempty"`
+	// example:
+	//
+	// transfer/1244234/****
+	OssFilePath *string `json:"OssFilePath,omitempty" xml:"OssFilePath,omitempty"`
+	// example:
+	//
+	// 10853079
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// DELETED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// txt
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListTransferFilesResponseBodyFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransferFilesResponseBodyFiles) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransferFilesResponseBodyFiles) SetIconUrl(v string) *ListTransferFilesResponseBodyFiles {
+	s.IconUrl = &v
+	return s
+}
+
+func (s *ListTransferFilesResponseBodyFiles) SetId(v string) *ListTransferFilesResponseBodyFiles {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTransferFilesResponseBodyFiles) SetName(v string) *ListTransferFilesResponseBodyFiles {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTransferFilesResponseBodyFiles) SetOssFileName(v string) *ListTransferFilesResponseBodyFiles {
+	s.OssFileName = &v
+	return s
+}
+
+func (s *ListTransferFilesResponseBodyFiles) SetOssFilePath(v string) *ListTransferFilesResponseBodyFiles {
+	s.OssFilePath = &v
+	return s
+}
+
+func (s *ListTransferFilesResponseBodyFiles) SetSize(v string) *ListTransferFilesResponseBodyFiles {
+	s.Size = &v
+	return s
+}
+
+func (s *ListTransferFilesResponseBodyFiles) SetStatus(v string) *ListTransferFilesResponseBodyFiles {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTransferFilesResponseBodyFiles) SetType(v string) *ListTransferFilesResponseBodyFiles {
+	s.Type = &v
+	return s
+}
+
+type ListTransferFilesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTransferFilesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTransferFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransferFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransferFilesResponse) SetHeaders(v map[string]*string) *ListTransferFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTransferFilesResponse) SetStatusCode(v int32) *ListTransferFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTransferFilesResponse) SetBody(v *ListTransferFilesResponseBody) *ListTransferFilesResponse {
+	s.Body = v
+	return s
+}
+
 type ListUserAdOrganizationUnitsRequest struct {
 	// The string that you enter for fuzzy search.
 	//
@@ -66598,6 +66786,102 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 	return s
 }
 
+type TransferTaskApprovalCallbackRequest struct {
+	// example:
+	//
+	// ed****-17337752804***
+	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	OssBucketRegionId *string `json:"OssBucketRegionId,omitempty" xml:"OssBucketRegionId,omitempty"`
+	// example:
+	//
+	// Approved
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// trt-msndfksm18fs****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s TransferTaskApprovalCallbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTaskApprovalCallbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTaskApprovalCallbackRequest) SetOssBucketName(v string) *TransferTaskApprovalCallbackRequest {
+	s.OssBucketName = &v
+	return s
+}
+
+func (s *TransferTaskApprovalCallbackRequest) SetOssBucketRegionId(v string) *TransferTaskApprovalCallbackRequest {
+	s.OssBucketRegionId = &v
+	return s
+}
+
+func (s *TransferTaskApprovalCallbackRequest) SetResult(v string) *TransferTaskApprovalCallbackRequest {
+	s.Result = &v
+	return s
+}
+
+func (s *TransferTaskApprovalCallbackRequest) SetTaskId(v string) *TransferTaskApprovalCallbackRequest {
+	s.TaskId = &v
+	return s
+}
+
+type TransferTaskApprovalCallbackResponseBody struct {
+	// example:
+	//
+	// AE7B699F-625C-587E-BC5F-1395CA****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TransferTaskApprovalCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTaskApprovalCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTaskApprovalCallbackResponseBody) SetRequestId(v string) *TransferTaskApprovalCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TransferTaskApprovalCallbackResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TransferTaskApprovalCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TransferTaskApprovalCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTaskApprovalCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTaskApprovalCallbackResponse) SetHeaders(v map[string]*string) *TransferTaskApprovalCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TransferTaskApprovalCallbackResponse) SetStatusCode(v int32) *TransferTaskApprovalCallbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TransferTaskApprovalCallbackResponse) SetBody(v *TransferTaskApprovalCallbackResponseBody) *TransferTaskApprovalCallbackResponse {
+	s.Body = v
+	return s
+}
+
 type UnbindConfigGroupRequest struct {
 	// The ID of the region. Set the value to `cn-shanghai`.
 	//
@@ -81919,6 +82203,74 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
+// 获取文件下载地址
+//
+// @param request - ListTransferFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTransferFilesResponse
+func (client *Client) ListTransferFilesWithOptions(request *ListTransferFilesRequest, runtime *util.RuntimeOptions) (_result *ListTransferFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTransferFiles"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTransferFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件下载地址
+//
+// @param request - ListTransferFilesRequest
+//
+// @return ListTransferFilesResponse
+func (client *Client) ListTransferFiles(request *ListTransferFilesRequest) (_result *ListTransferFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTransferFilesResponse{}
+	_body, _err := client.ListTransferFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the organizational units (OUs) of an Active Directory (AD) domain that is connected to an enterprise AD office network (formerly workspace).
 //
 // @param request - ListUserAdOrganizationUnitsRequest
@@ -88673,6 +89025,78 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
 	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 文件传输审批回调
+//
+// @param request - TransferTaskApprovalCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferTaskApprovalCallbackResponse
+func (client *Client) TransferTaskApprovalCallbackWithOptions(request *TransferTaskApprovalCallbackRequest, runtime *util.RuntimeOptions) (_result *TransferTaskApprovalCallbackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OssBucketName)) {
+		query["OssBucketName"] = request.OssBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketRegionId)) {
+		query["OssBucketRegionId"] = request.OssBucketRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Result)) {
+		query["Result"] = request.Result
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TransferTaskApprovalCallback"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TransferTaskApprovalCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 文件传输审批回调
+//
+// @param request - TransferTaskApprovalCallbackRequest
+//
+// @return TransferTaskApprovalCallbackResponse
+func (client *Client) TransferTaskApprovalCallback(request *TransferTaskApprovalCallbackRequest) (_result *TransferTaskApprovalCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TransferTaskApprovalCallbackResponse{}
+	_body, _err := client.TransferTaskApprovalCallbackWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
