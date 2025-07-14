@@ -1,3 +1,7 @@
+2025-07-14 Version: v2.10.0
+- Support API QueryReadableResourcesListByUserIdV2.
+
+
 2025-07-03 Version: v2.9.2
 - Generated golang 2022-01-01 for quickbi-public.
 
