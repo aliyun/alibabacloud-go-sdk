@@ -18513,19 +18513,19 @@ func (client *Client) CreateLoginProfile(request *CreateLoginProfileRequest) (_r
 //
 // Description:
 //
-// ### Prerequisites
+// ### [](#)Prerequisites
 //
-// Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external (IdP, such as Google G Suite or Okta.
+// Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificate authority (CA) certificates, and the client IDs are obtained from an external IdP, such as Google Workspace or Okta.
 //
-// ### Limits
+// ### [](#)Limits
 //
 //   - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
 //
-//   - You can add a maximum of 20 client IDs to an OIDC IdP.
+//   - You can add a maximum of 50 client IDs to an OIDC IdP.
 //
 //   - You can add a maximum of five fingerprints to an OIDC IdP.
 //
-// ###
+// ### [](#)Operation description
 //
 // This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
 //
@@ -18593,19 +18593,19 @@ func (client *Client) CreateOIDCProviderWithOptions(request *CreateOIDCProviderR
 //
 // Description:
 //
-// ### Prerequisites
+// ### [](#)Prerequisites
 //
-// Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external (IdP, such as Google G Suite or Okta.
+// Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificate authority (CA) certificates, and the client IDs are obtained from an external IdP, such as Google Workspace or Okta.
 //
-// ### Limits
+// ### [](#)Limits
 //
 //   - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
 //
-//   - You can add a maximum of 20 client IDs to an OIDC IdP.
+//   - You can add a maximum of 50 client IDs to an OIDC IdP.
 //
 //   - You can add a maximum of five fingerprints to an OIDC IdP.
 //
-// ###
+// ### [](#)Operation description
 //
 // This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
 //
