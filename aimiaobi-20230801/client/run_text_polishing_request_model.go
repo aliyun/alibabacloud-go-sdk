@@ -11,6 +11,8 @@ type iRunTextPolishingRequest interface {
 	GoString() string
 	SetContent(v string) *RunTextPolishingRequest
 	GetContent() *string
+	SetPrompt(v string) *RunTextPolishingRequest
+	GetPrompt() *string
 	SetWorkspaceId(v string) *RunTextPolishingRequest
 	GetWorkspaceId() *string
 }
@@ -22,6 +24,7 @@ type RunTextPolishingRequest struct {
 	//
 	// 文本内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Prompt  *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -42,12 +45,21 @@ func (s *RunTextPolishingRequest) GetContent() *string {
 	return s.Content
 }
 
+func (s *RunTextPolishingRequest) GetPrompt() *string {
+	return s.Prompt
+}
+
 func (s *RunTextPolishingRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
 func (s *RunTextPolishingRequest) SetContent(v string) *RunTextPolishingRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *RunTextPolishingRequest) SetPrompt(v string) *RunTextPolishingRequest {
+	s.Prompt = &v
 	return s
 }
 

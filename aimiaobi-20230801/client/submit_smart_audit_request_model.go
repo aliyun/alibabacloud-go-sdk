@@ -15,6 +15,8 @@ type iSubmitSmartAuditRequest interface {
 	GetText() *string
 	SetWorkspaceId(v string) *SubmitSmartAuditRequest
 	GetWorkspaceId() *string
+	SetImageUrls(v []*SubmitSmartAuditRequestImageUrls) *SubmitSmartAuditRequest
+	GetImageUrls() []*SubmitSmartAuditRequestImageUrls
 }
 
 type SubmitSmartAuditRequest struct {
@@ -23,7 +25,8 @@ type SubmitSmartAuditRequest struct {
 	// example:
 	//
 	// xxxx
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string                             `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	ImageUrls   []*SubmitSmartAuditRequestImageUrls `json:"imageUrls,omitempty" xml:"imageUrls,omitempty" type:"Repeated"`
 }
 
 func (s SubmitSmartAuditRequest) String() string {
@@ -46,6 +49,10 @@ func (s *SubmitSmartAuditRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
+func (s *SubmitSmartAuditRequest) GetImageUrls() []*SubmitSmartAuditRequestImageUrls {
+	return s.ImageUrls
+}
+
 func (s *SubmitSmartAuditRequest) SetSubCodes(v []*string) *SubmitSmartAuditRequest {
 	s.SubCodes = v
 	return s
@@ -61,6 +68,46 @@ func (s *SubmitSmartAuditRequest) SetWorkspaceId(v string) *SubmitSmartAuditRequ
 	return s
 }
 
+func (s *SubmitSmartAuditRequest) SetImageUrls(v []*SubmitSmartAuditRequestImageUrls) *SubmitSmartAuditRequest {
+	s.ImageUrls = v
+	return s
+}
+
 func (s *SubmitSmartAuditRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type SubmitSmartAuditRequestImageUrls struct {
+	Id  *string `json:"id,omitempty" xml:"id,omitempty"`
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s SubmitSmartAuditRequestImageUrls) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitSmartAuditRequestImageUrls) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartAuditRequestImageUrls) GetId() *string {
+	return s.Id
+}
+
+func (s *SubmitSmartAuditRequestImageUrls) GetUrl() *string {
+	return s.Url
+}
+
+func (s *SubmitSmartAuditRequestImageUrls) SetId(v string) *SubmitSmartAuditRequestImageUrls {
+	s.Id = &v
+	return s
+}
+
+func (s *SubmitSmartAuditRequestImageUrls) SetUrl(v string) *SubmitSmartAuditRequestImageUrls {
+	s.Url = &v
+	return s
+}
+
+func (s *SubmitSmartAuditRequestImageUrls) Validate() error {
 	return dara.Validate(s)
 }

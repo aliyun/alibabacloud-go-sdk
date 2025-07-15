@@ -9,6 +9,8 @@ type iRunKeywordsExtractionGenerationShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetPrompt(v string) *RunKeywordsExtractionGenerationShrinkRequest
+	GetPrompt() *string
 	SetReferenceDataShrink(v string) *RunKeywordsExtractionGenerationShrinkRequest
 	GetReferenceDataShrink() *string
 	SetTaskId(v string) *RunKeywordsExtractionGenerationShrinkRequest
@@ -18,6 +20,7 @@ type iRunKeywordsExtractionGenerationShrinkRequest interface {
 }
 
 type RunKeywordsExtractionGenerationShrinkRequest struct {
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// This parameter is required.
 	ReferenceDataShrink *string `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty"`
 	// example:
@@ -40,6 +43,10 @@ func (s RunKeywordsExtractionGenerationShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RunKeywordsExtractionGenerationShrinkRequest) GetPrompt() *string {
+	return s.Prompt
+}
+
 func (s *RunKeywordsExtractionGenerationShrinkRequest) GetReferenceDataShrink() *string {
 	return s.ReferenceDataShrink
 }
@@ -50,6 +57,11 @@ func (s *RunKeywordsExtractionGenerationShrinkRequest) GetTaskId() *string {
 
 func (s *RunKeywordsExtractionGenerationShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *RunKeywordsExtractionGenerationShrinkRequest) SetPrompt(v string) *RunKeywordsExtractionGenerationShrinkRequest {
+	s.Prompt = &v
+	return s
 }
 
 func (s *RunKeywordsExtractionGenerationShrinkRequest) SetReferenceDataShrink(v string) *RunKeywordsExtractionGenerationShrinkRequest {

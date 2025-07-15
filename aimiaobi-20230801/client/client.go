@@ -8000,6 +8000,10 @@ func (client *Client) RunAbbreviationContentWithOptions(request *RunAbbreviation
 		body["Content"] = request.Content
 	}
 
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		body["WorkspaceId"] = request.WorkspaceId
 	}
@@ -9280,6 +9284,10 @@ func (client *Client) RunExpandContentWithOptions(request *RunExpandContentReque
 		body["Content"] = request.Content
 	}
 
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		body["WorkspaceId"] = request.WorkspaceId
 	}
@@ -9502,6 +9510,10 @@ func (client *Client) RunKeywordsExtractionGenerationWithOptions(tmpReq *RunKeyw
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
 	if !dara.IsNil(request.ReferenceDataShrink) {
 		body["ReferenceData"] = request.ReferenceDataShrink
 	}
@@ -10074,6 +10086,10 @@ func (client *Client) RunTextPolishingWithOptions(request *RunTextPolishingReque
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Content) {
 		body["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -11915,6 +11931,10 @@ func (client *Client) SubmitSmartAuditWithOptions(tmpReq *SubmitSmartAuditReques
 		request.SubCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubCodes, dara.String("SubCodes"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.ImageUrls) {
+		request.ImageUrlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageUrls, dara.String("imageUrls"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SubCodesShrink) {
 		body["SubCodes"] = request.SubCodesShrink
@@ -11926,6 +11946,10 @@ func (client *Client) SubmitSmartAuditWithOptions(tmpReq *SubmitSmartAuditReques
 
 	if !dara.IsNil(request.WorkspaceId) {
 		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.ImageUrlsShrink) {
+		body["imageUrls"] = request.ImageUrlsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{

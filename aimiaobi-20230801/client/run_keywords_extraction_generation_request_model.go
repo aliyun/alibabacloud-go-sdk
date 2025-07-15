@@ -9,6 +9,8 @@ type iRunKeywordsExtractionGenerationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetPrompt(v string) *RunKeywordsExtractionGenerationRequest
+	GetPrompt() *string
 	SetReferenceData(v *RunKeywordsExtractionGenerationRequestReferenceData) *RunKeywordsExtractionGenerationRequest
 	GetReferenceData() *RunKeywordsExtractionGenerationRequestReferenceData
 	SetTaskId(v string) *RunKeywordsExtractionGenerationRequest
@@ -18,6 +20,7 @@ type iRunKeywordsExtractionGenerationRequest interface {
 }
 
 type RunKeywordsExtractionGenerationRequest struct {
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// This parameter is required.
 	ReferenceData *RunKeywordsExtractionGenerationRequestReferenceData `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty" type:"Struct"`
 	// example:
@@ -40,6 +43,10 @@ func (s RunKeywordsExtractionGenerationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RunKeywordsExtractionGenerationRequest) GetPrompt() *string {
+	return s.Prompt
+}
+
 func (s *RunKeywordsExtractionGenerationRequest) GetReferenceData() *RunKeywordsExtractionGenerationRequestReferenceData {
 	return s.ReferenceData
 }
@@ -50,6 +57,11 @@ func (s *RunKeywordsExtractionGenerationRequest) GetTaskId() *string {
 
 func (s *RunKeywordsExtractionGenerationRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *RunKeywordsExtractionGenerationRequest) SetPrompt(v string) *RunKeywordsExtractionGenerationRequest {
+	s.Prompt = &v
+	return s
 }
 
 func (s *RunKeywordsExtractionGenerationRequest) SetReferenceData(v *RunKeywordsExtractionGenerationRequestReferenceData) *RunKeywordsExtractionGenerationRequest {

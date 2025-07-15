@@ -15,6 +15,8 @@ type iSubmitSmartAuditShrinkRequest interface {
 	GetText() *string
 	SetWorkspaceId(v string) *SubmitSmartAuditShrinkRequest
 	GetWorkspaceId() *string
+	SetImageUrlsShrink(v string) *SubmitSmartAuditShrinkRequest
+	GetImageUrlsShrink() *string
 }
 
 type SubmitSmartAuditShrinkRequest struct {
@@ -23,7 +25,8 @@ type SubmitSmartAuditShrinkRequest struct {
 	// example:
 	//
 	// xxxx
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	ImageUrlsShrink *string `json:"imageUrls,omitempty" xml:"imageUrls,omitempty"`
 }
 
 func (s SubmitSmartAuditShrinkRequest) String() string {
@@ -46,6 +49,10 @@ func (s *SubmitSmartAuditShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
+func (s *SubmitSmartAuditShrinkRequest) GetImageUrlsShrink() *string {
+	return s.ImageUrlsShrink
+}
+
 func (s *SubmitSmartAuditShrinkRequest) SetSubCodesShrink(v string) *SubmitSmartAuditShrinkRequest {
 	s.SubCodesShrink = &v
 	return s
@@ -58,6 +65,11 @@ func (s *SubmitSmartAuditShrinkRequest) SetText(v string) *SubmitSmartAuditShrin
 
 func (s *SubmitSmartAuditShrinkRequest) SetWorkspaceId(v string) *SubmitSmartAuditShrinkRequest {
 	s.WorkspaceId = &v
+	return s
+}
+
+func (s *SubmitSmartAuditShrinkRequest) SetImageUrlsShrink(v string) *SubmitSmartAuditShrinkRequest {
+	s.ImageUrlsShrink = &v
 	return s
 }
 

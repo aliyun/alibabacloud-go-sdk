@@ -187,6 +187,7 @@ type GetSmartAuditResultResponseBodyDataErrorItemDetails struct {
 	// PunctuationError
 	SubClassCode *string `json:"SubClassCode,omitempty" xml:"SubClassCode,omitempty"`
 	SubClassDesc *string `json:"SubClassDesc,omitempty" xml:"SubClassDesc,omitempty"`
+	Url          *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetSmartAuditResultResponseBodyDataErrorItemDetails) String() string {
@@ -243,6 +244,10 @@ func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) GetSubClassCode() 
 
 func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) GetSubClassDesc() *string {
 	return s.SubClassDesc
+}
+
+func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) GetUrl() *string {
+	return s.Url
 }
 
 func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetCheckId(v string) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
@@ -302,6 +307,11 @@ func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetSubClassCode(v 
 
 func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetSubClassDesc(v string) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
 	s.SubClassDesc = &v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBodyDataErrorItemDetails) SetUrl(v string) *GetSmartAuditResultResponseBodyDataErrorItemDetails {
+	s.Url = &v
 	return s
 }
 
