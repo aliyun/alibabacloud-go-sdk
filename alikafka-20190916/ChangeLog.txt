@@ -2,6 +2,10 @@
 - Support API GetRiskList.
 
 
+2025-07-15 Version: v3.13.0
+- Support API GetRiskList.
+
+
 2025-05-27 Version: v3.12.0
 - Support API ListRebalanceInfo.
 
