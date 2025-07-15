@@ -1,11 +1,8 @@
-module github.com/alibabacloud-go/live-20161101
+module github.com/alibabacloud-go/live-20161101/v2
 
-go 1.15
+go 1.14
 
 require (
-	github.com/alibabacloud-go/darabonba-openapi/v2 v2.0.2
-	github.com/alibabacloud-go/endpoint-util v1.1.0
-	github.com/alibabacloud-go/openapi-util v0.1.0
-	github.com/alibabacloud-go/tea v1.1.19
-	github.com/alibabacloud-go/tea-utils/v2 v2.0.1
+	github.com/alibabacloud-go/darabonba-openapi/v2 v2.1.8
+	github.com/alibabacloud-go/tea v1.3.9
 )
