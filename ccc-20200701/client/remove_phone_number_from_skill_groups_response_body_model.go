@@ -1,0 +1,84 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iRemovePhoneNumberFromSkillGroupsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCode(v string) *RemovePhoneNumberFromSkillGroupsResponseBody
+	GetCode() *string
+	SetHttpStatusCode(v int32) *RemovePhoneNumberFromSkillGroupsResponseBody
+	GetHttpStatusCode() *int32
+	SetMessage(v string) *RemovePhoneNumberFromSkillGroupsResponseBody
+	GetMessage() *string
+	SetRequestId(v string) *RemovePhoneNumberFromSkillGroupsResponseBody
+	GetRequestId() *string
+}
+
+type RemovePhoneNumberFromSkillGroupsResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemovePhoneNumberFromSkillGroupsResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RemovePhoneNumberFromSkillGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemovePhoneNumberFromSkillGroupsResponseBody) GetCode() *string {
+	return s.Code
+}
+
+func (s *RemovePhoneNumberFromSkillGroupsResponseBody) GetHttpStatusCode() *int32 {
+	return s.HttpStatusCode
+}
+
+func (s *RemovePhoneNumberFromSkillGroupsResponseBody) GetMessage() *string {
+	return s.Message
+}
+
+func (s *RemovePhoneNumberFromSkillGroupsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *RemovePhoneNumberFromSkillGroupsResponseBody) SetCode(v string) *RemovePhoneNumberFromSkillGroupsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RemovePhoneNumberFromSkillGroupsResponseBody) SetHttpStatusCode(v int32) *RemovePhoneNumberFromSkillGroupsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *RemovePhoneNumberFromSkillGroupsResponseBody) SetMessage(v string) *RemovePhoneNumberFromSkillGroupsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RemovePhoneNumberFromSkillGroupsResponseBody) SetRequestId(v string) *RemovePhoneNumberFromSkillGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RemovePhoneNumberFromSkillGroupsResponseBody) Validate() error {
+	return dara.Validate(s)
+}
