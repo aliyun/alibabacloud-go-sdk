@@ -4880,6 +4880,14 @@ func (client *Client) ListServicesWithOptions(tmpReq *ListServicesRequest, heade
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoscalerEnabled) {
+		query["AutoscalerEnabled"] = request.AutoscalerEnabled
+	}
+
+	if !dara.IsNil(request.CronscalerEnabled) {
+		query["CronscalerEnabled"] = request.CronscalerEnabled
+	}
+
 	if !dara.IsNil(request.Filter) {
 		query["Filter"] = request.Filter
 	}
@@ -4922,6 +4930,10 @@ func (client *Client) ListServicesWithOptions(tmpReq *ListServicesRequest, heade
 
 	if !dara.IsNil(request.ResourceAliasName) {
 		query["ResourceAliasName"] = request.ResourceAliasName
+	}
+
+	if !dara.IsNil(request.ResourceBurstable) {
+		query["ResourceBurstable"] = request.ResourceBurstable
 	}
 
 	if !dara.IsNil(request.ResourceId) {

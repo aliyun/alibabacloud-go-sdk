@@ -9,6 +9,10 @@ type iListServicesShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoscalerEnabled(v bool) *ListServicesShrinkRequest
+	GetAutoscalerEnabled() *bool
+	SetCronscalerEnabled(v bool) *ListServicesShrinkRequest
+	GetCronscalerEnabled() *bool
 	SetFilter(v string) *ListServicesShrinkRequest
 	GetFilter() *string
 	SetGateway(v string) *ListServicesShrinkRequest
@@ -31,6 +35,8 @@ type iListServicesShrinkRequest interface {
 	GetQuotaId() *string
 	SetResourceAliasName(v string) *ListServicesShrinkRequest
 	GetResourceAliasName() *string
+	SetResourceBurstable(v bool) *ListServicesShrinkRequest
+	GetResourceBurstable() *bool
 	SetResourceId(v string) *ListServicesShrinkRequest
 	GetResourceId() *string
 	SetResourceName(v string) *ListServicesShrinkRequest
@@ -54,6 +60,8 @@ type iListServicesShrinkRequest interface {
 }
 
 type ListServicesShrinkRequest struct {
+	AutoscalerEnabled *bool `json:"AutoscalerEnabled,omitempty" xml:"AutoscalerEnabled,omitempty"`
+	CronscalerEnabled *bool `json:"CronscalerEnabled,omitempty" xml:"CronscalerEnabled,omitempty"`
 	// The field that is used for fuzzy matches. The system performs fuzzy matches only by service name.
 	//
 	// example:
@@ -110,6 +118,7 @@ type ListServicesShrinkRequest struct {
 	// quota12345
 	QuotaId           *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
 	ResourceAliasName *string `json:"ResourceAliasName,omitempty" xml:"ResourceAliasName,omitempty"`
+	ResourceBurstable *bool   `json:"ResourceBurstable,omitempty" xml:"ResourceBurstable,omitempty"`
 	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// Deprecated
 	//
@@ -380,6 +389,14 @@ func (s ListServicesShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListServicesShrinkRequest) GetAutoscalerEnabled() *bool {
+	return s.AutoscalerEnabled
+}
+
+func (s *ListServicesShrinkRequest) GetCronscalerEnabled() *bool {
+	return s.CronscalerEnabled
+}
+
 func (s *ListServicesShrinkRequest) GetFilter() *string {
 	return s.Filter
 }
@@ -424,6 +441,10 @@ func (s *ListServicesShrinkRequest) GetResourceAliasName() *string {
 	return s.ResourceAliasName
 }
 
+func (s *ListServicesShrinkRequest) GetResourceBurstable() *bool {
+	return s.ResourceBurstable
+}
+
 func (s *ListServicesShrinkRequest) GetResourceId() *string {
 	return s.ResourceId
 }
@@ -462,6 +483,16 @@ func (s *ListServicesShrinkRequest) GetSort() *string {
 
 func (s *ListServicesShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListServicesShrinkRequest) SetAutoscalerEnabled(v bool) *ListServicesShrinkRequest {
+	s.AutoscalerEnabled = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetCronscalerEnabled(v bool) *ListServicesShrinkRequest {
+	s.CronscalerEnabled = &v
+	return s
 }
 
 func (s *ListServicesShrinkRequest) SetFilter(v string) *ListServicesShrinkRequest {
@@ -516,6 +547,11 @@ func (s *ListServicesShrinkRequest) SetQuotaId(v string) *ListServicesShrinkRequ
 
 func (s *ListServicesShrinkRequest) SetResourceAliasName(v string) *ListServicesShrinkRequest {
 	s.ResourceAliasName = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetResourceBurstable(v bool) *ListServicesShrinkRequest {
+	s.ResourceBurstable = &v
 	return s
 }
 

@@ -19,12 +19,20 @@ type iDescribeResourceResponseBody interface {
 	GetCreateTime() *string
 	SetExtraData(v string) *DescribeResourceResponseBody
 	GetExtraData() *string
+	SetFeatures(v []*string) *DescribeResourceResponseBody
+	GetFeatures() []*string
 	SetGpuCount(v int32) *DescribeResourceResponseBody
 	GetGpuCount() *int32
 	SetGpuUsed(v float32) *DescribeResourceResponseBody
 	GetGpuUsed() *float32
 	SetInstanceCount(v int32) *DescribeResourceResponseBody
 	GetInstanceCount() *int32
+	SetInstanceMaxAllocatableCPU(v int32) *DescribeResourceResponseBody
+	GetInstanceMaxAllocatableCPU() *int32
+	SetInstanceMaxAllocatableGPU(v float32) *DescribeResourceResponseBody
+	GetInstanceMaxAllocatableGPU() *float32
+	SetInstanceMaxAllocatableMemory(v int32) *DescribeResourceResponseBody
+	GetInstanceMaxAllocatableMemory() *int32
 	SetMemory(v int32) *DescribeResourceResponseBody
 	GetMemory() *int32
 	SetMemoryUsed(v int32) *DescribeResourceResponseBody
@@ -81,7 +89,8 @@ type DescribeResourceResponseBody struct {
 	// example:
 	//
 	// {"vswitch_id":"vsw-bp17uo6xebcusy****","gpu_share":true,"aux_vswitch_id_list":["vsw-bp13b3pvjap3vxn****","vsw-bp1nls8o5hk8mt8*****"],"security_group_id":"sg-bp1j1z7297hcink*****","vpc_id":"vpc-bp1kjr3rfyhx01*****","destination_cidr":"172.16.0.12/28","role_arn":"acs:ram::1157703270*****:role/AliyunServiceRoleForPaiEas","sls_project":"","sls_logstore":"","sls_status":"ResourceReady","sls_message":"","update_time":""}
-	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	ExtraData *string   `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	Features  []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 	// The total number of GPUs.
 	//
 	// example:
@@ -99,7 +108,10 @@ type DescribeResourceResponseBody struct {
 	// example:
 	//
 	// 4
-	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	InstanceCount                *int32   `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	InstanceMaxAllocatableCPU    *int32   `json:"InstanceMaxAllocatableCPU,omitempty" xml:"InstanceMaxAllocatableCPU,omitempty"`
+	InstanceMaxAllocatableGPU    *float32 `json:"InstanceMaxAllocatableGPU,omitempty" xml:"InstanceMaxAllocatableGPU,omitempty"`
+	InstanceMaxAllocatableMemory *int32   `json:"InstanceMaxAllocatableMemory,omitempty" xml:"InstanceMaxAllocatableMemory,omitempty"`
 	// The total memory size. Unit: MB.
 	//
 	// example:
@@ -206,6 +218,10 @@ func (s *DescribeResourceResponseBody) GetExtraData() *string {
 	return s.ExtraData
 }
 
+func (s *DescribeResourceResponseBody) GetFeatures() []*string {
+	return s.Features
+}
+
 func (s *DescribeResourceResponseBody) GetGpuCount() *int32 {
 	return s.GpuCount
 }
@@ -216,6 +232,18 @@ func (s *DescribeResourceResponseBody) GetGpuUsed() *float32 {
 
 func (s *DescribeResourceResponseBody) GetInstanceCount() *int32 {
 	return s.InstanceCount
+}
+
+func (s *DescribeResourceResponseBody) GetInstanceMaxAllocatableCPU() *int32 {
+	return s.InstanceMaxAllocatableCPU
+}
+
+func (s *DescribeResourceResponseBody) GetInstanceMaxAllocatableGPU() *float32 {
+	return s.InstanceMaxAllocatableGPU
+}
+
+func (s *DescribeResourceResponseBody) GetInstanceMaxAllocatableMemory() *int32 {
+	return s.InstanceMaxAllocatableMemory
 }
 
 func (s *DescribeResourceResponseBody) GetMemory() *int32 {
@@ -291,6 +319,11 @@ func (s *DescribeResourceResponseBody) SetExtraData(v string) *DescribeResourceR
 	return s
 }
 
+func (s *DescribeResourceResponseBody) SetFeatures(v []*string) *DescribeResourceResponseBody {
+	s.Features = v
+	return s
+}
+
 func (s *DescribeResourceResponseBody) SetGpuCount(v int32) *DescribeResourceResponseBody {
 	s.GpuCount = &v
 	return s
@@ -303,6 +336,21 @@ func (s *DescribeResourceResponseBody) SetGpuUsed(v float32) *DescribeResourceRe
 
 func (s *DescribeResourceResponseBody) SetInstanceCount(v int32) *DescribeResourceResponseBody {
 	s.InstanceCount = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetInstanceMaxAllocatableCPU(v int32) *DescribeResourceResponseBody {
+	s.InstanceMaxAllocatableCPU = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetInstanceMaxAllocatableGPU(v float32) *DescribeResourceResponseBody {
+	s.InstanceMaxAllocatableGPU = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetInstanceMaxAllocatableMemory(v int32) *DescribeResourceResponseBody {
+	s.InstanceMaxAllocatableMemory = &v
 	return s
 }
 

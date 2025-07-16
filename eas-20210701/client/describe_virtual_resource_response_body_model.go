@@ -13,6 +13,8 @@ type iDescribeVirtualResourceResponseBody interface {
 	GetCreateTime() *string
 	SetDisableSpotProtectionPeriod(v bool) *DescribeVirtualResourceResponseBody
 	GetDisableSpotProtectionPeriod() *bool
+	SetFeatures(v []*string) *DescribeVirtualResourceResponseBody
+	GetFeatures() []*string
 	SetRequestId(v string) *DescribeVirtualResourceResponseBody
 	GetRequestId() *string
 	SetResources(v []*DescribeVirtualResourceResponseBodyResources) *DescribeVirtualResourceResponseBody
@@ -39,7 +41,8 @@ type DescribeVirtualResourceResponseBody struct {
 	// example:
 	//
 	// true
-	DisableSpotProtectionPeriod *bool `json:"DisableSpotProtectionPeriod,omitempty" xml:"DisableSpotProtectionPeriod,omitempty"`
+	DisableSpotProtectionPeriod *bool     `json:"DisableSpotProtectionPeriod,omitempty" xml:"DisableSpotProtectionPeriod,omitempty"`
+	Features                    []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
 	// example:
@@ -90,6 +93,10 @@ func (s *DescribeVirtualResourceResponseBody) GetDisableSpotProtectionPeriod() *
 	return s.DisableSpotProtectionPeriod
 }
 
+func (s *DescribeVirtualResourceResponseBody) GetFeatures() []*string {
+	return s.Features
+}
+
 func (s *DescribeVirtualResourceResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -121,6 +128,11 @@ func (s *DescribeVirtualResourceResponseBody) SetCreateTime(v string) *DescribeV
 
 func (s *DescribeVirtualResourceResponseBody) SetDisableSpotProtectionPeriod(v bool) *DescribeVirtualResourceResponseBody {
 	s.DisableSpotProtectionPeriod = &v
+	return s
+}
+
+func (s *DescribeVirtualResourceResponseBody) SetFeatures(v []*string) *DescribeVirtualResourceResponseBody {
+	s.Features = v
 	return s
 }
 

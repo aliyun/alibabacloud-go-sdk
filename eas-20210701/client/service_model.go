@@ -19,22 +19,32 @@ type iService interface {
 	GetAppType() *string
 	SetAppVersion(v string) *Service
 	GetAppVersion() *string
+	SetAutoscalerEnabled(v bool) *Service
+	GetAutoscalerEnabled() *bool
 	SetCallerUid(v string) *Service
 	GetCallerUid() *string
 	SetCpu(v int32) *Service
 	GetCpu() *int32
 	SetCreateTime(v string) *Service
 	GetCreateTime() *string
+	SetCronscalerEnabled(v bool) *Service
+	GetCronscalerEnabled() *bool
 	SetCurrentVersion(v int32) *Service
 	GetCurrentVersion() *int32
 	SetExtraData(v string) *Service
 	GetExtraData() *string
+	SetGPUCorePercentage(v int32) *Service
+	GetGPUCorePercentage() *int32
+	SetGPUMemory(v int32) *Service
+	GetGPUMemory() *int32
 	SetGateway(v string) *Service
 	GetGateway() *string
 	SetGpu(v int32) *Service
 	GetGpu() *int32
 	SetImage(v string) *Service
 	GetImage() *string
+	SetInstanceCountInResource(v *ServiceInstanceCountInResource) *Service
+	GetInstanceCountInResource() *ServiceInstanceCountInResource
 	SetInternetEndpoint(v string) *Service
 	GetInternetEndpoint() *string
 	SetIntranetEndpoint(v string) *Service
@@ -65,6 +75,8 @@ type iService interface {
 	GetResource() *string
 	SetResourceAlias(v string) *Service
 	GetResourceAlias() *string
+	SetResourceBurstable(v bool) *Service
+	GetResourceBurstable() *bool
 	SetRole(v string) *Service
 	GetRole() *string
 	SetRoleAttrs(v string) *Service
@@ -104,52 +116,58 @@ type iService interface {
 }
 
 type Service struct {
-	AccessToken               *string          `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	AppConfig                 *string          `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
-	AppSpecName               *string          `json:"AppSpecName,omitempty" xml:"AppSpecName,omitempty"`
-	AppType                   *string          `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	AppVersion                *string          `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	CallerUid                 *string          `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	Cpu                       *int32           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreateTime                *string          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CurrentVersion            *int32           `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	ExtraData                 *string          `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	Gateway                   *string          `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
-	Gpu                       *int32           `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	Image                     *string          `json:"Image,omitempty" xml:"Image,omitempty"`
-	InternetEndpoint          *string          `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
-	IntranetEndpoint          *string          `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	Labels                    []*ServiceLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatestVersion             *int32           `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	Memory                    *int32           `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Message                   *string          `json:"Message,omitempty" xml:"Message,omitempty"`
-	Namespace                 *string          `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ParentUid                 *string          `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	PendingInstance           *int32           `json:"PendingInstance,omitempty" xml:"PendingInstance,omitempty"`
-	QuotaId                   *string          `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	Reason                    *string          `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Region                    *string          `json:"Region,omitempty" xml:"Region,omitempty"`
-	RequestId                 *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resource                  *string          `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	ResourceAlias             *string          `json:"ResourceAlias,omitempty" xml:"ResourceAlias,omitempty"`
-	Role                      *string          `json:"Role,omitempty" xml:"Role,omitempty"`
-	RoleAttrs                 *string          `json:"RoleAttrs,omitempty" xml:"RoleAttrs,omitempty"`
-	RunningInstance           *int32           `json:"RunningInstance,omitempty" xml:"RunningInstance,omitempty"`
-	SafetyLock                *string          `json:"SafetyLock,omitempty" xml:"SafetyLock,omitempty"`
-	SecondaryInternetEndpoint *string          `json:"SecondaryInternetEndpoint,omitempty" xml:"SecondaryInternetEndpoint,omitempty"`
-	SecondaryIntranetEndpoint *string          `json:"SecondaryIntranetEndpoint,omitempty" xml:"SecondaryIntranetEndpoint,omitempty"`
-	ServiceConfig             *string          `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
-	ServiceGroup              *string          `json:"ServiceGroup,omitempty" xml:"ServiceGroup,omitempty"`
-	ServiceId                 *string          `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceName               *string          `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	ServiceUid                *string          `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
-	Source                    *string          `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status                    *string          `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalInstance             *int32           `json:"TotalInstance,omitempty" xml:"TotalInstance,omitempty"`
-	TrafficState              *string          `json:"TrafficState,omitempty" xml:"TrafficState,omitempty"`
-	UpdateTime                *string          `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Weight                    *int32           `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	WorkspaceId               *string          `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	AccessToken               *string                         `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	AppConfig                 *string                         `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
+	AppSpecName               *string                         `json:"AppSpecName,omitempty" xml:"AppSpecName,omitempty"`
+	AppType                   *string                         `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppVersion                *string                         `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	AutoscalerEnabled         *bool                           `json:"AutoscalerEnabled,omitempty" xml:"AutoscalerEnabled,omitempty"`
+	CallerUid                 *string                         `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	Cpu                       *int32                          `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CreateTime                *string                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CronscalerEnabled         *bool                           `json:"CronscalerEnabled,omitempty" xml:"CronscalerEnabled,omitempty"`
+	CurrentVersion            *int32                          `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	ExtraData                 *string                         `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	GPUCorePercentage         *int32                          `json:"GPUCorePercentage,omitempty" xml:"GPUCorePercentage,omitempty"`
+	GPUMemory                 *int32                          `json:"GPUMemory,omitempty" xml:"GPUMemory,omitempty"`
+	Gateway                   *string                         `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	Gpu                       *int32                          `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	Image                     *string                         `json:"Image,omitempty" xml:"Image,omitempty"`
+	InstanceCountInResource   *ServiceInstanceCountInResource `json:"InstanceCountInResource,omitempty" xml:"InstanceCountInResource,omitempty" type:"Struct"`
+	InternetEndpoint          *string                         `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
+	IntranetEndpoint          *string                         `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
+	Labels                    []*ServiceLabels                `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestVersion             *int32                          `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	Memory                    *int32                          `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Message                   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	Namespace                 *string                         `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ParentUid                 *string                         `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	PendingInstance           *int32                          `json:"PendingInstance,omitempty" xml:"PendingInstance,omitempty"`
+	QuotaId                   *string                         `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	Reason                    *string                         `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Region                    *string                         `json:"Region,omitempty" xml:"Region,omitempty"`
+	RequestId                 *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resource                  *string                         `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	ResourceAlias             *string                         `json:"ResourceAlias,omitempty" xml:"ResourceAlias,omitempty"`
+	ResourceBurstable         *bool                           `json:"ResourceBurstable,omitempty" xml:"ResourceBurstable,omitempty"`
+	Role                      *string                         `json:"Role,omitempty" xml:"Role,omitempty"`
+	RoleAttrs                 *string                         `json:"RoleAttrs,omitempty" xml:"RoleAttrs,omitempty"`
+	RunningInstance           *int32                          `json:"RunningInstance,omitempty" xml:"RunningInstance,omitempty"`
+	SafetyLock                *string                         `json:"SafetyLock,omitempty" xml:"SafetyLock,omitempty"`
+	SecondaryInternetEndpoint *string                         `json:"SecondaryInternetEndpoint,omitempty" xml:"SecondaryInternetEndpoint,omitempty"`
+	SecondaryIntranetEndpoint *string                         `json:"SecondaryIntranetEndpoint,omitempty" xml:"SecondaryIntranetEndpoint,omitempty"`
+	ServiceConfig             *string                         `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
+	ServiceGroup              *string                         `json:"ServiceGroup,omitempty" xml:"ServiceGroup,omitempty"`
+	ServiceId                 *string                         `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName               *string                         `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceUid                *string                         `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
+	Source                    *string                         `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status                    *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalInstance             *int32                          `json:"TotalInstance,omitempty" xml:"TotalInstance,omitempty"`
+	TrafficState              *string                         `json:"TrafficState,omitempty" xml:"TrafficState,omitempty"`
+	UpdateTime                *string                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Weight                    *int32                          `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	WorkspaceId               *string                         `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s Service) String() string {
@@ -180,6 +198,10 @@ func (s *Service) GetAppVersion() *string {
 	return s.AppVersion
 }
 
+func (s *Service) GetAutoscalerEnabled() *bool {
+	return s.AutoscalerEnabled
+}
+
 func (s *Service) GetCallerUid() *string {
 	return s.CallerUid
 }
@@ -192,12 +214,24 @@ func (s *Service) GetCreateTime() *string {
 	return s.CreateTime
 }
 
+func (s *Service) GetCronscalerEnabled() *bool {
+	return s.CronscalerEnabled
+}
+
 func (s *Service) GetCurrentVersion() *int32 {
 	return s.CurrentVersion
 }
 
 func (s *Service) GetExtraData() *string {
 	return s.ExtraData
+}
+
+func (s *Service) GetGPUCorePercentage() *int32 {
+	return s.GPUCorePercentage
+}
+
+func (s *Service) GetGPUMemory() *int32 {
+	return s.GPUMemory
 }
 
 func (s *Service) GetGateway() *string {
@@ -210,6 +244,10 @@ func (s *Service) GetGpu() *int32 {
 
 func (s *Service) GetImage() *string {
 	return s.Image
+}
+
+func (s *Service) GetInstanceCountInResource() *ServiceInstanceCountInResource {
+	return s.InstanceCountInResource
 }
 
 func (s *Service) GetInternetEndpoint() *string {
@@ -270,6 +308,10 @@ func (s *Service) GetResource() *string {
 
 func (s *Service) GetResourceAlias() *string {
 	return s.ResourceAlias
+}
+
+func (s *Service) GetResourceBurstable() *bool {
+	return s.ResourceBurstable
 }
 
 func (s *Service) GetRole() *string {
@@ -369,6 +411,11 @@ func (s *Service) SetAppVersion(v string) *Service {
 	return s
 }
 
+func (s *Service) SetAutoscalerEnabled(v bool) *Service {
+	s.AutoscalerEnabled = &v
+	return s
+}
+
 func (s *Service) SetCallerUid(v string) *Service {
 	s.CallerUid = &v
 	return s
@@ -384,6 +431,11 @@ func (s *Service) SetCreateTime(v string) *Service {
 	return s
 }
 
+func (s *Service) SetCronscalerEnabled(v bool) *Service {
+	s.CronscalerEnabled = &v
+	return s
+}
+
 func (s *Service) SetCurrentVersion(v int32) *Service {
 	s.CurrentVersion = &v
 	return s
@@ -391,6 +443,16 @@ func (s *Service) SetCurrentVersion(v int32) *Service {
 
 func (s *Service) SetExtraData(v string) *Service {
 	s.ExtraData = &v
+	return s
+}
+
+func (s *Service) SetGPUCorePercentage(v int32) *Service {
+	s.GPUCorePercentage = &v
+	return s
+}
+
+func (s *Service) SetGPUMemory(v int32) *Service {
+	s.GPUMemory = &v
 	return s
 }
 
@@ -406,6 +468,11 @@ func (s *Service) SetGpu(v int32) *Service {
 
 func (s *Service) SetImage(v string) *Service {
 	s.Image = &v
+	return s
+}
+
+func (s *Service) SetInstanceCountInResource(v *ServiceInstanceCountInResource) *Service {
+	s.InstanceCountInResource = v
 	return s
 }
 
@@ -481,6 +548,11 @@ func (s *Service) SetResource(v string) *Service {
 
 func (s *Service) SetResourceAlias(v string) *Service {
 	s.ResourceAlias = &v
+	return s
+}
+
+func (s *Service) SetResourceBurstable(v bool) *Service {
+	s.ResourceBurstable = &v
 	return s
 }
 
@@ -575,6 +647,51 @@ func (s *Service) SetWorkspaceId(v string) *Service {
 }
 
 func (s *Service) Validate() error {
+	return dara.Validate(s)
+}
+
+type ServiceInstanceCountInResource struct {
+	Dedicated *int32 `json:"Dedicated,omitempty" xml:"Dedicated,omitempty"`
+	Public    *int32 `json:"Public,omitempty" xml:"Public,omitempty"`
+	Quota     *int32 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+}
+
+func (s ServiceInstanceCountInResource) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ServiceInstanceCountInResource) GoString() string {
+	return s.String()
+}
+
+func (s *ServiceInstanceCountInResource) GetDedicated() *int32 {
+	return s.Dedicated
+}
+
+func (s *ServiceInstanceCountInResource) GetPublic() *int32 {
+	return s.Public
+}
+
+func (s *ServiceInstanceCountInResource) GetQuota() *int32 {
+	return s.Quota
+}
+
+func (s *ServiceInstanceCountInResource) SetDedicated(v int32) *ServiceInstanceCountInResource {
+	s.Dedicated = &v
+	return s
+}
+
+func (s *ServiceInstanceCountInResource) SetPublic(v int32) *ServiceInstanceCountInResource {
+	s.Public = &v
+	return s
+}
+
+func (s *ServiceInstanceCountInResource) SetQuota(v int32) *ServiceInstanceCountInResource {
+	s.Quota = &v
+	return s
+}
+
+func (s *ServiceInstanceCountInResource) Validate() error {
 	return dara.Validate(s)
 }
 

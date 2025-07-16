@@ -9,6 +9,10 @@ type iListServicesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoscalerEnabled(v bool) *ListServicesRequest
+	GetAutoscalerEnabled() *bool
+	SetCronscalerEnabled(v bool) *ListServicesRequest
+	GetCronscalerEnabled() *bool
 	SetFilter(v string) *ListServicesRequest
 	GetFilter() *string
 	SetGateway(v string) *ListServicesRequest
@@ -31,6 +35,8 @@ type iListServicesRequest interface {
 	GetQuotaId() *string
 	SetResourceAliasName(v string) *ListServicesRequest
 	GetResourceAliasName() *string
+	SetResourceBurstable(v bool) *ListServicesRequest
+	GetResourceBurstable() *bool
 	SetResourceId(v string) *ListServicesRequest
 	GetResourceId() *string
 	SetResourceName(v string) *ListServicesRequest
@@ -54,6 +60,8 @@ type iListServicesRequest interface {
 }
 
 type ListServicesRequest struct {
+	AutoscalerEnabled *bool `json:"AutoscalerEnabled,omitempty" xml:"AutoscalerEnabled,omitempty"`
+	CronscalerEnabled *bool `json:"CronscalerEnabled,omitempty" xml:"CronscalerEnabled,omitempty"`
 	// The field that is used for fuzzy matches. The system performs fuzzy matches only by service name.
 	//
 	// example:
@@ -110,6 +118,7 @@ type ListServicesRequest struct {
 	// quota12345
 	QuotaId           *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
 	ResourceAliasName *string `json:"ResourceAliasName,omitempty" xml:"ResourceAliasName,omitempty"`
+	ResourceBurstable *bool   `json:"ResourceBurstable,omitempty" xml:"ResourceBurstable,omitempty"`
 	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// Deprecated
 	//
@@ -380,6 +389,14 @@ func (s ListServicesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListServicesRequest) GetAutoscalerEnabled() *bool {
+	return s.AutoscalerEnabled
+}
+
+func (s *ListServicesRequest) GetCronscalerEnabled() *bool {
+	return s.CronscalerEnabled
+}
+
 func (s *ListServicesRequest) GetFilter() *string {
 	return s.Filter
 }
@@ -424,6 +441,10 @@ func (s *ListServicesRequest) GetResourceAliasName() *string {
 	return s.ResourceAliasName
 }
 
+func (s *ListServicesRequest) GetResourceBurstable() *bool {
+	return s.ResourceBurstable
+}
+
 func (s *ListServicesRequest) GetResourceId() *string {
 	return s.ResourceId
 }
@@ -462,6 +483,16 @@ func (s *ListServicesRequest) GetSort() *string {
 
 func (s *ListServicesRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListServicesRequest) SetAutoscalerEnabled(v bool) *ListServicesRequest {
+	s.AutoscalerEnabled = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetCronscalerEnabled(v bool) *ListServicesRequest {
+	s.CronscalerEnabled = &v
+	return s
 }
 
 func (s *ListServicesRequest) SetFilter(v string) *ListServicesRequest {
@@ -516,6 +547,11 @@ func (s *ListServicesRequest) SetQuotaId(v string) *ListServicesRequest {
 
 func (s *ListServicesRequest) SetResourceAliasName(v string) *ListServicesRequest {
 	s.ResourceAliasName = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetResourceBurstable(v bool) *ListServicesRequest {
+	s.ResourceBurstable = &v
 	return s
 }
 
