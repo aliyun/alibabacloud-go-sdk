@@ -1,3 +1,6 @@
+2025-07-16 Version: v2.4.1
+- Generated golang 2018-10-12 for alimt.
+
 2025-05-08 Version: v2.4.0
 - Support API GetDetectLanguageVpc.
 - Support API TranslateSearch.
