@@ -125,6 +125,138 @@ func (client *Client) AlterCatalog(catalog *string, request *AlterCatalogRequest
 
 // Summary:
 //
+// 更新数据库
+//
+// @param request - AlterDatabaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AlterDatabaseResponse
+func (client *Client) AlterDatabaseWithOptions(catalogId *string, database *string, request *AlterDatabaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterDatabaseResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Removals) {
+		body["removals"] = request.Removals
+	}
+
+	if !dara.IsNil(request.Updates) {
+		body["updates"] = request.Updates
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AlterDatabase"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AlterDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据库
+//
+// @param request - AlterDatabaseRequest
+//
+// @return AlterDatabaseResponse
+func (client *Client) AlterDatabase(catalogId *string, database *string, request *AlterDatabaseRequest) (_result *AlterDatabaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AlterDatabaseResponse{}
+	_body, _err := client.AlterDatabaseWithOptions(catalogId, database, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更改Table
+//
+// @param request - AlterTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AlterTableResponse
+func (client *Client) AlterTableWithOptions(catalogId *string, database *string, table *string, request *AlterTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterTableResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Changes) {
+		body["changes"] = request.Changes
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AlterTable"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database)) + "/tables/" + dara.PercentEncode(dara.StringValue(table))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &AlterTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更改Table
+//
+// @param request - AlterTableRequest
+//
+// @return AlterTableResponse
+func (client *Client) AlterTable(catalogId *string, database *string, table *string, request *AlterTableRequest) (_result *AlterTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AlterTableResponse{}
+	_body, _err := client.AlterTableWithOptions(catalogId, database, table, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量授权
 //
 // @param request - BatchGrantPermissionsRequest
@@ -325,6 +457,74 @@ func (client *Client) CreateCatalog(request *CreateCatalogRequest) (_result *Cre
 
 // Summary:
 //
+// 创建数据库
+//
+// @param request - CreateDatabaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatabaseResponse
+func (client *Client) CreateDatabaseWithOptions(catalogId *string, request *CreateDatabaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatabaseResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Options) {
+		body["options"] = request.Options
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDatabase"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &CreateDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据库
+//
+// @param request - CreateDatabaseRequest
+//
+// @return CreateDatabaseResponse
+func (client *Client) CreateDatabase(catalogId *string, request *CreateDatabaseRequest) (_result *CreateDatabaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDatabaseResponse{}
+	_body, _err := client.CreateDatabaseWithOptions(catalogId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建角色
 //
 // @param request - CreateRoleRequest
@@ -388,6 +588,74 @@ func (client *Client) CreateRole(request *CreateRoleRequest) (_result *CreateRol
 	headers := make(map[string]*string)
 	_result = &CreateRoleResponse{}
 	_body, _err := client.CreateRoleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建表
+//
+// @param request - CreateTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTableResponse
+func (client *Client) CreateTableWithOptions(catalogId *string, database *string, request *CreateTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTableResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Identifier) {
+		body["identifier"] = request.Identifier
+	}
+
+	if !dara.IsNil(request.Schema) {
+		body["schema"] = request.Schema
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTable"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database)) + "/tables"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &CreateTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建表
+//
+// @param request - CreateTableRequest
+//
+// @return CreateTableResponse
+func (client *Client) CreateTable(catalogId *string, database *string, request *CreateTableRequest) (_result *CreateTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTableResponse{}
+	_body, _err := client.CreateTableWithOptions(catalogId, database, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -552,6 +820,106 @@ func (client *Client) DropCatalog(catalog *string) (_result *DropCatalogResponse
 	headers := make(map[string]*string)
 	_result = &DropCatalogResponse{}
 	_body, _err := client.DropCatalogWithOptions(catalog, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据库
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DropDatabaseResponse
+func (client *Client) DropDatabaseWithOptions(catalogId *string, database *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DropDatabaseResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DropDatabase"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &DropDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据库
+//
+// @return DropDatabaseResponse
+func (client *Client) DropDatabase(catalogId *string, database *string) (_result *DropDatabaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DropDatabaseResponse{}
+	_body, _err := client.DropDatabaseWithOptions(catalogId, database, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DropTableResponse
+func (client *Client) DropTableWithOptions(catalogId *string, database *string, table *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DropTableResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DropTable"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database)) + "/tables/" + dara.PercentEncode(dara.StringValue(table))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &DropTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除表
+//
+// @return DropTableResponse
+func (client *Client) DropTable(catalogId *string, database *string, table *string) (_result *DropTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DropTableResponse{}
+	_body, _err := client.DropTableWithOptions(catalogId, database, table, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -779,6 +1147,56 @@ func (client *Client) GetCatalogToken(catalog *string) (_result *GetCatalogToken
 
 // Summary:
 //
+// 查看数据库
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatabaseResponse
+func (client *Client) GetDatabaseWithOptions(catalogId *string, database *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatabaseResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDatabase"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看数据库
+//
+// @return GetDatabaseResponse
+func (client *Client) GetDatabase(catalogId *string, database *string) (_result *GetDatabaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDatabaseResponse{}
+	_body, _err := client.GetDatabaseWithOptions(catalogId, database, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看表
 //
 // @param headers - map
@@ -934,6 +1352,56 @@ func (client *Client) GetRole(request *GetRoleRequest) (_result *GetRoleResponse
 	headers := make(map[string]*string)
 	_result = &GetRoleResponse{}
 	_body, _err := client.GetRoleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableResponse
+func (client *Client) GetTableWithOptions(catalogId *string, database *string, table *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTableResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTable"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database)) + "/tables/" + dara.PercentEncode(dara.StringValue(table))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表
+//
+// @return GetTableResponse
+func (client *Client) GetTable(catalogId *string, database *string, table *string) (_result *GetTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTableResponse{}
+	_body, _err := client.GetTableWithOptions(catalogId, database, table, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1188,6 +1656,78 @@ func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListC
 	headers := make(map[string]*string)
 	_result = &ListCatalogsResponse{}
 	_body, _err := client.ListCatalogsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看数据库列表
+//
+// @param request - ListDatabasesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatabasesResponse
+func (client *Client) ListDatabasesWithOptions(catalogId *string, request *ListDatabasesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatabasesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatabaseNamePattern) {
+		query["databaseNamePattern"] = request.DatabaseNamePattern
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.PageToken) {
+		query["pageToken"] = request.PageToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDatabases"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDatabasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看数据库列表
+//
+// @param request - ListDatabasesRequest
+//
+// @return ListDatabasesResponse
+func (client *Client) ListDatabases(catalogId *string, request *ListDatabasesRequest) (_result *ListDatabasesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDatabasesResponse{}
+	_body, _err := client.ListDatabasesWithOptions(catalogId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1496,6 +2036,78 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 	headers := make(map[string]*string)
 	_result = &ListRolesResponse{}
 	_body, _err := client.ListRolesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表详情列表
+//
+// @param request - ListTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTablesResponse
+func (client *Client) ListTablesWithOptions(catalogId *string, database *string, request *ListTablesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTablesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.PageToken) {
+		query["pageToken"] = request.PageToken
+	}
+
+	if !dara.IsNil(request.TableNamePattern) {
+		query["tableNamePattern"] = request.TableNamePattern
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTables"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database)) + "/tables"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表详情列表
+//
+// @param request - ListTablesRequest
+//
+// @return ListTablesResponse
+func (client *Client) ListTables(catalogId *string, database *string, request *ListTablesRequest) (_result *ListTablesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTablesResponse{}
+	_body, _err := client.ListTablesWithOptions(catalogId, database, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
