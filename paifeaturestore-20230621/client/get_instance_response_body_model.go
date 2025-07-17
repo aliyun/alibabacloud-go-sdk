@@ -9,6 +9,8 @@ type iGetInstanceResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetFeatureDBInfo(v *GetInstanceResponseBodyFeatureDBInfo) *GetInstanceResponseBody
+	GetFeatureDBInfo() *GetInstanceResponseBodyFeatureDBInfo
 	SetFeatureDBInstanceInfo(v *GetInstanceResponseBodyFeatureDBInstanceInfo) *GetInstanceResponseBody
 	GetFeatureDBInstanceInfo() *GetInstanceResponseBodyFeatureDBInstanceInfo
 	SetGmtCreateTime(v string) *GetInstanceResponseBody
@@ -30,6 +32,8 @@ type iGetInstanceResponseBody interface {
 }
 
 type GetInstanceResponseBody struct {
+	FeatureDBInfo *GetInstanceResponseBodyFeatureDBInfo `json:"FeatureDBInfo,omitempty" xml:"FeatureDBInfo,omitempty" type:"Struct"`
+	// Deprecated
 	FeatureDBInstanceInfo *GetInstanceResponseBodyFeatureDBInstanceInfo `json:"FeatureDBInstanceInfo,omitempty" xml:"FeatureDBInstanceInfo,omitempty" type:"Struct"`
 	// example:
 	//
@@ -73,6 +77,10 @@ func (s GetInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetInstanceResponseBody) GetFeatureDBInfo() *GetInstanceResponseBodyFeatureDBInfo {
+	return s.FeatureDBInfo
+}
+
 func (s *GetInstanceResponseBody) GetFeatureDBInstanceInfo() *GetInstanceResponseBodyFeatureDBInstanceInfo {
 	return s.FeatureDBInstanceInfo
 }
@@ -107,6 +115,11 @@ func (s *GetInstanceResponseBody) GetStatus() *string {
 
 func (s *GetInstanceResponseBody) GetType() *string {
 	return s.Type
+}
+
+func (s *GetInstanceResponseBody) SetFeatureDBInfo(v *GetInstanceResponseBodyFeatureDBInfo) *GetInstanceResponseBody {
+	s.FeatureDBInfo = v
+	return s
 }
 
 func (s *GetInstanceResponseBody) SetFeatureDBInstanceInfo(v *GetInstanceResponseBodyFeatureDBInstanceInfo) *GetInstanceResponseBody {
@@ -155,6 +168,31 @@ func (s *GetInstanceResponseBody) SetType(v string) *GetInstanceResponseBody {
 }
 
 func (s *GetInstanceResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetInstanceResponseBodyFeatureDBInfo struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetInstanceResponseBodyFeatureDBInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyFeatureDBInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyFeatureDBInfo) GetStatus() *string {
+	return s.Status
+}
+
+func (s *GetInstanceResponseBodyFeatureDBInfo) SetStatus(v string) *GetInstanceResponseBodyFeatureDBInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyFeatureDBInfo) Validate() error {
 	return dara.Validate(s)
 }
 

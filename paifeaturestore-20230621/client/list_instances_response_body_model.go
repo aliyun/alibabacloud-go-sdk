@@ -69,6 +69,8 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyInstances struct {
+	FeatureDBInfo *ListInstancesResponseBodyInstancesFeatureDBInfo `json:"FeatureDBInfo,omitempty" xml:"FeatureDBInfo,omitempty" type:"Struct"`
+	// Deprecated
 	FeatureDBInstanceInfo *ListInstancesResponseBodyInstancesFeatureDBInstanceInfo `json:"FeatureDBInstanceInfo,omitempty" xml:"FeatureDBInstanceInfo,omitempty" type:"Struct"`
 	// example:
 	//
@@ -104,6 +106,10 @@ func (s ListInstancesResponseBodyInstances) GoString() string {
 	return s.String()
 }
 
+func (s *ListInstancesResponseBodyInstances) GetFeatureDBInfo() *ListInstancesResponseBodyInstancesFeatureDBInfo {
+	return s.FeatureDBInfo
+}
+
 func (s *ListInstancesResponseBodyInstances) GetFeatureDBInstanceInfo() *ListInstancesResponseBodyInstancesFeatureDBInstanceInfo {
 	return s.FeatureDBInstanceInfo
 }
@@ -130,6 +136,11 @@ func (s *ListInstancesResponseBodyInstances) GetStatus() *string {
 
 func (s *ListInstancesResponseBodyInstances) GetType() *string {
 	return s.Type
+}
+
+func (s *ListInstancesResponseBodyInstances) SetFeatureDBInfo(v *ListInstancesResponseBodyInstancesFeatureDBInfo) *ListInstancesResponseBodyInstances {
+	s.FeatureDBInfo = v
+	return s
 }
 
 func (s *ListInstancesResponseBodyInstances) SetFeatureDBInstanceInfo(v *ListInstancesResponseBodyInstancesFeatureDBInstanceInfo) *ListInstancesResponseBodyInstances {
@@ -168,6 +179,31 @@ func (s *ListInstancesResponseBodyInstances) SetType(v string) *ListInstancesRes
 }
 
 func (s *ListInstancesResponseBodyInstances) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListInstancesResponseBodyInstancesFeatureDBInfo struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstancesFeatureDBInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesFeatureDBInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesFeatureDBInfo) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListInstancesResponseBodyInstancesFeatureDBInfo) SetStatus(v string) *ListInstancesResponseBodyInstancesFeatureDBInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesFeatureDBInfo) Validate() error {
 	return dara.Validate(s)
 }
 
