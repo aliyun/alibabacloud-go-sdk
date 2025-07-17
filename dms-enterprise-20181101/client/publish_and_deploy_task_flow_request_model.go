@@ -1,0 +1,82 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iPublishAndDeployTaskFlowRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDagId(v int64) *PublishAndDeployTaskFlowRequest
+	GetDagId() *int64
+	SetTid(v int64) *PublishAndDeployTaskFlowRequest
+	GetTid() *int64
+	SetVersionComments(v string) *PublishAndDeployTaskFlowRequest
+	GetVersionComments() *string
+}
+
+type PublishAndDeployTaskFlowRequest struct {
+	// The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7***
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
+	//
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The description of the version.
+	//
+	// example:
+	//
+	// vc_test
+	VersionComments *string `json:"VersionComments,omitempty" xml:"VersionComments,omitempty"`
+}
+
+func (s PublishAndDeployTaskFlowRequest) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PublishAndDeployTaskFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PublishAndDeployTaskFlowRequest) GetDagId() *int64 {
+	return s.DagId
+}
+
+func (s *PublishAndDeployTaskFlowRequest) GetTid() *int64 {
+	return s.Tid
+}
+
+func (s *PublishAndDeployTaskFlowRequest) GetVersionComments() *string {
+	return s.VersionComments
+}
+
+func (s *PublishAndDeployTaskFlowRequest) SetDagId(v int64) *PublishAndDeployTaskFlowRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *PublishAndDeployTaskFlowRequest) SetTid(v int64) *PublishAndDeployTaskFlowRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *PublishAndDeployTaskFlowRequest) SetVersionComments(v string) *PublishAndDeployTaskFlowRequest {
+	s.VersionComments = &v
+	return s
+}
+
+func (s *PublishAndDeployTaskFlowRequest) Validate() error {
+	return dara.Validate(s)
+}
