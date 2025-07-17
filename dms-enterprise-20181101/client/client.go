@@ -7479,6 +7479,10 @@ func (client *Client) GenerateSqlFromNLWithOptions(request *GenerateSqlFromNLReq
 		query["Question"] = request.Question
 	}
 
+	if !dara.IsNil(request.TableNames) {
+		query["TableNames"] = request.TableNames
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
