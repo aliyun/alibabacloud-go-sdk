@@ -139,6 +139,7 @@ type GetGatewayResponseBodyData struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	Isp         *string `json:"isp,omitempty" xml:"isp,omitempty"`
 	// The ingress addresses of the instance.
 	LoadBalancers []*GetGatewayResponseBodyDataLoadBalancers `json:"loadBalancers,omitempty" xml:"loadBalancers,omitempty" type:"Repeated"`
 	// The instance name.
@@ -257,6 +258,10 @@ func (s *GetGatewayResponseBodyData) GetGatewayType() *string {
 	return s.GatewayType
 }
 
+func (s *GetGatewayResponseBodyData) GetIsp() *string {
+	return s.Isp
+}
+
 func (s *GetGatewayResponseBodyData) GetLoadBalancers() []*GetGatewayResponseBodyDataLoadBalancers {
 	return s.LoadBalancers
 }
@@ -345,6 +350,11 @@ func (s *GetGatewayResponseBodyData) SetGatewayId(v string) *GetGatewayResponseB
 
 func (s *GetGatewayResponseBodyData) SetGatewayType(v string) *GetGatewayResponseBodyData {
 	s.GatewayType = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetIsp(v string) *GetGatewayResponseBodyData {
+	s.Isp = &v
 	return s
 }
 
