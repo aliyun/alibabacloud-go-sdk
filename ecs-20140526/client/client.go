@@ -30178,6 +30178,10 @@ func (client *Client) ModifyCloudAssistantSettingsWithOptions(tmpReq *ModifyClou
 		request.OssDeliveryConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OssDeliveryConfig, dara.String("OssDeliveryConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.SessionManagerConfig) {
+		request.SessionManagerConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SessionManagerConfig, dara.String("SessionManagerConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.SlsDeliveryConfig) {
 		request.SlsDeliveryConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SlsDeliveryConfig, dara.String("SlsDeliveryConfig"), dara.String("json"))
 	}
@@ -30209,6 +30213,10 @@ func (client *Client) ModifyCloudAssistantSettingsWithOptions(tmpReq *ModifyClou
 
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SessionManagerConfigShrink) {
+		query["SessionManagerConfig"] = request.SessionManagerConfigShrink
 	}
 
 	if !dara.IsNil(request.SettingType) {

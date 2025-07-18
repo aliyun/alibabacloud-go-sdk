@@ -15,6 +15,8 @@ type iDescribeCloudAssistantSettingsResponseBody interface {
 	GetOssDeliveryConfigs() *DescribeCloudAssistantSettingsResponseBodyOssDeliveryConfigs
 	SetRequestId(v string) *DescribeCloudAssistantSettingsResponseBody
 	GetRequestId() *string
+	SetSessionManagerConfig(v *DescribeCloudAssistantSettingsResponseBodySessionManagerConfig) *DescribeCloudAssistantSettingsResponseBody
+	GetSessionManagerConfig() *DescribeCloudAssistantSettingsResponseBodySessionManagerConfig
 	SetSlsDeliveryConfigs(v *DescribeCloudAssistantSettingsResponseBodySlsDeliveryConfigs) *DescribeCloudAssistantSettingsResponseBody
 	GetSlsDeliveryConfigs() *DescribeCloudAssistantSettingsResponseBodySlsDeliveryConfigs
 }
@@ -29,7 +31,8 @@ type DescribeCloudAssistantSettingsResponseBody struct {
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId            *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SessionManagerConfig *DescribeCloudAssistantSettingsResponseBodySessionManagerConfig `json:"SessionManagerConfig,omitempty" xml:"SessionManagerConfig,omitempty" type:"Struct"`
 	// The configurations for delivering items to Simple Log Service.
 	SlsDeliveryConfigs *DescribeCloudAssistantSettingsResponseBodySlsDeliveryConfigs `json:"SlsDeliveryConfigs,omitempty" xml:"SlsDeliveryConfigs,omitempty" type:"Struct"`
 }
@@ -54,6 +57,10 @@ func (s *DescribeCloudAssistantSettingsResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *DescribeCloudAssistantSettingsResponseBody) GetSessionManagerConfig() *DescribeCloudAssistantSettingsResponseBodySessionManagerConfig {
+	return s.SessionManagerConfig
+}
+
 func (s *DescribeCloudAssistantSettingsResponseBody) GetSlsDeliveryConfigs() *DescribeCloudAssistantSettingsResponseBodySlsDeliveryConfigs {
 	return s.SlsDeliveryConfigs
 }
@@ -70,6 +77,11 @@ func (s *DescribeCloudAssistantSettingsResponseBody) SetOssDeliveryConfigs(v *De
 
 func (s *DescribeCloudAssistantSettingsResponseBody) SetRequestId(v string) *DescribeCloudAssistantSettingsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCloudAssistantSettingsResponseBody) SetSessionManagerConfig(v *DescribeCloudAssistantSettingsResponseBodySessionManagerConfig) *DescribeCloudAssistantSettingsResponseBody {
+	s.SessionManagerConfig = v
 	return s
 }
 
@@ -319,6 +331,31 @@ func (s *DescribeCloudAssistantSettingsResponseBodyOssDeliveryConfigsOssDelivery
 }
 
 func (s *DescribeCloudAssistantSettingsResponseBodyOssDeliveryConfigsOssDeliveryConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeCloudAssistantSettingsResponseBodySessionManagerConfig struct {
+	SessionManagerEnabled *bool `json:"SessionManagerEnabled,omitempty" xml:"SessionManagerEnabled,omitempty"`
+}
+
+func (s DescribeCloudAssistantSettingsResponseBodySessionManagerConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeCloudAssistantSettingsResponseBodySessionManagerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudAssistantSettingsResponseBodySessionManagerConfig) GetSessionManagerEnabled() *bool {
+	return s.SessionManagerEnabled
+}
+
+func (s *DescribeCloudAssistantSettingsResponseBodySessionManagerConfig) SetSessionManagerEnabled(v bool) *DescribeCloudAssistantSettingsResponseBodySessionManagerConfig {
+	s.SessionManagerEnabled = &v
+	return s
+}
+
+func (s *DescribeCloudAssistantSettingsResponseBodySessionManagerConfig) Validate() error {
 	return dara.Validate(s)
 }
 

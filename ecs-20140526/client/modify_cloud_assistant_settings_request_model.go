@@ -23,6 +23,8 @@ type iModifyCloudAssistantSettingsRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ModifyCloudAssistantSettingsRequest
 	GetResourceOwnerId() *int64
+	SetSessionManagerConfig(v *ModifyCloudAssistantSettingsRequestSessionManagerConfig) *ModifyCloudAssistantSettingsRequest
+	GetSessionManagerConfig() *ModifyCloudAssistantSettingsRequestSessionManagerConfig
 	SetSettingType(v string) *ModifyCloudAssistantSettingsRequest
 	GetSettingType() *string
 	SetSlsDeliveryConfig(v *ModifyCloudAssistantSettingsRequestSlsDeliveryConfig) *ModifyCloudAssistantSettingsRequest
@@ -43,9 +45,10 @@ type ModifyCloudAssistantSettingsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId             *string                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                                                  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                                   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SessionManagerConfig *ModifyCloudAssistantSettingsRequestSessionManagerConfig `json:"SessionManagerConfig,omitempty" xml:"SessionManagerConfig,omitempty" type:"Struct"`
 	// The Cloud Assistant feature. Valid values:
 	//
 	// 	- SessionManagerDelivery: the Session Record Delivery configurations.
@@ -100,6 +103,10 @@ func (s *ModifyCloudAssistantSettingsRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *ModifyCloudAssistantSettingsRequest) GetSessionManagerConfig() *ModifyCloudAssistantSettingsRequestSessionManagerConfig {
+	return s.SessionManagerConfig
+}
+
 func (s *ModifyCloudAssistantSettingsRequest) GetSettingType() *string {
 	return s.SettingType
 }
@@ -140,6 +147,11 @@ func (s *ModifyCloudAssistantSettingsRequest) SetResourceOwnerAccount(v string) 
 
 func (s *ModifyCloudAssistantSettingsRequest) SetResourceOwnerId(v int64) *ModifyCloudAssistantSettingsRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyCloudAssistantSettingsRequest) SetSessionManagerConfig(v *ModifyCloudAssistantSettingsRequestSessionManagerConfig) *ModifyCloudAssistantSettingsRequest {
+	s.SessionManagerConfig = v
 	return s
 }
 
@@ -343,6 +355,31 @@ func (s *ModifyCloudAssistantSettingsRequestOssDeliveryConfig) SetPrefix(v strin
 }
 
 func (s *ModifyCloudAssistantSettingsRequestOssDeliveryConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type ModifyCloudAssistantSettingsRequestSessionManagerConfig struct {
+	SessionManagerEnabled *bool `json:"SessionManagerEnabled,omitempty" xml:"SessionManagerEnabled,omitempty"`
+}
+
+func (s ModifyCloudAssistantSettingsRequestSessionManagerConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyCloudAssistantSettingsRequestSessionManagerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudAssistantSettingsRequestSessionManagerConfig) GetSessionManagerEnabled() *bool {
+	return s.SessionManagerEnabled
+}
+
+func (s *ModifyCloudAssistantSettingsRequestSessionManagerConfig) SetSessionManagerEnabled(v bool) *ModifyCloudAssistantSettingsRequestSessionManagerConfig {
+	s.SessionManagerEnabled = &v
+	return s
+}
+
+func (s *ModifyCloudAssistantSettingsRequestSessionManagerConfig) Validate() error {
 	return dara.Validate(s)
 }
 

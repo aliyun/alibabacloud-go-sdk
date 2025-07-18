@@ -23,6 +23,8 @@ type iModifyCloudAssistantSettingsShrinkRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ModifyCloudAssistantSettingsShrinkRequest
 	GetResourceOwnerId() *int64
+	SetSessionManagerConfigShrink(v string) *ModifyCloudAssistantSettingsShrinkRequest
+	GetSessionManagerConfigShrink() *string
 	SetSettingType(v string) *ModifyCloudAssistantSettingsShrinkRequest
 	GetSettingType() *string
 	SetSlsDeliveryConfigShrink(v string) *ModifyCloudAssistantSettingsShrinkRequest
@@ -43,9 +45,10 @@ type ModifyCloudAssistantSettingsShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount       *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId            *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SessionManagerConfigShrink *string `json:"SessionManagerConfig,omitempty" xml:"SessionManagerConfig,omitempty"`
 	// The Cloud Assistant feature. Valid values:
 	//
 	// 	- SessionManagerDelivery: the Session Record Delivery configurations.
@@ -100,6 +103,10 @@ func (s *ModifyCloudAssistantSettingsShrinkRequest) GetResourceOwnerId() *int64 
 	return s.ResourceOwnerId
 }
 
+func (s *ModifyCloudAssistantSettingsShrinkRequest) GetSessionManagerConfigShrink() *string {
+	return s.SessionManagerConfigShrink
+}
+
 func (s *ModifyCloudAssistantSettingsShrinkRequest) GetSettingType() *string {
 	return s.SettingType
 }
@@ -140,6 +147,11 @@ func (s *ModifyCloudAssistantSettingsShrinkRequest) SetResourceOwnerAccount(v st
 
 func (s *ModifyCloudAssistantSettingsShrinkRequest) SetResourceOwnerId(v int64) *ModifyCloudAssistantSettingsShrinkRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyCloudAssistantSettingsShrinkRequest) SetSessionManagerConfigShrink(v string) *ModifyCloudAssistantSettingsShrinkRequest {
+	s.SessionManagerConfigShrink = &v
 	return s
 }
 

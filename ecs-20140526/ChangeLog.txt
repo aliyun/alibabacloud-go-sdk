@@ -1,3 +1,8 @@
+2025-07-18 Version: v7.0.16
+- Update API DescribeCloudAssistantSettings: add response parameters Body.SessionManagerConfig.
+- Update API ModifyCloudAssistantSettings: add request parameters SessionManagerConfig.
+
+
 2025-07-16 Version: v7.0.15
 - Generated golang 2014-05-26 for Ecs.
 
