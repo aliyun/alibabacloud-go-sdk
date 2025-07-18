@@ -183,7 +183,11 @@ func (client *Client) AddressVerifyIntl(request *AddressVerifyIntlRequest) (_res
 
 // Summary:
 //
-// 银行卡核验
+// # Bank Card Verification
+//
+// Description:
+//
+// Verification of bank card elements, including: two-element verification (name + bank card number), three-element verification (name + ID number + bank card number), and four-element verification (name + ID number + phone number + bank card number) for consistency.
 //
 // @param request - BankMetaVerifyIntlRequest
 //
@@ -257,7 +261,11 @@ func (client *Client) BankMetaVerifyIntlWithOptions(request *BankMetaVerifyIntlR
 
 // Summary:
 //
-// 银行卡核验
+// # Bank Card Verification
+//
+// Description:
+//
+// Verification of bank card elements, including: two-element verification (name + bank card number), three-element verification (name + ID number + bank card number), and four-element verification (name + ID number + phone number + bank card number) for consistency.
 //
 // @param request - BankMetaVerifyIntlRequest
 //
@@ -1908,6 +1916,78 @@ func (client *Client) KeepaliveIntl() (_result *KeepaliveIntlResponse, _err erro
 	runtime := &dara.RuntimeOptions{}
 	_result = &KeepaliveIntlResponse{}
 	_body, _err := client.KeepaliveIntlWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 手机号二要素核验API
+//
+// @param request - Mobile2MetaVerifyIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return Mobile2MetaVerifyIntlResponse
+func (client *Client) Mobile2MetaVerifyIntlWithOptions(request *Mobile2MetaVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *Mobile2MetaVerifyIntlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Mobile) {
+		body["Mobile"] = request.Mobile
+	}
+
+	if !dara.IsNil(request.ParamType) {
+		body["ParamType"] = request.ParamType
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("Mobile2MetaVerifyIntl"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &Mobile2MetaVerifyIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 手机号二要素核验API
+//
+// @param request - Mobile2MetaVerifyIntlRequest
+//
+// @return Mobile2MetaVerifyIntlResponse
+func (client *Client) Mobile2MetaVerifyIntl(request *Mobile2MetaVerifyIntlRequest) (_result *Mobile2MetaVerifyIntlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &Mobile2MetaVerifyIntlResponse{}
+	_body, _err := client.Mobile2MetaVerifyIntlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
