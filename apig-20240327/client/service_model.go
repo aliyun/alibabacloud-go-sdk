@@ -17,6 +17,8 @@ type iService interface {
 	GetAiServiceConfig() *AiServiceConfig
 	SetCreateTimestamp(v int64) *Service
 	GetCreateTimestamp() *int64
+	SetExpressType(v string) *Service
+	GetExpressType() *string
 	SetGatewayId(v string) *Service
 	GetGatewayId() *string
 	SetGroupName(v string) *Service
@@ -25,6 +27,8 @@ type iService interface {
 	GetHealthCheck() *ServiceHealthCheck
 	SetHealthStatus(v string) *Service
 	GetHealthStatus() *string
+	SetLabelDetails(v *LabelDetail) *Service
+	GetLabelDetails() *LabelDetail
 	SetName(v string) *Service
 	GetName() *string
 	SetNamespace(v string) *Service
@@ -54,6 +58,10 @@ type Service struct {
 	CreateTimestamp    *int64              `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
 	// example:
 	//
+	// StartExecution
+	ExpressType *string `json:"expressType,omitempty" xml:"expressType,omitempty"`
+	// example:
+	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 	// example:
@@ -62,6 +70,7 @@ type Service struct {
 	GroupName    *string             `json:"groupName,omitempty" xml:"groupName,omitempty"`
 	HealthCheck  *ServiceHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty"`
 	HealthStatus *string             `json:"healthStatus,omitempty" xml:"healthStatus,omitempty"`
+	LabelDetails *LabelDetail        `json:"labelDetails,omitempty" xml:"labelDetails,omitempty"`
 	Name         *string             `json:"name,omitempty" xml:"name,omitempty"`
 	Namespace    *string             `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	Ports        []*ServicePorts     `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
@@ -107,6 +116,10 @@ func (s *Service) GetCreateTimestamp() *int64 {
 	return s.CreateTimestamp
 }
 
+func (s *Service) GetExpressType() *string {
+	return s.ExpressType
+}
+
 func (s *Service) GetGatewayId() *string {
 	return s.GatewayId
 }
@@ -121,6 +134,10 @@ func (s *Service) GetHealthCheck() *ServiceHealthCheck {
 
 func (s *Service) GetHealthStatus() *string {
 	return s.HealthStatus
+}
+
+func (s *Service) GetLabelDetails() *LabelDetail {
+	return s.LabelDetails
 }
 
 func (s *Service) GetName() *string {
@@ -183,6 +200,11 @@ func (s *Service) SetCreateTimestamp(v int64) *Service {
 	return s
 }
 
+func (s *Service) SetExpressType(v string) *Service {
+	s.ExpressType = &v
+	return s
+}
+
 func (s *Service) SetGatewayId(v string) *Service {
 	s.GatewayId = &v
 	return s
@@ -200,6 +222,11 @@ func (s *Service) SetHealthCheck(v *ServiceHealthCheck) *Service {
 
 func (s *Service) SetHealthStatus(v string) *Service {
 	s.HealthStatus = &v
+	return s
+}
+
+func (s *Service) SetLabelDetails(v *LabelDetail) *Service {
+	s.LabelDetails = v
 	return s
 }
 

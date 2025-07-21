@@ -1,0 +1,171 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iCreateConsumerAuthorizationRulesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetAuthorizationRules(v []*CreateConsumerAuthorizationRulesRequestAuthorizationRules) *CreateConsumerAuthorizationRulesRequest
+	GetAuthorizationRules() []*CreateConsumerAuthorizationRulesRequestAuthorizationRules
+}
+
+type CreateConsumerAuthorizationRulesRequest struct {
+	// The consumer authentication rules to be created.
+	AuthorizationRules []*CreateConsumerAuthorizationRulesRequestAuthorizationRules `json:"authorizationRules,omitempty" xml:"authorizationRules,omitempty" type:"Repeated"`
+}
+
+func (s CreateConsumerAuthorizationRulesRequest) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateConsumerAuthorizationRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConsumerAuthorizationRulesRequest) GetAuthorizationRules() []*CreateConsumerAuthorizationRulesRequestAuthorizationRules {
+	return s.AuthorizationRules
+}
+
+func (s *CreateConsumerAuthorizationRulesRequest) SetAuthorizationRules(v []*CreateConsumerAuthorizationRulesRequestAuthorizationRules) *CreateConsumerAuthorizationRulesRequest {
+	s.AuthorizationRules = v
+	return s
+}
+
+func (s *CreateConsumerAuthorizationRulesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateConsumerAuthorizationRulesRequestAuthorizationRules struct {
+	// The consumer ID.
+	//
+	// example:
+	//
+	// cs-cu08olem1hkokaut34i0
+	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
+	// The expiration mode. Valid values: LongTerm and ShortTerm.
+	//
+	// example:
+	//
+	// LongTerm
+	ExpireMode *string `json:"expireMode,omitempty" xml:"expireMode,omitempty"`
+	// The expiration timestamp.
+	//
+	// example:
+	//
+	// 174116222x
+	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
+	// The resource identifier, which is provided to non-standard code sources for space reuse.
+	ResourceIdentifier *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty" type:"Struct"`
+	// The resource type.
+	//
+	// example:
+	//
+	// HttpApiRoute
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+}
+
+func (s CreateConsumerAuthorizationRulesRequestAuthorizationRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateConsumerAuthorizationRulesRequestAuthorizationRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) GetConsumerId() *string {
+	return s.ConsumerId
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) GetExpireMode() *string {
+	return s.ExpireMode
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) GetExpireTimestamp() *int64 {
+	return s.ExpireTimestamp
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) GetResourceIdentifier() *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier {
+	return s.ResourceIdentifier
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) GetResourceType() *string {
+	return s.ResourceType
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) SetConsumerId(v string) *CreateConsumerAuthorizationRulesRequestAuthorizationRules {
+	s.ConsumerId = &v
+	return s
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) SetExpireMode(v string) *CreateConsumerAuthorizationRulesRequestAuthorizationRules {
+	s.ExpireMode = &v
+	return s
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) SetExpireTimestamp(v int64) *CreateConsumerAuthorizationRulesRequestAuthorizationRules {
+	s.ExpireTimestamp = &v
+	return s
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) SetResourceIdentifier(v *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) *CreateConsumerAuthorizationRulesRequestAuthorizationRules {
+	s.ResourceIdentifier = v
+	return s
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) SetResourceType(v string) *CreateConsumerAuthorizationRulesRequestAuthorizationRules {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier struct {
+	// The environment ID.
+	//
+	// example:
+	//
+	// env-cti17hem1hktoruj98ug
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// The resource ID.
+	//
+	// example:
+	//
+	// ha-cn-li942gy8p03
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+}
+
+func (s CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) GetEnvironmentId() *string {
+	return s.EnvironmentId
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) GetResourceId() *string {
+	return s.ResourceId
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) SetEnvironmentId(v string) *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) SetResourceId(v string) *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) Validate() error {
+	return dara.Validate(s)
+}

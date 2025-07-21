@@ -129,6 +129,70 @@ func (client *Client) AddGatewaySecurityGroupRule(gatewayId *string, request *Ad
 
 // Summary:
 //
+// Removes consumer authentication rules.
+//
+// @param request - BatchDeleteConsumerAuthorizationRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeleteConsumerAuthorizationRuleResponse
+func (client *Client) BatchDeleteConsumerAuthorizationRuleWithOptions(request *BatchDeleteConsumerAuthorizationRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchDeleteConsumerAuthorizationRuleResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerAuthorizationRuleIds) {
+		query["consumerAuthorizationRuleIds"] = request.ConsumerAuthorizationRuleIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchDeleteConsumerAuthorizationRule"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/authorization-rules"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchDeleteConsumerAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes consumer authentication rules.
+//
+// @param request - BatchDeleteConsumerAuthorizationRuleRequest
+//
+// @return BatchDeleteConsumerAuthorizationRuleResponse
+func (client *Client) BatchDeleteConsumerAuthorizationRule(request *BatchDeleteConsumerAuthorizationRuleRequest) (_result *BatchDeleteConsumerAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchDeleteConsumerAuthorizationRuleResponse{}
+	_body, _err := client.BatchDeleteConsumerAuthorizationRuleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Resource Group Transfer
 //
 // @param request - ChangeResourceGroupRequest
@@ -196,6 +260,238 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	headers := make(map[string]*string)
 	_result = &ChangeResourceGroupResponse{}
 	_body, _err := client.ChangeResourceGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建消费者
+//
+// @param request - CreateConsumerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConsumerResponse
+func (client *Client) CreateConsumerWithOptions(request *CreateConsumerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConsumerResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AkSkIdentityConfigs) {
+		body["akSkIdentityConfigs"] = request.AkSkIdentityConfigs
+	}
+
+	if !dara.IsNil(request.ApikeyIdentityConfig) {
+		body["apikeyIdentityConfig"] = request.ApikeyIdentityConfig
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Enable) {
+		body["enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.GatewayType) {
+		body["gatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.JwtIdentityConfig) {
+		body["jwtIdentityConfig"] = request.JwtIdentityConfig
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateConsumer"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumers"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateConsumerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建消费者
+//
+// @param request - CreateConsumerRequest
+//
+// @return CreateConsumerResponse
+func (client *Client) CreateConsumer(request *CreateConsumerRequest) (_result *CreateConsumerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateConsumerResponse{}
+	_body, _err := client.CreateConsumerWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建消费者授权规则
+//
+// @param request - CreateConsumerAuthorizationRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConsumerAuthorizationRuleResponse
+func (client *Client) CreateConsumerAuthorizationRuleWithOptions(consumerId *string, request *CreateConsumerAuthorizationRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConsumerAuthorizationRuleResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationResourceInfos) {
+		body["authorizationResourceInfos"] = request.AuthorizationResourceInfos
+	}
+
+	if !dara.IsNil(request.ExpireMode) {
+		body["expireMode"] = request.ExpireMode
+	}
+
+	if !dara.IsNil(request.ExpireTimestamp) {
+		body["expireTimestamp"] = request.ExpireTimestamp
+	}
+
+	if !dara.IsNil(request.ParentResourceType) {
+		body["parentResourceType"] = request.ParentResourceType
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateConsumerAuthorizationRule"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumers/" + dara.PercentEncode(dara.StringValue(consumerId)) + "/authorization-rules"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateConsumerAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建消费者授权规则
+//
+// @param request - CreateConsumerAuthorizationRuleRequest
+//
+// @return CreateConsumerAuthorizationRuleResponse
+func (client *Client) CreateConsumerAuthorizationRule(consumerId *string, request *CreateConsumerAuthorizationRuleRequest) (_result *CreateConsumerAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateConsumerAuthorizationRuleResponse{}
+	_body, _err := client.CreateConsumerAuthorizationRuleWithOptions(consumerId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a consumer authentication rule.
+//
+// @param request - CreateConsumerAuthorizationRulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConsumerAuthorizationRulesResponse
+func (client *Client) CreateConsumerAuthorizationRulesWithOptions(request *CreateConsumerAuthorizationRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConsumerAuthorizationRulesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationRules) {
+		body["authorizationRules"] = request.AuthorizationRules
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateConsumerAuthorizationRules"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/authorization-rules"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateConsumerAuthorizationRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a consumer authentication rule.
+//
+// @param request - CreateConsumerAuthorizationRulesRequest
+//
+// @return CreateConsumerAuthorizationRulesResponse
+func (client *Client) CreateConsumerAuthorizationRules(request *CreateConsumerAuthorizationRulesRequest) (_result *CreateConsumerAuthorizationRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateConsumerAuthorizationRulesResponse{}
+	_body, _err := client.CreateConsumerAuthorizationRulesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -410,6 +706,106 @@ func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_res
 	headers := make(map[string]*string)
 	_result = &CreateEnvironmentResponse{}
 	_body, _err := client.CreateEnvironmentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建云原生网关
+//
+// @param request - CreateGatewayRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGatewayResponse
+func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGatewayResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChargeType) {
+		body["chargeType"] = request.ChargeType
+	}
+
+	if !dara.IsNil(request.GatewayType) {
+		body["gatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.LogConfig) {
+		body["logConfig"] = request.LogConfig
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NetworkAccessConfig) {
+		body["networkAccessConfig"] = request.NetworkAccessConfig
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Spec) {
+		body["spec"] = request.Spec
+	}
+
+	if !dara.IsNil(request.Tag) {
+		body["tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		body["vpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.ZoneConfig) {
+		body["zoneConfig"] = request.ZoneConfig
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGateway"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建云原生网关
+//
+// @param request - CreateGatewayRequest
+//
+// @return CreateGatewayResponse
+func (client *Client) CreateGateway(request *CreateGatewayRequest) (_result *CreateGatewayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateGatewayResponse{}
+	_body, _err := client.CreateGatewayWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1014,6 +1410,106 @@ func (client *Client) CreateService(request *CreateServiceRequest) (_result *Cre
 	headers := make(map[string]*string)
 	_result = &CreateServiceResponse{}
 	_body, _err := client.CreateServiceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除消费者
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConsumerResponse
+func (client *Client) DeleteConsumerWithOptions(consumerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteConsumerResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteConsumer"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumers/" + dara.PercentEncode(dara.StringValue(consumerId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteConsumerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除消费者
+//
+// @return DeleteConsumerResponse
+func (client *Client) DeleteConsumer(consumerId *string) (_result *DeleteConsumerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteConsumerResponse{}
+	_body, _err := client.DeleteConsumerWithOptions(consumerId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除消费者授权规则
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConsumerAuthorizationRuleResponse
+func (client *Client) DeleteConsumerAuthorizationRuleWithOptions(consumerAuthorizationRuleId *string, consumerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteConsumerAuthorizationRuleResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteConsumerAuthorizationRule"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumers/" + dara.PercentEncode(dara.StringValue(consumerId)) + "/authorization-rules/" + dara.PercentEncode(dara.StringValue(consumerAuthorizationRuleId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteConsumerAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除消费者授权规则
+//
+// @return DeleteConsumerAuthorizationRuleResponse
+func (client *Client) DeleteConsumerAuthorizationRule(consumerAuthorizationRuleId *string, consumerId *string) (_result *DeleteConsumerAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteConsumerAuthorizationRuleResponse{}
+	_body, _err := client.DeleteConsumerAuthorizationRuleWithOptions(consumerAuthorizationRuleId, consumerId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1706,6 +2202,106 @@ func (client *Client) ExportHttpApi(httpApiId *string) (_result *ExportHttpApiRe
 	headers := make(map[string]*string)
 	_result = &ExportHttpApiResponse{}
 	_body, _err := client.ExportHttpApiWithOptions(httpApiId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConsumerResponse
+func (client *Client) GetConsumerWithOptions(consumerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConsumerResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetConsumer"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumers/" + dara.PercentEncode(dara.StringValue(consumerId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetConsumerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者
+//
+// @return GetConsumerResponse
+func (client *Client) GetConsumer(consumerId *string) (_result *GetConsumerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetConsumerResponse{}
+	_body, _err := client.GetConsumerWithOptions(consumerId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者授权规则
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConsumerAuthorizationRuleResponse
+func (client *Client) GetConsumerAuthorizationRuleWithOptions(consumerAuthorizationRuleId *string, consumerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConsumerAuthorizationRuleResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetConsumerAuthorizationRule"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumers/" + dara.PercentEncode(dara.StringValue(consumerId)) + "/authorization-rules/" + dara.PercentEncode(dara.StringValue(consumerAuthorizationRuleId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetConsumerAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者授权规则
+//
+// @return GetConsumerAuthorizationRuleResponse
+func (client *Client) GetConsumerAuthorizationRule(consumerAuthorizationRuleId *string, consumerId *string) (_result *GetConsumerAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetConsumerAuthorizationRuleResponse{}
+	_body, _err := client.GetConsumerAuthorizationRuleWithOptions(consumerAuthorizationRuleId, consumerId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2578,6 +3174,82 @@ func (client *Client) ImportHttpApi(request *ImportHttpApiRequest) (_result *Imp
 	headers := make(map[string]*string)
 	_result = &ImportHttpApiResponse{}
 	_body, _err := client.ImportHttpApiWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者列表
+//
+// @param request - ListConsumersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConsumersResponse
+func (client *Client) ListConsumersWithOptions(request *ListConsumersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumersResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayType) {
+		query["gatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.NameLike) {
+		query["nameLike"] = request.NameLike
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConsumers"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumers"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConsumersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者列表
+//
+// @param request - ListConsumersRequest
+//
+// @return ListConsumersResponse
+func (client *Client) ListConsumers(request *ListConsumersRequest) (_result *ListConsumersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConsumersResponse{}
+	_body, _err := client.ListConsumersWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3709,6 +4381,156 @@ func (client *Client) ListZones() (_result *ListZonesResponse, _err error) {
 
 // Summary:
 //
+// Queries a list of consumer authentication rules.
+//
+// @param request - QueryConsumerAuthorizationRulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryConsumerAuthorizationRulesResponse
+func (client *Client) QueryConsumerAuthorizationRulesWithOptions(request *QueryConsumerAuthorizationRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryConsumerAuthorizationRulesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiNameLike) {
+		query["apiNameLike"] = request.ApiNameLike
+	}
+
+	if !dara.IsNil(request.ConsumerId) {
+		query["consumerId"] = request.ConsumerId
+	}
+
+	if !dara.IsNil(request.ConsumerNameLike) {
+		query["consumerNameLike"] = request.ConsumerNameLike
+	}
+
+	if !dara.IsNil(request.EnvironmentId) {
+		query["environmentId"] = request.EnvironmentId
+	}
+
+	if !dara.IsNil(request.GroupByApi) {
+		query["groupByApi"] = request.GroupByApi
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ParentResourceId) {
+		query["parentResourceId"] = request.ParentResourceId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["resourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryConsumerAuthorizationRules"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/authorization-rules"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryConsumerAuthorizationRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of consumer authentication rules.
+//
+// @param request - QueryConsumerAuthorizationRulesRequest
+//
+// @return QueryConsumerAuthorizationRulesResponse
+func (client *Client) QueryConsumerAuthorizationRules(request *QueryConsumerAuthorizationRulesRequest) (_result *QueryConsumerAuthorizationRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryConsumerAuthorizationRulesResponse{}
+	_body, _err := client.QueryConsumerAuthorizationRulesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a consumer authorization rule.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveConsumerAuthorizationRuleResponse
+func (client *Client) RemoveConsumerAuthorizationRuleWithOptions(consumerAuthorizationRuleId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveConsumerAuthorizationRuleResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveConsumerAuthorizationRule"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/authorization-rules/" + dara.PercentEncode(dara.StringValue(consumerAuthorizationRuleId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveConsumerAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a consumer authorization rule.
+//
+// @return RemoveConsumerAuthorizationRuleResponse
+func (client *Client) RemoveConsumerAuthorizationRule(consumerAuthorizationRuleId *string) (_result *RemoveConsumerAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RemoveConsumerAuthorizationRuleResponse{}
+	_body, _err := client.RemoveConsumerAuthorizationRuleWithOptions(consumerAuthorizationRuleId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Gateway Restart
 //
 // @param headers - map
@@ -3826,6 +4648,158 @@ func (client *Client) UndeployHttpApi(httpApiId *string, request *UndeployHttpAp
 	headers := make(map[string]*string)
 	_result = &UndeployHttpApiResponse{}
 	_body, _err := client.UndeployHttpApiWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新消费者
+//
+// @param request - UpdateConsumerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConsumerResponse
+func (client *Client) UpdateConsumerWithOptions(consumerId *string, request *UpdateConsumerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConsumerResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AkSkIdentityConfigs) {
+		body["akSkIdentityConfigs"] = request.AkSkIdentityConfigs
+	}
+
+	if !dara.IsNil(request.ApikeyIdentityConfig) {
+		body["apikeyIdentityConfig"] = request.ApikeyIdentityConfig
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Enable) {
+		body["enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.JwtIdentityConfig) {
+		body["jwtIdentityConfig"] = request.JwtIdentityConfig
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateConsumer"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumers/" + dara.PercentEncode(dara.StringValue(consumerId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateConsumerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新消费者
+//
+// @param request - UpdateConsumerRequest
+//
+// @return UpdateConsumerResponse
+func (client *Client) UpdateConsumer(consumerId *string, request *UpdateConsumerRequest) (_result *UpdateConsumerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateConsumerResponse{}
+	_body, _err := client.UpdateConsumerWithOptions(consumerId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新消费者授权规则
+//
+// @param request - UpdateConsumerAuthorizationRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConsumerAuthorizationRuleResponse
+func (client *Client) UpdateConsumerAuthorizationRuleWithOptions(consumerId *string, consumerAuthorizationRuleId *string, request *UpdateConsumerAuthorizationRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConsumerAuthorizationRuleResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizationResourceInfos) {
+		body["authorizationResourceInfos"] = request.AuthorizationResourceInfos
+	}
+
+	if !dara.IsNil(request.ExpireMode) {
+		body["expireMode"] = request.ExpireMode
+	}
+
+	if !dara.IsNil(request.ExpireTimestamp) {
+		body["expireTimestamp"] = request.ExpireTimestamp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateConsumerAuthorizationRule"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumers/" + dara.PercentEncode(dara.StringValue(consumerId)) + "/authorization-rules/" + dara.PercentEncode(dara.StringValue(consumerAuthorizationRuleId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateConsumerAuthorizationRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新消费者授权规则
+//
+// @param request - UpdateConsumerAuthorizationRuleRequest
+//
+// @return UpdateConsumerAuthorizationRuleResponse
+func (client *Client) UpdateConsumerAuthorizationRule(consumerId *string, consumerAuthorizationRuleId *string, request *UpdateConsumerAuthorizationRuleRequest) (_result *UpdateConsumerAuthorizationRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateConsumerAuthorizationRuleResponse{}
+	_body, _err := client.UpdateConsumerAuthorizationRuleWithOptions(consumerId, consumerAuthorizationRuleId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
