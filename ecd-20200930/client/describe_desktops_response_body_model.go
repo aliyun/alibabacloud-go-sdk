@@ -255,7 +255,8 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	// SIMPLE
 	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
 	// The information about the disks.
-	Disks []*DescribeDesktopsResponseBodyDesktopsDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	Disks      []*DescribeDesktopsResponseBodyDesktopsDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	DomainType *string                                      `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
 	// The number of times for which the cloud desktop can be downgraded.
 	//
 	// example:
@@ -632,6 +633,10 @@ func (s *DescribeDesktopsResponseBodyDesktops) GetDisks() []*DescribeDesktopsRes
 	return s.Disks
 }
 
+func (s *DescribeDesktopsResponseBodyDesktops) GetDomainType() *string {
+	return s.DomainType
+}
+
 func (s *DescribeDesktopsResponseBodyDesktops) GetDowngradeQuota() *int64 {
 	return s.DowngradeQuota
 }
@@ -903,6 +908,11 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetDirectoryType(v string) *Descr
 
 func (s *DescribeDesktopsResponseBodyDesktops) SetDisks(v []*DescribeDesktopsResponseBodyDesktopsDisks) *DescribeDesktopsResponseBodyDesktops {
 	s.Disks = v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) SetDomainType(v string) *DescribeDesktopsResponseBodyDesktops {
+	s.DomainType = &v
 	return s
 }
 
