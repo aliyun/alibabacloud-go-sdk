@@ -15,6 +15,8 @@ type iModifyDesktopChargeTypeResponseBody interface {
 	GetOrderId() *string
 	SetRequestId(v string) *ModifyDesktopChargeTypeResponseBody
 	GetRequestId() *string
+	SetTaskId(v string) *ModifyDesktopChargeTypeResponseBody
+	GetTaskId() *string
 }
 
 type ModifyDesktopChargeTypeResponseBody struct {
@@ -32,6 +34,7 @@ type ModifyDesktopChargeTypeResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ModifyDesktopChargeTypeResponseBody) String() string {
@@ -54,6 +57,10 @@ func (s *ModifyDesktopChargeTypeResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *ModifyDesktopChargeTypeResponseBody) GetTaskId() *string {
+	return s.TaskId
+}
+
 func (s *ModifyDesktopChargeTypeResponseBody) SetDesktopId(v []*string) *ModifyDesktopChargeTypeResponseBody {
 	s.DesktopId = v
 	return s
@@ -66,6 +73,11 @@ func (s *ModifyDesktopChargeTypeResponseBody) SetOrderId(v string) *ModifyDeskto
 
 func (s *ModifyDesktopChargeTypeResponseBody) SetRequestId(v string) *ModifyDesktopChargeTypeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyDesktopChargeTypeResponseBody) SetTaskId(v string) *ModifyDesktopChargeTypeResponseBody {
+	s.TaskId = &v
 	return s
 }
 
