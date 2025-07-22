@@ -536,6 +536,74 @@ func (client *Client) AddUserToDesktopOversoldUserGroup(request *AddUserToDeskto
 
 // Summary:
 //
+// 实例开通公网IP
+//
+// @param request - AllocateIpAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllocateIpAddressResponse
+func (client *Client) AllocateIpAddressWithOptions(request *AllocateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateIpAddressResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NetworkInterfaceId) {
+		query["NetworkInterfaceId"] = request.NetworkInterfaceId
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AllocateIpAddress"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AllocateIpAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 实例开通公网IP
+//
+// @param request - AllocateIpAddressRequest
+//
+// @return AllocateIpAddressResponse
+func (client *Client) AllocateIpAddress(request *AllocateIpAddressRequest) (_result *AllocateIpAddressResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AllocateIpAddressResponse{}
+	_body, _err := client.AllocateIpAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Apply an automatic snapshot policy to cloud computers. After the automatic snapshot policy is applied to the cloud computers, Elastic Desktop Service automatically creates snapshots for the cloud computers based on the time specified in the automatic snapshot policy.
 //
 // Description:
@@ -848,6 +916,82 @@ func (client *Client) ApproveFotaUpdate(request *ApproveFotaUpdateRequest) (_res
 
 // Summary:
 //
+// 实例绑定公网IP
+//
+// @param request - AssociateIpAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateIpAddressResponse
+func (client *Client) AssociateIpAddressWithOptions(request *AssociateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *AssociateIpAddressResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EipId) {
+		query["EipId"] = request.EipId
+	}
+
+	if !dara.IsNil(request.NatGatewayId) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !dara.IsNil(request.NetworkInterfaceId) {
+		query["NetworkInterfaceId"] = request.NetworkInterfaceId
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AssociateIpAddress"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AssociateIpAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 实例绑定公网IP
+//
+// @param request - AssociateIpAddressRequest
+//
+// @return AssociateIpAddressResponse
+func (client *Client) AssociateIpAddress(request *AssociateIpAddressRequest) (_result *AssociateIpAddressResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AssociateIpAddressResponse{}
+	_body, _err := client.AssociateIpAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Binds a premium bandwidth plan to an office network. A premium bandwidth plan is used together with only one office network.
 //
 // @param request - AssociateNetworkPackageRequest
@@ -907,6 +1051,74 @@ func (client *Client) AssociateNetworkPackage(request *AssociateNetworkPackageRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &AssociateNetworkPackageResponse{}
 	_body, _err := client.AssociateNetworkPackageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将创建的自定义路由表和同一VPC内的交换机绑定
+//
+// @param request - AssociateRouteTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateRouteTableResponse
+func (client *Client) AssociateRouteTableWithOptions(request *AssociateRouteTableRequest, runtime *dara.RuntimeOptions) (_result *AssociateRouteTableResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RouteTableId) {
+		query["RouteTableId"] = request.RouteTableId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AssociateRouteTable"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AssociateRouteTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将创建的自定义路由表和同一VPC内的交换机绑定
+//
+// @param request - AssociateRouteTableRequest
+//
+// @return AssociateRouteTableResponse
+func (client *Client) AssociateRouteTable(request *AssociateRouteTableRequest) (_result *AssociateRouteTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AssociateRouteTableResponse{}
+	_body, _err := client.AssociateRouteTableWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4598,6 +4810,94 @@ func (client *Client) CreateEcdReportTask(request *CreateEcdReportTaskRequest) (
 
 // Summary:
 //
+// 添加DNAT条目
+//
+// @param request - CreateForwardEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateForwardEntryResponse
+func (client *Client) CreateForwardEntryWithOptions(request *CreateForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateForwardEntryResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalIp) {
+		query["ExternalIp"] = request.ExternalIp
+	}
+
+	if !dara.IsNil(request.ExternalPort) {
+		query["ExternalPort"] = request.ExternalPort
+	}
+
+	if !dara.IsNil(request.ForwardEntryName) {
+		query["ForwardEntryName"] = request.ForwardEntryName
+	}
+
+	if !dara.IsNil(request.ForwardTableId) {
+		query["ForwardTableId"] = request.ForwardTableId
+	}
+
+	if !dara.IsNil(request.InternalIp) {
+		query["InternalIp"] = request.InternalIp
+	}
+
+	if !dara.IsNil(request.InternalPort) {
+		query["InternalPort"] = request.InternalPort
+	}
+
+	if !dara.IsNil(request.IpProtocol) {
+		query["IpProtocol"] = request.IpProtocol
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateForwardEntry"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateForwardEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加DNAT条目
+//
+// @param request - CreateForwardEntryRequest
+//
+// @return CreateForwardEntryResponse
+func (client *Client) CreateForwardEntry(request *CreateForwardEntryRequest) (_result *CreateForwardEntryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateForwardEntryResponse{}
+	_body, _err := client.CreateForwardEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a custom image based on a deployed cloud computer. Then, you can use the custom image to create cloud computers that have the same configurations. This prevents the repeated settings when you create cloud computers.
 //
 // @param request - CreateImageRequest
@@ -4809,6 +5109,74 @@ func (client *Client) CreateNASFileSystem(request *CreateNASFileSystemRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateNASFileSystemResponse{}
 	_body, _err := client.CreateNASFileSystemWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建NAT网关
+//
+// @param request - CreateNatGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNatGatewayResponse
+func (client *Client) CreateNatGatewayWithOptions(request *CreateNatGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateNatGatewayResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateNatGateway"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateNatGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建NAT网关
+//
+// @param request - CreateNatGatewayRequest
+//
+// @return CreateNatGatewayResponse
+func (client *Client) CreateNatGateway(request *CreateNatGatewayRequest) (_result *CreateNatGatewayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateNatGatewayResponse{}
+	_body, _err := client.CreateNatGatewayWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5306,6 +5674,166 @@ func (client *Client) CreateRAMDirectory(request *CreateRAMDirectoryRequest) (_r
 
 // Summary:
 //
+// 新建路由条目
+//
+// @param request - CreateRouteEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRouteEntryResponse
+func (client *Client) CreateRouteEntryWithOptions(request *CreateRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteEntryResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DestinationCidrBlock) {
+		query["DestinationCidrBlock"] = request.DestinationCidrBlock
+	}
+
+	if !dara.IsNil(request.NextHopId) {
+		query["NextHopId"] = request.NextHopId
+	}
+
+	if !dara.IsNil(request.NextHopType) {
+		query["NextHopType"] = request.NextHopType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RouteEntryName) {
+		query["RouteEntryName"] = request.RouteEntryName
+	}
+
+	if !dara.IsNil(request.RouteTableId) {
+		query["RouteTableId"] = request.RouteTableId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRouteEntry"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRouteEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建路由条目
+//
+// @param request - CreateRouteEntryRequest
+//
+// @return CreateRouteEntryResponse
+func (client *Client) CreateRouteEntry(request *CreateRouteEntryRequest) (_result *CreateRouteEntryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateRouteEntryResponse{}
+	_body, _err := client.CreateRouteEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建自定义路由表
+//
+// @param request - CreateRouteTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRouteTableResponse
+func (client *Client) CreateRouteTableWithOptions(request *CreateRouteTableRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteTableResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RouteTableName) {
+		query["RouteTableName"] = request.RouteTableName
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRouteTable"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRouteTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建自定义路由表
+//
+// @param request - CreateRouteTableRequest
+//
+// @return CreateRouteTableResponse
+func (client *Client) CreateRouteTable(request *CreateRouteTableRequest) (_result *CreateRouteTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateRouteTableResponse{}
+	_body, _err := client.CreateRouteTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an office network of the convenience account type. Elastic Desktop Service supports the following types of accounts: convenience accounts and enterprise AD accounts.
 //
 // @param request - CreateSimpleOfficeSiteRequest
@@ -5493,6 +6021,162 @@ func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *C
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateSnapshotResponse{}
 	_body, _err := client.CreateSnapshotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加SNAT条目
+//
+// @param request - CreateSnatEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSnatEntryResponse
+func (client *Client) CreateSnatEntryWithOptions(request *CreateSnatEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateSnatEntryResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EipAffinity) {
+		query["EipAffinity"] = request.EipAffinity
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SnatEntryName) {
+		query["SnatEntryName"] = request.SnatEntryName
+	}
+
+	if !dara.IsNil(request.SnatIp) {
+		query["SnatIp"] = request.SnatIp
+	}
+
+	if !dara.IsNil(request.SnatTableId) {
+		query["SnatTableId"] = request.SnatTableId
+	}
+
+	if !dara.IsNil(request.SourceCIDR) {
+		query["SourceCIDR"] = request.SourceCIDR
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSnatEntry"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSnatEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加SNAT条目
+//
+// @param request - CreateSnatEntryRequest
+//
+// @return CreateSnatEntryResponse
+func (client *Client) CreateSnatEntry(request *CreateSnatEntryRequest) (_result *CreateSnatEntryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSnatEntryResponse{}
+	_body, _err := client.CreateSnatEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建子网
+//
+// @param request - CreateSubnetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSubnetResponse
+func (client *Client) CreateSubnetWithOptions(request *CreateSubnetRequest, runtime *dara.RuntimeOptions) (_result *CreateSubnetResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CidrBlock) {
+		query["CidrBlock"] = request.CidrBlock
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSubnet"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSubnetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建子网
+//
+// @param request - CreateSubnetRequest
+//
+// @return CreateSubnetResponse
+func (client *Client) CreateSubnet(request *CreateSubnetRequest) (_result *CreateSubnetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSubnetResponse{}
+	_body, _err := client.CreateSubnetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6549,6 +7233,74 @@ func (client *Client) DeleteEduRoom(request *DeleteEduRoomRequest) (_result *Del
 
 // Summary:
 //
+// 删除DNAT条目
+//
+// @param request - DeleteForwardEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteForwardEntryResponse
+func (client *Client) DeleteForwardEntryWithOptions(request *DeleteForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteForwardEntryResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ForwardEntryId) {
+		query["ForwardEntryId"] = request.ForwardEntryId
+	}
+
+	if !dara.IsNil(request.ForwardTableId) {
+		query["ForwardTableId"] = request.ForwardTableId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteForwardEntry"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteForwardEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除DNAT条目
+//
+// @param request - DeleteForwardEntryRequest
+//
+// @return DeleteForwardEntryResponse
+func (client *Client) DeleteForwardEntry(request *DeleteForwardEntryRequest) (_result *DeleteForwardEntryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteForwardEntryResponse{}
+	_body, _err := client.DeleteForwardEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes one or more custom images.
 //
 // Description:
@@ -6696,6 +7448,70 @@ func (client *Client) DeleteNASFileSystems(request *DeleteNASFileSystemsRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteNASFileSystemsResponse{}
 	_body, _err := client.DeleteNASFileSystemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除NAT网关
+//
+// @param request - DeleteNatGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNatGatewayResponse
+func (client *Client) DeleteNatGatewayWithOptions(request *DeleteNatGatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteNatGatewayResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NatGatewayId) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteNatGateway"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteNatGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除NAT网关
+//
+// @param request - DeleteNatGatewayRequest
+//
+// @return DeleteNatGatewayResponse
+func (client *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (_result *DeleteNatGatewayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteNatGatewayResponse{}
+	_body, _err := client.DeleteNatGatewayWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6933,6 +7749,146 @@ func (client *Client) DeletePolicyGroups(request *DeletePolicyGroupsRequest) (_r
 
 // Summary:
 //
+// 删除路由条目
+//
+// @param request - DeleteRouteEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRouteEntryResponse
+func (client *Client) DeleteRouteEntryWithOptions(request *DeleteRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteEntryResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DestinationCidrBlock) {
+		query["DestinationCidrBlock"] = request.DestinationCidrBlock
+	}
+
+	if !dara.IsNil(request.NextHopId) {
+		query["NextHopId"] = request.NextHopId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RouteEntryId) {
+		query["RouteEntryId"] = request.RouteEntryId
+	}
+
+	if !dara.IsNil(request.RouteTableId) {
+		query["RouteTableId"] = request.RouteTableId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRouteEntry"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRouteEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除路由条目
+//
+// @param request - DeleteRouteEntryRequest
+//
+// @return DeleteRouteEntryResponse
+func (client *Client) DeleteRouteEntry(request *DeleteRouteEntryRequest) (_result *DeleteRouteEntryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteRouteEntryResponse{}
+	_body, _err := client.DeleteRouteEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义路由表
+//
+// @param request - DeleteRouteTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRouteTableResponse
+func (client *Client) DeleteRouteTableWithOptions(request *DeleteRouteTableRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteTableResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RouteTableId) {
+		query["RouteTableId"] = request.RouteTableId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRouteTable"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRouteTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义路由表
+//
+// @param request - DeleteRouteTableRequest
+//
+// @return DeleteRouteTableResponse
+func (client *Client) DeleteRouteTable(request *DeleteRouteTableRequest) (_result *DeleteRouteTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteRouteTableResponse{}
+	_body, _err := client.DeleteRouteTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes one or more snapshots.
 //
 // Description:
@@ -6996,6 +7952,138 @@ func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *D
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteSnapshotResponse{}
 	_body, _err := client.DeleteSnapshotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除SNAT条目
+//
+// @param request - DeleteSnatEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSnatEntryResponse
+func (client *Client) DeleteSnatEntryWithOptions(request *DeleteSnatEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnatEntryResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SnatEntryId) {
+		query["SnatEntryId"] = request.SnatEntryId
+	}
+
+	if !dara.IsNil(request.SnatTableId) {
+		query["SnatTableId"] = request.SnatTableId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSnatEntry"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSnatEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除SNAT条目
+//
+// @param request - DeleteSnatEntryRequest
+//
+// @return DeleteSnatEntryResponse
+func (client *Client) DeleteSnatEntry(request *DeleteSnatEntryRequest) (_result *DeleteSnatEntryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSnatEntryResponse{}
+	_body, _err := client.DeleteSnatEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除子网
+//
+// @param request - DeleteSubnetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSubnetResponse
+func (client *Client) DeleteSubnetWithOptions(request *DeleteSubnetRequest, runtime *dara.RuntimeOptions) (_result *DeleteSubnetResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SubnetId) {
+		query["SubnetId"] = request.SubnetId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSubnet"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSubnetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除子网
+//
+// @param request - DeleteSubnetRequest
+//
+// @return DeleteSubnetResponse
+func (client *Client) DeleteSubnet(request *DeleteSubnetRequest) (_result *DeleteSubnetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSubnetResponse{}
+	_body, _err := client.DeleteSubnetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9777,6 +10865,86 @@ func (client *Client) DescribeFlowStatistic(request *DescribeFlowStatisticReques
 
 // Summary:
 //
+// 查询DNAT条目
+//
+// @param request - DescribeForwardTableEntriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeForwardTableEntriesResponse
+func (client *Client) DescribeForwardTableEntriesWithOptions(request *DescribeForwardTableEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeForwardTableEntriesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ForwardEntryId) {
+		query["ForwardEntryId"] = request.ForwardEntryId
+	}
+
+	if !dara.IsNil(request.ForwardTableId) {
+		query["ForwardTableId"] = request.ForwardTableId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NatGatewayId) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeForwardTableEntries"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeForwardTableEntriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询DNAT条目
+//
+// @param request - DescribeForwardTableEntriesRequest
+//
+// @return DescribeForwardTableEntriesResponse
+func (client *Client) DescribeForwardTableEntries(request *DescribeForwardTableEntriesRequest) (_result *DescribeForwardTableEntriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeForwardTableEntriesResponse{}
+	_body, _err := client.DescribeForwardTableEntriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about the cloud computers whose images can be and are pending to be updated to the specified version.
 //
 // @param request - DescribeFotaPendingDesktopsRequest
@@ -10381,6 +11549,82 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 
 // Summary:
 //
+// 查询公网IP
+//
+// @param request - DescribeIpAddressesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeIpAddressesResponse
+func (client *Client) DescribeIpAddressesWithOptions(request *DescribeIpAddressesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpAddressesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EipId) {
+		query["EipId"] = request.EipId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeIpAddresses"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeIpAddressesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询公网IP
+//
+// @param request - DescribeIpAddressesRequest
+//
+// @return DescribeIpAddressesResponse
+func (client *Client) DescribeIpAddresses(request *DescribeIpAddressesRequest) (_result *DescribeIpAddressesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeIpAddressesResponse{}
+	_body, _err := client.DescribeIpAddressesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries Key Management Service (KMS) keys of users. The first time you call this operation, you can try to create a service key for Elastic Desktop Service (EDS) and call the operation to return results.
 //
 // @param request - DescribeKmsKeysRequest
@@ -10604,6 +11848,86 @@ func (client *Client) DescribeNASFileSystems(request *DescribeNASFileSystemsRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeNASFileSystemsResponse{}
 	_body, _err := client.DescribeNASFileSystemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询NAT详细列表
+//
+// @param request - DescribeNatGatewaysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNatGatewaysResponse
+func (client *Client) DescribeNatGatewaysWithOptions(request *DescribeNatGatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatGatewaysResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NatGatewayId) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNatGateways"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNatGatewaysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询NAT详细列表
+//
+// @param request - DescribeNatGatewaysRequest
+//
+// @return DescribeNatGatewaysResponse
+func (client *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (_result *DescribeNatGatewaysResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeNatGatewaysResponse{}
+	_body, _err := client.DescribeNatGatewaysWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11625,6 +12949,158 @@ func (client *Client) DescribeResourceByCenterPolicyId(request *DescribeResource
 
 // Summary:
 //
+// 查询路由条目列表
+//
+// @param request - DescribeRouteEntryListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRouteEntryListResponse
+func (client *Client) DescribeRouteEntryListWithOptions(request *DescribeRouteEntryListRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteEntryListResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RouteTableId) {
+		query["RouteTableId"] = request.RouteTableId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRouteEntryList"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRouteEntryListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询路由条目列表
+//
+// @param request - DescribeRouteEntryListRequest
+//
+// @return DescribeRouteEntryListResponse
+func (client *Client) DescribeRouteEntryList(request *DescribeRouteEntryListRequest) (_result *DescribeRouteEntryListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeRouteEntryListResponse{}
+	_body, _err := client.DescribeRouteEntryListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询路由表列表
+//
+// @param request - DescribeRouteTableListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRouteTableListResponse
+func (client *Client) DescribeRouteTableListWithOptions(request *DescribeRouteTableListRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteTableListResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RouteTableId) {
+		query["RouteTableId"] = request.RouteTableId
+	}
+
+	if !dara.IsNil(request.RouteTableName) {
+		query["RouteTableName"] = request.RouteTableName
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRouteTableList"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRouteTableListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询路由表列表
+//
+// @param request - DescribeRouteTableListRequest
+//
+// @return DescribeRouteTableListResponse
+func (client *Client) DescribeRouteTableList(request *DescribeRouteTableListRequest) (_result *DescribeRouteTableListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeRouteTableListResponse{}
+	_body, _err := client.DescribeRouteTableListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the session statistics of a region.
 //
 // Description:
@@ -11816,6 +13292,166 @@ func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeSnapshotsResponse{}
 	_body, _err := client.DescribeSnapshotsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询SNAT条目
+//
+// @param request - DescribeSnatTableEntriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSnatTableEntriesResponse
+func (client *Client) DescribeSnatTableEntriesWithOptions(request *DescribeSnatTableEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnatTableEntriesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NatGatewayId) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SnatEntryId) {
+		query["SnatEntryId"] = request.SnatEntryId
+	}
+
+	if !dara.IsNil(request.SnatTableId) {
+		query["SnatTableId"] = request.SnatTableId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSnatTableEntries"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSnatTableEntriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询SNAT条目
+//
+// @param request - DescribeSnatTableEntriesRequest
+//
+// @return DescribeSnatTableEntriesResponse
+func (client *Client) DescribeSnatTableEntries(request *DescribeSnatTableEntriesRequest) (_result *DescribeSnatTableEntriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSnatTableEntriesResponse{}
+	_body, _err := client.DescribeSnatTableEntriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询子网
+//
+// @param request - DescribeSubnetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSubnetsResponse
+func (client *Client) DescribeSubnetsWithOptions(request *DescribeSubnetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSubnetsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SubnetId) {
+		query["SubnetId"] = request.SubnetId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSubnets"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSubnetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询子网
+//
+// @param request - DescribeSubnetsRequest
+//
+// @return DescribeSubnetsResponse
+func (client *Client) DescribeSubnets(request *DescribeSubnetsRequest) (_result *DescribeSubnetsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSubnetsResponse{}
+	_body, _err := client.DescribeSubnetsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12820,6 +14456,70 @@ func (client *Client) DisconnectDesktopSessions(request *DisconnectDesktopSessio
 	runtime := &dara.RuntimeOptions{}
 	_result = &DisconnectDesktopSessionsResponse{}
 	_body, _err := client.DisconnectDesktopSessionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 实例解绑/删除公网IP
+//
+// @param request - DissociateIpAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DissociateIpAddressResponse
+func (client *Client) DissociateIpAddressWithOptions(request *DissociateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *DissociateIpAddressResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EipId) {
+		query["EipId"] = request.EipId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DissociateIpAddress"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DissociateIpAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 实例解绑/删除公网IP
+//
+// @param request - DissociateIpAddressRequest
+//
+// @return DissociateIpAddressResponse
+func (client *Client) DissociateIpAddress(request *DissociateIpAddressRequest) (_result *DissociateIpAddressResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DissociateIpAddressResponse{}
+	_body, _err := client.DissociateIpAddressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19269,6 +20969,70 @@ func (client *Client) RebuildDesktops(request *RebuildDesktopsRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &RebuildDesktopsResponse{}
 	_body, _err := client.RebuildDesktopsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除公网IP
+//
+// @param request - ReleaseIpAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseIpAddressResponse
+func (client *Client) ReleaseIpAddressWithOptions(request *ReleaseIpAddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseIpAddressResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EipId) {
+		query["EipId"] = request.EipId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReleaseIpAddress"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReleaseIpAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除公网IP
+//
+// @param request - ReleaseIpAddressRequest
+//
+// @return ReleaseIpAddressResponse
+func (client *Client) ReleaseIpAddress(request *ReleaseIpAddressRequest) (_result *ReleaseIpAddressResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ReleaseIpAddressResponse{}
+	_body, _err := client.ReleaseIpAddressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

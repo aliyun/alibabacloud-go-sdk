@@ -118,8 +118,6 @@ type CreateNetworkPackageRequest struct {
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The office network ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
