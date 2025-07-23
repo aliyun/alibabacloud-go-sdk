@@ -26,27 +26,7 @@ type iDescribeInstanceLogResponseBody interface {
 }
 
 type DescribeInstanceLogResponseBody struct {
-	// Indicates whether the log of the instance was obtained. Valid values:
-	//
-	// 	- **true**: indicates that the log was obtained.
-	//
-	// 	- **false**: indicates that the log could not be obtained.
-	//
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error code.
-	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
-	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
-	//
-	// example:
-	//
-	// hello\\nsae\\n
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code. Valid values:
+	// The interface state or POP error code. Valid values:
 	//
 	// 	- **2xx**: indicates that the request was successful.
 	//
@@ -55,28 +35,54 @@ type DescribeInstanceLogResponseBody struct {
 	// 	- **4xx**: indicates that the request was invalid.
 	//
 	// 	- **5xx**: indicates that a server error occurred.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information of instance logs.
+	//
+	// example:
+	//
+	// hello\\nsae\\n
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Error code.
+	//
+	// - No error code returned if the request succeeded.
+	//
+	// - Error code returned if the request failed. Refer to error code list below for details.
+	//
+	// example:
+	//
+	// Null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace.
+	// The returned message.
+	//
+	// success is returned when the request succeeds.
+	//
+	// An error code is returned when the request fails.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned message.
-	//
-	// 	- **success*	- is returned when the request succeeds.
-	//
-	// 	- An error code is returned when the request fails.
+	// Request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the logs of the instance is obtained.
+	//
+	// - true: logs obtained.
+	//
+	// - false: failed to obtain logs.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The log of the instance.
+	// Trace ID.
 	//
 	// example:
 	//

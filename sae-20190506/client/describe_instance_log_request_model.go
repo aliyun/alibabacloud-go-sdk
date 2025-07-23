@@ -22,7 +22,7 @@ type DescribeInstanceLogRequest struct {
 	//
 	// sidecar-test-01
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// The ID of the request.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
