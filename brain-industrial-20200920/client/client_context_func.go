@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("brain-industrial"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ActivateLicenseResponse
-func (client *Client) ActivateLicenseWithOptions(request *ActivateLicenseRequest, runtime *dara.RuntimeOptions) (_result *ActivateLicenseResponse, _err error) {
+func (client *Client) ActivateLicenseWithContext(ctx context.Context, request *ActivateLicenseRequest, runtime *dara.RuntimeOptions) (_result *ActivateLicenseResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -101,29 +53,11 @@ func (client *Client) ActivateLicenseWithOptions(request *ActivateLicenseRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ActivateLicenseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 激活License
-//
-// @param request - ActivateLicenseRequest
-//
-// @return ActivateLicenseResponse
-func (client *Client) ActivateLicense(request *ActivateLicenseRequest) (_result *ActivateLicenseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ActivateLicenseResponse{}
-	_body, _err := client.ActivateLicenseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -136,7 +70,7 @@ func (client *Client) ActivateLicense(request *ActivateLicenseRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AicsOpenApiInvokeResponse
-func (client *Client) AicsOpenApiInvokeWithOptions(tmpReq *AicsOpenApiInvokeRequest, runtime *dara.RuntimeOptions) (_result *AicsOpenApiInvokeResponse, _err error) {
+func (client *Client) AicsOpenApiInvokeWithContext(ctx context.Context, tmpReq *AicsOpenApiInvokeRequest, runtime *dara.RuntimeOptions) (_result *AicsOpenApiInvokeResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -181,29 +115,11 @@ func (client *Client) AicsOpenApiInvokeWithOptions(tmpReq *AicsOpenApiInvokeRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &AicsOpenApiInvokeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 调用aics openapi
-//
-// @param request - AicsOpenApiInvokeRequest
-//
-// @return AicsOpenApiInvokeResponse
-func (client *Client) AicsOpenApiInvoke(request *AicsOpenApiInvokeRequest) (_result *AicsOpenApiInvokeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AicsOpenApiInvokeResponse{}
-	_body, _err := client.AicsOpenApiInvokeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -216,7 +132,7 @@ func (client *Client) AicsOpenApiInvoke(request *AicsOpenApiInvokeRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEssOptJobResponse
-func (client *Client) CreateEssOptJobWithOptions(tmpReq *CreateEssOptJobRequest, runtime *dara.RuntimeOptions) (_result *CreateEssOptJobResponse, _err error) {
+func (client *Client) CreateEssOptJobWithContext(ctx context.Context, tmpReq *CreateEssOptJobRequest, runtime *dara.RuntimeOptions) (_result *CreateEssOptJobResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -299,29 +215,11 @@ func (client *Client) CreateEssOptJobWithOptions(tmpReq *CreateEssOptJobRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEssOptJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建储能运行优化任务
-//
-// @param request - CreateEssOptJobRequest
-//
-// @return CreateEssOptJobResponse
-func (client *Client) CreateEssOptJob(request *CreateEssOptJobRequest) (_result *CreateEssOptJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateEssOptJobResponse{}
-	_body, _err := client.CreateEssOptJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -334,7 +232,7 @@ func (client *Client) CreateEssOptJob(request *CreateEssOptJobRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLoadForecastJobResponse
-func (client *Client) CreateLoadForecastJobWithOptions(tmpReq *CreateLoadForecastJobRequest, runtime *dara.RuntimeOptions) (_result *CreateLoadForecastJobResponse, _err error) {
+func (client *Client) CreateLoadForecastJobWithContext(ctx context.Context, tmpReq *CreateLoadForecastJobRequest, runtime *dara.RuntimeOptions) (_result *CreateLoadForecastJobResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -397,29 +295,11 @@ func (client *Client) CreateLoadForecastJobWithOptions(tmpReq *CreateLoadForecas
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLoadForecastJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建用电负荷预测任务
-//
-// @param request - CreateLoadForecastJobRequest
-//
-// @return CreateLoadForecastJobResponse
-func (client *Client) CreateLoadForecastJob(request *CreateLoadForecastJobRequest) (_result *CreateLoadForecastJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLoadForecastJobResponse{}
-	_body, _err := client.CreateLoadForecastJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -432,7 +312,7 @@ func (client *Client) CreateLoadForecastJob(request *CreateLoadForecastJobReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePowerForecastJobResponse
-func (client *Client) CreatePowerForecastJobWithOptions(tmpReq *CreatePowerForecastJobRequest, runtime *dara.RuntimeOptions) (_result *CreatePowerForecastJobResponse, _err error) {
+func (client *Client) CreatePowerForecastJobWithContext(ctx context.Context, tmpReq *CreatePowerForecastJobRequest, runtime *dara.RuntimeOptions) (_result *CreatePowerForecastJobResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -503,29 +383,11 @@ func (client *Client) CreatePowerForecastJobWithOptions(tmpReq *CreatePowerForec
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePowerForecastJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建发电功率预测任务
-//
-// @param request - CreatePowerForecastJobRequest
-//
-// @return CreatePowerForecastJobResponse
-func (client *Client) CreatePowerForecastJob(request *CreatePowerForecastJobRequest) (_result *CreatePowerForecastJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePowerForecastJobResponse{}
-	_body, _err := client.CreatePowerForecastJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -538,7 +400,7 @@ func (client *Client) CreatePowerForecastJob(request *CreatePowerForecastJobRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAivppAlgoJobResponse
-func (client *Client) GetAivppAlgoJobWithOptions(request *GetAivppAlgoJobRequest, runtime *dara.RuntimeOptions) (_result *GetAivppAlgoJobResponse, _err error) {
+func (client *Client) GetAivppAlgoJobWithContext(ctx context.Context, request *GetAivppAlgoJobRequest, runtime *dara.RuntimeOptions) (_result *GetAivppAlgoJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -563,29 +425,11 @@ func (client *Client) GetAivppAlgoJobWithOptions(request *GetAivppAlgoJobRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAivppAlgoJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询aivpp算法job
-//
-// @param request - GetAivppAlgoJobRequest
-//
-// @return GetAivppAlgoJobResponse
-func (client *Client) GetAivppAlgoJob(request *GetAivppAlgoJobRequest) (_result *GetAivppAlgoJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAivppAlgoJobResponse{}
-	_body, _err := client.GetAivppAlgoJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -598,7 +442,7 @@ func (client *Client) GetAivppAlgoJob(request *GetAivppAlgoJobRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLicenseResponse
-func (client *Client) GetLicenseWithOptions(request *GetLicenseRequest, runtime *dara.RuntimeOptions) (_result *GetLicenseResponse, _err error) {
+func (client *Client) GetLicenseWithContext(ctx context.Context, request *GetLicenseRequest, runtime *dara.RuntimeOptions) (_result *GetLicenseResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -627,29 +471,11 @@ func (client *Client) GetLicenseWithOptions(request *GetLicenseRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLicenseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # License详情
-//
-// @param request - GetLicenseRequest
-//
-// @return GetLicenseResponse
-func (client *Client) GetLicense(request *GetLicenseRequest) (_result *GetLicenseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLicenseResponse{}
-	_body, _err := client.GetLicenseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -662,7 +488,7 @@ func (client *Client) GetLicense(request *GetLicenseRequest) (_result *GetLicens
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAivppResourcesResponse
-func (client *Client) ListAivppResourcesWithOptions(request *ListAivppResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListAivppResourcesResponse, _err error) {
+func (client *Client) ListAivppResourcesWithContext(ctx context.Context, request *ListAivppResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListAivppResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -691,29 +517,11 @@ func (client *Client) ListAivppResourcesWithOptions(request *ListAivppResourcesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAivppResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取用户AIVPP资源列表
-//
-// @param request - ListAivppResourcesRequest
-//
-// @return ListAivppResourcesResponse
-func (client *Client) ListAivppResources(request *ListAivppResourcesRequest) (_result *ListAivppResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAivppResourcesResponse{}
-	_body, _err := client.ListAivppResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -726,7 +534,7 @@ func (client *Client) ListAivppResources(request *ListAivppResourcesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLicensesResponse
-func (client *Client) ListLicensesWithOptions(request *ListLicensesRequest, runtime *dara.RuntimeOptions) (_result *ListLicensesResponse, _err error) {
+func (client *Client) ListLicensesWithContext(ctx context.Context, request *ListLicensesRequest, runtime *dara.RuntimeOptions) (_result *ListLicensesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -759,29 +567,11 @@ func (client *Client) ListLicensesWithOptions(request *ListLicensesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLicensesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # License列表
-//
-// @param request - ListLicensesRequest
-//
-// @return ListLicensesResponse
-func (client *Client) ListLicenses(request *ListLicensesRequest) (_result *ListLicensesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLicensesResponse{}
-	_body, _err := client.ListLicensesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -794,7 +584,7 @@ func (client *Client) ListLicenses(request *ListLicensesRequest) (_result *ListL
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListUserResourcesResponse
-func (client *Client) ListUserResourcesWithOptions(request *ListUserResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListUserResourcesResponse, _err error) {
+func (client *Client) ListUserResourcesWithContext(ctx context.Context, request *ListUserResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListUserResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -819,29 +609,11 @@ func (client *Client) ListUserResourcesWithOptions(request *ListUserResourcesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListUserResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取用户资源列表
-//
-// @param request - ListUserResourcesRequest
-//
-// @return ListUserResourcesResponse
-func (client *Client) ListUserResources(request *ListUserResourcesRequest) (_result *ListUserResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListUserResourcesResponse{}
-	_body, _err := client.ListUserResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -854,7 +626,7 @@ func (client *Client) ListUserResources(request *ListUserResourcesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLicenseDescriptionResponse
-func (client *Client) UpdateLicenseDescriptionWithOptions(request *UpdateLicenseDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateLicenseDescriptionResponse, _err error) {
+func (client *Client) UpdateLicenseDescriptionWithContext(ctx context.Context, request *UpdateLicenseDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateLicenseDescriptionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -883,28 +655,10 @@ func (client *Client) UpdateLicenseDescriptionWithOptions(request *UpdateLicense
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLicenseDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新license描述
-//
-// @param request - UpdateLicenseDescriptionRequest
-//
-// @return UpdateLicenseDescriptionResponse
-func (client *Client) UpdateLicenseDescription(request *UpdateLicenseDescriptionRequest) (_result *UpdateLicenseDescriptionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLicenseDescriptionResponse{}
-	_body, _err := client.UpdateLicenseDescriptionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
