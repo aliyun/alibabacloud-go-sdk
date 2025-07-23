@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("mns-open"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AuthorizeEndpointAclResponse
-func (client *Client) AuthorizeEndpointAclWithOptions(tmpReq *AuthorizeEndpointAclRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeEndpointAclResponse, _err error) {
+func (client *Client) AuthorizeEndpointAclWithContext(ctx context.Context, tmpReq *AuthorizeEndpointAclRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeEndpointAclResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -103,29 +55,11 @@ func (client *Client) AuthorizeEndpointAclWithOptions(tmpReq *AuthorizeEndpointA
 		BodyType:    dara.String("json"),
 	}
 	_result = &AuthorizeEndpointAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can call this operation to add one or more rules of access control lists (ACLs) for the endpoint of a type.
-//
-// @param request - AuthorizeEndpointAclRequest
-//
-// @return AuthorizeEndpointAclResponse
-func (client *Client) AuthorizeEndpointAcl(request *AuthorizeEndpointAclRequest) (_result *AuthorizeEndpointAclResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AuthorizeEndpointAclResponse{}
-	_body, _err := client.AuthorizeEndpointAclWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -138,7 +72,7 @@ func (client *Client) AuthorizeEndpointAcl(request *AuthorizeEndpointAclRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEventRuleResponse
-func (client *Client) CreateEventRuleWithOptions(tmpReq *CreateEventRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateEventRuleResponse, _err error) {
+func (client *Client) CreateEventRuleWithContext(ctx context.Context, tmpReq *CreateEventRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateEventRuleResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -209,29 +143,11 @@ func (client *Client) CreateEventRuleWithOptions(tmpReq *CreateEventRuleRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEventRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建事件规则
-//
-// @param request - CreateEventRuleRequest
-//
-// @return CreateEventRuleResponse
-func (client *Client) CreateEventRule(request *CreateEventRuleRequest) (_result *CreateEventRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateEventRuleResponse{}
-	_body, _err := client.CreateEventRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -244,7 +160,7 @@ func (client *Client) CreateEventRule(request *CreateEventRuleRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateQueueResponse
-func (client *Client) CreateQueueWithOptions(tmpReq *CreateQueueRequest, runtime *dara.RuntimeOptions) (_result *CreateQueueResponse, _err error) {
+func (client *Client) CreateQueueWithContext(ctx context.Context, tmpReq *CreateQueueRequest, runtime *dara.RuntimeOptions) (_result *CreateQueueResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -315,29 +231,11 @@ func (client *Client) CreateQueueWithOptions(tmpReq *CreateQueueRequest, runtime
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateQueueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a queue.
-//
-// @param request - CreateQueueRequest
-//
-// @return CreateQueueResponse
-func (client *Client) CreateQueue(request *CreateQueueRequest) (_result *CreateQueueResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateQueueResponse{}
-	_body, _err := client.CreateQueueWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -350,7 +248,7 @@ func (client *Client) CreateQueue(request *CreateQueueRequest) (_result *CreateQ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTopicResponse
-func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtime *dara.RuntimeOptions) (_result *CreateTopicResponse, _err error) {
+func (client *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopicRequest, runtime *dara.RuntimeOptions) (_result *CreateTopicResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -389,29 +287,11 @@ func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTopicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a topic.
-//
-// @param request - CreateTopicRequest
-//
-// @return CreateTopicResponse
-func (client *Client) CreateTopic(request *CreateTopicRequest) (_result *CreateTopicResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateTopicResponse{}
-	_body, _err := client.CreateTopicWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -424,7 +304,7 @@ func (client *Client) CreateTopic(request *CreateTopicRequest) (_result *CreateT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEventRuleResponse
-func (client *Client) DeleteEventRuleWithOptions(request *DeleteEventRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventRuleResponse, _err error) {
+func (client *Client) DeleteEventRuleWithContext(ctx context.Context, request *DeleteEventRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -453,29 +333,11 @@ func (client *Client) DeleteEventRuleWithOptions(request *DeleteEventRuleRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEventRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除事件规则
-//
-// @param request - DeleteEventRuleRequest
-//
-// @return DeleteEventRuleResponse
-func (client *Client) DeleteEventRule(request *DeleteEventRuleRequest) (_result *DeleteEventRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEventRuleResponse{}
-	_body, _err := client.DeleteEventRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -488,7 +350,7 @@ func (client *Client) DeleteEventRule(request *DeleteEventRuleRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteQueueResponse
-func (client *Client) DeleteQueueWithOptions(request *DeleteQueueRequest, runtime *dara.RuntimeOptions) (_result *DeleteQueueResponse, _err error) {
+func (client *Client) DeleteQueueWithContext(ctx context.Context, request *DeleteQueueRequest, runtime *dara.RuntimeOptions) (_result *DeleteQueueResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -513,29 +375,11 @@ func (client *Client) DeleteQueueWithOptions(request *DeleteQueueRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteQueueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a queue.
-//
-// @param request - DeleteQueueRequest
-//
-// @return DeleteQueueResponse
-func (client *Client) DeleteQueue(request *DeleteQueueRequest) (_result *DeleteQueueResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteQueueResponse{}
-	_body, _err := client.DeleteQueueWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -548,7 +392,7 @@ func (client *Client) DeleteQueue(request *DeleteQueueRequest) (_result *DeleteQ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTopicResponse
-func (client *Client) DeleteTopicWithOptions(request *DeleteTopicRequest, runtime *dara.RuntimeOptions) (_result *DeleteTopicResponse, _err error) {
+func (client *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopicRequest, runtime *dara.RuntimeOptions) (_result *DeleteTopicResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -573,29 +417,11 @@ func (client *Client) DeleteTopicWithOptions(request *DeleteTopicRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTopicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a topic.
-//
-// @param request - DeleteTopicRequest
-//
-// @return DeleteTopicResponse
-func (client *Client) DeleteTopic(request *DeleteTopicRequest) (_result *DeleteTopicResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteTopicResponse{}
-	_body, _err := client.DeleteTopicWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -608,7 +434,7 @@ func (client *Client) DeleteTopic(request *DeleteTopicRequest) (_result *DeleteT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableEndpointResponse
-func (client *Client) DisableEndpointWithOptions(request *DisableEndpointRequest, runtime *dara.RuntimeOptions) (_result *DisableEndpointResponse, _err error) {
+func (client *Client) DisableEndpointWithContext(ctx context.Context, request *DisableEndpointRequest, runtime *dara.RuntimeOptions) (_result *DisableEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -633,29 +459,11 @@ func (client *Client) DisableEndpointWithOptions(request *DisableEndpointRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can call this operation to disenable the endpoint of a type. After the endpoint is disabled, all requests from the endpoint are blocked and an error is returned.
-//
-// @param request - DisableEndpointRequest
-//
-// @return DisableEndpointResponse
-func (client *Client) DisableEndpoint(request *DisableEndpointRequest) (_result *DisableEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableEndpointResponse{}
-	_body, _err := client.DisableEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -668,7 +476,7 @@ func (client *Client) DisableEndpoint(request *DisableEndpointRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableEndpointResponse
-func (client *Client) EnableEndpointWithOptions(request *EnableEndpointRequest, runtime *dara.RuntimeOptions) (_result *EnableEndpointResponse, _err error) {
+func (client *Client) EnableEndpointWithContext(ctx context.Context, request *EnableEndpointRequest, runtime *dara.RuntimeOptions) (_result *EnableEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -693,29 +501,11 @@ func (client *Client) EnableEndpointWithOptions(request *EnableEndpointRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can call this operation to enable the endpoint of a type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
-//
-// @param request - EnableEndpointRequest
-//
-// @return EnableEndpointResponse
-func (client *Client) EnableEndpoint(request *EnableEndpointRequest) (_result *EnableEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableEndpointResponse{}
-	_body, _err := client.EnableEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -728,7 +518,7 @@ func (client *Client) EnableEndpoint(request *EnableEndpointRequest) (_result *E
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetEndpointAttributeResponse
-func (client *Client) GetEndpointAttributeWithOptions(request *GetEndpointAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetEndpointAttributeResponse, _err error) {
+func (client *Client) GetEndpointAttributeWithContext(ctx context.Context, request *GetEndpointAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetEndpointAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -753,29 +543,11 @@ func (client *Client) GetEndpointAttributeWithOptions(request *GetEndpointAttrib
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetEndpointAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # GetEndpointAttribute
-//
-// @param request - GetEndpointAttributeRequest
-//
-// @return GetEndpointAttributeResponse
-func (client *Client) GetEndpointAttribute(request *GetEndpointAttributeRequest) (_result *GetEndpointAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetEndpointAttributeResponse{}
-	_body, _err := client.GetEndpointAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -788,7 +560,7 @@ func (client *Client) GetEndpointAttribute(request *GetEndpointAttributeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetQueueAttributesResponse
-func (client *Client) GetQueueAttributesWithOptions(request *GetQueueAttributesRequest, runtime *dara.RuntimeOptions) (_result *GetQueueAttributesResponse, _err error) {
+func (client *Client) GetQueueAttributesWithContext(ctx context.Context, request *GetQueueAttributesRequest, runtime *dara.RuntimeOptions) (_result *GetQueueAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -817,29 +589,11 @@ func (client *Client) GetQueueAttributesWithOptions(request *GetQueueAttributesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetQueueAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the attributes of an existing queue.
-//
-// @param request - GetQueueAttributesRequest
-//
-// @return GetQueueAttributesResponse
-func (client *Client) GetQueueAttributes(request *GetQueueAttributesRequest) (_result *GetQueueAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetQueueAttributesResponse{}
-	_body, _err := client.GetQueueAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -852,7 +606,7 @@ func (client *Client) GetQueueAttributes(request *GetQueueAttributesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSubscriptionAttributesResponse
-func (client *Client) GetSubscriptionAttributesWithOptions(request *GetSubscriptionAttributesRequest, runtime *dara.RuntimeOptions) (_result *GetSubscriptionAttributesResponse, _err error) {
+func (client *Client) GetSubscriptionAttributesWithContext(ctx context.Context, request *GetSubscriptionAttributesRequest, runtime *dara.RuntimeOptions) (_result *GetSubscriptionAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -881,29 +635,11 @@ func (client *Client) GetSubscriptionAttributesWithOptions(request *GetSubscript
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSubscriptionAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the attributes of a subscription.
-//
-// @param request - GetSubscriptionAttributesRequest
-//
-// @return GetSubscriptionAttributesResponse
-func (client *Client) GetSubscriptionAttributes(request *GetSubscriptionAttributesRequest) (_result *GetSubscriptionAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSubscriptionAttributesResponse{}
-	_body, _err := client.GetSubscriptionAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -916,7 +652,7 @@ func (client *Client) GetSubscriptionAttributes(request *GetSubscriptionAttribut
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTopicAttributesResponse
-func (client *Client) GetTopicAttributesWithOptions(request *GetTopicAttributesRequest, runtime *dara.RuntimeOptions) (_result *GetTopicAttributesResponse, _err error) {
+func (client *Client) GetTopicAttributesWithContext(ctx context.Context, request *GetTopicAttributesRequest, runtime *dara.RuntimeOptions) (_result *GetTopicAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -945,29 +681,11 @@ func (client *Client) GetTopicAttributesWithOptions(request *GetTopicAttributesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTopicAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the attributes of a topic.
-//
-// @param request - GetTopicAttributesRequest
-//
-// @return GetTopicAttributesResponse
-func (client *Client) GetTopicAttributes(request *GetTopicAttributesRequest) (_result *GetTopicAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTopicAttributesResponse{}
-	_body, _err := client.GetTopicAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -980,7 +698,7 @@ func (client *Client) GetTopicAttributes(request *GetTopicAttributesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListQueueResponse
-func (client *Client) ListQueueWithOptions(request *ListQueueRequest, runtime *dara.RuntimeOptions) (_result *ListQueueResponse, _err error) {
+func (client *Client) ListQueueWithContext(ctx context.Context, request *ListQueueRequest, runtime *dara.RuntimeOptions) (_result *ListQueueResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1017,29 +735,11 @@ func (client *Client) ListQueueWithOptions(request *ListQueueRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListQueueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all queues that belong to an Alibaba Cloud account. The queues are displayed by page.
-//
-// @param request - ListQueueRequest
-//
-// @return ListQueueResponse
-func (client *Client) ListQueue(request *ListQueueRequest) (_result *ListQueueResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListQueueResponse{}
-	_body, _err := client.ListQueueWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1052,7 +752,7 @@ func (client *Client) ListQueue(request *ListQueueRequest) (_result *ListQueueRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSubscriptionByTopicResponse
-func (client *Client) ListSubscriptionByTopicWithOptions(request *ListSubscriptionByTopicRequest, runtime *dara.RuntimeOptions) (_result *ListSubscriptionByTopicResponse, _err error) {
+func (client *Client) ListSubscriptionByTopicWithContext(ctx context.Context, request *ListSubscriptionByTopicRequest, runtime *dara.RuntimeOptions) (_result *ListSubscriptionByTopicResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1097,29 +797,11 @@ func (client *Client) ListSubscriptionByTopicWithOptions(request *ListSubscripti
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSubscriptionByTopicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all subscriptions to a topic. The subscriptions are displayed by page.
-//
-// @param request - ListSubscriptionByTopicRequest
-//
-// @return ListSubscriptionByTopicResponse
-func (client *Client) ListSubscriptionByTopic(request *ListSubscriptionByTopicRequest) (_result *ListSubscriptionByTopicResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListSubscriptionByTopicResponse{}
-	_body, _err := client.ListSubscriptionByTopicWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1132,7 +814,7 @@ func (client *Client) ListSubscriptionByTopic(request *ListSubscriptionByTopicRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTopicResponse
-func (client *Client) ListTopicWithOptions(request *ListTopicRequest, runtime *dara.RuntimeOptions) (_result *ListTopicResponse, _err error) {
+func (client *Client) ListTopicWithContext(ctx context.Context, request *ListTopicRequest, runtime *dara.RuntimeOptions) (_result *ListTopicResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1169,29 +851,11 @@ func (client *Client) ListTopicWithOptions(request *ListTopicRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTopicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the topics that belong to an Alibaba Cloud account. The topics are displayed by page.
-//
-// @param request - ListTopicRequest
-//
-// @return ListTopicResponse
-func (client *Client) ListTopic(request *ListTopicRequest) (_result *ListTopicResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTopicResponse{}
-	_body, _err := client.ListTopicWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1204,7 +868,7 @@ func (client *Client) ListTopic(request *ListTopicRequest) (_result *ListTopicRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RevokeEndpointAclResponse
-func (client *Client) RevokeEndpointAclWithOptions(tmpReq *RevokeEndpointAclRequest, runtime *dara.RuntimeOptions) (_result *RevokeEndpointAclResponse, _err error) {
+func (client *Client) RevokeEndpointAclWithContext(ctx context.Context, tmpReq *RevokeEndpointAclRequest, runtime *dara.RuntimeOptions) (_result *RevokeEndpointAclResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1243,29 +907,11 @@ func (client *Client) RevokeEndpointAclWithOptions(tmpReq *RevokeEndpointAclRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &RevokeEndpointAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can call this operation to delete one or more rules of access control lists (ACLs) for the endpoint of a type.
-//
-// @param request - RevokeEndpointAclRequest
-//
-// @return RevokeEndpointAclResponse
-func (client *Client) RevokeEndpointAcl(request *RevokeEndpointAclRequest) (_result *RevokeEndpointAclResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RevokeEndpointAclResponse{}
-	_body, _err := client.RevokeEndpointAclWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1278,7 +924,7 @@ func (client *Client) RevokeEndpointAcl(request *RevokeEndpointAclRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetQueueAttributesResponse
-func (client *Client) SetQueueAttributesWithOptions(tmpReq *SetQueueAttributesRequest, runtime *dara.RuntimeOptions) (_result *SetQueueAttributesResponse, _err error) {
+func (client *Client) SetQueueAttributesWithContext(ctx context.Context, tmpReq *SetQueueAttributesRequest, runtime *dara.RuntimeOptions) (_result *SetQueueAttributesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1345,29 +991,11 @@ func (client *Client) SetQueueAttributesWithOptions(tmpReq *SetQueueAttributesRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetQueueAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a queue.
-//
-// @param request - SetQueueAttributesRequest
-//
-// @return SetQueueAttributesResponse
-func (client *Client) SetQueueAttributes(request *SetQueueAttributesRequest) (_result *SetQueueAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetQueueAttributesResponse{}
-	_body, _err := client.SetQueueAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1380,7 +1008,7 @@ func (client *Client) SetQueueAttributes(request *SetQueueAttributesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetSubscriptionAttributesResponse
-func (client *Client) SetSubscriptionAttributesWithOptions(tmpReq *SetSubscriptionAttributesRequest, runtime *dara.RuntimeOptions) (_result *SetSubscriptionAttributesResponse, _err error) {
+func (client *Client) SetSubscriptionAttributesWithContext(ctx context.Context, tmpReq *SetSubscriptionAttributesRequest, runtime *dara.RuntimeOptions) (_result *SetSubscriptionAttributesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1431,29 +1059,11 @@ func (client *Client) SetSubscriptionAttributesWithOptions(tmpReq *SetSubscripti
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetSubscriptionAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the attributes of a subscription.
-//
-// @param request - SetSubscriptionAttributesRequest
-//
-// @return SetSubscriptionAttributesResponse
-func (client *Client) SetSubscriptionAttributes(request *SetSubscriptionAttributesRequest) (_result *SetSubscriptionAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetSubscriptionAttributesResponse{}
-	_body, _err := client.SetSubscriptionAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1466,7 +1076,7 @@ func (client *Client) SetSubscriptionAttributes(request *SetSubscriptionAttribut
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetTopicAttributesResponse
-func (client *Client) SetTopicAttributesWithOptions(request *SetTopicAttributesRequest, runtime *dara.RuntimeOptions) (_result *SetTopicAttributesResponse, _err error) {
+func (client *Client) SetTopicAttributesWithContext(ctx context.Context, request *SetTopicAttributesRequest, runtime *dara.RuntimeOptions) (_result *SetTopicAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1499,29 +1109,11 @@ func (client *Client) SetTopicAttributesWithOptions(request *SetTopicAttributesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetTopicAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the attributes of a topic.
-//
-// @param request - SetTopicAttributesRequest
-//
-// @return SetTopicAttributesResponse
-func (client *Client) SetTopicAttributes(request *SetTopicAttributesRequest) (_result *SetTopicAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetTopicAttributesResponse{}
-	_body, _err := client.SetTopicAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1534,7 +1126,7 @@ func (client *Client) SetTopicAttributes(request *SetTopicAttributesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubscribeResponse
-func (client *Client) SubscribeWithOptions(tmpReq *SubscribeRequest, runtime *dara.RuntimeOptions) (_result *SubscribeResponse, _err error) {
+func (client *Client) SubscribeWithContext(ctx context.Context, tmpReq *SubscribeRequest, runtime *dara.RuntimeOptions) (_result *SubscribeResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1629,29 +1221,11 @@ func (client *Client) SubscribeWithOptions(tmpReq *SubscribeRequest, runtime *da
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubscribeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a subscription to a topic.
-//
-// @param request - SubscribeRequest
-//
-// @return SubscribeResponse
-func (client *Client) Subscribe(request *SubscribeRequest) (_result *SubscribeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubscribeResponse{}
-	_body, _err := client.SubscribeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1664,7 +1238,7 @@ func (client *Client) Subscribe(request *SubscribeRequest) (_result *SubscribeRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnsubscribeResponse
-func (client *Client) UnsubscribeWithOptions(request *UnsubscribeRequest, runtime *dara.RuntimeOptions) (_result *UnsubscribeResponse, _err error) {
+func (client *Client) UnsubscribeWithContext(ctx context.Context, request *UnsubscribeRequest, runtime *dara.RuntimeOptions) (_result *UnsubscribeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1693,28 +1267,10 @@ func (client *Client) UnsubscribeWithOptions(request *UnsubscribeRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnsubscribeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a subscription.
-//
-// @param request - UnsubscribeRequest
-//
-// @return UnsubscribeResponse
-func (client *Client) Unsubscribe(request *UnsubscribeRequest) (_result *UnsubscribeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnsubscribeResponse{}
-	_body, _err := client.UnsubscribeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
