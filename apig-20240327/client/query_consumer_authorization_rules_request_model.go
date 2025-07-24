@@ -29,6 +29,8 @@ type iQueryConsumerAuthorizationRulesRequest interface {
 	GetResourceId() *string
 	SetResourceType(v string) *QueryConsumerAuthorizationRulesRequest
 	GetResourceType() *string
+	SetResourceTypes(v string) *QueryConsumerAuthorizationRulesRequest
+	GetResourceTypes() *string
 }
 
 type QueryConsumerAuthorizationRulesRequest struct {
@@ -91,7 +93,8 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	// example:
 	//
 	// HttpApiRoute
-	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	ResourceType  *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	ResourceTypes *string `json:"resourceTypes,omitempty" xml:"resourceTypes,omitempty"`
 }
 
 func (s QueryConsumerAuthorizationRulesRequest) String() string {
@@ -142,6 +145,10 @@ func (s *QueryConsumerAuthorizationRulesRequest) GetResourceType() *string {
 	return s.ResourceType
 }
 
+func (s *QueryConsumerAuthorizationRulesRequest) GetResourceTypes() *string {
+	return s.ResourceTypes
+}
+
 func (s *QueryConsumerAuthorizationRulesRequest) SetApiNameLike(v string) *QueryConsumerAuthorizationRulesRequest {
 	s.ApiNameLike = &v
 	return s
@@ -189,6 +196,11 @@ func (s *QueryConsumerAuthorizationRulesRequest) SetResourceId(v string) *QueryC
 
 func (s *QueryConsumerAuthorizationRulesRequest) SetResourceType(v string) *QueryConsumerAuthorizationRulesRequest {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *QueryConsumerAuthorizationRulesRequest) SetResourceTypes(v string) *QueryConsumerAuthorizationRulesRequest {
+	s.ResourceTypes = &v
 	return s
 }
 

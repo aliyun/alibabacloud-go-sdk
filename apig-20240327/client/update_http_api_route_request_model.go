@@ -21,6 +21,10 @@ type iUpdateHttpApiRouteRequest interface {
 	GetEnvironmentId() *string
 	SetMatch(v *HttpRouteMatch) *UpdateHttpApiRouteRequest
 	GetMatch() *HttpRouteMatch
+	SetMcpRouteConfig(v *UpdateHttpApiRouteRequestMcpRouteConfig) *UpdateHttpApiRouteRequest
+	GetMcpRouteConfig() *UpdateHttpApiRouteRequestMcpRouteConfig
+	SetName(v string) *UpdateHttpApiRouteRequest
+	GetName() *string
 }
 
 type UpdateHttpApiRouteRequest struct {
@@ -42,7 +46,9 @@ type UpdateHttpApiRouteRequest struct {
 	// env-cquqsollhtgid***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
 	// The rules for matching the route.
-	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	Match          *HttpRouteMatch                          `json:"match,omitempty" xml:"match,omitempty"`
+	McpRouteConfig *UpdateHttpApiRouteRequestMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
+	Name           *string                                  `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s UpdateHttpApiRouteRequest) String() string {
@@ -77,6 +83,14 @@ func (s *UpdateHttpApiRouteRequest) GetMatch() *HttpRouteMatch {
 	return s.Match
 }
 
+func (s *UpdateHttpApiRouteRequest) GetMcpRouteConfig() *UpdateHttpApiRouteRequestMcpRouteConfig {
+	return s.McpRouteConfig
+}
+
+func (s *UpdateHttpApiRouteRequest) GetName() *string {
+	return s.Name
+}
+
 func (s *UpdateHttpApiRouteRequest) SetBackendConfig(v *UpdateHttpApiRouteRequestBackendConfig) *UpdateHttpApiRouteRequest {
 	s.BackendConfig = v
 	return s
@@ -104,6 +118,16 @@ func (s *UpdateHttpApiRouteRequest) SetEnvironmentId(v string) *UpdateHttpApiRou
 
 func (s *UpdateHttpApiRouteRequest) SetMatch(v *HttpRouteMatch) *UpdateHttpApiRouteRequest {
 	s.Match = v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequest) SetMcpRouteConfig(v *UpdateHttpApiRouteRequestMcpRouteConfig) *UpdateHttpApiRouteRequest {
+	s.McpRouteConfig = v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequest) SetName(v string) *UpdateHttpApiRouteRequest {
+	s.Name = &v
 	return s
 }
 
@@ -253,5 +277,50 @@ func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetWeight(v int32) *Upd
 }
 
 func (s *UpdateHttpApiRouteRequestBackendConfigServices) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateHttpApiRouteRequestMcpRouteConfig struct {
+	ExposedUriPath      *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
+	McpStatisticsEnable *bool   `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
+	Protocol            *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+}
+
+func (s UpdateHttpApiRouteRequestMcpRouteConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateHttpApiRouteRequestMcpRouteConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpApiRouteRequestMcpRouteConfig) GetExposedUriPath() *string {
+	return s.ExposedUriPath
+}
+
+func (s *UpdateHttpApiRouteRequestMcpRouteConfig) GetMcpStatisticsEnable() *bool {
+	return s.McpStatisticsEnable
+}
+
+func (s *UpdateHttpApiRouteRequestMcpRouteConfig) GetProtocol() *string {
+	return s.Protocol
+}
+
+func (s *UpdateHttpApiRouteRequestMcpRouteConfig) SetExposedUriPath(v string) *UpdateHttpApiRouteRequestMcpRouteConfig {
+	s.ExposedUriPath = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequestMcpRouteConfig) SetMcpStatisticsEnable(v bool) *UpdateHttpApiRouteRequestMcpRouteConfig {
+	s.McpStatisticsEnable = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequestMcpRouteConfig) SetProtocol(v string) *UpdateHttpApiRouteRequestMcpRouteConfig {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequestMcpRouteConfig) Validate() error {
 	return dara.Validate(s)
 }

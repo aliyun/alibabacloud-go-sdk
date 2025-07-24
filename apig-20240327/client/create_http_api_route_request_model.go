@@ -284,8 +284,9 @@ func (s *CreateHttpApiRouteRequestBackendConfigServices) Validate() error {
 }
 
 type CreateHttpApiRouteRequestMcpRouteConfig struct {
-	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
-	Protocol       *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	ExposedUriPath      *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
+	McpStatisticsEnable *bool   `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
+	Protocol            *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 
 func (s CreateHttpApiRouteRequestMcpRouteConfig) String() string {
@@ -300,12 +301,21 @@ func (s *CreateHttpApiRouteRequestMcpRouteConfig) GetExposedUriPath() *string {
 	return s.ExposedUriPath
 }
 
+func (s *CreateHttpApiRouteRequestMcpRouteConfig) GetMcpStatisticsEnable() *bool {
+	return s.McpStatisticsEnable
+}
+
 func (s *CreateHttpApiRouteRequestMcpRouteConfig) GetProtocol() *string {
 	return s.Protocol
 }
 
 func (s *CreateHttpApiRouteRequestMcpRouteConfig) SetExposedUriPath(v string) *CreateHttpApiRouteRequestMcpRouteConfig {
 	s.ExposedUriPath = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequestMcpRouteConfig) SetMcpStatisticsEnable(v bool) *CreateHttpApiRouteRequestMcpRouteConfig {
+	s.McpStatisticsEnable = &v
 	return s
 }
 

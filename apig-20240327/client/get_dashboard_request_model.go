@@ -21,6 +21,8 @@ type iGetDashboardRequest interface {
 	GetPluginClassId() *string
 	SetPluginId(v string) *GetDashboardRequest
 	GetPluginId() *string
+	SetRouteId(v string) *GetDashboardRequest
+	GetRouteId() *string
 	SetSource(v string) *GetDashboardRequest
 	GetSource() *string
 	SetUpstreamCluster(v string) *GetDashboardRequest
@@ -59,6 +61,7 @@ type GetDashboardRequest struct {
 	// pls-dn82a9djd8z****
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
 	PluginId      *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	RouteId       *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
 	// The dashboard source. Valid values:
 	//
 	// 	- SLS: Simple Log Service
@@ -102,6 +105,10 @@ func (s *GetDashboardRequest) GetPluginId() *string {
 	return s.PluginId
 }
 
+func (s *GetDashboardRequest) GetRouteId() *string {
+	return s.RouteId
+}
+
 func (s *GetDashboardRequest) GetSource() *string {
 	return s.Source
 }
@@ -137,6 +144,11 @@ func (s *GetDashboardRequest) SetPluginClassId(v string) *GetDashboardRequest {
 
 func (s *GetDashboardRequest) SetPluginId(v string) *GetDashboardRequest {
 	s.PluginId = &v
+	return s
+}
+
+func (s *GetDashboardRequest) SetRouteId(v string) *GetDashboardRequest {
+	s.RouteId = &v
 	return s
 }
 

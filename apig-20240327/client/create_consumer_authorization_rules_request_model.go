@@ -131,13 +131,15 @@ type CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier
 	// example:
 	//
 	// env-cti17hem1hktoruj98ug
-	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	EnvironmentId    *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	ParentResourceId *string `json:"parentResourceId,omitempty" xml:"parentResourceId,omitempty"`
 	// The resource ID.
 	//
 	// example:
 	//
 	// ha-cn-li942gy8p03
-	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	ResourceId *string   `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	Resources  []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
 }
 
 func (s CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) String() string {
@@ -152,8 +154,16 @@ func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdenti
 	return s.EnvironmentId
 }
 
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) GetParentResourceId() *string {
+	return s.ParentResourceId
+}
+
 func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) GetResourceId() *string {
 	return s.ResourceId
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) GetResources() []*string {
+	return s.Resources
 }
 
 func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) SetEnvironmentId(v string) *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier {
@@ -161,8 +171,18 @@ func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdenti
 	return s
 }
 
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) SetParentResourceId(v string) *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier {
+	s.ParentResourceId = &v
+	return s
+}
+
 func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) SetResourceId(v string) *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier) SetResources(v []*string) *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier {
+	s.Resources = v
 	return s
 }
 

@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("apig"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -66,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddGatewaySecurityGroupRuleResponse
-func (client *Client) AddGatewaySecurityGroupRuleWithOptions(gatewayId *string, request *AddGatewaySecurityGroupRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddGatewaySecurityGroupRuleResponse, _err error) {
+func (client *Client) AddGatewaySecurityGroupRuleWithContext(ctx context.Context, gatewayId *string, request *AddGatewaySecurityGroupRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddGatewaySecurityGroupRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -100,30 +52,11 @@ func (client *Client) AddGatewaySecurityGroupRuleWithOptions(gatewayId *string, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddGatewaySecurityGroupRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Authorize the security group for gateway to access services
-//
-// @param request - AddGatewaySecurityGroupRuleRequest
-//
-// @return AddGatewaySecurityGroupRuleResponse
-func (client *Client) AddGatewaySecurityGroupRule(gatewayId *string, request *AddGatewaySecurityGroupRuleRequest) (_result *AddGatewaySecurityGroupRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddGatewaySecurityGroupRuleResponse{}
-	_body, _err := client.AddGatewaySecurityGroupRuleWithOptions(gatewayId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -138,7 +71,7 @@ func (client *Client) AddGatewaySecurityGroupRule(gatewayId *string, request *Ad
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchDeleteConsumerAuthorizationRuleResponse
-func (client *Client) BatchDeleteConsumerAuthorizationRuleWithOptions(request *BatchDeleteConsumerAuthorizationRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchDeleteConsumerAuthorizationRuleResponse, _err error) {
+func (client *Client) BatchDeleteConsumerAuthorizationRuleWithContext(ctx context.Context, request *BatchDeleteConsumerAuthorizationRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchDeleteConsumerAuthorizationRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -164,30 +97,11 @@ func (client *Client) BatchDeleteConsumerAuthorizationRuleWithOptions(request *B
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchDeleteConsumerAuthorizationRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes consumer authentication rules.
-//
-// @param request - BatchDeleteConsumerAuthorizationRuleRequest
-//
-// @return BatchDeleteConsumerAuthorizationRuleResponse
-func (client *Client) BatchDeleteConsumerAuthorizationRule(request *BatchDeleteConsumerAuthorizationRuleRequest) (_result *BatchDeleteConsumerAuthorizationRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &BatchDeleteConsumerAuthorizationRuleResponse{}
-	_body, _err := client.BatchDeleteConsumerAuthorizationRuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -202,7 +116,7 @@ func (client *Client) BatchDeleteConsumerAuthorizationRule(request *BatchDeleteC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -240,30 +154,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Resource Group Transfer
-//
-// @param request - ChangeResourceGroupRequest
-//
-// @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.ChangeResourceGroupWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -278,7 +173,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateConsumerResponse
-func (client *Client) CreateConsumerWithOptions(request *CreateConsumerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConsumerResponse, _err error) {
+func (client *Client) CreateConsumerWithContext(ctx context.Context, request *CreateConsumerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConsumerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -328,30 +223,11 @@ func (client *Client) CreateConsumerWithOptions(request *CreateConsumerRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateConsumerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建消费者
-//
-// @param request - CreateConsumerRequest
-//
-// @return CreateConsumerResponse
-func (client *Client) CreateConsumer(request *CreateConsumerRequest) (_result *CreateConsumerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateConsumerResponse{}
-	_body, _err := client.CreateConsumerWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -366,7 +242,7 @@ func (client *Client) CreateConsumer(request *CreateConsumerRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateConsumerAuthorizationRuleResponse
-func (client *Client) CreateConsumerAuthorizationRuleWithOptions(consumerId *string, request *CreateConsumerAuthorizationRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConsumerAuthorizationRuleResponse, _err error) {
+func (client *Client) CreateConsumerAuthorizationRuleWithContext(ctx context.Context, consumerId *string, request *CreateConsumerAuthorizationRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConsumerAuthorizationRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -408,30 +284,11 @@ func (client *Client) CreateConsumerAuthorizationRuleWithOptions(consumerId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateConsumerAuthorizationRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建消费者授权规则
-//
-// @param request - CreateConsumerAuthorizationRuleRequest
-//
-// @return CreateConsumerAuthorizationRuleResponse
-func (client *Client) CreateConsumerAuthorizationRule(consumerId *string, request *CreateConsumerAuthorizationRuleRequest) (_result *CreateConsumerAuthorizationRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateConsumerAuthorizationRuleResponse{}
-	_body, _err := client.CreateConsumerAuthorizationRuleWithOptions(consumerId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -446,7 +303,7 @@ func (client *Client) CreateConsumerAuthorizationRule(consumerId *string, reques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateConsumerAuthorizationRulesResponse
-func (client *Client) CreateConsumerAuthorizationRulesWithOptions(request *CreateConsumerAuthorizationRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConsumerAuthorizationRulesResponse, _err error) {
+func (client *Client) CreateConsumerAuthorizationRulesWithContext(ctx context.Context, request *CreateConsumerAuthorizationRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateConsumerAuthorizationRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -472,30 +329,11 @@ func (client *Client) CreateConsumerAuthorizationRulesWithOptions(request *Creat
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateConsumerAuthorizationRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a consumer authentication rule.
-//
-// @param request - CreateConsumerAuthorizationRulesRequest
-//
-// @return CreateConsumerAuthorizationRulesResponse
-func (client *Client) CreateConsumerAuthorizationRules(request *CreateConsumerAuthorizationRulesRequest) (_result *CreateConsumerAuthorizationRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateConsumerAuthorizationRulesResponse{}
-	_body, _err := client.CreateConsumerAuthorizationRulesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -514,7 +352,7 @@ func (client *Client) CreateConsumerAuthorizationRules(request *CreateConsumerAu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDomainResponse
-func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
+func (client *Client) CreateDomainWithContext(ctx context.Context, request *CreateDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -588,34 +426,11 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a domain name.
-//
-// Description:
-//
-// Create Domain.
-//
-// @param request - CreateDomainRequest
-//
-// @return CreateDomainResponse
-func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *CreateDomainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateDomainResponse{}
-	_body, _err := client.CreateDomainWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -636,7 +451,7 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEnvironmentResponse
-func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEnvironmentResponse, _err error) {
+func (client *Client) CreateEnvironmentWithContext(ctx context.Context, request *CreateEnvironmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEnvironmentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -678,37 +493,11 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateEnvironment is deprecated
-//
-// Summary:
-//
-// # CreateEnvironment
-//
-// Description:
-//
-// Create environment.
-//
-// @param request - CreateEnvironmentRequest
-//
-// @return CreateEnvironmentResponse
-// Deprecated
-func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_result *CreateEnvironmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateEnvironmentResponse{}
-	_body, _err := client.CreateEnvironmentWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -723,7 +512,7 @@ func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateGatewayResponse
-func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGatewayResponse, _err error) {
+func (client *Client) CreateGatewayWithContext(ctx context.Context, request *CreateGatewayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -785,30 +574,11 @@ func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建云原生网关
-//
-// @param request - CreateGatewayRequest
-//
-// @return CreateGatewayResponse
-func (client *Client) CreateGateway(request *CreateGatewayRequest) (_result *CreateGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateGatewayResponse{}
-	_body, _err := client.CreateGatewayWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -823,7 +593,7 @@ func (client *Client) CreateGateway(request *CreateGatewayRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateHttpApiResponse
-func (client *Client) CreateHttpApiWithOptions(request *CreateHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateHttpApiResponse, _err error) {
+func (client *Client) CreateHttpApiWithContext(ctx context.Context, request *CreateHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateHttpApiResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -905,30 +675,11 @@ func (client *Client) CreateHttpApiWithOptions(request *CreateHttpApiRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateHttpApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an HTTP API.
-//
-// @param request - CreateHttpApiRequest
-//
-// @return CreateHttpApiResponse
-func (client *Client) CreateHttpApi(request *CreateHttpApiRequest) (_result *CreateHttpApiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateHttpApiResponse{}
-	_body, _err := client.CreateHttpApiWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -943,7 +694,7 @@ func (client *Client) CreateHttpApi(request *CreateHttpApiRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateHttpApiOperationResponse
-func (client *Client) CreateHttpApiOperationWithOptions(httpApiId *string, request *CreateHttpApiOperationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateHttpApiOperationResponse, _err error) {
+func (client *Client) CreateHttpApiOperationWithContext(ctx context.Context, httpApiId *string, request *CreateHttpApiOperationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateHttpApiOperationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -969,30 +720,11 @@ func (client *Client) CreateHttpApiOperationWithOptions(httpApiId *string, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateHttpApiOperationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Create an Operation for HTTP API
-//
-// @param request - CreateHttpApiOperationRequest
-//
-// @return CreateHttpApiOperationResponse
-func (client *Client) CreateHttpApiOperation(httpApiId *string, request *CreateHttpApiOperationRequest) (_result *CreateHttpApiOperationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateHttpApiOperationResponse{}
-	_body, _err := client.CreateHttpApiOperationWithOptions(httpApiId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1007,7 +739,7 @@ func (client *Client) CreateHttpApiOperation(httpApiId *string, request *CreateH
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateHttpApiRouteResponse
-func (client *Client) CreateHttpApiRouteWithOptions(httpApiId *string, request *CreateHttpApiRouteRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateHttpApiRouteResponse, _err error) {
+func (client *Client) CreateHttpApiRouteWithContext(ctx context.Context, httpApiId *string, request *CreateHttpApiRouteRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateHttpApiRouteResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1061,30 +793,11 @@ func (client *Client) CreateHttpApiRouteWithOptions(httpApiId *string, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateHttpApiRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a route for an HTTP API.
-//
-// @param request - CreateHttpApiRouteRequest
-//
-// @return CreateHttpApiRouteResponse
-func (client *Client) CreateHttpApiRoute(httpApiId *string, request *CreateHttpApiRouteRequest) (_result *CreateHttpApiRouteResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateHttpApiRouteResponse{}
-	_body, _err := client.CreateHttpApiRouteWithOptions(httpApiId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1099,7 +812,7 @@ func (client *Client) CreateHttpApiRoute(httpApiId *string, request *CreateHttpA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePluginAttachmentResponse
-func (client *Client) CreatePluginAttachmentWithOptions(request *CreatePluginAttachmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePluginAttachmentResponse, _err error) {
+func (client *Client) CreatePluginAttachmentWithContext(ctx context.Context, request *CreatePluginAttachmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePluginAttachmentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1149,30 +862,11 @@ func (client *Client) CreatePluginAttachmentWithOptions(request *CreatePluginAtt
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePluginAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建API
-//
-// @param request - CreatePluginAttachmentRequest
-//
-// @return CreatePluginAttachmentResponse
-func (client *Client) CreatePluginAttachment(request *CreatePluginAttachmentRequest) (_result *CreatePluginAttachmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreatePluginAttachmentResponse{}
-	_body, _err := client.CreatePluginAttachmentWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1187,7 +881,7 @@ func (client *Client) CreatePluginAttachment(request *CreatePluginAttachmentRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePolicyResponse
-func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
+func (client *Client) CreatePolicyWithContext(ctx context.Context, request *CreatePolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1225,30 +919,11 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Create Policy
-//
-// @param request - CreatePolicyRequest
-//
-// @return CreatePolicyResponse
-func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *CreatePolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreatePolicyResponse{}
-	_body, _err := client.CreatePolicyWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1263,7 +938,7 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePolicyAttachmentResponse
-func (client *Client) CreatePolicyAttachmentWithOptions(request *CreatePolicyAttachmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePolicyAttachmentResponse, _err error) {
+func (client *Client) CreatePolicyAttachmentWithContext(ctx context.Context, request *CreatePolicyAttachmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePolicyAttachmentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1305,30 +980,11 @@ func (client *Client) CreatePolicyAttachmentWithOptions(request *CreatePolicyAtt
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePolicyAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Create policy resource mount
-//
-// @param request - CreatePolicyAttachmentRequest
-//
-// @return CreatePolicyAttachmentResponse
-func (client *Client) CreatePolicyAttachment(request *CreatePolicyAttachmentRequest) (_result *CreatePolicyAttachmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreatePolicyAttachmentResponse{}
-	_body, _err := client.CreatePolicyAttachmentWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1347,7 +1003,7 @@ func (client *Client) CreatePolicyAttachment(request *CreatePolicyAttachmentRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateServiceResponse
-func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceResponse, _err error) {
+func (client *Client) CreateServiceWithContext(ctx context.Context, request *CreateServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1385,34 +1041,11 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a service.
-//
-// Description:
-//
-// You can call this operation to create multiple services at a time.
-//
-// @param request - CreateServiceRequest
-//
-// @return CreateServiceResponse
-func (client *Client) CreateService(request *CreateServiceRequest) (_result *CreateServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateServiceResponse{}
-	_body, _err := client.CreateServiceWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1425,7 +1058,7 @@ func (client *Client) CreateService(request *CreateServiceRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteConsumerResponse
-func (client *Client) DeleteConsumerWithOptions(consumerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteConsumerResponse, _err error) {
+func (client *Client) DeleteConsumerWithContext(ctx context.Context, consumerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteConsumerResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1441,28 +1074,11 @@ func (client *Client) DeleteConsumerWithOptions(consumerId *string, headers map[
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteConsumerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除消费者
-//
-// @return DeleteConsumerResponse
-func (client *Client) DeleteConsumer(consumerId *string) (_result *DeleteConsumerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteConsumerResponse{}
-	_body, _err := client.DeleteConsumerWithOptions(consumerId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1475,7 +1091,7 @@ func (client *Client) DeleteConsumer(consumerId *string) (_result *DeleteConsume
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteConsumerAuthorizationRuleResponse
-func (client *Client) DeleteConsumerAuthorizationRuleWithOptions(consumerAuthorizationRuleId *string, consumerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteConsumerAuthorizationRuleResponse, _err error) {
+func (client *Client) DeleteConsumerAuthorizationRuleWithContext(ctx context.Context, consumerAuthorizationRuleId *string, consumerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteConsumerAuthorizationRuleResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1491,28 +1107,11 @@ func (client *Client) DeleteConsumerAuthorizationRuleWithOptions(consumerAuthori
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteConsumerAuthorizationRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除消费者授权规则
-//
-// @return DeleteConsumerAuthorizationRuleResponse
-func (client *Client) DeleteConsumerAuthorizationRule(consumerAuthorizationRuleId *string, consumerId *string) (_result *DeleteConsumerAuthorizationRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteConsumerAuthorizationRuleResponse{}
-	_body, _err := client.DeleteConsumerAuthorizationRuleWithOptions(consumerAuthorizationRuleId, consumerId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1525,7 +1124,7 @@ func (client *Client) DeleteConsumerAuthorizationRule(consumerAuthorizationRuleI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDomainResponse
-func (client *Client) DeleteDomainWithOptions(domainId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
+func (client *Client) DeleteDomainWithContext(ctx context.Context, domainId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1541,28 +1140,11 @@ func (client *Client) DeleteDomainWithOptions(domainId *string, headers map[stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # DeleteDomain
-//
-// @return DeleteDomainResponse
-func (client *Client) DeleteDomain(domainId *string) (_result *DeleteDomainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteDomainResponse{}
-	_body, _err := client.DeleteDomainWithOptions(domainId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1577,7 +1159,7 @@ func (client *Client) DeleteDomain(domainId *string) (_result *DeleteDomainRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEnvironmentResponse
-func (client *Client) DeleteEnvironmentWithOptions(environmentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEnvironmentResponse, _err error) {
+func (client *Client) DeleteEnvironmentWithContext(ctx context.Context, environmentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEnvironmentResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1593,31 +1175,11 @@ func (client *Client) DeleteEnvironmentWithOptions(environmentId *string, header
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteEnvironment is deprecated
-//
-// Summary:
-//
-// # DeleteEnvironment
-//
-// @return DeleteEnvironmentResponse
-// Deprecated
-func (client *Client) DeleteEnvironment(environmentId *string) (_result *DeleteEnvironmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteEnvironmentResponse{}
-	_body, _err := client.DeleteEnvironmentWithOptions(environmentId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1630,7 +1192,7 @@ func (client *Client) DeleteEnvironment(environmentId *string) (_result *DeleteE
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteGatewayResponse
-func (client *Client) DeleteGatewayWithOptions(gatewayId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGatewayResponse, _err error) {
+func (client *Client) DeleteGatewayWithContext(ctx context.Context, gatewayId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGatewayResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1646,28 +1208,11 @@ func (client *Client) DeleteGatewayWithOptions(gatewayId *string, headers map[st
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Delete Gateway
-//
-// @return DeleteGatewayResponse
-func (client *Client) DeleteGateway(gatewayId *string) (_result *DeleteGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteGatewayResponse{}
-	_body, _err := client.DeleteGatewayWithOptions(gatewayId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1682,7 +1227,7 @@ func (client *Client) DeleteGateway(gatewayId *string) (_result *DeleteGatewayRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteGatewaySecurityGroupRuleResponse
-func (client *Client) DeleteGatewaySecurityGroupRuleWithOptions(gatewayId *string, securityGroupRuleId *string, request *DeleteGatewaySecurityGroupRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGatewaySecurityGroupRuleResponse, _err error) {
+func (client *Client) DeleteGatewaySecurityGroupRuleWithContext(ctx context.Context, gatewayId *string, securityGroupRuleId *string, request *DeleteGatewaySecurityGroupRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGatewaySecurityGroupRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1708,30 +1253,11 @@ func (client *Client) DeleteGatewaySecurityGroupRuleWithOptions(gatewayId *strin
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteGatewaySecurityGroupRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Delete the security group rule of a gateway
-//
-// @param request - DeleteGatewaySecurityGroupRuleRequest
-//
-// @return DeleteGatewaySecurityGroupRuleResponse
-func (client *Client) DeleteGatewaySecurityGroupRule(gatewayId *string, securityGroupRuleId *string, request *DeleteGatewaySecurityGroupRuleRequest) (_result *DeleteGatewaySecurityGroupRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteGatewaySecurityGroupRuleResponse{}
-	_body, _err := client.DeleteGatewaySecurityGroupRuleWithOptions(gatewayId, securityGroupRuleId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1744,7 +1270,7 @@ func (client *Client) DeleteGatewaySecurityGroupRule(gatewayId *string, security
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteHttpApiResponse
-func (client *Client) DeleteHttpApiWithOptions(httpApiId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteHttpApiResponse, _err error) {
+func (client *Client) DeleteHttpApiWithContext(ctx context.Context, httpApiId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteHttpApiResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1760,28 +1286,11 @@ func (client *Client) DeleteHttpApiWithOptions(httpApiId *string, headers map[st
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteHttpApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an HTTP API.
-//
-// @return DeleteHttpApiResponse
-func (client *Client) DeleteHttpApi(httpApiId *string) (_result *DeleteHttpApiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteHttpApiResponse{}
-	_body, _err := client.DeleteHttpApiWithOptions(httpApiId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1794,7 +1303,7 @@ func (client *Client) DeleteHttpApi(httpApiId *string) (_result *DeleteHttpApiRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteHttpApiOperationResponse
-func (client *Client) DeleteHttpApiOperationWithOptions(httpApiId *string, operationId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteHttpApiOperationResponse, _err error) {
+func (client *Client) DeleteHttpApiOperationWithContext(ctx context.Context, httpApiId *string, operationId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteHttpApiOperationResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1810,28 +1319,11 @@ func (client *Client) DeleteHttpApiOperationWithOptions(httpApiId *string, opera
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteHttpApiOperationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Delete Operation
-//
-// @return DeleteHttpApiOperationResponse
-func (client *Client) DeleteHttpApiOperation(httpApiId *string, operationId *string) (_result *DeleteHttpApiOperationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteHttpApiOperationResponse{}
-	_body, _err := client.DeleteHttpApiOperationWithOptions(httpApiId, operationId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1844,7 +1336,7 @@ func (client *Client) DeleteHttpApiOperation(httpApiId *string, operationId *str
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteHttpApiRouteResponse
-func (client *Client) DeleteHttpApiRouteWithOptions(httpApiId *string, routeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteHttpApiRouteResponse, _err error) {
+func (client *Client) DeleteHttpApiRouteWithContext(ctx context.Context, httpApiId *string, routeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteHttpApiRouteResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1860,28 +1352,11 @@ func (client *Client) DeleteHttpApiRouteWithOptions(httpApiId *string, routeId *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteHttpApiRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Delete the route of an HttpApi
-//
-// @return DeleteHttpApiRouteResponse
-func (client *Client) DeleteHttpApiRoute(httpApiId *string, routeId *string) (_result *DeleteHttpApiRouteResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteHttpApiRouteResponse{}
-	_body, _err := client.DeleteHttpApiRouteWithOptions(httpApiId, routeId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1894,7 +1369,7 @@ func (client *Client) DeleteHttpApiRoute(httpApiId *string, routeId *string) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePluginAttachmentResponse
-func (client *Client) DeletePluginAttachmentWithOptions(pluginAttachmentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePluginAttachmentResponse, _err error) {
+func (client *Client) DeletePluginAttachmentWithContext(ctx context.Context, pluginAttachmentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePluginAttachmentResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1910,28 +1385,11 @@ func (client *Client) DeletePluginAttachmentWithOptions(pluginAttachmentId *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePluginAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除挂载规则API
-//
-// @return DeletePluginAttachmentResponse
-func (client *Client) DeletePluginAttachment(pluginAttachmentId *string) (_result *DeletePluginAttachmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeletePluginAttachmentResponse{}
-	_body, _err := client.DeletePluginAttachmentWithOptions(pluginAttachmentId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1944,7 +1402,7 @@ func (client *Client) DeletePluginAttachment(pluginAttachmentId *string) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePolicyResponse
-func (client *Client) DeletePolicyWithOptions(policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePolicyResponse, _err error) {
+func (client *Client) DeletePolicyWithContext(ctx context.Context, policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePolicyResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1960,28 +1418,11 @@ func (client *Client) DeletePolicyWithOptions(policyId *string, headers map[stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Delete Policy
-//
-// @return DeletePolicyResponse
-func (client *Client) DeletePolicy(policyId *string) (_result *DeletePolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeletePolicyResponse{}
-	_body, _err := client.DeletePolicyWithOptions(policyId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1994,7 +1435,7 @@ func (client *Client) DeletePolicy(policyId *string) (_result *DeletePolicyRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePolicyAttachmentResponse
-func (client *Client) DeletePolicyAttachmentWithOptions(policyAttachmentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePolicyAttachmentResponse, _err error) {
+func (client *Client) DeletePolicyAttachmentWithContext(ctx context.Context, policyAttachmentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePolicyAttachmentResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2010,28 +1451,11 @@ func (client *Client) DeletePolicyAttachmentWithOptions(policyAttachmentId *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePolicyAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Delete policy resource attachment
-//
-// @return DeletePolicyAttachmentResponse
-func (client *Client) DeletePolicyAttachment(policyAttachmentId *string) (_result *DeletePolicyAttachmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeletePolicyAttachmentResponse{}
-	_body, _err := client.DeletePolicyAttachmentWithOptions(policyAttachmentId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2044,7 +1468,7 @@ func (client *Client) DeletePolicyAttachment(policyAttachmentId *string) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteServiceResponse
-func (client *Client) DeleteServiceWithOptions(serviceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
+func (client *Client) DeleteServiceWithContext(ctx context.Context, serviceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2060,28 +1484,11 @@ func (client *Client) DeleteServiceWithOptions(serviceId *string, headers map[st
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除服务
-//
-// @return DeleteServiceResponse
-func (client *Client) DeleteService(serviceId *string) (_result *DeleteServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteServiceResponse{}
-	_body, _err := client.DeleteServiceWithOptions(serviceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2096,7 +1503,7 @@ func (client *Client) DeleteService(serviceId *string) (_result *DeleteServiceRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeployHttpApiResponse
-func (client *Client) DeployHttpApiWithOptions(httpApiId *string, request *DeployHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeployHttpApiResponse, _err error) {
+func (client *Client) DeployHttpApiWithContext(ctx context.Context, httpApiId *string, request *DeployHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeployHttpApiResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2130,30 +1537,11 @@ func (client *Client) DeployHttpApiWithOptions(httpApiId *string, request *Deplo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeployHttpApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Deploy HttpApi
-//
-// @param request - DeployHttpApiRequest
-//
-// @return DeployHttpApiResponse
-func (client *Client) DeployHttpApi(httpApiId *string, request *DeployHttpApiRequest) (_result *DeployHttpApiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeployHttpApiResponse{}
-	_body, _err := client.DeployHttpApiWithOptions(httpApiId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2166,7 +1554,7 @@ func (client *Client) DeployHttpApi(httpApiId *string, request *DeployHttpApiReq
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExportHttpApiResponse
-func (client *Client) ExportHttpApiWithOptions(httpApiId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExportHttpApiResponse, _err error) {
+func (client *Client) ExportHttpApiWithContext(ctx context.Context, httpApiId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExportHttpApiResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2182,28 +1570,11 @@ func (client *Client) ExportHttpApiWithOptions(httpApiId *string, headers map[st
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExportHttpApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Export HTTP API
-//
-// @return ExportHttpApiResponse
-func (client *Client) ExportHttpApi(httpApiId *string) (_result *ExportHttpApiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ExportHttpApiResponse{}
-	_body, _err := client.ExportHttpApiWithOptions(httpApiId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2216,7 +1587,7 @@ func (client *Client) ExportHttpApi(httpApiId *string) (_result *ExportHttpApiRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetConsumerResponse
-func (client *Client) GetConsumerWithOptions(consumerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConsumerResponse, _err error) {
+func (client *Client) GetConsumerWithContext(ctx context.Context, consumerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConsumerResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2232,28 +1603,11 @@ func (client *Client) GetConsumerWithOptions(consumerId *string, headers map[str
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetConsumerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询消费者
-//
-// @return GetConsumerResponse
-func (client *Client) GetConsumer(consumerId *string) (_result *GetConsumerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetConsumerResponse{}
-	_body, _err := client.GetConsumerWithOptions(consumerId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2266,7 +1620,7 @@ func (client *Client) GetConsumer(consumerId *string) (_result *GetConsumerRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetConsumerAuthorizationRuleResponse
-func (client *Client) GetConsumerAuthorizationRuleWithOptions(consumerAuthorizationRuleId *string, consumerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConsumerAuthorizationRuleResponse, _err error) {
+func (client *Client) GetConsumerAuthorizationRuleWithContext(ctx context.Context, consumerAuthorizationRuleId *string, consumerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConsumerAuthorizationRuleResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2282,28 +1636,11 @@ func (client *Client) GetConsumerAuthorizationRuleWithOptions(consumerAuthorizat
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetConsumerAuthorizationRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询消费者授权规则
-//
-// @return GetConsumerAuthorizationRuleResponse
-func (client *Client) GetConsumerAuthorizationRule(consumerAuthorizationRuleId *string, consumerId *string) (_result *GetConsumerAuthorizationRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetConsumerAuthorizationRuleResponse{}
-	_body, _err := client.GetConsumerAuthorizationRuleWithOptions(consumerAuthorizationRuleId, consumerId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2318,7 +1655,7 @@ func (client *Client) GetConsumerAuthorizationRule(consumerAuthorizationRuleId *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDashboardResponse
-func (client *Client) GetDashboardWithOptions(gatewayId *string, tmpReq *GetDashboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDashboardResponse, _err error) {
+func (client *Client) GetDashboardWithContext(ctx context.Context, gatewayId *string, tmpReq *GetDashboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDashboardResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2382,30 +1719,11 @@ func (client *Client) GetDashboardWithOptions(gatewayId *string, tmpReq *GetDash
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDashboardResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains data from dashboards.
-//
-// @param request - GetDashboardRequest
-//
-// @return GetDashboardResponse
-func (client *Client) GetDashboard(gatewayId *string, request *GetDashboardRequest) (_result *GetDashboardResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetDashboardResponse{}
-	_body, _err := client.GetDashboardWithOptions(gatewayId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2420,7 +1738,7 @@ func (client *Client) GetDashboard(gatewayId *string, request *GetDashboardReque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDomainResponse
-func (client *Client) GetDomainWithOptions(domainId *string, request *GetDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDomainResponse, _err error) {
+func (client *Client) GetDomainWithContext(ctx context.Context, domainId *string, request *GetDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDomainResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2446,30 +1764,11 @@ func (client *Client) GetDomainWithOptions(domainId *string, request *GetDomainR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a domain name.
-//
-// @param request - GetDomainRequest
-//
-// @return GetDomainResponse
-func (client *Client) GetDomain(domainId *string, request *GetDomainRequest) (_result *GetDomainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetDomainResponse{}
-	_body, _err := client.GetDomainWithOptions(domainId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2486,7 +1785,7 @@ func (client *Client) GetDomain(domainId *string, request *GetDomainRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetEnvironmentResponse
-func (client *Client) GetEnvironmentWithOptions(environmentId *string, request *GetEnvironmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEnvironmentResponse, _err error) {
+func (client *Client) GetEnvironmentWithContext(ctx context.Context, environmentId *string, request *GetEnvironmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEnvironmentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2516,33 +1815,11 @@ func (client *Client) GetEnvironmentWithOptions(environmentId *string, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetEnvironment is deprecated
-//
-// Summary:
-//
-// # GetEnvironment
-//
-// @param request - GetEnvironmentRequest
-//
-// @return GetEnvironmentResponse
-// Deprecated
-func (client *Client) GetEnvironment(environmentId *string, request *GetEnvironmentRequest) (_result *GetEnvironmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetEnvironmentResponse{}
-	_body, _err := client.GetEnvironmentWithOptions(environmentId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2555,7 +1832,7 @@ func (client *Client) GetEnvironment(environmentId *string, request *GetEnvironm
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetGatewayResponse
-func (client *Client) GetGatewayWithOptions(gatewayId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGatewayResponse, _err error) {
+func (client *Client) GetGatewayWithContext(ctx context.Context, gatewayId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGatewayResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2571,28 +1848,11 @@ func (client *Client) GetGatewayWithOptions(gatewayId *string, headers map[strin
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the basic information about an instance, such as the virtual private cloud (VPC) and vSwitch to which the instance belongs and its ingress.
-//
-// @return GetGatewayResponse
-func (client *Client) GetGateway(gatewayId *string) (_result *GetGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetGatewayResponse{}
-	_body, _err := client.GetGatewayWithOptions(gatewayId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2605,7 +1865,7 @@ func (client *Client) GetGateway(gatewayId *string) (_result *GetGatewayResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetHttpApiResponse
-func (client *Client) GetHttpApiWithOptions(httpApiId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHttpApiResponse, _err error) {
+func (client *Client) GetHttpApiWithContext(ctx context.Context, httpApiId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHttpApiResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2621,28 +1881,11 @@ func (client *Client) GetHttpApiWithOptions(httpApiId *string, headers map[strin
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetHttpApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Read HttpApi
-//
-// @return GetHttpApiResponse
-func (client *Client) GetHttpApi(httpApiId *string) (_result *GetHttpApiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetHttpApiResponse{}
-	_body, _err := client.GetHttpApiWithOptions(httpApiId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2655,7 +1898,7 @@ func (client *Client) GetHttpApi(httpApiId *string) (_result *GetHttpApiResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetHttpApiOperationResponse
-func (client *Client) GetHttpApiOperationWithOptions(httpApiId *string, operationId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHttpApiOperationResponse, _err error) {
+func (client *Client) GetHttpApiOperationWithContext(ctx context.Context, httpApiId *string, operationId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHttpApiOperationResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2671,28 +1914,11 @@ func (client *Client) GetHttpApiOperationWithOptions(httpApiId *string, operatio
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetHttpApiOperationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get Operation
-//
-// @return GetHttpApiOperationResponse
-func (client *Client) GetHttpApiOperation(httpApiId *string, operationId *string) (_result *GetHttpApiOperationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetHttpApiOperationResponse{}
-	_body, _err := client.GetHttpApiOperationWithOptions(httpApiId, operationId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2705,7 +1931,7 @@ func (client *Client) GetHttpApiOperation(httpApiId *string, operationId *string
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetHttpApiRouteResponse
-func (client *Client) GetHttpApiRouteWithOptions(httpApiId *string, routeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHttpApiRouteResponse, _err error) {
+func (client *Client) GetHttpApiRouteWithContext(ctx context.Context, httpApiId *string, routeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHttpApiRouteResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2721,28 +1947,11 @@ func (client *Client) GetHttpApiRouteWithOptions(httpApiId *string, routeId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetHttpApiRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a route of an HTTP API.
-//
-// @return GetHttpApiRouteResponse
-func (client *Client) GetHttpApiRoute(httpApiId *string, routeId *string) (_result *GetHttpApiRouteResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetHttpApiRouteResponse{}
-	_body, _err := client.GetHttpApiRouteWithOptions(httpApiId, routeId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2755,7 +1964,7 @@ func (client *Client) GetHttpApiRoute(httpApiId *string, routeId *string) (_resu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPluginAttachmentResponse
-func (client *Client) GetPluginAttachmentWithOptions(pluginAttachmentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPluginAttachmentResponse, _err error) {
+func (client *Client) GetPluginAttachmentWithContext(ctx context.Context, pluginAttachmentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPluginAttachmentResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2771,28 +1980,11 @@ func (client *Client) GetPluginAttachmentWithOptions(pluginAttachmentId *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPluginAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// GetPluginAttachment。
-//
-// @return GetPluginAttachmentResponse
-func (client *Client) GetPluginAttachment(pluginAttachmentId *string) (_result *GetPluginAttachmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetPluginAttachmentResponse{}
-	_body, _err := client.GetPluginAttachmentWithOptions(pluginAttachmentId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2805,7 +1997,7 @@ func (client *Client) GetPluginAttachment(pluginAttachmentId *string) (_result *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPolicyResponse
-func (client *Client) GetPolicyWithOptions(policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPolicyResponse, _err error) {
+func (client *Client) GetPolicyWithContext(ctx context.Context, policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPolicyResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2821,28 +2013,11 @@ func (client *Client) GetPolicyWithOptions(policyId *string, headers map[string]
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a policy.
-//
-// @return GetPolicyResponse
-func (client *Client) GetPolicy(policyId *string) (_result *GetPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetPolicyResponse{}
-	_body, _err := client.GetPolicyWithOptions(policyId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2855,7 +2030,7 @@ func (client *Client) GetPolicy(policyId *string) (_result *GetPolicyResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPolicyAttachmentResponse
-func (client *Client) GetPolicyAttachmentWithOptions(policyAttachmentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPolicyAttachmentResponse, _err error) {
+func (client *Client) GetPolicyAttachmentWithContext(ctx context.Context, policyAttachmentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPolicyAttachmentResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2871,28 +2046,11 @@ func (client *Client) GetPolicyAttachmentWithOptions(policyAttachmentId *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPolicyAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Query Policy Resource Attachment
-//
-// @return GetPolicyAttachmentResponse
-func (client *Client) GetPolicyAttachment(policyAttachmentId *string) (_result *GetPolicyAttachmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetPolicyAttachmentResponse{}
-	_body, _err := client.GetPolicyAttachmentWithOptions(policyAttachmentId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2907,7 +2065,7 @@ func (client *Client) GetPolicyAttachment(policyAttachmentId *string) (_result *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetResourceOverviewResponse
-func (client *Client) GetResourceOverviewWithOptions(request *GetResourceOverviewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceOverviewResponse, _err error) {
+func (client *Client) GetResourceOverviewWithContext(ctx context.Context, request *GetResourceOverviewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceOverviewResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2933,30 +2091,11 @@ func (client *Client) GetResourceOverviewWithOptions(request *GetResourceOvervie
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetResourceOverviewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get resource overview information
-//
-// @param request - GetResourceOverviewRequest
-//
-// @return GetResourceOverviewResponse
-func (client *Client) GetResourceOverview(request *GetResourceOverviewRequest) (_result *GetResourceOverviewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetResourceOverviewResponse{}
-	_body, _err := client.GetResourceOverviewWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2969,7 +2108,7 @@ func (client *Client) GetResourceOverview(request *GetResourceOverviewRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetServiceResponse
-func (client *Client) GetServiceWithOptions(serviceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceResponse, _err error) {
+func (client *Client) GetServiceWithContext(ctx context.Context, serviceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2985,28 +2124,11 @@ func (client *Client) GetServiceWithOptions(serviceId *string, headers map[strin
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a service.
-//
-// @return GetServiceResponse
-func (client *Client) GetService(serviceId *string) (_result *GetServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetServiceResponse{}
-	_body, _err := client.GetServiceWithOptions(serviceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3021,7 +2143,7 @@ func (client *Client) GetService(serviceId *string) (_result *GetServiceResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTraceConfigResponse
-func (client *Client) GetTraceConfigWithOptions(gatewayId *string, request *GetTraceConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTraceConfigResponse, _err error) {
+func (client *Client) GetTraceConfigWithContext(ctx context.Context, gatewayId *string, request *GetTraceConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTraceConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3047,30 +2169,11 @@ func (client *Client) GetTraceConfigWithOptions(gatewayId *string, request *GetT
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTraceConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Retrieve Tracing Configuration
-//
-// @param request - GetTraceConfigRequest
-//
-// @return GetTraceConfigResponse
-func (client *Client) GetTraceConfig(gatewayId *string, request *GetTraceConfigRequest) (_result *GetTraceConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTraceConfigResponse{}
-	_body, _err := client.GetTraceConfigWithOptions(gatewayId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3085,7 +2188,7 @@ func (client *Client) GetTraceConfig(gatewayId *string, request *GetTraceConfigR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ImportHttpApiResponse
-func (client *Client) ImportHttpApiWithOptions(request *ImportHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ImportHttpApiResponse, _err error) {
+func (client *Client) ImportHttpApiWithContext(ctx context.Context, request *ImportHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ImportHttpApiResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3155,30 +2258,11 @@ func (client *Client) ImportHttpApiWithOptions(request *ImportHttpApiRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImportHttpApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Imports HTTP APIs. You can call this operation to import OpenAPI 2.0 and OpenAPI 3.0.x definition files to create REST APIs.
-//
-// @param request - ImportHttpApiRequest
-//
-// @return ImportHttpApiResponse
-func (client *Client) ImportHttpApi(request *ImportHttpApiRequest) (_result *ImportHttpApiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ImportHttpApiResponse{}
-	_body, _err := client.ImportHttpApiWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3193,7 +2277,7 @@ func (client *Client) ImportHttpApi(request *ImportHttpApiRequest) (_result *Imp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListConsumersResponse
-func (client *Client) ListConsumersWithOptions(request *ListConsumersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumersResponse, _err error) {
+func (client *Client) ListConsumersWithContext(ctx context.Context, request *ListConsumersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3231,30 +2315,11 @@ func (client *Client) ListConsumersWithOptions(request *ListConsumersRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListConsumersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询消费者列表
-//
-// @param request - ListConsumersRequest
-//
-// @return ListConsumersResponse
-func (client *Client) ListConsumers(request *ListConsumersRequest) (_result *ListConsumersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListConsumersResponse{}
-	_body, _err := client.ListConsumersWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3269,7 +2334,7 @@ func (client *Client) ListConsumers(request *ListConsumersRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDomainsResponse
-func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDomainsResponse, _err error) {
+func (client *Client) ListDomainsWithContext(ctx context.Context, request *ListDomainsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDomainsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3315,30 +2380,11 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, header
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of domain names.
-//
-// @param request - ListDomainsRequest
-//
-// @return ListDomainsResponse
-func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDomainsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListDomainsResponse{}
-	_body, _err := client.ListDomainsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3355,7 +2401,7 @@ func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDom
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnvironmentsResponse
-func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEnvironmentsResponse, _err error) {
+func (client *Client) ListEnvironmentsWithContext(ctx context.Context, request *ListEnvironmentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEnvironmentsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3409,33 +2455,11 @@ func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnvironmentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ListEnvironments is deprecated
-//
-// Summary:
-//
-// # ListEnvironments
-//
-// @param request - ListEnvironmentsRequest
-//
-// @return ListEnvironmentsResponse
-// Deprecated
-func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_result *ListEnvironmentsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListEnvironmentsResponse{}
-	_body, _err := client.ListEnvironmentsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3450,7 +2474,7 @@ func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListGatewaysResponse
-func (client *Client) ListGatewaysWithOptions(tmpReq *ListGatewaysRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewaysResponse, _err error) {
+func (client *Client) ListGatewaysWithContext(ctx context.Context, tmpReq *ListGatewaysRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewaysResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3510,30 +2534,11 @@ func (client *Client) ListGatewaysWithOptions(tmpReq *ListGatewaysRequest, heade
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListGatewaysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of instances.
-//
-// @param request - ListGatewaysRequest
-//
-// @return ListGatewaysResponse
-func (client *Client) ListGateways(request *ListGatewaysRequest) (_result *ListGatewaysResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListGatewaysResponse{}
-	_body, _err := client.ListGatewaysWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3548,7 +2553,7 @@ func (client *Client) ListGateways(request *ListGatewaysRequest) (_result *ListG
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListHttpApiOperationsResponse
-func (client *Client) ListHttpApiOperationsWithOptions(httpApiId *string, request *ListHttpApiOperationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListHttpApiOperationsResponse, _err error) {
+func (client *Client) ListHttpApiOperationsWithContext(ctx context.Context, httpApiId *string, request *ListHttpApiOperationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListHttpApiOperationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3618,30 +2623,11 @@ func (client *Client) ListHttpApiOperationsWithOptions(httpApiId *string, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListHttpApiOperationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # List Operations
-//
-// @param request - ListHttpApiOperationsRequest
-//
-// @return ListHttpApiOperationsResponse
-func (client *Client) ListHttpApiOperations(httpApiId *string, request *ListHttpApiOperationsRequest) (_result *ListHttpApiOperationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListHttpApiOperationsResponse{}
-	_body, _err := client.ListHttpApiOperationsWithOptions(httpApiId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3656,7 +2642,7 @@ func (client *Client) ListHttpApiOperations(httpApiId *string, request *ListHttp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListHttpApiRoutesResponse
-func (client *Client) ListHttpApiRoutesWithOptions(httpApiId *string, request *ListHttpApiRoutesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListHttpApiRoutesResponse, _err error) {
+func (client *Client) ListHttpApiRoutesWithContext(ctx context.Context, httpApiId *string, request *ListHttpApiRoutesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListHttpApiRoutesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3734,30 +2720,11 @@ func (client *Client) ListHttpApiRoutesWithOptions(httpApiId *string, request *L
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListHttpApiRoutesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the routes of an HTTP API.
-//
-// @param request - ListHttpApiRoutesRequest
-//
-// @return ListHttpApiRoutesResponse
-func (client *Client) ListHttpApiRoutes(httpApiId *string, request *ListHttpApiRoutesRequest) (_result *ListHttpApiRoutesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListHttpApiRoutesResponse{}
-	_body, _err := client.ListHttpApiRoutesWithOptions(httpApiId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3772,7 +2739,7 @@ func (client *Client) ListHttpApiRoutes(httpApiId *string, request *ListHttpApiR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListHttpApisResponse
-func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListHttpApisResponse, _err error) {
+func (client *Client) ListHttpApisWithContext(ctx context.Context, request *ListHttpApisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListHttpApisResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3862,30 +2829,11 @@ func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListHttpApisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of HTTP APIs.
-//
-// @param request - ListHttpApisRequest
-//
-// @return ListHttpApisResponse
-func (client *Client) ListHttpApis(request *ListHttpApisRequest) (_result *ListHttpApisResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListHttpApisResponse{}
-	_body, _err := client.ListHttpApisWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3900,7 +2848,7 @@ func (client *Client) ListHttpApis(request *ListHttpApisRequest) (_result *ListH
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPluginAttachmentsResponse
-func (client *Client) ListPluginAttachmentsWithOptions(request *ListPluginAttachmentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPluginAttachmentsResponse, _err error) {
+func (client *Client) ListPluginAttachmentsWithContext(ctx context.Context, request *ListPluginAttachmentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPluginAttachmentsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3958,30 +2906,11 @@ func (client *Client) ListPluginAttachmentsWithOptions(request *ListPluginAttach
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPluginAttachmentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取挂载列表
-//
-// @param request - ListPluginAttachmentsRequest
-//
-// @return ListPluginAttachmentsResponse
-func (client *Client) ListPluginAttachments(request *ListPluginAttachmentsRequest) (_result *ListPluginAttachmentsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListPluginAttachmentsResponse{}
-	_body, _err := client.ListPluginAttachmentsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3996,7 +2925,7 @@ func (client *Client) ListPluginAttachments(request *ListPluginAttachmentsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPluginsResponse
-func (client *Client) ListPluginsWithOptions(request *ListPluginsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPluginsResponse, _err error) {
+func (client *Client) ListPluginsWithContext(ctx context.Context, request *ListPluginsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPluginsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4058,30 +2987,11 @@ func (client *Client) ListPluginsWithOptions(request *ListPluginsRequest, header
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPluginsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ListPlugins
-//
-// @param request - ListPluginsRequest
-//
-// @return ListPluginsResponse
-func (client *Client) ListPlugins(request *ListPluginsRequest) (_result *ListPluginsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListPluginsResponse{}
-	_body, _err := client.ListPluginsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4096,7 +3006,7 @@ func (client *Client) ListPlugins(request *ListPluginsRequest) (_result *ListPlu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPolicyClassesResponse
-func (client *Client) ListPolicyClassesWithOptions(request *ListPolicyClassesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPolicyClassesResponse, _err error) {
+func (client *Client) ListPolicyClassesWithContext(ctx context.Context, request *ListPolicyClassesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPolicyClassesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4138,30 +3048,11 @@ func (client *Client) ListPolicyClassesWithOptions(request *ListPolicyClassesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPolicyClassesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ListPolicyClasses
-//
-// @param request - ListPolicyClassesRequest
-//
-// @return ListPolicyClassesResponse
-func (client *Client) ListPolicyClasses(request *ListPolicyClassesRequest) (_result *ListPolicyClassesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListPolicyClassesResponse{}
-	_body, _err := client.ListPolicyClassesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4176,7 +3067,7 @@ func (client *Client) ListPolicyClasses(request *ListPolicyClassesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListServicesResponse
-func (client *Client) ListServicesWithOptions(request *ListServicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServicesResponse, _err error) {
+func (client *Client) ListServicesWithContext(ctx context.Context, request *ListServicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServicesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4226,30 +3117,11 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListServicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of services.
-//
-// @param request - ListServicesRequest
-//
-// @return ListServicesResponse
-func (client *Client) ListServices(request *ListServicesRequest) (_result *ListServicesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListServicesResponse{}
-	_body, _err := client.ListServicesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4264,7 +3136,7 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSslCertsResponse
-func (client *Client) ListSslCertsWithOptions(request *ListSslCertsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSslCertsResponse, _err error) {
+func (client *Client) ListSslCertsWithContext(ctx context.Context, request *ListSslCertsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSslCertsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4302,30 +3174,11 @@ func (client *Client) ListSslCertsWithOptions(request *ListSslCertsRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSslCertsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ListSslCerts
-//
-// @param request - ListSslCertsRequest
-//
-// @return ListSslCertsResponse
-func (client *Client) ListSslCerts(request *ListSslCertsRequest) (_result *ListSslCertsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListSslCertsResponse{}
-	_body, _err := client.ListSslCertsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4338,7 +3191,7 @@ func (client *Client) ListSslCerts(request *ListSslCertsRequest) (_result *ListS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListZonesResponse
-func (client *Client) ListZonesWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListZonesResponse, _err error) {
+func (client *Client) ListZonesWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListZonesResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4354,28 +3207,11 @@ func (client *Client) ListZonesWithOptions(headers map[string]*string, runtime *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Retrieve the availability zones under a cloud-native API gateway region
-//
-// @return ListZonesResponse
-func (client *Client) ListZones() (_result *ListZonesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListZonesResponse{}
-	_body, _err := client.ListZonesWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4390,7 +3226,7 @@ func (client *Client) ListZones() (_result *ListZonesResponse, _err error) {
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryConsumerAuthorizationRulesResponse
-func (client *Client) QueryConsumerAuthorizationRulesWithOptions(request *QueryConsumerAuthorizationRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryConsumerAuthorizationRulesResponse, _err error) {
+func (client *Client) QueryConsumerAuthorizationRulesWithContext(ctx context.Context, request *QueryConsumerAuthorizationRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryConsumerAuthorizationRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4456,30 +3292,11 @@ func (client *Client) QueryConsumerAuthorizationRulesWithOptions(request *QueryC
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryConsumerAuthorizationRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of consumer authentication rules.
-//
-// @param request - QueryConsumerAuthorizationRulesRequest
-//
-// @return QueryConsumerAuthorizationRulesResponse
-func (client *Client) QueryConsumerAuthorizationRules(request *QueryConsumerAuthorizationRulesRequest) (_result *QueryConsumerAuthorizationRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QueryConsumerAuthorizationRulesResponse{}
-	_body, _err := client.QueryConsumerAuthorizationRulesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4492,7 +3309,7 @@ func (client *Client) QueryConsumerAuthorizationRules(request *QueryConsumerAuth
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveConsumerAuthorizationRuleResponse
-func (client *Client) RemoveConsumerAuthorizationRuleWithOptions(consumerAuthorizationRuleId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveConsumerAuthorizationRuleResponse, _err error) {
+func (client *Client) RemoveConsumerAuthorizationRuleWithContext(ctx context.Context, consumerAuthorizationRuleId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveConsumerAuthorizationRuleResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4508,28 +3325,11 @@ func (client *Client) RemoveConsumerAuthorizationRuleWithOptions(consumerAuthori
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveConsumerAuthorizationRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a consumer authorization rule.
-//
-// @return RemoveConsumerAuthorizationRuleResponse
-func (client *Client) RemoveConsumerAuthorizationRule(consumerAuthorizationRuleId *string) (_result *RemoveConsumerAuthorizationRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RemoveConsumerAuthorizationRuleResponse{}
-	_body, _err := client.RemoveConsumerAuthorizationRuleWithOptions(consumerAuthorizationRuleId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4542,7 +3342,7 @@ func (client *Client) RemoveConsumerAuthorizationRule(consumerAuthorizationRuleI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RestartGatewayResponse
-func (client *Client) RestartGatewayWithOptions(gatewayId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RestartGatewayResponse, _err error) {
+func (client *Client) RestartGatewayWithContext(ctx context.Context, gatewayId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RestartGatewayResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4558,28 +3358,11 @@ func (client *Client) RestartGatewayWithOptions(gatewayId *string, headers map[s
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Gateway Restart
-//
-// @return RestartGatewayResponse
-func (client *Client) RestartGateway(gatewayId *string) (_result *RestartGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RestartGatewayResponse{}
-	_body, _err := client.RestartGatewayWithOptions(gatewayId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4594,7 +3377,7 @@ func (client *Client) RestartGateway(gatewayId *string) (_result *RestartGateway
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UndeployHttpApiResponse
-func (client *Client) UndeployHttpApiWithOptions(httpApiId *string, request *UndeployHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UndeployHttpApiResponse, _err error) {
+func (client *Client) UndeployHttpApiWithContext(ctx context.Context, httpApiId *string, request *UndeployHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UndeployHttpApiResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4632,30 +3415,11 @@ func (client *Client) UndeployHttpApiWithOptions(httpApiId *string, request *Und
 		BodyType:    dara.String("json"),
 	}
 	_result = &UndeployHttpApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 取消部署HttpApi
-//
-// @param request - UndeployHttpApiRequest
-//
-// @return UndeployHttpApiResponse
-func (client *Client) UndeployHttpApi(httpApiId *string, request *UndeployHttpApiRequest) (_result *UndeployHttpApiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UndeployHttpApiResponse{}
-	_body, _err := client.UndeployHttpApiWithOptions(httpApiId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4670,7 +3434,7 @@ func (client *Client) UndeployHttpApi(httpApiId *string, request *UndeployHttpAp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateConsumerResponse
-func (client *Client) UpdateConsumerWithOptions(consumerId *string, request *UpdateConsumerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConsumerResponse, _err error) {
+func (client *Client) UpdateConsumerWithContext(ctx context.Context, consumerId *string, request *UpdateConsumerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConsumerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4712,30 +3476,11 @@ func (client *Client) UpdateConsumerWithOptions(consumerId *string, request *Upd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateConsumerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新消费者
-//
-// @param request - UpdateConsumerRequest
-//
-// @return UpdateConsumerResponse
-func (client *Client) UpdateConsumer(consumerId *string, request *UpdateConsumerRequest) (_result *UpdateConsumerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateConsumerResponse{}
-	_body, _err := client.UpdateConsumerWithOptions(consumerId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4750,7 +3495,7 @@ func (client *Client) UpdateConsumer(consumerId *string, request *UpdateConsumer
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateConsumerAuthorizationRuleResponse
-func (client *Client) UpdateConsumerAuthorizationRuleWithOptions(consumerId *string, consumerAuthorizationRuleId *string, request *UpdateConsumerAuthorizationRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConsumerAuthorizationRuleResponse, _err error) {
+func (client *Client) UpdateConsumerAuthorizationRuleWithContext(ctx context.Context, consumerId *string, consumerAuthorizationRuleId *string, request *UpdateConsumerAuthorizationRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConsumerAuthorizationRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4784,30 +3529,11 @@ func (client *Client) UpdateConsumerAuthorizationRuleWithOptions(consumerId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateConsumerAuthorizationRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新消费者授权规则
-//
-// @param request - UpdateConsumerAuthorizationRuleRequest
-//
-// @return UpdateConsumerAuthorizationRuleResponse
-func (client *Client) UpdateConsumerAuthorizationRule(consumerId *string, consumerAuthorizationRuleId *string, request *UpdateConsumerAuthorizationRuleRequest) (_result *UpdateConsumerAuthorizationRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateConsumerAuthorizationRuleResponse{}
-	_body, _err := client.UpdateConsumerAuthorizationRuleWithOptions(consumerId, consumerAuthorizationRuleId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4822,7 +3548,7 @@ func (client *Client) UpdateConsumerAuthorizationRule(consumerId *string, consum
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDomainResponse
-func (client *Client) UpdateDomainWithOptions(domainId *string, request *UpdateDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDomainResponse, _err error) {
+func (client *Client) UpdateDomainWithContext(ctx context.Context, domainId *string, request *UpdateDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDomainResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4884,30 +3610,11 @@ func (client *Client) UpdateDomainWithOptions(domainId *string, request *UpdateD
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a domain name.
-//
-// @param request - UpdateDomainRequest
-//
-// @return UpdateDomainResponse
-func (client *Client) UpdateDomain(domainId *string, request *UpdateDomainRequest) (_result *UpdateDomainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateDomainResponse{}
-	_body, _err := client.UpdateDomainWithOptions(domainId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4924,7 +3631,7 @@ func (client *Client) UpdateDomain(domainId *string, request *UpdateDomainReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateEnvironmentResponse
-func (client *Client) UpdateEnvironmentWithOptions(environmentId *string, request *UpdateEnvironmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateEnvironmentResponse, _err error) {
+func (client *Client) UpdateEnvironmentWithContext(ctx context.Context, environmentId *string, request *UpdateEnvironmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateEnvironmentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4954,33 +3661,11 @@ func (client *Client) UpdateEnvironmentWithOptions(environmentId *string, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI UpdateEnvironment is deprecated
-//
-// Summary:
-//
-// # UpdateEnvironment
-//
-// @param request - UpdateEnvironmentRequest
-//
-// @return UpdateEnvironmentResponse
-// Deprecated
-func (client *Client) UpdateEnvironment(environmentId *string, request *UpdateEnvironmentRequest) (_result *UpdateEnvironmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateEnvironmentResponse{}
-	_body, _err := client.UpdateEnvironmentWithOptions(environmentId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4995,7 +3680,7 @@ func (client *Client) UpdateEnvironment(environmentId *string, request *UpdateEn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateGatewayFeatureResponse
-func (client *Client) UpdateGatewayFeatureWithOptions(gatewayId *string, name *string, request *UpdateGatewayFeatureRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGatewayFeatureResponse, _err error) {
+func (client *Client) UpdateGatewayFeatureWithContext(ctx context.Context, gatewayId *string, name *string, request *UpdateGatewayFeatureRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGatewayFeatureResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5021,30 +3706,11 @@ func (client *Client) UpdateGatewayFeatureWithOptions(gatewayId *string, name *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateGatewayFeatureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get the feature configuration of the gateway
-//
-// @param request - UpdateGatewayFeatureRequest
-//
-// @return UpdateGatewayFeatureResponse
-func (client *Client) UpdateGatewayFeature(gatewayId *string, name *string, request *UpdateGatewayFeatureRequest) (_result *UpdateGatewayFeatureResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateGatewayFeatureResponse{}
-	_body, _err := client.UpdateGatewayFeatureWithOptions(gatewayId, name, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5059,7 +3725,7 @@ func (client *Client) UpdateGatewayFeature(gatewayId *string, name *string, requ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateGatewayNameResponse
-func (client *Client) UpdateGatewayNameWithOptions(gatewayId *string, request *UpdateGatewayNameRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGatewayNameResponse, _err error) {
+func (client *Client) UpdateGatewayNameWithContext(ctx context.Context, gatewayId *string, request *UpdateGatewayNameRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGatewayNameResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5085,30 +3751,11 @@ func (client *Client) UpdateGatewayNameWithOptions(gatewayId *string, request *U
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateGatewayNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Change the name of a gateway instance
-//
-// @param request - UpdateGatewayNameRequest
-//
-// @return UpdateGatewayNameResponse
-func (client *Client) UpdateGatewayName(gatewayId *string, request *UpdateGatewayNameRequest) (_result *UpdateGatewayNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateGatewayNameResponse{}
-	_body, _err := client.UpdateGatewayNameWithOptions(gatewayId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5123,7 +3770,7 @@ func (client *Client) UpdateGatewayName(gatewayId *string, request *UpdateGatewa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateHttpApiResponse
-func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *UpdateHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateHttpApiResponse, _err error) {
+func (client *Client) UpdateHttpApiWithContext(ctx context.Context, httpApiId *string, request *UpdateHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateHttpApiResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5193,30 +3840,11 @@ func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *Updat
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateHttpApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates an HTTP API.
-//
-// @param request - UpdateHttpApiRequest
-//
-// @return UpdateHttpApiResponse
-func (client *Client) UpdateHttpApi(httpApiId *string, request *UpdateHttpApiRequest) (_result *UpdateHttpApiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateHttpApiResponse{}
-	_body, _err := client.UpdateHttpApiWithOptions(httpApiId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5231,7 +3859,7 @@ func (client *Client) UpdateHttpApi(httpApiId *string, request *UpdateHttpApiReq
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateHttpApiOperationResponse
-func (client *Client) UpdateHttpApiOperationWithOptions(httpApiId *string, operationId *string, request *UpdateHttpApiOperationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateHttpApiOperationResponse, _err error) {
+func (client *Client) UpdateHttpApiOperationWithContext(ctx context.Context, httpApiId *string, operationId *string, request *UpdateHttpApiOperationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateHttpApiOperationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5257,30 +3885,11 @@ func (client *Client) UpdateHttpApiOperationWithOptions(httpApiId *string, opera
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateHttpApiOperationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Update Operation
-//
-// @param request - UpdateHttpApiOperationRequest
-//
-// @return UpdateHttpApiOperationResponse
-func (client *Client) UpdateHttpApiOperation(httpApiId *string, operationId *string, request *UpdateHttpApiOperationRequest) (_result *UpdateHttpApiOperationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateHttpApiOperationResponse{}
-	_body, _err := client.UpdateHttpApiOperationWithOptions(httpApiId, operationId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5295,7 +3904,7 @@ func (client *Client) UpdateHttpApiOperation(httpApiId *string, operationId *str
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateHttpApiRouteResponse
-func (client *Client) UpdateHttpApiRouteWithOptions(httpApiId *string, routeId *string, request *UpdateHttpApiRouteRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateHttpApiRouteResponse, _err error) {
+func (client *Client) UpdateHttpApiRouteWithContext(ctx context.Context, httpApiId *string, routeId *string, request *UpdateHttpApiRouteRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateHttpApiRouteResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5349,30 +3958,11 @@ func (client *Client) UpdateHttpApiRouteWithOptions(httpApiId *string, routeId *
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateHttpApiRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the route of an HTTP API.
-//
-// @param request - UpdateHttpApiRouteRequest
-//
-// @return UpdateHttpApiRouteResponse
-func (client *Client) UpdateHttpApiRoute(httpApiId *string, routeId *string, request *UpdateHttpApiRouteRequest) (_result *UpdateHttpApiRouteResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateHttpApiRouteResponse{}
-	_body, _err := client.UpdateHttpApiRouteWithOptions(httpApiId, routeId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5387,7 +3977,7 @@ func (client *Client) UpdateHttpApiRoute(httpApiId *string, routeId *string, req
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePluginAttachmentResponse
-func (client *Client) UpdatePluginAttachmentWithOptions(pluginAttachmentId *string, request *UpdatePluginAttachmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePluginAttachmentResponse, _err error) {
+func (client *Client) UpdatePluginAttachmentWithContext(ctx context.Context, pluginAttachmentId *string, request *UpdatePluginAttachmentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePluginAttachmentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5421,30 +4011,11 @@ func (client *Client) UpdatePluginAttachmentWithOptions(pluginAttachmentId *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePluginAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新挂载规则API
-//
-// @param request - UpdatePluginAttachmentRequest
-//
-// @return UpdatePluginAttachmentResponse
-func (client *Client) UpdatePluginAttachment(pluginAttachmentId *string, request *UpdatePluginAttachmentRequest) (_result *UpdatePluginAttachmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdatePluginAttachmentResponse{}
-	_body, _err := client.UpdatePluginAttachmentWithOptions(pluginAttachmentId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5459,7 +4030,7 @@ func (client *Client) UpdatePluginAttachment(pluginAttachmentId *string, request
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePolicyResponse
-func (client *Client) UpdatePolicyWithOptions(policyId *string, request *UpdatePolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePolicyResponse, _err error) {
+func (client *Client) UpdatePolicyWithContext(ctx context.Context, policyId *string, request *UpdatePolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5493,30 +4064,11 @@ func (client *Client) UpdatePolicyWithOptions(policyId *string, request *UpdateP
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Update Policy
-//
-// @param request - UpdatePolicyRequest
-//
-// @return UpdatePolicyResponse
-func (client *Client) UpdatePolicy(policyId *string, request *UpdatePolicyRequest) (_result *UpdatePolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdatePolicyResponse{}
-	_body, _err := client.UpdatePolicyWithOptions(policyId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5531,7 +4083,7 @@ func (client *Client) UpdatePolicy(policyId *string, request *UpdatePolicyReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeGatewayResponse
-func (client *Client) UpgradeGatewayWithOptions(gatewayId *string, request *UpgradeGatewayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpgradeGatewayResponse, _err error) {
+func (client *Client) UpgradeGatewayWithContext(ctx context.Context, gatewayId *string, request *UpgradeGatewayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpgradeGatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5557,29 +4109,10 @@ func (client *Client) UpgradeGatewayWithOptions(gatewayId *string, request *Upgr
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Upgrade the gateway version
-//
-// @param request - UpgradeGatewayRequest
-//
-// @return UpgradeGatewayResponse
-func (client *Client) UpgradeGateway(gatewayId *string, request *UpgradeGatewayRequest) (_result *UpgradeGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpgradeGatewayResponse{}
-	_body, _err := client.UpgradeGatewayWithOptions(gatewayId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }

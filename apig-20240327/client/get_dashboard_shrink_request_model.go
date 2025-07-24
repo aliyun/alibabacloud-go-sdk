@@ -21,6 +21,8 @@ type iGetDashboardShrinkRequest interface {
 	GetPluginClassId() *string
 	SetPluginId(v string) *GetDashboardShrinkRequest
 	GetPluginId() *string
+	SetRouteId(v string) *GetDashboardShrinkRequest
+	GetRouteId() *string
 	SetSource(v string) *GetDashboardShrinkRequest
 	GetSource() *string
 	SetUpstreamCluster(v string) *GetDashboardShrinkRequest
@@ -59,6 +61,7 @@ type GetDashboardShrinkRequest struct {
 	// pls-dn82a9djd8z****
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
 	PluginId      *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	RouteId       *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
 	// The dashboard source. Valid values:
 	//
 	// 	- SLS: Simple Log Service
@@ -102,6 +105,10 @@ func (s *GetDashboardShrinkRequest) GetPluginId() *string {
 	return s.PluginId
 }
 
+func (s *GetDashboardShrinkRequest) GetRouteId() *string {
+	return s.RouteId
+}
+
 func (s *GetDashboardShrinkRequest) GetSource() *string {
 	return s.Source
 }
@@ -137,6 +144,11 @@ func (s *GetDashboardShrinkRequest) SetPluginClassId(v string) *GetDashboardShri
 
 func (s *GetDashboardShrinkRequest) SetPluginId(v string) *GetDashboardShrinkRequest {
 	s.PluginId = &v
+	return s
+}
+
+func (s *GetDashboardShrinkRequest) SetRouteId(v string) *GetDashboardShrinkRequest {
+	s.RouteId = &v
 	return s
 }
 
