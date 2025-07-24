@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("emr-serverless-spark"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -66,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddMembersResponse
-func (client *Client) AddMembersWithOptions(request *AddMembersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddMembersResponse, _err error) {
+func (client *Client) AddMembersWithContext(ctx context.Context, request *AddMembersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddMembersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -102,30 +54,11 @@ func (client *Client) AddMembersWithOptions(request *AddMembersRequest, headers 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddMembersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a RAM user or RAM role to a workspace as a member.
-//
-// @param request - AddMembersRequest
-//
-// @return AddMembersResponse
-func (client *Client) AddMembers(request *AddMembersRequest) (_result *AddMembersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddMembersResponse{}
-	_body, _err := client.AddMembersWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -140,7 +73,7 @@ func (client *Client) AddMembers(request *AddMembersRequest) (_result *AddMember
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelJobRunResponse
-func (client *Client) CancelJobRunWithOptions(workspaceId *string, jobRunId *string, request *CancelJobRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelJobRunResponse, _err error) {
+func (client *Client) CancelJobRunWithContext(ctx context.Context, workspaceId *string, jobRunId *string, request *CancelJobRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelJobRunResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -166,30 +99,11 @@ func (client *Client) CancelJobRunWithOptions(workspaceId *string, jobRunId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelJobRunResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Terminates a Spark job.
-//
-// @param request - CancelJobRunRequest
-//
-// @return CancelJobRunResponse
-func (client *Client) CancelJobRun(workspaceId *string, jobRunId *string, request *CancelJobRunRequest) (_result *CancelJobRunResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CancelJobRunResponse{}
-	_body, _err := client.CancelJobRunWithOptions(workspaceId, jobRunId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -204,7 +118,7 @@ func (client *Client) CancelJobRun(workspaceId *string, jobRunId *string, reques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLivyComputeResponse
-func (client *Client) CreateLivyComputeWithOptions(workspaceBizId *string, request *CreateLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateLivyComputeResponse, _err error) {
+func (client *Client) CreateLivyComputeWithContext(ctx context.Context, workspaceBizId *string, request *CreateLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateLivyComputeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -292,30 +206,11 @@ func (client *Client) CreateLivyComputeWithOptions(workspaceBizId *string, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLivyComputeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建Livy compute
-//
-// @param request - CreateLivyComputeRequest
-//
-// @return CreateLivyComputeResponse
-func (client *Client) CreateLivyCompute(workspaceBizId *string, request *CreateLivyComputeRequest) (_result *CreateLivyComputeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateLivyComputeResponse{}
-	_body, _err := client.CreateLivyComputeWithOptions(workspaceBizId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -330,7 +225,7 @@ func (client *Client) CreateLivyCompute(workspaceBizId *string, request *CreateL
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLivyComputeTokenResponse
-func (client *Client) CreateLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, request *CreateLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateLivyComputeTokenResponse, _err error) {
+func (client *Client) CreateLivyComputeTokenWithContext(ctx context.Context, workspaceBizId *string, livyComputeId *string, request *CreateLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateLivyComputeTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -370,30 +265,11 @@ func (client *Client) CreateLivyComputeTokenWithOptions(workspaceBizId *string, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLivyComputeTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建Livy Compute的token
-//
-// @param request - CreateLivyComputeTokenRequest
-//
-// @return CreateLivyComputeTokenResponse
-func (client *Client) CreateLivyComputeToken(workspaceBizId *string, livyComputeId *string, request *CreateLivyComputeTokenRequest) (_result *CreateLivyComputeTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateLivyComputeTokenResponse{}
-	_body, _err := client.CreateLivyComputeTokenWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -408,7 +284,7 @@ func (client *Client) CreateLivyComputeToken(workspaceBizId *string, livyCompute
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateProcessDefinitionWithScheduleResponse
-func (client *Client) CreateProcessDefinitionWithScheduleWithOptions(bizId *string, tmpReq *CreateProcessDefinitionWithScheduleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateProcessDefinitionWithScheduleResponse, _err error) {
+func (client *Client) CreateProcessDefinitionWithScheduleWithContext(ctx context.Context, bizId *string, tmpReq *CreateProcessDefinitionWithScheduleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateProcessDefinitionWithScheduleResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -520,30 +396,11 @@ func (client *Client) CreateProcessDefinitionWithScheduleWithOptions(bizId *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateProcessDefinitionWithScheduleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a workflow.
-//
-// @param request - CreateProcessDefinitionWithScheduleRequest
-//
-// @return CreateProcessDefinitionWithScheduleResponse
-func (client *Client) CreateProcessDefinitionWithSchedule(bizId *string, request *CreateProcessDefinitionWithScheduleRequest) (_result *CreateProcessDefinitionWithScheduleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateProcessDefinitionWithScheduleResponse{}
-	_body, _err := client.CreateProcessDefinitionWithScheduleWithOptions(bizId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -558,7 +415,7 @@ func (client *Client) CreateProcessDefinitionWithSchedule(bizId *string, request
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSessionClusterResponse
-func (client *Client) CreateSessionClusterWithOptions(workspaceId *string, request *CreateSessionClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSessionClusterResponse, _err error) {
+func (client *Client) CreateSessionClusterWithContext(ctx context.Context, workspaceId *string, request *CreateSessionClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSessionClusterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -630,30 +487,11 @@ func (client *Client) CreateSessionClusterWithOptions(workspaceId *string, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSessionClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a session.
-//
-// @param request - CreateSessionClusterRequest
-//
-// @return CreateSessionClusterResponse
-func (client *Client) CreateSessionCluster(workspaceId *string, request *CreateSessionClusterRequest) (_result *CreateSessionClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateSessionClusterResponse{}
-	_body, _err := client.CreateSessionClusterWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -668,7 +506,7 @@ func (client *Client) CreateSessionCluster(workspaceId *string, request *CreateS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSqlStatementResponse
-func (client *Client) CreateSqlStatementWithOptions(workspaceId *string, request *CreateSqlStatementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSqlStatementResponse, _err error) {
+func (client *Client) CreateSqlStatementWithContext(ctx context.Context, workspaceId *string, request *CreateSqlStatementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSqlStatementResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -716,30 +554,11 @@ func (client *Client) CreateSqlStatementWithOptions(workspaceId *string, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSqlStatementResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an SQL query task.
-//
-// @param request - CreateSqlStatementRequest
-//
-// @return CreateSqlStatementResponse
-func (client *Client) CreateSqlStatement(workspaceId *string, request *CreateSqlStatementRequest) (_result *CreateSqlStatementResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateSqlStatementResponse{}
-	_body, _err := client.CreateSqlStatementWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -754,7 +573,7 @@ func (client *Client) CreateSqlStatement(workspaceId *string, request *CreateSql
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateWorkspaceResponse
-func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceResponse, _err error) {
+func (client *Client) CreateWorkspaceWithContext(ctx context.Context, request *CreateWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -846,30 +665,11 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateWorkspaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a workspace.
-//
-// @param request - CreateWorkspaceRequest
-//
-// @return CreateWorkspaceResponse
-func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result *CreateWorkspaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateWorkspaceResponse{}
-	_body, _err := client.CreateWorkspaceWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -884,7 +684,7 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLivyComputeResponse
-func (client *Client) DeleteLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *DeleteLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteLivyComputeResponse, _err error) {
+func (client *Client) DeleteLivyComputeWithContext(ctx context.Context, workspaceBizId *string, livyComputeId *string, request *DeleteLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteLivyComputeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -910,30 +710,11 @@ func (client *Client) DeleteLivyComputeWithOptions(workspaceBizId *string, livyC
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLivyComputeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除livy compute
-//
-// @param request - DeleteLivyComputeRequest
-//
-// @return DeleteLivyComputeResponse
-func (client *Client) DeleteLivyCompute(workspaceBizId *string, livyComputeId *string, request *DeleteLivyComputeRequest) (_result *DeleteLivyComputeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteLivyComputeResponse{}
-	_body, _err := client.DeleteLivyComputeWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -948,7 +729,7 @@ func (client *Client) DeleteLivyCompute(workspaceBizId *string, livyComputeId *s
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLivyComputeTokenResponse
-func (client *Client) DeleteLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, tokenId *string, request *DeleteLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteLivyComputeTokenResponse, _err error) {
+func (client *Client) DeleteLivyComputeTokenWithContext(ctx context.Context, workspaceBizId *string, livyComputeId *string, tokenId *string, request *DeleteLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteLivyComputeTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -974,30 +755,11 @@ func (client *Client) DeleteLivyComputeTokenWithOptions(workspaceBizId *string, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLivyComputeTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除Livy Compute的token
-//
-// @param request - DeleteLivyComputeTokenRequest
-//
-// @return DeleteLivyComputeTokenResponse
-func (client *Client) DeleteLivyComputeToken(workspaceBizId *string, livyComputeId *string, tokenId *string, request *DeleteLivyComputeTokenRequest) (_result *DeleteLivyComputeTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteLivyComputeTokenResponse{}
-	_body, _err := client.DeleteLivyComputeTokenWithOptions(workspaceBizId, livyComputeId, tokenId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1012,7 +774,7 @@ func (client *Client) DeleteLivyComputeToken(workspaceBizId *string, livyCompute
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EditWorkspaceQueueResponse
-func (client *Client) EditWorkspaceQueueWithOptions(request *EditWorkspaceQueueRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EditWorkspaceQueueResponse, _err error) {
+func (client *Client) EditWorkspaceQueueWithContext(ctx context.Context, request *EditWorkspaceQueueRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EditWorkspaceQueueResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1056,30 +818,11 @@ func (client *Client) EditWorkspaceQueueWithOptions(request *EditWorkspaceQueueR
 		BodyType:    dara.String("json"),
 	}
 	_result = &EditWorkspaceQueueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the queue of a workspace.
-//
-// @param request - EditWorkspaceQueueRequest
-//
-// @return EditWorkspaceQueueResponse
-func (client *Client) EditWorkspaceQueue(request *EditWorkspaceQueueRequest) (_result *EditWorkspaceQueueResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &EditWorkspaceQueueResponse{}
-	_body, _err := client.EditWorkspaceQueueWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1094,7 +837,7 @@ func (client *Client) EditWorkspaceQueue(request *EditWorkspaceQueueRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCuHoursResponse
-func (client *Client) GetCuHoursWithOptions(workspaceId *string, queue *string, request *GetCuHoursRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCuHoursResponse, _err error) {
+func (client *Client) GetCuHoursWithContext(ctx context.Context, workspaceId *string, queue *string, request *GetCuHoursRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCuHoursResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1124,30 +867,11 @@ func (client *Client) GetCuHoursWithOptions(workspaceId *string, queue *string, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCuHoursResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the number of CU-hours consumed by a queue during a specified cycle.
-//
-// @param request - GetCuHoursRequest
-//
-// @return GetCuHoursResponse
-func (client *Client) GetCuHours(workspaceId *string, queue *string, request *GetCuHoursRequest) (_result *GetCuHoursResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetCuHoursResponse{}
-	_body, _err := client.GetCuHoursWithOptions(workspaceId, queue, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1162,7 +886,7 @@ func (client *Client) GetCuHours(workspaceId *string, queue *string, request *Ge
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDoctorApplicationResponse
-func (client *Client) GetDoctorApplicationWithOptions(workspaceId *string, runId *string, request *GetDoctorApplicationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDoctorApplicationResponse, _err error) {
+func (client *Client) GetDoctorApplicationWithContext(ctx context.Context, workspaceId *string, runId *string, request *GetDoctorApplicationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDoctorApplicationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1196,30 +920,11 @@ func (client *Client) GetDoctorApplicationWithOptions(workspaceId *string, runId
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDoctorApplicationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains job analysis information on E-MapReduce (EMR) Doctor.
-//
-// @param request - GetDoctorApplicationRequest
-//
-// @return GetDoctorApplicationResponse
-func (client *Client) GetDoctorApplication(workspaceId *string, runId *string, request *GetDoctorApplicationRequest) (_result *GetDoctorApplicationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetDoctorApplicationResponse{}
-	_body, _err := client.GetDoctorApplicationWithOptions(workspaceId, runId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1234,7 +939,7 @@ func (client *Client) GetDoctorApplication(workspaceId *string, runId *string, r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetJobRunResponse
-func (client *Client) GetJobRunWithOptions(workspaceId *string, jobRunId *string, request *GetJobRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobRunResponse, _err error) {
+func (client *Client) GetJobRunWithContext(ctx context.Context, workspaceId *string, jobRunId *string, request *GetJobRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobRunResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1260,30 +965,11 @@ func (client *Client) GetJobRunWithOptions(workspaceId *string, jobRunId *string
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetJobRunResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtain the job details.
-//
-// @param request - GetJobRunRequest
-//
-// @return GetJobRunResponse
-func (client *Client) GetJobRun(workspaceId *string, jobRunId *string, request *GetJobRunRequest) (_result *GetJobRunResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetJobRunResponse{}
-	_body, _err := client.GetJobRunWithOptions(workspaceId, jobRunId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1298,7 +984,7 @@ func (client *Client) GetJobRun(workspaceId *string, jobRunId *string, request *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLivyComputeResponse
-func (client *Client) GetLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *GetLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLivyComputeResponse, _err error) {
+func (client *Client) GetLivyComputeWithContext(ctx context.Context, workspaceBizId *string, livyComputeId *string, request *GetLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLivyComputeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1324,30 +1010,11 @@ func (client *Client) GetLivyComputeWithOptions(workspaceBizId *string, livyComp
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLivyComputeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取livy compute
-//
-// @param request - GetLivyComputeRequest
-//
-// @return GetLivyComputeResponse
-func (client *Client) GetLivyCompute(workspaceBizId *string, livyComputeId *string, request *GetLivyComputeRequest) (_result *GetLivyComputeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetLivyComputeResponse{}
-	_body, _err := client.GetLivyComputeWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1362,7 +1029,7 @@ func (client *Client) GetLivyCompute(workspaceBizId *string, livyComputeId *stri
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLivyComputeTokenResponse
-func (client *Client) GetLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, tokenId *string, request *GetLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLivyComputeTokenResponse, _err error) {
+func (client *Client) GetLivyComputeTokenWithContext(ctx context.Context, workspaceBizId *string, livyComputeId *string, tokenId *string, request *GetLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLivyComputeTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1388,30 +1055,11 @@ func (client *Client) GetLivyComputeTokenWithOptions(workspaceBizId *string, liv
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLivyComputeTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取livy compute token
-//
-// @param request - GetLivyComputeTokenRequest
-//
-// @return GetLivyComputeTokenResponse
-func (client *Client) GetLivyComputeToken(workspaceBizId *string, livyComputeId *string, tokenId *string, request *GetLivyComputeTokenRequest) (_result *GetLivyComputeTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetLivyComputeTokenResponse{}
-	_body, _err := client.GetLivyComputeTokenWithOptions(workspaceBizId, livyComputeId, tokenId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1426,7 +1074,7 @@ func (client *Client) GetLivyComputeToken(workspaceBizId *string, livyComputeId 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSessionClusterResponse
-func (client *Client) GetSessionClusterWithOptions(workspaceId *string, sessionClusterId *string, request *GetSessionClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSessionClusterResponse, _err error) {
+func (client *Client) GetSessionClusterWithContext(ctx context.Context, workspaceId *string, sessionClusterId *string, request *GetSessionClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSessionClusterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1452,30 +1100,11 @@ func (client *Client) GetSessionClusterWithOptions(workspaceId *string, sessionC
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSessionClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a session.
-//
-// @param request - GetSessionClusterRequest
-//
-// @return GetSessionClusterResponse
-func (client *Client) GetSessionCluster(workspaceId *string, sessionClusterId *string, request *GetSessionClusterRequest) (_result *GetSessionClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSessionClusterResponse{}
-	_body, _err := client.GetSessionClusterWithOptions(workspaceId, sessionClusterId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1490,7 +1119,7 @@ func (client *Client) GetSessionCluster(workspaceId *string, sessionClusterId *s
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSqlStatementResponse
-func (client *Client) GetSqlStatementWithOptions(workspaceId *string, statementId *string, request *GetSqlStatementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSqlStatementResponse, _err error) {
+func (client *Client) GetSqlStatementWithContext(ctx context.Context, workspaceId *string, statementId *string, request *GetSqlStatementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSqlStatementResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1516,30 +1145,11 @@ func (client *Client) GetSqlStatementWithOptions(workspaceId *string, statementI
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSqlStatementResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of an SQL query task.
-//
-// @param request - GetSqlStatementRequest
-//
-// @return GetSqlStatementResponse
-func (client *Client) GetSqlStatement(workspaceId *string, statementId *string, request *GetSqlStatementRequest) (_result *GetSqlStatementResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSqlStatementResponse{}
-	_body, _err := client.GetSqlStatementWithOptions(workspaceId, statementId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1554,7 +1164,7 @@ func (client *Client) GetSqlStatement(workspaceId *string, statementId *string, 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTemplateResponse
-func (client *Client) GetTemplateWithOptions(workspaceBizId *string, request *GetTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
+func (client *Client) GetTemplateWithContext(ctx context.Context, workspaceBizId *string, request *GetTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1588,30 +1198,11 @@ func (client *Client) GetTemplateWithOptions(workspaceBizId *string, request *Ge
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries task templates.
-//
-// @param request - GetTemplateRequest
-//
-// @return GetTemplateResponse
-func (client *Client) GetTemplate(workspaceBizId *string, request *GetTemplateRequest) (_result *GetTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTemplateResponse{}
-	_body, _err := client.GetTemplateWithOptions(workspaceBizId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1626,7 +1217,7 @@ func (client *Client) GetTemplate(workspaceBizId *string, request *GetTemplateRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GrantRoleToUsersResponse
-func (client *Client) GrantRoleToUsersWithOptions(request *GrantRoleToUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GrantRoleToUsersResponse, _err error) {
+func (client *Client) GrantRoleToUsersWithContext(ctx context.Context, request *GrantRoleToUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GrantRoleToUsersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1662,30 +1253,11 @@ func (client *Client) GrantRoleToUsersWithOptions(request *GrantRoleToUsersReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GrantRoleToUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Assigns a specified role to users.
-//
-// @param request - GrantRoleToUsersRequest
-//
-// @return GrantRoleToUsersResponse
-func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_result *GrantRoleToUsersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GrantRoleToUsersResponse{}
-	_body, _err := client.GrantRoleToUsersWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1700,7 +1272,7 @@ func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListJobRunsResponse
-func (client *Client) ListJobRunsWithOptions(workspaceId *string, tmpReq *ListJobRunsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobRunsResponse, _err error) {
+func (client *Client) ListJobRunsWithContext(ctx context.Context, workspaceId *string, tmpReq *ListJobRunsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobRunsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1796,30 +1368,11 @@ func (client *Client) ListJobRunsWithOptions(workspaceId *string, tmpReq *ListJo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListJobRunsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of Spark jobs.
-//
-// @param request - ListJobRunsRequest
-//
-// @return ListJobRunsResponse
-func (client *Client) ListJobRuns(workspaceId *string, request *ListJobRunsRequest) (_result *ListJobRunsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListJobRunsResponse{}
-	_body, _err := client.ListJobRunsWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1832,7 +1385,7 @@ func (client *Client) ListJobRuns(workspaceId *string, request *ListJobRunsReque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListKyuubiServicesResponse
-func (client *Client) ListKyuubiServicesWithOptions(workspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListKyuubiServicesResponse, _err error) {
+func (client *Client) ListKyuubiServicesWithContext(ctx context.Context, workspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListKyuubiServicesResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1848,28 +1401,11 @@ func (client *Client) ListKyuubiServicesWithOptions(workspaceId *string, headers
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListKyuubiServicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ListKyuubiServices
-//
-// @return ListKyuubiServicesResponse
-func (client *Client) ListKyuubiServices(workspaceId *string) (_result *ListKyuubiServicesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListKyuubiServicesResponse{}
-	_body, _err := client.ListKyuubiServicesWithOptions(workspaceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1884,7 +1420,7 @@ func (client *Client) ListKyuubiServices(workspaceId *string) (_result *ListKyuu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListKyuubiSparkApplicationsResponse
-func (client *Client) ListKyuubiSparkApplicationsWithOptions(workspaceId *string, kyuubiServiceId *string, tmpReq *ListKyuubiSparkApplicationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListKyuubiSparkApplicationsResponse, _err error) {
+func (client *Client) ListKyuubiSparkApplicationsWithContext(ctx context.Context, workspaceId *string, kyuubiServiceId *string, tmpReq *ListKyuubiSparkApplicationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListKyuubiSparkApplicationsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1952,30 +1488,11 @@ func (client *Client) ListKyuubiSparkApplicationsWithOptions(workspaceId *string
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListKyuubiSparkApplicationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the applications that are submitted by using a Kyuubi gateway.
-//
-// @param request - ListKyuubiSparkApplicationsRequest
-//
-// @return ListKyuubiSparkApplicationsResponse
-func (client *Client) ListKyuubiSparkApplications(workspaceId *string, kyuubiServiceId *string, request *ListKyuubiSparkApplicationsRequest) (_result *ListKyuubiSparkApplicationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListKyuubiSparkApplicationsResponse{}
-	_body, _err := client.ListKyuubiSparkApplicationsWithOptions(workspaceId, kyuubiServiceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1990,7 +1507,7 @@ func (client *Client) ListKyuubiSparkApplications(workspaceId *string, kyuubiSer
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListKyuubiTokenResponse
-func (client *Client) ListKyuubiTokenWithOptions(workspaceId *string, kyuubiServiceId *string, request *ListKyuubiTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListKyuubiTokenResponse, _err error) {
+func (client *Client) ListKyuubiTokenWithContext(ctx context.Context, workspaceId *string, kyuubiServiceId *string, request *ListKyuubiTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListKyuubiTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2016,30 +1533,11 @@ func (client *Client) ListKyuubiTokenWithOptions(workspaceId *string, kyuubiServ
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListKyuubiTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 列出compute的token
-//
-// @param request - ListKyuubiTokenRequest
-//
-// @return ListKyuubiTokenResponse
-func (client *Client) ListKyuubiToken(workspaceId *string, kyuubiServiceId *string, request *ListKyuubiTokenRequest) (_result *ListKyuubiTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListKyuubiTokenResponse{}
-	_body, _err := client.ListKyuubiTokenWithOptions(workspaceId, kyuubiServiceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2054,7 +1552,7 @@ func (client *Client) ListKyuubiToken(workspaceId *string, kyuubiServiceId *stri
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLivyComputeResponse
-func (client *Client) ListLivyComputeWithOptions(workspaceBizId *string, request *ListLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLivyComputeResponse, _err error) {
+func (client *Client) ListLivyComputeWithContext(ctx context.Context, workspaceBizId *string, request *ListLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLivyComputeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2084,30 +1582,11 @@ func (client *Client) ListLivyComputeWithOptions(workspaceBizId *string, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLivyComputeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 列出livy compute
-//
-// @param request - ListLivyComputeRequest
-//
-// @return ListLivyComputeResponse
-func (client *Client) ListLivyCompute(workspaceBizId *string, request *ListLivyComputeRequest) (_result *ListLivyComputeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListLivyComputeResponse{}
-	_body, _err := client.ListLivyComputeWithOptions(workspaceBizId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2122,7 +1601,7 @@ func (client *Client) ListLivyCompute(workspaceBizId *string, request *ListLivyC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLivyComputeTokenResponse
-func (client *Client) ListLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, request *ListLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLivyComputeTokenResponse, _err error) {
+func (client *Client) ListLivyComputeTokenWithContext(ctx context.Context, workspaceBizId *string, livyComputeId *string, request *ListLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLivyComputeTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2148,30 +1627,11 @@ func (client *Client) ListLivyComputeTokenWithOptions(workspaceBizId *string, li
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLivyComputeTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 列出livy compute token
-//
-// @param request - ListLivyComputeTokenRequest
-//
-// @return ListLivyComputeTokenResponse
-func (client *Client) ListLivyComputeToken(workspaceBizId *string, livyComputeId *string, request *ListLivyComputeTokenRequest) (_result *ListLivyComputeTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListLivyComputeTokenResponse{}
-	_body, _err := client.ListLivyComputeTokenWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2186,7 +1646,7 @@ func (client *Client) ListLivyComputeToken(workspaceBizId *string, livyComputeId
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLogContentsResponse
-func (client *Client) ListLogContentsWithOptions(workspaceId *string, request *ListLogContentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLogContentsResponse, _err error) {
+func (client *Client) ListLogContentsWithContext(ctx context.Context, workspaceId *string, request *ListLogContentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLogContentsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2224,30 +1684,11 @@ func (client *Client) ListLogContentsWithOptions(workspaceId *string, request *L
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLogContentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get Log Content
-//
-// @param request - ListLogContentsRequest
-//
-// @return ListLogContentsResponse
-func (client *Client) ListLogContents(workspaceId *string, request *ListLogContentsRequest) (_result *ListLogContentsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListLogContentsResponse{}
-	_body, _err := client.ListLogContentsWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2262,7 +1703,7 @@ func (client *Client) ListLogContents(workspaceId *string, request *ListLogConte
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListReleaseVersionsResponse
-func (client *Client) ListReleaseVersionsWithOptions(request *ListReleaseVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListReleaseVersionsResponse, _err error) {
+func (client *Client) ListReleaseVersionsWithContext(ctx context.Context, request *ListReleaseVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListReleaseVersionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2308,30 +1749,11 @@ func (client *Client) ListReleaseVersionsWithOptions(request *ListReleaseVersion
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListReleaseVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the list of published versions of E-MapReduce (EMR) Serverless Spark.
-//
-// @param request - ListReleaseVersionsRequest
-//
-// @return ListReleaseVersionsResponse
-func (client *Client) ListReleaseVersions(request *ListReleaseVersionsRequest) (_result *ListReleaseVersionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListReleaseVersionsResponse{}
-	_body, _err := client.ListReleaseVersionsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2346,7 +1768,7 @@ func (client *Client) ListReleaseVersions(request *ListReleaseVersionsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSessionClustersResponse
-func (client *Client) ListSessionClustersWithOptions(workspaceId *string, request *ListSessionClustersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSessionClustersResponse, _err error) {
+func (client *Client) ListSessionClustersWithContext(ctx context.Context, workspaceId *string, request *ListSessionClustersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSessionClustersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2392,30 +1814,11 @@ func (client *Client) ListSessionClustersWithOptions(workspaceId *string, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSessionClustersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the list of sessions.
-//
-// @param request - ListSessionClustersRequest
-//
-// @return ListSessionClustersResponse
-func (client *Client) ListSessionClusters(workspaceId *string, request *ListSessionClustersRequest) (_result *ListSessionClustersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListSessionClustersResponse{}
-	_body, _err := client.ListSessionClustersWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2430,7 +1833,7 @@ func (client *Client) ListSessionClusters(workspaceId *string, request *ListSess
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListWorkspaceQueuesResponse
-func (client *Client) ListWorkspaceQueuesWithOptions(workspaceId *string, request *ListWorkspaceQueuesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkspaceQueuesResponse, _err error) {
+func (client *Client) ListWorkspaceQueuesWithContext(ctx context.Context, workspaceId *string, request *ListWorkspaceQueuesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkspaceQueuesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2460,30 +1863,11 @@ func (client *Client) ListWorkspaceQueuesWithOptions(workspaceId *string, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListWorkspaceQueuesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the list of queues in a Spark workspace.
-//
-// @param request - ListWorkspaceQueuesRequest
-//
-// @return ListWorkspaceQueuesResponse
-func (client *Client) ListWorkspaceQueues(workspaceId *string, request *ListWorkspaceQueuesRequest) (_result *ListWorkspaceQueuesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListWorkspaceQueuesResponse{}
-	_body, _err := client.ListWorkspaceQueuesWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2498,7 +1882,7 @@ func (client *Client) ListWorkspaceQueues(workspaceId *string, request *ListWork
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListWorkspacesResponse
-func (client *Client) ListWorkspacesWithOptions(tmpReq *ListWorkspacesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkspacesResponse, _err error) {
+func (client *Client) ListWorkspacesWithContext(ctx context.Context, tmpReq *ListWorkspacesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListWorkspacesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2550,30 +1934,11 @@ func (client *Client) ListWorkspacesWithOptions(tmpReq *ListWorkspacesRequest, h
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListWorkspacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of workspaces.
-//
-// @param request - ListWorkspacesRequest
-//
-// @return ListWorkspacesResponse
-func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *ListWorkspacesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListWorkspacesResponse{}
-	_body, _err := client.ListWorkspacesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2588,7 +1953,7 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RefreshLivyComputeTokenResponse
-func (client *Client) RefreshLivyComputeTokenWithOptions(workspaceBizId *string, livyComputeId *string, tokenId *string, request *RefreshLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RefreshLivyComputeTokenResponse, _err error) {
+func (client *Client) RefreshLivyComputeTokenWithContext(ctx context.Context, workspaceBizId *string, livyComputeId *string, tokenId *string, request *RefreshLivyComputeTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RefreshLivyComputeTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2628,30 +1993,11 @@ func (client *Client) RefreshLivyComputeTokenWithOptions(workspaceBizId *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &RefreshLivyComputeTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新Livy Compute的token
-//
-// @param request - RefreshLivyComputeTokenRequest
-//
-// @return RefreshLivyComputeTokenResponse
-func (client *Client) RefreshLivyComputeToken(workspaceBizId *string, livyComputeId *string, tokenId *string, request *RefreshLivyComputeTokenRequest) (_result *RefreshLivyComputeTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RefreshLivyComputeTokenResponse{}
-	_body, _err := client.RefreshLivyComputeTokenWithOptions(workspaceBizId, livyComputeId, tokenId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2666,7 +2012,7 @@ func (client *Client) RefreshLivyComputeToken(workspaceBizId *string, livyComput
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartJobRunResponse
-func (client *Client) StartJobRunWithOptions(workspaceId *string, request *StartJobRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartJobRunResponse, _err error) {
+func (client *Client) StartJobRunWithContext(ctx context.Context, workspaceId *string, request *StartJobRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartJobRunResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2742,30 +2088,11 @@ func (client *Client) StartJobRunWithOptions(workspaceId *string, request *Start
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartJobRunResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts a Spark job.
-//
-// @param request - StartJobRunRequest
-//
-// @return StartJobRunResponse
-func (client *Client) StartJobRun(workspaceId *string, request *StartJobRunRequest) (_result *StartJobRunResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StartJobRunResponse{}
-	_body, _err := client.StartJobRunWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2780,7 +2107,7 @@ func (client *Client) StartJobRun(workspaceId *string, request *StartJobRunReque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartLivyComputeResponse
-func (client *Client) StartLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *StartLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartLivyComputeResponse, _err error) {
+func (client *Client) StartLivyComputeWithContext(ctx context.Context, workspaceBizId *string, livyComputeId *string, request *StartLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartLivyComputeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2806,30 +2133,11 @@ func (client *Client) StartLivyComputeWithOptions(workspaceBizId *string, livyCo
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartLivyComputeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 启动livy compute
-//
-// @param request - StartLivyComputeRequest
-//
-// @return StartLivyComputeResponse
-func (client *Client) StartLivyCompute(workspaceBizId *string, livyComputeId *string, request *StartLivyComputeRequest) (_result *StartLivyComputeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StartLivyComputeResponse{}
-	_body, _err := client.StartLivyComputeWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2844,7 +2152,7 @@ func (client *Client) StartLivyCompute(workspaceBizId *string, livyComputeId *st
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartProcessInstanceResponse
-func (client *Client) StartProcessInstanceWithOptions(bizId *string, request *StartProcessInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartProcessInstanceResponse, _err error) {
+func (client *Client) StartProcessInstanceWithContext(ctx context.Context, bizId *string, request *StartProcessInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartProcessInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2910,30 +2218,11 @@ func (client *Client) StartProcessInstanceWithOptions(bizId *string, request *St
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartProcessInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Manually runs a workflow.
-//
-// @param request - StartProcessInstanceRequest
-//
-// @return StartProcessInstanceResponse
-func (client *Client) StartProcessInstance(bizId *string, request *StartProcessInstanceRequest) (_result *StartProcessInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StartProcessInstanceResponse{}
-	_body, _err := client.StartProcessInstanceWithOptions(bizId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2948,7 +2237,7 @@ func (client *Client) StartProcessInstance(bizId *string, request *StartProcessI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartSessionClusterResponse
-func (client *Client) StartSessionClusterWithOptions(workspaceId *string, request *StartSessionClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartSessionClusterResponse, _err error) {
+func (client *Client) StartSessionClusterWithContext(ctx context.Context, workspaceId *string, request *StartSessionClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartSessionClusterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2984,30 +2273,11 @@ func (client *Client) StartSessionClusterWithOptions(workspaceId *string, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartSessionClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts a session.
-//
-// @param request - StartSessionClusterRequest
-//
-// @return StartSessionClusterResponse
-func (client *Client) StartSessionCluster(workspaceId *string, request *StartSessionClusterRequest) (_result *StartSessionClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StartSessionClusterResponse{}
-	_body, _err := client.StartSessionClusterWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3022,7 +2292,7 @@ func (client *Client) StartSessionCluster(workspaceId *string, request *StartSes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopLivyComputeResponse
-func (client *Client) StopLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *StopLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopLivyComputeResponse, _err error) {
+func (client *Client) StopLivyComputeWithContext(ctx context.Context, workspaceBizId *string, livyComputeId *string, request *StopLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopLivyComputeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3048,30 +2318,11 @@ func (client *Client) StopLivyComputeWithOptions(workspaceBizId *string, livyCom
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopLivyComputeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 停止livy compute
-//
-// @param request - StopLivyComputeRequest
-//
-// @return StopLivyComputeResponse
-func (client *Client) StopLivyCompute(workspaceBizId *string, livyComputeId *string, request *StopLivyComputeRequest) (_result *StopLivyComputeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StopLivyComputeResponse{}
-	_body, _err := client.StopLivyComputeWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3086,7 +2337,7 @@ func (client *Client) StopLivyCompute(workspaceBizId *string, livyComputeId *str
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopSessionClusterResponse
-func (client *Client) StopSessionClusterWithOptions(workspaceId *string, request *StopSessionClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopSessionClusterResponse, _err error) {
+func (client *Client) StopSessionClusterWithContext(ctx context.Context, workspaceId *string, request *StopSessionClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopSessionClusterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3122,30 +2373,11 @@ func (client *Client) StopSessionClusterWithOptions(workspaceId *string, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopSessionClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops a session.
-//
-// @param request - StopSessionClusterRequest
-//
-// @return StopSessionClusterResponse
-func (client *Client) StopSessionCluster(workspaceId *string, request *StopSessionClusterRequest) (_result *StopSessionClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StopSessionClusterResponse{}
-	_body, _err := client.StopSessionClusterWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3160,7 +2392,7 @@ func (client *Client) StopSessionCluster(workspaceId *string, request *StopSessi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TerminateSqlStatementResponse
-func (client *Client) TerminateSqlStatementWithOptions(workspaceId *string, statementId *string, request *TerminateSqlStatementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TerminateSqlStatementResponse, _err error) {
+func (client *Client) TerminateSqlStatementWithContext(ctx context.Context, workspaceId *string, statementId *string, request *TerminateSqlStatementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TerminateSqlStatementResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3186,30 +2418,11 @@ func (client *Client) TerminateSqlStatementWithOptions(workspaceId *string, stat
 		BodyType:    dara.String("json"),
 	}
 	_result = &TerminateSqlStatementResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Terminates an SQL query task.
-//
-// @param request - TerminateSqlStatementRequest
-//
-// @return TerminateSqlStatementResponse
-func (client *Client) TerminateSqlStatement(workspaceId *string, statementId *string, request *TerminateSqlStatementRequest) (_result *TerminateSqlStatementResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &TerminateSqlStatementResponse{}
-	_body, _err := client.TerminateSqlStatementWithOptions(workspaceId, statementId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3224,7 +2437,7 @@ func (client *Client) TerminateSqlStatement(workspaceId *string, statementId *st
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLivyComputeResponse
-func (client *Client) UpdateLivyComputeWithOptions(workspaceBizId *string, livyComputeId *string, request *UpdateLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateLivyComputeResponse, _err error) {
+func (client *Client) UpdateLivyComputeWithContext(ctx context.Context, workspaceBizId *string, livyComputeId *string, request *UpdateLivyComputeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateLivyComputeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3312,30 +2525,11 @@ func (client *Client) UpdateLivyComputeWithOptions(workspaceBizId *string, livyC
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLivyComputeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新livy compute
-//
-// @param request - UpdateLivyComputeRequest
-//
-// @return UpdateLivyComputeResponse
-func (client *Client) UpdateLivyCompute(workspaceBizId *string, livyComputeId *string, request *UpdateLivyComputeRequest) (_result *UpdateLivyComputeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateLivyComputeResponse{}
-	_body, _err := client.UpdateLivyComputeWithOptions(workspaceBizId, livyComputeId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3350,7 +2544,7 @@ func (client *Client) UpdateLivyCompute(workspaceBizId *string, livyComputeId *s
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateProcessDefinitionWithScheduleResponse
-func (client *Client) UpdateProcessDefinitionWithScheduleWithOptions(bizId *string, code *string, tmpReq *UpdateProcessDefinitionWithScheduleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateProcessDefinitionWithScheduleResponse, _err error) {
+func (client *Client) UpdateProcessDefinitionWithScheduleWithContext(ctx context.Context, bizId *string, code *string, tmpReq *UpdateProcessDefinitionWithScheduleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateProcessDefinitionWithScheduleResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3466,29 +2660,10 @@ func (client *Client) UpdateProcessDefinitionWithScheduleWithOptions(bizId *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateProcessDefinitionWithScheduleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the workflow and time-based scheduling configurations.
-//
-// @param request - UpdateProcessDefinitionWithScheduleRequest
-//
-// @return UpdateProcessDefinitionWithScheduleResponse
-func (client *Client) UpdateProcessDefinitionWithSchedule(bizId *string, code *string, request *UpdateProcessDefinitionWithScheduleRequest) (_result *UpdateProcessDefinitionWithScheduleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateProcessDefinitionWithScheduleResponse{}
-	_body, _err := client.UpdateProcessDefinitionWithScheduleWithOptions(bizId, code, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
