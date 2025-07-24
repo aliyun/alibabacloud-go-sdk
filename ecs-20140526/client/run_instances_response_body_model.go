@@ -20,7 +20,7 @@ type iRunInstancesResponseBody interface {
 }
 
 type RunInstancesResponseBody struct {
-	// The instance IDs (`InstanceIdSet`).
+	// The instance IDs.
 	InstanceIdSets *RunInstancesResponseBodyInstanceIdSets `json:"InstanceIdSets,omitempty" xml:"InstanceIdSets,omitempty" type:"Struct"`
 	// The ID of the order. This parameter is returned only when `InstanceChargeType` is set to PrePaid.
 	//

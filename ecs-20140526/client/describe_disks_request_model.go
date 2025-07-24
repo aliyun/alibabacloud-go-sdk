@@ -295,10 +295,6 @@ type DescribeDisksRequest struct {
 	//
 	// 	- security: The disk is locked due to security reasons.
 	//
-	// 	- recycling: The spot instance is locked and pending release.
-	//
-	// 	- dedicatedhostfinancial: The instance is locked due to overdue payments for the dedicated host.
-	//
 	// example:
 	//
 	// recycling

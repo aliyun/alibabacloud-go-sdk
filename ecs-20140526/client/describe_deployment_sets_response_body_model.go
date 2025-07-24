@@ -150,6 +150,7 @@ func (s *DescribeDeploymentSetsResponseBodyDeploymentSets) Validate() error {
 }
 
 type DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet struct {
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// Details of the capacities of the deployment set. This parameter is valid only when the deployment set contains ECS instances. The value contains information about the capacities of the deployment set in different zones.
 	Capacities *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities `json:"Capacities,omitempty" xml:"Capacities,omitempty" type:"Struct"`
 	// The time when the deployment set was created.
@@ -226,6 +227,10 @@ func (s DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) GoString(
 	return s.String()
 }
 
+func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) GetAccountId() *int64 {
+	return s.AccountId
+}
+
 func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) GetCapacities() *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities {
 	return s.Capacities
 }
@@ -272,6 +277,11 @@ func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) GetInsta
 
 func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) GetStrategy() *string {
 	return s.Strategy
+}
+
+func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetAccountId(v int64) *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.AccountId = &v
+	return s
 }
 
 func (s *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetCapacities(v *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities) *DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {

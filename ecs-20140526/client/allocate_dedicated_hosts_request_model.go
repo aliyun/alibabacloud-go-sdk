@@ -63,9 +63,9 @@ type iAllocateDedicatedHostsRequest interface {
 
 type AllocateDedicatedHostsRequest struct {
 	NetworkAttributes *AllocateDedicatedHostsRequestNetworkAttributes `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
-	// The policy used to migrate the instances deployed on the dedicated host when the dedicated host fails or needs to be repaired online. Valid values:
+	// The policy for migrating the instances deployed on the dedicated host when the dedicated host fails or needs to be repaired online. Valid values:
 	//
-	// 	- Migrate: The instances are migrated to another physical server and restarted.
+	// 	- Migrate: The instances are migrated to another physical machine and then restarted.
 	//
 	//     If cloud disks are attached to the dedicated host, the default value is Migrate.
 	//

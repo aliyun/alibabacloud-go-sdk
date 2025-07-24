@@ -24,19 +24,19 @@ type iDescribeLaunchTemplatesResponseBody interface {
 type DescribeLaunchTemplatesResponseBody struct {
 	// The queried launch templates.
 	LaunchTemplateSets *DescribeLaunchTemplatesResponseBodyLaunchTemplateSets `json:"LaunchTemplateSets,omitempty" xml:"LaunchTemplateSets,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSet stru
 	//
 	// lt-m5e3ofjr1zn1aw7q****
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
-	// The name of the template.
+	// The name of the launch template.
 	//
 	// example:
 	//
@@ -310,13 +310,13 @@ func (s *DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSetT
 }
 
 type DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSetTagsTag struct {
-	// The tag key of the launch template.
+	// The tag value of the launch template.
 	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the launch template.
+	// The tag key of the launch template.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iDescribeDedicatedHostsResponseBody interface {
 }
 
 type DescribeDedicatedHostsResponseBody struct {
-	// Details about the dedicated hosts.
+	// Details about the DDH.
 	DedicatedHosts *DescribeDedicatedHostsResponseBodyDedicatedHosts `json:"DedicatedHosts,omitempty" xml:"DedicatedHosts,omitempty" type:"Struct"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. If the return value of this parameter is empty when you specify MaxResults and NextToken for a paged query, no more results are to be returned.
 	//
@@ -195,7 +195,7 @@ type DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHost struct {
 	//
 	// 3
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The CPU overcommit ratio.Valid values: 1 to 5.
+	// The CPU overcommit ratio. Valid values: 1 to 5.
 	//
 	// example:
 	//

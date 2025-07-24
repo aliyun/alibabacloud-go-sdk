@@ -309,7 +309,12 @@ type DescribeTerminalSessionsResponseBodySessionsSessionConnectionsConnection st
 	// example:
 	//
 	// 2024-01-19T09:16:46Z
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Cause of the connection failure. This parameter is returned only when the Status parameter is Failed.
+	//
+	// example:
+	//
+	// The Session Manager is closed normally.
 	FailedDetail *string `json:"FailedDetail,omitempty" xml:"FailedDetail,omitempty"`
 	// The instance ID.
 	//
@@ -328,10 +333,6 @@ type DescribeTerminalSessionsResponseBodySessionsSessionConnectionsConnection st
 	// 	- Connecting: The connection is being established.
 	//
 	// 	- Connected: The connection is established.
-	//
-	// 	- Disconnected: The connection is disconnected.
-	//
-	// 	- Terminating: The session is being terminated.
 	//
 	// 	- Terminated: The session is terminated.
 	//

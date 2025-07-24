@@ -2,95 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-hangzhou":                 dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-north-2-gov-1":            dara.String("ecs.aliyuncs.com"),
-		"ap-northeast-2-pop":          dara.String("ecs.aliyuncs.com"),
-		"cn-beijing-finance-pop":      dara.String("ecs.aliyuncs.com"),
-		"cn-beijing-gov-1":            dara.String("ecs.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-edge-1":                   dara.String("ecs.cn-qingdao-nebula.aliyuncs.com"),
-		"cn-fujian":                   dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-hangzhou-finance":         dara.String("ecs.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-hangzhou-test-306":        dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     dara.String("ecs.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       dara.String("ecs.cn-qingdao-nebula.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-shanghai-inner":           dara.String("ecs.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-shenzhen-inner":           dara.String("ecs.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-wuhan":                    dara.String("ecs.aliyuncs.com"),
-		"cn-yushanfang":               dara.String("ecs.aliyuncs.com"),
-		"cn-zhangbei":                 dara.String("ecs.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        dara.String("ecs-cn-hangzhou.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     dara.String("ecs.cn-zhangjiakou.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       dara.String("ecs.cn-qingdao-nebula.aliyuncs.com"),
-		"eu-west-1-oxs":               dara.String("ecs.cn-shenzhen-cloudstone.aliyuncs.com"),
-		"rus-west-1-pop":              dara.String("ecs.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("ecs"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -101,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AcceptInquiredSystemEventResponse
-func (client *Client) AcceptInquiredSystemEventWithOptions(request *AcceptInquiredSystemEventRequest, runtime *dara.RuntimeOptions) (_result *AcceptInquiredSystemEventResponse, _err error) {
+func (client *Client) AcceptInquiredSystemEventWithContext(ctx context.Context, request *AcceptInquiredSystemEventRequest, runtime *dara.RuntimeOptions) (_result *AcceptInquiredSystemEventResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -154,29 +69,11 @@ func (client *Client) AcceptInquiredSystemEventWithOptions(request *AcceptInquir
 		BodyType:    dara.String("json"),
 	}
 	_result = &AcceptInquiredSystemEventResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Accepts the default operation for a system event in the Inquiring state and authorizes the system to perform the operation.
-//
-// @param request - AcceptInquiredSystemEventRequest
-//
-// @return AcceptInquiredSystemEventResponse
-func (client *Client) AcceptInquiredSystemEvent(request *AcceptInquiredSystemEventRequest) (_result *AcceptInquiredSystemEventResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AcceptInquiredSystemEventResponse{}
-	_body, _err := client.AcceptInquiredSystemEventWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -187,7 +84,7 @@ func (client *Client) AcceptInquiredSystemEvent(request *AcceptInquiredSystemEve
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ActivateRouterInterfaceResponse
-func (client *Client) ActivateRouterInterfaceWithOptions(request *ActivateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *ActivateRouterInterfaceResponse, _err error) {
+func (client *Client) ActivateRouterInterfaceWithContext(ctx context.Context, request *ActivateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *ActivateRouterInterfaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -228,28 +125,11 @@ func (client *Client) ActivateRouterInterfaceWithOptions(request *ActivateRouter
 		BodyType:    dara.String("json"),
 	}
 	_result = &ActivateRouterInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ActivateRouterInterface is deprecated
-//
-// @param request - ActivateRouterInterfaceRequest
-//
-// @return ActivateRouterInterfaceResponse
-// Deprecated
-func (client *Client) ActivateRouterInterface(request *ActivateRouterInterfaceRequest) (_result *ActivateRouterInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ActivateRouterInterfaceResponse{}
-	_body, _err := client.ActivateRouterInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -260,7 +140,7 @@ func (client *Client) ActivateRouterInterface(request *ActivateRouterInterfaceRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddBandwidthPackageIpsResponse
-func (client *Client) AddBandwidthPackageIpsWithOptions(request *AddBandwidthPackageIpsRequest, runtime *dara.RuntimeOptions) (_result *AddBandwidthPackageIpsResponse, _err error) {
+func (client *Client) AddBandwidthPackageIpsWithContext(ctx context.Context, request *AddBandwidthPackageIpsRequest, runtime *dara.RuntimeOptions) (_result *AddBandwidthPackageIpsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -313,28 +193,11 @@ func (client *Client) AddBandwidthPackageIpsWithOptions(request *AddBandwidthPac
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddBandwidthPackageIpsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AddBandwidthPackageIps is deprecated
-//
-// @param request - AddBandwidthPackageIpsRequest
-//
-// @return AddBandwidthPackageIpsResponse
-// Deprecated
-func (client *Client) AddBandwidthPackageIps(request *AddBandwidthPackageIpsRequest) (_result *AddBandwidthPackageIpsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddBandwidthPackageIpsResponse{}
-	_body, _err := client.AddBandwidthPackageIpsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -359,7 +222,7 @@ func (client *Client) AddBandwidthPackageIps(request *AddBandwidthPackageIpsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddTagsResponse
-func (client *Client) AddTagsWithOptions(request *AddTagsRequest, runtime *dara.RuntimeOptions) (_result *AddTagsResponse, _err error) {
+func (client *Client) AddTagsWithContext(ctx context.Context, request *AddTagsRequest, runtime *dara.RuntimeOptions) (_result *AddTagsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -408,42 +271,11 @@ func (client *Client) AddTagsWithOptions(request *AddTagsRequest, runtime *dara.
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AddTags is deprecated, please use Ecs::2014-05-26::TagResources instead.
-//
-// Summary:
-//
-// Adds tags to Elastic Compute Service (ECS) resources, or overwrites tags of ECS resources. You can add tags to ECS resources such as instances, disks, snapshots, images, and security groups for easy management.
-//
-// Description:
-//
-// When you call this operation, take note of the following items:
-//
-//   - Up to 20 tags can be added to each ECS resource.
-//
-//   - `Tag.N.Key` must match `Tag.N.Value` based on the value of N.
-//
-//   - If you add a tag that has the same key (`Tag.N.Key`) as an existing tag on the specified resource, the new tag value (`Tag.N.Value`) overwrites the original tag value.
-//
-// @param request - AddTagsRequest
-//
-// @return AddTagsResponse
-// Deprecated
-func (client *Client) AddTags(request *AddTagsRequest) (_result *AddTagsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddTagsResponse{}
-	_body, _err := client.AddTagsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -470,7 +302,7 @@ func (client *Client) AddTags(request *AddTagsRequest) (_result *AddTagsResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AllocateDedicatedHostsResponse
-func (client *Client) AllocateDedicatedHostsWithOptions(request *AllocateDedicatedHostsRequest, runtime *dara.RuntimeOptions) (_result *AllocateDedicatedHostsResponse, _err error) {
+func (client *Client) AllocateDedicatedHostsWithContext(ctx context.Context, request *AllocateDedicatedHostsRequest, runtime *dara.RuntimeOptions) (_result *AllocateDedicatedHostsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -591,43 +423,11 @@ func (client *Client) AllocateDedicatedHostsWithOptions(request *AllocateDedicat
 		BodyType:    dara.String("json"),
 	}
 	_result = &AllocateDedicatedHostsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates pay-as-you-go or subscription dedicated hosts. A dedicated host is a physical server dedicated to a single tenant. You can create Elastic Compute Service (ECS) instances on a dedicated host and view the attributes of a dedicated host.
-//
-// Description:
-//
-// Before you create a dedicated host, you can call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation to query the resources available in a specific region or zone.
-//
-// We recommend that you understand the billing methods of resources before you create a dedicated host. You are charged for resources used by the created dedicated host. For more information, see [Billing overview](https://help.aliyun.com/document_detail/68978.html).
-//
-//   - You can create up to 100 pay-as-you-go or subscription dedicated hosts at a time.
-//
-//   - After a dedicated host is created, you can use the returned dedicated host ID as the value of a request parameter to call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the state of the dedicated host.
-//
-//   - After you submit a request to create a dedicated host, an error is returned if a specific parameter is invalid or if the requested resources are insufficient. For more information about error causes, see the "Error codes" section of this topic.
-//
-//   - After a dedicated host is created, you can call the [ModifyInstanceDeployment](https://help.aliyun.com/document_detail/134248.html) operation to migrate ECS instances from a shared host to the dedicated host. You can also migrate ECS instances from another dedicated host to the created dedicated host.
-//
-// @param request - AllocateDedicatedHostsRequest
-//
-// @return AllocateDedicatedHostsResponse
-func (client *Client) AllocateDedicatedHosts(request *AllocateDedicatedHostsRequest) (_result *AllocateDedicatedHostsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AllocateDedicatedHostsResponse{}
-	_body, _err := client.AllocateDedicatedHostsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -642,7 +442,7 @@ func (client *Client) AllocateDedicatedHosts(request *AllocateDedicatedHostsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AllocateEipAddressResponse
-func (client *Client) AllocateEipAddressWithOptions(request *AllocateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateEipAddressResponse, _err error) {
+func (client *Client) AllocateEipAddressWithContext(ctx context.Context, request *AllocateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateEipAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -703,32 +503,11 @@ func (client *Client) AllocateEipAddressWithOptions(request *AllocateEipAddressR
 		BodyType:    dara.String("json"),
 	}
 	_result = &AllocateEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AllocateEipAddress is deprecated, please use Vpc::2016-04-28::AllocateEipAddress instead.
-//
-// Description:
-//
-// > This operation has been upgraded. We recommend that you do not use it. For information about the new version of this operation, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
-//
-// @param request - AllocateEipAddressRequest
-//
-// @return AllocateEipAddressResponse
-// Deprecated
-func (client *Client) AllocateEipAddress(request *AllocateEipAddressRequest) (_result *AllocateEipAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AllocateEipAddressResponse{}
-	_body, _err := client.AllocateEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -761,7 +540,7 @@ func (client *Client) AllocateEipAddress(request *AllocateEipAddressRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AllocatePublicIpAddressResponse
-func (client *Client) AllocatePublicIpAddressWithOptions(request *AllocatePublicIpAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocatePublicIpAddressResponse, _err error) {
+func (client *Client) AllocatePublicIpAddressWithContext(ctx context.Context, request *AllocatePublicIpAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocatePublicIpAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -810,49 +589,11 @@ func (client *Client) AllocatePublicIpAddressWithOptions(request *AllocatePublic
 		BodyType:    dara.String("json"),
 	}
 	_result = &AllocatePublicIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Assigns a static public IP address (also called system-assigned public IP address or auto-assigned public IP address) to an Elastic Compute Service (ECS) instance.
-//
-// Description:
-//
-// ### [](#)Precautions
-//
-//   - The ECS instance to which you want to assign a static public IP address must be in the **Running*	- (`Running`) or **Stopped*	- (`Stopped`) state.
-//
-//   - If `OperationLocks` in the response of the DescribeInstances operation contains `"LockReason" : "security"` for an ECS instance, the instance is [locked for security reasons](https://help.aliyun.com/document_detail/25695.html) and cannot be assigned a static public IP address.
-//
-//   - When you call the AllocatePublicIpAddress operation for an ECS instance, make sure that the public bandwidth of the instance is greater than 0 Mbit/s. You can call the [ModifyInstanceNetworkSpec](https://help.aliyun.com/document_detail/2679879.html) operation to change the public bandwidth.
-//
-// ### [](#)Considerations
-//
-//   - Only users in the whitelist can specify `IpAddress` in the AllocatePublicIpAddress operation. If the public bandwidth of your ECS instance is greater than 0 Mbit/s, you can specify the ID of the instance (`InstanceId`) to randomly assign a static public IP address to the instance. If the public bandwidth of your ECS instance is 0 Mbit/s, you must call the [ModifyInstanceNetworkSpec](https://help.aliyun.com/document_detail/2679879.html) operation to increase the public bandwidth of the instance before you call the AllocatePublicIpAddress operation.
-//
-//   - You can assign only one static public IP address to an ECS instance. If the instance already has a static public IP address, the static public IP address is returned for the `IpAddress` response parameter.
-//
-//   - After you assign a static public IP address to an ECS instance, you must restart the instance ([RebootInstance](https://help.aliyun.com/document_detail/25502.html)) or start the instance ([StartInstance](https://help.aliyun.com/document_detail/25500.html)) for the public IP address to take effect.
-//
-// If an ECS instance resides in a virtual private cloud (VPC), you can assign a static public IP address to the instance or associate an elastic IP address (EIP) with the instance. For more information, see [AssociateEipAddress](https://help.aliyun.com/document_detail/2518064.html).
-//
-// @param request - AllocatePublicIpAddressRequest
-//
-// @return AllocatePublicIpAddressResponse
-func (client *Client) AllocatePublicIpAddress(request *AllocatePublicIpAddressRequest) (_result *AllocatePublicIpAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AllocatePublicIpAddressResponse{}
-	_body, _err := client.AllocatePublicIpAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -871,7 +612,7 @@ func (client *Client) AllocatePublicIpAddress(request *AllocatePublicIpAddressRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ApplyAutoSnapshotPolicyResponse
-func (client *Client) ApplyAutoSnapshotPolicyWithOptions(request *ApplyAutoSnapshotPolicyRequest, runtime *dara.RuntimeOptions) (_result *ApplyAutoSnapshotPolicyResponse, _err error) {
+func (client *Client) ApplyAutoSnapshotPolicyWithContext(ctx context.Context, request *ApplyAutoSnapshotPolicyRequest, runtime *dara.RuntimeOptions) (_result *ApplyAutoSnapshotPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -916,35 +657,11 @@ func (client *Client) ApplyAutoSnapshotPolicyWithOptions(request *ApplyAutoSnaps
 		BodyType:    dara.String("json"),
 	}
 	_result = &ApplyAutoSnapshotPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Applies an automatic snapshot policy to one or more cloud disks. You can call this operation to replace the automatic snapshot policy of a cloud disk.
-//
-// Description:
-//
-//	  Each disk can have only one automatic snapshot policy.
-//
-//		- Each automatic snapshot policy can be applied to multiple disks.
-//
-// @param request - ApplyAutoSnapshotPolicyRequest
-//
-// @return ApplyAutoSnapshotPolicyResponse
-func (client *Client) ApplyAutoSnapshotPolicy(request *ApplyAutoSnapshotPolicyRequest) (_result *ApplyAutoSnapshotPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ApplyAutoSnapshotPolicyResponse{}
-	_body, _err := client.ApplyAutoSnapshotPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -977,7 +694,7 @@ func (client *Client) ApplyAutoSnapshotPolicy(request *ApplyAutoSnapshotPolicyRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssignIpv6AddressesResponse
-func (client *Client) AssignIpv6AddressesWithOptions(request *AssignIpv6AddressesRequest, runtime *dara.RuntimeOptions) (_result *AssignIpv6AddressesResponse, _err error) {
+func (client *Client) AssignIpv6AddressesWithContext(ctx context.Context, request *AssignIpv6AddressesRequest, runtime *dara.RuntimeOptions) (_result *AssignIpv6AddressesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1046,49 +763,11 @@ func (client *Client) AssignIpv6AddressesWithOptions(request *AssignIpv6Addresse
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssignIpv6AddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Assigns one or more IPv6 addresses to an elastic network interface (ENI).
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// You can specify IPv6 addresses in the CIDR block of the vSwitch to which the ENI is connected. You can also specify the number of IPv6 addresses that the system assigns to the ENI. Take note of the following items:
-//
-//   - IPv6 must be enabled on the vSwitch to which the ENI is connected. For more information, see [Enable IPv6 for a vSwitch](https://help.aliyun.com/document_detail/98923.html).
-//
-//   - The ENI must be in the Available (Available) or InUse (InUse) state.
-//
-//   - If you want to assign IPv6 addresses to a primary ENI, make sure that the Elastic Compute Service (ECS) instance to which the ENI is attached is in the Running (Running) or Stopped (Stopped) state.
-//
-//   - The maximum number of IPv6 addresses that can be assigned to an ENI varies based on the instance type of the instance to which the ENI is attached.
-//
-//   - If the ENI is in the Available (Available) state, up to 10 IPv6 addresses can be assigned to the ENI.
-//
-//   - If the ENI is attached to an ECS instance, the maximum number of IPv6 addresses that can be assigned to the ENI varies based on the instance type. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
-//
-//   - After the operation is called, you can obtain the IPv6 addresses that are assigned to the ENI from the response.
-//
-// @param request - AssignIpv6AddressesRequest
-//
-// @return AssignIpv6AddressesResponse
-func (client *Client) AssignIpv6Addresses(request *AssignIpv6AddressesRequest) (_result *AssignIpv6AddressesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssignIpv6AddressesResponse{}
-	_body, _err := client.AssignIpv6AddressesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1113,7 +792,7 @@ func (client *Client) AssignIpv6Addresses(request *AssignIpv6AddressesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssignPrivateIpAddressesResponse
-func (client *Client) AssignPrivateIpAddressesWithOptions(request *AssignPrivateIpAddressesRequest, runtime *dara.RuntimeOptions) (_result *AssignPrivateIpAddressesResponse, _err error) {
+func (client *Client) AssignPrivateIpAddressesWithContext(ctx context.Context, request *AssignPrivateIpAddressesRequest, runtime *dara.RuntimeOptions) (_result *AssignPrivateIpAddressesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1182,41 +861,11 @@ func (client *Client) AssignPrivateIpAddressesWithOptions(request *AssignPrivate
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssignPrivateIpAddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Assigns secondary private IP addresses to an elastic network interface (ENI). You can specify available private IP addresses within the CIDR block of the vSwitch that is connected to the ENI. Alternatively, you can specify the number of private IP addresses that are automatically assigned from the CIDR block of the vSwitch to the ENI.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - The ENI to which you want to assign IP prefixes must be in the Available (Available) or InUse (InUse) state.
-//
-//   - When you assign private IP addresses to a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the Running (Running) or Stopped (Stopped) state.
-//
-//   - When an ENI is in the Available state, you can assign up to 49 secondary private IP addresses to the ENI. When an ENI is attached to an instance, the number of secondary private IP addresses that can be assigned to the ENI varies based on the instance type. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
-//
-//   - After the operation is called, you can obtain the assigned secondary private IP addresses from the response.
-//
-// @param request - AssignPrivateIpAddressesRequest
-//
-// @return AssignPrivateIpAddressesResponse
-func (client *Client) AssignPrivateIpAddresses(request *AssignPrivateIpAddressesRequest) (_result *AssignPrivateIpAddressesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssignPrivateIpAddressesResponse{}
-	_body, _err := client.AssignPrivateIpAddressesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1227,7 +876,7 @@ func (client *Client) AssignPrivateIpAddresses(request *AssignPrivateIpAddresses
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateEipAddressResponse
-func (client *Client) AssociateEipAddressWithOptions(request *AssociateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AssociateEipAddressResponse, _err error) {
+func (client *Client) AssociateEipAddressWithContext(ctx context.Context, request *AssociateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AssociateEipAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1280,28 +929,11 @@ func (client *Client) AssociateEipAddressWithOptions(request *AssociateEipAddres
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AssociateEipAddress is deprecated, please use Vpc::2016-04-28::AssociateEipAddress instead.
-//
-// @param request - AssociateEipAddressRequest
-//
-// @return AssociateEipAddressResponse
-// Deprecated
-func (client *Client) AssociateEipAddress(request *AssociateEipAddressRequest) (_result *AssociateEipAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateEipAddressResponse{}
-	_body, _err := client.AssociateEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1312,7 +944,7 @@ func (client *Client) AssociateEipAddress(request *AssociateEipAddressRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateHaVipResponse
-func (client *Client) AssociateHaVipWithOptions(request *AssociateHaVipRequest, runtime *dara.RuntimeOptions) (_result *AssociateHaVipResponse, _err error) {
+func (client *Client) AssociateHaVipWithContext(ctx context.Context, request *AssociateHaVipRequest, runtime *dara.RuntimeOptions) (_result *AssociateHaVipResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1365,28 +997,11 @@ func (client *Client) AssociateHaVipWithOptions(request *AssociateHaVipRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateHaVipResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AssociateHaVip is deprecated
-//
-// @param request - AssociateHaVipRequest
-//
-// @return AssociateHaVipResponse
-// Deprecated
-func (client *Client) AssociateHaVip(request *AssociateHaVipRequest) (_result *AssociateHaVipResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateHaVipResponse{}
-	_body, _err := client.AssociateHaVipWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1409,7 +1024,7 @@ func (client *Client) AssociateHaVip(request *AssociateHaVipRequest) (_result *A
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachClassicLinkVpcResponse
-func (client *Client) AttachClassicLinkVpcWithOptions(request *AttachClassicLinkVpcRequest, runtime *dara.RuntimeOptions) (_result *AttachClassicLinkVpcResponse, _err error) {
+func (client *Client) AttachClassicLinkVpcWithContext(ctx context.Context, request *AttachClassicLinkVpcRequest, runtime *dara.RuntimeOptions) (_result *AttachClassicLinkVpcResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1454,39 +1069,11 @@ func (client *Client) AttachClassicLinkVpcWithOptions(request *AttachClassicLink
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachClassicLinkVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Links an instance that is deployed in the classic network to a virtual private cloud (VPC) by establishing a ClassicLink connection between the instance and the VPC. This way, the instance can communicate with cloud resources in the VPC over the internal network.
-//
-// Description:
-//
-// When you call this operation, take note of the following items:
-//
-//   - The instance that you want to connect to a VPC must be in the **Running*	- or **Stopped*	- state.
-//
-//   - The ClassicLink feature must be enabled for the destination VPC. For more information, see [Create a ClassicLink connection](https://help.aliyun.com/document_detail/65413.html).
-//
-//   - The instance and the VPC must reside in the same region.
-//
-// @param request - AttachClassicLinkVpcRequest
-//
-// @return AttachClassicLinkVpcResponse
-func (client *Client) AttachClassicLinkVpc(request *AttachClassicLinkVpcRequest) (_result *AttachClassicLinkVpcResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachClassicLinkVpcResponse{}
-	_body, _err := client.AttachClassicLinkVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1531,7 +1118,7 @@ func (client *Client) AttachClassicLinkVpc(request *AttachClassicLinkVpcRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachDiskResponse
-func (client *Client) AttachDiskWithOptions(request *AttachDiskRequest, runtime *dara.RuntimeOptions) (_result *AttachDiskResponse, _err error) {
+func (client *Client) AttachDiskWithContext(ctx context.Context, request *AttachDiskRequest, runtime *dara.RuntimeOptions) (_result *AttachDiskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1600,61 +1187,11 @@ func (client *Client) AttachDiskWithOptions(request *AttachDiskRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Attaches a pay-as-you-go data disk or a system disk to an Elastic Compute Service (ECS) instance.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - The ECS instance and the disk must reside in the same zone.
-//
-//   - The disk must be in the **Unattached*	- (`Available`) state.
-//
-//   - When you attach the disk as a data disk to an ECS instance, take note of the following items:
-//
-//   - The ECS instance must be in the **Running*	- (`Running`) or **Stopped*	- (`Stopped`) state.
-//
-//   - If the disk was separately purchased, the billing method of the disk must be pay-as-you-go.
-//
-//   - If the disk is a system disk that was detached from an ECS instance, no limits apply to the billing method of the disk.
-//
-//   - If the disk is an elastic ephemeral disk that was detached from an ECS instance, the disk can be attached only to the instance.
-//
-//   - When you attach the disk as the system disk to an ECS instance, take note of the following items:
-//
-//   - The ECS instance must be the original instance from which the system disk was detached.
-//
-//   - The ECS instance must be in the **Stopped*	- (`Stopped`) state.
-//
-//   - You must configure logon credentials for the ECS instance.
-//
-//   - The disk cannot be an elastic ephemeral disk.
-//
-//   - For more information about how to attach a system disk, see [Detach or attach a system disk](https://help.aliyun.com/document_detail/146752.html).
-//
-//   - If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ECS instance, the instance is locked for security reasons. No operations are allowed on the instance.
-//
-// @param request - AttachDiskRequest
-//
-// @return AttachDiskResponse
-func (client *Client) AttachDisk(request *AttachDiskRequest) (_result *AttachDiskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachDiskResponse{}
-	_body, _err := client.AttachDiskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1673,7 +1210,7 @@ func (client *Client) AttachDisk(request *AttachDiskRequest) (_result *AttachDis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachInstanceRamRoleResponse
-func (client *Client) AttachInstanceRamRoleWithOptions(request *AttachInstanceRamRoleRequest, runtime *dara.RuntimeOptions) (_result *AttachInstanceRamRoleResponse, _err error) {
+func (client *Client) AttachInstanceRamRoleWithContext(ctx context.Context, request *AttachInstanceRamRoleRequest, runtime *dara.RuntimeOptions) (_result *AttachInstanceRamRoleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1722,35 +1259,11 @@ func (client *Client) AttachInstanceRamRoleWithOptions(request *AttachInstanceRa
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachInstanceRamRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Attaches an instance Resource Access Management (RAM) role to Elastic Compute Service (ECS) instances.
-//
-// Description:
-//
-// You can call the [DescribeInstanceRamRole](https://help.aliyun.com/document_detail/2679686.html) operation to query the [instance RAM roles](https://help.aliyun.com/document_detail/61175.html) that are attached to ECS instances.
-//
-// >  If an ECS instance already has an instance RAM role, an error is returned when you attach another instance RAM role to the instance.
-//
-// @param request - AttachInstanceRamRoleRequest
-//
-// @return AttachInstanceRamRoleResponse
-func (client *Client) AttachInstanceRamRole(request *AttachInstanceRamRoleRequest) (_result *AttachInstanceRamRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachInstanceRamRoleResponse{}
-	_body, _err := client.AttachInstanceRamRoleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1777,7 +1290,7 @@ func (client *Client) AttachInstanceRamRole(request *AttachInstanceRamRoleReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachKeyPairResponse
-func (client *Client) AttachKeyPairWithOptions(request *AttachKeyPairRequest, runtime *dara.RuntimeOptions) (_result *AttachKeyPairResponse, _err error) {
+func (client *Client) AttachKeyPairWithContext(ctx context.Context, request *AttachKeyPairRequest, runtime *dara.RuntimeOptions) (_result *AttachKeyPairResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1822,43 +1335,11 @@ func (client *Client) AttachKeyPairWithOptions(request *AttachKeyPairRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Binds an SSH key pair to one or more Linux instances.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - SSH key pairs are not supported on Windows instances.
-//
-//   - If an SSH key pair is bound to an instance, authentication by using the username and password is disabled for the instance.
-//
-//   - If you bind an SSH key pair to an instance in the **running*	- state, you must call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation to restart the instance for the key pair to take effect.
-//
-//   - If you bind an SSH key pair to an instance in the **stopped*	- state, you must call the [StartInstance](https://help.aliyun.com/document_detail/25500.html) operation to start the instance for the key pair to take effect.
-//
-//   - If an instance is already bound to an SSH key pair, the new SSH key pair will replace the original one.
-//
-// @param request - AttachKeyPairRequest
-//
-// @return AttachKeyPairResponse
-func (client *Client) AttachKeyPair(request *AttachKeyPairRequest) (_result *AttachKeyPairResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachKeyPairResponse{}
-	_body, _err := client.AttachKeyPairWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1897,7 +1378,7 @@ func (client *Client) AttachKeyPair(request *AttachKeyPairRequest) (_result *Att
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachNetworkInterfaceResponse
-func (client *Client) AttachNetworkInterfaceWithOptions(request *AttachNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *AttachNetworkInterfaceResponse, _err error) {
+func (client *Client) AttachNetworkInterfaceWithContext(ctx context.Context, request *AttachNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *AttachNetworkInterfaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1962,55 +1443,11 @@ func (client *Client) AttachNetworkInterfaceWithOptions(request *AttachNetworkIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Attaches an elastic network interface (ENI) to an Elastic Compute Service (ECS) instance that resides in a virtual private cloud (VPC). When you call this operation, you can specify parameters, such as NetworkInterfaceId, InstanceId, and NetworkCardIndex, in the request.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - The ENI must be in the **Available*	- state. You can attach an ENI to only one instance that resides in the same zone and VPC as the ENI.
-//
-//   - The instance must be in the Running or Stopped state. When you attach ENIs to instances of specific instance types, make sure that the instances are in the Stopped state. For more information, see the "Instance types of the ECS instances that must be in the Stopped (Stopped) state" section in the [Bind an ENI](https://help.aliyun.com/document_detail/58503.html) topic.
-//
-// >If the last start time of the instance (including the start time of the instance if it is a new instance, the last restart time of the instance, and the last reactivation time of the instance) is before April 1st, 2018 and the instance is in the Running state, you must call the RebootInstance operation to restart the instance. If you do not call the RebootInstance operation to restart the instance, you cannot attach the ENI to the instance.
-//
-//   - You can attach multiple ENIs to one instance. For more information, see [ENI overview](https://help.aliyun.com/document_detail/58496.html).
-//
-//   - The vSwitch to which the ENI is connected must be in the same zone and VPC as the vSwitch to which the instance is connected.
-//
-//   - This operation is an asynchronous operation. After you call this operation to attach an ENI, you can view the status or events of the ENI to check whether the ENI is attached. The following figure shows the transitions between the statuses of the ENI.
-//
-//     ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/en-US/20230223/vqky/AttachNetworkInterface.png)
-//
-// - If the ENI is in the Attaching state, the ENI attachment request is sent and the ENI is being attached to the specified instance.
-//
-// - If the ENI is in the InUse state, the ENI is attached to the specified instance.
-//
-// - If the ENI is in the Available state, the ENI failed to be attached.
-//
-// **For examples on how to call this operation, see*	- [Attach an ENI](https://help.aliyun.com/document_detail/471550.html).
-//
-// @param request - AttachNetworkInterfaceRequest
-//
-// @return AttachNetworkInterfaceResponse
-func (client *Client) AttachNetworkInterface(request *AttachNetworkInterfaceRequest) (_result *AttachNetworkInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachNetworkInterfaceResponse{}
-	_body, _err := client.AttachNetworkInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2107,7 +1544,7 @@ func (client *Client) AttachNetworkInterface(request *AttachNetworkInterfaceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AuthorizeSecurityGroupResponse
-func (client *Client) AuthorizeSecurityGroupWithOptions(request *AuthorizeSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeSecurityGroupResponse, _err error) {
+func (client *Client) AuthorizeSecurityGroupWithContext(ctx context.Context, request *AuthorizeSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeSecurityGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2236,113 +1673,11 @@ func (client *Client) AuthorizeSecurityGroupWithOptions(request *AuthorizeSecuri
 		BodyType:    dara.String("json"),
 	}
 	_result = &AuthorizeSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates inbound security group rules in a security group. You can use the created rules to allow or deny inbound traffic from other objects to Elastic Compute Service (ECS) instances in the security group for fine-grained network access control.
-//
-// Description:
-//
-// ### [](#)Precautions
-//
-//   - **Quantity limit**: The maximum number of inbound and outbound rules in all security groups associated with an elastic network interface (ENI) cannot exceed 1,000. For more information, see the [Security groups](~~25412#SecurityGroupQuota1~~) section of the "Limits and quotas on ECS" topic.
-//
-//   - **Rule priorities**: For inbound security group rules, the valid values of Priority range from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
-//
-// ### [](#)Considerations
-//
-// If the security group rule that you call the AuthorizeSecurityGroup operation to create exists in the security group, the call is successful but no security group rule is created.
-//
-// ### [](#)Parameters that define a security group rule
-//
-// Define an inbound security group rule by configuring the following parameters together:
-//
-//   - Source: You can specify one parameter from SourceCidrIp (IPv4 address), Ipv6SourceCidrIp (IPv6 address), SourcetPrefixListId (prefix list ID), and SourceGroupId (source security group ID).
-//
-//   - PortRange: specifies the range of destination port numbers.
-//
-//   - IpProtocol: specifies the protocol.
-//
-//   - Policy: specifies the action.
-//
-// >  Advanced security groups do not support security group rules that reference security groups as authorization objects. Each basic security group can contain up to 20 security group rules that reference security groups as authorization objects.
-//
-// ### [](#)Sample requests
-//
-// Sample requests to create inbound security group rules that control access from different sources in a security group in the China (Hangzhou) region:
-//
-//   - Sample request to create an inbound security group rule that controls access from a specific CIDR block:
-//
-//     "RegionId":"cn-hangzhou", // Specify the region.
-//
-//     "SecurityGroupId":"sg-bp67acfmxazb4p****", // Specify the security group.
-//
-//     "Permissions":[
-//
-//     {
-//
-//     "SourceCidrIp":"10.0.0.0/8", // Specify the source IPv4 CIDR block.
-//
-//     "PortRange":"22/22", // Specify the port range.
-//
-//     "IpProtocol":"TCP", // Specify the protocol.
-//
-//     "Policy":"Accept" // Specify the action.
-//
-//     }
-//
-//     ]
-//
-//   - Sample request to create an inbound security group rule that controls access from a security group and an inbound security group rule that controls access from a prefix list:
-//
-//     "RegionId":"cn-hangzhou",
-//
-//     "SecurityGroupId":"sg-bp67acfmxazb4p****",
-//
-//     "Permissions":[
-//
-//     {
-//
-//     "SourceGroupId":"sg-bp17vs63txqxbd****", // Specify the source security group.
-//
-//     "PortRange":"22/22",
-//
-//     "IpProtocol":"TCP",
-//
-//     "Policy":"Drop"
-//
-//     },{
-//
-//     "SourcePrefixListId":"pl-x1j1k5ykzqlixdcy****", // Specify the source prefix list.
-//
-//     "PortRange":"22/22",
-//
-//     "IpProtocol":"TCP",
-//
-//     "Policy":"Drop"
-//
-//     }
-//
-//     ]
-//
-// @param request - AuthorizeSecurityGroupRequest
-//
-// @return AuthorizeSecurityGroupResponse
-func (client *Client) AuthorizeSecurityGroup(request *AuthorizeSecurityGroupRequest) (_result *AuthorizeSecurityGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AuthorizeSecurityGroupResponse{}
-	_body, _err := client.AuthorizeSecurityGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2437,7 +1772,7 @@ func (client *Client) AuthorizeSecurityGroup(request *AuthorizeSecurityGroupRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AuthorizeSecurityGroupEgressResponse
-func (client *Client) AuthorizeSecurityGroupEgressWithOptions(request *AuthorizeSecurityGroupEgressRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeSecurityGroupEgressResponse, _err error) {
+func (client *Client) AuthorizeSecurityGroupEgressWithContext(ctx context.Context, request *AuthorizeSecurityGroupEgressRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeSecurityGroupEgressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2566,111 +1901,11 @@ func (client *Client) AuthorizeSecurityGroupEgressWithOptions(request *Authorize
 		BodyType:    dara.String("json"),
 	}
 	_result = &AuthorizeSecurityGroupEgressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates outbound rules in a security group. You can use the created rules to allow or deny outbound traffic from Elastic Compute Service (ECS) instances in the security group to other objects for fine-grained network access control.
-//
-// Description:
-//
-// ### [](#)Precautions
-//
-//   - **Quantity limit**: The maximum number of inbound and outbound rules in all security groups associated with an elastic network interface (ENI) cannot exceed 1,000. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section of the "Limits" topic.
-//
-//   - **Rule priorities**: For outbound security group rules, the valid values of Priority range from 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
-//
-// ### [](#)Considerations
-//
-// If the security group rule that you call the AuthorizeSecurityGroupEgress operation to create exists in the security group, the call is successful but no security group rule is created.
-//
-// ### [](#)Parameters that define a security group rule
-//
-// Define an outbound security group rule by configuring the following parameters together:
-//
-//   - One of the following parameters: DestCidrIp, Ipv6DestCidrIp, DestPrefixListId, and DestGroupId. DestCidrIp specifies the destination IPv4 CIDR block. Ipv6DestCidrIp specifies the destination IPv6 CIDR block. DestPrefixListId specifies the ID of the destination prefix list. DestGroupId specifies the destination security group.
-//
-//   - PortRange: specifies the range of destination port numbers.
-//
-//   - IpProtocol: specifies the protocol.
-//
-//   - Policy: specifies the action.
-//
-// >  Advanced security groups do not support security group rules that reference security groups as authorization objects. Each basic security group can contain up to 20 security group rules that reference security groups as authorization objects.
-//
-// ### [](#)Sample requests
-//
-// Sample requests to create outbound security group rules that control access to different destinations in a security group in the China (Hangzhou) region:
-//
-//   - Sample request to create an outbound security group rule that controls access to a specified CIDR block:
-//
-//     "RegionId":"cn-hangzhou", // The region ID.
-//
-//     "SecurityGroupId":"sg-bp17vs63txqxbds9***", // The ID of the source security group.
-//
-//     "Permissions":[
-//
-//     {
-//
-//     "DestCidrIp":"10.0.0.0/8", // The destination IPv4 CIDR block.
-//
-//     "PortRange":"-1/-1", // The range of destination port numbers.
-//
-//     "IpProtocol":"ICMP", //T he protocol.       "Policy":"Accept" // Specify the action.
-//
-//     }
-//
-//     ]
-//
-//   - Sample request to create an outbound security group rule that controls access to a security group and an outbound security group rule that controls access to a prefix list:
-//
-//     "RegionId":"cn-hangzhou",
-//
-//     "SecurityGroupId":"sg-bp17vs63txqxbds9***",
-//
-//     "Permissions":[
-//
-//     {
-//
-//     "DestGroupId":"sg-bp67acfmxazb4pi***", // The ID of the destination security group.
-//
-//     "PortRange":"22/22",
-//
-//     "IpProtocol":"TCP",
-//
-//     "Policy":"Drop"
-//
-//     },{
-//
-//     "DestPrefixListId":"pl-x1j1k5ykzqlixdcy****", // The destination prefix list.
-//
-//     "PortRange":"22/22",
-//
-//     "IpProtocol":"TCP",
-//
-//     "Policy":"Drop"
-//
-//     }
-//
-//     ]
-//
-// @param request - AuthorizeSecurityGroupEgressRequest
-//
-// @return AuthorizeSecurityGroupEgressResponse
-func (client *Client) AuthorizeSecurityGroupEgress(request *AuthorizeSecurityGroupEgressRequest) (_result *AuthorizeSecurityGroupEgressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AuthorizeSecurityGroupEgressResponse{}
-	_body, _err := client.AuthorizeSecurityGroupEgressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2683,7 +1918,7 @@ func (client *Client) AuthorizeSecurityGroupEgress(request *AuthorizeSecurityGro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelAutoSnapshotPolicyResponse
-func (client *Client) CancelAutoSnapshotPolicyWithOptions(request *CancelAutoSnapshotPolicyRequest, runtime *dara.RuntimeOptions) (_result *CancelAutoSnapshotPolicyResponse, _err error) {
+func (client *Client) CancelAutoSnapshotPolicyWithContext(ctx context.Context, request *CancelAutoSnapshotPolicyRequest, runtime *dara.RuntimeOptions) (_result *CancelAutoSnapshotPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2724,29 +1959,11 @@ func (client *Client) CancelAutoSnapshotPolicyWithOptions(request *CancelAutoSna
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelAutoSnapshotPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables automatic snapshot policies for one or more disks.
-//
-// @param request - CancelAutoSnapshotPolicyRequest
-//
-// @return CancelAutoSnapshotPolicyResponse
-func (client *Client) CancelAutoSnapshotPolicy(request *CancelAutoSnapshotPolicyRequest) (_result *CancelAutoSnapshotPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelAutoSnapshotPolicyResponse{}
-	_body, _err := client.CancelAutoSnapshotPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2767,7 +1984,7 @@ func (client *Client) CancelAutoSnapshotPolicy(request *CancelAutoSnapshotPolicy
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelCopyImageResponse
-func (client *Client) CancelCopyImageWithOptions(request *CancelCopyImageRequest, runtime *dara.RuntimeOptions) (_result *CancelCopyImageResponse, _err error) {
+func (client *Client) CancelCopyImageWithContext(ctx context.Context, request *CancelCopyImageRequest, runtime *dara.RuntimeOptions) (_result *CancelCopyImageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2812,37 +2029,11 @@ func (client *Client) CancelCopyImageWithOptions(request *CancelCopyImageRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelCopyImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels an ongoing image copy task.
-//
-// Description:
-//
-// When you call this operation, take note of the following items:
-//
-//   - After you cancel an image copy task, the image copy created in the destination region is deleted, and the copied image remains unchanged.
-//
-//   - If the image copy task is complete, the CancelCopyImage operation fails, and an error is returned.
-//
-// @param request - CancelCopyImageRequest
-//
-// @return CancelCopyImageResponse
-func (client *Client) CancelCopyImage(request *CancelCopyImageRequest) (_result *CancelCopyImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelCopyImageResponse{}
-	_body, _err := client.CancelCopyImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2859,7 +2050,7 @@ func (client *Client) CancelCopyImage(request *CancelCopyImageRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelImagePipelineExecutionResponse
-func (client *Client) CancelImagePipelineExecutionWithOptions(request *CancelImagePipelineExecutionRequest, runtime *dara.RuntimeOptions) (_result *CancelImagePipelineExecutionResponse, _err error) {
+func (client *Client) CancelImagePipelineExecutionWithContext(ctx context.Context, request *CancelImagePipelineExecutionRequest, runtime *dara.RuntimeOptions) (_result *CancelImagePipelineExecutionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2912,33 +2103,11 @@ func (client *Client) CancelImagePipelineExecutionWithOptions(request *CancelIma
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelImagePipelineExecutionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels an image building task.
-//
-// Description:
-//
-// Before you call the CancelImagePipelineExecution operation, make sure that the image building task to be canceled is in the BUILDING, PREPARING, or REPAIRING state.
-//
-// @param request - CancelImagePipelineExecutionRequest
-//
-// @return CancelImagePipelineExecutionResponse
-func (client *Client) CancelImagePipelineExecution(request *CancelImagePipelineExecutionRequest) (_result *CancelImagePipelineExecutionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelImagePipelineExecutionResponse{}
-	_body, _err := client.CancelImagePipelineExecutionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2949,7 +2118,7 @@ func (client *Client) CancelImagePipelineExecution(request *CancelImagePipelineE
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelPhysicalConnectionResponse
-func (client *Client) CancelPhysicalConnectionWithOptions(request *CancelPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CancelPhysicalConnectionResponse, _err error) {
+func (client *Client) CancelPhysicalConnectionWithContext(ctx context.Context, request *CancelPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CancelPhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3002,28 +2171,11 @@ func (client *Client) CancelPhysicalConnectionWithOptions(request *CancelPhysica
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelPhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CancelPhysicalConnection is deprecated
-//
-// @param request - CancelPhysicalConnectionRequest
-//
-// @return CancelPhysicalConnectionResponse
-// Deprecated
-func (client *Client) CancelPhysicalConnection(request *CancelPhysicalConnectionRequest) (_result *CancelPhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelPhysicalConnectionResponse{}
-	_body, _err := client.CancelPhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3036,7 +2188,7 @@ func (client *Client) CancelPhysicalConnection(request *CancelPhysicalConnection
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelSimulatedSystemEventsResponse
-func (client *Client) CancelSimulatedSystemEventsWithOptions(request *CancelSimulatedSystemEventsRequest, runtime *dara.RuntimeOptions) (_result *CancelSimulatedSystemEventsResponse, _err error) {
+func (client *Client) CancelSimulatedSystemEventsWithContext(ctx context.Context, request *CancelSimulatedSystemEventsRequest, runtime *dara.RuntimeOptions) (_result *CancelSimulatedSystemEventsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3085,29 +2237,11 @@ func (client *Client) CancelSimulatedSystemEventsWithOptions(request *CancelSimu
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelSimulatedSystemEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels simulated system events that are in the Scheduled or Executing state. After you cancel a simulated system event, the simulated event enters the Canceled state.
-//
-// @param request - CancelSimulatedSystemEventsRequest
-//
-// @return CancelSimulatedSystemEventsResponse
-func (client *Client) CancelSimulatedSystemEvents(request *CancelSimulatedSystemEventsRequest) (_result *CancelSimulatedSystemEventsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelSimulatedSystemEventsResponse{}
-	_body, _err := client.CancelSimulatedSystemEventsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3120,7 +2254,7 @@ func (client *Client) CancelSimulatedSystemEvents(request *CancelSimulatedSystem
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelTaskResponse
-func (client *Client) CancelTaskWithOptions(request *CancelTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
+func (client *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3161,29 +2295,11 @@ func (client *Client) CancelTaskWithOptions(request *CancelTaskRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels a running task. You can cancel the running tasks generated by the ImportImage or ExportImage operation.
-//
-// @param request - CancelTaskRequest
-//
-// @return CancelTaskResponse
-func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelTaskResponse{}
-	_body, _err := client.CancelTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3194,7 +2310,7 @@ func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTas
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConnectRouterInterfaceResponse
-func (client *Client) ConnectRouterInterfaceWithOptions(request *ConnectRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *ConnectRouterInterfaceResponse, _err error) {
+func (client *Client) ConnectRouterInterfaceWithContext(ctx context.Context, request *ConnectRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *ConnectRouterInterfaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3235,28 +2351,11 @@ func (client *Client) ConnectRouterInterfaceWithOptions(request *ConnectRouterIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConnectRouterInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ConnectRouterInterface is deprecated
-//
-// @param request - ConnectRouterInterfaceRequest
-//
-// @return ConnectRouterInterfaceResponse
-// Deprecated
-func (client *Client) ConnectRouterInterface(request *ConnectRouterInterfaceRequest) (_result *ConnectRouterInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConnectRouterInterfaceResponse{}
-	_body, _err := client.ConnectRouterInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3289,7 +2388,7 @@ func (client *Client) ConnectRouterInterface(request *ConnectRouterInterfaceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConvertNatPublicIpToEipResponse
-func (client *Client) ConvertNatPublicIpToEipWithOptions(request *ConvertNatPublicIpToEipRequest, runtime *dara.RuntimeOptions) (_result *ConvertNatPublicIpToEipResponse, _err error) {
+func (client *Client) ConvertNatPublicIpToEipWithContext(ctx context.Context, request *ConvertNatPublicIpToEipRequest, runtime *dara.RuntimeOptions) (_result *ConvertNatPublicIpToEipResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3330,49 +2429,11 @@ func (client *Client) ConvertNatPublicIpToEipWithOptions(request *ConvertNatPubl
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConvertNatPublicIpToEipResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Converts the static public IP address of an Elastic Compute Service (ECS) instance that resides in a virtual private cloud (VPC) into an elastic IP address (EIP). Static public IP addresses are the public IP addresses that are automatically assigned to ECS instances.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you fully understand the billing methods of EIPs. For more information, see [Billing overview](https://help.aliyun.com/document_detail/122035.html).
-//
-// When you call this operation, make sure that the ECS instance meets the following requirements:
-//
-//   - The instance is in the **Stopped*	- (`Stopped`) or **Running*	- (`Running`) state.
-//
-//   - The instance has no EIPs associated.
-//
-//   - The instance has no configuration change tasks that have not taken effect.
-//
-//   - The public bandwidth of the instance is not 0 Mbit/s.
-//
-//   - If the instance is a subscription instance, the billing method for network usage of the instance must be `pay-by-traffic`. The public IP address of a subscription instance that uses the `pay-by-bandwidth` billing method for network usage cannot be converted into an EIP. This requirement does not apply to pay-as-you-go instances. For more information, see [Change the billing method for network usage](https://help.aliyun.com/document_detail/178883.html).
-//
-//   - If the instance is a subscription instance that resides in a VPC, the instance does not expire within 24 hours.
-//
-// @param request - ConvertNatPublicIpToEipRequest
-//
-// @return ConvertNatPublicIpToEipResponse
-func (client *Client) ConvertNatPublicIpToEip(request *ConvertNatPublicIpToEipRequest) (_result *ConvertNatPublicIpToEipResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConvertNatPublicIpToEipResponse{}
-	_body, _err := client.ConvertNatPublicIpToEipWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3403,7 +2464,7 @@ func (client *Client) ConvertNatPublicIpToEip(request *ConvertNatPublicIpToEipRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CopyImageResponse
-func (client *Client) CopyImageWithOptions(request *CopyImageRequest, runtime *dara.RuntimeOptions) (_result *CopyImageResponse, _err error) {
+func (client *Client) CopyImageWithContext(ctx context.Context, request *CopyImageRequest, runtime *dara.RuntimeOptions) (_result *CopyImageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3488,47 +2549,11 @@ func (client *Client) CopyImageWithOptions(request *CopyImageRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &CopyImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Copies a custom image from one region to another region. You can copy custom images to deploy or copy Elastic Compute Service (ECS) instances across regions.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// After you copy a custom image to the destination region, you can use the image copy (new image) to create ECS instances by calling the RunInstances operation or replace the system disks of instances by calling the ReplaceSystemDisk operation in the destination region.
-//
-// Take note of the following items:
-//
-//   - Only custom images that are in the `Available` state can be copied.
-//
-//   - Custom images that belong to your Alibaba Cloud account can be copied across regions. Images that are shared with you by others can be copied only within the regions where the images reside.
-//
-//   - When an image is being copied, the new image cannot be deleted by calling the [DeleteImage](https://help.aliyun.com/document_detail/25537.html) operation. However, you can cancel the ongoing image copy task by calling the [CancelCopyImage](https://help.aliyun.com/document_detail/25539.html) operation.
-//
-//   - A region supports only up to five concurrent image copy tasks. Excess image copy tasks are queued for execution.
-//
-//   - You can configure `ResourceGroupId` to specify the resource group to which to assign the new image. If you do not configure `ResourceGroupId`, the new image is assigned to the default resource group.
-//
-// @param request - CopyImageRequest
-//
-// @return CopyImageResponse
-func (client *Client) CopyImage(request *CopyImageRequest) (_result *CopyImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CopyImageResponse{}
-	_body, _err := client.CopyImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3549,7 +2574,7 @@ func (client *Client) CopyImage(request *CopyImageRequest) (_result *CopyImageRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CopySnapshotResponse
-func (client *Client) CopySnapshotWithOptions(request *CopySnapshotRequest, runtime *dara.RuntimeOptions) (_result *CopySnapshotResponse, _err error) {
+func (client *Client) CopySnapshotWithContext(ctx context.Context, request *CopySnapshotRequest, runtime *dara.RuntimeOptions) (_result *CopySnapshotResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3634,37 +2659,11 @@ func (client *Client) CopySnapshotWithOptions(request *CopySnapshotRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &CopySnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Copies a standard or encrypted snapshot from one region to another.
-//
-// Description:
-//
-// When you call this operation, take note of the following item:
-//
-//   - New snapshots (snapshot copies) cannot be used to roll back the disks for which source snapshots (copied snapshots) were created.
-//
-//   - Local snapshots cannot be copied.
-//
-// @param request - CopySnapshotRequest
-//
-// @return CopySnapshotResponse
-func (client *Client) CopySnapshot(request *CopySnapshotRequest) (_result *CopySnapshotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CopySnapshotResponse{}
-	_body, _err := client.CopySnapshotWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3707,7 +2706,7 @@ func (client *Client) CopySnapshot(request *CopySnapshotRequest) (_result *CopyS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateActivationResponse
-func (client *Client) CreateActivationWithOptions(request *CreateActivationRequest, runtime *dara.RuntimeOptions) (_result *CreateActivationResponse, _err error) {
+func (client *Client) CreateActivationWithContext(ctx context.Context, request *CreateActivationRequest, runtime *dara.RuntimeOptions) (_result *CreateActivationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3780,59 +2779,11 @@ func (client *Client) CreateActivationWithOptions(request *CreateActivationReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateActivationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an activation code. The activation code is used to register servers that are not provided by Alibaba Cloud as Alibaba Cloud managed instances.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// After you use an activation code to register a server that is not provided by Alibaba Cloud as an Alibaba Cloud managed instance, you can use various online services of Alibaba Cloud, such as Cloud Assistant, CloudOps Orchestration Service (OOS), and Apsara Devops, on the managed instance.
-//
-// If a server is not provided by Alibaba Cloud, you can register the server as an Alibaba Cloud managed instance only if the server has Internet connectivity and runs one of the following operating systems:
-//
-//   - Alibaba Cloud Linux 2, Alibaba Cloud Linux 3, or later
-//
-//   - CentOS 6, CentOS 7, CentOS 8, or later
-//
-//   - Debian 8, Debian 9, Debian 10, or later
-//
-//   - Ubuntu 12, Ubuntu 14, Ubuntu 16, Ubuntu 18, or later
-//
-//   - CoreOS
-//
-//   - OpenSUSE
-//
-//   - Red Hat 5, Red Hat 6, Red Hat 7, or later
-//
-//   - SUSE Linux Enterprise Server 11, SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Server 15, or later
-//
-//   - Windows Server 2012, Windows Server 2016, Windows Server 2019, or later
-//
-// You can have up to 5,000 activation codes per Alibaba Cloud region. When the number of activation codes exceeds 1,000, the usage of the activation codes must be greater than 50% before you can create additional activation codes.
-//
-// >  To obtain the usage of activation codes, go to the **ECS Cloud Assistant*	- page in the Elastic Compute Service (ECS) console, click the **Manage Instances*	- tab, and then click **Register Instance**.
-//
-// @param request - CreateActivationRequest
-//
-// @return CreateActivationResponse
-func (client *Client) CreateActivation(request *CreateActivationRequest) (_result *CreateActivationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateActivationResponse{}
-	_body, _err := client.CreateActivationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3857,7 +2808,7 @@ func (client *Client) CreateActivation(request *CreateActivationRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAutoProvisioningGroupResponse
-func (client *Client) CreateAutoProvisioningGroupWithOptions(tmpReq *CreateAutoProvisioningGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAutoProvisioningGroupResponse, _err error) {
+func (client *Client) CreateAutoProvisioningGroupWithContext(ctx context.Context, tmpReq *CreateAutoProvisioningGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAutoProvisioningGroupResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4024,41 +2975,11 @@ func (client *Client) CreateAutoProvisioningGroupWithOptions(tmpReq *CreateAutoP
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAutoProvisioningGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an auto provisioning group.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of spot instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
-//
-//   - Auto Provisioning uses auto provisioning groups to schedule and maintain computing resources. You can use auto provisioning groups to obtain a steady supply of computing resources. This helps reduce the impact on compute capacity when spot instances are reclaimed.
-//
-//   - Auto Provisioning is provided free of charge. However, you are charged for instance resources that are created in auto provisioning groups. For more information, see [Overview of spot instances](https://help.aliyun.com/document_detail/52088.html) and [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
-//
-//   - When you specify both a launch template (`LaunchTemplateId`) and extended configurations (`LaunchConfiguration.*` parameters), LaunchTemplateId takes precedence.
-//
-// @param request - CreateAutoProvisioningGroupRequest
-//
-// @return CreateAutoProvisioningGroupResponse
-func (client *Client) CreateAutoProvisioningGroup(request *CreateAutoProvisioningGroupRequest) (_result *CreateAutoProvisioningGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAutoProvisioningGroupResponse{}
-	_body, _err := client.CreateAutoProvisioningGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4085,7 +3006,7 @@ func (client *Client) CreateAutoProvisioningGroup(request *CreateAutoProvisionin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAutoSnapshotPolicyResponse
-func (client *Client) CreateAutoSnapshotPolicyWithOptions(request *CreateAutoSnapshotPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateAutoSnapshotPolicyResponse, _err error) {
+func (client *Client) CreateAutoSnapshotPolicyWithContext(ctx context.Context, request *CreateAutoSnapshotPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateAutoSnapshotPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4166,43 +3087,11 @@ func (client *Client) CreateAutoSnapshotPolicyWithOptions(request *CreateAutoSna
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAutoSnapshotPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an automatic snapshot policy in a specific region. You can specify the schedule on which to create automatic snapshots, the retention period of the automatic snapshots, and whether to enable cross-region replication for the snapshots in the automatic snapshot policy. The automatic snapshot policy can be applied to create snapshots for system disks or data disks to back up disk data.
-//
-// Description:
-//
-// Before you call this operation, learn about how to [create an automatic snapshot policy](https://help.aliyun.com/document_detail/127767.html).
-//
-// Take note of the following items:
-//
-//   - You can create up to 100 automatic snapshot policies per region for a single Alibaba Cloud account. If the maximum number of automatic snapshots for a disk is reached and a new snapshot creation task is created, the system deletes the oldest automatic snapshot of the disk.
-//
-//   - If the instance to which a disk is attached is being stopped or restarted, the system cannot create snapshots for the disk based on the associated automatic snapshot policy.
-//
-//   - If cross-region snapshot replication is enabled and no encryption parameters are configured, encrypted snapshots are copied to the destination region and snapshot copies are encrypted by using the service key of the destination region. For more information about the limits on cross-region snapshot replication, see [Copy a snapshot](https://help.aliyun.com/document_detail/159441.html).
-//
-// After the automatic snapshot policy is created, call the [ApplyAutoSnapshotPolicy](https://help.aliyun.com/document_detail/25531.html) operation to apply the policy to disks. If you want to modify the automatic snapshot policy, call the [ModifyAutoSnapshotPolicyEx](https://help.aliyun.com/document_detail/25529.html) operation.
-//
-// @param request - CreateAutoSnapshotPolicyRequest
-//
-// @return CreateAutoSnapshotPolicyResponse
-func (client *Client) CreateAutoSnapshotPolicy(request *CreateAutoSnapshotPolicyRequest) (_result *CreateAutoSnapshotPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAutoSnapshotPolicyResponse{}
-	_body, _err := client.CreateAutoSnapshotPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4229,7 +3118,7 @@ func (client *Client) CreateAutoSnapshotPolicy(request *CreateAutoSnapshotPolicy
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCapacityReservationResponse
-func (client *Client) CreateCapacityReservationWithOptions(request *CreateCapacityReservationRequest, runtime *dara.RuntimeOptions) (_result *CreateCapacityReservationResponse, _err error) {
+func (client *Client) CreateCapacityReservationWithContext(ctx context.Context, request *CreateCapacityReservationRequest, runtime *dara.RuntimeOptions) (_result *CreateCapacityReservationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4318,43 +3207,11 @@ func (client *Client) CreateCapacityReservationWithOptions(request *CreateCapaci
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCapacityReservationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a capacity reservation.
-//
-// Description:
-//
-// When you create a capacity reservation, you can specify attributes such as a zone and an instance type. The system uses a private pool to reserve resources that match the specified attributes. For more information, see [Overview of Immediate Capacity Reservation](https://help.aliyun.com/document_detail/193633.html).
-//
-//   - Currently, only immediate capacity reservations are supported. Immediate capacity reservations take effect immediately after you purchase them. After you purchase an immediate capacity reservation, you are charged for the specified instance type based on the pay-as-you-go billing method regardless of whether you use the capacity reservation to create pay-as-you-go instances. Billing stops when you manually release the capacity reservation or when the capacity reservation expires and is automatically released.
-//
-//   - You can call the [CreateInstance](https://help.aliyun.com/document_detail/25499.html) or [RunInstances](https://help.aliyun.com/document_detail/63440.html) operation to specify private pool attributes when you create instances. To modify the attributes of a private pool, you can call the [ModifyInstanceAttachmentAttributes](https://help.aliyun.com/document_detail/190006.html) operation. If an instance matches a private pool associated with a capacity reservation, you are charged based on the configurations of the instance such as the instance type, disks, and public bandwidth.
-//
-//   - Before you use a private pool associated with a capacity reservation to create pay-as-you-go instances, you are charged only for the specified instance type.
-//
-//   - You can apply savings plans or regional reserved instances to offset hourly billing of unused immediate capacity reservations, and hourly fees of the instances that match the immediate capacity reservations. However, you cannot use zonal reserved instances to offset the hourly fees. We recommend that you purchase reserved instances or savings plans before you purchase immediate capacity reservations. This way, you can access resources free of charge within the coverage of the reserved instances or savings plans.
-//
-// > You can call the CreateCapacityReservation operation to create only immediate capacity reservations. You can create immediate or scheduled capacity reservations in the Elastic Compute Service (ECS) console. For more information, see [Overview](~~193626#section-oil-qh5-xvx~~).
-//
-// @param request - CreateCapacityReservationRequest
-//
-// @return CreateCapacityReservationResponse
-func (client *Client) CreateCapacityReservation(request *CreateCapacityReservationRequest) (_result *CreateCapacityReservationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateCapacityReservationResponse{}
-	_body, _err := client.CreateCapacityReservationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4397,7 +3254,7 @@ func (client *Client) CreateCapacityReservation(request *CreateCapacityReservati
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCommandResponse
-func (client *Client) CreateCommandWithOptions(request *CreateCommandRequest, runtime *dara.RuntimeOptions) (_result *CreateCommandResponse, _err error) {
+func (client *Client) CreateCommandWithContext(ctx context.Context, request *CreateCommandRequest, runtime *dara.RuntimeOptions) (_result *CreateCommandResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4486,59 +3343,11 @@ func (client *Client) CreateCommandWithOptions(request *CreateCommandRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCommandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a Cloud Assistant command, which can be a Shell, PowerShell, or batch command.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - You can create commands of the following types:
-//
-//   - Batch commands (RunBatScript), applicable to Windows instances
-//
-//   - PowerShell commands (RunPowerShellScript), applicable to Windows instances
-//
-//   - Shell commands (RunShellScript), applicable to Linux instances
-//
-//   - You can specify the Timeout parameter to set the maximum timeout period for executions of a command on Elastic Compute Service (ECS) instances. If an execution times out, [Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html) forcefully terminates the command process by canceling the process ID (PID) of the command.
-//
-//   - For a one-time task, when the execution times out, the state of the command ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) becomes Failed.
-//
-//   - For a scheduled task, take note of the following items:
-//
-//   - The timeout period takes effect on each execution.
-//
-//   - When an execution times out, the state ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
-//
-//   - The timeout of one execution does not affect the subsequent executions.
-//
-//   - You can retain up to 500 to 50,000 Cloud Assistant commands in each region. You can also apply for a quota increase. For information about how to query and increase quotas, see [Manage quotas](https://help.aliyun.com/document_detail/184116.html).
-//
-//   - You can use WorkingDir to specify the execution directory of a Cloud Assistant command. For Linux instances, the default execution directory of Cloud Assistant commands is the home directory of the root user, which is `/root`. For Windows instances, the default execution directory of Cloud Assistant commands is the directory where the Cloud Assistant Agent process resides, such as `C:\\Windows\\System32`.
-//
-//   - You can enable the custom parameter feature for a Cloud Assistant command by setting EnableParameter to true. When you set CommandContent, you can define custom parameters in the {{parameter}} format. Then, when the [InvokeCommand](https://help.aliyun.com/document_detail/64841.html) operation is called, the key-value pairs of custom parameters are passed in. For example, if a command is `echo {{name}}`, the Parameters parameter can be used to pass in the `<name, Jack>` key-value pair when the InvokeCommand operation is called. The name key of the custom parameter is automatically replaced by the paired Jack value to generate a new command. As a result, the `echo Jack` command is run.
-//
-// @param request - CreateCommandRequest
-//
-// @return CreateCommandResponse
-func (client *Client) CreateCommand(request *CreateCommandRequest) (_result *CreateCommandResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateCommandResponse{}
-	_body, _err := client.CreateCommandWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4551,7 +3360,7 @@ func (client *Client) CreateCommand(request *CreateCommandRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDedicatedHostClusterResponse
-func (client *Client) CreateDedicatedHostClusterWithOptions(request *CreateDedicatedHostClusterRequest, runtime *dara.RuntimeOptions) (_result *CreateDedicatedHostClusterResponse, _err error) {
+func (client *Client) CreateDedicatedHostClusterWithContext(ctx context.Context, request *CreateDedicatedHostClusterRequest, runtime *dara.RuntimeOptions) (_result *CreateDedicatedHostClusterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4616,29 +3425,11 @@ func (client *Client) CreateDedicatedHostClusterWithOptions(request *CreateDedic
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDedicatedHostClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a dedicated host group.
-//
-// @param request - CreateDedicatedHostClusterRequest
-//
-// @return CreateDedicatedHostClusterResponse
-func (client *Client) CreateDedicatedHostCluster(request *CreateDedicatedHostClusterRequest) (_result *CreateDedicatedHostClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDedicatedHostClusterResponse{}
-	_body, _err := client.CreateDedicatedHostClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4651,7 +3442,7 @@ func (client *Client) CreateDedicatedHostCluster(request *CreateDedicatedHostClu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDeploymentSetResponse
-func (client *Client) CreateDeploymentSetWithOptions(request *CreateDeploymentSetRequest, runtime *dara.RuntimeOptions) (_result *CreateDeploymentSetResponse, _err error) {
+func (client *Client) CreateDeploymentSetWithContext(ctx context.Context, request *CreateDeploymentSetRequest, runtime *dara.RuntimeOptions) (_result *CreateDeploymentSetResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4724,29 +3515,11 @@ func (client *Client) CreateDeploymentSetWithOptions(request *CreateDeploymentSe
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDeploymentSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a deployment set in a region.
-//
-// @param request - CreateDeploymentSetRequest
-//
-// @return CreateDeploymentSetResponse
-func (client *Client) CreateDeploymentSet(request *CreateDeploymentSetRequest) (_result *CreateDeploymentSetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDeploymentSetResponse{}
-	_body, _err := client.CreateDeploymentSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4759,7 +3532,7 @@ func (client *Client) CreateDeploymentSet(request *CreateDeploymentSetRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDiagnosticMetricSetResponse
-func (client *Client) CreateDiagnosticMetricSetWithOptions(request *CreateDiagnosticMetricSetRequest, runtime *dara.RuntimeOptions) (_result *CreateDiagnosticMetricSetResponse, _err error) {
+func (client *Client) CreateDiagnosticMetricSetWithContext(ctx context.Context, request *CreateDiagnosticMetricSetRequest, runtime *dara.RuntimeOptions) (_result *CreateDiagnosticMetricSetResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4800,29 +3573,11 @@ func (client *Client) CreateDiagnosticMetricSetWithOptions(request *CreateDiagno
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDiagnosticMetricSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a diagnostic metric set. You can group diagnostic metrics into diagnostic metric sets.
-//
-// @param request - CreateDiagnosticMetricSetRequest
-//
-// @return CreateDiagnosticMetricSetResponse
-func (client *Client) CreateDiagnosticMetricSet(request *CreateDiagnosticMetricSetRequest) (_result *CreateDiagnosticMetricSetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDiagnosticMetricSetResponse{}
-	_body, _err := client.CreateDiagnosticMetricSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4835,7 +3590,7 @@ func (client *Client) CreateDiagnosticMetricSet(request *CreateDiagnosticMetricS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDiagnosticReportResponse
-func (client *Client) CreateDiagnosticReportWithOptions(request *CreateDiagnosticReportRequest, runtime *dara.RuntimeOptions) (_result *CreateDiagnosticReportResponse, _err error) {
+func (client *Client) CreateDiagnosticReportWithContext(ctx context.Context, request *CreateDiagnosticReportRequest, runtime *dara.RuntimeOptions) (_result *CreateDiagnosticReportResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4876,29 +3631,11 @@ func (client *Client) CreateDiagnosticReportWithOptions(request *CreateDiagnosti
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDiagnosticReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a diagnostic report for a resource. When you call this operation, you can configure the MetricSetId parameter to create a diagnostic report based on the specified diagnostic metric set. Then, you can call the DescribeDiagnosticReportAttributes operation based on the returned diagnostic report ID to view the details of the diagnostic report.
-//
-// @param request - CreateDiagnosticReportRequest
-//
-// @return CreateDiagnosticReportResponse
-func (client *Client) CreateDiagnosticReport(request *CreateDiagnosticReportRequest) (_result *CreateDiagnosticReportResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDiagnosticReportResponse{}
-	_body, _err := client.CreateDiagnosticReportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4929,7 +3666,7 @@ func (client *Client) CreateDiagnosticReport(request *CreateDiagnosticReportRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDiskResponse
-func (client *Client) CreateDiskWithOptions(request *CreateDiskRequest, runtime *dara.RuntimeOptions) (_result *CreateDiskResponse, _err error) {
+func (client *Client) CreateDiskWithContext(ctx context.Context, request *CreateDiskRequest, runtime *dara.RuntimeOptions) (_result *CreateDiskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5058,47 +3795,11 @@ func (client *Client) CreateDiskWithOptions(request *CreateDiskRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a pay-as-you-go or subscription data disk.
-//
-// Description:
-//
-//	  You can enable the multi-attach (`MultiAttach`) feature when you create a disk. Before you enable the multi-attach feature, we recommend that you familiarize yourself with the feature and the limits on the feature. For more information, see [NVMe protocol](https://help.aliyun.com/document_detail/256487.html) and [Use the multi-attach feature to attach a cloud disk to multiple ECS instances](https://help.aliyun.com/document_detail/262105.html).
-//
-//		- You can create disks of the following disk categories: basic disks, ultra disks, standard SSDs, Enterprise SSDs (ESSDs), ESSD Entry disks, Regional ESSDs, ESSD AutoPL disks, standard elastic ephemeral disks, and premium elastic ephemeral disks.
-//
-//		- Before you can create a disk, you must complete real-name verification. Complete real-name verification on the [Real-name Verification](https://account.console.aliyun.com/#/auth/home) page in the Alibaba Cloud Management Console.
-//
-//		- When you create disks, you may be charged for the resources used. We recommend that you familiarize yourself with the billing methods of Elastic Compute Service (ECS) resources before you create a disk. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html).
-//
-//		- When you call this operation to create a disk, specific parameters are automatically specified.
-//
-//	    	- `DeleteAutoSnapshot` is automatically set to `true` when a disk is created. This indicates that the automatic snapshots of the disk are deleted when the disk is released. You can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) operation to query the DeleteAutoSnapshot value for the disk and call the [ModifyDiskAttribute](https://help.aliyun.com/document_detail/25517.html) operation to change the DeleteAutoSnapshot value for the disk.
-//
-//	    	- If you do not specify a performance level when you create an ESSD, the performance level of the ESSD is automatically set to PL1. To change the performance level of the ESSD, you can call the [ModifyDiskSpec](https://help.aliyun.com/document_detail/123780.html) operation.
-//
-//	    	- `Portable` is automatically set to `true` when a disk is created, which indicates that the disk is a pay-as-you-go disk.
-//
-// @param request - CreateDiskRequest
-//
-// @return CreateDiskResponse
-func (client *Client) CreateDisk(request *CreateDiskRequest) (_result *CreateDiskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDiskResponse{}
-	_body, _err := client.CreateDiskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5121,7 +3822,7 @@ func (client *Client) CreateDisk(request *CreateDiskRequest) (_result *CreateDis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateElasticityAssuranceResponse
-func (client *Client) CreateElasticityAssuranceWithOptions(request *CreateElasticityAssuranceRequest, runtime *dara.RuntimeOptions) (_result *CreateElasticityAssuranceResponse, _err error) {
+func (client *Client) CreateElasticityAssuranceWithContext(ctx context.Context, request *CreateElasticityAssuranceRequest, runtime *dara.RuntimeOptions) (_result *CreateElasticityAssuranceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5226,39 +3927,11 @@ func (client *Client) CreateElasticityAssuranceWithOptions(request *CreateElasti
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateElasticityAssuranceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an elasticity assurance in a region. When you call this operation, you can specify parameters, such as ZoneId, InstanceType, Period, PeriodUnit, and AutoRenew, in the request.
-//
-// Description:
-//
-// Elasticity Assurance provides a new method to purchase and use guaranteed resources in a flexible manner. Elasticity Assurance is a resource reservation service that provides assured access to resources for pay-as-you-go Elastic Compute Service (ECS) instances. For more information, see [Overview of Elasticity Assurance](https://help.aliyun.com/document_detail/193630.html).
-//
-//   - After you purchase an elasticity assurance, you cannot request a refund for the elasticity assurance. For information about the billing of elasticity assurances, see [Resource assurance](https://help.aliyun.com/document_detail/432502.html).
-//
-//   - Elasticity assurances can be used to create only pay-as-you-go ECS instances.
-//
-//   - Elasticity assurances only support the unlimited mode. You can set `AssuranceTimes` only to `Unlimited`. Elasticity assurances in unlimited mode can be used for an unlimited number of times within their terms. Elasticity assurances in unlimited mode take effect immediately after creation.
-//
-// @param request - CreateElasticityAssuranceRequest
-//
-// @return CreateElasticityAssuranceResponse
-func (client *Client) CreateElasticityAssurance(request *CreateElasticityAssuranceRequest) (_result *CreateElasticityAssuranceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateElasticityAssuranceResponse{}
-	_body, _err := client.CreateElasticityAssuranceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5269,7 +3942,7 @@ func (client *Client) CreateElasticityAssurance(request *CreateElasticityAssuran
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateForwardEntryResponse
-func (client *Client) CreateForwardEntryWithOptions(request *CreateForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateForwardEntryResponse, _err error) {
+func (client *Client) CreateForwardEntryWithContext(ctx context.Context, request *CreateForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateForwardEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5334,28 +4007,11 @@ func (client *Client) CreateForwardEntryWithOptions(request *CreateForwardEntryR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateForwardEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateForwardEntry is deprecated
-//
-// @param request - CreateForwardEntryRequest
-//
-// @return CreateForwardEntryResponse
-// Deprecated
-func (client *Client) CreateForwardEntry(request *CreateForwardEntryRequest) (_result *CreateForwardEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateForwardEntryResponse{}
-	_body, _err := client.CreateForwardEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5366,7 +4022,7 @@ func (client *Client) CreateForwardEntry(request *CreateForwardEntryRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateHaVipResponse
-func (client *Client) CreateHaVipWithOptions(request *CreateHaVipRequest, runtime *dara.RuntimeOptions) (_result *CreateHaVipResponse, _err error) {
+func (client *Client) CreateHaVipWithContext(ctx context.Context, request *CreateHaVipRequest, runtime *dara.RuntimeOptions) (_result *CreateHaVipResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5423,28 +4079,11 @@ func (client *Client) CreateHaVipWithOptions(request *CreateHaVipRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateHaVipResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateHaVip is deprecated
-//
-// @param request - CreateHaVipRequest
-//
-// @return CreateHaVipResponse
-// Deprecated
-func (client *Client) CreateHaVip(request *CreateHaVipRequest) (_result *CreateHaVipResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateHaVipResponse{}
-	_body, _err := client.CreateHaVipWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5457,7 +4096,7 @@ func (client *Client) CreateHaVip(request *CreateHaVipRequest) (_result *CreateH
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateHpcClusterResponse
-func (client *Client) CreateHpcClusterWithOptions(request *CreateHpcClusterRequest, runtime *dara.RuntimeOptions) (_result *CreateHpcClusterResponse, _err error) {
+func (client *Client) CreateHpcClusterWithContext(ctx context.Context, request *CreateHpcClusterRequest, runtime *dara.RuntimeOptions) (_result *CreateHpcClusterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5514,29 +4153,11 @@ func (client *Client) CreateHpcClusterWithOptions(request *CreateHpcClusterReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateHpcClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a high performance computing (HPC) cluster.
-//
-// @param request - CreateHpcClusterRequest
-//
-// @return CreateHpcClusterResponse
-func (client *Client) CreateHpcCluster(request *CreateHpcClusterRequest) (_result *CreateHpcClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateHpcClusterResponse{}
-	_body, _err := client.CreateHpcClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5583,7 +4204,7 @@ func (client *Client) CreateHpcCluster(request *CreateHpcClusterRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateImageResponse
-func (client *Client) CreateImageWithOptions(request *CreateImageRequest, runtime *dara.RuntimeOptions) (_result *CreateImageResponse, _err error) {
+func (client *Client) CreateImageWithContext(ctx context.Context, request *CreateImageRequest, runtime *dara.RuntimeOptions) (_result *CreateImageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5688,63 +4309,11 @@ func (client *Client) CreateImageWithOptions(request *CreateImageRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a custom image. After you call this operation to create a custom image, you can call the RunInstances operation to create Elastic Compute Service (ECS) instances from the custom image or call the ReplaceSystemDisk operation to replace system disks by using the custom image.
-//
-// Description:
-//
-// ### [](#)Considerations
-//
-//   - This operation is an asynchronous operation. After a request to create a custom image is sent, an image ID is returned but the creation of the custom image is in progress. You can call the [DescribeImage](https://help.aliyun.com/document_detail/2679797.html) operation to query the status of the custom image. When the status of the custom image is `Available` in the response, the image is created and available. For more information, see [Overview of custom images](https://help.aliyun.com/document_detail/172789.html).
-//
-//   - If the response contains {"OperationLocks": {"LockReason" : "security"}} when you query information about an ECS instance, the instance is locked for security reasons, and you cannot create a custom image from the instance.
-//
-//   - To optimize the image, we recommend that you specify `DetectionStrategy` when you create a custom image. For information about the image check feature, see [Overview](https://help.aliyun.com/document_detail/439819.html).
-//
-// You can call the CreateImage operation to create a custom image by using one of the following methods. The following request parameters are prioritized in descending order: InstanceId, DiskDeviceMapping, and SnapshotId. If your request contains two or more of these parameters, the custom image is created based on the parameter that has a higher priority.
-//
-//   - **Create a custom image from an instance**. Specify an instance ID (`InstanceId`).
-//
-//   - The ECS instance must be in the Running (`Running`) or Stopped (`Stopped`) state.
-//
-//   - After the CreateImage operation is called, a snapshot is created for each cloud disk of the instance.
-//
-//     **
-//
-//     **Note*	- When you create a custom image from a running ECS instance, cache data may not be written to disks. In this case, the data of the custom image may be slightly different from the data of the instance. Before you create a custom image from the instance, we recommend that you stop the instance by calling the StopInstancesoperation.
-//
-//   - **Create a custom image from a snapshot. The specified snapshot must be created after July 15, 2013.**
-//
-//   - **Create a custom image from a system disk snapshot of an ECS instance**. You need to only specify the ID of the system disk snapshot by using `SnapshotId`.
-//
-//   - **Create a custom image from a system disk snapshot and data disk snapshots of an ECS instance**. You need to establish data association between the disks by specifying `DiskDeviceMapping`.
-//
-//   - You can specify only one snapshot to create the system disk in the custom image.
-//
-//   - You can specify up to 16 snapshots to use to create data disks in the custom image. If you do not specify `DiskDeviceMapping.N.SnapshotId`, an empty data disk with the default capacity is created.
-//
-// >  When an ECS instance is released, the system disk of the instance is converted to a pay-as-you-go data disk. You cannot create a custom image from the snapshot of this disk. You must create a custom image from the snapshot of this disk before the instance is released.
-//
-// @param request - CreateImageRequest
-//
-// @return CreateImageResponse
-func (client *Client) CreateImage(request *CreateImageRequest) (_result *CreateImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateImageResponse{}
-	_body, _err := client.CreateImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5771,7 +4340,7 @@ func (client *Client) CreateImage(request *CreateImageRequest) (_result *CreateI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateImageComponentResponse
-func (client *Client) CreateImageComponentWithOptions(request *CreateImageComponentRequest, runtime *dara.RuntimeOptions) (_result *CreateImageComponentResponse, _err error) {
+func (client *Client) CreateImageComponentWithContext(ctx context.Context, request *CreateImageComponentRequest, runtime *dara.RuntimeOptions) (_result *CreateImageComponentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5856,43 +4425,11 @@ func (client *Client) CreateImageComponentWithOptions(request *CreateImageCompon
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateImageComponentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an image component. Image components are used to store the builder template commands that are commonly used when you create images.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// Take note of the following items:
-//
-//   - You can create only custom image components.
-//
-//   - Each version number of an image component must be unique. When you add a version of an image component to an image template, you can specify the component by its name and version number.
-//
-//   - The content size of an image component cannot exceed 16 KB. For information about the commands supported by Image Builder, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
-//
-// For more information, see [Image Builder](https://help.aliyun.com/document_detail/197410.html).
-//
-// @param request - CreateImageComponentRequest
-//
-// @return CreateImageComponentResponse
-func (client *Client) CreateImageComponent(request *CreateImageComponentRequest) (_result *CreateImageComponentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateImageComponentResponse{}
-	_body, _err := client.CreateImageComponentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5925,7 +4462,7 @@ func (client *Client) CreateImageComponent(request *CreateImageComponentRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateImagePipelineResponse
-func (client *Client) CreateImagePipelineWithOptions(request *CreateImagePipelineRequest, runtime *dara.RuntimeOptions) (_result *CreateImagePipelineResponse, _err error) {
+func (client *Client) CreateImagePipelineWithContext(ctx context.Context, request *CreateImagePipelineRequest, runtime *dara.RuntimeOptions) (_result *CreateImagePipelineResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6066,49 +4603,11 @@ func (client *Client) CreateImagePipelineWithOptions(request *CreateImagePipelin
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateImagePipelineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an image template. Image templates can be used to create images.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// You can use image templates to customize image content and create images across regions and accounts. Take note of the following items:
-//
-//   - You can create only custom image templates.
-//
-//   - You can specify only a public image, a custom image, a shared image, or an image family as the source image when you create an image template.
-//
-//   - When you use an image template to create an image, multiple intermediate instances are created. You are charged for the intermediate instances on a pay-as-you-go basis. For more information, see [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
-//
-// When you use `BuildContent` to specify the build content in an image template, take note of the following items:
-//
-//   - The `FROM` command is deprecated. Regardless of whether you specify the `FROM` command in `BuildContent`, the system uses the source image specified by `BaseImageType` and `BaseImage`. BaseImageType specifies the type of the source image and BaseImage specifies the source image.
-//
-//   - The size of BuildContent cannot exceed 16 KB. For information about the commands supported by Image Builder, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
-//
-// For more information, see [Image Builder](https://help.aliyun.com/document_detail/197410.html).
-//
-// @param request - CreateImagePipelineRequest
-//
-// @return CreateImagePipelineResponse
-func (client *Client) CreateImagePipeline(request *CreateImagePipelineRequest) (_result *CreateImagePipelineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateImagePipelineResponse{}
-	_body, _err := client.CreateImagePipelineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6155,7 +4654,7 @@ func (client *Client) CreateImagePipeline(request *CreateImagePipelineRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateInstanceResponse
-func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
+func (client *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6420,63 +4919,11 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a subscription or pay-as-you-go Elastic Compute Service (ECS) instance. When you call this operation, you can specify different parameters to create instances based on your business requirements.
-//
-// Description:
-//
-// >  This operation is no longer iterated or updated. We recommend that you call the [RunInstances](https://help.aliyun.com/document_detail/2679677.html) operation instead.
-//
-// **Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.**
-//
-// This operation is an asynchronous operation. After a request to create an ECS instance is sent, an ECS instance ID is immediately returned but the instance may be still being created. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instance. If the status of the instance is `Stopped` in the DescribeInstanceStatus response, the instance is created. In this case, you can call the [StartInstance](https://help.aliyun.com/document_detail/2679679.html) operation to start the instance.
-//
-// ### [](#)Prerequisites
-//
-//   - Make sure that you are familiar with the ECS billing methods because you may be charged for the resources that are used by the instance. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html).
-//
-//   - Make sure that the number of ECS instances you create or the number of vCPUs on ECS instances of all instance types you create does not exceed the corresponding quota. Go to the [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to view the quotas.
-//
-//   - Before you create ECS instances of the Virtual Private Cloud (VPC) type in a region, create a VPC in the region. For more information, see [Create a VPC](https://help.aliyun.com/document_detail/65430.html).
-//
-// ### [](#)Considerations
-//
-//   - If you create a subscription instance (`PrePaid`), available coupons in your account are automatically used.
-//
-//   - If you want to create instances with 512 MiB of memory, you cannot use Windows Server images except for Windows Server Semi-Annual Channel images. If you want to create instances with 4 GiB or more of memory, you cannot use 32-bit OS image.
-//
-//   - If you call the CreateInstance operation to create an instance, no public IP address is automatically assigned to the instance. If the InternetMaxBandwidthOut value of the instance is greater than 0 Mbit/s, call the [AllocatePublicIpAddress](https://help.aliyun.com/document_detail/25544.html) operation to assign a public IP address to the instance. If the InternetMaxBandwidthOut value of the instance is 0 Mbit/s, call the [ModifyInstanceNetworkSpec](https://help.aliyun.com/document_detail/2679879.html) operation to set InternetMaxBandwidthOut to a value greater than 0 Mbit/s and then call the [AllocatePublicIpAddress](https://help.aliyun.com/document_detail/25544.html) operation to assign a public IP address to the instance.
-//
-// >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits" topic.
-//
-// ### [](#)Suggestions
-//
-//   - **Instance type selection**: See [Overview of instance families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the performance data of instance types, or see [Instance type selection](https://help.aliyun.com/document_detail/58291.html) to learn about how to select instance types.
-//
-//   - **Query of available resources**: Call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation to query resources available in a specific region or zone.
-//
-//   - **User data**: If the instance type supports [user data](https://help.aliyun.com/document_detail/49121.html), you can use UserData to pass in user data. We recommend that you do not pass in confidential information, such as passwords or private keys, in plaintext as user data. This is because the system does not encrypt `UserData` values when API requests are sent. If you must pass in confidential information as user data, we recommend that you encrypt and encode the information in Base64 before you pass in the information. Then, decode and decrypt the information within the instance for subsequent use.
-//
-// @param request - CreateInstanceRequest
-//
-// @return CreateInstanceResponse
-func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateInstanceResponse{}
-	_body, _err := client.CreateInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6495,7 +4942,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateKeyPairResponse
-func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, runtime *dara.RuntimeOptions) (_result *CreateKeyPairResponse, _err error) {
+func (client *Client) CreateKeyPairWithContext(ctx context.Context, request *CreateKeyPairRequest, runtime *dara.RuntimeOptions) (_result *CreateKeyPairResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6544,35 +4991,11 @@ func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an SSH key pair. The system stores the public key and returns the unencrypted private key. The private key is encoded with PEM in the PKCS#8 format. You must properly store the private key and ensure its confidentiality.
-//
-// Description:
-//
-// In addition to calling the CreateKeyPair operation to create a key pair, you can use a third-party tool to create a key pair and then call the [ImportKeyPair](https://help.aliyun.com/document_detail/51774.html) operation to upload the key pair to an Alibaba Cloud region.
-//
-// Up to 500 key pairs can be created in each region. For more information, see the "SSH key pair limits" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
-//
-// @param request - CreateKeyPairRequest
-//
-// @return CreateKeyPairResponse
-func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *CreateKeyPairResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateKeyPairResponse{}
-	_body, _err := client.CreateKeyPairWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6599,7 +5022,7 @@ func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLaunchTemplateResponse
-func (client *Client) CreateLaunchTemplateWithOptions(request *CreateLaunchTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateLaunchTemplateResponse, _err error) {
+func (client *Client) CreateLaunchTemplateWithContext(ctx context.Context, request *CreateLaunchTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateLaunchTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6840,43 +5263,11 @@ func (client *Client) CreateLaunchTemplateWithOptions(request *CreateLaunchTempl
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLaunchTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a launch template. A launch template eliminates the need to configure a large number of parameters every time you create an Elastic Compute Service (ECS) instance.
-//
-// Description:
-//
-// After you create a launch template by calling the CreateLaunchTemplate operation, a default version that has a version number of 1 is automatically generated for the launch template. You can call the `CreateLaunchTemplateVersion` operation to create additional versions for the launch template. Version numbers start from 1 and increment by 1. If you specify a launch template but do not specify a launch template version number when you call the [RunInstances](https://help.aliyun.com/document_detail/63440.html) operation to create instances, the default version of the launch template is used.
-//
-// Launch templates contain preset configurations that are used to create instances, such as the region ID, image ID, instance type, security group ID, and public bandwidth settings. If a specific parameter is not included in a launch template, you need to manually specify the parameter when you use the launch template to create instances.
-//
-// Take note of the following items:
-//
-//   - You can retain up to 30 launch templates in each region in your Alibaba Cloud account. Each launch template can have up to 30 versions.
-//
-//   - Most parameters in launch templates are optional. When you create a launch template, ECS does not verify the existence or validity of specified parameter values. The parameter values are verified only when you use the launch template to create instances.
-//
-//   - If you configured a specific parameter in a launch template, you cannot filter out the parameter when you call the [RunInstances](https://help.aliyun.com/document_detail/63440.html) operation to create instances from the launch template. For example, if you set `HostName` to LocalHost in a launch template but do not specify `HostName` when you call the `RunInstances` operation to create instances from the launch template, the hostname of the created instances is `LocalHost`. If you want to overwrite `LocalHost`, which is the value of HostName in the launch template, you can set `HostName` to MyHost or a different value when you call the `RunInstances` operation.
-//
-// @param request - CreateLaunchTemplateRequest
-//
-// @return CreateLaunchTemplateResponse
-func (client *Client) CreateLaunchTemplate(request *CreateLaunchTemplateRequest) (_result *CreateLaunchTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLaunchTemplateResponse{}
-	_body, _err := client.CreateLaunchTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6895,7 +5286,7 @@ func (client *Client) CreateLaunchTemplate(request *CreateLaunchTemplateRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLaunchTemplateVersionResponse
-func (client *Client) CreateLaunchTemplateVersionWithOptions(request *CreateLaunchTemplateVersionRequest, runtime *dara.RuntimeOptions) (_result *CreateLaunchTemplateVersionResponse, _err error) {
+func (client *Client) CreateLaunchTemplateVersionWithContext(ctx context.Context, request *CreateLaunchTemplateVersionRequest, runtime *dara.RuntimeOptions) (_result *CreateLaunchTemplateVersionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7132,35 +5523,11 @@ func (client *Client) CreateLaunchTemplateVersionWithOptions(request *CreateLaun
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLaunchTemplateVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a version for a launch template. You can use the created version to create Elastic Compute Service (ECS) instances, scaling groups, or auto provisioning groups.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// If you want to modify the parameters of a launch template version, you can create another version with different parameter settings for the launch template. You can create up to 30 versions for each launch template.
-//
-// @param request - CreateLaunchTemplateVersionRequest
-//
-// @return CreateLaunchTemplateVersionResponse
-func (client *Client) CreateLaunchTemplateVersion(request *CreateLaunchTemplateVersionRequest) (_result *CreateLaunchTemplateVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLaunchTemplateVersionResponse{}
-	_body, _err := client.CreateLaunchTemplateVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7171,7 +5538,7 @@ func (client *Client) CreateLaunchTemplateVersion(request *CreateLaunchTemplateV
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateNatGatewayResponse
-func (client *Client) CreateNatGatewayWithOptions(request *CreateNatGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateNatGatewayResponse, _err error) {
+func (client *Client) CreateNatGatewayWithContext(ctx context.Context, request *CreateNatGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateNatGatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7232,28 +5599,11 @@ func (client *Client) CreateNatGatewayWithOptions(request *CreateNatGatewayReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateNatGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateNatGateway is deprecated
-//
-// @param request - CreateNatGatewayRequest
-//
-// @return CreateNatGatewayResponse
-// Deprecated
-func (client *Client) CreateNatGateway(request *CreateNatGatewayRequest) (_result *CreateNatGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateNatGatewayResponse{}
-	_body, _err := client.CreateNatGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7294,7 +5644,7 @@ func (client *Client) CreateNatGateway(request *CreateNatGatewayRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateNetworkInterfaceResponse
-func (client *Client) CreateNetworkInterfaceWithOptions(request *CreateNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *CreateNetworkInterfaceResponse, _err error) {
+func (client *Client) CreateNetworkInterfaceWithContext(ctx context.Context, request *CreateNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *CreateNetworkInterfaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7459,57 +5809,11 @@ func (client *Client) CreateNetworkInterfaceWithOptions(request *CreateNetworkIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an elastic network interface (ENI). You can specify an IP address as the primary private IP address of the ENI.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - This operation is a synchronous operation. After an ENI is created, the ENI immediately enters the Available (`Available`) state and can be attached to an Elastic Compute Service (ECS) instance.
-//
-//   - If `NetworkInterfaceId` is empty in the response, no ENI is created. Recall the operation to create an ENI.
-//
-//   - An ENI can be attached only to a single ECS instance that resides in a virtual private cloud (VPC).
-//
-//   - When an ENI is detached from an ECS instance and attached to another ECS instance, the attributes of the ENI remain unchanged and network traffic is redirected to the new instance.
-//
-//   - When you call this operation to create an ENI, you can assign up to 49 secondary private IP addresses to the ENI.
-//
-//   - If you want to assign IPv6 addresses when you create an ENI, make sure that IPv6 is enabled for the vSwitch with which you want to associate the ENI. For more information, see [What is an IPv6 gateway?](https://help.aliyun.com/document_detail/98896.html)
-//
-//   - A limit is imposed on the number of ENIs that can be created per Alibaba Cloud region per account. You can view the quota limit in the ECS console. For more information, see [Manage ECS quotas](https://help.aliyun.com/document_detail/184115.html).
-//
-// ### [](#)Sample requests
-//
-// **Create an ENI**
-//
-//	RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.SecurityGroupId:  sg-bp10jztp6b0sdsyl****,   // Specify the ID of the security group in which to create the ENI.VSwitchId:  vsw-bp19wo63nleroq22g****,   // Specify the ID of the vSwitch to which to connect the ENI.
-//
-// **Create an ENI and specify an IP address as the primary private IP address of the ENI**
-//
-//	RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.SecurityGroupId:  sg-bp10jztp6b0sdsyl****,   // Specify the ID of the security group in which to create the ENI.VSwitchId:  vsw-bp19wo63nleroq22g****,   // Specify the ID of the vSwitch to which to connect the ENI.PrimaryIpAddress:  192.168.0.*,   // Specify an IP address as the primary private IP address of the ENI.
-//
-// @param request - CreateNetworkInterfaceRequest
-//
-// @return CreateNetworkInterfaceResponse
-func (client *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequest) (_result *CreateNetworkInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateNetworkInterfaceResponse{}
-	_body, _err := client.CreateNetworkInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7526,7 +5830,7 @@ func (client *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateNetworkInterfacePermissionResponse
-func (client *Client) CreateNetworkInterfacePermissionWithOptions(request *CreateNetworkInterfacePermissionRequest, runtime *dara.RuntimeOptions) (_result *CreateNetworkInterfacePermissionResponse, _err error) {
+func (client *Client) CreateNetworkInterfacePermissionWithContext(ctx context.Context, request *CreateNetworkInterfacePermissionRequest, runtime *dara.RuntimeOptions) (_result *CreateNetworkInterfacePermissionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7583,33 +5887,11 @@ func (client *Client) CreateNetworkInterfacePermissionWithOptions(request *Creat
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateNetworkInterfacePermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Grants a permission on an elastic network interface (ENI) to an Alibaba Cloud partner (a certified ISV) or an individual user.
-//
-// Description:
-//
-// Before you call this operation, submit a ticket to apply for using this operation.
-//
-// @param request - CreateNetworkInterfacePermissionRequest
-//
-// @return CreateNetworkInterfacePermissionResponse
-func (client *Client) CreateNetworkInterfacePermission(request *CreateNetworkInterfacePermissionRequest) (_result *CreateNetworkInterfacePermissionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateNetworkInterfacePermissionResponse{}
-	_body, _err := client.CreateNetworkInterfacePermissionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7620,7 +5902,7 @@ func (client *Client) CreateNetworkInterfacePermission(request *CreateNetworkInt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePhysicalConnectionResponse
-func (client *Client) CreatePhysicalConnectionWithOptions(request *CreatePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreatePhysicalConnectionResponse, _err error) {
+func (client *Client) CreatePhysicalConnectionWithContext(ctx context.Context, request *CreatePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreatePhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7713,28 +5995,11 @@ func (client *Client) CreatePhysicalConnectionWithOptions(request *CreatePhysica
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreatePhysicalConnection is deprecated
-//
-// @param request - CreatePhysicalConnectionRequest
-//
-// @return CreatePhysicalConnectionResponse
-// Deprecated
-func (client *Client) CreatePhysicalConnection(request *CreatePhysicalConnectionRequest) (_result *CreatePhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePhysicalConnectionResponse{}
-	_body, _err := client.CreatePhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7747,7 +6012,7 @@ func (client *Client) CreatePhysicalConnection(request *CreatePhysicalConnection
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePortRangeListResponse
-func (client *Client) CreatePortRangeListWithOptions(request *CreatePortRangeListRequest, runtime *dara.RuntimeOptions) (_result *CreatePortRangeListResponse, _err error) {
+func (client *Client) CreatePortRangeListWithContext(ctx context.Context, request *CreatePortRangeListRequest, runtime *dara.RuntimeOptions) (_result *CreatePortRangeListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7820,29 +6085,11 @@ func (client *Client) CreatePortRangeListWithOptions(request *CreatePortRangeLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePortRangeListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a port list. You can associate a port list with resources, such as security groups.
-//
-// @param request - CreatePortRangeListRequest
-//
-// @return CreatePortRangeListResponse
-func (client *Client) CreatePortRangeList(request *CreatePortRangeListRequest) (_result *CreatePortRangeListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePortRangeListResponse{}
-	_body, _err := client.CreatePortRangeListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7873,7 +6120,7 @@ func (client *Client) CreatePortRangeList(request *CreatePortRangeListRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePrefixListResponse
-func (client *Client) CreatePrefixListWithOptions(request *CreatePrefixListRequest, runtime *dara.RuntimeOptions) (_result *CreatePrefixListResponse, _err error) {
+func (client *Client) CreatePrefixListWithContext(ctx context.Context, request *CreatePrefixListRequest, runtime *dara.RuntimeOptions) (_result *CreatePrefixListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7950,47 +6197,11 @@ func (client *Client) CreatePrefixListWithOptions(request *CreatePrefixListReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePrefixListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a prefix list.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - A prefix list is a collection of network prefixes (CIDR blocks) and can be referenced to configure network rules for other resources. For more information, see [Overview](https://help.aliyun.com/document_detail/206223.html).
-//
-//   - When you create a prefix list, take note of the following items:
-//
-//   - You must specify an IP address family (IPv4 or IPv6) for the prefix list, and cannot change the IP address family after the prefix list is created. You cannot combine IPv4 and IPv6 CIDR blocks in a single prefix list.
-//
-//   - You must specify the maximum number of entries that the prefix list can contain. You cannot modify the maximum number of entries after the prefix list is created.
-//
-//   - You can specify entries for the prefix list. Each entry consists of a CIDR block and the description for the CIDR block. The total number of entries cannot exceed the maximum number of entries that you specified.
-//
-//   - For more information about the limits on prefix lists and other resources, see [Limits](https://help.aliyun.com/document_detail/25412.html).
-//
-//   - You can create Resource Access Management (RAM) users and grant them minimum permissions. This eliminates the need to share the AccessKey pair of your Alibaba Cloud account with other users and reduces security risks for your enterprises. For information about how to grant permissions on prefix lists to RAM users, see [Grant a RAM user permissions on prefix lists](https://help.aliyun.com/document_detail/206175.html)
-//
-// @param request - CreatePrefixListRequest
-//
-// @return CreatePrefixListResponse
-func (client *Client) CreatePrefixList(request *CreatePrefixListRequest) (_result *CreatePrefixListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePrefixListResponse{}
-	_body, _err := client.CreatePrefixListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8001,7 +6212,7 @@ func (client *Client) CreatePrefixList(request *CreatePrefixListRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRouteEntryResponse
-func (client *Client) CreateRouteEntryWithOptions(request *CreateRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteEntryResponse, _err error) {
+func (client *Client) CreateRouteEntryWithContext(ctx context.Context, request *CreateRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8066,28 +6277,11 @@ func (client *Client) CreateRouteEntryWithOptions(request *CreateRouteEntryReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateRouteEntry is deprecated
-//
-// @param request - CreateRouteEntryRequest
-//
-// @return CreateRouteEntryResponse
-// Deprecated
-func (client *Client) CreateRouteEntry(request *CreateRouteEntryRequest) (_result *CreateRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRouteEntryResponse{}
-	_body, _err := client.CreateRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8098,7 +6292,7 @@ func (client *Client) CreateRouteEntry(request *CreateRouteEntryRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRouterInterfaceResponse
-func (client *Client) CreateRouterInterfaceWithOptions(request *CreateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *CreateRouterInterfaceResponse, _err error) {
+func (client *Client) CreateRouterInterfaceWithContext(ctx context.Context, request *CreateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *CreateRouterInterfaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8227,28 +6421,11 @@ func (client *Client) CreateRouterInterfaceWithOptions(request *CreateRouterInte
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRouterInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateRouterInterface is deprecated
-//
-// @param request - CreateRouterInterfaceRequest
-//
-// @return CreateRouterInterfaceResponse
-// Deprecated
-func (client *Client) CreateRouterInterface(request *CreateRouterInterfaceRequest) (_result *CreateRouterInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRouterInterfaceResponse{}
-	_body, _err := client.CreateRouterInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8261,7 +6438,7 @@ func (client *Client) CreateRouterInterface(request *CreateRouterInterfaceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSavingsPlanResponse
-func (client *Client) CreateSavingsPlanWithOptions(request *CreateSavingsPlanRequest, runtime *dara.RuntimeOptions) (_result *CreateSavingsPlanResponse, _err error) {
+func (client *Client) CreateSavingsPlanWithContext(ctx context.Context, request *CreateSavingsPlanRequest, runtime *dara.RuntimeOptions) (_result *CreateSavingsPlanResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8322,29 +6499,11 @@ func (client *Client) CreateSavingsPlanWithOptions(request *CreateSavingsPlanReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSavingsPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 购买节省计划并预付费换购按量付费
-//
-// @param request - CreateSavingsPlanRequest
-//
-// @return CreateSavingsPlanResponse
-func (client *Client) CreateSavingsPlan(request *CreateSavingsPlanRequest) (_result *CreateSavingsPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSavingsPlanResponse{}
-	_body, _err := client.CreateSavingsPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8367,7 +6526,7 @@ func (client *Client) CreateSavingsPlan(request *CreateSavingsPlanRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSecurityGroupResponse
-func (client *Client) CreateSecurityGroupWithOptions(request *CreateSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateSecurityGroupResponse, _err error) {
+func (client *Client) CreateSecurityGroupWithContext(ctx context.Context, request *CreateSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateSecurityGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8440,39 +6599,11 @@ func (client *Client) CreateSecurityGroupWithOptions(request *CreateSecurityGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a security group.
-//
-// Description:
-//
-//	  By default, the internal access control policy (InnerAccessPolicy) of the basic security group that you create by calling this operation is internal interconnectivity (**Accept**). You can call the [ModifySecurityGroupPolicy](https://help.aliyun.com/document_detail/2679846.html) operation to change the value of InnerAccessPolicy for the basic security group.
-//
-//		- By default, the internal access control policy (InnerAccessPolicy) of the advanced security group that you create by calling this operation is internal isolation (**Drop**). The InnerAccessPolicy value of the advanced security group cannot be changed.
-//
-//		- You can create a limited number of security groups per region. You can create at least 100 security groups per region. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section in the "Limits" topic.
-//
-//		- To create a security group of the Virtual Private Cloud (VPC) type, you must specify VpcId.
-//
-// @param request - CreateSecurityGroupRequest
-//
-// @return CreateSecurityGroupResponse
-func (client *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) (_result *CreateSecurityGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSecurityGroupResponse{}
-	_body, _err := client.CreateSecurityGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8499,7 +6630,7 @@ func (client *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSimulatedSystemEventsResponse
-func (client *Client) CreateSimulatedSystemEventsWithOptions(request *CreateSimulatedSystemEventsRequest, runtime *dara.RuntimeOptions) (_result *CreateSimulatedSystemEventsResponse, _err error) {
+func (client *Client) CreateSimulatedSystemEventsWithContext(ctx context.Context, request *CreateSimulatedSystemEventsRequest, runtime *dara.RuntimeOptions) (_result *CreateSimulatedSystemEventsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8556,43 +6687,11 @@ func (client *Client) CreateSimulatedSystemEventsWithOptions(request *CreateSimu
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSimulatedSystemEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Schedules simulated system events of Elastic Compute Service (ECS) instances. The simulated system events do not actually occur on or affect ECS instances.
-//
-// Description:
-//
-// You can use the ECS console, call [ECS API](https://help.aliyun.com/document_detail/63962.html) operations, or use CloudMonitor to view the scheduled simulated system events.
-//
-// The following descriptions provide the lifecycle of a simulated system event:
-//
-//   - Scheduled: The state of the simulated system event is automatically changed to Scheduled after it is scheduled.
-//
-//   - Executed: The state of the simulated system event is automatically changed to Executed at the time specified by the NotBefore parameter if no manual intervention is involved.
-//
-//   - Canceled: The state of the simulated system event is changed to Canceled if you cancel the event by calling the [CancelSimulatedSystemEvents](https://help.aliyun.com/document_detail/88808.html) operation.
-//
-//   - Avoided: The state of the simulated system event generated from maintenance-triggered instance restart can be changed to Avoided if you restart the instance before the scheduled time of the simulated system event. The maintenance-triggered instance restart is indicated by the SystemMaintenance.Reboot value. For more information, see [RebootInstance](https://help.aliyun.com/document_detail/25502.html).
-//
-// @param request - CreateSimulatedSystemEventsRequest
-//
-// @return CreateSimulatedSystemEventsResponse
-func (client *Client) CreateSimulatedSystemEvents(request *CreateSimulatedSystemEventsRequest) (_result *CreateSimulatedSystemEventsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSimulatedSystemEventsResponse{}
-	_body, _err := client.CreateSimulatedSystemEventsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8649,7 +6748,7 @@ func (client *Client) CreateSimulatedSystemEvents(request *CreateSimulatedSystem
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSnapshotResponse
-func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, runtime *dara.RuntimeOptions) (_result *CreateSnapshotResponse, _err error) {
+func (client *Client) CreateSnapshotWithContext(ctx context.Context, request *CreateSnapshotRequest, runtime *dara.RuntimeOptions) (_result *CreateSnapshotResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8730,73 +6829,11 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a snapshot for a cloud disk.
-//
-// Description:
-//
-// The local snapshot feature is replaced by the instant access feature. Take note of the following items:
-//
-//   - If you have used the local snapshot feature before December 14, 2020, you can use `Category`.
-//
-//   - If you have not used the local snapshot feature before December 14, 2020, new snapshots of your Enterprise SSD (ESSD) series disks are instantly available after creation without the need for additional configurations, regardless of whether the snapshots are manually or automatically created. ESSD-series disks include ESSDs, ESSD AutoPL disks, ESSD Entry disks, and Regional ESSDs. InstantAccess, InstantAccessRetentionDays, and DisableInstantAccess that are related to the instant access feature no longer take effect in API operations. Available is added to the DescribeSnapshots and DescribeSnapshotGroups operations to indicate whether snapshots are available.
-//
-// Prerequisites:
-//
-//   - Elastic Compute Service (ECS) Snapshot is activated. For more information, see [Activate ECS Snapshot](https://help.aliyun.com/document_detail/108381.html).
-//
-//   - The disk for which you want to create a snapshot is in the **In_use*	- or **Available*	- state. Take note of the following items:
-//
-//   - If the disk is in the **In_use*	- state, make sure that the ECS instance to which the disk is attached is in the **Running*	- or **Stopped*	- state.
-//
-//   - If the disk is in the **Available*	- state, make sure that the disk was attached to an ECS instance. Snapshots cannot be created for disks that have never been attached to an ECS instance.
-//
-//   - When you use a disk to create a dynamic extended volume or a RAID array, we recommend that you create a snapshot-consistent group and enable the application-consistent snapshot feature to back up data. When a business system involves multiple disks, you can create a snapshot-consistent group to ensure a consistent write order and the crash consistency of business system data. For more information, see [Create a snapshot-consistent group](https://help.aliyun.com/document_detail/199625.html) and [Create application-consistent snapshots](https://help.aliyun.com/document_detail/208589.html).
-//
-// When you create a snapshot, take note of the following items:
-//
-//   - We recommend that you create snapshots during off-peak hours because snapshot creation degrades disk I/O performance by up to 10% and slows down data reads and writes.
-//
-//   - If a snapshot is being created, you cannot use this snapshot to create a custom image by calling the [CreateImage](https://help.aliyun.com/document_detail/25535.html) operation.
-//
-//   - If operations are performed on the disk and incremental data is generated when a snapshot is being created, the incremental data is not included in the snapshot.
-//
-//   - When a snapshot is being created for a disk that is attached to an ECS instance, do not perform operations that change the status of the instance, such as stopping or restarting the instance. Otherwise, the snapshot may fail to be created.
-//
-//   - You cannot resize a disk for which a snapshot is being created. Wait until the snapshot is created before you resize the disk.
-//
-//   - You can create snapshots for a disk that is in the **Expired*	- (`Expired`) state. If the release time scheduled for a disk arrives while a snapshot is being created for the disk, the snapshot is in the **Creating*	- (`Creating`) state and is deleted when the disk is released.
-//
-//   - After you create snapshots, you are charged snapshot storage fees per region based on the total size of the snapshots that are stored in the region. For more information, see [Snapshots](https://help.aliyun.com/document_detail/56159.html).
-//
-//   - In the following scenarios, you cannot create snapshots for a disk:
-//
-//   - The number of manual snapshots of the disk has reached 256.
-//
-//   - A snapshot is being created for the disk.
-//
-//   - If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ECS instance, the instance is locked for security reasons and no operations are allowed on the instance.
-//
-// @param request - CreateSnapshotRequest
-//
-// @return CreateSnapshotResponse
-func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *CreateSnapshotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSnapshotResponse{}
-	_body, _err := client.CreateSnapshotWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8833,7 +6870,7 @@ func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSnapshotGroupResponse
-func (client *Client) CreateSnapshotGroupWithOptions(request *CreateSnapshotGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateSnapshotGroupResponse, _err error) {
+func (client *Client) CreateSnapshotGroupWithContext(ctx context.Context, request *CreateSnapshotGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateSnapshotGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8918,53 +6955,11 @@ func (client *Client) CreateSnapshotGroupWithOptions(request *CreateSnapshotGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSnapshotGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a snapshot-consistent group for the disks of an Elastic Compute Service (ECS) instance. A snapshot-consistent group contains snapshots of one or more disks.
-//
-// Description:
-//
-// You can specify `InstanceId` to create a snapshot-consistent group for disks on a specific ECS instance. You can also specify `DiskId.N` to create a snapshot-consistent group for multiple disks on multiple ECS instances within the same zone.
-//
-// >  You cannot specify both `DiskId.N` and `ExcludeDiskId.N` in the same request. If you specify `InstanceId`, you can use `DiskId.N` to specify only disks on the specified ECS instance and cannot use DiskId.N to specify disks across ECS instances.
-//
-// Take note of the following items:
-//
-//   - The disks for which you want to create a snapshot must be in the **In Use*	- (`In_use`) or **Unattached*	- (`Available`) state.
-//
-//   - If a disk is in the **In Use*	- (`In_use`) state, make sure that the ECS instance to which the disk is attached is in the **Running*	- (`Running`) or **Stopped*	- (`Stopped`) state.
-//
-//   - If a disk is in the **Unattached*	- (`Available`) state, make sure that the disk has been attached to ECS instances. Snapshots cannot be created for disks that have never been attached to an ECS instance.
-//
-//   - Snapshot-consistent groups can be used to create snapshots only for Enterprise SSDs (ESSDs), ESSD AutoPL disks, and ESSD Entry disks.
-//
-//   - A snapshot-consistent group can contain snapshots of up to 16 disks, including system disks and data disks, and cannot exceed 32 TiB in size.
-//
-//   - Snapshots that you created are stored indefinitely until you delete the snapshots. We recommend that you delete unnecessary snapshots on a regular basis to prevent excess snapshot storage fees.
-//
-//   - Snapshot-consistent groups cannot be created for disks for which multi-attach feature is enabled. If disks for which the multi-attach feature is enabled are attached to an ECS instance, you must specify the `ExcludeDiskId.N` parameter to exclude the disks.
-//
-// For more information about the snapshot-consistent group feature, see [Create a snapshot-consistent group](https://help.aliyun.com/document_detail/199625.html).
-//
-// @param request - CreateSnapshotGroupRequest
-//
-// @return CreateSnapshotGroupResponse
-func (client *Client) CreateSnapshotGroup(request *CreateSnapshotGroupRequest) (_result *CreateSnapshotGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSnapshotGroupResponse{}
-	_body, _err := client.CreateSnapshotGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8987,7 +6982,7 @@ func (client *Client) CreateSnapshotGroup(request *CreateSnapshotGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateStorageSetResponse
-func (client *Client) CreateStorageSetWithOptions(request *CreateStorageSetRequest, runtime *dara.RuntimeOptions) (_result *CreateStorageSetResponse, _err error) {
+func (client *Client) CreateStorageSetWithContext(ctx context.Context, request *CreateStorageSetRequest, runtime *dara.RuntimeOptions) (_result *CreateStorageSetResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9056,39 +7051,11 @@ func (client *Client) CreateStorageSetWithOptions(request *CreateStorageSetReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateStorageSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// (Beta) Creates a storage set in a zone of a region.
-//
-// Description:
-//
-// A storage set can distribute disks or Shared Block Storage devices to different locations. You can specify the number of partitions in a storage set. A larger number of partitions indicate more discrete distribution of disks or Shared Block Storage devices.
-//
-// When you call this operation, take note of the following items:
-//
-//   - The number of storage sets that you can create in a region is limited. You can call the [DescribeAccountAttributes](https://help.aliyun.com/document_detail/73772.html) operation to query the limit.
-//
-//   - The number of partitions in a zone is limited. You can call the [DescribeAccountAttributes](https://help.aliyun.com/document_detail/73772.html) operation to query the limit.
-//
-// @param request - CreateStorageSetRequest
-//
-// @return CreateStorageSetResponse
-func (client *Client) CreateStorageSet(request *CreateStorageSetRequest) (_result *CreateStorageSetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateStorageSetResponse{}
-	_body, _err := client.CreateStorageSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9099,7 +7066,7 @@ func (client *Client) CreateStorageSet(request *CreateStorageSetRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVSwitchResponse
-func (client *Client) CreateVSwitchWithOptions(request *CreateVSwitchRequest, runtime *dara.RuntimeOptions) (_result *CreateVSwitchResponse, _err error) {
+func (client *Client) CreateVSwitchWithContext(ctx context.Context, request *CreateVSwitchRequest, runtime *dara.RuntimeOptions) (_result *CreateVSwitchResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9164,28 +7131,11 @@ func (client *Client) CreateVSwitchWithOptions(request *CreateVSwitchRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVSwitchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateVSwitch is deprecated, please use Vpc::2016-04-28::CreateVSwitch instead.
-//
-// @param request - CreateVSwitchRequest
-//
-// @return CreateVSwitchResponse
-// Deprecated
-func (client *Client) CreateVSwitch(request *CreateVSwitchRequest) (_result *CreateVSwitchResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVSwitchResponse{}
-	_body, _err := client.CreateVSwitchWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9196,7 +7146,7 @@ func (client *Client) CreateVSwitch(request *CreateVSwitchRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVirtualBorderRouterResponse
-func (client *Client) CreateVirtualBorderRouterWithOptions(request *CreateVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *CreateVirtualBorderRouterResponse, _err error) {
+func (client *Client) CreateVirtualBorderRouterWithContext(ctx context.Context, request *CreateVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *CreateVirtualBorderRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9285,28 +7235,11 @@ func (client *Client) CreateVirtualBorderRouterWithOptions(request *CreateVirtua
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVirtualBorderRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateVirtualBorderRouter is deprecated
-//
-// @param request - CreateVirtualBorderRouterRequest
-//
-// @return CreateVirtualBorderRouterResponse
-// Deprecated
-func (client *Client) CreateVirtualBorderRouter(request *CreateVirtualBorderRouterRequest) (_result *CreateVirtualBorderRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVirtualBorderRouterResponse{}
-	_body, _err := client.CreateVirtualBorderRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9317,7 +7250,7 @@ func (client *Client) CreateVirtualBorderRouter(request *CreateVirtualBorderRout
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVpcResponse
-func (client *Client) CreateVpcWithOptions(request *CreateVpcRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcResponse, _err error) {
+func (client *Client) CreateVpcWithContext(ctx context.Context, request *CreateVpcRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9378,28 +7311,11 @@ func (client *Client) CreateVpcWithOptions(request *CreateVpcRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateVpc is deprecated, please use Vpc::2016-04-28::CreateVpc instead.
-//
-// @param request - CreateVpcRequest
-//
-// @return CreateVpcResponse
-// Deprecated
-func (client *Client) CreateVpc(request *CreateVpcRequest) (_result *CreateVpcResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVpcResponse{}
-	_body, _err := client.CreateVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9410,7 +7326,7 @@ func (client *Client) CreateVpc(request *CreateVpcRequest) (_result *CreateVpcRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeactivateRouterInterfaceResponse
-func (client *Client) DeactivateRouterInterfaceWithOptions(request *DeactivateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DeactivateRouterInterfaceResponse, _err error) {
+func (client *Client) DeactivateRouterInterfaceWithContext(ctx context.Context, request *DeactivateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DeactivateRouterInterfaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9451,28 +7367,11 @@ func (client *Client) DeactivateRouterInterfaceWithOptions(request *DeactivateRo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeactivateRouterInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeactivateRouterInterface is deprecated
-//
-// @param request - DeactivateRouterInterfaceRequest
-//
-// @return DeactivateRouterInterfaceResponse
-// Deprecated
-func (client *Client) DeactivateRouterInterface(request *DeactivateRouterInterfaceRequest) (_result *DeactivateRouterInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeactivateRouterInterfaceResponse{}
-	_body, _err := client.DeactivateRouterInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9491,7 +7390,7 @@ func (client *Client) DeactivateRouterInterface(request *DeactivateRouterInterfa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteActivationResponse
-func (client *Client) DeleteActivationWithOptions(request *DeleteActivationRequest, runtime *dara.RuntimeOptions) (_result *DeleteActivationResponse, _err error) {
+func (client *Client) DeleteActivationWithContext(ctx context.Context, request *DeleteActivationRequest, runtime *dara.RuntimeOptions) (_result *DeleteActivationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9540,35 +7439,11 @@ func (client *Client) DeleteActivationWithOptions(request *DeleteActivationReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteActivationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an unused activation code.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// Before you call this operation to delete an activation code, make sure that no managed instances are registered with the activation code.
-//
-// @param request - DeleteActivationRequest
-//
-// @return DeleteActivationResponse
-func (client *Client) DeleteActivation(request *DeleteActivationRequest) (_result *DeleteActivationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteActivationResponse{}
-	_body, _err := client.DeleteActivationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9581,7 +7456,7 @@ func (client *Client) DeleteActivation(request *DeleteActivationRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAutoProvisioningGroupResponse
-func (client *Client) DeleteAutoProvisioningGroupWithOptions(request *DeleteAutoProvisioningGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAutoProvisioningGroupResponse, _err error) {
+func (client *Client) DeleteAutoProvisioningGroupWithContext(ctx context.Context, request *DeleteAutoProvisioningGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAutoProvisioningGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9630,29 +7505,11 @@ func (client *Client) DeleteAutoProvisioningGroupWithOptions(request *DeleteAuto
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAutoProvisioningGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an auto provisioning group. When you call this operation, you can specify AutoProvisioningGroupId and TerminateInstances in the request.
-//
-// @param request - DeleteAutoProvisioningGroupRequest
-//
-// @return DeleteAutoProvisioningGroupResponse
-func (client *Client) DeleteAutoProvisioningGroup(request *DeleteAutoProvisioningGroupRequest) (_result *DeleteAutoProvisioningGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAutoProvisioningGroupResponse{}
-	_body, _err := client.DeleteAutoProvisioningGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9665,7 +7522,7 @@ func (client *Client) DeleteAutoProvisioningGroup(request *DeleteAutoProvisionin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAutoSnapshotPolicyResponse
-func (client *Client) DeleteAutoSnapshotPolicyWithOptions(request *DeleteAutoSnapshotPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteAutoSnapshotPolicyResponse, _err error) {
+func (client *Client) DeleteAutoSnapshotPolicyWithContext(ctx context.Context, request *DeleteAutoSnapshotPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteAutoSnapshotPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9706,29 +7563,11 @@ func (client *Client) DeleteAutoSnapshotPolicyWithOptions(request *DeleteAutoSna
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAutoSnapshotPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an automatic snapshot policy. After you delete an automatic snapshot policy, the policy is no longer applied to the disks on which it previously took effect.
-//
-// @param request - DeleteAutoSnapshotPolicyRequest
-//
-// @return DeleteAutoSnapshotPolicyResponse
-func (client *Client) DeleteAutoSnapshotPolicy(request *DeleteAutoSnapshotPolicyRequest) (_result *DeleteAutoSnapshotPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAutoSnapshotPolicyResponse{}
-	_body, _err := client.DeleteAutoSnapshotPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9739,7 +7578,7 @@ func (client *Client) DeleteAutoSnapshotPolicy(request *DeleteAutoSnapshotPolicy
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteBandwidthPackageResponse
-func (client *Client) DeleteBandwidthPackageWithOptions(request *DeleteBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *DeleteBandwidthPackageResponse, _err error) {
+func (client *Client) DeleteBandwidthPackageWithContext(ctx context.Context, request *DeleteBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *DeleteBandwidthPackageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9784,28 +7623,11 @@ func (client *Client) DeleteBandwidthPackageWithOptions(request *DeleteBandwidth
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteBandwidthPackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteBandwidthPackage is deprecated
-//
-// @param request - DeleteBandwidthPackageRequest
-//
-// @return DeleteBandwidthPackageResponse
-// Deprecated
-func (client *Client) DeleteBandwidthPackage(request *DeleteBandwidthPackageRequest) (_result *DeleteBandwidthPackageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteBandwidthPackageResponse{}
-	_body, _err := client.DeleteBandwidthPackageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9818,7 +7640,7 @@ func (client *Client) DeleteBandwidthPackage(request *DeleteBandwidthPackageRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCommandResponse
-func (client *Client) DeleteCommandWithOptions(request *DeleteCommandRequest, runtime *dara.RuntimeOptions) (_result *DeleteCommandResponse, _err error) {
+func (client *Client) DeleteCommandWithContext(ctx context.Context, request *DeleteCommandRequest, runtime *dara.RuntimeOptions) (_result *DeleteCommandResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9867,29 +7689,11 @@ func (client *Client) DeleteCommandWithOptions(request *DeleteCommandRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCommandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Cloud Assistant command in a region. This operation cannot delete Cloud Assistant commands that are being run.
-//
-// @param request - DeleteCommandRequest
-//
-// @return DeleteCommandResponse
-func (client *Client) DeleteCommand(request *DeleteCommandRequest) (_result *DeleteCommandResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCommandResponse{}
-	_body, _err := client.DeleteCommandWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9902,7 +7706,7 @@ func (client *Client) DeleteCommand(request *DeleteCommandRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDedicatedHostClusterResponse
-func (client *Client) DeleteDedicatedHostClusterWithOptions(request *DeleteDedicatedHostClusterRequest, runtime *dara.RuntimeOptions) (_result *DeleteDedicatedHostClusterResponse, _err error) {
+func (client *Client) DeleteDedicatedHostClusterWithContext(ctx context.Context, request *DeleteDedicatedHostClusterRequest, runtime *dara.RuntimeOptions) (_result *DeleteDedicatedHostClusterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9947,29 +7751,11 @@ func (client *Client) DeleteDedicatedHostClusterWithOptions(request *DeleteDedic
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDedicatedHostClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a dedicated host group. Before you call the API operation, you must migrate the dedicated hosts in the host group to another host group.
-//
-// @param request - DeleteDedicatedHostClusterRequest
-//
-// @return DeleteDedicatedHostClusterResponse
-func (client *Client) DeleteDedicatedHostCluster(request *DeleteDedicatedHostClusterRequest) (_result *DeleteDedicatedHostClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDedicatedHostClusterResponse{}
-	_body, _err := client.DeleteDedicatedHostClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9986,7 +7772,7 @@ func (client *Client) DeleteDedicatedHostCluster(request *DeleteDedicatedHostClu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDeploymentSetResponse
-func (client *Client) DeleteDeploymentSetWithOptions(request *DeleteDeploymentSetRequest, runtime *dara.RuntimeOptions) (_result *DeleteDeploymentSetResponse, _err error) {
+func (client *Client) DeleteDeploymentSetWithContext(ctx context.Context, request *DeleteDeploymentSetRequest, runtime *dara.RuntimeOptions) (_result *DeleteDeploymentSetResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10031,33 +7817,11 @@ func (client *Client) DeleteDeploymentSetWithOptions(request *DeleteDeploymentSe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDeploymentSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a deployment set.
-//
-// Description:
-//
-// Before you delete a deployment set, make sure that no instances exist in the deployment set. If instances exist in the deployment set, move the instances to a different deployment set or release the instances before you delete the deployment set. For more information, see [Change the deployment set of an instance](https://help.aliyun.com/document_detail/108407.html) and [Release an ECS instance](https://help.aliyun.com/document_detail/25442.html).
-//
-// @param request - DeleteDeploymentSetRequest
-//
-// @return DeleteDeploymentSetResponse
-func (client *Client) DeleteDeploymentSet(request *DeleteDeploymentSetRequest) (_result *DeleteDeploymentSetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDeploymentSetResponse{}
-	_body, _err := client.DeleteDeploymentSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10070,7 +7834,7 @@ func (client *Client) DeleteDeploymentSet(request *DeleteDeploymentSetRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDiagnosticMetricSetsResponse
-func (client *Client) DeleteDiagnosticMetricSetsWithOptions(request *DeleteDiagnosticMetricSetsRequest, runtime *dara.RuntimeOptions) (_result *DeleteDiagnosticMetricSetsResponse, _err error) {
+func (client *Client) DeleteDiagnosticMetricSetsWithContext(ctx context.Context, request *DeleteDiagnosticMetricSetsRequest, runtime *dara.RuntimeOptions) (_result *DeleteDiagnosticMetricSetsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10099,29 +7863,11 @@ func (client *Client) DeleteDiagnosticMetricSetsWithOptions(request *DeleteDiagn
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDiagnosticMetricSetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes diagnostic metric sets.
-//
-// @param request - DeleteDiagnosticMetricSetsRequest
-//
-// @return DeleteDiagnosticMetricSetsResponse
-func (client *Client) DeleteDiagnosticMetricSets(request *DeleteDiagnosticMetricSetsRequest) (_result *DeleteDiagnosticMetricSetsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDiagnosticMetricSetsResponse{}
-	_body, _err := client.DeleteDiagnosticMetricSetsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10138,7 +7884,7 @@ func (client *Client) DeleteDiagnosticMetricSets(request *DeleteDiagnosticMetric
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDiagnosticReportsResponse
-func (client *Client) DeleteDiagnosticReportsWithOptions(request *DeleteDiagnosticReportsRequest, runtime *dara.RuntimeOptions) (_result *DeleteDiagnosticReportsResponse, _err error) {
+func (client *Client) DeleteDiagnosticReportsWithContext(ctx context.Context, request *DeleteDiagnosticReportsRequest, runtime *dara.RuntimeOptions) (_result *DeleteDiagnosticReportsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10167,33 +7913,11 @@ func (client *Client) DeleteDiagnosticReportsWithOptions(request *DeleteDiagnost
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDiagnosticReportsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes diagnostic reports.
-//
-// Description:
-//
-// You can call this operation to delete the diagnostic reports that are no longer needed.
-//
-// @param request - DeleteDiagnosticReportsRequest
-//
-// @return DeleteDiagnosticReportsResponse
-func (client *Client) DeleteDiagnosticReports(request *DeleteDiagnosticReportsRequest) (_result *DeleteDiagnosticReportsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDiagnosticReportsResponse{}
-	_body, _err := client.DeleteDiagnosticReportsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10218,7 +7942,7 @@ func (client *Client) DeleteDiagnosticReports(request *DeleteDiagnosticReportsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDiskResponse
-func (client *Client) DeleteDiskWithOptions(request *DeleteDiskRequest, runtime *dara.RuntimeOptions) (_result *DeleteDiskResponse, _err error) {
+func (client *Client) DeleteDiskWithContext(ctx context.Context, request *DeleteDiskRequest, runtime *dara.RuntimeOptions) (_result *DeleteDiskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10259,41 +7983,11 @@ func (client *Client) DeleteDiskWithOptions(request *DeleteDiskRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a pay-as-you-go data disk. The data disk can be a basic disk, an ultra disk, a standard SSD, or an Enterprise SSD (ESSD).
-//
-// Description:
-//
-// When you call this operation, take note of the following items:
-//
-//   - Manual snapshots of the disk are retained.
-//
-//   - You can call the [ModifyDiskAttribute](https://help.aliyun.com/document_detail/25517.html) operation to configure whether to retain automatic snapshots of the disk or release the snapshots along with the disk. We recommend that you delete the snapshots that are no longer needed to maintain a sufficient quota for new automatic snapshots.
-//
-//   - The disk must be in the Unattached (Available) state.
-//
-//   - If the specified DiskId parameter does not exist, the request is ignored.
-//
-// @param request - DeleteDiskRequest
-//
-// @return DeleteDiskResponse
-func (client *Client) DeleteDisk(request *DeleteDiskRequest) (_result *DeleteDiskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDiskResponse{}
-	_body, _err := client.DeleteDiskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10304,7 +7998,7 @@ func (client *Client) DeleteDisk(request *DeleteDiskRequest) (_result *DeleteDis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteForwardEntryResponse
-func (client *Client) DeleteForwardEntryWithOptions(request *DeleteForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteForwardEntryResponse, _err error) {
+func (client *Client) DeleteForwardEntryWithContext(ctx context.Context, request *DeleteForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteForwardEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10353,28 +8047,11 @@ func (client *Client) DeleteForwardEntryWithOptions(request *DeleteForwardEntryR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteForwardEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteForwardEntry is deprecated
-//
-// @param request - DeleteForwardEntryRequest
-//
-// @return DeleteForwardEntryResponse
-// Deprecated
-func (client *Client) DeleteForwardEntry(request *DeleteForwardEntryRequest) (_result *DeleteForwardEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteForwardEntryResponse{}
-	_body, _err := client.DeleteForwardEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10385,7 +8062,7 @@ func (client *Client) DeleteForwardEntry(request *DeleteForwardEntryRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteHaVipResponse
-func (client *Client) DeleteHaVipWithOptions(request *DeleteHaVipRequest, runtime *dara.RuntimeOptions) (_result *DeleteHaVipResponse, _err error) {
+func (client *Client) DeleteHaVipWithContext(ctx context.Context, request *DeleteHaVipRequest, runtime *dara.RuntimeOptions) (_result *DeleteHaVipResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10434,28 +8111,11 @@ func (client *Client) DeleteHaVipWithOptions(request *DeleteHaVipRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteHaVipResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteHaVip is deprecated
-//
-// @param request - DeleteHaVipRequest
-//
-// @return DeleteHaVipResponse
-// Deprecated
-func (client *Client) DeleteHaVip(request *DeleteHaVipRequest) (_result *DeleteHaVipResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteHaVipResponse{}
-	_body, _err := client.DeleteHaVipWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10468,7 +8128,7 @@ func (client *Client) DeleteHaVip(request *DeleteHaVipRequest) (_result *DeleteH
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteHpcClusterResponse
-func (client *Client) DeleteHpcClusterWithOptions(request *DeleteHpcClusterRequest, runtime *dara.RuntimeOptions) (_result *DeleteHpcClusterResponse, _err error) {
+func (client *Client) DeleteHpcClusterWithContext(ctx context.Context, request *DeleteHpcClusterRequest, runtime *dara.RuntimeOptions) (_result *DeleteHpcClusterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10521,29 +8181,11 @@ func (client *Client) DeleteHpcClusterWithOptions(request *DeleteHpcClusterReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteHpcClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a high performance computing (HPC) cluster.
-//
-// @param request - DeleteHpcClusterRequest
-//
-// @return DeleteHpcClusterResponse
-func (client *Client) DeleteHpcCluster(request *DeleteHpcClusterRequest) (_result *DeleteHpcClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteHpcClusterResponse{}
-	_body, _err := client.DeleteHpcClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10560,7 +8202,7 @@ func (client *Client) DeleteHpcCluster(request *DeleteHpcClusterRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteImageResponse
-func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtime *dara.RuntimeOptions) (_result *DeleteImageResponse, _err error) {
+func (client *Client) DeleteImageWithContext(ctx context.Context, request *DeleteImageRequest, runtime *dara.RuntimeOptions) (_result *DeleteImageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10613,33 +8255,11 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a custom image. When you call this operation, you can specify ImageId and Force in the request.
-//
-// Description:
-//
-// For information about scenarios in which you cannot delete a custom image and the considerations related to custom image deletion, see [Delete a custom image](https://help.aliyun.com/document_detail/25466.html).
-//
-// @param request - DeleteImageRequest
-//
-// @return DeleteImageResponse
-func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteImageResponse{}
-	_body, _err := client.DeleteImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10658,7 +8278,7 @@ func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteImageComponentResponse
-func (client *Client) DeleteImageComponentWithOptions(request *DeleteImageComponentRequest, runtime *dara.RuntimeOptions) (_result *DeleteImageComponentResponse, _err error) {
+func (client *Client) DeleteImageComponentWithContext(ctx context.Context, request *DeleteImageComponentRequest, runtime *dara.RuntimeOptions) (_result *DeleteImageComponentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10707,35 +8327,11 @@ func (client *Client) DeleteImageComponentWithOptions(request *DeleteImageCompon
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteImageComponentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an image component. You can specify RegionId and ImageComponentId in the request.
-//
-// Description:
-//
-//	  Only custom image components can be deleted.
-//
-//		- When you delete a component, make sure that the component is not used in the template. Otherwise, the component fails to be deleted.
-//
-// @param request - DeleteImageComponentRequest
-//
-// @return DeleteImageComponentResponse
-func (client *Client) DeleteImageComponent(request *DeleteImageComponentRequest) (_result *DeleteImageComponentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteImageComponentResponse{}
-	_body, _err := client.DeleteImageComponentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10752,7 +8348,7 @@ func (client *Client) DeleteImageComponent(request *DeleteImageComponentRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteImagePipelineResponse
-func (client *Client) DeleteImagePipelineWithOptions(request *DeleteImagePipelineRequest, runtime *dara.RuntimeOptions) (_result *DeleteImagePipelineResponse, _err error) {
+func (client *Client) DeleteImagePipelineWithContext(ctx context.Context, request *DeleteImagePipelineRequest, runtime *dara.RuntimeOptions) (_result *DeleteImagePipelineResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10801,33 +8397,11 @@ func (client *Client) DeleteImagePipelineWithOptions(request *DeleteImagePipelin
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteImagePipelineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an image template.
-//
-// Description:
-//
-// If an ongoing image building task is associated with an image template, you cannot delete the image template. You can delete the image template only if the image building task reaches the SUCCESS, FAILED, TEST_FAILED, PARTITION_SUCCESS, or CANCELLED state. You can call the DescribeImagePipelineExecutions operation to query the details of an image building task.
-//
-// @param request - DeleteImagePipelineRequest
-//
-// @return DeleteImagePipelineResponse
-func (client *Client) DeleteImagePipeline(request *DeleteImagePipelineRequest) (_result *DeleteImagePipelineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteImagePipelineResponse{}
-	_body, _err := client.DeleteImagePipelineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10860,7 +8434,7 @@ func (client *Client) DeleteImagePipeline(request *DeleteImagePipelineRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteInstanceResponse
-func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
+func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10917,49 +8491,11 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes or releases a pay-as-you-go Elastic Compute Service (ECS) instance or an expired subscription ECS instance. You can configure parameters to specify whether to release the disks attached to the instance or retain the disks as pay-as-you-go disks.
-//
-// Description:
-//
-// *
-//
-// **Warning*	- After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
-//
-//   - After you release an instance, manual snapshots of the cloud disks attached to the instance are retained and continue to be billed. You can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) operation to delete the snapshots.
-//
-//   - After you release an instance, whether the cloud disks attached to the instance and the automatic snapshots of the disks are released is determined by the disk attributes. Before you release an instance, you can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) operations to query and modify disk attributes.
-//
-//   - The cloud disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks after the instance is released. The cloud disks for which DeleteWithInstance is set to true are released along with the instance.
-//
-//   - If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the cloud disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released along with the instance.
-//
-//   - Elastic IP addresses (EIPs) are not released together with instances. You can call the [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) operation to release EIPs.
-//
-//     **
-//
-//     **Note*	- When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released even if DeleteWithInstance is set to false.
-//
-// @param request - DeleteInstanceRequest
-//
-// @return DeleteInstanceResponse
-func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DeleteInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10988,7 +8524,7 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteInstancesResponse
-func (client *Client) DeleteInstancesWithOptions(request *DeleteInstancesRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstancesResponse, _err error) {
+func (client *Client) DeleteInstancesWithContext(ctx context.Context, request *DeleteInstancesRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11053,45 +8589,11 @@ func (client *Client) DeleteInstancesWithOptions(request *DeleteInstancesRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases multiple pay-as-you-go Elastic Compute Service (ECS) instances or expired subscription ECS instances at a time. You can configure parameters to specify whether to release the disks attached to the instances or retain the disks as pay-as-you-go disks.
-//
-// Description:
-//
-//		Warning: After you release an instance, the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
-//
-//		- After you release an instance, manual snapshots of the cloud disks attached to the instance are retained and continue to be billed. You can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/2679824.html) operation to delete the snapshots.
-//
-//		- After you release an instance, whether the cloud disks attached to the instance and the automatic snapshots of the disks are released is determined by the disk attributes. Before you release an instance, you can call the [DescribeDisks](https://help.aliyun.com/document_detail/2679767.html) and [ModifyDiskAttribute](https://help.aliyun.com/document_detail/2679770.html) operations to query and modify disk attributes.
-//
-//	    	- If `DeleteWithInstance` is set to false for a cloud disk attached to the instance, the cloud disk is changed to a pay-as-you-go disk and retained after the instance is released. If DeleteWithInstance is set to true for the cloud disk, the disk is released together with the instance.
-//
-//	    	- If `DeleteAutoSnapshot` is set to false for a cloud disk attached to the instance, the automatic snapshots of the disk are retained when the instance is released. If DeleteAutoSnapshot is set to true for the cloud disk, the automatic snapshots of the disk are released together with the instance.
-//
-//		- Elastic IP addresses (EIPs) are not released together with instances. You can call the [ReleaseEipAddress](https://help.aliyun.com/document_detail/448702.html) operation to release EIPs.
-//
-// > When you release an instance that is locked for security reasons, the cloud disks attached to the instance are released together with the instance even if DeleteWithInstance is set to false for the disks.
-//
-// @param request - DeleteInstancesRequest
-//
-// @return DeleteInstancesResponse
-func (client *Client) DeleteInstances(request *DeleteInstancesRequest) (_result *DeleteInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteInstancesResponse{}
-	_body, _err := client.DeleteInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11112,7 +8614,7 @@ func (client *Client) DeleteInstances(request *DeleteInstancesRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteKeyPairsResponse
-func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, runtime *dara.RuntimeOptions) (_result *DeleteKeyPairsResponse, _err error) {
+func (client *Client) DeleteKeyPairsWithContext(ctx context.Context, request *DeleteKeyPairsRequest, runtime *dara.RuntimeOptions) (_result *DeleteKeyPairsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11153,37 +8655,11 @@ func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteKeyPairsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes one or more SSH key pairs.
-//
-// Description:
-//
-// When you call this operation, take note of the following items:
-//
-//   - After an SSH key pair is deleted, you cannot query the SSH key pair by calling the [DescribeKeyPairs](https://help.aliyun.com/document_detail/51773.html) operation.
-//
-//   - If an SSH key pair is bound to one or more Elastic Compute Service (ECS) instances, the SSH key pair cannot be deleted.
-//
-// @param request - DeleteKeyPairsRequest
-//
-// @return DeleteKeyPairsResponse
-func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *DeleteKeyPairsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteKeyPairsResponse{}
-	_body, _err := client.DeleteKeyPairsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11204,7 +8680,7 @@ func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLaunchTemplateResponse
-func (client *Client) DeleteLaunchTemplateWithOptions(request *DeleteLaunchTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteLaunchTemplateResponse, _err error) {
+func (client *Client) DeleteLaunchTemplateWithContext(ctx context.Context, request *DeleteLaunchTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteLaunchTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11253,37 +8729,11 @@ func (client *Client) DeleteLaunchTemplateWithOptions(request *DeleteLaunchTempl
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLaunchTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a launch template. You can use the LaunchTemplateId or LaunchTemplateName parameter to specify the launch template that you want to delete from the specified region.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - After you delete a launch template, Elastic Compute Service (ECS) instances created based on the launch template are not affected.
-//
-//   - After you delete a launch template, all versions of the launch template are deleted and cannot be restored. If you want to delete only a specific version of the launch template, call the [DeleteLaunchTemplateVersion](https://help.aliyun.com/document_detail/2679735.html) operation.
-//
-// @param request - DeleteLaunchTemplateRequest
-//
-// @return DeleteLaunchTemplateResponse
-func (client *Client) DeleteLaunchTemplate(request *DeleteLaunchTemplateRequest) (_result *DeleteLaunchTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLaunchTemplateResponse{}
-	_body, _err := client.DeleteLaunchTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11306,7 +8756,7 @@ func (client *Client) DeleteLaunchTemplate(request *DeleteLaunchTemplateRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLaunchTemplateVersionResponse
-func (client *Client) DeleteLaunchTemplateVersionWithOptions(request *DeleteLaunchTemplateVersionRequest, runtime *dara.RuntimeOptions) (_result *DeleteLaunchTemplateVersionResponse, _err error) {
+func (client *Client) DeleteLaunchTemplateVersionWithContext(ctx context.Context, request *DeleteLaunchTemplateVersionRequest, runtime *dara.RuntimeOptions) (_result *DeleteLaunchTemplateVersionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11359,39 +8809,11 @@ func (client *Client) DeleteLaunchTemplateVersionWithOptions(request *DeleteLaun
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLaunchTemplateVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes versions of a launch template. When you call this operation, you can specify parameters, such as LaunchTemplateId and DeleteVersion, in the request.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - You cannot delete the default version of a launch template by calling this operation. To delete the default version of a launch template, you must delete the launch template.
-//
-//   - If the version of a launch template that you want to delete is the default version, call the [ModifyLaunchTemplateDefaultVersion](https://help.aliyun.com/document_detail/2679734.html) operation or go to the **Launch Templates*	- page in the Elastic Compute Service (ECS) console to change the default version to a different version, and then delete the original default version.
-//
-//   - After you delete a version of a launch template, the ECS instances that were created based on the version are not affected.
-//
-// @param request - DeleteLaunchTemplateVersionRequest
-//
-// @return DeleteLaunchTemplateVersionResponse
-func (client *Client) DeleteLaunchTemplateVersion(request *DeleteLaunchTemplateVersionRequest) (_result *DeleteLaunchTemplateVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLaunchTemplateVersionResponse{}
-	_body, _err := client.DeleteLaunchTemplateVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11402,7 +8824,7 @@ func (client *Client) DeleteLaunchTemplateVersion(request *DeleteLaunchTemplateV
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteNatGatewayResponse
-func (client *Client) DeleteNatGatewayWithOptions(request *DeleteNatGatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteNatGatewayResponse, _err error) {
+func (client *Client) DeleteNatGatewayWithContext(ctx context.Context, request *DeleteNatGatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteNatGatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11447,28 +8869,11 @@ func (client *Client) DeleteNatGatewayWithOptions(request *DeleteNatGatewayReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNatGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteNatGateway is deprecated
-//
-// @param request - DeleteNatGatewayRequest
-//
-// @return DeleteNatGatewayResponse
-// Deprecated
-func (client *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (_result *DeleteNatGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteNatGatewayResponse{}
-	_body, _err := client.DeleteNatGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11507,7 +8912,7 @@ func (client *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteNetworkInterfaceResponse
-func (client *Client) DeleteNetworkInterfaceWithOptions(request *DeleteNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkInterfaceResponse, _err error) {
+func (client *Client) DeleteNetworkInterfaceWithContext(ctx context.Context, request *DeleteNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkInterfaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11556,55 +8961,11 @@ func (client *Client) DeleteNetworkInterfaceWithOptions(request *DeleteNetworkIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an elastic network interface (ENI) in a region. DeleteNetworkInterface is an asynchronous operation.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - The ENI to be deleted must be in the Available state.
-//
-//   - If the ENI to be deleted is attached to an Elastic Compute Service (ECS) instance, you must detach the ENI from the instance before you can delete the ENI. To detach the ENI, you can call the [DetachNetworkInterface](https://help.aliyun.com/document_detail/58514.html) operation.
-//
-//   - After an ENI is deleted, the following situations occur:
-//
-//   - All private IP addresses (including primary and secondary private IP addresses) of the ENI are automatically released.
-//
-//   - The ENI is automatically removed from all security groups.
-//
-//   - The DeleteNetworkInterface operation is an asynchronous operation. After this operation is called to delete an ENI, you can check the status or events of the ENI to determine whether the ENI is deleted. The following figure shows the transitions between the states of the ENI.
-//
-// ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/en-US/20230223/krcd/DeleteNetworkInterface.png)
-//
-//   - If the ENI is in the Deleting state, the ENI deletion request is sent and the ENI is being deleted.
-//
-//   - If the ENI is not found, the ENI is deleted.
-//
-//   - If the ENI is stuck in the Deleting state, the ENI fails to be deleted. You can re-initiate the request to delete the ENI.
-//
-// For information about examples on how to call the DeleteNetworkInterface operation, see [Delete an ENI](https://help.aliyun.com/document_detail/471553.html).
-//
-// @param request - DeleteNetworkInterfaceRequest
-//
-// @return DeleteNetworkInterfaceResponse
-func (client *Client) DeleteNetworkInterface(request *DeleteNetworkInterfaceRequest) (_result *DeleteNetworkInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteNetworkInterfaceResponse{}
-	_body, _err := client.DeleteNetworkInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11619,7 +8980,7 @@ func (client *Client) DeleteNetworkInterface(request *DeleteNetworkInterfaceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteNetworkInterfacePermissionResponse
-func (client *Client) DeleteNetworkInterfacePermissionWithOptions(request *DeleteNetworkInterfacePermissionRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkInterfacePermissionResponse, _err error) {
+func (client *Client) DeleteNetworkInterfacePermissionWithContext(ctx context.Context, request *DeleteNetworkInterfacePermissionRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkInterfacePermissionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11672,32 +9033,11 @@ func (client *Client) DeleteNetworkInterfacePermissionWithOptions(request *Delet
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNetworkInterfacePermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteNetworkInterfacePermission is deprecated, please use Ecs::2014-05-26::DeleteNetworkInterface instead.
-//
-// Summary:
-//
-// 删除操作弹性网卡的权限
-//
-// @param request - DeleteNetworkInterfacePermissionRequest
-//
-// @return DeleteNetworkInterfacePermissionResponse
-// Deprecated
-func (client *Client) DeleteNetworkInterfacePermission(request *DeleteNetworkInterfacePermissionRequest) (_result *DeleteNetworkInterfacePermissionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteNetworkInterfacePermissionResponse{}
-	_body, _err := client.DeleteNetworkInterfacePermissionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11708,7 +9048,7 @@ func (client *Client) DeleteNetworkInterfacePermission(request *DeleteNetworkInt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePhysicalConnectionResponse
-func (client *Client) DeletePhysicalConnectionWithOptions(request *DeletePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *DeletePhysicalConnectionResponse, _err error) {
+func (client *Client) DeletePhysicalConnectionWithContext(ctx context.Context, request *DeletePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *DeletePhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11757,28 +9097,11 @@ func (client *Client) DeletePhysicalConnectionWithOptions(request *DeletePhysica
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeletePhysicalConnection is deprecated
-//
-// @param request - DeletePhysicalConnectionRequest
-//
-// @return DeletePhysicalConnectionResponse
-// Deprecated
-func (client *Client) DeletePhysicalConnection(request *DeletePhysicalConnectionRequest) (_result *DeletePhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePhysicalConnectionResponse{}
-	_body, _err := client.DeletePhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11791,7 +9114,7 @@ func (client *Client) DeletePhysicalConnection(request *DeletePhysicalConnection
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePortRangeListResponse
-func (client *Client) DeletePortRangeListWithOptions(request *DeletePortRangeListRequest, runtime *dara.RuntimeOptions) (_result *DeletePortRangeListResponse, _err error) {
+func (client *Client) DeletePortRangeListWithContext(ctx context.Context, request *DeletePortRangeListRequest, runtime *dara.RuntimeOptions) (_result *DeletePortRangeListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11840,29 +9163,11 @@ func (client *Client) DeletePortRangeListWithOptions(request *DeletePortRangeLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePortRangeListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a port list and all entries in the port list.
-//
-// @param request - DeletePortRangeListRequest
-//
-// @return DeletePortRangeListResponse
-func (client *Client) DeletePortRangeList(request *DeletePortRangeListRequest) (_result *DeletePortRangeListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePortRangeListResponse{}
-	_body, _err := client.DeletePortRangeListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11879,7 +9184,7 @@ func (client *Client) DeletePortRangeList(request *DeletePortRangeListRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePrefixListResponse
-func (client *Client) DeletePrefixListWithOptions(request *DeletePrefixListRequest, runtime *dara.RuntimeOptions) (_result *DeletePrefixListResponse, _err error) {
+func (client *Client) DeletePrefixListWithContext(ctx context.Context, request *DeletePrefixListRequest, runtime *dara.RuntimeOptions) (_result *DeletePrefixListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11928,33 +9233,11 @@ func (client *Client) DeletePrefixListWithOptions(request *DeletePrefixListReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePrefixListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a prefix list and all entries in the prefix list.
-//
-// Description:
-//
-// If a prefix list is associated with resources, you cannot delete the prefix list. You must disassociate the prefix list from the resources before you delete the prefix list. You can call the [DescribePrefixListAssociations](https://help.aliyun.com/document_detail/204724.html) operation to query resources that are associated with a specific prefix list.
-//
-// @param request - DeletePrefixListRequest
-//
-// @return DeletePrefixListResponse
-func (client *Client) DeletePrefixList(request *DeletePrefixListRequest) (_result *DeletePrefixListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePrefixListResponse{}
-	_body, _err := client.DeletePrefixListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11965,7 +9248,7 @@ func (client *Client) DeletePrefixList(request *DeletePrefixListRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRouteEntryResponse
-func (client *Client) DeleteRouteEntryWithOptions(request *DeleteRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteEntryResponse, _err error) {
+func (client *Client) DeleteRouteEntryWithContext(ctx context.Context, request *DeleteRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12022,28 +9305,11 @@ func (client *Client) DeleteRouteEntryWithOptions(request *DeleteRouteEntryReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteRouteEntry is deprecated
-//
-// @param request - DeleteRouteEntryRequest
-//
-// @return DeleteRouteEntryResponse
-// Deprecated
-func (client *Client) DeleteRouteEntry(request *DeleteRouteEntryRequest) (_result *DeleteRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRouteEntryResponse{}
-	_body, _err := client.DeleteRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12054,7 +9320,7 @@ func (client *Client) DeleteRouteEntry(request *DeleteRouteEntryRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRouterInterfaceResponse
-func (client *Client) DeleteRouterInterfaceWithOptions(request *DeleteRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouterInterfaceResponse, _err error) {
+func (client *Client) DeleteRouterInterfaceWithContext(ctx context.Context, request *DeleteRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouterInterfaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12107,28 +9373,11 @@ func (client *Client) DeleteRouterInterfaceWithOptions(request *DeleteRouterInte
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRouterInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteRouterInterface is deprecated
-//
-// @param request - DeleteRouterInterfaceRequest
-//
-// @return DeleteRouterInterfaceResponse
-// Deprecated
-func (client *Client) DeleteRouterInterface(request *DeleteRouterInterfaceRequest) (_result *DeleteRouterInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRouterInterfaceResponse{}
-	_body, _err := client.DeleteRouterInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12151,7 +9400,7 @@ func (client *Client) DeleteRouterInterface(request *DeleteRouterInterfaceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSecurityGroupResponse
-func (client *Client) DeleteSecurityGroupWithOptions(request *DeleteSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecurityGroupResponse, _err error) {
+func (client *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *DeleteSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecurityGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12196,39 +9445,11 @@ func (client *Client) DeleteSecurityGroupWithOptions(request *DeleteSecurityGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a security group and all security group rules in the security group.
-//
-// Description:
-//
-//	  Make sure that no Elastic Compute Service (ECS) instances exist in the security group. You can query instances by calling the [DescribeInstances](https://help.aliyun.com/document_detail/2679689.html) operation.
-//
-//		- Make sure that no elastic network interfaces (ENIs) exist in the security group. You can query ENIs by calling the [DescribeNetworkInterfaces](https://help.aliyun.com/document_detail/2679884.html) operation.
-//
-//		- Make sure that the security group that you want to delete is not referenced by rules of other security groups. You can query the associations by calling the [DescribeSecurityGroupReferences](https://help.aliyun.com/document_detail/57320.html) operation.
-//
-//		- If the `InvalidOperation.DeletionProtection` error code is returned when you call the DeleteSecurityGroup operation to delete a security group, the deletion protection feature is enabled for the security group. When you create a Container Service for Kubernetes (ACK) cluster, the deletion protection feature is enabled for an associated security group to prevent accidental deletion. You cannot manually disable the deletion protection feature for the security group. The deletion protection feature can be automatically disabled only after the ACK cluster is deleted. For more information, see the [Disable deletion protection for a security group](https://help.aliyun.com/document_detail/353191.html) section of the "Configure and manage security groups for an ACK cluster" topic.
-//
-// @param request - DeleteSecurityGroupRequest
-//
-// @return DeleteSecurityGroupResponse
-func (client *Client) DeleteSecurityGroup(request *DeleteSecurityGroupRequest) (_result *DeleteSecurityGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSecurityGroupResponse{}
-	_body, _err := client.DeleteSecurityGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12251,7 +9472,7 @@ func (client *Client) DeleteSecurityGroup(request *DeleteSecurityGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSnapshotResponse
-func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
+func (client *Client) DeleteSnapshotWithContext(ctx context.Context, request *DeleteSnapshotRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12296,39 +9517,11 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a specified snapshot. If you call this operation to delete a snapshot that is being created, the associated snapshot creation task is also canceled.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - If the snapshot does not exist, the request is ignored.
-//
-//   - If the snapshot has been used to create custom images, the snapshot cannot be deleted. You need to call the [DeleteImage](https://help.aliyun.com/document_detail/25537.html) operation to delete the custom images before you can delete the snapshot.
-//
-//   - If the snapshot has been used to create disks and `Force` is not specified or is set to `false`, the snapshot cannot be deleted directly. If you want to delete the snapshot, set `Force` to true to forcibly delete the snapshot. The disks created from the snapshot cannot be re-initialized after the snapshot is forcibly deleted.
-//
-// @param request - DeleteSnapshotRequest
-//
-// @return DeleteSnapshotResponse
-func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *DeleteSnapshotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSnapshotResponse{}
-	_body, _err := client.DeleteSnapshotWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12345,7 +9538,7 @@ func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSnapshotGroupResponse
-func (client *Client) DeleteSnapshotGroupWithOptions(request *DeleteSnapshotGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotGroupResponse, _err error) {
+func (client *Client) DeleteSnapshotGroupWithContext(ctx context.Context, request *DeleteSnapshotGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12390,33 +9583,11 @@ func (client *Client) DeleteSnapshotGroupWithOptions(request *DeleteSnapshotGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSnapshotGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes snapshot-consistent groups.
-//
-// Description:
-//
-// If a disk snapshot that is contained in a snapshot-consistent group has been used to create a custom image, the disk snapshot is retained after the snapshot-consistent group is deleted. Before you can delete the disk snapshot, you must call the [DeleteImage](https://help.aliyun.com/document_detail/25537.html) operation to delete the custom image. Then, you can call the [DeleteSnapshot](https://help.aliyun.com/document_detail/25525.html) operation to delete the disk snapshot.
-//
-// @param request - DeleteSnapshotGroupRequest
-//
-// @return DeleteSnapshotGroupResponse
-func (client *Client) DeleteSnapshotGroup(request *DeleteSnapshotGroupRequest) (_result *DeleteSnapshotGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSnapshotGroupResponse{}
-	_body, _err := client.DeleteSnapshotGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12429,7 +9600,7 @@ func (client *Client) DeleteSnapshotGroup(request *DeleteSnapshotGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteStorageSetResponse
-func (client *Client) DeleteStorageSetWithOptions(request *DeleteStorageSetRequest, runtime *dara.RuntimeOptions) (_result *DeleteStorageSetResponse, _err error) {
+func (client *Client) DeleteStorageSetWithContext(ctx context.Context, request *DeleteStorageSetRequest, runtime *dara.RuntimeOptions) (_result *DeleteStorageSetResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12478,29 +9649,11 @@ func (client *Client) DeleteStorageSetWithOptions(request *DeleteStorageSetReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteStorageSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// (Beta) Deletes an empty storage set. The storage set that you want to delete must be empty and do not contain disks or Shared Block Storage devices.
-//
-// @param request - DeleteStorageSetRequest
-//
-// @return DeleteStorageSetResponse
-func (client *Client) DeleteStorageSet(request *DeleteStorageSetRequest) (_result *DeleteStorageSetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteStorageSetResponse{}
-	_body, _err := client.DeleteStorageSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12511,7 +9664,7 @@ func (client *Client) DeleteStorageSet(request *DeleteStorageSetRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVSwitchResponse
-func (client *Client) DeleteVSwitchWithOptions(request *DeleteVSwitchRequest, runtime *dara.RuntimeOptions) (_result *DeleteVSwitchResponse, _err error) {
+func (client *Client) DeleteVSwitchWithContext(ctx context.Context, request *DeleteVSwitchRequest, runtime *dara.RuntimeOptions) (_result *DeleteVSwitchResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12556,28 +9709,11 @@ func (client *Client) DeleteVSwitchWithOptions(request *DeleteVSwitchRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVSwitchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteVSwitch is deprecated, please use Vpc::2016-04-28::DeleteVSwitch instead.
-//
-// @param request - DeleteVSwitchRequest
-//
-// @return DeleteVSwitchResponse
-// Deprecated
-func (client *Client) DeleteVSwitch(request *DeleteVSwitchRequest) (_result *DeleteVSwitchResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVSwitchResponse{}
-	_body, _err := client.DeleteVSwitchWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12588,7 +9724,7 @@ func (client *Client) DeleteVSwitch(request *DeleteVSwitchRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVirtualBorderRouterResponse
-func (client *Client) DeleteVirtualBorderRouterWithOptions(request *DeleteVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *DeleteVirtualBorderRouterResponse, _err error) {
+func (client *Client) DeleteVirtualBorderRouterWithContext(ctx context.Context, request *DeleteVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *DeleteVirtualBorderRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12641,28 +9777,11 @@ func (client *Client) DeleteVirtualBorderRouterWithOptions(request *DeleteVirtua
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVirtualBorderRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteVirtualBorderRouter is deprecated
-//
-// @param request - DeleteVirtualBorderRouterRequest
-//
-// @return DeleteVirtualBorderRouterResponse
-// Deprecated
-func (client *Client) DeleteVirtualBorderRouter(request *DeleteVirtualBorderRouterRequest) (_result *DeleteVirtualBorderRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVirtualBorderRouterResponse{}
-	_body, _err := client.DeleteVirtualBorderRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12677,7 +9796,7 @@ func (client *Client) DeleteVirtualBorderRouter(request *DeleteVirtualBorderRout
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVpcResponse
-func (client *Client) DeleteVpcWithOptions(request *DeleteVpcRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcResponse, _err error) {
+func (client *Client) DeleteVpcWithContext(ctx context.Context, request *DeleteVpcRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12722,32 +9841,11 @@ func (client *Client) DeleteVpcWithOptions(request *DeleteVpcRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteVpc is deprecated, please use Vpc::2016-04-28::DeleteVpc instead.
-//
-// Summary:
-//
-// 删除VPC
-//
-// @param request - DeleteVpcRequest
-//
-// @return DeleteVpcResponse
-// Deprecated
-func (client *Client) DeleteVpc(request *DeleteVpcRequest) (_result *DeleteVpcResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVpcResponse{}
-	_body, _err := client.DeleteVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12760,7 +9858,7 @@ func (client *Client) DeleteVpc(request *DeleteVpcRequest) (_result *DeleteVpcRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeregisterManagedInstanceResponse
-func (client *Client) DeregisterManagedInstanceWithOptions(request *DeregisterManagedInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeregisterManagedInstanceResponse, _err error) {
+func (client *Client) DeregisterManagedInstanceWithContext(ctx context.Context, request *DeregisterManagedInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeregisterManagedInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12809,29 +9907,11 @@ func (client *Client) DeregisterManagedInstanceWithOptions(request *DeregisterMa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeregisterManagedInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deregisters a managed instance. After you deregister the managed instance, you can no longer use Cloud Assistant to send commands or files to the instance.
-//
-// @param request - DeregisterManagedInstanceRequest
-//
-// @return DeregisterManagedInstanceResponse
-func (client *Client) DeregisterManagedInstance(request *DeregisterManagedInstanceRequest) (_result *DeregisterManagedInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeregisterManagedInstanceResponse{}
-	_body, _err := client.DeregisterManagedInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12842,7 +9922,7 @@ func (client *Client) DeregisterManagedInstance(request *DeregisterManagedInstan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAccessPointsResponse
-func (client *Client) DescribeAccessPointsWithOptions(request *DescribeAccessPointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccessPointsResponse, _err error) {
+func (client *Client) DescribeAccessPointsWithContext(ctx context.Context, request *DescribeAccessPointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccessPointsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12895,28 +9975,11 @@ func (client *Client) DescribeAccessPointsWithOptions(request *DescribeAccessPoi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAccessPointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeAccessPoints is deprecated
-//
-// @param request - DescribeAccessPointsRequest
-//
-// @return DescribeAccessPointsResponse
-// Deprecated
-func (client *Client) DescribeAccessPoints(request *DescribeAccessPointsRequest) (_result *DescribeAccessPointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAccessPointsResponse{}
-	_body, _err := client.DescribeAccessPointsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12935,7 +9998,7 @@ func (client *Client) DescribeAccessPoints(request *DescribeAccessPointsRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAccountAttributesResponse
-func (client *Client) DescribeAccountAttributesWithOptions(request *DescribeAccountAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccountAttributesResponse, _err error) {
+func (client *Client) DescribeAccountAttributesWithContext(ctx context.Context, request *DescribeAccountAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccountAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12980,35 +10043,11 @@ func (client *Client) DescribeAccountAttributesWithOptions(request *DescribeAcco
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAccountAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the quotas of Elastic Compute Service (ECS) resources that you can create in an Alibaba Cloud region. For a specific region, you can query the maximum numbers of security groups, elastic network interfaces (ENIs), vCPUs for pay-as-you-go instances, vCPUs for spot instances, and dedicated hosts that you can create and the capacity quotas for pay-as-you-go disks that you can create. You can also query information such as network types or whether an account has completed real-name verification.
-//
-// Description:
-//
-// After you [create](https://account.alibabacloud.com/register/intl_register.htm) an Alibaba Cloud account, you can create a specific number of ECS instances in different regions within the account. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
-//
-// You can apply for a quota increase in the [Quota Center console](https://quotas.console.aliyun.com/products).
-//
-// @param request - DescribeAccountAttributesRequest
-//
-// @return DescribeAccountAttributesResponse
-func (client *Client) DescribeAccountAttributes(request *DescribeAccountAttributesRequest) (_result *DescribeAccountAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAccountAttributesResponse{}
-	_body, _err := client.DescribeAccountAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13031,7 +10070,7 @@ func (client *Client) DescribeAccountAttributes(request *DescribeAccountAttribut
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeActivationsResponse
-func (client *Client) DescribeActivationsWithOptions(request *DescribeActivationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeActivationsResponse, _err error) {
+func (client *Client) DescribeActivationsWithContext(ctx context.Context, request *DescribeActivationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeActivationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13108,39 +10147,11 @@ func (client *Client) DescribeActivationsWithOptions(request *DescribeActivation
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeActivationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries existing activation codes and their usage information.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// You can use one of the following methods to check the responses:
-//
-//   - Method 1: During a paged query, when you call the DescribeActivations operation to retrieve the first page of results, use `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which you can use in the next request to retrieve a new page of results. When you call the DescribeActivations operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-//
-//   - Method 2: Use `PageSize` to specify the number of entries to return on each page, and then use `PageNumber` to specify the number of the page to return. You can use only one of the preceding methods. If you specify `MaxResults` or `NextToken`, the `PageSize` and `PageNumber` request parameters do not take effect and the `TotalCount` response parameter is invalid.
-//
-// @param request - DescribeActivationsRequest
-//
-// @return DescribeActivationsResponse
-func (client *Client) DescribeActivations(request *DescribeActivationsRequest) (_result *DescribeActivationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeActivationsResponse{}
-	_body, _err := client.DescribeActivationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13153,7 +10164,7 @@ func (client *Client) DescribeActivations(request *DescribeActivationsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAutoProvisioningGroupHistoryResponse
-func (client *Client) DescribeAutoProvisioningGroupHistoryWithOptions(request *DescribeAutoProvisioningGroupHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutoProvisioningGroupHistoryResponse, _err error) {
+func (client *Client) DescribeAutoProvisioningGroupHistoryWithContext(ctx context.Context, request *DescribeAutoProvisioningGroupHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutoProvisioningGroupHistoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13214,29 +10225,11 @@ func (client *Client) DescribeAutoProvisioningGroupHistoryWithOptions(request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAutoProvisioningGroupHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the scheduling tasks of an auto provisioning group.
-//
-// @param request - DescribeAutoProvisioningGroupHistoryRequest
-//
-// @return DescribeAutoProvisioningGroupHistoryResponse
-func (client *Client) DescribeAutoProvisioningGroupHistory(request *DescribeAutoProvisioningGroupHistoryRequest) (_result *DescribeAutoProvisioningGroupHistoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAutoProvisioningGroupHistoryResponse{}
-	_body, _err := client.DescribeAutoProvisioningGroupHistoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13249,7 +10242,7 @@ func (client *Client) DescribeAutoProvisioningGroupHistory(request *DescribeAuto
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAutoProvisioningGroupInstancesResponse
-func (client *Client) DescribeAutoProvisioningGroupInstancesWithOptions(request *DescribeAutoProvisioningGroupInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutoProvisioningGroupInstancesResponse, _err error) {
+func (client *Client) DescribeAutoProvisioningGroupInstancesWithContext(ctx context.Context, request *DescribeAutoProvisioningGroupInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutoProvisioningGroupInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13302,29 +10295,11 @@ func (client *Client) DescribeAutoProvisioningGroupInstancesWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAutoProvisioningGroupInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries information about Elastic Compute Service (ECS) instances in an auto provisioning group.
-//
-// @param request - DescribeAutoProvisioningGroupInstancesRequest
-//
-// @return DescribeAutoProvisioningGroupInstancesResponse
-func (client *Client) DescribeAutoProvisioningGroupInstances(request *DescribeAutoProvisioningGroupInstancesRequest) (_result *DescribeAutoProvisioningGroupInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAutoProvisioningGroupInstancesResponse{}
-	_body, _err := client.DescribeAutoProvisioningGroupInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13337,7 +10312,7 @@ func (client *Client) DescribeAutoProvisioningGroupInstances(request *DescribeAu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAutoProvisioningGroupsResponse
-func (client *Client) DescribeAutoProvisioningGroupsWithOptions(request *DescribeAutoProvisioningGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutoProvisioningGroupsResponse, _err error) {
+func (client *Client) DescribeAutoProvisioningGroupsWithContext(ctx context.Context, request *DescribeAutoProvisioningGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutoProvisioningGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13406,29 +10381,11 @@ func (client *Client) DescribeAutoProvisioningGroupsWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAutoProvisioningGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries information about one or more auto provisioning groups.
-//
-// @param request - DescribeAutoProvisioningGroupsRequest
-//
-// @return DescribeAutoProvisioningGroupsResponse
-func (client *Client) DescribeAutoProvisioningGroups(request *DescribeAutoProvisioningGroupsRequest) (_result *DescribeAutoProvisioningGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAutoProvisioningGroupsResponse{}
-	_body, _err := client.DescribeAutoProvisioningGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13441,7 +10398,7 @@ func (client *Client) DescribeAutoProvisioningGroups(request *DescribeAutoProvis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAutoSnapshotPolicyExResponse
-func (client *Client) DescribeAutoSnapshotPolicyExWithOptions(request *DescribeAutoSnapshotPolicyExRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutoSnapshotPolicyExResponse, _err error) {
+func (client *Client) DescribeAutoSnapshotPolicyExWithContext(ctx context.Context, request *DescribeAutoSnapshotPolicyExRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutoSnapshotPolicyExResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13506,29 +10463,11 @@ func (client *Client) DescribeAutoSnapshotPolicyExWithOptions(request *DescribeA
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAutoSnapshotPolicyExResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of automatic snapshot policies that are created in a specific region.
-//
-// @param request - DescribeAutoSnapshotPolicyExRequest
-//
-// @return DescribeAutoSnapshotPolicyExResponse
-func (client *Client) DescribeAutoSnapshotPolicyEx(request *DescribeAutoSnapshotPolicyExRequest) (_result *DescribeAutoSnapshotPolicyExResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAutoSnapshotPolicyExResponse{}
-	_body, _err := client.DescribeAutoSnapshotPolicyExWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13601,7 +10540,7 @@ func (client *Client) DescribeAutoSnapshotPolicyEx(request *DescribeAutoSnapshot
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAvailableResourceResponse
-func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvailableResourceRequest, runtime *dara.RuntimeOptions) (_result *DescribeAvailableResourceResponse, _err error) {
+func (client *Client) DescribeAvailableResourceWithContext(ctx context.Context, request *DescribeAvailableResourceRequest, runtime *dara.RuntimeOptions) (_result *DescribeAvailableResourceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13702,89 +10641,11 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAvailableResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries resources in a zone. You can query the resources available in a zone before you create Elastic Compute Service (ECS) instances by calling the RunInstances operation or before you change instance types by calling the ModifyInstanceSpec operation.
-//
-// Description:
-//
-// The value of `DestinationResource` determines whether you need to specify additional parameters. When you select a value in the following chain for DestinationResource, the more to the right the selected value is ordered, the more parameters you must specify.
-//
-//   - Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
-//
-//   - Examples:
-//
-//   - If you set `DestinationResource` to `DataDisk`, take note of the following items:
-//
-//   - If you set `ResourceType` to `disk` to query the categories of data disks regardless of whether the disks are attached to ECS instances, you can leave `InstanceType` empty.
-//
-//   - If you set `ResourceType` to `instance` to query the categories of data disks that are attached to ECS instances, you must specify `InstanceType` and `DataDiskCategory` due to instance type-specific limits on data disks.
-//
-//   - If you set `DestinationResource` to `SystemDisk` and `ResourceType` to `instance`, you must specify `InstanceType` due to instance type-specific limits on system disks.
-//
-//   - If you set `DestinationResource` to `InstanceType`, we recommend that you specify `IoOptimized` and `InstanceType`.
-//
-//   - To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-//
-//   - To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-//
-// **To query the zones in which the ecs.g5.large instance type is available in the China (Hangzhou) region, specify parameters as follows:**
-//
-//	"RegionId": "cn-hangzhou",
-//
-//	"DestinationResource": "Zone",
-//
-//	"InstanceType": "ecs.g5.large"
-//
-// **To query the ecs.g5.large instance type in all zones of the China (Hangzhou) region, specify parameters as follows:**
-//
-//	"RegionId": "cn-hangzhou",
-//
-//	"DestinationResource": "InstanceType""InstanceType": "ecs.g5.large"
-//
-// **To query data disks of the ultra disk category in Hangzhou Zone B regardless of whether the disks are attached to ECS instances, specify parameters as follows:**
-//
-//	"RegionId": "cn-hangzhou",
-//
-//	"ZoneId": "cn-hangzhou-b",
-//
-//	"ResourceType": "disk",
-//
-//	"DestinationResource": "DataDisk"
-//
-// **To query data disks purchased together with ecs.g7.large instances that reside in Hangzhou Zone B and use Enterprise SSDs (ESSDs) as system disks, specify parameters as follows:**
-//
-//	"RegionId": "cn-hangzhou",
-//
-//	"ZoneId": "cn-hangzhou-b",
-//
-//	"ResourceType": "instance",
-//
-//	"InstanceType": "ecs.g7.large",
-//
-//	"DestinationResource": "SystemDisk",
-//
-//	"SystemDiskCategory": "cloud_essd"
-//
-// @param request - DescribeAvailableResourceRequest
-//
-// @return DescribeAvailableResourceResponse
-func (client *Client) DescribeAvailableResource(request *DescribeAvailableResourceRequest) (_result *DescribeAvailableResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAvailableResourceResponse{}
-	_body, _err := client.DescribeAvailableResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13797,7 +10658,7 @@ func (client *Client) DescribeAvailableResource(request *DescribeAvailableResour
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBandwidthLimitationResponse
-func (client *Client) DescribeBandwidthLimitationWithOptions(request *DescribeBandwidthLimitationRequest, runtime *dara.RuntimeOptions) (_result *DescribeBandwidthLimitationResponse, _err error) {
+func (client *Client) DescribeBandwidthLimitationWithContext(ctx context.Context, request *DescribeBandwidthLimitationRequest, runtime *dara.RuntimeOptions) (_result *DescribeBandwidthLimitationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13858,29 +10719,11 @@ func (client *Client) DescribeBandwidthLimitationWithOptions(request *DescribeBa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBandwidthLimitationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the maximum public bandwidth that can be purchased, upgraded, or downgraded for various Elastic Compute Service (ECS) instance types.
-//
-// @param request - DescribeBandwidthLimitationRequest
-//
-// @return DescribeBandwidthLimitationResponse
-func (client *Client) DescribeBandwidthLimitation(request *DescribeBandwidthLimitationRequest) (_result *DescribeBandwidthLimitationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBandwidthLimitationResponse{}
-	_body, _err := client.DescribeBandwidthLimitationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13891,7 +10734,7 @@ func (client *Client) DescribeBandwidthLimitation(request *DescribeBandwidthLimi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBandwidthPackagesResponse
-func (client *Client) DescribeBandwidthPackagesWithOptions(request *DescribeBandwidthPackagesRequest, runtime *dara.RuntimeOptions) (_result *DescribeBandwidthPackagesResponse, _err error) {
+func (client *Client) DescribeBandwidthPackagesWithContext(ctx context.Context, request *DescribeBandwidthPackagesRequest, runtime *dara.RuntimeOptions) (_result *DescribeBandwidthPackagesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13948,28 +10791,11 @@ func (client *Client) DescribeBandwidthPackagesWithOptions(request *DescribeBand
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBandwidthPackagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeBandwidthPackages is deprecated
-//
-// @param request - DescribeBandwidthPackagesRequest
-//
-// @return DescribeBandwidthPackagesResponse
-// Deprecated
-func (client *Client) DescribeBandwidthPackages(request *DescribeBandwidthPackagesRequest) (_result *DescribeBandwidthPackagesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBandwidthPackagesResponse{}
-	_body, _err := client.DescribeBandwidthPackagesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13982,7 +10808,7 @@ func (client *Client) DescribeBandwidthPackages(request *DescribeBandwidthPackag
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCapacityReservationInstancesResponse
-func (client *Client) DescribeCapacityReservationInstancesWithOptions(request *DescribeCapacityReservationInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCapacityReservationInstancesResponse, _err error) {
+func (client *Client) DescribeCapacityReservationInstancesWithContext(ctx context.Context, request *DescribeCapacityReservationInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCapacityReservationInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14035,29 +10861,11 @@ func (client *Client) DescribeCapacityReservationInstancesWithOptions(request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCapacityReservationInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Elastic Compute Service (ECS) instances that match a capacity reservation.
-//
-// @param request - DescribeCapacityReservationInstancesRequest
-//
-// @return DescribeCapacityReservationInstancesResponse
-func (client *Client) DescribeCapacityReservationInstances(request *DescribeCapacityReservationInstancesRequest) (_result *DescribeCapacityReservationInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCapacityReservationInstancesResponse{}
-	_body, _err := client.DescribeCapacityReservationInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14070,7 +10878,7 @@ func (client *Client) DescribeCapacityReservationInstances(request *DescribeCapa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCapacityReservationsResponse
-func (client *Client) DescribeCapacityReservationsWithOptions(request *DescribeCapacityReservationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCapacityReservationsResponse, _err error) {
+func (client *Client) DescribeCapacityReservationsWithContext(ctx context.Context, request *DescribeCapacityReservationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCapacityReservationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14151,29 +10959,11 @@ func (client *Client) DescribeCapacityReservationsWithOptions(request *DescribeC
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCapacityReservationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of capacity reservations.
-//
-// @param request - DescribeCapacityReservationsRequest
-//
-// @return DescribeCapacityReservationsResponse
-func (client *Client) DescribeCapacityReservations(request *DescribeCapacityReservationsRequest) (_result *DescribeCapacityReservationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCapacityReservationsResponse{}
-	_body, _err := client.DescribeCapacityReservationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14196,7 +10986,7 @@ func (client *Client) DescribeCapacityReservations(request *DescribeCapacityRese
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeClassicLinkInstancesResponse
-func (client *Client) DescribeClassicLinkInstancesWithOptions(request *DescribeClassicLinkInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeClassicLinkInstancesResponse, _err error) {
+func (client *Client) DescribeClassicLinkInstancesWithContext(ctx context.Context, request *DescribeClassicLinkInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeClassicLinkInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14249,39 +11039,11 @@ func (client *Client) DescribeClassicLinkInstancesWithOptions(request *DescribeC
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeClassicLinkInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries instances located in the classic network that have established ClassicLink connections to virtual private clouds (VPCs).
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - This operation applies only to instances that reside in the classic network.
-//
-//   - You can query a maximum of 100 instances that reside in the classic network at a time.
-//
-//   - At least one of the `VpcId` and `InstanceId` parameters must be configured.
-//
-// @param request - DescribeClassicLinkInstancesRequest
-//
-// @return DescribeClassicLinkInstancesResponse
-func (client *Client) DescribeClassicLinkInstances(request *DescribeClassicLinkInstancesRequest) (_result *DescribeClassicLinkInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeClassicLinkInstancesResponse{}
-	_body, _err := client.DescribeClassicLinkInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14294,7 +11056,7 @@ func (client *Client) DescribeClassicLinkInstances(request *DescribeClassicLinkI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCloudAssistantSettingsResponse
-func (client *Client) DescribeCloudAssistantSettingsWithOptions(request *DescribeCloudAssistantSettingsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudAssistantSettingsResponse, _err error) {
+func (client *Client) DescribeCloudAssistantSettingsWithContext(ctx context.Context, request *DescribeCloudAssistantSettingsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudAssistantSettingsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14339,29 +11101,11 @@ func (client *Client) DescribeCloudAssistantSettingsWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCloudAssistantSettingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configurations of Cloud Assistant features.
-//
-// @param request - DescribeCloudAssistantSettingsRequest
-//
-// @return DescribeCloudAssistantSettingsResponse
-func (client *Client) DescribeCloudAssistantSettings(request *DescribeCloudAssistantSettingsRequest) (_result *DescribeCloudAssistantSettingsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCloudAssistantSettingsResponse{}
-	_body, _err := client.DescribeCloudAssistantSettingsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14382,7 +11126,7 @@ func (client *Client) DescribeCloudAssistantSettings(request *DescribeCloudAssis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCloudAssistantStatusResponse
-func (client *Client) DescribeCloudAssistantStatusWithOptions(request *DescribeCloudAssistantStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudAssistantStatusResponse, _err error) {
+func (client *Client) DescribeCloudAssistantStatusWithContext(ctx context.Context, request *DescribeCloudAssistantStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudAssistantStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14451,37 +11195,11 @@ func (client *Client) DescribeCloudAssistantStatusWithOptions(request *DescribeC
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCloudAssistantStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries whether Cloud Assistant Agent is installed on instances. If Cloud Assistant Agent is installed, the system queries the total number of Cloud Assistant commands that have been run, the number of Cloud Assistant commands that are being run, and the time when Cloud Assistant commands were last run.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - Before you run commands on or send files to instances, especially new instances, we recommend that you query the status of Cloud Assistant on the instances by calling this operation and checking the return value of CloudAssistantStatus. Run commands on or send files to the instances only when the return value is true.
-//
-//   - During a paged query, when you call the DescribeCloudAssistantStatus operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeCloudAssistantStatus operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-//
-// @param request - DescribeCloudAssistantStatusRequest
-//
-// @return DescribeCloudAssistantStatusResponse
-func (client *Client) DescribeCloudAssistantStatus(request *DescribeCloudAssistantStatusRequest) (_result *DescribeCloudAssistantStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCloudAssistantStatusResponse{}
-	_body, _err := client.DescribeCloudAssistantStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14496,7 +11214,7 @@ func (client *Client) DescribeCloudAssistantStatus(request *DescribeCloudAssista
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeClustersResponse
-func (client *Client) DescribeClustersWithOptions(request *DescribeClustersRequest, runtime *dara.RuntimeOptions) (_result *DescribeClustersResponse, _err error) {
+func (client *Client) DescribeClustersWithContext(ctx context.Context, request *DescribeClustersRequest, runtime *dara.RuntimeOptions) (_result *DescribeClustersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14537,32 +11255,11 @@ func (client *Client) DescribeClustersWithOptions(request *DescribeClustersReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeClustersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeClusters is deprecated
-//
-// Summary:
-//
-// 查询集群
-//
-// @param request - DescribeClustersRequest
-//
-// @return DescribeClustersResponse
-// Deprecated
-func (client *Client) DescribeClusters(request *DescribeClustersRequest) (_result *DescribeClustersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeClustersResponse{}
-	_body, _err := client.DescribeClustersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14583,7 +11280,7 @@ func (client *Client) DescribeClusters(request *DescribeClustersRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCommandsResponse
-func (client *Client) DescribeCommandsWithOptions(request *DescribeCommandsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCommandsResponse, _err error) {
+func (client *Client) DescribeCommandsWithContext(ctx context.Context, request *DescribeCommandsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCommandsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14680,37 +11377,11 @@ func (client *Client) DescribeCommandsWithOptions(request *DescribeCommandsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCommandsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Cloud Assistant commands that you created or the common Cloud Assistant commands that Alibaba Cloud provides.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - If you specify only `Action` and `RegionId`, all available commands (`CommandId`) that you created in the specified region are queried by default.
-//
-//   - During a paged query, when you call the DescribeCommands operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeCommands operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-//
-// @param request - DescribeCommandsRequest
-//
-// @return DescribeCommandsResponse
-func (client *Client) DescribeCommands(request *DescribeCommandsRequest) (_result *DescribeCommandsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCommandsResponse{}
-	_body, _err := client.DescribeCommandsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14723,7 +11394,7 @@ func (client *Client) DescribeCommands(request *DescribeCommandsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDedicatedHostAutoRenewResponse
-func (client *Client) DescribeDedicatedHostAutoRenewWithOptions(request *DescribeDedicatedHostAutoRenewRequest, runtime *dara.RuntimeOptions) (_result *DescribeDedicatedHostAutoRenewResponse, _err error) {
+func (client *Client) DescribeDedicatedHostAutoRenewWithContext(ctx context.Context, request *DescribeDedicatedHostAutoRenewRequest, runtime *dara.RuntimeOptions) (_result *DescribeDedicatedHostAutoRenewResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14768,29 +11439,11 @@ func (client *Client) DescribeDedicatedHostAutoRenewWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDedicatedHostAutoRenewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the auto-renewal status of one or more subscription dedicated hosts.
-//
-// @param request - DescribeDedicatedHostAutoRenewRequest
-//
-// @return DescribeDedicatedHostAutoRenewResponse
-func (client *Client) DescribeDedicatedHostAutoRenew(request *DescribeDedicatedHostAutoRenewRequest) (_result *DescribeDedicatedHostAutoRenewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDedicatedHostAutoRenewResponse{}
-	_body, _err := client.DescribeDedicatedHostAutoRenewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14809,7 +11462,7 @@ func (client *Client) DescribeDedicatedHostAutoRenew(request *DescribeDedicatedH
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDedicatedHostClustersResponse
-func (client *Client) DescribeDedicatedHostClustersWithOptions(request *DescribeDedicatedHostClustersRequest, runtime *dara.RuntimeOptions) (_result *DescribeDedicatedHostClustersResponse, _err error) {
+func (client *Client) DescribeDedicatedHostClustersWithContext(ctx context.Context, request *DescribeDedicatedHostClustersRequest, runtime *dara.RuntimeOptions) (_result *DescribeDedicatedHostClustersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14886,35 +11539,11 @@ func (client *Client) DescribeDedicatedHostClustersWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDedicatedHostClustersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of one or more dedicated host groups.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// You can specify multiple request parameters to filter query results. Specified request parameters have logical AND relations. Only the specified parameters are included in the filter conditions. However, if `DedicatedHostClusterIds` is set to an empty JSON array (`[]`), this parameter is regarded as a valid filter condition and an empty result is returned.
-//
-// @param request - DescribeDedicatedHostClustersRequest
-//
-// @return DescribeDedicatedHostClustersResponse
-func (client *Client) DescribeDedicatedHostClusters(request *DescribeDedicatedHostClustersRequest) (_result *DescribeDedicatedHostClustersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDedicatedHostClustersResponse{}
-	_body, _err := client.DescribeDedicatedHostClustersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14927,7 +11556,7 @@ func (client *Client) DescribeDedicatedHostClusters(request *DescribeDedicatedHo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDedicatedHostTypesResponse
-func (client *Client) DescribeDedicatedHostTypesWithOptions(request *DescribeDedicatedHostTypesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDedicatedHostTypesResponse, _err error) {
+func (client *Client) DescribeDedicatedHostTypesWithContext(ctx context.Context, request *DescribeDedicatedHostTypesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDedicatedHostTypesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14976,29 +11605,11 @@ func (client *Client) DescribeDedicatedHostTypesWithOptions(request *DescribeDed
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDedicatedHostTypesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of dedicated host types supported in a region, or the Elastic Compute Service (ECS) instance families supported by a specific dedicated host type.
-//
-// @param request - DescribeDedicatedHostTypesRequest
-//
-// @return DescribeDedicatedHostTypesResponse
-func (client *Client) DescribeDedicatedHostTypes(request *DescribeDedicatedHostTypesRequest) (_result *DescribeDedicatedHostTypesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDedicatedHostTypesResponse{}
-	_body, _err := client.DescribeDedicatedHostTypesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15021,7 +11632,7 @@ func (client *Client) DescribeDedicatedHostTypes(request *DescribeDedicatedHostT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDedicatedHostsResponse
-func (client *Client) DescribeDedicatedHostsWithOptions(request *DescribeDedicatedHostsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDedicatedHostsResponse, _err error) {
+func (client *Client) DescribeDedicatedHostsWithContext(ctx context.Context, request *DescribeDedicatedHostsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDedicatedHostsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15122,39 +11733,11 @@ func (client *Client) DescribeDedicatedHostsWithOptions(request *DescribeDedicat
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDedicatedHostsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of one or more Dedicated Hosts (DDHs). You can call this operation to obtain information about a DDH, including the physical performance specifications, machine code, service status, and the list of created ECS instances. You can specify relevant parameters, such as DDH IDs, DDH cluster IDs, hostname, and status, to query the required DDH details. This helps you efficiently manage and optimize cloud computing resources.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// You can use one of the following methods to query the information about dedicated hosts:
-//
-//   - Specify `DedicatedHostIds` to query the details of specified dedicated hosts.
-//
-//   - Specify `DedicatedHostClusterId` to query the details of dedicated hosts in a dedicated host cluster.
-//
-// @param request - DescribeDedicatedHostsRequest
-//
-// @return DescribeDedicatedHostsResponse
-func (client *Client) DescribeDedicatedHosts(request *DescribeDedicatedHostsRequest) (_result *DescribeDedicatedHostsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDedicatedHostsResponse{}
-	_body, _err := client.DescribeDedicatedHostsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15173,7 +11756,7 @@ func (client *Client) DescribeDedicatedHosts(request *DescribeDedicatedHostsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDeploymentSetSupportedInstanceTypeFamilyResponse
-func (client *Client) DescribeDeploymentSetSupportedInstanceTypeFamilyWithOptions(request *DescribeDeploymentSetSupportedInstanceTypeFamilyRequest, runtime *dara.RuntimeOptions) (_result *DescribeDeploymentSetSupportedInstanceTypeFamilyResponse, _err error) {
+func (client *Client) DescribeDeploymentSetSupportedInstanceTypeFamilyWithContext(ctx context.Context, request *DescribeDeploymentSetSupportedInstanceTypeFamilyRequest, runtime *dara.RuntimeOptions) (_result *DescribeDeploymentSetSupportedInstanceTypeFamilyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15218,35 +11801,11 @@ func (client *Client) DescribeDeploymentSetSupportedInstanceTypeFamilyWithOption
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDeploymentSetSupportedInstanceTypeFamilyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the instance families that support different deployment strategies. When you call this operation, specify parameters, such as RegionId and Strategy, in the request.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// For information about instance families, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
-//
-// @param request - DescribeDeploymentSetSupportedInstanceTypeFamilyRequest
-//
-// @return DescribeDeploymentSetSupportedInstanceTypeFamilyResponse
-func (client *Client) DescribeDeploymentSetSupportedInstanceTypeFamily(request *DescribeDeploymentSetSupportedInstanceTypeFamilyRequest) (_result *DescribeDeploymentSetSupportedInstanceTypeFamilyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDeploymentSetSupportedInstanceTypeFamilyResponse{}
-	_body, _err := client.DescribeDeploymentSetSupportedInstanceTypeFamilyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15259,7 +11818,7 @@ func (client *Client) DescribeDeploymentSetSupportedInstanceTypeFamily(request *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDeploymentSetsResponse
-func (client *Client) DescribeDeploymentSetsWithOptions(request *DescribeDeploymentSetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDeploymentSetsResponse, _err error) {
+func (client *Client) DescribeDeploymentSetsWithContext(ctx context.Context, request *DescribeDeploymentSetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDeploymentSetsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15332,29 +11891,11 @@ func (client *Client) DescribeDeploymentSetsWithOptions(request *DescribeDeploym
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDeploymentSetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries detailed information about one or more deployment sets.
-//
-// @param request - DescribeDeploymentSetsRequest
-//
-// @return DescribeDeploymentSetsResponse
-func (client *Client) DescribeDeploymentSets(request *DescribeDeploymentSetsRequest) (_result *DescribeDeploymentSetsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDeploymentSetsResponse{}
-	_body, _err := client.DescribeDeploymentSetsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15367,7 +11908,7 @@ func (client *Client) DescribeDeploymentSets(request *DescribeDeploymentSetsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDiagnosticMetricSetsResponse
-func (client *Client) DescribeDiagnosticMetricSetsWithOptions(request *DescribeDiagnosticMetricSetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiagnosticMetricSetsResponse, _err error) {
+func (client *Client) DescribeDiagnosticMetricSetsWithContext(ctx context.Context, request *DescribeDiagnosticMetricSetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiagnosticMetricSetsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15412,29 +11953,11 @@ func (client *Client) DescribeDiagnosticMetricSetsWithOptions(request *DescribeD
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDiagnosticMetricSetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries diagnostic metric sets.
-//
-// @param request - DescribeDiagnosticMetricSetsRequest
-//
-// @return DescribeDiagnosticMetricSetsResponse
-func (client *Client) DescribeDiagnosticMetricSets(request *DescribeDiagnosticMetricSetsRequest) (_result *DescribeDiagnosticMetricSetsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDiagnosticMetricSetsResponse{}
-	_body, _err := client.DescribeDiagnosticMetricSetsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15447,7 +11970,7 @@ func (client *Client) DescribeDiagnosticMetricSets(request *DescribeDiagnosticMe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDiagnosticMetricsResponse
-func (client *Client) DescribeDiagnosticMetricsWithOptions(request *DescribeDiagnosticMetricsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiagnosticMetricsResponse, _err error) {
+func (client *Client) DescribeDiagnosticMetricsWithContext(ctx context.Context, request *DescribeDiagnosticMetricsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiagnosticMetricsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15488,29 +12011,11 @@ func (client *Client) DescribeDiagnosticMetricsWithOptions(request *DescribeDiag
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDiagnosticMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries diagnostic metrics.
-//
-// @param request - DescribeDiagnosticMetricsRequest
-//
-// @return DescribeDiagnosticMetricsResponse
-func (client *Client) DescribeDiagnosticMetrics(request *DescribeDiagnosticMetricsRequest) (_result *DescribeDiagnosticMetricsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDiagnosticMetricsResponse{}
-	_body, _err := client.DescribeDiagnosticMetricsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15523,7 +12028,7 @@ func (client *Client) DescribeDiagnosticMetrics(request *DescribeDiagnosticMetri
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDiagnosticReportAttributesResponse
-func (client *Client) DescribeDiagnosticReportAttributesWithOptions(request *DescribeDiagnosticReportAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiagnosticReportAttributesResponse, _err error) {
+func (client *Client) DescribeDiagnosticReportAttributesWithContext(ctx context.Context, request *DescribeDiagnosticReportAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiagnosticReportAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15552,29 +12057,11 @@ func (client *Client) DescribeDiagnosticReportAttributesWithOptions(request *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDiagnosticReportAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a diagnostic report.
-//
-// @param request - DescribeDiagnosticReportAttributesRequest
-//
-// @return DescribeDiagnosticReportAttributesResponse
-func (client *Client) DescribeDiagnosticReportAttributes(request *DescribeDiagnosticReportAttributesRequest) (_result *DescribeDiagnosticReportAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDiagnosticReportAttributesResponse{}
-	_body, _err := client.DescribeDiagnosticReportAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15587,7 +12074,7 @@ func (client *Client) DescribeDiagnosticReportAttributes(request *DescribeDiagno
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDiagnosticReportsResponse
-func (client *Client) DescribeDiagnosticReportsWithOptions(request *DescribeDiagnosticReportsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiagnosticReportsResponse, _err error) {
+func (client *Client) DescribeDiagnosticReportsWithContext(ctx context.Context, request *DescribeDiagnosticReportsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiagnosticReportsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15636,29 +12123,11 @@ func (client *Client) DescribeDiagnosticReportsWithOptions(request *DescribeDiag
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDiagnosticReportsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries resource diagnostic reports.
-//
-// @param request - DescribeDiagnosticReportsRequest
-//
-// @return DescribeDiagnosticReportsResponse
-func (client *Client) DescribeDiagnosticReports(request *DescribeDiagnosticReportsRequest) (_result *DescribeDiagnosticReportsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDiagnosticReportsResponse{}
-	_body, _err := client.DescribeDiagnosticReportsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15671,7 +12140,7 @@ func (client *Client) DescribeDiagnosticReports(request *DescribeDiagnosticRepor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDiskDefaultKMSKeyIdResponse
-func (client *Client) DescribeDiskDefaultKMSKeyIdWithOptions(request *DescribeDiskDefaultKMSKeyIdRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiskDefaultKMSKeyIdResponse, _err error) {
+func (client *Client) DescribeDiskDefaultKMSKeyIdWithContext(ctx context.Context, request *DescribeDiskDefaultKMSKeyIdRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiskDefaultKMSKeyIdResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15704,29 +12173,11 @@ func (client *Client) DescribeDiskDefaultKMSKeyIdWithOptions(request *DescribeDi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDiskDefaultKMSKeyIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Key Management Service (KMS) key used by the Account-level Elastic Block Storage (EBS) Default Encryption feature in a region.
-//
-// @param request - DescribeDiskDefaultKMSKeyIdRequest
-//
-// @return DescribeDiskDefaultKMSKeyIdResponse
-func (client *Client) DescribeDiskDefaultKMSKeyId(request *DescribeDiskDefaultKMSKeyIdRequest) (_result *DescribeDiskDefaultKMSKeyIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDiskDefaultKMSKeyIdResponse{}
-	_body, _err := client.DescribeDiskDefaultKMSKeyIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15739,7 +12190,7 @@ func (client *Client) DescribeDiskDefaultKMSKeyId(request *DescribeDiskDefaultKM
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDiskEncryptionByDefaultStatusResponse
-func (client *Client) DescribeDiskEncryptionByDefaultStatusWithOptions(request *DescribeDiskEncryptionByDefaultStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiskEncryptionByDefaultStatusResponse, _err error) {
+func (client *Client) DescribeDiskEncryptionByDefaultStatusWithContext(ctx context.Context, request *DescribeDiskEncryptionByDefaultStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiskEncryptionByDefaultStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15772,29 +12223,11 @@ func (client *Client) DescribeDiskEncryptionByDefaultStatusWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDiskEncryptionByDefaultStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries whether account-level default encryption of Elastic Block Storage (EBS) resources is enabled in a region.
-//
-// @param request - DescribeDiskEncryptionByDefaultStatusRequest
-//
-// @return DescribeDiskEncryptionByDefaultStatusResponse
-func (client *Client) DescribeDiskEncryptionByDefaultStatus(request *DescribeDiskEncryptionByDefaultStatusRequest) (_result *DescribeDiskEncryptionByDefaultStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDiskEncryptionByDefaultStatusResponse{}
-	_body, _err := client.DescribeDiskEncryptionByDefaultStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15835,7 +12268,7 @@ func (client *Client) DescribeDiskEncryptionByDefaultStatus(request *DescribeDis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDiskMonitorDataResponse
-func (client *Client) DescribeDiskMonitorDataWithOptions(request *DescribeDiskMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiskMonitorDataResponse, _err error) {
+func (client *Client) DescribeDiskMonitorDataWithContext(ctx context.Context, request *DescribeDiskMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDiskMonitorDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15888,57 +12321,11 @@ func (client *Client) DescribeDiskMonitorDataWithOptions(request *DescribeDiskMo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDiskMonitorDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the monitoring data of a cloud disk within a specific period of time, such as the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - Monitoring data of only disks that are in the In Use (`In_use`) state can be queried. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
-//
-//     **
-//
-//     **Note*	- Some information may be missing from the monitoring data of a disk because the disk is not in the In Use `(In_use)` state and the system cannot obtain the relevant information.
-//
-//   - Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
-//
-//   - You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
-//
-// ## [](#)Sample requests
-//
-// For example, you want to query the monitoring data of a cloud disk whose ID is `d-bp14emm68wx98vjk****` in the China (Hangzhou) region every 600 seconds from `2025-02-17T00:00:00Z` to `2025-02-18T10:00:00Z`. Request parameters:
-//
-//	RegionId:"cn-hangzhou", // Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
-//
-//	DiskId:"d-bp14emm68wx98vjk****", // Specify the disk ID.
-//
-//	StartTime:"2025-02-15T00:00:00Z", // Specify the beginning of the time range to query.
-//
-//	EndTime:"2025-02-17T00:00:00Z", // Specify the end of the time range to query.
-//
-//	Period:"600", // Specify the interval at which to retrieve the monitoring data.
-//
-// @param request - DescribeDiskMonitorDataRequest
-//
-// @return DescribeDiskMonitorDataResponse
-func (client *Client) DescribeDiskMonitorData(request *DescribeDiskMonitorDataRequest) (_result *DescribeDiskMonitorDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDiskMonitorDataResponse{}
-	_body, _err := client.DescribeDiskMonitorDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15963,7 +12350,7 @@ func (client *Client) DescribeDiskMonitorData(request *DescribeDiskMonitorDataRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDisksResponse
-func (client *Client) DescribeDisksWithOptions(request *DescribeDisksRequest, runtime *dara.RuntimeOptions) (_result *DescribeDisksResponse, _err error) {
+func (client *Client) DescribeDisksWithContext(ctx context.Context, request *DescribeDisksRequest, runtime *dara.RuntimeOptions) (_result *DescribeDisksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16120,41 +12507,11 @@ func (client *Client) DescribeDisksWithOptions(request *DescribeDisksRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDisksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries block storage devices that you created, including cloud disks, local disks, and elastic ephemeral disks.
-//
-// Description:
-//
-//	  You can specify multiple request parameters such as `RegionId`, `ZoneId`, `DiskIds`, and `InstanceId` as filters. The specified parameters are evaluated by using the "AND" operator. If you specify more than one filter, the records that match all filters are returned.
-//
-//		- The value of `DiskIds` is a JSON array. If you do not specify DiskIds, the parameter is not used as a filter. If you set `DiskIds` to an empty JSON array, the parameter is regarded as a valid filter, and an empty result is returned.
-//
-//		- Token-based paged query: Use `NextToken` to configure the query token. Set the value to the `NextToken` value returned in the previous call to the DescribeDisks operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-//
-//		- You can attach a disk for which the multi-attach feature is enabled to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
-//
-// When you call the API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
-//
-// @param request - DescribeDisksRequest
-//
-// @return DescribeDisksResponse
-func (client *Client) DescribeDisks(request *DescribeDisksRequest) (_result *DescribeDisksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDisksResponse{}
-	_body, _err := client.DescribeDisksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16173,7 +12530,7 @@ func (client *Client) DescribeDisks(request *DescribeDisksRequest) (_result *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDisksFullStatusResponse
-func (client *Client) DescribeDisksFullStatusWithOptions(request *DescribeDisksFullStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeDisksFullStatusResponse, _err error) {
+func (client *Client) DescribeDisksFullStatusWithContext(ctx context.Context, request *DescribeDisksFullStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeDisksFullStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16258,35 +12615,11 @@ func (client *Client) DescribeDisksFullStatusWithOptions(request *DescribeDisksF
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDisksFullStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the full status information about one or more Elastic Block Storage (EBS) devices.
-//
-// Description:
-//
-//	  The full status information about an EBS device includes the lifecycle status specified by the `Status` parameter, health status specified by the `HealthStatus` parameter, and event type specified by the `EventType` parameter of the EBS device. You can filter the results based on these parameters.
-//
-//		- The release time, scheduled execution time, and actual execution time of each EBS device event are identical. If you specify a period of time by using the `EventTime.Start` and `EventTime.End` parameters, all events that occurred within this period are queried. You can query events that occurred within the last seven days.
-//
-// @param request - DescribeDisksFullStatusRequest
-//
-// @return DescribeDisksFullStatusResponse
-func (client *Client) DescribeDisksFullStatus(request *DescribeDisksFullStatusRequest) (_result *DescribeDisksFullStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDisksFullStatusResponse{}
-	_body, _err := client.DescribeDisksFullStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16297,7 +12630,7 @@ func (client *Client) DescribeDisksFullStatus(request *DescribeDisksFullStatusRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEipAddressesResponse
-func (client *Client) DescribeEipAddressesWithOptions(request *DescribeEipAddressesRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipAddressesResponse, _err error) {
+func (client *Client) DescribeEipAddressesWithContext(ctx context.Context, request *DescribeEipAddressesRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipAddressesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16382,28 +12715,11 @@ func (client *Client) DescribeEipAddressesWithOptions(request *DescribeEipAddres
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEipAddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeEipAddresses is deprecated, please use Vpc::2016-04-28::DescribeEipAddresses instead.
-//
-// @param request - DescribeEipAddressesRequest
-//
-// @return DescribeEipAddressesResponse
-// Deprecated
-func (client *Client) DescribeEipAddresses(request *DescribeEipAddressesRequest) (_result *DescribeEipAddressesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEipAddressesResponse{}
-	_body, _err := client.DescribeEipAddressesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16414,7 +12730,7 @@ func (client *Client) DescribeEipAddresses(request *DescribeEipAddressesRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEipMonitorDataResponse
-func (client *Client) DescribeEipMonitorDataWithOptions(request *DescribeEipMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipMonitorDataResponse, _err error) {
+func (client *Client) DescribeEipMonitorDataWithContext(ctx context.Context, request *DescribeEipMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipMonitorDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16471,28 +12787,11 @@ func (client *Client) DescribeEipMonitorDataWithOptions(request *DescribeEipMoni
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEipMonitorDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeEipMonitorData is deprecated
-//
-// @param request - DescribeEipMonitorDataRequest
-//
-// @return DescribeEipMonitorDataResponse
-// Deprecated
-func (client *Client) DescribeEipMonitorData(request *DescribeEipMonitorDataRequest) (_result *DescribeEipMonitorDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEipMonitorDataResponse{}
-	_body, _err := client.DescribeEipMonitorDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16505,7 +12804,7 @@ func (client *Client) DescribeEipMonitorData(request *DescribeEipMonitorDataRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeElasticityAssuranceAutoRenewAttributeResponse
-func (client *Client) DescribeElasticityAssuranceAutoRenewAttributeWithOptions(request *DescribeElasticityAssuranceAutoRenewAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeElasticityAssuranceAutoRenewAttributeResponse, _err error) {
+func (client *Client) DescribeElasticityAssuranceAutoRenewAttributeWithContext(ctx context.Context, request *DescribeElasticityAssuranceAutoRenewAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeElasticityAssuranceAutoRenewAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16550,29 +12849,11 @@ func (client *Client) DescribeElasticityAssuranceAutoRenewAttributeWithOptions(r
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeElasticityAssuranceAutoRenewAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the auto-renewal attribute of elasticity assurances.
-//
-// @param request - DescribeElasticityAssuranceAutoRenewAttributeRequest
-//
-// @return DescribeElasticityAssuranceAutoRenewAttributeResponse
-func (client *Client) DescribeElasticityAssuranceAutoRenewAttribute(request *DescribeElasticityAssuranceAutoRenewAttributeRequest) (_result *DescribeElasticityAssuranceAutoRenewAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeElasticityAssuranceAutoRenewAttributeResponse{}
-	_body, _err := client.DescribeElasticityAssuranceAutoRenewAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16589,7 +12870,7 @@ func (client *Client) DescribeElasticityAssuranceAutoRenewAttribute(request *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeElasticityAssuranceInstancesResponse
-func (client *Client) DescribeElasticityAssuranceInstancesWithOptions(request *DescribeElasticityAssuranceInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeElasticityAssuranceInstancesResponse, _err error) {
+func (client *Client) DescribeElasticityAssuranceInstancesWithContext(ctx context.Context, request *DescribeElasticityAssuranceInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeElasticityAssuranceInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16642,33 +12923,11 @@ func (client *Client) DescribeElasticityAssuranceInstancesWithOptions(request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeElasticityAssuranceInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the running Elastic Compute Service (ECS) instances that use an elasticity assurance.
-//
-// Description:
-//
-// When an elasticity assurance expires, data about the association between the instances and the private pool generated by the elasticity assurance becomes invalid. When you call this operation to query the expired elasticity assurance, no value is returned.
-//
-// @param request - DescribeElasticityAssuranceInstancesRequest
-//
-// @return DescribeElasticityAssuranceInstancesResponse
-func (client *Client) DescribeElasticityAssuranceInstances(request *DescribeElasticityAssuranceInstancesRequest) (_result *DescribeElasticityAssuranceInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeElasticityAssuranceInstancesResponse{}
-	_body, _err := client.DescribeElasticityAssuranceInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16681,7 +12940,7 @@ func (client *Client) DescribeElasticityAssuranceInstances(request *DescribeElas
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeElasticityAssurancesResponse
-func (client *Client) DescribeElasticityAssurancesWithOptions(request *DescribeElasticityAssurancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeElasticityAssurancesResponse, _err error) {
+func (client *Client) DescribeElasticityAssurancesWithContext(ctx context.Context, request *DescribeElasticityAssurancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeElasticityAssurancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16766,29 +13025,11 @@ func (client *Client) DescribeElasticityAssurancesWithOptions(request *DescribeE
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeElasticityAssurancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of elasticity assurances.
-//
-// @param request - DescribeElasticityAssurancesRequest
-//
-// @return DescribeElasticityAssurancesResponse
-func (client *Client) DescribeElasticityAssurances(request *DescribeElasticityAssurancesRequest) (_result *DescribeElasticityAssurancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeElasticityAssurancesResponse{}
-	_body, _err := client.DescribeElasticityAssurancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16811,7 +13052,7 @@ func (client *Client) DescribeElasticityAssurances(request *DescribeElasticityAs
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEniMonitorDataResponse
-func (client *Client) DescribeEniMonitorDataWithOptions(request *DescribeEniMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeEniMonitorDataResponse, _err error) {
+func (client *Client) DescribeEniMonitorDataWithContext(ctx context.Context, request *DescribeEniMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeEniMonitorDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16872,39 +13113,11 @@ func (client *Client) DescribeEniMonitorDataWithOptions(request *DescribeEniMoni
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEniMonitorDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the monitoring data of a secondary elastic network interface (ENI) over a specific period of time.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// The monitoring data of a secondary ENI includes the amount of traffic sent and received over the internal network, the number of packets sent and received by the secondary ENI, and the number of sent and received packets that are dropped by the secondary ENI. Specific information may be missing from the returned monitoring data. This may be because the system cannot obtain the relevant information. For example, if the instance to which the secondary ENI is attached is in the Stopped state or if the secondary ENI is not attached to an instance and is in the Available state, the monitoring data of the secondary ENI cannot be obtained. Take note of the following items:
-//
-//   - Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
-//
-//   - You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
-//
-// @param request - DescribeEniMonitorDataRequest
-//
-// @return DescribeEniMonitorDataResponse
-func (client *Client) DescribeEniMonitorData(request *DescribeEniMonitorDataRequest) (_result *DescribeEniMonitorDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEniMonitorDataResponse{}
-	_body, _err := client.DescribeEniMonitorDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16915,7 +13128,7 @@ func (client *Client) DescribeEniMonitorData(request *DescribeEniMonitorDataRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeForwardTableEntriesResponse
-func (client *Client) DescribeForwardTableEntriesWithOptions(request *DescribeForwardTableEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeForwardTableEntriesResponse, _err error) {
+func (client *Client) DescribeForwardTableEntriesWithContext(ctx context.Context, request *DescribeForwardTableEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeForwardTableEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16972,28 +13185,11 @@ func (client *Client) DescribeForwardTableEntriesWithOptions(request *DescribeFo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeForwardTableEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeForwardTableEntries is deprecated
-//
-// @param request - DescribeForwardTableEntriesRequest
-//
-// @return DescribeForwardTableEntriesResponse
-// Deprecated
-func (client *Client) DescribeForwardTableEntries(request *DescribeForwardTableEntriesRequest) (_result *DescribeForwardTableEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeForwardTableEntriesResponse{}
-	_body, _err := client.DescribeForwardTableEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17004,7 +13200,7 @@ func (client *Client) DescribeForwardTableEntries(request *DescribeForwardTableE
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeHaVipsResponse
-func (client *Client) DescribeHaVipsWithOptions(request *DescribeHaVipsRequest, runtime *dara.RuntimeOptions) (_result *DescribeHaVipsResponse, _err error) {
+func (client *Client) DescribeHaVipsWithContext(ctx context.Context, request *DescribeHaVipsRequest, runtime *dara.RuntimeOptions) (_result *DescribeHaVipsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17057,28 +13253,11 @@ func (client *Client) DescribeHaVipsWithOptions(request *DescribeHaVipsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeHaVipsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeHaVips is deprecated
-//
-// @param request - DescribeHaVipsRequest
-//
-// @return DescribeHaVipsResponse
-// Deprecated
-func (client *Client) DescribeHaVips(request *DescribeHaVipsRequest) (_result *DescribeHaVipsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeHaVipsResponse{}
-	_body, _err := client.DescribeHaVipsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17091,7 +13270,7 @@ func (client *Client) DescribeHaVips(request *DescribeHaVipsRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeHpcClustersResponse
-func (client *Client) DescribeHpcClustersWithOptions(request *DescribeHpcClustersRequest, runtime *dara.RuntimeOptions) (_result *DescribeHpcClustersResponse, _err error) {
+func (client *Client) DescribeHpcClustersWithContext(ctx context.Context, request *DescribeHpcClustersRequest, runtime *dara.RuntimeOptions) (_result *DescribeHpcClustersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17152,29 +13331,11 @@ func (client *Client) DescribeHpcClustersWithOptions(request *DescribeHpcCluster
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeHpcClustersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The \\*\\*token\\*\\	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence]\\(~~25693~~).
-//
-// @param request - DescribeHpcClustersRequest
-//
-// @return DescribeHpcClustersResponse
-func (client *Client) DescribeHpcClusters(request *DescribeHpcClustersRequest) (_result *DescribeHpcClustersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeHpcClustersResponse{}
-	_body, _err := client.DescribeHpcClustersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17191,7 +13352,7 @@ func (client *Client) DescribeHpcClusters(request *DescribeHpcClustersRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeImageComponentsResponse
-func (client *Client) DescribeImageComponentsWithOptions(request *DescribeImageComponentsRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageComponentsResponse, _err error) {
+func (client *Client) DescribeImageComponentsWithContext(ctx context.Context, request *DescribeImageComponentsRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageComponentsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17280,33 +13441,11 @@ func (client *Client) DescribeImageComponentsWithOptions(request *DescribeImageC
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeImageComponentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of one or more image components.
-//
-// Description:
-//
-// You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the previous call to the DescribeImageComponents operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-//
-// @param request - DescribeImageComponentsRequest
-//
-// @return DescribeImageComponentsResponse
-func (client *Client) DescribeImageComponents(request *DescribeImageComponentsRequest) (_result *DescribeImageComponentsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeImageComponentsResponse{}
-	_body, _err := client.DescribeImageComponentsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17325,7 +13464,7 @@ func (client *Client) DescribeImageComponents(request *DescribeImageComponentsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeImageFromFamilyResponse
-func (client *Client) DescribeImageFromFamilyWithOptions(request *DescribeImageFromFamilyRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageFromFamilyResponse, _err error) {
+func (client *Client) DescribeImageFromFamilyWithContext(ctx context.Context, request *DescribeImageFromFamilyRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageFromFamilyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17370,35 +13509,11 @@ func (client *Client) DescribeImageFromFamilyWithOptions(request *DescribeImageF
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeImageFromFamilyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries available custom images that are most recently created in a specific image family.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// If no available image exists in a specific image family, the response is empty.
-//
-// @param request - DescribeImageFromFamilyRequest
-//
-// @return DescribeImageFromFamilyResponse
-func (client *Client) DescribeImageFromFamily(request *DescribeImageFromFamilyRequest) (_result *DescribeImageFromFamilyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeImageFromFamilyResponse{}
-	_body, _err := client.DescribeImageFromFamilyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17421,7 +13536,7 @@ func (client *Client) DescribeImageFromFamily(request *DescribeImageFromFamilyRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeImagePipelineExecutionsResponse
-func (client *Client) DescribeImagePipelineExecutionsWithOptions(request *DescribeImagePipelineExecutionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeImagePipelineExecutionsResponse, _err error) {
+func (client *Client) DescribeImagePipelineExecutionsWithContext(ctx context.Context, request *DescribeImagePipelineExecutionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeImagePipelineExecutionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17490,39 +13605,11 @@ func (client *Client) DescribeImagePipelineExecutionsWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeImagePipelineExecutionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an image creation task.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - The image template that is specified by the `ImagePipelineId` parameter cannot be a deleted image template. When an image template is deleted, the corresponding image creation task is deleted.
-//
-//   - You must specify `ImagePipelineId` or `ExecutionId`.
-//
-//   - You can configure the query token by using the `NextToken` parameter. Set NextToken to the value of `NextToken` that was returned the previous call to the `DescribeImagePipelineExecutions` operation. Then, use the `MaxResults` parameter to specify the maximum number of entries to return on each page.
-//
-// @param request - DescribeImagePipelineExecutionsRequest
-//
-// @return DescribeImagePipelineExecutionsResponse
-func (client *Client) DescribeImagePipelineExecutions(request *DescribeImagePipelineExecutionsRequest) (_result *DescribeImagePipelineExecutionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeImagePipelineExecutionsResponse{}
-	_body, _err := client.DescribeImagePipelineExecutionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17539,7 +13626,7 @@ func (client *Client) DescribeImagePipelineExecutions(request *DescribeImagePipe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeImagePipelinesResponse
-func (client *Client) DescribeImagePipelinesWithOptions(request *DescribeImagePipelinesRequest, runtime *dara.RuntimeOptions) (_result *DescribeImagePipelinesResponse, _err error) {
+func (client *Client) DescribeImagePipelinesWithContext(ctx context.Context, request *DescribeImagePipelinesRequest, runtime *dara.RuntimeOptions) (_result *DescribeImagePipelinesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17612,33 +13699,11 @@ func (client *Client) DescribeImagePipelinesWithOptions(request *DescribeImagePi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeImagePipelinesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of one or more image templates.
-//
-// Description:
-//
-// You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the previous call to the `DescribeImagePipelines` operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-//
-// @param request - DescribeImagePipelinesRequest
-//
-// @return DescribeImagePipelinesResponse
-func (client *Client) DescribeImagePipelines(request *DescribeImagePipelinesRequest) (_result *DescribeImagePipelinesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeImagePipelinesResponse{}
-	_body, _err := client.DescribeImagePipelinesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17651,7 +13716,7 @@ func (client *Client) DescribeImagePipelines(request *DescribeImagePipelinesRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeImageSharePermissionResponse
-func (client *Client) DescribeImageSharePermissionWithOptions(request *DescribeImageSharePermissionRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageSharePermissionResponse, _err error) {
+func (client *Client) DescribeImageSharePermissionWithContext(ctx context.Context, request *DescribeImageSharePermissionRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageSharePermissionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17704,29 +13769,11 @@ func (client *Client) DescribeImageSharePermissionWithOptions(request *DescribeI
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeImageSharePermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the accounts with which a custom image is shared. When you call this operation, you can specify parameters, such as RegionId and ImageId, in the request. The response can be displayed by page. By default, 10 entries are displayed on each page.
-//
-// @param request - DescribeImageSharePermissionRequest
-//
-// @return DescribeImageSharePermissionResponse
-func (client *Client) DescribeImageSharePermission(request *DescribeImageSharePermissionRequest) (_result *DescribeImageSharePermissionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeImageSharePermissionResponse{}
-	_body, _err := client.DescribeImageSharePermissionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17739,7 +13786,7 @@ func (client *Client) DescribeImageSharePermission(request *DescribeImageSharePe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeImageSupportInstanceTypesResponse
-func (client *Client) DescribeImageSupportInstanceTypesWithOptions(request *DescribeImageSupportInstanceTypesRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageSupportInstanceTypesResponse, _err error) {
+func (client *Client) DescribeImageSupportInstanceTypesWithContext(ctx context.Context, request *DescribeImageSupportInstanceTypesRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageSupportInstanceTypesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17788,29 +13835,11 @@ func (client *Client) DescribeImageSupportInstanceTypesWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeImageSupportInstanceTypesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Elastic Compute Service (ECS) instance types supported by an image.
-//
-// @param request - DescribeImageSupportInstanceTypesRequest
-//
-// @return DescribeImageSupportInstanceTypesResponse
-func (client *Client) DescribeImageSupportInstanceTypes(request *DescribeImageSupportInstanceTypesRequest) (_result *DescribeImageSupportInstanceTypesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeImageSupportInstanceTypesResponse{}
-	_body, _err := client.DescribeImageSupportInstanceTypesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17835,7 +13864,7 @@ func (client *Client) DescribeImageSupportInstanceTypes(request *DescribeImageSu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeImagesResponse
-func (client *Client) DescribeImagesWithOptions(request *DescribeImagesRequest, runtime *dara.RuntimeOptions) (_result *DescribeImagesResponse, _err error) {
+func (client *Client) DescribeImagesWithContext(ctx context.Context, request *DescribeImagesRequest, runtime *dara.RuntimeOptions) (_result *DescribeImagesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17964,41 +13993,11 @@ func (client *Client) DescribeImagesWithOptions(request *DescribeImagesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeImagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries image resources that you can use. You can specify parameters, such as ImageId, ActionType, and Filter, in the request.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
-//
-//   - This is a paginated query. The response contains the total number of available images and the images on the returned page. By default,10 entries are displayed on each page.
-//
-//   - When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
-//
-//   - If you set ImageOwnerAlias to system or others when you call the DescribeImages operation to query public images that are provided by Alibaba Cloud or shared images, Resource Access Management (RAM) policies are ignored in the request. For more information, see [RAM authorization](https://help.aliyun.com/document_detail/25497.html).
-//
-// @param request - DescribeImagesRequest
-//
-// @return DescribeImagesResponse
-func (client *Client) DescribeImages(request *DescribeImagesRequest) (_result *DescribeImagesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeImagesResponse{}
-	_body, _err := client.DescribeImagesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18019,7 +14018,7 @@ func (client *Client) DescribeImages(request *DescribeImagesRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceAttachmentAttributesResponse
-func (client *Client) DescribeInstanceAttachmentAttributesWithOptions(request *DescribeInstanceAttachmentAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAttachmentAttributesResponse, _err error) {
+func (client *Client) DescribeInstanceAttachmentAttributesWithContext(ctx context.Context, request *DescribeInstanceAttachmentAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAttachmentAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18072,37 +14071,11 @@ func (client *Client) DescribeInstanceAttachmentAttributesWithOptions(request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceAttachmentAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about the private pools that Elastic Compute Service (ECS) instances match.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// After an elasticity assurance or a capacity reservation is created, a private pool is generated and associated with information about the instances that are created by using the private pool. You can specify a private pool when you create an instance. This way, the instance matches the elasticity assurance or capacity reservation that is associated with the private pool.
-//
-// When a private pool expires, data related to the association between instances and the private pool becomes invalid. If you call this operation to query information about the private pool, empty values are returned.
-//
-// @param request - DescribeInstanceAttachmentAttributesRequest
-//
-// @return DescribeInstanceAttachmentAttributesResponse
-func (client *Client) DescribeInstanceAttachmentAttributes(request *DescribeInstanceAttachmentAttributesRequest) (_result *DescribeInstanceAttachmentAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceAttachmentAttributesResponse{}
-	_body, _err := client.DescribeInstanceAttachmentAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18115,7 +14088,7 @@ func (client *Client) DescribeInstanceAttachmentAttributes(request *DescribeInst
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceAttributeResponse
-func (client *Client) DescribeInstanceAttributeWithOptions(request *DescribeInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAttributeResponse, _err error) {
+func (client *Client) DescribeInstanceAttributeWithContext(ctx context.Context, request *DescribeInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18156,29 +14129,11 @@ func (client *Client) DescribeInstanceAttributeWithOptions(request *DescribeInst
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the attributes of a specific Elastic Compute Service (ECS) instance.
-//
-// @param request - DescribeInstanceAttributeRequest
-//
-// @return DescribeInstanceAttributeResponse
-func (client *Client) DescribeInstanceAttribute(request *DescribeInstanceAttributeRequest) (_result *DescribeInstanceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceAttributeResponse{}
-	_body, _err := client.DescribeInstanceAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18197,7 +14152,7 @@ func (client *Client) DescribeInstanceAttribute(request *DescribeInstanceAttribu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceAutoRenewAttributeResponse
-func (client *Client) DescribeInstanceAutoRenewAttributeWithOptions(request *DescribeInstanceAutoRenewAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAutoRenewAttributeResponse, _err error) {
+func (client *Client) DescribeInstanceAutoRenewAttributeWithContext(ctx context.Context, request *DescribeInstanceAutoRenewAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAutoRenewAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18254,35 +14209,11 @@ func (client *Client) DescribeInstanceAutoRenewAttributeWithOptions(request *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceAutoRenewAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the auto-renewal attribute of subscription Elastic Compute Service (ECS) instances, including whether auto-renewal is enabled for the instances and the auto-renewal durations of the instances.
-//
-// Description:
-//
-//	  Only subscription instances are supported. If you call this operation for a pay-as-you-go instance, an error is returned.
-//
-//		- Before you configure auto-renewal or manual renewal for subscription instances, you can query the auto-renewal status of the instances.
-//
-// @param request - DescribeInstanceAutoRenewAttributeRequest
-//
-// @return DescribeInstanceAutoRenewAttributeResponse
-func (client *Client) DescribeInstanceAutoRenewAttribute(request *DescribeInstanceAutoRenewAttributeRequest) (_result *DescribeInstanceAutoRenewAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceAutoRenewAttributeResponse{}
-	_body, _err := client.DescribeInstanceAutoRenewAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18303,7 +14234,7 @@ func (client *Client) DescribeInstanceAutoRenewAttribute(request *DescribeInstan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceHistoryEventsResponse
-func (client *Client) DescribeInstanceHistoryEventsWithOptions(request *DescribeInstanceHistoryEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceHistoryEventsResponse, _err error) {
+func (client *Client) DescribeInstanceHistoryEventsWithContext(ctx context.Context, request *DescribeInstanceHistoryEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceHistoryEventsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18416,37 +14347,11 @@ func (client *Client) DescribeInstanceHistoryEventsWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceHistoryEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the system events of Elastic Compute Service (ECS) instances. When you call this operation, you can specify parameters, such as InstanceId and EventType, in the request. By default, non-active system events are queried.
-//
-// Description:
-//
-//	  You can query system events that were completed within the last 30 days. No limits apply to the time range for querying uncompleted system events.
-//
-//		- If you do not specify the EventCycleStatus or InstanceEventCycleStatus parameter, only system events in the Avoidated, Executed, Canceled, or Failed state are included in the query results by default.
-//
-//		- You can also specify the InstanceEventCycleStatus parameter in the request to query the system events that are in the Scheduled, Executing, or Inquiring state.
-//
-// @param request - DescribeInstanceHistoryEventsRequest
-//
-// @return DescribeInstanceHistoryEventsResponse
-func (client *Client) DescribeInstanceHistoryEvents(request *DescribeInstanceHistoryEventsRequest) (_result *DescribeInstanceHistoryEventsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceHistoryEventsResponse{}
-	_body, _err := client.DescribeInstanceHistoryEventsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18467,7 +14372,7 @@ func (client *Client) DescribeInstanceHistoryEvents(request *DescribeInstanceHis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceMaintenanceAttributesResponse
-func (client *Client) DescribeInstanceMaintenanceAttributesWithOptions(request *DescribeInstanceMaintenanceAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceMaintenanceAttributesResponse, _err error) {
+func (client *Client) DescribeInstanceMaintenanceAttributesWithContext(ctx context.Context, request *DescribeInstanceMaintenanceAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceMaintenanceAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18520,37 +14425,11 @@ func (client *Client) DescribeInstanceMaintenanceAttributesWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceMaintenanceAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the maintenance attributes of an instance.
-//
-// Description:
-//
-// This operation is used to query the specified maintenance policy of an instance, which contains the following maintenance attributes:
-//
-//   - Maintenance window: the time period that you specify for maintenance.
-//
-//   - Maintenance action: the action that you specify in response to instance shutdown.
-//
-// @param request - DescribeInstanceMaintenanceAttributesRequest
-//
-// @return DescribeInstanceMaintenanceAttributesResponse
-func (client *Client) DescribeInstanceMaintenanceAttributes(request *DescribeInstanceMaintenanceAttributesRequest) (_result *DescribeInstanceMaintenanceAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceMaintenanceAttributesResponse{}
-	_body, _err := client.DescribeInstanceMaintenanceAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18571,7 +14450,7 @@ func (client *Client) DescribeInstanceMaintenanceAttributes(request *DescribeIns
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceModificationPriceResponse
-func (client *Client) DescribeInstanceModificationPriceWithOptions(request *DescribeInstanceModificationPriceRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceModificationPriceResponse, _err error) {
+func (client *Client) DescribeInstanceModificationPriceWithContext(ctx context.Context, request *DescribeInstanceModificationPriceRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceModificationPriceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18628,37 +14507,11 @@ func (client *Client) DescribeInstanceModificationPriceWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceModificationPriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the pricing information about newly attached subscription data disks or about the new instance types when you upgrade the configurations of unexpired subscription Elastic Compute Service (ECS) instances.
-//
-// Description:
-//
-//	  Pricing information can be queried for unexpired subscription ECS instances only when you upgrade their configurations. The pricing information cannot be queried when the instance configurations are downgraded.
-//
-//		- Pricing information cannot be queried for pay-as-you-go ECS instances when you change their configurations. Prices of existing pay-as-you-go ECS instances whose configurations are changed are the same as those of new pay-as-you-go instances. You can call the [DescribePrice](https://help.aliyun.com/document_detail/107829.html) operation to query the latest prices of ECS instances.
-//
-//		- Before you upgrade the configurations of an instance, we recommend that you call the [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) operation to query the instance types available for configuration upgrades in a specified zone.
-//
-// @param request - DescribeInstanceModificationPriceRequest
-//
-// @return DescribeInstanceModificationPriceResponse
-func (client *Client) DescribeInstanceModificationPrice(request *DescribeInstanceModificationPriceRequest) (_result *DescribeInstanceModificationPriceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceModificationPriceResponse{}
-	_body, _err := client.DescribeInstanceModificationPriceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18685,7 +14538,7 @@ func (client *Client) DescribeInstanceModificationPrice(request *DescribeInstanc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceMonitorDataResponse
-func (client *Client) DescribeInstanceMonitorDataWithOptions(request *DescribeInstanceMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceMonitorDataResponse, _err error) {
+func (client *Client) DescribeInstanceMonitorDataWithContext(ctx context.Context, request *DescribeInstanceMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceMonitorDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18738,43 +14591,11 @@ func (client *Client) DescribeInstanceMonitorDataWithOptions(request *DescribeIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceMonitorDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the monitoring data of an Elastic Compute Service (ECS) instance. The monitoring data can include the vCPU utilization, CPU credits of the burstable instance, amount of received data traffic, amount of sent data traffic, and average bandwidth.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// Take note of the following items:
-//
-//   - Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
-//
-//   - You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
-//
-//   - In some scenarios, such as when the instance is in the Stopped state, the system cannot obtain the relevant information and specific information may be missing from the returned monitoring data.
-//
-//   - You cannot call this operation to obtain the CPU basic monitoring information of an ECS bare metal instance. To obtain the CPU monitoring information of an ECS bare metal instance, install the CloudMonitor agent on the instance. For more information, see [InstallCloudMonitor](https://help.aliyun.com/document_detail/183482.html).
-//
-// @param request - DescribeInstanceMonitorDataRequest
-//
-// @return DescribeInstanceMonitorDataResponse
-func (client *Client) DescribeInstanceMonitorData(request *DescribeInstanceMonitorDataRequest) (_result *DescribeInstanceMonitorDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceMonitorDataResponse{}
-	_body, _err := client.DescribeInstanceMonitorDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18793,7 +14614,7 @@ func (client *Client) DescribeInstanceMonitorData(request *DescribeInstanceMonit
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceRamRoleResponse
-func (client *Client) DescribeInstanceRamRoleWithOptions(request *DescribeInstanceRamRoleRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceRamRoleResponse, _err error) {
+func (client *Client) DescribeInstanceRamRoleWithContext(ctx context.Context, request *DescribeInstanceRamRoleRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceRamRoleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18846,35 +14667,11 @@ func (client *Client) DescribeInstanceRamRoleWithOptions(request *DescribeInstan
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceRamRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the instance Resource Access Management (RAM) roles that are attached to Elastic Compute Service (ECS) instances based on the instance IDs, or queries the ECS instances to which a specific instance RAM role is attached based on the name of the instance RAM role.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// When you call the API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
-//
-// @param request - DescribeInstanceRamRoleRequest
-//
-// @return DescribeInstanceRamRoleResponse
-func (client *Client) DescribeInstanceRamRole(request *DescribeInstanceRamRoleRequest) (_result *DescribeInstanceRamRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceRamRoleResponse{}
-	_body, _err := client.DescribeInstanceRamRoleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18915,7 +14712,7 @@ func (client *Client) DescribeInstanceRamRole(request *DescribeInstanceRamRoleRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceStatusResponse
-func (client *Client) DescribeInstanceStatusWithOptions(request *DescribeInstanceStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceStatusResponse, _err error) {
+func (client *Client) DescribeInstanceStatusWithContext(ctx context.Context, request *DescribeInstanceStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18976,57 +14773,11 @@ func (client *Client) DescribeInstanceStatusWithOptions(request *DescribeInstanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of one or more Elastic Compute Service (ECS) instances. You can also call this operation to query the list of ECS instances that match the specified filter conditions.
-//
-// Description:
-//
-// For information about the lifecycle states of an ECS instance, see [Instance lifecycle](https://help.aliyun.com/document_detail/25687.html).
-//
-// ## [](#)Sample requests
-//
-//   - Query the ECS instances and the status of the instances in a **specific region**. Sample request:
-//
-// <!---->
-//
-//	    "RegionID": "cn-hangzhou"
-//
-//		- Query the ECS instances and the status of the instances in a **zone*	- of a **specific region**. Sample request:
-//
-// <!---->
-//
-//	    "RegionID": "cn-hangzhou",
-//
-//	    "ZoneID": "cn-hangzhou-a"
-//
-//		- Query the status of an ECS instance in a **specific region*	- based on the **instance ID**. Sample request:
-//
-// <!---->
-//
-//	"RegionID": "cn-hangzhou",
-//
-//	"InstancesID": ["i-bp1f7c1zqp999zvp****", "i-bp1dqjv36biueg61****"]
-//
-// @param request - DescribeInstanceStatusRequest
-//
-// @return DescribeInstanceStatusResponse
-func (client *Client) DescribeInstanceStatus(request *DescribeInstanceStatusRequest) (_result *DescribeInstanceStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceStatusResponse{}
-	_body, _err := client.DescribeInstanceStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19039,7 +14790,7 @@ func (client *Client) DescribeInstanceStatus(request *DescribeInstanceStatusRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceTopologyResponse
-func (client *Client) DescribeInstanceTopologyWithOptions(request *DescribeInstanceTopologyRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceTopologyResponse, _err error) {
+func (client *Client) DescribeInstanceTopologyWithContext(ctx context.Context, request *DescribeInstanceTopologyRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceTopologyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19080,29 +14831,11 @@ func (client *Client) DescribeInstanceTopologyWithOptions(request *DescribeInsta
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceTopologyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the topology of the host on which an Elastic Compute Service (ECS) instance resides.
-//
-// @param request - DescribeInstanceTopologyRequest
-//
-// @return DescribeInstanceTopologyResponse
-func (client *Client) DescribeInstanceTopology(request *DescribeInstanceTopologyRequest) (_result *DescribeInstanceTopologyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceTopologyResponse{}
-	_body, _err := client.DescribeInstanceTopologyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19115,7 +14848,7 @@ func (client *Client) DescribeInstanceTopology(request *DescribeInstanceTopology
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceTypeFamiliesResponse
-func (client *Client) DescribeInstanceTypeFamiliesWithOptions(request *DescribeInstanceTypeFamiliesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceTypeFamiliesResponse, _err error) {
+func (client *Client) DescribeInstanceTypeFamiliesWithContext(ctx context.Context, request *DescribeInstanceTypeFamiliesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceTypeFamiliesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19160,29 +14893,11 @@ func (client *Client) DescribeInstanceTypeFamiliesWithOptions(request *DescribeI
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceTypeFamiliesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the instance families provided by Elastic Compute Service (ECS). You can call the DescribeInstanceTypeFamilies operation to obtain information about different series of instance families. This helps you better understand the available instance types and choose appropriate instance types to create ECS instances.
-//
-// @param request - DescribeInstanceTypeFamiliesRequest
-//
-// @return DescribeInstanceTypeFamiliesResponse
-func (client *Client) DescribeInstanceTypeFamilies(request *DescribeInstanceTypeFamiliesRequest) (_result *DescribeInstanceTypeFamiliesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceTypeFamiliesResponse{}
-	_body, _err := client.DescribeInstanceTypeFamiliesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19207,7 +14922,7 @@ func (client *Client) DescribeInstanceTypeFamilies(request *DescribeInstanceType
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceTypesResponse
-func (client *Client) DescribeInstanceTypesWithOptions(request *DescribeInstanceTypesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceTypesResponse, _err error) {
+func (client *Client) DescribeInstanceTypesWithContext(ctx context.Context, request *DescribeInstanceTypesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceTypesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19416,41 +15131,11 @@ func (client *Client) DescribeInstanceTypesWithOptions(request *DescribeInstance
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceTypesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of all instance types or a specific instance type provided by Elastic Compute Service (ECS). You can understand the specifications and performance of instance types based on the response and select an instance type that meets your business requirements.
-//
-// Description:
-//
-//	  **Paged query**: You can set MaxResults to specify the maximum number of entries to return in a single call. If the number of entries to return exceeds the specified MaxResults value, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
-//
-//		- When you call this operation, if you do not set NextToken to paginate the results, only the first page of results is returned by default and includes a maximum of 100 entries. To retrieve further pages of results, set NextToken or pass filter conditions in your requests to DescribeInstanceTypes.
-//
-// >  MaxResults specifies the maximum number of entries per page. The maximum value of this parameter is changed from 1600 to 100 for all users as of November 15, 2023. If you called the DescribeInstanceTypes operation in 2022, you can use 1600 as the maximum value before November 15, 2023.
-//
-//   - The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
-//
-//   - To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
-//
-// @param request - DescribeInstanceTypesRequest
-//
-// @return DescribeInstanceTypesResponse
-func (client *Client) DescribeInstanceTypes(request *DescribeInstanceTypesRequest) (_result *DescribeInstanceTypesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceTypesResponse{}
-	_body, _err := client.DescribeInstanceTypesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19485,7 +15170,7 @@ func (client *Client) DescribeInstanceTypes(request *DescribeInstanceTypesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceVncUrlResponse
-func (client *Client) DescribeInstanceVncUrlWithOptions(request *DescribeInstanceVncUrlRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceVncUrlResponse, _err error) {
+func (client *Client) DescribeInstanceVncUrlWithContext(ctx context.Context, request *DescribeInstanceVncUrlRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceVncUrlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19530,51 +15215,11 @@ func (client *Client) DescribeInstanceVncUrlWithOptions(request *DescribeInstanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceVncUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Virtual Network Computing (VNC) logon address of an Elastic Compute Service (ECS) instance.
-//
-// Description:
-//
-//	You cannot directly use the VNC logon address (VncUrl) in the response to log on to an ECS instance. To log on to the ECS instance, you can use the **web management terminal URL*	- that contains the VNC logon address.
-//
-// >  To construct a web management terminal URL, add the `vncUrl=\\*\\*\\*\\*`, `instanceId=****`, and `isWindows=true/false` parameters at the end of `https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?`. Separate each parameter with an ampersand (`&`). Parameter description:
-//
-//   - `vncUrl`: the VNC logon address.
-//
-//   - `instanceId`: the instance ID.
-//
-//   - `isWindows`: specifies whether the operating system of your ECS instance is Windows. A value of `true` specifies that the operating system is Windows. A value of `false` specifies that the operating system is not Windows.
-//
-//   - You can connect to an ECS instance without using a VNC logon password. Therefore, you do not need to specify the `password` parameter.
-//
-//   - The keepalive time of a connection to a VNC management terminal is 300 seconds. If you do not interact with the VNC management terminal within 300 seconds, the VNC management terminal is automatically disconnected.
-//
-//   - If the connection is interrupted, you must call the DescribeInstanceVncUrl operation to obtain a new VNC logon address (`VncUrl`) and use the new logon address to construct a new web management terminal URL that you can use to reconnect to the VNC management terminal. You can reconnect to a VNC management terminal up to 30 times per minute.
-//
-// Sample web management terminal URL:
-//
-//	https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****&instanceId=i-wz9hhwq5a6tm****&isWindows=true
-//
-// @param request - DescribeInstanceVncUrlRequest
-//
-// @return DescribeInstanceVncUrlResponse
-func (client *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequest) (_result *DescribeInstanceVncUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceVncUrlResponse{}
-	_body, _err := client.DescribeInstanceVncUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19601,7 +15246,7 @@ func (client *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstancesResponse
-func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
+func (client *Client) DescribeInstancesWithContext(ctx context.Context, request *DescribeInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19790,43 +15435,11 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Elastic Compute Service (ECS) instances by various filter conditions. The details of the queried ECS instances are returned in the response.
-//
-// Description:
-//
-// ### [](#)Limits
-//
-//   - When you call the API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
-//
-//   - If you use a Resource Access Management (RAM) user or RAM role that does not have the permissions to call this operation, an empty list is returned.
-//
-// ### [](#)Suggestions
-//
-//   - Specify DryRun in the request to perform a dry run. In the dry run, the system checks the validity and authorization status of the parameters.
-//
-//   - During a paged query, when you call the DescribeInstances operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeInstances operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-//
-// @param request - DescribeInstancesRequest
-//
-// @return DescribeInstancesResponse
-func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstancesResponse{}
-	_body, _err := client.DescribeInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19847,7 +15460,7 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstancesFullStatusResponse
-func (client *Client) DescribeInstancesFullStatusWithOptions(request *DescribeInstancesFullStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstancesFullStatusResponse, _err error) {
+func (client *Client) DescribeInstancesFullStatusWithContext(ctx context.Context, request *DescribeInstancesFullStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstancesFullStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19932,37 +15545,11 @@ func (client *Client) DescribeInstancesFullStatusWithOptions(request *DescribeIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstancesFullStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the full status information of one or more Elastic Compute Service (ECS) instances. The full status information includes the instance status and the status of instance system events. The instance status is the lifecycle status of instances. The status of instance system events is the health status of maintenance events.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// The response includes the instance status and the instance system events that are in the Scheduled state.
-//
-// You can specify a period of time to query events that occurred within the period of time.
-//
-// @param request - DescribeInstancesFullStatusRequest
-//
-// @return DescribeInstancesFullStatusResponse
-func (client *Client) DescribeInstancesFullStatus(request *DescribeInstancesFullStatusRequest) (_result *DescribeInstancesFullStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstancesFullStatusResponse{}
-	_body, _err := client.DescribeInstancesFullStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20003,7 +15590,7 @@ func (client *Client) DescribeInstancesFullStatus(request *DescribeInstancesFull
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInvocationResultsResponse
-func (client *Client) DescribeInvocationResultsWithOptions(request *DescribeInvocationResultsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvocationResultsResponse, _err error) {
+func (client *Client) DescribeInvocationResultsWithContext(ctx context.Context, request *DescribeInvocationResultsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvocationResultsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20096,57 +15683,11 @@ func (client *Client) DescribeInvocationResultsWithOptions(request *DescribeInvo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInvocationResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the execution results of one or more Cloud Assistant commands on Elastic Compute Service (ECS) instances.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - After you run a command, the command may fail to run or may return unexpected results. You can call this operation to query the execution results.
-//
-//   - You can query information about command executions within the last four weeks. Up to 100,000 pieces of execution information can be retained.
-//
-//   - You can [subscribe to Cloud Assistant task status events](https://help.aliyun.com/document_detail/2669130.html) to obtain command execution results from the events. This helps you reduce the number of times to poll API operations and improve efficiency.
-//
-//   - During a paged query, when you call the DescribeInvocationResults operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeInvocationResults operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-//
-//   - Comparison between the `DescribeInvocations` and `DescribeInvocationResults` operations:
-//
-//   - Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on multiple instances:
-//
-//   - The `DescribeInvocations` operation queries the execution status of the command on each instance and the overall execution status of the command on all instances.
-//
-//   - The `DescribeInvocationResults` operation queries only the execution status of the command on each instance.
-//
-//   - Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on a single instance:
-//
-//   - The `DescribeInvocations` operation is equivalent to the `DescribeInvocationResults` operation.
-//
-//   - If you want to query the status of each execution for a scheduled (recurring) task or a task that is automatically executed on instance startup (`RepeatMode is set to Period or EveryReboot`), you can call only the `DescribeInvocationResults` operation and must set `IncludeHistory` to true. The `DescribeInvocations` operation queries only the most recent execution status of the command.
-//
-//   - If you want to view the command content and parameters, you can call only the `DescribeInvocations` operation and check the `CommandContent` value in the response.
-//
-// @param request - DescribeInvocationResultsRequest
-//
-// @return DescribeInvocationResultsResponse
-func (client *Client) DescribeInvocationResults(request *DescribeInvocationResultsRequest) (_result *DescribeInvocationResultsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInvocationResultsResponse{}
-	_body, _err := client.DescribeInvocationResultsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20185,7 +15726,7 @@ func (client *Client) DescribeInvocationResults(request *DescribeInvocationResul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInvocationsResponse
-func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvocationsResponse, _err error) {
+func (client *Client) DescribeInvocationsWithContext(ctx context.Context, request *DescribeInvocationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvocationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20294,55 +15835,11 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInvocationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the execution list and states of Cloud Assistant commands.
-//
-// Description:
-//
-//	  After you run a command, the command may fail to run or may return unexpected results. You can call this operation to query the execution results.
-//
-//		- You can query information about command executions within the last four weeks. Up to 100,000 pieces of execution information can be retained.
-//
-//		- You can [subscribe to Cloud Assistant task status events](https://help.aliyun.com/document_detail/2669130.html) to obtain command execution results from the events. This helps you reduce the number of times to poll API operations and improve efficiency.
-//
-//		- During a paged query, when you call the DescribeInvocations operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeInvocations operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-//
-//		- Differences between the `DescribeInvocations` and `DescribeInvocationResults` operations:
-//
-//	    	- Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on multiple instances:
-//
-//	        	- The `DescribeInvocations` operation queries the execution status of the command on each instance and the overall execution status of the command on all instances.
-//
-//	        	- The `DescribeInvocationResults` operation queries only the execution status of the command on each instance.
-//
-//	    	- Scenario in which the `RunCommand` or `InvokeCommand` operation is called to run a Cloud Assistant command on a single instance:
-//
-//	        	- The `DescribeInvocations` operation is equivalent to the `DescribeInvocationResults` operation.
-//
-//	    	- If you want to query the status of each execution for a scheduled (recurring) task or a task that is automatically executed on instance startup (`RepeatMode is set to Period or EveryReboot`), you can call only the `DescribeInvocationResults` operation and must set `IncludeHistory` to true. The `DescribeInvocations` operation queries only the most recent execution status of the command.
-//
-//	    	- If you want to view the command content and parameters, you can call only the `DescribeInvocations` operation and check the `CommandContent` value in the response.
-//
-// @param request - DescribeInvocationsRequest
-//
-// @return DescribeInvocationsResponse
-func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (_result *DescribeInvocationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInvocationsResponse{}
-	_body, _err := client.DescribeInvocationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20355,7 +15852,7 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeKeyPairsResponse
-func (client *Client) DescribeKeyPairsWithOptions(request *DescribeKeyPairsRequest, runtime *dara.RuntimeOptions) (_result *DescribeKeyPairsResponse, _err error) {
+func (client *Client) DescribeKeyPairsWithContext(ctx context.Context, request *DescribeKeyPairsRequest, runtime *dara.RuntimeOptions) (_result *DescribeKeyPairsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20420,29 +15917,11 @@ func (client *Client) DescribeKeyPairsWithOptions(request *DescribeKeyPairsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeKeyPairsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries one or more key pairs.
-//
-// @param request - DescribeKeyPairsRequest
-//
-// @return DescribeKeyPairsResponse
-func (client *Client) DescribeKeyPairs(request *DescribeKeyPairsRequest) (_result *DescribeKeyPairsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeKeyPairsResponse{}
-	_body, _err := client.DescribeKeyPairsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20455,7 +15934,7 @@ func (client *Client) DescribeKeyPairs(request *DescribeKeyPairsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLaunchTemplateVersionsResponse
-func (client *Client) DescribeLaunchTemplateVersionsWithOptions(request *DescribeLaunchTemplateVersionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLaunchTemplateVersionsResponse, _err error) {
+func (client *Client) DescribeLaunchTemplateVersionsWithContext(ctx context.Context, request *DescribeLaunchTemplateVersionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLaunchTemplateVersionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20532,29 +16011,11 @@ func (client *Client) DescribeLaunchTemplateVersionsWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLaunchTemplateVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of launch template versions, such as the total number of launch templates, launch template names, and launch template version numbers.
-//
-// @param request - DescribeLaunchTemplateVersionsRequest
-//
-// @return DescribeLaunchTemplateVersionsResponse
-func (client *Client) DescribeLaunchTemplateVersions(request *DescribeLaunchTemplateVersionsRequest) (_result *DescribeLaunchTemplateVersionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLaunchTemplateVersionsResponse{}
-	_body, _err := client.DescribeLaunchTemplateVersionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20567,7 +16028,7 @@ func (client *Client) DescribeLaunchTemplateVersions(request *DescribeLaunchTemp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLaunchTemplatesResponse
-func (client *Client) DescribeLaunchTemplatesWithOptions(request *DescribeLaunchTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLaunchTemplatesResponse, _err error) {
+func (client *Client) DescribeLaunchTemplatesWithContext(ctx context.Context, request *DescribeLaunchTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLaunchTemplatesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20632,29 +16093,11 @@ func (client *Client) DescribeLaunchTemplatesWithOptions(request *DescribeLaunch
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLaunchTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of one or more launch templates, such as the total number of launch templates, the creation time of each launch template, and the latest version number of each launch template. When you can this operation, you can specify parameters, such as TemplateTag, TemplateResourceGroupId, and LaunchTemplateId, in the request.
-//
-// @param request - DescribeLaunchTemplatesRequest
-//
-// @return DescribeLaunchTemplatesResponse
-func (client *Client) DescribeLaunchTemplates(request *DescribeLaunchTemplatesRequest) (_result *DescribeLaunchTemplatesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLaunchTemplatesResponse{}
-	_body, _err := client.DescribeLaunchTemplatesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20669,7 +16112,7 @@ func (client *Client) DescribeLaunchTemplates(request *DescribeLaunchTemplatesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLimitationResponse
-func (client *Client) DescribeLimitationWithOptions(request *DescribeLimitationRequest, runtime *dara.RuntimeOptions) (_result *DescribeLimitationResponse, _err error) {
+func (client *Client) DescribeLimitationWithContext(ctx context.Context, request *DescribeLimitationRequest, runtime *dara.RuntimeOptions) (_result *DescribeLimitationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20710,32 +16153,11 @@ func (client *Client) DescribeLimitationWithOptions(request *DescribeLimitationR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLimitationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeLimitation is deprecated
-//
-// Summary:
-//
-// 查询账号限制
-//
-// @param request - DescribeLimitationRequest
-//
-// @return DescribeLimitationResponse
-// Deprecated
-func (client *Client) DescribeLimitation(request *DescribeLimitationRequest) (_result *DescribeLimitationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLimitationResponse{}
-	_body, _err := client.DescribeLimitationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20752,7 +16174,7 @@ func (client *Client) DescribeLimitation(request *DescribeLimitationRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeManagedInstancesResponse
-func (client *Client) DescribeManagedInstancesWithOptions(request *DescribeManagedInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeManagedInstancesResponse, _err error) {
+func (client *Client) DescribeManagedInstancesWithContext(ctx context.Context, request *DescribeManagedInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeManagedInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20841,33 +16263,11 @@ func (client *Client) DescribeManagedInstancesWithOptions(request *DescribeManag
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeManagedInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries managed instances.
-//
-// Description:
-//
-// During a paged query, when you call the DescribeManagedInstances operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeManagedInstances operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-//
-// @param request - DescribeManagedInstancesRequest
-//
-// @return DescribeManagedInstancesResponse
-func (client *Client) DescribeManagedInstances(request *DescribeManagedInstancesRequest) (_result *DescribeManagedInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeManagedInstancesResponse{}
-	_body, _err := client.DescribeManagedInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20878,7 +16278,7 @@ func (client *Client) DescribeManagedInstances(request *DescribeManagedInstances
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNatGatewaysResponse
-func (client *Client) DescribeNatGatewaysWithOptions(request *DescribeNatGatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatGatewaysResponse, _err error) {
+func (client *Client) DescribeNatGatewaysWithContext(ctx context.Context, request *DescribeNatGatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatGatewaysResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20935,28 +16335,11 @@ func (client *Client) DescribeNatGatewaysWithOptions(request *DescribeNatGateway
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNatGatewaysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeNatGateways is deprecated
-//
-// @param request - DescribeNatGatewaysRequest
-//
-// @return DescribeNatGatewaysResponse
-// Deprecated
-func (client *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (_result *DescribeNatGatewaysResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNatGatewaysResponse{}
-	_body, _err := client.DescribeNatGatewaysWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20975,7 +16358,7 @@ func (client *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNetworkInterfaceAttributeResponse
-func (client *Client) DescribeNetworkInterfaceAttributeWithOptions(request *DescribeNetworkInterfaceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkInterfaceAttributeResponse, _err error) {
+func (client *Client) DescribeNetworkInterfaceAttributeWithContext(ctx context.Context, request *DescribeNetworkInterfaceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkInterfaceAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21032,35 +16415,11 @@ func (client *Client) DescribeNetworkInterfaceAttributeWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNetworkInterfaceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an elastic network interface (ENI). When you call this operation, you can set the NetworkInterfaceId parameter to specify an ENI.
-//
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=DescribeNetworkInterfaceAttribute\\&type=RPC\\&version=2014-05-26)
-//
-// @param request - DescribeNetworkInterfaceAttributeRequest
-//
-// @return DescribeNetworkInterfaceAttributeResponse
-func (client *Client) DescribeNetworkInterfaceAttribute(request *DescribeNetworkInterfaceAttributeRequest) (_result *DescribeNetworkInterfaceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNetworkInterfaceAttributeResponse{}
-	_body, _err := client.DescribeNetworkInterfaceAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21073,7 +16432,7 @@ func (client *Client) DescribeNetworkInterfaceAttribute(request *DescribeNetwork
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNetworkInterfacePermissionsResponse
-func (client *Client) DescribeNetworkInterfacePermissionsWithOptions(request *DescribeNetworkInterfacePermissionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkInterfacePermissionsResponse, _err error) {
+func (client *Client) DescribeNetworkInterfacePermissionsWithContext(ctx context.Context, request *DescribeNetworkInterfacePermissionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkInterfacePermissionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21134,29 +16493,11 @@ func (client *Client) DescribeNetworkInterfacePermissionsWithOptions(request *De
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNetworkInterfacePermissionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the permissions on elastic network interfaces (ENIs) that are granted to an Alibaba Cloud partner (certified ISV) or an individual user.
-//
-// @param request - DescribeNetworkInterfacePermissionsRequest
-//
-// @return DescribeNetworkInterfacePermissionsResponse
-func (client *Client) DescribeNetworkInterfacePermissions(request *DescribeNetworkInterfacePermissionsRequest) (_result *DescribeNetworkInterfacePermissionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNetworkInterfacePermissionsResponse{}
-	_body, _err := client.DescribeNetworkInterfacePermissionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21179,7 +16520,7 @@ func (client *Client) DescribeNetworkInterfacePermissions(request *DescribeNetwo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNetworkInterfacesResponse
-func (client *Client) DescribeNetworkInterfacesWithOptions(request *DescribeNetworkInterfacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkInterfacesResponse, _err error) {
+func (client *Client) DescribeNetworkInterfacesWithContext(ctx context.Context, request *DescribeNetworkInterfacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkInterfacesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21300,39 +16641,11 @@ func (client *Client) DescribeNetworkInterfacesWithOptions(request *DescribeNetw
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNetworkInterfacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of one or more Elastic Network Interface (ENIs).
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// You can call the `DescribeNetworkInterfaces` operation for paged query by specifying the `MaxResults` or `NextToken` parameter. Take note of the following items:
-//
-//   - During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results.
-//
-//   - When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-//
-// @param request - DescribeNetworkInterfacesRequest
-//
-// @return DescribeNetworkInterfacesResponse
-func (client *Client) DescribeNetworkInterfaces(request *DescribeNetworkInterfacesRequest) (_result *DescribeNetworkInterfacesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNetworkInterfacesResponse{}
-	_body, _err := client.DescribeNetworkInterfacesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21343,7 +16656,7 @@ func (client *Client) DescribeNetworkInterfaces(request *DescribeNetworkInterfac
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNewProjectEipMonitorDataResponse
-func (client *Client) DescribeNewProjectEipMonitorDataWithOptions(request *DescribeNewProjectEipMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeNewProjectEipMonitorDataResponse, _err error) {
+func (client *Client) DescribeNewProjectEipMonitorDataWithContext(ctx context.Context, request *DescribeNewProjectEipMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeNewProjectEipMonitorDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21400,28 +16713,11 @@ func (client *Client) DescribeNewProjectEipMonitorDataWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNewProjectEipMonitorDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeNewProjectEipMonitorData is deprecated
-//
-// @param request - DescribeNewProjectEipMonitorDataRequest
-//
-// @return DescribeNewProjectEipMonitorDataResponse
-// Deprecated
-func (client *Client) DescribeNewProjectEipMonitorData(request *DescribeNewProjectEipMonitorDataRequest) (_result *DescribeNewProjectEipMonitorDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNewProjectEipMonitorDataResponse{}
-	_body, _err := client.DescribeNewProjectEipMonitorDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21432,7 +16728,7 @@ func (client *Client) DescribeNewProjectEipMonitorData(request *DescribeNewProje
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePhysicalConnectionsResponse
-func (client *Client) DescribePhysicalConnectionsWithOptions(request *DescribePhysicalConnectionsRequest, runtime *dara.RuntimeOptions) (_result *DescribePhysicalConnectionsResponse, _err error) {
+func (client *Client) DescribePhysicalConnectionsWithContext(ctx context.Context, request *DescribePhysicalConnectionsRequest, runtime *dara.RuntimeOptions) (_result *DescribePhysicalConnectionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21493,28 +16789,11 @@ func (client *Client) DescribePhysicalConnectionsWithOptions(request *DescribePh
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePhysicalConnectionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribePhysicalConnections is deprecated
-//
-// @param request - DescribePhysicalConnectionsRequest
-//
-// @return DescribePhysicalConnectionsResponse
-// Deprecated
-func (client *Client) DescribePhysicalConnections(request *DescribePhysicalConnectionsRequest) (_result *DescribePhysicalConnectionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePhysicalConnectionsResponse{}
-	_body, _err := client.DescribePhysicalConnectionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21527,7 +16806,7 @@ func (client *Client) DescribePhysicalConnections(request *DescribePhysicalConne
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePortRangeListAssociationsResponse
-func (client *Client) DescribePortRangeListAssociationsWithOptions(request *DescribePortRangeListAssociationsRequest, runtime *dara.RuntimeOptions) (_result *DescribePortRangeListAssociationsResponse, _err error) {
+func (client *Client) DescribePortRangeListAssociationsWithContext(ctx context.Context, request *DescribePortRangeListAssociationsRequest, runtime *dara.RuntimeOptions) (_result *DescribePortRangeListAssociationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21584,29 +16863,11 @@ func (client *Client) DescribePortRangeListAssociationsWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePortRangeListAssociationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the resources that are associated with a port list, such as security groups.
-//
-// @param request - DescribePortRangeListAssociationsRequest
-//
-// @return DescribePortRangeListAssociationsResponse
-func (client *Client) DescribePortRangeListAssociations(request *DescribePortRangeListAssociationsRequest) (_result *DescribePortRangeListAssociationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePortRangeListAssociationsResponse{}
-	_body, _err := client.DescribePortRangeListAssociationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21619,7 +16880,7 @@ func (client *Client) DescribePortRangeListAssociations(request *DescribePortRan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePortRangeListEntriesResponse
-func (client *Client) DescribePortRangeListEntriesWithOptions(request *DescribePortRangeListEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribePortRangeListEntriesResponse, _err error) {
+func (client *Client) DescribePortRangeListEntriesWithContext(ctx context.Context, request *DescribePortRangeListEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribePortRangeListEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21668,29 +16929,11 @@ func (client *Client) DescribePortRangeListEntriesWithOptions(request *DescribeP
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePortRangeListEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the entries of a specified port list.
-//
-// @param request - DescribePortRangeListEntriesRequest
-//
-// @return DescribePortRangeListEntriesResponse
-func (client *Client) DescribePortRangeListEntries(request *DescribePortRangeListEntriesRequest) (_result *DescribePortRangeListEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePortRangeListEntriesResponse{}
-	_body, _err := client.DescribePortRangeListEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21703,7 +16946,7 @@ func (client *Client) DescribePortRangeListEntries(request *DescribePortRangeLis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePortRangeListsResponse
-func (client *Client) DescribePortRangeListsWithOptions(request *DescribePortRangeListsRequest, runtime *dara.RuntimeOptions) (_result *DescribePortRangeListsResponse, _err error) {
+func (client *Client) DescribePortRangeListsWithContext(ctx context.Context, request *DescribePortRangeListsRequest, runtime *dara.RuntimeOptions) (_result *DescribePortRangeListsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21772,29 +17015,11 @@ func (client *Client) DescribePortRangeListsWithOptions(request *DescribePortRan
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePortRangeListsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the port lists.
-//
-// @param request - DescribePortRangeListsRequest
-//
-// @return DescribePortRangeListsResponse
-func (client *Client) DescribePortRangeLists(request *DescribePortRangeListsRequest) (_result *DescribePortRangeListsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePortRangeListsResponse{}
-	_body, _err := client.DescribePortRangeListsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21807,7 +17032,7 @@ func (client *Client) DescribePortRangeLists(request *DescribePortRangeListsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePrefixListAssociationsResponse
-func (client *Client) DescribePrefixListAssociationsWithOptions(request *DescribePrefixListAssociationsRequest, runtime *dara.RuntimeOptions) (_result *DescribePrefixListAssociationsResponse, _err error) {
+func (client *Client) DescribePrefixListAssociationsWithContext(ctx context.Context, request *DescribePrefixListAssociationsRequest, runtime *dara.RuntimeOptions) (_result *DescribePrefixListAssociationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21864,29 +17089,11 @@ func (client *Client) DescribePrefixListAssociationsWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePrefixListAssociationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries information about resources that are associated with a prefix list, such as the resource IDs and types.
-//
-// @param request - DescribePrefixListAssociationsRequest
-//
-// @return DescribePrefixListAssociationsResponse
-func (client *Client) DescribePrefixListAssociations(request *DescribePrefixListAssociationsRequest) (_result *DescribePrefixListAssociationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePrefixListAssociationsResponse{}
-	_body, _err := client.DescribePrefixListAssociationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21899,7 +17106,7 @@ func (client *Client) DescribePrefixListAssociations(request *DescribePrefixList
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePrefixListAttributesResponse
-func (client *Client) DescribePrefixListAttributesWithOptions(request *DescribePrefixListAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribePrefixListAttributesResponse, _err error) {
+func (client *Client) DescribePrefixListAttributesWithContext(ctx context.Context, request *DescribePrefixListAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribePrefixListAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21948,29 +17155,11 @@ func (client *Client) DescribePrefixListAttributesWithOptions(request *DescribeP
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePrefixListAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a prefix list, including the name, address family, maximum number of entries, and details of the entries.
-//
-// @param request - DescribePrefixListAttributesRequest
-//
-// @return DescribePrefixListAttributesResponse
-func (client *Client) DescribePrefixListAttributes(request *DescribePrefixListAttributesRequest) (_result *DescribePrefixListAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePrefixListAttributesResponse{}
-	_body, _err := client.DescribePrefixListAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21987,7 +17176,7 @@ func (client *Client) DescribePrefixListAttributes(request *DescribePrefixListAt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePrefixListsResponse
-func (client *Client) DescribePrefixListsWithOptions(request *DescribePrefixListsRequest, runtime *dara.RuntimeOptions) (_result *DescribePrefixListsResponse, _err error) {
+func (client *Client) DescribePrefixListsWithContext(ctx context.Context, request *DescribePrefixListsRequest, runtime *dara.RuntimeOptions) (_result *DescribePrefixListsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22060,33 +17249,11 @@ func (client *Client) DescribePrefixListsWithOptions(request *DescribePrefixList
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePrefixListsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of prefix lists.
-//
-// Description:
-//
-// You can specify the `AddressFamily`, `PrefixListId.N`, and `PrefixListName` request parameters in the request. Specified parameters have logical AND relations. Only the parameters that you set are included in the filter conditions.
-//
-// @param request - DescribePrefixListsRequest
-//
-// @return DescribePrefixListsResponse
-func (client *Client) DescribePrefixLists(request *DescribePrefixListsRequest) (_result *DescribePrefixListsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePrefixListsResponse{}
-	_body, _err := client.DescribePrefixListsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22117,7 +17284,7 @@ func (client *Client) DescribePrefixLists(request *DescribePrefixListsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePriceResponse
-func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, runtime *dara.RuntimeOptions) (_result *DescribePriceResponse, _err error) {
+func (client *Client) DescribePriceWithContext(ctx context.Context, request *DescribePriceRequest, runtime *dara.RuntimeOptions) (_result *DescribePriceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22270,47 +17437,11 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the most recent prices of specified resources. You can specify a resource type in the request, such as the Elastic Compute Service (ECS) instance, cloud disk, dedicated host, elasticity assurance, and capacity reservation. You can also query the activity rules, prices, and discounts of resources.
-//
-// Description:
-//
-// The required parameters vary based on the type of resource whose prices you want to query.
-//
-//   - When `ResourceType` is set to instance, you must specify `InstanceType`. By default, `ChargeType` is set to `PostPaid`. You can specify `PriceUnit` to query the ECS resource prices in different billing cycles.
-//
-//   - When `ResourceType` is set to disk, you must specify `DataDisk.1.Category` and `DataDisk.1.Size` in the same request. When `ResourceType` is set to disk, only pay-as-you-go prices of cloud disks are returned. In this scenario, `PriceUnit` can be set only to `Hour`.
-//
-//   - When `ResourceType` is set to diskperformance, you must specify `DataDisk.1.Category` and `DataDisk.1.ProvisionedIops`.
-//
-//   - When `ResourceType` is set to ddh, you must specify `DedicatedHostType`.
-//
-//   - When `ResourceType` is set to ElasticityAssurance, you must specify `InstanceType`.
-//
-//   - When `ResourceType` is set to CapacityReservation, you must specify `InstanceType`.
-//
-//   - When `ResourceType` is set to bandwidth, only the pay-by-traffic (`PayByTraffic`) prices for network usage are returned.
-//
-// @param request - DescribePriceRequest
-//
-// @return DescribePriceResponse
-func (client *Client) DescribePrice(request *DescribePriceRequest) (_result *DescribePriceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePriceResponse{}
-	_body, _err := client.DescribePriceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22323,7 +17454,7 @@ func (client *Client) DescribePrice(request *DescribePriceRequest) (_result *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRecommendInstanceTypeResponse
-func (client *Client) DescribeRecommendInstanceTypeWithOptions(request *DescribeRecommendInstanceTypeRequest, runtime *dara.RuntimeOptions) (_result *DescribeRecommendInstanceTypeResponse, _err error) {
+func (client *Client) DescribeRecommendInstanceTypeWithContext(ctx context.Context, request *DescribeRecommendInstanceTypeRequest, runtime *dara.RuntimeOptions) (_result *DescribeRecommendInstanceTypeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22424,29 +17555,11 @@ func (client *Client) DescribeRecommendInstanceTypeWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRecommendInstanceTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries alternative instance types of an instance type. This operation is in internal preview. This operation lists all alternative instance types of an instance type that has been or is planed to be retired.
-//
-// @param request - DescribeRecommendInstanceTypeRequest
-//
-// @return DescribeRecommendInstanceTypeResponse
-func (client *Client) DescribeRecommendInstanceType(request *DescribeRecommendInstanceTypeRequest) (_result *DescribeRecommendInstanceTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRecommendInstanceTypeResponse{}
-	_body, _err := client.DescribeRecommendInstanceTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22459,7 +17572,7 @@ func (client *Client) DescribeRecommendInstanceType(request *DescribeRecommendIn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22508,29 +17621,11 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Alibaba Cloud regions. When you call this operation, you can specify parameters, such as InstanceChargeType and ResourceType, in the request.
-//
-// @param request - DescribeRegionsRequest
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22553,7 +17648,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRenewalPriceResponse
-func (client *Client) DescribeRenewalPriceWithOptions(request *DescribeRenewalPriceRequest, runtime *dara.RuntimeOptions) (_result *DescribeRenewalPriceResponse, _err error) {
+func (client *Client) DescribeRenewalPriceWithContext(ctx context.Context, request *DescribeRenewalPriceRequest, runtime *dara.RuntimeOptions) (_result *DescribeRenewalPriceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22614,39 +17709,11 @@ func (client *Client) DescribeRenewalPriceWithOptions(request *DescribeRenewalPr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRenewalPriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the renewal prices of Elastic Compute Service (ECS) resources. Renewal prices of only subscription resources can be queried.
-//
-// Description:
-//
-//	  You can call this operation to query the price for renewing a subscription instance for a specific period of time or to a synchronized expiration date.
-//
-//		- Take note of the following items:
-//
-//	    	- If you specify only the required parameters, the price for renewing an instance for one month is queried by default.
-//
-//	    	- The renewal period-related parameter pair (`Period` and `PeriodUnit`) and the synchronized expiration date-related parameter (`ExpectedRenewDay`) are mutually exclusive. You cannot set these parameters together to query the prices for renewing a specified instance for a period of time and to a synchronized expiration date at the same time.
-//
-// @param request - DescribeRenewalPriceRequest
-//
-// @return DescribeRenewalPriceResponse
-func (client *Client) DescribeRenewalPrice(request *DescribeRenewalPriceRequest) (_result *DescribeRenewalPriceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRenewalPriceResponse{}
-	_body, _err := client.DescribeRenewalPriceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22659,7 +17726,7 @@ func (client *Client) DescribeRenewalPrice(request *DescribeRenewalPriceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeReservedInstanceAutoRenewAttributeResponse
-func (client *Client) DescribeReservedInstanceAutoRenewAttributeWithOptions(request *DescribeReservedInstanceAutoRenewAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeReservedInstanceAutoRenewAttributeResponse, _err error) {
+func (client *Client) DescribeReservedInstanceAutoRenewAttributeWithContext(ctx context.Context, request *DescribeReservedInstanceAutoRenewAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeReservedInstanceAutoRenewAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22704,29 +17771,11 @@ func (client *Client) DescribeReservedInstanceAutoRenewAttributeWithOptions(requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeReservedInstanceAutoRenewAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the auto-renewal attributes of one or more reserved instances, including the auto-renewal duration and auto-renewal status.
-//
-// @param request - DescribeReservedInstanceAutoRenewAttributeRequest
-//
-// @return DescribeReservedInstanceAutoRenewAttributeResponse
-func (client *Client) DescribeReservedInstanceAutoRenewAttribute(request *DescribeReservedInstanceAutoRenewAttributeRequest) (_result *DescribeReservedInstanceAutoRenewAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeReservedInstanceAutoRenewAttributeResponse{}
-	_body, _err := client.DescribeReservedInstanceAutoRenewAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22769,7 +17818,7 @@ func (client *Client) DescribeReservedInstanceAutoRenewAttribute(request *Descri
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeReservedInstancesResponse
-func (client *Client) DescribeReservedInstancesWithOptions(request *DescribeReservedInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeReservedInstancesResponse, _err error) {
+func (client *Client) DescribeReservedInstancesWithContext(ctx context.Context, request *DescribeReservedInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeReservedInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22866,59 +17915,11 @@ func (client *Client) DescribeReservedInstancesWithOptions(request *DescribeRese
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeReservedInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of reserved instances that you have purchased in a specific region. You can query the details of reserved instances based on parameters, such as tags and reserved instance attributes.
-//
-// Description:
-//
-// ### [](#)Scenarios
-//
-//   - Query all reserved instances in a specific region.
-//
-//   - Query the details of a reserved instance based on the ID or name.
-//
-//   - Query your purchased reserved instances based on the instance type or instance family.
-//
-//   - Query your purchased reserved instances based on the scope or status of reserved instances.
-//
-// ### [](#)Sample requests
-//
-// **Example: Query all purchased reserved instances in the China (Hangzhou) region**
-//
-//	"RegionId":"cn-hangzhou", //The ID of the region.
-//
-// **Example: Query the details of the reserved instance whose ID is ecsri-bp129enntoynwwj5\\*\\*\\*\\	- in the China (Hangzhou) region**
-//
-//	"RegionId":"cn-hangzhou", //The ID of the region."ReservedInstanceId":"ecsri-bp129enntoynwwj5****" //The ID of the reserved instance.
-//
-// **Example: Query the reserved instances that can be used to offset the bills of ecs.c5.2xlarge instances in the China (Hangzhou) region**
-//
-//	"RegionId":"cn-hangzhou", //The ID of the region."InstanceType":"ecs.c5.2xlarge", //The instance type.
-//
-// **Example: Query the regional reserved instances that are within the validity period in the China (Hangzhou) region**
-//
-//	"RegionId":"cn-hangzhou", //The ID of the region."Scope":"Region", //Set the scope of the reserved instance to regional."Status":["Active"] //Set the status to Active, which indicates that the reserved instance is within the validity period.
-//
-// @param request - DescribeReservedInstancesRequest
-//
-// @return DescribeReservedInstancesResponse
-func (client *Client) DescribeReservedInstances(request *DescribeReservedInstancesRequest) (_result *DescribeReservedInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeReservedInstancesResponse{}
-	_body, _err := client.DescribeReservedInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22933,7 +17934,7 @@ func (client *Client) DescribeReservedInstances(request *DescribeReservedInstanc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResourceByTagsResponse
-func (client *Client) DescribeResourceByTagsWithOptions(request *DescribeResourceByTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceByTagsResponse, _err error) {
+func (client *Client) DescribeResourceByTagsWithContext(ctx context.Context, request *DescribeResourceByTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceByTagsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22986,32 +17987,11 @@ func (client *Client) DescribeResourceByTagsWithOptions(request *DescribeResourc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeResourceByTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeResourceByTags is deprecated, please use Tag::2018-08-28::ListResourcesByTag instead.
-//
-// Summary:
-//
-// Queries resources by tag or resource type.
-//
-// @param request - DescribeResourceByTagsRequest
-//
-// @return DescribeResourceByTagsResponse
-// Deprecated
-func (client *Client) DescribeResourceByTags(request *DescribeResourceByTagsRequest) (_result *DescribeResourceByTagsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeResourceByTagsResponse{}
-	_body, _err := client.DescribeResourceByTagsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23082,7 +18062,7 @@ func (client *Client) DescribeResourceByTags(request *DescribeResourceByTagsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResourcesModificationResponse
-func (client *Client) DescribeResourcesModificationWithOptions(request *DescribeResourcesModificationRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourcesModificationResponse, _err error) {
+func (client *Client) DescribeResourcesModificationWithContext(ctx context.Context, request *DescribeResourcesModificationRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourcesModificationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23159,87 +18139,11 @@ func (client *Client) DescribeResourcesModificationWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeResourcesModificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries available instance types or system disk categories in a specific zone before you change the instance type or system disk category of an Elastic Compute Service (ECS) instance.
-//
-// Description:
-//
-// Examples of common scenarios in which this operation is used:
-//
-// ### [](#-1)Example 1: Query the instance types to which you can change the instance type of an instance.
-//
-// Query the instance types to which you can change the instance type of the i-bp67acfmxazb4p\\*\\*\\*\\	- instance and the inventory of the queried instance types in the zone in which the instance resides.
-//
-//	http(s)://ecs.aliyuncs.com/?Action=DescribeResourcesModification
-//
-//	&RegionId=cn-hangzhou
-//
-//	&ResourceId=i-bp67acfmxazb4p****
-//
-//	&DestinationResource=InstanceType
-//
-//	&OperationType=Upgrade
-//
-//	&<Common request parameters>
-//
-// ### [](#-2)Example 2: Query the instance types to which you can change the instance type of an instance after a system disk category change.
-//
-// Query the instance types to which you can change the instance type of the i-bp67acfmxazb4p\\*\\*\\*\\	- instance after a system disk category change and the inventory of the queried instance types in the zone in which the instance resides.
-//
-//	http(s)://ecs.aliyuncs.com/?Action=DescribeResourcesModification
-//
-//	&RegionId=cn-hangzhou
-//
-//	&ResourceId=i-bp67acfmxazb4p****
-//
-//	&DestinationResource=InstanceType
-//
-//	&OperationType=Upgrade
-//
-//	&Conditions.0=DiskCategory
-//
-//	&<Common request parameters>
-//
-// ### [](#-3)Example 3: Query the system disk categories supported by the instance type to which you want to change the instance type of an instance.
-//
-// Query the system disk categories supported by the instance type to which you want to change the instance type of the i-bp67acfmxazb4p\\*\\*\\*\\	- instance and the inventory of the disk categories in the zone in which the instance resides. In this example, the ecs.g7.large instance type is used. To change to the instance type, you must change the system disk category of the instance to a category supported by the instance type.
-//
-// >  You can call this operation as described in Example 2 to query the instance types to which you can change the instance type of an instance.
-//
-//	http(s)://ecs.aliyuncs.com/?Action=DescribeResourcesModification
-//
-//	&RegionId=cn-hangzhou
-//
-//	&ResourceId=i-bp67acfmxazb4p****
-//
-//	&DestinationResource=SystemDisk
-//
-//	&OperationType=Upgrade
-//
-//	&InstanceType=ecs.g7.large
-//
-//	&<Common request parameters>
-//
-// @param request - DescribeResourcesModificationRequest
-//
-// @return DescribeResourcesModificationResponse
-func (client *Client) DescribeResourcesModification(request *DescribeResourcesModificationRequest) (_result *DescribeResourcesModificationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeResourcesModificationResponse{}
-	_body, _err := client.DescribeResourcesModificationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23254,7 +18158,7 @@ func (client *Client) DescribeResourcesModification(request *DescribeResourcesMo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRouteTablesResponse
-func (client *Client) DescribeRouteTablesWithOptions(request *DescribeRouteTablesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteTablesResponse, _err error) {
+func (client *Client) DescribeRouteTablesWithContext(ctx context.Context, request *DescribeRouteTablesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteTablesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23323,32 +18227,11 @@ func (client *Client) DescribeRouteTablesWithOptions(request *DescribeRouteTable
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRouteTablesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeRouteTables is deprecated, please use Vpc::2016-04-28::DescribeRouteTableList instead.
-//
-// Summary:
-//
-// 查询路由表信息列表
-//
-// @param request - DescribeRouteTablesRequest
-//
-// @return DescribeRouteTablesResponse
-// Deprecated
-func (client *Client) DescribeRouteTables(request *DescribeRouteTablesRequest) (_result *DescribeRouteTablesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRouteTablesResponse{}
-	_body, _err := client.DescribeRouteTablesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23359,7 +18242,7 @@ func (client *Client) DescribeRouteTables(request *DescribeRouteTablesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRouterInterfacesResponse
-func (client *Client) DescribeRouterInterfacesWithOptions(request *DescribeRouterInterfacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouterInterfacesResponse, _err error) {
+func (client *Client) DescribeRouterInterfacesWithContext(ctx context.Context, request *DescribeRouterInterfacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouterInterfacesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23408,28 +18291,11 @@ func (client *Client) DescribeRouterInterfacesWithOptions(request *DescribeRoute
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRouterInterfacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeRouterInterfaces is deprecated
-//
-// @param request - DescribeRouterInterfacesRequest
-//
-// @return DescribeRouterInterfacesResponse
-// Deprecated
-func (client *Client) DescribeRouterInterfaces(request *DescribeRouterInterfacesRequest) (_result *DescribeRouterInterfacesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRouterInterfacesResponse{}
-	_body, _err := client.DescribeRouterInterfacesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23442,7 +18308,7 @@ func (client *Client) DescribeRouterInterfaces(request *DescribeRouterInterfaces
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSavingsPlanEstimationResponse
-func (client *Client) DescribeSavingsPlanEstimationWithOptions(request *DescribeSavingsPlanEstimationRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlanEstimationResponse, _err error) {
+func (client *Client) DescribeSavingsPlanEstimationWithContext(ctx context.Context, request *DescribeSavingsPlanEstimationRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlanEstimationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23495,29 +18361,11 @@ func (client *Client) DescribeSavingsPlanEstimationWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSavingsPlanEstimationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 节省计划测算
-//
-// @param request - DescribeSavingsPlanEstimationRequest
-//
-// @return DescribeSavingsPlanEstimationResponse
-func (client *Client) DescribeSavingsPlanEstimation(request *DescribeSavingsPlanEstimationRequest) (_result *DescribeSavingsPlanEstimationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSavingsPlanEstimationResponse{}
-	_body, _err := client.DescribeSavingsPlanEstimationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23530,7 +18378,7 @@ func (client *Client) DescribeSavingsPlanEstimation(request *DescribeSavingsPlan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSavingsPlanPriceResponse
-func (client *Client) DescribeSavingsPlanPriceWithOptions(request *DescribeSavingsPlanPriceRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlanPriceResponse, _err error) {
+func (client *Client) DescribeSavingsPlanPriceWithContext(ctx context.Context, request *DescribeSavingsPlanPriceRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlanPriceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23587,29 +18435,11 @@ func (client *Client) DescribeSavingsPlanPriceWithOptions(request *DescribeSavin
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSavingsPlanPriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 询价购买节省计划并预付费换购按量付费
-//
-// @param request - DescribeSavingsPlanPriceRequest
-//
-// @return DescribeSavingsPlanPriceResponse
-func (client *Client) DescribeSavingsPlanPrice(request *DescribeSavingsPlanPriceRequest) (_result *DescribeSavingsPlanPriceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSavingsPlanPriceResponse{}
-	_body, _err := client.DescribeSavingsPlanPriceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23622,7 +18452,7 @@ func (client *Client) DescribeSavingsPlanPrice(request *DescribeSavingsPlanPrice
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSecurityGroupAttributeResponse
-func (client *Client) DescribeSecurityGroupAttributeWithOptions(request *DescribeSecurityGroupAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityGroupAttributeResponse, _err error) {
+func (client *Client) DescribeSecurityGroupAttributeWithContext(ctx context.Context, request *DescribeSecurityGroupAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityGroupAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23683,29 +18513,11 @@ func (client *Client) DescribeSecurityGroupAttributeWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSecurityGroupAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a specified security group and the security group rules of the security group.
-//
-// @param request - DescribeSecurityGroupAttributeRequest
-//
-// @return DescribeSecurityGroupAttributeResponse
-func (client *Client) DescribeSecurityGroupAttribute(request *DescribeSecurityGroupAttributeRequest) (_result *DescribeSecurityGroupAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSecurityGroupAttributeResponse{}
-	_body, _err := client.DescribeSecurityGroupAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23722,7 +18534,7 @@ func (client *Client) DescribeSecurityGroupAttribute(request *DescribeSecurityGr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSecurityGroupReferencesResponse
-func (client *Client) DescribeSecurityGroupReferencesWithOptions(request *DescribeSecurityGroupReferencesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityGroupReferencesResponse, _err error) {
+func (client *Client) DescribeSecurityGroupReferencesWithContext(ctx context.Context, request *DescribeSecurityGroupReferencesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityGroupReferencesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23767,33 +18579,11 @@ func (client *Client) DescribeSecurityGroupReferencesWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSecurityGroupReferencesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the security groups whose rules reference security groups as authorization objects.
-//
-// Description:
-//
-//	If you cannot delete a security group by calling the [DeleteSecurityGroup](https://help.aliyun.com/document_detail/25558.html) operation, call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by the rules of other security groups. If the security group is referenced by the rules of other security groups, you must call the [RevokeSecurityGroup](https://help.aliyun.com/document_detail/2679855.html) and [RevokeSecurityGroupEgress](https://help.aliyun.com/document_detail/2679856.html) operations to remove the references before you can delete the security group.
-//
-// @param request - DescribeSecurityGroupReferencesRequest
-//
-// @return DescribeSecurityGroupReferencesResponse
-func (client *Client) DescribeSecurityGroupReferences(request *DescribeSecurityGroupReferencesRequest) (_result *DescribeSecurityGroupReferencesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSecurityGroupReferencesResponse{}
-	_body, _err := client.DescribeSecurityGroupReferencesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23818,7 +18608,7 @@ func (client *Client) DescribeSecurityGroupReferences(request *DescribeSecurityG
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSecurityGroupsResponse
-func (client *Client) DescribeSecurityGroupsWithOptions(request *DescribeSecurityGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityGroupsResponse, _err error) {
+func (client *Client) DescribeSecurityGroupsWithContext(ctx context.Context, request *DescribeSecurityGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23923,41 +18713,11 @@ func (client *Client) DescribeSecurityGroupsWithOptions(request *DescribeSecurit
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSecurityGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the basic information of security groups. You can query the information by various filter conditions, such as the region ID, security group ID, and security group type.
-//
-// Description:
-//
-//	  **Paged query**: We recommend that you specify `MaxResults` and `NextToken`.
-//
-//	    	- If the response does not include `NextToken`, the current page of results is the last page and no more results are to be returned.
-//
-//	    	- During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results.
-//
-//	    	- When you call the DescribeSecurityGroups operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-//
-//		- When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
-//
-// @param request - DescribeSecurityGroupsRequest
-//
-// @return DescribeSecurityGroupsResponse
-func (client *Client) DescribeSecurityGroups(request *DescribeSecurityGroupsRequest) (_result *DescribeSecurityGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSecurityGroupsResponse{}
-	_body, _err := client.DescribeSecurityGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23980,7 +18740,7 @@ func (client *Client) DescribeSecurityGroups(request *DescribeSecurityGroupsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSendFileResultsResponse
-func (client *Client) DescribeSendFileResultsWithOptions(request *DescribeSendFileResultsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSendFileResultsResponse, _err error) {
+func (client *Client) DescribeSendFileResultsWithContext(ctx context.Context, request *DescribeSendFileResultsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSendFileResultsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24065,39 +18825,11 @@ func (client *Client) DescribeSendFileResultsWithOptions(request *DescribeSendFi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSendFileResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the files sent by Cloud Assistant and their status.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - When you send a file, the file may fail to be sent to specific Elastic Compute Service (ECS) instances. You can call this operation to check the file sending results.
-//
-//   - You can call this operation to query the file sending records within the last six weeks.
-//
-//   - During a paged query, when you call the DescribeSendFileResults operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the DescribeSendFileResults operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-//
-// @param request - DescribeSendFileResultsRequest
-//
-// @return DescribeSendFileResultsResponse
-func (client *Client) DescribeSendFileResults(request *DescribeSendFileResultsRequest) (_result *DescribeSendFileResultsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSendFileResultsResponse{}
-	_body, _err := client.DescribeSendFileResultsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24114,7 +18846,7 @@ func (client *Client) DescribeSendFileResults(request *DescribeSendFileResultsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSnapshotGroupsResponse
-func (client *Client) DescribeSnapshotGroupsWithOptions(request *DescribeSnapshotGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotGroupsResponse, _err error) {
+func (client *Client) DescribeSnapshotGroupsWithContext(ctx context.Context, request *DescribeSnapshotGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24191,33 +18923,11 @@ func (client *Client) DescribeSnapshotGroupsWithOptions(request *DescribeSnapsho
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSnapshotGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of one or more snapshot-consistent groups, such as the status of the groups, IDs of the instances associated with the groups, and snapshot creation progress.
-//
-// Description:
-//
-// You can specify multiple request parameters to be queried, such as `InstanceId`, `SnapshotGroupId.N`, and `Status.N`. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-//
-// @param request - DescribeSnapshotGroupsRequest
-//
-// @return DescribeSnapshotGroupsResponse
-func (client *Client) DescribeSnapshotGroups(request *DescribeSnapshotGroupsRequest) (_result *DescribeSnapshotGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSnapshotGroupsResponse{}
-	_body, _err := client.DescribeSnapshotGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24240,7 +18950,7 @@ func (client *Client) DescribeSnapshotGroups(request *DescribeSnapshotGroupsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSnapshotLinksResponse
-func (client *Client) DescribeSnapshotLinksWithOptions(request *DescribeSnapshotLinksRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotLinksResponse, _err error) {
+func (client *Client) DescribeSnapshotLinksWithContext(ctx context.Context, request *DescribeSnapshotLinksRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotLinksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24309,39 +19019,11 @@ func (client *Client) DescribeSnapshotLinksWithOptions(request *DescribeSnapshot
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSnapshotLinksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the snapshot chains of cloud disks. A snapshot chain is a chain of all the snapshots created for a disk. A disk corresponds to a chain of snapshots.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// Take note of the following items:
-//
-//   - You can specify multiple request parameters, such as `RegionId`, `DiskIds`, and `InstanceId`, to query snapshot chains. Specified parameters have logical AND relations.
-//
-//   - Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, the values are considered as valid filter conditions. In this case, an empty result is returned.
-//
-// @param request - DescribeSnapshotLinksRequest
-//
-// @return DescribeSnapshotLinksResponse
-func (client *Client) DescribeSnapshotLinks(request *DescribeSnapshotLinksRequest) (_result *DescribeSnapshotLinksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSnapshotLinksResponse{}
-	_body, _err := client.DescribeSnapshotLinksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24364,7 +19046,7 @@ func (client *Client) DescribeSnapshotLinks(request *DescribeSnapshotLinksReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSnapshotMonitorDataResponse
-func (client *Client) DescribeSnapshotMonitorDataWithOptions(request *DescribeSnapshotMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotMonitorDataResponse, _err error) {
+func (client *Client) DescribeSnapshotMonitorDataWithContext(ctx context.Context, request *DescribeSnapshotMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotMonitorDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24421,39 +19103,11 @@ func (client *Client) DescribeSnapshotMonitorDataWithOptions(request *DescribeSn
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSnapshotMonitorDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the monitoring data of snapshot sizes in a region within the last 30 days.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// Take note of the following items:
-//
-//   - Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
-//
-//   - You can query the monitoring data of snapshot sizes in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
-//
-// @param request - DescribeSnapshotMonitorDataRequest
-//
-// @return DescribeSnapshotMonitorDataResponse
-func (client *Client) DescribeSnapshotMonitorData(request *DescribeSnapshotMonitorDataRequest) (_result *DescribeSnapshotMonitorDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSnapshotMonitorDataResponse{}
-	_body, _err := client.DescribeSnapshotMonitorDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24466,7 +19120,7 @@ func (client *Client) DescribeSnapshotMonitorData(request *DescribeSnapshotMonit
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSnapshotPackageResponse
-func (client *Client) DescribeSnapshotPackageWithOptions(request *DescribeSnapshotPackageRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotPackageResponse, _err error) {
+func (client *Client) DescribeSnapshotPackageWithContext(ctx context.Context, request *DescribeSnapshotPackageRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotPackageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24515,29 +19169,11 @@ func (client *Client) DescribeSnapshotPackageWithOptions(request *DescribeSnapsh
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSnapshotPackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Object Storage Service (OSS) storage plans that you purchased in an Alibaba Cloud region. OSS storage plans can be used to offset the storage fees for standard snapshots instead of local snapshots.
-//
-// @param request - DescribeSnapshotPackageRequest
-//
-// @return DescribeSnapshotPackageResponse
-func (client *Client) DescribeSnapshotPackage(request *DescribeSnapshotPackageRequest) (_result *DescribeSnapshotPackageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSnapshotPackageResponse{}
-	_body, _err := client.DescribeSnapshotPackageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24574,7 +19210,7 @@ func (client *Client) DescribeSnapshotPackage(request *DescribeSnapshotPackageRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSnapshotsResponse
-func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotsResponse, _err error) {
+func (client *Client) DescribeSnapshotsWithContext(ctx context.Context, request *DescribeSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24695,53 +19331,11 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of cloud disk snapshots. The details include the status of the snapshots, the amount of remaining time required to create the snapshots, and the retention period of the automatic snapshots in days.
-//
-// Description:
-//
-// You can specify multiple request parameters, such as `InstanceId`, `DiskId`, and `SnapshotIds`, to query snapshots. The specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-//
-// When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter formats](https://help.aliyun.com/document_detail/110340.html).
-//
-// Sample requests:
-//
-// **Query the snapshots of all cloud disks attached to an Elastic Compute Service (ECS) instance in the China (Hangzhou) region**
-//
-//	RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.InstanceId:  i-bp1fh7by6d9mw7zr***	- // Specify the ID of the instance that you want to query.
-//
-// **Query the snapshots of a specific cloud disk in the China (Hangzhou) region**
-//
-//	RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.DiskId:   d-bp10e7ej8z743dmu***	- // Specify the ID of the cloud disk that you want to query.
-//
-// **Query information about two snapshots in the China (Hangzhou) region by snapshot ID**
-//
-//	RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.SnapshotIds:   ["d-bp10e7ej8z743dmu****", "s-bp19vd1lorzgzt2s****"]   // Specify the IDs of the snapshots that you want to query.
-//
-// **Query snapshots created after a specific point in time in the China (Hangzhou) region**
-//
-//	RegionId:  cn-hangzhou,   // Specify the China (Hangzhou) region.Filter.1.Key:   CreationStartTime,   // Specify a point in time to query snapshots that were created after the specified point in time.Filter.1.Value:   2024-11-27T00:00Z
-//
-// @param request - DescribeSnapshotsRequest
-//
-// @return DescribeSnapshotsResponse
-func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_result *DescribeSnapshotsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSnapshotsResponse{}
-	_body, _err := client.DescribeSnapshotsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24760,7 +19354,7 @@ func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSnapshotsUsageResponse
-func (client *Client) DescribeSnapshotsUsageWithOptions(request *DescribeSnapshotsUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotsUsageResponse, _err error) {
+func (client *Client) DescribeSnapshotsUsageWithContext(ctx context.Context, request *DescribeSnapshotsUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotsUsageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24801,35 +19395,11 @@ func (client *Client) DescribeSnapshotsUsageWithOptions(request *DescribeSnapsho
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSnapshotsUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the number of snapshots that are stored in a region and the total size of the snapshots.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// If you want to view the snapshot usage of each disk in the current region, we recommend that you call the [DescribeSnapshotLinks](https://help.aliyun.com/document_detail/55837.html) operation to query snapshot chain information.
-//
-// @param request - DescribeSnapshotsUsageRequest
-//
-// @return DescribeSnapshotsUsageResponse
-func (client *Client) DescribeSnapshotsUsage(request *DescribeSnapshotsUsageRequest) (_result *DescribeSnapshotsUsageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSnapshotsUsageResponse{}
-	_body, _err := client.DescribeSnapshotsUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24856,7 +19426,7 @@ func (client *Client) DescribeSnapshotsUsage(request *DescribeSnapshotsUsageRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSpotAdviceResponse
-func (client *Client) DescribeSpotAdviceWithOptions(request *DescribeSpotAdviceRequest, runtime *dara.RuntimeOptions) (_result *DescribeSpotAdviceResponse, _err error) {
+func (client *Client) DescribeSpotAdviceWithContext(ctx context.Context, request *DescribeSpotAdviceRequest, runtime *dara.RuntimeOptions) (_result *DescribeSpotAdviceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24937,43 +19507,11 @@ func (client *Client) DescribeSpotAdviceWithOptions(request *DescribeSpotAdviceR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSpotAdviceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries information about spot instances in a region in the previous 30 days. The information includes the average release rate of spot instances and the percentage of the average spot instance price relative to the pay-as-you-go instance price.
-//
-// Description:
-//
-//	  This operation is applicable only to I/O optimized spot instances that reside in virtual private clouds (VPCs).
-//
-//		- You can use one of the following methods to call this operation:
-//
-//	    	- Specify `Cores` and `Memory` or `MinCores` and `MinMemory` to query information about the instance types that meet the specified vCPU and memory requirements.
-//
-//	    	- Specify `InstanceTypes.N` to query information about the specified instance types.
-//
-//	    	- Specify `Cores` and `Memory` or `MinCores` and `MinMemory`, and then specify `InstanceTypeFamily` or `InstanceFamilyLevel` to query information about the instance types that meet the specified vCPU and memory requirements within the specified instance family or at a specified instance family level.
-//
-//		- You can calculate the average price of spot instances based on the percentage of the average spot instance price relative to the pay-as-you-go instance price and the pay-as-you-go instance price.
-//
-// @param request - DescribeSpotAdviceRequest
-//
-// @return DescribeSpotAdviceResponse
-func (client *Client) DescribeSpotAdvice(request *DescribeSpotAdviceRequest) (_result *DescribeSpotAdviceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSpotAdviceResponse{}
-	_body, _err := client.DescribeSpotAdviceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24992,7 +19530,7 @@ func (client *Client) DescribeSpotAdvice(request *DescribeSpotAdviceRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSpotPriceHistoryResponse
-func (client *Client) DescribeSpotPriceHistoryWithOptions(request *DescribeSpotPriceHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeSpotPriceHistoryResponse, _err error) {
+func (client *Client) DescribeSpotPriceHistoryWithContext(ctx context.Context, request *DescribeSpotPriceHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeSpotPriceHistoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25073,35 +19611,11 @@ func (client *Client) DescribeSpotPriceHistoryWithOptions(request *DescribeSpotP
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSpotPriceHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the historical prices of spot instances within up to the previous 30 days. You can set the maximum price of a spot instance based on the historical prices.
-//
-// Description:
-//
-//	  This operation is applicable only to I/O optimized spot instances.
-//
-//		- The data returned by the interface may be paginated. If the returned data contains the `NextOffset` parameter, you can set the `Offset` parameter in the request to the value of the `NextOffset` parameter for subsequent data query.
-//
-// @param request - DescribeSpotPriceHistoryRequest
-//
-// @return DescribeSpotPriceHistoryResponse
-func (client *Client) DescribeSpotPriceHistory(request *DescribeSpotPriceHistoryRequest) (_result *DescribeSpotPriceHistoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSpotPriceHistoryResponse{}
-	_body, _err := client.DescribeSpotPriceHistoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25114,7 +19628,7 @@ func (client *Client) DescribeSpotPriceHistory(request *DescribeSpotPriceHistory
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeStorageCapacityUnitsResponse
-func (client *Client) DescribeStorageCapacityUnitsWithOptions(request *DescribeStorageCapacityUnitsRequest, runtime *dara.RuntimeOptions) (_result *DescribeStorageCapacityUnitsResponse, _err error) {
+func (client *Client) DescribeStorageCapacityUnitsWithContext(ctx context.Context, request *DescribeStorageCapacityUnitsRequest, runtime *dara.RuntimeOptions) (_result *DescribeStorageCapacityUnitsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25187,29 +19701,11 @@ func (client *Client) DescribeStorageCapacityUnitsWithOptions(request *DescribeS
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeStorageCapacityUnitsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of storage capacity units (SCUs). In the request, you can specify the name, status, or capacity of each SCU.
-//
-// @param request - DescribeStorageCapacityUnitsRequest
-//
-// @return DescribeStorageCapacityUnitsResponse
-func (client *Client) DescribeStorageCapacityUnits(request *DescribeStorageCapacityUnitsRequest) (_result *DescribeStorageCapacityUnitsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeStorageCapacityUnitsResponse{}
-	_body, _err := client.DescribeStorageCapacityUnitsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25222,7 +19718,7 @@ func (client *Client) DescribeStorageCapacityUnits(request *DescribeStorageCapac
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeStorageSetDetailsResponse
-func (client *Client) DescribeStorageSetDetailsWithOptions(request *DescribeStorageSetDetailsRequest, runtime *dara.RuntimeOptions) (_result *DescribeStorageSetDetailsResponse, _err error) {
+func (client *Client) DescribeStorageSetDetailsWithContext(ctx context.Context, request *DescribeStorageSetDetailsRequest, runtime *dara.RuntimeOptions) (_result *DescribeStorageSetDetailsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25287,29 +19783,11 @@ func (client *Client) DescribeStorageSetDetailsWithOptions(request *DescribeStor
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeStorageSetDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of the disks or Shared Block Storage devices in a storage set.
-//
-// @param request - DescribeStorageSetDetailsRequest
-//
-// @return DescribeStorageSetDetailsResponse
-func (client *Client) DescribeStorageSetDetails(request *DescribeStorageSetDetailsRequest) (_result *DescribeStorageSetDetailsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeStorageSetDetailsResponse{}
-	_body, _err := client.DescribeStorageSetDetailsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25322,7 +19800,7 @@ func (client *Client) DescribeStorageSetDetails(request *DescribeStorageSetDetai
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeStorageSetsResponse
-func (client *Client) DescribeStorageSetsWithOptions(request *DescribeStorageSetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeStorageSetsResponse, _err error) {
+func (client *Client) DescribeStorageSetsWithContext(ctx context.Context, request *DescribeStorageSetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeStorageSetsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25391,29 +19869,11 @@ func (client *Client) DescribeStorageSetsWithOptions(request *DescribeStorageSet
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeStorageSetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Describes the details of storage sets in a specific region. The details of a storage set include its region, zone, creation time, and maximum number of partitions.
-//
-// @param request - DescribeStorageSetsRequest
-//
-// @return DescribeStorageSetsResponse
-func (client *Client) DescribeStorageSets(request *DescribeStorageSetsRequest) (_result *DescribeStorageSetsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeStorageSetsResponse{}
-	_body, _err := client.DescribeStorageSetsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25432,7 +19892,7 @@ func (client *Client) DescribeStorageSets(request *DescribeStorageSetsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTagsResponse
-func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
+func (client *Client) DescribeTagsWithContext(ctx context.Context, request *DescribeTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25493,36 +19953,11 @@ func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeTags is deprecated, please use Tag::2018-08-28::CountResourcesByTags instead.
-//
-// Summary:
-//
-// Queries the available tags. You can specify multiple filter conditions, such as a resource type, a resource ID, a tag key, and a tag value, to query tags. The specified filter conditions have logical AND relations.
-//
-// Description:
-//
-// If a tag key that has no tag value is specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
-//
-// @param request - DescribeTagsRequest
-//
-// @return DescribeTagsResponse
-// Deprecated
-func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *DescribeTagsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTagsResponse{}
-	_body, _err := client.DescribeTagsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25535,7 +19970,7 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTaskAttributeResponse
-func (client *Client) DescribeTaskAttributeWithOptions(request *DescribeTaskAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeTaskAttributeResponse, _err error) {
+func (client *Client) DescribeTaskAttributeWithContext(ctx context.Context, request *DescribeTaskAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeTaskAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25576,29 +20011,11 @@ func (client *Client) DescribeTaskAttributeWithOptions(request *DescribeTaskAttr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTaskAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an asynchronous task. The asynchronous tasks that you can query by calling this operation are the tasks generated by the ImportImage, ExportImage, and ModifyDiskSpec operations.
-//
-// @param request - DescribeTaskAttributeRequest
-//
-// @return DescribeTaskAttributeResponse
-func (client *Client) DescribeTaskAttribute(request *DescribeTaskAttributeRequest) (_result *DescribeTaskAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTaskAttributeResponse{}
-	_body, _err := client.DescribeTaskAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25617,7 +20034,7 @@ func (client *Client) DescribeTaskAttribute(request *DescribeTaskAttributeReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTasksResponse
-func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
+func (client *Client) DescribeTasksWithContext(ctx context.Context, request *DescribeTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25690,35 +20107,11 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the progress of one or more asynchronous tasks.
-//
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=DescribeTasks\\&type=RPC\\&version=2014-05-26)
-//
-// @param request - DescribeTasksRequest
-//
-// @return DescribeTasksResponse
-func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *DescribeTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTasksResponse{}
-	_body, _err := client.DescribeTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25735,7 +20128,7 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTerminalSessionsResponse
-func (client *Client) DescribeTerminalSessionsWithOptions(request *DescribeTerminalSessionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTerminalSessionsResponse, _err error) {
+func (client *Client) DescribeTerminalSessionsWithContext(ctx context.Context, request *DescribeTerminalSessionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTerminalSessionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25792,33 +20185,11 @@ func (client *Client) DescribeTerminalSessionsWithOptions(request *DescribeTermi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTerminalSessionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the session records of Elastic Compute Service (ECS) Session Manager.
-//
-// Description:
-//
-// You can query the session records of Session Manager that were generated in the last four weeks.
-//
-// @param request - DescribeTerminalSessionsRequest
-//
-// @return DescribeTerminalSessionsResponse
-func (client *Client) DescribeTerminalSessions(request *DescribeTerminalSessionsRequest) (_result *DescribeTerminalSessionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTerminalSessionsResponse{}
-	_body, _err := client.DescribeTerminalSessionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25833,7 +20204,7 @@ func (client *Client) DescribeTerminalSessions(request *DescribeTerminalSessions
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUserBusinessBehaviorResponse
-func (client *Client) DescribeUserBusinessBehaviorWithOptions(request *DescribeUserBusinessBehaviorRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserBusinessBehaviorResponse, _err error) {
+func (client *Client) DescribeUserBusinessBehaviorWithContext(ctx context.Context, request *DescribeUserBusinessBehaviorRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserBusinessBehaviorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25878,32 +20249,11 @@ func (client *Client) DescribeUserBusinessBehaviorWithOptions(request *DescribeU
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUserBusinessBehaviorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeUserBusinessBehavior is deprecated
-//
-// Summary:
-//
-// 获取用户级别默认属性
-//
-// @param request - DescribeUserBusinessBehaviorRequest
-//
-// @return DescribeUserBusinessBehaviorResponse
-// Deprecated
-func (client *Client) DescribeUserBusinessBehavior(request *DescribeUserBusinessBehaviorRequest) (_result *DescribeUserBusinessBehaviorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeUserBusinessBehaviorResponse{}
-	_body, _err := client.DescribeUserBusinessBehaviorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25920,7 +20270,7 @@ func (client *Client) DescribeUserBusinessBehavior(request *DescribeUserBusiness
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUserDataResponse
-func (client *Client) DescribeUserDataWithOptions(request *DescribeUserDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserDataResponse, _err error) {
+func (client *Client) DescribeUserDataWithContext(ctx context.Context, request *DescribeUserDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25961,33 +20311,11 @@ func (client *Client) DescribeUserDataWithOptions(request *DescribeUserDataReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUserDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the user data of an Elastic Compute Service (ECS) instance.
-//
-// Description:
-//
-//	If no user data is configured for the ECS instance, an empty string is returned.
-//
-// @param request - DescribeUserDataRequest
-//
-// @return DescribeUserDataResponse
-func (client *Client) DescribeUserData(request *DescribeUserDataRequest) (_result *DescribeUserDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeUserDataResponse{}
-	_body, _err := client.DescribeUserDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26002,7 +20330,7 @@ func (client *Client) DescribeUserData(request *DescribeUserDataRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVRoutersResponse
-func (client *Client) DescribeVRoutersWithOptions(request *DescribeVRoutersRequest, runtime *dara.RuntimeOptions) (_result *DescribeVRoutersResponse, _err error) {
+func (client *Client) DescribeVRoutersWithContext(ctx context.Context, request *DescribeVRoutersRequest, runtime *dara.RuntimeOptions) (_result *DescribeVRoutersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26055,32 +20383,11 @@ func (client *Client) DescribeVRoutersWithOptions(request *DescribeVRoutersReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVRoutersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeVRouters is deprecated, please use Vpc::2016-04-28::DescribeVRouters instead.
-//
-// Summary:
-//
-// 查询路由器列表
-//
-// @param request - DescribeVRoutersRequest
-//
-// @return DescribeVRoutersResponse
-// Deprecated
-func (client *Client) DescribeVRouters(request *DescribeVRoutersRequest) (_result *DescribeVRoutersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVRoutersResponse{}
-	_body, _err := client.DescribeVRoutersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26091,7 +20398,7 @@ func (client *Client) DescribeVRouters(request *DescribeVRoutersRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVSwitchesResponse
-func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVSwitchesResponse, _err error) {
+func (client *Client) DescribeVSwitchesWithContext(ctx context.Context, request *DescribeVSwitchesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVSwitchesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26156,28 +20463,11 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVSwitchesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeVSwitches is deprecated
-//
-// @param request - DescribeVSwitchesRequest
-//
-// @return DescribeVSwitchesResponse
-// Deprecated
-func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_result *DescribeVSwitchesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVSwitchesResponse{}
-	_body, _err := client.DescribeVSwitchesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26188,7 +20478,7 @@ func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVirtualBorderRoutersResponse
-func (client *Client) DescribeVirtualBorderRoutersWithOptions(request *DescribeVirtualBorderRoutersRequest, runtime *dara.RuntimeOptions) (_result *DescribeVirtualBorderRoutersResponse, _err error) {
+func (client *Client) DescribeVirtualBorderRoutersWithContext(ctx context.Context, request *DescribeVirtualBorderRoutersRequest, runtime *dara.RuntimeOptions) (_result *DescribeVirtualBorderRoutersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26237,28 +20527,11 @@ func (client *Client) DescribeVirtualBorderRoutersWithOptions(request *DescribeV
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVirtualBorderRoutersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeVirtualBorderRouters is deprecated
-//
-// @param request - DescribeVirtualBorderRoutersRequest
-//
-// @return DescribeVirtualBorderRoutersResponse
-// Deprecated
-func (client *Client) DescribeVirtualBorderRouters(request *DescribeVirtualBorderRoutersRequest) (_result *DescribeVirtualBorderRoutersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVirtualBorderRoutersResponse{}
-	_body, _err := client.DescribeVirtualBorderRoutersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26269,7 +20542,7 @@ func (client *Client) DescribeVirtualBorderRouters(request *DescribeVirtualBorde
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVirtualBorderRoutersForPhysicalConnectionResponse
-func (client *Client) DescribeVirtualBorderRoutersForPhysicalConnectionWithOptions(request *DescribeVirtualBorderRoutersForPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *DescribeVirtualBorderRoutersForPhysicalConnectionResponse, _err error) {
+func (client *Client) DescribeVirtualBorderRoutersForPhysicalConnectionWithContext(ctx context.Context, request *DescribeVirtualBorderRoutersForPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *DescribeVirtualBorderRoutersForPhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26322,28 +20595,11 @@ func (client *Client) DescribeVirtualBorderRoutersForPhysicalConnectionWithOptio
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVirtualBorderRoutersForPhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeVirtualBorderRoutersForPhysicalConnection is deprecated
-//
-// @param request - DescribeVirtualBorderRoutersForPhysicalConnectionRequest
-//
-// @return DescribeVirtualBorderRoutersForPhysicalConnectionResponse
-// Deprecated
-func (client *Client) DescribeVirtualBorderRoutersForPhysicalConnection(request *DescribeVirtualBorderRoutersForPhysicalConnectionRequest) (_result *DescribeVirtualBorderRoutersForPhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVirtualBorderRoutersForPhysicalConnectionResponse{}
-	_body, _err := client.DescribeVirtualBorderRoutersForPhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26358,7 +20614,7 @@ func (client *Client) DescribeVirtualBorderRoutersForPhysicalConnection(request 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpcsResponse
-func (client *Client) DescribeVpcsWithOptions(request *DescribeVpcsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcsResponse, _err error) {
+func (client *Client) DescribeVpcsWithContext(ctx context.Context, request *DescribeVpcsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26415,32 +20671,11 @@ func (client *Client) DescribeVpcsWithOptions(request *DescribeVpcsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpcsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeVpcs is deprecated, please use Vpc::2016-04-28::DescribeVpcs instead.
-//
-// Summary:
-//
-// 查询VPC
-//
-// @param request - DescribeVpcsRequest
-//
-// @return DescribeVpcsResponse
-// Deprecated
-func (client *Client) DescribeVpcs(request *DescribeVpcsRequest) (_result *DescribeVpcsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpcsResponse{}
-	_body, _err := client.DescribeVpcsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26459,7 +20694,7 @@ func (client *Client) DescribeVpcs(request *DescribeVpcsRequest) (_result *Descr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeZonesResponse
-func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
+func (client *Client) DescribeZonesWithContext(ctx context.Context, request *DescribeZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26516,35 +20751,11 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Alibaba Cloud regions. You can specify parameters, such as InstanceChargeType and ResourceType, in the request.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// When you call this operation, only a list of zones and some resource information of each zone are returned. If you want to query instance types and disk categories that are available for purchase in a specific zone, we recommend that you call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation.
-//
-// @param request - DescribeZonesRequest
-//
-// @return DescribeZonesResponse
-func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *DescribeZonesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeZonesResponse{}
-	_body, _err := client.DescribeZonesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26557,7 +20768,7 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachClassicLinkVpcResponse
-func (client *Client) DetachClassicLinkVpcWithOptions(request *DetachClassicLinkVpcRequest, runtime *dara.RuntimeOptions) (_result *DetachClassicLinkVpcResponse, _err error) {
+func (client *Client) DetachClassicLinkVpcWithContext(ctx context.Context, request *DetachClassicLinkVpcRequest, runtime *dara.RuntimeOptions) (_result *DetachClassicLinkVpcResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26602,29 +20813,11 @@ func (client *Client) DetachClassicLinkVpcWithOptions(request *DetachClassicLink
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachClassicLinkVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unlinks an Elastic Compute Service (ECS) instance that resides in the classic network from a virtual private cloud (VPC) by closing the ClassicLink connection between the instance and the VPC. After the instance is unlinked from the VPC, the instance can no longer communicate with instances in the VPC.
-//
-// @param request - DetachClassicLinkVpcRequest
-//
-// @return DetachClassicLinkVpcResponse
-func (client *Client) DetachClassicLinkVpc(request *DetachClassicLinkVpcRequest) (_result *DetachClassicLinkVpcResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachClassicLinkVpcResponse{}
-	_body, _err := client.DetachClassicLinkVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26647,7 +20840,7 @@ func (client *Client) DetachClassicLinkVpc(request *DetachClassicLinkVpcRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachDiskResponse
-func (client *Client) DetachDiskWithOptions(request *DetachDiskRequest, runtime *dara.RuntimeOptions) (_result *DetachDiskResponse, _err error) {
+func (client *Client) DetachDiskWithContext(ctx context.Context, request *DetachDiskRequest, runtime *dara.RuntimeOptions) (_result *DetachDiskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26696,39 +20889,11 @@ func (client *Client) DetachDiskWithOptions(request *DetachDiskRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Detaches a pay-as-you-go data disk or a system disk from an Elastic Compute Service (ECS) instance.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - This operation is an asynchronous operation. After you call the operation to detach a disk from an ECS instance, the disk is detached in approximately 1 minute.
-//
-//   - If `OperationLocks` in the response contains `"LockReason" : "security"` when you query information about an instance, the instance is locked for security reasons and all operations are prohibited on the instance.
-//
-//   - If you want to attach an elastic ephemeral disk that you detached from an instance, you can attach the disk only to the instance.
-//
-// @param request - DetachDiskRequest
-//
-// @return DetachDiskResponse
-func (client *Client) DetachDisk(request *DetachDiskRequest) (_result *DetachDiskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachDiskResponse{}
-	_body, _err := client.DetachDiskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26741,7 +20906,7 @@ func (client *Client) DetachDisk(request *DetachDiskRequest) (_result *DetachDis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachInstanceRamRoleResponse
-func (client *Client) DetachInstanceRamRoleWithOptions(request *DetachInstanceRamRoleRequest, runtime *dara.RuntimeOptions) (_result *DetachInstanceRamRoleResponse, _err error) {
+func (client *Client) DetachInstanceRamRoleWithContext(ctx context.Context, request *DetachInstanceRamRoleRequest, runtime *dara.RuntimeOptions) (_result *DetachInstanceRamRoleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26786,29 +20951,11 @@ func (client *Client) DetachInstanceRamRoleWithOptions(request *DetachInstanceRa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachInstanceRamRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Detaches instance Resource Access Management (RAM) roles from Elastic Compute Service (ECS) instances.
-//
-// @param request - DetachInstanceRamRoleRequest
-//
-// @return DetachInstanceRamRoleResponse
-func (client *Client) DetachInstanceRamRole(request *DetachInstanceRamRoleRequest) (_result *DetachInstanceRamRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachInstanceRamRoleResponse{}
-	_body, _err := client.DetachInstanceRamRoleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26829,7 +20976,7 @@ func (client *Client) DetachInstanceRamRole(request *DetachInstanceRamRoleReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachKeyPairResponse
-func (client *Client) DetachKeyPairWithOptions(request *DetachKeyPairRequest, runtime *dara.RuntimeOptions) (_result *DetachKeyPairResponse, _err error) {
+func (client *Client) DetachKeyPairWithContext(ctx context.Context, request *DetachKeyPairRequest, runtime *dara.RuntimeOptions) (_result *DetachKeyPairResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26874,37 +21021,11 @@ func (client *Client) DetachKeyPairWithOptions(request *DetachKeyPairRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unbinds an SSH key pair from Linux Elastic Compute Service (ECS) instances.
-//
-// Description:
-//
-// When you call this operation, take note of the following items:
-//
-//   - After you unbind an SSH key pair from an instance, you must call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation to restart the instance to allow the unbind operation to take effect.
-//
-//   - After you unbind an SSH key pair from an instance, the username and password authentication method is selected for the instance.
-//
-// @param request - DetachKeyPairRequest
-//
-// @return DetachKeyPairResponse
-func (client *Client) DetachKeyPair(request *DetachKeyPairRequest) (_result *DetachKeyPairResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachKeyPairResponse{}
-	_body, _err := client.DetachKeyPairWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26937,7 +21058,7 @@ func (client *Client) DetachKeyPair(request *DetachKeyPairRequest) (_result *Det
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachNetworkInterfaceResponse
-func (client *Client) DetachNetworkInterfaceWithOptions(request *DetachNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DetachNetworkInterfaceResponse, _err error) {
+func (client *Client) DetachNetworkInterfaceWithContext(ctx context.Context, request *DetachNetworkInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DetachNetworkInterfaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26994,49 +21115,11 @@ func (client *Client) DetachNetworkInterfaceWithOptions(request *DetachNetworkIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Detach an elastic network interface (ENI) from an Elastic Compute Service (ECS) instance.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - You cannot detach the primary ENI of an instance.
-//
-//   - Make sure that the ENI to be detached is in the Detaching (Unbinding) or InUse (Bound) state.
-//
-//   - Make sure that the instance from which you want to detach an ENI is in the Running (Running) or Stopped (Stopped) state.
-//
-//   - The DetachNetworkInterface operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the status or events of the ENI to determine whether the ENI is detached. The following figure shows the transitions between the states of the ENI.![](https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/en-US/20230223/uemr/DetachNetworkInterface.png)
-//
-//   - If the ENI is in the Detaching state, the ENI detachment request is sent and the ENI is being detached from the associated instance.
-//
-//   - If the ENI is in the Available state, the ENI is detached from the associated instance.
-//
-//   - If the ENI is stuck in the Detaching state, the ENI may fail to be detached from the associated instance due to specific reasons. For example, the ENI may fail to be detached because the operating system of the instance did not respond to the ENI detachment request. If this issue occurs, you can re-initiate the request to detach the ENI. If the issue persists, restart the instance.
-//
-// For information about examples on how to call the DetachNetworkInterface operation, see [Detach an ENI from an ECS instance](https://help.aliyun.com/document_detail/471551.html).
-//
-// @param request - DetachNetworkInterfaceRequest
-//
-// @return DetachNetworkInterfaceResponse
-func (client *Client) DetachNetworkInterface(request *DetachNetworkInterfaceRequest) (_result *DetachNetworkInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachNetworkInterfaceResponse{}
-	_body, _err := client.DetachNetworkInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27055,7 +21138,7 @@ func (client *Client) DetachNetworkInterface(request *DetachNetworkInterfaceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableActivationResponse
-func (client *Client) DisableActivationWithOptions(request *DisableActivationRequest, runtime *dara.RuntimeOptions) (_result *DisableActivationResponse, _err error) {
+func (client *Client) DisableActivationWithContext(ctx context.Context, request *DisableActivationRequest, runtime *dara.RuntimeOptions) (_result *DisableActivationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27104,35 +21187,11 @@ func (client *Client) DisableActivationWithOptions(request *DisableActivationReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableActivationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// To prevent an activation code from being leaked, you can call the DisableActivation operation to disable the activation code. Disabled activation codes cannot be used to register new managed instances. However, managed instances that are already registered are not affected.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// To prevent an activation code from being leaked, you can call the DisableActivation operation to disable the activation code. Disabled activation codes cannot be used to register new managed instances. However, managed instances that are already registered are not affected.
-//
-// @param request - DisableActivationRequest
-//
-// @return DisableActivationResponse
-func (client *Client) DisableActivation(request *DisableActivationRequest) (_result *DisableActivationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableActivationResponse{}
-	_body, _err := client.DisableActivationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27157,7 +21216,7 @@ func (client *Client) DisableActivation(request *DisableActivationRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableDiskEncryptionByDefaultResponse
-func (client *Client) DisableDiskEncryptionByDefaultWithOptions(request *DisableDiskEncryptionByDefaultRequest, runtime *dara.RuntimeOptions) (_result *DisableDiskEncryptionByDefaultResponse, _err error) {
+func (client *Client) DisableDiskEncryptionByDefaultWithContext(ctx context.Context, request *DisableDiskEncryptionByDefaultRequest, runtime *dara.RuntimeOptions) (_result *DisableDiskEncryptionByDefaultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27190,41 +21249,11 @@ func (client *Client) DisableDiskEncryptionByDefaultWithOptions(request *Disable
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableDiskEncryptionByDefaultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables account-level default encryption of Elastic Block Storage (EBS) resources in a region. After you disable account-level default encryption of EBS resources in a region, the encryption status of existing disks in the region does not change. When you create a disk, you can still choose to encrypt the disk.
-//
-// Description:
-//
-//	  **Instructions**
-//
-//	    	- You must grant the RAM user the `AliyunECSFullAccess` permissions. For information about how to grant permissions to a RAM user, see [Grant permissions to a RAM user](https://help.aliyun.com/document_detail/116146.html).
-//
-//		- **Considerations**
-//
-//	    	- After Account-level EBS Default Encryption is disabled, the encryption status of existing cloud disks is not affected.
-//
-//	    	- After Account-level EBS Default Encryption is disabled, you can still choose to encrypt new cloud disks when you purchase the disks.
-//
-// @param request - DisableDiskEncryptionByDefaultRequest
-//
-// @return DisableDiskEncryptionByDefaultResponse
-func (client *Client) DisableDiskEncryptionByDefault(request *DisableDiskEncryptionByDefaultRequest) (_result *DisableDiskEncryptionByDefaultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableDiskEncryptionByDefaultResponse{}
-	_body, _err := client.DisableDiskEncryptionByDefaultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27263,7 +21292,7 @@ func (client *Client) DisableDiskEncryptionByDefault(request *DisableDiskEncrypt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableDiskEncryptionByDefaultResponse
-func (client *Client) EnableDiskEncryptionByDefaultWithOptions(request *EnableDiskEncryptionByDefaultRequest, runtime *dara.RuntimeOptions) (_result *EnableDiskEncryptionByDefaultResponse, _err error) {
+func (client *Client) EnableDiskEncryptionByDefaultWithContext(ctx context.Context, request *EnableDiskEncryptionByDefaultRequest, runtime *dara.RuntimeOptions) (_result *EnableDiskEncryptionByDefaultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27304,55 +21333,11 @@ func (client *Client) EnableDiskEncryptionByDefaultWithOptions(request *EnableDi
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableDiskEncryptionByDefaultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables the Account-level Elastic Block Storage (EBS) Default Encryption feature in a region.
-//
-// Description:
-//
-// >  The Account-level EBS Default Encryption feature is available only in specific regions and to specific users. To use the feature, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
-//
-//   - **Precautions**
-//
-//   - To enable the Account-level EBS Default Encryption feature as a Resource Access Management (RAM) user, grant the `AliyunECSFullAccess` permission to the RAM user. For more information, see [Grant permissions to a RAM user](https://help.aliyun.com/document_detail/116146.html).
-//
-//   - Before you can enable the Account-level EBS Default Encryption feature in a region, you must [activate Key Management Service (KMS)](https://help.aliyun.com/document_detail/480156.html) in the region.
-//
-//   - After you enable the Account-level EBS Default Encryption feature in a region, you can purchase only encrypted cloud disks in the region. For more information, see the [Limits](~~59643#50de175230erj~~) section of the "Encrypt cloud disks" topic.
-//
-//   - **Considerations**
-//
-//   - After you enable the Account-level EBS Default Encryption feature in a region, new pay-as-you-go and subscription cloud disks in the region must be encrypted. You can use the KMS key configured for the feature or specify other KMS keys to encrypt the cloud disks.
-//
-//   - The first time you enable the Account-level EBS Default Encryption feature in a region, the service key in the region is automatically used to encrypt EBS resources.
-//
-//   - **Suggestions**
-//
-//   - You can call the [DescribeDiskEncryptionByDefaultStatus](https://help.aliyun.com/document_detail/2851493.html) operation to query whether the Account-level EBS Default Encryption feature is enabled in a region and the [DescribeDiskDefaultKMSKeyId](https://help.aliyun.com/document_detail/2851490.html) operation to query the ID of the KMS key used by the feature in a region.
-//
-//   - You can call the [ModifyDiskDefaultKMSKeyId](https://help.aliyun.com/document_detail/2851492.html) or [ResetDiskDefaultKMSKeyId](https://help.aliyun.com/document_detail/2851539.html) operation to change or reset the KMS key used by the Account-level EBS Default Encryption feature in a region.
-//
-//   - You can call the [DisableDiskEncryptionByDefault](https://help.aliyun.com/document_detail/2851491.html) operation to disable the Account-level EBS Default Encryption feature in a region.
-//
-// @param request - EnableDiskEncryptionByDefaultRequest
-//
-// @return EnableDiskEncryptionByDefaultResponse
-func (client *Client) EnableDiskEncryptionByDefault(request *EnableDiskEncryptionByDefaultRequest) (_result *EnableDiskEncryptionByDefaultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableDiskEncryptionByDefaultResponse{}
-	_body, _err := client.EnableDiskEncryptionByDefaultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27363,7 +21348,7 @@ func (client *Client) EnableDiskEncryptionByDefault(request *EnableDiskEncryptio
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnablePhysicalConnectionResponse
-func (client *Client) EnablePhysicalConnectionWithOptions(request *EnablePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *EnablePhysicalConnectionResponse, _err error) {
+func (client *Client) EnablePhysicalConnectionWithContext(ctx context.Context, request *EnablePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *EnablePhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27416,28 +21401,11 @@ func (client *Client) EnablePhysicalConnectionWithOptions(request *EnablePhysica
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnablePhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI EnablePhysicalConnection is deprecated
-//
-// @param request - EnablePhysicalConnectionRequest
-//
-// @return EnablePhysicalConnectionResponse
-// Deprecated
-func (client *Client) EnablePhysicalConnection(request *EnablePhysicalConnectionRequest) (_result *EnablePhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnablePhysicalConnectionResponse{}
-	_body, _err := client.EnablePhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27456,7 +21424,7 @@ func (client *Client) EnablePhysicalConnection(request *EnablePhysicalConnection
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EndTerminalSessionResponse
-func (client *Client) EndTerminalSessionWithOptions(request *EndTerminalSessionRequest, runtime *dara.RuntimeOptions) (_result *EndTerminalSessionResponse, _err error) {
+func (client *Client) EndTerminalSessionWithContext(ctx context.Context, request *EndTerminalSessionRequest, runtime *dara.RuntimeOptions) (_result *EndTerminalSessionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27501,35 +21469,11 @@ func (client *Client) EndTerminalSessionWithOptions(request *EndTerminalSessionR
 		BodyType:    dara.String("json"),
 	}
 	_result = &EndTerminalSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Permanently closes a session.
-//
-// Description:
-//
-//	  After you closes a session, the session is no longer available.
-//
-//		- The WebSocket URL that is associated with a closed session is invalid and no longer available.
-//
-// @param request - EndTerminalSessionRequest
-//
-// @return EndTerminalSessionResponse
-func (client *Client) EndTerminalSession(request *EndTerminalSessionRequest) (_result *EndTerminalSessionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EndTerminalSessionResponse{}
-	_body, _err := client.EndTerminalSessionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27626,7 +21570,7 @@ func (client *Client) EndTerminalSession(request *EndTerminalSessionRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExportImageResponse
-func (client *Client) ExportImageWithOptions(request *ExportImageRequest, runtime *dara.RuntimeOptions) (_result *ExportImageResponse, _err error) {
+func (client *Client) ExportImageWithContext(ctx context.Context, request *ExportImageRequest, runtime *dara.RuntimeOptions) (_result *ExportImageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27687,113 +21631,11 @@ func (client *Client) ExportImageWithOptions(request *ExportImageRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExportImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Exports a custom image to an Object Storage Service (OSS) bucket in the same region.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - Make sure that you are familiar with the prerequisites and considerations. For more information, see [Export a custom image](https://help.aliyun.com/document_detail/58181.html).
-//
-//   - The `ImageFormat` parameter is available only for the following regions: Japan (Tokyo), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
-//
-//   - Use Resource Access Management (RAM) to authorize Elastic Compute Service (ECS) to write data to OSS. To complete the authorization, perform the following operations:
-//
-//   - Create a role named `AliyunECSImageExportDefaultRole` and attach the following policy to the role:
-//
-//     {
-//
-//     "Statement": [
-//
-//     {
-//
-//     "Action": "sts:AssumeRole",
-//
-//     "Effect": "Allow",
-//
-//     "Principal": {
-//
-//     "Service": [
-//
-//     "ecs.aliyuncs.com"
-//
-//     ]
-//
-//     }
-//
-//     }
-//
-//     ],
-//
-//     "Version": "1"
-//
-//     }
-//
-//   - Attach the `AliyunECSImageExportRolePolicy` system policy, which is the default policy that grants ECS the permissions to export images, to the `AliyunECSImageExportDefaultRole` role. For more information, go to the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101.0.0.64c64df5dfpmdY#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunECSImageImportDefaultRole%22,%20%22TemplateId%22:%20%22ECSImportRole%22%7D,%20%22request2%22:%20%7B%22RoleName%22:%20%22AliyunECSImageExportDefaultRole%22,%20%22TemplateId%22:%20%22ECSExportRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fecs.console.aliyun.com%2F%22,%20%22Service%22:%20%22ECS%22%7D) page. You can also create a custom policy that contains the following content and attach the policy to the role:
-//
-//     {
-//
-//     "Version": "1",
-//
-//     "Statement": [
-//
-//     {
-//
-//     "Action": [
-//
-//     "oss:GetObject",
-//
-//     "oss:PutObject",
-//
-//     "oss:DeleteObject",
-//
-//     "oss:GetBucketLocation",
-//
-//     "oss:GetBucketInfo",
-//
-//     "oss:AbortMultipartUpload",
-//
-//     "oss:ListMultipartUploads",
-//
-//     "oss:ListParts"
-//
-//     ],
-//
-//     "Resource": "*",
-//
-//     "Effect": "Allow"
-//
-//     }
-//
-//     ]
-//
-//     }
-//
-// After you export the images, take note of the following items:
-//
-// Each exported custom image is stored in the specified OSS bucket. You can download the custom image. For more information, see [Download OSS objects by using simple download](https://help.aliyun.com/document_detail/31912.html).
-//
-// @param request - ExportImageRequest
-//
-// @return ExportImageResponse
-func (client *Client) ExportImage(request *ExportImageRequest) (_result *ExportImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ExportImageResponse{}
-	_body, _err := client.ExportImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27808,7 +21650,7 @@ func (client *Client) ExportImage(request *ExportImageRequest) (_result *ExportI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExportSnapshotResponse
-func (client *Client) ExportSnapshotWithOptions(request *ExportSnapshotRequest, runtime *dara.RuntimeOptions) (_result *ExportSnapshotResponse, _err error) {
+func (client *Client) ExportSnapshotWithContext(ctx context.Context, request *ExportSnapshotRequest, runtime *dara.RuntimeOptions) (_result *ExportSnapshotResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27857,32 +21699,11 @@ func (client *Client) ExportSnapshotWithOptions(request *ExportSnapshotRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExportSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ExportSnapshot is deprecated
-//
-// Summary:
-//
-// 将快照导出到指定的对象存储
-//
-// @param request - ExportSnapshotRequest
-//
-// @return ExportSnapshotResponse
-// Deprecated
-func (client *Client) ExportSnapshot(request *ExportSnapshotRequest) (_result *ExportSnapshotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ExportSnapshotResponse{}
-	_body, _err := client.ExportSnapshotWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27903,7 +21724,7 @@ func (client *Client) ExportSnapshot(request *ExportSnapshotRequest) (_result *E
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceConsoleOutputResponse
-func (client *Client) GetInstanceConsoleOutputWithOptions(request *GetInstanceConsoleOutputRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceConsoleOutputResponse, _err error) {
+func (client *Client) GetInstanceConsoleOutputWithContext(ctx context.Context, request *GetInstanceConsoleOutputRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceConsoleOutputResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27956,37 +21777,11 @@ func (client *Client) GetInstanceConsoleOutputWithOptions(request *GetInstanceCo
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceConsoleOutputResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the command output of an Elastic Compute Service (ECS) instance. The returned command output is encoded in Base64.
-//
-// Description:
-//
-//	  ECS is a virtualized cloud-based service and cannot be connected to display devices. Alibaba Cloud caches system command outputs for the last start, restart, or shutdown of ECS instances. You can call the GetInstanceConsoleOutput operation to query the command outputs.
-//
-//		- For instances of the retired instance types, you cannot obtain command outputs. For more information, see [Retired instance types](https://help.aliyun.com/document_detail/55263.html).
-//
-//		- You cannot obtain the command outputs of Windows instances.
-//
-// @param request - GetInstanceConsoleOutputRequest
-//
-// @return GetInstanceConsoleOutputResponse
-func (client *Client) GetInstanceConsoleOutput(request *GetInstanceConsoleOutputRequest) (_result *GetInstanceConsoleOutputResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetInstanceConsoleOutputResponse{}
-	_body, _err := client.GetInstanceConsoleOutputWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28009,7 +21804,7 @@ func (client *Client) GetInstanceConsoleOutput(request *GetInstanceConsoleOutput
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceScreenshotResponse
-func (client *Client) GetInstanceScreenshotWithOptions(request *GetInstanceScreenshotRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceScreenshotResponse, _err error) {
+func (client *Client) GetInstanceScreenshotWithContext(ctx context.Context, request *GetInstanceScreenshotRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceScreenshotResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28062,39 +21857,11 @@ func (client *Client) GetInstanceScreenshotWithOptions(request *GetInstanceScree
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceScreenshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the screenshots of an Elastic Compute Service (ECS) instance.
-//
-// Description:
-//
-// After ECS returns a Base64-encoded instance screenshot in the JPG format, you must decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items:
-//
-//   - The instance must be in the Running state.
-//
-//   - For instances of the retired instance types, you cannot obtain screenshots. For more information, see [Retired instance types](https://help.aliyun.com/document_detail/55263.html).
-//
-//   - If you call this operation on an instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error is returned.
-//
-// @param request - GetInstanceScreenshotRequest
-//
-// @return GetInstanceScreenshotResponse
-func (client *Client) GetInstanceScreenshot(request *GetInstanceScreenshotRequest) (_result *GetInstanceScreenshotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetInstanceScreenshotResponse{}
-	_body, _err := client.GetInstanceScreenshotWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28281,7 +22048,7 @@ func (client *Client) GetInstanceScreenshot(request *GetInstanceScreenshotReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ImportImageResponse
-func (client *Client) ImportImageWithOptions(request *ImportImageRequest, runtime *dara.RuntimeOptions) (_result *ImportImageResponse, _err error) {
+func (client *Client) ImportImageWithContext(ctx context.Context, request *ImportImageRequest, runtime *dara.RuntimeOptions) (_result *ImportImageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28382,203 +22149,11 @@ func (client *Client) ImportImageWithOptions(request *ImportImageRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImportImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Imports an on-premise image to Elastic Compute Service (ECS). The imported image exists as a custom image in the destination region. You can use the imported image to create ECS instances by calling the RunInstances operation or replace the system disk of an ECS instance by calling the ReplaceSystemDisk operation.
-//
-// Description:
-//
-// ### [](#)Usage notes
-//
-// Take note of the following items:
-//
-//   - Before you import an image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](https://help.aliyun.com/document_detail/31886.html).
-//
-//   - In specific scenarios, you may want to create a custom image based on the operating system data of a source server, import the image to Alibaba Cloud, and then create an ECS instance from the image. The source server can be a physical server, a virtual machine, or a cloud host. If the virtio driver is not installed on the source server, the created ECS instance may be unable to start. To prevent this issue, verify that the virtio driver is installed on the source server before you import the image to Alibaba Cloud. For more information, see [Install the virtio driver](https://help.aliyun.com/document_detail/62423.html).
-//
-//   - Before you import images for the first time, you must use Resource Access Management (RAM) to authorize ECS to access your OSS buckets. If ECS is not authorized to access your OSS buckets, the `NoSetRoletoECSServiceAccount` or `InvalidOperation.CloudBoxImageImportRoleRequired` error code is returned when you call the ImportImage operation. The authorization configuration varies based on whether the image files are imported from a cloud box.
-//
-//   - **If the image files are not imported from a cloud box**, you can complete the authorization on the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/?spm=5176.2020520101image.0.0.2ffa4df57kSoHX#/role/authorize?request=%7B%22Requests%22%3A%20%7B%22request1%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageImportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSImportRole%22%7D%2C%20%22request2%22%3A%20%7B%22RoleName%22%3A%20%22AliyunECSImageExportDefaultRole%22%2C%20%22TemplateId%22%3A%20%22ECSExportRole%22%7D%7D%2C%20%22ReturnUrl%22%3A%20%22https%3A//ecs.console.aliyun.com/%22%2C%20%22Service%22%3A%20%22ECS%22%7D) page of the RAM console. You can also complete the authorization by using a RAM role and RAM policies. The following example shows the policies and permissions required for specific steps in the authorization procedure. For more information, see [Control access to ECS resources by using RAM users](https://help.aliyun.com/document_detail/25481.html).
-//
-//     1.  Create a RAM role named `AliyunECSImageImportDefaultRole`. You must use this exact role name. Otherwise, the image cannot be imported. Configure the following trust policy for the role:
-//
-//     {
-//
-//     "Statement": [
-//
-//     {
-//
-//     "Action": "sts:AssumeRole",
-//
-//     "Effect": "Allow",
-//
-//     "Principal": {
-//
-//     "Service": [
-//
-//     "ecs.aliyuncs.com"
-//
-//     ]
-//
-//     }
-//
-//     }
-//
-//     ],
-//
-//     "Version": "1"
-//
-//     }
-//
-//     2.  Attach the `AliyunECSImageImportRolePolicy` system policy to the RAM role. You can also create a custom policy that contains the following content and attach the policy to the role:
-//
-//     ```
-//
-//     {
-//
-//     "Version": "1",
-//
-//     "Statement": [
-//
-//     {
-//
-//     "Action": [
-//
-//     "oss:GetObject",
-//
-//     "oss:GetBucketLocation",
-//
-//     "oss:GetBucketInfo"
-//
-//     ],
-//
-//     "Resource": "*",
-//
-//     "Effect": "Allow"
-//
-//     }
-//
-//     ]
-//
-//     }
-//
-//     ```
-//
-//   - **If the image files are imported from a cloud box**, you can complete the authorization on the [Cloud Resource Access Authorization](https://ram.console.aliyun.com/role/authorize?request=%7B%22ReturnUrl%22%3A%22https%3A%2F%2Fecs.console.aliyun.com%2F%22%2C%22Services%22%3A%5B%7B%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunECSCloudBoxImageImportDefaultRole%22%2C%22TemplateId%22%3A%22AliyunECSCloudBoxImageImportDefaultRole%22%7D%5D%2C%22Service%22%3A%22ECS%22%7D%5D%7D) page of the RAM console. You can also complete the authorization by using a RAM role and RAM policies. The following example shows the policies and permissions required for specific steps in the authorization procedure. For more information, see [Control access to ECS resources by using RAM users](https://help.aliyun.com/document_detail/25481.html).
-//
-//     1.  Create a RAM role named `AliyunECSCloudBoxImageImportDefaultRole`. You must use this exact role name. Otherwise, the image cannot be imported. Configure the following trust policy for the role:
-//
-//     {
-//
-//     "Statement": [
-//
-//     {
-//
-//     "Action": "sts:AssumeRole",
-//
-//     "Effect": "Allow",
-//
-//     "Principal": {
-//
-//     "Service": [
-//
-//     "ecs.aliyuncs.com"
-//
-//     ]
-//
-//     }
-//
-//     }
-//
-//     ],
-//
-//     "Version": "1"
-//
-//     }
-//
-//     2.  Attach the `AliyunECSCloudBoxImageImportRolePolicy` system policy to the RAM role. You can also create a custom policy that contains the following content and attach the policy to the role:
-//
-//     ```
-//
-//     {
-//
-//     "Version": "1",
-//
-//     "Statement": [
-//
-//     {
-//
-//     "Action": [
-//
-//     "oss-cloudbox:GetObject",
-//
-//     "oss-cloudbox:GetBucketLocation",
-//
-//     "oss-cloudbox:GetBucketInfo"
-//
-//     ],
-//
-//     "Resource": "*",
-//
-//     "Effect": "Allow"
-//
-//     }
-//
-//     ]
-//
-//     }
-//
-//     ```
-//
-//   - You cannot delete an image that is being imported. However, you can call the [CancelTask](https://help.aliyun.com/document_detail/25624.html) operation to cancel the image import task.
-//
-//   - You can import an image only to the same region as the OSS bucket to which the image file is uploaded.
-//
-//   - The valid values of N in `DiskDeviceMapping.N` range from 1 to 17. When N is set to 1, the disk is a system disk. When N is set to a value from 2 to 17, the disk is a data disk. When N is set to a value greater than 17, parameters prefixed with DiskDeviceMapping.N are ignored.
-//
-//   - When you set `Architecture` to `arm64` or when you set `Platform` to `CentOS Stream`, `Anolis`, `AlmaLinux`, `UOS`, `Kylin`, or `Rocky Linux`, take note of the following items:
-//
-//   - To ensure that the password can be set or the key pair can be modified for an imported image, make sure that the image meets the following requirements before you import it:
-//
-//   - The kernel of the operating system supports the `CONFIG_FW_CFG_SYSFS` feature. By default, Linux community kernel 4.6 and later and CentOS kernel 3.10.0-826.el7 and later support the CONFIG_FW_CFG_SYSFS feature. You can run the `grep -nr CONFIG_FW_CFG_SYSFS /boot/config-$(uname -r)` command on the source server of the image. If the command output contains `CONFIG_FW_CFG_SYSFS=y`, the kernel of the image supports the `CONFIG_FW_CFG_SYSFS` feature.
-//
-//   - Alibaba Cloud cloud-init of the latest version is installed on the operating system. If the version of cloud-init is 19.1, the minor version must be 19.1.3 or later. If the version of cloud-init is 0.7.6a in some early versions of operating systems, the minor version must be 0.7.6a15 or later. For more information, see [Install cloud-init](https://help.aliyun.com/document_detail/57803.html).
-//
-//   - The operating system supports the SHA-512 encryption algorithm.
-//
-//   - If you want an imported image to support the resizing of disks and file systems, make sure that the image meets the following requirements before you import it:
-//
-//   - The kernel version of the operating system is later than 3.6.
-//
-//   - The image supports the growpart command. To support this command, you must install the `cloud-utils-growpart` package. The methods of installing the package vary based on operating systems. For more information, see [Extend the partitions and file systems of disks on a Linux instance](https://help.aliyun.com/document_detail/25451.html).
-//
-//   - The image supports the resize2fs command. To support this command, you must install the `e2fsprogs` package. By default, the package is installed on the operating system. If the package is not installed, install it.
-//
-//   - Alibaba Cloud cloud-init of the latest version is installed on the operating system. If the version of cloud-init is 19.1, the minor version must be 19.1.3 or later. If the version of cloud-init is 0.7.6a in some early versions of operating systems, the minor version must be 0.7.6a15 or later. For more information, see [Install cloud-init](https://help.aliyun.com/document_detail/57803.html).
-//
-//   - If the image that you want to import uses the Arm64 architecture, configure the real-time clock (RTC) to use the Coordinated Universal Time (UTC) time standard. For more information, see [Linux time and time zones](https://help.aliyun.com/document_detail/405080.html).
-//
-//   - When you import images, we recommend that you specify DetectionStrategy. This way, you can optimize the images based on the image check results. For more information, see [Overview of image check](https://help.aliyun.com/document_detail/439819.html).
-//
-// @param request - ImportImageRequest
-//
-// @return ImportImageResponse
-func (client *Client) ImportImage(request *ImportImageRequest) (_result *ImportImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ImportImageResponse{}
-	_body, _err := client.ImportImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28623,7 +22198,7 @@ func (client *Client) ImportImage(request *ImportImageRequest) (_result *ImportI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ImportKeyPairResponse
-func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, runtime *dara.RuntimeOptions) (_result *ImportKeyPairResponse, _err error) {
+func (client *Client) ImportKeyPairWithContext(ctx context.Context, request *ImportKeyPairRequest, runtime *dara.RuntimeOptions) (_result *ImportKeyPairResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28676,61 +22251,11 @@ func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImportKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Imports the public key of a Rivest-Shamir-Adleman (RSA) key pair that is generated by a third-party tool. After the key pair is imported, Alibaba Cloud stores the public key. You must securely lock away the private key.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - A maximum of 500 key pairs can be created in each region.
-//
-//   - The key pair to be imported must support one of the following encryption methods:
-//
-//   - rsa
-//
-//   - dsa
-//
-//   - ssh-rsa
-//
-//   - ssh-dss
-//
-//   - ecdsa
-//
-//   - <ssh-rsa-cert-v00@openssh.com>
-//
-//   - <ssh-dss-cert-v00@openssh.com>
-//
-//   - <ssh-rsa-cert-v01@openssh.com>
-//
-//   - <ssh-dss-cert-v01@openssh.com>
-//
-//   - <ecdsa-sha2-nistp256-cert-v01@openssh.com>
-//
-//   - <ecdsa-sha2-nistp384-cert-v01@openssh.com>
-//
-//   - <ecdsa-sha2-nistp521-cert-v01@openssh.com>
-//
-// @param request - ImportKeyPairRequest
-//
-// @return ImportKeyPairResponse
-func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *ImportKeyPairResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ImportKeyPairResponse{}
-	_body, _err := client.ImportKeyPairWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28749,7 +22274,7 @@ func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *Imp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InstallCloudAssistantResponse
-func (client *Client) InstallCloudAssistantWithOptions(request *InstallCloudAssistantRequest, runtime *dara.RuntimeOptions) (_result *InstallCloudAssistantResponse, _err error) {
+func (client *Client) InstallCloudAssistantWithContext(ctx context.Context, request *InstallCloudAssistantRequest, runtime *dara.RuntimeOptions) (_result *InstallCloudAssistantResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28798,35 +22323,11 @@ func (client *Client) InstallCloudAssistantWithOptions(request *InstallCloudAssi
 		BodyType:    dara.String("json"),
 	}
 	_result = &InstallCloudAssistantResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Installs Cloud Assistant Agent on Elastic Compute Service (ECS) instances. After you install Cloud Assistant Agent on ECS instances, restart the instances for the installation to take effect.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// After you call the InstallCloudAssistant operation to install Cloud Assistant Agent on an ECS instance, call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation to restart the instance to make the installation take effect.
-//
-// @param request - InstallCloudAssistantRequest
-//
-// @return InstallCloudAssistantResponse
-func (client *Client) InstallCloudAssistant(request *InstallCloudAssistantRequest) (_result *InstallCloudAssistantResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &InstallCloudAssistantResponse{}
-	_body, _err := client.InstallCloudAssistantWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28871,7 +22372,7 @@ func (client *Client) InstallCloudAssistant(request *InstallCloudAssistantReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InvokeCommandResponse
-func (client *Client) InvokeCommandWithOptions(tmpReq *InvokeCommandRequest, runtime *dara.RuntimeOptions) (_result *InvokeCommandResponse, _err error) {
+func (client *Client) InvokeCommandWithContext(ctx context.Context, tmpReq *InvokeCommandRequest, runtime *dara.RuntimeOptions) (_result *InvokeCommandResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28994,61 +22495,11 @@ func (client *Client) InvokeCommandWithOptions(tmpReq *InvokeCommandRequest, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &InvokeCommandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Runs a Cloud Assistant command on one or more Elastic Compute Service (ECS) instances. When you call this operation, you can specify parameters, such as CommandId, InstanceId, and ResourceGroupId, in the request.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - The ECS instances on which you want to run the Cloud Assistant command must meet the following requirements. If multiple ECS instances are specified and one of the instances does not meet the requirements for running the command, the call fails. You must specify instances that meet the requirements and call the InvokeCommand operation again.
-//
-//   - The instances are in the Running (`Running`) state. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of instances.
-//
-//   - Cloud Assistant Agent is installed on the instances. For more information, see [Install Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html).
-//
-//   - If the command is a PowerShell command, make sure that the instances have the PowerShell module configured.
-//
-//   - You can configure the command to run only once on the instances.
-//
-//   - You can configure the command to run on the instances based on a schedule.
-//
-//   - The schedule is specified by Frequency. The results of each execution of the command do not affect the next execution of the command.
-//
-//   - When you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instances. Make sure that the time or time zone of the instances meets your business requirements. For more information, see [Manage the time synchronization service](https://help.aliyun.com/document_detail/92704.html).
-//
-//     To ensure that scheduled tasks can run as expected, make sure that the version of Cloud Assistant Agent is not earlier than the following versions. A scheduled task can run a command at a fixed interval, only once at a specific time, or at specific times based on a cron expression in a specified year or time zone. If the ClientNeedUpgrade error code is returned, you must upgrade Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades for Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
-//
-//   - Linux: 2.2.3.282
-//
-//   - Windows: 2.1.3.282
-//
-//   - Command executions may fail due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command execution fails, no execution information is generated. For more information, see [Check execution results and troubleshoot common issues](https://help.aliyun.com/document_detail/87029.html).
-//
-//   - If you enable the custom parameter feature when you create the command, you must specify custom parameters (`Parameters`) to run the command.
-//
-//   - Before you run the command on instances, especially new instances, we recommend that you call the [DescribeCloudAssistantStatus](https://help.aliyun.com/document_detail/87346.html) operation to query the status of Cloud Assistant Agent on the instances and run the command when the value of CloudAssistantStatus in the response is true for the instances.
-//
-// @param request - InvokeCommandRequest
-//
-// @return InvokeCommandResponse
-func (client *Client) InvokeCommand(request *InvokeCommandRequest) (_result *InvokeCommandResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &InvokeCommandResponse{}
-	_body, _err := client.InvokeCommandWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29067,7 +22518,7 @@ func (client *Client) InvokeCommand(request *InvokeCommandRequest) (_result *Inv
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return JoinResourceGroupResponse
-func (client *Client) JoinResourceGroupWithOptions(request *JoinResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *JoinResourceGroupResponse, _err error) {
+func (client *Client) JoinResourceGroupWithContext(ctx context.Context, request *JoinResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *JoinResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29120,35 +22571,11 @@ func (client *Client) JoinResourceGroupWithOptions(request *JoinResourceGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &JoinResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds an Elastic Compute Service (ECS) resource or service to a resource group.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// A resource is a cloud service entity that you create on Alibaba Cloud, such as an ECS instance, an elastic network interface (ENI), or an image. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources and monitor and run tasks in a centralized manner without the need to switch between Alibaba Cloud services.
-//
-// @param request - JoinResourceGroupRequest
-//
-// @return JoinResourceGroupResponse
-func (client *Client) JoinResourceGroup(request *JoinResourceGroupRequest) (_result *JoinResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &JoinResourceGroupResponse{}
-	_body, _err := client.JoinResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29175,7 +22602,7 @@ func (client *Client) JoinResourceGroup(request *JoinResourceGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return JoinSecurityGroupResponse
-func (client *Client) JoinSecurityGroupWithOptions(request *JoinSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *JoinSecurityGroupResponse, _err error) {
+func (client *Client) JoinSecurityGroupWithContext(ctx context.Context, request *JoinSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *JoinSecurityGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29228,43 +22655,11 @@ func (client *Client) JoinSecurityGroupWithOptions(request *JoinSecurityGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &JoinSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a specified security group.
-//
-// Description:
-//
-// > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
-//
-//   - An instance and an ENI cannot be added to a security group at the same time. You cannot specify `InstanceId` and `NetworkInterfaceId` at the same time in a request.
-//
-//   - The security group and the ECS instance to be added to the security group must reside in the same region.
-//
-//   - The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must reside in the same VPC.
-//
-//   - Before you add an instance to a security group, the instance must be in the **Stopped*	- or **Running*	- state.
-//
-//   - An instance can be added to up to five security groups by default. For more information, see [Security group limits](~~25412#SecurityGroupQuota1~~).
-//
-// @param request - JoinSecurityGroupRequest
-//
-// @return JoinSecurityGroupResponse
-func (client *Client) JoinSecurityGroup(request *JoinSecurityGroupRequest) (_result *JoinSecurityGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &JoinSecurityGroupResponse{}
-	_body, _err := client.JoinSecurityGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29291,7 +22686,7 @@ func (client *Client) JoinSecurityGroup(request *JoinSecurityGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return LeaveSecurityGroupResponse
-func (client *Client) LeaveSecurityGroupWithOptions(request *LeaveSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *LeaveSecurityGroupResponse, _err error) {
+func (client *Client) LeaveSecurityGroupWithContext(ctx context.Context, request *LeaveSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *LeaveSecurityGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29344,43 +22739,11 @@ func (client *Client) LeaveSecurityGroupWithOptions(request *LeaveSecurityGroupR
 		BodyType:    dara.String("json"),
 	}
 	_result = &LeaveSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) from a security group.
-//
-// Description:
-//
-// >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
-//
-// >  Alibaba Cloud modified verification rules for the LeaveSecurityGroup operation on July 8, 2024. When you remove an ECS instance or ENI that does not belong to a security group from the security group, the "InvalidSecurityGroupAssociation.NotFound" error code is returned instead of a success response. Update the LeaveSecurityGroup operation to use the new verification rules with the new error code based on your business requirements.
-//
-//   - You cannot remove an instance and an ENI from a security group at the same time. This indicates that you cannot specify `InstanceId` and `NetworkInterfaceId` in one request.
-//
-//   - Before you remove an instance from a security group, the instance must be in the **Stopped*	- (Stopped) or **Running*	- (Running) state.
-//
-//   - An instance or ENI must be added to at least one security group. If you remove an instance or ENI from the only security group, the removal request fails and an error is returned.
-//
-//   - When you remove an instance or ENI that is not in a security group from the security group, the removal request fails and an error is returned.
-//
-// @param request - LeaveSecurityGroupRequest
-//
-// @return LeaveSecurityGroupResponse
-func (client *Client) LeaveSecurityGroup(request *LeaveSecurityGroupRequest) (_result *LeaveSecurityGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &LeaveSecurityGroupResponse{}
-	_body, _err := client.LeaveSecurityGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29403,7 +22766,7 @@ func (client *Client) LeaveSecurityGroup(request *LeaveSecurityGroupRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPluginStatusResponse
-func (client *Client) ListPluginStatusWithOptions(request *ListPluginStatusRequest, runtime *dara.RuntimeOptions) (_result *ListPluginStatusResponse, _err error) {
+func (client *Client) ListPluginStatusWithContext(ctx context.Context, request *ListPluginStatusRequest, runtime *dara.RuntimeOptions) (_result *ListPluginStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29472,39 +22835,11 @@ func (client *Client) ListPluginStatusWithOptions(request *ListPluginStatusReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPluginStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the states of Cloud Assistant plug-ins on Elastic Compute Service (ECS) instances.
-//
-// Description:
-//
-//	  Before you call this operation to query the status of Cloud Assistant plug-ins on ECS instances, make sure that the versions of Cloud Assistant Agent on the instances are not earlier than the following ones:
-//
-//	    	- 2.2.3.344 for Linux instances
-//
-//	    	- 2.1.3.344 for Windows instances
-//
-//		- During a paged query, when you call the ListPluginStatus operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token that can be used in the next call to retrieve a new page of results. When you call the ListPluginStatus operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-//
-// @param request - ListPluginStatusRequest
-//
-// @return ListPluginStatusResponse
-func (client *Client) ListPluginStatus(request *ListPluginStatusRequest) (_result *ListPluginStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPluginStatusResponse{}
-	_body, _err := client.ListPluginStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29535,7 +22870,7 @@ func (client *Client) ListPluginStatus(request *ListPluginStatusRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29600,47 +22935,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the tags that are added to one or more Elastic Compute Service (ECS) resources.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// Specify at least one of the following parameters or parameter pairs in a request to determine a query object:
-//
-//   - `ResourceId.N`
-//
-//   - `Tag.N` parameter pair (`Tag.N.Key` and `Tag.N.Value`)
-//
-//   - `TagFilter.N`
-//
-// If one of the following sets of request parameters is specified as filter conditions, only ECS resources that meet all the specified filter conditions are returned:
-//
-//   - Set 1: `Tag.N.Key, Tag.N.Value` and `ResourceId.N`
-//
-//   - Set 2: `TagFilter.N.TagKey, TagFilter.N.TagValues.N` and `ResourceId.N`
-//
-// @param request - ListTagResourcesRequest
-//
-// @return ListTagResourcesResponse
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29661,7 +22960,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAutoProvisioningGroupResponse
-func (client *Client) ModifyAutoProvisioningGroupWithOptions(request *ModifyAutoProvisioningGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyAutoProvisioningGroupResponse, _err error) {
+func (client *Client) ModifyAutoProvisioningGroupWithContext(ctx context.Context, request *ModifyAutoProvisioningGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyAutoProvisioningGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29742,37 +23041,11 @@ func (client *Client) ModifyAutoProvisioningGroupWithOptions(request *ModifyAuto
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAutoProvisioningGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configurations of an auto provisioning group.
-//
-// Description:
-//
-// Before you call this operation, take note of the following items:
-//
-//   - If you modify the capacity or capacity-related settings of an auto-provisioning group, the group executes a scheduling task after the group is modified.
-//
-//   - You cannot modify an auto-provisioning group when the group is being deleted.
-//
-// @param request - ModifyAutoProvisioningGroupRequest
-//
-// @return ModifyAutoProvisioningGroupResponse
-func (client *Client) ModifyAutoProvisioningGroup(request *ModifyAutoProvisioningGroupRequest) (_result *ModifyAutoProvisioningGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAutoProvisioningGroupResponse{}
-	_body, _err := client.ModifyAutoProvisioningGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29795,7 +23068,7 @@ func (client *Client) ModifyAutoProvisioningGroup(request *ModifyAutoProvisionin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAutoSnapshotPolicyExResponse
-func (client *Client) ModifyAutoSnapshotPolicyExWithOptions(request *ModifyAutoSnapshotPolicyExRequest, runtime *dara.RuntimeOptions) (_result *ModifyAutoSnapshotPolicyExResponse, _err error) {
+func (client *Client) ModifyAutoSnapshotPolicyExWithContext(ctx context.Context, request *ModifyAutoSnapshotPolicyExRequest, runtime *dara.RuntimeOptions) (_result *ModifyAutoSnapshotPolicyExResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29868,39 +23141,11 @@ func (client *Client) ModifyAutoSnapshotPolicyExWithOptions(request *ModifyAutoS
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAutoSnapshotPolicyExResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies an automatic snapshot policy. For example, you can change the points in time of the day at which to create automatic snapshots, days of the week on which to create automatic snapshots, and retention period of automatic snapshots for the automatic snapshot policy.
-//
-// Description:
-//
-// Before you call this operation, take note of the following items:
-//
-//   - You cannot modify system policies.
-//
-//   - After an automatic snapshot policy is modified, the modifications immediately take effect on the disks that are associated with the policy.
-//
-//   - If cross-region replication for snapshots is enabled and no encryption parameters are configured, the generated encrypted snapshot copies are encrypted by using the Key Management Service (KMS) encryption keys in the region to which the snapshots are copied.
-//
-// @param request - ModifyAutoSnapshotPolicyExRequest
-//
-// @return ModifyAutoSnapshotPolicyExResponse
-func (client *Client) ModifyAutoSnapshotPolicyEx(request *ModifyAutoSnapshotPolicyExRequest) (_result *ModifyAutoSnapshotPolicyExResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAutoSnapshotPolicyExResponse{}
-	_body, _err := client.ModifyAutoSnapshotPolicyExWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29911,7 +23156,7 @@ func (client *Client) ModifyAutoSnapshotPolicyEx(request *ModifyAutoSnapshotPoli
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyBandwidthPackageSpecResponse
-func (client *Client) ModifyBandwidthPackageSpecWithOptions(request *ModifyBandwidthPackageSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyBandwidthPackageSpecResponse, _err error) {
+func (client *Client) ModifyBandwidthPackageSpecWithContext(ctx context.Context, request *ModifyBandwidthPackageSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyBandwidthPackageSpecResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29960,28 +23205,11 @@ func (client *Client) ModifyBandwidthPackageSpecWithOptions(request *ModifyBandw
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyBandwidthPackageSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyBandwidthPackageSpec is deprecated
-//
-// @param request - ModifyBandwidthPackageSpecRequest
-//
-// @return ModifyBandwidthPackageSpecResponse
-// Deprecated
-func (client *Client) ModifyBandwidthPackageSpec(request *ModifyBandwidthPackageSpecRequest) (_result *ModifyBandwidthPackageSpecResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyBandwidthPackageSpecResponse{}
-	_body, _err := client.ModifyBandwidthPackageSpecWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29994,7 +23222,7 @@ func (client *Client) ModifyBandwidthPackageSpec(request *ModifyBandwidthPackage
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCapacityReservationResponse
-func (client *Client) ModifyCapacityReservationWithOptions(request *ModifyCapacityReservationRequest, runtime *dara.RuntimeOptions) (_result *ModifyCapacityReservationResponse, _err error) {
+func (client *Client) ModifyCapacityReservationWithContext(ctx context.Context, request *ModifyCapacityReservationRequest, runtime *dara.RuntimeOptions) (_result *ModifyCapacityReservationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30063,29 +23291,11 @@ func (client *Client) ModifyCapacityReservationWithOptions(request *ModifyCapaci
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCapacityReservationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the information of a capacity reservation, including the name, description, release mode, and the total number of Elastic Compute Service (ECS) instances for which capacity is reserved.
-//
-// @param request - ModifyCapacityReservationRequest
-//
-// @return ModifyCapacityReservationResponse
-func (client *Client) ModifyCapacityReservation(request *ModifyCapacityReservationRequest) (_result *ModifyCapacityReservationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyCapacityReservationResponse{}
-	_body, _err := client.ModifyCapacityReservationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30098,7 +23308,7 @@ func (client *Client) ModifyCapacityReservation(request *ModifyCapacityReservati
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCloudAssistantSettingsResponse
-func (client *Client) ModifyCloudAssistantSettingsWithOptions(tmpReq *ModifyCloudAssistantSettingsRequest, runtime *dara.RuntimeOptions) (_result *ModifyCloudAssistantSettingsResponse, _err error) {
+func (client *Client) ModifyCloudAssistantSettingsWithContext(ctx context.Context, tmpReq *ModifyCloudAssistantSettingsRequest, runtime *dara.RuntimeOptions) (_result *ModifyCloudAssistantSettingsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30177,29 +23387,11 @@ func (client *Client) ModifyCloudAssistantSettingsWithOptions(tmpReq *ModifyClou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCloudAssistantSettingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configurations of a Cloud Assistant feature.
-//
-// @param request - ModifyCloudAssistantSettingsRequest
-//
-// @return ModifyCloudAssistantSettingsResponse
-func (client *Client) ModifyCloudAssistantSettings(request *ModifyCloudAssistantSettingsRequest) (_result *ModifyCloudAssistantSettingsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyCloudAssistantSettingsResponse{}
-	_body, _err := client.ModifyCloudAssistantSettingsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30218,7 +23410,7 @@ func (client *Client) ModifyCloudAssistantSettings(request *ModifyCloudAssistant
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCommandResponse
-func (client *Client) ModifyCommandWithOptions(request *ModifyCommandRequest, runtime *dara.RuntimeOptions) (_result *ModifyCommandResponse, _err error) {
+func (client *Client) ModifyCommandWithContext(ctx context.Context, request *ModifyCommandRequest, runtime *dara.RuntimeOptions) (_result *ModifyCommandResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30291,35 +23483,11 @@ func (client *Client) ModifyCommandWithOptions(request *ModifyCommandRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCommandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the parameters of a Cloud Assistant command.
-//
-// Description:
-//
-// You can modify a command when it is run. After the command is modified, the new command content applies to subsequent executions.
-//
-// You cannot modify the command type. For example, you cannot change a shell command (RunShellScript) to a batch command (RunBatScript).
-//
-// @param request - ModifyCommandRequest
-//
-// @return ModifyCommandResponse
-func (client *Client) ModifyCommand(request *ModifyCommandRequest) (_result *ModifyCommandResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyCommandResponse{}
-	_body, _err := client.ModifyCommandWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30340,7 +23508,7 @@ func (client *Client) ModifyCommand(request *ModifyCommandRequest) (_result *Mod
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDedicatedHostAttributeResponse
-func (client *Client) ModifyDedicatedHostAttributeWithOptions(request *ModifyDedicatedHostAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDedicatedHostAttributeResponse, _err error) {
+func (client *Client) ModifyDedicatedHostAttributeWithContext(ctx context.Context, request *ModifyDedicatedHostAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDedicatedHostAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30413,37 +23581,11 @@ func (client *Client) ModifyDedicatedHostAttributeWithOptions(request *ModifyDed
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDedicatedHostAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the information about a dedicated host, such as the name, description, and instance migration policy that is applied when the dedicated host fails.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - All Elastic Compute Service (ECS) instances that are hosted on a dedicated host must be in the Stopped (`Stopped`) state before you can modify the CPU overcommit ratio of the dedicated host.
-//
-//   - Changes to the CPU overcommit ratio of a dedicated host do not affect the running status of the dedicated host. After the CPU overcommit ratio is changed, the number of allocated vCPUs on the dedicated host cannot exceed the new total number of vCPUs. Otherwise, ECS instances that use the excess vCPUs cannot start.
-//
-// @param request - ModifyDedicatedHostAttributeRequest
-//
-// @return ModifyDedicatedHostAttributeResponse
-func (client *Client) ModifyDedicatedHostAttribute(request *ModifyDedicatedHostAttributeRequest) (_result *ModifyDedicatedHostAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDedicatedHostAttributeResponse{}
-	_body, _err := client.ModifyDedicatedHostAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30462,7 +23604,7 @@ func (client *Client) ModifyDedicatedHostAttribute(request *ModifyDedicatedHostA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDedicatedHostAutoReleaseTimeResponse
-func (client *Client) ModifyDedicatedHostAutoReleaseTimeWithOptions(request *ModifyDedicatedHostAutoReleaseTimeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDedicatedHostAutoReleaseTimeResponse, _err error) {
+func (client *Client) ModifyDedicatedHostAutoReleaseTimeWithContext(ctx context.Context, request *ModifyDedicatedHostAutoReleaseTimeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDedicatedHostAutoReleaseTimeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30511,35 +23653,11 @@ func (client *Client) ModifyDedicatedHostAutoReleaseTimeWithOptions(request *Mod
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDedicatedHostAutoReleaseTimeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sets the automatic release time for a pay-as-you-go dedicated host or cancels its automatic release.
-//
-// Description:
-//
-// ## Usage notes
-//
-// A pay-as-you-go dedicated host can be automatically released at the specified time. Before you release a pay-as-you-go dedicated host, make sure that the host is no longer required and all necessary application data is backed up.
-//
-// @param request - ModifyDedicatedHostAutoReleaseTimeRequest
-//
-// @return ModifyDedicatedHostAutoReleaseTimeResponse
-func (client *Client) ModifyDedicatedHostAutoReleaseTime(request *ModifyDedicatedHostAutoReleaseTimeRequest) (_result *ModifyDedicatedHostAutoReleaseTimeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDedicatedHostAutoReleaseTimeResponse{}
-	_body, _err := client.ModifyDedicatedHostAutoReleaseTimeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30558,7 +23676,7 @@ func (client *Client) ModifyDedicatedHostAutoReleaseTime(request *ModifyDedicate
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDedicatedHostAutoRenewAttributeResponse
-func (client *Client) ModifyDedicatedHostAutoRenewAttributeWithOptions(request *ModifyDedicatedHostAutoRenewAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDedicatedHostAutoRenewAttributeResponse, _err error) {
+func (client *Client) ModifyDedicatedHostAutoRenewAttributeWithContext(ctx context.Context, request *ModifyDedicatedHostAutoRenewAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDedicatedHostAutoRenewAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30623,35 +23741,11 @@ func (client *Client) ModifyDedicatedHostAutoRenewAttributeWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDedicatedHostAutoRenewAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables or disables auto-renewal for one or more subscription dedicated hosts.
-//
-// Description:
-//
-//	  If you enable auto-renewal for your subscription dedicated host, the system attempts to deduct the renewal payment at 08:00:00 (UTC+8) nine days before the dedicated host expires to renew the dedicated host. If this deduction attempt fails, the system attempt to deduct the payment at the same point in time the next day. The system attempts to deduct the payment once every day until the dedicated host expires or until the payment is deducted. Make sure that your account balance is sufficient.
-//
-//		- Subscription dedicated hosts can be automatically renewed along with the subscription Elastic Compute Service (ECS) instances hosted on the dedicated hosts. For more information, see the description of the AutoRenewWithEcs parameter.
-//
-// @param request - ModifyDedicatedHostAutoRenewAttributeRequest
-//
-// @return ModifyDedicatedHostAutoRenewAttributeResponse
-func (client *Client) ModifyDedicatedHostAutoRenewAttribute(request *ModifyDedicatedHostAutoRenewAttributeRequest) (_result *ModifyDedicatedHostAutoRenewAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDedicatedHostAutoRenewAttributeResponse{}
-	_body, _err := client.ModifyDedicatedHostAutoRenewAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30664,7 +23758,7 @@ func (client *Client) ModifyDedicatedHostAutoRenewAttribute(request *ModifyDedic
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDedicatedHostClusterAttributeResponse
-func (client *Client) ModifyDedicatedHostClusterAttributeWithOptions(request *ModifyDedicatedHostClusterAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDedicatedHostClusterAttributeResponse, _err error) {
+func (client *Client) ModifyDedicatedHostClusterAttributeWithContext(ctx context.Context, request *ModifyDedicatedHostClusterAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDedicatedHostClusterAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30717,29 +23811,11 @@ func (client *Client) ModifyDedicatedHostClusterAttributeWithOptions(request *Mo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDedicatedHostClusterAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the information of a dedicated host group, including the name, description, and properties.
-//
-// @param request - ModifyDedicatedHostClusterAttributeRequest
-//
-// @return ModifyDedicatedHostClusterAttributeResponse
-func (client *Client) ModifyDedicatedHostClusterAttribute(request *ModifyDedicatedHostClusterAttributeRequest) (_result *ModifyDedicatedHostClusterAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDedicatedHostClusterAttributeResponse{}
-	_body, _err := client.ModifyDedicatedHostClusterAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30752,7 +23828,7 @@ func (client *Client) ModifyDedicatedHostClusterAttribute(request *ModifyDedicat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDedicatedHostsChargeTypeResponse
-func (client *Client) ModifyDedicatedHostsChargeTypeWithOptions(request *ModifyDedicatedHostsChargeTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDedicatedHostsChargeTypeResponse, _err error) {
+func (client *Client) ModifyDedicatedHostsChargeTypeWithContext(ctx context.Context, request *ModifyDedicatedHostsChargeTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDedicatedHostsChargeTypeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30825,29 +23901,11 @@ func (client *Client) ModifyDedicatedHostsChargeTypeWithOptions(request *ModifyD
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDedicatedHostsChargeTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the billing method of dedicated hosts.
-//
-// @param request - ModifyDedicatedHostsChargeTypeRequest
-//
-// @return ModifyDedicatedHostsChargeTypeResponse
-func (client *Client) ModifyDedicatedHostsChargeType(request *ModifyDedicatedHostsChargeTypeRequest) (_result *ModifyDedicatedHostsChargeTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDedicatedHostsChargeTypeResponse{}
-	_body, _err := client.ModifyDedicatedHostsChargeTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30860,7 +23918,7 @@ func (client *Client) ModifyDedicatedHostsChargeType(request *ModifyDedicatedHos
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDeploymentSetAttributeResponse
-func (client *Client) ModifyDeploymentSetAttributeWithOptions(request *ModifyDeploymentSetAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDeploymentSetAttributeResponse, _err error) {
+func (client *Client) ModifyDeploymentSetAttributeWithContext(ctx context.Context, request *ModifyDeploymentSetAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDeploymentSetAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30913,29 +23971,11 @@ func (client *Client) ModifyDeploymentSetAttributeWithOptions(request *ModifyDep
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDeploymentSetAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of a deployment set.
-//
-// @param request - ModifyDeploymentSetAttributeRequest
-//
-// @return ModifyDeploymentSetAttributeResponse
-func (client *Client) ModifyDeploymentSetAttribute(request *ModifyDeploymentSetAttributeRequest) (_result *ModifyDeploymentSetAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDeploymentSetAttributeResponse{}
-	_body, _err := client.ModifyDeploymentSetAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30948,7 +23988,7 @@ func (client *Client) ModifyDeploymentSetAttribute(request *ModifyDeploymentSetA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDiagnosticMetricSetResponse
-func (client *Client) ModifyDiagnosticMetricSetWithOptions(request *ModifyDiagnosticMetricSetRequest, runtime *dara.RuntimeOptions) (_result *ModifyDiagnosticMetricSetResponse, _err error) {
+func (client *Client) ModifyDiagnosticMetricSetWithContext(ctx context.Context, request *ModifyDiagnosticMetricSetRequest, runtime *dara.RuntimeOptions) (_result *ModifyDiagnosticMetricSetResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30993,29 +24033,11 @@ func (client *Client) ModifyDiagnosticMetricSetWithOptions(request *ModifyDiagno
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDiagnosticMetricSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a diagnostic metric set.
-//
-// @param request - ModifyDiagnosticMetricSetRequest
-//
-// @return ModifyDiagnosticMetricSetResponse
-func (client *Client) ModifyDiagnosticMetricSet(request *ModifyDiagnosticMetricSetRequest) (_result *ModifyDiagnosticMetricSetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDiagnosticMetricSetResponse{}
-	_body, _err := client.ModifyDiagnosticMetricSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31032,7 +24054,7 @@ func (client *Client) ModifyDiagnosticMetricSet(request *ModifyDiagnosticMetricS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDiskAttributeResponse
-func (client *Client) ModifyDiskAttributeWithOptions(request *ModifyDiskAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDiskAttributeResponse, _err error) {
+func (client *Client) ModifyDiskAttributeWithContext(ctx context.Context, request *ModifyDiskAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDiskAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31105,33 +24127,11 @@ func (client *Client) ModifyDiskAttributeWithOptions(request *ModifyDiskAttribut
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDiskAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name, description, release behavior with ECS instance, snapshot deletion on disk removal, automatic snapshot policy feature, and performance burst feature for one or more block storage devices.
-//
-// Description:
-//
-// You can use `DiskId` to specify a block storage device and modify the attributes of the device, such as the name and description of the device and whether to release the device together with the associated instance. You can use `DiskIds.N` to specify multiple block storage devices and batch modify the attributes of the devices.
-//
-// @param request - ModifyDiskAttributeRequest
-//
-// @return ModifyDiskAttributeResponse
-func (client *Client) ModifyDiskAttribute(request *ModifyDiskAttributeRequest) (_result *ModifyDiskAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDiskAttributeResponse{}
-	_body, _err := client.ModifyDiskAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31160,7 +24160,7 @@ func (client *Client) ModifyDiskAttribute(request *ModifyDiskAttributeRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDiskChargeTypeResponse
-func (client *Client) ModifyDiskChargeTypeWithOptions(request *ModifyDiskChargeTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDiskChargeTypeResponse, _err error) {
+func (client *Client) ModifyDiskChargeTypeWithContext(ctx context.Context, request *ModifyDiskChargeTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDiskChargeTypeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31221,45 +24221,11 @@ func (client *Client) ModifyDiskChargeTypeWithOptions(request *ModifyDiskChargeT
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDiskChargeTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Converts the billing method of a data disk attached to a subscription ECS instance between pay-as-you-go and subscription.
-//
-// Description:
-//
-// For information about how to change the billing method of cloud disks, see [Change the billing methods of a disk](https://help.aliyun.com/document_detail/145018.html).
-//
-// Take note of the following items:
-//
-//   - Only pay-as-you-go disks can be attached to pay-as-you-go instances, and the billing methods of the disks cannot be changed.
-//
-//   - The instance to which data disks are attached cannot be in the Stopped state due to expiration.
-//
-//   - The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are nonrefundable.
-//
-//   - You cannot change the billing method again within 5 minutes of a successful change.
-//
-// After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, log on to the **Expenses and Costs console**, go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list), and pay for the order.
-//
-// @param request - ModifyDiskChargeTypeRequest
-//
-// @return ModifyDiskChargeTypeResponse
-func (client *Client) ModifyDiskChargeType(request *ModifyDiskChargeTypeRequest) (_result *ModifyDiskChargeTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDiskChargeTypeResponse{}
-	_body, _err := client.ModifyDiskChargeTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31280,7 +24246,7 @@ func (client *Client) ModifyDiskChargeType(request *ModifyDiskChargeTypeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDiskDefaultKMSKeyIdResponse
-func (client *Client) ModifyDiskDefaultKMSKeyIdWithOptions(request *ModifyDiskDefaultKMSKeyIdRequest, runtime *dara.RuntimeOptions) (_result *ModifyDiskDefaultKMSKeyIdResponse, _err error) {
+func (client *Client) ModifyDiskDefaultKMSKeyIdWithContext(ctx context.Context, request *ModifyDiskDefaultKMSKeyIdRequest, runtime *dara.RuntimeOptions) (_result *ModifyDiskDefaultKMSKeyIdResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31317,37 +24283,11 @@ func (client *Client) ModifyDiskDefaultKMSKeyIdWithOptions(request *ModifyDiskDe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDiskDefaultKMSKeyIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the Key Management Service (KMS) key used by the Account-level Elastic Block Storage (EBS) Default Encryption feature in a region.
-//
-// Description:
-//
-//	  To call this operation as a Resource Access Management (RAM) user, grant the `AliyunECSFullAccess` permission to the RAM user. For more information, see [Grant permissions to a RAM user](https://help.aliyun.com/document_detail/116146.html).
-//
-//		- Before you can call this operation in a region, make sure that the Account-level EBS Default Encryption feature is enabled in the region.
-//
-//		- The first time you use a customer master key (CMK), you must use the `AliyunECSDiskEncryptDefaultRole` role to grant Elastic Compute Service (ECS) access to KMS resources. For more information, see [Grant access to KMS keys through RAM roles](https://help.aliyun.com/document_detail/2838993.html).
-//
-// @param request - ModifyDiskDefaultKMSKeyIdRequest
-//
-// @return ModifyDiskDefaultKMSKeyIdResponse
-func (client *Client) ModifyDiskDefaultKMSKeyId(request *ModifyDiskDefaultKMSKeyIdRequest) (_result *ModifyDiskDefaultKMSKeyIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDiskDefaultKMSKeyIdResponse{}
-	_body, _err := client.ModifyDiskDefaultKMSKeyIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31386,7 +24326,7 @@ func (client *Client) ModifyDiskDefaultKMSKeyId(request *ModifyDiskDefaultKMSKey
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDiskDeploymentResponse
-func (client *Client) ModifyDiskDeploymentWithOptions(request *ModifyDiskDeploymentRequest, runtime *dara.RuntimeOptions) (_result *ModifyDiskDeploymentResponse, _err error) {
+func (client *Client) ModifyDiskDeploymentWithContext(ctx context.Context, request *ModifyDiskDeploymentRequest, runtime *dara.RuntimeOptions) (_result *ModifyDiskDeploymentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31443,55 +24383,11 @@ func (client *Client) ModifyDiskDeploymentWithOptions(request *ModifyDiskDeploym
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDiskDeploymentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Migrates disks to or from a dedicated block storage cluster, or migrates disks between different dedicated block storage clusters.
-//
-// Description:
-//
-// >  The Dedicated Block Storage Cluster feature is available in the following regions: China (Hangzhou), China (Shanghai), China (Beijing), China (Zhangjiakou), China (Ulanqab), China (Shenzhen), China (Heyuan), Indonesia (Jakarta), Germany (Frankfurt), and China South 1 Finance.
-//
-// Before you call the ModifyDiskDeployment operation, make sure that you fully understand the billing methods and prices of disks and dedicated block storage clusters. In addition, make sure that the dedicated block storage clusters are unexpired and your account has no overdue payments. For more information, see [Dedicated block storage cluster](https://help.aliyun.com/document_detail/208883.html) and [Block storage devices](https://help.aliyun.com/document_detail/179022.html).
-//
-// Take note of the following items:
-//
-//   - The disks and a dedicated block storage cluster to which you want to migrate the disk must be in the same zone.
-//
-//   - You can migrate only pay-as-you-go disks. If you want to migrate subscription disks, change the disks to pay-as-you-go disks first. For more information, see [Change the billing method of a disk](https://help.aliyun.com/document_detail/145018.html).
-//
-//   - The specifications of disks that you want to migrate to a destination block storage cluster must the same as the disk specifications that the destination dedicated block storage cluster supports. During migration, you can change the specifications of the disks to ensure specification consistency.
-//
-//   - The disk must be in the **In Use*	- (In_Use) or **Available*	- (Available) state.
-//
-//   - If the disk is attached to an Elastic Compute Service (ECS) instance, the instance must be in the **Running*	- (Running) or **Stopped*	- (Stopped) state. The ECS instance cannot be in the Expired state.
-//
-//   - The performance level of an Enterprise SSD (ESSD) is limited by the ESSD disk size. If you cannot upgrade the performance level of an ESSD, extend the ESSD and try again. For more information, see [ResizeDisk](https://help.aliyun.com/document_detail/25522.html) and [ESSDs](https://help.aliyun.com/document_detail/122389.html).
-//
-//   - An account can perform up to five disk migration tasks in the same region at the same time.
-//
-//   - When a disk is being migrated, you cannot cancel the migration task, create snapshots for the disk, change the disk configurations, resize the disk, mount the disk, unmount the disk, or re-initialize the disk.
-//
-// >  After you migrate a disk to a destination cluster by calling the ModifyDiskDeployment operation, the billing method, disk specifications, and capabilities of the destination cluster take effect immediately on the disk. Alibaba Cloud charges the disk based on the disk category and performance level. For more information, see [Dedicated block storage cluster](https://help.aliyun.com/document_detail/208883.html) and [Block storage devices](https://help.aliyun.com/document_detail/179022.html).
-//
-// @param request - ModifyDiskDeploymentRequest
-//
-// @return ModifyDiskDeploymentResponse
-func (client *Client) ModifyDiskDeployment(request *ModifyDiskDeploymentRequest) (_result *ModifyDiskDeploymentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDiskDeploymentResponse{}
-	_body, _err := client.ModifyDiskDeploymentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31534,7 +24430,7 @@ func (client *Client) ModifyDiskDeployment(request *ModifyDiskDeploymentRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDiskSpecResponse
-func (client *Client) ModifyDiskSpecWithOptions(request *ModifyDiskSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyDiskSpecResponse, _err error) {
+func (client *Client) ModifyDiskSpecWithContext(ctx context.Context, request *ModifyDiskSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyDiskSpecResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31599,59 +24495,11 @@ func (client *Client) ModifyDiskSpecWithOptions(request *ModifyDiskSpecRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDiskSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the disk category of a cloud disk or the performance level of an Enterprise SSD (ESSD). You cannot change the disk categories of Regional ESSDs, basic disks, elastic ephemeral disks, and local disks.
-//
-// Description:
-//
-// To minimize impacts on your business, change the disk categories or performance levels of cloud disks during off-peak hours.
-//
-// Take note of the following items:
-//
-//   - To change the performance level of an ESSD, take note of the following items:
-//
-//   - If the ESSD is a subscription ESSD, you can only upgrade its performance level.
-//
-//   - If the ESSD is a pay-as-you-go ESSD, you can upgrade or downgrade its performance level. However, you cannot downgrade the performance level to PL0.
-//
-//   - The ESSD must be in the **In Use*	- (In_Use) or **Unattached*	- (Available) state.
-//
-//   - If the ESSD is attached to an Elastic Compute Service (ECS) instance, the instance must be in the **Running*	- (Running) or **Stopped*	- (Stopped) state. The instance cannot be in the Expired state or stopped due to an overdue payment.
-//
-//   - If you cannot upgrade the performance level of an ESSD due to the capacity limit, extend the ESSD by calling the [ResizeDisk](https://help.aliyun.com/document_detail/25522.html) operation and then try again. For more information, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
-//
-//   - For information about the limits on changing the disk category of a cloud disk, see [Change the category of a disk](~~161980#section_s4a_to0_1jx~~).
-//
-//   - For the disk categories to which cloud disks of each disk category can be changed, see [Change the category of a disk](~~161980#eb8bb54032nho~~).
-//
-// After the disk category of a cloud disk is changed, the billing of the cloud disk has the following changes:
-//
-//   - If the cloud disk is a pay-as-you-go disk, you are charged for the disk based on the new disk category.
-//
-//   - If the cloud disk is a subscription disk, you may be charged additionally based on the price difference between the old and new disk categories and the remaining days of the billing cycle, starting from 00:00 the next day until the end of the subscription period.
-//
-// For information about the billing of cloud disks, see [Block storage devices](https://help.aliyun.com/document_detail/179022.html).
-//
-// @param request - ModifyDiskSpecRequest
-//
-// @return ModifyDiskSpecResponse
-func (client *Client) ModifyDiskSpec(request *ModifyDiskSpecRequest) (_result *ModifyDiskSpecResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDiskSpecResponse{}
-	_body, _err := client.ModifyDiskSpecWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31662,7 +24510,7 @@ func (client *Client) ModifyDiskSpec(request *ModifyDiskSpecRequest) (_result *M
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyEipAddressAttributeResponse
-func (client *Client) ModifyEipAddressAttributeWithOptions(request *ModifyEipAddressAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyEipAddressAttributeResponse, _err error) {
+func (client *Client) ModifyEipAddressAttributeWithContext(ctx context.Context, request *ModifyEipAddressAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyEipAddressAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31711,28 +24559,11 @@ func (client *Client) ModifyEipAddressAttributeWithOptions(request *ModifyEipAdd
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyEipAddressAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyEipAddressAttribute is deprecated
-//
-// @param request - ModifyEipAddressAttributeRequest
-//
-// @return ModifyEipAddressAttributeResponse
-// Deprecated
-func (client *Client) ModifyEipAddressAttribute(request *ModifyEipAddressAttributeRequest) (_result *ModifyEipAddressAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyEipAddressAttributeResponse{}
-	_body, _err := client.ModifyEipAddressAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31745,7 +24576,7 @@ func (client *Client) ModifyEipAddressAttribute(request *ModifyEipAddressAttribu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyElasticityAssuranceResponse
-func (client *Client) ModifyElasticityAssuranceWithOptions(request *ModifyElasticityAssuranceRequest, runtime *dara.RuntimeOptions) (_result *ModifyElasticityAssuranceResponse, _err error) {
+func (client *Client) ModifyElasticityAssuranceWithContext(ctx context.Context, request *ModifyElasticityAssuranceRequest, runtime *dara.RuntimeOptions) (_result *ModifyElasticityAssuranceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31806,29 +24637,11 @@ func (client *Client) ModifyElasticityAssuranceWithOptions(request *ModifyElasti
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyElasticityAssuranceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies information about an elasticity assurance, including the name, description, and capacity. Only capacity scale-in is supported .
-//
-// @param request - ModifyElasticityAssuranceRequest
-//
-// @return ModifyElasticityAssuranceResponse
-func (client *Client) ModifyElasticityAssurance(request *ModifyElasticityAssuranceRequest) (_result *ModifyElasticityAssuranceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyElasticityAssuranceResponse{}
-	_body, _err := client.ModifyElasticityAssuranceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31841,7 +24654,7 @@ func (client *Client) ModifyElasticityAssurance(request *ModifyElasticityAssuran
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyElasticityAssuranceAutoRenewAttributeResponse
-func (client *Client) ModifyElasticityAssuranceAutoRenewAttributeWithOptions(request *ModifyElasticityAssuranceAutoRenewAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyElasticityAssuranceAutoRenewAttributeResponse, _err error) {
+func (client *Client) ModifyElasticityAssuranceAutoRenewAttributeWithContext(ctx context.Context, request *ModifyElasticityAssuranceAutoRenewAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyElasticityAssuranceAutoRenewAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31898,29 +24711,11 @@ func (client *Client) ModifyElasticityAssuranceAutoRenewAttributeWithOptions(req
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyElasticityAssuranceAutoRenewAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the auto-renewal attribute of elasticity assurances.
-//
-// @param request - ModifyElasticityAssuranceAutoRenewAttributeRequest
-//
-// @return ModifyElasticityAssuranceAutoRenewAttributeResponse
-func (client *Client) ModifyElasticityAssuranceAutoRenewAttribute(request *ModifyElasticityAssuranceAutoRenewAttributeRequest) (_result *ModifyElasticityAssuranceAutoRenewAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyElasticityAssuranceAutoRenewAttributeResponse{}
-	_body, _err := client.ModifyElasticityAssuranceAutoRenewAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31931,7 +24726,7 @@ func (client *Client) ModifyElasticityAssuranceAutoRenewAttribute(request *Modif
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyForwardEntryResponse
-func (client *Client) ModifyForwardEntryWithOptions(request *ModifyForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifyForwardEntryResponse, _err error) {
+func (client *Client) ModifyForwardEntryWithContext(ctx context.Context, request *ModifyForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifyForwardEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32000,28 +24795,11 @@ func (client *Client) ModifyForwardEntryWithOptions(request *ModifyForwardEntryR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyForwardEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyForwardEntry is deprecated
-//
-// @param request - ModifyForwardEntryRequest
-//
-// @return ModifyForwardEntryResponse
-// Deprecated
-func (client *Client) ModifyForwardEntry(request *ModifyForwardEntryRequest) (_result *ModifyForwardEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyForwardEntryResponse{}
-	_body, _err := client.ModifyForwardEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32032,7 +24810,7 @@ func (client *Client) ModifyForwardEntry(request *ModifyForwardEntryRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyHaVipAttributeResponse
-func (client *Client) ModifyHaVipAttributeWithOptions(request *ModifyHaVipAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyHaVipAttributeResponse, _err error) {
+func (client *Client) ModifyHaVipAttributeWithContext(ctx context.Context, request *ModifyHaVipAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyHaVipAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32085,28 +24863,11 @@ func (client *Client) ModifyHaVipAttributeWithOptions(request *ModifyHaVipAttrib
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyHaVipAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyHaVipAttribute is deprecated
-//
-// @param request - ModifyHaVipAttributeRequest
-//
-// @return ModifyHaVipAttributeResponse
-// Deprecated
-func (client *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest) (_result *ModifyHaVipAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyHaVipAttributeResponse{}
-	_body, _err := client.ModifyHaVipAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32119,7 +24880,7 @@ func (client *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyHpcClusterAttributeResponse
-func (client *Client) ModifyHpcClusterAttributeWithOptions(request *ModifyHpcClusterAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyHpcClusterAttributeResponse, _err error) {
+func (client *Client) ModifyHpcClusterAttributeWithContext(ctx context.Context, request *ModifyHpcClusterAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyHpcClusterAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32180,29 +24941,11 @@ func (client *Client) ModifyHpcClusterAttributeWithOptions(request *ModifyHpcClu
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyHpcClusterAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the description of a high performance computing (HPC) cluster.
-//
-// @param request - ModifyHpcClusterAttributeRequest
-//
-// @return ModifyHpcClusterAttributeResponse
-func (client *Client) ModifyHpcClusterAttribute(request *ModifyHpcClusterAttributeRequest) (_result *ModifyHpcClusterAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyHpcClusterAttributeResponse{}
-	_body, _err := client.ModifyHpcClusterAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32215,7 +24958,7 @@ func (client *Client) ModifyHpcClusterAttribute(request *ModifyHpcClusterAttribu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyImageAttributeResponse
-func (client *Client) ModifyImageAttributeWithOptions(request *ModifyImageAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyImageAttributeResponse, _err error) {
+func (client *Client) ModifyImageAttributeWithContext(ctx context.Context, request *ModifyImageAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyImageAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32292,29 +25035,11 @@ func (client *Client) ModifyImageAttributeWithOptions(request *ModifyImageAttrib
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyImageAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the attributes of a custom image, such as the image family, name, boot mode, and status and whether the image supports the Non-Volatile Memory Express (NVMe) protocol. When you call this operation, you can specify parameters, such as ImageId and ImageFamily, in the request.
-//
-// @param request - ModifyImageAttributeRequest
-//
-// @return ModifyImageAttributeResponse
-func (client *Client) ModifyImageAttribute(request *ModifyImageAttributeRequest) (_result *ModifyImageAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyImageAttributeResponse{}
-	_body, _err := client.ModifyImageAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32329,7 +25054,7 @@ func (client *Client) ModifyImageAttribute(request *ModifyImageAttributeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyImageShareGroupPermissionResponse
-func (client *Client) ModifyImageShareGroupPermissionWithOptions(request *ModifyImageShareGroupPermissionRequest, runtime *dara.RuntimeOptions) (_result *ModifyImageShareGroupPermissionResponse, _err error) {
+func (client *Client) ModifyImageShareGroupPermissionWithContext(ctx context.Context, request *ModifyImageShareGroupPermissionRequest, runtime *dara.RuntimeOptions) (_result *ModifyImageShareGroupPermissionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32382,32 +25107,11 @@ func (client *Client) ModifyImageShareGroupPermissionWithOptions(request *Modify
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyImageShareGroupPermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyImageShareGroupPermission is deprecated, please use Ecs::2014-05-26::ModifyImageSharePermission instead.
-//
-// Summary:
-//
-// 修改镜像共享组权限
-//
-// @param request - ModifyImageShareGroupPermissionRequest
-//
-// @return ModifyImageShareGroupPermissionResponse
-// Deprecated
-func (client *Client) ModifyImageShareGroupPermission(request *ModifyImageShareGroupPermissionRequest) (_result *ModifyImageShareGroupPermissionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyImageShareGroupPermissionResponse{}
-	_body, _err := client.ModifyImageShareGroupPermissionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32444,7 +25148,7 @@ func (client *Client) ModifyImageShareGroupPermission(request *ModifyImageShareG
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyImageSharePermissionResponse
-func (client *Client) ModifyImageSharePermissionWithOptions(request *ModifyImageSharePermissionRequest, runtime *dara.RuntimeOptions) (_result *ModifyImageSharePermissionResponse, _err error) {
+func (client *Client) ModifyImageSharePermissionWithContext(ctx context.Context, request *ModifyImageSharePermissionRequest, runtime *dara.RuntimeOptions) (_result *ModifyImageSharePermissionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32509,53 +25213,11 @@ func (client *Client) ModifyImageSharePermissionWithOptions(request *ModifyImage
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyImageSharePermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the share permissions on an image. You can share your custom images with other Alibaba Cloud accounts or publish the images as community images.
-//
-// Description:
-//
-// Before you call this operation, read [Share a custom image](https://help.aliyun.com/document_detail/25463.html).
-//
-// When you call this operation, take note of the following sharing rules:
-//
-//   - **Sharing limits**: You can share only the custom images created in your Alibaba Cloud account to other Alibaba Cloud accounts. A custom image can be shared to up to 50 Alibaba Cloud accounts. You can share a custom image to up to 10 Alibaba Cloud accounts at a time.
-//
-//   - **Impacts on an instance**: If an instance was created ([RunInstances](https://help.aliyun.com/document_detail/63440.html)) from a shared image, you cannot re-initialize the system disk of the instance ([ReInitDisk](https://help.aliyun.com/document_detail/25519.html)) after the image owner unshares or deletes the image ([DeleteImage](https://help.aliyun.com/document_detail/25537.html)).
-//
-// >  You can share images encrypted by using customer master keys (CMKs) but cannot share images encrypted by using service keys. When you share an image encrypted by using a service key, an error is reported. If you want to share an image encrypted by using a service key, call the CopyImage operation to copy the image and change the encryption key of the image copy to a CMK.
-//
-// When you publish or unpublish a community image, take note of the following items:
-//
-//   - **Responsibilities and agreement**: Alibaba Cloud provides only the platform on which community images can be published and managed. The owner of a community image is responsible for the quality and updates of the image. Make sure that you acknowledge and agree to the Community Image Agreement. Otherwise, you cannot publish community images. For more information, see [Publish a community image](https://help.aliyun.com/document_detail/208370.html).
-//
-//   - **Encryption limits**: You cannot publish encrypted images as community images.
-//
-//   - **Openness**: Community images are publicly available. A community image is available to all Alibaba Cloud accounts in the region where the image resides.
-//
-//   - **Feature limits**: You cannot share, export, or copy community images.
-//
-//   - **Unpublication impacts**: After you unpublish a community image, the image is no longer available to other Alibaba Cloud accounts. If an image is shared to other Alibaba Cloud accounts before it is unpublished, the image remains available to the accounts.
-//
-// @param request - ModifyImageSharePermissionRequest
-//
-// @return ModifyImageSharePermissionResponse
-func (client *Client) ModifyImageSharePermission(request *ModifyImageSharePermissionRequest) (_result *ModifyImageSharePermissionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyImageSharePermissionResponse{}
-	_body, _err := client.ModifyImageSharePermissionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32586,7 +25248,7 @@ func (client *Client) ModifyImageSharePermission(request *ModifyImageSharePermis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceAttachmentAttributesResponse
-func (client *Client) ModifyInstanceAttachmentAttributesWithOptions(request *ModifyInstanceAttachmentAttributesRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceAttachmentAttributesResponse, _err error) {
+func (client *Client) ModifyInstanceAttachmentAttributesWithContext(ctx context.Context, request *ModifyInstanceAttachmentAttributesRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceAttachmentAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32635,47 +25297,11 @@ func (client *Client) ModifyInstanceAttachmentAttributesWithOptions(request *Mod
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceAttachmentAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the type of the private pool for an Elastic Compute Service (ECS) instance.
-//
-// Description:
-//
-// A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about the instances that use the private pool. You can specify whether to use a private pool when you create an ECS instance to match the instance with the associated elasticity assurance or capacity reservation.
-//
-//   - After you call this operation to modify the private pool attributes of an ECS instance, you do not need to restart the instance for the changes to take effect.
-//
-//   - When you call the following operations on an ECS instance, the system attempts to match the instance with active private pools. If the instance is already matched to a specified private pool, the call to an operation may fail when the private pool capacity is used up or the private pool expires. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the type of the private pool to `Open`.
-//
-//   - [StartInstance](https://help.aliyun.com/document_detail/2679679.html): start an ECS instance that is stopped in economical mode.
-//
-//   - [ReActivateInstances](https://help.aliyun.com/document_detail/2679707.html): reactivates an ECS instance that has expired or is reclaimed due to an overdue payment.
-//
-//   - [ModifyInstanceChargeType](https://help.aliyun.com/document_detail/2679704.html): changes the billing method of an ECS instance.
-//
-//   - [ModifyPrepayInstanceSpec](https://help.aliyun.com/document_detail/2679706.html): changes the instance type of an ECS instance.
-//
-//   - [ReplaceSystemDisk](https://help.aliyun.com/document_detail/2679771.html): replaces the operating system of an ECS instance.
-//
-// @param request - ModifyInstanceAttachmentAttributesRequest
-//
-// @return ModifyInstanceAttachmentAttributesResponse
-func (client *Client) ModifyInstanceAttachmentAttributes(request *ModifyInstanceAttachmentAttributesRequest) (_result *ModifyInstanceAttachmentAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstanceAttachmentAttributesResponse{}
-	_body, _err := client.ModifyInstanceAttachmentAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32692,7 +25318,7 @@ func (client *Client) ModifyInstanceAttachmentAttributes(request *ModifyInstance
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceAttributeResponse
-func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceAttributeResponse, _err error) {
+func (client *Client) ModifyInstanceAttributeWithContext(ctx context.Context, request *ModifyInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32793,33 +25419,11 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the attributes of an Elastic Compute Service (ECS) instance, such as the password, name, description, hostname, security groups, maximum transmission unit (MTU), and user data of the instance.
-//
-// Description:
-//
-// You cannot call this operation to modify the attributes of the ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-//
-// @param request - ModifyInstanceAttributeRequest
-//
-// @return ModifyInstanceAttributeResponse
-func (client *Client) ModifyInstanceAttribute(request *ModifyInstanceAttributeRequest) (_result *ModifyInstanceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstanceAttributeResponse{}
-	_body, _err := client.ModifyInstanceAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32832,7 +25436,7 @@ func (client *Client) ModifyInstanceAttribute(request *ModifyInstanceAttributeRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceAutoReleaseTimeResponse
-func (client *Client) ModifyInstanceAutoReleaseTimeWithOptions(request *ModifyInstanceAutoReleaseTimeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceAutoReleaseTimeResponse, _err error) {
+func (client *Client) ModifyInstanceAutoReleaseTimeWithContext(ctx context.Context, request *ModifyInstanceAutoReleaseTimeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceAutoReleaseTimeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32881,29 +25485,11 @@ func (client *Client) ModifyInstanceAutoReleaseTimeWithOptions(request *ModifyIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceAutoReleaseTimeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the automatic release time of a pay-as-you-go or spot instance or cancels the automatic release of the instance.
-//
-// @param request - ModifyInstanceAutoReleaseTimeRequest
-//
-// @return ModifyInstanceAutoReleaseTimeResponse
-func (client *Client) ModifyInstanceAutoReleaseTime(request *ModifyInstanceAutoReleaseTimeRequest) (_result *ModifyInstanceAutoReleaseTimeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstanceAutoReleaseTimeResponse{}
-	_body, _err := client.ModifyInstanceAutoReleaseTimeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32928,7 +25514,7 @@ func (client *Client) ModifyInstanceAutoReleaseTime(request *ModifyInstanceAutoR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceAutoRenewAttributeResponse
-func (client *Client) ModifyInstanceAutoRenewAttributeWithOptions(request *ModifyInstanceAutoRenewAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceAutoRenewAttributeResponse, _err error) {
+func (client *Client) ModifyInstanceAutoRenewAttributeWithContext(ctx context.Context, request *ModifyInstanceAutoRenewAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceAutoRenewAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32989,41 +25575,11 @@ func (client *Client) ModifyInstanceAutoRenewAttributeWithOptions(request *Modif
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceAutoRenewAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures auto-renewal for subscription instances to help reduce the maintenance workloads on instance expiration.
-//
-// Description:
-//
-// *Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of Elastic Compute Service (ECS)**.
-//
-//   - Make sure that your account balance or credit balance is sufficient.
-//
-//   - Only subscription instances are supported. If you call this operation for a pay-as-you-go instance, an error is returned.
-//
-//   - The payment for auto-renewal of an instance is automatically deducted at 08:00:00 (UTC+8) nine days before the instance expires.
-//
-//   - If the deduction fails, Alibaba Cloud attempts to deduct the payment every day until the payment is deducted or until the instance is locked on expiration.
-//
-// @param request - ModifyInstanceAutoRenewAttributeRequest
-//
-// @return ModifyInstanceAutoRenewAttributeResponse
-func (client *Client) ModifyInstanceAutoRenewAttribute(request *ModifyInstanceAutoRenewAttributeRequest) (_result *ModifyInstanceAutoRenewAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstanceAutoRenewAttributeResponse{}
-	_body, _err := client.ModifyInstanceAutoRenewAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33060,7 +25616,7 @@ func (client *Client) ModifyInstanceAutoRenewAttribute(request *ModifyInstanceAu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceChargeTypeResponse
-func (client *Client) ModifyInstanceChargeTypeWithOptions(request *ModifyInstanceChargeTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceChargeTypeResponse, _err error) {
+func (client *Client) ModifyInstanceChargeTypeWithContext(ctx context.Context, request *ModifyInstanceChargeTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceChargeTypeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33137,53 +25693,11 @@ func (client *Client) ModifyInstanceChargeTypeWithOptions(request *ModifyInstanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceChargeTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the billing method of Elastic Compute Service (ECS) instances in batches.
-//
-// Description:
-//
-// ### [](#)Precautions
-//
-//   - Before you call this operation, make sure that you are familiar with the [subscription](https://help.aliyun.com/document_detail/56220.html) and [pay-as-you-go](https://help.aliyun.com/document_detail/40653.html) billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of ECS.
-//
-//   - The instances must be in the **Running*	- (`Running`) or **Stopped*	- (`Stopped`) state, and you have no overdue payments for the instances.
-//
-//   - After you change the billing method, the payment is automatically completed. Make sure that the balance in your account is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
-//
-// ### [](#)Considerations
-//
-//   - **Change the billing method from subscription to pay-as-you-go**:
-//
-//   - After you change the billing method of an instance from subscription to pay-as-you-go, the new billing method remains in effect for the remaining lifecycle of the instance. The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are not refundable.
-//
-//   - **Refund rule**: You have a quota for the total refund amount each month, and unused balance of this quota is not carried forward into the next month. After you use up the refund quota of the current month, you can change the billing method only in the next month. The refund amount incurred when you change the billing method is calculated based on the following formula: **Number of vCPUs × (Number of remaining days × 24 ± Number of remaining or elapsed hours)**. For more information, see [Change the billing method of an instance from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/85517.html).
-//
-//   - **Change the billing method from pay-as-you-go to subscription**:
-//
-//   - You can change the billing method of all data disks attached to an instance from pay-as-you-go to subscription.
-//
-//   - This operation cannot be called for a pay-as-you-go instance that has an automatic release time set. For more information, see [Change the billing method of an instance from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/49884.html).
-//
-// @param request - ModifyInstanceChargeTypeRequest
-//
-// @return ModifyInstanceChargeTypeResponse
-func (client *Client) ModifyInstanceChargeType(request *ModifyInstanceChargeTypeRequest) (_result *ModifyInstanceChargeTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstanceChargeTypeResponse{}
-	_body, _err := client.ModifyInstanceChargeTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33212,7 +25726,7 @@ func (client *Client) ModifyInstanceChargeType(request *ModifyInstanceChargeType
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceDeploymentResponse
-func (client *Client) ModifyInstanceDeploymentWithOptions(request *ModifyInstanceDeploymentRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceDeploymentResponse, _err error) {
+func (client *Client) ModifyInstanceDeploymentWithContext(ctx context.Context, request *ModifyInstanceDeploymentRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceDeploymentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33297,45 +25811,11 @@ func (client *Client) ModifyInstanceDeploymentWithOptions(request *ModifyInstanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceDeploymentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the deployment set of an Elastic Compute Service (ECS) instance or migrates an ECS instance to a dedicated host. You can change the instance type of an ECS instance when you migrate the instance.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - The instance must be in the **Stopped*	- (Stopped) state. The instance is automatically restarted after it is migrated.
-//
-//   - The network type of the instance must be Virtual Private Cloud (VPC).
-//
-//   - The instance and the destination dedicated host to which to migrate the instance must belong to the same account and reside in the same region and zone.
-//
-//   - A pay-as-you-go instance can be migrated to a subscription dedicated host. A subscription instance can be migrated only between subscription dedicated hosts. The expiration date of the subscription instance cannot be later than that of the destination dedicated host.
-//
-//   - You can migrate only pay-as-you-go instances from a shared host to a dedicated host. You cannot migrate subscription instances or spot instances from a shared host to a dedicated host.
-//
-//   - You can redeploy an instance to a specific dedicated host cluster.
-//
-// @param request - ModifyInstanceDeploymentRequest
-//
-// @return ModifyInstanceDeploymentResponse
-func (client *Client) ModifyInstanceDeployment(request *ModifyInstanceDeploymentRequest) (_result *ModifyInstanceDeploymentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstanceDeploymentResponse{}
-	_body, _err := client.ModifyInstanceDeploymentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33356,7 +25836,7 @@ func (client *Client) ModifyInstanceDeployment(request *ModifyInstanceDeployment
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceMaintenanceAttributesResponse
-func (client *Client) ModifyInstanceMaintenanceAttributesWithOptions(request *ModifyInstanceMaintenanceAttributesRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceMaintenanceAttributesResponse, _err error) {
+func (client *Client) ModifyInstanceMaintenanceAttributesWithContext(ctx context.Context, request *ModifyInstanceMaintenanceAttributesRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceMaintenanceAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33413,37 +25893,11 @@ func (client *Client) ModifyInstanceMaintenanceAttributesWithOptions(request *Mo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceMaintenanceAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the maintenance attributes of an instance.
-//
-// Description:
-//
-// This operation is used to modify the maintenance policy of an instance. The maintenance policy consists of the following maintenance attributes:
-//
-//   - Maintenance window: the time period that you specify for maintenance.
-//
-//   - Maintenance action: the action that you specify in response to instance shutdown.
-//
-// @param request - ModifyInstanceMaintenanceAttributesRequest
-//
-// @return ModifyInstanceMaintenanceAttributesResponse
-func (client *Client) ModifyInstanceMaintenanceAttributes(request *ModifyInstanceMaintenanceAttributesRequest) (_result *ModifyInstanceMaintenanceAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstanceMaintenanceAttributesResponse{}
-	_body, _err := client.ModifyInstanceMaintenanceAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33456,7 +25910,7 @@ func (client *Client) ModifyInstanceMaintenanceAttributes(request *ModifyInstanc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceMetadataOptionsResponse
-func (client *Client) ModifyInstanceMetadataOptionsWithOptions(request *ModifyInstanceMetadataOptionsRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceMetadataOptionsResponse, _err error) {
+func (client *Client) ModifyInstanceMetadataOptionsWithContext(ctx context.Context, request *ModifyInstanceMetadataOptionsRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceMetadataOptionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33513,29 +25967,11 @@ func (client *Client) ModifyInstanceMetadataOptionsWithOptions(request *ModifyIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceMetadataOptionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the metadata access configurations of instances in a specific region, including whether to enable the metadata access channel and whether to forcefully use the security hardening mode to access instance metadata.
-//
-// @param request - ModifyInstanceMetadataOptionsRequest
-//
-// @return ModifyInstanceMetadataOptionsResponse
-func (client *Client) ModifyInstanceMetadataOptions(request *ModifyInstanceMetadataOptionsRequest) (_result *ModifyInstanceMetadataOptionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstanceMetadataOptionsResponse{}
-	_body, _err := client.ModifyInstanceMetadataOptionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33566,7 +26002,7 @@ func (client *Client) ModifyInstanceMetadataOptions(request *ModifyInstanceMetad
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceNetworkSpecResponse
-func (client *Client) ModifyInstanceNetworkSpecWithOptions(request *ModifyInstanceNetworkSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceNetworkSpecResponse, _err error) {
+func (client *Client) ModifyInstanceNetworkSpecWithContext(ctx context.Context, request *ModifyInstanceNetworkSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceNetworkSpecResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33643,47 +26079,11 @@ func (client *Client) ModifyInstanceNetworkSpecWithOptions(request *ModifyInstan
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceNetworkSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the network configurations of an Elastic Compute Service (ECS) instance, such as the public bandwidth, assignment or unassignment of a static public IP address (also known as system-assigned or auto-assigned public IP address), and billing method for network usage. You can call this operation to upgrade or downgrade the network configurations of ECS instances.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a subscription (PrePaid) instance from 0 Mbit/s when you modify the network configurations of the instance, a static public IP address is automatically assigned to the instance.
-//
-//   - If you upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of a pay-as-you-go (PostPaid) instance from 0 Mbit/s when you modify the network configurations of the instance, no static public IP address is automatically assigned to the instance. In this case, to assign a static public IP address to the instance, you must set `AllocatePublicIp` to `true`.
-//
-//   - You can upgrade the outbound public bandwidth (InternetMaxBandwidthOut) of an instance in the classic network from 0 Mbit/s only if the instance is in the Stopped state.
-//
-// >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits" topic.
-//
-//   - Billing:
-//
-//   - After the public bandwidth is upgraded, AutoPay is automatically set to true and the payment is automatically made. Make sure that your account balance is sufficient. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set AutoPay to false. In this case, when you call the ModifyInstanceNetworkSpec operation, an unpaid order is generated. Then, you can log on to the ECS console to pay for the order.
-//
-//   - After the public bandwidth is downgraded, the price difference is refunded to the payment account that you used. Vouchers or coupons that have been redeemed are not refundable.
-//
-// @param request - ModifyInstanceNetworkSpecRequest
-//
-// @return ModifyInstanceNetworkSpecResponse
-func (client *Client) ModifyInstanceNetworkSpec(request *ModifyInstanceNetworkSpecRequest) (_result *ModifyInstanceNetworkSpecResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstanceNetworkSpecResponse{}
-	_body, _err := client.ModifyInstanceNetworkSpecWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33714,7 +26114,7 @@ func (client *Client) ModifyInstanceNetworkSpec(request *ModifyInstanceNetworkSp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceSpecResponse
-func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceSpecResponse, _err error) {
+func (client *Client) ModifyInstanceSpecWithContext(ctx context.Context, request *ModifyInstanceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceSpecResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33799,47 +26199,11 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the instance type or public bandwidth of a pay-as-you-go Elastic Compute Service (ECS) instance.
-//
-// Description:
-//
-// *Before you call this operation, familiarize yourself with the billing and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.**
-//
-// Before you [change the instance type of a pay-as-you-go instance](https://help.aliyun.com/document_detail/60051.html), call the [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) operation to query compatible instance types.
-//
-// **Considerations**
-//
-//   - Make sure that you have no overdue payments in your account.
-//
-//   - You can change only the instance type or only the public bandwidth of an ECS instance at a time. The instance type and the public bandwidth of an ECS instance cannot be changed together.
-//
-//   - You can change the public bandwidth of an ECS instance only when the instance is in the **Running*	- (`Running`) or **Stopped*	- (`Stopped`) state. The change immediately takes effect.
-//
-//   - You can change the instance type of an ECS instance only when the instance is in the **Stopped*	- (`Stopped`) state. You must [start the instance](https://help.aliyun.com/document_detail/25441.html) for the change to take effect.
-//
-// >  A limit is imposed on the sum of public bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage per region in an Alibaba Cloud account. For more information, see the [Public bandwidth limits](~~25412#BandwidthQuota~~) section of the "Limits and quotas" topic.
-//
-// @param request - ModifyInstanceSpecRequest
-//
-// @return ModifyInstanceSpecResponse
-func (client *Client) ModifyInstanceSpec(request *ModifyInstanceSpecRequest) (_result *ModifyInstanceSpecResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstanceSpecResponse{}
-	_body, _err := client.ModifyInstanceSpecWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33862,7 +26226,7 @@ func (client *Client) ModifyInstanceSpec(request *ModifyInstanceSpecRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceVncPasswdResponse
-func (client *Client) ModifyInstanceVncPasswdWithOptions(request *ModifyInstanceVncPasswdRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceVncPasswdResponse, _err error) {
+func (client *Client) ModifyInstanceVncPasswdWithContext(ctx context.Context, request *ModifyInstanceVncPasswdRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceVncPasswdResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33911,39 +26275,11 @@ func (client *Client) ModifyInstanceVncPasswdWithOptions(request *ModifyInstance
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceVncPasswdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the Virtual Network Computing (VNC) password of an Elastic Compute Service (ECS) instance.
-//
-// Description:
-//
-//	  The VNC password must be six characters in length and can contain uppercase letters, lowercase letters, and digits.
-//
-//		- After you modify the VNC password of an ECS instance, take note of the following items:
-//
-//	    	- If the instance is I/O optimized, the new password takes effect immediately without the need to restart the instance.
-//
-//	    	- If the instance is not I/O optimized, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) in the ECS console or by calling the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation for the new password to take effect.
-//
-// @param request - ModifyInstanceVncPasswdRequest
-//
-// @return ModifyInstanceVncPasswdResponse
-func (client *Client) ModifyInstanceVncPasswd(request *ModifyInstanceVncPasswdRequest) (_result *ModifyInstanceVncPasswdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstanceVncPasswdResponse{}
-	_body, _err := client.ModifyInstanceVncPasswdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34000,7 +26336,7 @@ func (client *Client) ModifyInstanceVncPasswd(request *ModifyInstanceVncPasswdRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceVpcAttributeResponse
-func (client *Client) ModifyInstanceVpcAttributeWithOptions(request *ModifyInstanceVpcAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceVpcAttributeResponse, _err error) {
+func (client *Client) ModifyInstanceVpcAttributeWithContext(ctx context.Context, request *ModifyInstanceVpcAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceVpcAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34057,73 +26393,11 @@ func (client *Client) ModifyInstanceVpcAttributeWithOptions(request *ModifyInsta
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceVpcAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the virtual private cloud (VPC), private IP address, security groups, or vSwitch of an Elastic Compute Service (ECS) instance located in a VPC.
-//
-// Description:
-//
-// The ECS instance that you want to manage must be in the **Stopped*	- (`Stopped`) state.
-//
-//   - When you call this operation to change the private IP address or vSwitch of an ECS instance, take note of the following items:
-//
-//   - If the instance is a new instance, you must restart the instance before you call this operation.
-//
-//   - After the private IP address or vSwitch of the instance is changed, you must restart the instance before you can recall this operation.
-//
-//   - When you call this operation to change the VPC of an ECS instance, take note of the following items:
-//
-//   - **ECS instance:**
-//
-//   - The instance cannot be in the Locked, To Be Released, Expired, To Be Recycled, Expired and Being Recycled, or Overdue and Being Recycled state. For more information, see [Overview of instances](https://help.aliyun.com/document_detail/25380.html).
-//
-//   - The instance cannot be associated with Server Load Balancer (SLB) instances.
-//
-//   - The instance cannot be used in other Alibaba Cloud services. For example, the instance cannot be in the process of being migrated or having its VPC changed, or the databases deployed on the instance cannot be managed by Data Transmission Service (DTS).
-//
-//   - **Network:**
-//
-//   - The cut-through mode or the multi-elastic IP address (EIP)-to-elastic network interface (ENI) mode cannot be enabled for the ECS instance.
-//
-//   - The ECS instance cannot be associated with a high-availability virtual IP address (HAVIP).
-//
-//   - The vSwitch of the ECS instance cannot be associated with a custom route table.
-//
-//   - Global Accelerator (GA) cannot be activated for the ECS instance.
-//
-//   - Secondary ENIs cannot be attached to the ECS instance.
-//
-//   - The ECS instance cannot be assigned an IPv6 address.
-//
-//   - The primary ENI of the ECS instance cannot be associated with multiple IP addresses.
-//
-//   - The vSwitch must belong to the new VPC.
-//
-//   - The original and new vSwitches must reside in the same zone.
-//
-//   - If you assign a private IP address to the primary ENI of the ECS instance, the private IP address must be an idle IP address within the CIDR block of the new vSwitch. If you do not assign a private IP address to the primary ENI of the ECS instance, a private IP address is randomly assigned to the ENI. Make sure that sufficient IP addresses are available in the CIDR block of the new vSwitch.
-//
-//   - If you use a VPC that is shared by another Alibaba Cloud account with your account and want to change the security groups of the ECS instance, specify the security groups that you created in the VPC, instead of the security group created by the VPC owner, as the new security groups.
-//
-// @param request - ModifyInstanceVpcAttributeRequest
-//
-// @return ModifyInstanceVpcAttributeResponse
-func (client *Client) ModifyInstanceVpcAttribute(request *ModifyInstanceVpcAttributeRequest) (_result *ModifyInstanceVpcAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstanceVpcAttributeResponse{}
-	_body, _err := client.ModifyInstanceVpcAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34168,7 +26442,7 @@ func (client *Client) ModifyInstanceVpcAttribute(request *ModifyInstanceVpcAttri
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInvocationAttributeResponse
-func (client *Client) ModifyInvocationAttributeWithOptions(tmpReq *ModifyInvocationAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInvocationAttributeResponse, _err error) {
+func (client *Client) ModifyInvocationAttributeWithContext(ctx context.Context, tmpReq *ModifyInvocationAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInvocationAttributeResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34247,61 +26521,11 @@ func (client *Client) ModifyInvocationAttributeWithOptions(tmpReq *ModifyInvocat
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInvocationAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the execution information of a Cloud Assistant scheduled command task, including modifying the content and execution frequency of the command and adding Elastic Compute Service (ECS) instances or Alibaba Cloud managed instances to the command task.
-//
-// Description:
-//
-//	  You can modify the execution information of a task that runs a command in one of the following modes. To query the execution mode of a command, you can call the [DescribeInvocations](https://help.aliyun.com/document_detail/2679916.html) operation and check the `RepeatMode` value in the response.
-//
-//	    	- Period: The task runs the command on a schedule.
-//
-//	    	- NextRebootOnly: The task runs the command the next time the associated instances start.
-//
-//	    	- EveryReboot: The task runs the command every time the associated instances start.
-//
-//		- You can modify the execution information of a command task in one of the following execution states. To query the execution status of a command, you can call the [DescribeInvocations](https://help.aliyun.com/document_detail/2679916.html) operation and check the `InvocationStatus` value.
-//
-//	    	- Pending: The command is being verified or sent. When the execution state on at least one instance is Pending, the overall execution state is Pending.
-//
-//	    	- Running: The command is being run on instances. When the execution state on at least one instance is Running, the overall execution state is Running.
-//
-//	    	- Scheduled: The command that is set to run on a schedule is sent and waiting to be run. When the execution state on at least one instance is Scheduled, the overall execution state is Scheduled.
-//
-//	    	- Stopping: The command task is being stopped. When the execution state on at least one instance is Stopping, the overall execution state is Stopping.
-//
-//		- Before you modify the execution information of a scheduled task, such as the command content, custom parameters, and execution frequency, make sure that the version of Cloud Assistant Agent on the ECS instances or managed instances associated with the task is later than the following versions:
-//
-//	    	- Linux: 2.2.3.541
-//
-//	    	- Windows: 2.1.3.541
-//
-//	    	- If the `InvalidOperation.CloudAssistantVersionUnsupported` error code is returned in the response, update Cloud Assistant Agent to the latest version.
-//
-//		- You cannot modify `CommandContent` for a common Cloud Assistant command.
-//
-//		- If you modify the `CommandContent` value of a command and set `KeepCommand` to `true` when you call the [InvokeCommand](https://help.aliyun.com/document_detail/64841.html) or [RunCommand](https://help.aliyun.com/document_detail/141751.html) operation to run the command, a new command is added and retained. The new command consumes the quota for Cloud Assistant commands. You can retain up to 500 to 50,000 Cloud Assistant commands in each region. You can apply for a quota increase. For information about how to query and increase quotas, see [Manage quotas](https://help.aliyun.com/document_detail/184116.html).
-//
-// @param request - ModifyInvocationAttributeRequest
-//
-// @return ModifyInvocationAttributeResponse
-func (client *Client) ModifyInvocationAttribute(request *ModifyInvocationAttributeRequest) (_result *ModifyInvocationAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInvocationAttributeResponse{}
-	_body, _err := client.ModifyInvocationAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34320,7 +26544,7 @@ func (client *Client) ModifyInvocationAttribute(request *ModifyInvocationAttribu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLaunchTemplateDefaultVersionResponse
-func (client *Client) ModifyLaunchTemplateDefaultVersionWithOptions(request *ModifyLaunchTemplateDefaultVersionRequest, runtime *dara.RuntimeOptions) (_result *ModifyLaunchTemplateDefaultVersionResponse, _err error) {
+func (client *Client) ModifyLaunchTemplateDefaultVersionWithContext(ctx context.Context, request *ModifyLaunchTemplateDefaultVersionRequest, runtime *dara.RuntimeOptions) (_result *ModifyLaunchTemplateDefaultVersionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34373,35 +26597,11 @@ func (client *Client) ModifyLaunchTemplateDefaultVersionWithOptions(request *Mod
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyLaunchTemplateDefaultVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the default version of a launch template. When you call this operation, you can specify DefaultVersionNumber in the request. If you do not specify a version when you create Elastic Compute Service (ECS) instances based on a launch template, the default version of the launch template is used.
-//
-// Description:
-//
-// ## Debugging
-//
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=ModifyLaunchTemplateDefaultVersion\\&type=RPC\\&version=2014-05-26)
-//
-// @param request - ModifyLaunchTemplateDefaultVersionRequest
-//
-// @return ModifyLaunchTemplateDefaultVersionResponse
-func (client *Client) ModifyLaunchTemplateDefaultVersion(request *ModifyLaunchTemplateDefaultVersionRequest) (_result *ModifyLaunchTemplateDefaultVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyLaunchTemplateDefaultVersionResponse{}
-	_body, _err := client.ModifyLaunchTemplateDefaultVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34420,7 +26620,7 @@ func (client *Client) ModifyLaunchTemplateDefaultVersion(request *ModifyLaunchTe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyManagedInstanceResponse
-func (client *Client) ModifyManagedInstanceWithOptions(request *ModifyManagedInstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyManagedInstanceResponse, _err error) {
+func (client *Client) ModifyManagedInstanceWithContext(ctx context.Context, request *ModifyManagedInstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyManagedInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34473,35 +26673,11 @@ func (client *Client) ModifyManagedInstanceWithOptions(request *ModifyManagedIns
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyManagedInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the information of a managed instance.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// The ModifyManagedInstance operation can be called to change only the name of a single managed instance.
-//
-// @param request - ModifyManagedInstanceRequest
-//
-// @return ModifyManagedInstanceResponse
-func (client *Client) ModifyManagedInstance(request *ModifyManagedInstanceRequest) (_result *ModifyManagedInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyManagedInstanceResponse{}
-	_body, _err := client.ModifyManagedInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34514,7 +26690,7 @@ func (client *Client) ModifyManagedInstance(request *ModifyManagedInstanceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyNetworkInterfaceAttributeResponse
-func (client *Client) ModifyNetworkInterfaceAttributeWithOptions(request *ModifyNetworkInterfaceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyNetworkInterfaceAttributeResponse, _err error) {
+func (client *Client) ModifyNetworkInterfaceAttributeWithContext(ctx context.Context, request *ModifyNetworkInterfaceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyNetworkInterfaceAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34607,29 +26783,11 @@ func (client *Client) ModifyNetworkInterfaceAttributeWithOptions(request *Modify
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyNetworkInterfaceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the attributes of an elastic network interface (ENI), such as the number of queues supported by the ENI, the security groups to which the ENI belongs, the queue depth, the communication mode, and whether to retain the ENI when the Elastic Compute Service (ECS) instance to which the ENI is attached is released.
-//
-// @param request - ModifyNetworkInterfaceAttributeRequest
-//
-// @return ModifyNetworkInterfaceAttributeResponse
-func (client *Client) ModifyNetworkInterfaceAttribute(request *ModifyNetworkInterfaceAttributeRequest) (_result *ModifyNetworkInterfaceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyNetworkInterfaceAttributeResponse{}
-	_body, _err := client.ModifyNetworkInterfaceAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34640,7 +26798,7 @@ func (client *Client) ModifyNetworkInterfaceAttribute(request *ModifyNetworkInte
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPhysicalConnectionAttributeResponse
-func (client *Client) ModifyPhysicalConnectionAttributeWithOptions(request *ModifyPhysicalConnectionAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyPhysicalConnectionAttributeResponse, _err error) {
+func (client *Client) ModifyPhysicalConnectionAttributeWithContext(ctx context.Context, request *ModifyPhysicalConnectionAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyPhysicalConnectionAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34729,28 +26887,11 @@ func (client *Client) ModifyPhysicalConnectionAttributeWithOptions(request *Modi
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyPhysicalConnectionAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyPhysicalConnectionAttribute is deprecated
-//
-// @param request - ModifyPhysicalConnectionAttributeRequest
-//
-// @return ModifyPhysicalConnectionAttributeResponse
-// Deprecated
-func (client *Client) ModifyPhysicalConnectionAttribute(request *ModifyPhysicalConnectionAttributeRequest) (_result *ModifyPhysicalConnectionAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyPhysicalConnectionAttributeResponse{}
-	_body, _err := client.ModifyPhysicalConnectionAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34763,7 +26904,7 @@ func (client *Client) ModifyPhysicalConnectionAttribute(request *ModifyPhysicalC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPortRangeListResponse
-func (client *Client) ModifyPortRangeListWithOptions(request *ModifyPortRangeListRequest, runtime *dara.RuntimeOptions) (_result *ModifyPortRangeListResponse, _err error) {
+func (client *Client) ModifyPortRangeListWithContext(ctx context.Context, request *ModifyPortRangeListRequest, runtime *dara.RuntimeOptions) (_result *ModifyPortRangeListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34832,29 +26973,11 @@ func (client *Client) ModifyPortRangeListWithOptions(request *ModifyPortRangeLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyPortRangeListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and entries of a port list. You can call this operation to add, modify, and remove entries for a port list.
-//
-// @param request - ModifyPortRangeListRequest
-//
-// @return ModifyPortRangeListResponse
-func (client *Client) ModifyPortRangeList(request *ModifyPortRangeListRequest) (_result *ModifyPortRangeListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyPortRangeListResponse{}
-	_body, _err := client.ModifyPortRangeListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34883,7 +27006,7 @@ func (client *Client) ModifyPortRangeList(request *ModifyPortRangeListRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPrefixListResponse
-func (client *Client) ModifyPrefixListWithOptions(request *ModifyPrefixListRequest, runtime *dara.RuntimeOptions) (_result *ModifyPrefixListResponse, _err error) {
+func (client *Client) ModifyPrefixListWithContext(ctx context.Context, request *ModifyPrefixListRequest, runtime *dara.RuntimeOptions) (_result *ModifyPrefixListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34948,45 +27071,11 @@ func (client *Client) ModifyPrefixListWithOptions(request *ModifyPrefixListReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyPrefixListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name, description, or entries of a prefix list. You can add, modify, and delete entries in the prefix list.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](~~40637#section-jua-0tj-q5m~~) section in the "Network FAQ" topic.
-//
-//   - When you add or delete an entry, you cannot specify duplicate CIDR blocks. Examples:
-//
-//   - For IPv4 CIDR blocks, you cannot specify the 10.0.0.0/8 CIDR block in two entries. You cannot specify the 10.0.0.1/32 CIDR block in one entry and the 10.0.0.1 CIDR block in another entry. The two CIDR blocks are the same.
-//
-//   - For IPv6 CIDR blocks, you cannot specify the 2001:fd01:0:0:0:0:0:0/32 CIDR block in one entry and the 2001:fd01::/32 CIDR block in another entry. The two CIDR blocks are the same.
-//
-//   - The CIDR block in an entry to be added cannot the same as that in an entry to be deleted. For example, when you add an entry in which the 10.0.0.0/8 CIDR block is specified, make sure that the 10.0.0.0/8 CIDR block is not specified in an entry to be deleted.
-//
-//   - If you want to modify the description of an entry, you must specify the CIDR block (`AddEntry.N.Cidr`) and new description (`AddEntry.N.Description`) for the entry.
-//
-// @param request - ModifyPrefixListRequest
-//
-// @return ModifyPrefixListResponse
-func (client *Client) ModifyPrefixList(request *ModifyPrefixListRequest) (_result *ModifyPrefixListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyPrefixListResponse{}
-	_body, _err := client.ModifyPrefixListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35023,7 +27112,7 @@ func (client *Client) ModifyPrefixList(request *ModifyPrefixListRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPrepayInstanceSpecResponse
-func (client *Client) ModifyPrepayInstanceSpecWithOptions(request *ModifyPrepayInstanceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyPrepayInstanceSpecResponse, _err error) {
+func (client *Client) ModifyPrepayInstanceSpecWithContext(ctx context.Context, request *ModifyPrepayInstanceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyPrepayInstanceSpecResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35112,53 +27201,11 @@ func (client *Client) ModifyPrepayInstanceSpecWithOptions(request *ModifyPrepayI
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyPrepayInstanceSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the instance type of a subscription Elastic Compute Service (ECS) instance. You can upgrade or downgrade the instance type. The new instance type takes effect for the entire lifecycle of the subscription ECS instance.
-//
-// Description:
-//
-// *Before you call this operation, make sure that you are familiar with the billing methods, [prices](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl), and [rules for unsubscribing from resources](https://help.aliyun.com/document_detail/476339.html) of ECS.**
-//
-// ModifyPrepayInstanceSpec is an asynchronous operation. After a request is sent, wait for 5 to 10 seconds for the instance type change to complete. Before you change the instance type of a subscription ECS instance, call the [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) operation to query the instance types to which you can change the instance.
-//
-// **Considerations**
-//
-//   - Before you change the instance type of an expired instance, you must renew the instance.
-//
-//   - When you downgrade the instance type of a subscription ECS instance, take note of the following items:
-//
-//   - The instance must be in the **Stopped*	- (`Stopped`) state.
-//
-//   - The price difference is refunded to the payment account that you used. Redeemed vouchers are not refundable.
-//
-//   - The new instance type takes effect only after you [start the instance](https://help.aliyun.com/document_detail/25441.html).
-//
-//   - When you upgrade the instance type of a subscription ECS instance, take note of the following items:
-//
-//   - The instance must be in the **Stopped*	- (`Stopped`) or **Running*	- (`Running`) state.
-//
-//   - The new instance type takes effect only after you [start the instance](https://help.aliyun.com/document_detail/25441.html) or [restart the instance](https://help.aliyun.com/document_detail/25440.html).
-//
-// @param request - ModifyPrepayInstanceSpecRequest
-//
-// @return ModifyPrepayInstanceSpecResponse
-func (client *Client) ModifyPrepayInstanceSpec(request *ModifyPrepayInstanceSpecRequest) (_result *ModifyPrepayInstanceSpecResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyPrepayInstanceSpecResponse{}
-	_body, _err := client.ModifyPrepayInstanceSpecWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35171,7 +27218,7 @@ func (client *Client) ModifyPrepayInstanceSpec(request *ModifyPrepayInstanceSpec
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyReservedInstanceAttributeResponse
-func (client *Client) ModifyReservedInstanceAttributeWithOptions(request *ModifyReservedInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyReservedInstanceAttributeResponse, _err error) {
+func (client *Client) ModifyReservedInstanceAttributeWithContext(ctx context.Context, request *ModifyReservedInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyReservedInstanceAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35224,29 +27271,11 @@ func (client *Client) ModifyReservedInstanceAttributeWithOptions(request *Modify
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyReservedInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the attributes of a reserved instance, such as the name and description of the instance.
-//
-// @param request - ModifyReservedInstanceAttributeRequest
-//
-// @return ModifyReservedInstanceAttributeResponse
-func (client *Client) ModifyReservedInstanceAttribute(request *ModifyReservedInstanceAttributeRequest) (_result *ModifyReservedInstanceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyReservedInstanceAttributeResponse{}
-	_body, _err := client.ModifyReservedInstanceAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35259,7 +27288,7 @@ func (client *Client) ModifyReservedInstanceAttribute(request *ModifyReservedIns
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyReservedInstanceAutoRenewAttributeResponse
-func (client *Client) ModifyReservedInstanceAutoRenewAttributeWithOptions(request *ModifyReservedInstanceAutoRenewAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyReservedInstanceAutoRenewAttributeResponse, _err error) {
+func (client *Client) ModifyReservedInstanceAutoRenewAttributeWithContext(ctx context.Context, request *ModifyReservedInstanceAutoRenewAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyReservedInstanceAutoRenewAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35316,29 +27345,11 @@ func (client *Client) ModifyReservedInstanceAutoRenewAttributeWithOptions(reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyReservedInstanceAutoRenewAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the auto-renewal attributes of reserved instances. You can cancel or disable the auto-renewal feature for reserved instances.
-//
-// @param request - ModifyReservedInstanceAutoRenewAttributeRequest
-//
-// @return ModifyReservedInstanceAutoRenewAttributeResponse
-func (client *Client) ModifyReservedInstanceAutoRenewAttribute(request *ModifyReservedInstanceAutoRenewAttributeRequest) (_result *ModifyReservedInstanceAutoRenewAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyReservedInstanceAutoRenewAttributeResponse{}
-	_body, _err := client.ModifyReservedInstanceAutoRenewAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35451,7 +27462,7 @@ func (client *Client) ModifyReservedInstanceAutoRenewAttribute(request *ModifyRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyReservedInstancesResponse
-func (client *Client) ModifyReservedInstancesWithOptions(request *ModifyReservedInstancesRequest, runtime *dara.RuntimeOptions) (_result *ModifyReservedInstancesResponse, _err error) {
+func (client *Client) ModifyReservedInstancesWithContext(ctx context.Context, request *ModifyReservedInstancesRequest, runtime *dara.RuntimeOptions) (_result *ModifyReservedInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35500,129 +27511,11 @@ func (client *Client) ModifyReservedInstancesWithOptions(request *ModifyReserved
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyReservedInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configurations of a reserved instance, such as the instance type, quantity, and zone, to split, merge, or change the scope of the reserved instance.
-//
-// Description:
-//
-// This operation is an asynchronous operation. After you call this operation to modify a reserved instance, the operation starts the modification process and returns the ID of the resulting new reserved instance. The original reserved instance enters the `Updating` state and then the `Inactive` state. At the same time, the resulting new reserved instance is generated and enters the Creating state and then the Active state. You can call the [DescribeReservedInstances](https://help.aliyun.com/document_detail/2679781.html) operation to query the states of the reserved instance.
-//
-//   - You can modify the configurations of a reserved instance only if the reserved instance is in the **Active*	- state.
-//
-//   - Make sure that the [computing power](~~140660#2742f3844abzz~~) of the reserved instance remains unchanged before and after the modification. Otherwise, the modification fails.
-//
-//   - You cannot split, merge, or change the scope of a reserved instance at the same time.
-//
-// For more information, see [Split, merge, or modify reserved instances](https://help.aliyun.com/document_detail/100375.html).
-//
-// ## [](#)Sample requests
-//
-//   - **Sample request to split a reserved instance**: Split a regional reserved instance that is scoped to the China (Hangzhou) region and can match two pay-as-you-go instances of the ecs.g5.xlarge instance type into two regional reserved instances that are scoped to the China (Hangzhou) region and each can match one pay-as-you-go instance of the ecs.g5.large instance type:
-//
-// <!---->
-//
-//	    "RegionId":"cn-hangzhou", //The ID of the region.
-//
-//	    "ReservedInstanceId":["ecsri-bp1hd03e9uv19e75****"], //The ID of the reserved instance that you want to split.
-//
-//	    "Configuration":[
-//
-//	      {
-//
-//	        "ReservedInstanceName":"testReservedInstanceName1", //The name of the new reserved instance.
-//
-//	        "InstanceType":"ecs.g5.large", //The instance type that the new reserved instance can match.
-//
-//	        "Scope":"Region", //The scope level of the new reserved instance, which must be the same as the scope level of the original reserved instance.
-//
-//	        "InstanceAmount":1 //The number of pay-as-you-go instances of the specified instance type that each new reserved instance can match.
-//
-//	      },
-//
-//	      {
-//
-//	        "ReservedInstanceName":"testReservedInstanceName2",
-//
-//	        "InstanceType":"ecs.g5.large",
-//
-//	        "Scope":"Region",
-//
-//	        "InstanceAmount":1
-//
-//	      }
-//
-//	    ]
-//
-//		- **Sample request to merge reserved instance:**: Merge two zonal reserved instances that are scoped to Hangzhou Zone H and can match four pay-as-you-go instances of the ecs.g5.xlarge instance type into one zonal reserved instance that is scoped to Hangzhou Zone H and can match two pay-as-you-go instances of the ecs.g5.4xlarge instance type:
-//
-// <!---->
-//
-//	    "RegionId":"cn-hangzhou", //The ID of the region.
-//
-//	    "ReservedInstanceId":["ecsri-bp1hd03e9uv16b75****",""ecsri-bp1hd03e9uv16b76****""], //The IDs of the reserved instances that you want to merge.
-//
-//	    "Configuration":[
-//
-//	      {
-//
-//	        "ReservedInstanceName":"testReservedInstanceName", //The name of the new reserved instance.
-//
-//	        "InstanceType":"ecs.g5.4xlarge", //The instance type that the new reserved instance can match.
-//
-//	        "Scope":"Zone", //The scope level of the new reserved instance, which must be the same as the scope level of the original reserved instances.
-//
-//	        "ZoneId":"cn-hangzhou-h", //
-//
-//	        "InstanceAmount":2 //The number of pay-as-you-go instances of the specified instance type that the new reserved instance can match.
-//
-//	      }
-//
-//	    ]
-//
-//		- **Sample request to change the scope of a reserved instance**: Change a regional reserved instance that is scoped to Hangzhou Zone H and can match six pay-as-you-go instances of the ecs.g5.xlarge instance type to a regional reserved instance that is scoped to the China (Hangzhou) region and can match three pay-as-you-go instances of the ecs.g5.2xlarge instance type.
-//
-// <!---->
-//
-//	"RegionId":"cn-hangzhou", //The ID of the region.
-//
-//	"ReservedInstanceId":["ecsri-bp1hd03e9uv16b77****"], //The ID of the reserved instance whose scope you want to change.
-//
-//	"Configuration":[
-//
-//	  {
-//
-//	    "ReservedInstanceName":"testReservedInstanceName", //The name of the new reserved instance.
-//
-//	    "InstanceType":"ecs.g5.2xlarge", //The instance type that the new reserved instance can match.
-//
-//	    "Scope":"Region", //The scope level of the new reserved instance.
-//
-//	    "InstanceAmount":3 //The number of pay-as-you-go instances of the specified instance type that the new reserved instance can match.
-//
-//	  }
-//
-//	]
-//
-// @param request - ModifyReservedInstancesRequest
-//
-// @return ModifyReservedInstancesResponse
-func (client *Client) ModifyReservedInstances(request *ModifyReservedInstancesRequest) (_result *ModifyReservedInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyReservedInstancesResponse{}
-	_body, _err := client.ModifyReservedInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35633,7 +27526,7 @@ func (client *Client) ModifyReservedInstances(request *ModifyReservedInstancesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyRouterInterfaceAttributeResponse
-func (client *Client) ModifyRouterInterfaceAttributeWithOptions(request *ModifyRouterInterfaceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouterInterfaceAttributeResponse, _err error) {
+func (client *Client) ModifyRouterInterfaceAttributeWithContext(ctx context.Context, request *ModifyRouterInterfaceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouterInterfaceAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35706,28 +27599,11 @@ func (client *Client) ModifyRouterInterfaceAttributeWithOptions(request *ModifyR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyRouterInterfaceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyRouterInterfaceAttribute is deprecated
-//
-// @param request - ModifyRouterInterfaceAttributeRequest
-//
-// @return ModifyRouterInterfaceAttributeResponse
-// Deprecated
-func (client *Client) ModifyRouterInterfaceAttribute(request *ModifyRouterInterfaceAttributeRequest) (_result *ModifyRouterInterfaceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyRouterInterfaceAttributeResponse{}
-	_body, _err := client.ModifyRouterInterfaceAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35738,7 +27614,7 @@ func (client *Client) ModifyRouterInterfaceAttribute(request *ModifyRouterInterf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyRouterInterfaceSpecResponse
-func (client *Client) ModifyRouterInterfaceSpecWithOptions(request *ModifyRouterInterfaceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouterInterfaceSpecResponse, _err error) {
+func (client *Client) ModifyRouterInterfaceSpecWithContext(ctx context.Context, request *ModifyRouterInterfaceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouterInterfaceSpecResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35795,28 +27671,11 @@ func (client *Client) ModifyRouterInterfaceSpecWithOptions(request *ModifyRouter
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyRouterInterfaceSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyRouterInterfaceSpec is deprecated
-//
-// @param request - ModifyRouterInterfaceSpecRequest
-//
-// @return ModifyRouterInterfaceSpecResponse
-// Deprecated
-func (client *Client) ModifyRouterInterfaceSpec(request *ModifyRouterInterfaceSpecRequest) (_result *ModifyRouterInterfaceSpecResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyRouterInterfaceSpecResponse{}
-	_body, _err := client.ModifyRouterInterfaceSpecWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35829,7 +27688,7 @@ func (client *Client) ModifyRouterInterfaceSpec(request *ModifyRouterInterfaceSp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifySecurityGroupAttributeResponse
-func (client *Client) ModifySecurityGroupAttributeWithOptions(request *ModifySecurityGroupAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityGroupAttributeResponse, _err error) {
+func (client *Client) ModifySecurityGroupAttributeWithContext(ctx context.Context, request *ModifySecurityGroupAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityGroupAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35882,29 +27741,11 @@ func (client *Client) ModifySecurityGroupAttributeWithOptions(request *ModifySec
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifySecurityGroupAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name or description of a specific security group.
-//
-// @param request - ModifySecurityGroupAttributeRequest
-//
-// @return ModifySecurityGroupAttributeResponse
-func (client *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupAttributeRequest) (_result *ModifySecurityGroupAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifySecurityGroupAttributeResponse{}
-	_body, _err := client.ModifySecurityGroupAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35925,7 +27766,7 @@ func (client *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifySecurityGroupEgressRuleResponse
-func (client *Client) ModifySecurityGroupEgressRuleWithOptions(request *ModifySecurityGroupEgressRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityGroupEgressRuleResponse, _err error) {
+func (client *Client) ModifySecurityGroupEgressRuleWithContext(ctx context.Context, request *ModifySecurityGroupEgressRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityGroupEgressRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36046,37 +27887,11 @@ func (client *Client) ModifySecurityGroupEgressRuleWithOptions(request *ModifySe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifySecurityGroupEgressRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies an outbound security group rule in a security group.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - An authorization object in a security group rule can be of one of the following types: IPv4 CIDR block or address, IPv6 CIDR block or address, security group, or prefix list. You cannot call this operation to change the type of an existing authorization object. For example, if an authorization object is an IPv4 CIDR block, you can change the authorization object to a different IPv4 CIDR block or an IPv4 address, but you cannot change the authorization object to an IPv6 CIDR block or address, a security group, or a prefix list.
-//
-//   - You cannot delete the value of a non-empty parameter. If you want to delete the values of non-empty parameters, we recommend that you create another rule and delete the original rule.
-//
-// @param request - ModifySecurityGroupEgressRuleRequest
-//
-// @return ModifySecurityGroupEgressRuleResponse
-func (client *Client) ModifySecurityGroupEgressRule(request *ModifySecurityGroupEgressRuleRequest) (_result *ModifySecurityGroupEgressRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifySecurityGroupEgressRuleResponse{}
-	_body, _err := client.ModifySecurityGroupEgressRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36099,7 +27914,7 @@ func (client *Client) ModifySecurityGroupEgressRule(request *ModifySecurityGroup
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifySecurityGroupPolicyResponse
-func (client *Client) ModifySecurityGroupPolicyWithOptions(request *ModifySecurityGroupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityGroupPolicyResponse, _err error) {
+func (client *Client) ModifySecurityGroupPolicyWithContext(ctx context.Context, request *ModifySecurityGroupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityGroupPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36152,39 +27967,11 @@ func (client *Client) ModifySecurityGroupPolicyWithOptions(request *ModifySecuri
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifySecurityGroupPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the internal access control policy of a basic security group.
-//
-// Description:
-//
-//	  By default, advanced security groups use the **internal isolation policy**, and Elastic Compute Service (ECS) instances in each advanced security group cannot communicate with each other. The internal access control policy of advanced security groups cannot be modified.
-//
-//		- You can call the [DescribeSecurityGroupAttribute](https://help.aliyun.com/document_detail/25555.html) operation to query the internal access control policy of a security group.
-//
-//		- If the internal access control policy of a security group is set to **Accept**, the security group uses the internal interconnectivity policy and all ECS instances in the security group can communicate with each other over the internal network, regardless of whether custom rules exist in the security group.
-//
-//		- If the internal access control policy of a security group is set to **Drop*	- and the security group contains no custom rules, the security group uses the internal isolation policy and all ECS instances in the security group cannot communicate with each other over the internal network. In this case, you can use custom rules to allow ECS instances in the security group to communicate with each other. For example, you can call the [AuthorizeSecurityGroup](https://help.aliyun.com/document_detail/25554.html) operation to configure custom rules.
-//
-// @param request - ModifySecurityGroupPolicyRequest
-//
-// @return ModifySecurityGroupPolicyResponse
-func (client *Client) ModifySecurityGroupPolicy(request *ModifySecurityGroupPolicyRequest) (_result *ModifySecurityGroupPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifySecurityGroupPolicyResponse{}
-	_body, _err := client.ModifySecurityGroupPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36205,7 +27992,7 @@ func (client *Client) ModifySecurityGroupPolicy(request *ModifySecurityGroupPoli
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifySecurityGroupRuleResponse
-func (client *Client) ModifySecurityGroupRuleWithOptions(request *ModifySecurityGroupRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityGroupRuleResponse, _err error) {
+func (client *Client) ModifySecurityGroupRuleWithContext(ctx context.Context, request *ModifySecurityGroupRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityGroupRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36326,37 +28113,11 @@ func (client *Client) ModifySecurityGroupRuleWithOptions(request *ModifySecurity
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifySecurityGroupRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies an inbound security group rule in a security group.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - An authorization object in a security group rule can be of one of the following types: IPv4 CIDR block or address, IPv6 CIDR block or address, security group, or prefix list. You cannot call this operation to change the type of an existing authorization object. For example, if an authorization object is an IPv4 CIDR block, you can change the authorization object to a different IPv4 CIDR block or an IPv4 address, but you cannot change the authorization object to an IPv6 CIDR block or address, a security group, or a prefix list.
-//
-//   - You cannot delete the value of a non-empty parameter. If you want to delete the values of non-empty parameters, we recommend that you create a security group rule and delete the original security group rule.
-//
-// @param request - ModifySecurityGroupRuleRequest
-//
-// @return ModifySecurityGroupRuleResponse
-func (client *Client) ModifySecurityGroupRule(request *ModifySecurityGroupRuleRequest) (_result *ModifySecurityGroupRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifySecurityGroupRuleResponse{}
-	_body, _err := client.ModifySecurityGroupRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36369,7 +28130,7 @@ func (client *Client) ModifySecurityGroupRule(request *ModifySecurityGroupRuleRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifySnapshotAttributeResponse
-func (client *Client) ModifySnapshotAttributeWithOptions(request *ModifySnapshotAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifySnapshotAttributeResponse, _err error) {
+func (client *Client) ModifySnapshotAttributeWithContext(ctx context.Context, request *ModifySnapshotAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifySnapshotAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36426,29 +28187,11 @@ func (client *Client) ModifySnapshotAttributeWithOptions(request *ModifySnapshot
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifySnapshotAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name, description, or retention period of a snapshot.
-//
-// @param request - ModifySnapshotAttributeRequest
-//
-// @return ModifySnapshotAttributeResponse
-func (client *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRequest) (_result *ModifySnapshotAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifySnapshotAttributeResponse{}
-	_body, _err := client.ModifySnapshotAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36473,7 +28216,7 @@ func (client *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifySnapshotCategoryResponse
-func (client *Client) ModifySnapshotCategoryWithOptions(request *ModifySnapshotCategoryRequest, runtime *dara.RuntimeOptions) (_result *ModifySnapshotCategoryResponse, _err error) {
+func (client *Client) ModifySnapshotCategoryWithContext(ctx context.Context, request *ModifySnapshotCategoryRequest, runtime *dara.RuntimeOptions) (_result *ModifySnapshotCategoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36522,41 +28265,11 @@ func (client *Client) ModifySnapshotCategoryWithOptions(request *ModifySnapshotC
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifySnapshotCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the type of a snapshot. You can call this operation to convert a standard snapshot into an archive snapshot.
-//
-// Description:
-//
-//	  Archive snapshots cannot be restored to standard snapshots.
-//
-//		- You can archive only standard snapshots that have been retained for at least 14 days.
-//
-//		- You cannot archive encrypted snapshots.
-//
-//		- You cannot archive snapshots that are shared to you, snapshots managed by Cloud Backup, or snapshots in cloud boxes.
-//
-//		- The archive snapshot feature is available only in the China (Hohhot), Malaysia (Kuala Lumpur), South Korea (Seoul), Philippines (Manila), Thailand (Bangkok), and Mexico regions. The availability of the feature in other regions is subject to notice.
-//
-// @param request - ModifySnapshotCategoryRequest
-//
-// @return ModifySnapshotCategoryResponse
-func (client *Client) ModifySnapshotCategory(request *ModifySnapshotCategoryRequest) (_result *ModifySnapshotCategoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifySnapshotCategoryResponse{}
-	_body, _err := client.ModifySnapshotCategoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36569,7 +28282,7 @@ func (client *Client) ModifySnapshotCategory(request *ModifySnapshotCategoryRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifySnapshotGroupResponse
-func (client *Client) ModifySnapshotGroupWithOptions(request *ModifySnapshotGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifySnapshotGroupResponse, _err error) {
+func (client *Client) ModifySnapshotGroupWithContext(ctx context.Context, request *ModifySnapshotGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifySnapshotGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36622,29 +28335,11 @@ func (client *Client) ModifySnapshotGroupWithOptions(request *ModifySnapshotGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifySnapshotGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of a snapshot-consistent group.
-//
-// @param request - ModifySnapshotGroupRequest
-//
-// @return ModifySnapshotGroupResponse
-func (client *Client) ModifySnapshotGroup(request *ModifySnapshotGroupRequest) (_result *ModifySnapshotGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifySnapshotGroupResponse{}
-	_body, _err := client.ModifySnapshotGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36657,7 +28352,7 @@ func (client *Client) ModifySnapshotGroup(request *ModifySnapshotGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyStorageCapacityUnitAttributeResponse
-func (client *Client) ModifyStorageCapacityUnitAttributeWithOptions(request *ModifyStorageCapacityUnitAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyStorageCapacityUnitAttributeResponse, _err error) {
+func (client *Client) ModifyStorageCapacityUnitAttributeWithContext(ctx context.Context, request *ModifyStorageCapacityUnitAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyStorageCapacityUnitAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36710,29 +28405,11 @@ func (client *Client) ModifyStorageCapacityUnitAttributeWithOptions(request *Mod
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyStorageCapacityUnitAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the name or modifies the description of a storage capacity unit (SCU).
-//
-// @param request - ModifyStorageCapacityUnitAttributeRequest
-//
-// @return ModifyStorageCapacityUnitAttributeResponse
-func (client *Client) ModifyStorageCapacityUnitAttribute(request *ModifyStorageCapacityUnitAttributeRequest) (_result *ModifyStorageCapacityUnitAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyStorageCapacityUnitAttributeResponse{}
-	_body, _err := client.ModifyStorageCapacityUnitAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36745,7 +28422,7 @@ func (client *Client) ModifyStorageCapacityUnitAttribute(request *ModifyStorageC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyStorageSetAttributeResponse
-func (client *Client) ModifyStorageSetAttributeWithOptions(request *ModifyStorageSetAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyStorageSetAttributeResponse, _err error) {
+func (client *Client) ModifyStorageSetAttributeWithContext(ctx context.Context, request *ModifyStorageSetAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyStorageSetAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36802,29 +28479,11 @@ func (client *Client) ModifyStorageSetAttributeWithOptions(request *ModifyStorag
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyStorageSetAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name or description of a storage set.
-//
-// @param request - ModifyStorageSetAttributeRequest
-//
-// @return ModifyStorageSetAttributeResponse
-func (client *Client) ModifyStorageSetAttribute(request *ModifyStorageSetAttributeRequest) (_result *ModifyStorageSetAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyStorageSetAttributeResponse{}
-	_body, _err := client.ModifyStorageSetAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36839,7 +28498,7 @@ func (client *Client) ModifyStorageSetAttribute(request *ModifyStorageSetAttribu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyUserBusinessBehaviorResponse
-func (client *Client) ModifyUserBusinessBehaviorWithOptions(request *ModifyUserBusinessBehaviorRequest, runtime *dara.RuntimeOptions) (_result *ModifyUserBusinessBehaviorResponse, _err error) {
+func (client *Client) ModifyUserBusinessBehaviorWithContext(ctx context.Context, request *ModifyUserBusinessBehaviorRequest, runtime *dara.RuntimeOptions) (_result *ModifyUserBusinessBehaviorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36888,32 +28547,11 @@ func (client *Client) ModifyUserBusinessBehaviorWithOptions(request *ModifyUserB
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyUserBusinessBehaviorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyUserBusinessBehavior is deprecated
-//
-// Summary:
-//
-// 设置用户级别默认属性
-//
-// @param request - ModifyUserBusinessBehaviorRequest
-//
-// @return ModifyUserBusinessBehaviorResponse
-// Deprecated
-func (client *Client) ModifyUserBusinessBehavior(request *ModifyUserBusinessBehaviorRequest) (_result *ModifyUserBusinessBehaviorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyUserBusinessBehaviorResponse{}
-	_body, _err := client.ModifyUserBusinessBehaviorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36924,7 +28562,7 @@ func (client *Client) ModifyUserBusinessBehavior(request *ModifyUserBusinessBeha
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVRouterAttributeResponse
-func (client *Client) ModifyVRouterAttributeWithOptions(request *ModifyVRouterAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVRouterAttributeResponse, _err error) {
+func (client *Client) ModifyVRouterAttributeWithContext(ctx context.Context, request *ModifyVRouterAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVRouterAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36977,28 +28615,11 @@ func (client *Client) ModifyVRouterAttributeWithOptions(request *ModifyVRouterAt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVRouterAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyVRouterAttribute is deprecated
-//
-// @param request - ModifyVRouterAttributeRequest
-//
-// @return ModifyVRouterAttributeResponse
-// Deprecated
-func (client *Client) ModifyVRouterAttribute(request *ModifyVRouterAttributeRequest) (_result *ModifyVRouterAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVRouterAttributeResponse{}
-	_body, _err := client.ModifyVRouterAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37009,7 +28630,7 @@ func (client *Client) ModifyVRouterAttribute(request *ModifyVRouterAttributeRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVSwitchAttributeResponse
-func (client *Client) ModifyVSwitchAttributeWithOptions(request *ModifyVSwitchAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVSwitchAttributeResponse, _err error) {
+func (client *Client) ModifyVSwitchAttributeWithContext(ctx context.Context, request *ModifyVSwitchAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVSwitchAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37062,28 +28683,11 @@ func (client *Client) ModifyVSwitchAttributeWithOptions(request *ModifyVSwitchAt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVSwitchAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyVSwitchAttribute is deprecated
-//
-// @param request - ModifyVSwitchAttributeRequest
-//
-// @return ModifyVSwitchAttributeResponse
-// Deprecated
-func (client *Client) ModifyVSwitchAttribute(request *ModifyVSwitchAttributeRequest) (_result *ModifyVSwitchAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVSwitchAttributeResponse{}
-	_body, _err := client.ModifyVSwitchAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37094,7 +28698,7 @@ func (client *Client) ModifyVSwitchAttribute(request *ModifyVSwitchAttributeRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVirtualBorderRouterAttributeResponse
-func (client *Client) ModifyVirtualBorderRouterAttributeWithOptions(request *ModifyVirtualBorderRouterAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVirtualBorderRouterAttributeResponse, _err error) {
+func (client *Client) ModifyVirtualBorderRouterAttributeWithContext(ctx context.Context, request *ModifyVirtualBorderRouterAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVirtualBorderRouterAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37175,28 +28779,11 @@ func (client *Client) ModifyVirtualBorderRouterAttributeWithOptions(request *Mod
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVirtualBorderRouterAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyVirtualBorderRouterAttribute is deprecated
-//
-// @param request - ModifyVirtualBorderRouterAttributeRequest
-//
-// @return ModifyVirtualBorderRouterAttributeResponse
-// Deprecated
-func (client *Client) ModifyVirtualBorderRouterAttribute(request *ModifyVirtualBorderRouterAttributeRequest) (_result *ModifyVirtualBorderRouterAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVirtualBorderRouterAttributeResponse{}
-	_body, _err := client.ModifyVirtualBorderRouterAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37207,7 +28794,7 @@ func (client *Client) ModifyVirtualBorderRouterAttribute(request *ModifyVirtualB
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVpcAttributeResponse
-func (client *Client) ModifyVpcAttributeWithOptions(request *ModifyVpcAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcAttributeResponse, _err error) {
+func (client *Client) ModifyVpcAttributeWithContext(ctx context.Context, request *ModifyVpcAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37268,28 +28855,11 @@ func (client *Client) ModifyVpcAttributeWithOptions(request *ModifyVpcAttributeR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVpcAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyVpcAttribute is deprecated
-//
-// @param request - ModifyVpcAttributeRequest
-//
-// @return ModifyVpcAttributeResponse
-// Deprecated
-func (client *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (_result *ModifyVpcAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVpcAttributeResponse{}
-	_body, _err := client.ModifyVpcAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37308,7 +28878,7 @@ func (client *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PurchaseElasticityAssuranceResponse
-func (client *Client) PurchaseElasticityAssuranceWithOptions(request *PurchaseElasticityAssuranceRequest, runtime *dara.RuntimeOptions) (_result *PurchaseElasticityAssuranceResponse, _err error) {
+func (client *Client) PurchaseElasticityAssuranceWithContext(ctx context.Context, request *PurchaseElasticityAssuranceRequest, runtime *dara.RuntimeOptions) (_result *PurchaseElasticityAssuranceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37369,35 +28939,11 @@ func (client *Client) PurchaseElasticityAssuranceWithOptions(request *PurchaseEl
 		BodyType:    dara.String("json"),
 	}
 	_result = &PurchaseElasticityAssuranceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Purchases an elasticity assurance that is not in the Active state and for which resources are prepared.
-//
-// Description:
-//
-// Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh?spm=5176.28117011.nav-v2-dropdown-language.exp-location-zh.9ae4165bF98IHz&_p_lc=1) of elasticity assurances.
-//
-// Before you purchase an elasticity assurance, you can call the [DescribeElasticityAssurances](https://help.aliyun.com/document_detail/2679748.html) operation to query the elasticity assurances that you can purchase.
-//
-// @param request - PurchaseElasticityAssuranceRequest
-//
-// @return PurchaseElasticityAssuranceResponse
-func (client *Client) PurchaseElasticityAssurance(request *PurchaseElasticityAssuranceRequest) (_result *PurchaseElasticityAssuranceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PurchaseElasticityAssuranceResponse{}
-	_body, _err := client.PurchaseElasticityAssuranceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37440,7 +28986,7 @@ func (client *Client) PurchaseElasticityAssurance(request *PurchaseElasticityAss
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PurchaseReservedInstancesOfferingResponse
-func (client *Client) PurchaseReservedInstancesOfferingWithOptions(request *PurchaseReservedInstancesOfferingRequest, runtime *dara.RuntimeOptions) (_result *PurchaseReservedInstancesOfferingResponse, _err error) {
+func (client *Client) PurchaseReservedInstancesOfferingWithContext(ctx context.Context, request *PurchaseReservedInstancesOfferingRequest, runtime *dara.RuntimeOptions) (_result *PurchaseReservedInstancesOfferingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37545,59 +29091,11 @@ func (client *Client) PurchaseReservedInstancesOfferingWithOptions(request *Purc
 		BodyType:    dara.String("json"),
 	}
 	_result = &PurchaseReservedInstancesOfferingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Purchases a regional or zonal reserved instance to offset the bills of pay-as-you-go Elastic Compute Service (ECS) instances.
-//
-// Description:
-//
-// *Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of reserved instances.**
-//
-//   - Before you call this operation, make sure that you are familiar with the billing rules of reserved instances. For more information, see [Reserved instances](https://help.aliyun.com/document_detail/100371.html).
-//
-//   - You can retain up to 20 regional reserved instances in all regions per Alibaba Cloud account.
-//
-//   - You can retain up to 20 zonal reserved instances per zone per Alibaba Cloud account.
-//
-// ## [](#)Sample requests
-//
-//   - Purchase a one-year regional reserved instance in the China (Hangzhou) region to offset the bills of three ecs.g5.large Linux pay-as-you-go instances.
-//
-// <!---->
-//
-//	    "RegionId":"cn-hangzhou", // Specify the China (Hangzhou) region."InstanceType":"ecs.g5.large", // Specify the instance type."Scope":"Region", // Set the scope of the reserved instance to regional."InstanceAmount":3, // Specify the reserved instance to match three pay-as-you-go instances of the same instance type."OfferingType":"All Upfront", // Specify the payment option. In this example, the default value is used, which is All Upfront."Platform":"Linux", // Specify the operating system platform of the ECS instances eligible for the reserved instance. In this example, the Linux or Unix-like operating system is used."Period":1, // Specify the term of the reserved instance. In this example, the one-year duration is used."PeriodUnit":"Year", // Set the unit of the term to year.
-//
-//		- Purchase a two-year zonal reserved instance in Hangzhou Zone H to offset the bills of five ecs.g5.large Windows pay-as-you-go instances.
-//
-// <!---->
-//
-//	"RegionId":"cn-hangzhou",
-//
-//	"ZoneId":"cn-hangzhou-h", // Specify Hangzhou Zone H."InstanceType":"ecs.g5.large",
-//
-//	"Scope":"Zone", // Set the scope of the reserved instance to zonal."InstanceAmount":5, // Specify the reserved instance to match five pay-as-you-go instances of the same instance type."OfferingType":"All Upfront",
-//
-//	"Platform":"Windows", // Specify the operating system platform of the ECS instances eligible for the reserved instance. In this example, the Windows operating system is used."Period":2, // Specify the term of the reserved instance. In this example, the two-year duration is used."PeriodUnit":"Year", // Set the unit of the term to year.
-//
-// @param request - PurchaseReservedInstancesOfferingRequest
-//
-// @return PurchaseReservedInstancesOfferingResponse
-func (client *Client) PurchaseReservedInstancesOffering(request *PurchaseReservedInstancesOfferingRequest) (_result *PurchaseReservedInstancesOfferingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PurchaseReservedInstancesOfferingResponse{}
-	_body, _err := client.PurchaseReservedInstancesOfferingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37614,7 +29112,7 @@ func (client *Client) PurchaseReservedInstancesOffering(request *PurchaseReserve
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PurchaseStorageCapacityUnitResponse
-func (client *Client) PurchaseStorageCapacityUnitWithOptions(request *PurchaseStorageCapacityUnitRequest, runtime *dara.RuntimeOptions) (_result *PurchaseStorageCapacityUnitResponse, _err error) {
+func (client *Client) PurchaseStorageCapacityUnitWithContext(ctx context.Context, request *PurchaseStorageCapacityUnitRequest, runtime *dara.RuntimeOptions) (_result *PurchaseStorageCapacityUnitResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37699,33 +29197,11 @@ func (client *Client) PurchaseStorageCapacityUnitWithOptions(request *PurchaseSt
 		BodyType:    dara.String("json"),
 	}
 	_result = &PurchaseStorageCapacityUnitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Purchases one or more storage capacity units (SCUs).
-//
-// Description:
-//
-// *Before you call this operation, make sure that you understand the [billing methods](https://help.aliyun.com/document_detail/137897.html) and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of SCUs.
-//
-// @param request - PurchaseStorageCapacityUnitRequest
-//
-// @return PurchaseStorageCapacityUnitResponse
-func (client *Client) PurchaseStorageCapacityUnit(request *PurchaseStorageCapacityUnitRequest) (_result *PurchaseStorageCapacityUnitResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PurchaseStorageCapacityUnitResponse{}
-	_body, _err := client.PurchaseStorageCapacityUnitWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37746,7 +29222,7 @@ func (client *Client) PurchaseStorageCapacityUnit(request *PurchaseStorageCapaci
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReActivateInstancesResponse
-func (client *Client) ReActivateInstancesWithOptions(request *ReActivateInstancesRequest, runtime *dara.RuntimeOptions) (_result *ReActivateInstancesResponse, _err error) {
+func (client *Client) ReActivateInstancesWithContext(ctx context.Context, request *ReActivateInstancesRequest, runtime *dara.RuntimeOptions) (_result *ReActivateInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37791,37 +29267,11 @@ func (client *Client) ReActivateInstancesWithOptions(request *ReActivateInstance
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReActivateInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Reactivates a pay-as-you-go Elastic Compute Service (ECS) instance that has expired or has been reclaimed due to overdue payments.
-//
-// Description:
-//
-// After you complete the overdue payment for a pay-as-you-go ECS instance, you do not need to call this operation to reactivate the instance. The system automatically reactivates the instance to restore the instance to the status before the payment became overdue. Automatic reactivation occasionally fails. Take note of the status of automatic reactivation. If the automatic reactivation fails, call this operation to manually reactivate the instance.
-//
-//   - The instance must be in the **Expired*	- `(Stopped)` state.
-//
-//   - You cannot call this operation to start ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-//
-// @param request - ReActivateInstancesRequest
-//
-// @return ReActivateInstancesResponse
-func (client *Client) ReActivateInstances(request *ReActivateInstancesRequest) (_result *ReActivateInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReActivateInstancesResponse{}
-	_body, _err := client.ReActivateInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37848,7 +29298,7 @@ func (client *Client) ReActivateInstances(request *ReActivateInstancesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReInitDiskResponse
-func (client *Client) ReInitDiskWithOptions(request *ReInitDiskRequest, runtime *dara.RuntimeOptions) (_result *ReInitDiskResponse, _err error) {
+func (client *Client) ReInitDiskWithContext(ctx context.Context, request *ReInitDiskRequest, runtime *dara.RuntimeOptions) (_result *ReInitDiskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37905,43 +29355,11 @@ func (client *Client) ReInitDiskWithOptions(request *ReInitDiskRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReInitDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Re-initializes a cloud disk to the state when the cloud disk was created.
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - The disk that you want to re-initialize must be in the **In Use*	- (`In_use`) state and the instance to which the disk is attached must be in the **Stopped*	- (`Stoppe`) state.
-//
-//   - If an instance has never been started since it was created, the disks attached to it cannot be re-initialized.
-//
-//   - If a local snapshot has been created for a disk, the disk cannot be re-initialized.
-//
-//   - If a system disk is re-initialized, the disk is restored to the state of the image from which it was created. If the image has been deleted, the disk cannot be re-initialized.
-//
-//   - For a data disk that was created from scratch, the disk is initialized to the empty disk state. For a data disk that is created from a snapshot, the disk is initialized to the snapshot state. If the snapshots were deleted, the disks cannot be re-initialized and an error is returned.
-//
-// @param request - ReInitDiskRequest
-//
-// @return ReInitDiskResponse
-func (client *Client) ReInitDisk(request *ReInitDiskRequest) (_result *ReInitDiskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReInitDiskResponse{}
-	_body, _err := client.ReInitDiskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37964,7 +29382,7 @@ func (client *Client) ReInitDisk(request *ReInitDiskRequest) (_result *ReInitDis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RebootInstanceResponse
-func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, runtime *dara.RuntimeOptions) (_result *RebootInstanceResponse, _err error) {
+func (client *Client) RebootInstanceWithContext(ctx context.Context, request *RebootInstanceRequest, runtime *dara.RuntimeOptions) (_result *RebootInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38013,39 +29431,11 @@ func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &RebootInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Restarts an Elastic Compute Service (ECS) instance.
-//
-// Description:
-//
-// This operation is an asynchronous operation. After you call this operation to restart an ECS instance, the operation sets the status of the ECS instance to `Starting` and begins the restart process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instance. When the status of the ECS instance changes to `Running`, the instance is restarted.
-//
-// ### [](#)Considerations
-//
-//   - You cannot call this operation to restart an ECS instance that is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-//
-//   - The ECS instance that you want to restart must be in the **Running*	- (`Running`) state.
-//
-// @param request - RebootInstanceRequest
-//
-// @return RebootInstanceResponse
-func (client *Client) RebootInstance(request *RebootInstanceRequest) (_result *RebootInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RebootInstanceResponse{}
-	_body, _err := client.RebootInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38068,7 +29458,7 @@ func (client *Client) RebootInstance(request *RebootInstanceRequest) (_result *R
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RebootInstancesResponse
-func (client *Client) RebootInstancesWithOptions(request *RebootInstancesRequest, runtime *dara.RuntimeOptions) (_result *RebootInstancesResponse, _err error) {
+func (client *Client) RebootInstancesWithContext(ctx context.Context, request *RebootInstancesRequest, runtime *dara.RuntimeOptions) (_result *RebootInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38125,39 +29515,11 @@ func (client *Client) RebootInstancesWithOptions(request *RebootInstancesRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &RebootInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Restarts Elastic Compute Service (ECS) instances. When you call this operation, you can configure parameters to specify a batch operation mode and whether to forcefully restart the instances.
-//
-// Description:
-//
-// This operation is an asynchronous operation. After you call this operation to restart an ECS instance, the operation sets the status of the ECS instance to `Starting` and begins the restart process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instance. When the status of the ECS instance changes to `Running`, the instance is restarted.
-//
-// ### [](#)Limits
-//
-//   - You cannot call this operation to restart ECS instances that are locked due to security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-//
-//   - The ECS instances that you want to restart must be in the **Running*	- (`Running`) state.
-//
-// @param request - RebootInstancesRequest
-//
-// @return RebootInstancesResponse
-func (client *Client) RebootInstances(request *RebootInstancesRequest) (_result *RebootInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RebootInstancesResponse{}
-	_body, _err := client.RebootInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38168,7 +29530,7 @@ func (client *Client) RebootInstances(request *RebootInstancesRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RecoverVirtualBorderRouterResponse
-func (client *Client) RecoverVirtualBorderRouterWithOptions(request *RecoverVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *RecoverVirtualBorderRouterResponse, _err error) {
+func (client *Client) RecoverVirtualBorderRouterWithContext(ctx context.Context, request *RecoverVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *RecoverVirtualBorderRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38221,28 +29583,11 @@ func (client *Client) RecoverVirtualBorderRouterWithOptions(request *RecoverVirt
 		BodyType:    dara.String("json"),
 	}
 	_result = &RecoverVirtualBorderRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI RecoverVirtualBorderRouter is deprecated
-//
-// @param request - RecoverVirtualBorderRouterRequest
-//
-// @return RecoverVirtualBorderRouterResponse
-// Deprecated
-func (client *Client) RecoverVirtualBorderRouter(request *RecoverVirtualBorderRouterRequest) (_result *RecoverVirtualBorderRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RecoverVirtualBorderRouterResponse{}
-	_body, _err := client.RecoverVirtualBorderRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38259,7 +29604,7 @@ func (client *Client) RecoverVirtualBorderRouter(request *RecoverVirtualBorderRo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RedeployDedicatedHostResponse
-func (client *Client) RedeployDedicatedHostWithOptions(request *RedeployDedicatedHostRequest, runtime *dara.RuntimeOptions) (_result *RedeployDedicatedHostResponse, _err error) {
+func (client *Client) RedeployDedicatedHostWithContext(ctx context.Context, request *RedeployDedicatedHostRequest, runtime *dara.RuntimeOptions) (_result *RedeployDedicatedHostResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38308,33 +29653,11 @@ func (client *Client) RedeployDedicatedHostWithOptions(request *RedeployDedicate
 		BodyType:    dara.String("json"),
 	}
 	_result = &RedeployDedicatedHostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Migrates Elastic Compute Service (ECS) instances from a failed dedicated host.
-//
-// Description:
-//
-// If a dedicated host is in the `UnderAssessment` state, we recommend that you call this operation to migrate ECS instances away from the dedicated host to prevent permanent failures. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the status of a dedicated host.
-//
-// @param request - RedeployDedicatedHostRequest
-//
-// @return RedeployDedicatedHostResponse
-func (client *Client) RedeployDedicatedHost(request *RedeployDedicatedHostRequest) (_result *RedeployDedicatedHostResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RedeployDedicatedHostResponse{}
-	_body, _err := client.RedeployDedicatedHostWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38393,7 +29716,7 @@ func (client *Client) RedeployDedicatedHost(request *RedeployDedicatedHostReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RedeployInstanceResponse
-func (client *Client) RedeployInstanceWithOptions(request *RedeployInstanceRequest, runtime *dara.RuntimeOptions) (_result *RedeployInstanceResponse, _err error) {
+func (client *Client) RedeployInstanceWithContext(ctx context.Context, request *RedeployInstanceRequest, runtime *dara.RuntimeOptions) (_result *RedeployInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38438,75 +29761,11 @@ func (client *Client) RedeployInstanceWithOptions(request *RedeployInstanceReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &RedeployInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Redeploys an Elastic Compute Service (ECS) instance. You can call this operation to redeploy an ECS instance when the instance receives a system event notification.
-//
-// Description:
-//
-// ## Usage notes
-//
-// RedeployInstance is an asynchronous operation. The operation migrates the instance to a healthy physical server and then restarts the instance. After the instance is redeployed, it enters the Running (`Running`) state. If the instance fails to be redeployed, it returns to the original physical server and the state before the redeployment.
-//
-// When you call this operation, take note of the following item:
-//
-//   - The instance must be in the Running (Running) or Stopped (Stopped) state. After the instance is redeployed, the following changes occur to the status of the instance:
-//
-//   - If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
-//
-//   - If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
-//
-//   - If an instance is deployed on a dedicated host, you cannot redeploy the instance.
-//
-//   - If `OperationLocks` in the response of the DescribeInstances operation contains `"LockReason": "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
-//
-//   - If an instance receives notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for the instance, you cannot call this operation to redeploy the instance.
-//
-//   - When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [O&#x26;M scenarios and system events for instances equipped with local disks](https://help.aliyun.com/document_detail/107693.html).
-//
-// The following table describes the types and states of events that you can handle by calling the RedeployInstance operation.
-//
-// |System event|Event status|
-//
-// |---|---|
-//
-// |Instance restart due to system maintenance (SystemMaintenance.Reboot)|Inquiring and Scheduled|
-//
-// |Instance redeployment due to system maintenance (SystemMaintenance.Redeploy)|Inquiring and Scheduled|
-//
-// |Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)|Inquiring|
-//
-// |Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk)|Inquiring|
-//
-// |Instance redeployment due to system errors (SystemFailure.Redeploy)|Inquiring|
-//
-// |For ECS instances that use only local disks: instance restart due to system errors (SystemFailure.Reboot)|Executing|
-//
-// |Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)|Inquiring|
-//
-// |Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)|Inquiring|
-//
-// **Note*	- When the system redeploys instances equipped with local disks, the local disks are re-initialized and data on the local disks is cleared.
-//
-// @param request - RedeployInstanceRequest
-//
-// @return RedeployInstanceResponse
-func (client *Client) RedeployInstance(request *RedeployInstanceRequest) (_result *RedeployInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RedeployInstanceResponse{}
-	_body, _err := client.RedeployInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38523,7 +29782,7 @@ func (client *Client) RedeployInstance(request *RedeployInstanceRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseCapacityReservationResponse
-func (client *Client) ReleaseCapacityReservationWithOptions(request *ReleaseCapacityReservationRequest, runtime *dara.RuntimeOptions) (_result *ReleaseCapacityReservationResponse, _err error) {
+func (client *Client) ReleaseCapacityReservationWithContext(ctx context.Context, request *ReleaseCapacityReservationRequest, runtime *dara.RuntimeOptions) (_result *ReleaseCapacityReservationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38572,33 +29831,11 @@ func (client *Client) ReleaseCapacityReservationWithOptions(request *ReleaseCapa
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseCapacityReservationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases a capacity reservation.
-//
-// Description:
-//
-// If the release mode of a capacity reservation that takes effect immediately is set to manual release, you can call this operation to release the capacity reservation.
-//
-// @param request - ReleaseCapacityReservationRequest
-//
-// @return ReleaseCapacityReservationResponse
-func (client *Client) ReleaseCapacityReservation(request *ReleaseCapacityReservationRequest) (_result *ReleaseCapacityReservationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReleaseCapacityReservationResponse{}
-	_body, _err := client.ReleaseCapacityReservationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38617,7 +29854,7 @@ func (client *Client) ReleaseCapacityReservation(request *ReleaseCapacityReserva
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseDedicatedHostResponse
-func (client *Client) ReleaseDedicatedHostWithOptions(request *ReleaseDedicatedHostRequest, runtime *dara.RuntimeOptions) (_result *ReleaseDedicatedHostResponse, _err error) {
+func (client *Client) ReleaseDedicatedHostWithContext(ctx context.Context, request *ReleaseDedicatedHostRequest, runtime *dara.RuntimeOptions) (_result *ReleaseDedicatedHostResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38662,35 +29899,11 @@ func (client *Client) ReleaseDedicatedHostWithOptions(request *ReleaseDedicatedH
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseDedicatedHostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases a pay-as-you-go dedicated host.
-//
-// Description:
-//
-// ## Usage notes
-//
-// Before you release a pay-as-you-go dedicated host, make sure that no ECS instances are deployed on the dedicated host.
-//
-// @param request - ReleaseDedicatedHostRequest
-//
-// @return ReleaseDedicatedHostResponse
-func (client *Client) ReleaseDedicatedHost(request *ReleaseDedicatedHostRequest) (_result *ReleaseDedicatedHostResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReleaseDedicatedHostResponse{}
-	_body, _err := client.ReleaseDedicatedHostWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38701,7 +29914,7 @@ func (client *Client) ReleaseDedicatedHost(request *ReleaseDedicatedHostRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseEipAddressResponse
-func (client *Client) ReleaseEipAddressWithOptions(request *ReleaseEipAddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseEipAddressResponse, _err error) {
+func (client *Client) ReleaseEipAddressWithContext(ctx context.Context, request *ReleaseEipAddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseEipAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38746,28 +29959,11 @@ func (client *Client) ReleaseEipAddressWithOptions(request *ReleaseEipAddressReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ReleaseEipAddress is deprecated
-//
-// @param request - ReleaseEipAddressRequest
-//
-// @return ReleaseEipAddressResponse
-// Deprecated
-func (client *Client) ReleaseEipAddress(request *ReleaseEipAddressRequest) (_result *ReleaseEipAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReleaseEipAddressResponse{}
-	_body, _err := client.ReleaseEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38782,7 +29978,7 @@ func (client *Client) ReleaseEipAddress(request *ReleaseEipAddressRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleasePublicIpAddressResponse
-func (client *Client) ReleasePublicIpAddressWithOptions(request *ReleasePublicIpAddressRequest, runtime *dara.RuntimeOptions) (_result *ReleasePublicIpAddressResponse, _err error) {
+func (client *Client) ReleasePublicIpAddressWithContext(ctx context.Context, request *ReleasePublicIpAddressRequest, runtime *dara.RuntimeOptions) (_result *ReleasePublicIpAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38819,32 +30015,11 @@ func (client *Client) ReleasePublicIpAddressWithOptions(request *ReleasePublicIp
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleasePublicIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ReleasePublicIpAddress is deprecated
-//
-// Summary:
-//
-// Disassociates a public IP address from an Elastic Compute Service (ECS) instance.
-//
-// @param request - ReleasePublicIpAddressRequest
-//
-// @return ReleasePublicIpAddressResponse
-// Deprecated
-func (client *Client) ReleasePublicIpAddress(request *ReleasePublicIpAddressRequest) (_result *ReleasePublicIpAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReleasePublicIpAddressResponse{}
-	_body, _err := client.ReleasePublicIpAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38855,7 +30030,7 @@ func (client *Client) ReleasePublicIpAddress(request *ReleasePublicIpAddressRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveBandwidthPackageIpsResponse
-func (client *Client) RemoveBandwidthPackageIpsWithOptions(request *RemoveBandwidthPackageIpsRequest, runtime *dara.RuntimeOptions) (_result *RemoveBandwidthPackageIpsResponse, _err error) {
+func (client *Client) RemoveBandwidthPackageIpsWithContext(ctx context.Context, request *RemoveBandwidthPackageIpsRequest, runtime *dara.RuntimeOptions) (_result *RemoveBandwidthPackageIpsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38908,28 +30083,11 @@ func (client *Client) RemoveBandwidthPackageIpsWithOptions(request *RemoveBandwi
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveBandwidthPackageIpsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI RemoveBandwidthPackageIps is deprecated
-//
-// @param request - RemoveBandwidthPackageIpsRequest
-//
-// @return RemoveBandwidthPackageIpsResponse
-// Deprecated
-func (client *Client) RemoveBandwidthPackageIps(request *RemoveBandwidthPackageIpsRequest) (_result *RemoveBandwidthPackageIpsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveBandwidthPackageIpsResponse{}
-	_body, _err := client.RemoveBandwidthPackageIpsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38944,7 +30102,7 @@ func (client *Client) RemoveBandwidthPackageIps(request *RemoveBandwidthPackageI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveTagsResponse
-func (client *Client) RemoveTagsWithOptions(request *RemoveTagsRequest, runtime *dara.RuntimeOptions) (_result *RemoveTagsResponse, _err error) {
+func (client *Client) RemoveTagsWithContext(ctx context.Context, request *RemoveTagsRequest, runtime *dara.RuntimeOptions) (_result *RemoveTagsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38993,32 +30151,11 @@ func (client *Client) RemoveTagsWithOptions(request *RemoveTagsRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI RemoveTags is deprecated, please use Ecs::2014-05-26::UntagResources instead.
-//
-// Summary:
-//
-// Removes tags from a resource, such as an Elastic Compute Service (ECS) instance, disk, snapshot, image, or security group.
-//
-// @param request - RemoveTagsRequest
-//
-// @return RemoveTagsResponse
-// Deprecated
-func (client *Client) RemoveTags(request *RemoveTagsRequest) (_result *RemoveTagsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveTagsResponse{}
-	_body, _err := client.RemoveTagsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39037,7 +30174,7 @@ func (client *Client) RemoveTags(request *RemoveTagsRequest) (_result *RemoveTag
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenewDedicatedHostsResponse
-func (client *Client) RenewDedicatedHostsWithOptions(request *RenewDedicatedHostsRequest, runtime *dara.RuntimeOptions) (_result *RenewDedicatedHostsResponse, _err error) {
+func (client *Client) RenewDedicatedHostsWithContext(ctx context.Context, request *RenewDedicatedHostsRequest, runtime *dara.RuntimeOptions) (_result *RenewDedicatedHostsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39094,35 +30231,11 @@ func (client *Client) RenewDedicatedHostsWithOptions(request *RenewDedicatedHost
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenewDedicatedHostsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Renews one or more subscription dedicated hosts.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// When you renew subscription dedicated hosts, vouchers are used first by default. Make sure that your account supports credit card payments or balance payments.
-//
-// @param request - RenewDedicatedHostsRequest
-//
-// @return RenewDedicatedHostsResponse
-func (client *Client) RenewDedicatedHosts(request *RenewDedicatedHostsRequest) (_result *RenewDedicatedHostsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RenewDedicatedHostsResponse{}
-	_body, _err := client.RenewDedicatedHostsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39135,7 +30248,7 @@ func (client *Client) RenewDedicatedHosts(request *RenewDedicatedHostsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenewElasticityAssurancesResponse
-func (client *Client) RenewElasticityAssurancesWithOptions(request *RenewElasticityAssurancesRequest, runtime *dara.RuntimeOptions) (_result *RenewElasticityAssurancesResponse, _err error) {
+func (client *Client) RenewElasticityAssurancesWithContext(ctx context.Context, request *RenewElasticityAssurancesRequest, runtime *dara.RuntimeOptions) (_result *RenewElasticityAssurancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39204,29 +30317,11 @@ func (client *Client) RenewElasticityAssurancesWithOptions(request *RenewElastic
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenewElasticityAssurancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Renews elasticity assurances that you purchased.
-//
-// @param request - RenewElasticityAssurancesRequest
-//
-// @return RenewElasticityAssurancesResponse
-func (client *Client) RenewElasticityAssurances(request *RenewElasticityAssurancesRequest) (_result *RenewElasticityAssurancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RenewElasticityAssurancesResponse{}
-	_body, _err := client.RenewElasticityAssurancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39249,7 +30344,7 @@ func (client *Client) RenewElasticityAssurances(request *RenewElasticityAssuranc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenewInstanceResponse
-func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
+func (client *Client) RenewInstanceWithContext(ctx context.Context, request *RenewInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39306,39 +30401,11 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenewInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Renews a subscription Elastic Compute Service (ECS) instance. You can specify a renewal period or renew the instance to a unified expiration date.
-//
-// Description:
-//
-// *Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://www.alibabacloud.com/product/ecs#pricing) of ECS**.
-//
-//   - Make sure that your account balance or credit balance is sufficient.
-//
-//   - Only subscription instances are supported. If you call this operation for a pay-as-you-go instance, an error is returned.
-//
-//   - You must specify the renewal period-related parameter pair (`Period` and `PeriodUnit`) or `ExpectedRenewDay`, but not both.
-//
-// @param request - RenewInstanceRequest
-//
-// @return RenewInstanceResponse
-func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *RenewInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RenewInstanceResponse{}
-	_body, _err := client.RenewInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39361,7 +30428,7 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenewReservedInstancesResponse
-func (client *Client) RenewReservedInstancesWithOptions(request *RenewReservedInstancesRequest, runtime *dara.RuntimeOptions) (_result *RenewReservedInstancesResponse, _err error) {
+func (client *Client) RenewReservedInstancesWithContext(ctx context.Context, request *RenewReservedInstancesRequest, runtime *dara.RuntimeOptions) (_result *RenewReservedInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39426,39 +30493,11 @@ func (client *Client) RenewReservedInstancesWithOptions(request *RenewReservedIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenewReservedInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Renews one or more reserved instances. When you renew reserved instances, you can specify a validity period (renewal period) and whether to enable auto-renewal for the reserved instances.
-//
-// Description:
-//
-// *Before you call this operation, make sure that you are familiar with the billing and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of reserved instances.**
-//
-//   - You can manually renew reserved instances or enable auto-renewal for reserved instances. For more information, see the [Renewal](~~100371#53bfc50b78sta~~) section of the "Reserved instances" topic.
-//
-//   - You can call the [DescribeReservedInstances](https://help.aliyun.com/document_detail/100065.html) operation to query the reserved instances that you purchased.
-//
-//   - You can call this operation to enable auto-renewal for reserved instances but cannot call this operation to disable auto-renewal for reserved instances. To disable auto-renewal for a reserved instance, call the [ModifyReservedInstanceAutoRenewAttribute](https://help.aliyun.com/document_detail/2679786.html) operation.
-//
-// @param request - RenewReservedInstancesRequest
-//
-// @return RenewReservedInstancesResponse
-func (client *Client) RenewReservedInstances(request *RenewReservedInstancesRequest) (_result *RenewReservedInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RenewReservedInstancesResponse{}
-	_body, _err := client.RenewReservedInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39497,7 +30536,7 @@ func (client *Client) RenewReservedInstances(request *RenewReservedInstancesRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReplaceSystemDiskResponse
-func (client *Client) ReplaceSystemDiskWithOptions(request *ReplaceSystemDiskRequest, runtime *dara.RuntimeOptions) (_result *ReplaceSystemDiskResponse, _err error) {
+func (client *Client) ReplaceSystemDiskWithContext(ctx context.Context, request *ReplaceSystemDiskRequest, runtime *dara.RuntimeOptions) (_result *ReplaceSystemDiskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39598,55 +30637,11 @@ func (client *Client) ReplaceSystemDiskWithOptions(request *ReplaceSystemDiskReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReplaceSystemDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Replaces the operating system (system disk) of an ECS instance. After the operating system of the ECS instance is replaced, the original system disk of the instance is released and a new system disk is generated for the instance. This causes the ID of the system disk to change.
-//
-// Description:
-//
-// Before you call this operation, refer to [Replace the operating system (system disk) of an instance](https://help.aliyun.com/document_detail/50134.html).
-//
-// When you call this operation for an ECS instance, take note of the following items:
-//
-//   - The billing method of the system disk cannot be changed.
-//
-//   - The category of the system disk cannot be changed.
-//
-//   - Make sure that no unpaid orders are associated with the instance.
-//
-//   - The instance must be in the `Stopped` state.
-//
-//     **Note*	- The operation is applicable only to instances of the Virtual Private Cloud (VPC) type. If the instance is a pay-as-you-go instance and default economical mode is enabled, enable standard mode when you stop the instance. This prevents the instance from being unable to restart due to insufficient ECS resources after the system disk is replaced. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
-//
-//   - The instance cannot be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-//
-//   - You can configure `SystemDisk.Size` to specify the capacity of the new system disk.
-//
-// After you call the ReplaceSystemDisk operation, you can use one of the following methods to check whether the system disk is replaced:
-//
-//   - Call the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query the status of the new system disk. If the new system disk is in the In Use state, the system disk is replaced.
-//
-//   - Call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of the instance whose system disk is replaced. If the `OperationLocks` parameter is empty, the system disk is replaced.
-//
-// @param request - ReplaceSystemDiskRequest
-//
-// @return ReplaceSystemDiskResponse
-func (client *Client) ReplaceSystemDisk(request *ReplaceSystemDiskRequest) (_result *ReplaceSystemDiskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReplaceSystemDiskResponse{}
-	_body, _err := client.ReplaceSystemDiskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39659,7 +30654,7 @@ func (client *Client) ReplaceSystemDisk(request *ReplaceSystemDiskRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReportInstancesStatusResponse
-func (client *Client) ReportInstancesStatusWithOptions(request *ReportInstancesStatusRequest, runtime *dara.RuntimeOptions) (_result *ReportInstancesStatusResponse, _err error) {
+func (client *Client) ReportInstancesStatusWithContext(ctx context.Context, request *ReportInstancesStatusRequest, runtime *dara.RuntimeOptions) (_result *ReportInstancesStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39736,29 +30731,11 @@ func (client *Client) ReportInstancesStatusWithOptions(request *ReportInstancesS
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReportInstancesStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Reports an exception on Elastic Compute Service (ECS) instances. You can report the same exception on multiple ECS instances or on multiple disks of an ECS instance.
-//
-// @param request - ReportInstancesStatusRequest
-//
-// @return ReportInstancesStatusResponse
-func (client *Client) ReportInstancesStatus(request *ReportInstancesStatusRequest) (_result *ReportInstancesStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReportInstancesStatusResponse{}
-	_body, _err := client.ReportInstancesStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39785,7 +30762,7 @@ func (client *Client) ReportInstancesStatus(request *ReportInstancesStatusReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResetDiskResponse
-func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *dara.RuntimeOptions) (_result *ResetDiskResponse, _err error) {
+func (client *Client) ResetDiskWithContext(ctx context.Context, request *ResetDiskRequest, runtime *dara.RuntimeOptions) (_result *ResetDiskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39834,43 +30811,11 @@ func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Rolls back a cloud disk to a snapshot from an earlier point in time.
-//
-// Description:
-//
-// Before you call this operation, read [Roll back a disk by using a snapshot](https://help.aliyun.com/document_detail/25450.html).
-//
-// Take note of the following items:
-//
-//   - The cloud disk that you want to roll back must be in the In Use (`In_use`) or Unattached (`Available`) state.
-//
-//   - The instance to which the cloud disk is attached must be in the `Stopped` state. You can call the [StopInstances](https://help.aliyun.com/document_detail/155372.html) operation to stop the instance.
-//
-//   - The snapshot specified by `SnapshotId` must be created from the disk specified by `DiskId`.
-//
-//   - If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an instance by calling the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation, the instance is locked for security reasons and no operations can be performed on the instance.
-//
-// @param request - ResetDiskRequest
-//
-// @return ResetDiskResponse
-func (client *Client) ResetDisk(request *ResetDiskRequest) (_result *ResetDiskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ResetDiskResponse{}
-	_body, _err := client.ResetDiskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39889,7 +30834,7 @@ func (client *Client) ResetDisk(request *ResetDiskRequest) (_result *ResetDiskRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResetDiskDefaultKMSKeyIdResponse
-func (client *Client) ResetDiskDefaultKMSKeyIdWithOptions(request *ResetDiskDefaultKMSKeyIdRequest, runtime *dara.RuntimeOptions) (_result *ResetDiskDefaultKMSKeyIdResponse, _err error) {
+func (client *Client) ResetDiskDefaultKMSKeyIdWithContext(ctx context.Context, request *ResetDiskDefaultKMSKeyIdRequest, runtime *dara.RuntimeOptions) (_result *ResetDiskDefaultKMSKeyIdResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39922,35 +30867,11 @@ func (client *Client) ResetDiskDefaultKMSKeyIdWithOptions(request *ResetDiskDefa
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetDiskDefaultKMSKeyIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Resets the Key Management Service (KMS) key used by Account-level Elastic Block Storage (EBS) Default Encryption in a region to the service key.
-//
-// Description:
-//
-//	  You must grant the RAM user the `AliyunECSFullAccess` permissions. For information about how to grant permissions to a RAM user, see [Grant permissions to a RAM user](https://help.aliyun.com/document_detail/116146.html).
-//
-//		- Before you can call this operation in a region, make sure that the **Account-level Elastic Block Storage (EBS) Default Encryption*	- feature is enabled in the region.
-//
-// @param request - ResetDiskDefaultKMSKeyIdRequest
-//
-// @return ResetDiskDefaultKMSKeyIdResponse
-func (client *Client) ResetDiskDefaultKMSKeyId(request *ResetDiskDefaultKMSKeyIdRequest) (_result *ResetDiskDefaultKMSKeyIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ResetDiskDefaultKMSKeyIdResponse{}
-	_body, _err := client.ResetDiskDefaultKMSKeyIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39967,7 +30888,7 @@ func (client *Client) ResetDiskDefaultKMSKeyId(request *ResetDiskDefaultKMSKeyId
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResetDisksResponse
-func (client *Client) ResetDisksWithOptions(request *ResetDisksRequest, runtime *dara.RuntimeOptions) (_result *ResetDisksResponse, _err error) {
+func (client *Client) ResetDisksWithContext(ctx context.Context, request *ResetDisksRequest, runtime *dara.RuntimeOptions) (_result *ResetDisksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40016,33 +30937,11 @@ func (client *Client) ResetDisksWithOptions(request *ResetDisksRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetDisksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Rolls back one or more disks by using a snapshot-consistent group.
-//
-// Description:
-//
-// This operation will be removed in the future. We recommend that you call the [ResetDisk](https://help.aliyun.com/document_detail/25520.html) operation to roll back a disk.
-//
-// @param request - ResetDisksRequest
-//
-// @return ResetDisksResponse
-func (client *Client) ResetDisks(request *ResetDisksRequest) (_result *ResetDisksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ResetDisksResponse{}
-	_body, _err := client.ResetDisksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40079,7 +30978,7 @@ func (client *Client) ResetDisks(request *ResetDisksRequest) (_result *ResetDisk
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResizeDiskResponse
-func (client *Client) ResizeDiskWithOptions(request *ResizeDiskRequest, runtime *dara.RuntimeOptions) (_result *ResizeDiskResponse, _err error) {
+func (client *Client) ResizeDiskWithContext(ctx context.Context, request *ResizeDiskRequest, runtime *dara.RuntimeOptions) (_result *ResizeDiskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40132,53 +31031,11 @@ func (client *Client) ResizeDiskWithOptions(request *ResizeDiskRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResizeDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Resizes a system disk or a data disk.
-//
-// Description:
-//
-// >  Before you call this operation to resize a disk, you must check the partition format of the disk. You cannot resize a master boot record (MBR) disk to a size that is larger than 2 TiB. If you resize an MBR disk to a size that is larger than 2 TiB, data may be lost. If you want to resize an MBR disk to a size that is larger than 2 TiB, we recommend that you perform the following steps: Create a new data disk that is larger than 2 TiB in size, partition and format the new data disk by using the GUID Partition Table (GPT) format, and then copy data from the MBR disk to the GPT data disk. For more information, see [Step 1: Resize a disk to extend the disk capacity](https://help.aliyun.com/document_detail/44986.html).
-//
-//   - You can resize disks of the following disk categories: basic disks (`cloud`), ultra disks (`cloud_efficiency`), standard SSDs (`cloud_ssd`), Enterprise SSDs (ESSDs) (`cloud_essd`), ESSD AutoPL disks (cloud_auto), standard elastic ephemeral disks (elastic_ephemeral_disk_standard), and premium elastic ephemeral disks (elastic_ephemeral_disk_premium).
-//
-//   - You cannot resize a cloud disk when a snapshot is being created for the disk. Wait until the snapshot is created before you resize the cloud disk.
-//
-//   - You cannot call this operation to resize partitions or file systems on a cloud disk. You must manually resize the partitions and file systems after the disk is resized. For more information, see [Step 2: Resize partitions and file systems](https://help.aliyun.com/document_detail/470068.html).
-//
-//   - If the multi-attach feature is enabled for a cloud disk, you can resize the disk online or offline. Make sure that the Elastic Compute Service (ECS) instances to which the disk is attached meet the following requirements:
-//
-//   - If you want to resize the disk online, the ECS instances must be in the **Running*	- (`Running`) state.
-//
-//   - If you want to resize the disk offline, the ECS instances must be in the **Running*	- (`Running`) or **Stopped*	- (`Stopped`) state.
-//
-//   - The cloud disk that you want to resize must meet the following requirements:
-//
-//   - The disk is in the In Use (`In_use`) or Unattached (`Available`) state.
-//
-//   - (Recommended) Snapshots are created for the disk to back up disk data. For information about how to create snapshots for a disk, see [Create a snapshot](https://help.aliyun.com/document_detail/25455.html).
-//
-//   - If the disk is a new data disk, initialize the disk before you resize the disk. For more information, see [Overview](https://help.aliyun.com/document_detail/466323.html).
-//
-// @param request - ResizeDiskRequest
-//
-// @return ResizeDiskResponse
-func (client *Client) ResizeDisk(request *ResizeDiskRequest) (_result *ResizeDiskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ResizeDiskResponse{}
-	_body, _err := client.ResizeDiskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40293,7 +31150,7 @@ func (client *Client) ResizeDisk(request *ResizeDiskRequest) (_result *ResizeDis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RevokeSecurityGroupResponse
-func (client *Client) RevokeSecurityGroupWithOptions(request *RevokeSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *RevokeSecurityGroupResponse, _err error) {
+func (client *Client) RevokeSecurityGroupWithContext(ctx context.Context, request *RevokeSecurityGroupRequest, runtime *dara.RuntimeOptions) (_result *RevokeSecurityGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40422,131 +31279,11 @@ func (client *Client) RevokeSecurityGroupWithOptions(request *RevokeSecurityGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &RevokeSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes inbound security group rules from a specific security group.
-//
-// Description:
-//
-// >  Alibaba Cloud modified verification rules for the RevokeSecurityGroup operation on July 8, 2024. When you call the RevokeSecurityGroup operation to delete a security group rule that does not exist, the "InvalidParam.SecurityGroupRuleId" error code is returned instead of a success response. Update the RevokeSecurityGroup operation to use the new verification rules with the new error code based on your business requirements.
-//
-// You can use one of the following groups of parameters to specify the security group rules that you want to delete:
-//
-//   - Parameters used to specify the IDs of security group rules. We recommend that you specify the IDs of security group rules to delete the rules.
-//
-//   - If a specified security group rule ID does not exist, the call to RevokeSecurityGroup fails.
-//
-//   - Parameters that start with Permissions.
-//
-//   - If no security group rule matches the specified parameters, the call to RevokeSecurityGroup is successful but no security group rules are deleted.
-//
-//   - Define an inbound security group rule by configuring the following parameters together:
-//
-//   - Source: You can specify one parameter from SourceCidrIp (IPv4 address), Ipv6SourceCidrIp (IPv6 address), SourcetPrefixListId (prefix list ID), and SourceGroupId (source security group ID).
-//
-//   - PortRange: specifies the destination port range.
-//
-//   - IpProtocol: specifies the protocol.
-//
-//   - Policy: specifies the action.
-//
-// >  You cannot specify the IDs of security group rules and the parameters that start with Permissions in the same request.
-//
-// ### [](#)Sample requests
-//
-//   - Delete a security group rule based on the rule ID:
-//
-// <!---->
-//
-//	    "SecurityGroupId":"sg-bp67acfmxazb4p****", //Specify the ID of the security group.
-//
-//	    "SecurityGroupRuleId":["sgr-bpdfmk****","sgr-bpdfmg****"] //Specify the ID of the security group rule.
-//
-//		- Delete a security group rule based on an IPv4 CIDR block:
-//
-// <!---->
-//
-//	    "SecurityGroupId":"sg-bp67acfmxazb4p****",
-//
-//	    "Permissions":[
-//
-//	      {
-//
-//	        "SourceCidrIp":"10.0.0.0/8", //Specify the source IPv4 CIDR block.
-//
-//	        "IpProtocol":"TCP", //Specify the protocol.
-//
-//	        "PortRange":"80/80", //Specify the destination port range.
-//
-//	        "Policy":"accept" //Specify the action.
-//
-//	      }
-//
-//	    ]
-//
-//		- Delete a security group rule in which a security group is referenced:
-//
-// <!---->
-//
-//	    "SecurityGroupId":"sg-bp67acfmxazb4p****",
-//
-//	    "Permissions":[
-//
-//	      {
-//
-//	        "SourceGroupId":"sg-bp67acfmxa123b****", //Specify the ID of the source security group.
-//
-//	        "IpProtocol":"TCP,"
-//
-//	        "PortRange":"80/80",
-//
-//	        "Policy":"accept"
-//
-//	      ]
-//
-//	    }
-//
-//		- Delete a security group rule in which a prefix list is referenced:
-//
-// <!---->
-//
-//	"SecurityGroupId":"sg-bp67acfmxazb4p****",
-//
-//	"Permissions":[
-//
-//	  {
-//
-//	    "SourcePrefixListId":pl-x1j1k5ykzqlixdcy****", //Specify the ID of the source prefix list.
-//
-//	    "IpProtocol":"TCP",
-//
-//	    "PortRange":"80/80",
-//
-//	    "Policy":"accept"
-//
-//	  }
-//
-//	]
-//
-// @param request - RevokeSecurityGroupRequest
-//
-// @return RevokeSecurityGroupResponse
-func (client *Client) RevokeSecurityGroup(request *RevokeSecurityGroupRequest) (_result *RevokeSecurityGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RevokeSecurityGroupResponse{}
-	_body, _err := client.RevokeSecurityGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40657,7 +31394,7 @@ func (client *Client) RevokeSecurityGroup(request *RevokeSecurityGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RevokeSecurityGroupEgressResponse
-func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecurityGroupEgressRequest, runtime *dara.RuntimeOptions) (_result *RevokeSecurityGroupEgressResponse, _err error) {
+func (client *Client) RevokeSecurityGroupEgressWithContext(ctx context.Context, request *RevokeSecurityGroupEgressRequest, runtime *dara.RuntimeOptions) (_result *RevokeSecurityGroupEgressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40790,127 +31527,11 @@ func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecuri
 		BodyType:    dara.String("json"),
 	}
 	_result = &RevokeSecurityGroupEgressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes outbound security group rules from a specified security group.
-//
-// Description:
-//
-// >  Alibaba Cloud modified verification rules for the RevokeSecurityGroupEgress operation on July 8, 2024. When you use the RevokeSecurityGroupEgress operation to delete a security group rule that does not exist, the "InvalidSecurityGroupRule.RuleNotExist" error code is returned instead of a success response. Update the RevokeSecurityGroupEgress operation to use the new verification rules with the new error code based on your business requirements.
-//
-// You can use one of the following methods to delete a security group rule:
-//
-//   - Delete a rule by specifying the IDs of security group rules. We recommend that you specify the IDs of security group rules to delete the rules.
-//
-//   - If a security group rule ID that you specify does not exist, an error is reported.
-//
-//   - Delete a rule by specifying the Permissions parameter.
-//
-//   - If no security group rule matches the specified parameters, the call to RevokeSecurityGroup is successful but no security group rules are deleted.
-//
-//   - Delete a security group rule by configuring the following parameters together:
-//
-//   - One of the following parameters: DestCidrIp, Ipv6DestCidrIp, DestPrefixListId, and DestGroupId. DestCidrIp specifies the destination IPv4 CIDR block. Ipv6DestCidrIp specifies the destination IPv6 CIDR block. DestPrefixListId specifies the ID of the destination prefix list. DestGroupId specifies the destination security group.
-//
-//   - PortRange: specifies the range of destination port numbers.
-//
-//   - IpProtocol: specifies the protocol.
-//
-//   - Policy: specifies the action.
-//
-// >  You cannot set the security group rule ID and the Permissions parameter at the same time.
-//
-// ### [](#)Sample requests
-//
-//   - Delete a security group rule.
-//
-// <!---->
-//
-//	    "SecurityGroupId":"sg-bp67acfmxazb4p****", //The security group ID.
-//
-//	    "SecurityGroupRuleId":["sgr-bpdfmk****","sgr-bpdfmg****"]  //The ID of the security group rule.
-//
-//		- Delete a security group rule based on the CIDR block.
-//
-// <!---->
-//
-//	    "SecurityGroupId":"sg-bp67acfmxazb4ph***",
-//
-//	    "Permissions":[
-//
-//	      {
-//
-//	    "IpProtocol":"TCP", //The protocol.
-//
-//	           "DestCidrIp":"10.0.0.0/8", //The destination IPv4 CIDR block.
-//
-//	    "PortRange":"22/22", //The destination port range.
-//
-//	           "Policy":"accept" //The action.  }
-//
-//	    ]
-//
-//		- Delete a security group rule based on the ID of the destination security group.
-//
-// <!---->
-//
-//	    "SecurityGroupId":"sg-bp67acfmxazb4ph***",
-//
-//	    "Permissions":[
-//
-//	      {
-//
-//	        "DestGroupId":"sg-bp67acfmxa123b****", //Set the ID of the target security group.
-//
-//	        "IpProtocol":"TCP",
-//
-//	        "PortRange":"22/22",
-//
-//	        "Policy":"accept"
-//
-//	      }
-//
-//	    ]
-//
-//		- Delete a security group rule based on a specified prefix list.
-//
-// <!---->
-//
-//	"SecurityGroupId":"sg-bp67acfmxazb4ph***",
-//
-//	"Permissions":[
-//
-//	  {
-//
-//	    "IpProtocol":"TCP",
-//
-//	       "DestPrefixListId":"pl-x1j1k5ykzqlixdcy****", //The ID of the destination prefix list.    "PortRange":"22/22",
-//
-//	    "Policy":"accept",
-//
-//	  }
-//
-//	]
-//
-// @param request - RevokeSecurityGroupEgressRequest
-//
-// @return RevokeSecurityGroupEgressResponse
-func (client *Client) RevokeSecurityGroupEgress(request *RevokeSecurityGroupEgressRequest) (_result *RevokeSecurityGroupEgressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RevokeSecurityGroupEgressResponse{}
-	_body, _err := client.RevokeSecurityGroupEgressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40963,7 +31584,7 @@ func (client *Client) RevokeSecurityGroupEgress(request *RevokeSecurityGroupEgre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunCommandResponse
-func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *dara.RuntimeOptions) (_result *RunCommandResponse, _err error) {
+func (client *Client) RunCommandWithContext(ctx context.Context, tmpReq *RunCommandRequest, runtime *dara.RuntimeOptions) (_result *RunCommandResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41110,69 +31731,11 @@ func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunCommandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates and runs a Cloud Assistant command on one or more Elastic Compute Service (ECS) instances. Shell, PowerShell, and batch commands are supported. You can run the command based on a schedule, include custom parameters in the command, or run the command in containers on instances.
-//
-// Description:
-//
-// This operation is an asynchronous operation. After a request is sent, a response that contains a command ID and a command task ID is immediately returned. You can call the [DescribeInvocations](https://help.aliyun.com/document_detail/2679916.html) or [DescribeInvocationResults](https://help.aliyun.com/document_detail/2679916.html) operation with the command ID or task ID to query the execution results of the command.
-//
-// ### [](#)Precautions
-//
-//   - The instances on which you want to create and run a Cloud Assistant command must be in the Running (`Running`) state. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of instances.
-//
-//   - [Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html) must be pre-installed on the instances on which you want to create and run a Cloud Assistant command. You can call the [InstallCloudAssistant](https://help.aliyun.com/document_detail/2679925.html) operation to install Cloud Assistant Agent on instances and the [DescribeCloudAssistantStatus](https://help.aliyun.com/document_detail/2679924.html) operation to query whether Cloud Assistant Agent is installed on instances.
-//
-//     **
-//
-//     **Note*	- By default, Cloud Assistant Agent is pre-installed on instances created from public images on or after December 1, 2017.
-//
-//   - Before you run a PowerShell command on a Windows instance, make sure that the PowerShell module is installed on the instance.
-//
-// ### [](#)Considerations
-//
-//   - You can retain up to 500 to 50,000 Cloud Assistant commands in each region. You can also request a quota increase. For information about how to view quotas and request a quota increase, see [Manage quotas](https://help.aliyun.com/document_detail/184116.html).
-//
-//   - To ensure that scheduled tasks can run as expected, make sure that the Cloud Assistant Agent version is not earlier than the following versions. A scheduled task can run a command at a specific interval, only once at a specific time, or at designated times based on a cron expression in a specific year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update Cloud Assistant Agent to the latest version. For more information, see [Upgrade or disable upgrades of Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
-//
-//   - Linux: 2.2.3.282
-//
-//   - Windows: 2.1.3.282
-//
-//   - When you use a cron expression to specify a schedule, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instances. Make sure that the time or time zone of the instances meets your business requirements. For information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](https://help.aliyun.com/document_detail/92803.html) or [Configure the NTP service for Windows instances](https://help.aliyun.com/document_detail/51890.html).
-//
-// ### [](#)Suggestions
-//
-//   - **Timeout settings**: You can set `Timeout` to specify the timeout period for command executions on instances. If an execution times out, Cloud Assistant Agent forcefully terminates the command process.
-//
-//   - When the one-time execution of the command times out, the execution status ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
-//
-//   - For a scheduled task, the timeout period takes effect on every execution of the command. When a command execution times out, the subsequent executions of the command are not affected. When a scheduled execution of the command times out, the execution status ([InvokeRecordStatus](https://help.aliyun.com/document_detail/64845.html)) of the command becomes Failed.
-//
-//   - **Execution failure**: Command executions may fail due to instance status exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If a command execution fails, no execution information is generated. For more information, see [Check execution results and troubleshoot common issues](https://help.aliyun.com/document_detail/87029.html).
-//
-//   - **Custom parameters**: If you set `EnableParameter` to true, the custom parameter feature is enabled. When you specify `CommandContent`, you can define custom parameters in the `{{parameter}}` format. Then, the key-value pairs of the custom parameters are passed in when you run the command.
-//
-// @param request - RunCommandRequest
-//
-// @return RunCommandResponse
-func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunCommandResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RunCommandResponse{}
-	_body, _err := client.RunCommandWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -41337,7 +31900,7 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunInstancesResponse
-func (client *Client) RunInstancesWithOptions(request *RunInstancesRequest, runtime *dara.RuntimeOptions) (_result *RunInstancesResponse, _err error) {
+func (client *Client) RunInstancesWithContext(ctx context.Context, request *RunInstancesRequest, runtime *dara.RuntimeOptions) (_result *RunInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41670,181 +32233,11 @@ func (client *Client) RunInstancesWithOptions(request *RunInstancesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Batch creates Elastic Compute Service (ECS) instances. You can automatically start, assign public IP addresses to, and specify an automatic release time for the instances.
-//
-// Description:
-//
-// Before you call this operation, familiarize yourself with the billing rules and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS resources.
-//
-// This operation is an asynchronous operation. After a request to create ECS instances is sent, ECS instance IDs are returned but the creation and startup of the instances may be incomplete. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of an instance is `Running` in the DescribeInstanceStatus response, the instance is created and started.
-//
-// ### [](#)Considerations
-//
-//   - If the resource inventory is insufficient to complete instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call the [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) operation to check whether an instance creation failure event exists. For more information, see [System events related to instance creation failures](https://help.aliyun.com/document_detail/2545990.html).
-//
-//   - Make sure that the number of ECS instances you create or the number of vCPUs on ECS instances of all instance types you create does not exceed the corresponding quota. Go to the [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas) to view the quotas.
-//
-//   - Before you create ECS instances of the Virtual Private Cloud (VPC) type in a region, [create a VPC](https://help.aliyun.com/document_detail/65430.html) in the region.
-//
-// ### [](#)Precautions
-//
-//   - If you create a subscription instance (`PrePaid`), available coupons in your account are automatically used.
-//
-//   - You can call the RunInstances operation to create up to 100 ECS instances in a single request. To create more than 100 ECS instances, we recommend that you initiate multiple requests in batches or concurrently.
-//
-//   - If you set `InternetMaxBandwidthOut` to a value greater than 0, public IP addresses are automatically assigned to the ECS instances to be created.
-//
-// >  For the limits on the sum of maximum public bandwidths of ECS instances that use the pay-by-bandwidth billing method for network usage per region per Alibaba Cloud account, see the [Public bandwidth](~~25412#BandwidthQuota~~) section of the "Limits and quotas on ECS" topic.
-//
-// ### [](#)Suggestions
-//
-//   - **Test scenarios**: Set `DryRun` to true to perform a dry run without performing the actual request.
-//
-//   - **Release of ECS instances**: Use `AutoReleaseTime` to configure an automatic release time for ECS instances in the request to RunInstances or call the [DeleteInstances](https://help.aliyun.com/document_detail/2679710.html) operation to release the instances.
-//
-//   - **Management and search of ECS instances**: Add tags to the ECS instances by specifying `Tag.N.Key` and `Tag.N.Value` and append incremental suffixes by specifying `UniqueSuffix` to the hostname specified by `HostName` and the instance name specified by `InstanceName`. For more information, see [Batch configure sequential names or hostnames for multiple instances](https://help.aliyun.com/document_detail/196048.html).
-//
-//   - **Launch template**: A launch template contains the parameters required to create an ECS instance so that you do not have to specify the parameters every time you create ECS instances. You can call the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create a launch template. Then, in the request to `RunInstances`, you can specify `LaunchTemplateId` and `LaunchTemplateVersion` to use the launch template.
-//
-//   - **Disabling of Hyper-Threading (HT)**: In memory-intensive scenarios, set `CpuOptions.ThreadsPerCore` to 1 to disable HT and increase the memory-to-vCPU ratio.
-//
-//   - **Enabling of Jumbo Frames**: Set `NetworkOptions.EnableJumboFrame` to true to enable the `Jumbo Frames` feature when you create ECS instances. For more information, see [Jumbo Frames](https://help.aliyun.com/document_detail/200512.html).
-//
-// ## [](#)Sample requests
-//
-// Use a specific image to create ECS instances of a specific instance type in the China (Hangzhou) region. The instances use disks with a specific capacity as the system disk and data disks and are automatically assigned public IP addresses. The instances have user-defined names and logon passwords. The instances are assigned to a specific security group and connected to a specific vSwitch. Request parameters:
-//
-//	RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
-//
-//	ImageId:"aliyun_3_x64_20G_alibase_20221102.vhd", //Set the image ID to aliyun_3_x64_20G_alibase_20221102.vhd.
-//
-//	InstanceType:"ecs.g7.large", //Set the instance type to ecs.g7.large.
-//
-//	SecurityGroupId:"sg-bp150uqocpf9jj70****", //Set the security group ID to sg-bp150uqocpf9jj70****.
-//
-//	VSwitchId:"vsw-bp1qo7s91cbch5i4l****", //Set the vSwitch ID to vsw-bp1qo7s91cbch5i4l****.
-//
-//	SystemDisk:{
-//
-//	  Category:"cloud_essd", //Set the system disk category to cloud_essd, which specifies the Enterprise SSD (ESSD) category.
-//
-//	  Size:40, //Set the system disk size to 40. Unit: GiB.
-//
-//	},
-//
-//	DataDisk:[
-//
-//	  {
-//
-//	    Category:"cloud_essd", //Set the data disk category to cloud_essd, which specifies the ESSD category.
-//
-//	    Size:100, //Set the data disk size to 100. Unit: GiB.
-//
-//	  }
-//
-//	],
-//
-//	HostName:"ECS-test", //Set the instance hostname to ECS-test.
-//
-//	Password:"ECS@test1234", //Set the logon password to ECS@test1234.
-//
-//	InternetMaxBandwidthOut:10 //Set the outbound public bandwidth to 10. Unit: Mbit/s.
-//
-// Examples on how to create instances of different types based on the preceding parameters:
-//
-// **Example: Create five subscription ECS instances for which auto-renewal is enabled**
-//
-//	Amount:5, //Set the number of ECS instances that you want to create to 5.
-//
-//	InstanceChargeType:"PrePaid", //Set the billing method to PrePaid, which specifies the subscription billing method.
-//
-//	PeriodUnit:"Month", //Set the subscription period unit to Month.
-//
-//	Period:1, //Set the subscription period to 1. The unit is specified by PeriodUnit, which is Month in this example.
-//
-//	AutoRenew:true, //Set this parameter to true to enable auto-renewal.
-//
-//	AutoRenewPeriod:1 //Set the renewal period to 1. The unit is specified by PeriodUnit, which is Month in this example.
-//
-// **Example: Create 10 pay-as-you-go ECS instances**
-//
-//	Amount:10, //Set the number of ECS instances that you want to create to 10.
-//
-//	InstanceChargeType:"PostPaid", //Set the billing method to PostPaid, which specifies the pay-as-you-go billing method.
-//
-//	SpotStrategy:"NoSpot" //Set this parameter to NoSpot, which is the default value and specifies that the instances are created as pay-as-you-go instances.
-//
-// **Example: Create 20 spot instances that use a specific bidding policy and a protection period**
-//
-//	Amount:20, //Set the number of ECS instances that you want to create to 20.
-//
-//	InstanceChargeType:"PostPaid",
-//
-//	SpotStrategy:"SpotAsPriceGo", //Set the bidding policy to SpotAsPriceGo, which specifies that the instances are created as spot instances for which the market price at the time of purchase is automatically used as the bid price.
-//
-//	SpotDuration:1 //Set the protection period of the spot instances to 1. Unit: hours.
-//
-// Use a launch template created by calling the [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) operation to create ECS instances in the China (Hangzhou) region. Examples:
-//
-// **Example: Create 10 ECS instances based on a launch template**
-//
-//	RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
-//
-//	Amount:10, //Set the number of ECS instances that you want to create to 10.
-//
-//	LaunchTemplateId:"lt-bp14xczpoxvb6rre****" //Set the launch template ID to lt-bp14xczpoxvb6rre****.
-//
-// >  If a parameter is specified both in the launch template that you reference in a request and in the instance parameters of the same request, the value specified in the instance parameters takes precedence. For example, if you set InstanceChargeType in the launch template to PrePaid (subscription) and set InstanceChargeType in the instance parameters to PostPaid (pay-as-you-go), the created instances are pay-as-you-go instances.
-//
-// **Example: Use a full image (an image that contains the system disk and data disks) to create an ECS instance**
-//
-//	RegionId:"cn-hangzhou", //Set the region ID to cn-hangzhou, which specifies the China (Hangzhou) region.
-//
-//	ImageId = m-bp13ohd32cvzpq9e****, //Set the custom image ID to m-bp13ohd32cvzpq9e****.
-//
-//	InstanceType = ecs.u1-c1m1.large, //Set the instance type to ecs.u1-c1m1.large.
-//
-//	SecurityGroupId = sg-bp10jztp6b0sdsyl****, //Set the security group ID to sg-bp10jztp6b0sdsyl****.
-//
-//	VSwitchId = vsw-bp19wo63nleroq22g****, //Set the vSwitch ID to vsw-bp19wo63nleroq22g****.
-//
-//	SystemDisk.Size = 50, //Set the size of the system disk in the full image to 50. Unit: GiB.
-//
-//	SystemDisk.Category = cloud_auto, //Set the category of the system disk in the full image to cloud_auto, which specifies the ESSD AutoPL disk category.
-//
-//	DataDisk.0.Device = /dev/xvdb, //Set the mount point of the data disk in the full image to /dev/xvdb.
-//
-//	DataDisk.0.Size = 50, //Set the size of the data disk in the full image to 50. Unit: GiB.
-//
-//	DataDisk.0.Category = cloud_essd, //Set the category of the data disk in the full image to cloud_essd, which specifies the ESSD category.
-//
-//	DataDisk.1.Device = /dev/xvdc, //Set the mount point of the new data disk to /dev/xvdc. If you want to use a new data disk to replace the data disk in the full image, set DataDisk.1.Device to /dev/xvdb (the default mount point of the data disk in the full image).
-//
-//	DataDisk.1.Size = 70, //Set the size of the new data disk to 70. Unit: GiB.
-//
-//	DataDisk.1.Category = cloud_auto, //Set the category of the new data disk to cloud_auto, which specifies the ESSD AutoPL disk category.
-//
-// @param request - RunInstancesRequest
-//
-// @return RunInstancesResponse
-func (client *Client) RunInstances(request *RunInstancesRequest) (_result *RunInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RunInstancesResponse{}
-	_body, _err := client.RunInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -41875,7 +32268,7 @@ func (client *Client) RunInstances(request *RunInstancesRequest) (_result *RunIn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendFileResponse
-func (client *Client) SendFileWithOptions(request *SendFileRequest, runtime *dara.RuntimeOptions) (_result *SendFileResponse, _err error) {
+func (client *Client) SendFileWithContext(ctx context.Context, request *SendFileRequest, runtime *dara.RuntimeOptions) (_result *SendFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41972,47 +32365,11 @@ func (client *Client) SendFileWithOptions(request *SendFileRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends a file to one or more Elastic Compute Service (ECS) instances.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - The instances to which you want to send a file must be in the Running (`Running`) state.
-//
-//   - [Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html) must be installed on the instances.
-//
-//   - Only Cloud Assistant Agent versions that are later than the following ones support file sending. If the `ClientNeedUpgrade` error code is returned, update Cloud Assistant Agent to the latest version.
-//
-//   - For Linux instances, the version of Cloud Assistant Agent must be later than 1.0.2.569.
-//
-//   - For Windows instances, the version of Cloud Assistant Agent must be later than 1.0.0.149.
-//
-//   - The file to be sent must not exceed 32 KB in size after it is encoded in Base64.
-//
-//   - The file may fail to be sent due to instance exceptions, network exceptions, or exceptions on Cloud Assistant Agent. If the file fails to be sent, call the [DescribeSendFileResults](https://help.aliyun.com/document_detail/184117.html) operation or see [Check execution results and troubleshoot common issues](https://help.aliyun.com/document_detail/87029.html) for troubleshooting.
-//
-// @param request - SendFileRequest
-//
-// @return SendFileResponse
-func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendFileResponse{}
-	_body, _err := client.SendFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -42031,7 +32388,7 @@ func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartImagePipelineExecutionResponse
-func (client *Client) StartImagePipelineExecutionWithOptions(request *StartImagePipelineExecutionRequest, runtime *dara.RuntimeOptions) (_result *StartImagePipelineExecutionResponse, _err error) {
+func (client *Client) StartImagePipelineExecutionWithContext(ctx context.Context, request *StartImagePipelineExecutionRequest, runtime *dara.RuntimeOptions) (_result *StartImagePipelineExecutionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -42092,35 +32449,11 @@ func (client *Client) StartImagePipelineExecutionWithOptions(request *StartImage
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartImagePipelineExecutionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Executes an image creation task (image building task) by using an image template.
-//
-// Description:
-//
-//	  After you create an image template, you can call the StartImagePipelineExecution operation to create a pipeline task. The system creates, copies, and shares images based on the parameters configured in the image template.
-//
-//		- You can execute only one pipeline task for each image template.
-//
-// @param request - StartImagePipelineExecutionRequest
-//
-// @return StartImagePipelineExecutionResponse
-func (client *Client) StartImagePipelineExecution(request *StartImagePipelineExecutionRequest) (_result *StartImagePipelineExecutionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartImagePipelineExecutionResponse{}
-	_body, _err := client.StartImagePipelineExecutionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -42145,7 +32478,7 @@ func (client *Client) StartImagePipelineExecution(request *StartImagePipelineExe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartInstanceResponse
-func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, runtime *dara.RuntimeOptions) (_result *StartInstanceResponse, _err error) {
+func (client *Client) StartInstanceWithContext(ctx context.Context, request *StartInstanceRequest, runtime *dara.RuntimeOptions) (_result *StartInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -42194,41 +32527,11 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts an Elastic Compute Service (ECS) instance. You can specify the ID of an ECS instance and parameters, such as InitLocalDisk, in the request based on your business requirements to start the instance.
-//
-// Description:
-//
-// This operation is an asynchronous operation. After you call this operation to start an ECS instance, the operation sets the status of the ECS instance to Starting and begins the startup process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Running`, the instance is started.
-//
-// ### [](#)Precautions
-//
-//   - You cannot call this operation to start an ECS instance that is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-//
-//   - The ECS instance that you want to start must be in the **Stopped*	- (`Stopped`) state.
-//
-//   - If an ECS instance is stopped in economical mode, the instance may fail to be started due to insufficient resources.
-//
-// @param request - StartInstanceRequest
-//
-// @return StartInstanceResponse
-func (client *Client) StartInstance(request *StartInstanceRequest) (_result *StartInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartInstanceResponse{}
-	_body, _err := client.StartInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -42253,7 +32556,7 @@ func (client *Client) StartInstance(request *StartInstanceRequest) (_result *Sta
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartInstancesResponse
-func (client *Client) StartInstancesWithOptions(request *StartInstancesRequest, runtime *dara.RuntimeOptions) (_result *StartInstancesResponse, _err error) {
+func (client *Client) StartInstancesWithContext(ctx context.Context, request *StartInstancesRequest, runtime *dara.RuntimeOptions) (_result *StartInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -42306,41 +32609,11 @@ func (client *Client) StartInstancesWithOptions(request *StartInstancesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts Elastic Compute Service (ECS) instances that are in the Stopped state.
-//
-// Description:
-//
-// This operation is an asynchronous operation. After you call this operation to start ECS instances, the operation sets the status of the ECS instances to Starting and begins the startup process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the instances. When the status of the ECS instances changes to `Running`, the instances are started.
-//
-// ### [](#)Precautions
-//
-//   - You cannot call this operation to start ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-//
-//   - The ECS instances that you want to start must be in the **Stopped*	- (`Stopped`) state.
-//
-//   - ECS instances stopped in economical mode may fail to be started due to insufficient resources.
-//
-// @param request - StartInstancesRequest
-//
-// @return StartInstancesResponse
-func (client *Client) StartInstances(request *StartInstancesRequest) (_result *StartInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartInstancesResponse{}
-	_body, _err := client.StartInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -42381,7 +32654,7 @@ func (client *Client) StartInstances(request *StartInstancesRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartTerminalSessionResponse
-func (client *Client) StartTerminalSessionWithOptions(request *StartTerminalSessionRequest, runtime *dara.RuntimeOptions) (_result *StartTerminalSessionResponse, _err error) {
+func (client *Client) StartTerminalSessionWithContext(ctx context.Context, request *StartTerminalSessionRequest, runtime *dara.RuntimeOptions) (_result *StartTerminalSessionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -42454,57 +32727,11 @@ func (client *Client) StartTerminalSessionWithOptions(request *StartTerminalSess
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartTerminalSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a session by using the session management feature. When you call this operation, you can include the ID of an Elastic Compute Service (ECS) instance in the request to create a WebSocket session for the instance. The URL of the WebSocket session returned by the operation can be used to connect to the instance.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// When you use custom code to connect to an ECS instance that serves as a client, you can call this operation to obtain the WebSocket URL that is used to connect to the instance. Take note of the following items:
-//
-//   - The ECS instance must be in the Running state.
-//
-//   - Cloud Assistant Agent must be installed on the ECS instance. You can call the [DescribeCloudAssistantStatus](https://help.aliyun.com/document_detail/87346.html) operation to check whether Cloud Assistant Agent is installed on the ECS instance and query the version number of the installed Cloud Assistant Agent.
-//
-//   - If Cloud Assistant Agent is not installed on the ECS instance, call the [InstallCloudAssistant](https://help.aliyun.com/document_detail/85916.html) operation to install Cloud Assistant Agent.
-//
-//   - The Cloud Assistant Agent versions that are later than the following ones support the session management feature. If you need to upgrade the Cloud Assistant Agent version, follow the instructions in [Upgrade or disable upgrades of Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
-//
-//   - Linux operating system: 2.2.3.256
-//
-//   - Windows operating system: 2.1.3.256
-//
-//   - Each WebSocket URL returned by the StartTerminalSession operation remains valid for 10 minutes.
-//
-//   - If no data is transferred over a session within 3 minutes, Cloud Assistant closes the session connection.
-//
-//   - Up to 1,000 sessions can be created and available in a region. Each ECS instance can have up to 20 sessions in the connected state. Each session supports a bandwidth of up to 200 Kbit/s.
-//
-//   - The port forwarding feature supports only TCP port forwarding. UDP port forwarding is not supported.
-//
-//   - If you want to permanently close a session and invalidate the WebSocket URL, call the EndTerminalSession operation.
-//
-// @param request - StartTerminalSessionRequest
-//
-// @return StartTerminalSessionResponse
-func (client *Client) StartTerminalSession(request *StartTerminalSessionRequest) (_result *StartTerminalSessionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartTerminalSessionResponse{}
-	_body, _err := client.StartTerminalSessionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -42527,7 +32754,7 @@ func (client *Client) StartTerminalSession(request *StartTerminalSessionRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopInstanceResponse
-func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
+func (client *Client) StopInstanceWithContext(ctx context.Context, request *StopInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -42588,39 +32815,11 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops an Elastic Compute Service (ECS) instance. You can specify parameters to determine whether to forcefully stop the instance and the stop mode.
-//
-// Description:
-//
-// This operation is an asynchronous operation. After you call this operation to stop an ECS instance, the operation sets the status of the ECS instance to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Stopped`, the instance is stopped.
-//
-// ### [](#)Precautions
-//
-//   - You cannot call this operation to stop an ECS instance that is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-//
-//   - After you enable the default economical mode for all pay-as-you-go ECS instances located in virtual private clouds (VPCs) in your account, you can set `StoppedMode` to KeepCharging for the ECS instance that you want to stop to enable standard mode. This way, the ECS instance continues to be billed after the instance is stopped. The instance type resources and public IP address of the instance are retained.
-//
-// @param request - StopInstanceRequest
-//
-// @return StopInstanceResponse
-func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopInstanceResponse{}
-	_body, _err := client.StopInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -42643,7 +32842,7 @@ func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopInstancesResponse
-func (client *Client) StopInstancesWithOptions(request *StopInstancesRequest, runtime *dara.RuntimeOptions) (_result *StopInstancesResponse, _err error) {
+func (client *Client) StopInstancesWithContext(ctx context.Context, request *StopInstancesRequest, runtime *dara.RuntimeOptions) (_result *StopInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -42704,39 +32903,11 @@ func (client *Client) StopInstancesWithOptions(request *StopInstancesRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops Elastic Compute Service (ECS) instances. You can specify parameters to determine whether to forcefully stop the instances and the stop mode.
-//
-// Description:
-//
-// This operation is an asynchronous operation. After you call this operation to stop an ECS instance, the operation sets the status of the ECS instance to Stopping and begins the stop process. You can call the [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) operation to query the status of the ECS instance. When the status of the ECS instance changes to `Stopped`, the instance is stopped.
-//
-// ### [](#)Considerations
-//
-//   - The instance is unavailable after you stop the instance. Make sure that stopping the instance does not affect your business. You can also call the [StartInstance](https://help.aliyun.com/document_detail/2679679.html) or [StartInstances](https://help.aliyun.com/document_detail/2679680.html) operation to start the instance.
-//
-//   - You cannot call this operation to stop ECS instances that are locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
-//
-// @param request - StopInstancesRequest
-//
-// @return StopInstancesResponse
-func (client *Client) StopInstances(request *StopInstancesRequest) (_result *StopInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopInstancesResponse{}
-	_body, _err := client.StopInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -42759,7 +32930,7 @@ func (client *Client) StopInstances(request *StopInstancesRequest) (_result *Sto
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopInvocationResponse
-func (client *Client) StopInvocationWithOptions(request *StopInvocationRequest, runtime *dara.RuntimeOptions) (_result *StopInvocationResponse, _err error) {
+func (client *Client) StopInvocationWithContext(ctx context.Context, request *StopInvocationRequest, runtime *dara.RuntimeOptions) (_result *StopInvocationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -42812,39 +32983,11 @@ func (client *Client) StopInvocationWithOptions(request *StopInvocationRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopInvocationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// \\	- If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled.
-//
-// \\	- If you stop the process of a scheduled invocation command, the executions that have started are not interrupted. However, the execution does not start in the next period.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled.
-//
-//   - If you stop the process of a command that runs on a schedule, the executions that have started are not interrupted. Subsequent executions are not scheduled.
-//
-// @param request - StopInvocationRequest
-//
-// @return StopInvocationResponse
-func (client *Client) StopInvocation(request *StopInvocationRequest) (_result *StopInvocationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopInvocationResponse{}
-	_body, _err := client.StopInvocationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -42863,7 +33006,7 @@ func (client *Client) StopInvocation(request *StopInvocationRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -42916,35 +33059,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates and adds tags to Elastic Compute Service (ECS) resources.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see [Tag limits](https://help.aliyun.com/document_detail/25412.html).
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -42955,7 +33074,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TerminatePhysicalConnectionResponse
-func (client *Client) TerminatePhysicalConnectionWithOptions(request *TerminatePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *TerminatePhysicalConnectionResponse, _err error) {
+func (client *Client) TerminatePhysicalConnectionWithContext(ctx context.Context, request *TerminatePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *TerminatePhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -43008,28 +33127,11 @@ func (client *Client) TerminatePhysicalConnectionWithOptions(request *TerminateP
 		BodyType:    dara.String("json"),
 	}
 	_result = &TerminatePhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI TerminatePhysicalConnection is deprecated
-//
-// @param request - TerminatePhysicalConnectionRequest
-//
-// @return TerminatePhysicalConnectionResponse
-// Deprecated
-func (client *Client) TerminatePhysicalConnection(request *TerminatePhysicalConnectionRequest) (_result *TerminatePhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TerminatePhysicalConnectionResponse{}
-	_body, _err := client.TerminatePhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -43040,7 +33142,7 @@ func (client *Client) TerminatePhysicalConnection(request *TerminatePhysicalConn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TerminateVirtualBorderRouterResponse
-func (client *Client) TerminateVirtualBorderRouterWithOptions(request *TerminateVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *TerminateVirtualBorderRouterResponse, _err error) {
+func (client *Client) TerminateVirtualBorderRouterWithContext(ctx context.Context, request *TerminateVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *TerminateVirtualBorderRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -43093,28 +33195,11 @@ func (client *Client) TerminateVirtualBorderRouterWithOptions(request *Terminate
 		BodyType:    dara.String("json"),
 	}
 	_result = &TerminateVirtualBorderRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI TerminateVirtualBorderRouter is deprecated
-//
-// @param request - TerminateVirtualBorderRouterRequest
-//
-// @return TerminateVirtualBorderRouterResponse
-// Deprecated
-func (client *Client) TerminateVirtualBorderRouter(request *TerminateVirtualBorderRouterRequest) (_result *TerminateVirtualBorderRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TerminateVirtualBorderRouterResponse{}
-	_body, _err := client.TerminateVirtualBorderRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -43137,7 +33222,7 @@ func (client *Client) TerminateVirtualBorderRouter(request *TerminateVirtualBord
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnassignIpv6AddressesResponse
-func (client *Client) UnassignIpv6AddressesWithOptions(request *UnassignIpv6AddressesRequest, runtime *dara.RuntimeOptions) (_result *UnassignIpv6AddressesResponse, _err error) {
+func (client *Client) UnassignIpv6AddressesWithContext(ctx context.Context, request *UnassignIpv6AddressesRequest, runtime *dara.RuntimeOptions) (_result *UnassignIpv6AddressesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -43194,39 +33279,11 @@ func (client *Client) UnassignIpv6AddressesWithOptions(request *UnassignIpv6Addr
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnassignIpv6AddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unassigns one or more IPv6 addresses from an elastic network interface (ENI).
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// Take note of the following items:
-//
-//   - The ENI must be in the **Available*	- (Available) or **InUse*	- (InUse) state.
-//
-//   - If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running*	- (Running) or **Stopped*	- (Stopped) state.
-//
-// @param request - UnassignIpv6AddressesRequest
-//
-// @return UnassignIpv6AddressesResponse
-func (client *Client) UnassignIpv6Addresses(request *UnassignIpv6AddressesRequest) (_result *UnassignIpv6AddressesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnassignIpv6AddressesResponse{}
-	_body, _err := client.UnassignIpv6AddressesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -43247,7 +33304,7 @@ func (client *Client) UnassignIpv6Addresses(request *UnassignIpv6AddressesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnassignPrivateIpAddressesResponse
-func (client *Client) UnassignPrivateIpAddressesWithOptions(request *UnassignPrivateIpAddressesRequest, runtime *dara.RuntimeOptions) (_result *UnassignPrivateIpAddressesResponse, _err error) {
+func (client *Client) UnassignPrivateIpAddressesWithContext(ctx context.Context, request *UnassignPrivateIpAddressesRequest, runtime *dara.RuntimeOptions) (_result *UnassignPrivateIpAddressesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -43304,37 +33361,11 @@ func (client *Client) UnassignPrivateIpAddressesWithOptions(request *UnassignPri
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnassignPrivateIpAddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unassigns secondary private IP addresses from an elastic network interface (ENI).
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - The ENI from which to unassign secondary private IP addresses must be in the **Available*	- (Available) or **InUse*	- (InUse) state.
-//
-//   - If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running*	- (Running) or **Stopped*	- (Stopped) state.
-//
-// @param request - UnassignPrivateIpAddressesRequest
-//
-// @return UnassignPrivateIpAddressesResponse
-func (client *Client) UnassignPrivateIpAddresses(request *UnassignPrivateIpAddressesRequest) (_result *UnassignPrivateIpAddressesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnassignPrivateIpAddressesResponse{}
-	_body, _err := client.UnassignPrivateIpAddressesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -43345,7 +33376,7 @@ func (client *Client) UnassignPrivateIpAddresses(request *UnassignPrivateIpAddre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnassociateEipAddressResponse
-func (client *Client) UnassociateEipAddressWithOptions(request *UnassociateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *UnassociateEipAddressResponse, _err error) {
+func (client *Client) UnassociateEipAddressWithContext(ctx context.Context, request *UnassociateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *UnassociateEipAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -43398,28 +33429,11 @@ func (client *Client) UnassociateEipAddressWithOptions(request *UnassociateEipAd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnassociateEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI UnassociateEipAddress is deprecated
-//
-// @param request - UnassociateEipAddressRequest
-//
-// @return UnassociateEipAddressResponse
-// Deprecated
-func (client *Client) UnassociateEipAddress(request *UnassociateEipAddressRequest) (_result *UnassociateEipAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnassociateEipAddressResponse{}
-	_body, _err := client.UnassociateEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -43430,7 +33444,7 @@ func (client *Client) UnassociateEipAddress(request *UnassociateEipAddressReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnassociateHaVipResponse
-func (client *Client) UnassociateHaVipWithOptions(request *UnassociateHaVipRequest, runtime *dara.RuntimeOptions) (_result *UnassociateHaVipResponse, _err error) {
+func (client *Client) UnassociateHaVipWithContext(ctx context.Context, request *UnassociateHaVipRequest, runtime *dara.RuntimeOptions) (_result *UnassociateHaVipResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -43487,28 +33501,11 @@ func (client *Client) UnassociateHaVipWithOptions(request *UnassociateHaVipReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnassociateHaVipResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI UnassociateHaVip is deprecated
-//
-// @param request - UnassociateHaVipRequest
-//
-// @return UnassociateHaVipResponse
-// Deprecated
-func (client *Client) UnassociateHaVip(request *UnassociateHaVipRequest) (_result *UnassociateHaVipResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnassociateHaVipResponse{}
-	_body, _err := client.UnassociateHaVipWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -43521,7 +33518,7 @@ func (client *Client) UnassociateHaVip(request *UnassociateHaVipRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -43582,28 +33579,10 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes tags from Elastic Compute Service (ECS) resources. After a tag is removed from a resource, the tag is automatically deleted if it is not added to other resources.
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }

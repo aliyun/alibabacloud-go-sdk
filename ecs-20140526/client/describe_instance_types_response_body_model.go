@@ -99,14 +99,16 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypes) Validate() error {
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceType struct {
+	// The list of specification attributes.
 	Attributes *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Struct"`
 	// The baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
 	//
 	// example:
 	//
 	// 4
-	BaselineCredit *int32                                                           `json:"BaselineCredit,omitempty" xml:"BaselineCredit,omitempty"`
-	Clock          *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeClock `json:"Clock,omitempty" xml:"Clock,omitempty" type:"Struct"`
+	BaselineCredit *int32 `json:"BaselineCredit,omitempty" xml:"BaselineCredit,omitempty"`
+	// The clock supported by the specification.
+	Clock *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeClock `json:"Clock,omitempty" xml:"Clock,omitempty" type:"Struct"`
 	// The CPU architecture. Valid values:
 	//
 	// 	- X86
@@ -350,6 +352,8 @@ type DescribeInstanceTypesResponseBodyInstanceTypesInstanceType struct {
 	// 	- true
 	//
 	// 	- false
+	//
+	// >  This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
@@ -837,7 +841,17 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeAttributes) V
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeAttributesAttribute struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the attribute.
+	//
+	// example:
+	//
+	// VirtualIntelSpeedSelectTechnologySupport
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The attribute value.
+	//
+	// example:
+	//
+	// 1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -872,6 +886,15 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeAttributesAtt
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeClock struct {
+	// Whether PTP is supported. Possible values:
+	//
+	// 	- supported
+	//
+	// 	- unsupported
+	//
+	// example:
+	//
+	// unsupported
 	PtpSupport *string `json:"PtpSupport,omitempty" xml:"PtpSupport,omitempty"`
 }
 
