@@ -290,7 +290,8 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// example:
 	//
 	// 1
-	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	PaidType                  *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	RecommendedPartitionCount *int32 `json:"RecommendedPartitionCount,omitempty" xml:"RecommendedPartitionCount,omitempty"`
 	// The ID of the region where the instance resides.
 	//
 	// example:
@@ -637,6 +638,10 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) GetPaidType() *int32
 	return s.PaidType
 }
 
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) GetRecommendedPartitionCount() *int32 {
+	return s.RecommendedPartitionCount
+}
+
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) GetRegionId() *string {
 	return s.RegionId
 }
@@ -853,6 +858,11 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetName(v string) *G
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetPaidType(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.PaidType = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetRecommendedPartitionCount(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.RecommendedPartitionCount = &v
 	return s
 }
 
