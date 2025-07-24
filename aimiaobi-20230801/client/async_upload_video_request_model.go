@@ -11,16 +11,22 @@ type iAsyncUploadVideoRequest interface {
 	GoString() string
 	SetAnlysisPrompt(v string) *AsyncUploadVideoRequest
 	GetAnlysisPrompt() *string
+	SetReferenceVideo(v *AsyncUploadVideoRequestReferenceVideo) *AsyncUploadVideoRequest
+	GetReferenceVideo() *AsyncUploadVideoRequestReferenceVideo
 	SetSourceVideos(v []*AsyncUploadVideoRequestSourceVideos) *AsyncUploadVideoRequest
 	GetSourceVideos() []*AsyncUploadVideoRequestSourceVideos
+	SetSplitInterval(v int32) *AsyncUploadVideoRequest
+	GetSplitInterval() *int32
 	SetWorkspaceId(v string) *AsyncUploadVideoRequest
 	GetWorkspaceId() *string
 }
 
 type AsyncUploadVideoRequest struct {
-	AnlysisPrompt *string `json:"AnlysisPrompt,omitempty" xml:"AnlysisPrompt,omitempty"`
+	AnlysisPrompt  *string                                `json:"AnlysisPrompt,omitempty" xml:"AnlysisPrompt,omitempty"`
+	ReferenceVideo *AsyncUploadVideoRequestReferenceVideo `json:"ReferenceVideo,omitempty" xml:"ReferenceVideo,omitempty" type:"Struct"`
 	// This parameter is required.
-	SourceVideos []*AsyncUploadVideoRequestSourceVideos `json:"SourceVideos,omitempty" xml:"SourceVideos,omitempty" type:"Repeated"`
+	SourceVideos  []*AsyncUploadVideoRequestSourceVideos `json:"SourceVideos,omitempty" xml:"SourceVideos,omitempty" type:"Repeated"`
+	SplitInterval *int32                                 `json:"SplitInterval,omitempty" xml:"SplitInterval,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -41,8 +47,16 @@ func (s *AsyncUploadVideoRequest) GetAnlysisPrompt() *string {
 	return s.AnlysisPrompt
 }
 
+func (s *AsyncUploadVideoRequest) GetReferenceVideo() *AsyncUploadVideoRequestReferenceVideo {
+	return s.ReferenceVideo
+}
+
 func (s *AsyncUploadVideoRequest) GetSourceVideos() []*AsyncUploadVideoRequestSourceVideos {
 	return s.SourceVideos
+}
+
+func (s *AsyncUploadVideoRequest) GetSplitInterval() *int32 {
+	return s.SplitInterval
 }
 
 func (s *AsyncUploadVideoRequest) GetWorkspaceId() *string {
@@ -54,8 +68,18 @@ func (s *AsyncUploadVideoRequest) SetAnlysisPrompt(v string) *AsyncUploadVideoRe
 	return s
 }
 
+func (s *AsyncUploadVideoRequest) SetReferenceVideo(v *AsyncUploadVideoRequestReferenceVideo) *AsyncUploadVideoRequest {
+	s.ReferenceVideo = v
+	return s
+}
+
 func (s *AsyncUploadVideoRequest) SetSourceVideos(v []*AsyncUploadVideoRequestSourceVideos) *AsyncUploadVideoRequest {
 	s.SourceVideos = v
+	return s
+}
+
+func (s *AsyncUploadVideoRequest) SetSplitInterval(v int32) *AsyncUploadVideoRequest {
+	s.SplitInterval = &v
 	return s
 }
 
@@ -65,6 +89,51 @@ func (s *AsyncUploadVideoRequest) SetWorkspaceId(v string) *AsyncUploadVideoRequ
 }
 
 func (s *AsyncUploadVideoRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type AsyncUploadVideoRequestReferenceVideo struct {
+	VideoExtraInfo *string `json:"VideoExtraInfo,omitempty" xml:"VideoExtraInfo,omitempty"`
+	VideoName      *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
+	VideoUrl       *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s AsyncUploadVideoRequestReferenceVideo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AsyncUploadVideoRequestReferenceVideo) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncUploadVideoRequestReferenceVideo) GetVideoExtraInfo() *string {
+	return s.VideoExtraInfo
+}
+
+func (s *AsyncUploadVideoRequestReferenceVideo) GetVideoName() *string {
+	return s.VideoName
+}
+
+func (s *AsyncUploadVideoRequestReferenceVideo) GetVideoUrl() *string {
+	return s.VideoUrl
+}
+
+func (s *AsyncUploadVideoRequestReferenceVideo) SetVideoExtraInfo(v string) *AsyncUploadVideoRequestReferenceVideo {
+	s.VideoExtraInfo = &v
+	return s
+}
+
+func (s *AsyncUploadVideoRequestReferenceVideo) SetVideoName(v string) *AsyncUploadVideoRequestReferenceVideo {
+	s.VideoName = &v
+	return s
+}
+
+func (s *AsyncUploadVideoRequestReferenceVideo) SetVideoUrl(v string) *AsyncUploadVideoRequestReferenceVideo {
+	s.VideoUrl = &v
+	return s
+}
+
+func (s *AsyncUploadVideoRequestReferenceVideo) Validate() error {
 	return dara.Validate(s)
 }
 

@@ -9,6 +9,12 @@ type iAsyncCreateClipsTimeLineRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAdditionalContent(v string) *AsyncCreateClipsTimeLineRequest
+	GetAdditionalContent() *string
+	SetCustomContent(v string) *AsyncCreateClipsTimeLineRequest
+	GetCustomContent() *string
+	SetNoRefVideo(v bool) *AsyncCreateClipsTimeLineRequest
+	GetNoRefVideo() *bool
 	SetProcessPrompt(v string) *AsyncCreateClipsTimeLineRequest
 	GetProcessPrompt() *string
 	SetTaskId(v string) *AsyncCreateClipsTimeLineRequest
@@ -18,7 +24,10 @@ type iAsyncCreateClipsTimeLineRequest interface {
 }
 
 type AsyncCreateClipsTimeLineRequest struct {
-	ProcessPrompt *string `json:"ProcessPrompt,omitempty" xml:"ProcessPrompt,omitempty"`
+	AdditionalContent *string `json:"AdditionalContent,omitempty" xml:"AdditionalContent,omitempty"`
+	CustomContent     *string `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
+	NoRefVideo        *bool   `json:"NoRefVideo,omitempty" xml:"NoRefVideo,omitempty"`
+	ProcessPrompt     *string `json:"ProcessPrompt,omitempty" xml:"ProcessPrompt,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -41,6 +50,18 @@ func (s AsyncCreateClipsTimeLineRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AsyncCreateClipsTimeLineRequest) GetAdditionalContent() *string {
+	return s.AdditionalContent
+}
+
+func (s *AsyncCreateClipsTimeLineRequest) GetCustomContent() *string {
+	return s.CustomContent
+}
+
+func (s *AsyncCreateClipsTimeLineRequest) GetNoRefVideo() *bool {
+	return s.NoRefVideo
+}
+
 func (s *AsyncCreateClipsTimeLineRequest) GetProcessPrompt() *string {
 	return s.ProcessPrompt
 }
@@ -51,6 +72,21 @@ func (s *AsyncCreateClipsTimeLineRequest) GetTaskId() *string {
 
 func (s *AsyncCreateClipsTimeLineRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *AsyncCreateClipsTimeLineRequest) SetAdditionalContent(v string) *AsyncCreateClipsTimeLineRequest {
+	s.AdditionalContent = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTimeLineRequest) SetCustomContent(v string) *AsyncCreateClipsTimeLineRequest {
+	s.CustomContent = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTimeLineRequest) SetNoRefVideo(v bool) *AsyncCreateClipsTimeLineRequest {
+	s.NoRefVideo = &v
+	return s
 }
 
 func (s *AsyncCreateClipsTimeLineRequest) SetProcessPrompt(v string) *AsyncCreateClipsTimeLineRequest {

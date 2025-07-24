@@ -73,6 +73,7 @@ func (s *GetAutoClipsTaskInfoResponseBody) Validate() error {
 type GetAutoClipsTaskInfoResponseBodyData struct {
 	ColorWords         []*GetAutoClipsTaskInfoResponseBodyDataColorWords `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
 	Content            *string                                           `json:"Content,omitempty" xml:"Content,omitempty"`
+	ErrorMessage       *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	MediaCloudTimeline *string                                           `json:"MediaCloudTimeline,omitempty" xml:"MediaCloudTimeline,omitempty"`
 	MusicStyle         *string                                           `json:"MusicStyle,omitempty" xml:"MusicStyle,omitempty"`
 	// example:
@@ -122,6 +123,10 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) GetColorWords() []*GetAutoClipsTa
 
 func (s *GetAutoClipsTaskInfoResponseBodyData) GetContent() *string {
 	return s.Content
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) GetErrorMessage() *string {
+	return s.ErrorMessage
 }
 
 func (s *GetAutoClipsTaskInfoResponseBodyData) GetMediaCloudTimeline() *string {
@@ -179,6 +184,11 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) SetColorWords(v []*GetAutoClipsTa
 
 func (s *GetAutoClipsTaskInfoResponseBodyData) SetContent(v string) *GetAutoClipsTaskInfoResponseBodyData {
 	s.Content = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyData) SetErrorMessage(v string) *GetAutoClipsTaskInfoResponseBodyData {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -406,11 +416,13 @@ type GetAutoClipsTaskInfoResponseBodyDataTimelinesClips struct {
 	// example:
 	//
 	// 0
-	In *int32 `json:"In,omitempty" xml:"In,omitempty"`
+	In   *int32   `json:"In,omitempty" xml:"In,omitempty"`
+	InEx *float32 `json:"InEx,omitempty" xml:"InEx,omitempty"`
 	// example:
 	//
 	// 5
-	Out *int32 `json:"Out,omitempty" xml:"Out,omitempty"`
+	Out   *int32   `json:"Out,omitempty" xml:"Out,omitempty"`
+	OutEx *float32 `json:"OutEx,omitempty" xml:"OutEx,omitempty"`
 	// example:
 	//
 	// 20774ebd9abc71ef80486632b68f0102
@@ -441,8 +453,16 @@ func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) GetIn() *int32 {
 	return s.In
 }
 
+func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) GetInEx() *float32 {
+	return s.InEx
+}
+
 func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) GetOut() *int32 {
 	return s.Out
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) GetOutEx() *float32 {
+	return s.OutEx
 }
 
 func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) GetVideoId() *string {
@@ -468,8 +488,18 @@ func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) SetIn(v int32) *Get
 	return s
 }
 
+func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) SetInEx(v float32) *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips {
+	s.InEx = &v
+	return s
+}
+
 func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) SetOut(v int32) *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips {
 	s.Out = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips) SetOutEx(v float32) *GetAutoClipsTaskInfoResponseBodyDataTimelinesClips {
+	s.OutEx = &v
 	return s
 }
 

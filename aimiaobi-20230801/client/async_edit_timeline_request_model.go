@@ -122,12 +122,14 @@ func (s *AsyncEditTimelineRequestTimelines) Validate() error {
 }
 
 type AsyncEditTimelineRequestTimelinesClips struct {
-	ClipId       *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
-	ContentInner *string `json:"ContentInner,omitempty" xml:"ContentInner,omitempty"`
-	In           *int32  `json:"In,omitempty" xml:"In,omitempty"`
-	Out          *int32  `json:"Out,omitempty" xml:"Out,omitempty"`
-	VideoId      *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-	VideoName    *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
+	ClipId       *string  `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	ContentInner *string  `json:"ContentInner,omitempty" xml:"ContentInner,omitempty"`
+	In           *int32   `json:"In,omitempty" xml:"In,omitempty"`
+	InEx         *float32 `json:"InEx,omitempty" xml:"InEx,omitempty"`
+	Out          *int32   `json:"Out,omitempty" xml:"Out,omitempty"`
+	OutEx        *float32 `json:"OutEx,omitempty" xml:"OutEx,omitempty"`
+	VideoId      *string  `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	VideoName    *string  `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
 }
 
 func (s AsyncEditTimelineRequestTimelinesClips) String() string {
@@ -150,8 +152,16 @@ func (s *AsyncEditTimelineRequestTimelinesClips) GetIn() *int32 {
 	return s.In
 }
 
+func (s *AsyncEditTimelineRequestTimelinesClips) GetInEx() *float32 {
+	return s.InEx
+}
+
 func (s *AsyncEditTimelineRequestTimelinesClips) GetOut() *int32 {
 	return s.Out
+}
+
+func (s *AsyncEditTimelineRequestTimelinesClips) GetOutEx() *float32 {
+	return s.OutEx
 }
 
 func (s *AsyncEditTimelineRequestTimelinesClips) GetVideoId() *string {
@@ -177,8 +187,18 @@ func (s *AsyncEditTimelineRequestTimelinesClips) SetIn(v int32) *AsyncEditTimeli
 	return s
 }
 
+func (s *AsyncEditTimelineRequestTimelinesClips) SetInEx(v float32) *AsyncEditTimelineRequestTimelinesClips {
+	s.InEx = &v
+	return s
+}
+
 func (s *AsyncEditTimelineRequestTimelinesClips) SetOut(v int32) *AsyncEditTimelineRequestTimelinesClips {
 	s.Out = &v
+	return s
+}
+
+func (s *AsyncEditTimelineRequestTimelinesClips) SetOutEx(v float32) *AsyncEditTimelineRequestTimelinesClips {
+	s.OutEx = &v
 	return s
 }
 
