@@ -27,6 +27,10 @@ type iCreateVpcRequest interface {
 	GetIpv4IpamPoolId() *string
 	SetIpv6CidrBlock(v string) *CreateVpcRequest
 	GetIpv6CidrBlock() *string
+	SetIpv6CidrMask(v int32) *CreateVpcRequest
+	GetIpv6CidrMask() *int32
+	SetIpv6IpamPoolId(v string) *CreateVpcRequest
+	GetIpv6IpamPoolId() *string
 	SetIpv6Isp(v string) *CreateVpcRequest
 	GetIpv6Isp() *string
 	SetOwnerAccount(v string) *CreateVpcRequest
@@ -127,7 +131,9 @@ type CreateVpcRequest struct {
 	// example:
 	//
 	// 2408:XXXX:0:6a::/56
-	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	Ipv6CidrBlock  *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	Ipv6CidrMask   *int32  `json:"Ipv6CidrMask,omitempty" xml:"Ipv6CidrMask,omitempty"`
+	Ipv6IpamPoolId *string `json:"Ipv6IpamPoolId,omitempty" xml:"Ipv6IpamPoolId,omitempty"`
 	// The type of the IPv6 CIDR block of the VPC. Valid values:
 	//
 	// 	- **BGP*	- (default)
@@ -230,6 +236,14 @@ func (s *CreateVpcRequest) GetIpv6CidrBlock() *string {
 	return s.Ipv6CidrBlock
 }
 
+func (s *CreateVpcRequest) GetIpv6CidrMask() *int32 {
+	return s.Ipv6CidrMask
+}
+
+func (s *CreateVpcRequest) GetIpv6IpamPoolId() *string {
+	return s.Ipv6IpamPoolId
+}
+
 func (s *CreateVpcRequest) GetIpv6Isp() *string {
 	return s.Ipv6Isp
 }
@@ -312,6 +326,16 @@ func (s *CreateVpcRequest) SetIpv4IpamPoolId(v string) *CreateVpcRequest {
 
 func (s *CreateVpcRequest) SetIpv6CidrBlock(v string) *CreateVpcRequest {
 	s.Ipv6CidrBlock = &v
+	return s
+}
+
+func (s *CreateVpcRequest) SetIpv6CidrMask(v int32) *CreateVpcRequest {
+	s.Ipv6CidrMask = &v
+	return s
+}
+
+func (s *CreateVpcRequest) SetIpv6IpamPoolId(v string) *CreateVpcRequest {
+	s.Ipv6IpamPoolId = &v
 	return s
 }
 

@@ -112,6 +112,11 @@ func (s *GetVpcPrefixListAssociationsResponseBody) Validate() error {
 }
 
 type GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation struct {
+	// List of CIDR addresses where the prefix list is effective in the currently associated resources.
+	//
+	// example:
+	//
+	// 192.168.0.0/16
 	CidrList *string `json:"CidrList,omitempty" xml:"CidrList,omitempty"`
 	// The ID of the Alibaba Cloud account to which the prefix list belongs.
 	//

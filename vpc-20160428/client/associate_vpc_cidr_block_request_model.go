@@ -15,6 +15,8 @@ type iAssociateVpcCidrBlockRequest interface {
 	GetIpVersion() *string
 	SetIpamPoolId(v string) *AssociateVpcCidrBlockRequest
 	GetIpamPoolId() *string
+	SetIpv6CidrMask(v int32) *AssociateVpcCidrBlockRequest
+	GetIpv6CidrMask() *int32
 	SetIpv6Isp(v string) *AssociateVpcCidrBlockRequest
 	GetIpv6Isp() *string
 	SetOwnerAccount(v string) *AssociateVpcCidrBlockRequest
@@ -59,7 +61,8 @@ type AssociateVpcCidrBlockRequest struct {
 	// example:
 	//
 	// ipam-pool-sycmt3p2a9v63i****
-	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	IpamPoolId   *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	Ipv6CidrMask *int32  `json:"Ipv6CidrMask,omitempty" xml:"Ipv6CidrMask,omitempty"`
 	// The type of the IPv6 CIDR block. Valid values:
 	//
 	// 	- **BGP*	- (default)
@@ -81,8 +84,6 @@ type AssociateVpcCidrBlockRequest struct {
 	// The region ID of the VPC to which you want to add a secondary CIDR block.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -148,6 +149,10 @@ func (s *AssociateVpcCidrBlockRequest) GetIpamPoolId() *string {
 	return s.IpamPoolId
 }
 
+func (s *AssociateVpcCidrBlockRequest) GetIpv6CidrMask() *int32 {
+	return s.Ipv6CidrMask
+}
+
 func (s *AssociateVpcCidrBlockRequest) GetIpv6Isp() *string {
 	return s.Ipv6Isp
 }
@@ -196,6 +201,11 @@ func (s *AssociateVpcCidrBlockRequest) SetIpVersion(v string) *AssociateVpcCidrB
 
 func (s *AssociateVpcCidrBlockRequest) SetIpamPoolId(v string) *AssociateVpcCidrBlockRequest {
 	s.IpamPoolId = &v
+	return s
+}
+
+func (s *AssociateVpcCidrBlockRequest) SetIpv6CidrMask(v int32) *AssociateVpcCidrBlockRequest {
+	s.Ipv6CidrMask = &v
 	return s
 }
 

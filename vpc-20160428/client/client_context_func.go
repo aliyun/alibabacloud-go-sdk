@@ -2,96 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-hangzhou":                 dara.String("vpc.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("vpc.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       dara.String("vpc.aliyuncs.com"),
-		"cn-north-2-gov-1":            dara.String("vpc.aliyuncs.com"),
-		"ap-northeast-2-pop":          dara.String("vpc.aliyuncs.com"),
-		"cn-beijing-finance-pop":      dara.String("vpc.aliyuncs.com"),
-		"cn-beijing-gov-1":            dara.String("vpc.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         dara.String("vpc.aliyuncs.com"),
-		"cn-edge-1":                   dara.String("vpc-nebula.cn-qingdao-nebula.aliyuncs.com"),
-		"cn-fujian":                   dara.String("vpc.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         dara.String("vpc.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          dara.String("vpc.aliyuncs.com"),
-		"cn-hangzhou-finance":         dara.String("vpc.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": dara.String("vpc.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": dara.String("vpc-pre.cn-hangzhou.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": dara.String("vpc-inner-pre.cn-hangzhou.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": dara.String("vpc-pre.cn-hangzhou.aliyuncs.com"),
-		"cn-hangzhou-test-306":        dara.String("vpc-pre.cn-hangzhou.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     dara.String("vpc.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       dara.String("vpc-nebula.cn-qingdao-nebula.aliyuncs.com"),
-		"cn-qingdao-nebula":           dara.String("vpc-nebula.cn-qingdao-nebula.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        dara.String("vpc-pre.cn-hangzhou.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         dara.String("vpc.aliyuncs.com"),
-		"cn-shanghai-inner":           dara.String("vpc.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": dara.String("vpc-pre.cn-hangzhou.aliyuncs.com"),
-		"cn-shenzhen-inner":           dara.String("vpc.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         dara.String("vpc.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        dara.String("vpc.aliyuncs.com"),
-		"cn-wuhan":                    dara.String("vpc.aliyuncs.com"),
-		"cn-yushanfang":               dara.String("vpc.aliyuncs.com"),
-		"cn-zhangbei":                 dara.String("vpc.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        dara.String("vpc.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     dara.String("vpc.cn-zhangjiakou.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       dara.String("vpc-nebula.cn-qingdao-nebula.aliyuncs.com"),
-		"eu-west-1-oxs":               dara.String("vpc-nebula.cn-shenzhen-cloudstone.aliyuncs.com"),
-		"rus-west-1-pop":              dara.String("vpc.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("vpc"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -108,7 +22,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ActivateRouterInterfaceResponse
-func (client *Client) ActivateRouterInterfaceWithOptions(request *ActivateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *ActivateRouterInterfaceResponse, _err error) {
+func (client *Client) ActivateRouterInterfaceWithContext(ctx context.Context, request *ActivateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *ActivateRouterInterfaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -149,35 +63,11 @@ func (client *Client) ActivateRouterInterfaceWithOptions(request *ActivateRouter
 		BodyType:    dara.String("json"),
 	}
 	_result = &ActivateRouterInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Activates a router interface that is in the Inactive state.
-//
-// Description:
-//
-// After you call this operation, the router interface enters the **Activating*	- state. After the router interface is activated, it enters the **Active*	- state.
-//
-// >  You cannot activate a router interface that has overdue payments.
-//
-// @param request - ActivateRouterInterfaceRequest
-//
-// @return ActivateRouterInterfaceResponse
-func (client *Client) ActivateRouterInterface(request *ActivateRouterInterfaceRequest) (_result *ActivateRouterInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ActivateRouterInterfaceResponse{}
-	_body, _err := client.ActivateRouterInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -200,7 +90,7 @@ func (client *Client) ActivateRouterInterface(request *ActivateRouterInterfaceRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ActiveFlowLogResponse
-func (client *Client) ActiveFlowLogWithOptions(request *ActiveFlowLogRequest, runtime *dara.RuntimeOptions) (_result *ActiveFlowLogResponse, _err error) {
+func (client *Client) ActiveFlowLogWithContext(ctx context.Context, request *ActiveFlowLogRequest, runtime *dara.RuntimeOptions) (_result *ActiveFlowLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -245,39 +135,11 @@ func (client *Client) ActiveFlowLogWithOptions(request *ActiveFlowLogRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ActiveFlowLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables a flow log. After the flow log is enabled, traffic information about a resource is captured.
-//
-// Description:
-//
-//	  The **ActiveFlowLog*	- operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeFlowLogs](https://help.aliyun.com/document_detail/87923.html) operation to query the status of a flow log:
-//
-//	    	- If the flow log is in the **Activating*	- state, the flow log is being started.
-//
-//	    	- If the flow log is in the **Active*	- state, the flow log is started.
-//
-//		- You cannot repeatedly call the **ActiveFlowLog*	- operation to start a flow log within the specified period of time.
-//
-// @param request - ActiveFlowLogRequest
-//
-// @return ActiveFlowLogResponse
-func (client *Client) ActiveFlowLog(request *ActiveFlowLogRequest) (_result *ActiveFlowLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ActiveFlowLogResponse{}
-	_body, _err := client.ActiveFlowLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -290,7 +152,7 @@ func (client *Client) ActiveFlowLog(request *ActiveFlowLogRequest) (_result *Act
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddBgpNetworkResponse
-func (client *Client) AddBgpNetworkWithOptions(request *AddBgpNetworkRequest, runtime *dara.RuntimeOptions) (_result *AddBgpNetworkResponse, _err error) {
+func (client *Client) AddBgpNetworkWithContext(ctx context.Context, request *AddBgpNetworkRequest, runtime *dara.RuntimeOptions) (_result *AddBgpNetworkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -347,29 +209,11 @@ func (client *Client) AddBgpNetworkWithOptions(request *AddBgpNetworkRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddBgpNetworkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Advertises a Border Gateway Protocol (BGP) network.
-//
-// @param request - AddBgpNetworkRequest
-//
-// @return AddBgpNetworkResponse
-func (client *Client) AddBgpNetwork(request *AddBgpNetworkRequest) (_result *AddBgpNetworkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddBgpNetworkResponse{}
-	_body, _err := client.AddBgpNetworkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -400,7 +244,7 @@ func (client *Client) AddBgpNetwork(request *AddBgpNetworkRequest) (_result *Add
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddCommonBandwidthPackageIpResponse
-func (client *Client) AddCommonBandwidthPackageIpWithOptions(request *AddCommonBandwidthPackageIpRequest, runtime *dara.RuntimeOptions) (_result *AddCommonBandwidthPackageIpResponse, _err error) {
+func (client *Client) AddCommonBandwidthPackageIpWithContext(ctx context.Context, request *AddCommonBandwidthPackageIpRequest, runtime *dara.RuntimeOptions) (_result *AddCommonBandwidthPackageIpResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -457,47 +301,11 @@ func (client *Client) AddCommonBandwidthPackageIpWithOptions(request *AddCommonB
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddCommonBandwidthPackageIpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates an elastic IP address (EIP) with an Internet Shared Bandwidth instance.
-//
-// Description:
-//
-// Before you call this operation, take note of the following items:
-//
-//   - When you call this operation to associate an EIP with an Internet Shared Bandwidth instance, make sure that the EIP meets the following requirements:
-//
-//   - The EIP uses the pay-as-you-go billing method.
-//
-//   - The EIP and the Internet Shared Bandwidth instance belong to the same region.
-//
-//   - The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
-//
-//   - **AddCommonBandwidthPackageIp*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](https://help.aliyun.com/document_detail/120309.html) operation to query the status of the operation.
-//
-//   - If the Internet Shared Bandwidth instance is in the **BINDING*	- state, the EIP is being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
-//
-//   - If the Internet Shared Bandwidth instance is in the **BINDED*	- state, the EIP is associated with the Internet Shared Bandwidth instance.
-//
-// @param request - AddCommonBandwidthPackageIpRequest
-//
-// @return AddCommonBandwidthPackageIpResponse
-func (client *Client) AddCommonBandwidthPackageIp(request *AddCommonBandwidthPackageIpRequest) (_result *AddCommonBandwidthPackageIpResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddCommonBandwidthPackageIpResponse{}
-	_body, _err := client.AddCommonBandwidthPackageIpWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -526,7 +334,7 @@ func (client *Client) AddCommonBandwidthPackageIp(request *AddCommonBandwidthPac
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddCommonBandwidthPackageIpsResponse
-func (client *Client) AddCommonBandwidthPackageIpsWithOptions(request *AddCommonBandwidthPackageIpsRequest, runtime *dara.RuntimeOptions) (_result *AddCommonBandwidthPackageIpsResponse, _err error) {
+func (client *Client) AddCommonBandwidthPackageIpsWithContext(ctx context.Context, request *AddCommonBandwidthPackageIpsRequest, runtime *dara.RuntimeOptions) (_result *AddCommonBandwidthPackageIpsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -583,45 +391,11 @@ func (client *Client) AddCommonBandwidthPackageIpsWithOptions(request *AddCommon
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddCommonBandwidthPackageIpsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates multiple elastic IP addresses (EIPs) with an Internet Shared Bandwidth instance.
-//
-// Description:
-//
-//	  When you call this operation to associate EIPs with an Internet Shared Bandwidth instance, make sure that the EIPs meet the following requirements:
-//
-//	    	- The EIPs use the pay-as-you-go billing method.
-//
-//	    	- The EIP and the Internet Shared Bandwidth instance belong to the same region.
-//
-//	    	- The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
-//
-//		- **AddCommonBandwidthPackageIps*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~DescribeCommonBandwidthPackages~~) operation to query the status of the task.
-//
-//	    	- If the Internet Shared Bandwidth instance is in the **BINDING*	- state, the EIP is being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
-//
-//	    	- If the Internet Shared Bandwidth instance is in the **BINDED*	- state, the EIP is associated with the Internet Shared Bandwidth instance.
-//
-// @param request - AddCommonBandwidthPackageIpsRequest
-//
-// @return AddCommonBandwidthPackageIpsResponse
-func (client *Client) AddCommonBandwidthPackageIps(request *AddCommonBandwidthPackageIpsRequest) (_result *AddCommonBandwidthPackageIpsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddCommonBandwidthPackageIpsResponse{}
-	_body, _err := client.AddCommonBandwidthPackageIpsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -634,7 +408,7 @@ func (client *Client) AddCommonBandwidthPackageIps(request *AddCommonBandwidthPa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddGlobalAccelerationInstanceIpResponse
-func (client *Client) AddGlobalAccelerationInstanceIpWithOptions(request *AddGlobalAccelerationInstanceIpRequest, runtime *dara.RuntimeOptions) (_result *AddGlobalAccelerationInstanceIpResponse, _err error) {
+func (client *Client) AddGlobalAccelerationInstanceIpWithContext(ctx context.Context, request *AddGlobalAccelerationInstanceIpRequest, runtime *dara.RuntimeOptions) (_result *AddGlobalAccelerationInstanceIpResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -683,29 +457,11 @@ func (client *Client) AddGlobalAccelerationInstanceIpWithOptions(request *AddGlo
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddGlobalAccelerationInstanceIpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates an elastic IP address (EIP) with a shared-bandwidth Global Accelerator (GA) instance.
-//
-// @param request - AddGlobalAccelerationInstanceIpRequest
-//
-// @return AddGlobalAccelerationInstanceIpResponse
-func (client *Client) AddGlobalAccelerationInstanceIp(request *AddGlobalAccelerationInstanceIpRequest) (_result *AddGlobalAccelerationInstanceIpResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddGlobalAccelerationInstanceIpResponse{}
-	_body, _err := client.AddGlobalAccelerationInstanceIpWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -720,7 +476,7 @@ func (client *Client) AddGlobalAccelerationInstanceIp(request *AddGlobalAccelera
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddIPv6TranslatorAclListEntryResponse
-func (client *Client) AddIPv6TranslatorAclListEntryWithOptions(request *AddIPv6TranslatorAclListEntryRequest, runtime *dara.RuntimeOptions) (_result *AddIPv6TranslatorAclListEntryResponse, _err error) {
+func (client *Client) AddIPv6TranslatorAclListEntryWithContext(ctx context.Context, request *AddIPv6TranslatorAclListEntryRequest, runtime *dara.RuntimeOptions) (_result *AddIPv6TranslatorAclListEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -773,32 +529,11 @@ func (client *Client) AddIPv6TranslatorAclListEntryWithOptions(request *AddIPv6T
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddIPv6TranslatorAclListEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AddIPv6TranslatorAclListEntry is deprecated
-//
-// Summary:
-//
-// Adds an IP entry to an access control list (ACL).
-//
-// @param request - AddIPv6TranslatorAclListEntryRequest
-//
-// @return AddIPv6TranslatorAclListEntryResponse
-// Deprecated
-func (client *Client) AddIPv6TranslatorAclListEntry(request *AddIPv6TranslatorAclListEntryRequest) (_result *AddIPv6TranslatorAclListEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddIPv6TranslatorAclListEntryResponse{}
-	_body, _err := client.AddIPv6TranslatorAclListEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -827,7 +562,7 @@ func (client *Client) AddIPv6TranslatorAclListEntry(request *AddIPv6TranslatorAc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddPublicIpAddressPoolCidrBlockResponse
-func (client *Client) AddPublicIpAddressPoolCidrBlockWithOptions(request *AddPublicIpAddressPoolCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *AddPublicIpAddressPoolCidrBlockResponse, _err error) {
+func (client *Client) AddPublicIpAddressPoolCidrBlockWithContext(ctx context.Context, request *AddPublicIpAddressPoolCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *AddPublicIpAddressPoolCidrBlockResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -888,45 +623,11 @@ func (client *Client) AddPublicIpAddressPoolCidrBlockWithOptions(request *AddPub
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddPublicIpAddressPoolCidrBlockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a CIDR block to an IP address pool.
-//
-// Description:
-//
-// Before you call this operation, take note of the following limits:
-//
-//   - The CIDR block and the IP address pool must belong to the same region.
-//
-//   - The CIDR block and the IP address pool must use the same line type.
-//
-//   - **AddPublicIpAddressPoolCidrBlock*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPublicIpAddressPoolCidrBlocks](https://help.aliyun.com/document_detail/429436.html) operation to query the status of the task.
-//
-//   - If the CIDR block is in the **Modifying*	- state, the CIDR block is being added. In this state, you can only query the CIDR block and cannot perform other operations.
-//
-//   - If the CIDR block is in the **Created*	- state, the CIDR block is added.
-//
-//   - You cannot repeatedly call the **AddPublicIpAddressPoolCidrBlock*	- operation to add a CIDR block to an IP address pool within the specified period of time.
-//
-// @param request - AddPublicIpAddressPoolCidrBlockRequest
-//
-// @return AddPublicIpAddressPoolCidrBlockResponse
-func (client *Client) AddPublicIpAddressPoolCidrBlock(request *AddPublicIpAddressPoolCidrBlockRequest) (_result *AddPublicIpAddressPoolCidrBlockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddPublicIpAddressPoolCidrBlockResponse{}
-	_body, _err := client.AddPublicIpAddressPoolCidrBlockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -949,7 +650,7 @@ func (client *Client) AddPublicIpAddressPoolCidrBlock(request *AddPublicIpAddres
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddSourcesToTrafficMirrorSessionResponse
-func (client *Client) AddSourcesToTrafficMirrorSessionWithOptions(request *AddSourcesToTrafficMirrorSessionRequest, runtime *dara.RuntimeOptions) (_result *AddSourcesToTrafficMirrorSessionResponse, _err error) {
+func (client *Client) AddSourcesToTrafficMirrorSessionWithContext(ctx context.Context, request *AddSourcesToTrafficMirrorSessionRequest, runtime *dara.RuntimeOptions) (_result *AddSourcesToTrafficMirrorSessionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1006,39 +707,11 @@ func (client *Client) AddSourcesToTrafficMirrorSessionWithOptions(request *AddSo
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddSourcesToTrafficMirrorSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a traffic mirror source to a traffic mirror session.
-//
-// Description:
-//
-//	  **AddSourcesToTrafficMirrorSession*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](https://help.aliyun.com/document_detail/261367.html) operation to query the status of the task.
-//
-//	    	- If the traffic mirror session is in the **Modifying*	- state, the traffic mirror source is being added to the traffic mirror session.
-//
-//	    	- If the traffic mirror session is in the **Created*	- state, the traffic mirror source is added to the traffic mirror session.
-//
-//		- You cannot repeatedly call the **AddSourcesToTrafficMirrorSession*	- operation to add a traffic mirror source to a traffic mirror session within the specified period of time.
-//
-// @param request - AddSourcesToTrafficMirrorSessionRequest
-//
-// @return AddSourcesToTrafficMirrorSessionResponse
-func (client *Client) AddSourcesToTrafficMirrorSession(request *AddSourcesToTrafficMirrorSessionRequest) (_result *AddSourcesToTrafficMirrorSessionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddSourcesToTrafficMirrorSessionResponse{}
-	_body, _err := client.AddSourcesToTrafficMirrorSessionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1057,7 +730,7 @@ func (client *Client) AddSourcesToTrafficMirrorSession(request *AddSourcesToTraf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AllocateEipAddressResponse
-func (client *Client) AllocateEipAddressWithOptions(request *AllocateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateEipAddressResponse, _err error) {
+func (client *Client) AllocateEipAddressWithContext(ctx context.Context, request *AllocateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateEipAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1174,35 +847,11 @@ func (client *Client) AllocateEipAddressWithOptions(request *AllocateEipAddressR
 		BodyType:    dara.String("json"),
 	}
 	_result = &AllocateEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Applies for an elastic IP address (EIP).
-//
-// Description:
-//
-// Before you call this operation, make sure that you are familiar with the billing methods and pricing of EIPs. For more information, see [Billing overview](https://help.aliyun.com/document_detail/122035.html).
-//
-// After you call this operation, the system randomly allocates an EIP that is in the **Available*	- state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported.
-//
-// @param request - AllocateEipAddressRequest
-//
-// @return AllocateEipAddressResponse
-func (client *Client) AllocateEipAddress(request *AllocateEipAddressRequest) (_result *AllocateEipAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AllocateEipAddressResponse{}
-	_body, _err := client.AllocateEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1215,7 +864,7 @@ func (client *Client) AllocateEipAddress(request *AllocateEipAddressRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AllocateEipAddressProResponse
-func (client *Client) AllocateEipAddressProWithOptions(request *AllocateEipAddressProRequest, runtime *dara.RuntimeOptions) (_result *AllocateEipAddressProResponse, _err error) {
+func (client *Client) AllocateEipAddressProWithContext(ctx context.Context, request *AllocateEipAddressProRequest, runtime *dara.RuntimeOptions) (_result *AllocateEipAddressProResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1316,29 +965,11 @@ func (client *Client) AllocateEipAddressProWithOptions(request *AllocateEipAddre
 		BodyType:    dara.String("json"),
 	}
 	_result = &AllocateEipAddressProResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Requests a specified elastic IP address (EIP).
-//
-// @param request - AllocateEipAddressProRequest
-//
-// @return AllocateEipAddressProResponse
-func (client *Client) AllocateEipAddressPro(request *AllocateEipAddressProRequest) (_result *AllocateEipAddressProResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AllocateEipAddressProResponse{}
-	_body, _err := client.AllocateEipAddressProWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1361,7 +992,7 @@ func (client *Client) AllocateEipAddressPro(request *AllocateEipAddressProReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AllocateEipSegmentAddressResponse
-func (client *Client) AllocateEipSegmentAddressWithOptions(request *AllocateEipSegmentAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateEipSegmentAddressResponse, _err error) {
+func (client *Client) AllocateEipSegmentAddressWithContext(ctx context.Context, request *AllocateEipSegmentAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateEipSegmentAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1434,40 +1065,11 @@ func (client *Client) AllocateEipSegmentAddressWithOptions(request *AllocateEipS
 		BodyType:    dara.String("json"),
 	}
 	_result = &AllocateEipSegmentAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AllocateEipSegmentAddress is deprecated
-//
-// Summary:
-//
-// Applies for contiguous elastic IP addresses (EIPs).
-//
-// Description:
-//
-// *AllocateEipSegmentAddress*	- is an asynchronous operation. After a request is sent, the system returns the ID of a contiguous EIP group and runs the task in the background. You can call the [DescribeEipSegment](https://help.aliyun.com/document_detail/156063.html) operation to query the status of the task.
-//
-//   - If the contiguous EIP group is in the **Allocating*	- state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
-//
-//   - If the contiguous EIP group is in the **Allocated*	- state, the EIPs are allocated.
-//
-// @param request - AllocateEipSegmentAddressRequest
-//
-// @return AllocateEipSegmentAddressResponse
-// Deprecated
-func (client *Client) AllocateEipSegmentAddress(request *AllocateEipSegmentAddressRequest) (_result *AllocateEipSegmentAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AllocateEipSegmentAddressResponse{}
-	_body, _err := client.AllocateEipSegmentAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1480,7 +1082,7 @@ func (client *Client) AllocateEipSegmentAddress(request *AllocateEipSegmentAddre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AllocateIpv6AddressResponse
-func (client *Client) AllocateIpv6AddressWithOptions(request *AllocateIpv6AddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateIpv6AddressResponse, _err error) {
+func (client *Client) AllocateIpv6AddressWithContext(ctx context.Context, request *AllocateIpv6AddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateIpv6AddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1561,29 +1163,11 @@ func (client *Client) AllocateIpv6AddressWithOptions(request *AllocateIpv6Addres
 		BodyType:    dara.String("json"),
 	}
 	_result = &AllocateIpv6AddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Assigns an IPv6 address.
-//
-// @param request - AllocateIpv6AddressRequest
-//
-// @return AllocateIpv6AddressResponse
-func (client *Client) AllocateIpv6Address(request *AllocateIpv6AddressRequest) (_result *AllocateIpv6AddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AllocateIpv6AddressResponse{}
-	_body, _err := client.AllocateIpv6AddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1602,7 +1186,7 @@ func (client *Client) AllocateIpv6Address(request *AllocateIpv6AddressRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AllocateIpv6InternetBandwidthResponse
-func (client *Client) AllocateIpv6InternetBandwidthWithOptions(request *AllocateIpv6InternetBandwidthRequest, runtime *dara.RuntimeOptions) (_result *AllocateIpv6InternetBandwidthResponse, _err error) {
+func (client *Client) AllocateIpv6InternetBandwidthWithContext(ctx context.Context, request *AllocateIpv6InternetBandwidthRequest, runtime *dara.RuntimeOptions) (_result *AllocateIpv6InternetBandwidthResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1675,35 +1259,11 @@ func (client *Client) AllocateIpv6InternetBandwidthWithOptions(request *Allocate
 		BodyType:    dara.String("json"),
 	}
 	_result = &AllocateIpv6InternetBandwidthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Default IPv6 gateways support only private communication. You can call the AllocateIpv6InternetBandwidth operation to purchase Internet bandwidth resources for an IPv6 address. This way, ECS instances in a VPC can access the Internet through the IPv6 address. IPv6 clients can also access the ECS instances over the Internet.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that an ECS instance that supports IPv6 is created in a VPC that has an IPv6 CIDR block. For more information, see [Create a VPC with an IPv6 CIDR block](https://help.aliyun.com/document_detail/100540.html).
-//
-//		- You cannot repeatedly call **AllocateIpv6InternetBandwidth*	- within the specified period of time.
-//
-// @param request - AllocateIpv6InternetBandwidthRequest
-//
-// @return AllocateIpv6InternetBandwidthResponse
-func (client *Client) AllocateIpv6InternetBandwidth(request *AllocateIpv6InternetBandwidthRequest) (_result *AllocateIpv6InternetBandwidthResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AllocateIpv6InternetBandwidthResponse{}
-	_body, _err := client.AllocateIpv6InternetBandwidthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1726,7 +1286,7 @@ func (client *Client) AllocateIpv6InternetBandwidth(request *AllocateIpv6Interne
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AllocateVpcIpv6CidrResponse
-func (client *Client) AllocateVpcIpv6CidrWithOptions(request *AllocateVpcIpv6CidrRequest, runtime *dara.RuntimeOptions) (_result *AllocateVpcIpv6CidrResponse, _err error) {
+func (client *Client) AllocateVpcIpv6CidrWithContext(ctx context.Context, request *AllocateVpcIpv6CidrRequest, runtime *dara.RuntimeOptions) (_result *AllocateVpcIpv6CidrResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1787,39 +1347,11 @@ func (client *Client) AllocateVpcIpv6CidrWithOptions(request *AllocateVpcIpv6Cid
 		BodyType:    dara.String("json"),
 	}
 	_result = &AllocateVpcIpv6CidrResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Reserves an IPv6 CIDR block.
-//
-// Description:
-//
-// # [](#)
-//
-// The following section describes how to allocate an IPv6 CIDR block to a virtual private cloud (VPC):
-//
-// 1.  Call the AllocateVpcIpv6Cidr operation to reserve the IPv6 CIDR block.
-//
-// 2.  To allocate an IPv6 CIDR block to an existing VPC, call the [AssociateVpcCidrBlock](https://help.aliyun.com/document_detail/146745.html) operation. Set **RegionId**, **VpcId**, and **IPv6CidrBlock*	- to the IPv6 CIDR bock, and set **IpVersion*	- to **ipv6**. To allocate an IPv6 CIDR block when you create a VPC, call the [CreateVpc](https://help.aliyun.com/document_detail/35737.html) operation. Set **RegionId*	- and **Ipv6CidrBlock*	- to the IPv6 CIDR block, and set **EnableIpv6*	- to **true**.
-//
-// @param request - AllocateVpcIpv6CidrRequest
-//
-// @return AllocateVpcIpv6CidrResponse
-func (client *Client) AllocateVpcIpv6Cidr(request *AllocateVpcIpv6CidrRequest) (_result *AllocateVpcIpv6CidrResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AllocateVpcIpv6CidrResponse{}
-	_body, _err := client.AllocateVpcIpv6CidrWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1832,7 +1364,7 @@ func (client *Client) AllocateVpcIpv6Cidr(request *AllocateVpcIpv6CidrRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ApplyPhysicalConnectionLOAResponse
-func (client *Client) ApplyPhysicalConnectionLOAWithOptions(request *ApplyPhysicalConnectionLOARequest, runtime *dara.RuntimeOptions) (_result *ApplyPhysicalConnectionLOAResponse, _err error) {
+func (client *Client) ApplyPhysicalConnectionLOAWithContext(ctx context.Context, request *ApplyPhysicalConnectionLOARequest, runtime *dara.RuntimeOptions) (_result *ApplyPhysicalConnectionLOAResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1913,29 +1445,11 @@ func (client *Client) ApplyPhysicalConnectionLOAWithOptions(request *ApplyPhysic
 		BodyType:    dara.String("json"),
 	}
 	_result = &ApplyPhysicalConnectionLOAResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Applies for a Letter of Authorization (LOA) for an Express Connect circuit.
-//
-// @param request - ApplyPhysicalConnectionLOARequest
-//
-// @return ApplyPhysicalConnectionLOAResponse
-func (client *Client) ApplyPhysicalConnectionLOA(request *ApplyPhysicalConnectionLOARequest) (_result *ApplyPhysicalConnectionLOAResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ApplyPhysicalConnectionLOAResponse{}
-	_body, _err := client.ApplyPhysicalConnectionLOAWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1960,7 +1474,7 @@ func (client *Client) ApplyPhysicalConnectionLOA(request *ApplyPhysicalConnectio
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateEipAddressResponse
-func (client *Client) AssociateEipAddressWithOptions(request *AssociateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AssociateEipAddressResponse, _err error) {
+func (client *Client) AssociateEipAddressWithContext(ctx context.Context, request *AssociateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AssociateEipAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2033,41 +1547,11 @@ func (client *Client) AssociateEipAddressWithOptions(request *AssociateEipAddres
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates an elastic IP address (EIP) with an instance in the same region.
-//
-// Description:
-//
-//	  You can associate an EIP with an Elastic Compute Service (ECS) instance, a Classic Load Balancer (CLB) instance, a secondary elastic network interface (ENI), a NAT gateway, or a high-availability virtual IP address (HAVIP) in the same region. The ECS instance and CLB instance must be deployed in a virtual private cloud (VPC).
-//
-//		- **AssociateEipAddress*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](https://help.aliyun.com/document_detail/120193.html) operation to query the status of the task.
-//
-//	    	- If the EIP is in the **Associating*	- state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
-//
-//	    	- If the EIP is in the **InUse*	- state, the EIP is associated.
-//
-//		- You cannot call the **AssociateEipAddress*	- operation to associate an EIP with multiple instances at a time.
-//
-// @param request - AssociateEipAddressRequest
-//
-// @return AssociateEipAddressResponse
-func (client *Client) AssociateEipAddress(request *AssociateEipAddressRequest) (_result *AssociateEipAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateEipAddressResponse{}
-	_body, _err := client.AssociateEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2092,7 +1576,7 @@ func (client *Client) AssociateEipAddress(request *AssociateEipAddressRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateEipAddressBatchResponse
-func (client *Client) AssociateEipAddressBatchWithOptions(request *AssociateEipAddressBatchRequest, runtime *dara.RuntimeOptions) (_result *AssociateEipAddressBatchResponse, _err error) {
+func (client *Client) AssociateEipAddressBatchWithContext(ctx context.Context, request *AssociateEipAddressBatchRequest, runtime *dara.RuntimeOptions) (_result *AssociateEipAddressBatchResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2153,41 +1637,11 @@ func (client *Client) AssociateEipAddressBatchWithOptions(request *AssociateEipA
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateEipAddressBatchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates multiple elastic IP addresses (EIPs) with an instance in the same region.
-//
-// Description:
-//
-//	  You can call the **AssociateEipAddressBatch*	- operation to associate EIPs with an instance in the same region. The instance must be a NAT gateway or a secondary elastic network interface (ENI). For more information about how to associate EIPs with other instances, see [AssociateEipAddress](https://help.aliyun.com/document_detail/120195.html).
-//
-//		- **AssociateEipAddressBatch*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](https://help.aliyun.com/document_detail/120193.html) operation to query the status of the task.
-//
-//	    	- If the EIP is in the **Associating*	- state, the EIP is being associated. You can only query the EIP and cannot perform other operations.
-//
-//	    	- If the EIP is in the **InUse*	- state, the EIP is associated.
-//
-//		- You cannot call the **AssociateEipAddressBatch*	- operation to associate an EIP with multiple instances at a time.
-//
-// @param request - AssociateEipAddressBatchRequest
-//
-// @return AssociateEipAddressBatchResponse
-func (client *Client) AssociateEipAddressBatch(request *AssociateEipAddressBatchRequest) (_result *AssociateEipAddressBatchResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateEipAddressBatchResponse{}
-	_body, _err := client.AssociateEipAddressBatchWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2222,7 +1676,7 @@ func (client *Client) AssociateEipAddressBatch(request *AssociateEipAddressBatch
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateHaVipResponse
-func (client *Client) AssociateHaVipWithOptions(request *AssociateHaVipRequest, runtime *dara.RuntimeOptions) (_result *AssociateHaVipResponse, _err error) {
+func (client *Client) AssociateHaVipWithContext(ctx context.Context, request *AssociateHaVipRequest, runtime *dara.RuntimeOptions) (_result *AssociateHaVipResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2279,51 +1733,11 @@ func (client *Client) AssociateHaVipWithOptions(request *AssociateHaVipRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateHaVipResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates a high-availability virtual IP address (HaVip) with an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
-//
-// Description:
-//
-// When you call this operation, take note of the following limits:
-//
-//   - An HaVip immediately takes effect after it is associated. You do not need to restart the ECS instance. However, you must associate the HaVip with the ENI of the ECS instance.
-//
-//   - The HaVip and ECS instance must belong to the same vSwitch.
-//
-//   - You can associate an HaVip with at most two ECS instances.
-//
-//   - The ECS instance must be in the **Running*	- or **Stopped*	- state.
-//
-//   - The HaVip must be in the **Available*	- or **InUse*	- state.
-//
-//   - The **AssociateHaVip*	- operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
-//
-//   - If the HaVip is in the **Associating*	- state, the HaVip is being associated.
-//
-//   - If the HaVip is in the **InUse*	- state, the HaVip is associated.
-//
-//   - You cannot repeatedly call the **AssociateHaVip*	- operation to associate an HaVip within the specified period of time.
-//
-// @param request - AssociateHaVipRequest
-//
-// @return AssociateHaVipResponse
-func (client *Client) AssociateHaVip(request *AssociateHaVipRequest) (_result *AssociateHaVipResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateHaVipResponse{}
-	_body, _err := client.AssociateHaVipWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2348,7 +1762,7 @@ func (client *Client) AssociateHaVip(request *AssociateHaVipRequest) (_result *A
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateNetworkAclResponse
-func (client *Client) AssociateNetworkAclWithOptions(request *AssociateNetworkAclRequest, runtime *dara.RuntimeOptions) (_result *AssociateNetworkAclResponse, _err error) {
+func (client *Client) AssociateNetworkAclWithContext(ctx context.Context, request *AssociateNetworkAclRequest, runtime *dara.RuntimeOptions) (_result *AssociateNetworkAclResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2409,41 +1823,11 @@ func (client *Client) AssociateNetworkAclWithOptions(request *AssociateNetworkAc
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateNetworkAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates a network access control list (ACL) with a vSwitch.
-//
-// Description:
-//
-// ## [](#)Description
-//
-//   - **AssociateNetworkAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeNetworkAclAttributes](https://help.aliyun.com/document_detail/116542.html) operation to query the status of the task.
-//
-//   - If the network ACL is in the **BINDING*	- state, the network ACL is being associated.
-//
-//   - If the network ACL is in the **BINDED*	- state, the network ACL is associated.
-//
-//   - You cannot repeatedly call the **AssociateNetworkAcl*	- operation to associate a network ACL within the specified period of time.
-//
-// @param request - AssociateNetworkAclRequest
-//
-// @return AssociateNetworkAclResponse
-func (client *Client) AssociateNetworkAcl(request *AssociateNetworkAclRequest) (_result *AssociateNetworkAclResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateNetworkAclResponse{}
-	_body, _err := client.AssociateNetworkAclWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2456,7 +1840,7 @@ func (client *Client) AssociateNetworkAcl(request *AssociateNetworkAclRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociatePhysicalConnectionToVirtualBorderRouterResponse
-func (client *Client) AssociatePhysicalConnectionToVirtualBorderRouterWithOptions(request *AssociatePhysicalConnectionToVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *AssociatePhysicalConnectionToVirtualBorderRouterResponse, _err error) {
+func (client *Client) AssociatePhysicalConnectionToVirtualBorderRouterWithContext(ctx context.Context, request *AssociatePhysicalConnectionToVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *AssociatePhysicalConnectionToVirtualBorderRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2545,29 +1929,11 @@ func (client *Client) AssociatePhysicalConnectionToVirtualBorderRouterWithOption
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociatePhysicalConnectionToVirtualBorderRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates a virtual border router (VBR) with a specified Express Connect circuit.
-//
-// @param request - AssociatePhysicalConnectionToVirtualBorderRouterRequest
-//
-// @return AssociatePhysicalConnectionToVirtualBorderRouterResponse
-func (client *Client) AssociatePhysicalConnectionToVirtualBorderRouter(request *AssociatePhysicalConnectionToVirtualBorderRouterRequest) (_result *AssociatePhysicalConnectionToVirtualBorderRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociatePhysicalConnectionToVirtualBorderRouterResponse{}
-	_body, _err := client.AssociatePhysicalConnectionToVirtualBorderRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2588,7 +1954,7 @@ func (client *Client) AssociatePhysicalConnectionToVirtualBorderRouter(request *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateRouteTableResponse
-func (client *Client) AssociateRouteTableWithOptions(request *AssociateRouteTableRequest, runtime *dara.RuntimeOptions) (_result *AssociateRouteTableResponse, _err error) {
+func (client *Client) AssociateRouteTableWithContext(ctx context.Context, request *AssociateRouteTableRequest, runtime *dara.RuntimeOptions) (_result *AssociateRouteTableResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2645,37 +2011,11 @@ func (client *Client) AssociateRouteTableWithOptions(request *AssociateRouteTabl
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateRouteTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates a custom route table with a vSwitch in the same VPC.
-//
-// Description:
-//
-// *AssociateRouteTable*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](https://help.aliyun.com/document_detail/94567.html) operation to query the status of the task:
-//
-//   - If the vSwitch is in the **Pending*	- state, the route table is being associated with the vSwitch.
-//
-//   - If the vSwitch is in the **Available*	- state, the route table is associated with the vSwitch.
-//
-// @param request - AssociateRouteTableRequest
-//
-// @return AssociateRouteTableResponse
-func (client *Client) AssociateRouteTable(request *AssociateRouteTableRequest) (_result *AssociateRouteTableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateRouteTableResponse{}
-	_body, _err := client.AssociateRouteTableWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2688,7 +2028,7 @@ func (client *Client) AssociateRouteTable(request *AssociateRouteTableRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateRouteTableWithGatewayResponse
-func (client *Client) AssociateRouteTableWithGatewayWithOptions(request *AssociateRouteTableWithGatewayRequest, runtime *dara.RuntimeOptions) (_result *AssociateRouteTableWithGatewayResponse, _err error) {
+func (client *Client) AssociateRouteTableWithGatewayWithContext(ctx context.Context, request *AssociateRouteTableWithGatewayRequest, runtime *dara.RuntimeOptions) (_result *AssociateRouteTableWithGatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2753,29 +2093,11 @@ func (client *Client) AssociateRouteTableWithGatewayWithOptions(request *Associa
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateRouteTableWithGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates a gateway route table with an IPv4 gateway in the same virtual private cloud (VPC).
-//
-// @param request - AssociateRouteTableWithGatewayRequest
-//
-// @return AssociateRouteTableWithGatewayResponse
-func (client *Client) AssociateRouteTableWithGateway(request *AssociateRouteTableWithGatewayRequest) (_result *AssociateRouteTableWithGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateRouteTableWithGatewayResponse{}
-	_body, _err := client.AssociateRouteTableWithGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2812,7 +2134,7 @@ func (client *Client) AssociateRouteTableWithGateway(request *AssociateRouteTabl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateRouteTablesWithVpcGatewayEndpointResponse
-func (client *Client) AssociateRouteTablesWithVpcGatewayEndpointWithOptions(request *AssociateRouteTablesWithVpcGatewayEndpointRequest, runtime *dara.RuntimeOptions) (_result *AssociateRouteTablesWithVpcGatewayEndpointResponse, _err error) {
+func (client *Client) AssociateRouteTablesWithVpcGatewayEndpointWithContext(ctx context.Context, request *AssociateRouteTablesWithVpcGatewayEndpointRequest, runtime *dara.RuntimeOptions) (_result *AssociateRouteTablesWithVpcGatewayEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2869,53 +2191,11 @@ func (client *Client) AssociateRouteTablesWithVpcGatewayEndpointWithOptions(requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateRouteTablesWithVpcGatewayEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates a route table with a gateway endpoint.
-//
-// Description:
-//
-// When you call this operation, take note of the following limits:
-//
-//   - The gateway endpoint to be associated with the route table cannot be in one of the following states: **Creating**, **Modifying**, **Associating**, **Dissociating**, or **Deleting**.
-//
-//   - The route table cannot be in one of the following states: **Creating**, **Modifying**, **Associating**, **Dissociating**, or **Deleting**.
-//
-//   - The gateway endpoint and route table must belong to the same virtual private cloud (VPC).
-//
-//   - The route table cannot be shared.
-//
-//   - You cannot associate a gateway endpoint with a virtual border router (VBR) route table.
-//
-//   - You can associate a gateway endpoint with at most 20 route tables at a time.
-//
-//   - **AssociateRouteTablesWithVpcGatewayEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](https://help.aliyun.com/document_detail/311017.html) operation to query whether a route table is associated with a gateway endpoint.
-//
-//   - If the **Associating*	- status is returned, the route table is being associated with the gateway endpoint.
-//
-//   - If the **Created*	- status is returned, the route table is associated with the gateway endpoint.
-//
-//   - You cannot repeatedly call the **AssociateRouteTablesWithVpcGatewayEndpoint*	- operation within a specific period of time.
-//
-// @param request - AssociateRouteTablesWithVpcGatewayEndpointRequest
-//
-// @return AssociateRouteTablesWithVpcGatewayEndpointResponse
-func (client *Client) AssociateRouteTablesWithVpcGatewayEndpoint(request *AssociateRouteTablesWithVpcGatewayEndpointRequest) (_result *AssociateRouteTablesWithVpcGatewayEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateRouteTablesWithVpcGatewayEndpointResponse{}
-	_body, _err := client.AssociateRouteTablesWithVpcGatewayEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2940,7 +2220,7 @@ func (client *Client) AssociateRouteTablesWithVpcGatewayEndpoint(request *Associ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateVpcCidrBlockResponse
-func (client *Client) AssociateVpcCidrBlockWithOptions(request *AssociateVpcCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *AssociateVpcCidrBlockResponse, _err error) {
+func (client *Client) AssociateVpcCidrBlockWithContext(ctx context.Context, request *AssociateVpcCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *AssociateVpcCidrBlockResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3017,41 +2297,11 @@ func (client *Client) AssociateVpcCidrBlockWithOptions(request *AssociateVpcCidr
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateVpcCidrBlockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a secondary CIDR block to a virtual private cloud (VPC).
-//
-// Description:
-//
-// ## [](#)
-//
-//   - Take note of the following limits:
-//
-//   - Each VPC can contain up to five secondary IPv4 CIDR blocks.
-//
-//   - Each VPC can contain up to five secondary IPv6 CIDR blocks.
-//
-//   - You cannot repeatedly call the **AssociateVpcCidrBlock*	- operation to add secondary CIDR blocks to a VPC within the specified period of time.
-//
-// @param request - AssociateVpcCidrBlockRequest
-//
-// @return AssociateVpcCidrBlockResponse
-func (client *Client) AssociateVpcCidrBlock(request *AssociateVpcCidrBlockRequest) (_result *AssociateVpcCidrBlockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateVpcCidrBlockResponse{}
-	_body, _err := client.AssociateVpcCidrBlockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3086,7 +2336,7 @@ func (client *Client) AssociateVpcCidrBlock(request *AssociateVpcCidrBlockReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateVpnGatewayWithCertificateResponse
-func (client *Client) AssociateVpnGatewayWithCertificateWithOptions(request *AssociateVpnGatewayWithCertificateRequest, runtime *dara.RuntimeOptions) (_result *AssociateVpnGatewayWithCertificateResponse, _err error) {
+func (client *Client) AssociateVpnGatewayWithCertificateWithContext(ctx context.Context, request *AssociateVpnGatewayWithCertificateRequest, runtime *dara.RuntimeOptions) (_result *AssociateVpnGatewayWithCertificateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3131,51 +2381,11 @@ func (client *Client) AssociateVpnGatewayWithCertificateWithOptions(request *Ass
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateVpnGatewayWithCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates a VPN gateway with a certificate.
-//
-// Description:
-//
-// Before you associate a VPN gateway with an SSL certificate, take note of the following items:
-//
-//   - You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
-//
-//   - The SSL certificates must use the SM algorithm.
-//
-//   - You cannot specify one SSL certificate as both the encryption certificate and signature certificate for one VPN gateway.
-//
-//   - **AssociateVpnGatewayWithCertificate*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the status of the task.
-//
-//   - If the VPN gateway is in the **updating*	- state, the SSL certificate is being associated.
-//
-//   - If the VPN gateway is in the **active*	- state, the SSL certificate is being associated.
-//
-//   - You cannot call **AssociateVpnGatewayWithCertificate*	- within a specific period of time.
-//
-// ### [](#)Prerequisites
-//
-// Make sure that you have two SSL certificates that use the SM algorithm in the Certificate Management Service console. For more information about SSL certificates, see [What is Certificate Management Service?](https://help.aliyun.com/document_detail/28535.html).
-//
-// @param request - AssociateVpnGatewayWithCertificateRequest
-//
-// @return AssociateVpnGatewayWithCertificateResponse
-func (client *Client) AssociateVpnGatewayWithCertificate(request *AssociateVpnGatewayWithCertificateRequest) (_result *AssociateVpnGatewayWithCertificateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateVpnGatewayWithCertificateResponse{}
-	_body, _err := client.AssociateVpnGatewayWithCertificateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3194,7 +2404,7 @@ func (client *Client) AssociateVpnGatewayWithCertificate(request *AssociateVpnGa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachDhcpOptionsSetToVpcResponse
-func (client *Client) AttachDhcpOptionsSetToVpcWithOptions(request *AttachDhcpOptionsSetToVpcRequest, runtime *dara.RuntimeOptions) (_result *AttachDhcpOptionsSetToVpcResponse, _err error) {
+func (client *Client) AttachDhcpOptionsSetToVpcWithContext(ctx context.Context, request *AttachDhcpOptionsSetToVpcRequest, runtime *dara.RuntimeOptions) (_result *AttachDhcpOptionsSetToVpcResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3251,35 +2461,11 @@ func (client *Client) AttachDhcpOptionsSetToVpcWithOptions(request *AttachDhcpOp
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachDhcpOptionsSetToVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Description:
-//
-//	  The **AttachDhcpOptionsSetToVpc*	- operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of a DHCP options set:
-//
-//	    	- If the DHCP options set is in the **Pending*	- state, the DHCP options set is being associated.
-//
-//	    	- If the DHCP options set is in the **InUse*	- state, the DHCP options set is associated.
-//
-//		- You cannot repeatedly call the **AttachDhcpOptionsSetToVpc*	- operation to associate DHCP options sets with a VPC within the specified period of time.
-//
-// @param request - AttachDhcpOptionsSetToVpcRequest
-//
-// @return AttachDhcpOptionsSetToVpcResponse
-func (client *Client) AttachDhcpOptionsSetToVpc(request *AttachDhcpOptionsSetToVpcRequest) (_result *AttachDhcpOptionsSetToVpcResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachDhcpOptionsSetToVpcResponse{}
-	_body, _err := client.AttachDhcpOptionsSetToVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3292,7 +2478,7 @@ func (client *Client) AttachDhcpOptionsSetToVpc(request *AttachDhcpOptionsSetToV
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachVbrToVpconnResponse
-func (client *Client) AttachVbrToVpconnWithOptions(request *AttachVbrToVpconnRequest, runtime *dara.RuntimeOptions) (_result *AttachVbrToVpconnResponse, _err error) {
+func (client *Client) AttachVbrToVpconnWithContext(ctx context.Context, request *AttachVbrToVpconnRequest, runtime *dara.RuntimeOptions) (_result *AttachVbrToVpconnResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3333,29 +2519,11 @@ func (client *Client) AttachVbrToVpconnWithOptions(request *AttachVbrToVpconnReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachVbrToVpconnResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates a virtual border router (VBR) with a hosted connection.
-//
-// @param request - AttachVbrToVpconnRequest
-//
-// @return AttachVbrToVpconnResponse
-func (client *Client) AttachVbrToVpconn(request *AttachVbrToVpconnRequest) (_result *AttachVbrToVpconnResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachVbrToVpconnResponse{}
-	_body, _err := client.AttachVbrToVpconnWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3376,7 +2544,7 @@ func (client *Client) AttachVbrToVpconn(request *AttachVbrToVpconnRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelCommonBandwidthPackageIpBandwidthResponse
-func (client *Client) CancelCommonBandwidthPackageIpBandwidthWithOptions(request *CancelCommonBandwidthPackageIpBandwidthRequest, runtime *dara.RuntimeOptions) (_result *CancelCommonBandwidthPackageIpBandwidthResponse, _err error) {
+func (client *Client) CancelCommonBandwidthPackageIpBandwidthWithContext(ctx context.Context, request *CancelCommonBandwidthPackageIpBandwidthRequest, runtime *dara.RuntimeOptions) (_result *CancelCommonBandwidthPackageIpBandwidthResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3425,37 +2593,11 @@ func (client *Client) CancelCommonBandwidthPackageIpBandwidthWithOptions(request
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelCommonBandwidthPackageIpBandwidthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels the maximum bandwidth configured for an elastic IP address (EIP) that is associated with an Internet Shared Bandwidth instance.
-//
-// Description:
-//
-// Before you call this operation, take note of the following items:
-//
-//   - After this operation is performed, the maximum bandwidth of the EIP equals that of the Internet Shared Bandwidth instance.
-//
-//   - You cannot repeatedly call the **CancelCommonBandwidthPackageIpBandwidth*	- operation within a specific time period.
-//
-// @param request - CancelCommonBandwidthPackageIpBandwidthRequest
-//
-// @return CancelCommonBandwidthPackageIpBandwidthResponse
-func (client *Client) CancelCommonBandwidthPackageIpBandwidth(request *CancelCommonBandwidthPackageIpBandwidthRequest) (_result *CancelCommonBandwidthPackageIpBandwidthResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelCommonBandwidthPackageIpBandwidthResponse{}
-	_body, _err := client.CancelCommonBandwidthPackageIpBandwidthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3472,7 +2614,7 @@ func (client *Client) CancelCommonBandwidthPackageIpBandwidth(request *CancelCom
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelPhysicalConnectionResponse
-func (client *Client) CancelPhysicalConnectionWithOptions(request *CancelPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CancelPhysicalConnectionResponse, _err error) {
+func (client *Client) CancelPhysicalConnectionWithContext(ctx context.Context, request *CancelPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CancelPhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3521,33 +2663,11 @@ func (client *Client) CancelPhysicalConnectionWithOptions(request *CancelPhysica
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelPhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels an Express Connect circuit before it is enabled. After you perform this operation, the Express Connect circuit enters the Canceled state.
-//
-// Description:
-//
-// You can cancel only an Express Connect circuit that is in the **Initial**, **Approved**, **Allocated**, or **Confirmed*	- state.
-//
-// @param request - CancelPhysicalConnectionRequest
-//
-// @return CancelPhysicalConnectionResponse
-func (client *Client) CancelPhysicalConnection(request *CancelPhysicalConnectionRequest) (_result *CancelPhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelPhysicalConnectionResponse{}
-	_body, _err := client.CancelPhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3566,7 +2686,7 @@ func (client *Client) CancelPhysicalConnection(request *CancelPhysicalConnection
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3603,35 +2723,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Moves an Express Connect circuit to a new resource group.
-//
-// Description:
-//
-// ## [](#)
-//
-// You cannot repeatedly call the **ChangeResourceGroup*	- operation to modify the resource group of the same Express Connect circuit.
-//
-// @param request - ChangeResourceGroupRequest
-//
-// @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3644,7 +2740,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckCanAllocateVpcPrivateIpAddressResponse
-func (client *Client) CheckCanAllocateVpcPrivateIpAddressWithOptions(request *CheckCanAllocateVpcPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *CheckCanAllocateVpcPrivateIpAddressResponse, _err error) {
+func (client *Client) CheckCanAllocateVpcPrivateIpAddressWithContext(ctx context.Context, request *CheckCanAllocateVpcPrivateIpAddressRequest, runtime *dara.RuntimeOptions) (_result *CheckCanAllocateVpcPrivateIpAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3697,29 +2793,11 @@ func (client *Client) CheckCanAllocateVpcPrivateIpAddressWithOptions(request *Ch
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckCanAllocateVpcPrivateIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks whether a private IP address in a specified vSwitch is available.
-//
-// @param request - CheckCanAllocateVpcPrivateIpAddressRequest
-//
-// @return CheckCanAllocateVpcPrivateIpAddressResponse
-func (client *Client) CheckCanAllocateVpcPrivateIpAddress(request *CheckCanAllocateVpcPrivateIpAddressRequest) (_result *CheckCanAllocateVpcPrivateIpAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckCanAllocateVpcPrivateIpAddressResponse{}
-	_body, _err := client.CheckCanAllocateVpcPrivateIpAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3732,7 +2810,7 @@ func (client *Client) CheckCanAllocateVpcPrivateIpAddress(request *CheckCanAlloc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckVpnBgpEnabledResponse
-func (client *Client) CheckVpnBgpEnabledWithOptions(request *CheckVpnBgpEnabledRequest, runtime *dara.RuntimeOptions) (_result *CheckVpnBgpEnabledResponse, _err error) {
+func (client *Client) CheckVpnBgpEnabledWithContext(ctx context.Context, request *CheckVpnBgpEnabledRequest, runtime *dara.RuntimeOptions) (_result *CheckVpnBgpEnabledResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3773,29 +2851,11 @@ func (client *Client) CheckVpnBgpEnabledWithOptions(request *CheckVpnBgpEnabledR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckVpnBgpEnabledResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks whether the region of an IPsec-VPN connection supports BGP.
-//
-// @param request - CheckVpnBgpEnabledRequest
-//
-// @return CheckVpnBgpEnabledResponse
-func (client *Client) CheckVpnBgpEnabled(request *CheckVpnBgpEnabledRequest) (_result *CheckVpnBgpEnabledResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckVpnBgpEnabledResponse{}
-	_body, _err := client.CheckVpnBgpEnabledWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3808,7 +2868,7 @@ func (client *Client) CheckVpnBgpEnabled(request *CheckVpnBgpEnabledRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CompletePhysicalConnectionLOAResponse
-func (client *Client) CompletePhysicalConnectionLOAWithOptions(request *CompletePhysicalConnectionLOARequest, runtime *dara.RuntimeOptions) (_result *CompletePhysicalConnectionLOAResponse, _err error) {
+func (client *Client) CompletePhysicalConnectionLOAWithContext(ctx context.Context, request *CompletePhysicalConnectionLOARequest, runtime *dara.RuntimeOptions) (_result *CompletePhysicalConnectionLOAResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3881,29 +2941,11 @@ func (client *Client) CompletePhysicalConnectionLOAWithOptions(request *Complete
 		BodyType:    dara.String("json"),
 	}
 	_result = &CompletePhysicalConnectionLOAResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Generates a report for an installed Express Connect circuit.
-//
-// @param request - CompletePhysicalConnectionLOARequest
-//
-// @return CompletePhysicalConnectionLOAResponse
-func (client *Client) CompletePhysicalConnectionLOA(request *CompletePhysicalConnectionLOARequest) (_result *CompletePhysicalConnectionLOAResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CompletePhysicalConnectionLOAResponse{}
-	_body, _err := client.CompletePhysicalConnectionLOAWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3916,7 +2958,7 @@ func (client *Client) CompletePhysicalConnectionLOA(request *CompletePhysicalCon
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfirmPhysicalConnectionResponse
-func (client *Client) ConfirmPhysicalConnectionWithOptions(request *ConfirmPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *ConfirmPhysicalConnectionResponse, _err error) {
+func (client *Client) ConfirmPhysicalConnectionWithContext(ctx context.Context, request *ConfirmPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *ConfirmPhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3965,29 +3007,11 @@ func (client *Client) ConfirmPhysicalConnectionWithOptions(request *ConfirmPhysi
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConfirmPhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the status of an Express Connect circuit to Confirmed.
-//
-// @param request - ConfirmPhysicalConnectionRequest
-//
-// @return ConfirmPhysicalConnectionResponse
-func (client *Client) ConfirmPhysicalConnection(request *ConfirmPhysicalConnectionRequest) (_result *ConfirmPhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConfirmPhysicalConnectionResponse{}
-	_body, _err := client.ConfirmPhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4012,7 +3036,7 @@ func (client *Client) ConfirmPhysicalConnection(request *ConfirmPhysicalConnecti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConnectRouterInterfaceResponse
-func (client *Client) ConnectRouterInterfaceWithOptions(request *ConnectRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *ConnectRouterInterfaceResponse, _err error) {
+func (client *Client) ConnectRouterInterfaceWithContext(ctx context.Context, request *ConnectRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *ConnectRouterInterfaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4053,41 +3077,11 @@ func (client *Client) ConnectRouterInterfaceWithOptions(request *ConnectRouterIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConnectRouterInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Initiates a connection from the router interface of an initiator to the router interface of an accepter.
-//
-// Description:
-//
-// After you call this operation, the router interface enters the **Connecting*	- state. When the connection is established, it enters the **Active*	- state.
-//
-// When you call this operation, take note of the following items:
-//
-//   - Only an initiator router interface in the **Idle*	- state can initiate a connection.
-//
-//   - You can create only one pair of connected router interfaces between two routers.
-//
-//   - You cannot initiate a connection if your Alibaba Cloud account has a router interface with overdue payments.
-//
-// @param request - ConnectRouterInterfaceRequest
-//
-// @return ConnectRouterInterfaceResponse
-func (client *Client) ConnectRouterInterface(request *ConnectRouterInterfaceRequest) (_result *ConnectRouterInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConnectRouterInterfaceResponse{}
-	_body, _err := client.ConnectRouterInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4112,7 +3106,7 @@ func (client *Client) ConnectRouterInterface(request *ConnectRouterInterfaceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConvertBandwidthPackageResponse
-func (client *Client) ConvertBandwidthPackageWithOptions(request *ConvertBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *ConvertBandwidthPackageResponse, _err error) {
+func (client *Client) ConvertBandwidthPackageWithContext(ctx context.Context, request *ConvertBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *ConvertBandwidthPackageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4161,42 +3155,11 @@ func (client *Client) ConvertBandwidthPackageWithOptions(request *ConvertBandwid
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConvertBandwidthPackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ConvertBandwidthPackage is deprecated
-//
-// Summary:
-//
-// Converts a NAT service plan to an Internet Shared Bandwidth instance.
-//
-// Description:
-//
-// Before you convert a NAT service plan to an Internet Shared Bandwidth instance, take note of the following limits:
-//
-//   - You are not charged for the conversion.
-//
-//   - When you convert a NAT service plan to an Internet Shared Bandwidth instance, you can continue to use the SNAT and DNAT features of the NAT gateway, and your workloads are not affected. However, we recommend that you convert your NAT service plan during off-peak hours.
-//
-//   - After the NAT service plan is converted to an Internet Shared Bandwidth instance, the public IP addresses in the NAT service plan are converted to elastic IP addresses (EIPs). The maximum bandwidth and billing method of the Internet Shared Bandwidth instance are the same as those of the NAT service plan.
-//
-// @param request - ConvertBandwidthPackageRequest
-//
-// @return ConvertBandwidthPackageResponse
-// Deprecated
-func (client *Client) ConvertBandwidthPackage(request *ConvertBandwidthPackageRequest) (_result *ConvertBandwidthPackageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConvertBandwidthPackageResponse{}
-	_body, _err := client.ConvertBandwidthPackageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4221,7 +3184,7 @@ func (client *Client) ConvertBandwidthPackage(request *ConvertBandwidthPackageRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CopyNetworkAclEntriesResponse
-func (client *Client) CopyNetworkAclEntriesWithOptions(request *CopyNetworkAclEntriesRequest, runtime *dara.RuntimeOptions) (_result *CopyNetworkAclEntriesResponse, _err error) {
+func (client *Client) CopyNetworkAclEntriesWithContext(ctx context.Context, request *CopyNetworkAclEntriesRequest, runtime *dara.RuntimeOptions) (_result *CopyNetworkAclEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4282,41 +3245,11 @@ func (client *Client) CopyNetworkAclEntriesWithOptions(request *CopyNetworkAclEn
 		BodyType:    dara.String("json"),
 	}
 	_result = &CopyNetworkAclEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Copies rules of a network access control list (ACL).
-//
-// Description:
-//
-// ## [](#)Description
-//
-//   - **CopyNetworkAclEntries*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeNetworkAclAttributes](https://help.aliyun.com/document_detail/116542.html) operation to query the status of the task.
-//
-//   - If the network ACL is in the **Modifying*	- state, the rules of the network ACL are being copied.
-//
-//   - If the network ACL is in the **Available*	- state, the rules of the network ACL are copied.
-//
-//   - You cannot repeatedly call the **CopyNetworkAclEntries*	- operation within the specified period of time.
-//
-// @param request - CopyNetworkAclEntriesRequest
-//
-// @return CopyNetworkAclEntriesResponse
-func (client *Client) CopyNetworkAclEntries(request *CopyNetworkAclEntriesRequest) (_result *CopyNetworkAclEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CopyNetworkAclEntriesResponse{}
-	_body, _err := client.CopyNetworkAclEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4347,7 +3280,7 @@ func (client *Client) CopyNetworkAclEntries(request *CopyNetworkAclEntriesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateBgpGroupResponse
-func (client *Client) CreateBgpGroupWithOptions(request *CreateBgpGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateBgpGroupResponse, _err error) {
+func (client *Client) CreateBgpGroupWithContext(ctx context.Context, request *CreateBgpGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateBgpGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4428,47 +3361,11 @@ func (client *Client) CreateBgpGroupWithOptions(request *CreateBgpGroupRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateBgpGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a BGP group for a virtual border router (VBR).
-//
-// Description:
-//
-// You can connect a VBR to a data center through BGP. Each BGP group is associated with a VBR. You can add a BGP peer that needs to communicate with a VBR to a BGP group and advertise the BGP network in the VBR.
-//
-// BGP groups are used to simplify BGP configurations. You can add BGP peers that use the same configurations to one BGP group. Before you start, you must create a BGP group with the requested autonomous system number (ASN).
-//
-// When you call this operation, take note of the following limits:
-//
-//   - You can specify only the data center that is connected to the VBR through an Express Connect circuit as a BGP peer.
-//
-//   - VBRs support only BGP-4.
-//
-//   - You can create at most eight BGP peers for each VBR.
-//
-//   - Each BGP peer supports at most 110 dynamic routes.
-//
-//   - The ASN of Alibaba Cloud is 45104. You can specify a 2-byte or 4-byte ASN for the data center.
-//
-// @param request - CreateBgpGroupRequest
-//
-// @return CreateBgpGroupResponse
-func (client *Client) CreateBgpGroup(request *CreateBgpGroupRequest) (_result *CreateBgpGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateBgpGroupResponse{}
-	_body, _err := client.CreateBgpGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4481,7 +3378,7 @@ func (client *Client) CreateBgpGroup(request *CreateBgpGroupRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateBgpPeerResponse
-func (client *Client) CreateBgpPeerWithOptions(request *CreateBgpPeerRequest, runtime *dara.RuntimeOptions) (_result *CreateBgpPeerResponse, _err error) {
+func (client *Client) CreateBgpPeerWithContext(ctx context.Context, request *CreateBgpPeerRequest, runtime *dara.RuntimeOptions) (_result *CreateBgpPeerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4546,29 +3443,11 @@ func (client *Client) CreateBgpPeerWithOptions(request *CreateBgpPeerRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateBgpPeerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a Border Gateway Protocol (BGP) peer to a BGP group.
-//
-// @param request - CreateBgpPeerRequest
-//
-// @return CreateBgpPeerResponse
-func (client *Client) CreateBgpPeer(request *CreateBgpPeerRequest) (_result *CreateBgpPeerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateBgpPeerResponse{}
-	_body, _err := client.CreateBgpPeerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4581,7 +3460,7 @@ func (client *Client) CreateBgpPeer(request *CreateBgpPeerRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCommonBandwidthPackageResponse
-func (client *Client) CreateCommonBandwidthPackageWithOptions(request *CreateCommonBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *CreateCommonBandwidthPackageResponse, _err error) {
+func (client *Client) CreateCommonBandwidthPackageWithContext(ctx context.Context, request *CreateCommonBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *CreateCommonBandwidthPackageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4666,29 +3545,11 @@ func (client *Client) CreateCommonBandwidthPackageWithOptions(request *CreateCom
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCommonBandwidthPackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an Internet Shared Bandwidth instance.
-//
-// @param request - CreateCommonBandwidthPackageRequest
-//
-// @return CreateCommonBandwidthPackageResponse
-func (client *Client) CreateCommonBandwidthPackage(request *CreateCommonBandwidthPackageRequest) (_result *CreateCommonBandwidthPackageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateCommonBandwidthPackageResponse{}
-	_body, _err := client.CreateCommonBandwidthPackageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4701,7 +3562,7 @@ func (client *Client) CreateCommonBandwidthPackage(request *CreateCommonBandwidt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCustomerGatewayResponse
-func (client *Client) CreateCustomerGatewayWithOptions(request *CreateCustomerGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomerGatewayResponse, _err error) {
+func (client *Client) CreateCustomerGatewayWithContext(ctx context.Context, request *CreateCustomerGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomerGatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4774,29 +3635,11 @@ func (client *Client) CreateCustomerGatewayWithOptions(request *CreateCustomerGa
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCustomerGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a customer gateway.
-//
-// @param request - CreateCustomerGatewayRequest
-//
-// @return CreateCustomerGatewayResponse
-func (client *Client) CreateCustomerGateway(request *CreateCustomerGatewayRequest) (_result *CreateCustomerGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateCustomerGatewayResponse{}
-	_body, _err := client.CreateCustomerGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4831,7 +3674,7 @@ func (client *Client) CreateCustomerGateway(request *CreateCustomerGatewayReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDefaultVSwitchResponse
-func (client *Client) CreateDefaultVSwitchWithOptions(request *CreateDefaultVSwitchRequest, runtime *dara.RuntimeOptions) (_result *CreateDefaultVSwitchResponse, _err error) {
+func (client *Client) CreateDefaultVSwitchWithContext(ctx context.Context, request *CreateDefaultVSwitchRequest, runtime *dara.RuntimeOptions) (_result *CreateDefaultVSwitchResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4884,51 +3727,11 @@ func (client *Client) CreateDefaultVSwitchWithOptions(request *CreateDefaultVSwi
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDefaultVSwitchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a default vSwitch.
-//
-// Description:
-//
-// When you call this operation, take note of the following limits:
-//
-//   - The first IP address and last three IP addresses of a vSwitch CIDR block are reserved. For example, if the CIDR block of a vSwitch is 192.168.1.0/24, the IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved.
-//
-//   - The number of instances in the default vSwitch cannot exceed the remaining number of instances supported by the VPC (15,000 minus the number of existing instances).
-//
-//   - Default vSwitches do not support multicasting or broadcasting.
-//
-//   - After you create a default vSwitch, you cannot modify its CIDR block.
-//
-//   - **CreateDefaultVSwitch*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](https://help.aliyun.com/document_detail/94567.html) operation to query the status of a default vSwitch:
-//
-//   - If a default vSwitch is in the **Pending*	- state, it is being configured.
-//
-//   - If a default vSwitch is in the **Available*	- state, it is available.
-//
-//   - If a default vSwitch already exists in a region, you cannot call this operation to create a default vSwitch in this region.
-//
-//   - Before you create a default vSwitch, make sure that a default VPC is created. You can call the [CreateDefaultVpc](https://help.aliyun.com/document_detail/609152.html) operation to create a default VPC.
-//
-// @param request - CreateDefaultVSwitchRequest
-//
-// @return CreateDefaultVSwitchResponse
-func (client *Client) CreateDefaultVSwitch(request *CreateDefaultVSwitchRequest) (_result *CreateDefaultVSwitchResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDefaultVSwitchResponse{}
-	_body, _err := client.CreateDefaultVSwitchWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4965,7 +3768,7 @@ func (client *Client) CreateDefaultVSwitch(request *CreateDefaultVSwitchRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDefaultVpcResponse
-func (client *Client) CreateDefaultVpcWithOptions(request *CreateDefaultVpcRequest, runtime *dara.RuntimeOptions) (_result *CreateDefaultVpcResponse, _err error) {
+func (client *Client) CreateDefaultVpcWithContext(ctx context.Context, request *CreateDefaultVpcRequest, runtime *dara.RuntimeOptions) (_result *CreateDefaultVpcResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5022,53 +3825,11 @@ func (client *Client) CreateDefaultVpcWithOptions(request *CreateDefaultVpcReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDefaultVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a default virtual private cloud (VPC).
-//
-// Description:
-//
-// ## Usage notes
-//
-// When you call this operation, take note of the following items:
-//
-//   - After you create a default VPC, you cannot change its CIDR block. However, you can add secondary IPv4 CIDR blocks to it.
-//
-//   - In each default VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota.
-//
-//   - After you create a default VPC, a vRouter and a route table are automatically created for the VPC.
-//
-//   - At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
-//
-//   - **CreateDefaultVpc*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of the task:
-//
-//   - If the default VPC is in the **Pending*	- state, the VPC is being configured.
-//
-//   - If the default VPC is in the **Available*	- state, the VPC is available.
-//
-//   - You cannot repeatedly call the **CreateDefaultVpc*	- operation within a specific time period.
-//
-//   - You can create only one default VPC in each region.
-//
-// @param request - CreateDefaultVpcRequest
-//
-// @return CreateDefaultVpcResponse
-func (client *Client) CreateDefaultVpc(request *CreateDefaultVpcRequest) (_result *CreateDefaultVpcResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDefaultVpcResponse{}
-	_body, _err := client.CreateDefaultVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5089,7 +3850,7 @@ func (client *Client) CreateDefaultVpc(request *CreateDefaultVpcRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDhcpOptionsSetResponse
-func (client *Client) CreateDhcpOptionsSetWithOptions(request *CreateDhcpOptionsSetRequest, runtime *dara.RuntimeOptions) (_result *CreateDhcpOptionsSetResponse, _err error) {
+func (client *Client) CreateDhcpOptionsSetWithContext(ctx context.Context, request *CreateDhcpOptionsSetRequest, runtime *dara.RuntimeOptions) (_result *CreateDhcpOptionsSetResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5170,37 +3931,11 @@ func (client *Client) CreateDhcpOptionsSetWithOptions(request *CreateDhcpOptions
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDhcpOptionsSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a DHCP options set.
-//
-// Description:
-//
-//	**CreateDhcpOptionsSet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetDhcpOptionsSet](https://help.aliyun.com/document_detail/448820.html) to query the status of the task.
-//
-//	  	- If the vSwitch is in the **Pending*	- state, the DHCP options set is being configured.
-//
-//	  	- If the vSwitch is in the **Available*	- state, the DHCP options set is available.
-//
-// @param request - CreateDhcpOptionsSetRequest
-//
-// @return CreateDhcpOptionsSetResponse
-func (client *Client) CreateDhcpOptionsSet(request *CreateDhcpOptionsSetRequest) (_result *CreateDhcpOptionsSetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDhcpOptionsSetResponse{}
-	_body, _err := client.CreateDhcpOptionsSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5213,7 +3948,7 @@ func (client *Client) CreateDhcpOptionsSet(request *CreateDhcpOptionsSetRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateExpressCloudConnectionResponse
-func (client *Client) CreateExpressCloudConnectionWithOptions(request *CreateExpressCloudConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressCloudConnectionResponse, _err error) {
+func (client *Client) CreateExpressCloudConnectionWithContext(ctx context.Context, request *CreateExpressCloudConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressCloudConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5298,29 +4033,11 @@ func (client *Client) CreateExpressCloudConnectionWithOptions(request *CreateExp
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateExpressCloudConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an Express Cloud Connect (ECC) instance.
-//
-// @param request - CreateExpressCloudConnectionRequest
-//
-// @return CreateExpressCloudConnectionResponse
-func (client *Client) CreateExpressCloudConnection(request *CreateExpressCloudConnectionRequest) (_result *CreateExpressCloudConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateExpressCloudConnectionResponse{}
-	_body, _err := client.CreateExpressCloudConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5333,7 +4050,7 @@ func (client *Client) CreateExpressCloudConnection(request *CreateExpressCloudCo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateExpressConnectTrafficQosResponse
-func (client *Client) CreateExpressConnectTrafficQosWithOptions(request *CreateExpressConnectTrafficQosRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectTrafficQosResponse, _err error) {
+func (client *Client) CreateExpressConnectTrafficQosWithContext(ctx context.Context, request *CreateExpressConnectTrafficQosRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectTrafficQosResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5394,29 +4111,11 @@ func (client *Client) CreateExpressConnectTrafficQosWithOptions(request *CreateE
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateExpressConnectTrafficQosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a quality of service (QoS) policy.
-//
-// @param request - CreateExpressConnectTrafficQosRequest
-//
-// @return CreateExpressConnectTrafficQosResponse
-func (client *Client) CreateExpressConnectTrafficQos(request *CreateExpressConnectTrafficQosRequest) (_result *CreateExpressConnectTrafficQosResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateExpressConnectTrafficQosResponse{}
-	_body, _err := client.CreateExpressConnectTrafficQosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5429,7 +4128,7 @@ func (client *Client) CreateExpressConnectTrafficQos(request *CreateExpressConne
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateExpressConnectTrafficQosQueueResponse
-func (client *Client) CreateExpressConnectTrafficQosQueueWithOptions(request *CreateExpressConnectTrafficQosQueueRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectTrafficQosQueueResponse, _err error) {
+func (client *Client) CreateExpressConnectTrafficQosQueueWithContext(ctx context.Context, request *CreateExpressConnectTrafficQosQueueRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectTrafficQosQueueResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5494,29 +4193,11 @@ func (client *Client) CreateExpressConnectTrafficQosQueueWithOptions(request *Cr
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateExpressConnectTrafficQosQueueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a quality of service (QoS) queue.
-//
-// @param request - CreateExpressConnectTrafficQosQueueRequest
-//
-// @return CreateExpressConnectTrafficQosQueueResponse
-func (client *Client) CreateExpressConnectTrafficQosQueue(request *CreateExpressConnectTrafficQosQueueRequest) (_result *CreateExpressConnectTrafficQosQueueResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateExpressConnectTrafficQosQueueResponse{}
-	_body, _err := client.CreateExpressConnectTrafficQosQueueWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5529,7 +4210,7 @@ func (client *Client) CreateExpressConnectTrafficQosQueue(request *CreateExpress
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateExpressConnectTrafficQosRuleResponse
-func (client *Client) CreateExpressConnectTrafficQosRuleWithOptions(request *CreateExpressConnectTrafficQosRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectTrafficQosRuleResponse, _err error) {
+func (client *Client) CreateExpressConnectTrafficQosRuleWithContext(ctx context.Context, request *CreateExpressConnectTrafficQosRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectTrafficQosRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5630,29 +4311,11 @@ func (client *Client) CreateExpressConnectTrafficQosRuleWithOptions(request *Cre
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateExpressConnectTrafficQosRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a quality of service (QoS) rule.
-//
-// @param request - CreateExpressConnectTrafficQosRuleRequest
-//
-// @return CreateExpressConnectTrafficQosRuleResponse
-func (client *Client) CreateExpressConnectTrafficQosRule(request *CreateExpressConnectTrafficQosRuleRequest) (_result *CreateExpressConnectTrafficQosRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateExpressConnectTrafficQosRuleResponse{}
-	_body, _err := client.CreateExpressConnectTrafficQosRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5683,7 +4346,7 @@ func (client *Client) CreateExpressConnectTrafficQosRule(request *CreateExpressC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFailoverTestJobResponse
-func (client *Client) CreateFailoverTestJobWithOptions(request *CreateFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *CreateFailoverTestJobResponse, _err error) {
+func (client *Client) CreateFailoverTestJobWithContext(ctx context.Context, request *CreateFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *CreateFailoverTestJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5756,47 +4419,11 @@ func (client *Client) CreateFailoverTestJobWithOptions(request *CreateFailoverTe
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateFailoverTestJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a failover test.
-//
-// Description:
-//
-// You cannot create a failover test in the following scenarios:
-//
-//   - You have created a failover test in the region and its type is StartNow.
-//
-//   - The Express Connect circuit or hosted connection has pending orders or overdue payments.
-//
-//   - A failover test is already performed on the Express Connect circuit or hosted connection.
-//
-//   - More than one hosted connection is created over the Express Connect circuit.
-//
-//   - More than one cross-account VBR is created on the Express Connect circuit.
-//
-//   - No VBR is associated with the hosted connection.
-//
-//   - The VLAN ID of the hosted connection is set to 0.
-//
-// @param request - CreateFailoverTestJobRequest
-//
-// @return CreateFailoverTestJobResponse
-func (client *Client) CreateFailoverTestJob(request *CreateFailoverTestJobRequest) (_result *CreateFailoverTestJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateFailoverTestJobResponse{}
-	_body, _err := client.CreateFailoverTestJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5817,7 +4444,7 @@ func (client *Client) CreateFailoverTestJob(request *CreateFailoverTestJobReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFlowLogResponse
-func (client *Client) CreateFlowLogWithOptions(request *CreateFlowLogRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowLogResponse, _err error) {
+func (client *Client) CreateFlowLogWithContext(ctx context.Context, request *CreateFlowLogRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5906,37 +4533,11 @@ func (client *Client) CreateFlowLogWithOptions(request *CreateFlowLogRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateFlowLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a flow log.
-//
-// Description:
-//
-// *CreateFlowLog*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeFlowLogs](https://help.aliyun.com/document_detail/87923.html) operation to query the status of the flow log.
-//
-//   - If the flow log is in the **Activating*	- state, the flow log is being created.
-//
-//   - If the flow log is in the **Active*	- state, the flow log is created and started.
-//
-// @param request - CreateFlowLogRequest
-//
-// @return CreateFlowLogResponse
-func (client *Client) CreateFlowLog(request *CreateFlowLogRequest) (_result *CreateFlowLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateFlowLogResponse{}
-	_body, _err := client.CreateFlowLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5975,7 +4576,7 @@ func (client *Client) CreateFlowLog(request *CreateFlowLogRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateForwardEntryResponse
-func (client *Client) CreateForwardEntryWithOptions(request *CreateForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateForwardEntryResponse, _err error) {
+func (client *Client) CreateForwardEntryWithContext(ctx context.Context, request *CreateForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateForwardEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6056,55 +4657,11 @@ func (client *Client) CreateForwardEntryWithOptions(request *CreateForwardEntryR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateForwardEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a DNAT entry to a DNAT table.
-//
-// Description:
-//
-// ## [](#)
-//
-// Each DNAT entry consists of the following parameters: **ExternalIp**, **ExternalPort**, **IpProtocol**, **InternalIp**, and **InternalPort**. After you add a DNAT entry, the NAT gateway forwards packets over the specified protocol from **ExternalIp:ExternalPort*	- to **InternalIp:InternalPort*	- and sends responses back through the same route.
-//
-// When you call this operation, take note of the following limits:
-//
-//   - **CreateForwardEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeForwardTableEntries](https://help.aliyun.com/document_detail/36053.html) operation to query the status of the task.
-//
-//   - If the DNAT entry is in the **Pending*	- state, the system is adding the DNAT entry. You can only query the DNAT entry, but cannot perform other operations.
-//
-//   - If the DNAT entry is in the **Available*	- state, the DNAT entry is added.
-//
-//   - You cannot repeatedly call the **CreateForwardEntry*	- operation to add a DNAT entry within a specific period of time.
-//
-//   - All combinations of **ExternalIp**, **ExternalPort**, and **IpProtocol*	- used in DNAT entries must be unique. You cannot distribute requests to more than one Elastic Compute Service (ECS) instance if these requests are initiated from the same source IP address, received on the same port, and use the same protocol.
-//
-//   - The combinations of **IpProtocol**, **InternalIp**, and **InternalPort*	- must be unique.
-//
-//   - If one or more DNAT entries in the DNAT table are in the **Pending*	- or **Modifying*	- state, you cannot add DNAT entries to the DNAT table.
-//
-//   - You can add at most 100 DNAT entries to a DNAT table.
-//
-//   - For an elastic IP address (EIP) used by an Internet NAT gateway or a NAT IP address used by a Virtual Private Cloud (VPC) NAT gateway, take note of the following limit: If the IP address has IP mapping enabled and is specified in a DNAT entry, the IP address cannot be used by another DNAT or SNAT entry.
-//
-// @param request - CreateForwardEntryRequest
-//
-// @return CreateForwardEntryResponse
-func (client *Client) CreateForwardEntry(request *CreateForwardEntryRequest) (_result *CreateForwardEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateForwardEntryResponse{}
-	_body, _err := client.CreateForwardEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6127,7 +4684,7 @@ func (client *Client) CreateForwardEntry(request *CreateForwardEntryRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFullNatEntryResponse
-func (client *Client) CreateFullNatEntryWithOptions(request *CreateFullNatEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateFullNatEntryResponse, _err error) {
+func (client *Client) CreateFullNatEntryWithContext(ctx context.Context, request *CreateFullNatEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateFullNatEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6212,39 +4769,11 @@ func (client *Client) CreateFullNatEntryWithOptions(request *CreateFullNatEntryR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateFullNatEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a FULLNAT entry to the FULLNAT table.
-//
-// Description:
-//
-//	  **CreateFullNatEntry*	- is an asynchronous operation. After you send a request to call this operation, the system returns a FULLNAT entry and the FULLNAT entry is being added in the backend. You can call the [ListFullNatEntries](https://help.aliyun.com/document_detail/348779.html) operation to query the status of a FULLNAT entry.
-//
-//	    	- If the FULLNAT entry is in the **Creating*	- state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
-//
-//	    	- If the FULLNAT entry is in the **Available*	- state, the FULLNAT entry is added.
-//
-//		- You cannot repeatedly call the **CreateFullNatEntry*	- operation for the same VPN gateway within the specified period of time.
-//
-// @param request - CreateFullNatEntryRequest
-//
-// @return CreateFullNatEntryResponse
-func (client *Client) CreateFullNatEntry(request *CreateFullNatEntryRequest) (_result *CreateFullNatEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateFullNatEntryResponse{}
-	_body, _err := client.CreateFullNatEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6265,7 +4794,7 @@ func (client *Client) CreateFullNatEntry(request *CreateFullNatEntryRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateGlobalAccelerationInstanceResponse
-func (client *Client) CreateGlobalAccelerationInstanceWithOptions(request *CreateGlobalAccelerationInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateGlobalAccelerationInstanceResponse, _err error) {
+func (client *Client) CreateGlobalAccelerationInstanceWithContext(ctx context.Context, request *CreateGlobalAccelerationInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateGlobalAccelerationInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6330,38 +4859,11 @@ func (client *Client) CreateGlobalAccelerationInstanceWithOptions(request *Creat
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateGlobalAccelerationInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateGlobalAccelerationInstance is deprecated
-//
-// Summary:
-//
-// Creates a Global Accelerator (GA) instance.
-//
-// Description:
-//
-// ## Usage notes
-//
-// You can call this operation to create only pay-as-you-go GA instances.
-//
-// @param request - CreateGlobalAccelerationInstanceRequest
-//
-// @return CreateGlobalAccelerationInstanceResponse
-// Deprecated
-func (client *Client) CreateGlobalAccelerationInstance(request *CreateGlobalAccelerationInstanceRequest) (_result *CreateGlobalAccelerationInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateGlobalAccelerationInstanceResponse{}
-	_body, _err := client.CreateGlobalAccelerationInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6382,7 +4884,7 @@ func (client *Client) CreateGlobalAccelerationInstance(request *CreateGlobalAcce
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateHaVipResponse
-func (client *Client) CreateHaVipWithOptions(request *CreateHaVipRequest, runtime *dara.RuntimeOptions) (_result *CreateHaVipResponse, _err error) {
+func (client *Client) CreateHaVipWithContext(ctx context.Context, request *CreateHaVipRequest, runtime *dara.RuntimeOptions) (_result *CreateHaVipResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6451,37 +4953,11 @@ func (client *Client) CreateHaVipWithOptions(request *CreateHaVipRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateHaVipResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a high-availability virtual IP address (HaVip).
-//
-// Description:
-//
-// *CreateHaVip*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of the task:
-//
-//   - If the HaVip is in the **Creating*	- state, the HaVip is being created.
-//
-//   - If the HaVip is in the **Available*	- state, the HaVip is created.
-//
-// @param request - CreateHaVipRequest
-//
-// @return CreateHaVipResponse
-func (client *Client) CreateHaVip(request *CreateHaVipRequest) (_result *CreateHaVipResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateHaVipResponse{}
-	_body, _err := client.CreateHaVipWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6494,7 +4970,7 @@ func (client *Client) CreateHaVip(request *CreateHaVipRequest) (_result *CreateH
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateHighReliablePhysicalConnectionResponse
-func (client *Client) CreateHighReliablePhysicalConnectionWithOptions(request *CreateHighReliablePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateHighReliablePhysicalConnectionResponse, _err error) {
+func (client *Client) CreateHighReliablePhysicalConnectionWithContext(ctx context.Context, request *CreateHighReliablePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateHighReliablePhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6575,29 +5051,11 @@ func (client *Client) CreateHighReliablePhysicalConnectionWithOptions(request *C
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateHighReliablePhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates Express Connect circuits in high reliability mode. This improves the stability of multiple Express Connect circuits and prevents service interruptions caused by single points of failures (SPOFs).
-//
-// @param request - CreateHighReliablePhysicalConnectionRequest
-//
-// @return CreateHighReliablePhysicalConnectionResponse
-func (client *Client) CreateHighReliablePhysicalConnection(request *CreateHighReliablePhysicalConnectionRequest) (_result *CreateHighReliablePhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateHighReliablePhysicalConnectionResponse{}
-	_body, _err := client.CreateHighReliablePhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6612,7 +5070,7 @@ func (client *Client) CreateHighReliablePhysicalConnection(request *CreateHighRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIPv6TranslatorResponse
-func (client *Client) CreateIPv6TranslatorWithOptions(request *CreateIPv6TranslatorRequest, runtime *dara.RuntimeOptions) (_result *CreateIPv6TranslatorResponse, _err error) {
+func (client *Client) CreateIPv6TranslatorWithContext(ctx context.Context, request *CreateIPv6TranslatorRequest, runtime *dara.RuntimeOptions) (_result *CreateIPv6TranslatorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6685,32 +5143,11 @@ func (client *Client) CreateIPv6TranslatorWithOptions(request *CreateIPv6Transla
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIPv6TranslatorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateIPv6Translator is deprecated
-//
-// Summary:
-//
-// Creates an IPv6 Translation Service instance.
-//
-// @param request - CreateIPv6TranslatorRequest
-//
-// @return CreateIPv6TranslatorResponse
-// Deprecated
-func (client *Client) CreateIPv6Translator(request *CreateIPv6TranslatorRequest) (_result *CreateIPv6TranslatorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIPv6TranslatorResponse{}
-	_body, _err := client.CreateIPv6TranslatorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6725,7 +5162,7 @@ func (client *Client) CreateIPv6Translator(request *CreateIPv6TranslatorRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIPv6TranslatorAclListResponse
-func (client *Client) CreateIPv6TranslatorAclListWithOptions(request *CreateIPv6TranslatorAclListRequest, runtime *dara.RuntimeOptions) (_result *CreateIPv6TranslatorAclListResponse, _err error) {
+func (client *Client) CreateIPv6TranslatorAclListWithContext(ctx context.Context, request *CreateIPv6TranslatorAclListRequest, runtime *dara.RuntimeOptions) (_result *CreateIPv6TranslatorAclListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6774,32 +5211,11 @@ func (client *Client) CreateIPv6TranslatorAclListWithOptions(request *CreateIPv6
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIPv6TranslatorAclListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateIPv6TranslatorAclList is deprecated
-//
-// Summary:
-//
-// Creates an access control list (ACL).
-//
-// @param request - CreateIPv6TranslatorAclListRequest
-//
-// @return CreateIPv6TranslatorAclListResponse
-// Deprecated
-func (client *Client) CreateIPv6TranslatorAclList(request *CreateIPv6TranslatorAclListRequest) (_result *CreateIPv6TranslatorAclListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIPv6TranslatorAclListResponse{}
-	_body, _err := client.CreateIPv6TranslatorAclListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6814,7 +5230,7 @@ func (client *Client) CreateIPv6TranslatorAclList(request *CreateIPv6TranslatorA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIPv6TranslatorEntryResponse
-func (client *Client) CreateIPv6TranslatorEntryWithOptions(request *CreateIPv6TranslatorEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateIPv6TranslatorEntryResponse, _err error) {
+func (client *Client) CreateIPv6TranslatorEntryWithContext(ctx context.Context, request *CreateIPv6TranslatorEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateIPv6TranslatorEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6899,32 +5315,11 @@ func (client *Client) CreateIPv6TranslatorEntryWithOptions(request *CreateIPv6Tr
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIPv6TranslatorEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreateIPv6TranslatorEntry is deprecated
-//
-// Summary:
-//
-// Adds an IPv6 mapping entry to an IPv6 Translation Service instance.
-//
-// @param request - CreateIPv6TranslatorEntryRequest
-//
-// @return CreateIPv6TranslatorEntryResponse
-// Deprecated
-func (client *Client) CreateIPv6TranslatorEntry(request *CreateIPv6TranslatorEntryRequest) (_result *CreateIPv6TranslatorEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIPv6TranslatorEntryResponse{}
-	_body, _err := client.CreateIPv6TranslatorEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6951,7 +5346,7 @@ func (client *Client) CreateIPv6TranslatorEntry(request *CreateIPv6TranslatorEnt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIpsecServerResponse
-func (client *Client) CreateIpsecServerWithOptions(request *CreateIpsecServerRequest, runtime *dara.RuntimeOptions) (_result *CreateIpsecServerResponse, _err error) {
+func (client *Client) CreateIpsecServerWithContext(ctx context.Context, request *CreateIpsecServerRequest, runtime *dara.RuntimeOptions) (_result *CreateIpsecServerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7020,43 +5415,11 @@ func (client *Client) CreateIpsecServerWithOptions(request *CreateIpsecServerReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIpsecServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an IPsec server.
-//
-// Description:
-//
-//	  Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html).
-//
-//		- Before you create an IPsec server, make sure that no IPsec-VPN connection exists on the VPN gateway. For more information, see [DeleteVpnConnection](https://help.aliyun.com/document_detail/2526948.html).
-//
-//		- **CreateIpsecServer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
-//
-//	    	- If the VPN gateway is in the **updating*	- state, the IPsec server is being created.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the IPsec server is created.
-//
-//		- You cannot repeatedly call **CreateIpsecServer*	- within the specified period of time.
-//
-// @param request - CreateIpsecServerRequest
-//
-// @return CreateIpsecServerResponse
-func (client *Client) CreateIpsecServer(request *CreateIpsecServerRequest) (_result *CreateIpsecServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIpsecServerResponse{}
-	_body, _err := client.CreateIpsecServerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7079,7 +5442,7 @@ func (client *Client) CreateIpsecServer(request *CreateIpsecServerRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIpv4GatewayResponse
-func (client *Client) CreateIpv4GatewayWithOptions(request *CreateIpv4GatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateIpv4GatewayResponse, _err error) {
+func (client *Client) CreateIpv4GatewayWithContext(ctx context.Context, request *CreateIpv4GatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateIpv4GatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7152,39 +5515,11 @@ func (client *Client) CreateIpv4GatewayWithOptions(request *CreateIpv4GatewayReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIpv4GatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建IPv4网关。
-//
-// Description:
-//
-//	  **CreateIpv4Gateway*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetIpv4GatewayAttribute](https://help.aliyun.com/document_detail/407670.html) operation to query the status of an IPv4 gateway:
-//
-//	    	- If the IPv4 gateway is in the **Creating*	- state, the IPv4 gateway is being created.
-//
-//	    	- If the IPv4 gateway is in the **Created*	- state, the IPv4 gateway is created.
-//
-//		- You cannot repeatedly call the **CreateIpv4Gateway*	- operation to create IPv4 gateways in a virtual private cloud (VPC) within the specified period of time.
-//
-// @param request - CreateIpv4GatewayRequest
-//
-// @return CreateIpv4GatewayResponse
-func (client *Client) CreateIpv4Gateway(request *CreateIpv4GatewayRequest) (_result *CreateIpv4GatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIpv4GatewayResponse{}
-	_body, _err := client.CreateIpv4GatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7207,7 +5542,7 @@ func (client *Client) CreateIpv4Gateway(request *CreateIpv4GatewayRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIpv6EgressOnlyRuleResponse
-func (client *Client) CreateIpv6EgressOnlyRuleWithOptions(request *CreateIpv6EgressOnlyRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateIpv6EgressOnlyRuleResponse, _err error) {
+func (client *Client) CreateIpv6EgressOnlyRuleWithContext(ctx context.Context, request *CreateIpv6EgressOnlyRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateIpv6EgressOnlyRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7276,39 +5611,11 @@ func (client *Client) CreateIpv6EgressOnlyRuleWithOptions(request *CreateIpv6Egr
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIpv6EgressOnlyRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can call CreateIpv6EgressOnlyRule to create egress-only rules to enable ECS instances in VPCs that have IPv6 enabled to access IPv6 clients. However, IPv6 clients cannot access the ECS instances over the Internet.
-//
-// Description:
-//
-//	  **CreateIpv6EgressOnlyRule*	- is an asynchronous operation. After a request is sent, the system returns a request ID and creates the rule in the background. You can call the [DescribeIpv6EgressOnlyRules](https://help.aliyun.com/document_detail/102208.html) operation to query the status of the task.
-//
-//	    	- If the egress-only rule is in the **Creating*	- state, the egress-only rule is being created.
-//
-//	    	- If the egress-only rule is in the **Created*	- state, the egress-only rule is created.
-//
-//		- You cannot repeatedly call the **CreateIpv6EgressOnlyRule*	- operation to add egress-only rules for an IPv6 address within the specified period of time.
-//
-// @param request - CreateIpv6EgressOnlyRuleRequest
-//
-// @return CreateIpv6EgressOnlyRuleResponse
-func (client *Client) CreateIpv6EgressOnlyRule(request *CreateIpv6EgressOnlyRuleRequest) (_result *CreateIpv6EgressOnlyRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIpv6EgressOnlyRuleResponse{}
-	_body, _err := client.CreateIpv6EgressOnlyRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7331,7 +5638,7 @@ func (client *Client) CreateIpv6EgressOnlyRule(request *CreateIpv6EgressOnlyRule
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIpv6GatewayResponse
-func (client *Client) CreateIpv6GatewayWithOptions(request *CreateIpv6GatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateIpv6GatewayResponse, _err error) {
+func (client *Client) CreateIpv6GatewayWithContext(ctx context.Context, request *CreateIpv6GatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateIpv6GatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7400,39 +5707,11 @@ func (client *Client) CreateIpv6GatewayWithOptions(request *CreateIpv6GatewayReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIpv6GatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// IPv6 gateways are used to control the IPv6 traffic of virtual private clouds (VPCs). You can call the CreateIpv6Gateway operation to create IPv6 gateways.
-//
-// Description:
-//
-//	  **CreateIpv6Gateway*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeIpv6GatewayAttribute](https://help.aliyun.com/document_detail/102226.html) operation to query the status of the task.
-//
-//	    	- If the IPv6 gateway is in the **Creating*	- state, the IPv6 gateway is being created.
-//
-//	    	- If the IPv6 gateway is in the **Created*	- state, the IPv6 gateway is created.
-//
-//		- You cannot repeatedly call the **CreateIpv6Gateway*	- operation within a specific time period.
-//
-// @param request - CreateIpv6GatewayRequest
-//
-// @return CreateIpv6GatewayResponse
-func (client *Client) CreateIpv6Gateway(request *CreateIpv6GatewayRequest) (_result *CreateIpv6GatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIpv6GatewayResponse{}
-	_body, _err := client.CreateIpv6GatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7463,7 +5742,7 @@ func (client *Client) CreateIpv6Gateway(request *CreateIpv6GatewayRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateNatGatewayResponse
-func (client *Client) CreateNatGatewayWithOptions(tmpReq *CreateNatGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateNatGatewayResponse, _err error) {
+func (client *Client) CreateNatGatewayWithContext(ctx context.Context, tmpReq *CreateNatGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateNatGatewayResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7586,47 +5865,11 @@ func (client *Client) CreateNatGatewayWithOptions(tmpReq *CreateNatGatewayReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateNatGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an enhanced Internet NAT gateway or a Virtual Private Cloud (VPC) NAT gateway.
-//
-// Description:
-//
-// ## Usage notes
-//
-// Before you call this operation, take note of the following items:
-//
-//   - When you create an enhanced NAT gateway for the first time, the system automatically creates the service-linked role AliyunServiceRoleForNatgw. Then, the system attaches the permission policy AliyunServiceRolePolicyForNatgw to the role. This allows the NAT gateway to access other resources on Alibaba Cloud. For more information, see [Service-linked roles](https://help.aliyun.com/document_detail/174251.html).
-//
-//   - After you create an enhanced Internet NAT gateway, a route entry is automatically added to the route table of the VPC. The destination CIDR block of the route entry is 0.0.0.0/0 and the next hop is the NAT gateway. This ensures that traffic is routed to the NAT gateway.
-//
-//   - **CreateNatGateway*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeNatGateways](https://help.aliyun.com/document_detail/36054.html) operation to query the status of the task.
-//
-//   - If a NAT gateway is in the **Creating*	- state, the NAT gateway is being created. In this case, you can query the NAT gateway but cannot perform other operations.
-//
-//   - If a NAT gateway is in the **Available*	- state, the NAT gateway is created.
-//
-// It takes 1 to 3 minutes to create a NAT gateway.
-//
-// @param request - CreateNatGatewayRequest
-//
-// @return CreateNatGatewayResponse
-func (client *Client) CreateNatGateway(request *CreateNatGatewayRequest) (_result *CreateNatGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateNatGatewayResponse{}
-	_body, _err := client.CreateNatGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7651,7 +5894,7 @@ func (client *Client) CreateNatGateway(request *CreateNatGatewayRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateNatIpResponse
-func (client *Client) CreateNatIpWithOptions(request *CreateNatIpRequest, runtime *dara.RuntimeOptions) (_result *CreateNatIpResponse, _err error) {
+func (client *Client) CreateNatIpWithContext(ctx context.Context, request *CreateNatIpRequest, runtime *dara.RuntimeOptions) (_result *CreateNatIpResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7724,41 +5967,11 @@ func (client *Client) CreateNatIpWithOptions(request *CreateNatIpRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateNatIpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a NAT IP address.
-//
-// Description:
-//
-// ## [](#)
-//
-// **CreateNatIp*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListNatIps](https://help.aliyun.com/document_detail/287000.html) operation to query the status of the task.
-//
-//   - If a NAT IP address is in the **Creating*	- state, the NAT IP address is being created. In this case, you can only query the NAT IP address and cannot perform other operations.
-//
-//   - If a NAT IP address is in the **Available*	- state, the NAT IP address is created.
-//
-// You cannot repeatedly call the **CreateNatIp*	- operation to create a NAT IP address within a specific period of time.
-//
-// @param request - CreateNatIpRequest
-//
-// @return CreateNatIpResponse
-func (client *Client) CreateNatIp(request *CreateNatIpRequest) (_result *CreateNatIpResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateNatIpResponse{}
-	_body, _err := client.CreateNatIpWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7777,7 +5990,7 @@ func (client *Client) CreateNatIp(request *CreateNatIpRequest) (_result *CreateN
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateNatIpCidrResponse
-func (client *Client) CreateNatIpCidrWithOptions(request *CreateNatIpCidrRequest, runtime *dara.RuntimeOptions) (_result *CreateNatIpCidrResponse, _err error) {
+func (client *Client) CreateNatIpCidrWithContext(ctx context.Context, request *CreateNatIpCidrRequest, runtime *dara.RuntimeOptions) (_result *CreateNatIpCidrResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7846,35 +6059,11 @@ func (client *Client) CreateNatIpCidrWithOptions(request *CreateNatIpCidrRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateNatIpCidrResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a NAT CIDR block.
-//
-// Description:
-//
-// ## [](#)Description
-//
-// You cannot repeatedly call the **CreateNatIpCidr*	- operation to create a NAT CIDR block within the specified period of time.
-//
-// @param request - CreateNatIpCidrRequest
-//
-// @return CreateNatIpCidrResponse
-func (client *Client) CreateNatIpCidr(request *CreateNatIpCidrRequest) (_result *CreateNatIpCidrResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateNatIpCidrResponse{}
-	_body, _err := client.CreateNatIpCidrWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7887,7 +6076,7 @@ func (client *Client) CreateNatIpCidr(request *CreateNatIpCidrRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateNetworkAclResponse
-func (client *Client) CreateNetworkAclWithOptions(request *CreateNetworkAclRequest, runtime *dara.RuntimeOptions) (_result *CreateNetworkAclResponse, _err error) {
+func (client *Client) CreateNetworkAclWithContext(ctx context.Context, request *CreateNetworkAclRequest, runtime *dara.RuntimeOptions) (_result *CreateNetworkAclResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7952,29 +6141,11 @@ func (client *Client) CreateNetworkAclWithOptions(request *CreateNetworkAclReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateNetworkAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a network ACL.
-//
-// @param request - CreateNetworkAclRequest
-//
-// @return CreateNetworkAclResponse
-func (client *Client) CreateNetworkAcl(request *CreateNetworkAclRequest) (_result *CreateNetworkAclResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateNetworkAclResponse{}
-	_body, _err := client.CreateNetworkAclWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7997,7 +6168,7 @@ func (client *Client) CreateNetworkAcl(request *CreateNetworkAclRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePhysicalConnectionResponse
-func (client *Client) CreatePhysicalConnectionWithOptions(request *CreatePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreatePhysicalConnectionResponse, _err error) {
+func (client *Client) CreatePhysicalConnectionWithContext(ctx context.Context, request *CreatePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreatePhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8098,39 +6269,11 @@ func (client *Client) CreatePhysicalConnectionWithOptions(request *CreatePhysica
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Applies for an Express Connect circuit.
-//
-// Description:
-//
-// You can apply for a dedicated Express Connect circuit for yourself or create a hosted connection for a tenant. After your application is approved, the Express Connect circuit changes to the **Initial*	- state. You can contact the connectivity provider to start construction.
-//
-// When you call this operation, take note of the following limits:
-//
-//   - If your Alibaba Cloud account has more than five Express Connect circuits that are not in the **Enabled*	- state, you cannot apply for another Express Connect circuit.
-//
-//   - If your Alibaba Cloud account has an Express Connect circuit with overdue payments, you cannot apply for another Express Connect circuit.
-//
-// @param request - CreatePhysicalConnectionRequest
-//
-// @return CreatePhysicalConnectionResponse
-func (client *Client) CreatePhysicalConnection(request *CreatePhysicalConnectionRequest) (_result *CreatePhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePhysicalConnectionResponse{}
-	_body, _err := client.CreatePhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8147,7 +6290,7 @@ func (client *Client) CreatePhysicalConnection(request *CreatePhysicalConnection
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePhysicalConnectionOccupancyOrderResponse
-func (client *Client) CreatePhysicalConnectionOccupancyOrderWithOptions(request *CreatePhysicalConnectionOccupancyOrderRequest, runtime *dara.RuntimeOptions) (_result *CreatePhysicalConnectionOccupancyOrderResponse, _err error) {
+func (client *Client) CreatePhysicalConnectionOccupancyOrderWithContext(ctx context.Context, request *CreatePhysicalConnectionOccupancyOrderRequest, runtime *dara.RuntimeOptions) (_result *CreatePhysicalConnectionOccupancyOrderResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8212,33 +6355,11 @@ func (client *Client) CreatePhysicalConnectionOccupancyOrderWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePhysicalConnectionOccupancyOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an order for resource occupation of an Express Connect circuit.
-//
-// Description:
-//
-// >  You can call this operation only when the Express Connect circuit is in the **Complete*	- state.
-//
-// @param request - CreatePhysicalConnectionOccupancyOrderRequest
-//
-// @return CreatePhysicalConnectionOccupancyOrderResponse
-func (client *Client) CreatePhysicalConnectionOccupancyOrder(request *CreatePhysicalConnectionOccupancyOrderRequest) (_result *CreatePhysicalConnectionOccupancyOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePhysicalConnectionOccupancyOrderResponse{}
-	_body, _err := client.CreatePhysicalConnectionOccupancyOrderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8251,7 +6372,7 @@ func (client *Client) CreatePhysicalConnectionOccupancyOrder(request *CreatePhys
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePhysicalConnectionSetupOrderResponse
-func (client *Client) CreatePhysicalConnectionSetupOrderWithOptions(request *CreatePhysicalConnectionSetupOrderRequest, runtime *dara.RuntimeOptions) (_result *CreatePhysicalConnectionSetupOrderResponse, _err error) {
+func (client *Client) CreatePhysicalConnectionSetupOrderWithContext(ctx context.Context, request *CreatePhysicalConnectionSetupOrderRequest, runtime *dara.RuntimeOptions) (_result *CreatePhysicalConnectionSetupOrderResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8320,29 +6441,11 @@ func (client *Client) CreatePhysicalConnectionSetupOrderWithOptions(request *Cre
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePhysicalConnectionSetupOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an order for initial installation of an Express Connect circuit.
-//
-// @param request - CreatePhysicalConnectionSetupOrderRequest
-//
-// @return CreatePhysicalConnectionSetupOrderResponse
-func (client *Client) CreatePhysicalConnectionSetupOrder(request *CreatePhysicalConnectionSetupOrderRequest) (_result *CreatePhysicalConnectionSetupOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePhysicalConnectionSetupOrderResponse{}
-	_body, _err := client.CreatePhysicalConnectionSetupOrderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8359,7 +6462,7 @@ func (client *Client) CreatePhysicalConnectionSetupOrder(request *CreatePhysical
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePublicIpAddressPoolResponse
-func (client *Client) CreatePublicIpAddressPoolWithOptions(request *CreatePublicIpAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *CreatePublicIpAddressPoolResponse, _err error) {
+func (client *Client) CreatePublicIpAddressPoolWithContext(ctx context.Context, request *CreatePublicIpAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *CreatePublicIpAddressPoolResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8440,33 +6543,11 @@ func (client *Client) CreatePublicIpAddressPoolWithOptions(request *CreatePublic
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePublicIpAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an IP address pool.
-//
-// Description:
-//
-// By default, the IP address pool feature is unavailable. You can apply for the privilege to use the **IP address pool feature*	- in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in the [Manage EIP quotas](https://help.aliyun.com/document_detail/108213.html) topic.
-//
-// @param request - CreatePublicIpAddressPoolRequest
-//
-// @return CreatePublicIpAddressPoolResponse
-func (client *Client) CreatePublicIpAddressPool(request *CreatePublicIpAddressPoolRequest) (_result *CreatePublicIpAddressPoolResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePublicIpAddressPoolResponse{}
-	_body, _err := client.CreatePublicIpAddressPoolWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8507,7 +6588,7 @@ func (client *Client) CreatePublicIpAddressPool(request *CreatePublicIpAddressPo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRouteEntriesResponse
-func (client *Client) CreateRouteEntriesWithOptions(request *CreateRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteEntriesResponse, _err error) {
+func (client *Client) CreateRouteEntriesWithContext(ctx context.Context, request *CreateRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8560,57 +6641,11 @@ func (client *Client) CreateRouteEntriesWithOptions(request *CreateRouteEntriesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds custom route entries to the route table of a vRouter in a virtual private cloud (VPC).
-//
-// Description:
-//
-// ## [](#)References
-//
-//   - **CreateRouteEntries*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) operation to query the status of the task.
-//
-//   - If the route entry is in the **Creating*	- state, the route entry is being created.
-//
-//   - If the route entry is in the **Created*	- state, the route entry is created.
-//
-//   - You cannot repeatedly call the **CreateRouteEntries*	- operation to create the same route entry within the specified period of time.
-//
-// **When you call this operation to add custom route entries to the route table of a vRouter, take note of the following items:**
-//
-//   - A route table can contain up to 200 custom route entries.
-//
-//   - The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot be the same as or overlap with the CIDR block of a vSwitch in the VPC.
-//
-//   - The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or its subnets.
-//
-//   - The destination CIDR blocks (**DstCidrBlock**) of route entries in the same route table must be unique.
-//
-//   - If you do not include the mask length when you specify the destination CIDR block (**DstCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-//
-//   - Multiple custom route entries can point to the same next hop (**NextHop**).
-//
-//   - The next hop (**NextHop**) of a custom route entry must belong to the same VPC as the route table.
-//
-// @param request - CreateRouteEntriesRequest
-//
-// @return CreateRouteEntriesResponse
-func (client *Client) CreateRouteEntries(request *CreateRouteEntriesRequest) (_result *CreateRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRouteEntriesResponse{}
-	_body, _err := client.CreateRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8677,7 +6712,7 @@ func (client *Client) CreateRouteEntries(request *CreateRouteEntriesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRouteEntryResponse
-func (client *Client) CreateRouteEntryWithOptions(request *CreateRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteEntryResponse, _err error) {
+func (client *Client) CreateRouteEntryWithContext(ctx context.Context, request *CreateRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8754,83 +6789,11 @@ func (client *Client) CreateRouteEntryWithOptions(request *CreateRouteEntryReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a custom route entry in the route table of a VRouter or virtual border router (VBR).
-//
-// Description:
-//
-//	  **CreateRouteEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) operation to query the status of the task:
-//
-//	    	- If a route is in the **Creating*	- state, the route is being added.
-//
-//	    	- If a route is in the **Created*	- state, the route is added.
-//
-//		- You cannot repeatedly call **CreateRouteEntry*	- within a specific period of time.
-//
-// **When you call this operation to add a custom route entry to the route table of a vRouter, take note of the following limits:**
-//
-// >  When you add a route entry from a prefix list, the quota usage is calculated by adding the number of existing route entries and the maximum number of route entries of the prefix list.
-//
-//   - A route table can contain up to 200 custom route entries.
-//
-//   - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be the same as or be a subset of the CIDR block of a vSwitch in the virtual private cloud (VPC). The destination CIDR block can contain the CIDR block of a vSwitch.
-//
-//   - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or a subset of it.
-//
-//   - The destination CIDR blocks (**DestinationCidrBlock**) of route entries in the same route table must be unique.
-//
-//   - If you do not include the mask length when you specify the destination CIDR block (**DestinationCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-//
-//   - Multiple custom route entries can point to the same next hop (**NextHopId**).
-//
-//   - The next hop (**NextHopId**) of a custom route entry must in the same VPC as the route table.
-//
-//   - Equal-cost multi-path (ECMP) routing can be configured by specifying the **NextHopList*	- parameter.
-//
-//   - When you add non-ECMP route entries, you must specify **DestinationCidrBlock**, **NextHopType**, and **NextHopId**, and you must not specify **NextHopList**.
-//
-//   - When you add route entries for ECMP routing, you must specify **DestinationCidrBlock*	- and **NextHopList**, and you must not specify **NextHopType*	- or **NextHopId**.
-//
-// **When you call this operation to add a custom route entry to the route table of a VBR, take note of the following limits:**
-//
-//   - A route table can contain up to 200 custom route entries.
-//
-//   - **NextHopList*	- is not supported.
-//
-//   - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be 100.64.0.0/10 or a subset of it.
-//
-//   - The destination CIDR blocks (**DestinationCidrBlock**) of route entries in the same route table must be unique.
-//
-//   - If you do not include the mask length when you specify the destination CIDR block (**DestinationCidrBlock**), the destination CIDR block is considered a host IP address whose mask length is 32 bits.
-//
-//   - Multiple custom route entries can point to the same next hop (**NextHopId**).
-//
-//   - The next hop (**NextHopId**) of a custom route entry must be a router interface associated with the VBR.
-//
-//   - You can add route entries only when the VBR is in the **Active*	- state, and the Express Connect circuit associated with the VBR is in the **Enabled*	- state and is not locked due to overdue payments.
-//
-//   - Only non-ECMP route entries are supported. When you add non-ECMP route entries, you must specify **DestinationCidrBlock**, **NextHopType**, and **NextHopId**, and you cannot specify **NextHopList**.
-//
-// @param request - CreateRouteEntryRequest
-//
-// @return CreateRouteEntryResponse
-func (client *Client) CreateRouteEntry(request *CreateRouteEntryRequest) (_result *CreateRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRouteEntryResponse{}
-	_body, _err := client.CreateRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8853,7 +6816,7 @@ func (client *Client) CreateRouteEntry(request *CreateRouteEntryRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRouteTableResponse
-func (client *Client) CreateRouteTableWithOptions(request *CreateRouteTableRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteTableResponse, _err error) {
+func (client *Client) CreateRouteTableWithContext(ctx context.Context, request *CreateRouteTableRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteTableResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8922,39 +6885,11 @@ func (client *Client) CreateRouteTableWithOptions(request *CreateRouteTableReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRouteTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a custom route table.
-//
-// Description:
-//
-//	  **CreateRouteTable*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the operation in the background. You can call the [DescribeRouteTableList](https://help.aliyun.com/document_detail/87602.html) operation to query the status of the task.
-//
-//	    	- If the custom route table is in the **Creating*	- state, the custom route table is being created.
-//
-//	    	- If the custom route table is in the **Created*	- state, the custom route table is created.
-//
-//		- You cannot repeatedly call the **CreateRouteTable*	- operation within the specified period of time.
-//
-// @param request - CreateRouteTableRequest
-//
-// @return CreateRouteTableResponse
-func (client *Client) CreateRouteTable(request *CreateRouteTableRequest) (_result *CreateRouteTableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRouteTableResponse{}
-	_body, _err := client.CreateRouteTableWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8983,7 +6918,7 @@ func (client *Client) CreateRouteTable(request *CreateRouteTableRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRouterInterfaceResponse
-func (client *Client) CreateRouterInterfaceWithOptions(request *CreateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *CreateRouterInterfaceResponse, _err error) {
+func (client *Client) CreateRouterInterfaceWithContext(ctx context.Context, request *CreateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *CreateRouterInterfaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9124,45 +7059,11 @@ func (client *Client) CreateRouterInterfaceWithOptions(request *CreateRouterInte
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRouterInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a router interface.
-//
-// Description:
-//
-// When you call this operation, take note of the following limits:
-//
-//   - You can create only one pair of interfaces to be connected between two routers.
-//
-//   - You can create a maximum of five router interfaces for a router.
-//
-//   - If your Alibaba Cloud account has a router interface with overdue payments, you cannot create new router interfaces.
-//
-//   - Each destination CIDR block of route entries in the same route table must be unique.
-//
-//   - A virtual border router (VBR) can serve only as a requester. The VBR must be in the Activated state.
-//
-//   - You can call this operation to create subscription and pay-as-you-go router interfaces.
-//
-// @param request - CreateRouterInterfaceRequest
-//
-// @return CreateRouterInterfaceResponse
-func (client *Client) CreateRouterInterface(request *CreateRouterInterfaceRequest) (_result *CreateRouterInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRouterInterfaceResponse{}
-	_body, _err := client.CreateRouterInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9195,7 +7096,7 @@ func (client *Client) CreateRouterInterface(request *CreateRouterInterfaceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSnatEntryResponse
-func (client *Client) CreateSnatEntryWithOptions(request *CreateSnatEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateSnatEntryResponse, _err error) {
+func (client *Client) CreateSnatEntryWithContext(ctx context.Context, request *CreateSnatEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateSnatEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9272,49 +7173,11 @@ func (client *Client) CreateSnatEntryWithOptions(request *CreateSnatEntryRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSnatEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds an SNAT entry to an SNAT table.
-//
-// Description:
-//
-// You can call this operation to add SNAT entries to Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways. In this topic, a **NAT*	- gateway refers to both gateway types.
-//
-// Before you call this operation, take note of the following limits:
-//
-//   - **CreateSnatEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeSnatTableEntries](https://help.aliyun.com/document_detail/42677.html) operation to query the status of the task.
-//
-//   - If the SNAT entry is in the **Pending*	- state, the system is adding the SNAT entry. You can only query the status of the SNAT entry, and cannot perform other operations.
-//
-//   - If the SNAT entry is in the **Available*	- state, the SNAT entry is added.
-//
-//   - You cannot repeatedly call the **CreateSnatEntry*	- operation to add an SNAT entry to an SNAT table within the specified period of time.
-//
-//   - The vSwitch and Elastic Compute Service (ECS) instance specified in an SNAT entry must be created in the VPC where the NAT gateway is deployed.
-//
-//   - Each vSwitch or ECS instance can be specified in only one SNAT entry.
-//
-//   - If a high-availability virtual IP address (HAVIP) exists in a vSwitch, you cannot create SNAT entries.
-//
-// @param request - CreateSnatEntryRequest
-//
-// @return CreateSnatEntryResponse
-func (client *Client) CreateSnatEntry(request *CreateSnatEntryRequest) (_result *CreateSnatEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSnatEntryResponse{}
-	_body, _err := client.CreateSnatEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9331,7 +7194,7 @@ func (client *Client) CreateSnatEntry(request *CreateSnatEntryRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSslVpnClientCertResponse
-func (client *Client) CreateSslVpnClientCertWithOptions(request *CreateSslVpnClientCertRequest, runtime *dara.RuntimeOptions) (_result *CreateSslVpnClientCertResponse, _err error) {
+func (client *Client) CreateSslVpnClientCertWithContext(ctx context.Context, request *CreateSslVpnClientCertRequest, runtime *dara.RuntimeOptions) (_result *CreateSslVpnClientCertResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9384,33 +7247,11 @@ func (client *Client) CreateSslVpnClientCertWithOptions(request *CreateSslVpnCli
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSslVpnClientCertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an SSL client certificate.
-//
-// Description:
-//
-// Before you create an SSL client certificate, make sure that an SSL server is created on the VPN gateway. For more information, see [CreateSslVpnServer](https://help.aliyun.com/document_detail/2794075.html).
-//
-// @param request - CreateSslVpnClientCertRequest
-//
-// @return CreateSslVpnClientCertResponse
-func (client *Client) CreateSslVpnClientCert(request *CreateSslVpnClientCertRequest) (_result *CreateSslVpnClientCertResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSslVpnClientCertResponse{}
-	_body, _err := client.CreateSslVpnClientCertWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9439,7 +7280,7 @@ func (client *Client) CreateSslVpnClientCert(request *CreateSslVpnClientCertRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSslVpnServerResponse
-func (client *Client) CreateSslVpnServerWithOptions(request *CreateSslVpnServerRequest, runtime *dara.RuntimeOptions) (_result *CreateSslVpnServerResponse, _err error) {
+func (client *Client) CreateSslVpnServerWithContext(ctx context.Context, request *CreateSslVpnServerRequest, runtime *dara.RuntimeOptions) (_result *CreateSslVpnServerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9536,45 +7377,11 @@ func (client *Client) CreateSslVpnServerWithOptions(request *CreateSslVpnServerR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSslVpnServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an SSL server.
-//
-// Description:
-//
-//	  **CreateSslVpnServer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
-//
-//	    	- If the VPN gateway is in the **updating*	- state, the SSL server is being created.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the SSL server is created.
-//
-//		- You cannot repeatedly call the **CreateSslVpnServer*	- operation within the specified period of time.
-//
-// ### [](#)Prerequisite
-//
-//   - A VPN gateway is created, and the SSL-VPN feature is enabled for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html).
-//
-//   - If you want to enable two-factor authentication for the SSL server, make sure that the VPN gateway supports two-factor authentication. You may need to upgrade the VPN gateway. For more information, see [Two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
-//
-// @param request - CreateSslVpnServerRequest
-//
-// @return CreateSslVpnServerResponse
-func (client *Client) CreateSslVpnServer(request *CreateSslVpnServerRequest) (_result *CreateSslVpnServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSslVpnServerResponse{}
-	_body, _err := client.CreateSslVpnServerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9595,7 +7402,7 @@ func (client *Client) CreateSslVpnServer(request *CreateSslVpnServerRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTrafficMirrorFilterResponse
-func (client *Client) CreateTrafficMirrorFilterWithOptions(request *CreateTrafficMirrorFilterRequest, runtime *dara.RuntimeOptions) (_result *CreateTrafficMirrorFilterResponse, _err error) {
+func (client *Client) CreateTrafficMirrorFilterWithContext(ctx context.Context, request *CreateTrafficMirrorFilterRequest, runtime *dara.RuntimeOptions) (_result *CreateTrafficMirrorFilterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9668,37 +7475,11 @@ func (client *Client) CreateTrafficMirrorFilterWithOptions(request *CreateTraffi
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTrafficMirrorFilterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a filter for traffic mirror.
-//
-// Description:
-//
-// *CreateTrafficMirrorFilter*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) operation to query the status of the task.
-//
-//   - If the filter is in the **Creating*	- state, the filter is being created.
-//
-//   - If the filter is in the **Created*	- state, the filter is created.
-//
-// @param request - CreateTrafficMirrorFilterRequest
-//
-// @return CreateTrafficMirrorFilterResponse
-func (client *Client) CreateTrafficMirrorFilter(request *CreateTrafficMirrorFilterRequest) (_result *CreateTrafficMirrorFilterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateTrafficMirrorFilterResponse{}
-	_body, _err := client.CreateTrafficMirrorFilterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9721,7 +7502,7 @@ func (client *Client) CreateTrafficMirrorFilter(request *CreateTrafficMirrorFilt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTrafficMirrorFilterRulesResponse
-func (client *Client) CreateTrafficMirrorFilterRulesWithOptions(request *CreateTrafficMirrorFilterRulesRequest, runtime *dara.RuntimeOptions) (_result *CreateTrafficMirrorFilterRulesResponse, _err error) {
+func (client *Client) CreateTrafficMirrorFilterRulesWithContext(ctx context.Context, request *CreateTrafficMirrorFilterRulesRequest, runtime *dara.RuntimeOptions) (_result *CreateTrafficMirrorFilterRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9782,39 +7563,11 @@ func (client *Client) CreateTrafficMirrorFilterRulesWithOptions(request *CreateT
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTrafficMirrorFilterRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an inbound or outbound rule for traffic mirror.
-//
-// Description:
-//
-//	  **CreateTrafficMirrorFilterRules*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) to query the status of the task.
-//
-//	    	- If the inbound or outbound rule is in the **Creating*	- state, the rule is being created.
-//
-//	    	- If the inbound or outbound rule is in the **Created*	- state, the rule is created.
-//
-//		- You cannot call **CreateTrafficMirrorFilterRules*	- within the specified period of time.
-//
-// @param request - CreateTrafficMirrorFilterRulesRequest
-//
-// @return CreateTrafficMirrorFilterRulesResponse
-func (client *Client) CreateTrafficMirrorFilterRules(request *CreateTrafficMirrorFilterRulesRequest) (_result *CreateTrafficMirrorFilterRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateTrafficMirrorFilterRulesResponse{}
-	_body, _err := client.CreateTrafficMirrorFilterRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9835,7 +7588,7 @@ func (client *Client) CreateTrafficMirrorFilterRules(request *CreateTrafficMirro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTrafficMirrorSessionResponse
-func (client *Client) CreateTrafficMirrorSessionWithOptions(request *CreateTrafficMirrorSessionRequest, runtime *dara.RuntimeOptions) (_result *CreateTrafficMirrorSessionResponse, _err error) {
+func (client *Client) CreateTrafficMirrorSessionWithContext(ctx context.Context, request *CreateTrafficMirrorSessionRequest, runtime *dara.RuntimeOptions) (_result *CreateTrafficMirrorSessionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9932,37 +7685,11 @@ func (client *Client) CreateTrafficMirrorSessionWithOptions(request *CreateTraff
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTrafficMirrorSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a traffic mirror session.
-//
-// Description:
-//
-// *CreateTrafficMirrorSession*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListTrafficMirrorSessions](https://help.aliyun.com/document_detail/261367.html) to query the status of the task.
-//
-//   - If the traffic mirror session is in the **Creating*	- state, it is being created.
-//
-//   - If the traffic mirror session is in the **Created*	- state, it is created.
-//
-// @param request - CreateTrafficMirrorSessionRequest
-//
-// @return CreateTrafficMirrorSessionResponse
-func (client *Client) CreateTrafficMirrorSession(request *CreateTrafficMirrorSessionRequest) (_result *CreateTrafficMirrorSessionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateTrafficMirrorSessionResponse{}
-	_body, _err := client.CreateTrafficMirrorSessionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9999,7 +7726,7 @@ func (client *Client) CreateTrafficMirrorSession(request *CreateTrafficMirrorSes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVSwitchResponse
-func (client *Client) CreateVSwitchWithOptions(request *CreateVSwitchRequest, runtime *dara.RuntimeOptions) (_result *CreateVSwitchResponse, _err error) {
+func (client *Client) CreateVSwitchWithContext(ctx context.Context, request *CreateVSwitchRequest, runtime *dara.RuntimeOptions) (_result *CreateVSwitchResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10076,53 +7803,11 @@ func (client *Client) CreateVSwitchWithOptions(request *CreateVSwitchRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVSwitchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建交换机。
-//
-// Description:
-//
-// When you call this operation, take note of the following limits:
-//
-//   - You can create at most 150 vSwitches in a virtual private cloud (VPC).
-//
-//   - The first IP address and last three IP addresses of each vSwitch CIDR block are reserved. For example, if the CIDR block of a vSwitch is 192.168.1.0/24, the IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved.
-//
-//   - The number of instances in a vSwitch cannot exceed the remaining capacity of the VPC. The remaining capacity is the difference between 15,000 and the current number of instances.
-//
-//   - Each instance can belong to only one vSwitch.
-//
-//   - vSwitches do not support multicast or broadcast.
-//
-//   - After you create a vSwitch, you cannot modify its CIDR block.
-//
-//   - **CreateVSwitch*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVSwitchAttributes](https://help.aliyun.com/document_detail/94567.html) to query the status of the task.
-//
-//   - If the vSwitch is in the **Pending*	- state, the vSwitch is being configured.
-//
-//   - If the vSwitch is in the **Available*	- state, the vSwitch is available.
-//
-//   - You cannot repeatedly call the **CreateVSwitch*	- operation to create a vSwitch in a VPC within the specified period of time.
-//
-// @param request - CreateVSwitchRequest
-//
-// @return CreateVSwitchResponse
-func (client *Client) CreateVSwitch(request *CreateVSwitchRequest) (_result *CreateVSwitchResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVSwitchResponse{}
-	_body, _err := client.CreateVSwitchWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10155,7 +7840,7 @@ func (client *Client) CreateVSwitch(request *CreateVSwitchRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVSwitchCidrReservationResponse
-func (client *Client) CreateVSwitchCidrReservationWithOptions(request *CreateVSwitchCidrReservationRequest, runtime *dara.RuntimeOptions) (_result *CreateVSwitchCidrReservationResponse, _err error) {
+func (client *Client) CreateVSwitchCidrReservationWithContext(ctx context.Context, request *CreateVSwitchCidrReservationRequest, runtime *dara.RuntimeOptions) (_result *CreateVSwitchCidrReservationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10236,49 +7921,11 @@ func (client *Client) CreateVSwitchCidrReservationWithOptions(request *CreateVSw
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVSwitchCidrReservationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a reserved CIDR block for a vSwitch.
-//
-// Description:
-//
-// ## [](#)Description
-//
-// Take note of the following items:
-//
-//   - You can create at most 10 reserved IPv4 CIDR blocks and 10 reserved IPv6 CIDR blocks for each vSwitch in a virtual private cloud (VPC).
-//
-//   - After you create a reserved CIDR block for a vSwitch, the CIDR block cannot contain the IP address of the subnet gateway of the VPC to which the vSwitch belongs.
-//
-//   - **CreateVSwitchCidrReservation*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListVSwitchCidrReservations](https://help.aliyun.com/document_detail/610155.html) to query the status of the task:
-//
-//   - If the vSwitch is in the **Assigning*	- state, the reserved CIDR block is being created.
-//
-//   - If the vSwitch is in the **Assigned*	- state, the reserved CIDR block is created.
-//
-//   - When you create a reserved IPv4 CIDR block for a vSwitch, the first IP address and the last three IP addresses of the vSwitch are reserved by the system. The four IP addresses will not be allocated.
-//
-//   - When you create a reserved IPv6 CIDR block for a vSwitch, the first IP address and the last nine IP addresses of the vSwitch are reserved by the system. The 10 IP addresses will not be allocated. For example, if you create a reserved IPv4 CIDR block for a vSwitch whose CIDR block is 192.168.1.0/24, the reserved CIDR block cannot contain the following IP addresses: 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255.
-//
-// @param request - CreateVSwitchCidrReservationRequest
-//
-// @return CreateVSwitchCidrReservationResponse
-func (client *Client) CreateVSwitchCidrReservation(request *CreateVSwitchCidrReservationRequest) (_result *CreateVSwitchCidrReservationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVSwitchCidrReservationResponse{}
-	_body, _err := client.CreateVSwitchCidrReservationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10291,7 +7938,7 @@ func (client *Client) CreateVSwitchCidrReservation(request *CreateVSwitchCidrRes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVbrHaResponse
-func (client *Client) CreateVbrHaWithOptions(request *CreateVbrHaRequest, runtime *dara.RuntimeOptions) (_result *CreateVbrHaResponse, _err error) {
+func (client *Client) CreateVbrHaWithContext(ctx context.Context, request *CreateVbrHaRequest, runtime *dara.RuntimeOptions) (_result *CreateVbrHaResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10356,29 +8003,11 @@ func (client *Client) CreateVbrHaWithOptions(request *CreateVbrHaRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVbrHaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a virtual border router (VBR) failover group.
-//
-// @param request - CreateVbrHaRequest
-//
-// @return CreateVbrHaResponse
-func (client *Client) CreateVbrHa(request *CreateVbrHaRequest) (_result *CreateVbrHaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVbrHaResponse{}
-	_body, _err := client.CreateVbrHaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10407,7 +8036,7 @@ func (client *Client) CreateVbrHa(request *CreateVbrHaRequest) (_result *CreateV
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVcoRouteEntryResponse
-func (client *Client) CreateVcoRouteEntryWithOptions(request *CreateVcoRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateVcoRouteEntryResponse, _err error) {
+func (client *Client) CreateVcoRouteEntryWithContext(ctx context.Context, request *CreateVcoRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateVcoRouteEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10476,45 +8105,11 @@ func (client *Client) CreateVcoRouteEntryWithOptions(request *CreateVcoRouteEntr
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVcoRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a destination-based route for an IPsec-VPN connection.
-//
-// Description:
-//
-//	  The IPsec-VPN connection must be associated with a transit router. For more information, see [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/468249.html).
-//
-//		- You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
-//
-//		- Do not add a destination-based route whose destination CIDR block is 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10 or belongs to 100.64.0.0/10. Such a route will make the console fail to display the status of the IPsec-VPN connection or cause IPsec negotiation failures.
-//
-//		- **CreateVcoRouteEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) to query the status of the task.
-//
-//	    	- If the IPsec-VPN connection is in the **updating*	- state, the destination-based route is being created.
-//
-//	    	- If the IPsec-VPN connection is in the **attached*	- state, the destination-based route is created.
-//
-//		- You cannot repeatedly call **CreateVcoRouteEntry*	- within the specified period of time.
-//
-// @param request - CreateVcoRouteEntryRequest
-//
-// @return CreateVcoRouteEntryResponse
-func (client *Client) CreateVcoRouteEntry(request *CreateVcoRouteEntryRequest) (_result *CreateVcoRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVcoRouteEntryResponse{}
-	_body, _err := client.CreateVcoRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10531,7 +8126,7 @@ func (client *Client) CreateVcoRouteEntry(request *CreateVcoRouteEntryRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVirtualBorderRouterResponse
-func (client *Client) CreateVirtualBorderRouterWithOptions(request *CreateVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *CreateVirtualBorderRouterResponse, _err error) {
+func (client *Client) CreateVirtualBorderRouterWithContext(ctx context.Context, request *CreateVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *CreateVirtualBorderRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10640,33 +8235,11 @@ func (client *Client) CreateVirtualBorderRouterWithOptions(request *CreateVirtua
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVirtualBorderRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a virtual border router (VBR).
-//
-// Description:
-//
-// After you create a VBR, the VBR is in the **active*	- state.
-//
-// @param request - CreateVirtualBorderRouterRequest
-//
-// @return CreateVirtualBorderRouterResponse
-func (client *Client) CreateVirtualBorderRouter(request *CreateVirtualBorderRouterRequest) (_result *CreateVirtualBorderRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVirtualBorderRouterResponse{}
-	_body, _err := client.CreateVirtualBorderRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10685,7 +8258,7 @@ func (client *Client) CreateVirtualBorderRouter(request *CreateVirtualBorderRout
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVirtualPhysicalConnectionResponse
-func (client *Client) CreateVirtualPhysicalConnectionWithOptions(request *CreateVirtualPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateVirtualPhysicalConnectionResponse, _err error) {
+func (client *Client) CreateVirtualPhysicalConnectionWithContext(ctx context.Context, request *CreateVirtualPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateVirtualPhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10754,35 +8327,11 @@ func (client *Client) CreateVirtualPhysicalConnectionWithOptions(request *Create
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVirtualPhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a hosted connection over Express Connect circuit.
-//
-// Description:
-//
-// # [](#)Description
-//
-// Before you call this operation, we recommend that you learn about the workflow for creating a hosted connection and the environment requirements. For more information, see [Overview of hosted connections](https://help.aliyun.com/document_detail/146571.html) and [Operations performed by Express Connect partners](https://help.aliyun.com/document_detail/155987.html).
-//
-// @param request - CreateVirtualPhysicalConnectionRequest
-//
-// @return CreateVirtualPhysicalConnectionResponse
-func (client *Client) CreateVirtualPhysicalConnection(request *CreateVirtualPhysicalConnectionRequest) (_result *CreateVirtualPhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVirtualPhysicalConnectionResponse{}
-	_body, _err := client.CreateVirtualPhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10817,7 +8366,7 @@ func (client *Client) CreateVirtualPhysicalConnection(request *CreateVirtualPhys
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVpcResponse
-func (client *Client) CreateVpcWithOptions(request *CreateVpcRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcResponse, _err error) {
+func (client *Client) CreateVpcWithContext(ctx context.Context, request *CreateVpcRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10922,51 +8471,11 @@ func (client *Client) CreateVpcWithOptions(request *CreateVpcRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a virtual private cloud (VPC).
-//
-// Description:
-//
-// When you call this operation, take note of the following items:
-//
-//   - You can specify only one CIDR block for each VPC.
-//
-//   - After you create a VPC, you cannot change its CIDR block. However, you can add secondary IPv4 CIDR blocks to the VPC.
-//
-//   - In each VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota.
-//
-//   - After you create a VPC, a vRouter and a route table are automatically created.
-//
-//   - At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if both 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
-//
-//   - **CreateVpc*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of the task:
-//
-//   - If the VPC is in the **Creating*	- state, the VPC is being created.
-//
-//   - If the VPC is in the **Created*	- state, the VPC is created.
-//
-//   - You cannot repeatedly call the **DeleteRouteEntry*	- operation to create default VPCs within a specific time period. However, you can repeatedly call this operation to create custom VPCs within a specific time period.
-//
-// @param request - CreateVpcRequest
-//
-// @return CreateVpcResponse
-func (client *Client) CreateVpc(request *CreateVpcRequest) (_result *CreateVpcResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVpcResponse{}
-	_body, _err := client.CreateVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10989,7 +8498,7 @@ func (client *Client) CreateVpc(request *CreateVpcRequest) (_result *CreateVpcRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVpcGatewayEndpointResponse
-func (client *Client) CreateVpcGatewayEndpointWithOptions(request *CreateVpcGatewayEndpointRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcGatewayEndpointResponse, _err error) {
+func (client *Client) CreateVpcGatewayEndpointWithContext(ctx context.Context, request *CreateVpcGatewayEndpointRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcGatewayEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11066,39 +8575,11 @@ func (client *Client) CreateVpcGatewayEndpointWithOptions(request *CreateVpcGate
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVpcGatewayEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a gateway endpoint.
-//
-// Description:
-//
-//	  **CreateVpcGatewayEndpoint*	- is an asynchronous operation. After a request is sent, the system returns an **EndpointId*	- and runs the task in the background. You can call the [ListVpcGatewayEndpoints](https://help.aliyun.com/document_detail/448682.html) operation to query the status of the task.
-//
-//	    	- If the gateway endpoint is in the **Creating*	- state, the gateway endpoint is being created.
-//
-//	    	- If the gateway endpoint is in the **Created*	- state, the gateway endpoint is created.
-//
-//		- You cannot repeatedly call the **CreateVpcGatewayEndpoint*	- operation for the same endpoint service within the specified period of time.
-//
-// @param request - CreateVpcGatewayEndpointRequest
-//
-// @return CreateVpcGatewayEndpointResponse
-func (client *Client) CreateVpcGatewayEndpoint(request *CreateVpcGatewayEndpointRequest) (_result *CreateVpcGatewayEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVpcGatewayEndpointResponse{}
-	_body, _err := client.CreateVpcGatewayEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11115,7 +8596,7 @@ func (client *Client) CreateVpcGatewayEndpoint(request *CreateVpcGatewayEndpoint
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVpcPrefixListResponse
-func (client *Client) CreateVpcPrefixListWithOptions(request *CreateVpcPrefixListRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcPrefixListResponse, _err error) {
+func (client *Client) CreateVpcPrefixListWithContext(ctx context.Context, request *CreateVpcPrefixListRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcPrefixListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11192,33 +8673,11 @@ func (client *Client) CreateVpcPrefixListWithOptions(request *CreateVpcPrefixLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVpcPrefixListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a prefix list.
-//
-// Description:
-//
-// You cannot repeatedly call the **CreateVpcPrefixList*	- operation within the specified period of time.
-//
-// @param request - CreateVpcPrefixListRequest
-//
-// @return CreateVpcPrefixListResponse
-func (client *Client) CreateVpcPrefixList(request *CreateVpcPrefixListRequest) (_result *CreateVpcPrefixListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVpcPrefixListResponse{}
-	_body, _err := client.CreateVpcPrefixListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11245,7 +8704,7 @@ func (client *Client) CreateVpcPrefixList(request *CreateVpcPrefixListRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVpconnFromVbrResponse
-func (client *Client) CreateVpconnFromVbrWithOptions(request *CreateVpconnFromVbrRequest, runtime *dara.RuntimeOptions) (_result *CreateVpconnFromVbrResponse, _err error) {
+func (client *Client) CreateVpconnFromVbrWithContext(ctx context.Context, request *CreateVpconnFromVbrRequest, runtime *dara.RuntimeOptions) (_result *CreateVpconnFromVbrResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11286,43 +8745,11 @@ func (client *Client) CreateVpconnFromVbrWithOptions(request *CreateVpconnFromVb
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVpconnFromVbrResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a shared port to a hosted connection.
-//
-// Description:
-//
-// If an Express Connect partner has created a virtual border router (VBR) for a tenant before, the Express Connect partner can push the Express Connect circuit that is associated with the VBR to the tenant account by adding a shared port for the tenant account. The service of the tenant is not interrupted in this process.
-//
-// Preparations:
-//
-// Before the Express Connect partner performs the operation, the Express Connect partner must notify the tenant and request the tenant to enable outbound data transfer billing. For more information, see [Enable outbound data transfer billing](https://help.aliyun.com/document_detail/274385.html).
-//
-// What to do next:
-//
-// 1.  After the Express Connect partner performs the operation, a shared port is added for the tenant account. The tenant must call the [ConfirmPhysicalConnection](https://help.aliyun.com/document_detail/324198.html) operation to accept the shared port.
-//
-// 2.  Then, the Express Connect partner must call the [AttachVbrToVpconn](https://help.aliyun.com/document_detail/324191.html) operation to associate the VBR with the newly added shared port that belongs to the tenant account.
-//
-// @param request - CreateVpconnFromVbrRequest
-//
-// @return CreateVpconnFromVbrResponse
-func (client *Client) CreateVpconnFromVbr(request *CreateVpconnFromVbrRequest) (_result *CreateVpconnFromVbrResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVpconnFromVbrResponse{}
-	_body, _err := client.CreateVpconnFromVbrWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11351,7 +8778,7 @@ func (client *Client) CreateVpconnFromVbr(request *CreateVpconnFromVbrRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVpnAttachmentResponse
-func (client *Client) CreateVpnAttachmentWithOptions(request *CreateVpnAttachmentRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnAttachmentResponse, _err error) {
+func (client *Client) CreateVpnAttachmentWithContext(ctx context.Context, request *CreateVpnAttachmentRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnAttachmentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11473,45 +8900,11 @@ func (client *Client) CreateVpnAttachmentWithOptions(request *CreateVpnAttachmen
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVpnAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an IPsec-VPN connection. After you create the IPsec-VPN connection, you can associate the IPsec-VPN connection with a transit router.
-//
-// Description:
-//
-//	  By default, the IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not bound to any resources. You can call the [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/443993.html) operation to bind the IPsec-VPN connection to a transit router.
-//
-//		- If you want to associate an IPsec-VPN connection with a transit router, you can create a dual-tunnel connection in some regions. For more information, see [Dual-tunnel IPsec-VPN connections](https://help.aliyun.com/document_detail/2853535.html).
-//
-//	    	- When you create a IPsec-VPN connection in dual tunnel mode, you can configure the following request parameters in addition to the required parameters: **ClientToken**, **Name**, **NetworkType**, **EffectImmediately**, **AutoConfigRoute**, **Tags*	- array, **ResourceGroupId**, **TunnelOptionsSpecification*	- array, and **EnableTunnelsBgp**.
-//
-//	    	- When you create a IPsec-VPN connection in single tunnel mode, you can configure the following request parameters in addition to the required parameters: **ClientToken**, **CustomerGatewayId**, **NetworkType**, **Name**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, **Tags*	- array, and **ResourceGroupId**.
-//
-// ### [](#)Prerequisites
-//
-// Before you create an IPsec-VPN connection, you must create a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](https://help.aliyun.com/document_detail/120368.html).
-//
-// If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
-//
-// @param request - CreateVpnAttachmentRequest
-//
-// @return CreateVpnAttachmentResponse
-func (client *Client) CreateVpnAttachment(request *CreateVpnAttachmentRequest) (_result *CreateVpnAttachmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVpnAttachmentResponse{}
-	_body, _err := client.CreateVpnAttachmentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11544,7 +8937,7 @@ func (client *Client) CreateVpnAttachment(request *CreateVpnAttachmentRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVpnConnectionResponse
-func (client *Client) CreateVpnConnectionWithOptions(request *CreateVpnConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnConnectionResponse, _err error) {
+func (client *Client) CreateVpnConnectionWithContext(ctx context.Context, request *CreateVpnConnectionRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11666,49 +9059,11 @@ func (client *Client) CreateVpnConnectionWithOptions(request *CreateVpnConnectio
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVpnConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an IPsec-VPN connection.
-//
-// Description:
-//
-//	  If the VPN gateway supports the dual-tunnel mode, you can specify the following parameters in addition to the required parameters when you call `CreateVpnConnection`:
-//
-//	    **ClientToken**, **Name**, **EffectImmediately**, **AutoConfigRoute**, **Tags*	- array, **TunnelOptionsSpecification*	- array, and **EnableTunnelsBgp**.
-//
-//	    For more information about the regions and zones that support the dual-tunnel mode, see [IPsec-VPN connections support the dual-tunnel mode](https://help.aliyun.com/document_detail/2358946.html).
-//
-//		- If the VPN gateway supports only the dual-tunnel mode, you can specify the following parameters in addition to the required parameters when you call `CreateVpnConnection`:
-//
-//	    **ClientToken**, **CustomerGatewayId**, **Name**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, **RemoteCaCertificate**, and **Tags*	- array.
-//
-//		- **CreateVpnConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
-//
-//	    	- If the VPN gateway is in the **updating*	- state, the IPsec-VPN connection is being created.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the IPsec-VPN connection is created.
-//
-//		- You cannot call **CreateVpnConnection*	- to create multiple IPsec-VPN connections associated with a VPN gateway at the same time.
-//
-// @param request - CreateVpnConnectionRequest
-//
-// @return CreateVpnConnectionResponse
-func (client *Client) CreateVpnConnection(request *CreateVpnConnectionRequest) (_result *CreateVpnConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVpnConnectionResponse{}
-	_body, _err := client.CreateVpnConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11733,7 +9088,7 @@ func (client *Client) CreateVpnConnection(request *CreateVpnConnectionRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVpnGatewayResponse
-func (client *Client) CreateVpnGatewayWithOptions(request *CreateVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnGatewayResponse, _err error) {
+func (client *Client) CreateVpnGatewayWithContext(ctx context.Context, request *CreateVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnGatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11834,41 +9189,11 @@ func (client *Client) CreateVpnGatewayWithOptions(request *CreateVpnGatewayReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVpnGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a VPN gateway.
-//
-// Description:
-//
-//	  Before you create a VPN gateway, we recommend that you know more about the limits of VPN gateways. For more information, see the [Limits](https://help.aliyun.com/document_detail/65290.html) section in the "Create and manage a VPN gateway" topic.
-//
-//		- VPN gateways in some regions support only IPsec-VPN connections in dual-tunnel mode. If you call `CreateVpnGateway` in these regions, you must specify **VSwitchId*	- and **DisasterRecoveryVSwitchId*	- in addition to the required parameters. For more information about the regions and zones that support the IPsec-VPN connections in dual-tunnel mode, see [IPsec-VPN connections support the dual-tunnel mode](https://help.aliyun.com/document_detail/2358946.html).
-//
-//		- **CreateVpnGateway*	- is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the endpoint service is being created in the backend. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of a VPN gateway.
-//
-//	    	- If the VPN gateway is in the **provisioning*	- state, the VPN gateway is being created.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the VPN gateway is created.
-//
-// @param request - CreateVpnGatewayRequest
-//
-// @return CreateVpnGatewayResponse
-func (client *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (_result *CreateVpnGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVpnGatewayResponse{}
-	_body, _err := client.CreateVpnGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11895,7 +9220,7 @@ func (client *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVpnPbrRouteEntryResponse
-func (client *Client) CreateVpnPbrRouteEntryWithOptions(request *CreateVpnPbrRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnPbrRouteEntryResponse, _err error) {
+func (client *Client) CreateVpnPbrRouteEntryWithContext(ctx context.Context, request *CreateVpnPbrRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnPbrRouteEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11980,43 +9305,11 @@ func (client *Client) CreateVpnPbrRouteEntryWithOptions(request *CreateVpnPbrRou
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVpnPbrRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a policy-based route for a VPN gateway.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that you are familiar with the match rules of and limits on policy-based routes. For more information, see [Manage policy-based routes](https://help.aliyun.com/document_detail/110777.html).
-//
-//		- Before you create a policy-based route, make sure that an IPsec-VPN connection is created. For more information, see [CreateVpnConnection](https://help.aliyun.com/document_detail/120391.html).
-//
-//		- **CreateVpnPbrRouteEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the status of the VPN gateway.
-//
-//	    	- If the VPN gateway is in the **updating*	- state, the policy-based route is being created.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the policy-based route is created.
-//
-//		- You cannot call the **CreateVpnPbrRouteEntry*	- operation to create multiple policy-based routes for a VPN gateway at a time.
-//
-// @param request - CreateVpnPbrRouteEntryRequest
-//
-// @return CreateVpnPbrRouteEntryResponse
-func (client *Client) CreateVpnPbrRouteEntry(request *CreateVpnPbrRouteEntryRequest) (_result *CreateVpnPbrRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVpnPbrRouteEntryResponse{}
-	_body, _err := client.CreateVpnPbrRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12039,7 +9332,7 @@ func (client *Client) CreateVpnPbrRouteEntry(request *CreateVpnPbrRouteEntryRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVpnRouteEntryResponse
-func (client *Client) CreateVpnRouteEntryWithOptions(request *CreateVpnRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnRouteEntryResponse, _err error) {
+func (client *Client) CreateVpnRouteEntryWithContext(ctx context.Context, request *CreateVpnRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *CreateVpnRouteEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12116,39 +9409,11 @@ func (client *Client) CreateVpnRouteEntryWithOptions(request *CreateVpnRouteEntr
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVpnRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a destination-based route entry for a VPN gateway.
-//
-// Description:
-//
-//	  **CreateVpnRouteEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
-//
-//	    	- If a VPN gateway is in the **updating*	- state, the destination-based route entry is being created.
-//
-//	    	- If a VPN gateway is in the **active*	- state, the destination-based route entry has been created.
-//
-//		- You cannot repeatedly call **CreateVpnRouteEntry*	- to create a destination-based route entry for a VPN gateway within the specified period of time.
-//
-// @param request - CreateVpnRouteEntryRequest
-//
-// @return CreateVpnRouteEntryResponse
-func (client *Client) CreateVpnRouteEntry(request *CreateVpnRouteEntryRequest) (_result *CreateVpnRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVpnRouteEntryResponse{}
-	_body, _err := client.CreateVpnRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12161,7 +9426,7 @@ func (client *Client) CreateVpnRouteEntry(request *CreateVpnRouteEntryRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeactivateRouterInterfaceResponse
-func (client *Client) DeactivateRouterInterfaceWithOptions(request *DeactivateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DeactivateRouterInterfaceResponse, _err error) {
+func (client *Client) DeactivateRouterInterfaceWithContext(ctx context.Context, request *DeactivateRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DeactivateRouterInterfaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12202,29 +9467,11 @@ func (client *Client) DeactivateRouterInterfaceWithOptions(request *DeactivateRo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeactivateRouterInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 冻结路由器接口
-//
-// @param request - DeactivateRouterInterfaceRequest
-//
-// @return DeactivateRouterInterfaceResponse
-func (client *Client) DeactivateRouterInterface(request *DeactivateRouterInterfaceRequest) (_result *DeactivateRouterInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeactivateRouterInterfaceResponse{}
-	_body, _err := client.DeactivateRouterInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12247,7 +9494,7 @@ func (client *Client) DeactivateRouterInterface(request *DeactivateRouterInterfa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeactiveFlowLogResponse
-func (client *Client) DeactiveFlowLogWithOptions(request *DeactiveFlowLogRequest, runtime *dara.RuntimeOptions) (_result *DeactiveFlowLogResponse, _err error) {
+func (client *Client) DeactiveFlowLogWithContext(ctx context.Context, request *DeactiveFlowLogRequest, runtime *dara.RuntimeOptions) (_result *DeactiveFlowLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12292,39 +9539,11 @@ func (client *Client) DeactiveFlowLogWithOptions(request *DeactiveFlowLogRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeactiveFlowLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables a flow log. After a flow log is disabled, the system no longer captures the traffic information about a resource.
-//
-// Description:
-//
-//	  The **DeactiveFlowLog*	- operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeFlowLogs](https://help.aliyun.com/document_detail/87923.html) operation to query the status of a flow log:
-//
-//	    	- If the flow log is in the **Deactivating*	- state, the flow log is being disabled.
-//
-//	    	- If the flow log is in the **Inactive*	- state, the flow log is disabled.
-//
-//		- You cannot repeatedly call the **DeactiveFlowLog*	- operation to disable a flow log within the specified period of time.
-//
-// @param request - DeactiveFlowLogRequest
-//
-// @return DeactiveFlowLogResponse
-func (client *Client) DeactiveFlowLog(request *DeactiveFlowLogRequest) (_result *DeactiveFlowLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeactiveFlowLogResponse{}
-	_body, _err := client.DeactiveFlowLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12337,7 +9556,7 @@ func (client *Client) DeactiveFlowLog(request *DeactiveFlowLogRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteBgpGroupResponse
-func (client *Client) DeleteBgpGroupWithOptions(request *DeleteBgpGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteBgpGroupResponse, _err error) {
+func (client *Client) DeleteBgpGroupWithContext(ctx context.Context, request *DeleteBgpGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteBgpGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12386,29 +9605,11 @@ func (client *Client) DeleteBgpGroupWithOptions(request *DeleteBgpGroupRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteBgpGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Border Gateway Protocol (BGP) group.
-//
-// @param request - DeleteBgpGroupRequest
-//
-// @return DeleteBgpGroupResponse
-func (client *Client) DeleteBgpGroup(request *DeleteBgpGroupRequest) (_result *DeleteBgpGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteBgpGroupResponse{}
-	_body, _err := client.DeleteBgpGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12421,7 +9622,7 @@ func (client *Client) DeleteBgpGroup(request *DeleteBgpGroupRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteBgpNetworkResponse
-func (client *Client) DeleteBgpNetworkWithOptions(request *DeleteBgpNetworkRequest, runtime *dara.RuntimeOptions) (_result *DeleteBgpNetworkResponse, _err error) {
+func (client *Client) DeleteBgpNetworkWithContext(ctx context.Context, request *DeleteBgpNetworkRequest, runtime *dara.RuntimeOptions) (_result *DeleteBgpNetworkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12474,29 +9675,11 @@ func (client *Client) DeleteBgpNetworkWithOptions(request *DeleteBgpNetworkReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteBgpNetworkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an advertised Border Gateway Protocol (BGP) network.
-//
-// @param request - DeleteBgpNetworkRequest
-//
-// @return DeleteBgpNetworkResponse
-func (client *Client) DeleteBgpNetwork(request *DeleteBgpNetworkRequest) (_result *DeleteBgpNetworkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteBgpNetworkResponse{}
-	_body, _err := client.DeleteBgpNetworkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12509,7 +9692,7 @@ func (client *Client) DeleteBgpNetwork(request *DeleteBgpNetworkRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteBgpPeerResponse
-func (client *Client) DeleteBgpPeerWithOptions(request *DeleteBgpPeerRequest, runtime *dara.RuntimeOptions) (_result *DeleteBgpPeerResponse, _err error) {
+func (client *Client) DeleteBgpPeerWithContext(ctx context.Context, request *DeleteBgpPeerRequest, runtime *dara.RuntimeOptions) (_result *DeleteBgpPeerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12558,29 +9741,11 @@ func (client *Client) DeleteBgpPeerWithOptions(request *DeleteBgpPeerRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteBgpPeerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Border Gateway Protocol (BGP) peer.
-//
-// @param request - DeleteBgpPeerRequest
-//
-// @return DeleteBgpPeerResponse
-func (client *Client) DeleteBgpPeer(request *DeleteBgpPeerRequest) (_result *DeleteBgpPeerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteBgpPeerResponse{}
-	_body, _err := client.DeleteBgpPeerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12597,7 +9762,7 @@ func (client *Client) DeleteBgpPeer(request *DeleteBgpPeerRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCommonBandwidthPackageResponse
-func (client *Client) DeleteCommonBandwidthPackageWithOptions(request *DeleteCommonBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *DeleteCommonBandwidthPackageResponse, _err error) {
+func (client *Client) DeleteCommonBandwidthPackageWithContext(ctx context.Context, request *DeleteCommonBandwidthPackageRequest, runtime *dara.RuntimeOptions) (_result *DeleteCommonBandwidthPackageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12646,33 +9811,11 @@ func (client *Client) DeleteCommonBandwidthPackageWithOptions(request *DeleteCom
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCommonBandwidthPackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an Internet Shared Bandwidth instance.
-//
-// Description:
-//
-// You cannot repeatedly call the **DeleteCommonBandwidthPackage*	- operation to delete an Internet Shared Bandwidth instance within the specified period of time.
-//
-// @param request - DeleteCommonBandwidthPackageRequest
-//
-// @return DeleteCommonBandwidthPackageResponse
-func (client *Client) DeleteCommonBandwidthPackage(request *DeleteCommonBandwidthPackageRequest) (_result *DeleteCommonBandwidthPackageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCommonBandwidthPackageResponse{}
-	_body, _err := client.DeleteCommonBandwidthPackageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12689,7 +9832,7 @@ func (client *Client) DeleteCommonBandwidthPackage(request *DeleteCommonBandwidt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCustomerGatewayResponse
-func (client *Client) DeleteCustomerGatewayWithOptions(request *DeleteCustomerGatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomerGatewayResponse, _err error) {
+func (client *Client) DeleteCustomerGatewayWithContext(ctx context.Context, request *DeleteCustomerGatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomerGatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12738,33 +9881,11 @@ func (client *Client) DeleteCustomerGatewayWithOptions(request *DeleteCustomerGa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCustomerGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a customer gateway.
-//
-// Description:
-//
-// Before you delete a customer gateway, make sure that no IPsec-VPN connection is associated with the customer gateway. For more information about how to delete an IPsec-VPN connection, see [DeleteVpnAttachment](https://help.aliyun.com/document_detail/2526938.html) or [DeleteVpnConnection](https://help.aliyun.com/document_detail/2526948.html).
-//
-// @param request - DeleteCustomerGatewayRequest
-//
-// @return DeleteCustomerGatewayResponse
-func (client *Client) DeleteCustomerGateway(request *DeleteCustomerGatewayRequest) (_result *DeleteCustomerGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCustomerGatewayResponse{}
-	_body, _err := client.DeleteCustomerGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12789,7 +9910,7 @@ func (client *Client) DeleteCustomerGateway(request *DeleteCustomerGatewayReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDhcpOptionsSetResponse
-func (client *Client) DeleteDhcpOptionsSetWithOptions(request *DeleteDhcpOptionsSetRequest, runtime *dara.RuntimeOptions) (_result *DeleteDhcpOptionsSetResponse, _err error) {
+func (client *Client) DeleteDhcpOptionsSetWithContext(ctx context.Context, request *DeleteDhcpOptionsSetRequest, runtime *dara.RuntimeOptions) (_result *DeleteDhcpOptionsSetResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12842,41 +9963,11 @@ func (client *Client) DeleteDhcpOptionsSetWithOptions(request *DeleteDhcpOptions
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDhcpOptionsSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a DHCP options set.
-//
-// Description:
-//
-// ## [](#)Description
-//
-//   - **DeleteDhcpOptionsSet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetDhcpOptionsSet](https://help.aliyun.com/document_detail/189208.html) operation to query the status of the task.
-//
-//   - If the DHCP options set is in the **Deleting*	- state, the DHCP options set is being deleted.
-//
-//   - If you cannot query the DHCP options set, the DHCP options set is deleted.
-//
-//   - You cannot repeatedly call the **DeleteDhcpOptionsSet*	- operation to delete a DHCP options set within the specified period of time.
-//
-// @param request - DeleteDhcpOptionsSetRequest
-//
-// @return DeleteDhcpOptionsSetResponse
-func (client *Client) DeleteDhcpOptionsSet(request *DeleteDhcpOptionsSetRequest) (_result *DeleteDhcpOptionsSetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDhcpOptionsSetResponse{}
-	_body, _err := client.DeleteDhcpOptionsSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12889,7 +9980,7 @@ func (client *Client) DeleteDhcpOptionsSet(request *DeleteDhcpOptionsSetRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteExpressConnectTrafficQosResponse
-func (client *Client) DeleteExpressConnectTrafficQosWithOptions(request *DeleteExpressConnectTrafficQosRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectTrafficQosResponse, _err error) {
+func (client *Client) DeleteExpressConnectTrafficQosWithContext(ctx context.Context, request *DeleteExpressConnectTrafficQosRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectTrafficQosResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12938,29 +10029,11 @@ func (client *Client) DeleteExpressConnectTrafficQosWithOptions(request *DeleteE
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteExpressConnectTrafficQosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a quality of service (QoS) policy.
-//
-// @param request - DeleteExpressConnectTrafficQosRequest
-//
-// @return DeleteExpressConnectTrafficQosResponse
-func (client *Client) DeleteExpressConnectTrafficQos(request *DeleteExpressConnectTrafficQosRequest) (_result *DeleteExpressConnectTrafficQosResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteExpressConnectTrafficQosResponse{}
-	_body, _err := client.DeleteExpressConnectTrafficQosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12973,7 +10046,7 @@ func (client *Client) DeleteExpressConnectTrafficQos(request *DeleteExpressConne
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteExpressConnectTrafficQosQueueResponse
-func (client *Client) DeleteExpressConnectTrafficQosQueueWithOptions(request *DeleteExpressConnectTrafficQosQueueRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectTrafficQosQueueResponse, _err error) {
+func (client *Client) DeleteExpressConnectTrafficQosQueueWithContext(ctx context.Context, request *DeleteExpressConnectTrafficQosQueueRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectTrafficQosQueueResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13026,29 +10099,11 @@ func (client *Client) DeleteExpressConnectTrafficQosQueueWithOptions(request *De
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteExpressConnectTrafficQosQueueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a quality of service (QoS) queue.
-//
-// @param request - DeleteExpressConnectTrafficQosQueueRequest
-//
-// @return DeleteExpressConnectTrafficQosQueueResponse
-func (client *Client) DeleteExpressConnectTrafficQosQueue(request *DeleteExpressConnectTrafficQosQueueRequest) (_result *DeleteExpressConnectTrafficQosQueueResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteExpressConnectTrafficQosQueueResponse{}
-	_body, _err := client.DeleteExpressConnectTrafficQosQueueWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13061,7 +10116,7 @@ func (client *Client) DeleteExpressConnectTrafficQosQueue(request *DeleteExpress
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteExpressConnectTrafficQosRuleResponse
-func (client *Client) DeleteExpressConnectTrafficQosRuleWithOptions(request *DeleteExpressConnectTrafficQosRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectTrafficQosRuleResponse, _err error) {
+func (client *Client) DeleteExpressConnectTrafficQosRuleWithContext(ctx context.Context, request *DeleteExpressConnectTrafficQosRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectTrafficQosRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13118,29 +10173,11 @@ func (client *Client) DeleteExpressConnectTrafficQosRuleWithOptions(request *Del
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteExpressConnectTrafficQosRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a quality of service (QoS) rule.
-//
-// @param request - DeleteExpressConnectTrafficQosRuleRequest
-//
-// @return DeleteExpressConnectTrafficQosRuleResponse
-func (client *Client) DeleteExpressConnectTrafficQosRule(request *DeleteExpressConnectTrafficQosRuleRequest) (_result *DeleteExpressConnectTrafficQosRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteExpressConnectTrafficQosRuleResponse{}
-	_body, _err := client.DeleteExpressConnectTrafficQosRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13157,7 +10194,7 @@ func (client *Client) DeleteExpressConnectTrafficQosRule(request *DeleteExpressC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFailoverTestJobResponse
-func (client *Client) DeleteFailoverTestJobWithOptions(request *DeleteFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteFailoverTestJobResponse, _err error) {
+func (client *Client) DeleteFailoverTestJobWithContext(ctx context.Context, request *DeleteFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteFailoverTestJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13206,33 +10243,11 @@ func (client *Client) DeleteFailoverTestJobWithOptions(request *DeleteFailoverTe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFailoverTestJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a failover test.
-//
-// Description:
-//
-// You can delete only failover tests that are in the **Pending*	- or **Complete*	- state.
-//
-// @param request - DeleteFailoverTestJobRequest
-//
-// @return DeleteFailoverTestJobResponse
-func (client *Client) DeleteFailoverTestJob(request *DeleteFailoverTestJobRequest) (_result *DeleteFailoverTestJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteFailoverTestJobResponse{}
-	_body, _err := client.DeleteFailoverTestJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13255,7 +10270,7 @@ func (client *Client) DeleteFailoverTestJob(request *DeleteFailoverTestJobReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFlowLogResponse
-func (client *Client) DeleteFlowLogWithOptions(request *DeleteFlowLogRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowLogResponse, _err error) {
+func (client *Client) DeleteFlowLogWithContext(ctx context.Context, request *DeleteFlowLogRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13300,39 +10315,11 @@ func (client *Client) DeleteFlowLogWithOptions(request *DeleteFlowLogRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFlowLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a flow log.
-//
-// Description:
-//
-//	  The **DeleteFlowLog*	- operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeFlowLogs](https://help.aliyun.com/document_detail/87923.html) operation to query the status of a flow log:
-//
-//	    	- If the flow log is in the **Deleting*	- state, the flow log is being deleted.
-//
-//	    	- If you cannot query the flow log, the flow log is deleted.
-//
-//		- You cannot repeatedly call the **DeleteFlowLog*	- operation to delete a flow log within the specified period of time.
-//
-// @param request - DeleteFlowLogRequest
-//
-// @return DeleteFlowLogResponse
-func (client *Client) DeleteFlowLog(request *DeleteFlowLogRequest) (_result *DeleteFlowLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteFlowLogResponse{}
-	_body, _err := client.DeleteFlowLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13359,7 +10346,7 @@ func (client *Client) DeleteFlowLog(request *DeleteFlowLogRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteForwardEntryResponse
-func (client *Client) DeleteForwardEntryWithOptions(request *DeleteForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteForwardEntryResponse, _err error) {
+func (client *Client) DeleteForwardEntryWithContext(ctx context.Context, request *DeleteForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteForwardEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13412,43 +10399,11 @@ func (client *Client) DeleteForwardEntryWithOptions(request *DeleteForwardEntryR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteForwardEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a DNAT entry.
-//
-// Description:
-//
-// ## [](#)Description
-//
-//   - **DeleteForwardEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeForwardTableEntries](https://help.aliyun.com/document_detail/36053.html) operation to query the status of the task.
-//
-//   - If the DNAT entry is in the **Deleting*	- state, the system is deleting the DNAT entry. In this case, you can only query the status of the DNAT entry, but cannot perform other operations.
-//
-//   - If the DNAT entry cannot be found, it is deleted.
-//
-// >  If a DNAT table has DNAT entries in the **Pending*	- state, you cannot delete the DNAT entries.
-//
-//   - You cannot repeatedly call the **DeleteForwardEntry*	- operation to delete a DNAT entry within the specified period of time.
-//
-// @param request - DeleteForwardEntryRequest
-//
-// @return DeleteForwardEntryResponse
-func (client *Client) DeleteForwardEntry(request *DeleteForwardEntryRequest) (_result *DeleteForwardEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteForwardEntryResponse{}
-	_body, _err := client.DeleteForwardEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13473,7 +10428,7 @@ func (client *Client) DeleteForwardEntry(request *DeleteForwardEntryRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFullNatEntryResponse
-func (client *Client) DeleteFullNatEntryWithOptions(request *DeleteFullNatEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteFullNatEntryResponse, _err error) {
+func (client *Client) DeleteFullNatEntryWithContext(ctx context.Context, request *DeleteFullNatEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteFullNatEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13530,41 +10485,11 @@ func (client *Client) DeleteFullNatEntryWithOptions(request *DeleteFullNatEntryR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFullNatEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a FULLNAT entry.
-//
-// Description:
-//
-// ## [](#)Description
-//
-// **DeleteFullNatEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListFullNatEntries](https://help.aliyun.com/document_detail/348779.html) operation to query the status of a FULLNAT entry.
-//
-//   - If the FULLNAT entry is in the **Deleting*	- state, the system is deleting the FULLNAT entry. In this case, you can query the status of the FULLNAT entry, but cannot perform other operations.
-//
-//   - If the FULLNAT entry cannot be found, the FULLNAT entry is deleted.
-//
-// You cannot repeatedly call the **DeleteFullNatEntry*	- operation to delete a FULLNAT entry within the specified period of time.
-//
-// @param request - DeleteFullNatEntryRequest
-//
-// @return DeleteFullNatEntryResponse
-func (client *Client) DeleteFullNatEntry(request *DeleteFullNatEntryRequest) (_result *DeleteFullNatEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteFullNatEntryResponse{}
-	_body, _err := client.DeleteFullNatEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13587,7 +10512,7 @@ func (client *Client) DeleteFullNatEntry(request *DeleteFullNatEntryRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteGlobalAccelerationInstanceResponse
-func (client *Client) DeleteGlobalAccelerationInstanceWithOptions(request *DeleteGlobalAccelerationInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteGlobalAccelerationInstanceResponse, _err error) {
+func (client *Client) DeleteGlobalAccelerationInstanceWithContext(ctx context.Context, request *DeleteGlobalAccelerationInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteGlobalAccelerationInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13632,39 +10557,11 @@ func (client *Client) DeleteGlobalAccelerationInstanceWithOptions(request *Delet
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteGlobalAccelerationInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Global Accelerator (GA) instance.
-//
-// Description:
-//
-// When you call this operation, take note of the following items:
-//
-//   - You can delete only pay-as-you-go instances.
-//
-//   - Before you can delete a dedicated instance, disassociate the backend server from the instance first.
-//
-//   - Before you can delete a shared instance, disassociate the elastic IP address (EIP) from the instance first.
-//
-// @param request - DeleteGlobalAccelerationInstanceRequest
-//
-// @return DeleteGlobalAccelerationInstanceResponse
-func (client *Client) DeleteGlobalAccelerationInstance(request *DeleteGlobalAccelerationInstanceRequest) (_result *DeleteGlobalAccelerationInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteGlobalAccelerationInstanceResponse{}
-	_body, _err := client.DeleteGlobalAccelerationInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13695,7 +10592,7 @@ func (client *Client) DeleteGlobalAccelerationInstance(request *DeleteGlobalAcce
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteHaVipResponse
-func (client *Client) DeleteHaVipWithOptions(request *DeleteHaVipRequest, runtime *dara.RuntimeOptions) (_result *DeleteHaVipResponse, _err error) {
+func (client *Client) DeleteHaVipWithContext(ctx context.Context, request *DeleteHaVipRequest, runtime *dara.RuntimeOptions) (_result *DeleteHaVipResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13744,47 +10641,11 @@ func (client *Client) DeleteHaVipWithOptions(request *DeleteHaVipRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteHaVipResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a high-availability virtual IP address (HaVip).
-//
-// Description:
-//
-// When you call this operation, take note of the following rules:
-//
-//   - The HaVip must be in the available state before it can be deleted.
-//
-//   - Make sure that no routes are destined for the HaVip.
-//
-//   - Make sure that no elastic IP addresses (EIPs) are associated with the HaVip.
-//
-//   - **DeleteHaVip*	- is an asynchronous operation. After a request is sent, the system returns a request ID while deleting the HaVip in the background. Call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
-//
-//   - The **Deleting*	- state indicates the HaVip is being deleted.
-//
-//   - If no HaVip is found, the HaVip is deleted.
-//
-//   - You cannot repeatedly call the **DeleteHaVip*	- operation to delete the same HaVip.
-//
-// @param request - DeleteHaVipRequest
-//
-// @return DeleteHaVipResponse
-func (client *Client) DeleteHaVip(request *DeleteHaVipRequest) (_result *DeleteHaVipResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteHaVipResponse{}
-	_body, _err := client.DeleteHaVipWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13797,7 +10658,7 @@ func (client *Client) DeleteHaVip(request *DeleteHaVipRequest) (_result *DeleteH
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIPv6TranslatorResponse
-func (client *Client) DeleteIPv6TranslatorWithOptions(request *DeleteIPv6TranslatorRequest, runtime *dara.RuntimeOptions) (_result *DeleteIPv6TranslatorResponse, _err error) {
+func (client *Client) DeleteIPv6TranslatorWithContext(ctx context.Context, request *DeleteIPv6TranslatorRequest, runtime *dara.RuntimeOptions) (_result *DeleteIPv6TranslatorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13846,29 +10707,11 @@ func (client *Client) DeleteIPv6TranslatorWithOptions(request *DeleteIPv6Transla
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIPv6TranslatorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an IPv6 Translation Service instance.
-//
-// @param request - DeleteIPv6TranslatorRequest
-//
-// @return DeleteIPv6TranslatorResponse
-func (client *Client) DeleteIPv6Translator(request *DeleteIPv6TranslatorRequest) (_result *DeleteIPv6TranslatorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIPv6TranslatorResponse{}
-	_body, _err := client.DeleteIPv6TranslatorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13883,7 +10726,7 @@ func (client *Client) DeleteIPv6Translator(request *DeleteIPv6TranslatorRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIPv6TranslatorAclListResponse
-func (client *Client) DeleteIPv6TranslatorAclListWithOptions(request *DeleteIPv6TranslatorAclListRequest, runtime *dara.RuntimeOptions) (_result *DeleteIPv6TranslatorAclListResponse, _err error) {
+func (client *Client) DeleteIPv6TranslatorAclListWithContext(ctx context.Context, request *DeleteIPv6TranslatorAclListRequest, runtime *dara.RuntimeOptions) (_result *DeleteIPv6TranslatorAclListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13932,32 +10775,11 @@ func (client *Client) DeleteIPv6TranslatorAclListWithOptions(request *DeleteIPv6
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIPv6TranslatorAclListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteIPv6TranslatorAclList is deprecated
-//
-// Summary:
-//
-// Deletes an access control list (ACL). You can delete an ACL only when the ACL is not associated with IPv6 translation mappings.
-//
-// @param request - DeleteIPv6TranslatorAclListRequest
-//
-// @return DeleteIPv6TranslatorAclListResponse
-// Deprecated
-func (client *Client) DeleteIPv6TranslatorAclList(request *DeleteIPv6TranslatorAclListRequest) (_result *DeleteIPv6TranslatorAclListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIPv6TranslatorAclListResponse{}
-	_body, _err := client.DeleteIPv6TranslatorAclListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13972,7 +10794,7 @@ func (client *Client) DeleteIPv6TranslatorAclList(request *DeleteIPv6TranslatorA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIPv6TranslatorEntryResponse
-func (client *Client) DeleteIPv6TranslatorEntryWithOptions(request *DeleteIPv6TranslatorEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteIPv6TranslatorEntryResponse, _err error) {
+func (client *Client) DeleteIPv6TranslatorEntryWithContext(ctx context.Context, request *DeleteIPv6TranslatorEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteIPv6TranslatorEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14025,32 +10847,11 @@ func (client *Client) DeleteIPv6TranslatorEntryWithOptions(request *DeleteIPv6Tr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIPv6TranslatorEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteIPv6TranslatorEntry is deprecated
-//
-// Summary:
-//
-// Deletes an IPv6 mapping entry.
-//
-// @param request - DeleteIPv6TranslatorEntryRequest
-//
-// @return DeleteIPv6TranslatorEntryResponse
-// Deprecated
-func (client *Client) DeleteIPv6TranslatorEntry(request *DeleteIPv6TranslatorEntryRequest) (_result *DeleteIPv6TranslatorEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIPv6TranslatorEntryResponse{}
-	_body, _err := client.DeleteIPv6TranslatorEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14073,7 +10874,7 @@ func (client *Client) DeleteIPv6TranslatorEntry(request *DeleteIPv6TranslatorEnt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIpsecServerResponse
-func (client *Client) DeleteIpsecServerWithOptions(request *DeleteIpsecServerRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpsecServerResponse, _err error) {
+func (client *Client) DeleteIpsecServerWithContext(ctx context.Context, request *DeleteIpsecServerRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpsecServerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14110,39 +10911,11 @@ func (client *Client) DeleteIpsecServerWithOptions(request *DeleteIpsecServerReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIpsecServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an IPsec server.
-//
-// Description:
-//
-//	  **DeleteIpsecServer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
-//
-//	    	- If the VPN gateway is in the **updating*	- state, the IPsec server is being deleted.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the IPsec server is deleted.
-//
-//		- You cannot call **DeleteIpsecServer*	- within the specified period of time.
-//
-// @param request - DeleteIpsecServerRequest
-//
-// @return DeleteIpsecServerResponse
-func (client *Client) DeleteIpsecServer(request *DeleteIpsecServerRequest) (_result *DeleteIpsecServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIpsecServerResponse{}
-	_body, _err := client.DeleteIpsecServerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14169,7 +10942,7 @@ func (client *Client) DeleteIpsecServer(request *DeleteIpsecServerRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIpv4GatewayResponse
-func (client *Client) DeleteIpv4GatewayWithOptions(request *DeleteIpv4GatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpv4GatewayResponse, _err error) {
+func (client *Client) DeleteIpv4GatewayWithContext(ctx context.Context, request *DeleteIpv4GatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpv4GatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14230,43 +11003,11 @@ func (client *Client) DeleteIpv4GatewayWithOptions(request *DeleteIpv4GatewayReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIpv4GatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an IPv4 gateway.
-//
-// Description:
-//
-// ### [](#)Description
-//
-//   - Before you delete an IPv4 gateway, make sure that no route tables are associated with the IPv4 gateway.
-//
-//   - **DeleteIpv4Gateway*	- is an asynchronous operation. After a request is sent, the system returns a **request ID*	- and runs the task in the background. You can call the [GetIpv4GatewayAttribute](https://help.aliyun.com/document_detail/407670.html) operation to query the status of the task.
-//
-//   - If the IPv4 gateway is in the **Deleting*	- state, the IPv4 gateway is being deleted.
-//
-//   - If the IPv4 gateway cannot be queried, the IPv4 gateway is deleted.
-//
-//   - After you call the **DeleteIpv4Gateway*	- operation to delete an IPv4 gateway, you cannot call the operation again to delete the IPv4 gateway until the deletion task is complete.
-//
-// @param request - DeleteIpv4GatewayRequest
-//
-// @return DeleteIpv4GatewayResponse
-func (client *Client) DeleteIpv4Gateway(request *DeleteIpv4GatewayRequest) (_result *DeleteIpv4GatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIpv4GatewayResponse{}
-	_body, _err := client.DeleteIpv4GatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14289,7 +11030,7 @@ func (client *Client) DeleteIpv4Gateway(request *DeleteIpv4GatewayRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIpv6EgressOnlyRuleResponse
-func (client *Client) DeleteIpv6EgressOnlyRuleWithOptions(request *DeleteIpv6EgressOnlyRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpv6EgressOnlyRuleResponse, _err error) {
+func (client *Client) DeleteIpv6EgressOnlyRuleWithContext(ctx context.Context, request *DeleteIpv6EgressOnlyRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpv6EgressOnlyRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14342,39 +11083,11 @@ func (client *Client) DeleteIpv6EgressOnlyRuleWithOptions(request *DeleteIpv6Egr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIpv6EgressOnlyRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an egress-only rule.
-//
-// Description:
-//
-//	  **DeleteIpv6EgressOnlyRule*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeIpv6EgressOnlyRules](https://help.aliyun.com/document_detail/102208.html) operation to query the status of the task.
-//
-//	    	- If the egress-only rule is in the **Deleting*	- state, the egress-only rule is being deleted.
-//
-//	    	- If you cannot query the egress-only rule, the egress-only rule is deleted.
-//
-//		- You cannot call the **DeleteIpv6EgressOnlyRule*	- within the specified period of time.
-//
-// @param request - DeleteIpv6EgressOnlyRuleRequest
-//
-// @return DeleteIpv6EgressOnlyRuleResponse
-func (client *Client) DeleteIpv6EgressOnlyRule(request *DeleteIpv6EgressOnlyRuleRequest) (_result *DeleteIpv6EgressOnlyRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIpv6EgressOnlyRuleResponse{}
-	_body, _err := client.DeleteIpv6EgressOnlyRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14399,7 +11112,7 @@ func (client *Client) DeleteIpv6EgressOnlyRule(request *DeleteIpv6EgressOnlyRule
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIpv6GatewayResponse
-func (client *Client) DeleteIpv6GatewayWithOptions(request *DeleteIpv6GatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpv6GatewayResponse, _err error) {
+func (client *Client) DeleteIpv6GatewayWithContext(ctx context.Context, request *DeleteIpv6GatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpv6GatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14456,41 +11169,11 @@ func (client *Client) DeleteIpv6GatewayWithOptions(request *DeleteIpv6GatewayReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIpv6GatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an IPv6 gateway.
-//
-// Description:
-//
-// Before you delete an IPv6 gateway, you must delete the egress-only rules of the IPv6 gateway. For more information, see [DeleteIpv6EgressOnlyRule](https://help.aliyun.com/document_detail/102201.html).
-//
-//   - **DeleteIpv6Gateway*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeIpv6GatewayAttribute](https://help.aliyun.com/document_detail/102226.html) operation to query the status of the task:
-//
-//   - If the IPv6 gateway is in the **Deleting*	- state, the IPv6 gateway is being deleted.
-//
-//   - If you cannot query the IPv6 gateway, the IPv6 gateway is deleted.
-//
-//   - You cannot repeatedly call the **DeleteIpv6Gateway*	- operation to delete an IPv6 gateway within the specified period of time.
-//
-// @param request - DeleteIpv6GatewayRequest
-//
-// @return DeleteIpv6GatewayResponse
-func (client *Client) DeleteIpv6Gateway(request *DeleteIpv6GatewayRequest) (_result *DeleteIpv6GatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIpv6GatewayResponse{}
-	_body, _err := client.DeleteIpv6GatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14507,7 +11190,7 @@ func (client *Client) DeleteIpv6Gateway(request *DeleteIpv6GatewayRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIpv6InternetBandwidthResponse
-func (client *Client) DeleteIpv6InternetBandwidthWithOptions(request *DeleteIpv6InternetBandwidthRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpv6InternetBandwidthResponse, _err error) {
+func (client *Client) DeleteIpv6InternetBandwidthWithContext(ctx context.Context, request *DeleteIpv6InternetBandwidthRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpv6InternetBandwidthResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14568,33 +11251,11 @@ func (client *Client) DeleteIpv6InternetBandwidthWithOptions(request *DeleteIpv6
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIpv6InternetBandwidthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes Internet bandwidth.
-//
-// Description:
-//
-// You cannot call the **DeleteIpv6InternetBandwidth*	- operation within the specified period of time.
-//
-// @param request - DeleteIpv6InternetBandwidthRequest
-//
-// @return DeleteIpv6InternetBandwidthResponse
-func (client *Client) DeleteIpv6InternetBandwidth(request *DeleteIpv6InternetBandwidthRequest) (_result *DeleteIpv6InternetBandwidthResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIpv6InternetBandwidthResponse{}
-	_body, _err := client.DeleteIpv6InternetBandwidthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14621,7 +11282,7 @@ func (client *Client) DeleteIpv6InternetBandwidth(request *DeleteIpv6InternetBan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteNatGatewayResponse
-func (client *Client) DeleteNatGatewayWithOptions(request *DeleteNatGatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteNatGatewayResponse, _err error) {
+func (client *Client) DeleteNatGatewayWithContext(ctx context.Context, request *DeleteNatGatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteNatGatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14670,43 +11331,11 @@ func (client *Client) DeleteNatGatewayWithOptions(request *DeleteNatGatewayReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNatGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a specified Internet NAT gateway.
-//
-// Description:
-//
-// ## [](#)Description
-//
-//   - **DeleteNatGateway*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeNatGateways](https://help.aliyun.com/document_detail/36054.html) to query the status of the task.
-//
-//   - If a NAT gateway is in the **Deleting*	- state, the NAT gateway is being deleted. In this case, you can query the NAT gateway but you cannot perform other operations.
-//
-//   - If the NAT gateway cannot be found, the NAT gateway is deleted.
-//
-//     After you delete a NAT gateway, you cannot restore the NAT gateway. Proceed with caution.
-//
-//   - You cannot repeatedly call the **DeleteNatGateway*	- operation to delete a NAT gateway within the specified period of time.
-//
-// @param request - DeleteNatGatewayRequest
-//
-// @return DeleteNatGatewayResponse
-func (client *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (_result *DeleteNatGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteNatGatewayResponse{}
-	_body, _err := client.DeleteNatGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14731,7 +11360,7 @@ func (client *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteNatIpResponse
-func (client *Client) DeleteNatIpWithOptions(request *DeleteNatIpRequest, runtime *dara.RuntimeOptions) (_result *DeleteNatIpResponse, _err error) {
+func (client *Client) DeleteNatIpWithContext(ctx context.Context, request *DeleteNatIpRequest, runtime *dara.RuntimeOptions) (_result *DeleteNatIpResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14788,41 +11417,11 @@ func (client *Client) DeleteNatIpWithOptions(request *DeleteNatIpRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNatIpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a NAT IP address.
-//
-// Description:
-//
-// ## [](#)Description
-//
-//   - **DeleteNatIp*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListNatIps](https://help.aliyun.com/document_detail/281979.html) operation to query the status of the task.
-//
-//   - If the NAT IP address is in the **Deleting*	- state, the NAT IP address is being deleted. In this case, you can only query the NAT IP address but cannot perform other operations.
-//
-//   - If the NAT IP address cannot be found, it is deleted.
-//
-//   - You cannot repeatedly call the **DeleteNatIp*	- operation to delete a NAT IP address within the specified period of time.
-//
-// @param request - DeleteNatIpRequest
-//
-// @return DeleteNatIpResponse
-func (client *Client) DeleteNatIp(request *DeleteNatIpRequest) (_result *DeleteNatIpResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteNatIpResponse{}
-	_body, _err := client.DeleteNatIpWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14841,7 +11440,7 @@ func (client *Client) DeleteNatIp(request *DeleteNatIpRequest) (_result *DeleteN
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteNatIpCidrResponse
-func (client *Client) DeleteNatIpCidrWithOptions(request *DeleteNatIpCidrRequest, runtime *dara.RuntimeOptions) (_result *DeleteNatIpCidrResponse, _err error) {
+func (client *Client) DeleteNatIpCidrWithContext(ctx context.Context, request *DeleteNatIpCidrRequest, runtime *dara.RuntimeOptions) (_result *DeleteNatIpCidrResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14902,35 +11501,11 @@ func (client *Client) DeleteNatIpCidrWithOptions(request *DeleteNatIpCidrRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNatIpCidrResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a NAT CIDR block.
-//
-// Description:
-//
-// ## [](#)Description
-//
-// You cannot repeatedly call the **DeleteNatIpCidr*	- operation to delete a NAT CIDR block within the specified period of time.
-//
-// @param request - DeleteNatIpCidrRequest
-//
-// @return DeleteNatIpCidrResponse
-func (client *Client) DeleteNatIpCidr(request *DeleteNatIpCidrRequest) (_result *DeleteNatIpCidrResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteNatIpCidrResponse{}
-	_body, _err := client.DeleteNatIpCidrWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14949,7 +11524,7 @@ func (client *Client) DeleteNatIpCidr(request *DeleteNatIpCidrRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteNetworkAclResponse
-func (client *Client) DeleteNetworkAclWithOptions(request *DeleteNetworkAclRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkAclResponse, _err error) {
+func (client *Client) DeleteNetworkAclWithContext(ctx context.Context, request *DeleteNetworkAclRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkAclResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15006,35 +11581,11 @@ func (client *Client) DeleteNetworkAclWithOptions(request *DeleteNetworkAclReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNetworkAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a network access control list (ACL).
-//
-// Description:
-//
-// ## [](#)Description
-//
-// You cannot repeatedly call the **DeleteNetworkAcl*	- operation within the specified period of time.
-//
-// @param request - DeleteNetworkAclRequest
-//
-// @return DeleteNetworkAclResponse
-func (client *Client) DeleteNetworkAcl(request *DeleteNetworkAclRequest) (_result *DeleteNetworkAclResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteNetworkAclResponse{}
-	_body, _err := client.DeleteNetworkAclWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15051,7 +11602,7 @@ func (client *Client) DeleteNetworkAcl(request *DeleteNetworkAclRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePhysicalConnectionResponse
-func (client *Client) DeletePhysicalConnectionWithOptions(request *DeletePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *DeletePhysicalConnectionResponse, _err error) {
+func (client *Client) DeletePhysicalConnectionWithContext(ctx context.Context, request *DeletePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *DeletePhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15100,33 +11651,11 @@ func (client *Client) DeletePhysicalConnectionWithOptions(request *DeletePhysica
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a connection over an Express Connect circuit.
-//
-// Description:
-//
-// You can only delete a connection over an Express Connect circuit that is in the **Allocated**, **Confirmed**, **Rejected**, **Canceled**, **AllocationFailed**, and **Terminated*	- states.
-//
-// @param request - DeletePhysicalConnectionRequest
-//
-// @return DeletePhysicalConnectionResponse
-func (client *Client) DeletePhysicalConnection(request *DeletePhysicalConnectionRequest) (_result *DeletePhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePhysicalConnectionResponse{}
-	_body, _err := client.DeletePhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15153,7 +11682,7 @@ func (client *Client) DeletePhysicalConnection(request *DeletePhysicalConnection
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePublicIpAddressPoolResponse
-func (client *Client) DeletePublicIpAddressPoolWithOptions(request *DeletePublicIpAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *DeletePublicIpAddressPoolResponse, _err error) {
+func (client *Client) DeletePublicIpAddressPoolWithContext(ctx context.Context, request *DeletePublicIpAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *DeletePublicIpAddressPoolResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15206,43 +11735,11 @@ func (client *Client) DeletePublicIpAddressPoolWithOptions(request *DeletePublic
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePublicIpAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an IP address pool.
-//
-// Description:
-//
-// Before you call this operation, take note of the following items:
-//
-//   - Before you delete an IP address pool, make sure that no IP address in the pool is being used.
-//
-//   - **DeletePublicIpAddressPool*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPublicIpAddressPools](https://help.aliyun.com/document_detail/429433.html) operation to query the status of the task.
-//
-//   - If the IP address pool is in the **Deleting*	- state, the IP address pool is being deleted. In this state. you can only query the IP address pool and cannot perform other operations.
-//
-//   - If you cannot query the IP address pool, the IP address pool is deleted.
-//
-//   - You cannot repeatedly call the **DeletePublicIpAddressPool*	- operation to delete an IP address pool within the specified period of time.
-//
-// @param request - DeletePublicIpAddressPoolRequest
-//
-// @return DeletePublicIpAddressPoolResponse
-func (client *Client) DeletePublicIpAddressPool(request *DeletePublicIpAddressPoolRequest) (_result *DeletePublicIpAddressPoolResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePublicIpAddressPoolResponse{}
-	_body, _err := client.DeletePublicIpAddressPoolWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15269,7 +11766,7 @@ func (client *Client) DeletePublicIpAddressPool(request *DeletePublicIpAddressPo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePublicIpAddressPoolCidrBlockResponse
-func (client *Client) DeletePublicIpAddressPoolCidrBlockWithOptions(request *DeletePublicIpAddressPoolCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *DeletePublicIpAddressPoolCidrBlockResponse, _err error) {
+func (client *Client) DeletePublicIpAddressPoolCidrBlockWithContext(ctx context.Context, request *DeletePublicIpAddressPoolCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *DeletePublicIpAddressPoolCidrBlockResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15326,43 +11823,11 @@ func (client *Client) DeletePublicIpAddressPoolCidrBlockWithOptions(request *Del
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePublicIpAddressPoolCidrBlockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a CIDR block from an IP address pool.
-//
-// Description:
-//
-// Before you call this operation, take note of the following items:
-//
-//   - Before you delete a CIDR block, make sure that it is not being used.
-//
-//   - **DeletePublicIpAddressPoolCidrBlock*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPublicIpAddressPoolCidrBlocks](https://help.aliyun.com/document_detail/429436.html) operation to query the status of the task.
-//
-//   - If the CIDR block is in the **Deleting*	- state, the CIDR block is being deleted. In this state, you can only query the CIDR block and cannot perform other operations.
-//
-//   - If you cannot query the CIDR block, the CIDR block is deleted.
-//
-//   - You cannot repeatedly call the **DeletePublicIpAddressPoolCidrBlock*	- operation to delete a CIDR block within the specified period of time.
-//
-// @param request - DeletePublicIpAddressPoolCidrBlockRequest
-//
-// @return DeletePublicIpAddressPoolCidrBlockResponse
-func (client *Client) DeletePublicIpAddressPoolCidrBlock(request *DeletePublicIpAddressPoolCidrBlockRequest) (_result *DeletePublicIpAddressPoolCidrBlockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePublicIpAddressPoolCidrBlockResponse{}
-	_body, _err := client.DeletePublicIpAddressPoolCidrBlockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15391,7 +11856,7 @@ func (client *Client) DeletePublicIpAddressPoolCidrBlock(request *DeletePublicIp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRouteEntriesResponse
-func (client *Client) DeleteRouteEntriesWithOptions(request *DeleteRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteEntriesResponse, _err error) {
+func (client *Client) DeleteRouteEntriesWithContext(ctx context.Context, request *DeleteRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15444,45 +11909,11 @@ func (client *Client) DeleteRouteEntriesWithOptions(request *DeleteRouteEntriesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes multiple custom route entries at a time.
-//
-// Description:
-//
-// When you call this operation, take note of the following items:
-//
-//   - You can delete only routes that are in the **Available*	- state.
-//
-//   - You cannot delete a route of a virtual private cloud (VPC) in which a vSwitch or another route is being created or deleted.
-//
-//   - **DeleteRouteEntries*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) operation to query the status of the task.
-//
-//   - If the route is in the **Deleting*	- state, the route is being deleted.
-//
-//   - If you cannot query the route, the route is deleted.
-//
-//   - You cannot repeatedly call **DeleteRouteEntries*	- within a specific period of time.
-//
-// @param request - DeleteRouteEntriesRequest
-//
-// @return DeleteRouteEntriesResponse
-func (client *Client) DeleteRouteEntries(request *DeleteRouteEntriesRequest) (_result *DeleteRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRouteEntriesResponse{}
-	_body, _err := client.DeleteRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15513,7 +11944,7 @@ func (client *Client) DeleteRouteEntries(request *DeleteRouteEntriesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRouteEntryResponse
-func (client *Client) DeleteRouteEntryWithOptions(request *DeleteRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteEntryResponse, _err error) {
+func (client *Client) DeleteRouteEntryWithContext(ctx context.Context, request *DeleteRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15578,47 +12009,11 @@ func (client *Client) DeleteRouteEntryWithOptions(request *DeleteRouteEntryReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a route entry from a route table of a VRouter or virtual border router (VBR).
-//
-// Description:
-//
-// When you call this operation, take note of the following items:
-//
-//   - You can delete only routes that are in the **Available*	- state.
-//
-//   - You cannot delete a route entry of a virtual private cloud (VPC) in which a vSwitch or another route entry is being created or deleted.
-//
-//   - Before you call this operation to delete a route of a VBR route table, call the [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) operation to query the **NextHopId*	- of the route first.
-//
-//   - **DeleteRouteEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) operation to query the status of the task.
-//
-//   - If the route is in the **Deleting*	- state, the route is being deleted.
-//
-//   - If you cannot query the route entry, the route entry is deleted.
-//
-//   - You cannot repeatedly call the **DeleteRouteEntry*	- operation to delete a route from the route table of a vRouter or a VBR within the specified period of time.
-//
-// @param request - DeleteRouteEntryRequest
-//
-// @return DeleteRouteEntryResponse
-func (client *Client) DeleteRouteEntry(request *DeleteRouteEntryRequest) (_result *DeleteRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRouteEntryResponse{}
-	_body, _err := client.DeleteRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15643,7 +12038,7 @@ func (client *Client) DeleteRouteEntry(request *DeleteRouteEntryRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRouteTableResponse
-func (client *Client) DeleteRouteTableWithOptions(request *DeleteRouteTableRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteTableResponse, _err error) {
+func (client *Client) DeleteRouteTableWithContext(ctx context.Context, request *DeleteRouteTableRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteTableResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15692,41 +12087,11 @@ func (client *Client) DeleteRouteTableWithOptions(request *DeleteRouteTableReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRouteTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a custom route table.
-//
-// Description:
-//
-// ## [](#)Description
-//
-//   - **DeleteRouteTable*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeRouteTableList](https://help.aliyun.com/document_detail/87602.html) operation to query the status of the task.
-//
-//   - If the custom route table is in the **Deleting*	- state, the custom route table is being deleted.
-//
-//   - If you cannot query the custom route table, the custom route table is deleted.
-//
-//   - You cannot repeatedly call the **DeleteRouteTable*	- operation to delete a custom route table within the specified period of time.
-//
-// @param request - DeleteRouteTableRequest
-//
-// @return DeleteRouteTableResponse
-func (client *Client) DeleteRouteTable(request *DeleteRouteTableRequest) (_result *DeleteRouteTableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRouteTableResponse{}
-	_body, _err := client.DeleteRouteTableWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15747,7 +12112,7 @@ func (client *Client) DeleteRouteTable(request *DeleteRouteTableRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRouterInterfaceResponse
-func (client *Client) DeleteRouterInterfaceWithOptions(request *DeleteRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouterInterfaceResponse, _err error) {
+func (client *Client) DeleteRouterInterfaceWithContext(ctx context.Context, request *DeleteRouterInterfaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouterInterfaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15796,37 +12161,11 @@ func (client *Client) DeleteRouterInterfaceWithOptions(request *DeleteRouterInte
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRouterInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a router interface.
-//
-// Description:
-//
-// When you call this operation, take note of the following limits:
-//
-//   - You can delete only a router interface that is in the **Idle*	- or **Inactive*	- state.
-//
-//   - Before you delete a router interface, you must delete all custom route entries destined for the router interface.
-//
-// @param request - DeleteRouterInterfaceRequest
-//
-// @return DeleteRouterInterfaceResponse
-func (client *Client) DeleteRouterInterface(request *DeleteRouterInterfaceRequest) (_result *DeleteRouterInterfaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRouterInterfaceResponse{}
-	_body, _err := client.DeleteRouterInterfaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15849,7 +12188,7 @@ func (client *Client) DeleteRouterInterface(request *DeleteRouterInterfaceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSnatEntryResponse
-func (client *Client) DeleteSnatEntryWithOptions(request *DeleteSnatEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnatEntryResponse, _err error) {
+func (client *Client) DeleteSnatEntryWithContext(ctx context.Context, request *DeleteSnatEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnatEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15902,39 +12241,11 @@ func (client *Client) DeleteSnatEntryWithOptions(request *DeleteSnatEntryRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSnatEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an SNAT entry.
-//
-// Description:
-//
-// DeleteSnatEntry is an asynchronous operation. After you make a request, the ID of the request is returned but the specified SNAT entry is not deleted. The system deletes the SNAT entry in the background. You can call the [DescribeSnatTableEntries](https://help.aliyun.com/document_detail/42677.html) operation to query the status of SNAT entries.
-//
-//   - If the SNAT entries are in the **Deleting*	- state, the system is deleting the SNAT entries. In this case, you can only query the status of the SNAT entries, and cannot perform other operations.
-//
-//   - If no SNAT entry is returned in the response, the SNAT entry is deleted.
-//
-// If some SNAT entries are in the **Pending*	- state, you cannot delete these SNAT entries.
-//
-// @param request - DeleteSnatEntryRequest
-//
-// @return DeleteSnatEntryResponse
-func (client *Client) DeleteSnatEntry(request *DeleteSnatEntryRequest) (_result *DeleteSnatEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSnatEntryResponse{}
-	_body, _err := client.DeleteSnatEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15965,7 +12276,7 @@ func (client *Client) DeleteSnatEntry(request *DeleteSnatEntryRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSslVpnClientCertResponse
-func (client *Client) DeleteSslVpnClientCertWithOptions(request *DeleteSslVpnClientCertRequest, runtime *dara.RuntimeOptions) (_result *DeleteSslVpnClientCertResponse, _err error) {
+func (client *Client) DeleteSslVpnClientCertWithContext(ctx context.Context, request *DeleteSslVpnClientCertRequest, runtime *dara.RuntimeOptions) (_result *DeleteSslVpnClientCertResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16014,47 +12325,11 @@ func (client *Client) DeleteSslVpnClientCertWithOptions(request *DeleteSslVpnCli
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSslVpnClientCertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an SSL client certificate.
-//
-// Description:
-//
-//	  If you delete an SSL client certificate, all SSL-VPN client connections to the SSL server are disconnected. You need to reinitiate connections from SSL clients.
-//
-//	    For example, SSL client certificate 1 and SSL client certificate 2 are created on an SSL server. After you delete certificate 1, all client connections associated with certificate 1 and certificate 2 are disconnected from the SSL server.
-//
-//	    	- If clients associated with certificate 1 require SSL-VPN connections, you need to install other certificates on the clients and reinitiate connections from the clients.
-//
-//	    	- If clients associated with certificate 2 require SSL-VPN connections, you can directly reinitiate connections from the clients.
-//
-//		- **DeleteSslVpnClientCert*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
-//
-//	    	- If the VPN gateway is in the **updating*	- state, the SSL client certificate is being deleted.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the SSL client certificate is deleted.
-//
-//		- You cannot call **DeleteSslVpnClientCert*	- within the specified period of time.
-//
-// @param request - DeleteSslVpnClientCertRequest
-//
-// @return DeleteSslVpnClientCertResponse
-func (client *Client) DeleteSslVpnClientCert(request *DeleteSslVpnClientCertRequest) (_result *DeleteSslVpnClientCertResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSslVpnClientCertResponse{}
-	_body, _err := client.DeleteSslVpnClientCertWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16077,7 +12352,7 @@ func (client *Client) DeleteSslVpnClientCert(request *DeleteSslVpnClientCertRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSslVpnServerResponse
-func (client *Client) DeleteSslVpnServerWithOptions(request *DeleteSslVpnServerRequest, runtime *dara.RuntimeOptions) (_result *DeleteSslVpnServerResponse, _err error) {
+func (client *Client) DeleteSslVpnServerWithContext(ctx context.Context, request *DeleteSslVpnServerRequest, runtime *dara.RuntimeOptions) (_result *DeleteSslVpnServerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16126,39 +12401,11 @@ func (client *Client) DeleteSslVpnServerWithOptions(request *DeleteSslVpnServerR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSslVpnServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an SSL server.
-//
-// Description:
-//
-//	  **DeleteSslVpnServer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
-//
-//	    	- If the VPN gateway is in the **updating*	- state, the SSL server is being deleted.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the SSL server is deleted.
-//
-//		- You cannot repeatedly call the **DeleteSslVpnServer*	- operation to delete an SSL server from the same VPN gateway within the specified period of time.
-//
-// @param request - DeleteSslVpnServerRequest
-//
-// @return DeleteSslVpnServerResponse
-func (client *Client) DeleteSslVpnServer(request *DeleteSslVpnServerRequest) (_result *DeleteSslVpnServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSslVpnServerResponse{}
-	_body, _err := client.DeleteSslVpnServerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16181,7 +12428,7 @@ func (client *Client) DeleteSslVpnServer(request *DeleteSslVpnServerRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTrafficMirrorFilterResponse
-func (client *Client) DeleteTrafficMirrorFilterWithOptions(request *DeleteTrafficMirrorFilterRequest, runtime *dara.RuntimeOptions) (_result *DeleteTrafficMirrorFilterResponse, _err error) {
+func (client *Client) DeleteTrafficMirrorFilterWithContext(ctx context.Context, request *DeleteTrafficMirrorFilterRequest, runtime *dara.RuntimeOptions) (_result *DeleteTrafficMirrorFilterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16234,39 +12481,11 @@ func (client *Client) DeleteTrafficMirrorFilterWithOptions(request *DeleteTraffi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTrafficMirrorFilterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a filter of traffic mirror.
-//
-// Description:
-//
-//	  The **DeleteTrafficMirrorFilter*	- operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) operation to query the status of a filter:
-//
-//	    	- If the filter is in the **Deleting*	- state, the filter is being deleted.
-//
-//	    	- If you cannot query the filter, the filter is deleted.
-//
-//		- You cannot repeatedly call the **DeleteTrafficMirrorFilter*	- operation to delete a filter within the specified period of time.
-//
-// @param request - DeleteTrafficMirrorFilterRequest
-//
-// @return DeleteTrafficMirrorFilterResponse
-func (client *Client) DeleteTrafficMirrorFilter(request *DeleteTrafficMirrorFilterRequest) (_result *DeleteTrafficMirrorFilterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteTrafficMirrorFilterResponse{}
-	_body, _err := client.DeleteTrafficMirrorFilterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16289,7 +12508,7 @@ func (client *Client) DeleteTrafficMirrorFilter(request *DeleteTrafficMirrorFilt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTrafficMirrorFilterRulesResponse
-func (client *Client) DeleteTrafficMirrorFilterRulesWithOptions(request *DeleteTrafficMirrorFilterRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteTrafficMirrorFilterRulesResponse, _err error) {
+func (client *Client) DeleteTrafficMirrorFilterRulesWithContext(ctx context.Context, request *DeleteTrafficMirrorFilterRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteTrafficMirrorFilterRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16346,39 +12565,11 @@ func (client *Client) DeleteTrafficMirrorFilterRulesWithOptions(request *DeleteT
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTrafficMirrorFilterRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an inbound or outbound rule of a filter for traffic mirror.
-//
-// Description:
-//
-//	  **DeleteTrafficMirrorFilterRules*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) to query the status of the task.
-//
-//	    	- If the inbound or outbound rule is in the **Deleting*	- state, the rule is being deleted.
-//
-//	    	- If you cannot query the rule, the rule is deleted.
-//
-//		- You cannot repeatedly call **DeleteTrafficMirrorFilterRules*	- within the specified period of time.
-//
-// @param request - DeleteTrafficMirrorFilterRulesRequest
-//
-// @return DeleteTrafficMirrorFilterRulesResponse
-func (client *Client) DeleteTrafficMirrorFilterRules(request *DeleteTrafficMirrorFilterRulesRequest) (_result *DeleteTrafficMirrorFilterRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteTrafficMirrorFilterRulesResponse{}
-	_body, _err := client.DeleteTrafficMirrorFilterRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16401,7 +12592,7 @@ func (client *Client) DeleteTrafficMirrorFilterRules(request *DeleteTrafficMirro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTrafficMirrorSessionResponse
-func (client *Client) DeleteTrafficMirrorSessionWithOptions(request *DeleteTrafficMirrorSessionRequest, runtime *dara.RuntimeOptions) (_result *DeleteTrafficMirrorSessionResponse, _err error) {
+func (client *Client) DeleteTrafficMirrorSessionWithContext(ctx context.Context, request *DeleteTrafficMirrorSessionRequest, runtime *dara.RuntimeOptions) (_result *DeleteTrafficMirrorSessionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16454,39 +12645,11 @@ func (client *Client) DeleteTrafficMirrorSessionWithOptions(request *DeleteTraff
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTrafficMirrorSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a traffic mirror session.
-//
-// Description:
-//
-//	  **DeleteTrafficMirrorSession*	- is an asynchronous operation. After you send the request, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](https://help.aliyun.com/document_detail/261367.html) operation to query the status of a traffic mirror session.
-//
-//	    	- If the traffic mirror session is in the **Deleting*	- state, the traffic mirror session is being deleted.
-//
-//	    	- If you cannot query the traffic mirror session, the traffic mirror session is deleted.
-//
-//		- You cannot repeatedly call the **DeleteTrafficMirrorSession*	- operation to delete a traffic mirror session within the specified period of time.
-//
-// @param request - DeleteTrafficMirrorSessionRequest
-//
-// @return DeleteTrafficMirrorSessionResponse
-func (client *Client) DeleteTrafficMirrorSession(request *DeleteTrafficMirrorSessionRequest) (_result *DeleteTrafficMirrorSessionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteTrafficMirrorSessionResponse{}
-	_body, _err := client.DeleteTrafficMirrorSessionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16517,7 +12680,7 @@ func (client *Client) DeleteTrafficMirrorSession(request *DeleteTrafficMirrorSes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVSwitchResponse
-func (client *Client) DeleteVSwitchWithOptions(request *DeleteVSwitchRequest, runtime *dara.RuntimeOptions) (_result *DeleteVSwitchResponse, _err error) {
+func (client *Client) DeleteVSwitchWithContext(ctx context.Context, request *DeleteVSwitchRequest, runtime *dara.RuntimeOptions) (_result *DeleteVSwitchResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16566,47 +12729,11 @@ func (client *Client) DeleteVSwitchWithOptions(request *DeleteVSwitchRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVSwitchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a vSwitch.
-//
-// Description:
-//
-// When you call this operation, take note of the following limits:
-//
-//   - Before you delete a vSwitch, you must first release or remove all virtual private cloud (VPC) resources, including vSwitches, instances, router interfaces, and high-availability virtual IP addresses (HaVips).
-//
-//   - You can delete only vSwitches that are in the **Available*	- state.
-//
-//   - You cannot delete a vSwitch from a VPC where a vSwitch or a route is being created or deleted.
-//
-//   - **DeleteVSwitch*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](https://help.aliyun.com/document_detail/94567.html) operation to query the status of the task:
-//
-//   - If the vSwitch is in the **Pending*	- state, the vSwitch is being deleted.
-//
-//   - If you cannot query the vSwitch, the vSwitch is deleted.
-//
-//   - You cannot repeatedly call the **DeleteVSwitch*	- operation to delete a vSwitch within the specified period of time.
-//
-// @param request - DeleteVSwitchRequest
-//
-// @return DeleteVSwitchResponse
-func (client *Client) DeleteVSwitch(request *DeleteVSwitchRequest) (_result *DeleteVSwitchResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVSwitchResponse{}
-	_body, _err := client.DeleteVSwitchWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16631,7 +12758,7 @@ func (client *Client) DeleteVSwitch(request *DeleteVSwitchRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVSwitchCidrReservationResponse
-func (client *Client) DeleteVSwitchCidrReservationWithOptions(request *DeleteVSwitchCidrReservationRequest, runtime *dara.RuntimeOptions) (_result *DeleteVSwitchCidrReservationResponse, _err error) {
+func (client *Client) DeleteVSwitchCidrReservationWithContext(ctx context.Context, request *DeleteVSwitchCidrReservationRequest, runtime *dara.RuntimeOptions) (_result *DeleteVSwitchCidrReservationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16684,41 +12811,11 @@ func (client *Client) DeleteVSwitchCidrReservationWithOptions(request *DeleteVSw
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVSwitchCidrReservationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a reserved CIDR block of a vSwitch.
-//
-// Description:
-//
-// ## [](#)Description
-//
-//   - Before you call this operation, make sure that the IP address allocated to an elastic network interface (ENI) from the reserved CIDR block is deleted. If the IP address of the ENI is not deleted, call [UnassignPrivateIpAddresses](https://help.aliyun.com/document_detail/85919.html) or [UnassignIpv6Addresses](https://help.aliyun.com/document_detail/98611.html) to delete the IPv4 or IPv6 address.
-//
-//   - **DeleteVSwitchCidrReservation*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListVSwitchCidrReservations](https://help.aliyun.com/document_detail/610155.html) to query the status of the task:
-//
-//   - If the reserved CIDR block is in the **Releasing*	- state, it is being released.
-//
-//   - If the reserved CIDR block is in the **Released*	- state, it is released.
-//
-// @param request - DeleteVSwitchCidrReservationRequest
-//
-// @return DeleteVSwitchCidrReservationResponse
-func (client *Client) DeleteVSwitchCidrReservation(request *DeleteVSwitchCidrReservationRequest) (_result *DeleteVSwitchCidrReservationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVSwitchCidrReservationResponse{}
-	_body, _err := client.DeleteVSwitchCidrReservationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16731,7 +12828,7 @@ func (client *Client) DeleteVSwitchCidrReservation(request *DeleteVSwitchCidrRes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVbrHaResponse
-func (client *Client) DeleteVbrHaWithOptions(request *DeleteVbrHaRequest, runtime *dara.RuntimeOptions) (_result *DeleteVbrHaResponse, _err error) {
+func (client *Client) DeleteVbrHaWithContext(ctx context.Context, request *DeleteVbrHaRequest, runtime *dara.RuntimeOptions) (_result *DeleteVbrHaResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16780,29 +12877,11 @@ func (client *Client) DeleteVbrHaWithOptions(request *DeleteVbrHaRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVbrHaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a virtual border router (VBR) failover group.
-//
-// @param request - DeleteVbrHaRequest
-//
-// @return DeleteVbrHaResponse
-func (client *Client) DeleteVbrHa(request *DeleteVbrHaRequest) (_result *DeleteVbrHaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVbrHaResponse{}
-	_body, _err := client.DeleteVbrHaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16825,7 +12904,7 @@ func (client *Client) DeleteVbrHa(request *DeleteVbrHaRequest) (_result *DeleteV
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVcoRouteEntryResponse
-func (client *Client) DeleteVcoRouteEntryWithOptions(request *DeleteVcoRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteVcoRouteEntryResponse, _err error) {
+func (client *Client) DeleteVcoRouteEntryWithContext(ctx context.Context, request *DeleteVcoRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteVcoRouteEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16886,39 +12965,11 @@ func (client *Client) DeleteVcoRouteEntryWithOptions(request *DeleteVcoRouteEntr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVcoRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a destination-based route from an IPsec-VPN connection.
-//
-// Description:
-//
-//	  **DeleteVcoRouteEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) operation to query the status of the task.
-//
-//	    	- If the IPsec-VPN connection is in the **updating*	- state, the route is being deleted.
-//
-//	    	- If the IPsec-VPN connection is in the **attached*	- state, the route is deleted.
-//
-//		- You cannot repeatedly call the **DeleteVcoRouteEntry*	- operation within a specific time period.
-//
-// @param request - DeleteVcoRouteEntryRequest
-//
-// @return DeleteVcoRouteEntryResponse
-func (client *Client) DeleteVcoRouteEntry(request *DeleteVcoRouteEntryRequest) (_result *DeleteVcoRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVcoRouteEntryResponse{}
-	_body, _err := client.DeleteVcoRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16941,7 +12992,7 @@ func (client *Client) DeleteVcoRouteEntry(request *DeleteVcoRouteEntryRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVirtualBorderRouterResponse
-func (client *Client) DeleteVirtualBorderRouterWithOptions(request *DeleteVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *DeleteVirtualBorderRouterResponse, _err error) {
+func (client *Client) DeleteVirtualBorderRouterWithContext(ctx context.Context, request *DeleteVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *DeleteVirtualBorderRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16990,39 +13041,11 @@ func (client *Client) DeleteVirtualBorderRouterWithOptions(request *DeleteVirtua
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVirtualBorderRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a virtual border router (VBR).
-//
-// Description:
-//
-// Before you call this operation, take note of the following limits:
-//
-//   - Before you delete a VBR, you must delete all router interfaces of the VBR.
-//
-//   - You can delete only a VBR in the **unconfirmed**, **active**, or **terminated*	- state.
-//
-//   - The owner of an Express Connect circuit can delete a VBR that belongs to another account only if the VBR is in the **unconfirmed*	- state.
-//
-// @param request - DeleteVirtualBorderRouterRequest
-//
-// @return DeleteVirtualBorderRouterResponse
-func (client *Client) DeleteVirtualBorderRouter(request *DeleteVirtualBorderRouterRequest) (_result *DeleteVirtualBorderRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVirtualBorderRouterResponse{}
-	_body, _err := client.DeleteVirtualBorderRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17051,7 +13074,7 @@ func (client *Client) DeleteVirtualBorderRouter(request *DeleteVirtualBorderRout
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVpcResponse
-func (client *Client) DeleteVpcWithOptions(request *DeleteVpcRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcResponse, _err error) {
+func (client *Client) DeleteVpcWithContext(ctx context.Context, request *DeleteVpcRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17108,45 +13131,11 @@ func (client *Client) DeleteVpcWithOptions(request *DeleteVpcRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a virtual private cloud (VPC).
-//
-// Description:
-//
-// When you call this operation, take note of the following limits:
-//
-//   - Before you delete a VPC, make sure that all resources deployed in the VPC are released or removed, such as vSwitches, instances, and high-availability virtual IP addresses (HaVips).
-//
-//   - You can delete only a VPC that is in the **Available*	- state.
-//
-//   - The **DeleteVpc*	- operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of a VPC:
-//
-//   - If the VPC is in the **Deleting*	- state, the VPC is being deleted.
-//
-//   - If you cannot query the VPC, the VPC is deleted.
-//
-//   - You cannot repeatedly call the **DeleteVpc*	- operation to delete a VPC within the specified period of time.
-//
-// @param request - DeleteVpcRequest
-//
-// @return DeleteVpcResponse
-func (client *Client) DeleteVpc(request *DeleteVpcRequest) (_result *DeleteVpcResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVpcResponse{}
-	_body, _err := client.DeleteVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17159,7 +13148,7 @@ func (client *Client) DeleteVpc(request *DeleteVpcRequest) (_result *DeleteVpcRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVpcGatewayEndpointResponse
-func (client *Client) DeleteVpcGatewayEndpointWithOptions(request *DeleteVpcGatewayEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcGatewayEndpointResponse, _err error) {
+func (client *Client) DeleteVpcGatewayEndpointWithContext(ctx context.Context, request *DeleteVpcGatewayEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcGatewayEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17212,29 +13201,11 @@ func (client *Client) DeleteVpcGatewayEndpointWithOptions(request *DeleteVpcGate
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVpcGatewayEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a gateway endpoint.
-//
-// @param request - DeleteVpcGatewayEndpointRequest
-//
-// @return DeleteVpcGatewayEndpointResponse
-func (client *Client) DeleteVpcGatewayEndpoint(request *DeleteVpcGatewayEndpointRequest) (_result *DeleteVpcGatewayEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVpcGatewayEndpointResponse{}
-	_body, _err := client.DeleteVpcGatewayEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17251,7 +13222,7 @@ func (client *Client) DeleteVpcGatewayEndpoint(request *DeleteVpcGatewayEndpoint
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVpcPrefixListResponse
-func (client *Client) DeleteVpcPrefixListWithOptions(request *DeleteVpcPrefixListRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcPrefixListResponse, _err error) {
+func (client *Client) DeleteVpcPrefixListWithContext(ctx context.Context, request *DeleteVpcPrefixListRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcPrefixListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17304,33 +13275,11 @@ func (client *Client) DeleteVpcPrefixListWithOptions(request *DeleteVpcPrefixLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVpcPrefixListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a prefix list.
-//
-// Description:
-//
-// You cannot repeatedly call the **DeleteDhcpOptionsSet*	- operation to delete a prefix list within the specified period of time.
-//
-// @param request - DeleteVpcPrefixListRequest
-//
-// @return DeleteVpcPrefixListResponse
-func (client *Client) DeleteVpcPrefixList(request *DeleteVpcPrefixListRequest) (_result *DeleteVpcPrefixListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVpcPrefixListResponse{}
-	_body, _err := client.DeleteVpcPrefixListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17349,7 +13298,7 @@ func (client *Client) DeleteVpcPrefixList(request *DeleteVpcPrefixListRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVpnAttachmentResponse
-func (client *Client) DeleteVpnAttachmentWithOptions(request *DeleteVpnAttachmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnAttachmentResponse, _err error) {
+func (client *Client) DeleteVpnAttachmentWithContext(ctx context.Context, request *DeleteVpnAttachmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnAttachmentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17394,35 +13343,11 @@ func (client *Client) DeleteVpnAttachmentWithOptions(request *DeleteVpnAttachmen
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVpnAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an IPsec-VPN connection.
-//
-// Description:
-//
-//	  If an IPsec-VPN connection is associated with a transit router, you must disassociate the transit router from the IPsec-VPN connection before you delete the IPsec-VPN connection. For more information, see [DeleteTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/468251.html).
-//
-//		- If an IPsec-VPN connection is not associated with a resource, you can call `DeleteVpnAttachment` to directly delete the IPsec-VPN connection.
-//
-// @param request - DeleteVpnAttachmentRequest
-//
-// @return DeleteVpnAttachmentResponse
-func (client *Client) DeleteVpnAttachment(request *DeleteVpnAttachmentRequest) (_result *DeleteVpnAttachmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVpnAttachmentResponse{}
-	_body, _err := client.DeleteVpnAttachmentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17447,7 +13372,7 @@ func (client *Client) DeleteVpnAttachment(request *DeleteVpnAttachmentRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVpnConnectionResponse
-func (client *Client) DeleteVpnConnectionWithOptions(request *DeleteVpnConnectionRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnConnectionResponse, _err error) {
+func (client *Client) DeleteVpnConnectionWithContext(ctx context.Context, request *DeleteVpnConnectionRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17496,41 +13421,11 @@ func (client *Client) DeleteVpnConnectionWithOptions(request *DeleteVpnConnectio
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVpnConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an IPsec-VPN connection.
-//
-// Description:
-//
-//	  **DeleteVpnConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the status of a VPN gateway.
-//
-//	    	- If a VPN gateway is in the **updating*	- state, the IPsec-VPN connection is being deleted.
-//
-//	    	- If a VPN gateway is in the **active*	- state, the IPsec-VPN connection has been deleted.
-//
-//		- You cannot call the **DeleteVpnConnection*	- operation to delete multiple IPsec-VPN connections for a VPN gateway at a time.
-//
-// >  After an IPsec-VPN connection between a data center and Alibaba Cloud is deleted, the connection between the data center and Alibaba Cloud is closed.
-//
-// @param request - DeleteVpnConnectionRequest
-//
-// @return DeleteVpnConnectionResponse
-func (client *Client) DeleteVpnConnection(request *DeleteVpnConnectionRequest) (_result *DeleteVpnConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVpnConnectionResponse{}
-	_body, _err := client.DeleteVpnConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17547,7 +13442,7 @@ func (client *Client) DeleteVpnConnection(request *DeleteVpnConnectionRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVpnGatewayResponse
-func (client *Client) DeleteVpnGatewayWithOptions(request *DeleteVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnGatewayResponse, _err error) {
+func (client *Client) DeleteVpnGatewayWithContext(ctx context.Context, request *DeleteVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnGatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17596,33 +13491,11 @@ func (client *Client) DeleteVpnGatewayWithOptions(request *DeleteVpnGatewayReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVpnGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a VPN gateway.
-//
-// Description:
-//
-// >  You cannot delete a VPN gateway associated with existing IPsec-VPN connections.
-//
-// @param request - DeleteVpnGatewayRequest
-//
-// @return DeleteVpnGatewayResponse
-func (client *Client) DeleteVpnGateway(request *DeleteVpnGatewayRequest) (_result *DeleteVpnGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVpnGatewayResponse{}
-	_body, _err := client.DeleteVpnGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17645,7 +13518,7 @@ func (client *Client) DeleteVpnGateway(request *DeleteVpnGatewayRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVpnPbrRouteEntryResponse
-func (client *Client) DeleteVpnPbrRouteEntryWithOptions(request *DeleteVpnPbrRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnPbrRouteEntryResponse, _err error) {
+func (client *Client) DeleteVpnPbrRouteEntryWithContext(ctx context.Context, request *DeleteVpnPbrRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnPbrRouteEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17718,39 +13591,11 @@ func (client *Client) DeleteVpnPbrRouteEntryWithOptions(request *DeleteVpnPbrRou
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVpnPbrRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a policy-based route from a VPN gateway.
-//
-// Description:
-//
-//	  **DeleteVpnPbrRouteEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
-//
-//	    	- If a VPN gateway is in the **updating*	- state, the policy-based route is being deleted.
-//
-//	    	- If a VPN gateway is in the **active*	- state, the policy-based route has been deleted.
-//
-//		- You cannot repeatedly call **DeleteVpnPbrRouteEntry*	- to delete a policy-based route within the specified period of time.
-//
-// @param request - DeleteVpnPbrRouteEntryRequest
-//
-// @return DeleteVpnPbrRouteEntryResponse
-func (client *Client) DeleteVpnPbrRouteEntry(request *DeleteVpnPbrRouteEntryRequest) (_result *DeleteVpnPbrRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVpnPbrRouteEntryResponse{}
-	_body, _err := client.DeleteVpnPbrRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17773,7 +13618,7 @@ func (client *Client) DeleteVpnPbrRouteEntry(request *DeleteVpnPbrRouteEntryRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVpnRouteEntryResponse
-func (client *Client) DeleteVpnRouteEntryWithOptions(request *DeleteVpnRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnRouteEntryResponse, _err error) {
+func (client *Client) DeleteVpnRouteEntryWithContext(ctx context.Context, request *DeleteVpnRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpnRouteEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17838,39 +13683,11 @@ func (client *Client) DeleteVpnRouteEntryWithOptions(request *DeleteVpnRouteEntr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVpnRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a destination-based route from a VPN gateway.
-//
-// Description:
-//
-//	  **DeleteVpnRouteEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
-//
-//	    	- If a VPN gateway is in the **updating*	- state, the destination-based route is being deleted.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the destination-based route is deleted.
-//
-//		- You cannot repeatedly call **DeleteVpnRouteEntry*	- to delete a destination-based route from a VPN gateway within the specified period of time.
-//
-// @param request - DeleteVpnRouteEntryRequest
-//
-// @return DeleteVpnRouteEntryResponse
-func (client *Client) DeleteVpnRouteEntry(request *DeleteVpnRouteEntryRequest) (_result *DeleteVpnRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVpnRouteEntryResponse{}
-	_body, _err := client.DeleteVpnRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17887,7 +13704,7 @@ func (client *Client) DeleteVpnRouteEntry(request *DeleteVpnRouteEntryRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletionProtectionResponse
-func (client *Client) DeletionProtectionWithOptions(request *DeletionProtectionRequest, runtime *dara.RuntimeOptions) (_result *DeletionProtectionResponse, _err error) {
+func (client *Client) DeletionProtectionWithContext(ctx context.Context, request *DeletionProtectionRequest, runtime *dara.RuntimeOptions) (_result *DeletionProtectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17944,33 +13761,11 @@ func (client *Client) DeletionProtectionWithOptions(request *DeletionProtectionR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletionProtectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 设置实例删除保护功能。
-//
-// Description:
-//
-// After you enable deletion protection for an instance, you cannot delete the instance. You must disable deletion protection before you can delete the instance.
-//
-// @param request - DeletionProtectionRequest
-//
-// @return DeletionProtectionResponse
-func (client *Client) DeletionProtection(request *DeletionProtectionRequest) (_result *DeletionProtectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletionProtectionResponse{}
-	_body, _err := client.DeletionProtectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17983,7 +13778,7 @@ func (client *Client) DeletionProtection(request *DeletionProtectionRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return Describe95TrafficResponse
-func (client *Client) Describe95TrafficWithOptions(request *Describe95TrafficRequest, runtime *dara.RuntimeOptions) (_result *Describe95TrafficResponse, _err error) {
+func (client *Client) Describe95TrafficWithContext(ctx context.Context, request *Describe95TrafficRequest, runtime *dara.RuntimeOptions) (_result *Describe95TrafficResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18036,29 +13831,11 @@ func (client *Client) Describe95TrafficWithOptions(request *Describe95TrafficReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &Describe95TrafficResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries traffic data of a pay-by-enhanced-95th-percentile Internet Shared Bandwidth instance.
-//
-// @param request - Describe95TrafficRequest
-//
-// @return Describe95TrafficResponse
-func (client *Client) Describe95Traffic(request *Describe95TrafficRequest) (_result *Describe95TrafficResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &Describe95TrafficResponse{}
-	_body, _err := client.Describe95TrafficWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18071,7 +13848,7 @@ func (client *Client) Describe95Traffic(request *Describe95TrafficRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAccessPointsResponse
-func (client *Client) DescribeAccessPointsWithOptions(request *DescribeAccessPointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccessPointsResponse, _err error) {
+func (client *Client) DescribeAccessPointsWithContext(ctx context.Context, request *DescribeAccessPointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccessPointsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18120,29 +13897,11 @@ func (client *Client) DescribeAccessPointsWithOptions(request *DescribeAccessPoi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAccessPointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the access points of Express Connect circuits in a region.
-//
-// @param request - DescribeAccessPointsRequest
-//
-// @return DescribeAccessPointsResponse
-func (client *Client) DescribeAccessPoints(request *DescribeAccessPointsRequest) (_result *DescribeAccessPointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAccessPointsResponse{}
-	_body, _err := client.DescribeAccessPointsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18155,7 +13914,7 @@ func (client *Client) DescribeAccessPoints(request *DescribeAccessPointsRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBgpGroupsResponse
-func (client *Client) DescribeBgpGroupsWithOptions(request *DescribeBgpGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBgpGroupsResponse, _err error) {
+func (client *Client) DescribeBgpGroupsWithContext(ctx context.Context, request *DescribeBgpGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBgpGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18216,29 +13975,11 @@ func (client *Client) DescribeBgpGroupsWithOptions(request *DescribeBgpGroupsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBgpGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Border Gateway Protocol (BGP) groups in a region.
-//
-// @param request - DescribeBgpGroupsRequest
-//
-// @return DescribeBgpGroupsResponse
-func (client *Client) DescribeBgpGroups(request *DescribeBgpGroupsRequest) (_result *DescribeBgpGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBgpGroupsResponse{}
-	_body, _err := client.DescribeBgpGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18251,7 +13992,7 @@ func (client *Client) DescribeBgpGroups(request *DescribeBgpGroupsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBgpNetworksResponse
-func (client *Client) DescribeBgpNetworksWithOptions(request *DescribeBgpNetworksRequest, runtime *dara.RuntimeOptions) (_result *DescribeBgpNetworksResponse, _err error) {
+func (client *Client) DescribeBgpNetworksWithContext(ctx context.Context, request *DescribeBgpNetworksRequest, runtime *dara.RuntimeOptions) (_result *DescribeBgpNetworksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18304,29 +14045,11 @@ func (client *Client) DescribeBgpNetworksWithOptions(request *DescribeBgpNetwork
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBgpNetworksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries advertised Border Gateway Protocol (BGP) networks.
-//
-// @param request - DescribeBgpNetworksRequest
-//
-// @return DescribeBgpNetworksResponse
-func (client *Client) DescribeBgpNetworks(request *DescribeBgpNetworksRequest) (_result *DescribeBgpNetworksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBgpNetworksResponse{}
-	_body, _err := client.DescribeBgpNetworksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18339,7 +14062,7 @@ func (client *Client) DescribeBgpNetworks(request *DescribeBgpNetworksRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBgpPeersResponse
-func (client *Client) DescribeBgpPeersWithOptions(request *DescribeBgpPeersRequest, runtime *dara.RuntimeOptions) (_result *DescribeBgpPeersResponse, _err error) {
+func (client *Client) DescribeBgpPeersWithContext(ctx context.Context, request *DescribeBgpPeersRequest, runtime *dara.RuntimeOptions) (_result *DescribeBgpPeersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18404,29 +14127,11 @@ func (client *Client) DescribeBgpPeersWithOptions(request *DescribeBgpPeersReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBgpPeersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Border Gateway Protocol (BGP) peers in a region.
-//
-// @param request - DescribeBgpPeersRequest
-//
-// @return DescribeBgpPeersResponse
-func (client *Client) DescribeBgpPeers(request *DescribeBgpPeersRequest) (_result *DescribeBgpPeersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBgpPeersResponse{}
-	_body, _err := client.DescribeBgpPeersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18439,7 +14144,7 @@ func (client *Client) DescribeBgpPeers(request *DescribeBgpPeersRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCommonBandwidthPackagesResponse
-func (client *Client) DescribeCommonBandwidthPackagesWithOptions(request *DescribeCommonBandwidthPackagesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCommonBandwidthPackagesResponse, _err error) {
+func (client *Client) DescribeCommonBandwidthPackagesWithContext(ctx context.Context, request *DescribeCommonBandwidthPackagesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCommonBandwidthPackagesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18516,29 +14221,11 @@ func (client *Client) DescribeCommonBandwidthPackagesWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCommonBandwidthPackagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of Internet Shared Bandwidth instances in a region.
-//
-// @param request - DescribeCommonBandwidthPackagesRequest
-//
-// @return DescribeCommonBandwidthPackagesResponse
-func (client *Client) DescribeCommonBandwidthPackages(request *DescribeCommonBandwidthPackagesRequest) (_result *DescribeCommonBandwidthPackagesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCommonBandwidthPackagesResponse{}
-	_body, _err := client.DescribeCommonBandwidthPackagesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18551,7 +14238,7 @@ func (client *Client) DescribeCommonBandwidthPackages(request *DescribeCommonBan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCustomerGatewayResponse
-func (client *Client) DescribeCustomerGatewayWithOptions(request *DescribeCustomerGatewayRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomerGatewayResponse, _err error) {
+func (client *Client) DescribeCustomerGatewayWithContext(ctx context.Context, request *DescribeCustomerGatewayRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomerGatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18596,29 +14283,11 @@ func (client *Client) DescribeCustomerGatewayWithOptions(request *DescribeCustom
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCustomerGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries details of a customer gateway.
-//
-// @param request - DescribeCustomerGatewayRequest
-//
-// @return DescribeCustomerGatewayResponse
-func (client *Client) DescribeCustomerGateway(request *DescribeCustomerGatewayRequest) (_result *DescribeCustomerGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCustomerGatewayResponse{}
-	_body, _err := client.DescribeCustomerGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18631,7 +14300,7 @@ func (client *Client) DescribeCustomerGateway(request *DescribeCustomerGatewayRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCustomerGatewaysResponse
-func (client *Client) DescribeCustomerGatewaysWithOptions(request *DescribeCustomerGatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomerGatewaysResponse, _err error) {
+func (client *Client) DescribeCustomerGatewaysWithContext(ctx context.Context, request *DescribeCustomerGatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomerGatewaysResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18692,29 +14361,11 @@ func (client *Client) DescribeCustomerGatewaysWithOptions(request *DescribeCusto
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCustomerGatewaysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries customer gateways.
-//
-// @param request - DescribeCustomerGatewaysRequest
-//
-// @return DescribeCustomerGatewaysResponse
-func (client *Client) DescribeCustomerGateways(request *DescribeCustomerGatewaysRequest) (_result *DescribeCustomerGatewaysResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCustomerGatewaysResponse{}
-	_body, _err := client.DescribeCustomerGatewaysWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18727,7 +14378,7 @@ func (client *Client) DescribeCustomerGateways(request *DescribeCustomerGateways
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEcGrantRelationResponse
-func (client *Client) DescribeEcGrantRelationWithOptions(request *DescribeEcGrantRelationRequest, runtime *dara.RuntimeOptions) (_result *DescribeEcGrantRelationResponse, _err error) {
+func (client *Client) DescribeEcGrantRelationWithContext(ctx context.Context, request *DescribeEcGrantRelationRequest, runtime *dara.RuntimeOptions) (_result *DescribeEcGrantRelationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18768,29 +14419,11 @@ func (client *Client) DescribeEcGrantRelationWithOptions(request *DescribeEcGran
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEcGrantRelationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries whether permissions on a virtual private cloud (VPC) are granted to a virtual border router (VBR).
-//
-// @param request - DescribeEcGrantRelationRequest
-//
-// @return DescribeEcGrantRelationResponse
-func (client *Client) DescribeEcGrantRelation(request *DescribeEcGrantRelationRequest) (_result *DescribeEcGrantRelationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEcGrantRelationResponse{}
-	_body, _err := client.DescribeEcGrantRelationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18807,7 +14440,7 @@ func (client *Client) DescribeEcGrantRelation(request *DescribeEcGrantRelationRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEipAddressesResponse
-func (client *Client) DescribeEipAddressesWithOptions(request *DescribeEipAddressesRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipAddressesResponse, _err error) {
+func (client *Client) DescribeEipAddressesWithContext(ctx context.Context, request *DescribeEipAddressesRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipAddressesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18928,33 +14561,11 @@ func (client *Client) DescribeEipAddressesWithOptions(request *DescribeEipAddres
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEipAddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries elastic IP addresses (EIPs) created in a region.
-//
-// Description:
-//
-// You can call this operation to query information about EIPs in a region, including maximum bandwidth, billing methods, and associated instances.
-//
-// @param request - DescribeEipAddressesRequest
-//
-// @return DescribeEipAddressesResponse
-func (client *Client) DescribeEipAddresses(request *DescribeEipAddressesRequest) (_result *DescribeEipAddressesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEipAddressesResponse{}
-	_body, _err := client.DescribeEipAddressesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18971,7 +14582,7 @@ func (client *Client) DescribeEipAddresses(request *DescribeEipAddressesRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEipGatewayInfoResponse
-func (client *Client) DescribeEipGatewayInfoWithOptions(request *DescribeEipGatewayInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipGatewayInfoResponse, _err error) {
+func (client *Client) DescribeEipGatewayInfoWithContext(ctx context.Context, request *DescribeEipGatewayInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipGatewayInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19020,33 +14631,11 @@ func (client *Client) DescribeEipGatewayInfoWithOptions(request *DescribeEipGate
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEipGatewayInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the gateway and subnet mask of an elastic IP address (EIP).
-//
-// Description:
-//
-// You can query only EIPs that are associated with secondary elastic network interfaces (ENIs) in multi-EIP-to-ENI mode.
-//
-// @param request - DescribeEipGatewayInfoRequest
-//
-// @return DescribeEipGatewayInfoResponse
-func (client *Client) DescribeEipGatewayInfo(request *DescribeEipGatewayInfoRequest) (_result *DescribeEipGatewayInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEipGatewayInfoResponse{}
-	_body, _err := client.DescribeEipGatewayInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19063,7 +14652,7 @@ func (client *Client) DescribeEipGatewayInfo(request *DescribeEipGatewayInfoRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEipMonitorDataResponse
-func (client *Client) DescribeEipMonitorDataWithOptions(request *DescribeEipMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipMonitorDataResponse, _err error) {
+func (client *Client) DescribeEipMonitorDataWithContext(ctx context.Context, request *DescribeEipMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipMonitorDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19120,33 +14709,11 @@ func (client *Client) DescribeEipMonitorDataWithOptions(request *DescribeEipMoni
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEipMonitorDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the monitoring data of an elastic IP address (EIP). You can query monitoring data within the last 30 days, and obtain up to 400 data points in each request.
-//
-// Description:
-//
-// To improve user experience in querying monitoring data, we recommend that you call the DescribeMetricList API operation provided by CloudMonitor to query EIP monitoring data. For more information, see [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html) and [EIP monitoring data](https://help.aliyun.com/document_detail/162874.html).
-//
-// @param request - DescribeEipMonitorDataRequest
-//
-// @return DescribeEipMonitorDataResponse
-func (client *Client) DescribeEipMonitorData(request *DescribeEipMonitorDataRequest) (_result *DescribeEipMonitorDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEipMonitorDataResponse{}
-	_body, _err := client.DescribeEipMonitorDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19159,7 +14726,7 @@ func (client *Client) DescribeEipMonitorData(request *DescribeEipMonitorDataRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEipSegmentResponse
-func (client *Client) DescribeEipSegmentWithOptions(request *DescribeEipSegmentRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipSegmentResponse, _err error) {
+func (client *Client) DescribeEipSegmentWithContext(ctx context.Context, request *DescribeEipSegmentRequest, runtime *dara.RuntimeOptions) (_result *DescribeEipSegmentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19216,29 +14783,11 @@ func (client *Client) DescribeEipSegmentWithOptions(request *DescribeEipSegmentR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEipSegmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries contiguous elastic IP address (EIP) groups.
-//
-// @param request - DescribeEipSegmentRequest
-//
-// @return DescribeEipSegmentResponse
-func (client *Client) DescribeEipSegment(request *DescribeEipSegmentRequest) (_result *DescribeEipSegmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEipSegmentResponse{}
-	_body, _err := client.DescribeEipSegmentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19251,7 +14800,7 @@ func (client *Client) DescribeEipSegment(request *DescribeEipSegmentRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExpressConnectTrafficQosResponse
-func (client *Client) DescribeExpressConnectTrafficQosWithOptions(request *DescribeExpressConnectTrafficQosRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectTrafficQosResponse, _err error) {
+func (client *Client) DescribeExpressConnectTrafficQosWithContext(ctx context.Context, request *DescribeExpressConnectTrafficQosRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectTrafficQosResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19320,29 +14869,11 @@ func (client *Client) DescribeExpressConnectTrafficQosWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeExpressConnectTrafficQosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the quality of service (QoS) policies of Express Connect. The response can be displayed by page.
-//
-// @param request - DescribeExpressConnectTrafficQosRequest
-//
-// @return DescribeExpressConnectTrafficQosResponse
-func (client *Client) DescribeExpressConnectTrafficQos(request *DescribeExpressConnectTrafficQosRequest) (_result *DescribeExpressConnectTrafficQosResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeExpressConnectTrafficQosResponse{}
-	_body, _err := client.DescribeExpressConnectTrafficQosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19355,7 +14886,7 @@ func (client *Client) DescribeExpressConnectTrafficQos(request *DescribeExpressC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExpressConnectTrafficQosQueueResponse
-func (client *Client) DescribeExpressConnectTrafficQosQueueWithOptions(request *DescribeExpressConnectTrafficQosQueueRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectTrafficQosQueueResponse, _err error) {
+func (client *Client) DescribeExpressConnectTrafficQosQueueWithContext(ctx context.Context, request *DescribeExpressConnectTrafficQosQueueRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectTrafficQosQueueResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19412,29 +14943,11 @@ func (client *Client) DescribeExpressConnectTrafficQosQueueWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeExpressConnectTrafficQosQueueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about the quality of service (QoS) queues of the Express Connect circuit.
-//
-// @param request - DescribeExpressConnectTrafficQosQueueRequest
-//
-// @return DescribeExpressConnectTrafficQosQueueResponse
-func (client *Client) DescribeExpressConnectTrafficQosQueue(request *DescribeExpressConnectTrafficQosQueueRequest) (_result *DescribeExpressConnectTrafficQosQueueResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeExpressConnectTrafficQosQueueResponse{}
-	_body, _err := client.DescribeExpressConnectTrafficQosQueueWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19447,7 +14960,7 @@ func (client *Client) DescribeExpressConnectTrafficQosQueue(request *DescribeExp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExpressConnectTrafficQosRuleResponse
-func (client *Client) DescribeExpressConnectTrafficQosRuleWithOptions(request *DescribeExpressConnectTrafficQosRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectTrafficQosRuleResponse, _err error) {
+func (client *Client) DescribeExpressConnectTrafficQosRuleWithContext(ctx context.Context, request *DescribeExpressConnectTrafficQosRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectTrafficQosRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19508,29 +15021,11 @@ func (client *Client) DescribeExpressConnectTrafficQosRuleWithOptions(request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeExpressConnectTrafficQosRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries quality of service (QoS) rules. Paging parameters are not supported.
-//
-// @param request - DescribeExpressConnectTrafficQosRuleRequest
-//
-// @return DescribeExpressConnectTrafficQosRuleResponse
-func (client *Client) DescribeExpressConnectTrafficQosRule(request *DescribeExpressConnectTrafficQosRuleRequest) (_result *DescribeExpressConnectTrafficQosRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeExpressConnectTrafficQosRuleResponse{}
-	_body, _err := client.DescribeExpressConnectTrafficQosRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19543,7 +15038,7 @@ func (client *Client) DescribeExpressConnectTrafficQosRule(request *DescribeExpr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFailoverTestJobResponse
-func (client *Client) DescribeFailoverTestJobWithOptions(request *DescribeFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *DescribeFailoverTestJobResponse, _err error) {
+func (client *Client) DescribeFailoverTestJobWithContext(ctx context.Context, request *DescribeFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *DescribeFailoverTestJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19592,29 +15087,11 @@ func (client *Client) DescribeFailoverTestJobWithOptions(request *DescribeFailov
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeFailoverTestJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries failover tests.
-//
-// @param request - DescribeFailoverTestJobRequest
-//
-// @return DescribeFailoverTestJobResponse
-func (client *Client) DescribeFailoverTestJob(request *DescribeFailoverTestJobRequest) (_result *DescribeFailoverTestJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeFailoverTestJobResponse{}
-	_body, _err := client.DescribeFailoverTestJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19627,7 +15104,7 @@ func (client *Client) DescribeFailoverTestJob(request *DescribeFailoverTestJobRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFailoverTestJobsResponse
-func (client *Client) DescribeFailoverTestJobsWithOptions(request *DescribeFailoverTestJobsRequest, runtime *dara.RuntimeOptions) (_result *DescribeFailoverTestJobsResponse, _err error) {
+func (client *Client) DescribeFailoverTestJobsWithContext(ctx context.Context, request *DescribeFailoverTestJobsRequest, runtime *dara.RuntimeOptions) (_result *DescribeFailoverTestJobsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19684,29 +15161,11 @@ func (client *Client) DescribeFailoverTestJobsWithOptions(request *DescribeFailo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeFailoverTestJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries failover tests for Express Connect.
-//
-// @param request - DescribeFailoverTestJobsRequest
-//
-// @return DescribeFailoverTestJobsResponse
-func (client *Client) DescribeFailoverTestJobs(request *DescribeFailoverTestJobsRequest) (_result *DescribeFailoverTestJobsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeFailoverTestJobsResponse{}
-	_body, _err := client.DescribeFailoverTestJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19719,7 +15178,7 @@ func (client *Client) DescribeFailoverTestJobs(request *DescribeFailoverTestJobs
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFlowLogsResponse
-func (client *Client) DescribeFlowLogsWithOptions(request *DescribeFlowLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeFlowLogsResponse, _err error) {
+func (client *Client) DescribeFlowLogsWithContext(ctx context.Context, request *DescribeFlowLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeFlowLogsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19816,29 +15275,11 @@ func (client *Client) DescribeFlowLogsWithOptions(request *DescribeFlowLogsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeFlowLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about flow logs.
-//
-// @param request - DescribeFlowLogsRequest
-//
-// @return DescribeFlowLogsResponse
-func (client *Client) DescribeFlowLogs(request *DescribeFlowLogsRequest) (_result *DescribeFlowLogsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeFlowLogsResponse{}
-	_body, _err := client.DescribeFlowLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19851,7 +15292,7 @@ func (client *Client) DescribeFlowLogs(request *DescribeFlowLogsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeForwardTableEntriesResponse
-func (client *Client) DescribeForwardTableEntriesWithOptions(request *DescribeForwardTableEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeForwardTableEntriesResponse, _err error) {
+func (client *Client) DescribeForwardTableEntriesWithContext(ctx context.Context, request *DescribeForwardTableEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeForwardTableEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19936,29 +15377,11 @@ func (client *Client) DescribeForwardTableEntriesWithOptions(request *DescribeFo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeForwardTableEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries DNAT entries.
-//
-// @param request - DescribeForwardTableEntriesRequest
-//
-// @return DescribeForwardTableEntriesResponse
-func (client *Client) DescribeForwardTableEntries(request *DescribeForwardTableEntriesRequest) (_result *DescribeForwardTableEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeForwardTableEntriesResponse{}
-	_body, _err := client.DescribeForwardTableEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19971,7 +15394,7 @@ func (client *Client) DescribeForwardTableEntries(request *DescribeForwardTableE
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeGlobalAccelerationInstancesResponse
-func (client *Client) DescribeGlobalAccelerationInstancesWithOptions(request *DescribeGlobalAccelerationInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeGlobalAccelerationInstancesResponse, _err error) {
+func (client *Client) DescribeGlobalAccelerationInstancesWithContext(ctx context.Context, request *DescribeGlobalAccelerationInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeGlobalAccelerationInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20052,29 +15475,11 @@ func (client *Client) DescribeGlobalAccelerationInstancesWithOptions(request *De
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeGlobalAccelerationInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Global Accelerator (GA) instances.
-//
-// @param request - DescribeGlobalAccelerationInstancesRequest
-//
-// @return DescribeGlobalAccelerationInstancesResponse
-func (client *Client) DescribeGlobalAccelerationInstances(request *DescribeGlobalAccelerationInstancesRequest) (_result *DescribeGlobalAccelerationInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeGlobalAccelerationInstancesResponse{}
-	_body, _err := client.DescribeGlobalAccelerationInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20087,7 +15492,7 @@ func (client *Client) DescribeGlobalAccelerationInstances(request *DescribeGloba
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeGrantRulesToCenResponse
-func (client *Client) DescribeGrantRulesToCenWithOptions(request *DescribeGrantRulesToCenRequest, runtime *dara.RuntimeOptions) (_result *DescribeGrantRulesToCenResponse, _err error) {
+func (client *Client) DescribeGrantRulesToCenWithContext(ctx context.Context, request *DescribeGrantRulesToCenRequest, runtime *dara.RuntimeOptions) (_result *DescribeGrantRulesToCenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20152,29 +15557,11 @@ func (client *Client) DescribeGrantRulesToCenWithOptions(request *DescribeGrantR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeGrantRulesToCenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询指定网络实例（VPC、VBR）的云企业网跨账号授权信息
-//
-// @param request - DescribeGrantRulesToCenRequest
-//
-// @return DescribeGrantRulesToCenResponse
-func (client *Client) DescribeGrantRulesToCen(request *DescribeGrantRulesToCenRequest) (_result *DescribeGrantRulesToCenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeGrantRulesToCenResponse{}
-	_body, _err := client.DescribeGrantRulesToCenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20187,7 +15574,7 @@ func (client *Client) DescribeGrantRulesToCen(request *DescribeGrantRulesToCenRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeHaVipsResponse
-func (client *Client) DescribeHaVipsWithOptions(request *DescribeHaVipsRequest, runtime *dara.RuntimeOptions) (_result *DescribeHaVipsResponse, _err error) {
+func (client *Client) DescribeHaVipsWithContext(ctx context.Context, request *DescribeHaVipsRequest, runtime *dara.RuntimeOptions) (_result *DescribeHaVipsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20248,29 +15635,11 @@ func (client *Client) DescribeHaVipsWithOptions(request *DescribeHaVipsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeHaVipsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries HaVips in a region.
-//
-// @param request - DescribeHaVipsRequest
-//
-// @return DescribeHaVipsResponse
-func (client *Client) DescribeHaVips(request *DescribeHaVipsRequest) (_result *DescribeHaVipsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeHaVipsResponse{}
-	_body, _err := client.DescribeHaVipsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20283,7 +15652,7 @@ func (client *Client) DescribeHaVips(request *DescribeHaVipsRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeHighDefinitionMonitorLogAttributeResponse
-func (client *Client) DescribeHighDefinitionMonitorLogAttributeWithOptions(request *DescribeHighDefinitionMonitorLogAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeHighDefinitionMonitorLogAttributeResponse, _err error) {
+func (client *Client) DescribeHighDefinitionMonitorLogAttributeWithContext(ctx context.Context, request *DescribeHighDefinitionMonitorLogAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeHighDefinitionMonitorLogAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20332,29 +15701,11 @@ func (client *Client) DescribeHighDefinitionMonitorLogAttributeWithOptions(reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeHighDefinitionMonitorLogAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries configurations about the fine-grained monitoring feature of an elastic IP address (EIP).
-//
-// @param request - DescribeHighDefinitionMonitorLogAttributeRequest
-//
-// @return DescribeHighDefinitionMonitorLogAttributeResponse
-func (client *Client) DescribeHighDefinitionMonitorLogAttribute(request *DescribeHighDefinitionMonitorLogAttributeRequest) (_result *DescribeHighDefinitionMonitorLogAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeHighDefinitionMonitorLogAttributeResponse{}
-	_body, _err := client.DescribeHighDefinitionMonitorLogAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20367,7 +15718,7 @@ func (client *Client) DescribeHighDefinitionMonitorLogAttribute(request *Describ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIPv6TranslatorAclListAttributesResponse
-func (client *Client) DescribeIPv6TranslatorAclListAttributesWithOptions(request *DescribeIPv6TranslatorAclListAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIPv6TranslatorAclListAttributesResponse, _err error) {
+func (client *Client) DescribeIPv6TranslatorAclListAttributesWithContext(ctx context.Context, request *DescribeIPv6TranslatorAclListAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIPv6TranslatorAclListAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20420,29 +15771,11 @@ func (client *Client) DescribeIPv6TranslatorAclListAttributesWithOptions(request
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeIPv6TranslatorAclListAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an access control list (ACL), including the specified IP addresses and associated IPv6 mapping entries.
-//
-// @param request - DescribeIPv6TranslatorAclListAttributesRequest
-//
-// @return DescribeIPv6TranslatorAclListAttributesResponse
-func (client *Client) DescribeIPv6TranslatorAclListAttributes(request *DescribeIPv6TranslatorAclListAttributesRequest) (_result *DescribeIPv6TranslatorAclListAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeIPv6TranslatorAclListAttributesResponse{}
-	_body, _err := client.DescribeIPv6TranslatorAclListAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20457,7 +15790,7 @@ func (client *Client) DescribeIPv6TranslatorAclListAttributes(request *DescribeI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIPv6TranslatorAclListsResponse
-func (client *Client) DescribeIPv6TranslatorAclListsWithOptions(request *DescribeIPv6TranslatorAclListsRequest, runtime *dara.RuntimeOptions) (_result *DescribeIPv6TranslatorAclListsResponse, _err error) {
+func (client *Client) DescribeIPv6TranslatorAclListsWithContext(ctx context.Context, request *DescribeIPv6TranslatorAclListsRequest, runtime *dara.RuntimeOptions) (_result *DescribeIPv6TranslatorAclListsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20514,32 +15847,11 @@ func (client *Client) DescribeIPv6TranslatorAclListsWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeIPv6TranslatorAclListsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeIPv6TranslatorAclLists is deprecated
-//
-// Summary:
-//
-// Queries access control lists (ACLs).
-//
-// @param request - DescribeIPv6TranslatorAclListsRequest
-//
-// @return DescribeIPv6TranslatorAclListsResponse
-// Deprecated
-func (client *Client) DescribeIPv6TranslatorAclLists(request *DescribeIPv6TranslatorAclListsRequest) (_result *DescribeIPv6TranslatorAclListsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeIPv6TranslatorAclListsResponse{}
-	_body, _err := client.DescribeIPv6TranslatorAclListsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20554,7 +15866,7 @@ func (client *Client) DescribeIPv6TranslatorAclLists(request *DescribeIPv6Transl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIPv6TranslatorEntriesResponse
-func (client *Client) DescribeIPv6TranslatorEntriesWithOptions(request *DescribeIPv6TranslatorEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIPv6TranslatorEntriesResponse, _err error) {
+func (client *Client) DescribeIPv6TranslatorEntriesWithContext(ctx context.Context, request *DescribeIPv6TranslatorEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIPv6TranslatorEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20651,32 +15963,11 @@ func (client *Client) DescribeIPv6TranslatorEntriesWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeIPv6TranslatorEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeIPv6TranslatorEntries is deprecated
-//
-// Summary:
-//
-// Queries IPv6 mapping entries.
-//
-// @param request - DescribeIPv6TranslatorEntriesRequest
-//
-// @return DescribeIPv6TranslatorEntriesResponse
-// Deprecated
-func (client *Client) DescribeIPv6TranslatorEntries(request *DescribeIPv6TranslatorEntriesRequest) (_result *DescribeIPv6TranslatorEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeIPv6TranslatorEntriesResponse{}
-	_body, _err := client.DescribeIPv6TranslatorEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20691,7 +15982,7 @@ func (client *Client) DescribeIPv6TranslatorEntries(request *DescribeIPv6Transla
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIPv6TranslatorsResponse
-func (client *Client) DescribeIPv6TranslatorsWithOptions(request *DescribeIPv6TranslatorsRequest, runtime *dara.RuntimeOptions) (_result *DescribeIPv6TranslatorsResponse, _err error) {
+func (client *Client) DescribeIPv6TranslatorsWithContext(ctx context.Context, request *DescribeIPv6TranslatorsRequest, runtime *dara.RuntimeOptions) (_result *DescribeIPv6TranslatorsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20772,32 +16063,11 @@ func (client *Client) DescribeIPv6TranslatorsWithOptions(request *DescribeIPv6Tr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeIPv6TranslatorsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeIPv6Translators is deprecated
-//
-// Summary:
-//
-// Queries IPv6 Translation Service instances.
-//
-// @param request - DescribeIPv6TranslatorsRequest
-//
-// @return DescribeIPv6TranslatorsResponse
-// Deprecated
-func (client *Client) DescribeIPv6Translators(request *DescribeIPv6TranslatorsRequest) (_result *DescribeIPv6TranslatorsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeIPv6TranslatorsResponse{}
-	_body, _err := client.DescribeIPv6TranslatorsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20810,7 +16080,7 @@ func (client *Client) DescribeIPv6Translators(request *DescribeIPv6TranslatorsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIpv6AddressesResponse
-func (client *Client) DescribeIpv6AddressesWithOptions(request *DescribeIpv6AddressesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpv6AddressesResponse, _err error) {
+func (client *Client) DescribeIpv6AddressesWithContext(ctx context.Context, request *DescribeIpv6AddressesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpv6AddressesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20919,29 +16189,11 @@ func (client *Client) DescribeIpv6AddressesWithOptions(request *DescribeIpv6Addr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeIpv6AddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries IPv6 addresses in a region.
-//
-// @param request - DescribeIpv6AddressesRequest
-//
-// @return DescribeIpv6AddressesResponse
-func (client *Client) DescribeIpv6Addresses(request *DescribeIpv6AddressesRequest) (_result *DescribeIpv6AddressesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeIpv6AddressesResponse{}
-	_body, _err := client.DescribeIpv6AddressesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20954,7 +16206,7 @@ func (client *Client) DescribeIpv6Addresses(request *DescribeIpv6AddressesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIpv6EgressOnlyRulesResponse
-func (client *Client) DescribeIpv6EgressOnlyRulesWithOptions(request *DescribeIpv6EgressOnlyRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpv6EgressOnlyRulesResponse, _err error) {
+func (client *Client) DescribeIpv6EgressOnlyRulesWithContext(ctx context.Context, request *DescribeIpv6EgressOnlyRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpv6EgressOnlyRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21027,29 +16279,11 @@ func (client *Client) DescribeIpv6EgressOnlyRulesWithOptions(request *DescribeIp
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeIpv6EgressOnlyRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries egress-only rules.
-//
-// @param request - DescribeIpv6EgressOnlyRulesRequest
-//
-// @return DescribeIpv6EgressOnlyRulesResponse
-func (client *Client) DescribeIpv6EgressOnlyRules(request *DescribeIpv6EgressOnlyRulesRequest) (_result *DescribeIpv6EgressOnlyRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeIpv6EgressOnlyRulesResponse{}
-	_body, _err := client.DescribeIpv6EgressOnlyRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21062,7 +16296,7 @@ func (client *Client) DescribeIpv6EgressOnlyRules(request *DescribeIpv6EgressOnl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIpv6GatewayAttributeResponse
-func (client *Client) DescribeIpv6GatewayAttributeWithOptions(request *DescribeIpv6GatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpv6GatewayAttributeResponse, _err error) {
+func (client *Client) DescribeIpv6GatewayAttributeWithContext(ctx context.Context, request *DescribeIpv6GatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpv6GatewayAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21111,29 +16345,11 @@ func (client *Client) DescribeIpv6GatewayAttributeWithOptions(request *DescribeI
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeIpv6GatewayAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about an IPv6 gateway, including the region, virtual private cloud (VPC), status, and billing method.
-//
-// @param request - DescribeIpv6GatewayAttributeRequest
-//
-// @return DescribeIpv6GatewayAttributeResponse
-func (client *Client) DescribeIpv6GatewayAttribute(request *DescribeIpv6GatewayAttributeRequest) (_result *DescribeIpv6GatewayAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeIpv6GatewayAttributeResponse{}
-	_body, _err := client.DescribeIpv6GatewayAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21146,7 +16362,7 @@ func (client *Client) DescribeIpv6GatewayAttribute(request *DescribeIpv6GatewayA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIpv6GatewaysResponse
-func (client *Client) DescribeIpv6GatewaysWithOptions(request *DescribeIpv6GatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpv6GatewaysResponse, _err error) {
+func (client *Client) DescribeIpv6GatewaysWithContext(ctx context.Context, request *DescribeIpv6GatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpv6GatewaysResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21219,29 +16435,11 @@ func (client *Client) DescribeIpv6GatewaysWithOptions(request *DescribeIpv6Gatew
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeIpv6GatewaysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries IPv6 gateways in a region.
-//
-// @param request - DescribeIpv6GatewaysRequest
-//
-// @return DescribeIpv6GatewaysResponse
-func (client *Client) DescribeIpv6Gateways(request *DescribeIpv6GatewaysRequest) (_result *DescribeIpv6GatewaysResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeIpv6GatewaysResponse{}
-	_body, _err := client.DescribeIpv6GatewaysWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21254,7 +16452,7 @@ func (client *Client) DescribeIpv6Gateways(request *DescribeIpv6GatewaysRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNatGatewayAssociateNetworkInterfacesResponse
-func (client *Client) DescribeNatGatewayAssociateNetworkInterfacesWithOptions(request *DescribeNatGatewayAssociateNetworkInterfacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatGatewayAssociateNetworkInterfacesResponse, _err error) {
+func (client *Client) DescribeNatGatewayAssociateNetworkInterfacesWithContext(ctx context.Context, request *DescribeNatGatewayAssociateNetworkInterfacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatGatewayAssociateNetworkInterfacesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21327,29 +16525,11 @@ func (client *Client) DescribeNatGatewayAssociateNetworkInterfacesWithOptions(re
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNatGatewayAssociateNetworkInterfacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询NAT已绑定ENI信息
-//
-// @param request - DescribeNatGatewayAssociateNetworkInterfacesRequest
-//
-// @return DescribeNatGatewayAssociateNetworkInterfacesResponse
-func (client *Client) DescribeNatGatewayAssociateNetworkInterfaces(request *DescribeNatGatewayAssociateNetworkInterfacesRequest) (_result *DescribeNatGatewayAssociateNetworkInterfacesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNatGatewayAssociateNetworkInterfacesResponse{}
-	_body, _err := client.DescribeNatGatewayAssociateNetworkInterfacesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21366,7 +16546,7 @@ func (client *Client) DescribeNatGatewayAssociateNetworkInterfaces(request *Desc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNatGatewaysResponse
-func (client *Client) DescribeNatGatewaysWithOptions(request *DescribeNatGatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatGatewaysResponse, _err error) {
+func (client *Client) DescribeNatGatewaysWithContext(ctx context.Context, request *DescribeNatGatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatGatewaysResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21463,33 +16643,11 @@ func (client *Client) DescribeNatGatewaysWithOptions(request *DescribeNatGateway
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNatGatewaysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries NAT gateways that meet specific conditions in a specified region.
-//
-// Description:
-//
-// You can call this operation to query both Virtual Private Cloud (VPC) NAT gateways and Internet NAT gateways. NAT gateways in this topic refer to both VPC NAT gateways and Internet NAT gateways.
-//
-// @param request - DescribeNatGatewaysRequest
-//
-// @return DescribeNatGatewaysResponse
-func (client *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (_result *DescribeNatGatewaysResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNatGatewaysResponse{}
-	_body, _err := client.DescribeNatGatewaysWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21502,7 +16660,7 @@ func (client *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNetworkAclAttributesResponse
-func (client *Client) DescribeNetworkAclAttributesWithOptions(request *DescribeNetworkAclAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkAclAttributesResponse, _err error) {
+func (client *Client) DescribeNetworkAclAttributesWithContext(ctx context.Context, request *DescribeNetworkAclAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkAclAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21555,29 +16713,11 @@ func (client *Client) DescribeNetworkAclAttributesWithOptions(request *DescribeN
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNetworkAclAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries network access control lists (ACLs).
-//
-// @param request - DescribeNetworkAclAttributesRequest
-//
-// @return DescribeNetworkAclAttributesResponse
-func (client *Client) DescribeNetworkAclAttributes(request *DescribeNetworkAclAttributesRequest) (_result *DescribeNetworkAclAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNetworkAclAttributesResponse{}
-	_body, _err := client.DescribeNetworkAclAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21590,7 +16730,7 @@ func (client *Client) DescribeNetworkAclAttributes(request *DescribeNetworkAclAt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNetworkAclsResponse
-func (client *Client) DescribeNetworkAclsWithOptions(request *DescribeNetworkAclsRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkAclsResponse, _err error) {
+func (client *Client) DescribeNetworkAclsWithContext(ctx context.Context, request *DescribeNetworkAclsRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkAclsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21671,29 +16811,11 @@ func (client *Client) DescribeNetworkAclsWithOptions(request *DescribeNetworkAcl
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeNetworkAclsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries network ACLs.
-//
-// @param request - DescribeNetworkAclsRequest
-//
-// @return DescribeNetworkAclsResponse
-func (client *Client) DescribeNetworkAcls(request *DescribeNetworkAclsRequest) (_result *DescribeNetworkAclsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeNetworkAclsResponse{}
-	_body, _err := client.DescribeNetworkAclsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21706,7 +16828,7 @@ func (client *Client) DescribeNetworkAcls(request *DescribeNetworkAclsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePhysicalConnectionLOAResponse
-func (client *Client) DescribePhysicalConnectionLOAWithOptions(request *DescribePhysicalConnectionLOARequest, runtime *dara.RuntimeOptions) (_result *DescribePhysicalConnectionLOAResponse, _err error) {
+func (client *Client) DescribePhysicalConnectionLOAWithContext(ctx context.Context, request *DescribePhysicalConnectionLOARequest, runtime *dara.RuntimeOptions) (_result *DescribePhysicalConnectionLOAResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21755,29 +16877,11 @@ func (client *Client) DescribePhysicalConnectionLOAWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePhysicalConnectionLOAResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询物理专线LOA信息
-//
-// @param request - DescribePhysicalConnectionLOARequest
-//
-// @return DescribePhysicalConnectionLOAResponse
-func (client *Client) DescribePhysicalConnectionLOA(request *DescribePhysicalConnectionLOARequest) (_result *DescribePhysicalConnectionLOAResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePhysicalConnectionLOAResponse{}
-	_body, _err := client.DescribePhysicalConnectionLOAWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21794,7 +16898,7 @@ func (client *Client) DescribePhysicalConnectionLOA(request *DescribePhysicalCon
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePhysicalConnectionsResponse
-func (client *Client) DescribePhysicalConnectionsWithOptions(request *DescribePhysicalConnectionsRequest, runtime *dara.RuntimeOptions) (_result *DescribePhysicalConnectionsResponse, _err error) {
+func (client *Client) DescribePhysicalConnectionsWithContext(ctx context.Context, request *DescribePhysicalConnectionsRequest, runtime *dara.RuntimeOptions) (_result *DescribePhysicalConnectionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21863,33 +16967,11 @@ func (client *Client) DescribePhysicalConnectionsWithOptions(request *DescribePh
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePhysicalConnectionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Express Connect circuits in a region.
-//
-// Description:
-//
-// By default, the system queries information about all Express Connect circuits in the specified region. You can query Express Connect circuits that meet specific conditions by specifying filter conditions provided by the **DescribePhysicalConnections*	- operation. For more information about the supported filter conditions, see **Key*	- in the **Request parameters*	- section.
-//
-// @param request - DescribePhysicalConnectionsRequest
-//
-// @return DescribePhysicalConnectionsResponse
-func (client *Client) DescribePhysicalConnections(request *DescribePhysicalConnectionsRequest) (_result *DescribePhysicalConnectionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePhysicalConnectionsResponse{}
-	_body, _err := client.DescribePhysicalConnectionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21906,7 +16988,7 @@ func (client *Client) DescribePhysicalConnections(request *DescribePhysicalConne
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePublicIpAddressResponse
-func (client *Client) DescribePublicIpAddressWithOptions(request *DescribePublicIpAddressRequest, runtime *dara.RuntimeOptions) (_result *DescribePublicIpAddressResponse, _err error) {
+func (client *Client) DescribePublicIpAddressWithContext(ctx context.Context, request *DescribePublicIpAddressRequest, runtime *dara.RuntimeOptions) (_result *DescribePublicIpAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21963,33 +17045,11 @@ func (client *Client) DescribePublicIpAddressWithOptions(request *DescribePublic
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePublicIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the public IP address range of a virtual private cloud (VPC) in a region.
-//
-// Description:
-//
-// You cannot query the range of public IP addresses of a classic network by calling the **DescribePublicIpAddress*	- operation.
-//
-// @param request - DescribePublicIpAddressRequest
-//
-// @return DescribePublicIpAddressResponse
-func (client *Client) DescribePublicIpAddress(request *DescribePublicIpAddressRequest) (_result *DescribePublicIpAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePublicIpAddressResponse{}
-	_body, _err := client.DescribePublicIpAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22002,7 +17062,7 @@ func (client *Client) DescribePublicIpAddress(request *DescribePublicIpAddressRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22047,29 +17107,11 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the most recent region list.
-//
-// @param request - DescribeRegionsRequest
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22086,7 +17128,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRouteEntryListResponse
-func (client *Client) DescribeRouteEntryListWithOptions(request *DescribeRouteEntryListRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteEntryListResponse, _err error) {
+func (client *Client) DescribeRouteEntryListWithContext(ctx context.Context, request *DescribeRouteEntryListRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteEntryListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22179,33 +17221,11 @@ func (client *Client) DescribeRouteEntryListWithOptions(request *DescribeRouteEn
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRouteEntryListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries information about route entries in a route table.
-//
-// Description:
-//
-// Before you call the [DeleteRouteEntry](https://help.aliyun.com/document_detail/36013.html) operation to delete a route, you can call this operation to query the next hop of the route that you want to delete.
-//
-// @param request - DescribeRouteEntryListRequest
-//
-// @return DescribeRouteEntryListResponse
-func (client *Client) DescribeRouteEntryList(request *DescribeRouteEntryListRequest) (_result *DescribeRouteEntryListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRouteEntryListResponse{}
-	_body, _err := client.DescribeRouteEntryListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22218,7 +17238,7 @@ func (client *Client) DescribeRouteEntryList(request *DescribeRouteEntryListRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRouteTableListResponse
-func (client *Client) DescribeRouteTableListWithOptions(request *DescribeRouteTableListRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteTableListResponse, _err error) {
+func (client *Client) DescribeRouteTableListWithContext(ctx context.Context, request *DescribeRouteTableListRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteTableListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22299,29 +17319,11 @@ func (client *Client) DescribeRouteTableListWithOptions(request *DescribeRouteTa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRouteTableListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries route tables.
-//
-// @param request - DescribeRouteTableListRequest
-//
-// @return DescribeRouteTableListResponse
-func (client *Client) DescribeRouteTableList(request *DescribeRouteTableListRequest) (_result *DescribeRouteTableListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRouteTableListResponse{}
-	_body, _err := client.DescribeRouteTableListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22336,7 +17338,7 @@ func (client *Client) DescribeRouteTableList(request *DescribeRouteTableListRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRouteTablesResponse
-func (client *Client) DescribeRouteTablesWithOptions(request *DescribeRouteTablesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteTablesResponse, _err error) {
+func (client *Client) DescribeRouteTablesWithContext(ctx context.Context, request *DescribeRouteTablesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouteTablesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22413,32 +17415,11 @@ func (client *Client) DescribeRouteTablesWithOptions(request *DescribeRouteTable
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRouteTablesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DescribeRouteTables is deprecated, please use Vpc::2016-04-28::DescribeRouteTableList instead.
-//
-// Summary:
-//
-// Queries route tables.
-//
-// @param request - DescribeRouteTablesRequest
-//
-// @return DescribeRouteTablesResponse
-// Deprecated
-func (client *Client) DescribeRouteTables(request *DescribeRouteTablesRequest) (_result *DescribeRouteTablesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRouteTablesResponse{}
-	_body, _err := client.DescribeRouteTablesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22451,7 +17432,7 @@ func (client *Client) DescribeRouteTables(request *DescribeRouteTablesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRouterInterfaceAttributeResponse
-func (client *Client) DescribeRouterInterfaceAttributeWithOptions(request *DescribeRouterInterfaceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouterInterfaceAttributeResponse, _err error) {
+func (client *Client) DescribeRouterInterfaceAttributeWithContext(ctx context.Context, request *DescribeRouterInterfaceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouterInterfaceAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22492,29 +17473,11 @@ func (client *Client) DescribeRouterInterfaceAttributeWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRouterInterfaceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configuration of a router interface.
-//
-// @param request - DescribeRouterInterfaceAttributeRequest
-//
-// @return DescribeRouterInterfaceAttributeResponse
-func (client *Client) DescribeRouterInterfaceAttribute(request *DescribeRouterInterfaceAttributeRequest) (_result *DescribeRouterInterfaceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRouterInterfaceAttributeResponse{}
-	_body, _err := client.DescribeRouterInterfaceAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22527,7 +17490,7 @@ func (client *Client) DescribeRouterInterfaceAttribute(request *DescribeRouterIn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRouterInterfacesResponse
-func (client *Client) DescribeRouterInterfacesWithOptions(request *DescribeRouterInterfacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouterInterfacesResponse, _err error) {
+func (client *Client) DescribeRouterInterfacesWithContext(ctx context.Context, request *DescribeRouterInterfacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRouterInterfacesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22588,29 +17551,11 @@ func (client *Client) DescribeRouterInterfacesWithOptions(request *DescribeRoute
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRouterInterfacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries router interfaces in a specified region.
-//
-// @param request - DescribeRouterInterfacesRequest
-//
-// @return DescribeRouterInterfacesResponse
-func (client *Client) DescribeRouterInterfaces(request *DescribeRouterInterfacesRequest) (_result *DescribeRouterInterfacesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRouterInterfacesResponse{}
-	_body, _err := client.DescribeRouterInterfacesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22627,7 +17572,7 @@ func (client *Client) DescribeRouterInterfaces(request *DescribeRouterInterfaces
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServerRelatedGlobalAccelerationInstancesResponse
-func (client *Client) DescribeServerRelatedGlobalAccelerationInstancesWithOptions(request *DescribeServerRelatedGlobalAccelerationInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeServerRelatedGlobalAccelerationInstancesResponse, _err error) {
+func (client *Client) DescribeServerRelatedGlobalAccelerationInstancesWithContext(ctx context.Context, request *DescribeServerRelatedGlobalAccelerationInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeServerRelatedGlobalAccelerationInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22676,33 +17621,11 @@ func (client *Client) DescribeServerRelatedGlobalAccelerationInstancesWithOption
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeServerRelatedGlobalAccelerationInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Global Accelerator (GA) instances that are associated with a backend server.
-//
-// Description:
-//
-// > You can call this operation to query only dedicated-bandwidth GA instances.
-//
-// @param request - DescribeServerRelatedGlobalAccelerationInstancesRequest
-//
-// @return DescribeServerRelatedGlobalAccelerationInstancesResponse
-func (client *Client) DescribeServerRelatedGlobalAccelerationInstances(request *DescribeServerRelatedGlobalAccelerationInstancesRequest) (_result *DescribeServerRelatedGlobalAccelerationInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeServerRelatedGlobalAccelerationInstancesResponse{}
-	_body, _err := client.DescribeServerRelatedGlobalAccelerationInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22715,7 +17638,7 @@ func (client *Client) DescribeServerRelatedGlobalAccelerationInstances(request *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSnatTableEntriesResponse
-func (client *Client) DescribeSnatTableEntriesWithOptions(request *DescribeSnatTableEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnatTableEntriesResponse, _err error) {
+func (client *Client) DescribeSnatTableEntriesWithContext(ctx context.Context, request *DescribeSnatTableEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnatTableEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22796,29 +17719,11 @@ func (client *Client) DescribeSnatTableEntriesWithOptions(request *DescribeSnatT
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSnatTableEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries SNAT entries.
-//
-// @param request - DescribeSnatTableEntriesRequest
-//
-// @return DescribeSnatTableEntriesResponse
-func (client *Client) DescribeSnatTableEntries(request *DescribeSnatTableEntriesRequest) (_result *DescribeSnatTableEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSnatTableEntriesResponse{}
-	_body, _err := client.DescribeSnatTableEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22831,7 +17736,7 @@ func (client *Client) DescribeSnatTableEntries(request *DescribeSnatTableEntries
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSslVpnClientCertResponse
-func (client *Client) DescribeSslVpnClientCertWithOptions(request *DescribeSslVpnClientCertRequest, runtime *dara.RuntimeOptions) (_result *DescribeSslVpnClientCertResponse, _err error) {
+func (client *Client) DescribeSslVpnClientCertWithContext(ctx context.Context, request *DescribeSslVpnClientCertRequest, runtime *dara.RuntimeOptions) (_result *DescribeSslVpnClientCertResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22876,29 +17781,11 @@ func (client *Client) DescribeSslVpnClientCertWithOptions(request *DescribeSslVp
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSslVpnClientCertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an SSL client certificate.
-//
-// @param request - DescribeSslVpnClientCertRequest
-//
-// @return DescribeSslVpnClientCertResponse
-func (client *Client) DescribeSslVpnClientCert(request *DescribeSslVpnClientCertRequest) (_result *DescribeSslVpnClientCertResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSslVpnClientCertResponse{}
-	_body, _err := client.DescribeSslVpnClientCertWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22911,7 +17798,7 @@ func (client *Client) DescribeSslVpnClientCert(request *DescribeSslVpnClientCert
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSslVpnClientCertsResponse
-func (client *Client) DescribeSslVpnClientCertsWithOptions(request *DescribeSslVpnClientCertsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSslVpnClientCertsResponse, _err error) {
+func (client *Client) DescribeSslVpnClientCertsWithContext(ctx context.Context, request *DescribeSslVpnClientCertsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSslVpnClientCertsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22976,29 +17863,11 @@ func (client *Client) DescribeSslVpnClientCertsWithOptions(request *DescribeSslV
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSslVpnClientCertsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries SSL client certificates.
-//
-// @param request - DescribeSslVpnClientCertsRequest
-//
-// @return DescribeSslVpnClientCertsResponse
-func (client *Client) DescribeSslVpnClientCerts(request *DescribeSslVpnClientCertsRequest) (_result *DescribeSslVpnClientCertsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSslVpnClientCertsResponse{}
-	_body, _err := client.DescribeSslVpnClientCertsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23017,7 +17886,7 @@ func (client *Client) DescribeSslVpnClientCerts(request *DescribeSslVpnClientCer
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSslVpnClientsResponse
-func (client *Client) DescribeSslVpnClientsWithOptions(request *DescribeSslVpnClientsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSslVpnClientsResponse, _err error) {
+func (client *Client) DescribeSslVpnClientsWithContext(ctx context.Context, request *DescribeSslVpnClientsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSslVpnClientsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23070,35 +17939,11 @@ func (client *Client) DescribeSslVpnClientsWithOptions(request *DescribeSslVpnCl
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSslVpnClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the clients that have connected to a VPN gateway through SSL-VPN connections.
-//
-// Description:
-//
-// If your VPN gateway was created before December 10, 2022, you need to upgrade the VPN gateway to the latest version to view the connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/2671058.html).
-//
-// If your VPN gateway was created after December 10, 2022, you can view the connection information about SSL clients by default.
-//
-// @param request - DescribeSslVpnClientsRequest
-//
-// @return DescribeSslVpnClientsResponse
-func (client *Client) DescribeSslVpnClients(request *DescribeSslVpnClientsRequest) (_result *DescribeSslVpnClientsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSslVpnClientsResponse{}
-	_body, _err := client.DescribeSslVpnClientsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23111,7 +17956,7 @@ func (client *Client) DescribeSslVpnClients(request *DescribeSslVpnClientsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSslVpnServersResponse
-func (client *Client) DescribeSslVpnServersWithOptions(request *DescribeSslVpnServersRequest, runtime *dara.RuntimeOptions) (_result *DescribeSslVpnServersResponse, _err error) {
+func (client *Client) DescribeSslVpnServersWithContext(ctx context.Context, request *DescribeSslVpnServersRequest, runtime *dara.RuntimeOptions) (_result *DescribeSslVpnServersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23176,29 +18021,11 @@ func (client *Client) DescribeSslVpnServersWithOptions(request *DescribeSslVpnSe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSslVpnServersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries one or more SSL-VPN servers.
-//
-// @param request - DescribeSslVpnServersRequest
-//
-// @return DescribeSslVpnServersResponse
-func (client *Client) DescribeSslVpnServers(request *DescribeSslVpnServersRequest) (_result *DescribeSslVpnServersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSslVpnServersResponse{}
-	_body, _err := client.DescribeSslVpnServersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23211,7 +18038,7 @@ func (client *Client) DescribeSslVpnServers(request *DescribeSslVpnServersReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTagKeysResponse
-func (client *Client) DescribeTagKeysWithOptions(request *DescribeTagKeysRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagKeysResponse, _err error) {
+func (client *Client) DescribeTagKeysWithContext(ctx context.Context, request *DescribeTagKeysRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagKeysResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23272,29 +18099,11 @@ func (client *Client) DescribeTagKeysWithOptions(request *DescribeTagKeysRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTagKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries tag keys.
-//
-// @param request - DescribeTagKeysRequest
-//
-// @return DescribeTagKeysResponse
-func (client *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (_result *DescribeTagKeysResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTagKeysResponse{}
-	_body, _err := client.DescribeTagKeysWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23307,7 +18116,7 @@ func (client *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTagKeysForExpressConnectResponse
-func (client *Client) DescribeTagKeysForExpressConnectWithOptions(request *DescribeTagKeysForExpressConnectRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagKeysForExpressConnectResponse, _err error) {
+func (client *Client) DescribeTagKeysForExpressConnectWithContext(ctx context.Context, request *DescribeTagKeysForExpressConnectRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagKeysForExpressConnectResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23368,29 +18177,11 @@ func (client *Client) DescribeTagKeysForExpressConnectWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTagKeysForExpressConnectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the tags of an Express Connect circuit.
-//
-// @param request - DescribeTagKeysForExpressConnectRequest
-//
-// @return DescribeTagKeysForExpressConnectResponse
-func (client *Client) DescribeTagKeysForExpressConnect(request *DescribeTagKeysForExpressConnectRequest) (_result *DescribeTagKeysForExpressConnectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTagKeysForExpressConnectResponse{}
-	_body, _err := client.DescribeTagKeysForExpressConnectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23413,7 +18204,7 @@ func (client *Client) DescribeTagKeysForExpressConnect(request *DescribeTagKeysF
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTagsResponse
-func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
+func (client *Client) DescribeTagsWithContext(ctx context.Context, request *DescribeTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23474,39 +18265,11 @@ func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询满足筛选条件的标签列表。
-//
-// Description:
-//
-//	  You must specify **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value*	- in the request to specify the object that you want to query.
-//
-//		- **Tag.N*	- is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you specify only **Tag.N.Value**, an error message is returned.
-//
-//		- If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
-//
-//		- If you specify multiple key-value pairs, all tags that match the key-value pairs are returned.
-//
-// @param request - DescribeTagsRequest
-//
-// @return DescribeTagsResponse
-func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *DescribeTagsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTagsResponse{}
-	_body, _err := client.DescribeTagsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23519,7 +18282,7 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVRoutersResponse
-func (client *Client) DescribeVRoutersWithOptions(request *DescribeVRoutersRequest, runtime *dara.RuntimeOptions) (_result *DescribeVRoutersResponse, _err error) {
+func (client *Client) DescribeVRoutersWithContext(ctx context.Context, request *DescribeVRoutersRequest, runtime *dara.RuntimeOptions) (_result *DescribeVRoutersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23572,29 +18335,11 @@ func (client *Client) DescribeVRoutersWithOptions(request *DescribeVRoutersReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVRoutersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询路由器列表
-//
-// @param request - DescribeVRoutersRequest
-//
-// @return DescribeVRoutersResponse
-func (client *Client) DescribeVRouters(request *DescribeVRoutersRequest) (_result *DescribeVRoutersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVRoutersResponse{}
-	_body, _err := client.DescribeVRoutersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23607,7 +18352,7 @@ func (client *Client) DescribeVRouters(request *DescribeVRoutersRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVSwitchAttributesResponse
-func (client *Client) DescribeVSwitchAttributesWithOptions(request *DescribeVSwitchAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVSwitchAttributesResponse, _err error) {
+func (client *Client) DescribeVSwitchAttributesWithContext(ctx context.Context, request *DescribeVSwitchAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVSwitchAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23656,29 +18401,11 @@ func (client *Client) DescribeVSwitchAttributesWithOptions(request *DescribeVSwi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVSwitchAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the detailed information about a vSwitch.
-//
-// @param request - DescribeVSwitchAttributesRequest
-//
-// @return DescribeVSwitchAttributesResponse
-func (client *Client) DescribeVSwitchAttributes(request *DescribeVSwitchAttributesRequest) (_result *DescribeVSwitchAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVSwitchAttributesResponse{}
-	_body, _err := client.DescribeVSwitchAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23691,7 +18418,7 @@ func (client *Client) DescribeVSwitchAttributes(request *DescribeVSwitchAttribut
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVSwitchesResponse
-func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVSwitchesResponse, _err error) {
+func (client *Client) DescribeVSwitchesWithContext(ctx context.Context, request *DescribeVSwitchesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVSwitchesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23784,29 +18511,11 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVSwitchesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about available vSwitches that are used for an internal network.
-//
-// @param request - DescribeVSwitchesRequest
-//
-// @return DescribeVSwitchesResponse
-func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_result *DescribeVSwitchesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVSwitchesResponse{}
-	_body, _err := client.DescribeVSwitchesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23819,7 +18528,7 @@ func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVbrHaResponse
-func (client *Client) DescribeVbrHaWithOptions(request *DescribeVbrHaRequest, runtime *dara.RuntimeOptions) (_result *DescribeVbrHaResponse, _err error) {
+func (client *Client) DescribeVbrHaWithContext(ctx context.Context, request *DescribeVbrHaRequest, runtime *dara.RuntimeOptions) (_result *DescribeVbrHaResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23876,29 +18585,11 @@ func (client *Client) DescribeVbrHaWithOptions(request *DescribeVbrHaRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVbrHaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries virtual border router (VBR) failover groups.
-//
-// @param request - DescribeVbrHaRequest
-//
-// @return DescribeVbrHaResponse
-func (client *Client) DescribeVbrHa(request *DescribeVbrHaRequest) (_result *DescribeVbrHaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVbrHaResponse{}
-	_body, _err := client.DescribeVbrHaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23911,7 +18602,7 @@ func (client *Client) DescribeVbrHa(request *DescribeVbrHaRequest) (_result *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVcoRouteEntriesResponse
-func (client *Client) DescribeVcoRouteEntriesWithOptions(request *DescribeVcoRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVcoRouteEntriesResponse, _err error) {
+func (client *Client) DescribeVcoRouteEntriesWithContext(ctx context.Context, request *DescribeVcoRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVcoRouteEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23968,29 +18659,11 @@ func (client *Client) DescribeVcoRouteEntriesWithOptions(request *DescribeVcoRou
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVcoRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the routes of an IPsec-VPN connection.
-//
-// @param request - DescribeVcoRouteEntriesRequest
-//
-// @return DescribeVcoRouteEntriesResponse
-func (client *Client) DescribeVcoRouteEntries(request *DescribeVcoRouteEntriesRequest) (_result *DescribeVcoRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVcoRouteEntriesResponse{}
-	_body, _err := client.DescribeVcoRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24003,7 +18676,7 @@ func (client *Client) DescribeVcoRouteEntries(request *DescribeVcoRouteEntriesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVirtualBorderRoutersResponse
-func (client *Client) DescribeVirtualBorderRoutersWithOptions(request *DescribeVirtualBorderRoutersRequest, runtime *dara.RuntimeOptions) (_result *DescribeVirtualBorderRoutersResponse, _err error) {
+func (client *Client) DescribeVirtualBorderRoutersWithContext(ctx context.Context, request *DescribeVirtualBorderRoutersRequest, runtime *dara.RuntimeOptions) (_result *DescribeVirtualBorderRoutersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24064,29 +18737,11 @@ func (client *Client) DescribeVirtualBorderRoutersWithOptions(request *DescribeV
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVirtualBorderRoutersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries virtual border routers (VBRs).
-//
-// @param request - DescribeVirtualBorderRoutersRequest
-//
-// @return DescribeVirtualBorderRoutersResponse
-func (client *Client) DescribeVirtualBorderRouters(request *DescribeVirtualBorderRoutersRequest) (_result *DescribeVirtualBorderRoutersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVirtualBorderRoutersResponse{}
-	_body, _err := client.DescribeVirtualBorderRoutersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24099,7 +18754,7 @@ func (client *Client) DescribeVirtualBorderRouters(request *DescribeVirtualBorde
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVirtualBorderRoutersForPhysicalConnectionResponse
-func (client *Client) DescribeVirtualBorderRoutersForPhysicalConnectionWithOptions(request *DescribeVirtualBorderRoutersForPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *DescribeVirtualBorderRoutersForPhysicalConnectionResponse, _err error) {
+func (client *Client) DescribeVirtualBorderRoutersForPhysicalConnectionWithContext(ctx context.Context, request *DescribeVirtualBorderRoutersForPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *DescribeVirtualBorderRoutersForPhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24152,29 +18807,11 @@ func (client *Client) DescribeVirtualBorderRoutersForPhysicalConnectionWithOptio
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVirtualBorderRoutersForPhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the virtual border routers (VBRs) that are associated with an Express Connect circuit. The VBRs can be created by the owner of the Express Connect circuit and by other Alibaba Cloud accounts.
-//
-// @param request - DescribeVirtualBorderRoutersForPhysicalConnectionRequest
-//
-// @return DescribeVirtualBorderRoutersForPhysicalConnectionResponse
-func (client *Client) DescribeVirtualBorderRoutersForPhysicalConnection(request *DescribeVirtualBorderRoutersForPhysicalConnectionRequest) (_result *DescribeVirtualBorderRoutersForPhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVirtualBorderRoutersForPhysicalConnectionResponse{}
-	_body, _err := client.DescribeVirtualBorderRoutersForPhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24187,7 +18824,7 @@ func (client *Client) DescribeVirtualBorderRoutersForPhysicalConnection(request 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpcAttributeResponse
-func (client *Client) DescribeVpcAttributeWithOptions(request *DescribeVpcAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcAttributeResponse, _err error) {
+func (client *Client) DescribeVpcAttributeWithContext(ctx context.Context, request *DescribeVpcAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24240,29 +18877,11 @@ func (client *Client) DescribeVpcAttributeWithOptions(request *DescribeVpcAttrib
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpcAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configuration of a virtual private cloud (VPC).
-//
-// @param request - DescribeVpcAttributeRequest
-//
-// @return DescribeVpcAttributeResponse
-func (client *Client) DescribeVpcAttribute(request *DescribeVpcAttributeRequest) (_result *DescribeVpcAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpcAttributeResponse{}
-	_body, _err := client.DescribeVpcAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24275,7 +18894,7 @@ func (client *Client) DescribeVpcAttribute(request *DescribeVpcAttributeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpcsResponse
-func (client *Client) DescribeVpcsWithOptions(request *DescribeVpcsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcsResponse, _err error) {
+func (client *Client) DescribeVpcsWithContext(ctx context.Context, request *DescribeVpcsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24360,29 +18979,11 @@ func (client *Client) DescribeVpcsWithOptions(request *DescribeVpcsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpcsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries virtual private clouds (VPCs).
-//
-// @param request - DescribeVpcsRequest
-//
-// @return DescribeVpcsResponse
-func (client *Client) DescribeVpcs(request *DescribeVpcsRequest) (_result *DescribeVpcsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpcsResponse{}
-	_body, _err := client.DescribeVpcsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24395,7 +18996,7 @@ func (client *Client) DescribeVpcs(request *DescribeVpcsRequest) (_result *Descr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpnAttachmentsResponse
-func (client *Client) DescribeVpnAttachmentsWithOptions(request *DescribeVpnAttachmentsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnAttachmentsResponse, _err error) {
+func (client *Client) DescribeVpnAttachmentsWithContext(ctx context.Context, request *DescribeVpnAttachmentsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnAttachmentsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24452,29 +19053,11 @@ func (client *Client) DescribeVpnAttachmentsWithOptions(request *DescribeVpnAtta
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpnAttachmentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the IPsec-VPN connections associated with a transit router.
-//
-// @param request - DescribeVpnAttachmentsRequest
-//
-// @return DescribeVpnAttachmentsResponse
-func (client *Client) DescribeVpnAttachments(request *DescribeVpnAttachmentsRequest) (_result *DescribeVpnAttachmentsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpnAttachmentsResponse{}
-	_body, _err := client.DescribeVpnAttachmentsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24487,7 +19070,7 @@ func (client *Client) DescribeVpnAttachments(request *DescribeVpnAttachmentsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpnConnectionResponse
-func (client *Client) DescribeVpnConnectionWithOptions(request *DescribeVpnConnectionRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnConnectionResponse, _err error) {
+func (client *Client) DescribeVpnConnectionWithContext(ctx context.Context, request *DescribeVpnConnectionRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24532,29 +19115,11 @@ func (client *Client) DescribeVpnConnectionWithOptions(request *DescribeVpnConne
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpnConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the detailed information about an IPsec-VPN connection.
-//
-// @param request - DescribeVpnConnectionRequest
-//
-// @return DescribeVpnConnectionResponse
-func (client *Client) DescribeVpnConnection(request *DescribeVpnConnectionRequest) (_result *DescribeVpnConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpnConnectionResponse{}
-	_body, _err := client.DescribeVpnConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24567,7 +19132,7 @@ func (client *Client) DescribeVpnConnection(request *DescribeVpnConnectionReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpnConnectionLogsResponse
-func (client *Client) DescribeVpnConnectionLogsWithOptions(request *DescribeVpnConnectionLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnConnectionLogsResponse, _err error) {
+func (client *Client) DescribeVpnConnectionLogsWithContext(ctx context.Context, request *DescribeVpnConnectionLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnConnectionLogsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24636,29 +19201,11 @@ func (client *Client) DescribeVpnConnectionLogsWithOptions(request *DescribeVpnC
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpnConnectionLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries logs of IPsec-VPN connections.
-//
-// @param request - DescribeVpnConnectionLogsRequest
-//
-// @return DescribeVpnConnectionLogsResponse
-func (client *Client) DescribeVpnConnectionLogs(request *DescribeVpnConnectionLogsRequest) (_result *DescribeVpnConnectionLogsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpnConnectionLogsResponse{}
-	_body, _err := client.DescribeVpnConnectionLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24671,7 +19218,7 @@ func (client *Client) DescribeVpnConnectionLogs(request *DescribeVpnConnectionLo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpnConnectionsResponse
-func (client *Client) DescribeVpnConnectionsWithOptions(request *DescribeVpnConnectionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnConnectionsResponse, _err error) {
+func (client *Client) DescribeVpnConnectionsWithContext(ctx context.Context, request *DescribeVpnConnectionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnConnectionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24740,29 +19287,11 @@ func (client *Client) DescribeVpnConnectionsWithOptions(request *DescribeVpnConn
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpnConnectionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries IPsec-VPN connections.
-//
-// @param request - DescribeVpnConnectionsRequest
-//
-// @return DescribeVpnConnectionsResponse
-func (client *Client) DescribeVpnConnections(request *DescribeVpnConnectionsRequest) (_result *DescribeVpnConnectionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpnConnectionsResponse{}
-	_body, _err := client.DescribeVpnConnectionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24775,7 +19304,7 @@ func (client *Client) DescribeVpnConnections(request *DescribeVpnConnectionsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpnCrossAccountAuthorizationsResponse
-func (client *Client) DescribeVpnCrossAccountAuthorizationsWithOptions(request *DescribeVpnCrossAccountAuthorizationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnCrossAccountAuthorizationsResponse, _err error) {
+func (client *Client) DescribeVpnCrossAccountAuthorizationsWithContext(ctx context.Context, request *DescribeVpnCrossAccountAuthorizationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnCrossAccountAuthorizationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24828,29 +19357,11 @@ func (client *Client) DescribeVpnCrossAccountAuthorizationsWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpnCrossAccountAuthorizationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the cross-account authorization information about an IPsec-VPN connection.
-//
-// @param request - DescribeVpnCrossAccountAuthorizationsRequest
-//
-// @return DescribeVpnCrossAccountAuthorizationsResponse
-func (client *Client) DescribeVpnCrossAccountAuthorizations(request *DescribeVpnCrossAccountAuthorizationsRequest) (_result *DescribeVpnCrossAccountAuthorizationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpnCrossAccountAuthorizationsResponse{}
-	_body, _err := client.DescribeVpnCrossAccountAuthorizationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24863,7 +19374,7 @@ func (client *Client) DescribeVpnCrossAccountAuthorizations(request *DescribeVpn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpnGatewayResponse
-func (client *Client) DescribeVpnGatewayWithOptions(request *DescribeVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnGatewayResponse, _err error) {
+func (client *Client) DescribeVpnGatewayWithContext(ctx context.Context, request *DescribeVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnGatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24912,29 +19423,11 @@ func (client *Client) DescribeVpnGatewayWithOptions(request *DescribeVpnGatewayR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpnGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the detailed information about a VPN gateway.
-//
-// @param request - DescribeVpnGatewayRequest
-//
-// @return DescribeVpnGatewayResponse
-func (client *Client) DescribeVpnGateway(request *DescribeVpnGatewayRequest) (_result *DescribeVpnGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpnGatewayResponse{}
-	_body, _err := client.DescribeVpnGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24947,7 +19440,7 @@ func (client *Client) DescribeVpnGateway(request *DescribeVpnGatewayRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpnGatewayAvailableZonesResponse
-func (client *Client) DescribeVpnGatewayAvailableZonesWithOptions(request *DescribeVpnGatewayAvailableZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnGatewayAvailableZonesResponse, _err error) {
+func (client *Client) DescribeVpnGatewayAvailableZonesWithContext(ctx context.Context, request *DescribeVpnGatewayAvailableZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnGatewayAvailableZonesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24968,29 +19461,11 @@ func (client *Client) DescribeVpnGatewayAvailableZonesWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpnGatewayAvailableZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries zones that support IPsec-VPN connections in a region.
-//
-// @param request - DescribeVpnGatewayAvailableZonesRequest
-//
-// @return DescribeVpnGatewayAvailableZonesResponse
-func (client *Client) DescribeVpnGatewayAvailableZones(request *DescribeVpnGatewayAvailableZonesRequest) (_result *DescribeVpnGatewayAvailableZonesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpnGatewayAvailableZonesResponse{}
-	_body, _err := client.DescribeVpnGatewayAvailableZonesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25003,7 +19478,7 @@ func (client *Client) DescribeVpnGatewayAvailableZones(request *DescribeVpnGatew
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpnGatewaysResponse
-func (client *Client) DescribeVpnGatewaysWithOptions(request *DescribeVpnGatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnGatewaysResponse, _err error) {
+func (client *Client) DescribeVpnGatewaysWithContext(ctx context.Context, request *DescribeVpnGatewaysRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnGatewaysResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25080,29 +19555,11 @@ func (client *Client) DescribeVpnGatewaysWithOptions(request *DescribeVpnGateway
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpnGatewaysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries VPN gateways in a region.
-//
-// @param request - DescribeVpnGatewaysRequest
-//
-// @return DescribeVpnGatewaysResponse
-func (client *Client) DescribeVpnGateways(request *DescribeVpnGatewaysRequest) (_result *DescribeVpnGatewaysResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpnGatewaysResponse{}
-	_body, _err := client.DescribeVpnGatewaysWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25115,7 +19572,7 @@ func (client *Client) DescribeVpnGateways(request *DescribeVpnGatewaysRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpnPbrRouteEntriesResponse
-func (client *Client) DescribeVpnPbrRouteEntriesWithOptions(request *DescribeVpnPbrRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnPbrRouteEntriesResponse, _err error) {
+func (client *Client) DescribeVpnPbrRouteEntriesWithContext(ctx context.Context, request *DescribeVpnPbrRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnPbrRouteEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25168,29 +19625,11 @@ func (client *Client) DescribeVpnPbrRouteEntriesWithOptions(request *DescribeVpn
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpnPbrRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries policy-based routes configured for a VPN gateway.
-//
-// @param request - DescribeVpnPbrRouteEntriesRequest
-//
-// @return DescribeVpnPbrRouteEntriesResponse
-func (client *Client) DescribeVpnPbrRouteEntries(request *DescribeVpnPbrRouteEntriesRequest) (_result *DescribeVpnPbrRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpnPbrRouteEntriesResponse{}
-	_body, _err := client.DescribeVpnPbrRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25203,7 +19642,7 @@ func (client *Client) DescribeVpnPbrRouteEntries(request *DescribeVpnPbrRouteEnt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpnRouteEntriesResponse
-func (client *Client) DescribeVpnRouteEntriesWithOptions(request *DescribeVpnRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnRouteEntriesResponse, _err error) {
+func (client *Client) DescribeVpnRouteEntriesWithContext(ctx context.Context, request *DescribeVpnRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnRouteEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25260,29 +19699,11 @@ func (client *Client) DescribeVpnRouteEntriesWithOptions(request *DescribeVpnRou
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpnRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries destination-based and BGP route entries of a VPN gateway.
-//
-// @param request - DescribeVpnRouteEntriesRequest
-//
-// @return DescribeVpnRouteEntriesResponse
-func (client *Client) DescribeVpnRouteEntries(request *DescribeVpnRouteEntriesRequest) (_result *DescribeVpnRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpnRouteEntriesResponse{}
-	_body, _err := client.DescribeVpnRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25295,7 +19716,7 @@ func (client *Client) DescribeVpnRouteEntries(request *DescribeVpnRouteEntriesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVpnSslServerLogsResponse
-func (client *Client) DescribeVpnSslServerLogsWithOptions(request *DescribeVpnSslServerLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnSslServerLogsResponse, _err error) {
+func (client *Client) DescribeVpnSslServerLogsWithContext(ctx context.Context, request *DescribeVpnSslServerLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpnSslServerLogsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25364,29 +19785,11 @@ func (client *Client) DescribeVpnSslServerLogsWithOptions(request *DescribeVpnSs
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVpnSslServerLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the log entries of an SSL server.
-//
-// @param request - DescribeVpnSslServerLogsRequest
-//
-// @return DescribeVpnSslServerLogsResponse
-func (client *Client) DescribeVpnSslServerLogs(request *DescribeVpnSslServerLogsRequest) (_result *DescribeVpnSslServerLogsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVpnSslServerLogsResponse{}
-	_body, _err := client.DescribeVpnSslServerLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25399,7 +19802,7 @@ func (client *Client) DescribeVpnSslServerLogs(request *DescribeVpnSslServerLogs
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeZonesResponse
-func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
+func (client *Client) DescribeZonesWithContext(ctx context.Context, request *DescribeZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25448,29 +19851,11 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries zones in a region.
-//
-// @param request - DescribeZonesRequest
-//
-// @return DescribeZonesResponse
-func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *DescribeZonesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeZonesResponse{}
-	_body, _err := client.DescribeZonesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25495,7 +19880,7 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachDhcpOptionsSetFromVpcResponse
-func (client *Client) DetachDhcpOptionsSetFromVpcWithOptions(request *DetachDhcpOptionsSetFromVpcRequest, runtime *dara.RuntimeOptions) (_result *DetachDhcpOptionsSetFromVpcResponse, _err error) {
+func (client *Client) DetachDhcpOptionsSetFromVpcWithContext(ctx context.Context, request *DetachDhcpOptionsSetFromVpcRequest, runtime *dara.RuntimeOptions) (_result *DetachDhcpOptionsSetFromVpcResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25552,41 +19937,11 @@ func (client *Client) DetachDhcpOptionsSetFromVpcWithOptions(request *DetachDhcp
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachDhcpOptionsSetFromVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates a DHCP options set from a virtual private cloud (VPC).
-//
-// Description:
-//
-// ## [](#)Description
-//
-//   - **DetachDhcpOptionsSetFromVpc*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of the task.
-//
-//   - If the DHCP options set is in the **Pending*	- state, the DHCP options set is being disassociated.
-//
-//   - If the DHCP options set is in the **UnUsed*	- state, the DHCP options set is disassociated.
-//
-//   - You cannot repeatedly call the **DetachDhcpOptionsSetFromVpc*	- operation to disassociate a DHCP options set from a VPC within the specified period of time.
-//
-// @param request - DetachDhcpOptionsSetFromVpcRequest
-//
-// @return DetachDhcpOptionsSetFromVpcResponse
-func (client *Client) DetachDhcpOptionsSetFromVpc(request *DetachDhcpOptionsSetFromVpcRequest) (_result *DetachDhcpOptionsSetFromVpcResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachDhcpOptionsSetFromVpcResponse{}
-	_body, _err := client.DetachDhcpOptionsSetFromVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25607,7 +19962,7 @@ func (client *Client) DetachDhcpOptionsSetFromVpc(request *DetachDhcpOptionsSetF
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DiagnoseVpnConnectionsResponse
-func (client *Client) DiagnoseVpnConnectionsWithOptions(request *DiagnoseVpnConnectionsRequest, runtime *dara.RuntimeOptions) (_result *DiagnoseVpnConnectionsResponse, _err error) {
+func (client *Client) DiagnoseVpnConnectionsWithContext(ctx context.Context, request *DiagnoseVpnConnectionsRequest, runtime *dara.RuntimeOptions) (_result *DiagnoseVpnConnectionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25656,37 +20011,11 @@ func (client *Client) DiagnoseVpnConnectionsWithOptions(request *DiagnoseVpnConn
 		BodyType:    dara.String("json"),
 	}
 	_result = &DiagnoseVpnConnectionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Diagnoses IPsec-VPN connections.
-//
-// Description:
-//
-//	  If the IPsec-VPN connection is in single-tunnel mode, the request parameter `VpnConnectionIds` is required when you call the **DiagnoseVpnConnections*	- operation.
-//
-//		- If the IPsec-VPN connection is in dual-tunnel mode, the request parameter `TunnelIds` is required when you call the **DiagnoseVpnConnections*	- operation.
-//
-//		- After you call the **DiagnoseVpnConnections*	- operation, if the current IPsec-VPN connection is faulty, the operation returns the corresponding error code (**FailedReasonCode**) and log (**SourceLog**). You can troubleshoot based on the error code and log information. For more information, see [Common errors and troubleshooting methods for IPsec-VPN connections](https://help.aliyun.com/document_detail/477862.html).
-//
-// @param request - DiagnoseVpnConnectionsRequest
-//
-// @return DiagnoseVpnConnectionsResponse
-func (client *Client) DiagnoseVpnConnections(request *DiagnoseVpnConnectionsRequest) (_result *DiagnoseVpnConnectionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DiagnoseVpnConnectionsResponse{}
-	_body, _err := client.DiagnoseVpnConnectionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25699,7 +20028,7 @@ func (client *Client) DiagnoseVpnConnections(request *DiagnoseVpnConnectionsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DiagnoseVpnGatewayResponse
-func (client *Client) DiagnoseVpnGatewayWithOptions(request *DiagnoseVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *DiagnoseVpnGatewayResponse, _err error) {
+func (client *Client) DiagnoseVpnGatewayWithContext(ctx context.Context, request *DiagnoseVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *DiagnoseVpnGatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25744,29 +20073,11 @@ func (client *Client) DiagnoseVpnGatewayWithOptions(request *DiagnoseVpnGatewayR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DiagnoseVpnGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Diagnoses a VPN gateway.
-//
-// @param request - DiagnoseVpnGatewayRequest
-//
-// @return DiagnoseVpnGatewayResponse
-func (client *Client) DiagnoseVpnGateway(request *DiagnoseVpnGatewayRequest) (_result *DiagnoseVpnGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DiagnoseVpnGatewayResponse{}
-	_body, _err := client.DiagnoseVpnGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25781,7 +20092,7 @@ func (client *Client) DiagnoseVpnGateway(request *DiagnoseVpnGatewayRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableNatGatewayEcsMetricResponse
-func (client *Client) DisableNatGatewayEcsMetricWithOptions(request *DisableNatGatewayEcsMetricRequest, runtime *dara.RuntimeOptions) (_result *DisableNatGatewayEcsMetricResponse, _err error) {
+func (client *Client) DisableNatGatewayEcsMetricWithContext(ctx context.Context, request *DisableNatGatewayEcsMetricRequest, runtime *dara.RuntimeOptions) (_result *DisableNatGatewayEcsMetricResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25818,32 +20129,11 @@ func (client *Client) DisableNatGatewayEcsMetricWithOptions(request *DisableNatG
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableNatGatewayEcsMetricResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DisableNatGatewayEcsMetric is deprecated
-//
-// Summary:
-//
-// Disables traffic monitoring for an Elastic Compute Service (ECS) instance.
-//
-// @param request - DisableNatGatewayEcsMetricRequest
-//
-// @return DisableNatGatewayEcsMetricResponse
-// Deprecated
-func (client *Client) DisableNatGatewayEcsMetric(request *DisableNatGatewayEcsMetricRequest) (_result *DisableNatGatewayEcsMetricResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableNatGatewayEcsMetricResponse{}
-	_body, _err := client.DisableNatGatewayEcsMetricWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25856,7 +20146,7 @@ func (client *Client) DisableNatGatewayEcsMetric(request *DisableNatGatewayEcsMe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableVpcClassicLinkResponse
-func (client *Client) DisableVpcClassicLinkWithOptions(request *DisableVpcClassicLinkRequest, runtime *dara.RuntimeOptions) (_result *DisableVpcClassicLinkResponse, _err error) {
+func (client *Client) DisableVpcClassicLinkWithContext(ctx context.Context, request *DisableVpcClassicLinkRequest, runtime *dara.RuntimeOptions) (_result *DisableVpcClassicLinkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25905,29 +20195,11 @@ func (client *Client) DisableVpcClassicLinkWithOptions(request *DisableVpcClassi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableVpcClassicLinkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables ClassicLink for a virtual private cloud (VPC).
-//
-// @param request - DisableVpcClassicLinkRequest
-//
-// @return DisableVpcClassicLinkResponse
-func (client *Client) DisableVpcClassicLink(request *DisableVpcClassicLinkRequest) (_result *DisableVpcClassicLinkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableVpcClassicLinkResponse{}
-	_body, _err := client.DisableVpcClassicLinkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25940,7 +20212,7 @@ func (client *Client) DisableVpcClassicLink(request *DisableVpcClassicLinkReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DissociateRouteTableFromGatewayResponse
-func (client *Client) DissociateRouteTableFromGatewayWithOptions(request *DissociateRouteTableFromGatewayRequest, runtime *dara.RuntimeOptions) (_result *DissociateRouteTableFromGatewayResponse, _err error) {
+func (client *Client) DissociateRouteTableFromGatewayWithContext(ctx context.Context, request *DissociateRouteTableFromGatewayRequest, runtime *dara.RuntimeOptions) (_result *DissociateRouteTableFromGatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26005,29 +20277,11 @@ func (client *Client) DissociateRouteTableFromGatewayWithOptions(request *Dissoc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DissociateRouteTableFromGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates a gateway route table from an IPv4 gateway.
-//
-// @param request - DissociateRouteTableFromGatewayRequest
-//
-// @return DissociateRouteTableFromGatewayResponse
-func (client *Client) DissociateRouteTableFromGateway(request *DissociateRouteTableFromGatewayRequest) (_result *DissociateRouteTableFromGatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DissociateRouteTableFromGatewayResponse{}
-	_body, _err := client.DissociateRouteTableFromGatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26040,7 +20294,7 @@ func (client *Client) DissociateRouteTableFromGateway(request *DissociateRouteTa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DissociateRouteTablesFromVpcGatewayEndpointResponse
-func (client *Client) DissociateRouteTablesFromVpcGatewayEndpointWithOptions(request *DissociateRouteTablesFromVpcGatewayEndpointRequest, runtime *dara.RuntimeOptions) (_result *DissociateRouteTablesFromVpcGatewayEndpointResponse, _err error) {
+func (client *Client) DissociateRouteTablesFromVpcGatewayEndpointWithContext(ctx context.Context, request *DissociateRouteTablesFromVpcGatewayEndpointRequest, runtime *dara.RuntimeOptions) (_result *DissociateRouteTablesFromVpcGatewayEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26097,29 +20351,11 @@ func (client *Client) DissociateRouteTablesFromVpcGatewayEndpointWithOptions(req
 		BodyType:    dara.String("json"),
 	}
 	_result = &DissociateRouteTablesFromVpcGatewayEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates a gateway endpoint from a route table.
-//
-// @param request - DissociateRouteTablesFromVpcGatewayEndpointRequest
-//
-// @return DissociateRouteTablesFromVpcGatewayEndpointResponse
-func (client *Client) DissociateRouteTablesFromVpcGatewayEndpoint(request *DissociateRouteTablesFromVpcGatewayEndpointRequest) (_result *DissociateRouteTablesFromVpcGatewayEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DissociateRouteTablesFromVpcGatewayEndpointResponse{}
-	_body, _err := client.DissociateRouteTablesFromVpcGatewayEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26142,7 +20378,7 @@ func (client *Client) DissociateRouteTablesFromVpcGatewayEndpoint(request *Disso
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DissociateVpnGatewayWithCertificateResponse
-func (client *Client) DissociateVpnGatewayWithCertificateWithOptions(request *DissociateVpnGatewayWithCertificateRequest, runtime *dara.RuntimeOptions) (_result *DissociateVpnGatewayWithCertificateResponse, _err error) {
+func (client *Client) DissociateVpnGatewayWithCertificateWithContext(ctx context.Context, request *DissociateVpnGatewayWithCertificateRequest, runtime *dara.RuntimeOptions) (_result *DissociateVpnGatewayWithCertificateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26187,39 +20423,11 @@ func (client *Client) DissociateVpnGatewayWithCertificateWithOptions(request *Di
 		BodyType:    dara.String("json"),
 	}
 	_result = &DissociateVpnGatewayWithCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates a certificate from a VPN gateway.
-//
-// Description:
-//
-//	  **DissociateVpnGatewayWithCertificate*	- is an asynchronous operation. After a request is sent, the system returns a request and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the status the task.
-//
-//	    	- If the VPN gateway is in the **updating*	- state, the SSL certificate is being disassociated from the VPN gateway.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the SSL certificate is disassociated from the VPN gateway.
-//
-//		- You cannot repeatedly call **DissociateVpnGatewayWithCertificate*	- within a specific period of time.
-//
-// @param request - DissociateVpnGatewayWithCertificateRequest
-//
-// @return DissociateVpnGatewayWithCertificateResponse
-func (client *Client) DissociateVpnGatewayWithCertificate(request *DissociateVpnGatewayWithCertificateRequest) (_result *DissociateVpnGatewayWithCertificateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DissociateVpnGatewayWithCertificateResponse{}
-	_body, _err := client.DissociateVpnGatewayWithCertificateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26232,7 +20440,7 @@ func (client *Client) DissociateVpnGatewayWithCertificate(request *DissociateVpn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DownloadVpnConnectionConfigResponse
-func (client *Client) DownloadVpnConnectionConfigWithOptions(request *DownloadVpnConnectionConfigRequest, runtime *dara.RuntimeOptions) (_result *DownloadVpnConnectionConfigResponse, _err error) {
+func (client *Client) DownloadVpnConnectionConfigWithContext(ctx context.Context, request *DownloadVpnConnectionConfigRequest, runtime *dara.RuntimeOptions) (_result *DownloadVpnConnectionConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26277,29 +20485,11 @@ func (client *Client) DownloadVpnConnectionConfigWithOptions(request *DownloadVp
 		BodyType:    dara.String("json"),
 	}
 	_result = &DownloadVpnConnectionConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configuration of an IPsec-VPN connection.
-//
-// @param request - DownloadVpnConnectionConfigRequest
-//
-// @return DownloadVpnConnectionConfigResponse
-func (client *Client) DownloadVpnConnectionConfig(request *DownloadVpnConnectionConfigRequest) (_result *DownloadVpnConnectionConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DownloadVpnConnectionConfigResponse{}
-	_body, _err := client.DownloadVpnConnectionConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26314,7 +20504,7 @@ func (client *Client) DownloadVpnConnectionConfig(request *DownloadVpnConnection
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableNatGatewayEcsMetricResponse
-func (client *Client) EnableNatGatewayEcsMetricWithOptions(request *EnableNatGatewayEcsMetricRequest, runtime *dara.RuntimeOptions) (_result *EnableNatGatewayEcsMetricResponse, _err error) {
+func (client *Client) EnableNatGatewayEcsMetricWithContext(ctx context.Context, request *EnableNatGatewayEcsMetricRequest, runtime *dara.RuntimeOptions) (_result *EnableNatGatewayEcsMetricResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26351,32 +20541,11 @@ func (client *Client) EnableNatGatewayEcsMetricWithOptions(request *EnableNatGat
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableNatGatewayEcsMetricResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI EnableNatGatewayEcsMetric is deprecated
-//
-// Summary:
-//
-// Enables Elastic Compute Service (ECS) traffic monitoring.
-//
-// @param request - EnableNatGatewayEcsMetricRequest
-//
-// @return EnableNatGatewayEcsMetricResponse
-// Deprecated
-func (client *Client) EnableNatGatewayEcsMetric(request *EnableNatGatewayEcsMetricRequest) (_result *EnableNatGatewayEcsMetricResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableNatGatewayEcsMetricResponse{}
-	_body, _err := client.EnableNatGatewayEcsMetricWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26401,7 +20570,7 @@ func (client *Client) EnableNatGatewayEcsMetric(request *EnableNatGatewayEcsMetr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnablePhysicalConnectionResponse
-func (client *Client) EnablePhysicalConnectionWithOptions(request *EnablePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *EnablePhysicalConnectionResponse, _err error) {
+func (client *Client) EnablePhysicalConnectionWithContext(ctx context.Context, request *EnablePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *EnablePhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26454,41 +20623,11 @@ func (client *Client) EnablePhysicalConnectionWithOptions(request *EnablePhysica
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnablePhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables an Express Connect circuit that is in the Confirmed state. After you perform this operation, the Express Connect circuit enters the Enabled state.
-//
-// Description:
-//
-// When you call this operation, take note of the following limits:
-//
-//   - You can enable only an Express Connect circuit that is in the **Confirmed*	- state.
-//
-//   - After you enable an Express Connect circuit, it enters the **Enabled*	- state.
-//
-//   - **EnablePhysicalConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribePhysicalConnections](https://help.aliyun.com/document_detail/36042.html) operation to query the status of the task.
-//
-//   - You cannot repeatedly call **EnablePhysicalConnection*	- for an Express Connect circuit in the **Confirmed*	- state within a specific time period.
-//
-// @param request - EnablePhysicalConnectionRequest
-//
-// @return EnablePhysicalConnectionResponse
-func (client *Client) EnablePhysicalConnection(request *EnablePhysicalConnectionRequest) (_result *EnablePhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnablePhysicalConnectionResponse{}
-	_body, _err := client.EnablePhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26501,7 +20640,7 @@ func (client *Client) EnablePhysicalConnection(request *EnablePhysicalConnection
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableVpcClassicLinkResponse
-func (client *Client) EnableVpcClassicLinkWithOptions(request *EnableVpcClassicLinkRequest, runtime *dara.RuntimeOptions) (_result *EnableVpcClassicLinkResponse, _err error) {
+func (client *Client) EnableVpcClassicLinkWithContext(ctx context.Context, request *EnableVpcClassicLinkRequest, runtime *dara.RuntimeOptions) (_result *EnableVpcClassicLinkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26550,29 +20689,11 @@ func (client *Client) EnableVpcClassicLinkWithOptions(request *EnableVpcClassicL
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableVpcClassicLinkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables ClassicLink for a VPC.
-//
-// @param request - EnableVpcClassicLinkRequest
-//
-// @return EnableVpcClassicLinkResponse
-func (client *Client) EnableVpcClassicLink(request *EnableVpcClassicLinkRequest) (_result *EnableVpcClassicLinkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableVpcClassicLinkResponse{}
-	_body, _err := client.EnableVpcClassicLinkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26597,7 +20718,7 @@ func (client *Client) EnableVpcClassicLink(request *EnableVpcClassicLinkRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableVpcIpv4GatewayResponse
-func (client *Client) EnableVpcIpv4GatewayWithOptions(request *EnableVpcIpv4GatewayRequest, runtime *dara.RuntimeOptions) (_result *EnableVpcIpv4GatewayResponse, _err error) {
+func (client *Client) EnableVpcIpv4GatewayWithContext(ctx context.Context, request *EnableVpcIpv4GatewayRequest, runtime *dara.RuntimeOptions) (_result *EnableVpcIpv4GatewayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26658,41 +20779,11 @@ func (client *Client) EnableVpcIpv4GatewayWithOptions(request *EnableVpcIpv4Gate
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableVpcIpv4GatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Activates an IPv4 gateway.
-//
-// Description:
-//
-// ## [](#)Description
-//
-//   - **EnableVpcIpv4Gateway*	- is an asynchronous operation. After a request is sent, the system returns a **request ID*	- and runs the task in the background. You can call the [GetIpv4GatewayAttribute](https://help.aliyun.com/document_detail/407670.html) operation to query the status of an IPv4 gateway.
-//
-//   - If the IPv4 gateway is in the **Activating*	- state, the IPv4 gateway is being activated.
-//
-//   - If the IPv4 gateway is in the **Created*	- state, the IPv4 gateway is activated.
-//
-//   - You cannot repeatedly call the **EnableVpcIpv4Gateway*	- operation to activate an IPv4 gateway within the specified period of time.
-//
-// @param request - EnableVpcIpv4GatewayRequest
-//
-// @return EnableVpcIpv4GatewayResponse
-func (client *Client) EnableVpcIpv4Gateway(request *EnableVpcIpv4GatewayRequest) (_result *EnableVpcIpv4GatewayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableVpcIpv4GatewayResponse{}
-	_body, _err := client.EnableVpcIpv4GatewayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26705,7 +20796,7 @@ func (client *Client) EnableVpcIpv4Gateway(request *EnableVpcIpv4GatewayRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDhcpOptionsSetResponse
-func (client *Client) GetDhcpOptionsSetWithOptions(request *GetDhcpOptionsSetRequest, runtime *dara.RuntimeOptions) (_result *GetDhcpOptionsSetResponse, _err error) {
+func (client *Client) GetDhcpOptionsSetWithContext(ctx context.Context, request *GetDhcpOptionsSetRequest, runtime *dara.RuntimeOptions) (_result *GetDhcpOptionsSetResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26750,29 +20841,11 @@ func (client *Client) GetDhcpOptionsSetWithOptions(request *GetDhcpOptionsSetReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDhcpOptionsSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a DHCP options set.
-//
-// @param request - GetDhcpOptionsSetRequest
-//
-// @return GetDhcpOptionsSetResponse
-func (client *Client) GetDhcpOptionsSet(request *GetDhcpOptionsSetRequest) (_result *GetDhcpOptionsSetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetDhcpOptionsSetResponse{}
-	_body, _err := client.GetDhcpOptionsSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26785,7 +20858,7 @@ func (client *Client) GetDhcpOptionsSet(request *GetDhcpOptionsSetRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetFlowLogServiceStatusResponse
-func (client *Client) GetFlowLogServiceStatusWithOptions(request *GetFlowLogServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetFlowLogServiceStatusResponse, _err error) {
+func (client *Client) GetFlowLogServiceStatusWithContext(ctx context.Context, request *GetFlowLogServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetFlowLogServiceStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26834,29 +20907,11 @@ func (client *Client) GetFlowLogServiceStatusWithOptions(request *GetFlowLogServ
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetFlowLogServiceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of a flow log.
-//
-// @param request - GetFlowLogServiceStatusRequest
-//
-// @return GetFlowLogServiceStatusResponse
-func (client *Client) GetFlowLogServiceStatus(request *GetFlowLogServiceStatusRequest) (_result *GetFlowLogServiceStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetFlowLogServiceStatusResponse{}
-	_body, _err := client.GetFlowLogServiceStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26869,7 +20924,7 @@ func (client *Client) GetFlowLogServiceStatus(request *GetFlowLogServiceStatusRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetIpv4GatewayAttributeResponse
-func (client *Client) GetIpv4GatewayAttributeWithOptions(request *GetIpv4GatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetIpv4GatewayAttributeResponse, _err error) {
+func (client *Client) GetIpv4GatewayAttributeWithContext(ctx context.Context, request *GetIpv4GatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetIpv4GatewayAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26918,29 +20973,11 @@ func (client *Client) GetIpv4GatewayAttributeWithOptions(request *GetIpv4Gateway
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetIpv4GatewayAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries an IPv4 gateway.
-//
-// @param request - GetIpv4GatewayAttributeRequest
-//
-// @return GetIpv4GatewayAttributeResponse
-func (client *Client) GetIpv4GatewayAttribute(request *GetIpv4GatewayAttributeRequest) (_result *GetIpv4GatewayAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetIpv4GatewayAttributeResponse{}
-	_body, _err := client.GetIpv4GatewayAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26957,7 +20994,7 @@ func (client *Client) GetIpv4GatewayAttribute(request *GetIpv4GatewayAttributeRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetNatGatewayAttributeResponse
-func (client *Client) GetNatGatewayAttributeWithOptions(request *GetNatGatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetNatGatewayAttributeResponse, _err error) {
+func (client *Client) GetNatGatewayAttributeWithContext(ctx context.Context, request *GetNatGatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetNatGatewayAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27006,33 +21043,11 @@ func (client *Client) GetNatGatewayAttributeWithOptions(request *GetNatGatewayAt
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNatGatewayAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询NAT详情信息
-//
-// Description:
-//
-// You can call this operation to query information about a specified Internet NAT gateway or Virtual Private Cloud (VPC) NAT gateway. In this topic, "NAT gateway" refers to both gateway types.
-//
-// @param request - GetNatGatewayAttributeRequest
-//
-// @return GetNatGatewayAttributeResponse
-func (client *Client) GetNatGatewayAttribute(request *GetNatGatewayAttributeRequest) (_result *GetNatGatewayAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetNatGatewayAttributeResponse{}
-	_body, _err := client.GetNatGatewayAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27049,7 +21064,7 @@ func (client *Client) GetNatGatewayAttribute(request *GetNatGatewayAttributeRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPhysicalConnectionServiceStatusResponse
-func (client *Client) GetPhysicalConnectionServiceStatusWithOptions(request *GetPhysicalConnectionServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetPhysicalConnectionServiceStatusResponse, _err error) {
+func (client *Client) GetPhysicalConnectionServiceStatusWithContext(ctx context.Context, request *GetPhysicalConnectionServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetPhysicalConnectionServiceStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27090,33 +21105,11 @@ func (client *Client) GetPhysicalConnectionServiceStatusWithOptions(request *Get
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPhysicalConnectionServiceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询是否开通了出云流量服务
-//
-// Description:
-//
-// You can call this API operation to query the status of outbound data transfer billing for the current account. For more information about outbound data transfer billing, see [Outbound data transfer billing](https://help.aliyun.com/document_detail/274385.html) and [Billing](https://help.aliyun.com/document_detail/54582.html).
-//
-// @param request - GetPhysicalConnectionServiceStatusRequest
-//
-// @return GetPhysicalConnectionServiceStatusResponse
-func (client *Client) GetPhysicalConnectionServiceStatus(request *GetPhysicalConnectionServiceStatusRequest) (_result *GetPhysicalConnectionServiceStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPhysicalConnectionServiceStatusResponse{}
-	_body, _err := client.GetPhysicalConnectionServiceStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27129,7 +21122,7 @@ func (client *Client) GetPhysicalConnectionServiceStatus(request *GetPhysicalCon
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPublicIpAddressPoolServiceStatusResponse
-func (client *Client) GetPublicIpAddressPoolServiceStatusWithOptions(request *GetPublicIpAddressPoolServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetPublicIpAddressPoolServiceStatusResponse, _err error) {
+func (client *Client) GetPublicIpAddressPoolServiceStatusWithContext(ctx context.Context, request *GetPublicIpAddressPoolServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetPublicIpAddressPoolServiceStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27178,29 +21171,11 @@ func (client *Client) GetPublicIpAddressPoolServiceStatusWithOptions(request *Ge
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPublicIpAddressPoolServiceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries whether the IP address pool feature is enabled.
-//
-// @param request - GetPublicIpAddressPoolServiceStatusRequest
-//
-// @return GetPublicIpAddressPoolServiceStatusResponse
-func (client *Client) GetPublicIpAddressPoolServiceStatus(request *GetPublicIpAddressPoolServiceStatusRequest) (_result *GetPublicIpAddressPoolServiceStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPublicIpAddressPoolServiceStatusResponse{}
-	_body, _err := client.GetPublicIpAddressPoolServiceStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27213,7 +21188,7 @@ func (client *Client) GetPublicIpAddressPoolServiceStatus(request *GetPublicIpAd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTrafficMirrorServiceStatusResponse
-func (client *Client) GetTrafficMirrorServiceStatusWithOptions(request *GetTrafficMirrorServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetTrafficMirrorServiceStatusResponse, _err error) {
+func (client *Client) GetTrafficMirrorServiceStatusWithContext(ctx context.Context, request *GetTrafficMirrorServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetTrafficMirrorServiceStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27262,29 +21237,11 @@ func (client *Client) GetTrafficMirrorServiceStatusWithOptions(request *GetTraff
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTrafficMirrorServiceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of the traffic mirror feature.
-//
-// @param request - GetTrafficMirrorServiceStatusRequest
-//
-// @return GetTrafficMirrorServiceStatusResponse
-func (client *Client) GetTrafficMirrorServiceStatus(request *GetTrafficMirrorServiceStatusRequest) (_result *GetTrafficMirrorServiceStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTrafficMirrorServiceStatusResponse{}
-	_body, _err := client.GetTrafficMirrorServiceStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27297,7 +21254,7 @@ func (client *Client) GetTrafficMirrorServiceStatus(request *GetTrafficMirrorSer
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVSwitchCidrReservationUsageResponse
-func (client *Client) GetVSwitchCidrReservationUsageWithOptions(request *GetVSwitchCidrReservationUsageRequest, runtime *dara.RuntimeOptions) (_result *GetVSwitchCidrReservationUsageResponse, _err error) {
+func (client *Client) GetVSwitchCidrReservationUsageWithContext(ctx context.Context, request *GetVSwitchCidrReservationUsageRequest, runtime *dara.RuntimeOptions) (_result *GetVSwitchCidrReservationUsageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27350,29 +21307,11 @@ func (client *Client) GetVSwitchCidrReservationUsageWithOptions(request *GetVSwi
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVSwitchCidrReservationUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the usage of a prefix list.
-//
-// @param request - GetVSwitchCidrReservationUsageRequest
-//
-// @return GetVSwitchCidrReservationUsageResponse
-func (client *Client) GetVSwitchCidrReservationUsage(request *GetVSwitchCidrReservationUsageRequest) (_result *GetVSwitchCidrReservationUsageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVSwitchCidrReservationUsageResponse{}
-	_body, _err := client.GetVSwitchCidrReservationUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27385,7 +21324,7 @@ func (client *Client) GetVSwitchCidrReservationUsage(request *GetVSwitchCidrRese
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVpcGatewayEndpointAttributeResponse
-func (client *Client) GetVpcGatewayEndpointAttributeWithOptions(request *GetVpcGatewayEndpointAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetVpcGatewayEndpointAttributeResponse, _err error) {
+func (client *Client) GetVpcGatewayEndpointAttributeWithContext(ctx context.Context, request *GetVpcGatewayEndpointAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetVpcGatewayEndpointAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27430,29 +21369,11 @@ func (client *Client) GetVpcGatewayEndpointAttributeWithOptions(request *GetVpcG
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVpcGatewayEndpointAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the attributes of a gateway endpoint.
-//
-// @param request - GetVpcGatewayEndpointAttributeRequest
-//
-// @return GetVpcGatewayEndpointAttributeResponse
-func (client *Client) GetVpcGatewayEndpointAttribute(request *GetVpcGatewayEndpointAttributeRequest) (_result *GetVpcGatewayEndpointAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVpcGatewayEndpointAttributeResponse{}
-	_body, _err := client.GetVpcGatewayEndpointAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27465,7 +21386,7 @@ func (client *Client) GetVpcGatewayEndpointAttribute(request *GetVpcGatewayEndpo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVpcPrefixListAssociationsResponse
-func (client *Client) GetVpcPrefixListAssociationsWithOptions(request *GetVpcPrefixListAssociationsRequest, runtime *dara.RuntimeOptions) (_result *GetVpcPrefixListAssociationsResponse, _err error) {
+func (client *Client) GetVpcPrefixListAssociationsWithContext(ctx context.Context, request *GetVpcPrefixListAssociationsRequest, runtime *dara.RuntimeOptions) (_result *GetVpcPrefixListAssociationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27518,29 +21439,11 @@ func (client *Client) GetVpcPrefixListAssociationsWithOptions(request *GetVpcPre
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVpcPrefixListAssociationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the resources that are associated with a prefix list.
-//
-// @param request - GetVpcPrefixListAssociationsRequest
-//
-// @return GetVpcPrefixListAssociationsResponse
-func (client *Client) GetVpcPrefixListAssociations(request *GetVpcPrefixListAssociationsRequest) (_result *GetVpcPrefixListAssociationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVpcPrefixListAssociationsResponse{}
-	_body, _err := client.GetVpcPrefixListAssociationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27553,7 +21456,7 @@ func (client *Client) GetVpcPrefixListAssociations(request *GetVpcPrefixListAsso
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVpcPrefixListEntriesResponse
-func (client *Client) GetVpcPrefixListEntriesWithOptions(request *GetVpcPrefixListEntriesRequest, runtime *dara.RuntimeOptions) (_result *GetVpcPrefixListEntriesResponse, _err error) {
+func (client *Client) GetVpcPrefixListEntriesWithContext(ctx context.Context, request *GetVpcPrefixListEntriesRequest, runtime *dara.RuntimeOptions) (_result *GetVpcPrefixListEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27606,29 +21509,11 @@ func (client *Client) GetVpcPrefixListEntriesWithOptions(request *GetVpcPrefixLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVpcPrefixListEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a prefix list.
-//
-// @param request - GetVpcPrefixListEntriesRequest
-//
-// @return GetVpcPrefixListEntriesResponse
-func (client *Client) GetVpcPrefixListEntries(request *GetVpcPrefixListEntriesRequest) (_result *GetVpcPrefixListEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVpcPrefixListEntriesResponse{}
-	_body, _err := client.GetVpcPrefixListEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27641,7 +21526,7 @@ func (client *Client) GetVpcPrefixListEntries(request *GetVpcPrefixListEntriesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVpcRouteEntrySummaryResponse
-func (client *Client) GetVpcRouteEntrySummaryWithOptions(request *GetVpcRouteEntrySummaryRequest, runtime *dara.RuntimeOptions) (_result *GetVpcRouteEntrySummaryResponse, _err error) {
+func (client *Client) GetVpcRouteEntrySummaryWithContext(ctx context.Context, request *GetVpcRouteEntrySummaryRequest, runtime *dara.RuntimeOptions) (_result *GetVpcRouteEntrySummaryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27694,29 +21579,11 @@ func (client *Client) GetVpcRouteEntrySummaryWithOptions(request *GetVpcRouteEnt
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVpcRouteEntrySummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询路由类型的明细。
-//
-// @param request - GetVpcRouteEntrySummaryRequest
-//
-// @return GetVpcRouteEntrySummaryResponse
-func (client *Client) GetVpcRouteEntrySummary(request *GetVpcRouteEntrySummaryRequest) (_result *GetVpcRouteEntrySummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVpcRouteEntrySummaryResponse{}
-	_body, _err := client.GetVpcRouteEntrySummaryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27733,7 +21600,7 @@ func (client *Client) GetVpcRouteEntrySummary(request *GetVpcRouteEntrySummaryRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVpnGatewayDiagnoseResultResponse
-func (client *Client) GetVpnGatewayDiagnoseResultWithOptions(request *GetVpnGatewayDiagnoseResultRequest, runtime *dara.RuntimeOptions) (_result *GetVpnGatewayDiagnoseResultResponse, _err error) {
+func (client *Client) GetVpnGatewayDiagnoseResultWithContext(ctx context.Context, request *GetVpnGatewayDiagnoseResultRequest, runtime *dara.RuntimeOptions) (_result *GetVpnGatewayDiagnoseResultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27770,33 +21637,11 @@ func (client *Client) GetVpnGatewayDiagnoseResultWithOptions(request *GetVpnGate
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVpnGatewayDiagnoseResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the diagnostic result of a VPN gateway.
-//
-// Description:
-//
-// When you call the **GetVpnGatewayDiagnoseResult*	- operation, you must specify one of **DiagnoseId*	- and **VpnGatewayId**.
-//
-// @param request - GetVpnGatewayDiagnoseResultRequest
-//
-// @return GetVpnGatewayDiagnoseResultResponse
-func (client *Client) GetVpnGatewayDiagnoseResult(request *GetVpnGatewayDiagnoseResultRequest) (_result *GetVpnGatewayDiagnoseResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVpnGatewayDiagnoseResultResponse{}
-	_body, _err := client.GetVpnGatewayDiagnoseResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27817,7 +21662,7 @@ func (client *Client) GetVpnGatewayDiagnoseResult(request *GetVpnGatewayDiagnose
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GrantInstanceToCenResponse
-func (client *Client) GrantInstanceToCenWithOptions(request *GrantInstanceToCenRequest, runtime *dara.RuntimeOptions) (_result *GrantInstanceToCenResponse, _err error) {
+func (client *Client) GrantInstanceToCenWithContext(ctx context.Context, request *GrantInstanceToCenRequest, runtime *dara.RuntimeOptions) (_result *GrantInstanceToCenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27878,37 +21723,11 @@ func (client *Client) GrantInstanceToCenWithOptions(request *GrantInstanceToCenR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GrantInstanceToCenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Grants permissions to a Cloud Enterprise Network (CEN) instance.
-//
-// Description:
-//
-//	Before you can attach a network instance that belongs to another Alibaba Cloud account to your CEN instance, you must grant permissions to your CEN instance.
-//
-// >  **GrantInstanceToCen*	- is a Virtual Private Cloud (VPC) operation. Therefore, you must use the `vpc.aliyuncs.com` domain name to call this operation. The API version is `2016-04-28`.
-//
-//   - You cannot repeatedly call the **GrantInstanceToCen*	- operation to grant the permissions on a network instance to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
-//
-// @param request - GrantInstanceToCenRequest
-//
-// @return GrantInstanceToCenResponse
-func (client *Client) GrantInstanceToCen(request *GrantInstanceToCenRequest) (_result *GrantInstanceToCenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GrantInstanceToCenResponse{}
-	_body, _err := client.GrantInstanceToCenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27927,7 +21746,7 @@ func (client *Client) GrantInstanceToCen(request *GrantInstanceToCenRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GrantInstanceToVbrResponse
-func (client *Client) GrantInstanceToVbrWithOptions(tmpReq *GrantInstanceToVbrRequest, runtime *dara.RuntimeOptions) (_result *GrantInstanceToVbrResponse, _err error) {
+func (client *Client) GrantInstanceToVbrWithContext(ctx context.Context, tmpReq *GrantInstanceToVbrRequest, runtime *dara.RuntimeOptions) (_result *GrantInstanceToVbrResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27978,35 +21797,11 @@ func (client *Client) GrantInstanceToVbrWithOptions(tmpReq *GrantInstanceToVbrRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &GrantInstanceToVbrResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Grants a virtual border router (VBR) the permissions to connect to a virtual private cloud (VPC) that belongs to another Alibaba Cloud account.
-//
-// Description:
-//
-// ## Usage notes
-//
-// When you connect a VBR to a VPC that belongs to another Alibaba Cloud account, the VBR must acquire the required permissions from the VPC.
-//
-// @param request - GrantInstanceToVbrRequest
-//
-// @return GrantInstanceToVbrResponse
-func (client *Client) GrantInstanceToVbr(request *GrantInstanceToVbrRequest) (_result *GrantInstanceToVbrResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GrantInstanceToVbrResponse{}
-	_body, _err := client.GrantInstanceToVbrWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28019,7 +21814,7 @@ func (client *Client) GrantInstanceToVbr(request *GrantInstanceToVbrRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListBusinessAccessPointsResponse
-func (client *Client) ListBusinessAccessPointsWithOptions(request *ListBusinessAccessPointsRequest, runtime *dara.RuntimeOptions) (_result *ListBusinessAccessPointsResponse, _err error) {
+func (client *Client) ListBusinessAccessPointsWithContext(ctx context.Context, request *ListBusinessAccessPointsRequest, runtime *dara.RuntimeOptions) (_result *ListBusinessAccessPointsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28048,29 +21843,11 @@ func (client *Client) ListBusinessAccessPointsWithOptions(request *ListBusinessA
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListBusinessAccessPointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the access points of an Express Connect circuit.
-//
-// @param request - ListBusinessAccessPointsRequest
-//
-// @return ListBusinessAccessPointsResponse
-func (client *Client) ListBusinessAccessPoints(request *ListBusinessAccessPointsRequest) (_result *ListBusinessAccessPointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListBusinessAccessPointsResponse{}
-	_body, _err := client.ListBusinessAccessPointsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28083,7 +21860,7 @@ func (client *Client) ListBusinessAccessPoints(request *ListBusinessAccessPoints
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDhcpOptionsSetsResponse
-func (client *Client) ListDhcpOptionsSetsWithOptions(request *ListDhcpOptionsSetsRequest, runtime *dara.RuntimeOptions) (_result *ListDhcpOptionsSetsResponse, _err error) {
+func (client *Client) ListDhcpOptionsSetsWithContext(ctx context.Context, request *ListDhcpOptionsSetsRequest, runtime *dara.RuntimeOptions) (_result *ListDhcpOptionsSetsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28152,29 +21929,11 @@ func (client *Client) ListDhcpOptionsSetsWithOptions(request *ListDhcpOptionsSet
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDhcpOptionsSetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Dynamic Host Configuration Protocol (DHCP) options sets.
-//
-// @param request - ListDhcpOptionsSetsRequest
-//
-// @return ListDhcpOptionsSetsResponse
-func (client *Client) ListDhcpOptionsSets(request *ListDhcpOptionsSetsRequest) (_result *ListDhcpOptionsSetsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDhcpOptionsSetsResponse{}
-	_body, _err := client.ListDhcpOptionsSetsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28191,7 +21950,7 @@ func (client *Client) ListDhcpOptionsSets(request *ListDhcpOptionsSetsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnhanhcedNatGatewayAvailableZonesResponse
-func (client *Client) ListEnhanhcedNatGatewayAvailableZonesWithOptions(request *ListEnhanhcedNatGatewayAvailableZonesRequest, runtime *dara.RuntimeOptions) (_result *ListEnhanhcedNatGatewayAvailableZonesResponse, _err error) {
+func (client *Client) ListEnhanhcedNatGatewayAvailableZonesWithContext(ctx context.Context, request *ListEnhanhcedNatGatewayAvailableZonesRequest, runtime *dara.RuntimeOptions) (_result *ListEnhanhcedNatGatewayAvailableZonesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28244,33 +22003,11 @@ func (client *Client) ListEnhanhcedNatGatewayAvailableZonesWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnhanhcedNatGatewayAvailableZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the zones that support NAT gateways.
-//
-// Description:
-//
-// You can call this operation to query zones that support NAT gateways, including Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways.
-//
-// @param request - ListEnhanhcedNatGatewayAvailableZonesRequest
-//
-// @return ListEnhanhcedNatGatewayAvailableZonesResponse
-func (client *Client) ListEnhanhcedNatGatewayAvailableZones(request *ListEnhanhcedNatGatewayAvailableZonesRequest) (_result *ListEnhanhcedNatGatewayAvailableZonesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEnhanhcedNatGatewayAvailableZonesResponse{}
-	_body, _err := client.ListEnhanhcedNatGatewayAvailableZonesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28283,7 +22020,7 @@ func (client *Client) ListEnhanhcedNatGatewayAvailableZones(request *ListEnhanhc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFullNatEntriesResponse
-func (client *Client) ListFullNatEntriesWithOptions(request *ListFullNatEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListFullNatEntriesResponse, _err error) {
+func (client *Client) ListFullNatEntriesWithContext(ctx context.Context, request *ListFullNatEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListFullNatEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28368,29 +22105,11 @@ func (client *Client) ListFullNatEntriesWithOptions(request *ListFullNatEntriesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFullNatEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries FULLNAT entries.
-//
-// @param request - ListFullNatEntriesRequest
-//
-// @return ListFullNatEntriesResponse
-func (client *Client) ListFullNatEntries(request *ListFullNatEntriesRequest) (_result *ListFullNatEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListFullNatEntriesResponse{}
-	_body, _err := client.ListFullNatEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28403,7 +22122,7 @@ func (client *Client) ListFullNatEntries(request *ListFullNatEntriesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListGatewayRouteTableEntriesResponse
-func (client *Client) ListGatewayRouteTableEntriesWithOptions(request *ListGatewayRouteTableEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListGatewayRouteTableEntriesResponse, _err error) {
+func (client *Client) ListGatewayRouteTableEntriesWithContext(ctx context.Context, request *ListGatewayRouteTableEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListGatewayRouteTableEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28464,76 +22183,11 @@ func (client *Client) ListGatewayRouteTableEntriesWithOptions(request *ListGatew
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListGatewayRouteTableEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries route entries of a gateway route table.
-//
-// @param request - ListGatewayRouteTableEntriesRequest
-//
-// @return ListGatewayRouteTableEntriesResponse
-func (client *Client) ListGatewayRouteTableEntries(request *ListGatewayRouteTableEntriesRequest) (_result *ListGatewayRouteTableEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListGatewayRouteTableEntriesResponse{}
-	_body, _err := client.ListGatewayRouteTableEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the most recent region list.
-//
-// @param request - ListGeographicSubRegionsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListGeographicSubRegionsResponse
-func (client *Client) ListGeographicSubRegionsWithOptions(runtime *dara.RuntimeOptions) (_result *ListGeographicSubRegionsResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("ListGeographicSubRegions"),
-		Version:     dara.String("2016-04-28"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ListGeographicSubRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the most recent region list.
-//
-// @return ListGeographicSubRegionsResponse
-func (client *Client) ListGeographicSubRegions() (_result *ListGeographicSubRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListGeographicSubRegionsResponse{}
-	_body, _err := client.ListGeographicSubRegionsWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28546,7 +22200,7 @@ func (client *Client) ListGeographicSubRegions() (_result *ListGeographicSubRegi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIpsecServerLogsResponse
-func (client *Client) ListIpsecServerLogsWithOptions(request *ListIpsecServerLogsRequest, runtime *dara.RuntimeOptions) (_result *ListIpsecServerLogsResponse, _err error) {
+func (client *Client) ListIpsecServerLogsWithContext(ctx context.Context, request *ListIpsecServerLogsRequest, runtime *dara.RuntimeOptions) (_result *ListIpsecServerLogsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28595,29 +22249,11 @@ func (client *Client) ListIpsecServerLogsWithOptions(request *ListIpsecServerLog
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIpsecServerLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the logs of an IPsec server.
-//
-// @param request - ListIpsecServerLogsRequest
-//
-// @return ListIpsecServerLogsResponse
-func (client *Client) ListIpsecServerLogs(request *ListIpsecServerLogsRequest) (_result *ListIpsecServerLogsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListIpsecServerLogsResponse{}
-	_body, _err := client.ListIpsecServerLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28630,7 +22266,7 @@ func (client *Client) ListIpsecServerLogs(request *ListIpsecServerLogsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIpsecServersResponse
-func (client *Client) ListIpsecServersWithOptions(request *ListIpsecServersRequest, runtime *dara.RuntimeOptions) (_result *ListIpsecServersResponse, _err error) {
+func (client *Client) ListIpsecServersWithContext(ctx context.Context, request *ListIpsecServersRequest, runtime *dara.RuntimeOptions) (_result *ListIpsecServersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28679,29 +22315,11 @@ func (client *Client) ListIpsecServersWithOptions(request *ListIpsecServersReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIpsecServersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries IPsec servers.
-//
-// @param request - ListIpsecServersRequest
-//
-// @return ListIpsecServersResponse
-func (client *Client) ListIpsecServers(request *ListIpsecServersRequest) (_result *ListIpsecServersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListIpsecServersResponse{}
-	_body, _err := client.ListIpsecServersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28714,7 +22332,7 @@ func (client *Client) ListIpsecServers(request *ListIpsecServersRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIpv4GatewaysResponse
-func (client *Client) ListIpv4GatewaysWithOptions(request *ListIpv4GatewaysRequest, runtime *dara.RuntimeOptions) (_result *ListIpv4GatewaysResponse, _err error) {
+func (client *Client) ListIpv4GatewaysWithContext(ctx context.Context, request *ListIpv4GatewaysRequest, runtime *dara.RuntimeOptions) (_result *ListIpv4GatewaysResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28787,29 +22405,11 @@ func (client *Client) ListIpv4GatewaysWithOptions(request *ListIpv4GatewaysReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIpv4GatewaysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries IPv4 gateways.
-//
-// @param request - ListIpv4GatewaysRequest
-//
-// @return ListIpv4GatewaysResponse
-func (client *Client) ListIpv4Gateways(request *ListIpv4GatewaysRequest) (_result *ListIpv4GatewaysResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListIpv4GatewaysResponse{}
-	_body, _err := client.ListIpv4GatewaysWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28822,7 +22422,7 @@ func (client *Client) ListIpv4Gateways(request *ListIpv4GatewaysRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNatIpCidrsResponse
-func (client *Client) ListNatIpCidrsWithOptions(request *ListNatIpCidrsRequest, runtime *dara.RuntimeOptions) (_result *ListNatIpCidrsResponse, _err error) {
+func (client *Client) ListNatIpCidrsWithContext(ctx context.Context, request *ListNatIpCidrsRequest, runtime *dara.RuntimeOptions) (_result *ListNatIpCidrsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28903,29 +22503,11 @@ func (client *Client) ListNatIpCidrsWithOptions(request *ListNatIpCidrsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNatIpCidrsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the CIDR blocks of a specified NAT gateway.
-//
-// @param request - ListNatIpCidrsRequest
-//
-// @return ListNatIpCidrsResponse
-func (client *Client) ListNatIpCidrs(request *ListNatIpCidrsRequest) (_result *ListNatIpCidrsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListNatIpCidrsResponse{}
-	_body, _err := client.ListNatIpCidrsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28938,7 +22520,7 @@ func (client *Client) ListNatIpCidrs(request *ListNatIpCidrsRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNatIpsResponse
-func (client *Client) ListNatIpsWithOptions(request *ListNatIpsRequest, runtime *dara.RuntimeOptions) (_result *ListNatIpsResponse, _err error) {
+func (client *Client) ListNatIpsWithContext(ctx context.Context, request *ListNatIpsRequest, runtime *dara.RuntimeOptions) (_result *ListNatIpsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29019,29 +22601,11 @@ func (client *Client) ListNatIpsWithOptions(request *ListNatIpsRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNatIpsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the IP addresses on a NAT gateway.
-//
-// @param request - ListNatIpsRequest
-//
-// @return ListNatIpsResponse
-func (client *Client) ListNatIps(request *ListNatIpsRequest) (_result *ListNatIpsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListNatIpsResponse{}
-	_body, _err := client.ListNatIpsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29054,7 +22618,7 @@ func (client *Client) ListNatIps(request *ListNatIpsRequest) (_result *ListNatIp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPrefixListsResponse
-func (client *Client) ListPrefixListsWithOptions(request *ListPrefixListsRequest, runtime *dara.RuntimeOptions) (_result *ListPrefixListsResponse, _err error) {
+func (client *Client) ListPrefixListsWithContext(ctx context.Context, request *ListPrefixListsRequest, runtime *dara.RuntimeOptions) (_result *ListPrefixListsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29119,29 +22683,11 @@ func (client *Client) ListPrefixListsWithOptions(request *ListPrefixListsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPrefixListsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries prefix lists.
-//
-// @param request - ListPrefixListsRequest
-//
-// @return ListPrefixListsResponse
-func (client *Client) ListPrefixLists(request *ListPrefixListsRequest) (_result *ListPrefixListsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPrefixListsResponse{}
-	_body, _err := client.ListPrefixListsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29154,7 +22700,7 @@ func (client *Client) ListPrefixLists(request *ListPrefixListsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPublicIpAddressPoolCidrBlocksResponse
-func (client *Client) ListPublicIpAddressPoolCidrBlocksWithOptions(request *ListPublicIpAddressPoolCidrBlocksRequest, runtime *dara.RuntimeOptions) (_result *ListPublicIpAddressPoolCidrBlocksResponse, _err error) {
+func (client *Client) ListPublicIpAddressPoolCidrBlocksWithContext(ctx context.Context, request *ListPublicIpAddressPoolCidrBlocksRequest, runtime *dara.RuntimeOptions) (_result *ListPublicIpAddressPoolCidrBlocksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29215,29 +22761,11 @@ func (client *Client) ListPublicIpAddressPoolCidrBlocksWithOptions(request *List
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPublicIpAddressPoolCidrBlocksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询IP地址池中的IP地址网段信息
-//
-// @param request - ListPublicIpAddressPoolCidrBlocksRequest
-//
-// @return ListPublicIpAddressPoolCidrBlocksResponse
-func (client *Client) ListPublicIpAddressPoolCidrBlocks(request *ListPublicIpAddressPoolCidrBlocksRequest) (_result *ListPublicIpAddressPoolCidrBlocksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPublicIpAddressPoolCidrBlocksResponse{}
-	_body, _err := client.ListPublicIpAddressPoolCidrBlocksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29250,7 +22778,7 @@ func (client *Client) ListPublicIpAddressPoolCidrBlocks(request *ListPublicIpAdd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPublicIpAddressPoolsResponse
-func (client *Client) ListPublicIpAddressPoolsWithOptions(request *ListPublicIpAddressPoolsRequest, runtime *dara.RuntimeOptions) (_result *ListPublicIpAddressPoolsResponse, _err error) {
+func (client *Client) ListPublicIpAddressPoolsWithContext(ctx context.Context, request *ListPublicIpAddressPoolsRequest, runtime *dara.RuntimeOptions) (_result *ListPublicIpAddressPoolsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29331,29 +22859,11 @@ func (client *Client) ListPublicIpAddressPoolsWithOptions(request *ListPublicIpA
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPublicIpAddressPoolsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries available IP address pools.
-//
-// @param request - ListPublicIpAddressPoolsRequest
-//
-// @return ListPublicIpAddressPoolsResponse
-func (client *Client) ListPublicIpAddressPools(request *ListPublicIpAddressPoolsRequest) (_result *ListPublicIpAddressPoolsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPublicIpAddressPoolsResponse{}
-	_body, _err := client.ListPublicIpAddressPoolsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29378,7 +22888,7 @@ func (client *Client) ListPublicIpAddressPools(request *ListPublicIpAddressPools
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29439,41 +22949,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the tags that are added to resources.
-//
-// Description:
-//
-// ## Usage notes
-//
-//   - You must specify **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value*	- in the request to specify the object that you want to query.
-//
-//   - **Tag.N*	- is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
-//
-//   - If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
-//
-//   - If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
-//
-// @param request - ListTagResourcesRequest
-//
-// @return ListTagResourcesResponse
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29498,7 +22978,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesForExpressConnectResponse
-func (client *Client) ListTagResourcesForExpressConnectWithOptions(request *ListTagResourcesForExpressConnectRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesForExpressConnectResponse, _err error) {
+func (client *Client) ListTagResourcesForExpressConnectWithContext(ctx context.Context, request *ListTagResourcesForExpressConnectRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesForExpressConnectResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29559,41 +23039,11 @@ func (client *Client) ListTagResourcesForExpressConnectWithOptions(request *List
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesForExpressConnectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the tags that are added to an Express Connect circuit.
-//
-// Description:
-//
-// ## [](#)
-//
-//   - If you want to query a specific object, you must specify **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value*	- in the request.
-//
-//   - **Tag.N*	- is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
-//
-//   - If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
-//
-//   - If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
-//
-// @param request - ListTagResourcesForExpressConnectRequest
-//
-// @return ListTagResourcesForExpressConnectResponse
-func (client *Client) ListTagResourcesForExpressConnect(request *ListTagResourcesForExpressConnectRequest) (_result *ListTagResourcesForExpressConnectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesForExpressConnectResponse{}
-	_body, _err := client.ListTagResourcesForExpressConnectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29606,7 +23056,7 @@ func (client *Client) ListTagResourcesForExpressConnect(request *ListTagResource
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTrafficMirrorFiltersResponse
-func (client *Client) ListTrafficMirrorFiltersWithOptions(request *ListTrafficMirrorFiltersRequest, runtime *dara.RuntimeOptions) (_result *ListTrafficMirrorFiltersResponse, _err error) {
+func (client *Client) ListTrafficMirrorFiltersWithContext(ctx context.Context, request *ListTrafficMirrorFiltersRequest, runtime *dara.RuntimeOptions) (_result *ListTrafficMirrorFiltersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29671,29 +23121,11 @@ func (client *Client) ListTrafficMirrorFiltersWithOptions(request *ListTrafficMi
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTrafficMirrorFiltersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries filters for traffic mirror.
-//
-// @param request - ListTrafficMirrorFiltersRequest
-//
-// @return ListTrafficMirrorFiltersResponse
-func (client *Client) ListTrafficMirrorFilters(request *ListTrafficMirrorFiltersRequest) (_result *ListTrafficMirrorFiltersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTrafficMirrorFiltersResponse{}
-	_body, _err := client.ListTrafficMirrorFiltersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29706,7 +23138,7 @@ func (client *Client) ListTrafficMirrorFilters(request *ListTrafficMirrorFilters
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTrafficMirrorSessionsResponse
-func (client *Client) ListTrafficMirrorSessionsWithOptions(request *ListTrafficMirrorSessionsRequest, runtime *dara.RuntimeOptions) (_result *ListTrafficMirrorSessionsResponse, _err error) {
+func (client *Client) ListTrafficMirrorSessionsWithContext(ctx context.Context, request *ListTrafficMirrorSessionsRequest, runtime *dara.RuntimeOptions) (_result *ListTrafficMirrorSessionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29795,29 +23227,11 @@ func (client *Client) ListTrafficMirrorSessionsWithOptions(request *ListTrafficM
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTrafficMirrorSessionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a traffic mirror session.
-//
-// @param request - ListTrafficMirrorSessionsRequest
-//
-// @return ListTrafficMirrorSessionsResponse
-func (client *Client) ListTrafficMirrorSessions(request *ListTrafficMirrorSessionsRequest) (_result *ListTrafficMirrorSessionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTrafficMirrorSessionsResponse{}
-	_body, _err := client.ListTrafficMirrorSessionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29830,7 +23244,7 @@ func (client *Client) ListTrafficMirrorSessions(request *ListTrafficMirrorSessio
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVSwitchCidrReservationsResponse
-func (client *Client) ListVSwitchCidrReservationsWithOptions(request *ListVSwitchCidrReservationsRequest, runtime *dara.RuntimeOptions) (_result *ListVSwitchCidrReservationsResponse, _err error) {
+func (client *Client) ListVSwitchCidrReservationsWithContext(ctx context.Context, request *ListVSwitchCidrReservationsRequest, runtime *dara.RuntimeOptions) (_result *ListVSwitchCidrReservationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29899,29 +23313,11 @@ func (client *Client) ListVSwitchCidrReservationsWithOptions(request *ListVSwitc
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVSwitchCidrReservationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the CIDR reservation information about vSwitches.
-//
-// @param request - ListVSwitchCidrReservationsRequest
-//
-// @return ListVSwitchCidrReservationsResponse
-func (client *Client) ListVSwitchCidrReservations(request *ListVSwitchCidrReservationsRequest) (_result *ListVSwitchCidrReservationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVSwitchCidrReservationsResponse{}
-	_body, _err := client.ListVSwitchCidrReservationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29934,7 +23330,7 @@ func (client *Client) ListVSwitchCidrReservations(request *ListVSwitchCidrReserv
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVirtualPhysicalConnectionsResponse
-func (client *Client) ListVirtualPhysicalConnectionsWithOptions(request *ListVirtualPhysicalConnectionsRequest, runtime *dara.RuntimeOptions) (_result *ListVirtualPhysicalConnectionsResponse, _err error) {
+func (client *Client) ListVirtualPhysicalConnectionsWithContext(ctx context.Context, request *ListVirtualPhysicalConnectionsRequest, runtime *dara.RuntimeOptions) (_result *ListVirtualPhysicalConnectionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30003,29 +23399,11 @@ func (client *Client) ListVirtualPhysicalConnectionsWithOptions(request *ListVir
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVirtualPhysicalConnectionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries hosted connections.
-//
-// @param request - ListVirtualPhysicalConnectionsRequest
-//
-// @return ListVirtualPhysicalConnectionsResponse
-func (client *Client) ListVirtualPhysicalConnections(request *ListVirtualPhysicalConnectionsRequest) (_result *ListVirtualPhysicalConnectionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVirtualPhysicalConnectionsResponse{}
-	_body, _err := client.ListVirtualPhysicalConnectionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30038,7 +23416,7 @@ func (client *Client) ListVirtualPhysicalConnections(request *ListVirtualPhysica
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpcEndpointServicesByEndUserResponse
-func (client *Client) ListVpcEndpointServicesByEndUserWithOptions(request *ListVpcEndpointServicesByEndUserRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointServicesByEndUserResponse, _err error) {
+func (client *Client) ListVpcEndpointServicesByEndUserWithContext(ctx context.Context, request *ListVpcEndpointServicesByEndUserRequest, runtime *dara.RuntimeOptions) (_result *ListVpcEndpointServicesByEndUserResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30091,29 +23469,11 @@ func (client *Client) ListVpcEndpointServicesByEndUserWithOptions(request *ListV
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpcEndpointServicesByEndUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries available endpoint services.
-//
-// @param request - ListVpcEndpointServicesByEndUserRequest
-//
-// @return ListVpcEndpointServicesByEndUserResponse
-func (client *Client) ListVpcEndpointServicesByEndUser(request *ListVpcEndpointServicesByEndUserRequest) (_result *ListVpcEndpointServicesByEndUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpcEndpointServicesByEndUserResponse{}
-	_body, _err := client.ListVpcEndpointServicesByEndUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30126,7 +23486,7 @@ func (client *Client) ListVpcEndpointServicesByEndUser(request *ListVpcEndpointS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpcGatewayEndpointsResponse
-func (client *Client) ListVpcGatewayEndpointsWithOptions(request *ListVpcGatewayEndpointsRequest, runtime *dara.RuntimeOptions) (_result *ListVpcGatewayEndpointsResponse, _err error) {
+func (client *Client) ListVpcGatewayEndpointsWithContext(ctx context.Context, request *ListVpcGatewayEndpointsRequest, runtime *dara.RuntimeOptions) (_result *ListVpcGatewayEndpointsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30199,29 +23559,11 @@ func (client *Client) ListVpcGatewayEndpointsWithOptions(request *ListVpcGateway
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpcGatewayEndpointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries gateway endpoints.
-//
-// @param request - ListVpcGatewayEndpointsRequest
-//
-// @return ListVpcGatewayEndpointsResponse
-func (client *Client) ListVpcGatewayEndpoints(request *ListVpcGatewayEndpointsRequest) (_result *ListVpcGatewayEndpointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpcGatewayEndpointsResponse{}
-	_body, _err := client.ListVpcGatewayEndpointsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30234,7 +23576,7 @@ func (client *Client) ListVpcGatewayEndpoints(request *ListVpcGatewayEndpointsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpcPublishedRouteEntriesResponse
-func (client *Client) ListVpcPublishedRouteEntriesWithOptions(request *ListVpcPublishedRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListVpcPublishedRouteEntriesResponse, _err error) {
+func (client *Client) ListVpcPublishedRouteEntriesWithContext(ctx context.Context, request *ListVpcPublishedRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *ListVpcPublishedRouteEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30303,29 +23645,11 @@ func (client *Client) ListVpcPublishedRouteEntriesWithOptions(request *ListVpcPu
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpcPublishedRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries advertised routes.
-//
-// @param request - ListVpcPublishedRouteEntriesRequest
-//
-// @return ListVpcPublishedRouteEntriesResponse
-func (client *Client) ListVpcPublishedRouteEntries(request *ListVpcPublishedRouteEntriesRequest) (_result *ListVpcPublishedRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpcPublishedRouteEntriesResponse{}
-	_body, _err := client.ListVpcPublishedRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30350,7 +23674,7 @@ func (client *Client) ListVpcPublishedRouteEntries(request *ListVpcPublishedRout
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpnCertificateAssociationsResponse
-func (client *Client) ListVpnCertificateAssociationsWithOptions(request *ListVpnCertificateAssociationsRequest, runtime *dara.RuntimeOptions) (_result *ListVpnCertificateAssociationsResponse, _err error) {
+func (client *Client) ListVpnCertificateAssociationsWithContext(ctx context.Context, request *ListVpnCertificateAssociationsRequest, runtime *dara.RuntimeOptions) (_result *ListVpnCertificateAssociationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30395,41 +23719,11 @@ func (client *Client) ListVpnCertificateAssociationsWithOptions(request *ListVpn
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVpnCertificateAssociationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the association between VPN gateways and certificates in a region.
-//
-// Description:
-//
-// When you call **ListVpnCertificateAssociations**, take note of the following information:
-//
-//   - If you specify only **RegionId**, the SSL certificates associated with all VPN gateways in the specified region are queried.
-//
-//   - If you specify **RegionId*	- and **CertificateType**, the SSL certificates of the specified type that are associated with the VPN gateways in the specified region are queried.
-//
-//   - If you specify **RegionId*	- and **VpnGatewayId**, the SSL certificates associated with the specified VPN gateway in the specified region are queried.
-//
-//   - If you specify **RegionId*	- and **CertificateId**, the VPN gateways associated with the specified SSL certificate in the specified region are queried.
-//
-// @param request - ListVpnCertificateAssociationsRequest
-//
-// @return ListVpnCertificateAssociationsResponse
-func (client *Client) ListVpnCertificateAssociations(request *ListVpnCertificateAssociationsRequest) (_result *ListVpnCertificateAssociationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVpnCertificateAssociationsResponse{}
-	_body, _err := client.ListVpnCertificateAssociationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30442,7 +23736,7 @@ func (client *Client) ListVpnCertificateAssociations(request *ListVpnCertificate
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyBgpGroupAttributeResponse
-func (client *Client) ModifyBgpGroupAttributeWithOptions(request *ModifyBgpGroupAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyBgpGroupAttributeResponse, _err error) {
+func (client *Client) ModifyBgpGroupAttributeWithContext(ctx context.Context, request *ModifyBgpGroupAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyBgpGroupAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30523,29 +23817,11 @@ func (client *Client) ModifyBgpGroupAttributeWithOptions(request *ModifyBgpGroup
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyBgpGroupAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of a Border Gateway Protocol (BGP) group.
-//
-// @param request - ModifyBgpGroupAttributeRequest
-//
-// @return ModifyBgpGroupAttributeResponse
-func (client *Client) ModifyBgpGroupAttribute(request *ModifyBgpGroupAttributeRequest) (_result *ModifyBgpGroupAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyBgpGroupAttributeResponse{}
-	_body, _err := client.ModifyBgpGroupAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30558,7 +23834,7 @@ func (client *Client) ModifyBgpGroupAttribute(request *ModifyBgpGroupAttributeRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyBgpPeerAttributeResponse
-func (client *Client) ModifyBgpPeerAttributeWithOptions(request *ModifyBgpPeerAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyBgpPeerAttributeResponse, _err error) {
+func (client *Client) ModifyBgpPeerAttributeWithContext(ctx context.Context, request *ModifyBgpPeerAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyBgpPeerAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30623,29 +23899,11 @@ func (client *Client) ModifyBgpPeerAttributeWithOptions(request *ModifyBgpPeerAt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyBgpPeerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of a BGP peer.
-//
-// @param request - ModifyBgpPeerAttributeRequest
-//
-// @return ModifyBgpPeerAttributeResponse
-func (client *Client) ModifyBgpPeerAttribute(request *ModifyBgpPeerAttributeRequest) (_result *ModifyBgpPeerAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyBgpPeerAttributeResponse{}
-	_body, _err := client.ModifyBgpPeerAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30658,7 +23916,7 @@ func (client *Client) ModifyBgpPeerAttribute(request *ModifyBgpPeerAttributeRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCommonBandwidthPackageAttributeResponse
-func (client *Client) ModifyCommonBandwidthPackageAttributeWithOptions(request *ModifyCommonBandwidthPackageAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyCommonBandwidthPackageAttributeResponse, _err error) {
+func (client *Client) ModifyCommonBandwidthPackageAttributeWithContext(ctx context.Context, request *ModifyCommonBandwidthPackageAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyCommonBandwidthPackageAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30711,29 +23969,11 @@ func (client *Client) ModifyCommonBandwidthPackageAttributeWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCommonBandwidthPackageAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of an EIP bandwidth plan.
-//
-// @param request - ModifyCommonBandwidthPackageAttributeRequest
-//
-// @return ModifyCommonBandwidthPackageAttributeResponse
-func (client *Client) ModifyCommonBandwidthPackageAttribute(request *ModifyCommonBandwidthPackageAttributeRequest) (_result *ModifyCommonBandwidthPackageAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyCommonBandwidthPackageAttributeResponse{}
-	_body, _err := client.ModifyCommonBandwidthPackageAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30760,7 +24000,7 @@ func (client *Client) ModifyCommonBandwidthPackageAttribute(request *ModifyCommo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCommonBandwidthPackageIpBandwidthResponse
-func (client *Client) ModifyCommonBandwidthPackageIpBandwidthWithOptions(request *ModifyCommonBandwidthPackageIpBandwidthRequest, runtime *dara.RuntimeOptions) (_result *ModifyCommonBandwidthPackageIpBandwidthResponse, _err error) {
+func (client *Client) ModifyCommonBandwidthPackageIpBandwidthWithContext(ctx context.Context, request *ModifyCommonBandwidthPackageIpBandwidthRequest, runtime *dara.RuntimeOptions) (_result *ModifyCommonBandwidthPackageIpBandwidthResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30813,43 +24053,11 @@ func (client *Client) ModifyCommonBandwidthPackageIpBandwidthWithOptions(request
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCommonBandwidthPackageIpBandwidthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sets the maximum bandwidth of an EIP that is associated with an Internet Shared Bandwidth instance.
-//
-// Description:
-//
-// You can call the **ModifyCommonBandwidthPackageIpBandwidth*	- operation to set the maximum bandwidth of an EIP that is associated with an Internet Shared Bandwidth instance. This prevents an EIP from exhausting the bandwidth resources of an Internet Shared Bandwidth instance.
-//
-// For example, two EIPs are associated with an Internet Shared Bandwidth instance whose maximum bandwidth is 800 Mbit/s. In this case, you can set the maximum bandwidth of one EIP to 500 Mbit/s and that of the other EIP to 400 Mbit/s. After you set the maximum bandwidth values, the first EIP cannot consume bandwidth higher than 500 Mbit/s. The second EIP cannot consume bandwidth higher than 400 Mbit/s.
-//
-// When you call this operation, take note of the following items:
-//
-//   - This operation is valid only for EIPs that are associated with Elastic Compute Service (ECS) instances. This operation is invalid for EIPs that are associated with Server Load Balancer (SLB) instances, NAT gateways, secondary elastic network interfaces (ENIs), or high-availability virtual IP addresses (HAVIPs).
-//
-//   - This operation is in public preview. You can call this operation to set the maximum bandwidth of EIPs only if the EIPs are associated with an Internet Shared Bandwidth instance. The feature is not supported in the console.
-//
-//   - You cannot repeatedly call this operation to set the maximum bandwidth of an EIP within the specified period of time.
-//
-// @param request - ModifyCommonBandwidthPackageIpBandwidthRequest
-//
-// @return ModifyCommonBandwidthPackageIpBandwidthResponse
-func (client *Client) ModifyCommonBandwidthPackageIpBandwidth(request *ModifyCommonBandwidthPackageIpBandwidthRequest) (_result *ModifyCommonBandwidthPackageIpBandwidthResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyCommonBandwidthPackageIpBandwidthResponse{}
-	_body, _err := client.ModifyCommonBandwidthPackageIpBandwidthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30874,7 +24082,7 @@ func (client *Client) ModifyCommonBandwidthPackageIpBandwidth(request *ModifyCom
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCommonBandwidthPackageSpecResponse
-func (client *Client) ModifyCommonBandwidthPackageSpecWithOptions(request *ModifyCommonBandwidthPackageSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyCommonBandwidthPackageSpecResponse, _err error) {
+func (client *Client) ModifyCommonBandwidthPackageSpecWithContext(ctx context.Context, request *ModifyCommonBandwidthPackageSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyCommonBandwidthPackageSpecResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30923,41 +24131,11 @@ func (client *Client) ModifyCommonBandwidthPackageSpecWithOptions(request *Modif
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCommonBandwidthPackageSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the maximum bandwidth of an Internet Shared Bandwidth instance.
-//
-// Description:
-//
-// Before you call this operation, take note of the following items:
-//
-//   - **ModifyCommonBandwidthPackageSpec*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](https://help.aliyun.com/document_detail/120309.html) operation to query the status of the task.
-//
-//   - If the Internet Shared Bandwidth instance is in the **Modifying*	- state, the maximum bandwidth of the Internet Shared Bandwidth instance is being modified. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
-//
-//   - If the Internet Shared Bandwidth instance is in the **Available*	- state, the maximum bandwidth of the Internet Shared Bandwidth instance is modified.
-//
-//   - You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec*	- operation to modify the maximum bandwidth of an Internet Shared Bandwidth instance within the specified period of time.
-//
-// @param request - ModifyCommonBandwidthPackageSpecRequest
-//
-// @return ModifyCommonBandwidthPackageSpecResponse
-func (client *Client) ModifyCommonBandwidthPackageSpec(request *ModifyCommonBandwidthPackageSpecRequest) (_result *ModifyCommonBandwidthPackageSpecResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyCommonBandwidthPackageSpecResponse{}
-	_body, _err := client.ModifyCommonBandwidthPackageSpecWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30982,7 +24160,7 @@ func (client *Client) ModifyCommonBandwidthPackageSpec(request *ModifyCommonBand
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCustomerGatewayAttributeResponse
-func (client *Client) ModifyCustomerGatewayAttributeWithOptions(request *ModifyCustomerGatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyCustomerGatewayAttributeResponse, _err error) {
+func (client *Client) ModifyCustomerGatewayAttributeWithContext(ctx context.Context, request *ModifyCustomerGatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyCustomerGatewayAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31043,41 +24221,11 @@ func (client *Client) ModifyCustomerGatewayAttributeWithOptions(request *ModifyC
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCustomerGatewayAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of a customer gateway.
-//
-// Description:
-//
-//	  When you call **ModifyCustomerGatewayAttribute**, if a value is assigned to **AuthKey**, the operation is asynchronous. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
-//
-//	    	- If a VPN gateway is in the **updating*	- state, the configurations are being modified.
-//
-//	    	- If a VPN gateway is in the **active*	- state, the configurations are modified.
-//
-//		- When you call **ModifyCustomerGatewayAttribute**, if no value is assigned to **AuthKey**, the operation is synchronous.
-//
-//		- You cannot repeatedly call **ModifyCustomerGatewayAttribute*	- to modify the configurations of a customer gateway within the specified period of time.
-//
-// @param request - ModifyCustomerGatewayAttributeRequest
-//
-// @return ModifyCustomerGatewayAttributeResponse
-func (client *Client) ModifyCustomerGatewayAttribute(request *ModifyCustomerGatewayAttributeRequest) (_result *ModifyCustomerGatewayAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyCustomerGatewayAttributeResponse{}
-	_body, _err := client.ModifyCustomerGatewayAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31090,7 +24238,7 @@ func (client *Client) ModifyCustomerGatewayAttribute(request *ModifyCustomerGate
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyEipAddressAttributeResponse
-func (client *Client) ModifyEipAddressAttributeWithOptions(request *ModifyEipAddressAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyEipAddressAttributeResponse, _err error) {
+func (client *Client) ModifyEipAddressAttributeWithContext(ctx context.Context, request *ModifyEipAddressAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyEipAddressAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31147,29 +24295,11 @@ func (client *Client) ModifyEipAddressAttributeWithOptions(request *ModifyEipAdd
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyEipAddressAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name, description, and maximum bandwidth of an elastic IP address (EIP).
-//
-// @param request - ModifyEipAddressAttributeRequest
-//
-// @return ModifyEipAddressAttributeResponse
-func (client *Client) ModifyEipAddressAttribute(request *ModifyEipAddressAttributeRequest) (_result *ModifyEipAddressAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyEipAddressAttributeResponse{}
-	_body, _err := client.ModifyEipAddressAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31182,7 +24312,7 @@ func (client *Client) ModifyEipAddressAttribute(request *ModifyEipAddressAttribu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyEipForwardModeResponse
-func (client *Client) ModifyEipForwardModeWithOptions(request *ModifyEipForwardModeRequest, runtime *dara.RuntimeOptions) (_result *ModifyEipForwardModeResponse, _err error) {
+func (client *Client) ModifyEipForwardModeWithContext(ctx context.Context, request *ModifyEipForwardModeRequest, runtime *dara.RuntimeOptions) (_result *ModifyEipForwardModeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31235,29 +24365,11 @@ func (client *Client) ModifyEipForwardModeWithOptions(request *ModifyEipForwardM
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyEipForwardModeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the EIP forwarding mode.
-//
-// @param request - ModifyEipForwardModeRequest
-//
-// @return ModifyEipForwardModeResponse
-func (client *Client) ModifyEipForwardMode(request *ModifyEipForwardModeRequest) (_result *ModifyEipForwardModeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyEipForwardModeResponse{}
-	_body, _err := client.ModifyEipForwardModeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31270,7 +24382,7 @@ func (client *Client) ModifyEipForwardMode(request *ModifyEipForwardModeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyExpressCloudConnectionAttributeResponse
-func (client *Client) ModifyExpressCloudConnectionAttributeWithOptions(request *ModifyExpressCloudConnectionAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressCloudConnectionAttributeResponse, _err error) {
+func (client *Client) ModifyExpressCloudConnectionAttributeWithContext(ctx context.Context, request *ModifyExpressCloudConnectionAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressCloudConnectionAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31335,29 +24447,11 @@ func (client *Client) ModifyExpressCloudConnectionAttributeWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyExpressCloudConnectionAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of an Express Cloud Connect (ECC) instance.
-//
-// @param request - ModifyExpressCloudConnectionAttributeRequest
-//
-// @return ModifyExpressCloudConnectionAttributeResponse
-func (client *Client) ModifyExpressCloudConnectionAttribute(request *ModifyExpressCloudConnectionAttributeRequest) (_result *ModifyExpressCloudConnectionAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyExpressCloudConnectionAttributeResponse{}
-	_body, _err := client.ModifyExpressCloudConnectionAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31370,7 +24464,7 @@ func (client *Client) ModifyExpressCloudConnectionAttribute(request *ModifyExpre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyExpressCloudConnectionBandwidthResponse
-func (client *Client) ModifyExpressCloudConnectionBandwidthWithOptions(request *ModifyExpressCloudConnectionBandwidthRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressCloudConnectionBandwidthResponse, _err error) {
+func (client *Client) ModifyExpressCloudConnectionBandwidthWithContext(ctx context.Context, request *ModifyExpressCloudConnectionBandwidthRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressCloudConnectionBandwidthResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31419,29 +24513,11 @@ func (client *Client) ModifyExpressCloudConnectionBandwidthWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyExpressCloudConnectionBandwidthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the bandwidth of an Express Cloud Connect (ECC) instance.
-//
-// @param request - ModifyExpressCloudConnectionBandwidthRequest
-//
-// @return ModifyExpressCloudConnectionBandwidthResponse
-func (client *Client) ModifyExpressCloudConnectionBandwidth(request *ModifyExpressCloudConnectionBandwidthRequest) (_result *ModifyExpressCloudConnectionBandwidthResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyExpressCloudConnectionBandwidthResponse{}
-	_body, _err := client.ModifyExpressCloudConnectionBandwidthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31454,7 +24530,7 @@ func (client *Client) ModifyExpressCloudConnectionBandwidth(request *ModifyExpre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyExpressConnectTrafficQosResponse
-func (client *Client) ModifyExpressConnectTrafficQosWithOptions(request *ModifyExpressConnectTrafficQosRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectTrafficQosResponse, _err error) {
+func (client *Client) ModifyExpressConnectTrafficQosWithContext(ctx context.Context, request *ModifyExpressConnectTrafficQosRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectTrafficQosResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31519,29 +24595,11 @@ func (client *Client) ModifyExpressConnectTrafficQosWithOptions(request *ModifyE
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyExpressConnectTrafficQosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a quality of service (QoS) policy or associates a QoS policy with a dedicated Express Connect circuit.
-//
-// @param request - ModifyExpressConnectTrafficQosRequest
-//
-// @return ModifyExpressConnectTrafficQosResponse
-func (client *Client) ModifyExpressConnectTrafficQos(request *ModifyExpressConnectTrafficQosRequest) (_result *ModifyExpressConnectTrafficQosResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyExpressConnectTrafficQosResponse{}
-	_body, _err := client.ModifyExpressConnectTrafficQosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31554,7 +24612,7 @@ func (client *Client) ModifyExpressConnectTrafficQos(request *ModifyExpressConne
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyExpressConnectTrafficQosQueueResponse
-func (client *Client) ModifyExpressConnectTrafficQosQueueWithOptions(request *ModifyExpressConnectTrafficQosQueueRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectTrafficQosQueueResponse, _err error) {
+func (client *Client) ModifyExpressConnectTrafficQosQueueWithContext(ctx context.Context, request *ModifyExpressConnectTrafficQosQueueRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectTrafficQosQueueResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31619,29 +24677,11 @@ func (client *Client) ModifyExpressConnectTrafficQosQueueWithOptions(request *Mo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyExpressConnectTrafficQosQueueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a quality of service (QoS) queue.
-//
-// @param request - ModifyExpressConnectTrafficQosQueueRequest
-//
-// @return ModifyExpressConnectTrafficQosQueueResponse
-func (client *Client) ModifyExpressConnectTrafficQosQueue(request *ModifyExpressConnectTrafficQosQueueRequest) (_result *ModifyExpressConnectTrafficQosQueueResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyExpressConnectTrafficQosQueueResponse{}
-	_body, _err := client.ModifyExpressConnectTrafficQosQueueWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31654,7 +24694,7 @@ func (client *Client) ModifyExpressConnectTrafficQosQueue(request *ModifyExpress
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyExpressConnectTrafficQosRuleResponse
-func (client *Client) ModifyExpressConnectTrafficQosRuleWithOptions(request *ModifyExpressConnectTrafficQosRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectTrafficQosRuleResponse, _err error) {
+func (client *Client) ModifyExpressConnectTrafficQosRuleWithContext(ctx context.Context, request *ModifyExpressConnectTrafficQosRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectTrafficQosRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31759,29 +24799,11 @@ func (client *Client) ModifyExpressConnectTrafficQosRuleWithOptions(request *Mod
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyExpressConnectTrafficQosRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a quality of service (QoS) rule.
-//
-// @param request - ModifyExpressConnectTrafficQosRuleRequest
-//
-// @return ModifyExpressConnectTrafficQosRuleResponse
-func (client *Client) ModifyExpressConnectTrafficQosRule(request *ModifyExpressConnectTrafficQosRuleRequest) (_result *ModifyExpressConnectTrafficQosRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyExpressConnectTrafficQosRuleResponse{}
-	_body, _err := client.ModifyExpressConnectTrafficQosRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31804,7 +24826,7 @@ func (client *Client) ModifyExpressConnectTrafficQosRule(request *ModifyExpressC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyFlowLogAttributeResponse
-func (client *Client) ModifyFlowLogAttributeWithOptions(request *ModifyFlowLogAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyFlowLogAttributeResponse, _err error) {
+func (client *Client) ModifyFlowLogAttributeWithContext(ctx context.Context, request *ModifyFlowLogAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyFlowLogAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31865,39 +24887,11 @@ func (client *Client) ModifyFlowLogAttributeWithOptions(request *ModifyFlowLogAt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyFlowLogAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of a flow log.
-//
-// Description:
-//
-//	  **ModifyFlowLogAttribute*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeFlowLogs](https://help.aliyun.com/document_detail/87923.html) operation to query the status of a flow log:
-//
-//	    	- If the flow log is in the **Modifying*	- state, the flow log is being modified.
-//
-//	    	- If the flow log is in the **Active*	- or **Inactive*	- state, the flow log is modified.
-//
-//		- You cannot repeatedly call the **ModifyFlowLogAttribute*	- operation to modify a flow log within the specified period of time.
-//
-// @param request - ModifyFlowLogAttributeRequest
-//
-// @return ModifyFlowLogAttributeResponse
-func (client *Client) ModifyFlowLogAttribute(request *ModifyFlowLogAttributeRequest) (_result *ModifyFlowLogAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyFlowLogAttributeResponse{}
-	_body, _err := client.ModifyFlowLogAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31920,7 +24914,7 @@ func (client *Client) ModifyFlowLogAttribute(request *ModifyFlowLogAttributeRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyForwardEntryResponse
-func (client *Client) ModifyForwardEntryWithOptions(request *ModifyForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifyForwardEntryResponse, _err error) {
+func (client *Client) ModifyForwardEntryWithContext(ctx context.Context, request *ModifyForwardEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifyForwardEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32005,39 +24999,11 @@ func (client *Client) ModifyForwardEntryWithOptions(request *ModifyForwardEntryR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyForwardEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a DNAT entry.
-//
-// Description:
-//
-//	  **ModifyForwardEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeForwardTableEntries](https://help.aliyun.com/document_detail/36053.html) operation to query the status of the task.
-//
-//	    	- **Pending**: indicates that the system is modifying the DNAT entry. You can only query the DNAT entry, but cannot perform other operations.
-//
-//	    	- **Available**: indicates that the DNAT entry is modified.
-//
-//		- You cannot repeatedly call the **ModifyForwardEntry*	- operation to modify a DNAT entry within the specified period of time.
-//
-// @param request - ModifyForwardEntryRequest
-//
-// @return ModifyForwardEntryResponse
-func (client *Client) ModifyForwardEntry(request *ModifyForwardEntryRequest) (_result *ModifyForwardEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyForwardEntryResponse{}
-	_body, _err := client.ModifyForwardEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32062,7 +25028,7 @@ func (client *Client) ModifyForwardEntry(request *ModifyForwardEntryRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyFullNatEntryAttributeResponse
-func (client *Client) ModifyFullNatEntryAttributeWithOptions(request *ModifyFullNatEntryAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyFullNatEntryAttributeResponse, _err error) {
+func (client *Client) ModifyFullNatEntryAttributeWithContext(ctx context.Context, request *ModifyFullNatEntryAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyFullNatEntryAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32151,41 +25117,11 @@ func (client *Client) ModifyFullNatEntryAttributeWithOptions(request *ModifyFull
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyFullNatEntryAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a FULLNAT entry.
-//
-// Description:
-//
-// ## [](#)
-//
-//   - **ModifyFullNatEntryAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListFullNatEntries](https://help.aliyun.com/document_detail/348779.html) operation to query the status of a FULLNAT entry.
-//
-//   - **Modifying**: indicates that the system is modifying the FULLNAT entry. You can query the FULLNAT entry, but cannot perform other operations.
-//
-//   - **Available**: indicates that the FULLNAT entry is modified.
-//
-//   - You cannot repeatedly call the **ModifyFullNatEntryAttribute*	- operation to modify a FULLNAT entry within the specified period of time.
-//
-// @param request - ModifyFullNatEntryAttributeRequest
-//
-// @return ModifyFullNatEntryAttributeResponse
-func (client *Client) ModifyFullNatEntryAttribute(request *ModifyFullNatEntryAttributeRequest) (_result *ModifyFullNatEntryAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyFullNatEntryAttributeResponse{}
-	_body, _err := client.ModifyFullNatEntryAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32198,7 +25134,7 @@ func (client *Client) ModifyFullNatEntryAttribute(request *ModifyFullNatEntryAtt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyGlobalAccelerationInstanceAttributesResponse
-func (client *Client) ModifyGlobalAccelerationInstanceAttributesWithOptions(request *ModifyGlobalAccelerationInstanceAttributesRequest, runtime *dara.RuntimeOptions) (_result *ModifyGlobalAccelerationInstanceAttributesResponse, _err error) {
+func (client *Client) ModifyGlobalAccelerationInstanceAttributesWithContext(ctx context.Context, request *ModifyGlobalAccelerationInstanceAttributesRequest, runtime *dara.RuntimeOptions) (_result *ModifyGlobalAccelerationInstanceAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32251,29 +25187,11 @@ func (client *Client) ModifyGlobalAccelerationInstanceAttributesWithOptions(requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyGlobalAccelerationInstanceAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of a Global Accelerator (GA) instance.
-//
-// @param request - ModifyGlobalAccelerationInstanceAttributesRequest
-//
-// @return ModifyGlobalAccelerationInstanceAttributesResponse
-func (client *Client) ModifyGlobalAccelerationInstanceAttributes(request *ModifyGlobalAccelerationInstanceAttributesRequest) (_result *ModifyGlobalAccelerationInstanceAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyGlobalAccelerationInstanceAttributesResponse{}
-	_body, _err := client.ModifyGlobalAccelerationInstanceAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32292,7 +25210,7 @@ func (client *Client) ModifyGlobalAccelerationInstanceAttributes(request *Modify
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyGlobalAccelerationInstanceSpecResponse
-func (client *Client) ModifyGlobalAccelerationInstanceSpecWithOptions(request *ModifyGlobalAccelerationInstanceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyGlobalAccelerationInstanceSpecResponse, _err error) {
+func (client *Client) ModifyGlobalAccelerationInstanceSpecWithContext(ctx context.Context, request *ModifyGlobalAccelerationInstanceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyGlobalAccelerationInstanceSpecResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32341,35 +25259,11 @@ func (client *Client) ModifyGlobalAccelerationInstanceSpecWithOptions(request *M
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyGlobalAccelerationInstanceSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the maximum bandwidth of a Global Accelerator (GA) instance.
-//
-// Description:
-//
-// ## Usage notes
-//
-// You cannot call this operation to modify the maximum bandwidth of a subscription GA instance.
-//
-// @param request - ModifyGlobalAccelerationInstanceSpecRequest
-//
-// @return ModifyGlobalAccelerationInstanceSpecResponse
-func (client *Client) ModifyGlobalAccelerationInstanceSpec(request *ModifyGlobalAccelerationInstanceSpecRequest) (_result *ModifyGlobalAccelerationInstanceSpecResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyGlobalAccelerationInstanceSpecResponse{}
-	_body, _err := client.ModifyGlobalAccelerationInstanceSpecWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32386,7 +25280,7 @@ func (client *Client) ModifyGlobalAccelerationInstanceSpec(request *ModifyGlobal
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyHaVipAttributeResponse
-func (client *Client) ModifyHaVipAttributeWithOptions(request *ModifyHaVipAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyHaVipAttributeResponse, _err error) {
+func (client *Client) ModifyHaVipAttributeWithContext(ctx context.Context, request *ModifyHaVipAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyHaVipAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32443,33 +25337,11 @@ func (client *Client) ModifyHaVipAttributeWithOptions(request *ModifyHaVipAttrib
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyHaVipAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of a high-availability virtual IP address (HaVip).
-//
-// Description:
-//
-// You cannot repeatedly call the **ModifyHaVipAttribute*	- operation to modify the name and description of an HaVip within the specified periods of time.
-//
-// @param request - ModifyHaVipAttributeRequest
-//
-// @return ModifyHaVipAttributeResponse
-func (client *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest) (_result *ModifyHaVipAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyHaVipAttributeResponse{}
-	_body, _err := client.ModifyHaVipAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32484,7 +25356,7 @@ func (client *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyIPv6TranslatorAclAttributeResponse
-func (client *Client) ModifyIPv6TranslatorAclAttributeWithOptions(request *ModifyIPv6TranslatorAclAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorAclAttributeResponse, _err error) {
+func (client *Client) ModifyIPv6TranslatorAclAttributeWithContext(ctx context.Context, request *ModifyIPv6TranslatorAclAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorAclAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32537,32 +25409,11 @@ func (client *Client) ModifyIPv6TranslatorAclAttributeWithOptions(request *Modif
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyIPv6TranslatorAclAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyIPv6TranslatorAclAttribute is deprecated
-//
-// Summary:
-//
-// Modifies the name of an access control list (ACL).
-//
-// @param request - ModifyIPv6TranslatorAclAttributeRequest
-//
-// @return ModifyIPv6TranslatorAclAttributeResponse
-// Deprecated
-func (client *Client) ModifyIPv6TranslatorAclAttribute(request *ModifyIPv6TranslatorAclAttributeRequest) (_result *ModifyIPv6TranslatorAclAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyIPv6TranslatorAclAttributeResponse{}
-	_body, _err := client.ModifyIPv6TranslatorAclAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32575,7 +25426,7 @@ func (client *Client) ModifyIPv6TranslatorAclAttribute(request *ModifyIPv6Transl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyIPv6TranslatorAclListEntryResponse
-func (client *Client) ModifyIPv6TranslatorAclListEntryWithOptions(request *ModifyIPv6TranslatorAclListEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorAclListEntryResponse, _err error) {
+func (client *Client) ModifyIPv6TranslatorAclListEntryWithContext(ctx context.Context, request *ModifyIPv6TranslatorAclListEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorAclListEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32628,29 +25479,11 @@ func (client *Client) ModifyIPv6TranslatorAclListEntryWithOptions(request *Modif
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyIPv6TranslatorAclListEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies an IP entry in an access control list (ACL).
-//
-// @param request - ModifyIPv6TranslatorAclListEntryRequest
-//
-// @return ModifyIPv6TranslatorAclListEntryResponse
-func (client *Client) ModifyIPv6TranslatorAclListEntry(request *ModifyIPv6TranslatorAclListEntryRequest) (_result *ModifyIPv6TranslatorAclListEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyIPv6TranslatorAclListEntryResponse{}
-	_body, _err := client.ModifyIPv6TranslatorAclListEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32663,7 +25496,7 @@ func (client *Client) ModifyIPv6TranslatorAclListEntry(request *ModifyIPv6Transl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyIPv6TranslatorAttributeResponse
-func (client *Client) ModifyIPv6TranslatorAttributeWithOptions(request *ModifyIPv6TranslatorAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorAttributeResponse, _err error) {
+func (client *Client) ModifyIPv6TranslatorAttributeWithContext(ctx context.Context, request *ModifyIPv6TranslatorAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32720,29 +25553,11 @@ func (client *Client) ModifyIPv6TranslatorAttributeWithOptions(request *ModifyIP
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyIPv6TranslatorAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of an IPv6 Translation Service instance.
-//
-// @param request - ModifyIPv6TranslatorAttributeRequest
-//
-// @return ModifyIPv6TranslatorAttributeResponse
-func (client *Client) ModifyIPv6TranslatorAttribute(request *ModifyIPv6TranslatorAttributeRequest) (_result *ModifyIPv6TranslatorAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyIPv6TranslatorAttributeResponse{}
-	_body, _err := client.ModifyIPv6TranslatorAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32755,7 +25570,7 @@ func (client *Client) ModifyIPv6TranslatorAttribute(request *ModifyIPv6Translato
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyIPv6TranslatorBandwidthResponse
-func (client *Client) ModifyIPv6TranslatorBandwidthWithOptions(request *ModifyIPv6TranslatorBandwidthRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorBandwidthResponse, _err error) {
+func (client *Client) ModifyIPv6TranslatorBandwidthWithContext(ctx context.Context, request *ModifyIPv6TranslatorBandwidthRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorBandwidthResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32812,29 +25627,11 @@ func (client *Client) ModifyIPv6TranslatorBandwidthWithOptions(request *ModifyIP
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyIPv6TranslatorBandwidthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the maximum bandwidth of an IPv6 Translation Service instance.
-//
-// @param request - ModifyIPv6TranslatorBandwidthRequest
-//
-// @return ModifyIPv6TranslatorBandwidthResponse
-func (client *Client) ModifyIPv6TranslatorBandwidth(request *ModifyIPv6TranslatorBandwidthRequest) (_result *ModifyIPv6TranslatorBandwidthResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyIPv6TranslatorBandwidthResponse{}
-	_body, _err := client.ModifyIPv6TranslatorBandwidthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32849,7 +25646,7 @@ func (client *Client) ModifyIPv6TranslatorBandwidth(request *ModifyIPv6Translato
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyIPv6TranslatorEntryResponse
-func (client *Client) ModifyIPv6TranslatorEntryWithOptions(request *ModifyIPv6TranslatorEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorEntryResponse, _err error) {
+func (client *Client) ModifyIPv6TranslatorEntryWithContext(ctx context.Context, request *ModifyIPv6TranslatorEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifyIPv6TranslatorEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32934,32 +25731,11 @@ func (client *Client) ModifyIPv6TranslatorEntryWithOptions(request *ModifyIPv6Tr
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyIPv6TranslatorEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ModifyIPv6TranslatorEntry is deprecated
-//
-// Summary:
-//
-// Modifies an IPv6 mapping entry.
-//
-// @param request - ModifyIPv6TranslatorEntryRequest
-//
-// @return ModifyIPv6TranslatorEntryResponse
-// Deprecated
-func (client *Client) ModifyIPv6TranslatorEntry(request *ModifyIPv6TranslatorEntryRequest) (_result *ModifyIPv6TranslatorEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyIPv6TranslatorEntryResponse{}
-	_body, _err := client.ModifyIPv6TranslatorEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32972,7 +25748,7 @@ func (client *Client) ModifyIPv6TranslatorEntry(request *ModifyIPv6TranslatorEnt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyIpv6AddressAttributeResponse
-func (client *Client) ModifyIpv6AddressAttributeWithOptions(request *ModifyIpv6AddressAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyIpv6AddressAttributeResponse, _err error) {
+func (client *Client) ModifyIpv6AddressAttributeWithContext(ctx context.Context, request *ModifyIpv6AddressAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyIpv6AddressAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33037,29 +25813,11 @@ func (client *Client) ModifyIpv6AddressAttributeWithOptions(request *ModifyIpv6A
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyIpv6AddressAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of an IPv6 address.
-//
-// @param request - ModifyIpv6AddressAttributeRequest
-//
-// @return ModifyIpv6AddressAttributeResponse
-func (client *Client) ModifyIpv6AddressAttribute(request *ModifyIpv6AddressAttributeRequest) (_result *ModifyIpv6AddressAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyIpv6AddressAttributeResponse{}
-	_body, _err := client.ModifyIpv6AddressAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33072,7 +25830,7 @@ func (client *Client) ModifyIpv6AddressAttribute(request *ModifyIpv6AddressAttri
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyIpv6GatewayAttributeResponse
-func (client *Client) ModifyIpv6GatewayAttributeWithOptions(request *ModifyIpv6GatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyIpv6GatewayAttributeResponse, _err error) {
+func (client *Client) ModifyIpv6GatewayAttributeWithContext(ctx context.Context, request *ModifyIpv6GatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyIpv6GatewayAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33137,29 +25895,11 @@ func (client *Client) ModifyIpv6GatewayAttributeWithOptions(request *ModifyIpv6G
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyIpv6GatewayAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of an IPv6 gateway.
-//
-// @param request - ModifyIpv6GatewayAttributeRequest
-//
-// @return ModifyIpv6GatewayAttributeResponse
-func (client *Client) ModifyIpv6GatewayAttribute(request *ModifyIpv6GatewayAttributeRequest) (_result *ModifyIpv6GatewayAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyIpv6GatewayAttributeResponse{}
-	_body, _err := client.ModifyIpv6GatewayAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33176,7 +25916,7 @@ func (client *Client) ModifyIpv6GatewayAttribute(request *ModifyIpv6GatewayAttri
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyIpv6InternetBandwidthResponse
-func (client *Client) ModifyIpv6InternetBandwidthWithOptions(request *ModifyIpv6InternetBandwidthRequest, runtime *dara.RuntimeOptions) (_result *ModifyIpv6InternetBandwidthResponse, _err error) {
+func (client *Client) ModifyIpv6InternetBandwidthWithContext(ctx context.Context, request *ModifyIpv6InternetBandwidthRequest, runtime *dara.RuntimeOptions) (_result *ModifyIpv6InternetBandwidthResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33245,33 +25985,11 @@ func (client *Client) ModifyIpv6InternetBandwidthWithOptions(request *ModifyIpv6
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyIpv6InternetBandwidthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the Internet bandwidth of an IPv6 address.
-//
-// Description:
-//
-// You cannot repeatedly call the **ModifyIpv6InternetBandwidth*	- operation to modify the Internet bandwidth value of an IPv6 CIDR block within the specified period of time.
-//
-// @param request - ModifyIpv6InternetBandwidthRequest
-//
-// @return ModifyIpv6InternetBandwidthResponse
-func (client *Client) ModifyIpv6InternetBandwidth(request *ModifyIpv6InternetBandwidthRequest) (_result *ModifyIpv6InternetBandwidthResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyIpv6InternetBandwidthResponse{}
-	_body, _err := client.ModifyIpv6InternetBandwidthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33290,7 +26008,7 @@ func (client *Client) ModifyIpv6InternetBandwidth(request *ModifyIpv6InternetBan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyNatGatewayAttributeResponse
-func (client *Client) ModifyNatGatewayAttributeWithOptions(tmpReq *ModifyNatGatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyNatGatewayAttributeResponse, _err error) {
+func (client *Client) ModifyNatGatewayAttributeWithContext(ctx context.Context, tmpReq *ModifyNatGatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyNatGatewayAttributeResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33365,35 +26083,11 @@ func (client *Client) ModifyNatGatewayAttributeWithOptions(tmpReq *ModifyNatGate
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyNatGatewayAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of a NAT gateway.
-//
-// Description:
-//
-// ## [](#)Description
-//
-// You can call this operation to query an Internet NAT gateway or a virtual private cloud (VPC) NAT gateway. The term NAT gateway in this topic refers to both NAT gateway types.
-//
-// @param request - ModifyNatGatewayAttributeRequest
-//
-// @return ModifyNatGatewayAttributeResponse
-func (client *Client) ModifyNatGatewayAttribute(request *ModifyNatGatewayAttributeRequest) (_result *ModifyNatGatewayAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyNatGatewayAttributeResponse{}
-	_body, _err := client.ModifyNatGatewayAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33430,7 +26124,7 @@ func (client *Client) ModifyNatGatewayAttribute(request *ModifyNatGatewayAttribu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyNatGatewaySpecResponse
-func (client *Client) ModifyNatGatewaySpecWithOptions(request *ModifyNatGatewaySpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyNatGatewaySpecResponse, _err error) {
+func (client *Client) ModifyNatGatewaySpecWithContext(ctx context.Context, request *ModifyNatGatewaySpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyNatGatewaySpecResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33487,53 +26181,11 @@ func (client *Client) ModifyNatGatewaySpecWithOptions(request *ModifyNatGatewayS
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyNatGatewaySpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Upgrades a subscription Internet NAT gateway.
-//
-// Description:
-//
-// - You cannot call this operation to downgrade a subscription Internet NAT gateway. You can downgrade a subscription Internet NAT gateway only in the console.
-//
-// - When you call this operation to upgrade a subscription Internet NAT gateway, an order is generated. After you complete the payment in the order center, the Internet NAT gateway is upgraded.
-//
-// - **ModifyNatGatewaySpec*	- is an asynchronous operation. After you make a request, the ID of the request is returned but the Internet NAT gateway is not upgraded. The system upgrades the NAT gateway in the background. You can call the [DescribeNatGateways](/help/en/virtual-private-cloud/latest/describenatgateways) operation to query the status of an Internet NAT gateway.    - If an Internet NAT gateway is in the **Modifying*	- state, the NAT gateway is being upgraded. In this case, you can only query the NAT gateway but cannot perform other operations.
-//
-//   - If an Internet NAT gateway is in the **Available*	- state, the Internet NAT gateway is upgraded.
-//
-// - You cannot repeatedly call the **ModifyNatGatewaySpec*	- operation to resize a pay-by-specification NAT gateway.
-//
-// Internet NAT gateways are available in different sizes. The size of an Internet NAT gateway determines the SNAT performance, which includes the maximum number of connections and the number of new connections per second. However, the size of a NAT gateway does not affect the data throughput. The following table describes the correlations between different sizes of Internet NAT gateways and SNAT performance metrics.
-//
-// | Size | Maximum number of connections | Number of new connections per second |
-//
-// | ---- | ----------------------------- | ------------------------------------ |
-//
-// | Small | 10,000 | 1,000 |
-//
-// | Medium | 50,000 | 5,000 |
-//
-// | Large | 200,000 | 10,000 |
-//
-// @param request - ModifyNatGatewaySpecRequest
-//
-// @return ModifyNatGatewaySpecResponse
-func (client *Client) ModifyNatGatewaySpec(request *ModifyNatGatewaySpecRequest) (_result *ModifyNatGatewaySpecResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyNatGatewaySpecResponse{}
-	_body, _err := client.ModifyNatGatewaySpecWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33552,7 +26204,7 @@ func (client *Client) ModifyNatGatewaySpec(request *ModifyNatGatewaySpecRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyNatIpAttributeResponse
-func (client *Client) ModifyNatIpAttributeWithOptions(request *ModifyNatIpAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyNatIpAttributeResponse, _err error) {
+func (client *Client) ModifyNatIpAttributeWithContext(ctx context.Context, request *ModifyNatIpAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyNatIpAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33617,35 +26269,11 @@ func (client *Client) ModifyNatIpAttributeWithOptions(request *ModifyNatIpAttrib
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyNatIpAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of a NAT IP address.
-//
-// Description:
-//
-// ## [](#)Description
-//
-// You cannot repeatedly call the **ModifyNatIpAttribute*	- operation to modify the name and description of a NAT IP address within the specified period of time.
-//
-// @param request - ModifyNatIpAttributeRequest
-//
-// @return ModifyNatIpAttributeResponse
-func (client *Client) ModifyNatIpAttribute(request *ModifyNatIpAttributeRequest) (_result *ModifyNatIpAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyNatIpAttributeResponse{}
-	_body, _err := client.ModifyNatIpAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33658,7 +26286,7 @@ func (client *Client) ModifyNatIpAttribute(request *ModifyNatIpAttributeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyNatIpCidrAttributeResponse
-func (client *Client) ModifyNatIpCidrAttributeWithOptions(request *ModifyNatIpCidrAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyNatIpCidrAttributeResponse, _err error) {
+func (client *Client) ModifyNatIpCidrAttributeWithContext(ctx context.Context, request *ModifyNatIpCidrAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyNatIpCidrAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33727,29 +26355,11 @@ func (client *Client) ModifyNatIpCidrAttributeWithOptions(request *ModifyNatIpCi
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyNatIpCidrAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of a NAT CIDR block.
-//
-// @param request - ModifyNatIpCidrAttributeRequest
-//
-// @return ModifyNatIpCidrAttributeResponse
-func (client *Client) ModifyNatIpCidrAttribute(request *ModifyNatIpCidrAttributeRequest) (_result *ModifyNatIpCidrAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyNatIpCidrAttributeResponse{}
-	_body, _err := client.ModifyNatIpCidrAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33762,7 +26372,7 @@ func (client *Client) ModifyNatIpCidrAttribute(request *ModifyNatIpCidrAttribute
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyNetworkAclAttributesResponse
-func (client *Client) ModifyNetworkAclAttributesWithOptions(request *ModifyNetworkAclAttributesRequest, runtime *dara.RuntimeOptions) (_result *ModifyNetworkAclAttributesResponse, _err error) {
+func (client *Client) ModifyNetworkAclAttributesWithContext(ctx context.Context, request *ModifyNetworkAclAttributesRequest, runtime *dara.RuntimeOptions) (_result *ModifyNetworkAclAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33827,29 +26437,11 @@ func (client *Client) ModifyNetworkAclAttributesWithOptions(request *ModifyNetwo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyNetworkAclAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the attributes of a network access control list (ACL).
-//
-// @param request - ModifyNetworkAclAttributesRequest
-//
-// @return ModifyNetworkAclAttributesResponse
-func (client *Client) ModifyNetworkAclAttributes(request *ModifyNetworkAclAttributesRequest) (_result *ModifyNetworkAclAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyNetworkAclAttributesResponse{}
-	_body, _err := client.ModifyNetworkAclAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33872,7 +26464,7 @@ func (client *Client) ModifyNetworkAclAttributes(request *ModifyNetworkAclAttrib
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPhysicalConnectionAttributeResponse
-func (client *Client) ModifyPhysicalConnectionAttributeWithOptions(request *ModifyPhysicalConnectionAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyPhysicalConnectionAttributeResponse, _err error) {
+func (client *Client) ModifyPhysicalConnectionAttributeWithContext(ctx context.Context, request *ModifyPhysicalConnectionAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyPhysicalConnectionAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33957,39 +26549,11 @@ func (client *Client) ModifyPhysicalConnectionAttributeWithOptions(request *Modi
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyPhysicalConnectionAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configurations of an Express Connect circuit.
-//
-// Description:
-//
-// When you call this operation, take note of the following limits:
-//
-//   - If an Express Connect circuit is in the **Initial**, **Enabled**, or **Rejected*	- state, you can modify the specifications of the Express Connect circuit and the ID of the redundant circuit.
-//
-//   - If an Express Connect circuit is in the **Canceled**, **Allocating**, **AllocationFailed**, or **Terminated*	- state, you cannot modify the specifications of the Express Connect circuit.
-//
-//   - After you modify the specifications of an Express Connect circuit that is in the **Rejected*	- state, the Express Connect circuit enters the **Initial*	- state.
-//
-// @param request - ModifyPhysicalConnectionAttributeRequest
-//
-// @return ModifyPhysicalConnectionAttributeResponse
-func (client *Client) ModifyPhysicalConnectionAttribute(request *ModifyPhysicalConnectionAttributeRequest) (_result *ModifyPhysicalConnectionAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyPhysicalConnectionAttributeResponse{}
-	_body, _err := client.ModifyPhysicalConnectionAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34006,7 +26570,7 @@ func (client *Client) ModifyPhysicalConnectionAttribute(request *ModifyPhysicalC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyRouteEntryResponse
-func (client *Client) ModifyRouteEntryWithOptions(request *ModifyRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouteEntryResponse, _err error) {
+func (client *Client) ModifyRouteEntryWithContext(ctx context.Context, request *ModifyRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouteEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34079,33 +26643,11 @@ func (client *Client) ModifyRouteEntryWithOptions(request *ModifyRouteEntryReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of a custom route entry.
-//
-// Description:
-//
-// You cannot repeatedly call the **ModifyRouteEntry*	- operation to modify the name and description of a custom route within the specified period of time.
-//
-// @param request - ModifyRouteEntryRequest
-//
-// @return ModifyRouteEntryResponse
-func (client *Client) ModifyRouteEntry(request *ModifyRouteEntryRequest) (_result *ModifyRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyRouteEntryResponse{}
-	_body, _err := client.ModifyRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34122,7 +26664,7 @@ func (client *Client) ModifyRouteEntry(request *ModifyRouteEntryRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyRouteTableAttributesResponse
-func (client *Client) ModifyRouteTableAttributesWithOptions(request *ModifyRouteTableAttributesRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouteTableAttributesResponse, _err error) {
+func (client *Client) ModifyRouteTableAttributesWithContext(ctx context.Context, request *ModifyRouteTableAttributesRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouteTableAttributesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34179,33 +26721,11 @@ func (client *Client) ModifyRouteTableAttributesWithOptions(request *ModifyRoute
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyRouteTableAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of a route table.
-//
-// Description:
-//
-// You cannot repeatedly call the **ModifyRouteTableAttributes*	- operation to modify the name and description of a route table within the specified period of time.
-//
-// @param request - ModifyRouteTableAttributesRequest
-//
-// @return ModifyRouteTableAttributesResponse
-func (client *Client) ModifyRouteTableAttributes(request *ModifyRouteTableAttributesRequest) (_result *ModifyRouteTableAttributesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyRouteTableAttributesResponse{}
-	_body, _err := client.ModifyRouteTableAttributesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34218,7 +26738,7 @@ func (client *Client) ModifyRouteTableAttributes(request *ModifyRouteTableAttrib
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyRouterInterfaceAttributeResponse
-func (client *Client) ModifyRouterInterfaceAttributeWithOptions(request *ModifyRouterInterfaceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouterInterfaceAttributeResponse, _err error) {
+func (client *Client) ModifyRouterInterfaceAttributeWithContext(ctx context.Context, request *ModifyRouterInterfaceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouterInterfaceAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34303,29 +26823,11 @@ func (client *Client) ModifyRouterInterfaceAttributeWithOptions(request *ModifyR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyRouterInterfaceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of a router interface.
-//
-// @param request - ModifyRouterInterfaceAttributeRequest
-//
-// @return ModifyRouterInterfaceAttributeResponse
-func (client *Client) ModifyRouterInterfaceAttribute(request *ModifyRouterInterfaceAttributeRequest) (_result *ModifyRouterInterfaceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyRouterInterfaceAttributeResponse{}
-	_body, _err := client.ModifyRouterInterfaceAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34344,7 +26846,7 @@ func (client *Client) ModifyRouterInterfaceAttribute(request *ModifyRouterInterf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyRouterInterfaceSpecResponse
-func (client *Client) ModifyRouterInterfaceSpecWithOptions(request *ModifyRouterInterfaceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouterInterfaceSpecResponse, _err error) {
+func (client *Client) ModifyRouterInterfaceSpecWithContext(ctx context.Context, request *ModifyRouterInterfaceSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyRouterInterfaceSpecResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34397,35 +26899,11 @@ func (client *Client) ModifyRouterInterfaceSpecWithOptions(request *ModifyRouter
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyRouterInterfaceSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the specification of a router interface.
-//
-// Description:
-//
-// After you call this operation, the router interface enters the **Activating*	- state. After the router interface is activated, the router interface enters the **Active*	- state.
-//
-// >  You cannot modify the specification of a router interface that has overdue payments.
-//
-// @param request - ModifyRouterInterfaceSpecRequest
-//
-// @return ModifyRouterInterfaceSpecResponse
-func (client *Client) ModifyRouterInterfaceSpec(request *ModifyRouterInterfaceSpecRequest) (_result *ModifyRouterInterfaceSpecResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyRouterInterfaceSpecResponse{}
-	_body, _err := client.ModifyRouterInterfaceSpecWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34452,7 +26930,7 @@ func (client *Client) ModifyRouterInterfaceSpec(request *ModifyRouterInterfaceSp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifySnatEntryResponse
-func (client *Client) ModifySnatEntryWithOptions(request *ModifySnatEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifySnatEntryResponse, _err error) {
+func (client *Client) ModifySnatEntryWithContext(ctx context.Context, request *ModifySnatEntryRequest, runtime *dara.RuntimeOptions) (_result *ModifySnatEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34525,43 +27003,11 @@ func (client *Client) ModifySnatEntryWithOptions(request *ModifySnatEntryRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifySnatEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies an SNAT entry.
-//
-// Description:
-//
-// ## [](#)
-//
-// **ModifySnatEntry*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeSnatTableEntries](https://help.aliyun.com/document_detail/42677.html) operation to query the status of the task.
-//
-//   - **Pending**: indicates that the system is modifying the SNAT entry. You can only query the status of the SNAT entry, but cannot perform other operations.
-//
-//   - **Available**: indicates that the SNAT entry is modified.
-//
-// >  If an SNAT entry is in the **Pending*	- state, it indicates that you cannot modify the SNAT entry.
-//
-// You cannot repeatedly call the **ModifySnatEntry*	- operation to modify an SNAT entry within a specific period of time.
-//
-// @param request - ModifySnatEntryRequest
-//
-// @return ModifySnatEntryResponse
-func (client *Client) ModifySnatEntry(request *ModifySnatEntryRequest) (_result *ModifySnatEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifySnatEntryResponse{}
-	_body, _err := client.ModifySnatEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34574,7 +27020,7 @@ func (client *Client) ModifySnatEntry(request *ModifySnatEntryRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifySslVpnClientCertResponse
-func (client *Client) ModifySslVpnClientCertWithOptions(request *ModifySslVpnClientCertRequest, runtime *dara.RuntimeOptions) (_result *ModifySslVpnClientCertResponse, _err error) {
+func (client *Client) ModifySslVpnClientCertWithContext(ctx context.Context, request *ModifySslVpnClientCertRequest, runtime *dara.RuntimeOptions) (_result *ModifySslVpnClientCertResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34627,29 +27073,11 @@ func (client *Client) ModifySslVpnClientCertWithOptions(request *ModifySslVpnCli
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifySslVpnClientCertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name of an SSL-VPN client certificate.
-//
-// @param request - ModifySslVpnClientCertRequest
-//
-// @return ModifySslVpnClientCertResponse
-func (client *Client) ModifySslVpnClientCert(request *ModifySslVpnClientCertRequest) (_result *ModifySslVpnClientCertResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifySslVpnClientCertResponse{}
-	_body, _err := client.ModifySslVpnClientCertWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34676,7 +27104,7 @@ func (client *Client) ModifySslVpnClientCert(request *ModifySslVpnClientCertRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifySslVpnServerResponse
-func (client *Client) ModifySslVpnServerWithOptions(request *ModifySslVpnServerRequest, runtime *dara.RuntimeOptions) (_result *ModifySslVpnServerResponse, _err error) {
+func (client *Client) ModifySslVpnServerWithContext(ctx context.Context, request *ModifySslVpnServerRequest, runtime *dara.RuntimeOptions) (_result *ModifySslVpnServerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34773,43 +27201,11 @@ func (client *Client) ModifySslVpnServerWithOptions(request *ModifySslVpnServerR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifySslVpnServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configurations of an SSL server.
-//
-// Description:
-//
-//	  To enable two-factor authentication for an SSL server, make sure that the VPN gateway supports two-factor authentication. You may need to upgrade the VPN gateway. For more information, see [Two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
-//
-//		- If you modify only **Name**, this operation is synchronous. If you modify other parameters besides **Name**, this operation is asynchronous.
-//
-//		- **ModifySslVpnServer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
-//
-//	    	- If the VPN gateway is in the **updating*	- state, the SSL server is being modified.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the SSL server is modified.
-//
-//		- You cannot repeatedly call **ModifySslVpnServer*	- within the specified period of time.
-//
-// @param request - ModifySslVpnServerRequest
-//
-// @return ModifySslVpnServerResponse
-func (client *Client) ModifySslVpnServer(request *ModifySslVpnServerRequest) (_result *ModifySslVpnServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifySslVpnServerResponse{}
-	_body, _err := client.ModifySslVpnServerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34822,7 +27218,7 @@ func (client *Client) ModifySslVpnServer(request *ModifySslVpnServerRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyTunnelAttributeResponse
-func (client *Client) ModifyTunnelAttributeWithOptions(request *ModifyTunnelAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyTunnelAttributeResponse, _err error) {
+func (client *Client) ModifyTunnelAttributeWithContext(ctx context.Context, request *ModifyTunnelAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyTunnelAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34879,29 +27275,11 @@ func (client *Client) ModifyTunnelAttributeWithOptions(request *ModifyTunnelAttr
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyTunnelAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a VPN tunnel.
-//
-// @param request - ModifyTunnelAttributeRequest
-//
-// @return ModifyTunnelAttributeResponse
-func (client *Client) ModifyTunnelAttribute(request *ModifyTunnelAttributeRequest) (_result *ModifyTunnelAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyTunnelAttributeResponse{}
-	_body, _err := client.ModifyTunnelAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34918,7 +27296,7 @@ func (client *Client) ModifyTunnelAttribute(request *ModifyTunnelAttributeReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVRouterAttributeResponse
-func (client *Client) ModifyVRouterAttributeWithOptions(request *ModifyVRouterAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVRouterAttributeResponse, _err error) {
+func (client *Client) ModifyVRouterAttributeWithContext(ctx context.Context, request *ModifyVRouterAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVRouterAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34971,33 +27349,11 @@ func (client *Client) ModifyVRouterAttributeWithOptions(request *ModifyVRouterAt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVRouterAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of a vRouter.
-//
-// Description:
-//
-// You cannot repeatedly call the **ModifyVRouterAttribute*	- operation within a specific period of time.
-//
-// @param request - ModifyVRouterAttributeRequest
-//
-// @return ModifyVRouterAttributeResponse
-func (client *Client) ModifyVRouterAttribute(request *ModifyVRouterAttributeRequest) (_result *ModifyVRouterAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVRouterAttributeResponse{}
-	_body, _err := client.ModifyVRouterAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35020,7 +27376,7 @@ func (client *Client) ModifyVRouterAttribute(request *ModifyVRouterAttributeRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVSwitchAttributeResponse
-func (client *Client) ModifyVSwitchAttributeWithOptions(request *ModifyVSwitchAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVSwitchAttributeResponse, _err error) {
+func (client *Client) ModifyVSwitchAttributeWithContext(ctx context.Context, request *ModifyVSwitchAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVSwitchAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35085,39 +27441,11 @@ func (client *Client) ModifyVSwitchAttributeWithOptions(request *ModifyVSwitchAt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVSwitchAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改VSwitch属性
-//
-// Description:
-//
-//	  **ModifyVSwitchAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](https://help.aliyun.com/document_detail/94567.html) operation to query the status of the task:
-//
-//	    	- If the vSwitch is in the **Pending*	- state, the name and description of the vSwitch are being modified.
-//
-//	    	- If the vSwitch is in the **Available*	- state, the name and description of the vSwitch are modified.
-//
-//		- You cannot repeatedly call the **ModifyVSwitchAttribute*	- operation to modify the name and description of a vSwitch within the specified period of time.
-//
-// @param request - ModifyVSwitchAttributeRequest
-//
-// @return ModifyVSwitchAttributeResponse
-func (client *Client) ModifyVSwitchAttribute(request *ModifyVSwitchAttributeRequest) (_result *ModifyVSwitchAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVSwitchAttributeResponse{}
-	_body, _err := client.ModifyVSwitchAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35136,7 +27464,7 @@ func (client *Client) ModifyVSwitchAttribute(request *ModifyVSwitchAttributeRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVSwitchCidrReservationAttributeResponse
-func (client *Client) ModifyVSwitchCidrReservationAttributeWithOptions(request *ModifyVSwitchCidrReservationAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVSwitchCidrReservationAttributeResponse, _err error) {
+func (client *Client) ModifyVSwitchCidrReservationAttributeWithContext(ctx context.Context, request *ModifyVSwitchCidrReservationAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVSwitchCidrReservationAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35197,35 +27525,11 @@ func (client *Client) ModifyVSwitchCidrReservationAttributeWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVSwitchCidrReservationAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改交换机预留网段的名称和描述信息。
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// You cannot repeatedly call **ModifyVSwitchCidrReservationAttribute*	- within a specific time period.
-//
-// @param request - ModifyVSwitchCidrReservationAttributeRequest
-//
-// @return ModifyVSwitchCidrReservationAttributeResponse
-func (client *Client) ModifyVSwitchCidrReservationAttribute(request *ModifyVSwitchCidrReservationAttributeRequest) (_result *ModifyVSwitchCidrReservationAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVSwitchCidrReservationAttributeResponse{}
-	_body, _err := client.ModifyVSwitchCidrReservationAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35248,7 +27552,7 @@ func (client *Client) ModifyVSwitchCidrReservationAttribute(request *ModifyVSwit
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVcoRouteEntryWeightResponse
-func (client *Client) ModifyVcoRouteEntryWeightWithOptions(request *ModifyVcoRouteEntryWeightRequest, runtime *dara.RuntimeOptions) (_result *ModifyVcoRouteEntryWeightResponse, _err error) {
+func (client *Client) ModifyVcoRouteEntryWeightWithContext(ctx context.Context, request *ModifyVcoRouteEntryWeightRequest, runtime *dara.RuntimeOptions) (_result *ModifyVcoRouteEntryWeightResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35313,39 +27617,11 @@ func (client *Client) ModifyVcoRouteEntryWeightWithOptions(request *ModifyVcoRou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVcoRouteEntryWeightResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the weight of a destination-based route for an IPsec-VPN connection.
-//
-// Description:
-//
-//	  **ModifyVcoRouteEntryWeight*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) operation to query the status of the associated IPsec-VPN connection and determine whether the weight of the specified destination-based route is modified.
-//
-//	    	- If the IPsec-VPN connection is in the **updating*	- state, the weight of the destination-based route is being modified.
-//
-//	    	- If the IPsec-VPN connection is in the **attached*	- state, the weight of the destination-based route is modified.
-//
-//		- You cannot repeatedly call the **ModifyVcoRouteEntryWeight*	- operation for the same IPsec-VPN connection within the specified period of time.
-//
-// @param request - ModifyVcoRouteEntryWeightRequest
-//
-// @return ModifyVcoRouteEntryWeightResponse
-func (client *Client) ModifyVcoRouteEntryWeight(request *ModifyVcoRouteEntryWeightRequest) (_result *ModifyVcoRouteEntryWeightResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVcoRouteEntryWeightResponse{}
-	_body, _err := client.ModifyVcoRouteEntryWeightWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35374,7 +27650,7 @@ func (client *Client) ModifyVcoRouteEntryWeight(request *ModifyVcoRouteEntryWeig
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVirtualBorderRouterAttributeResponse
-func (client *Client) ModifyVirtualBorderRouterAttributeWithOptions(request *ModifyVirtualBorderRouterAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVirtualBorderRouterAttributeResponse, _err error) {
+func (client *Client) ModifyVirtualBorderRouterAttributeWithContext(ctx context.Context, request *ModifyVirtualBorderRouterAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVirtualBorderRouterAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35491,45 +27767,11 @@ func (client *Client) ModifyVirtualBorderRouterAttributeWithOptions(request *Mod
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVirtualBorderRouterAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of a virtual border router (VBR).
-//
-// Description:
-//
-// # [](#)
-//
-//   - Only the owner of an Express Connect circuit can modify the **VlanId*	- parameter.
-//
-//   - One VLAN ID of an Express Connect circuit cannot be used only by one VBR at the same time.
-//
-//   - The VLAN ID of a VBR in the **Terminated*	- state is reserved for seven days and cannot be used by other VBRs. The VLAN ID can be used by other VBRs after 7 days.
-//
-//   - You cannot set **LocalGatewayIp**, **PeerGatewayIp**, or **PeeringSubnetMask*	- for VBRs that do not belong to your Alibaba Cloud account.
-//
-//   - Set **PeeringSubnetMask*	- to a subnet mask with 24 to 30 bits in length (255.255.255.0～255.255.255.252).
-//
-//   - Set **LocalGatewayIp*	- and **PeerGatewayIp*	- to IP addresses that belong to the same CIDR block. For example, you can set LocalGatewayIp to 192.168.XX.XX, PeerGatewayIp to 192.168.XX.XX, and PeeringSubnetMask to 255.255.255.248.
-//
-// @param request - ModifyVirtualBorderRouterAttributeRequest
-//
-// @return ModifyVirtualBorderRouterAttributeResponse
-func (client *Client) ModifyVirtualBorderRouterAttribute(request *ModifyVirtualBorderRouterAttributeRequest) (_result *ModifyVirtualBorderRouterAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVirtualBorderRouterAttributeResponse{}
-	_body, _err := client.ModifyVirtualBorderRouterAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35548,7 +27790,7 @@ func (client *Client) ModifyVirtualBorderRouterAttribute(request *ModifyVirtualB
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVpcAttributeResponse
-func (client *Client) ModifyVpcAttributeWithOptions(request *ModifyVpcAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcAttributeResponse, _err error) {
+func (client *Client) ModifyVpcAttributeWithContext(ctx context.Context, request *ModifyVpcAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35621,35 +27863,11 @@ func (client *Client) ModifyVpcAttributeWithOptions(request *ModifyVpcAttributeR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVpcAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of a virtual private cloud (VPC).
-//
-// Description:
-//
-// ## [](#)Description
-//
-// You cannot repeatedly call the **ModifyVpcAttribute*	- operation to modify the name and description of a VPC within the specified period of time.
-//
-// @param request - ModifyVpcAttributeRequest
-//
-// @return ModifyVpcAttributeResponse
-func (client *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (_result *ModifyVpcAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVpcAttributeResponse{}
-	_body, _err := client.ModifyVpcAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35674,7 +27892,7 @@ func (client *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVpcPrefixListResponse
-func (client *Client) ModifyVpcPrefixListWithOptions(request *ModifyVpcPrefixListRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcPrefixListResponse, _err error) {
+func (client *Client) ModifyVpcPrefixListWithContext(ctx context.Context, request *ModifyVpcPrefixListRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcPrefixListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35747,41 +27965,11 @@ func (client *Client) ModifyVpcPrefixListWithOptions(request *ModifyVpcPrefixLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVpcPrefixListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of a prefix list.
-//
-// Description:
-//
-//	  **ModifyVpcPrefixList*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPrefixLists](https://help.aliyun.com/document_detail/311535.html) to query the status of the task.
-//
-//	    	- If the prefix list is in the **Modifying*	- state, the configuration of the prefix list is being modified.
-//
-//	    	- If the prefix list is in the **Created*	- state, the configuration of the prefix list is modified.
-//
-//	    	- After the configuration of the prefix list is modified, you can call the [GetVpcPrefixListAssociations](https://help.aliyun.com/document_detail/445478.html) operation to query the information about the network instances that are associated with the prefix list and determine whether the associated network instances use the new CIDR blocks. If the association **status*	- of the prefix list is **Created**, the new CIDR blocks are used by the network instances that are associated with the prefix list.
-//
-//		- You cannot repeatedly call **ModifyVpcPrefixList*	- to modify the configuration of a prefix list within the specified period of time.
-//
-// @param request - ModifyVpcPrefixListRequest
-//
-// @return ModifyVpcPrefixListResponse
-func (client *Client) ModifyVpcPrefixList(request *ModifyVpcPrefixListRequest) (_result *ModifyVpcPrefixListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVpcPrefixListResponse{}
-	_body, _err := client.ModifyVpcPrefixListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35810,7 +27998,7 @@ func (client *Client) ModifyVpcPrefixList(request *ModifyVpcPrefixListRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVpnAttachmentAttributeResponse
-func (client *Client) ModifyVpnAttachmentAttributeWithOptions(request *ModifyVpnAttachmentAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnAttachmentAttributeResponse, _err error) {
+func (client *Client) ModifyVpnAttachmentAttributeWithContext(ctx context.Context, request *ModifyVpnAttachmentAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnAttachmentAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35924,45 +28112,11 @@ func (client *Client) ModifyVpnAttachmentAttributeWithOptions(request *ModifyVpn
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVpnAttachmentAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of an IPsec-VPN connection.
-//
-// Description:
-//
-//	  When you modify a IPsec-VPN connection in dual-tunnel mode, you can configure the following parameters in addition to the required request parameters: **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **AutoConfigRoute**, **TunnelOptionsSpecification*	- array, and **EnableTunnelsBgp**.
-//
-//		- When you modify a IPsec-VPN connection in single tunnel mode, you can configure the following parameters in addition to the required request parameters: **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **CustomerGatewayId**.
-//
-//		- **ModifyVpnAttachmentAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) operation to query the status of the task:
-//
-//	    	- If the IPsec-VPN connection is in the **updating*	- state, the IPsec-VPN connection is being modified.
-//
-//	    	- If the IPsec-VPN connection is in the **attached*	- state, the IPsec-VPN connection is modified.
-//
-//		- You cannot concurrently call **ModifyVpnAttachmentAttribute*	- within the specified period of time.
-//
-//		- You cannot call **ModifyVpnAttachmentAttribute*	- to modify the gateway type of an IPsec-VPN connection.
-//
-// @param request - ModifyVpnAttachmentAttributeRequest
-//
-// @return ModifyVpnAttachmentAttributeResponse
-func (client *Client) ModifyVpnAttachmentAttribute(request *ModifyVpnAttachmentAttributeRequest) (_result *ModifyVpnAttachmentAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVpnAttachmentAttributeResponse{}
-	_body, _err := client.ModifyVpnAttachmentAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35993,7 +28147,7 @@ func (client *Client) ModifyVpnAttachmentAttribute(request *ModifyVpnAttachmentA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVpnConnectionAttributeResponse
-func (client *Client) ModifyVpnConnectionAttributeWithOptions(request *ModifyVpnConnectionAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnConnectionAttributeResponse, _err error) {
+func (client *Client) ModifyVpnConnectionAttributeWithContext(ctx context.Context, request *ModifyVpnConnectionAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnConnectionAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36103,47 +28257,11 @@ func (client *Client) ModifyVpnConnectionAttributeWithOptions(request *ModifyVpn
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVpnConnectionAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of an IPsec-VPN connection.
-//
-// Description:
-//
-//	  If you want to modify a IPsec-VPN connection in dual-tunnel mode, call the `ModifyVpnConnectionAttribute` operation. You can modify the required parameters and the following request parameters:
-//
-//	    **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **AutoConfigRoute**, **TunnelOptionsSpecification**, and **EnableTunnelsBgp**.
-//
-//		- If you want to modify a IPsec-VPN connection in single-tunnel mode, call the `ModifyVpnConnectionAttribute` operation. You can modify the required parameters and the following request parameters:
-//
-//	    **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **RemoteCaCertificate**.
-//
-//		- **ModifyVpnConnectionAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and modifies the configuration of the IPsec-VPN connection in the backend. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the status of a VPN gateway.
-//
-//	    	- If the VPN gateway is in the **updating*	- state, the configuration of the IPsec-VPN connection is being modified.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the configuration of the IPsec-VPN connection is modified.
-//
-//		- You cannot repeatedly call the **ModifyVpnConnectionAttribute*	- operation for the same VPN gateway within the specified period of time.
-//
-// @param request - ModifyVpnConnectionAttributeRequest
-//
-// @return ModifyVpnConnectionAttributeResponse
-func (client *Client) ModifyVpnConnectionAttribute(request *ModifyVpnConnectionAttributeRequest) (_result *ModifyVpnConnectionAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVpnConnectionAttributeResponse{}
-	_body, _err := client.ModifyVpnConnectionAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36166,7 +28284,7 @@ func (client *Client) ModifyVpnConnectionAttribute(request *ModifyVpnConnectionA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVpnGatewayAttributeResponse
-func (client *Client) ModifyVpnGatewayAttributeWithOptions(request *ModifyVpnGatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnGatewayAttributeResponse, _err error) {
+func (client *Client) ModifyVpnGatewayAttributeWithContext(ctx context.Context, request *ModifyVpnGatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnGatewayAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36227,39 +28345,11 @@ func (client *Client) ModifyVpnGatewayAttributeWithOptions(request *ModifyVpnGat
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVpnGatewayAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of a VPN gateway.
-//
-// Description:
-//
-//	  **ModifyVpnGatewayAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
-//
-//	    	- If the VPN gateway is in the **updating*	- state, the VPN gateway is being modified.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the VPN gateway is modified.
-//
-//		- You cannot repeatedly call **ModifyVpnGatewayAttribute*	- to modify a VPN gateway within the specified period of time.
-//
-// @param request - ModifyVpnGatewayAttributeRequest
-//
-// @return ModifyVpnGatewayAttributeResponse
-func (client *Client) ModifyVpnGatewayAttribute(request *ModifyVpnGatewayAttributeRequest) (_result *ModifyVpnGatewayAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVpnGatewayAttributeResponse{}
-	_body, _err := client.ModifyVpnGatewayAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36290,7 +28380,7 @@ func (client *Client) ModifyVpnGatewayAttribute(request *ModifyVpnGatewayAttribu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVpnPbrRouteEntryAttributeResponse
-func (client *Client) ModifyVpnPbrRouteEntryAttributeWithOptions(request *ModifyVpnPbrRouteEntryAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnPbrRouteEntryAttributeResponse, _err error) {
+func (client *Client) ModifyVpnPbrRouteEntryAttributeWithContext(ctx context.Context, request *ModifyVpnPbrRouteEntryAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnPbrRouteEntryAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36367,47 +28457,11 @@ func (client *Client) ModifyVpnPbrRouteEntryAttributeWithOptions(request *Modify
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVpnPbrRouteEntryAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the weight and priority of a policy-based route.
-//
-// Description:
-//
-//	  You can call the **ModifyVpnPbrRouteEntryAttribute*	- operation to modify the weight and priority of a policy-based route.
-//
-//	    	- If you want to modify only the weight of a policy-based route, call [ModifyVpnPbrRouteEntryWeight](https://help.aliyun.com/document_detail/127249.html).
-//
-//	    	- If you want to modify only the priority of a policy-based route, call [ModifyVpnPbrRouteEntryPriority](https://help.aliyun.com/document_detail/466870.html).
-//
-//	    	- If a policy-based route does not support priorities, you can only call [ModifyVpnPbrRouteEntryWeight](https://help.aliyun.com/document_detail/127249.html) to modify its weight.
-//
-//		- The **ModifyVpnPbrRouteEntryAttribute*	- operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of a VPN gateway.
-//
-//	    	- If a VPN gateway is in the **updating*	- state, the policy-based route entry is being modified.
-//
-//	    	- If a VPN gateway is in the **active*	- state, the policy-based route entry is modified.
-//
-//		- You cannot repeatedly call the **ModifyVpnPbrRouteEntryAttribute*	- operation for the same VPN gateway within the specified period of time.
-//
-// @param request - ModifyVpnPbrRouteEntryAttributeRequest
-//
-// @return ModifyVpnPbrRouteEntryAttributeResponse
-func (client *Client) ModifyVpnPbrRouteEntryAttribute(request *ModifyVpnPbrRouteEntryAttributeRequest) (_result *ModifyVpnPbrRouteEntryAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVpnPbrRouteEntryAttributeResponse{}
-	_body, _err := client.ModifyVpnPbrRouteEntryAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36430,7 +28484,7 @@ func (client *Client) ModifyVpnPbrRouteEntryAttribute(request *ModifyVpnPbrRoute
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVpnPbrRouteEntryPriorityResponse
-func (client *Client) ModifyVpnPbrRouteEntryPriorityWithOptions(request *ModifyVpnPbrRouteEntryPriorityRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnPbrRouteEntryPriorityResponse, _err error) {
+func (client *Client) ModifyVpnPbrRouteEntryPriorityWithContext(ctx context.Context, request *ModifyVpnPbrRouteEntryPriorityRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnPbrRouteEntryPriorityResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36503,39 +28557,11 @@ func (client *Client) ModifyVpnPbrRouteEntryPriorityWithOptions(request *ModifyV
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVpnPbrRouteEntryPriorityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the priority of a policy-based route.
-//
-// Description:
-//
-//	  **ModifyVpnPbrRouteEntryPriority*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
-//
-//	    	- If a VPN gateway is in the **updating*	- state, the policy-based route entry is being modified.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the policy-based route is created.
-//
-//		- You cannot repeatedly call the **ModifyVpnPbrRouteEntryPriority*	- operation for the same VPN gateway within the specified period of time.
-//
-// @param request - ModifyVpnPbrRouteEntryPriorityRequest
-//
-// @return ModifyVpnPbrRouteEntryPriorityResponse
-func (client *Client) ModifyVpnPbrRouteEntryPriority(request *ModifyVpnPbrRouteEntryPriorityRequest) (_result *ModifyVpnPbrRouteEntryPriorityResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVpnPbrRouteEntryPriorityResponse{}
-	_body, _err := client.ModifyVpnPbrRouteEntryPriorityWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36558,7 +28584,7 @@ func (client *Client) ModifyVpnPbrRouteEntryPriority(request *ModifyVpnPbrRouteE
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVpnPbrRouteEntryWeightResponse
-func (client *Client) ModifyVpnPbrRouteEntryWeightWithOptions(request *ModifyVpnPbrRouteEntryWeightRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnPbrRouteEntryWeightResponse, _err error) {
+func (client *Client) ModifyVpnPbrRouteEntryWeightWithContext(ctx context.Context, request *ModifyVpnPbrRouteEntryWeightRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnPbrRouteEntryWeightResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36635,39 +28661,11 @@ func (client *Client) ModifyVpnPbrRouteEntryWeightWithOptions(request *ModifyVpn
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVpnPbrRouteEntryWeightResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the weight of a policy-based route of a VPN gateway.
-//
-// Description:
-//
-//	  **ModifyVpnPbrRouteEntryWeight*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
-//
-//	    	- If a VPN gateway is in the **updating*	- state, the policy-based route entry is being modified.
-//
-//	    	- If a VPN gateway is in the **active*	- state, the policy-based route entry is modified.
-//
-//		- You cannot repeatedly call the **ModifyVpnPbrRouteEntryWeight*	- operation for the same VPN gateway within the specified period of time.
-//
-// @param request - ModifyVpnPbrRouteEntryWeightRequest
-//
-// @return ModifyVpnPbrRouteEntryWeightResponse
-func (client *Client) ModifyVpnPbrRouteEntryWeight(request *ModifyVpnPbrRouteEntryWeightRequest) (_result *ModifyVpnPbrRouteEntryWeightResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVpnPbrRouteEntryWeightResponse{}
-	_body, _err := client.ModifyVpnPbrRouteEntryWeightWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36692,7 +28690,7 @@ func (client *Client) ModifyVpnPbrRouteEntryWeight(request *ModifyVpnPbrRouteEnt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyVpnRouteEntryWeightResponse
-func (client *Client) ModifyVpnRouteEntryWeightWithOptions(request *ModifyVpnRouteEntryWeightRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnRouteEntryWeightResponse, _err error) {
+func (client *Client) ModifyVpnRouteEntryWeightWithContext(ctx context.Context, request *ModifyVpnRouteEntryWeightRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpnRouteEntryWeightResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36761,41 +28759,11 @@ func (client *Client) ModifyVpnRouteEntryWeightWithOptions(request *ModifyVpnRou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyVpnRouteEntryWeightResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the weight of a destination-based route.
-//
-// Description:
-//
-//	  In scenarios where a VPN gateway has an active and a standby destination-based route, if you need to modify the weight of the active destination-based route, you must first delete the standby destination-based route. After you modify the active destination-based route, configure a standby destination-based route. If you need to modify the weight of the standby destination-based route, you also need to delete the active destination-based route first. After you modify the standby destination-based route, configure an active destination-based route. For more information about how to delete a destination-based route, see [DeleteVpnRouteEntry](https://help.aliyun.com/document_detail/2526961.html).
-//
-//		- **ModifyVpnRouteEntryWeight*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
-//
-//	    	- If the VPN gateway is in the **updating*	- state, the weight of the destination-based route is being modified.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the weight of the destination-based route is modified.
-//
-//		- You cannot repeatedly call the **ModifyVpnRouteEntryWeight*	- operation to modify the weight of destination-based route for the same VPN gateway within the specified period of time.
-//
-// @param request - ModifyVpnRouteEntryWeightRequest
-//
-// @return ModifyVpnRouteEntryWeightResponse
-func (client *Client) ModifyVpnRouteEntryWeight(request *ModifyVpnRouteEntryWeightRequest) (_result *ModifyVpnRouteEntryWeightResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyVpnRouteEntryWeightResponse{}
-	_body, _err := client.ModifyVpnRouteEntryWeightWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36808,7 +28776,7 @@ func (client *Client) ModifyVpnRouteEntryWeight(request *ModifyVpnRouteEntryWeig
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return MoveResourceGroupResponse
-func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
+func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36861,29 +28829,11 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Moves a resource to another resource group.
-//
-// @param request - MoveResourceGroupRequest
-//
-// @return MoveResourceGroupResponse
-func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.MoveResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36896,7 +28846,7 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return MoveVpnResourceGroupResponse
-func (client *Client) MoveVpnResourceGroupWithOptions(request *MoveVpnResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveVpnResourceGroupResponse, _err error) {
+func (client *Client) MoveVpnResourceGroupWithContext(ctx context.Context, request *MoveVpnResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveVpnResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36949,29 +28899,11 @@ func (client *Client) MoveVpnResourceGroupWithOptions(request *MoveVpnResourceGr
 		BodyType:    dara.String("json"),
 	}
 	_result = &MoveVpnResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Moves a VPN gateway resource to a new resource group.
-//
-// @param request - MoveVpnResourceGroupRequest
-//
-// @return MoveVpnResourceGroupResponse
-func (client *Client) MoveVpnResourceGroup(request *MoveVpnResourceGroupRequest) (_result *MoveVpnResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &MoveVpnResourceGroupResponse{}
-	_body, _err := client.MoveVpnResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36990,7 +28922,7 @@ func (client *Client) MoveVpnResourceGroup(request *MoveVpnResourceGroupRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenFlowLogServiceResponse
-func (client *Client) OpenFlowLogServiceWithOptions(request *OpenFlowLogServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenFlowLogServiceResponse, _err error) {
+func (client *Client) OpenFlowLogServiceWithContext(ctx context.Context, request *OpenFlowLogServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenFlowLogServiceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37039,35 +28971,11 @@ func (client *Client) OpenFlowLogServiceWithOptions(request *OpenFlowLogServiceR
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenFlowLogServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables the flow log feature.
-//
-// Description:
-//
-//	  You cannot repeatedly call the **OpenFlowLogService*	- operation within the specified period of time by using an Alibaba Cloud account.
-//
-//		- You can call the [GetFlowLogServiceStatus](https://help.aliyun.com/document_detail/449624.html) operation to query the status of the flow log feature.
-//
-// @param request - OpenFlowLogServiceRequest
-//
-// @return OpenFlowLogServiceResponse
-func (client *Client) OpenFlowLogService(request *OpenFlowLogServiceRequest) (_result *OpenFlowLogServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenFlowLogServiceResponse{}
-	_body, _err := client.OpenFlowLogServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37080,7 +28988,7 @@ func (client *Client) OpenFlowLogService(request *OpenFlowLogServiceRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenPhysicalConnectionServiceResponse
-func (client *Client) OpenPhysicalConnectionServiceWithOptions(request *OpenPhysicalConnectionServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenPhysicalConnectionServiceResponse, _err error) {
+func (client *Client) OpenPhysicalConnectionServiceWithContext(ctx context.Context, request *OpenPhysicalConnectionServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenPhysicalConnectionServiceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37121,29 +29029,11 @@ func (client *Client) OpenPhysicalConnectionServiceWithOptions(request *OpenPhys
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenPhysicalConnectionServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables billing for outbound data transfer.
-//
-// @param request - OpenPhysicalConnectionServiceRequest
-//
-// @return OpenPhysicalConnectionServiceResponse
-func (client *Client) OpenPhysicalConnectionService(request *OpenPhysicalConnectionServiceRequest) (_result *OpenPhysicalConnectionServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenPhysicalConnectionServiceResponse{}
-	_body, _err := client.OpenPhysicalConnectionServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37156,7 +29046,7 @@ func (client *Client) OpenPhysicalConnectionService(request *OpenPhysicalConnect
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenPublicIpAddressPoolServiceResponse
-func (client *Client) OpenPublicIpAddressPoolServiceWithOptions(request *OpenPublicIpAddressPoolServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenPublicIpAddressPoolServiceResponse, _err error) {
+func (client *Client) OpenPublicIpAddressPoolServiceWithContext(ctx context.Context, request *OpenPublicIpAddressPoolServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenPublicIpAddressPoolServiceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37205,29 +29095,11 @@ func (client *Client) OpenPublicIpAddressPoolServiceWithOptions(request *OpenPub
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenPublicIpAddressPoolServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 开通IP地址池功能。
-//
-// @param request - OpenPublicIpAddressPoolServiceRequest
-//
-// @return OpenPublicIpAddressPoolServiceResponse
-func (client *Client) OpenPublicIpAddressPoolService(request *OpenPublicIpAddressPoolServiceRequest) (_result *OpenPublicIpAddressPoolServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenPublicIpAddressPoolServiceResponse{}
-	_body, _err := client.OpenPublicIpAddressPoolServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37246,7 +29118,7 @@ func (client *Client) OpenPublicIpAddressPoolService(request *OpenPublicIpAddres
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenTrafficMirrorServiceResponse
-func (client *Client) OpenTrafficMirrorServiceWithOptions(request *OpenTrafficMirrorServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenTrafficMirrorServiceResponse, _err error) {
+func (client *Client) OpenTrafficMirrorServiceWithContext(ctx context.Context, request *OpenTrafficMirrorServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenTrafficMirrorServiceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37295,35 +29167,11 @@ func (client *Client) OpenTrafficMirrorServiceWithOptions(request *OpenTrafficMi
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenTrafficMirrorServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables traffic mirror.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// You can enable traffic mirror for different regions. You cannot repeatedly call the **OpenTrafficMirrorService*	- operation to enable traffic mirror for one region within the specified period of time.
-//
-// @param request - OpenTrafficMirrorServiceRequest
-//
-// @return OpenTrafficMirrorServiceResponse
-func (client *Client) OpenTrafficMirrorService(request *OpenTrafficMirrorServiceRequest) (_result *OpenTrafficMirrorServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenTrafficMirrorServiceResponse{}
-	_body, _err := client.OpenTrafficMirrorServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37336,7 +29184,7 @@ func (client *Client) OpenTrafficMirrorService(request *OpenTrafficMirrorService
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishVpcRouteEntriesResponse
-func (client *Client) PublishVpcRouteEntriesWithOptions(request *PublishVpcRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *PublishVpcRouteEntriesResponse, _err error) {
+func (client *Client) PublishVpcRouteEntriesWithContext(ctx context.Context, request *PublishVpcRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *PublishVpcRouteEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37397,29 +29245,11 @@ func (client *Client) PublishVpcRouteEntriesWithOptions(request *PublishVpcRoute
 		BodyType:    dara.String("json"),
 	}
 	_result = &PublishVpcRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Advertises VPC routes to an external component.
-//
-// @param request - PublishVpcRouteEntriesRequest
-//
-// @return PublishVpcRouteEntriesResponse
-func (client *Client) PublishVpcRouteEntries(request *PublishVpcRouteEntriesRequest) (_result *PublishVpcRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PublishVpcRouteEntriesResponse{}
-	_body, _err := client.PublishVpcRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37432,7 +29262,7 @@ func (client *Client) PublishVpcRouteEntries(request *PublishVpcRouteEntriesRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishVpnRouteEntryResponse
-func (client *Client) PublishVpnRouteEntryWithOptions(request *PublishVpnRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *PublishVpnRouteEntryResponse, _err error) {
+func (client *Client) PublishVpnRouteEntryWithContext(ctx context.Context, request *PublishVpnRouteEntryRequest, runtime *dara.RuntimeOptions) (_result *PublishVpnRouteEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37497,29 +29327,11 @@ func (client *Client) PublishVpnRouteEntryWithOptions(request *PublishVpnRouteEn
 		BodyType:    dara.String("json"),
 	}
 	_result = &PublishVpnRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Advertises a VPN route to a VPC.
-//
-// @param request - PublishVpnRouteEntryRequest
-//
-// @return PublishVpnRouteEntryResponse
-func (client *Client) PublishVpnRouteEntry(request *PublishVpnRouteEntryRequest) (_result *PublishVpnRouteEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PublishVpnRouteEntryResponse{}
-	_body, _err := client.PublishVpnRouteEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37538,7 +29350,7 @@ func (client *Client) PublishVpnRouteEntry(request *PublishVpnRouteEntryRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RecoverPhysicalConnectionResponse
-func (client *Client) RecoverPhysicalConnectionWithOptions(request *RecoverPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *RecoverPhysicalConnectionResponse, _err error) {
+func (client *Client) RecoverPhysicalConnectionWithContext(ctx context.Context, request *RecoverPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *RecoverPhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37575,35 +29387,11 @@ func (client *Client) RecoverPhysicalConnectionWithOptions(request *RecoverPhysi
 		BodyType:    dara.String("json"),
 	}
 	_result = &RecoverPhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Resumes an Express Connect circuit.
-//
-// Description:
-//
-// # [](#)Description
-//
-// You can call this API operation to resume a suspended Express Connect circuit. You can resume only shared Express Connect circuits by calling this API operation.
-//
-// @param request - RecoverPhysicalConnectionRequest
-//
-// @return RecoverPhysicalConnectionResponse
-func (client *Client) RecoverPhysicalConnection(request *RecoverPhysicalConnectionRequest) (_result *RecoverPhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RecoverPhysicalConnectionResponse{}
-	_body, _err := client.RecoverPhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37626,7 +29414,7 @@ func (client *Client) RecoverPhysicalConnection(request *RecoverPhysicalConnecti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RecoverVirtualBorderRouterResponse
-func (client *Client) RecoverVirtualBorderRouterWithOptions(request *RecoverVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *RecoverVirtualBorderRouterResponse, _err error) {
+func (client *Client) RecoverVirtualBorderRouterWithContext(ctx context.Context, request *RecoverVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *RecoverVirtualBorderRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37675,39 +29463,11 @@ func (client *Client) RecoverVirtualBorderRouterWithOptions(request *RecoverVirt
 		BodyType:    dara.String("json"),
 	}
 	_result = &RecoverVirtualBorderRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables a disabled virtual border router (VBR).
-//
-// Description:
-//
-// After you call this operation, the VBR changes from the **terminated*	- state to the **recovering*	- state. After the operation is performed, the VBR enters the **active*	- state.
-//
-// When you call this operation, take note of the following items:
-//
-//   - Only the owner of the Express Connect circuit can call this operation.
-//
-//   - The Express Connect circuit to which the VBR connects must be in the **Enabled*	- state.
-//
-// @param request - RecoverVirtualBorderRouterRequest
-//
-// @return RecoverVirtualBorderRouterResponse
-func (client *Client) RecoverVirtualBorderRouter(request *RecoverVirtualBorderRouterRequest) (_result *RecoverVirtualBorderRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RecoverVirtualBorderRouterResponse{}
-	_body, _err := client.RecoverVirtualBorderRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37738,7 +29498,7 @@ func (client *Client) RecoverVirtualBorderRouter(request *RecoverVirtualBorderRo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseEipAddressResponse
-func (client *Client) ReleaseEipAddressWithOptions(request *ReleaseEipAddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseEipAddressResponse, _err error) {
+func (client *Client) ReleaseEipAddressWithContext(ctx context.Context, request *ReleaseEipAddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseEipAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37783,47 +29543,11 @@ func (client *Client) ReleaseEipAddressWithOptions(request *ReleaseEipAddressReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases an elastic IP address (EIP).
-//
-// Description:
-//
-// Before you call this operation, take note of the following items:
-//
-//   - Before you release an EIP, make sure that the EIP meets the following requirements:
-//
-//   - You can release only an EIP that is in the **Available*	- state.
-//
-//   - You can release only a pay-as-you-go EIP. You cannot release a subscription EIP.
-//
-//   - **ReleaseEipAddress*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](https://help.aliyun.com/document_detail/120193.html) operation to query the status of the task:
-//
-//   - If the EIP is in the **Releasing*	- state, the EIP is being released. In this state, you can only query the EIP and cannot perform other operations.
-//
-//   - If you cannot query the EIP, the EIP is released.
-//
-//   - You cannot repeatedly call the **ReleaseEipAddress*	- operation to release an EIP within the specified period of time.
-//
-// @param request - ReleaseEipAddressRequest
-//
-// @return ReleaseEipAddressResponse
-func (client *Client) ReleaseEipAddress(request *ReleaseEipAddressRequest) (_result *ReleaseEipAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReleaseEipAddressResponse{}
-	_body, _err := client.ReleaseEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37848,7 +29572,7 @@ func (client *Client) ReleaseEipAddress(request *ReleaseEipAddressRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseEipSegmentAddressResponse
-func (client *Client) ReleaseEipSegmentAddressWithOptions(request *ReleaseEipSegmentAddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseEipSegmentAddressResponse, _err error) {
+func (client *Client) ReleaseEipSegmentAddressWithContext(ctx context.Context, request *ReleaseEipSegmentAddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseEipSegmentAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37897,41 +29621,11 @@ func (client *Client) ReleaseEipSegmentAddressWithOptions(request *ReleaseEipSeg
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseEipSegmentAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases contiguous elastic IP addresses (EIPs).
-//
-// Description:
-//
-//	  After you call the **ReleaseEipSegmentAddress*	- operation, all EIPs in the specified group are released.
-//
-//		- **ReleaseEipSegmentAddress*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipSegment](https://help.aliyun.com/document_detail/156063.html) operation to query the status of the task.
-//
-//	    	- If the group is in the **Releasing*	- state, EIPs in the group are being released. In this state, you can only query the group and cannot perform other operations.
-//
-//	    	- If you cannot query the group of contiguous EIPs, the contiguous EIPs are released.
-//
-//		- You cannot repeatedly call the **ReleaseEipSegmentAddress*	- operation to release a group of contiguous EIPs within the specified period of time.
-//
-// @param request - ReleaseEipSegmentAddressRequest
-//
-// @return ReleaseEipSegmentAddressResponse
-func (client *Client) ReleaseEipSegmentAddress(request *ReleaseEipSegmentAddressRequest) (_result *ReleaseEipSegmentAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReleaseEipSegmentAddressResponse{}
-	_body, _err := client.ReleaseEipSegmentAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37944,7 +29638,7 @@ func (client *Client) ReleaseEipSegmentAddress(request *ReleaseEipSegmentAddress
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseIpv6AddressResponse
-func (client *Client) ReleaseIpv6AddressWithOptions(request *ReleaseIpv6AddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseIpv6AddressResponse, _err error) {
+func (client *Client) ReleaseIpv6AddressWithContext(ctx context.Context, request *ReleaseIpv6AddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseIpv6AddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38001,29 +29695,11 @@ func (client *Client) ReleaseIpv6AddressWithOptions(request *ReleaseIpv6AddressR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseIpv6AddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases an idle IPv6 address.
-//
-// @param request - ReleaseIpv6AddressRequest
-//
-// @return ReleaseIpv6AddressResponse
-func (client *Client) ReleaseIpv6Address(request *ReleaseIpv6AddressRequest) (_result *ReleaseIpv6AddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReleaseIpv6AddressResponse{}
-	_body, _err := client.ReleaseIpv6AddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38036,7 +29712,7 @@ func (client *Client) ReleaseIpv6Address(request *ReleaseIpv6AddressRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveCommonBandwidthPackageIpResponse
-func (client *Client) RemoveCommonBandwidthPackageIpWithOptions(request *RemoveCommonBandwidthPackageIpRequest, runtime *dara.RuntimeOptions) (_result *RemoveCommonBandwidthPackageIpResponse, _err error) {
+func (client *Client) RemoveCommonBandwidthPackageIpWithContext(ctx context.Context, request *RemoveCommonBandwidthPackageIpRequest, runtime *dara.RuntimeOptions) (_result *RemoveCommonBandwidthPackageIpResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38089,29 +29765,11 @@ func (client *Client) RemoveCommonBandwidthPackageIpWithOptions(request *RemoveC
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveCommonBandwidthPackageIpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates an EIP from an Internet Shared Bandwidth instance.
-//
-// @param request - RemoveCommonBandwidthPackageIpRequest
-//
-// @return RemoveCommonBandwidthPackageIpResponse
-func (client *Client) RemoveCommonBandwidthPackageIp(request *RemoveCommonBandwidthPackageIpRequest) (_result *RemoveCommonBandwidthPackageIpResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveCommonBandwidthPackageIpResponse{}
-	_body, _err := client.RemoveCommonBandwidthPackageIpWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38120,7 +29778,7 @@ func (client *Client) RemoveCommonBandwidthPackageIp(request *RemoveCommonBandwi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveGlobalAccelerationInstanceIpResponse
-func (client *Client) RemoveGlobalAccelerationInstanceIpWithOptions(request *RemoveGlobalAccelerationInstanceIpRequest, runtime *dara.RuntimeOptions) (_result *RemoveGlobalAccelerationInstanceIpResponse, _err error) {
+func (client *Client) RemoveGlobalAccelerationInstanceIpWithContext(ctx context.Context, request *RemoveGlobalAccelerationInstanceIpRequest, runtime *dara.RuntimeOptions) (_result *RemoveGlobalAccelerationInstanceIpResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38169,25 +29827,11 @@ func (client *Client) RemoveGlobalAccelerationInstanceIpWithOptions(request *Rem
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveGlobalAccelerationInstanceIpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - RemoveGlobalAccelerationInstanceIpRequest
-//
-// @return RemoveGlobalAccelerationInstanceIpResponse
-func (client *Client) RemoveGlobalAccelerationInstanceIp(request *RemoveGlobalAccelerationInstanceIpRequest) (_result *RemoveGlobalAccelerationInstanceIpResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveGlobalAccelerationInstanceIpResponse{}
-	_body, _err := client.RemoveGlobalAccelerationInstanceIpWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38200,7 +29844,7 @@ func (client *Client) RemoveGlobalAccelerationInstanceIp(request *RemoveGlobalAc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveIPv6TranslatorAclListEntryResponse
-func (client *Client) RemoveIPv6TranslatorAclListEntryWithOptions(request *RemoveIPv6TranslatorAclListEntryRequest, runtime *dara.RuntimeOptions) (_result *RemoveIPv6TranslatorAclListEntryResponse, _err error) {
+func (client *Client) RemoveIPv6TranslatorAclListEntryWithContext(ctx context.Context, request *RemoveIPv6TranslatorAclListEntryRequest, runtime *dara.RuntimeOptions) (_result *RemoveIPv6TranslatorAclListEntryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38253,29 +29897,11 @@ func (client *Client) RemoveIPv6TranslatorAclListEntryWithOptions(request *Remov
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveIPv6TranslatorAclListEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an IP entry from an ACL.
-//
-// @param request - RemoveIPv6TranslatorAclListEntryRequest
-//
-// @return RemoveIPv6TranslatorAclListEntryResponse
-func (client *Client) RemoveIPv6TranslatorAclListEntry(request *RemoveIPv6TranslatorAclListEntryRequest) (_result *RemoveIPv6TranslatorAclListEntryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveIPv6TranslatorAclListEntryResponse{}
-	_body, _err := client.RemoveIPv6TranslatorAclListEntryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38298,7 +29924,7 @@ func (client *Client) RemoveIPv6TranslatorAclListEntry(request *RemoveIPv6Transl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveSourcesFromTrafficMirrorSessionResponse
-func (client *Client) RemoveSourcesFromTrafficMirrorSessionWithOptions(request *RemoveSourcesFromTrafficMirrorSessionRequest, runtime *dara.RuntimeOptions) (_result *RemoveSourcesFromTrafficMirrorSessionResponse, _err error) {
+func (client *Client) RemoveSourcesFromTrafficMirrorSessionWithContext(ctx context.Context, request *RemoveSourcesFromTrafficMirrorSessionRequest, runtime *dara.RuntimeOptions) (_result *RemoveSourcesFromTrafficMirrorSessionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38355,39 +29981,11 @@ func (client *Client) RemoveSourcesFromTrafficMirrorSessionWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveSourcesFromTrafficMirrorSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a traffic mirror source from a traffic mirror session.
-//
-// Description:
-//
-//	  **RemoveSourcesFromTrafficMirrorSession*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](https://help.aliyun.com/document_detail/261367.html) operation to query the status of the task.
-//
-//	    	- If the traffic mirror session is in the **Modifying*	- state, the traffic mirror source is being deleted.
-//
-//	    	- If the traffic mirror session is in the **Created*	- state, the traffic mirror source is deleted.
-//
-//		- You cannot repeatedly call **RemoveSourcesFromTrafficMirrorSession*	- within the specified period of time.
-//
-// @param request - RemoveSourcesFromTrafficMirrorSessionRequest
-//
-// @return RemoveSourcesFromTrafficMirrorSessionResponse
-func (client *Client) RemoveSourcesFromTrafficMirrorSession(request *RemoveSourcesFromTrafficMirrorSessionRequest) (_result *RemoveSourcesFromTrafficMirrorSessionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveSourcesFromTrafficMirrorSessionResponse{}
-	_body, _err := client.RemoveSourcesFromTrafficMirrorSessionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38410,7 +30008,7 @@ func (client *Client) RemoveSourcesFromTrafficMirrorSession(request *RemoveSourc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReplaceVpcDhcpOptionsSetResponse
-func (client *Client) ReplaceVpcDhcpOptionsSetWithOptions(request *ReplaceVpcDhcpOptionsSetRequest, runtime *dara.RuntimeOptions) (_result *ReplaceVpcDhcpOptionsSetResponse, _err error) {
+func (client *Client) ReplaceVpcDhcpOptionsSetWithContext(ctx context.Context, request *ReplaceVpcDhcpOptionsSetRequest, runtime *dara.RuntimeOptions) (_result *ReplaceVpcDhcpOptionsSetResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38467,39 +30065,11 @@ func (client *Client) ReplaceVpcDhcpOptionsSetWithOptions(request *ReplaceVpcDhc
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReplaceVpcDhcpOptionsSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更改DHCP选项集与VPC的关联。
-//
-// Description:
-//
-//	  The **ReplaceVpcDhcpOptionsSet*	- operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of a DHCP options set:
-//
-//	    	- If the DHCP options set is in the **Pending*	- state, the DHCP options set is being replaced.
-//
-//	    	- If the DHCP options set is in the **InUse*	- state, the DHCP options set is replaced.
-//
-//		- You cannot repeatedly call the **ReplaceVpcDhcpOptionsSet*	- operation to replace the DHCP options set associated with a VPC within the specified period of time.
-//
-// @param request - ReplaceVpcDhcpOptionsSetRequest
-//
-// @return ReplaceVpcDhcpOptionsSetResponse
-func (client *Client) ReplaceVpcDhcpOptionsSet(request *ReplaceVpcDhcpOptionsSetRequest) (_result *ReplaceVpcDhcpOptionsSetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReplaceVpcDhcpOptionsSetResponse{}
-	_body, _err := client.ReplaceVpcDhcpOptionsSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38526,7 +30096,7 @@ func (client *Client) ReplaceVpcDhcpOptionsSet(request *ReplaceVpcDhcpOptionsSet
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RetryVpcPrefixListAssociationResponse
-func (client *Client) RetryVpcPrefixListAssociationWithOptions(request *RetryVpcPrefixListAssociationRequest, runtime *dara.RuntimeOptions) (_result *RetryVpcPrefixListAssociationResponse, _err error) {
+func (client *Client) RetryVpcPrefixListAssociationWithContext(ctx context.Context, request *RetryVpcPrefixListAssociationRequest, runtime *dara.RuntimeOptions) (_result *RetryVpcPrefixListAssociationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38587,43 +30157,11 @@ func (client *Client) RetryVpcPrefixListAssociationWithOptions(request *RetryVpc
 		BodyType:    dara.String("json"),
 	}
 	_result = &RetryVpcPrefixListAssociationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Re-applies a prefix list.
-//
-// Description:
-//
-//	  If you modify the information about a prefix list but the modification is not automatically applied to the route table that is associated with the prefix list, you can call this operation to apply the latest prefix list to the associated route table.
-//
-//		- The **RetryVpcPrefixListAssociation*	- operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetVpcPrefixListAssociations](https://help.aliyun.com/document_detail/445478.html) to check whether the prefix list is re-applied.
-//
-//	    	- If the prefix list is in the **Modifying*	- state, the prefix list is being re-applied.
-//
-//	    	- If the prefix list is in the **ModifyFailed*	- state, the prefix list fails to be re-applied.
-//
-//	    	- If the prefix list is in the **Created*	- state, the prefix list is re-applied.
-//
-//		- After you call the **RetryVpcPrefixListAssociation*	- operation to re-apply a prefix list, you cannot call the operation again until the current task is complete.
-//
-// @param request - RetryVpcPrefixListAssociationRequest
-//
-// @return RetryVpcPrefixListAssociationResponse
-func (client *Client) RetryVpcPrefixListAssociation(request *RetryVpcPrefixListAssociationRequest) (_result *RetryVpcPrefixListAssociationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RetryVpcPrefixListAssociationResponse{}
-	_body, _err := client.RetryVpcPrefixListAssociationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38644,7 +30182,7 @@ func (client *Client) RetryVpcPrefixListAssociation(request *RetryVpcPrefixListA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RevokeInstanceFromCenResponse
-func (client *Client) RevokeInstanceFromCenWithOptions(request *RevokeInstanceFromCenRequest, runtime *dara.RuntimeOptions) (_result *RevokeInstanceFromCenResponse, _err error) {
+func (client *Client) RevokeInstanceFromCenWithContext(ctx context.Context, request *RevokeInstanceFromCenRequest, runtime *dara.RuntimeOptions) (_result *RevokeInstanceFromCenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38705,37 +30243,11 @@ func (client *Client) RevokeInstanceFromCenWithOptions(request *RevokeInstanceFr
 		BodyType:    dara.String("json"),
 	}
 	_result = &RevokeInstanceFromCenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Revokes the permissions granted to a Cloud Enterprise Network (CEN) instance on a network instance.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - **RevokeInstanceFromCen*	- is a Virtual Private Cloud (VPC) operation. Therefore, you must use `vpc.aliyuncs.com` as the domain name when you call this operation. The API version is `2016-04-28`.
-//
-//   - You cannot repeatedly call the **RevokeInstanceFromCen*	- operation to revoke the permissions on a network instance that is attached to a CEN instance within the specified period of time. The network instance can be a VPC, virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
-//
-// @param request - RevokeInstanceFromCenRequest
-//
-// @return RevokeInstanceFromCenResponse
-func (client *Client) RevokeInstanceFromCen(request *RevokeInstanceFromCenRequest) (_result *RevokeInstanceFromCenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RevokeInstanceFromCenResponse{}
-	_body, _err := client.RevokeInstanceFromCenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38748,7 +30260,7 @@ func (client *Client) RevokeInstanceFromCen(request *RevokeInstanceFromCenReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RevokeInstanceFromVbrResponse
-func (client *Client) RevokeInstanceFromVbrWithOptions(tmpReq *RevokeInstanceFromVbrRequest, runtime *dara.RuntimeOptions) (_result *RevokeInstanceFromVbrResponse, _err error) {
+func (client *Client) RevokeInstanceFromVbrWithContext(ctx context.Context, tmpReq *RevokeInstanceFromVbrRequest, runtime *dara.RuntimeOptions) (_result *RevokeInstanceFromVbrResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38799,29 +30311,11 @@ func (client *Client) RevokeInstanceFromVbrWithOptions(tmpReq *RevokeInstanceFro
 		BodyType:    dara.String("json"),
 	}
 	_result = &RevokeInstanceFromVbrResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Revokes the permissions granted to a virtual border router (VBR) on a virtual private cloud (VPC).
-//
-// @param request - RevokeInstanceFromVbrRequest
-//
-// @return RevokeInstanceFromVbrResponse
-func (client *Client) RevokeInstanceFromVbr(request *RevokeInstanceFromVbrRequest) (_result *RevokeInstanceFromVbrResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RevokeInstanceFromVbrResponse{}
-	_body, _err := client.RevokeInstanceFromVbrWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38834,7 +30328,7 @@ func (client *Client) RevokeInstanceFromVbr(request *RevokeInstanceFromVbrReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SecondApplyPhysicalConnectionLOAResponse
-func (client *Client) SecondApplyPhysicalConnectionLOAWithOptions(request *SecondApplyPhysicalConnectionLOARequest, runtime *dara.RuntimeOptions) (_result *SecondApplyPhysicalConnectionLOAResponse, _err error) {
+func (client *Client) SecondApplyPhysicalConnectionLOAWithContext(ctx context.Context, request *SecondApplyPhysicalConnectionLOARequest, runtime *dara.RuntimeOptions) (_result *SecondApplyPhysicalConnectionLOAResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38911,29 +30405,11 @@ func (client *Client) SecondApplyPhysicalConnectionLOAWithOptions(request *Secon
 		BodyType:    dara.String("json"),
 	}
 	_result = &SecondApplyPhysicalConnectionLOAResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// If your application for a Letter of Authorization (LOA) by calling the ApplyPhysicalConnectionLOA operation is denied, you can call this operation to apply again.
-//
-// @param request - SecondApplyPhysicalConnectionLOARequest
-//
-// @return SecondApplyPhysicalConnectionLOAResponse
-func (client *Client) SecondApplyPhysicalConnectionLOA(request *SecondApplyPhysicalConnectionLOARequest) (_result *SecondApplyPhysicalConnectionLOAResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SecondApplyPhysicalConnectionLOAResponse{}
-	_body, _err := client.SecondApplyPhysicalConnectionLOAWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38950,7 +30426,7 @@ func (client *Client) SecondApplyPhysicalConnectionLOA(request *SecondApplyPhysi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetHighDefinitionMonitorLogStatusResponse
-func (client *Client) SetHighDefinitionMonitorLogStatusWithOptions(request *SetHighDefinitionMonitorLogStatusRequest, runtime *dara.RuntimeOptions) (_result *SetHighDefinitionMonitorLogStatusResponse, _err error) {
+func (client *Client) SetHighDefinitionMonitorLogStatusWithContext(ctx context.Context, request *SetHighDefinitionMonitorLogStatusRequest, runtime *dara.RuntimeOptions) (_result *SetHighDefinitionMonitorLogStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39011,33 +30487,11 @@ func (client *Client) SetHighDefinitionMonitorLogStatusWithOptions(request *SetH
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetHighDefinitionMonitorLogStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures fine-grained monitoring for an elastic IP address (EIP).
-//
-// Description:
-//
-// You cannot repeatedly call **SetHighDefinitionMonitorLogStatus*	- within a specific period of time.
-//
-// @param request - SetHighDefinitionMonitorLogStatusRequest
-//
-// @return SetHighDefinitionMonitorLogStatusResponse
-func (client *Client) SetHighDefinitionMonitorLogStatus(request *SetHighDefinitionMonitorLogStatusRequest) (_result *SetHighDefinitionMonitorLogStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetHighDefinitionMonitorLogStatusResponse{}
-	_body, _err := client.SetHighDefinitionMonitorLogStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39054,7 +30508,7 @@ func (client *Client) SetHighDefinitionMonitorLogStatus(request *SetHighDefiniti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartFailoverTestJobResponse
-func (client *Client) StartFailoverTestJobWithOptions(request *StartFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *StartFailoverTestJobResponse, _err error) {
+func (client *Client) StartFailoverTestJobWithContext(ctx context.Context, request *StartFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *StartFailoverTestJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39103,33 +30557,11 @@ func (client *Client) StartFailoverTestJobWithOptions(request *StartFailoverTest
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartFailoverTestJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Performs a failover test.
-//
-// Description:
-//
-// You can perform only failover tests that are in the **Pending*	- state.
-//
-// @param request - StartFailoverTestJobRequest
-//
-// @return StartFailoverTestJobResponse
-func (client *Client) StartFailoverTestJob(request *StartFailoverTestJobRequest) (_result *StartFailoverTestJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartFailoverTestJobResponse{}
-	_body, _err := client.StartFailoverTestJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39142,7 +30574,7 @@ func (client *Client) StartFailoverTestJob(request *StartFailoverTestJobRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopFailoverTestJobResponse
-func (client *Client) StopFailoverTestJobWithOptions(request *StopFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *StopFailoverTestJobResponse, _err error) {
+func (client *Client) StopFailoverTestJobWithContext(ctx context.Context, request *StopFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *StopFailoverTestJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39191,29 +30623,11 @@ func (client *Client) StopFailoverTestJobWithOptions(request *StopFailoverTestJo
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopFailoverTestJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Terminates a failover test.
-//
-// @param request - StopFailoverTestJobRequest
-//
-// @return StopFailoverTestJobResponse
-func (client *Client) StopFailoverTestJob(request *StopFailoverTestJobRequest) (_result *StopFailoverTestJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopFailoverTestJobResponse{}
-	_body, _err := client.StopFailoverTestJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39244,7 +30658,7 @@ func (client *Client) StopFailoverTestJob(request *StopFailoverTestJobRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39297,47 +30711,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates and adds tags to resources.
-//
-// Description:
-//
-// Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following limits:
-//
-//   - The keys of tags that are added to the same instance must be unique.
-//
-//   - You cannot create tags without adding them to instances. All tags must be added to instances.
-//
-//   - Tag information is not shared across regions.
-//
-//     For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
-//
-//   - Virtual private clouds (VPCs), route tables, vSwitches, and elastic IP addresses (EIPs) that belong to the same Alibaba Cloud account and are deployed in the same region share tag information with each other.
-//
-//     For example, if you added a tag to a VPC, the tag is available to vSwitches, route tables, and EIPs that belong to the same account and are deployed in the same region in which the VPC is created. You can select this tag from the editing page without the need to enter the tag again. You can modify the key and the value of a tag or remove a tag from an instance. After you delete an instance, all tags that are added to the instance are deleted.
-//
-//   - You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39366,7 +30744,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesForExpressConnectResponse
-func (client *Client) TagResourcesForExpressConnectWithOptions(request *TagResourcesForExpressConnectRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesForExpressConnectResponse, _err error) {
+func (client *Client) TagResourcesForExpressConnectWithContext(ctx context.Context, request *TagResourcesForExpressConnectRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesForExpressConnectResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39419,45 +30797,11 @@ func (client *Client) TagResourcesForExpressConnectWithOptions(request *TagResou
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesForExpressConnectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates tags and adds the tags to an Express Connect circuit.
-//
-// Description:
-//
-// ## [](#)
-//
-// Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following items:
-//
-//   - Each tag key that is added to an instance must be unique.
-//
-//   - You cannot create tags without adding them to instances. All tags must be added to instances.
-//
-//   - Tag information is not shared across regions.
-//
-//     For example, you cannot view the tags that are created in the China (Hangzhou) region from the China (Shanghai) region.
-//
-//   - You can add up to 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
-//
-// @param request - TagResourcesForExpressConnectRequest
-//
-// @return TagResourcesForExpressConnectResponse
-func (client *Client) TagResourcesForExpressConnect(request *TagResourcesForExpressConnectRequest) (_result *TagResourcesForExpressConnectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesForExpressConnectResponse{}
-	_body, _err := client.TagResourcesForExpressConnectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39478,7 +30822,7 @@ func (client *Client) TagResourcesForExpressConnect(request *TagResourcesForExpr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TerminatePhysicalConnectionResponse
-func (client *Client) TerminatePhysicalConnectionWithOptions(request *TerminatePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *TerminatePhysicalConnectionResponse, _err error) {
+func (client *Client) TerminatePhysicalConnectionWithContext(ctx context.Context, request *TerminatePhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *TerminatePhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39527,37 +30871,11 @@ func (client *Client) TerminatePhysicalConnectionWithOptions(request *TerminateP
 		BodyType:    dara.String("json"),
 	}
 	_result = &TerminatePhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables an Express Connect circuit after it is enabled.
-//
-// Description:
-//
-// After you call this operation, the specified Express Connect circuit changes to the **Terminating*	- state. After the Express Connect circuit is disabled, it changes to the **Terminated*	- state. When you call this operation, take note of the following limits:
-//
-//   - You can only disable an Express Connect circuit that is in the **Enabled*	- state.
-//
-//   - Before you disable an Express Connect circuit, you must delete the virtual border routers (VBRs) associated with it.
-//
-// @param request - TerminatePhysicalConnectionRequest
-//
-// @return TerminatePhysicalConnectionResponse
-func (client *Client) TerminatePhysicalConnection(request *TerminatePhysicalConnectionRequest) (_result *TerminatePhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TerminatePhysicalConnectionResponse{}
-	_body, _err := client.TerminatePhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39576,7 +30894,7 @@ func (client *Client) TerminatePhysicalConnection(request *TerminatePhysicalConn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TerminateVirtualBorderRouterResponse
-func (client *Client) TerminateVirtualBorderRouterWithOptions(request *TerminateVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *TerminateVirtualBorderRouterResponse, _err error) {
+func (client *Client) TerminateVirtualBorderRouterWithContext(ctx context.Context, request *TerminateVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *TerminateVirtualBorderRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39625,35 +30943,11 @@ func (client *Client) TerminateVirtualBorderRouterWithOptions(request *Terminate
 		BodyType:    dara.String("json"),
 	}
 	_result = &TerminateVirtualBorderRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Terminates a virtual border router (VBR).
-//
-// Description:
-//
-// After you call this operation, the VBR enters the **terminating*	- state from the **active*	- state. After the VBR is terminated, the VBR enters the **terminated*	- state.
-//
-// >  Only the owner of an Express Connect circuit can call this operation.
-//
-// @param request - TerminateVirtualBorderRouterRequest
-//
-// @return TerminateVirtualBorderRouterResponse
-func (client *Client) TerminateVirtualBorderRouter(request *TerminateVirtualBorderRouterRequest) (_result *TerminateVirtualBorderRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TerminateVirtualBorderRouterResponse{}
-	_body, _err := client.TerminateVirtualBorderRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39666,7 +30960,7 @@ func (client *Client) TerminateVirtualBorderRouter(request *TerminateVirtualBord
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TransformEipSegmentToPublicIpAddressPoolResponse
-func (client *Client) TransformEipSegmentToPublicIpAddressPoolWithOptions(request *TransformEipSegmentToPublicIpAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *TransformEipSegmentToPublicIpAddressPoolResponse, _err error) {
+func (client *Client) TransformEipSegmentToPublicIpAddressPoolWithContext(ctx context.Context, request *TransformEipSegmentToPublicIpAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *TransformEipSegmentToPublicIpAddressPoolResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39711,29 +31005,11 @@ func (client *Client) TransformEipSegmentToPublicIpAddressPoolWithOptions(reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &TransformEipSegmentToPublicIpAddressPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Migrate contiguous EIP groups to IP address pool by calling TransformEipSegmentToPublicIpAddressPool.
-//
-// @param request - TransformEipSegmentToPublicIpAddressPoolRequest
-//
-// @return TransformEipSegmentToPublicIpAddressPoolResponse
-func (client *Client) TransformEipSegmentToPublicIpAddressPool(request *TransformEipSegmentToPublicIpAddressPoolRequest) (_result *TransformEipSegmentToPublicIpAddressPoolResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TransformEipSegmentToPublicIpAddressPoolResponse{}
-	_body, _err := client.TransformEipSegmentToPublicIpAddressPoolWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39746,7 +31022,7 @@ func (client *Client) TransformEipSegmentToPublicIpAddressPool(request *Transfor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnTagResourcesResponse
-func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UnTagResourcesResponse, _err error) {
+func (client *Client) UnTagResourcesWithContext(ctx context.Context, request *UnTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UnTagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39803,29 +31079,11 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes tags from resources.
-//
-// @param request - UnTagResourcesRequest
-//
-// @return UnTagResourcesResponse
-func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *UnTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnTagResourcesResponse{}
-	_body, _err := client.UnTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39848,7 +31106,7 @@ func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnassociateEipAddressResponse
-func (client *Client) UnassociateEipAddressWithOptions(request *UnassociateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *UnassociateEipAddressResponse, _err error) {
+func (client *Client) UnassociateEipAddressWithContext(ctx context.Context, request *UnassociateEipAddressRequest, runtime *dara.RuntimeOptions) (_result *UnassociateEipAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39913,39 +31171,11 @@ func (client *Client) UnassociateEipAddressWithOptions(request *UnassociateEipAd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnassociateEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates an elastic IP address (EIP) from a cloud resource.
-//
-// Description:
-//
-//	  **UnassociateEipAddress*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](https://help.aliyun.com/document_detail/120193.html) operation to query the status of the task.
-//
-//	    	- If the EIP is in the **Unassociating*	- state, the EIP is being disassociated. In this state, you can only query the EIP and cannot perform other operations.
-//
-//	    	- If the EIP is in the **Available*	- state, the EIP is disassociated.
-//
-//		- You cannot repeatedly call the **UnassociateEipAddress*	- operation within the specified period of time.
-//
-// @param request - UnassociateEipAddressRequest
-//
-// @return UnassociateEipAddressResponse
-func (client *Client) UnassociateEipAddress(request *UnassociateEipAddressRequest) (_result *UnassociateEipAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnassociateEipAddressResponse{}
-	_body, _err := client.UnassociateEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39958,7 +31188,7 @@ func (client *Client) UnassociateEipAddress(request *UnassociateEipAddressReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnassociateGlobalAccelerationInstanceResponse
-func (client *Client) UnassociateGlobalAccelerationInstanceWithOptions(request *UnassociateGlobalAccelerationInstanceRequest, runtime *dara.RuntimeOptions) (_result *UnassociateGlobalAccelerationInstanceResponse, _err error) {
+func (client *Client) UnassociateGlobalAccelerationInstanceWithContext(ctx context.Context, request *UnassociateGlobalAccelerationInstanceRequest, runtime *dara.RuntimeOptions) (_result *UnassociateGlobalAccelerationInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40007,29 +31237,11 @@ func (client *Client) UnassociateGlobalAccelerationInstanceWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnassociateGlobalAccelerationInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates a Global Accelerator (GA) instance from a backend server.
-//
-// @param request - UnassociateGlobalAccelerationInstanceRequest
-//
-// @return UnassociateGlobalAccelerationInstanceResponse
-func (client *Client) UnassociateGlobalAccelerationInstance(request *UnassociateGlobalAccelerationInstanceRequest) (_result *UnassociateGlobalAccelerationInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnassociateGlobalAccelerationInstanceResponse{}
-	_body, _err := client.UnassociateGlobalAccelerationInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40060,7 +31272,7 @@ func (client *Client) UnassociateGlobalAccelerationInstance(request *Unassociate
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnassociateHaVipResponse
-func (client *Client) UnassociateHaVipWithOptions(request *UnassociateHaVipRequest, runtime *dara.RuntimeOptions) (_result *UnassociateHaVipResponse, _err error) {
+func (client *Client) UnassociateHaVipWithContext(ctx context.Context, request *UnassociateHaVipRequest, runtime *dara.RuntimeOptions) (_result *UnassociateHaVipResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40121,47 +31333,11 @@ func (client *Client) UnassociateHaVipWithOptions(request *UnassociateHaVipReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnassociateHaVipResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates a high-availability virtual IP address (HaVip) from an Elastic Compute Service (ECS) in a virtual private cloud (VPC) or from an elastic network interface (ENI).
-//
-// Description:
-//
-// ## [](#)
-//
-// When you call this operation, take note of the following limits:
-//
-//   - The ECS instance must be in the **Running*	- or **Stopped*	- state.
-//
-//   - The HaVip must be in the **Available*	- or **InUse*	- state.
-//
-//   - **UnassociateHaVip*	- is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [DescribeHaVips](https://help.aliyun.com/document_detail/114611.html) operation to query the status of an HaVip:
-//
-//   - If the HaVip is in the **Unassociating*	- state, the HaVip is being disassociated.
-//
-//   - If the HaVip is in the **Inuse*	- or **Available*	- state, the HaVip is disassociated.
-//
-//   - You cannot repeatedly call the **UnassociateHaVip*	- operation to disassociate an HaVip within the specified period of time.
-//
-// @param request - UnassociateHaVipRequest
-//
-// @return UnassociateHaVipResponse
-func (client *Client) UnassociateHaVip(request *UnassociateHaVipRequest) (_result *UnassociateHaVipResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnassociateHaVipResponse{}
-	_body, _err := client.UnassociateHaVipWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40186,7 +31362,7 @@ func (client *Client) UnassociateHaVip(request *UnassociateHaVipRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnassociateNetworkAclResponse
-func (client *Client) UnassociateNetworkAclWithOptions(request *UnassociateNetworkAclRequest, runtime *dara.RuntimeOptions) (_result *UnassociateNetworkAclResponse, _err error) {
+func (client *Client) UnassociateNetworkAclWithContext(ctx context.Context, request *UnassociateNetworkAclRequest, runtime *dara.RuntimeOptions) (_result *UnassociateNetworkAclResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40247,41 +31423,11 @@ func (client *Client) UnassociateNetworkAclWithOptions(request *UnassociateNetwo
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnassociateNetworkAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates a network access control list (ACL) from a vSwitch.
-//
-// Description:
-//
-// ## [](#)Description
-//
-//   - **UnassociateNetworkAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeNetworkAclAttributes](https://help.aliyun.com/document_detail/116542.html) operation to query the status of the task.
-//
-//   - If the network ACL is in the **UNBINDING*	- state, the network ACL is being disassociated from the vSwitch.
-//
-//   - If the network ACL is in the **UNBINDED*	- state, the network ACL is disassociated from the vSwitch.
-//
-//   - You cannot repeatedly call the **UnassociateNetworkAcl*	- operation to disassociate a network ACL from a vSwitch within the specified period of time.
-//
-// @param request - UnassociateNetworkAclRequest
-//
-// @return UnassociateNetworkAclResponse
-func (client *Client) UnassociateNetworkAcl(request *UnassociateNetworkAclRequest) (_result *UnassociateNetworkAclResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnassociateNetworkAclResponse{}
-	_body, _err := client.UnassociateNetworkAclWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40294,7 +31440,7 @@ func (client *Client) UnassociateNetworkAcl(request *UnassociateNetworkAclReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnassociatePhysicalConnectionFromVirtualBorderRouterResponse
-func (client *Client) UnassociatePhysicalConnectionFromVirtualBorderRouterWithOptions(request *UnassociatePhysicalConnectionFromVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *UnassociatePhysicalConnectionFromVirtualBorderRouterResponse, _err error) {
+func (client *Client) UnassociatePhysicalConnectionFromVirtualBorderRouterWithContext(ctx context.Context, request *UnassociatePhysicalConnectionFromVirtualBorderRouterRequest, runtime *dara.RuntimeOptions) (_result *UnassociatePhysicalConnectionFromVirtualBorderRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40347,29 +31493,11 @@ func (client *Client) UnassociatePhysicalConnectionFromVirtualBorderRouterWithOp
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnassociatePhysicalConnectionFromVirtualBorderRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates a virtual border router (VBR) from an Express Connect circuit.
-//
-// @param request - UnassociatePhysicalConnectionFromVirtualBorderRouterRequest
-//
-// @return UnassociatePhysicalConnectionFromVirtualBorderRouterResponse
-func (client *Client) UnassociatePhysicalConnectionFromVirtualBorderRouter(request *UnassociatePhysicalConnectionFromVirtualBorderRouterRequest) (_result *UnassociatePhysicalConnectionFromVirtualBorderRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnassociatePhysicalConnectionFromVirtualBorderRouterResponse{}
-	_body, _err := client.UnassociatePhysicalConnectionFromVirtualBorderRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40394,7 +31522,7 @@ func (client *Client) UnassociatePhysicalConnectionFromVirtualBorderRouter(reque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnassociateRouteTableResponse
-func (client *Client) UnassociateRouteTableWithOptions(request *UnassociateRouteTableRequest, runtime *dara.RuntimeOptions) (_result *UnassociateRouteTableResponse, _err error) {
+func (client *Client) UnassociateRouteTableWithContext(ctx context.Context, request *UnassociateRouteTableRequest, runtime *dara.RuntimeOptions) (_result *UnassociateRouteTableResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40451,41 +31579,11 @@ func (client *Client) UnassociateRouteTableWithOptions(request *UnassociateRoute
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnassociateRouteTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates a route table from a vSwitch.
-//
-// Description:
-//
-// ## [](#)References
-//
-//   - **UnassociateRouteTable*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](https://help.aliyun.com/document_detail/94567.html) operation to query the status of the task.
-//
-//   - If the vSwitch is in the **Pending*	- state, the route table is being disassociated.
-//
-//   - If the vSwitch is in the **Available*	- state, the route table is disassociated.
-//
-//   - You cannot repeatedly call the **UnassociateRouteTable*	- operation to disassociate a route table from a vSwitch within the specified period of time.
-//
-// @param request - UnassociateRouteTableRequest
-//
-// @return UnassociateRouteTableResponse
-func (client *Client) UnassociateRouteTable(request *UnassociateRouteTableRequest) (_result *UnassociateRouteTableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnassociateRouteTableResponse{}
-	_body, _err := client.UnassociateRouteTableWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40504,7 +31602,7 @@ func (client *Client) UnassociateRouteTable(request *UnassociateRouteTableReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnassociateVpcCidrBlockResponse
-func (client *Client) UnassociateVpcCidrBlockWithOptions(request *UnassociateVpcCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *UnassociateVpcCidrBlockResponse, _err error) {
+func (client *Client) UnassociateVpcCidrBlockWithContext(ctx context.Context, request *UnassociateVpcCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *UnassociateVpcCidrBlockResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40561,35 +31659,11 @@ func (client *Client) UnassociateVpcCidrBlockWithOptions(request *UnassociateVpc
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnassociateVpcCidrBlockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes a secondary CIDR block from a virtual private cloud (VPC).
-//
-// Description:
-//
-//	  Before you delete a secondary CIDR block from a VPC, delete the vSwitch which is created with the CIDR block. For more information, see [DeleteVSwitch](https://help.aliyun.com/document_detail/35746.html).
-//
-//		- You cannot repeatedly call the **UnassociateVpcCidrBlock*	- operation to delete a secondary CIDR block from a VPC within the specified period of time.
-//
-// @param request - UnassociateVpcCidrBlockRequest
-//
-// @return UnassociateVpcCidrBlockResponse
-func (client *Client) UnassociateVpcCidrBlock(request *UnassociateVpcCidrBlockRequest) (_result *UnassociateVpcCidrBlockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnassociateVpcCidrBlockResponse{}
-	_body, _err := client.UnassociateVpcCidrBlockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40602,7 +31676,7 @@ func (client *Client) UnassociateVpcCidrBlock(request *UnassociateVpcCidrBlockRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesForExpressConnectResponse
-func (client *Client) UntagResourcesForExpressConnectWithOptions(request *UntagResourcesForExpressConnectRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesForExpressConnectResponse, _err error) {
+func (client *Client) UntagResourcesForExpressConnectWithContext(ctx context.Context, request *UntagResourcesForExpressConnectRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesForExpressConnectResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40659,29 +31733,11 @@ func (client *Client) UntagResourcesForExpressConnectWithOptions(request *UntagR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesForExpressConnectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes tags from an Express Connect circuit at a time.
-//
-// @param request - UntagResourcesForExpressConnectRequest
-//
-// @return UntagResourcesForExpressConnectResponse
-func (client *Client) UntagResourcesForExpressConnect(request *UntagResourcesForExpressConnectRequest) (_result *UntagResourcesForExpressConnectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesForExpressConnectResponse{}
-	_body, _err := client.UntagResourcesForExpressConnectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40694,7 +31750,7 @@ func (client *Client) UntagResourcesForExpressConnect(request *UntagResourcesFor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDhcpOptionsSetAttributeResponse
-func (client *Client) UpdateDhcpOptionsSetAttributeWithOptions(request *UpdateDhcpOptionsSetAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateDhcpOptionsSetAttributeResponse, _err error) {
+func (client *Client) UpdateDhcpOptionsSetAttributeWithContext(ctx context.Context, request *UpdateDhcpOptionsSetAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateDhcpOptionsSetAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40771,29 +31827,11 @@ func (client *Client) UpdateDhcpOptionsSetAttributeWithOptions(request *UpdateDh
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDhcpOptionsSetAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改Dhcp选项集信息
-//
-// @param request - UpdateDhcpOptionsSetAttributeRequest
-//
-// @return UpdateDhcpOptionsSetAttributeResponse
-func (client *Client) UpdateDhcpOptionsSetAttribute(request *UpdateDhcpOptionsSetAttributeRequest) (_result *UpdateDhcpOptionsSetAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateDhcpOptionsSetAttributeResponse{}
-	_body, _err := client.UpdateDhcpOptionsSetAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40806,7 +31844,7 @@ func (client *Client) UpdateDhcpOptionsSetAttribute(request *UpdateDhcpOptionsSe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateFailoverTestJobResponse
-func (client *Client) UpdateFailoverTestJobWithOptions(request *UpdateFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateFailoverTestJobResponse, _err error) {
+func (client *Client) UpdateFailoverTestJobWithContext(ctx context.Context, request *UpdateFailoverTestJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateFailoverTestJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40875,29 +31913,11 @@ func (client *Client) UpdateFailoverTestJobWithOptions(request *UpdateFailoverTe
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateFailoverTestJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a failover test.
-//
-// @param request - UpdateFailoverTestJobRequest
-//
-// @return UpdateFailoverTestJobResponse
-func (client *Client) UpdateFailoverTestJob(request *UpdateFailoverTestJobRequest) (_result *UpdateFailoverTestJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateFailoverTestJobResponse{}
-	_body, _err := client.UpdateFailoverTestJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40910,7 +31930,7 @@ func (client *Client) UpdateFailoverTestJob(request *UpdateFailoverTestJobReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateGatewayRouteTableEntryAttributeResponse
-func (client *Client) UpdateGatewayRouteTableEntryAttributeWithOptions(request *UpdateGatewayRouteTableEntryAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateGatewayRouteTableEntryAttributeResponse, _err error) {
+func (client *Client) UpdateGatewayRouteTableEntryAttributeWithContext(ctx context.Context, request *UpdateGatewayRouteTableEntryAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateGatewayRouteTableEntryAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40991,29 +32011,11 @@ func (client *Client) UpdateGatewayRouteTableEntryAttributeWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateGatewayRouteTableEntryAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the next hop type and next hop of the route entry in a gateway route table.
-//
-// @param request - UpdateGatewayRouteTableEntryAttributeRequest
-//
-// @return UpdateGatewayRouteTableEntryAttributeResponse
-func (client *Client) UpdateGatewayRouteTableEntryAttribute(request *UpdateGatewayRouteTableEntryAttributeRequest) (_result *UpdateGatewayRouteTableEntryAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateGatewayRouteTableEntryAttributeResponse{}
-	_body, _err := client.UpdateGatewayRouteTableEntryAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -41038,7 +32040,7 @@ func (client *Client) UpdateGatewayRouteTableEntryAttribute(request *UpdateGatew
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateIpsecServerResponse
-func (client *Client) UpdateIpsecServerWithOptions(request *UpdateIpsecServerRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpsecServerResponse, _err error) {
+func (client *Client) UpdateIpsecServerWithContext(ctx context.Context, request *UpdateIpsecServerRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpsecServerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41107,41 +32109,11 @@ func (client *Client) UpdateIpsecServerWithOptions(request *UpdateIpsecServerReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateIpsecServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of an IPsec server.
-//
-// Description:
-//
-//	  If you modify only **IpsecServerName*	- of the IPsec server, this operation is synchronous. If you modify other parameters besides **IpsecServerName**, this operation is asynchronous.
-//
-//		- If **UpdateIpsecServer*	- is an asynchronous operation, after a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
-//
-//	    	- If the VPN gateway is in the **updating*	- state, the IPsec server is being modified.
-//
-//	    	- If the VPN gateway is in the **active*	- state, the IPsec server is modified.
-//
-//		- You cannot repeatedly call **UpdateIpsecServer*	- within the specified period of time.
-//
-// @param request - UpdateIpsecServerRequest
-//
-// @return UpdateIpsecServerResponse
-func (client *Client) UpdateIpsecServer(request *UpdateIpsecServerRequest) (_result *UpdateIpsecServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateIpsecServerResponse{}
-	_body, _err := client.UpdateIpsecServerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -41158,7 +32130,7 @@ func (client *Client) UpdateIpsecServer(request *UpdateIpsecServerRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateIpv4GatewayAttributeResponse
-func (client *Client) UpdateIpv4GatewayAttributeWithOptions(request *UpdateIpv4GatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpv4GatewayAttributeResponse, _err error) {
+func (client *Client) UpdateIpv4GatewayAttributeWithContext(ctx context.Context, request *UpdateIpv4GatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpv4GatewayAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41223,33 +32195,11 @@ func (client *Client) UpdateIpv4GatewayAttributeWithOptions(request *UpdateIpv4G
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateIpv4GatewayAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the description or name of an IPv4 gateway.
-//
-// Description:
-//
-// You cannot repeatedly call the **UpdateIpv4GatewayAttribute*	- operation to modify the name or description of an IPv4 gateway within the specified period of time.
-//
-// @param request - UpdateIpv4GatewayAttributeRequest
-//
-// @return UpdateIpv4GatewayAttributeResponse
-func (client *Client) UpdateIpv4GatewayAttribute(request *UpdateIpv4GatewayAttributeRequest) (_result *UpdateIpv4GatewayAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateIpv4GatewayAttributeResponse{}
-	_body, _err := client.UpdateIpv4GatewayAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -41284,7 +32234,7 @@ func (client *Client) UpdateIpv4GatewayAttribute(request *UpdateIpv4GatewayAttri
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateNatGatewayNatTypeResponse
-func (client *Client) UpdateNatGatewayNatTypeWithOptions(request *UpdateNatGatewayNatTypeRequest, runtime *dara.RuntimeOptions) (_result *UpdateNatGatewayNatTypeResponse, _err error) {
+func (client *Client) UpdateNatGatewayNatTypeWithContext(ctx context.Context, request *UpdateNatGatewayNatTypeRequest, runtime *dara.RuntimeOptions) (_result *UpdateNatGatewayNatTypeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41349,52 +32299,11 @@ func (client *Client) UpdateNatGatewayNatTypeWithOptions(request *UpdateNatGatew
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateNatGatewayNatTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI UpdateNatGatewayNatType is deprecated
-//
-// Summary:
-//
-// Upgrades a standard NAT gateway to an enhanced NAT gateway.
-//
-// Description:
-//
-// Before you call this operation, take note of the following limits:
-//
-//   - **UpdateNatGatewayNatType*	- is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the NAT gateway is still being upgraded in the backend. You can call the GetNatGatewayConvertStatus operation to query the upgrade progress of a NAT gateway. For more information, see [GetNatGatewayConvertStatus](https://help.aliyun.com/document_detail/184744.html).
-//
-//   - If the NAT gateway is in the **processing*	- state, the NAT gateway is being upgraded. You can only query the status of the NAT gateway but cannot perform other operations.
-//
-//   - If the NAT gateway is in the **successful*	- state, the NAT gateway is upgraded.
-//
-//   - If the NAT gateway is in the **failed*	- state, the system failed to upgrade the NAT gateway.
-//
-//   - You cannot repeatedly call the **UpdateNatGatewayNatType*	- operation for the same VPN gateway within the specified period of time.
-//
-//   - The billing method and billable items remain the same after the upgrade.
-//
-//   - It takes about five minutes to upgrade a standard NAT gateway to an enhanced NAT gateway. During the upgrade, transient connection errors may occur once or twice. The service can be recovered by reconnection. You can determine whether to enable automatic reconnection or use manual reconnection based on your business requirements.
-//
-//   - You can only upgrade standard NAT gateways to enhanced NAT gateways. You are not allowed to downgrade enhanced NAT gateways to standard NAT gateways.
-//
-// @param request - UpdateNatGatewayNatTypeRequest
-//
-// @return UpdateNatGatewayNatTypeResponse
-// Deprecated
-func (client *Client) UpdateNatGatewayNatType(request *UpdateNatGatewayNatTypeRequest) (_result *UpdateNatGatewayNatTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateNatGatewayNatTypeResponse{}
-	_body, _err := client.UpdateNatGatewayNatTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -41417,7 +32326,7 @@ func (client *Client) UpdateNatGatewayNatType(request *UpdateNatGatewayNatTypeRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateNetworkAclEntriesResponse
-func (client *Client) UpdateNetworkAclEntriesWithOptions(request *UpdateNetworkAclEntriesRequest, runtime *dara.RuntimeOptions) (_result *UpdateNetworkAclEntriesResponse, _err error) {
+func (client *Client) UpdateNetworkAclEntriesWithContext(ctx context.Context, request *UpdateNetworkAclEntriesRequest, runtime *dara.RuntimeOptions) (_result *UpdateNetworkAclEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41490,39 +32399,11 @@ func (client *Client) UpdateNetworkAclEntriesWithOptions(request *UpdateNetworkA
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateNetworkAclEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the rules of a network access control list (ACL).
-//
-// Description:
-//
-//	  **UpdateNetworkAclEntries*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeNetworkAclAttributes](https://help.aliyun.com/document_detail/116542.html) operation to query the status of a network ACL:
-//
-//	    	- If the network ACL is in the **Modifying*	- state, the rules of the network ACL are being updated.
-//
-//	    	- If the network ACL is in the **Available*	- state, the rules of the network ACL are updated.
-//
-//		- You cannot repeatedly call the **UpdateNetworkAclEntries*	- operation to update the rules of a network ACL within the specified period of time.
-//
-// @param request - UpdateNetworkAclEntriesRequest
-//
-// @return UpdateNetworkAclEntriesResponse
-func (client *Client) UpdateNetworkAclEntries(request *UpdateNetworkAclEntriesRequest) (_result *UpdateNetworkAclEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateNetworkAclEntriesResponse{}
-	_body, _err := client.UpdateNetworkAclEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -41539,7 +32420,7 @@ func (client *Client) UpdateNetworkAclEntries(request *UpdateNetworkAclEntriesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePublicIpAddressPoolAttributeResponse
-func (client *Client) UpdatePublicIpAddressPoolAttributeWithOptions(request *UpdatePublicIpAddressPoolAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdatePublicIpAddressPoolAttributeResponse, _err error) {
+func (client *Client) UpdatePublicIpAddressPoolAttributeWithContext(ctx context.Context, request *UpdatePublicIpAddressPoolAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdatePublicIpAddressPoolAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41600,33 +32481,11 @@ func (client *Client) UpdatePublicIpAddressPoolAttributeWithOptions(request *Upd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePublicIpAddressPoolAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the attributes of an IP address pool.
-//
-// Description:
-//
-// You cannot repeatedly call the **UpdatePublicIpAddressPoolAttribute*	- operation to modify the attributes of an IP address pool within the specified period of time.
-//
-// @param request - UpdatePublicIpAddressPoolAttributeRequest
-//
-// @return UpdatePublicIpAddressPoolAttributeResponse
-func (client *Client) UpdatePublicIpAddressPoolAttribute(request *UpdatePublicIpAddressPoolAttributeRequest) (_result *UpdatePublicIpAddressPoolAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePublicIpAddressPoolAttributeResponse{}
-	_body, _err := client.UpdatePublicIpAddressPoolAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -41643,7 +32502,7 @@ func (client *Client) UpdatePublicIpAddressPoolAttribute(request *UpdatePublicIp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTrafficMirrorFilterAttributeResponse
-func (client *Client) UpdateTrafficMirrorFilterAttributeWithOptions(request *UpdateTrafficMirrorFilterAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTrafficMirrorFilterAttributeResponse, _err error) {
+func (client *Client) UpdateTrafficMirrorFilterAttributeWithContext(ctx context.Context, request *UpdateTrafficMirrorFilterAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTrafficMirrorFilterAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41704,33 +32563,11 @@ func (client *Client) UpdateTrafficMirrorFilterAttributeWithOptions(request *Upd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTrafficMirrorFilterAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of a filter for traffic mirror.
-//
-// Description:
-//
-// You cannot repeatedly call the **UpdateTrafficMirrorFilterAttribute*	- operation to modify the configuration of a filter for traffic mirror within the specified period of time.
-//
-// @param request - UpdateTrafficMirrorFilterAttributeRequest
-//
-// @return UpdateTrafficMirrorFilterAttributeResponse
-func (client *Client) UpdateTrafficMirrorFilterAttribute(request *UpdateTrafficMirrorFilterAttributeRequest) (_result *UpdateTrafficMirrorFilterAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateTrafficMirrorFilterAttributeResponse{}
-	_body, _err := client.UpdateTrafficMirrorFilterAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -41753,7 +32590,7 @@ func (client *Client) UpdateTrafficMirrorFilterAttribute(request *UpdateTrafficM
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTrafficMirrorFilterRuleAttributeResponse
-func (client *Client) UpdateTrafficMirrorFilterRuleAttributeWithOptions(request *UpdateTrafficMirrorFilterRuleAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTrafficMirrorFilterRuleAttributeResponse, _err error) {
+func (client *Client) UpdateTrafficMirrorFilterRuleAttributeWithContext(ctx context.Context, request *UpdateTrafficMirrorFilterRuleAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTrafficMirrorFilterRuleAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41834,39 +32671,11 @@ func (client *Client) UpdateTrafficMirrorFilterRuleAttributeWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTrafficMirrorFilterRuleAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of an inbound or outbound rule for traffic mirroring.
-//
-// Description:
-//
-//	  The **UpdateTrafficMirrorFilterRuleAttribute*	- operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorFilters](https://help.aliyun.com/document_detail/261353.html) operation to query the status of an inbound or outbound rule:
-//
-//	    	- If the rule is in the **Modifying*	- state, the rule is being modified.
-//
-//	    	- If the rule is in the **Created*	- state, the rule is modified.
-//
-//		- You cannot repeatedly call the **UpdateTrafficMirrorFilterRuleAttribute*	- operation to modify an inbound or outbound rule within the specified period of time.
-//
-// @param request - UpdateTrafficMirrorFilterRuleAttributeRequest
-//
-// @return UpdateTrafficMirrorFilterRuleAttributeResponse
-func (client *Client) UpdateTrafficMirrorFilterRuleAttribute(request *UpdateTrafficMirrorFilterRuleAttributeRequest) (_result *UpdateTrafficMirrorFilterRuleAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateTrafficMirrorFilterRuleAttributeResponse{}
-	_body, _err := client.UpdateTrafficMirrorFilterRuleAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -41891,7 +32700,7 @@ func (client *Client) UpdateTrafficMirrorFilterRuleAttribute(request *UpdateTraf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTrafficMirrorSessionAttributeResponse
-func (client *Client) UpdateTrafficMirrorSessionAttributeWithOptions(request *UpdateTrafficMirrorSessionAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTrafficMirrorSessionAttributeResponse, _err error) {
+func (client *Client) UpdateTrafficMirrorSessionAttributeWithContext(ctx context.Context, request *UpdateTrafficMirrorSessionAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateTrafficMirrorSessionAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41980,41 +32789,11 @@ func (client *Client) UpdateTrafficMirrorSessionAttributeWithOptions(request *Up
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTrafficMirrorSessionAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of a traffic mirror session.
-//
-// Description:
-//
-// ## Usage notes
-//
-//   - **UpdateTrafficMirrorSessionAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](https://help.aliyun.com/document_detail/261367.html) operation to query the status of the task.
-//
-//   - If the traffic mirror session is in the **Modifying*	- state, the configuration of the traffic mirror session is being modified.
-//
-//   - If the traffic mirror session is in the **Created*	- state, the configuration of the traffic mirror session is modified.
-//
-//   - You cannot repeatedly call the **UpdateTrafficMirrorSessionAttribute*	- operation within a specific period of time.
-//
-// @param request - UpdateTrafficMirrorSessionAttributeRequest
-//
-// @return UpdateTrafficMirrorSessionAttributeResponse
-func (client *Client) UpdateTrafficMirrorSessionAttribute(request *UpdateTrafficMirrorSessionAttributeRequest) (_result *UpdateTrafficMirrorSessionAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateTrafficMirrorSessionAttributeResponse{}
-	_body, _err := client.UpdateTrafficMirrorSessionAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -42027,7 +32806,7 @@ func (client *Client) UpdateTrafficMirrorSessionAttribute(request *UpdateTraffic
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateVirtualBorderBandwidthResponse
-func (client *Client) UpdateVirtualBorderBandwidthWithOptions(request *UpdateVirtualBorderBandwidthRequest, runtime *dara.RuntimeOptions) (_result *UpdateVirtualBorderBandwidthResponse, _err error) {
+func (client *Client) UpdateVirtualBorderBandwidthWithContext(ctx context.Context, request *UpdateVirtualBorderBandwidthRequest, runtime *dara.RuntimeOptions) (_result *UpdateVirtualBorderBandwidthResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -42080,29 +32859,11 @@ func (client *Client) UpdateVirtualBorderBandwidthWithOptions(request *UpdateVir
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateVirtualBorderBandwidthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the maximum bandwidth value of outbound data transfer for a virtual border router (VBR).
-//
-// @param request - UpdateVirtualBorderBandwidthRequest
-//
-// @return UpdateVirtualBorderBandwidthResponse
-func (client *Client) UpdateVirtualBorderBandwidth(request *UpdateVirtualBorderBandwidthRequest) (_result *UpdateVirtualBorderBandwidthResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateVirtualBorderBandwidthResponse{}
-	_body, _err := client.UpdateVirtualBorderBandwidthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -42115,7 +32876,7 @@ func (client *Client) UpdateVirtualBorderBandwidth(request *UpdateVirtualBorderB
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateVirtualPhysicalConnectionResponse
-func (client *Client) UpdateVirtualPhysicalConnectionWithOptions(request *UpdateVirtualPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *UpdateVirtualPhysicalConnectionResponse, _err error) {
+func (client *Client) UpdateVirtualPhysicalConnectionWithContext(ctx context.Context, request *UpdateVirtualPhysicalConnectionRequest, runtime *dara.RuntimeOptions) (_result *UpdateVirtualPhysicalConnectionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -42160,29 +32921,11 @@ func (client *Client) UpdateVirtualPhysicalConnectionWithOptions(request *Update
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateVirtualPhysicalConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the virtual local area network (VLAN) ID of a hosted connection over Express Connect circuit.
-//
-// @param request - UpdateVirtualPhysicalConnectionRequest
-//
-// @return UpdateVirtualPhysicalConnectionResponse
-func (client *Client) UpdateVirtualPhysicalConnection(request *UpdateVirtualPhysicalConnectionRequest) (_result *UpdateVirtualPhysicalConnectionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateVirtualPhysicalConnectionResponse{}
-	_body, _err := client.UpdateVirtualPhysicalConnectionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -42205,7 +32948,7 @@ func (client *Client) UpdateVirtualPhysicalConnection(request *UpdateVirtualPhys
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateVpcGatewayEndpointAttributeResponse
-func (client *Client) UpdateVpcGatewayEndpointAttributeWithOptions(request *UpdateVpcGatewayEndpointAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpcGatewayEndpointAttributeResponse, _err error) {
+func (client *Client) UpdateVpcGatewayEndpointAttributeWithContext(ctx context.Context, request *UpdateVpcGatewayEndpointAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateVpcGatewayEndpointAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -42270,39 +33013,11 @@ func (client *Client) UpdateVpcGatewayEndpointAttributeWithOptions(request *Upda
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateVpcGatewayEndpointAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of a gateway endpoint.
-//
-// Description:
-//
-//	  **UpdateVpcGatewayEndpointAttribute*	- is an asynchronous operation. After a request is sent, the system returns a **request ID*	- and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](https://help.aliyun.com/document_detail/311017.html) operation to query the status of the task.
-//
-//	    	- If the gateway endpoint is in the **Updating*	- state, it is being modified.
-//
-//	    	- If the gateway endpoint is in the **Created*	- state, it is modified.
-//
-//		- You cannot call the **UpdateVpcGatewayEndpointAttribute*	- operation within a specific period of time.
-//
-// @param request - UpdateVpcGatewayEndpointAttributeRequest
-//
-// @return UpdateVpcGatewayEndpointAttributeResponse
-func (client *Client) UpdateVpcGatewayEndpointAttribute(request *UpdateVpcGatewayEndpointAttributeRequest) (_result *UpdateVpcGatewayEndpointAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateVpcGatewayEndpointAttributeResponse{}
-	_body, _err := client.UpdateVpcGatewayEndpointAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -42319,7 +33034,7 @@ func (client *Client) UpdateVpcGatewayEndpointAttribute(request *UpdateVpcGatewa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse
-func (client *Client) VpcDescribeVpcNatGatewayNetworkInterfaceQuotaWithOptions(request *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest, runtime *dara.RuntimeOptions) (_result *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse, _err error) {
+func (client *Client) VpcDescribeVpcNatGatewayNetworkInterfaceQuotaWithContext(ctx context.Context, request *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest, runtime *dara.RuntimeOptions) (_result *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -42372,33 +33087,11 @@ func (client *Client) VpcDescribeVpcNatGatewayNetworkInterfaceQuotaWithOptions(r
 		BodyType:    dara.String("json"),
 	}
 	_result = &VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看eni quota
-//
-// Description:
-//
-// Before you call this operation, make sure that a VPC NAT gateway is created. For more information, see [CreateNatGateway](https://help.aliyun.com/document_detail/120219.html).
-//
-// @param request - VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest
-//
-// @return VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse
-func (client *Client) VpcDescribeVpcNatGatewayNetworkInterfaceQuota(request *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest) (_result *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse{}
-	_body, _err := client.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -42411,7 +33104,7 @@ func (client *Client) VpcDescribeVpcNatGatewayNetworkInterfaceQuota(request *Vpc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return WithdrawVpcPublishedRouteEntriesResponse
-func (client *Client) WithdrawVpcPublishedRouteEntriesWithOptions(request *WithdrawVpcPublishedRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *WithdrawVpcPublishedRouteEntriesResponse, _err error) {
+func (client *Client) WithdrawVpcPublishedRouteEntriesWithContext(ctx context.Context, request *WithdrawVpcPublishedRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *WithdrawVpcPublishedRouteEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -42472,28 +33165,10 @@ func (client *Client) WithdrawVpcPublishedRouteEntriesWithOptions(request *Withd
 		BodyType:    dara.String("json"),
 	}
 	_result = &WithdrawVpcPublishedRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Withdraw advertised Virtual Private Cloud (VPC) routes.
-//
-// @param request - WithdrawVpcPublishedRouteEntriesRequest
-//
-// @return WithdrawVpcPublishedRouteEntriesResponse
-func (client *Client) WithdrawVpcPublishedRouteEntries(request *WithdrawVpcPublishedRouteEntriesRequest) (_result *WithdrawVpcPublishedRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &WithdrawVpcPublishedRouteEntriesResponse{}
-	_body, _err := client.WithdrawVpcPublishedRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
