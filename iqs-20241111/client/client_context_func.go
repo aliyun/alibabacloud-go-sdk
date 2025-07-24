@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("iqs"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -66,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AiSearchResponse
-func (client *Client) AiSearchWithOptions(request *AiSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AiSearchResponse, _err error) {
+func (client *Client) AiSearchWithContext(ctx context.Context, request *AiSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AiSearchResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -108,30 +60,11 @@ func (client *Client) AiSearchWithOptions(request *AiSearchRequest, headers map[
 		BodyType:    dara.String("json"),
 	}
 	_result = &AiSearchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # AI搜索流式接口
-//
-// @param request - AiSearchRequest
-//
-// @return AiSearchResponse
-func (client *Client) AiSearch(request *AiSearchRequest) (_result *AiSearchResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AiSearchResponse{}
-	_body, _err := client.AiSearchWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -146,7 +79,7 @@ func (client *Client) AiSearch(request *AiSearchRequest) (_result *AiSearchRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GenericAdvancedSearchResponse
-func (client *Client) GenericAdvancedSearchWithOptions(request *GenericAdvancedSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenericAdvancedSearchResponse, _err error) {
+func (client *Client) GenericAdvancedSearchWithContext(ctx context.Context, request *GenericAdvancedSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenericAdvancedSearchResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -184,30 +117,11 @@ func (client *Client) GenericAdvancedSearchWithOptions(request *GenericAdvancedS
 		BodyType:    dara.String("json"),
 	}
 	_result = &GenericAdvancedSearchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 增强版通用搜索
-//
-// @param request - GenericAdvancedSearchRequest
-//
-// @return GenericAdvancedSearchResponse
-func (client *Client) GenericAdvancedSearch(request *GenericAdvancedSearchRequest) (_result *GenericAdvancedSearchResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GenericAdvancedSearchResponse{}
-	_body, _err := client.GenericAdvancedSearchWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -222,7 +136,7 @@ func (client *Client) GenericAdvancedSearch(request *GenericAdvancedSearchReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GenericSearchResponse
-func (client *Client) GenericSearchWithOptions(request *GenericSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenericSearchResponse, _err error) {
+func (client *Client) GenericSearchWithContext(ctx context.Context, request *GenericSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenericSearchResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -280,30 +194,11 @@ func (client *Client) GenericSearchWithOptions(request *GenericSearchRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &GenericSearchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 通用搜索
-//
-// @param request - GenericSearchRequest
-//
-// @return GenericSearchResponse
-func (client *Client) GenericSearch(request *GenericSearchRequest) (_result *GenericSearchResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GenericSearchResponse{}
-	_body, _err := client.GenericSearchWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -318,7 +213,7 @@ func (client *Client) GenericSearch(request *GenericSearchRequest) (_result *Gen
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetIqsUsageResponse
-func (client *Client) GetIqsUsageWithOptions(request *GetIqsUsageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIqsUsageResponse, _err error) {
+func (client *Client) GetIqsUsageWithContext(ctx context.Context, request *GetIqsUsageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIqsUsageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -348,30 +243,11 @@ func (client *Client) GetIqsUsageWithOptions(request *GetIqsUsageRequest, header
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetIqsUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 信息查询服务接口日维度使用量查询
-//
-// @param request - GetIqsUsageRequest
-//
-// @return GetIqsUsageResponse
-func (client *Client) GetIqsUsage(request *GetIqsUsageRequest) (_result *GetIqsUsageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetIqsUsageResponse{}
-	_body, _err := client.GetIqsUsageWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -386,7 +262,7 @@ func (client *Client) GetIqsUsage(request *GetIqsUsageRequest) (_result *GetIqsU
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GlobalSearchResponse
-func (client *Client) GlobalSearchWithOptions(request *GlobalSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalSearchResponse, _err error) {
+func (client *Client) GlobalSearchWithContext(ctx context.Context, request *GlobalSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GlobalSearchResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -424,30 +300,11 @@ func (client *Client) GlobalSearchWithOptions(request *GlobalSearchRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &GlobalSearchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 通晓搜索-出海版(全球信息搜索)
-//
-// @param request - GlobalSearchRequest
-//
-// @return GlobalSearchResponse
-func (client *Client) GlobalSearch(request *GlobalSearchRequest) (_result *GlobalSearchResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GlobalSearchResponse{}
-	_body, _err := client.GlobalSearchWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -462,7 +319,7 @@ func (client *Client) GlobalSearch(request *GlobalSearchRequest) (_result *Globa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnifiedSearchResponse
-func (client *Client) UnifiedSearchWithOptions(request *UnifiedSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UnifiedSearchResponse, _err error) {
+func (client *Client) UnifiedSearchWithContext(ctx context.Context, request *UnifiedSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UnifiedSearchResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -483,29 +340,10 @@ func (client *Client) UnifiedSearchWithOptions(request *UnifiedSearchRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnifiedSearchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 通晓统一搜索API
-//
-// @param request - UnifiedSearchRequest
-//
-// @return UnifiedSearchResponse
-func (client *Client) UnifiedSearch(request *UnifiedSearchRequest) (_result *UnifiedSearchResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UnifiedSearchResponse{}
-	_body, _err := client.UnifiedSearchWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
