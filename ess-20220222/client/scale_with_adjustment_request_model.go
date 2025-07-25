@@ -304,7 +304,8 @@ type ScaleWithAdjustmentRequestOverrides struct {
 	// example:
 	//
 	// 4
-	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory   *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	UserData *string  `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ScaleWithAdjustmentRequestOverrides) String() string {
@@ -327,6 +328,10 @@ func (s *ScaleWithAdjustmentRequestOverrides) GetMemory() *float32 {
 	return s.Memory
 }
 
+func (s *ScaleWithAdjustmentRequestOverrides) GetUserData() *string {
+	return s.UserData
+}
+
 func (s *ScaleWithAdjustmentRequestOverrides) SetContainerOverrides(v []*ScaleWithAdjustmentRequestOverridesContainerOverrides) *ScaleWithAdjustmentRequestOverrides {
 	s.ContainerOverrides = v
 	return s
@@ -339,6 +344,11 @@ func (s *ScaleWithAdjustmentRequestOverrides) SetCpu(v float32) *ScaleWithAdjust
 
 func (s *ScaleWithAdjustmentRequestOverrides) SetMemory(v float32) *ScaleWithAdjustmentRequestOverrides {
 	s.Memory = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequestOverrides) SetUserData(v string) *ScaleWithAdjustmentRequestOverrides {
+	s.UserData = &v
 	return s
 }
 
