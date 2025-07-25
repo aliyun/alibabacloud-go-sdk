@@ -2,94 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.SignatureAlgorithm = dara.String("v2")
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-2-pop":          dara.String("arms.aliyuncs.com"),
-		"cn-beijing-finance-1":        dara.String("arms.aliyuncs.com"),
-		"cn-beijing-finance-pop":      dara.String("arms.aliyuncs.com"),
-		"cn-beijing-gov-1":            dara.String("arms.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         dara.String("arms.aliyuncs.com"),
-		"cn-edge-1":                   dara.String("arms.aliyuncs.com"),
-		"cn-fujian":                   dara.String("arms.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         dara.String("arms.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          dara.String("arms.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": dara.String("arms.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": dara.String("arms.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": dara.String("arms.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": dara.String("arms.aliyuncs.com"),
-		"cn-hangzhou-test-306":        dara.String("arms.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     dara.String("arms.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       dara.String("arms.aliyuncs.com"),
-		"cn-qingdao-nebula":           dara.String("arms.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        dara.String("arms.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         dara.String("arms.aliyuncs.com"),
-		"cn-shanghai-inner":           dara.String("arms.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": dara.String("arms.aliyuncs.com"),
-		"cn-shenzhen-inner":           dara.String("arms.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         dara.String("arms.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        dara.String("arms.aliyuncs.com"),
-		"cn-wuhan":                    dara.String("arms.aliyuncs.com"),
-		"cn-yushanfang":               dara.String("arms.aliyuncs.com"),
-		"cn-zhangbei":                 dara.String("arms.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        dara.String("arms.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     dara.String("arms.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       dara.String("arms.aliyuncs.com"),
-		"eu-west-1-oxs":               dara.String("arms.aliyuncs.com"),
-		"me-east-1":                   dara.String("arms.aliyuncs.com"),
-		"rus-west-1-pop":              dara.String("arms.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("arms"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Deprecated: OpenAPI AddAliClusterIdsToPrometheusGlobalView is deprecated
 //
@@ -102,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddAliClusterIdsToPrometheusGlobalViewResponse
-func (client *Client) AddAliClusterIdsToPrometheusGlobalViewWithOptions(request *AddAliClusterIdsToPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *AddAliClusterIdsToPrometheusGlobalViewResponse, _err error) {
+func (client *Client) AddAliClusterIdsToPrometheusGlobalViewWithContext(ctx context.Context, request *AddAliClusterIdsToPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *AddAliClusterIdsToPrometheusGlobalViewResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -139,32 +55,11 @@ func (client *Client) AddAliClusterIdsToPrometheusGlobalViewWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddAliClusterIdsToPrometheusGlobalViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AddAliClusterIdsToPrometheusGlobalView is deprecated
-//
-// Summary:
-//
-// Adds a global aggregation instance as a data source in Managed Service for Prometheus.
-//
-// @param request - AddAliClusterIdsToPrometheusGlobalViewRequest
-//
-// @return AddAliClusterIdsToPrometheusGlobalViewResponse
-// Deprecated
-func (client *Client) AddAliClusterIdsToPrometheusGlobalView(request *AddAliClusterIdsToPrometheusGlobalViewRequest) (_result *AddAliClusterIdsToPrometheusGlobalViewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddAliClusterIdsToPrometheusGlobalViewResponse{}
-	_body, _err := client.AddAliClusterIdsToPrometheusGlobalViewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -179,7 +74,7 @@ func (client *Client) AddAliClusterIdsToPrometheusGlobalView(request *AddAliClus
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddGrafanaResponse
-func (client *Client) AddGrafanaWithOptions(request *AddGrafanaRequest, runtime *dara.RuntimeOptions) (_result *AddGrafanaResponse, _err error) {
+func (client *Client) AddGrafanaWithContext(ctx context.Context, request *AddGrafanaRequest, runtime *dara.RuntimeOptions) (_result *AddGrafanaResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -212,32 +107,11 @@ func (client *Client) AddGrafanaWithOptions(request *AddGrafanaRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddGrafanaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AddGrafana is deprecated
-//
-// Summary:
-//
-// Integrates the dashboard of Prometheus Service.
-//
-// @param request - AddGrafanaRequest
-//
-// @return AddGrafanaResponse
-// Deprecated
-func (client *Client) AddGrafana(request *AddGrafanaRequest) (_result *AddGrafanaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddGrafanaResponse{}
-	_body, _err := client.AddGrafanaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -252,7 +126,7 @@ func (client *Client) AddGrafana(request *AddGrafanaRequest) (_result *AddGrafan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddIntegrationResponse
-func (client *Client) AddIntegrationWithOptions(request *AddIntegrationRequest, runtime *dara.RuntimeOptions) (_result *AddIntegrationResponse, _err error) {
+func (client *Client) AddIntegrationWithContext(ctx context.Context, request *AddIntegrationRequest, runtime *dara.RuntimeOptions) (_result *AddIntegrationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -285,32 +159,11 @@ func (client *Client) AddIntegrationWithOptions(request *AddIntegrationRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddIntegrationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AddIntegration is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
-//
-// Summary:
-//
-// Integrates the dashboard and collection rules of Prometheus Service.
-//
-// @param request - AddIntegrationRequest
-//
-// @return AddIntegrationResponse
-// Deprecated
-func (client *Client) AddIntegration(request *AddIntegrationRequest) (_result *AddIntegrationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddIntegrationResponse{}
-	_body, _err := client.AddIntegrationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -325,7 +178,7 @@ func (client *Client) AddIntegration(request *AddIntegrationRequest) (_result *A
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddPrometheusGlobalViewResponse
-func (client *Client) AddPrometheusGlobalViewWithOptions(request *AddPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *AddPrometheusGlobalViewResponse, _err error) {
+func (client *Client) AddPrometheusGlobalViewWithContext(ctx context.Context, request *AddPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *AddPrometheusGlobalViewResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -366,32 +219,11 @@ func (client *Client) AddPrometheusGlobalViewWithOptions(request *AddPrometheusG
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddPrometheusGlobalViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AddPrometheusGlobalView is deprecated
-//
-// Summary:
-//
-// Adds a global aggregation instance in Prometheus Service.
-//
-// @param request - AddPrometheusGlobalViewRequest
-//
-// @return AddPrometheusGlobalViewResponse
-// Deprecated
-func (client *Client) AddPrometheusGlobalView(request *AddPrometheusGlobalViewRequest) (_result *AddPrometheusGlobalViewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddPrometheusGlobalViewResponse{}
-	_body, _err := client.AddPrometheusGlobalViewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -406,7 +238,7 @@ func (client *Client) AddPrometheusGlobalView(request *AddPrometheusGlobalViewRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddPrometheusGlobalViewByAliClusterIdsResponse
-func (client *Client) AddPrometheusGlobalViewByAliClusterIdsWithOptions(request *AddPrometheusGlobalViewByAliClusterIdsRequest, runtime *dara.RuntimeOptions) (_result *AddPrometheusGlobalViewByAliClusterIdsResponse, _err error) {
+func (client *Client) AddPrometheusGlobalViewByAliClusterIdsWithContext(ctx context.Context, request *AddPrometheusGlobalViewByAliClusterIdsRequest, runtime *dara.RuntimeOptions) (_result *AddPrometheusGlobalViewByAliClusterIdsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -443,32 +275,11 @@ func (client *Client) AddPrometheusGlobalViewByAliClusterIdsWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddPrometheusGlobalViewByAliClusterIdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AddPrometheusGlobalViewByAliClusterIds is deprecated
-//
-// Summary:
-//
-// Adds a global aggregation instance in Managed Service for Prometheus.
-//
-// @param request - AddPrometheusGlobalViewByAliClusterIdsRequest
-//
-// @return AddPrometheusGlobalViewByAliClusterIdsResponse
-// Deprecated
-func (client *Client) AddPrometheusGlobalViewByAliClusterIds(request *AddPrometheusGlobalViewByAliClusterIdsRequest) (_result *AddPrometheusGlobalViewByAliClusterIdsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddPrometheusGlobalViewByAliClusterIdsResponse{}
-	_body, _err := client.AddPrometheusGlobalViewByAliClusterIdsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -483,7 +294,7 @@ func (client *Client) AddPrometheusGlobalViewByAliClusterIds(request *AddPrometh
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddPrometheusInstanceResponse
-func (client *Client) AddPrometheusInstanceWithOptions(request *AddPrometheusInstanceRequest, runtime *dara.RuntimeOptions) (_result *AddPrometheusInstanceResponse, _err error) {
+func (client *Client) AddPrometheusInstanceWithContext(ctx context.Context, request *AddPrometheusInstanceRequest, runtime *dara.RuntimeOptions) (_result *AddPrometheusInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -516,32 +327,11 @@ func (client *Client) AddPrometheusInstanceWithOptions(request *AddPrometheusIns
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddPrometheusInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AddPrometheusInstance is deprecated, please use ARMS::2019-08-08::CreatePrometheusInstance instead.
-//
-// Summary:
-//
-// Creates a Prometheus instance for Remote Write.
-//
-// @param request - AddPrometheusInstanceRequest
-//
-// @return AddPrometheusInstanceResponse
-// Deprecated
-func (client *Client) AddPrometheusInstance(request *AddPrometheusInstanceRequest) (_result *AddPrometheusInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddPrometheusInstanceResponse{}
-	_body, _err := client.AddPrometheusInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -556,7 +346,7 @@ func (client *Client) AddPrometheusInstance(request *AddPrometheusInstanceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddPrometheusIntegrationResponse
-func (client *Client) AddPrometheusIntegrationWithOptions(request *AddPrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *AddPrometheusIntegrationResponse, _err error) {
+func (client *Client) AddPrometheusIntegrationWithContext(ctx context.Context, request *AddPrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *AddPrometheusIntegrationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -593,32 +383,11 @@ func (client *Client) AddPrometheusIntegrationWithOptions(request *AddPrometheus
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddPrometheusIntegrationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AddPrometheusIntegration is deprecated
-//
-// Summary:
-//
-// Adds an exporter to a Prometheus instance for Container Service or a Prometheus instance for ECS.
-//
-// @param request - AddPrometheusIntegrationRequest
-//
-// @return AddPrometheusIntegrationResponse
-// Deprecated
-func (client *Client) AddPrometheusIntegration(request *AddPrometheusIntegrationRequest) (_result *AddPrometheusIntegrationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddPrometheusIntegrationResponse{}
-	_body, _err := client.AddPrometheusIntegrationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -633,7 +402,7 @@ func (client *Client) AddPrometheusIntegration(request *AddPrometheusIntegration
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddRecordingRuleResponse
-func (client *Client) AddRecordingRuleWithOptions(request *AddRecordingRuleRequest, runtime *dara.RuntimeOptions) (_result *AddRecordingRuleResponse, _err error) {
+func (client *Client) AddRecordingRuleWithContext(ctx context.Context, request *AddRecordingRuleRequest, runtime *dara.RuntimeOptions) (_result *AddRecordingRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -666,32 +435,11 @@ func (client *Client) AddRecordingRuleWithOptions(request *AddRecordingRuleReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddRecordingRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AddRecordingRule is deprecated
-//
-// Summary:
-//
-// Creates or updates a recording rule of Managed Service for Prometheus.
-//
-// @param request - AddRecordingRuleRequest
-//
-// @return AddRecordingRuleResponse
-// Deprecated
-func (client *Client) AddRecordingRule(request *AddRecordingRuleRequest) (_result *AddRecordingRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddRecordingRuleResponse{}
-	_body, _err := client.AddRecordingRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -706,7 +454,7 @@ func (client *Client) AddRecordingRule(request *AddRecordingRuleRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddTagToFlinkClusterResponse
-func (client *Client) AddTagToFlinkClusterWithOptions(request *AddTagToFlinkClusterRequest, runtime *dara.RuntimeOptions) (_result *AddTagToFlinkClusterResponse, _err error) {
+func (client *Client) AddTagToFlinkClusterWithContext(ctx context.Context, request *AddTagToFlinkClusterRequest, runtime *dara.RuntimeOptions) (_result *AddTagToFlinkClusterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -751,32 +499,11 @@ func (client *Client) AddTagToFlinkClusterWithOptions(request *AddTagToFlinkClus
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddTagToFlinkClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AddTagToFlinkCluster is deprecated
-//
-// Summary:
-//
-// Attaches the workspace ID and workspace name tags to the Prometheus instance corresponding to a Flink workspace.
-//
-// @param request - AddTagToFlinkClusterRequest
-//
-// @return AddTagToFlinkClusterResponse
-// Deprecated
-func (client *Client) AddTagToFlinkCluster(request *AddTagToFlinkClusterRequest) (_result *AddTagToFlinkClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddTagToFlinkClusterResponse{}
-	_body, _err := client.AddTagToFlinkClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -791,7 +518,7 @@ func (client *Client) AddTagToFlinkCluster(request *AddTagToFlinkClusterRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AppendInstancesToPrometheusGlobalViewResponse
-func (client *Client) AppendInstancesToPrometheusGlobalViewWithOptions(request *AppendInstancesToPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *AppendInstancesToPrometheusGlobalViewResponse, _err error) {
+func (client *Client) AppendInstancesToPrometheusGlobalViewWithContext(ctx context.Context, request *AppendInstancesToPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *AppendInstancesToPrometheusGlobalViewResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -828,32 +555,11 @@ func (client *Client) AppendInstancesToPrometheusGlobalViewWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &AppendInstancesToPrometheusGlobalViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI AppendInstancesToPrometheusGlobalView is deprecated
-//
-// Summary:
-//
-// Adds a data source to a global aggregation instance.
-//
-// @param request - AppendInstancesToPrometheusGlobalViewRequest
-//
-// @return AppendInstancesToPrometheusGlobalViewResponse
-// Deprecated
-func (client *Client) AppendInstancesToPrometheusGlobalView(request *AppendInstancesToPrometheusGlobalViewRequest) (_result *AppendInstancesToPrometheusGlobalViewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AppendInstancesToPrometheusGlobalViewResponse{}
-	_body, _err := client.AppendInstancesToPrometheusGlobalViewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -862,7 +568,7 @@ func (client *Client) AppendInstancesToPrometheusGlobalView(request *AppendInsta
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ApplyScenarioResponse
-func (client *Client) ApplyScenarioWithOptions(tmpReq *ApplyScenarioRequest, runtime *dara.RuntimeOptions) (_result *ApplyScenarioResponse, _err error) {
+func (client *Client) ApplyScenarioWithContext(ctx context.Context, tmpReq *ApplyScenarioRequest, runtime *dara.RuntimeOptions) (_result *ApplyScenarioResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -933,25 +639,11 @@ func (client *Client) ApplyScenarioWithOptions(tmpReq *ApplyScenarioRequest, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &ApplyScenarioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ApplyScenarioRequest
-//
-// @return ApplyScenarioResponse
-func (client *Client) ApplyScenario(request *ApplyScenarioRequest) (_result *ApplyScenarioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ApplyScenarioResponse{}
-	_body, _err := client.ApplyScenarioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -966,7 +658,7 @@ func (client *Client) ApplyScenario(request *ApplyScenarioRequest) (_result *App
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindPrometheusGrafanaInstanceResponse
-func (client *Client) BindPrometheusGrafanaInstanceWithOptions(request *BindPrometheusGrafanaInstanceRequest, runtime *dara.RuntimeOptions) (_result *BindPrometheusGrafanaInstanceResponse, _err error) {
+func (client *Client) BindPrometheusGrafanaInstanceWithContext(ctx context.Context, request *BindPrometheusGrafanaInstanceRequest, runtime *dara.RuntimeOptions) (_result *BindPrometheusGrafanaInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1003,32 +695,11 @@ func (client *Client) BindPrometheusGrafanaInstanceWithOptions(request *BindProm
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindPrometheusGrafanaInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI BindPrometheusGrafanaInstance is deprecated
-//
-// Summary:
-//
-// Binds a Grafana workspace to a Prometheus instance.
-//
-// @param request - BindPrometheusGrafanaInstanceRequest
-//
-// @return BindPrometheusGrafanaInstanceResponse
-// Deprecated
-func (client *Client) BindPrometheusGrafanaInstance(request *BindPrometheusGrafanaInstanceRequest) (_result *BindPrometheusGrafanaInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindPrometheusGrafanaInstanceResponse{}
-	_body, _err := client.BindPrometheusGrafanaInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1041,7 +712,7 @@ func (client *Client) BindPrometheusGrafanaInstance(request *BindPrometheusGrafa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BlockAlarmNotificationResponse
-func (client *Client) BlockAlarmNotificationWithOptions(request *BlockAlarmNotificationRequest, runtime *dara.RuntimeOptions) (_result *BlockAlarmNotificationResponse, _err error) {
+func (client *Client) BlockAlarmNotificationWithContext(ctx context.Context, request *BlockAlarmNotificationRequest, runtime *dara.RuntimeOptions) (_result *BlockAlarmNotificationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1078,29 +749,11 @@ func (client *Client) BlockAlarmNotificationWithOptions(request *BlockAlarmNotif
 		BodyType:    dara.String("json"),
 	}
 	_result = &BlockAlarmNotificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Blocks alert notifications in a time period.
-//
-// @param request - BlockAlarmNotificationRequest
-//
-// @return BlockAlarmNotificationResponse
-func (client *Client) BlockAlarmNotification(request *BlockAlarmNotificationRequest) (_result *BlockAlarmNotificationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BlockAlarmNotificationResponse{}
-	_body, _err := client.BlockAlarmNotificationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1113,7 +766,7 @@ func (client *Client) BlockAlarmNotification(request *BlockAlarmNotificationRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeAlarmSeverityResponse
-func (client *Client) ChangeAlarmSeverityWithOptions(request *ChangeAlarmSeverityRequest, runtime *dara.RuntimeOptions) (_result *ChangeAlarmSeverityResponse, _err error) {
+func (client *Client) ChangeAlarmSeverityWithContext(ctx context.Context, request *ChangeAlarmSeverityRequest, runtime *dara.RuntimeOptions) (_result *ChangeAlarmSeverityResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1150,29 +803,11 @@ func (client *Client) ChangeAlarmSeverityWithOptions(request *ChangeAlarmSeverit
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeAlarmSeverityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the severity level of an alert.
-//
-// @param request - ChangeAlarmSeverityRequest
-//
-// @return ChangeAlarmSeverityResponse
-func (client *Client) ChangeAlarmSeverity(request *ChangeAlarmSeverityRequest) (_result *ChangeAlarmSeverityResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeAlarmSeverityResponse{}
-	_body, _err := client.ChangeAlarmSeverityWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1185,7 +820,7 @@ func (client *Client) ChangeAlarmSeverity(request *ChangeAlarmSeverityRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1222,29 +857,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Moves a resource to a specific resource group.
-//
-// @param request - ChangeResourceGroupRequest
-//
-// @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1261,7 +878,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckCommercialStatusResponse
-func (client *Client) CheckCommercialStatusWithOptions(request *CheckCommercialStatusRequest, runtime *dara.RuntimeOptions) (_result *CheckCommercialStatusResponse, _err error) {
+func (client *Client) CheckCommercialStatusWithContext(ctx context.Context, request *CheckCommercialStatusRequest, runtime *dara.RuntimeOptions) (_result *CheckCommercialStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1282,33 +899,11 @@ func (client *Client) CheckCommercialStatusWithOptions(request *CheckCommercialS
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckCommercialStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks whether Application Real-Time Monitoring Service (ARMS) is available for commercial use in a region.
-//
-// Description:
-//
-// You can call this operation to check whether ARMS is available for commercial use in a region.
-//
-// @param request - CheckCommercialStatusRequest
-//
-// @return CheckCommercialStatusResponse
-func (client *Client) CheckCommercialStatus(request *CheckCommercialStatusRequest) (_result *CheckCommercialStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckCommercialStatusResponse{}
-	_body, _err := client.CheckCommercialStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1321,7 +916,7 @@ func (client *Client) CheckCommercialStatus(request *CheckCommercialStatusReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckServiceStatusResponse
-func (client *Client) CheckServiceStatusWithOptions(request *CheckServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *CheckServiceStatusResponse, _err error) {
+func (client *Client) CheckServiceStatusWithContext(ctx context.Context, request *CheckServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *CheckServiceStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1350,29 +945,11 @@ func (client *Client) CheckServiceStatusWithOptions(request *CheckServiceStatusR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckServiceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks the status of a service in the current cluster, such as whether the service is activated and whether the payment is overdue.
-//
-// @param request - CheckServiceStatusRequest
-//
-// @return CheckServiceStatusResponse
-func (client *Client) CheckServiceStatus(request *CheckServiceStatusRequest) (_result *CheckServiceStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckServiceStatusResponse{}
-	_body, _err := client.CheckServiceStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1385,7 +962,7 @@ func (client *Client) CheckServiceStatus(request *CheckServiceStatusRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ClaimAlarmResponse
-func (client *Client) ClaimAlarmWithOptions(request *ClaimAlarmRequest, runtime *dara.RuntimeOptions) (_result *ClaimAlarmResponse, _err error) {
+func (client *Client) ClaimAlarmWithContext(ctx context.Context, request *ClaimAlarmRequest, runtime *dara.RuntimeOptions) (_result *ClaimAlarmResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1418,29 +995,11 @@ func (client *Client) ClaimAlarmWithOptions(request *ClaimAlarmRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ClaimAlarmResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Claims an alert. This operation can be used together with escalation policies. When multiple handlers are involved in alert management, each handler can call this operation to claim alerts. After an alert is claimed, the alert enters the Being Processed state.
-//
-// @param request - ClaimAlarmRequest
-//
-// @return ClaimAlarmResponse
-func (client *Client) ClaimAlarm(request *ClaimAlarmRequest) (_result *ClaimAlarmResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ClaimAlarmResponse{}
-	_body, _err := client.ClaimAlarmWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1453,7 +1012,7 @@ func (client *Client) ClaimAlarm(request *ClaimAlarmRequest) (_result *ClaimAlar
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CloseAlarmResponse
-func (client *Client) CloseAlarmWithOptions(request *CloseAlarmRequest, runtime *dara.RuntimeOptions) (_result *CloseAlarmResponse, _err error) {
+func (client *Client) CloseAlarmWithContext(ctx context.Context, request *CloseAlarmRequest, runtime *dara.RuntimeOptions) (_result *CloseAlarmResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1490,29 +1049,11 @@ func (client *Client) CloseAlarmWithOptions(request *CloseAlarmRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CloseAlarmResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables an alert. Make sure that the alert is resolved before you disable the alert. If an alert is not resolved, new alerts can be triggered even after the alert is disabled.
-//
-// @param request - CloseAlarmRequest
-//
-// @return CloseAlarmResponse
-func (client *Client) CloseAlarm(request *CloseAlarmRequest) (_result *CloseAlarmResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CloseAlarmResponse{}
-	_body, _err := client.CloseAlarmWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1529,7 +1070,7 @@ func (client *Client) CloseAlarm(request *CloseAlarmRequest) (_result *CloseAlar
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigAppResponse
-func (client *Client) ConfigAppWithOptions(request *ConfigAppRequest, runtime *dara.RuntimeOptions) (_result *ConfigAppResponse, _err error) {
+func (client *Client) ConfigAppWithContext(ctx context.Context, request *ConfigAppRequest, runtime *dara.RuntimeOptions) (_result *ConfigAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1566,33 +1107,11 @@ func (client *Client) ConfigAppWithOptions(request *ConfigAppRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConfigAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Turns on or off the main switch of an ARMS agent, or queries the status of the main switch.
-//
-// Description:
-//
-// ***
-//
-// @param request - ConfigAppRequest
-//
-// @return ConfigAppResponse
-func (client *Client) ConfigApp(request *ConfigAppRequest) (_result *ConfigAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConfigAppResponse{}
-	_body, _err := client.ConfigAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1609,7 +1128,7 @@ func (client *Client) ConfigApp(request *ConfigAppRequest) (_result *ConfigAppRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAlertContactResponse
-func (client *Client) CreateAlertContactWithOptions(request *CreateAlertContactRequest, runtime *dara.RuntimeOptions) (_result *CreateAlertContactResponse, _err error) {
+func (client *Client) CreateAlertContactWithContext(ctx context.Context, request *CreateAlertContactRequest, runtime *dara.RuntimeOptions) (_result *CreateAlertContactResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1658,33 +1177,11 @@ func (client *Client) CreateAlertContactWithOptions(request *CreateAlertContactR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAlertContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an alert contact.
-//
-// Description:
-//
-// This operation is no longer maintained. To create or modify an alert contact, call the CreateOrUpdateContact operation provided by the new version of the Alert Management module.
-//
-// @param request - CreateAlertContactRequest
-//
-// @return CreateAlertContactResponse
-func (client *Client) CreateAlertContact(request *CreateAlertContactRequest) (_result *CreateAlertContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAlertContactResponse{}
-	_body, _err := client.CreateAlertContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1701,7 +1198,7 @@ func (client *Client) CreateAlertContact(request *CreateAlertContactRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAlertContactGroupResponse
-func (client *Client) CreateAlertContactGroupWithOptions(request *CreateAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAlertContactGroupResponse, _err error) {
+func (client *Client) CreateAlertContactGroupWithContext(ctx context.Context, request *CreateAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAlertContactGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1734,33 +1231,11 @@ func (client *Client) CreateAlertContactGroupWithOptions(request *CreateAlertCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAlertContactGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an alert contact group.
-//
-// Description:
-//
-// The current API operation is no longer maintained. Call the CreateOrUpdateContactGroup operation of the new Alert Management module to create or modify alert contact groups.
-//
-// @param request - CreateAlertContactGroupRequest
-//
-// @return CreateAlertContactGroupResponse
-func (client *Client) CreateAlertContactGroup(request *CreateAlertContactGroupRequest) (_result *CreateAlertContactGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAlertContactGroupResponse{}
-	_body, _err := client.CreateAlertContactGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1773,7 +1248,7 @@ func (client *Client) CreateAlertContactGroup(request *CreateAlertContactGroupRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDispatchRuleResponse
-func (client *Client) CreateDispatchRuleWithOptions(request *CreateDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateDispatchRuleResponse, _err error) {
+func (client *Client) CreateDispatchRuleWithContext(ctx context.Context, request *CreateDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateDispatchRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1802,29 +1277,11 @@ func (client *Client) CreateDispatchRuleWithOptions(request *CreateDispatchRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDispatchRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a dispatch policy.
-//
-// @param request - CreateDispatchRuleRequest
-//
-// @return CreateDispatchRuleResponse
-func (client *Client) CreateDispatchRule(request *CreateDispatchRuleRequest) (_result *CreateDispatchRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDispatchRuleResponse{}
-	_body, _err := client.CreateDispatchRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1837,7 +1294,7 @@ func (client *Client) CreateDispatchRule(request *CreateDispatchRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEnvCustomJobResponse
-func (client *Client) CreateEnvCustomJobWithOptions(request *CreateEnvCustomJobRequest, runtime *dara.RuntimeOptions) (_result *CreateEnvCustomJobResponse, _err error) {
+func (client *Client) CreateEnvCustomJobWithContext(ctx context.Context, request *CreateEnvCustomJobRequest, runtime *dara.RuntimeOptions) (_result *CreateEnvCustomJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1880,29 +1337,11 @@ func (client *Client) CreateEnvCustomJobWithOptions(request *CreateEnvCustomJobR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEnvCustomJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a custom job for an environment.
-//
-// @param request - CreateEnvCustomJobRequest
-//
-// @return CreateEnvCustomJobResponse
-func (client *Client) CreateEnvCustomJob(request *CreateEnvCustomJobRequest) (_result *CreateEnvCustomJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateEnvCustomJobResponse{}
-	_body, _err := client.CreateEnvCustomJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1915,7 +1354,7 @@ func (client *Client) CreateEnvCustomJob(request *CreateEnvCustomJobRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEnvPodMonitorResponse
-func (client *Client) CreateEnvPodMonitorWithOptions(request *CreateEnvPodMonitorRequest, runtime *dara.RuntimeOptions) (_result *CreateEnvPodMonitorResponse, _err error) {
+func (client *Client) CreateEnvPodMonitorWithContext(ctx context.Context, request *CreateEnvPodMonitorRequest, runtime *dara.RuntimeOptions) (_result *CreateEnvPodMonitorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1958,29 +1397,11 @@ func (client *Client) CreateEnvPodMonitorWithOptions(request *CreateEnvPodMonito
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEnvPodMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a PodMonitor for an environment.
-//
-// @param request - CreateEnvPodMonitorRequest
-//
-// @return CreateEnvPodMonitorResponse
-func (client *Client) CreateEnvPodMonitor(request *CreateEnvPodMonitorRequest) (_result *CreateEnvPodMonitorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateEnvPodMonitorResponse{}
-	_body, _err := client.CreateEnvPodMonitorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1993,7 +1414,7 @@ func (client *Client) CreateEnvPodMonitor(request *CreateEnvPodMonitorRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEnvServiceMonitorResponse
-func (client *Client) CreateEnvServiceMonitorWithOptions(request *CreateEnvServiceMonitorRequest, runtime *dara.RuntimeOptions) (_result *CreateEnvServiceMonitorResponse, _err error) {
+func (client *Client) CreateEnvServiceMonitorWithContext(ctx context.Context, request *CreateEnvServiceMonitorRequest, runtime *dara.RuntimeOptions) (_result *CreateEnvServiceMonitorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2036,29 +1457,11 @@ func (client *Client) CreateEnvServiceMonitorWithOptions(request *CreateEnvServi
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEnvServiceMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a ServiceMonitor for an environment.
-//
-// @param request - CreateEnvServiceMonitorRequest
-//
-// @return CreateEnvServiceMonitorResponse
-func (client *Client) CreateEnvServiceMonitor(request *CreateEnvServiceMonitorRequest) (_result *CreateEnvServiceMonitorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateEnvServiceMonitorResponse{}
-	_body, _err := client.CreateEnvServiceMonitorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2071,7 +1474,7 @@ func (client *Client) CreateEnvServiceMonitor(request *CreateEnvServiceMonitorRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEnvironmentResponse
-func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *CreateEnvironmentResponse, _err error) {
+func (client *Client) CreateEnvironmentWithContext(ctx context.Context, request *CreateEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *CreateEnvironmentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2144,29 +1547,11 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an environment instance.
-//
-// @param request - CreateEnvironmentRequest
-//
-// @return CreateEnvironmentResponse
-func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_result *CreateEnvironmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateEnvironmentResponse{}
-	_body, _err := client.CreateEnvironmentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2191,7 +1576,7 @@ func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateGrafanaWorkspaceResponse
-func (client *Client) CreateGrafanaWorkspaceWithOptions(tmpReq *CreateGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *CreateGrafanaWorkspaceResponse, _err error) {
+func (client *Client) CreateGrafanaWorkspaceWithContext(ctx context.Context, tmpReq *CreateGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *CreateGrafanaWorkspaceResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2274,41 +1659,11 @@ func (client *Client) CreateGrafanaWorkspaceWithOptions(tmpReq *CreateGrafanaWor
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateGrafanaWorkspaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a workspace in Managed Service for Grafana.
-//
-// Description:
-//
-// Before you call the operation, make sure that you have learned about the billing methods and [pricing](https://www.alibabacloud.com/help/zh/grafana/product-overview/billing-4?spm=a2c4g.11186623.0.0.14c2d253B3SDbt) of Managed Service for Grafana.
-//
-// >
-//
-//   - To create workspaces, you must complete real-name verification.
-//
-//   - Regular users can create workspaces only in Managed Service for Grafana Developer Edition, Pro Edition, and Advanced Edition. `These editions charge fees.`
-//
-//   - Internal users can create workspaces only in Managed Service for Grafana Beta Edition and Standard Edition. `These editions do not charge fees.`
-//
-// @param request - CreateGrafanaWorkspaceRequest
-//
-// @return CreateGrafanaWorkspaceResponse
-func (client *Client) CreateGrafanaWorkspace(request *CreateGrafanaWorkspaceRequest) (_result *CreateGrafanaWorkspaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateGrafanaWorkspaceResponse{}
-	_body, _err := client.CreateGrafanaWorkspaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2321,7 +1676,7 @@ func (client *Client) CreateGrafanaWorkspace(request *CreateGrafanaWorkspaceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIntegrationResponse
-func (client *Client) CreateIntegrationWithOptions(request *CreateIntegrationRequest, runtime *dara.RuntimeOptions) (_result *CreateIntegrationResponse, _err error) {
+func (client *Client) CreateIntegrationWithContext(ctx context.Context, request *CreateIntegrationRequest, runtime *dara.RuntimeOptions) (_result *CreateIntegrationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2368,29 +1723,11 @@ func (client *Client) CreateIntegrationWithOptions(request *CreateIntegrationReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIntegrationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an alert integration.
-//
-// @param request - CreateIntegrationRequest
-//
-// @return CreateIntegrationResponse
-func (client *Client) CreateIntegration(request *CreateIntegrationRequest) (_result *CreateIntegrationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIntegrationResponse{}
-	_body, _err := client.CreateIntegrationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2403,7 +1740,7 @@ func (client *Client) CreateIntegration(request *CreateIntegrationRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateOrUpdateAlertRuleResponse
-func (client *Client) CreateOrUpdateAlertRuleWithOptions(request *CreateOrUpdateAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateAlertRuleResponse, _err error) {
+func (client *Client) CreateOrUpdateAlertRuleWithContext(ctx context.Context, request *CreateOrUpdateAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateAlertRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2544,29 +1881,11 @@ func (client *Client) CreateOrUpdateAlertRuleWithOptions(request *CreateOrUpdate
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateOrUpdateAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates or modifies an alert rule.
-//
-// @param request - CreateOrUpdateAlertRuleRequest
-//
-// @return CreateOrUpdateAlertRuleResponse
-func (client *Client) CreateOrUpdateAlertRule(request *CreateOrUpdateAlertRuleRequest) (_result *CreateOrUpdateAlertRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateOrUpdateAlertRuleResponse{}
-	_body, _err := client.CreateOrUpdateAlertRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2579,7 +1898,7 @@ func (client *Client) CreateOrUpdateAlertRule(request *CreateOrUpdateAlertRuleRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateOrUpdateContactResponse
-func (client *Client) CreateOrUpdateContactWithOptions(request *CreateOrUpdateContactRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateContactResponse, _err error) {
+func (client *Client) CreateOrUpdateContactWithContext(ctx context.Context, request *CreateOrUpdateContactRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateContactResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2638,29 +1957,11 @@ func (client *Client) CreateOrUpdateContactWithOptions(request *CreateOrUpdateCo
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateOrUpdateContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates or modifies an alert contact.
-//
-// @param request - CreateOrUpdateContactRequest
-//
-// @return CreateOrUpdateContactResponse
-func (client *Client) CreateOrUpdateContact(request *CreateOrUpdateContactRequest) (_result *CreateOrUpdateContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateOrUpdateContactResponse{}
-	_body, _err := client.CreateOrUpdateContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2673,7 +1974,7 @@ func (client *Client) CreateOrUpdateContact(request *CreateOrUpdateContactReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateOrUpdateContactGroupResponse
-func (client *Client) CreateOrUpdateContactGroupWithOptions(request *CreateOrUpdateContactGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateContactGroupResponse, _err error) {
+func (client *Client) CreateOrUpdateContactGroupWithContext(ctx context.Context, request *CreateOrUpdateContactGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateContactGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2706,29 +2007,11 @@ func (client *Client) CreateOrUpdateContactGroupWithOptions(request *CreateOrUpd
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateOrUpdateContactGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates or modifies an alert contact group.
-//
-// @param request - CreateOrUpdateContactGroupRequest
-//
-// @return CreateOrUpdateContactGroupResponse
-func (client *Client) CreateOrUpdateContactGroup(request *CreateOrUpdateContactGroupRequest) (_result *CreateOrUpdateContactGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateOrUpdateContactGroupResponse{}
-	_body, _err := client.CreateOrUpdateContactGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2741,7 +2024,7 @@ func (client *Client) CreateOrUpdateContactGroup(request *CreateOrUpdateContactG
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateOrUpdateEventBridgeIntegrationResponse
-func (client *Client) CreateOrUpdateEventBridgeIntegrationWithOptions(request *CreateOrUpdateEventBridgeIntegrationRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateEventBridgeIntegrationResponse, _err error) {
+func (client *Client) CreateOrUpdateEventBridgeIntegrationWithContext(ctx context.Context, request *CreateOrUpdateEventBridgeIntegrationRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateEventBridgeIntegrationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2798,29 +2081,11 @@ func (client *Client) CreateOrUpdateEventBridgeIntegrationWithOptions(request *C
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateOrUpdateEventBridgeIntegrationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates or modifies an EventBridge integration.
-//
-// @param request - CreateOrUpdateEventBridgeIntegrationRequest
-//
-// @return CreateOrUpdateEventBridgeIntegrationResponse
-func (client *Client) CreateOrUpdateEventBridgeIntegration(request *CreateOrUpdateEventBridgeIntegrationRequest) (_result *CreateOrUpdateEventBridgeIntegrationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateOrUpdateEventBridgeIntegrationResponse{}
-	_body, _err := client.CreateOrUpdateEventBridgeIntegrationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2833,7 +2098,7 @@ func (client *Client) CreateOrUpdateEventBridgeIntegration(request *CreateOrUpda
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateOrUpdateIMRobotResponse
-func (client *Client) CreateOrUpdateIMRobotWithOptions(request *CreateOrUpdateIMRobotRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateIMRobotResponse, _err error) {
+func (client *Client) CreateOrUpdateIMRobotWithContext(ctx context.Context, request *CreateOrUpdateIMRobotRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateIMRobotResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2894,29 +2159,11 @@ func (client *Client) CreateOrUpdateIMRobotWithOptions(request *CreateOrUpdateIM
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateOrUpdateIMRobotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates or updates an IM chatbot.
-//
-// @param request - CreateOrUpdateIMRobotRequest
-//
-// @return CreateOrUpdateIMRobotResponse
-func (client *Client) CreateOrUpdateIMRobot(request *CreateOrUpdateIMRobotRequest) (_result *CreateOrUpdateIMRobotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateOrUpdateIMRobotResponse{}
-	_body, _err := client.CreateOrUpdateIMRobotWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2929,7 +2176,7 @@ func (client *Client) CreateOrUpdateIMRobot(request *CreateOrUpdateIMRobotReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateOrUpdateNotificationPolicyResponse
-func (client *Client) CreateOrUpdateNotificationPolicyWithOptions(request *CreateOrUpdateNotificationPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateNotificationPolicyResponse, _err error) {
+func (client *Client) CreateOrUpdateNotificationPolicyWithContext(ctx context.Context, request *CreateOrUpdateNotificationPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateNotificationPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3006,29 +2253,11 @@ func (client *Client) CreateOrUpdateNotificationPolicyWithOptions(request *Creat
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateOrUpdateNotificationPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates or modifies a notification policy.
-//
-// @param request - CreateOrUpdateNotificationPolicyRequest
-//
-// @return CreateOrUpdateNotificationPolicyResponse
-func (client *Client) CreateOrUpdateNotificationPolicy(request *CreateOrUpdateNotificationPolicyRequest) (_result *CreateOrUpdateNotificationPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateOrUpdateNotificationPolicyResponse{}
-	_body, _err := client.CreateOrUpdateNotificationPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3041,7 +2270,7 @@ func (client *Client) CreateOrUpdateNotificationPolicy(request *CreateOrUpdateNo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateOrUpdateSilencePolicyResponse
-func (client *Client) CreateOrUpdateSilencePolicyWithOptions(request *CreateOrUpdateSilencePolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateSilencePolicyResponse, _err error) {
+func (client *Client) CreateOrUpdateSilencePolicyWithContext(ctx context.Context, request *CreateOrUpdateSilencePolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateSilencePolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3096,29 +2325,11 @@ func (client *Client) CreateOrUpdateSilencePolicyWithOptions(request *CreateOrUp
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateOrUpdateSilencePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates or modifies a silence policy.
-//
-// @param request - CreateOrUpdateSilencePolicyRequest
-//
-// @return CreateOrUpdateSilencePolicyResponse
-func (client *Client) CreateOrUpdateSilencePolicy(request *CreateOrUpdateSilencePolicyRequest) (_result *CreateOrUpdateSilencePolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateOrUpdateSilencePolicyResponse{}
-	_body, _err := client.CreateOrUpdateSilencePolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3131,7 +2342,7 @@ func (client *Client) CreateOrUpdateSilencePolicy(request *CreateOrUpdateSilence
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateOrUpdateWebhookContactResponse
-func (client *Client) CreateOrUpdateWebhookContactWithOptions(request *CreateOrUpdateWebhookContactRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateWebhookContactResponse, _err error) {
+func (client *Client) CreateOrUpdateWebhookContactWithContext(ctx context.Context, request *CreateOrUpdateWebhookContactRequest, runtime *dara.RuntimeOptions) (_result *CreateOrUpdateWebhookContactResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3184,29 +2395,11 @@ func (client *Client) CreateOrUpdateWebhookContactWithOptions(request *CreateOrU
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateOrUpdateWebhookContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates or modifies a webhook alert contact.
-//
-// @param request - CreateOrUpdateWebhookContactRequest
-//
-// @return CreateOrUpdateWebhookContactResponse
-func (client *Client) CreateOrUpdateWebhookContact(request *CreateOrUpdateWebhookContactRequest) (_result *CreateOrUpdateWebhookContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateOrUpdateWebhookContactResponse{}
-	_body, _err := client.CreateOrUpdateWebhookContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3219,7 +2412,7 @@ func (client *Client) CreateOrUpdateWebhookContact(request *CreateOrUpdateWebhoo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePrometheusAlertRuleResponse
-func (client *Client) CreatePrometheusAlertRuleWithOptions(request *CreatePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *CreatePrometheusAlertRuleResponse, _err error) {
+func (client *Client) CreatePrometheusAlertRuleWithContext(ctx context.Context, request *CreatePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *CreatePrometheusAlertRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3288,29 +2481,11 @@ func (client *Client) CreatePrometheusAlertRuleWithOptions(request *CreatePromet
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePrometheusAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an alert rule.
-//
-// @param request - CreatePrometheusAlertRuleRequest
-//
-// @return CreatePrometheusAlertRuleResponse
-func (client *Client) CreatePrometheusAlertRule(request *CreatePrometheusAlertRuleRequest) (_result *CreatePrometheusAlertRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePrometheusAlertRuleResponse{}
-	_body, _err := client.CreatePrometheusAlertRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3323,7 +2498,7 @@ func (client *Client) CreatePrometheusAlertRule(request *CreatePrometheusAlertRu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePrometheusInstanceResponse
-func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometheusInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreatePrometheusInstanceResponse, _err error) {
+func (client *Client) CreatePrometheusInstanceWithContext(ctx context.Context, request *CreatePrometheusInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreatePrometheusInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3404,29 +2579,11 @@ func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometh
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePrometheusInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a Prometheus instance.
-//
-// @param request - CreatePrometheusInstanceRequest
-//
-// @return CreatePrometheusInstanceResponse
-func (client *Client) CreatePrometheusInstance(request *CreatePrometheusInstanceRequest) (_result *CreatePrometheusInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePrometheusInstanceResponse{}
-	_body, _err := client.CreatePrometheusInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3441,7 +2598,7 @@ func (client *Client) CreatePrometheusInstance(request *CreatePrometheusInstance
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePrometheusMonitoringResponse
-func (client *Client) CreatePrometheusMonitoringWithOptions(request *CreatePrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *CreatePrometheusMonitoringResponse, _err error) {
+func (client *Client) CreatePrometheusMonitoringWithContext(ctx context.Context, request *CreatePrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *CreatePrometheusMonitoringResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3484,32 +2641,11 @@ func (client *Client) CreatePrometheusMonitoringWithOptions(request *CreateProme
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePrometheusMonitoringResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI CreatePrometheusMonitoring is deprecated
-//
-// Summary:
-//
-// Creates a monitoring configuration for a Prometheus instance.
-//
-// @param request - CreatePrometheusMonitoringRequest
-//
-// @return CreatePrometheusMonitoringResponse
-// Deprecated
-func (client *Client) CreatePrometheusMonitoring(request *CreatePrometheusMonitoringRequest) (_result *CreatePrometheusMonitoringResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePrometheusMonitoringResponse{}
-	_body, _err := client.CreatePrometheusMonitoringWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3522,7 +2658,7 @@ func (client *Client) CreatePrometheusMonitoring(request *CreatePrometheusMonito
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRetcodeAppResponse
-func (client *Client) CreateRetcodeAppWithOptions(request *CreateRetcodeAppRequest, runtime *dara.RuntimeOptions) (_result *CreateRetcodeAppResponse, _err error) {
+func (client *Client) CreateRetcodeAppWithContext(ctx context.Context, request *CreateRetcodeAppRequest, runtime *dara.RuntimeOptions) (_result *CreateRetcodeAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3563,29 +2699,11 @@ func (client *Client) CreateRetcodeAppWithOptions(request *CreateRetcodeAppReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRetcodeAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a Browser Monitoring task for an application.
-//
-// @param request - CreateRetcodeAppRequest
-//
-// @return CreateRetcodeAppResponse
-func (client *Client) CreateRetcodeApp(request *CreateRetcodeAppRequest) (_result *CreateRetcodeAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRetcodeAppResponse{}
-	_body, _err := client.CreateRetcodeAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3598,7 +2716,7 @@ func (client *Client) CreateRetcodeApp(request *CreateRetcodeAppRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRumAppResponse
-func (client *Client) CreateRumAppWithOptions(tmpReq *CreateRumAppRequest, runtime *dara.RuntimeOptions) (_result *CreateRumAppResponse, _err error) {
+func (client *Client) CreateRumAppWithContext(ctx context.Context, tmpReq *CreateRumAppRequest, runtime *dara.RuntimeOptions) (_result *CreateRumAppResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3673,29 +2791,11 @@ func (client *Client) CreateRumAppWithOptions(tmpReq *CreateRumAppRequest, runti
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRumAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Create a Real User Monitoring (RUM) application.
-//
-// @param request - CreateRumAppRequest
-//
-// @return CreateRumAppResponse
-func (client *Client) CreateRumApp(request *CreateRumAppRequest) (_result *CreateRumAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRumAppResponse{}
-	_body, _err := client.CreateRumAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3712,7 +2812,7 @@ func (client *Client) CreateRumApp(request *CreateRumAppRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRumUploadFileUrlResponse
-func (client *Client) CreateRumUploadFileUrlWithOptions(request *CreateRumUploadFileUrlRequest, runtime *dara.RuntimeOptions) (_result *CreateRumUploadFileUrlResponse, _err error) {
+func (client *Client) CreateRumUploadFileUrlWithContext(ctx context.Context, request *CreateRumUploadFileUrlRequest, runtime *dara.RuntimeOptions) (_result *CreateRumUploadFileUrlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3765,33 +2865,11 @@ func (client *Client) CreateRumUploadFileUrlWithOptions(request *CreateRumUpload
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRumUploadFileUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a file upload URL to upload SourceMap files, symbol table files, or dSYM files.
-//
-// Description:
-//
-// This operation returns a URL. You can upload files to the URL. For more information, see [Upload local files with signed URLs](https://help.aliyun.com/document_detail/2579659.html).
-//
-// @param request - CreateRumUploadFileUrlRequest
-//
-// @return CreateRumUploadFileUrlResponse
-func (client *Client) CreateRumUploadFileUrl(request *CreateRumUploadFileUrlRequest) (_result *CreateRumUploadFileUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRumUploadFileUrlResponse{}
-	_body, _err := client.CreateRumUploadFileUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3804,7 +2882,7 @@ func (client *Client) CreateRumUploadFileUrl(request *CreateRumUploadFileUrlRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSyntheticTaskResponse
-func (client *Client) CreateSyntheticTaskWithOptions(tmpReq *CreateSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateSyntheticTaskResponse, _err error) {
+func (client *Client) CreateSyntheticTaskWithContext(ctx context.Context, tmpReq *CreateSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateSyntheticTaskResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3915,29 +2993,11 @@ func (client *Client) CreateSyntheticTaskWithOptions(tmpReq *CreateSyntheticTask
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSyntheticTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates or updates a synthetic monitoring task.
-//
-// @param request - CreateSyntheticTaskRequest
-//
-// @return CreateSyntheticTaskResponse
-func (client *Client) CreateSyntheticTask(request *CreateSyntheticTaskRequest) (_result *CreateSyntheticTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSyntheticTaskResponse{}
-	_body, _err := client.CreateSyntheticTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3950,7 +3010,7 @@ func (client *Client) CreateSyntheticTask(request *CreateSyntheticTaskRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTimingSyntheticTaskResponse
-func (client *Client) CreateTimingSyntheticTaskWithOptions(tmpReq *CreateTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateTimingSyntheticTaskResponse, _err error) {
+func (client *Client) CreateTimingSyntheticTaskWithContext(ctx context.Context, tmpReq *CreateTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateTimingSyntheticTaskResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4045,29 +3105,11 @@ func (client *Client) CreateTimingSyntheticTaskWithOptions(tmpReq *CreateTimingS
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTimingSyntheticTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a scheduled synthetic test task.
-//
-// @param request - CreateTimingSyntheticTaskRequest
-//
-// @return CreateTimingSyntheticTaskResponse
-func (client *Client) CreateTimingSyntheticTask(request *CreateTimingSyntheticTaskRequest) (_result *CreateTimingSyntheticTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateTimingSyntheticTaskResponse{}
-	_body, _err := client.CreateTimingSyntheticTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4080,7 +3122,7 @@ func (client *Client) CreateTimingSyntheticTask(request *CreateTimingSyntheticTa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateWebhookResponse
-func (client *Client) CreateWebhookWithOptions(request *CreateWebhookRequest, runtime *dara.RuntimeOptions) (_result *CreateWebhookResponse, _err error) {
+func (client *Client) CreateWebhookWithContext(ctx context.Context, request *CreateWebhookRequest, runtime *dara.RuntimeOptions) (_result *CreateWebhookResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4133,29 +3175,11 @@ func (client *Client) CreateWebhookWithOptions(request *CreateWebhookRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateWebhookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a contact for webhook alerts.
-//
-// @param request - CreateWebhookRequest
-//
-// @return CreateWebhookResponse
-func (client *Client) CreateWebhook(request *CreateWebhookRequest) (_result *CreateWebhookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateWebhookResponse{}
-	_body, _err := client.CreateWebhookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4168,7 +3192,7 @@ func (client *Client) CreateWebhook(request *CreateWebhookRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DelAuthTokenResponse
-func (client *Client) DelAuthTokenWithOptions(request *DelAuthTokenRequest, runtime *dara.RuntimeOptions) (_result *DelAuthTokenResponse, _err error) {
+func (client *Client) DelAuthTokenWithContext(ctx context.Context, request *DelAuthTokenRequest, runtime *dara.RuntimeOptions) (_result *DelAuthTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4197,29 +3221,11 @@ func (client *Client) DelAuthTokenWithOptions(request *DelAuthTokenRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DelAuthTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables an authentication token.
-//
-// @param request - DelAuthTokenRequest
-//
-// @return DelAuthTokenResponse
-func (client *Client) DelAuthToken(request *DelAuthTokenRequest) (_result *DelAuthTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DelAuthTokenResponse{}
-	_body, _err := client.DelAuthTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4232,7 +3238,7 @@ func (client *Client) DelAuthToken(request *DelAuthTokenRequest) (_result *DelAu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAddonReleaseResponse
-func (client *Client) DeleteAddonReleaseWithOptions(request *DeleteAddonReleaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteAddonReleaseResponse, _err error) {
+func (client *Client) DeleteAddonReleaseWithContext(ctx context.Context, request *DeleteAddonReleaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteAddonReleaseResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4273,29 +3279,11 @@ func (client *Client) DeleteAddonReleaseWithOptions(request *DeleteAddonReleaseR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAddonReleaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Delete AddonRelease data by AddonRelease name.
-//
-// @param request - DeleteAddonReleaseRequest
-//
-// @return DeleteAddonReleaseResponse
-func (client *Client) DeleteAddonRelease(request *DeleteAddonReleaseRequest) (_result *DeleteAddonReleaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAddonReleaseResponse{}
-	_body, _err := client.DeleteAddonReleaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4312,7 +3300,7 @@ func (client *Client) DeleteAddonRelease(request *DeleteAddonReleaseRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAlertContactResponse
-func (client *Client) DeleteAlertContactWithOptions(request *DeleteAlertContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertContactResponse, _err error) {
+func (client *Client) DeleteAlertContactWithContext(ctx context.Context, request *DeleteAlertContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertContactResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4341,33 +3329,11 @@ func (client *Client) DeleteAlertContactWithOptions(request *DeleteAlertContactR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAlertContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an DeleteAlertContact contact.
-//
-// Description:
-//
-// *******
-//
-// @param request - DeleteAlertContactRequest
-//
-// @return DeleteAlertContactResponse
-func (client *Client) DeleteAlertContact(request *DeleteAlertContactRequest) (_result *DeleteAlertContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAlertContactResponse{}
-	_body, _err := client.DeleteAlertContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4380,7 +3346,7 @@ func (client *Client) DeleteAlertContact(request *DeleteAlertContactRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAlertContactGroupResponse
-func (client *Client) DeleteAlertContactGroupWithOptions(request *DeleteAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertContactGroupResponse, _err error) {
+func (client *Client) DeleteAlertContactGroupWithContext(ctx context.Context, request *DeleteAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertContactGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4409,29 +3375,11 @@ func (client *Client) DeleteAlertContactGroupWithOptions(request *DeleteAlertCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAlertContactGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an DeleteAlertContactGroup contact group.
-//
-// @param request - DeleteAlertContactGroupRequest
-//
-// @return DeleteAlertContactGroupResponse
-func (client *Client) DeleteAlertContactGroup(request *DeleteAlertContactGroupRequest) (_result *DeleteAlertContactGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAlertContactGroupResponse{}
-	_body, _err := client.DeleteAlertContactGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4444,7 +3392,7 @@ func (client *Client) DeleteAlertContactGroup(request *DeleteAlertContactGroupRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAlertRuleResponse
-func (client *Client) DeleteAlertRuleWithOptions(request *DeleteAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertRuleResponse, _err error) {
+func (client *Client) DeleteAlertRuleWithContext(ctx context.Context, request *DeleteAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4469,29 +3417,11 @@ func (client *Client) DeleteAlertRuleWithOptions(request *DeleteAlertRuleRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an alert rule.
-//
-// @param request - DeleteAlertRuleRequest
-//
-// @return DeleteAlertRuleResponse
-func (client *Client) DeleteAlertRule(request *DeleteAlertRuleRequest) (_result *DeleteAlertRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAlertRuleResponse{}
-	_body, _err := client.DeleteAlertRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4508,7 +3438,7 @@ func (client *Client) DeleteAlertRule(request *DeleteAlertRuleRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAlertRulesResponse
-func (client *Client) DeleteAlertRulesWithOptions(request *DeleteAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertRulesResponse, _err error) {
+func (client *Client) DeleteAlertRulesWithContext(ctx context.Context, request *DeleteAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteAlertRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4537,33 +3467,11 @@ func (client *Client) DeleteAlertRulesWithOptions(request *DeleteAlertRulesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAlertRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes alert rules.
-//
-// Description:
-//
-// The current operation is no longer maintained. Call the DeleteAlertRule operation of Alert Management (New) to delete alert rules.
-//
-// @param request - DeleteAlertRulesRequest
-//
-// @return DeleteAlertRulesResponse
-func (client *Client) DeleteAlertRules(request *DeleteAlertRulesRequest) (_result *DeleteAlertRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAlertRulesResponse{}
-	_body, _err := client.DeleteAlertRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4576,7 +3484,7 @@ func (client *Client) DeleteAlertRules(request *DeleteAlertRulesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAppListResponse
-func (client *Client) DeleteAppListWithOptions(request *DeleteAppListRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppListResponse, _err error) {
+func (client *Client) DeleteAppListWithContext(ctx context.Context, request *DeleteAppListRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4605,29 +3513,11 @@ func (client *Client) DeleteAppListWithOptions(request *DeleteAppListRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAppListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes multiple applications at a time based on the process IDs (PIDs).
-//
-// @param request - DeleteAppListRequest
-//
-// @return DeleteAppListResponse
-func (client *Client) DeleteAppList(request *DeleteAppListRequest) (_result *DeleteAppListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAppListResponse{}
-	_body, _err := client.DeleteAppListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4642,7 +3532,7 @@ func (client *Client) DeleteAppList(request *DeleteAppListRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCmsExporterResponse
-func (client *Client) DeleteCmsExporterWithOptions(request *DeleteCmsExporterRequest, runtime *dara.RuntimeOptions) (_result *DeleteCmsExporterResponse, _err error) {
+func (client *Client) DeleteCmsExporterWithContext(ctx context.Context, request *DeleteCmsExporterRequest, runtime *dara.RuntimeOptions) (_result *DeleteCmsExporterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4671,32 +3561,11 @@ func (client *Client) DeleteCmsExporterWithOptions(request *DeleteCmsExporterReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCmsExporterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteCmsExporter is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
-//
-// Summary:
-//
-// Releases a Prometheus instance for Alibaba Cloud services.
-//
-// @param request - DeleteCmsExporterRequest
-//
-// @return DeleteCmsExporterResponse
-// Deprecated
-func (client *Client) DeleteCmsExporter(request *DeleteCmsExporterRequest) (_result *DeleteCmsExporterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCmsExporterResponse{}
-	_body, _err := client.DeleteCmsExporterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4709,7 +3578,7 @@ func (client *Client) DeleteCmsExporter(request *DeleteCmsExporterRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteContactResponse
-func (client *Client) DeleteContactWithOptions(request *DeleteContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteContactResponse, _err error) {
+func (client *Client) DeleteContactWithContext(ctx context.Context, request *DeleteContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteContactResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4734,29 +3603,11 @@ func (client *Client) DeleteContactWithOptions(request *DeleteContactRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes alert contacts.
-//
-// @param request - DeleteContactRequest
-//
-// @return DeleteContactResponse
-func (client *Client) DeleteContact(request *DeleteContactRequest) (_result *DeleteContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteContactResponse{}
-	_body, _err := client.DeleteContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4769,7 +3620,7 @@ func (client *Client) DeleteContact(request *DeleteContactRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteContactGroupResponse
-func (client *Client) DeleteContactGroupWithOptions(request *DeleteContactGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteContactGroupResponse, _err error) {
+func (client *Client) DeleteContactGroupWithContext(ctx context.Context, request *DeleteContactGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteContactGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4794,29 +3645,11 @@ func (client *Client) DeleteContactGroupWithOptions(request *DeleteContactGroupR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteContactGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an alert contact group.
-//
-// @param request - DeleteContactGroupRequest
-//
-// @return DeleteContactGroupResponse
-func (client *Client) DeleteContactGroup(request *DeleteContactGroupRequest) (_result *DeleteContactGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteContactGroupResponse{}
-	_body, _err := client.DeleteContactGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4829,7 +3662,7 @@ func (client *Client) DeleteContactGroup(request *DeleteContactGroupRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDispatchRuleResponse
-func (client *Client) DeleteDispatchRuleWithOptions(request *DeleteDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteDispatchRuleResponse, _err error) {
+func (client *Client) DeleteDispatchRuleWithContext(ctx context.Context, request *DeleteDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteDispatchRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4858,29 +3691,11 @@ func (client *Client) DeleteDispatchRuleWithOptions(request *DeleteDispatchRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDispatchRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the dispatch policy of a specified ID.
-//
-// @param request - DeleteDispatchRuleRequest
-//
-// @return DeleteDispatchRuleResponse
-func (client *Client) DeleteDispatchRule(request *DeleteDispatchRuleRequest) (_result *DeleteDispatchRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDispatchRuleResponse{}
-	_body, _err := client.DeleteDispatchRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4893,7 +3708,7 @@ func (client *Client) DeleteDispatchRule(request *DeleteDispatchRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEnvCustomJobResponse
-func (client *Client) DeleteEnvCustomJobWithOptions(request *DeleteEnvCustomJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvCustomJobResponse, _err error) {
+func (client *Client) DeleteEnvCustomJobWithContext(ctx context.Context, request *DeleteEnvCustomJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvCustomJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4926,29 +3741,11 @@ func (client *Client) DeleteEnvCustomJobWithOptions(request *DeleteEnvCustomJobR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEnvCustomJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a custom job for an environment.
-//
-// @param request - DeleteEnvCustomJobRequest
-//
-// @return DeleteEnvCustomJobResponse
-func (client *Client) DeleteEnvCustomJob(request *DeleteEnvCustomJobRequest) (_result *DeleteEnvCustomJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEnvCustomJobResponse{}
-	_body, _err := client.DeleteEnvCustomJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4961,7 +3758,7 @@ func (client *Client) DeleteEnvCustomJob(request *DeleteEnvCustomJobRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEnvPodMonitorResponse
-func (client *Client) DeleteEnvPodMonitorWithOptions(request *DeleteEnvPodMonitorRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvPodMonitorResponse, _err error) {
+func (client *Client) DeleteEnvPodMonitorWithContext(ctx context.Context, request *DeleteEnvPodMonitorRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvPodMonitorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4998,29 +3795,11 @@ func (client *Client) DeleteEnvPodMonitorWithOptions(request *DeleteEnvPodMonito
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEnvPodMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the PodMonitor of an environment.
-//
-// @param request - DeleteEnvPodMonitorRequest
-//
-// @return DeleteEnvPodMonitorResponse
-func (client *Client) DeleteEnvPodMonitor(request *DeleteEnvPodMonitorRequest) (_result *DeleteEnvPodMonitorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEnvPodMonitorResponse{}
-	_body, _err := client.DeleteEnvPodMonitorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5033,7 +3812,7 @@ func (client *Client) DeleteEnvPodMonitor(request *DeleteEnvPodMonitorRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEnvServiceMonitorResponse
-func (client *Client) DeleteEnvServiceMonitorWithOptions(request *DeleteEnvServiceMonitorRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvServiceMonitorResponse, _err error) {
+func (client *Client) DeleteEnvServiceMonitorWithContext(ctx context.Context, request *DeleteEnvServiceMonitorRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvServiceMonitorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5070,29 +3849,11 @@ func (client *Client) DeleteEnvServiceMonitorWithOptions(request *DeleteEnvServi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEnvServiceMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the ServiceMonitor of an environment.
-//
-// @param request - DeleteEnvServiceMonitorRequest
-//
-// @return DeleteEnvServiceMonitorResponse
-func (client *Client) DeleteEnvServiceMonitor(request *DeleteEnvServiceMonitorRequest) (_result *DeleteEnvServiceMonitorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEnvServiceMonitorResponse{}
-	_body, _err := client.DeleteEnvServiceMonitorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5105,7 +3866,7 @@ func (client *Client) DeleteEnvServiceMonitor(request *DeleteEnvServiceMonitorRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEnvironmentResponse
-func (client *Client) DeleteEnvironmentWithOptions(request *DeleteEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvironmentResponse, _err error) {
+func (client *Client) DeleteEnvironmentWithContext(ctx context.Context, request *DeleteEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvironmentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5138,29 +3899,11 @@ func (client *Client) DeleteEnvironmentWithOptions(request *DeleteEnvironmentReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an environment instance.
-//
-// @param request - DeleteEnvironmentRequest
-//
-// @return DeleteEnvironmentResponse
-func (client *Client) DeleteEnvironment(request *DeleteEnvironmentRequest) (_result *DeleteEnvironmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEnvironmentResponse{}
-	_body, _err := client.DeleteEnvironmentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5173,7 +3916,7 @@ func (client *Client) DeleteEnvironment(request *DeleteEnvironmentRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEnvironmentFeatureResponse
-func (client *Client) DeleteEnvironmentFeatureWithOptions(request *DeleteEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvironmentFeatureResponse, _err error) {
+func (client *Client) DeleteEnvironmentFeatureWithContext(ctx context.Context, request *DeleteEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnvironmentFeatureResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5206,29 +3949,11 @@ func (client *Client) DeleteEnvironmentFeatureWithOptions(request *DeleteEnviron
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEnvironmentFeatureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a feature.
-//
-// @param request - DeleteEnvironmentFeatureRequest
-//
-// @return DeleteEnvironmentFeatureResponse
-func (client *Client) DeleteEnvironmentFeature(request *DeleteEnvironmentFeatureRequest) (_result *DeleteEnvironmentFeatureResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEnvironmentFeatureResponse{}
-	_body, _err := client.DeleteEnvironmentFeatureWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5241,7 +3966,7 @@ func (client *Client) DeleteEnvironmentFeature(request *DeleteEnvironmentFeature
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEventBridgeIntegrationResponse
-func (client *Client) DeleteEventBridgeIntegrationWithOptions(request *DeleteEventBridgeIntegrationRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventBridgeIntegrationResponse, _err error) {
+func (client *Client) DeleteEventBridgeIntegrationWithContext(ctx context.Context, request *DeleteEventBridgeIntegrationRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventBridgeIntegrationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5266,29 +3991,11 @@ func (client *Client) DeleteEventBridgeIntegrationWithOptions(request *DeleteEve
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEventBridgeIntegrationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an EventBridge integration.
-//
-// @param request - DeleteEventBridgeIntegrationRequest
-//
-// @return DeleteEventBridgeIntegrationResponse
-func (client *Client) DeleteEventBridgeIntegration(request *DeleteEventBridgeIntegrationRequest) (_result *DeleteEventBridgeIntegrationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEventBridgeIntegrationResponse{}
-	_body, _err := client.DeleteEventBridgeIntegrationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5303,7 +4010,7 @@ func (client *Client) DeleteEventBridgeIntegration(request *DeleteEventBridgeInt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteGrafanaResourceResponse
-func (client *Client) DeleteGrafanaResourceWithOptions(request *DeleteGrafanaResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteGrafanaResourceResponse, _err error) {
+func (client *Client) DeleteGrafanaResourceWithContext(ctx context.Context, request *DeleteGrafanaResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteGrafanaResourceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5338,32 +4045,11 @@ func (client *Client) DeleteGrafanaResourceWithOptions(request *DeleteGrafanaRes
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteGrafanaResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteGrafanaResource is deprecated
-//
-// Summary:
-//
-// Deletes Grafana dashboard resources from a Managed Service for Prometheus instance.
-//
-// @param request - DeleteGrafanaResourceRequest
-//
-// @return DeleteGrafanaResourceResponse
-// Deprecated
-func (client *Client) DeleteGrafanaResource(request *DeleteGrafanaResourceRequest) (_result *DeleteGrafanaResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteGrafanaResourceResponse{}
-	_body, _err := client.DeleteGrafanaResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5382,7 +4068,7 @@ func (client *Client) DeleteGrafanaResource(request *DeleteGrafanaResourceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteGrafanaWorkspaceResponse
-func (client *Client) DeleteGrafanaWorkspaceWithOptions(request *DeleteGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteGrafanaWorkspaceResponse, _err error) {
+func (client *Client) DeleteGrafanaWorkspaceWithContext(ctx context.Context, request *DeleteGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteGrafanaWorkspaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5411,35 +4097,11 @@ func (client *Client) DeleteGrafanaWorkspaceWithOptions(request *DeleteGrafanaWo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteGrafanaWorkspaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Managed Service for Prometheus workspace.
-//
-// Description:
-//
-//	  You can delete workspaces only in Managed Service for Prometheus Beta Edition, which is `free of charge`.
-//
-//		- You cannot delete workspaces in Managed Service for Prometheus Developer Edition, Pro Edition, and Advanced Edition. You can go to the [User Center](https://usercenter2.aliyun.com/refund/refund) to unsubscribe from workspaces.
-//
-// @param request - DeleteGrafanaWorkspaceRequest
-//
-// @return DeleteGrafanaWorkspaceResponse
-func (client *Client) DeleteGrafanaWorkspace(request *DeleteGrafanaWorkspaceRequest) (_result *DeleteGrafanaWorkspaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteGrafanaWorkspaceResponse{}
-	_body, _err := client.DeleteGrafanaWorkspaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5452,7 +4114,7 @@ func (client *Client) DeleteGrafanaWorkspace(request *DeleteGrafanaWorkspaceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIMRobotResponse
-func (client *Client) DeleteIMRobotWithOptions(request *DeleteIMRobotRequest, runtime *dara.RuntimeOptions) (_result *DeleteIMRobotResponse, _err error) {
+func (client *Client) DeleteIMRobotWithContext(ctx context.Context, request *DeleteIMRobotRequest, runtime *dara.RuntimeOptions) (_result *DeleteIMRobotResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5477,29 +4139,11 @@ func (client *Client) DeleteIMRobotWithOptions(request *DeleteIMRobotRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIMRobotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an instant messaging (IM) chatbot.
-//
-// @param request - DeleteIMRobotRequest
-//
-// @return DeleteIMRobotResponse
-func (client *Client) DeleteIMRobot(request *DeleteIMRobotRequest) (_result *DeleteIMRobotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIMRobotResponse{}
-	_body, _err := client.DeleteIMRobotWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5514,7 +4158,7 @@ func (client *Client) DeleteIMRobot(request *DeleteIMRobotRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIntegrationResponse
-func (client *Client) DeleteIntegrationWithOptions(request *DeleteIntegrationRequest, runtime *dara.RuntimeOptions) (_result *DeleteIntegrationResponse, _err error) {
+func (client *Client) DeleteIntegrationWithContext(ctx context.Context, request *DeleteIntegrationRequest, runtime *dara.RuntimeOptions) (_result *DeleteIntegrationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5547,32 +4191,11 @@ func (client *Client) DeleteIntegrationWithOptions(request *DeleteIntegrationReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIntegrationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteIntegration is deprecated, please use ARMS::2019-08-08::DeleteAddonRelease instead.
-//
-// Summary:
-//
-// Deletes collection rules from an integration.
-//
-// @param request - DeleteIntegrationRequest
-//
-// @return DeleteIntegrationResponse
-// Deprecated
-func (client *Client) DeleteIntegration(request *DeleteIntegrationRequest) (_result *DeleteIntegrationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIntegrationResponse{}
-	_body, _err := client.DeleteIntegrationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5585,7 +4208,7 @@ func (client *Client) DeleteIntegration(request *DeleteIntegrationRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIntegrationsResponse
-func (client *Client) DeleteIntegrationsWithOptions(request *DeleteIntegrationsRequest, runtime *dara.RuntimeOptions) (_result *DeleteIntegrationsResponse, _err error) {
+func (client *Client) DeleteIntegrationsWithContext(ctx context.Context, request *DeleteIntegrationsRequest, runtime *dara.RuntimeOptions) (_result *DeleteIntegrationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5606,29 +4229,11 @@ func (client *Client) DeleteIntegrationsWithOptions(request *DeleteIntegrationsR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIntegrationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an alert integration.
-//
-// @param request - DeleteIntegrationsRequest
-//
-// @return DeleteIntegrationsResponse
-func (client *Client) DeleteIntegrations(request *DeleteIntegrationsRequest) (_result *DeleteIntegrationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIntegrationsResponse{}
-	_body, _err := client.DeleteIntegrationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5641,7 +4246,7 @@ func (client *Client) DeleteIntegrations(request *DeleteIntegrationsRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteNotificationPolicyResponse
-func (client *Client) DeleteNotificationPolicyWithOptions(request *DeleteNotificationPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteNotificationPolicyResponse, _err error) {
+func (client *Client) DeleteNotificationPolicyWithContext(ctx context.Context, request *DeleteNotificationPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteNotificationPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5666,29 +4271,11 @@ func (client *Client) DeleteNotificationPolicyWithOptions(request *DeleteNotific
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNotificationPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a notification policy based on its ID.
-//
-// @param request - DeleteNotificationPolicyRequest
-//
-// @return DeleteNotificationPolicyResponse
-func (client *Client) DeleteNotificationPolicy(request *DeleteNotificationPolicyRequest) (_result *DeleteNotificationPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteNotificationPolicyResponse{}
-	_body, _err := client.DeleteNotificationPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5701,7 +4288,7 @@ func (client *Client) DeleteNotificationPolicy(request *DeleteNotificationPolicy
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePrometheusAlertRuleResponse
-func (client *Client) DeletePrometheusAlertRuleWithOptions(request *DeletePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *DeletePrometheusAlertRuleResponse, _err error) {
+func (client *Client) DeletePrometheusAlertRuleWithContext(ctx context.Context, request *DeletePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *DeletePrometheusAlertRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5730,29 +4317,11 @@ func (client *Client) DeletePrometheusAlertRuleWithOptions(request *DeletePromet
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePrometheusAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an alert rule of Prometheus Service.
-//
-// @param request - DeletePrometheusAlertRuleRequest
-//
-// @return DeletePrometheusAlertRuleResponse
-func (client *Client) DeletePrometheusAlertRule(request *DeletePrometheusAlertRuleRequest) (_result *DeletePrometheusAlertRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePrometheusAlertRuleResponse{}
-	_body, _err := client.DeletePrometheusAlertRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5767,7 +4336,7 @@ func (client *Client) DeletePrometheusAlertRule(request *DeletePrometheusAlertRu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePrometheusGlobalViewResponse
-func (client *Client) DeletePrometheusGlobalViewWithOptions(request *DeletePrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *DeletePrometheusGlobalViewResponse, _err error) {
+func (client *Client) DeletePrometheusGlobalViewWithContext(ctx context.Context, request *DeletePrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *DeletePrometheusGlobalViewResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5796,32 +4365,11 @@ func (client *Client) DeletePrometheusGlobalViewWithOptions(request *DeleteProme
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePrometheusGlobalViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeletePrometheusGlobalView is deprecated
-//
-// Summary:
-//
-// Deletes a global aggregation instance from Prometheus Service.
-//
-// @param request - DeletePrometheusGlobalViewRequest
-//
-// @return DeletePrometheusGlobalViewResponse
-// Deprecated
-func (client *Client) DeletePrometheusGlobalView(request *DeletePrometheusGlobalViewRequest) (_result *DeletePrometheusGlobalViewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePrometheusGlobalViewResponse{}
-	_body, _err := client.DeletePrometheusGlobalViewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5836,7 +4384,7 @@ func (client *Client) DeletePrometheusGlobalView(request *DeletePrometheusGlobal
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePrometheusIntegrationResponse
-func (client *Client) DeletePrometheusIntegrationWithOptions(request *DeletePrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *DeletePrometheusIntegrationResponse, _err error) {
+func (client *Client) DeletePrometheusIntegrationWithContext(ctx context.Context, request *DeletePrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *DeletePrometheusIntegrationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5873,32 +4421,11 @@ func (client *Client) DeletePrometheusIntegrationWithOptions(request *DeleteProm
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePrometheusIntegrationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeletePrometheusIntegration is deprecated
-//
-// Summary:
-//
-// Deletes an exporter from a Prometheus instance for Container Service or a Prometheus instance for ECS.
-//
-// @param request - DeletePrometheusIntegrationRequest
-//
-// @return DeletePrometheusIntegrationResponse
-// Deprecated
-func (client *Client) DeletePrometheusIntegration(request *DeletePrometheusIntegrationRequest) (_result *DeletePrometheusIntegrationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePrometheusIntegrationResponse{}
-	_body, _err := client.DeletePrometheusIntegrationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5913,7 +4440,7 @@ func (client *Client) DeletePrometheusIntegration(request *DeletePrometheusInteg
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePrometheusMonitoringResponse
-func (client *Client) DeletePrometheusMonitoringWithOptions(request *DeletePrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *DeletePrometheusMonitoringResponse, _err error) {
+func (client *Client) DeletePrometheusMonitoringWithContext(ctx context.Context, request *DeletePrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *DeletePrometheusMonitoringResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5950,32 +4477,11 @@ func (client *Client) DeletePrometheusMonitoringWithOptions(request *DeleteProme
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePrometheusMonitoringResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeletePrometheusMonitoring is deprecated
-//
-// Summary:
-//
-// Deletes the monitoring configuration of a Prometheus instance.
-//
-// @param request - DeletePrometheusMonitoringRequest
-//
-// @return DeletePrometheusMonitoringResponse
-// Deprecated
-func (client *Client) DeletePrometheusMonitoring(request *DeletePrometheusMonitoringRequest) (_result *DeletePrometheusMonitoringResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePrometheusMonitoringResponse{}
-	_body, _err := client.DeletePrometheusMonitoringWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5988,7 +4494,7 @@ func (client *Client) DeletePrometheusMonitoring(request *DeletePrometheusMonito
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRetcodeAppResponse
-func (client *Client) DeleteRetcodeAppWithOptions(request *DeleteRetcodeAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteRetcodeAppResponse, _err error) {
+func (client *Client) DeleteRetcodeAppWithContext(ctx context.Context, request *DeleteRetcodeAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteRetcodeAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6025,29 +4531,11 @@ func (client *Client) DeleteRetcodeAppWithOptions(request *DeleteRetcodeAppReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRetcodeAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Browser Monitoring task.
-//
-// @param request - DeleteRetcodeAppRequest
-//
-// @return DeleteRetcodeAppResponse
-func (client *Client) DeleteRetcodeApp(request *DeleteRetcodeAppRequest) (_result *DeleteRetcodeAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRetcodeAppResponse{}
-	_body, _err := client.DeleteRetcodeAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6060,7 +4548,7 @@ func (client *Client) DeleteRetcodeApp(request *DeleteRetcodeAppRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRumAppResponse
-func (client *Client) DeleteRumAppWithOptions(request *DeleteRumAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteRumAppResponse, _err error) {
+func (client *Client) DeleteRumAppWithContext(ctx context.Context, request *DeleteRumAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteRumAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6097,29 +4585,11 @@ func (client *Client) DeleteRumAppWithOptions(request *DeleteRumAppRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRumAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a RUM application.
-//
-// @param request - DeleteRumAppRequest
-//
-// @return DeleteRumAppResponse
-func (client *Client) DeleteRumApp(request *DeleteRumAppRequest) (_result *DeleteRumAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRumAppResponse{}
-	_body, _err := client.DeleteRumAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6136,7 +4606,7 @@ func (client *Client) DeleteRumApp(request *DeleteRumAppRequest) (_result *Delet
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRumUploadFileResponse
-func (client *Client) DeleteRumUploadFileWithOptions(request *DeleteRumUploadFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteRumUploadFileResponse, _err error) {
+func (client *Client) DeleteRumUploadFileWithContext(ctx context.Context, request *DeleteRumUploadFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteRumUploadFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6181,33 +4651,11 @@ func (client *Client) DeleteRumUploadFileWithOptions(request *DeleteRumUploadFil
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRumUploadFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a file such as a symbol table or SourceMap.
-//
-// Description:
-//
-// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
-//
-// @param request - DeleteRumUploadFileRequest
-//
-// @return DeleteRumUploadFileResponse
-func (client *Client) DeleteRumUploadFile(request *DeleteRumUploadFileRequest) (_result *DeleteRumUploadFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRumUploadFileResponse{}
-	_body, _err := client.DeleteRumUploadFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6216,7 +4664,7 @@ func (client *Client) DeleteRumUploadFile(request *DeleteRumUploadFileRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteScenarioResponse
-func (client *Client) DeleteScenarioWithOptions(request *DeleteScenarioRequest, runtime *dara.RuntimeOptions) (_result *DeleteScenarioResponse, _err error) {
+func (client *Client) DeleteScenarioWithContext(ctx context.Context, request *DeleteScenarioRequest, runtime *dara.RuntimeOptions) (_result *DeleteScenarioResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6245,25 +4693,11 @@ func (client *Client) DeleteScenarioWithOptions(request *DeleteScenarioRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteScenarioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteScenarioRequest
-//
-// @return DeleteScenarioResponse
-func (client *Client) DeleteScenario(request *DeleteScenarioRequest) (_result *DeleteScenarioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteScenarioResponse{}
-	_body, _err := client.DeleteScenarioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6276,7 +4710,7 @@ func (client *Client) DeleteScenario(request *DeleteScenarioRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSilencePolicyResponse
-func (client *Client) DeleteSilencePolicyWithOptions(request *DeleteSilencePolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteSilencePolicyResponse, _err error) {
+func (client *Client) DeleteSilencePolicyWithContext(ctx context.Context, request *DeleteSilencePolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteSilencePolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6301,29 +4735,11 @@ func (client *Client) DeleteSilencePolicyWithOptions(request *DeleteSilencePolic
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSilencePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The ID of the silence policy.
-//
-// @param request - DeleteSilencePolicyRequest
-//
-// @return DeleteSilencePolicyResponse
-func (client *Client) DeleteSilencePolicy(request *DeleteSilencePolicyRequest) (_result *DeleteSilencePolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSilencePolicyResponse{}
-	_body, _err := client.DeleteSilencePolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6336,7 +4752,7 @@ func (client *Client) DeleteSilencePolicy(request *DeleteSilencePolicyRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSourceMapResponse
-func (client *Client) DeleteSourceMapWithOptions(tmpReq *DeleteSourceMapRequest, runtime *dara.RuntimeOptions) (_result *DeleteSourceMapResponse, _err error) {
+func (client *Client) DeleteSourceMapWithContext(ctx context.Context, tmpReq *DeleteSourceMapRequest, runtime *dara.RuntimeOptions) (_result *DeleteSourceMapResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6375,29 +4791,11 @@ func (client *Client) DeleteSourceMapWithOptions(tmpReq *DeleteSourceMapRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSourceMapResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the SourceMap files uploaded in Browser Monitoring.
-//
-// @param request - DeleteSourceMapRequest
-//
-// @return DeleteSourceMapResponse
-func (client *Client) DeleteSourceMap(request *DeleteSourceMapRequest) (_result *DeleteSourceMapResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSourceMapResponse{}
-	_body, _err := client.DeleteSourceMapWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6410,7 +4808,7 @@ func (client *Client) DeleteSourceMap(request *DeleteSourceMapRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSyntheticTaskResponse
-func (client *Client) DeleteSyntheticTaskWithOptions(request *DeleteSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteSyntheticTaskResponse, _err error) {
+func (client *Client) DeleteSyntheticTaskWithContext(ctx context.Context, request *DeleteSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteSyntheticTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6439,29 +4837,11 @@ func (client *Client) DeleteSyntheticTaskWithOptions(request *DeleteSyntheticTas
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSyntheticTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes scheduled synthetic monitoring tasks.
-//
-// @param request - DeleteSyntheticTaskRequest
-//
-// @return DeleteSyntheticTaskResponse
-func (client *Client) DeleteSyntheticTask(request *DeleteSyntheticTaskRequest) (_result *DeleteSyntheticTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSyntheticTaskResponse{}
-	_body, _err := client.DeleteSyntheticTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6474,7 +4854,7 @@ func (client *Client) DeleteSyntheticTask(request *DeleteSyntheticTaskRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTimingSyntheticTaskResponse
-func (client *Client) DeleteTimingSyntheticTaskWithOptions(request *DeleteTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteTimingSyntheticTaskResponse, _err error) {
+func (client *Client) DeleteTimingSyntheticTaskWithContext(ctx context.Context, request *DeleteTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteTimingSyntheticTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6507,29 +4887,11 @@ func (client *Client) DeleteTimingSyntheticTaskWithOptions(request *DeleteTiming
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTimingSyntheticTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a scheduled synthetic monitoring task.
-//
-// @param request - DeleteTimingSyntheticTaskRequest
-//
-// @return DeleteTimingSyntheticTaskResponse
-func (client *Client) DeleteTimingSyntheticTask(request *DeleteTimingSyntheticTaskRequest) (_result *DeleteTimingSyntheticTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteTimingSyntheticTaskResponse{}
-	_body, _err := client.DeleteTimingSyntheticTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6542,7 +4904,7 @@ func (client *Client) DeleteTimingSyntheticTask(request *DeleteTimingSyntheticTa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTraceAppResponse
-func (client *Client) DeleteTraceAppWithOptions(tmpReq *DeleteTraceAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteTraceAppResponse, _err error) {
+func (client *Client) DeleteTraceAppWithContext(ctx context.Context, tmpReq *DeleteTraceAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteTraceAppResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6589,29 +4951,11 @@ func (client *Client) DeleteTraceAppWithOptions(tmpReq *DeleteTraceAppRequest, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTraceAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an application based on a specified process identifier (PID) and application type.
-//
-// @param request - DeleteTraceAppRequest
-//
-// @return DeleteTraceAppResponse
-func (client *Client) DeleteTraceApp(request *DeleteTraceAppRequest) (_result *DeleteTraceAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteTraceAppResponse{}
-	_body, _err := client.DeleteTraceAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6624,7 +4968,7 @@ func (client *Client) DeleteTraceApp(request *DeleteTraceAppRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteWebhookContactResponse
-func (client *Client) DeleteWebhookContactWithOptions(request *DeleteWebhookContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteWebhookContactResponse, _err error) {
+func (client *Client) DeleteWebhookContactWithContext(ctx context.Context, request *DeleteWebhookContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteWebhookContactResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6649,29 +4993,11 @@ func (client *Client) DeleteWebhookContactWithOptions(request *DeleteWebhookCont
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteWebhookContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a webhook alert contact.
-//
-// @param request - DeleteWebhookContactRequest
-//
-// @return DeleteWebhookContactResponse
-func (client *Client) DeleteWebhookContact(request *DeleteWebhookContactRequest) (_result *DeleteWebhookContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteWebhookContactResponse{}
-	_body, _err := client.DeleteWebhookContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6684,7 +5010,7 @@ func (client *Client) DeleteWebhookContact(request *DeleteWebhookContactRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAddonMetricsResponse
-func (client *Client) DescribeAddonMetricsWithOptions(request *DescribeAddonMetricsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAddonMetricsResponse, _err error) {
+func (client *Client) DescribeAddonMetricsWithContext(ctx context.Context, request *DescribeAddonMetricsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAddonMetricsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6725,29 +5051,11 @@ func (client *Client) DescribeAddonMetricsWithOptions(request *DescribeAddonMetr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAddonMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the metric details of a component.
-//
-// @param request - DescribeAddonMetricsRequest
-//
-// @return DescribeAddonMetricsResponse
-func (client *Client) DescribeAddonMetrics(request *DescribeAddonMetricsRequest) (_result *DescribeAddonMetricsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAddonMetricsResponse{}
-	_body, _err := client.DescribeAddonMetricsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6760,7 +5068,7 @@ func (client *Client) DescribeAddonMetrics(request *DescribeAddonMetricsRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAddonReleaseResponse
-func (client *Client) DescribeAddonReleaseWithOptions(request *DescribeAddonReleaseRequest, runtime *dara.RuntimeOptions) (_result *DescribeAddonReleaseResponse, _err error) {
+func (client *Client) DescribeAddonReleaseWithContext(ctx context.Context, request *DescribeAddonReleaseRequest, runtime *dara.RuntimeOptions) (_result *DescribeAddonReleaseResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6793,29 +5101,11 @@ func (client *Client) DescribeAddonReleaseWithOptions(request *DescribeAddonRele
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAddonReleaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the release information of an add-on by name.
-//
-// @param request - DescribeAddonReleaseRequest
-//
-// @return DescribeAddonReleaseResponse
-func (client *Client) DescribeAddonRelease(request *DescribeAddonReleaseRequest) (_result *DescribeAddonReleaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAddonReleaseResponse{}
-	_body, _err := client.DescribeAddonReleaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6828,7 +5118,7 @@ func (client *Client) DescribeAddonRelease(request *DescribeAddonReleaseRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeContactGroupsResponse
-func (client *Client) DescribeContactGroupsWithOptions(request *DescribeContactGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeContactGroupsResponse, _err error) {
+func (client *Client) DescribeContactGroupsWithContext(ctx context.Context, request *DescribeContactGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeContactGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6873,29 +5163,11 @@ func (client *Client) DescribeContactGroupsWithOptions(request *DescribeContactG
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeContactGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries an alert contact group.
-//
-// @param request - DescribeContactGroupsRequest
-//
-// @return DescribeContactGroupsResponse
-func (client *Client) DescribeContactGroups(request *DescribeContactGroupsRequest) (_result *DescribeContactGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeContactGroupsResponse{}
-	_body, _err := client.DescribeContactGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6908,7 +5180,7 @@ func (client *Client) DescribeContactGroups(request *DescribeContactGroupsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeContactsResponse
-func (client *Client) DescribeContactsWithOptions(request *DescribeContactsRequest, runtime *dara.RuntimeOptions) (_result *DescribeContactsResponse, _err error) {
+func (client *Client) DescribeContactsWithContext(ctx context.Context, request *DescribeContactsRequest, runtime *dara.RuntimeOptions) (_result *DescribeContactsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6961,29 +5233,11 @@ func (client *Client) DescribeContactsWithOptions(request *DescribeContactsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeContactsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries alert contacts.
-//
-// @param request - DescribeContactsRequest
-//
-// @return DescribeContactsResponse
-func (client *Client) DescribeContacts(request *DescribeContactsRequest) (_result *DescribeContactsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeContactsResponse{}
-	_body, _err := client.DescribeContactsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6996,7 +5250,7 @@ func (client *Client) DescribeContacts(request *DescribeContactsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDispatchRuleResponse
-func (client *Client) DescribeDispatchRuleWithOptions(request *DescribeDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeDispatchRuleResponse, _err error) {
+func (client *Client) DescribeDispatchRuleWithContext(ctx context.Context, request *DescribeDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeDispatchRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7025,29 +5279,11 @@ func (client *Client) DescribeDispatchRuleWithOptions(request *DescribeDispatchR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDispatchRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a dispatch policy.
-//
-// @param request - DescribeDispatchRuleRequest
-//
-// @return DescribeDispatchRuleResponse
-func (client *Client) DescribeDispatchRule(request *DescribeDispatchRuleRequest) (_result *DescribeDispatchRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDispatchRuleResponse{}
-	_body, _err := client.DescribeDispatchRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7060,7 +5296,7 @@ func (client *Client) DescribeDispatchRule(request *DescribeDispatchRuleRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEnvCustomJobResponse
-func (client *Client) DescribeEnvCustomJobWithOptions(request *DescribeEnvCustomJobRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvCustomJobResponse, _err error) {
+func (client *Client) DescribeEnvCustomJobWithContext(ctx context.Context, request *DescribeEnvCustomJobRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvCustomJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7097,29 +5333,11 @@ func (client *Client) DescribeEnvCustomJobWithOptions(request *DescribeEnvCustom
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEnvCustomJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a custom job for an environment.
-//
-// @param request - DescribeEnvCustomJobRequest
-//
-// @return DescribeEnvCustomJobResponse
-func (client *Client) DescribeEnvCustomJob(request *DescribeEnvCustomJobRequest) (_result *DescribeEnvCustomJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEnvCustomJobResponse{}
-	_body, _err := client.DescribeEnvCustomJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7132,7 +5350,7 @@ func (client *Client) DescribeEnvCustomJob(request *DescribeEnvCustomJobRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEnvDropMetricsRuleResponse
-func (client *Client) DescribeEnvDropMetricsRuleWithOptions(request *DescribeEnvDropMetricsRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvDropMetricsRuleResponse, _err error) {
+func (client *Client) DescribeEnvDropMetricsRuleWithContext(ctx context.Context, request *DescribeEnvDropMetricsRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvDropMetricsRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7161,29 +5379,11 @@ func (client *Client) DescribeEnvDropMetricsRuleWithOptions(request *DescribeEnv
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEnvDropMetricsRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询指定环境实例的废弃指标列表
-//
-// @param request - DescribeEnvDropMetricsRuleRequest
-//
-// @return DescribeEnvDropMetricsRuleResponse
-func (client *Client) DescribeEnvDropMetricsRule(request *DescribeEnvDropMetricsRuleRequest) (_result *DescribeEnvDropMetricsRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEnvDropMetricsRuleResponse{}
-	_body, _err := client.DescribeEnvDropMetricsRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7196,7 +5396,7 @@ func (client *Client) DescribeEnvDropMetricsRule(request *DescribeEnvDropMetrics
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEnvPodMonitorResponse
-func (client *Client) DescribeEnvPodMonitorWithOptions(request *DescribeEnvPodMonitorRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvPodMonitorResponse, _err error) {
+func (client *Client) DescribeEnvPodMonitorWithContext(ctx context.Context, request *DescribeEnvPodMonitorRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvPodMonitorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7233,29 +5433,11 @@ func (client *Client) DescribeEnvPodMonitorWithOptions(request *DescribeEnvPodMo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEnvPodMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the PodMonitor details of an environment.
-//
-// @param request - DescribeEnvPodMonitorRequest
-//
-// @return DescribeEnvPodMonitorResponse
-func (client *Client) DescribeEnvPodMonitor(request *DescribeEnvPodMonitorRequest) (_result *DescribeEnvPodMonitorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEnvPodMonitorResponse{}
-	_body, _err := client.DescribeEnvPodMonitorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7268,7 +5450,7 @@ func (client *Client) DescribeEnvPodMonitor(request *DescribeEnvPodMonitorReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEnvServiceMonitorResponse
-func (client *Client) DescribeEnvServiceMonitorWithOptions(request *DescribeEnvServiceMonitorRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvServiceMonitorResponse, _err error) {
+func (client *Client) DescribeEnvServiceMonitorWithContext(ctx context.Context, request *DescribeEnvServiceMonitorRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvServiceMonitorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7305,29 +5487,11 @@ func (client *Client) DescribeEnvServiceMonitorWithOptions(request *DescribeEnvS
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEnvServiceMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the ServiceMonitor details of an environment.
-//
-// @param request - DescribeEnvServiceMonitorRequest
-//
-// @return DescribeEnvServiceMonitorResponse
-func (client *Client) DescribeEnvServiceMonitor(request *DescribeEnvServiceMonitorRequest) (_result *DescribeEnvServiceMonitorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEnvServiceMonitorResponse{}
-	_body, _err := client.DescribeEnvServiceMonitorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7340,7 +5504,7 @@ func (client *Client) DescribeEnvServiceMonitor(request *DescribeEnvServiceMonit
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEnvironmentResponse
-func (client *Client) DescribeEnvironmentWithOptions(request *DescribeEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvironmentResponse, _err error) {
+func (client *Client) DescribeEnvironmentWithContext(ctx context.Context, request *DescribeEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvironmentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7369,29 +5533,11 @@ func (client *Client) DescribeEnvironmentWithOptions(request *DescribeEnvironmen
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an environment.
-//
-// @param request - DescribeEnvironmentRequest
-//
-// @return DescribeEnvironmentResponse
-func (client *Client) DescribeEnvironment(request *DescribeEnvironmentRequest) (_result *DescribeEnvironmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEnvironmentResponse{}
-	_body, _err := client.DescribeEnvironmentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7404,7 +5550,7 @@ func (client *Client) DescribeEnvironment(request *DescribeEnvironmentRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEnvironmentFeatureResponse
-func (client *Client) DescribeEnvironmentFeatureWithOptions(request *DescribeEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvironmentFeatureResponse, _err error) {
+func (client *Client) DescribeEnvironmentFeatureWithContext(ctx context.Context, request *DescribeEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnvironmentFeatureResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7441,29 +5587,11 @@ func (client *Client) DescribeEnvironmentFeatureWithOptions(request *DescribeEnv
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEnvironmentFeatureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a feature.
-//
-// @param request - DescribeEnvironmentFeatureRequest
-//
-// @return DescribeEnvironmentFeatureResponse
-func (client *Client) DescribeEnvironmentFeature(request *DescribeEnvironmentFeatureRequest) (_result *DescribeEnvironmentFeatureResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEnvironmentFeatureResponse{}
-	_body, _err := client.DescribeEnvironmentFeatureWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7476,7 +5604,7 @@ func (client *Client) DescribeEnvironmentFeature(request *DescribeEnvironmentFea
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIMRobotsResponse
-func (client *Client) DescribeIMRobotsWithOptions(request *DescribeIMRobotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeIMRobotsResponse, _err error) {
+func (client *Client) DescribeIMRobotsWithContext(ctx context.Context, request *DescribeIMRobotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeIMRobotsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7513,29 +5641,11 @@ func (client *Client) DescribeIMRobotsWithOptions(request *DescribeIMRobotsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeIMRobotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries instant messaging (IM) chatbots.
-//
-// @param request - DescribeIMRobotsRequest
-//
-// @return DescribeIMRobotsResponse
-func (client *Client) DescribeIMRobots(request *DescribeIMRobotsRequest) (_result *DescribeIMRobotsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeIMRobotsResponse{}
-	_body, _err := client.DescribeIMRobotsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7548,7 +5658,7 @@ func (client *Client) DescribeIMRobots(request *DescribeIMRobotsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePrometheusAlertRuleResponse
-func (client *Client) DescribePrometheusAlertRuleWithOptions(request *DescribePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribePrometheusAlertRuleResponse, _err error) {
+func (client *Client) DescribePrometheusAlertRuleWithContext(ctx context.Context, request *DescribePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribePrometheusAlertRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7577,29 +5687,11 @@ func (client *Client) DescribePrometheusAlertRuleWithOptions(request *DescribePr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePrometheusAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details about an alert rule for a Prometheus instance.
-//
-// @param request - DescribePrometheusAlertRuleRequest
-//
-// @return DescribePrometheusAlertRuleResponse
-func (client *Client) DescribePrometheusAlertRule(request *DescribePrometheusAlertRuleRequest) (_result *DescribePrometheusAlertRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePrometheusAlertRuleResponse{}
-	_body, _err := client.DescribePrometheusAlertRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7612,7 +5704,7 @@ func (client *Client) DescribePrometheusAlertRule(request *DescribePrometheusAle
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTraceLicenseKeyResponse
-func (client *Client) DescribeTraceLicenseKeyWithOptions(request *DescribeTraceLicenseKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeTraceLicenseKeyResponse, _err error) {
+func (client *Client) DescribeTraceLicenseKeyWithContext(ctx context.Context, request *DescribeTraceLicenseKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeTraceLicenseKeyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7637,29 +5729,11 @@ func (client *Client) DescribeTraceLicenseKeyWithOptions(request *DescribeTraceL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTraceLicenseKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the license key.
-//
-// @param request - DescribeTraceLicenseKeyRequest
-//
-// @return DescribeTraceLicenseKeyResponse
-func (client *Client) DescribeTraceLicenseKey(request *DescribeTraceLicenseKeyRequest) (_result *DescribeTraceLicenseKeyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTraceLicenseKeyResponse{}
-	_body, _err := client.DescribeTraceLicenseKeyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7672,7 +5746,7 @@ func (client *Client) DescribeTraceLicenseKey(request *DescribeTraceLicenseKeyRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeWebhookContactsResponse
-func (client *Client) DescribeWebhookContactsWithOptions(request *DescribeWebhookContactsRequest, runtime *dara.RuntimeOptions) (_result *DescribeWebhookContactsResponse, _err error) {
+func (client *Client) DescribeWebhookContactsWithContext(ctx context.Context, request *DescribeWebhookContactsRequest, runtime *dara.RuntimeOptions) (_result *DescribeWebhookContactsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7693,29 +5767,11 @@ func (client *Client) DescribeWebhookContactsWithOptions(request *DescribeWebhoo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeWebhookContactsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the list of webhook alert contacts.
-//
-// @param request - DescribeWebhookContactsRequest
-//
-// @return DescribeWebhookContactsResponse
-func (client *Client) DescribeWebhookContacts(request *DescribeWebhookContactsRequest) (_result *DescribeWebhookContactsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeWebhookContactsResponse{}
-	_body, _err := client.DescribeWebhookContactsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7728,7 +5784,7 @@ func (client *Client) DescribeWebhookContacts(request *DescribeWebhookContactsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DoInsightsActionResponse
-func (client *Client) DoInsightsActionWithOptions(request *DoInsightsActionRequest, runtime *dara.RuntimeOptions) (_result *DoInsightsActionResponse, _err error) {
+func (client *Client) DoInsightsActionWithContext(ctx context.Context, request *DoInsightsActionRequest, runtime *dara.RuntimeOptions) (_result *DoInsightsActionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7763,29 +5819,11 @@ func (client *Client) DoInsightsActionWithOptions(request *DoInsightsActionReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DoInsightsActionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Performs actions based on the specified module type.
-//
-// @param request - DoInsightsActionRequest
-//
-// @return DoInsightsActionResponse
-func (client *Client) DoInsightsAction(request *DoInsightsActionRequest) (_result *DoInsightsActionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DoInsightsActionResponse{}
-	_body, _err := client.DoInsightsActionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7800,7 +5838,7 @@ func (client *Client) DoInsightsAction(request *DoInsightsActionRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableMetricResponse
-func (client *Client) EnableMetricWithOptions(request *EnableMetricRequest, runtime *dara.RuntimeOptions) (_result *EnableMetricResponse, _err error) {
+func (client *Client) EnableMetricWithContext(ctx context.Context, request *EnableMetricRequest, runtime *dara.RuntimeOptions) (_result *EnableMetricResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7833,32 +5871,11 @@ func (client *Client) EnableMetricWithOptions(request *EnableMetricRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableMetricResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI EnableMetric is deprecated
-//
-// Summary:
-//
-// Enables a discarded metric.
-//
-// @param request - EnableMetricRequest
-//
-// @return EnableMetricResponse
-// Deprecated
-func (client *Client) EnableMetric(request *EnableMetricRequest) (_result *EnableMetricResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableMetricResponse{}
-	_body, _err := client.EnableMetricWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7871,7 +5888,7 @@ func (client *Client) EnableMetric(request *EnableMetricRequest) (_result *Enabl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAgentDownloadUrlResponse
-func (client *Client) GetAgentDownloadUrlWithOptions(request *GetAgentDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *GetAgentDownloadUrlResponse, _err error) {
+func (client *Client) GetAgentDownloadUrlWithContext(ctx context.Context, request *GetAgentDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *GetAgentDownloadUrlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7892,29 +5909,11 @@ func (client *Client) GetAgentDownloadUrlWithOptions(request *GetAgentDownloadUr
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAgentDownloadUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the URL for downloading an agent.
-//
-// @param request - GetAgentDownloadUrlRequest
-//
-// @return GetAgentDownloadUrlResponse
-func (client *Client) GetAgentDownloadUrl(request *GetAgentDownloadUrlRequest) (_result *GetAgentDownloadUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAgentDownloadUrlResponse{}
-	_body, _err := client.GetAgentDownloadUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7927,7 +5926,7 @@ func (client *Client) GetAgentDownloadUrl(request *GetAgentDownloadUrlRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAgentDownloadUrlV2Response
-func (client *Client) GetAgentDownloadUrlV2WithOptions(request *GetAgentDownloadUrlV2Request, runtime *dara.RuntimeOptions) (_result *GetAgentDownloadUrlV2Response, _err error) {
+func (client *Client) GetAgentDownloadUrlV2WithContext(ctx context.Context, request *GetAgentDownloadUrlV2Request, runtime *dara.RuntimeOptions) (_result *GetAgentDownloadUrlV2Response, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7960,29 +5959,11 @@ func (client *Client) GetAgentDownloadUrlV2WithOptions(request *GetAgentDownload
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAgentDownloadUrlV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the URL for downloading an agent.
-//
-// @param request - GetAgentDownloadUrlV2Request
-//
-// @return GetAgentDownloadUrlV2Response
-func (client *Client) GetAgentDownloadUrlV2(request *GetAgentDownloadUrlV2Request) (_result *GetAgentDownloadUrlV2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAgentDownloadUrlV2Response{}
-	_body, _err := client.GetAgentDownloadUrlV2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7995,7 +5976,7 @@ func (client *Client) GetAgentDownloadUrlV2(request *GetAgentDownloadUrlV2Reques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAlertRulesResponse
-func (client *Client) GetAlertRulesWithOptions(request *GetAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *GetAlertRulesResponse, _err error) {
+func (client *Client) GetAlertRulesWithContext(ctx context.Context, request *GetAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *GetAlertRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8060,29 +6041,11 @@ func (client *Client) GetAlertRulesWithOptions(request *GetAlertRulesRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAlertRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries alert rules.
-//
-// @param request - GetAlertRulesRequest
-//
-// @return GetAlertRulesResponse
-func (client *Client) GetAlertRules(request *GetAlertRulesRequest) (_result *GetAlertRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAlertRulesResponse{}
-	_body, _err := client.GetAlertRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8095,7 +6058,7 @@ func (client *Client) GetAlertRules(request *GetAlertRulesRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAppApiByPageResponse
-func (client *Client) GetAppApiByPageWithOptions(request *GetAppApiByPageRequest, runtime *dara.RuntimeOptions) (_result *GetAppApiByPageResponse, _err error) {
+func (client *Client) GetAppApiByPageWithContext(ctx context.Context, request *GetAppApiByPageRequest, runtime *dara.RuntimeOptions) (_result *GetAppApiByPageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8144,29 +6107,11 @@ func (client *Client) GetAppApiByPageWithOptions(request *GetAppApiByPageRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAppApiByPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the API operations of application monitoring by page.
-//
-// @param request - GetAppApiByPageRequest
-//
-// @return GetAppApiByPageResponse
-func (client *Client) GetAppApiByPage(request *GetAppApiByPageRequest) (_result *GetAppApiByPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAppApiByPageResponse{}
-	_body, _err := client.GetAppApiByPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8179,7 +6124,7 @@ func (client *Client) GetAppApiByPage(request *GetAppApiByPageRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAppJVMConfigResponse
-func (client *Client) GetAppJVMConfigWithOptions(request *GetAppJVMConfigRequest, runtime *dara.RuntimeOptions) (_result *GetAppJVMConfigResponse, _err error) {
+func (client *Client) GetAppJVMConfigWithContext(ctx context.Context, request *GetAppJVMConfigRequest, runtime *dara.RuntimeOptions) (_result *GetAppJVMConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8200,29 +6145,11 @@ func (client *Client) GetAppJVMConfigWithOptions(request *GetAppJVMConfigRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAppJVMConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Obtain the JVM configuration information of each instance of the application
-//
-// @param request - GetAppJVMConfigRequest
-//
-// @return GetAppJVMConfigResponse
-func (client *Client) GetAppJVMConfig(request *GetAppJVMConfigRequest) (_result *GetAppJVMConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAppJVMConfigResponse{}
-	_body, _err := client.GetAppJVMConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8235,7 +6162,7 @@ func (client *Client) GetAppJVMConfig(request *GetAppJVMConfigRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAuthTokenResponse
-func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runtime *dara.RuntimeOptions) (_result *GetAuthTokenResponse, _err error) {
+func (client *Client) GetAuthTokenWithContext(ctx context.Context, request *GetAuthTokenRequest, runtime *dara.RuntimeOptions) (_result *GetAuthTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8264,29 +6191,11 @@ func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAuthTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains an authentication token. When you connect a Container Service for Kubernetes (ACK) cluster to Prometheus Service over the Internet, you must use a token for authentication.
-//
-// @param request - GetAuthTokenRequest
-//
-// @return GetAuthTokenResponse
-func (client *Client) GetAuthToken(request *GetAuthTokenRequest) (_result *GetAuthTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAuthTokenResponse{}
-	_body, _err := client.GetAuthTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8301,7 +6210,7 @@ func (client *Client) GetAuthToken(request *GetAuthTokenRequest) (_result *GetAu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCloudClusterAllUrlResponse
-func (client *Client) GetCloudClusterAllUrlWithOptions(request *GetCloudClusterAllUrlRequest, runtime *dara.RuntimeOptions) (_result *GetCloudClusterAllUrlResponse, _err error) {
+func (client *Client) GetCloudClusterAllUrlWithContext(ctx context.Context, request *GetCloudClusterAllUrlRequest, runtime *dara.RuntimeOptions) (_result *GetCloudClusterAllUrlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8330,32 +6239,11 @@ func (client *Client) GetCloudClusterAllUrlWithOptions(request *GetCloudClusterA
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCloudClusterAllUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetCloudClusterAllUrl is deprecated, please use ARMS::2019-08-08::GetRemoteWriteUrl instead.
-//
-// Summary:
-//
-// Queries the read and write URLs of a CloudMonitor instance, such as Pushgateway and Grafana URLs.
-//
-// @param request - GetCloudClusterAllUrlRequest
-//
-// @return GetCloudClusterAllUrlResponse
-// Deprecated
-func (client *Client) GetCloudClusterAllUrl(request *GetCloudClusterAllUrlRequest) (_result *GetCloudClusterAllUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetCloudClusterAllUrlResponse{}
-	_body, _err := client.GetCloudClusterAllUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8370,7 +6258,7 @@ func (client *Client) GetCloudClusterAllUrl(request *GetCloudClusterAllUrlReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetClusterAllUrlResponse
-func (client *Client) GetClusterAllUrlWithOptions(request *GetClusterAllUrlRequest, runtime *dara.RuntimeOptions) (_result *GetClusterAllUrlResponse, _err error) {
+func (client *Client) GetClusterAllUrlWithContext(ctx context.Context, request *GetClusterAllUrlRequest, runtime *dara.RuntimeOptions) (_result *GetClusterAllUrlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8399,32 +6287,11 @@ func (client *Client) GetClusterAllUrlWithOptions(request *GetClusterAllUrlReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetClusterAllUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetClusterAllUrl is deprecated, please use ARMS::2019-08-08::GetPrometheusInstance instead.
-//
-// Summary:
-//
-// Obtains all the URLs of a cluster, including remote read and write URLs, Pushgateway URLs, and Grafana URLs.
-//
-// @param request - GetClusterAllUrlRequest
-//
-// @return GetClusterAllUrlResponse
-// Deprecated
-func (client *Client) GetClusterAllUrl(request *GetClusterAllUrlRequest) (_result *GetClusterAllUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetClusterAllUrlResponse{}
-	_body, _err := client.GetClusterAllUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8437,7 +6304,7 @@ func (client *Client) GetClusterAllUrl(request *GetClusterAllUrlRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCommercialStatusResponse
-func (client *Client) GetCommercialStatusWithOptions(request *GetCommercialStatusRequest, runtime *dara.RuntimeOptions) (_result *GetCommercialStatusResponse, _err error) {
+func (client *Client) GetCommercialStatusWithContext(ctx context.Context, request *GetCommercialStatusRequest, runtime *dara.RuntimeOptions) (_result *GetCommercialStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8466,29 +6333,11 @@ func (client *Client) GetCommercialStatusWithOptions(request *GetCommercialStatu
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCommercialStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries whether the current account has activated the commercial edition of a service.
-//
-// @param request - GetCommercialStatusRequest
-//
-// @return GetCommercialStatusResponse
-func (client *Client) GetCommercialStatus(request *GetCommercialStatusRequest) (_result *GetCommercialStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetCommercialStatusResponse{}
-	_body, _err := client.GetCommercialStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8503,7 +6352,7 @@ func (client *Client) GetCommercialStatus(request *GetCommercialStatusRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetExploreUrlResponse
-func (client *Client) GetExploreUrlWithOptions(request *GetExploreUrlRequest, runtime *dara.RuntimeOptions) (_result *GetExploreUrlResponse, _err error) {
+func (client *Client) GetExploreUrlWithContext(ctx context.Context, request *GetExploreUrlRequest, runtime *dara.RuntimeOptions) (_result *GetExploreUrlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8540,32 +6389,11 @@ func (client *Client) GetExploreUrlWithOptions(request *GetExploreUrlRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetExploreUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetExploreUrl is deprecated
-//
-// Summary:
-//
-// Enables the Explore feature of Grafana.
-//
-// @param request - GetExploreUrlRequest
-//
-// @return GetExploreUrlResponse
-// Deprecated
-func (client *Client) GetExploreUrl(request *GetExploreUrlRequest) (_result *GetExploreUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetExploreUrlResponse{}
-	_body, _err := client.GetExploreUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8582,7 +6410,7 @@ func (client *Client) GetExploreUrl(request *GetExploreUrlRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetGrafanaWorkspaceResponse
-func (client *Client) GetGrafanaWorkspaceWithOptions(request *GetGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *GetGrafanaWorkspaceResponse, _err error) {
+func (client *Client) GetGrafanaWorkspaceWithContext(ctx context.Context, request *GetGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *GetGrafanaWorkspaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8615,33 +6443,11 @@ func (client *Client) GetGrafanaWorkspaceWithOptions(request *GetGrafanaWorkspac
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetGrafanaWorkspaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a Grafana workspace.
-//
-// Description:
-//
-// Note: The list returned by this operation includes the workspaces of Developer Edition, Expert Edition, and Advanced Edition. The list does not include the workspaces of Shared Edition.
-//
-// @param request - GetGrafanaWorkspaceRequest
-//
-// @return GetGrafanaWorkspaceResponse
-func (client *Client) GetGrafanaWorkspace(request *GetGrafanaWorkspaceRequest) (_result *GetGrafanaWorkspaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetGrafanaWorkspaceResponse{}
-	_body, _err := client.GetGrafanaWorkspaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8656,7 +6462,7 @@ func (client *Client) GetGrafanaWorkspace(request *GetGrafanaWorkspaceRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetIntegrationStateResponse
-func (client *Client) GetIntegrationStateWithOptions(request *GetIntegrationStateRequest, runtime *dara.RuntimeOptions) (_result *GetIntegrationStateResponse, _err error) {
+func (client *Client) GetIntegrationStateWithContext(ctx context.Context, request *GetIntegrationStateRequest, runtime *dara.RuntimeOptions) (_result *GetIntegrationStateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8689,32 +6495,11 @@ func (client *Client) GetIntegrationStateWithOptions(request *GetIntegrationStat
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetIntegrationStateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetIntegrationState is deprecated, please use ARMS::2019-08-08::DescribeAddonRelease instead.
-//
-// Summary:
-//
-// Queries the integration state of the dashboards and collection rules of Application Real-Time Monitoring Service (ARMS) Prometheus.
-//
-// @param request - GetIntegrationStateRequest
-//
-// @return GetIntegrationStateResponse
-// Deprecated
-func (client *Client) GetIntegrationState(request *GetIntegrationStateRequest) (_result *GetIntegrationStateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetIntegrationStateResponse{}
-	_body, _err := client.GetIntegrationStateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8729,7 +6514,7 @@ func (client *Client) GetIntegrationState(request *GetIntegrationStateRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetManagedPrometheusStatusResponse
-func (client *Client) GetManagedPrometheusStatusWithOptions(request *GetManagedPrometheusStatusRequest, runtime *dara.RuntimeOptions) (_result *GetManagedPrometheusStatusResponse, _err error) {
+func (client *Client) GetManagedPrometheusStatusWithContext(ctx context.Context, request *GetManagedPrometheusStatusRequest, runtime *dara.RuntimeOptions) (_result *GetManagedPrometheusStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8770,32 +6555,11 @@ func (client *Client) GetManagedPrometheusStatusWithOptions(request *GetManagedP
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetManagedPrometheusStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetManagedPrometheusStatus is deprecated
-//
-// Summary:
-//
-// Queries the installation status of a Prometheus agent in a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) cluster.
-//
-// @param request - GetManagedPrometheusStatusRequest
-//
-// @return GetManagedPrometheusStatusResponse
-// Deprecated
-func (client *Client) GetManagedPrometheusStatus(request *GetManagedPrometheusStatusRequest) (_result *GetManagedPrometheusStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetManagedPrometheusStatusResponse{}
-	_body, _err := client.GetManagedPrometheusStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8808,7 +6572,7 @@ func (client *Client) GetManagedPrometheusStatus(request *GetManagedPrometheusSt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMultipleTraceResponse
-func (client *Client) GetMultipleTraceWithOptions(request *GetMultipleTraceRequest, runtime *dara.RuntimeOptions) (_result *GetMultipleTraceResponse, _err error) {
+func (client *Client) GetMultipleTraceWithContext(ctx context.Context, request *GetMultipleTraceRequest, runtime *dara.RuntimeOptions) (_result *GetMultipleTraceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8853,29 +6617,11 @@ func (client *Client) GetMultipleTraceWithOptions(request *GetMultipleTraceReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMultipleTraceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of one or more traces.
-//
-// @param request - GetMultipleTraceRequest
-//
-// @return GetMultipleTraceResponse
-func (client *Client) GetMultipleTrace(request *GetMultipleTraceRequest) (_result *GetMultipleTraceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetMultipleTraceResponse{}
-	_body, _err := client.GetMultipleTraceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8888,7 +6634,7 @@ func (client *Client) GetMultipleTrace(request *GetMultipleTraceRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetOnCallSchedulesDetailResponse
-func (client *Client) GetOnCallSchedulesDetailWithOptions(request *GetOnCallSchedulesDetailRequest, runtime *dara.RuntimeOptions) (_result *GetOnCallSchedulesDetailResponse, _err error) {
+func (client *Client) GetOnCallSchedulesDetailWithContext(ctx context.Context, request *GetOnCallSchedulesDetailRequest, runtime *dara.RuntimeOptions) (_result *GetOnCallSchedulesDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8909,29 +6655,11 @@ func (client *Client) GetOnCallSchedulesDetailWithOptions(request *GetOnCallSche
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetOnCallSchedulesDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a scheduling policy.
-//
-// @param request - GetOnCallSchedulesDetailRequest
-//
-// @return GetOnCallSchedulesDetailResponse
-func (client *Client) GetOnCallSchedulesDetail(request *GetOnCallSchedulesDetailRequest) (_result *GetOnCallSchedulesDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetOnCallSchedulesDetailResponse{}
-	_body, _err := client.GetOnCallSchedulesDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8948,7 +6676,7 @@ func (client *Client) GetOnCallSchedulesDetail(request *GetOnCallSchedulesDetail
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPrometheusApiTokenResponse
-func (client *Client) GetPrometheusApiTokenWithOptions(request *GetPrometheusApiTokenRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusApiTokenResponse, _err error) {
+func (client *Client) GetPrometheusApiTokenWithContext(ctx context.Context, request *GetPrometheusApiTokenRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusApiTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8973,33 +6701,11 @@ func (client *Client) GetPrometheusApiTokenWithOptions(request *GetPrometheusApi
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPrometheusApiTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the token required for integrating Prometheus Service.
-//
-// Description:
-//
-// None.
-//
-// @param request - GetPrometheusApiTokenRequest
-//
-// @return GetPrometheusApiTokenResponse
-func (client *Client) GetPrometheusApiToken(request *GetPrometheusApiTokenRequest) (_result *GetPrometheusApiTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPrometheusApiTokenResponse{}
-	_body, _err := client.GetPrometheusApiTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9012,7 +6718,7 @@ func (client *Client) GetPrometheusApiToken(request *GetPrometheusApiTokenReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPrometheusGlobalViewResponse
-func (client *Client) GetPrometheusGlobalViewWithOptions(request *GetPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusGlobalViewResponse, _err error) {
+func (client *Client) GetPrometheusGlobalViewWithContext(ctx context.Context, request *GetPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusGlobalViewResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9041,29 +6747,11 @@ func (client *Client) GetPrometheusGlobalViewWithOptions(request *GetPrometheusG
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPrometheusGlobalViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a global aggregation instance.
-//
-// @param request - GetPrometheusGlobalViewRequest
-//
-// @return GetPrometheusGlobalViewResponse
-func (client *Client) GetPrometheusGlobalView(request *GetPrometheusGlobalViewRequest) (_result *GetPrometheusGlobalViewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPrometheusGlobalViewResponse{}
-	_body, _err := client.GetPrometheusGlobalViewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9076,7 +6764,7 @@ func (client *Client) GetPrometheusGlobalView(request *GetPrometheusGlobalViewRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPrometheusInstanceResponse
-func (client *Client) GetPrometheusInstanceWithOptions(request *GetPrometheusInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusInstanceResponse, _err error) {
+func (client *Client) GetPrometheusInstanceWithContext(ctx context.Context, request *GetPrometheusInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9105,29 +6793,11 @@ func (client *Client) GetPrometheusInstanceWithOptions(request *GetPrometheusIns
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPrometheusInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a Prometheus instance.
-//
-// @param request - GetPrometheusInstanceRequest
-//
-// @return GetPrometheusInstanceResponse
-func (client *Client) GetPrometheusInstance(request *GetPrometheusInstanceRequest) (_result *GetPrometheusInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPrometheusInstanceResponse{}
-	_body, _err := client.GetPrometheusInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9142,7 +6812,7 @@ func (client *Client) GetPrometheusInstance(request *GetPrometheusInstanceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPrometheusIntegrationResponse
-func (client *Client) GetPrometheusIntegrationWithOptions(request *GetPrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusIntegrationResponse, _err error) {
+func (client *Client) GetPrometheusIntegrationWithContext(ctx context.Context, request *GetPrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusIntegrationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9179,32 +6849,11 @@ func (client *Client) GetPrometheusIntegrationWithOptions(request *GetPrometheus
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPrometheusIntegrationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetPrometheusIntegration is deprecated
-//
-// Summary:
-//
-// Queries the information about an exporter that is integrated into a Prometheus instance for Container Service or a Prometheus instance for ECS.
-//
-// @param request - GetPrometheusIntegrationRequest
-//
-// @return GetPrometheusIntegrationResponse
-// Deprecated
-func (client *Client) GetPrometheusIntegration(request *GetPrometheusIntegrationRequest) (_result *GetPrometheusIntegrationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPrometheusIntegrationResponse{}
-	_body, _err := client.GetPrometheusIntegrationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9219,7 +6868,7 @@ func (client *Client) GetPrometheusIntegration(request *GetPrometheusIntegration
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPrometheusMonitoringResponse
-func (client *Client) GetPrometheusMonitoringWithOptions(request *GetPrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusMonitoringResponse, _err error) {
+func (client *Client) GetPrometheusMonitoringWithContext(ctx context.Context, request *GetPrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *GetPrometheusMonitoringResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9256,32 +6905,11 @@ func (client *Client) GetPrometheusMonitoringWithOptions(request *GetPrometheusM
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPrometheusMonitoringResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetPrometheusMonitoring is deprecated
-//
-// Summary:
-//
-// Queries the monitoring configuration of a Prometheus instance.
-//
-// @param request - GetPrometheusMonitoringRequest
-//
-// @return GetPrometheusMonitoringResponse
-// Deprecated
-func (client *Client) GetPrometheusMonitoring(request *GetPrometheusMonitoringRequest) (_result *GetPrometheusMonitoringResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPrometheusMonitoringResponse{}
-	_body, _err := client.GetPrometheusMonitoringWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9296,7 +6924,7 @@ func (client *Client) GetPrometheusMonitoring(request *GetPrometheusMonitoringRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRecordingRuleResponse
-func (client *Client) GetRecordingRuleWithOptions(request *GetRecordingRuleRequest, runtime *dara.RuntimeOptions) (_result *GetRecordingRuleResponse, _err error) {
+func (client *Client) GetRecordingRuleWithContext(ctx context.Context, request *GetRecordingRuleRequest, runtime *dara.RuntimeOptions) (_result *GetRecordingRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9325,32 +6953,11 @@ func (client *Client) GetRecordingRuleWithOptions(request *GetRecordingRuleReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRecordingRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetRecordingRule is deprecated
-//
-// Summary:
-//
-// Obtains the recording rule of a cluster.
-//
-// @param request - GetRecordingRuleRequest
-//
-// @return GetRecordingRuleResponse
-// Deprecated
-func (client *Client) GetRecordingRule(request *GetRecordingRuleRequest) (_result *GetRecordingRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRecordingRuleResponse{}
-	_body, _err := client.GetRecordingRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9363,7 +6970,7 @@ func (client *Client) GetRecordingRule(request *GetRecordingRuleRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRetcodeAppByPidResponse
-func (client *Client) GetRetcodeAppByPidWithOptions(request *GetRetcodeAppByPidRequest, runtime *dara.RuntimeOptions) (_result *GetRetcodeAppByPidResponse, _err error) {
+func (client *Client) GetRetcodeAppByPidWithContext(ctx context.Context, request *GetRetcodeAppByPidRequest, runtime *dara.RuntimeOptions) (_result *GetRetcodeAppByPidResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9384,29 +6991,11 @@ func (client *Client) GetRetcodeAppByPidWithOptions(request *GetRetcodeAppByPidR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRetcodeAppByPidResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the objects of a Browser Monitoring application by process identifier (PID).
-//
-// @param request - GetRetcodeAppByPidRequest
-//
-// @return GetRetcodeAppByPidResponse
-func (client *Client) GetRetcodeAppByPid(request *GetRetcodeAppByPidRequest) (_result *GetRetcodeAppByPidResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRetcodeAppByPidResponse{}
-	_body, _err := client.GetRetcodeAppByPidWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9419,7 +7008,7 @@ func (client *Client) GetRetcodeAppByPid(request *GetRetcodeAppByPidRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRetcodeDataByQueryResponse
-func (client *Client) GetRetcodeDataByQueryWithOptions(request *GetRetcodeDataByQueryRequest, runtime *dara.RuntimeOptions) (_result *GetRetcodeDataByQueryResponse, _err error) {
+func (client *Client) GetRetcodeDataByQueryWithContext(ctx context.Context, request *GetRetcodeDataByQueryRequest, runtime *dara.RuntimeOptions) (_result *GetRetcodeDataByQueryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9460,29 +7049,11 @@ func (client *Client) GetRetcodeDataByQueryWithOptions(request *GetRetcodeDataBy
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRetcodeDataByQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Browser Monitoring data based on a query statement of Log Service.
-//
-// @param request - GetRetcodeDataByQueryRequest
-//
-// @return GetRetcodeDataByQueryResponse
-func (client *Client) GetRetcodeDataByQuery(request *GetRetcodeDataByQueryRequest) (_result *GetRetcodeDataByQueryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRetcodeDataByQueryResponse{}
-	_body, _err := client.GetRetcodeDataByQueryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9495,7 +7066,7 @@ func (client *Client) GetRetcodeDataByQuery(request *GetRetcodeDataByQueryReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRetcodeLogstoreResponse
-func (client *Client) GetRetcodeLogstoreWithOptions(request *GetRetcodeLogstoreRequest, runtime *dara.RuntimeOptions) (_result *GetRetcodeLogstoreResponse, _err error) {
+func (client *Client) GetRetcodeLogstoreWithContext(ctx context.Context, request *GetRetcodeLogstoreRequest, runtime *dara.RuntimeOptions) (_result *GetRetcodeLogstoreResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9524,29 +7095,11 @@ func (client *Client) GetRetcodeLogstoreWithOptions(request *GetRetcodeLogstoreR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRetcodeLogstoreResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Log Service project and Logstore that correspond to an application of browser monitoring.
-//
-// @param request - GetRetcodeLogstoreRequest
-//
-// @return GetRetcodeLogstoreResponse
-func (client *Client) GetRetcodeLogstore(request *GetRetcodeLogstoreRequest) (_result *GetRetcodeLogstoreResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRetcodeLogstoreResponse{}
-	_body, _err := client.GetRetcodeLogstoreWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9559,7 +7112,7 @@ func (client *Client) GetRetcodeLogstore(request *GetRetcodeLogstoreRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRetcodeShareUrlResponse
-func (client *Client) GetRetcodeShareUrlWithOptions(request *GetRetcodeShareUrlRequest, runtime *dara.RuntimeOptions) (_result *GetRetcodeShareUrlResponse, _err error) {
+func (client *Client) GetRetcodeShareUrlWithContext(ctx context.Context, request *GetRetcodeShareUrlRequest, runtime *dara.RuntimeOptions) (_result *GetRetcodeShareUrlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9584,29 +7137,11 @@ func (client *Client) GetRetcodeShareUrlWithOptions(request *GetRetcodeShareUrlR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRetcodeShareUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the share URL of an application monitored by Browser Monitoring.
-//
-// @param request - GetRetcodeShareUrlRequest
-//
-// @return GetRetcodeShareUrlResponse
-func (client *Client) GetRetcodeShareUrl(request *GetRetcodeShareUrlRequest) (_result *GetRetcodeShareUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRetcodeShareUrlResponse{}
-	_body, _err := client.GetRetcodeShareUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9623,7 +7158,7 @@ func (client *Client) GetRetcodeShareUrl(request *GetRetcodeShareUrlRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRumAppInfoResponse
-func (client *Client) GetRumAppInfoWithOptions(request *GetRumAppInfoRequest, runtime *dara.RuntimeOptions) (_result *GetRumAppInfoResponse, _err error) {
+func (client *Client) GetRumAppInfoWithContext(ctx context.Context, request *GetRumAppInfoRequest, runtime *dara.RuntimeOptions) (_result *GetRumAppInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9656,33 +7191,11 @@ func (client *Client) GetRumAppInfoWithOptions(request *GetRumAppInfoRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRumAppInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the information about a single application in Browser Monitoring.
-//
-// Description:
-//
-// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
-//
-// @param request - GetRumAppInfoRequest
-//
-// @return GetRumAppInfoResponse
-func (client *Client) GetRumAppInfo(request *GetRumAppInfoRequest) (_result *GetRumAppInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRumAppInfoResponse{}
-	_body, _err := client.GetRumAppInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9699,7 +7212,7 @@ func (client *Client) GetRumAppInfo(request *GetRumAppInfoRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRumAppsResponse
-func (client *Client) GetRumAppsWithOptions(tmpReq *GetRumAppsRequest, runtime *dara.RuntimeOptions) (_result *GetRumAppsResponse, _err error) {
+func (client *Client) GetRumAppsWithContext(ctx context.Context, tmpReq *GetRumAppsRequest, runtime *dara.RuntimeOptions) (_result *GetRumAppsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9754,33 +7267,11 @@ func (client *Client) GetRumAppsWithOptions(tmpReq *GetRumAppsRequest, runtime *
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRumAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of Real User Monitoring (RUM) applications.
-//
-// Description:
-//
-// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
-//
-// @param request - GetRumAppsRequest
-//
-// @return GetRumAppsResponse
-func (client *Client) GetRumApps(request *GetRumAppsRequest) (_result *GetRumAppsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRumAppsResponse{}
-	_body, _err := client.GetRumAppsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9797,7 +7288,7 @@ func (client *Client) GetRumApps(request *GetRumAppsRequest) (_result *GetRumApp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRumDataForPageResponse
-func (client *Client) GetRumDataForPageWithOptions(request *GetRumDataForPageRequest, runtime *dara.RuntimeOptions) (_result *GetRumDataForPageResponse, _err error) {
+func (client *Client) GetRumDataForPageWithContext(ctx context.Context, request *GetRumDataForPageRequest, runtime *dara.RuntimeOptions) (_result *GetRumDataForPageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9850,33 +7341,11 @@ func (client *Client) GetRumDataForPageWithOptions(request *GetRumDataForPageReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRumDataForPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Real User Monitoring (RUM) data by page.
-//
-// Description:
-//
-// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
-//
-// @param request - GetRumDataForPageRequest
-//
-// @return GetRumDataForPageResponse
-func (client *Client) GetRumDataForPage(request *GetRumDataForPageRequest) (_result *GetRumDataForPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRumDataForPageResponse{}
-	_body, _err := client.GetRumDataForPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9893,7 +7362,7 @@ func (client *Client) GetRumDataForPage(request *GetRumDataForPageRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRumExceptionStackResponse
-func (client *Client) GetRumExceptionStackWithOptions(request *GetRumExceptionStackRequest, runtime *dara.RuntimeOptions) (_result *GetRumExceptionStackResponse, _err error) {
+func (client *Client) GetRumExceptionStackWithContext(ctx context.Context, request *GetRumExceptionStackRequest, runtime *dara.RuntimeOptions) (_result *GetRumExceptionStackResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9942,33 +7411,11 @@ func (client *Client) GetRumExceptionStackWithOptions(request *GetRumExceptionSt
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRumExceptionStackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the exception stack information of a Real User Monitoring (RUM) application.
-//
-// Description:
-//
-// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
-//
-// @param request - GetRumExceptionStackRequest
-//
-// @return GetRumExceptionStackResponse
-func (client *Client) GetRumExceptionStack(request *GetRumExceptionStackRequest) (_result *GetRumExceptionStackResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRumExceptionStackResponse{}
-	_body, _err := client.GetRumExceptionStackWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9985,7 +7432,7 @@ func (client *Client) GetRumExceptionStack(request *GetRumExceptionStackRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRumOcuStatisticDataResponse
-func (client *Client) GetRumOcuStatisticDataWithOptions(tmpReq *GetRumOcuStatisticDataRequest, runtime *dara.RuntimeOptions) (_result *GetRumOcuStatisticDataResponse, _err error) {
+func (client *Client) GetRumOcuStatisticDataWithContext(ctx context.Context, tmpReq *GetRumOcuStatisticDataRequest, runtime *dara.RuntimeOptions) (_result *GetRumOcuStatisticDataResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10016,33 +7463,11 @@ func (client *Client) GetRumOcuStatisticDataWithOptions(tmpReq *GetRumOcuStatist
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRumOcuStatisticDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the observability capacity unit (OCU) usage data of Real User Monitoring (RUM).
-//
-// Description:
-//
-// You can query the usage data for the current day at any time. You can query the usage data for the previous day only after 8:00 today.
-//
-// @param request - GetRumOcuStatisticDataRequest
-//
-// @return GetRumOcuStatisticDataResponse
-func (client *Client) GetRumOcuStatisticData(request *GetRumOcuStatisticDataRequest) (_result *GetRumOcuStatisticDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRumOcuStatisticDataResponse{}
-	_body, _err := client.GetRumOcuStatisticDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10059,7 +7484,7 @@ func (client *Client) GetRumOcuStatisticData(request *GetRumOcuStatisticDataRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRumUploadFilesResponse
-func (client *Client) GetRumUploadFilesWithOptions(request *GetRumUploadFilesRequest, runtime *dara.RuntimeOptions) (_result *GetRumUploadFilesResponse, _err error) {
+func (client *Client) GetRumUploadFilesWithContext(ctx context.Context, request *GetRumUploadFilesRequest, runtime *dara.RuntimeOptions) (_result *GetRumUploadFilesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10096,33 +7521,11 @@ func (client *Client) GetRumUploadFilesWithOptions(request *GetRumUploadFilesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRumUploadFilesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Real User Monitoring (RUM)-related files, such as symbol tables and SourceMap.
-//
-// Description:
-//
-// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
-//
-// @param request - GetRumUploadFilesRequest
-//
-// @return GetRumUploadFilesResponse
-func (client *Client) GetRumUploadFiles(request *GetRumUploadFilesRequest) (_result *GetRumUploadFilesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRumUploadFilesResponse{}
-	_body, _err := client.GetRumUploadFilesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10135,7 +7538,7 @@ func (client *Client) GetRumUploadFiles(request *GetRumUploadFilesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSourceMapInfoResponse
-func (client *Client) GetSourceMapInfoWithOptions(request *GetSourceMapInfoRequest, runtime *dara.RuntimeOptions) (_result *GetSourceMapInfoResponse, _err error) {
+func (client *Client) GetSourceMapInfoWithContext(ctx context.Context, request *GetSourceMapInfoRequest, runtime *dara.RuntimeOptions) (_result *GetSourceMapInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10180,29 +7583,11 @@ func (client *Client) GetSourceMapInfoWithOptions(request *GetSourceMapInfoReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSourceMapInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the details of the SourceMap file uploaded in Browser Monitoring.
-//
-// @param request - GetSourceMapInfoRequest
-//
-// @return GetSourceMapInfoResponse
-func (client *Client) GetSourceMapInfo(request *GetSourceMapInfoRequest) (_result *GetSourceMapInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSourceMapInfoResponse{}
-	_body, _err := client.GetSourceMapInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10215,7 +7600,7 @@ func (client *Client) GetSourceMapInfo(request *GetSourceMapInfoRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetStackResponse
-func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *dara.RuntimeOptions) (_result *GetStackResponse, _err error) {
+func (client *Client) GetStackWithContext(ctx context.Context, request *GetStackRequest, runtime *dara.RuntimeOptions) (_result *GetStackResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10264,29 +7649,11 @@ func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetStackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of a method stack.
-//
-// @param request - GetStackRequest
-//
-// @return GetStackResponse
-func (client *Client) GetStack(request *GetStackRequest) (_result *GetStackResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetStackResponse{}
-	_body, _err := client.GetStackWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10299,7 +7666,7 @@ func (client *Client) GetStack(request *GetStackRequest) (_result *GetStackRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSyntheticMonitorsResponse
-func (client *Client) GetSyntheticMonitorsWithOptions(tmpReq *GetSyntheticMonitorsRequest, runtime *dara.RuntimeOptions) (_result *GetSyntheticMonitorsResponse, _err error) {
+func (client *Client) GetSyntheticMonitorsWithContext(ctx context.Context, tmpReq *GetSyntheticMonitorsRequest, runtime *dara.RuntimeOptions) (_result *GetSyntheticMonitorsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10326,29 +7693,11 @@ func (client *Client) GetSyntheticMonitorsWithOptions(tmpReq *GetSyntheticMonito
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSyntheticMonitorsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains detection points.
-//
-// @param request - GetSyntheticMonitorsRequest
-//
-// @return GetSyntheticMonitorsResponse
-func (client *Client) GetSyntheticMonitors(request *GetSyntheticMonitorsRequest) (_result *GetSyntheticMonitorsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSyntheticMonitorsResponse{}
-	_body, _err := client.GetSyntheticMonitorsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10361,7 +7710,7 @@ func (client *Client) GetSyntheticMonitors(request *GetSyntheticMonitorsRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSyntheticTaskDetailResponse
-func (client *Client) GetSyntheticTaskDetailWithOptions(request *GetSyntheticTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *GetSyntheticTaskDetailResponse, _err error) {
+func (client *Client) GetSyntheticTaskDetailWithContext(ctx context.Context, request *GetSyntheticTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *GetSyntheticTaskDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10390,29 +7739,11 @@ func (client *Client) GetSyntheticTaskDetailWithOptions(request *GetSyntheticTas
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSyntheticTaskDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a scheduled synthetic monitoring task.
-//
-// @param request - GetSyntheticTaskDetailRequest
-//
-// @return GetSyntheticTaskDetailResponse
-func (client *Client) GetSyntheticTaskDetail(request *GetSyntheticTaskDetailRequest) (_result *GetSyntheticTaskDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSyntheticTaskDetailResponse{}
-	_body, _err := client.GetSyntheticTaskDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10425,7 +7756,7 @@ func (client *Client) GetSyntheticTaskDetail(request *GetSyntheticTaskDetailRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSyntheticTaskListResponse
-func (client *Client) GetSyntheticTaskListWithOptions(request *GetSyntheticTaskListRequest, runtime *dara.RuntimeOptions) (_result *GetSyntheticTaskListResponse, _err error) {
+func (client *Client) GetSyntheticTaskListWithContext(ctx context.Context, request *GetSyntheticTaskListRequest, runtime *dara.RuntimeOptions) (_result *GetSyntheticTaskListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10482,29 +7813,11 @@ func (client *Client) GetSyntheticTaskListWithOptions(request *GetSyntheticTaskL
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSyntheticTaskListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of scheduled synthetic monitoring tasks.
-//
-// @param request - GetSyntheticTaskListRequest
-//
-// @return GetSyntheticTaskListResponse
-func (client *Client) GetSyntheticTaskList(request *GetSyntheticTaskListRequest) (_result *GetSyntheticTaskListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSyntheticTaskListResponse{}
-	_body, _err := client.GetSyntheticTaskListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10517,7 +7830,7 @@ func (client *Client) GetSyntheticTaskList(request *GetSyntheticTaskListRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSyntheticTaskMonitorsResponse
-func (client *Client) GetSyntheticTaskMonitorsWithOptions(request *GetSyntheticTaskMonitorsRequest, runtime *dara.RuntimeOptions) (_result *GetSyntheticTaskMonitorsResponse, _err error) {
+func (client *Client) GetSyntheticTaskMonitorsWithContext(ctx context.Context, request *GetSyntheticTaskMonitorsRequest, runtime *dara.RuntimeOptions) (_result *GetSyntheticTaskMonitorsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10542,29 +7855,11 @@ func (client *Client) GetSyntheticTaskMonitorsWithOptions(request *GetSyntheticT
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSyntheticTaskMonitorsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the information about synthetic monitoring points.
-//
-// @param request - GetSyntheticTaskMonitorsRequest
-//
-// @return GetSyntheticTaskMonitorsResponse
-func (client *Client) GetSyntheticTaskMonitors(request *GetSyntheticTaskMonitorsRequest) (_result *GetSyntheticTaskMonitorsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSyntheticTaskMonitorsResponse{}
-	_body, _err := client.GetSyntheticTaskMonitorsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10577,7 +7872,7 @@ func (client *Client) GetSyntheticTaskMonitors(request *GetSyntheticTaskMonitors
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTimingSyntheticTaskResponse
-func (client *Client) GetTimingSyntheticTaskWithOptions(request *GetTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *GetTimingSyntheticTaskResponse, _err error) {
+func (client *Client) GetTimingSyntheticTaskWithContext(ctx context.Context, request *GetTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *GetTimingSyntheticTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10598,29 +7893,11 @@ func (client *Client) GetTimingSyntheticTaskWithOptions(request *GetTimingSynthe
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTimingSyntheticTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the details of a synthetic monitoring task.
-//
-// @param request - GetTimingSyntheticTaskRequest
-//
-// @return GetTimingSyntheticTaskResponse
-func (client *Client) GetTimingSyntheticTask(request *GetTimingSyntheticTaskRequest) (_result *GetTimingSyntheticTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTimingSyntheticTaskResponse{}
-	_body, _err := client.GetTimingSyntheticTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10637,7 +7914,7 @@ func (client *Client) GetTimingSyntheticTask(request *GetTimingSyntheticTaskRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTraceResponse
-func (client *Client) GetTraceWithOptions(request *GetTraceRequest, runtime *dara.RuntimeOptions) (_result *GetTraceResponse, _err error) {
+func (client *Client) GetTraceWithContext(ctx context.Context, request *GetTraceRequest, runtime *dara.RuntimeOptions) (_result *GetTraceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10682,33 +7959,11 @@ func (client *Client) GetTraceWithOptions(request *GetTraceRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTraceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a trace.
-//
-// Description:
-//
-// > You must use Application Real-Time Monitoring Service (ARMS) SDK for Java V2.7.24.
-//
-// @param request - GetTraceRequest
-//
-// @return GetTraceResponse
-func (client *Client) GetTrace(request *GetTraceRequest) (_result *GetTraceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTraceResponse{}
-	_body, _err := client.GetTraceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10721,7 +7976,7 @@ func (client *Client) GetTrace(request *GetTraceRequest) (_result *GetTraceRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTraceAppResponse
-func (client *Client) GetTraceAppWithOptions(request *GetTraceAppRequest, runtime *dara.RuntimeOptions) (_result *GetTraceAppResponse, _err error) {
+func (client *Client) GetTraceAppWithContext(ctx context.Context, request *GetTraceAppRequest, runtime *dara.RuntimeOptions) (_result *GetTraceAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10754,29 +8009,11 @@ func (client *Client) GetTraceAppWithOptions(request *GetTraceAppRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTraceAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an application monitoring task.
-//
-// @param request - GetTraceAppRequest
-//
-// @return GetTraceAppResponse
-func (client *Client) GetTraceApp(request *GetTraceAppRequest) (_result *GetTraceAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTraceAppResponse{}
-	_body, _err := client.GetTraceAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10789,7 +8026,7 @@ func (client *Client) GetTraceApp(request *GetTraceAppRequest) (_result *GetTrac
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTraceAppConfigResponse
-func (client *Client) GetTraceAppConfigWithOptions(request *GetTraceAppConfigRequest, runtime *dara.RuntimeOptions) (_result *GetTraceAppConfigResponse, _err error) {
+func (client *Client) GetTraceAppConfigWithContext(ctx context.Context, request *GetTraceAppConfigRequest, runtime *dara.RuntimeOptions) (_result *GetTraceAppConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10814,29 +8051,11 @@ func (client *Client) GetTraceAppConfigWithOptions(request *GetTraceAppConfigReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTraceAppConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all custom settings of an application monitored by Application Monitoring, such as trace sampling settings and agent switches. This operation is applicable only to applications that are monitored by Application Monitoring. It is not applicable to applications that are monitored by Managed Service for OpenTelemetry.
-//
-// @param request - GetTraceAppConfigRequest
-//
-// @return GetTraceAppConfigResponse
-func (client *Client) GetTraceAppConfig(request *GetTraceAppConfigRequest) (_result *GetTraceAppConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTraceAppConfigResponse{}
-	_body, _err := client.GetTraceAppConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10853,7 +8072,7 @@ func (client *Client) GetTraceAppConfig(request *GetTraceAppConfigRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ImportAppAlertRulesResponse
-func (client *Client) ImportAppAlertRulesWithOptions(request *ImportAppAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ImportAppAlertRulesResponse, _err error) {
+func (client *Client) ImportAppAlertRulesWithContext(ctx context.Context, request *ImportAppAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ImportAppAlertRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10902,33 +8121,11 @@ func (client *Client) ImportAppAlertRulesWithOptions(request *ImportAppAlertRule
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImportAppAlertRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an alert rule based on an alert template.
-//
-// Description:
-//
-// >  You can call the **ImportAppAlertRules*	- operation to import only the alert rules that are generated by Application Real-Time Monitoring Service (ARMS) for application monitoring and browser monitoring. This operation cannot be used to import custom alert rules, alert rules for Prometheus monitoring, or default emergency alert rules.
-//
-// @param request - ImportAppAlertRulesRequest
-//
-// @return ImportAppAlertRulesResponse
-func (client *Client) ImportAppAlertRules(request *ImportAppAlertRulesRequest) (_result *ImportAppAlertRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ImportAppAlertRulesResponse{}
-	_body, _err := client.ImportAppAlertRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10941,7 +8138,7 @@ func (client *Client) ImportAppAlertRules(request *ImportAppAlertRulesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InitEnvironmentResponse
-func (client *Client) InitEnvironmentWithOptions(request *InitEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *InitEnvironmentResponse, _err error) {
+func (client *Client) InitEnvironmentWithContext(ctx context.Context, request *InitEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *InitEnvironmentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10982,29 +8179,11 @@ func (client *Client) InitEnvironmentWithOptions(request *InitEnvironmentRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &InitEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Initializes an environment instance.
-//
-// @param request - InitEnvironmentRequest
-//
-// @return InitEnvironmentResponse
-func (client *Client) InitEnvironment(request *InitEnvironmentRequest) (_result *InitEnvironmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &InitEnvironmentResponse{}
-	_body, _err := client.InitEnvironmentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11017,7 +8196,7 @@ func (client *Client) InitEnvironment(request *InitEnvironmentRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InstallAddonResponse
-func (client *Client) InstallAddonWithOptions(request *InstallAddonRequest, runtime *dara.RuntimeOptions) (_result *InstallAddonResponse, _err error) {
+func (client *Client) InstallAddonWithContext(ctx context.Context, request *InstallAddonRequest, runtime *dara.RuntimeOptions) (_result *InstallAddonResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11070,29 +8249,11 @@ func (client *Client) InstallAddonWithOptions(request *InstallAddonRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &InstallAddonResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Installs an add-on.
-//
-// @param request - InstallAddonRequest
-//
-// @return InstallAddonResponse
-func (client *Client) InstallAddon(request *InstallAddonRequest) (_result *InstallAddonResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &InstallAddonResponse{}
-	_body, _err := client.InstallAddonWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11107,7 +8268,7 @@ func (client *Client) InstallAddon(request *InstallAddonRequest) (_result *Insta
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InstallCmsExporterResponse
-func (client *Client) InstallCmsExporterWithOptions(request *InstallCmsExporterRequest, runtime *dara.RuntimeOptions) (_result *InstallCmsExporterResponse, _err error) {
+func (client *Client) InstallCmsExporterWithContext(ctx context.Context, request *InstallCmsExporterRequest, runtime *dara.RuntimeOptions) (_result *InstallCmsExporterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11148,32 +8309,11 @@ func (client *Client) InstallCmsExporterWithOptions(request *InstallCmsExporterR
 		BodyType:    dara.String("json"),
 	}
 	_result = &InstallCmsExporterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI InstallCmsExporter is deprecated, please use ARMS::2019-08-08::InstallAddon instead.
-//
-// Summary:
-//
-// Installs the cms-exporter collector.
-//
-// @param request - InstallCmsExporterRequest
-//
-// @return InstallCmsExporterResponse
-// Deprecated
-func (client *Client) InstallCmsExporter(request *InstallCmsExporterRequest) (_result *InstallCmsExporterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &InstallCmsExporterResponse{}
-	_body, _err := client.InstallCmsExporterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11186,7 +8326,7 @@ func (client *Client) InstallCmsExporter(request *InstallCmsExporterRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InstallEnvironmentFeatureResponse
-func (client *Client) InstallEnvironmentFeatureWithOptions(request *InstallEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *InstallEnvironmentFeatureResponse, _err error) {
+func (client *Client) InstallEnvironmentFeatureWithContext(ctx context.Context, request *InstallEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *InstallEnvironmentFeatureResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11235,29 +8375,11 @@ func (client *Client) InstallEnvironmentFeatureWithOptions(request *InstallEnvir
 		BodyType:    dara.String("json"),
 	}
 	_result = &InstallEnvironmentFeatureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Installs a feature.
-//
-// @param request - InstallEnvironmentFeatureRequest
-//
-// @return InstallEnvironmentFeatureResponse
-func (client *Client) InstallEnvironmentFeature(request *InstallEnvironmentFeatureRequest) (_result *InstallEnvironmentFeatureResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &InstallEnvironmentFeatureResponse{}
-	_body, _err := client.InstallEnvironmentFeatureWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11276,7 +8398,7 @@ func (client *Client) InstallEnvironmentFeature(request *InstallEnvironmentFeatu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InstallManagedPrometheusResponse
-func (client *Client) InstallManagedPrometheusWithOptions(request *InstallManagedPrometheusRequest, runtime *dara.RuntimeOptions) (_result *InstallManagedPrometheusResponse, _err error) {
+func (client *Client) InstallManagedPrometheusWithContext(ctx context.Context, request *InstallManagedPrometheusRequest, runtime *dara.RuntimeOptions) (_result *InstallManagedPrometheusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11341,36 +8463,11 @@ func (client *Client) InstallManagedPrometheusWithOptions(request *InstallManage
 		BodyType:    dara.String("json"),
 	}
 	_result = &InstallManagedPrometheusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI InstallManagedPrometheus is deprecated
-//
-// Summary:
-//
-// Installs a Prometheus agent for serverless Kubernetes (ASK) clusters or Elastic Compute Service (ECS) clusters.
-//
-// Description:
-//
-// You can call this operation only if the following conditions are met: The resources that you want to monitor are ASK clusters or ECS clusters. No Prometheus agents are installed in the ASK or ECS clusters. Take note that Prometheus agents can be installed only on the cloud service side, not in user clusters.
-//
-// @param request - InstallManagedPrometheusRequest
-//
-// @return InstallManagedPrometheusResponse
-// Deprecated
-func (client *Client) InstallManagedPrometheus(request *InstallManagedPrometheusRequest) (_result *InstallManagedPrometheusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &InstallManagedPrometheusResponse{}
-	_body, _err := client.InstallManagedPrometheusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11383,7 +8480,7 @@ func (client *Client) InstallManagedPrometheus(request *InstallManagedPrometheus
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListActivatedAlertsResponse
-func (client *Client) ListActivatedAlertsWithOptions(request *ListActivatedAlertsRequest, runtime *dara.RuntimeOptions) (_result *ListActivatedAlertsResponse, _err error) {
+func (client *Client) ListActivatedAlertsWithContext(ctx context.Context, request *ListActivatedAlertsRequest, runtime *dara.RuntimeOptions) (_result *ListActivatedAlertsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11420,29 +8517,11 @@ func (client *Client) ListActivatedAlertsWithOptions(request *ListActivatedAlert
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListActivatedAlertsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the alerts that have been triggered.
-//
-// @param request - ListActivatedAlertsRequest
-//
-// @return ListActivatedAlertsResponse
-func (client *Client) ListActivatedAlerts(request *ListActivatedAlertsRequest) (_result *ListActivatedAlertsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListActivatedAlertsResponse{}
-	_body, _err := client.ListActivatedAlertsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11455,7 +8534,7 @@ func (client *Client) ListActivatedAlerts(request *ListActivatedAlertsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAddonReleasesResponse
-func (client *Client) ListAddonReleasesWithOptions(request *ListAddonReleasesRequest, runtime *dara.RuntimeOptions) (_result *ListAddonReleasesResponse, _err error) {
+func (client *Client) ListAddonReleasesWithContext(ctx context.Context, request *ListAddonReleasesRequest, runtime *dara.RuntimeOptions) (_result *ListAddonReleasesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11488,29 +8567,11 @@ func (client *Client) ListAddonReleasesWithOptions(request *ListAddonReleasesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAddonReleasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the add-ons installed in an environment.
-//
-// @param request - ListAddonReleasesRequest
-//
-// @return ListAddonReleasesResponse
-func (client *Client) ListAddonReleases(request *ListAddonReleasesRequest) (_result *ListAddonReleasesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAddonReleasesResponse{}
-	_body, _err := client.ListAddonReleasesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11523,7 +8584,7 @@ func (client *Client) ListAddonReleases(request *ListAddonReleasesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAddonsResponse
-func (client *Client) ListAddonsWithOptions(request *ListAddonsRequest, runtime *dara.RuntimeOptions) (_result *ListAddonsResponse, _err error) {
+func (client *Client) ListAddonsWithContext(ctx context.Context, request *ListAddonsRequest, runtime *dara.RuntimeOptions) (_result *ListAddonsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11564,29 +8625,11 @@ func (client *Client) ListAddonsWithOptions(request *ListAddonsRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAddonsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// List of access center products.
-//
-// @param request - ListAddonsRequest
-//
-// @return ListAddonsResponse
-func (client *Client) ListAddons(request *ListAddonsRequest) (_result *ListAddonsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAddonsResponse{}
-	_body, _err := client.ListAddonsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11599,7 +8642,7 @@ func (client *Client) ListAddons(request *ListAddonsRequest) (_result *ListAddon
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAlertEventsResponse
-func (client *Client) ListAlertEventsWithOptions(request *ListAlertEventsRequest, runtime *dara.RuntimeOptions) (_result *ListAlertEventsResponse, _err error) {
+func (client *Client) ListAlertEventsWithContext(ctx context.Context, request *ListAlertEventsRequest, runtime *dara.RuntimeOptions) (_result *ListAlertEventsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11652,29 +8695,11 @@ func (client *Client) ListAlertEventsWithOptions(request *ListAlertEventsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAlertEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries historical alert events.
-//
-// @param request - ListAlertEventsRequest
-//
-// @return ListAlertEventsResponse
-func (client *Client) ListAlertEvents(request *ListAlertEventsRequest) (_result *ListAlertEventsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAlertEventsResponse{}
-	_body, _err := client.ListAlertEventsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11687,7 +8712,7 @@ func (client *Client) ListAlertEvents(request *ListAlertEventsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAlertsResponse
-func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, runtime *dara.RuntimeOptions) (_result *ListAlertsResponse, _err error) {
+func (client *Client) ListAlertsWithContext(ctx context.Context, request *ListAlertsRequest, runtime *dara.RuntimeOptions) (_result *ListAlertsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11760,29 +8785,11 @@ func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAlertsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the alert sending history.
-//
-// @param request - ListAlertsRequest
-//
-// @return ListAlertsResponse
-func (client *Client) ListAlerts(request *ListAlertsRequest) (_result *ListAlertsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAlertsResponse{}
-	_body, _err := client.ListAlertsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11797,7 +8804,7 @@ func (client *Client) ListAlerts(request *ListAlertsRequest) (_result *ListAlert
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListClusterFromGrafanaResponse
-func (client *Client) ListClusterFromGrafanaWithOptions(request *ListClusterFromGrafanaRequest, runtime *dara.RuntimeOptions) (_result *ListClusterFromGrafanaResponse, _err error) {
+func (client *Client) ListClusterFromGrafanaWithContext(ctx context.Context, request *ListClusterFromGrafanaRequest, runtime *dara.RuntimeOptions) (_result *ListClusterFromGrafanaResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11822,32 +8829,11 @@ func (client *Client) ListClusterFromGrafanaWithOptions(request *ListClusterFrom
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListClusterFromGrafanaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ListClusterFromGrafana is deprecated
-//
-// Summary:
-//
-// Queries all Grafana dashboards in a specified region.
-//
-// @param request - ListClusterFromGrafanaRequest
-//
-// @return ListClusterFromGrafanaResponse
-// Deprecated
-func (client *Client) ListClusterFromGrafana(request *ListClusterFromGrafanaRequest) (_result *ListClusterFromGrafanaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListClusterFromGrafanaResponse{}
-	_body, _err := client.ListClusterFromGrafanaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11862,7 +8848,7 @@ func (client *Client) ListClusterFromGrafana(request *ListClusterFromGrafanaRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCmsInstancesResponse
-func (client *Client) ListCmsInstancesWithOptions(request *ListCmsInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListCmsInstancesResponse, _err error) {
+func (client *Client) ListCmsInstancesWithContext(ctx context.Context, request *ListCmsInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListCmsInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11895,32 +8881,11 @@ func (client *Client) ListCmsInstancesWithOptions(request *ListCmsInstancesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCmsInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ListCmsInstances is deprecated
-//
-// Summary:
-//
-// Queries the collection of cloud services.
-//
-// @param request - ListCmsInstancesRequest
-//
-// @return ListCmsInstancesResponse
-// Deprecated
-func (client *Client) ListCmsInstances(request *ListCmsInstancesRequest) (_result *ListCmsInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListCmsInstancesResponse{}
-	_body, _err := client.ListCmsInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11937,7 +8902,7 @@ func (client *Client) ListCmsInstances(request *ListCmsInstancesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDashboardsResponse
-func (client *Client) ListDashboardsWithOptions(request *ListDashboardsRequest, runtime *dara.RuntimeOptions) (_result *ListDashboardsResponse, _err error) {
+func (client *Client) ListDashboardsWithContext(ctx context.Context, request *ListDashboardsRequest, runtime *dara.RuntimeOptions) (_result *ListDashboardsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11990,33 +8955,11 @@ func (client *Client) ListDashboardsWithOptions(request *ListDashboardsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDashboardsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Grafana dashboards of a Container Service for Kubernetes (ACK) cluster.
-//
-// Description:
-//
-// None.
-//
-// @param request - ListDashboardsRequest
-//
-// @return ListDashboardsResponse
-func (client *Client) ListDashboards(request *ListDashboardsRequest) (_result *ListDashboardsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDashboardsResponse{}
-	_body, _err := client.ListDashboardsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12031,7 +8974,7 @@ func (client *Client) ListDashboards(request *ListDashboardsRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDashboardsByNameResponse
-func (client *Client) ListDashboardsByNameWithOptions(request *ListDashboardsByNameRequest, runtime *dara.RuntimeOptions) (_result *ListDashboardsByNameResponse, _err error) {
+func (client *Client) ListDashboardsByNameWithContext(ctx context.Context, request *ListDashboardsByNameRequest, runtime *dara.RuntimeOptions) (_result *ListDashboardsByNameResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12088,32 +9031,11 @@ func (client *Client) ListDashboardsByNameWithOptions(request *ListDashboardsByN
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDashboardsByNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ListDashboardsByName is deprecated
-//
-// Summary:
-//
-// Uses Loki data sources and other data sources to create a Grafana dashboard in Managed Service for Prometheus.
-//
-// @param request - ListDashboardsByNameRequest
-//
-// @return ListDashboardsByNameResponse
-// Deprecated
-func (client *Client) ListDashboardsByName(request *ListDashboardsByNameRequest) (_result *ListDashboardsByNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDashboardsByNameResponse{}
-	_body, _err := client.ListDashboardsByNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12130,7 +9052,7 @@ func (client *Client) ListDashboardsByName(request *ListDashboardsByNameRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDispatchRuleResponse
-func (client *Client) ListDispatchRuleWithOptions(request *ListDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *ListDispatchRuleResponse, _err error) {
+func (client *Client) ListDispatchRuleWithContext(ctx context.Context, request *ListDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *ListDispatchRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12163,33 +9085,11 @@ func (client *Client) ListDispatchRuleWithOptions(request *ListDispatchRuleReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDispatchRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries notification policies.
-//
-// Description:
-//
-// The current API operation is no longer maintained. To query the notification policy information, call the ListNotificationPolicies operation instead.
-//
-// @param request - ListDispatchRuleRequest
-//
-// @return ListDispatchRuleResponse
-func (client *Client) ListDispatchRule(request *ListDispatchRuleRequest) (_result *ListDispatchRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDispatchRuleResponse{}
-	_body, _err := client.ListDispatchRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12202,7 +9102,7 @@ func (client *Client) ListDispatchRule(request *ListDispatchRuleRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnvCustomJobsResponse
-func (client *Client) ListEnvCustomJobsWithOptions(request *ListEnvCustomJobsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvCustomJobsResponse, _err error) {
+func (client *Client) ListEnvCustomJobsWithContext(ctx context.Context, request *ListEnvCustomJobsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvCustomJobsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12235,29 +9135,11 @@ func (client *Client) ListEnvCustomJobsWithOptions(request *ListEnvCustomJobsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnvCustomJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the custom jobs of an environment.
-//
-// @param request - ListEnvCustomJobsRequest
-//
-// @return ListEnvCustomJobsResponse
-func (client *Client) ListEnvCustomJobs(request *ListEnvCustomJobsRequest) (_result *ListEnvCustomJobsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEnvCustomJobsResponse{}
-	_body, _err := client.ListEnvCustomJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12270,7 +9152,7 @@ func (client *Client) ListEnvCustomJobs(request *ListEnvCustomJobsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnvPodMonitorsResponse
-func (client *Client) ListEnvPodMonitorsWithOptions(request *ListEnvPodMonitorsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvPodMonitorsResponse, _err error) {
+func (client *Client) ListEnvPodMonitorsWithContext(ctx context.Context, request *ListEnvPodMonitorsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvPodMonitorsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12299,29 +9181,11 @@ func (client *Client) ListEnvPodMonitorsWithOptions(request *ListEnvPodMonitorsR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnvPodMonitorsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the PodMonitors of an environment.
-//
-// @param request - ListEnvPodMonitorsRequest
-//
-// @return ListEnvPodMonitorsResponse
-func (client *Client) ListEnvPodMonitors(request *ListEnvPodMonitorsRequest) (_result *ListEnvPodMonitorsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEnvPodMonitorsResponse{}
-	_body, _err := client.ListEnvPodMonitorsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12334,7 +9198,7 @@ func (client *Client) ListEnvPodMonitors(request *ListEnvPodMonitorsRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnvServiceMonitorsResponse
-func (client *Client) ListEnvServiceMonitorsWithOptions(request *ListEnvServiceMonitorsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvServiceMonitorsResponse, _err error) {
+func (client *Client) ListEnvServiceMonitorsWithContext(ctx context.Context, request *ListEnvServiceMonitorsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvServiceMonitorsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12363,29 +9227,11 @@ func (client *Client) ListEnvServiceMonitorsWithOptions(request *ListEnvServiceM
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnvServiceMonitorsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the ServiceMonitors of an environment.
-//
-// @param request - ListEnvServiceMonitorsRequest
-//
-// @return ListEnvServiceMonitorsResponse
-func (client *Client) ListEnvServiceMonitors(request *ListEnvServiceMonitorsRequest) (_result *ListEnvServiceMonitorsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEnvServiceMonitorsResponse{}
-	_body, _err := client.ListEnvServiceMonitorsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12398,7 +9244,7 @@ func (client *Client) ListEnvServiceMonitors(request *ListEnvServiceMonitorsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnvironmentAddonsResponse
-func (client *Client) ListEnvironmentAddonsWithOptions(request *ListEnvironmentAddonsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentAddonsResponse, _err error) {
+func (client *Client) ListEnvironmentAddonsWithContext(ctx context.Context, request *ListEnvironmentAddonsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentAddonsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12427,29 +9273,11 @@ func (client *Client) ListEnvironmentAddonsWithOptions(request *ListEnvironmentA
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnvironmentAddonsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 环境addon列表
-//
-// @param request - ListEnvironmentAddonsRequest
-//
-// @return ListEnvironmentAddonsResponse
-func (client *Client) ListEnvironmentAddons(request *ListEnvironmentAddonsRequest) (_result *ListEnvironmentAddonsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEnvironmentAddonsResponse{}
-	_body, _err := client.ListEnvironmentAddonsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12462,7 +9290,7 @@ func (client *Client) ListEnvironmentAddons(request *ListEnvironmentAddonsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnvironmentAlertRulesResponse
-func (client *Client) ListEnvironmentAlertRulesWithOptions(request *ListEnvironmentAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentAlertRulesResponse, _err error) {
+func (client *Client) ListEnvironmentAlertRulesWithContext(ctx context.Context, request *ListEnvironmentAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentAlertRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12499,29 +9327,11 @@ func (client *Client) ListEnvironmentAlertRulesWithOptions(request *ListEnvironm
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnvironmentAlertRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the alert groups of an environment instance.
-//
-// @param request - ListEnvironmentAlertRulesRequest
-//
-// @return ListEnvironmentAlertRulesResponse
-func (client *Client) ListEnvironmentAlertRules(request *ListEnvironmentAlertRulesRequest) (_result *ListEnvironmentAlertRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEnvironmentAlertRulesResponse{}
-	_body, _err := client.ListEnvironmentAlertRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12534,7 +9344,7 @@ func (client *Client) ListEnvironmentAlertRules(request *ListEnvironmentAlertRul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnvironmentDashboardsResponse
-func (client *Client) ListEnvironmentDashboardsWithOptions(request *ListEnvironmentDashboardsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentDashboardsResponse, _err error) {
+func (client *Client) ListEnvironmentDashboardsWithContext(ctx context.Context, request *ListEnvironmentDashboardsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentDashboardsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12571,29 +9381,11 @@ func (client *Client) ListEnvironmentDashboardsWithOptions(request *ListEnvironm
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnvironmentDashboardsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries information about a dashboard of an environment instance.
-//
-// @param request - ListEnvironmentDashboardsRequest
-//
-// @return ListEnvironmentDashboardsResponse
-func (client *Client) ListEnvironmentDashboards(request *ListEnvironmentDashboardsRequest) (_result *ListEnvironmentDashboardsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEnvironmentDashboardsResponse{}
-	_body, _err := client.ListEnvironmentDashboardsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12606,7 +9398,7 @@ func (client *Client) ListEnvironmentDashboards(request *ListEnvironmentDashboar
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnvironmentFeaturesResponse
-func (client *Client) ListEnvironmentFeaturesWithOptions(request *ListEnvironmentFeaturesRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentFeaturesResponse, _err error) {
+func (client *Client) ListEnvironmentFeaturesWithContext(ctx context.Context, request *ListEnvironmentFeaturesRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentFeaturesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12639,29 +9431,11 @@ func (client *Client) ListEnvironmentFeaturesWithOptions(request *ListEnvironmen
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnvironmentFeaturesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the features in an environment.
-//
-// @param request - ListEnvironmentFeaturesRequest
-//
-// @return ListEnvironmentFeaturesResponse
-func (client *Client) ListEnvironmentFeatures(request *ListEnvironmentFeaturesRequest) (_result *ListEnvironmentFeaturesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEnvironmentFeaturesResponse{}
-	_body, _err := client.ListEnvironmentFeaturesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12674,7 +9448,7 @@ func (client *Client) ListEnvironmentFeatures(request *ListEnvironmentFeaturesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnvironmentKubeResourcesResponse
-func (client *Client) ListEnvironmentKubeResourcesWithOptions(tmpReq *ListEnvironmentKubeResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentKubeResourcesResponse, _err error) {
+func (client *Client) ListEnvironmentKubeResourcesWithContext(ctx context.Context, tmpReq *ListEnvironmentKubeResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentKubeResourcesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12721,29 +9495,11 @@ func (client *Client) ListEnvironmentKubeResourcesWithOptions(tmpReq *ListEnviro
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnvironmentKubeResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Kubernetes resources of an environment.
-//
-// @param request - ListEnvironmentKubeResourcesRequest
-//
-// @return ListEnvironmentKubeResourcesResponse
-func (client *Client) ListEnvironmentKubeResources(request *ListEnvironmentKubeResourcesRequest) (_result *ListEnvironmentKubeResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEnvironmentKubeResourcesResponse{}
-	_body, _err := client.ListEnvironmentKubeResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12756,7 +9512,7 @@ func (client *Client) ListEnvironmentKubeResources(request *ListEnvironmentKubeR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnvironmentMetricTargetsResponse
-func (client *Client) ListEnvironmentMetricTargetsWithOptions(request *ListEnvironmentMetricTargetsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentMetricTargetsResponse, _err error) {
+func (client *Client) ListEnvironmentMetricTargetsWithContext(ctx context.Context, request *ListEnvironmentMetricTargetsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentMetricTargetsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12789,29 +9545,11 @@ func (client *Client) ListEnvironmentMetricTargetsWithOptions(request *ListEnvir
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnvironmentMetricTargetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the targets of an environment.
-//
-// @param request - ListEnvironmentMetricTargetsRequest
-//
-// @return ListEnvironmentMetricTargetsResponse
-func (client *Client) ListEnvironmentMetricTargets(request *ListEnvironmentMetricTargetsRequest) (_result *ListEnvironmentMetricTargetsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEnvironmentMetricTargetsResponse{}
-	_body, _err := client.ListEnvironmentMetricTargetsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12824,7 +9562,7 @@ func (client *Client) ListEnvironmentMetricTargets(request *ListEnvironmentMetri
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEnvironmentsResponse
-func (client *Client) ListEnvironmentsWithOptions(tmpReq *ListEnvironmentsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentsResponse, _err error) {
+func (client *Client) ListEnvironmentsWithContext(ctx context.Context, tmpReq *ListEnvironmentsRequest, runtime *dara.RuntimeOptions) (_result *ListEnvironmentsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12883,29 +9621,11 @@ func (client *Client) ListEnvironmentsWithOptions(tmpReq *ListEnvironmentsReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnvironmentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries environments.
-//
-// @param request - ListEnvironmentsRequest
-//
-// @return ListEnvironmentsResponse
-func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_result *ListEnvironmentsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEnvironmentsResponse{}
-	_body, _err := client.ListEnvironmentsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12918,7 +9638,7 @@ func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEscalationPoliciesResponse
-func (client *Client) ListEscalationPoliciesWithOptions(request *ListEscalationPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListEscalationPoliciesResponse, _err error) {
+func (client *Client) ListEscalationPoliciesWithContext(ctx context.Context, request *ListEscalationPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListEscalationPoliciesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12939,29 +9659,11 @@ func (client *Client) ListEscalationPoliciesWithOptions(request *ListEscalationP
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEscalationPoliciesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about an escalation policy.
-//
-// @param request - ListEscalationPoliciesRequest
-//
-// @return ListEscalationPoliciesResponse
-func (client *Client) ListEscalationPolicies(request *ListEscalationPoliciesRequest) (_result *ListEscalationPoliciesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEscalationPoliciesResponse{}
-	_body, _err := client.ListEscalationPoliciesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12974,7 +9676,7 @@ func (client *Client) ListEscalationPolicies(request *ListEscalationPoliciesRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEventBridgeIntegrationsResponse
-func (client *Client) ListEventBridgeIntegrationsWithOptions(request *ListEventBridgeIntegrationsRequest, runtime *dara.RuntimeOptions) (_result *ListEventBridgeIntegrationsResponse, _err error) {
+func (client *Client) ListEventBridgeIntegrationsWithContext(ctx context.Context, request *ListEventBridgeIntegrationsRequest, runtime *dara.RuntimeOptions) (_result *ListEventBridgeIntegrationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12995,29 +9697,11 @@ func (client *Client) ListEventBridgeIntegrationsWithOptions(request *ListEventB
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEventBridgeIntegrationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries an EventBridge integration.
-//
-// @param request - ListEventBridgeIntegrationsRequest
-//
-// @return ListEventBridgeIntegrationsResponse
-func (client *Client) ListEventBridgeIntegrations(request *ListEventBridgeIntegrationsRequest) (_result *ListEventBridgeIntegrationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEventBridgeIntegrationsResponse{}
-	_body, _err := client.ListEventBridgeIntegrationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13034,7 +9718,7 @@ func (client *Client) ListEventBridgeIntegrations(request *ListEventBridgeIntegr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListGrafanaWorkspaceResponse
-func (client *Client) ListGrafanaWorkspaceWithOptions(tmpReq *ListGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *ListGrafanaWorkspaceResponse, _err error) {
+func (client *Client) ListGrafanaWorkspaceWithContext(ctx context.Context, tmpReq *ListGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *ListGrafanaWorkspaceResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13077,33 +9761,11 @@ func (client *Client) ListGrafanaWorkspaceWithOptions(tmpReq *ListGrafanaWorkspa
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListGrafanaWorkspaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Obtain Specified Workspace List
-//
-// Description:
-//
-// >The list returned by this operation includes the workspaces of Developer Edition, Expert Edition, and Advanced Edition. The list does not include the workspaces of Shared Edition.
-//
-// @param request - ListGrafanaWorkspaceRequest
-//
-// @return ListGrafanaWorkspaceResponse
-func (client *Client) ListGrafanaWorkspace(request *ListGrafanaWorkspaceRequest) (_result *ListGrafanaWorkspaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListGrafanaWorkspaceResponse{}
-	_body, _err := client.ListGrafanaWorkspaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13116,7 +9778,7 @@ func (client *Client) ListGrafanaWorkspace(request *ListGrafanaWorkspaceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInsightsEventsResponse
-func (client *Client) ListInsightsEventsWithOptions(request *ListInsightsEventsRequest, runtime *dara.RuntimeOptions) (_result *ListInsightsEventsResponse, _err error) {
+func (client *Client) ListInsightsEventsWithContext(ctx context.Context, request *ListInsightsEventsRequest, runtime *dara.RuntimeOptions) (_result *ListInsightsEventsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13157,29 +9819,11 @@ func (client *Client) ListInsightsEventsWithOptions(request *ListInsightsEventsR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInsightsEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the abnormal Insights events within a specified period of time.
-//
-// @param request - ListInsightsEventsRequest
-//
-// @return ListInsightsEventsResponse
-func (client *Client) ListInsightsEvents(request *ListInsightsEventsRequest) (_result *ListInsightsEventsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListInsightsEventsResponse{}
-	_body, _err := client.ListInsightsEventsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13192,7 +9836,7 @@ func (client *Client) ListInsightsEvents(request *ListInsightsEventsRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIntegrationResponse
-func (client *Client) ListIntegrationWithOptions(request *ListIntegrationRequest, runtime *dara.RuntimeOptions) (_result *ListIntegrationResponse, _err error) {
+func (client *Client) ListIntegrationWithContext(ctx context.Context, request *ListIntegrationRequest, runtime *dara.RuntimeOptions) (_result *ListIntegrationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13213,29 +9857,11 @@ func (client *Client) ListIntegrationWithOptions(request *ListIntegrationRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIntegrationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Views a list of alert integrations.
-//
-// @param request - ListIntegrationRequest
-//
-// @return ListIntegrationResponse
-func (client *Client) ListIntegration(request *ListIntegrationRequest) (_result *ListIntegrationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListIntegrationResponse{}
-	_body, _err := client.ListIntegrationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13248,7 +9874,7 @@ func (client *Client) ListIntegration(request *ListIntegrationRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNotificationPoliciesResponse
-func (client *Client) ListNotificationPoliciesWithOptions(request *ListNotificationPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListNotificationPoliciesResponse, _err error) {
+func (client *Client) ListNotificationPoliciesWithContext(ctx context.Context, request *ListNotificationPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListNotificationPoliciesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13297,29 +9923,11 @@ func (client *Client) ListNotificationPoliciesWithOptions(request *ListNotificat
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNotificationPoliciesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries notification policies based on specified conditions.
-//
-// @param request - ListNotificationPoliciesRequest
-//
-// @return ListNotificationPoliciesResponse
-func (client *Client) ListNotificationPolicies(request *ListNotificationPoliciesRequest) (_result *ListNotificationPoliciesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListNotificationPoliciesResponse{}
-	_body, _err := client.ListNotificationPoliciesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13332,7 +9940,7 @@ func (client *Client) ListNotificationPolicies(request *ListNotificationPolicies
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListOnCallSchedulesResponse
-func (client *Client) ListOnCallSchedulesWithOptions(request *ListOnCallSchedulesRequest, runtime *dara.RuntimeOptions) (_result *ListOnCallSchedulesResponse, _err error) {
+func (client *Client) ListOnCallSchedulesWithContext(ctx context.Context, request *ListOnCallSchedulesRequest, runtime *dara.RuntimeOptions) (_result *ListOnCallSchedulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13353,29 +9961,11 @@ func (client *Client) ListOnCallSchedulesWithOptions(request *ListOnCallSchedule
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListOnCallSchedulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a scheduling policy.
-//
-// @param request - ListOnCallSchedulesRequest
-//
-// @return ListOnCallSchedulesResponse
-func (client *Client) ListOnCallSchedules(request *ListOnCallSchedulesRequest) (_result *ListOnCallSchedulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListOnCallSchedulesResponse{}
-	_body, _err := client.ListOnCallSchedulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13388,7 +9978,7 @@ func (client *Client) ListOnCallSchedules(request *ListOnCallSchedulesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPrometheusAlertRulesResponse
-func (client *Client) ListPrometheusAlertRulesWithOptions(request *ListPrometheusAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusAlertRulesResponse, _err error) {
+func (client *Client) ListPrometheusAlertRulesWithContext(ctx context.Context, request *ListPrometheusAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusAlertRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13437,29 +10027,11 @@ func (client *Client) ListPrometheusAlertRulesWithOptions(request *ListPrometheu
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPrometheusAlertRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the alert rules created for a Prometheus instance.
-//
-// @param request - ListPrometheusAlertRulesRequest
-//
-// @return ListPrometheusAlertRulesResponse
-func (client *Client) ListPrometheusAlertRules(request *ListPrometheusAlertRulesRequest) (_result *ListPrometheusAlertRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPrometheusAlertRulesResponse{}
-	_body, _err := client.ListPrometheusAlertRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13472,7 +10044,7 @@ func (client *Client) ListPrometheusAlertRules(request *ListPrometheusAlertRules
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPrometheusAlertTemplatesResponse
-func (client *Client) ListPrometheusAlertTemplatesWithOptions(request *ListPrometheusAlertTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusAlertTemplatesResponse, _err error) {
+func (client *Client) ListPrometheusAlertTemplatesWithContext(ctx context.Context, request *ListPrometheusAlertTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusAlertTemplatesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13501,29 +10073,11 @@ func (client *Client) ListPrometheusAlertTemplatesWithOptions(request *ListProme
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPrometheusAlertTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the alert templates of Prometheus Service.
-//
-// @param request - ListPrometheusAlertTemplatesRequest
-//
-// @return ListPrometheusAlertTemplatesResponse
-func (client *Client) ListPrometheusAlertTemplates(request *ListPrometheusAlertTemplatesRequest) (_result *ListPrometheusAlertTemplatesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPrometheusAlertTemplatesResponse{}
-	_body, _err := client.ListPrometheusAlertTemplatesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13536,7 +10090,7 @@ func (client *Client) ListPrometheusAlertTemplates(request *ListPrometheusAlertT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPrometheusGlobalViewResponse
-func (client *Client) ListPrometheusGlobalViewWithOptions(request *ListPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusGlobalViewResponse, _err error) {
+func (client *Client) ListPrometheusGlobalViewWithContext(ctx context.Context, request *ListPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusGlobalViewResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13561,29 +10115,11 @@ func (client *Client) ListPrometheusGlobalViewWithOptions(request *ListPrometheu
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPrometheusGlobalViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a global aggregation instance in Prometheus Service and obtains the list of global aggregation instances.
-//
-// @param request - ListPrometheusGlobalViewRequest
-//
-// @return ListPrometheusGlobalViewResponse
-func (client *Client) ListPrometheusGlobalView(request *ListPrometheusGlobalViewRequest) (_result *ListPrometheusGlobalViewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPrometheusGlobalViewResponse{}
-	_body, _err := client.ListPrometheusGlobalViewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13596,7 +10132,7 @@ func (client *Client) ListPrometheusGlobalView(request *ListPrometheusGlobalView
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPrometheusInstanceByTagAndResourceGroupIdResponse
-func (client *Client) ListPrometheusInstanceByTagAndResourceGroupIdWithOptions(request *ListPrometheusInstanceByTagAndResourceGroupIdRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusInstanceByTagAndResourceGroupIdResponse, _err error) {
+func (client *Client) ListPrometheusInstanceByTagAndResourceGroupIdWithContext(ctx context.Context, request *ListPrometheusInstanceByTagAndResourceGroupIdRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusInstanceByTagAndResourceGroupIdResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13629,29 +10165,11 @@ func (client *Client) ListPrometheusInstanceByTagAndResourceGroupIdWithOptions(r
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPrometheusInstanceByTagAndResourceGroupIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Prometheus instances by tag and resource group.
-//
-// @param request - ListPrometheusInstanceByTagAndResourceGroupIdRequest
-//
-// @return ListPrometheusInstanceByTagAndResourceGroupIdResponse
-func (client *Client) ListPrometheusInstanceByTagAndResourceGroupId(request *ListPrometheusInstanceByTagAndResourceGroupIdRequest) (_result *ListPrometheusInstanceByTagAndResourceGroupIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPrometheusInstanceByTagAndResourceGroupIdResponse{}
-	_body, _err := client.ListPrometheusInstanceByTagAndResourceGroupIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13664,7 +10182,7 @@ func (client *Client) ListPrometheusInstanceByTagAndResourceGroupId(request *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPrometheusInstancesResponse
-func (client *Client) ListPrometheusInstancesWithOptions(request *ListPrometheusInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusInstancesResponse, _err error) {
+func (client *Client) ListPrometheusInstancesWithContext(ctx context.Context, request *ListPrometheusInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13697,29 +10215,11 @@ func (client *Client) ListPrometheusInstancesWithOptions(request *ListPrometheus
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPrometheusInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains all Prometheus instances in a region.
-//
-// @param request - ListPrometheusInstancesRequest
-//
-// @return ListPrometheusInstancesResponse
-func (client *Client) ListPrometheusInstances(request *ListPrometheusInstancesRequest) (_result *ListPrometheusInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPrometheusInstancesResponse{}
-	_body, _err := client.ListPrometheusInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13734,7 +10234,7 @@ func (client *Client) ListPrometheusInstances(request *ListPrometheusInstancesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPrometheusIntegrationResponse
-func (client *Client) ListPrometheusIntegrationWithOptions(request *ListPrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusIntegrationResponse, _err error) {
+func (client *Client) ListPrometheusIntegrationWithContext(ctx context.Context, request *ListPrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusIntegrationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13767,32 +10267,11 @@ func (client *Client) ListPrometheusIntegrationWithOptions(request *ListPromethe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPrometheusIntegrationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ListPrometheusIntegration is deprecated
-//
-// Summary:
-//
-// Queries a list of exporters that are integrated into a Prometheus instance. Only aliyun-cs and ecs instances are supported.
-//
-// @param request - ListPrometheusIntegrationRequest
-//
-// @return ListPrometheusIntegrationResponse
-// Deprecated
-func (client *Client) ListPrometheusIntegration(request *ListPrometheusIntegrationRequest) (_result *ListPrometheusIntegrationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPrometheusIntegrationResponse{}
-	_body, _err := client.ListPrometheusIntegrationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13807,7 +10286,7 @@ func (client *Client) ListPrometheusIntegration(request *ListPrometheusIntegrati
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPrometheusMonitoringResponse
-func (client *Client) ListPrometheusMonitoringWithOptions(request *ListPrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusMonitoringResponse, _err error) {
+func (client *Client) ListPrometheusMonitoringWithContext(ctx context.Context, request *ListPrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *ListPrometheusMonitoringResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13840,32 +10319,11 @@ func (client *Client) ListPrometheusMonitoringWithOptions(request *ListPrometheu
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPrometheusMonitoringResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ListPrometheusMonitoring is deprecated
-//
-// Summary:
-//
-// Queries the monitoring configuration of a Prometheus instance.
-//
-// @param request - ListPrometheusMonitoringRequest
-//
-// @return ListPrometheusMonitoringResponse
-// Deprecated
-func (client *Client) ListPrometheusMonitoring(request *ListPrometheusMonitoringRequest) (_result *ListPrometheusMonitoringResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPrometheusMonitoringResponse{}
-	_body, _err := client.ListPrometheusMonitoringWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13882,7 +10340,7 @@ func (client *Client) ListPrometheusMonitoring(request *ListPrometheusMonitoring
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRetcodeAppsResponse
-func (client *Client) ListRetcodeAppsWithOptions(request *ListRetcodeAppsRequest, runtime *dara.RuntimeOptions) (_result *ListRetcodeAppsResponse, _err error) {
+func (client *Client) ListRetcodeAppsWithContext(ctx context.Context, request *ListRetcodeAppsRequest, runtime *dara.RuntimeOptions) (_result *ListRetcodeAppsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13915,33 +10373,11 @@ func (client *Client) ListRetcodeAppsWithOptions(request *ListRetcodeAppsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRetcodeAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Browser Monitoring tasks in a region.
-//
-// Description:
-//
-// ***
-//
-// @param request - ListRetcodeAppsRequest
-//
-// @return ListRetcodeAppsResponse
-func (client *Client) ListRetcodeApps(request *ListRetcodeAppsRequest) (_result *ListRetcodeAppsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRetcodeAppsResponse{}
-	_body, _err := client.ListRetcodeAppsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13950,7 +10386,7 @@ func (client *Client) ListRetcodeApps(request *ListRetcodeAppsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListScenarioResponse
-func (client *Client) ListScenarioWithOptions(request *ListScenarioRequest, runtime *dara.RuntimeOptions) (_result *ListScenarioResponse, _err error) {
+func (client *Client) ListScenarioWithContext(ctx context.Context, request *ListScenarioRequest, runtime *dara.RuntimeOptions) (_result *ListScenarioResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13991,25 +10427,11 @@ func (client *Client) ListScenarioWithOptions(request *ListScenarioRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListScenarioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListScenarioRequest
-//
-// @return ListScenarioResponse
-func (client *Client) ListScenario(request *ListScenarioRequest) (_result *ListScenarioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListScenarioResponse{}
-	_body, _err := client.ListScenarioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14022,7 +10444,7 @@ func (client *Client) ListScenario(request *ListScenarioRequest) (_result *ListS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSilencePoliciesResponse
-func (client *Client) ListSilencePoliciesWithOptions(request *ListSilencePoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListSilencePoliciesResponse, _err error) {
+func (client *Client) ListSilencePoliciesWithContext(ctx context.Context, request *ListSilencePoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListSilencePoliciesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14063,29 +10485,11 @@ func (client *Client) ListSilencePoliciesWithOptions(request *ListSilencePolicie
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSilencePoliciesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of a silence policy list.
-//
-// @param request - ListSilencePoliciesRequest
-//
-// @return ListSilencePoliciesResponse
-func (client *Client) ListSilencePolicies(request *ListSilencePoliciesRequest) (_result *ListSilencePoliciesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListSilencePoliciesResponse{}
-	_body, _err := client.ListSilencePoliciesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14098,7 +10502,7 @@ func (client *Client) ListSilencePolicies(request *ListSilencePoliciesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSyntheticDetailResponse
-func (client *Client) ListSyntheticDetailWithOptions(tmpReq *ListSyntheticDetailRequest, runtime *dara.RuntimeOptions) (_result *ListSyntheticDetailResponse, _err error) {
+func (client *Client) ListSyntheticDetailWithContext(ctx context.Context, tmpReq *ListSyntheticDetailRequest, runtime *dara.RuntimeOptions) (_result *ListSyntheticDetailResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14133,29 +10537,11 @@ func (client *Client) ListSyntheticDetailWithOptions(tmpReq *ListSyntheticDetail
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSyntheticDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the results of one or more synthetic tests.
-//
-// @param request - ListSyntheticDetailRequest
-//
-// @return ListSyntheticDetailResponse
-func (client *Client) ListSyntheticDetail(request *ListSyntheticDetailRequest) (_result *ListSyntheticDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListSyntheticDetailResponse{}
-	_body, _err := client.ListSyntheticDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14168,7 +10554,7 @@ func (client *Client) ListSyntheticDetail(request *ListSyntheticDetailRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTimingSyntheticTasksResponse
-func (client *Client) ListTimingSyntheticTasksWithOptions(tmpReq *ListTimingSyntheticTasksRequest, runtime *dara.RuntimeOptions) (_result *ListTimingSyntheticTasksResponse, _err error) {
+func (client *Client) ListTimingSyntheticTasksWithContext(ctx context.Context, tmpReq *ListTimingSyntheticTasksRequest, runtime *dara.RuntimeOptions) (_result *ListTimingSyntheticTasksResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14199,29 +10585,11 @@ func (client *Client) ListTimingSyntheticTasksWithOptions(tmpReq *ListTimingSynt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTimingSyntheticTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries scheduled synthetic monitoring tasks.
-//
-// @param request - ListTimingSyntheticTasksRequest
-//
-// @return ListTimingSyntheticTasksResponse
-func (client *Client) ListTimingSyntheticTasks(request *ListTimingSyntheticTasksRequest) (_result *ListTimingSyntheticTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTimingSyntheticTasksResponse{}
-	_body, _err := client.ListTimingSyntheticTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14234,7 +10602,7 @@ func (client *Client) ListTimingSyntheticTasks(request *ListTimingSyntheticTasks
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTraceAppsResponse
-func (client *Client) ListTraceAppsWithOptions(request *ListTraceAppsRequest, runtime *dara.RuntimeOptions) (_result *ListTraceAppsResponse, _err error) {
+func (client *Client) ListTraceAppsWithContext(ctx context.Context, request *ListTraceAppsRequest, runtime *dara.RuntimeOptions) (_result *ListTraceAppsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14275,29 +10643,11 @@ func (client *Client) ListTraceAppsWithOptions(request *ListTraceAppsRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTraceAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all Application Monitoring tasks in a specified region.
-//
-// @param request - ListTraceAppsRequest
-//
-// @return ListTraceAppsResponse
-func (client *Client) ListTraceApps(request *ListTraceAppsRequest) (_result *ListTraceAppsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTraceAppsResponse{}
-	_body, _err := client.ListTraceAppsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14310,7 +10660,7 @@ func (client *Client) ListTraceApps(request *ListTraceAppsRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenArmsDefaultSLRResponse
-func (client *Client) OpenArmsDefaultSLRWithOptions(request *OpenArmsDefaultSLRRequest, runtime *dara.RuntimeOptions) (_result *OpenArmsDefaultSLRResponse, _err error) {
+func (client *Client) OpenArmsDefaultSLRWithContext(ctx context.Context, request *OpenArmsDefaultSLRRequest, runtime *dara.RuntimeOptions) (_result *OpenArmsDefaultSLRResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14335,29 +10685,11 @@ func (client *Client) OpenArmsDefaultSLRWithOptions(request *OpenArmsDefaultSLRR
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenArmsDefaultSLRResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Activates the service-linked role AliyunServiceRoleForARMS for Application Real-Time Monitoring Service (ARMS).
-//
-// @param request - OpenArmsDefaultSLRRequest
-//
-// @return OpenArmsDefaultSLRResponse
-func (client *Client) OpenArmsDefaultSLR(request *OpenArmsDefaultSLRRequest) (_result *OpenArmsDefaultSLRResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenArmsDefaultSLRResponse{}
-	_body, _err := client.OpenArmsDefaultSLRWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14382,7 +10714,7 @@ func (client *Client) OpenArmsDefaultSLR(request *OpenArmsDefaultSLRRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenArmsServiceSecondVersionResponse
-func (client *Client) OpenArmsServiceSecondVersionWithOptions(request *OpenArmsServiceSecondVersionRequest, runtime *dara.RuntimeOptions) (_result *OpenArmsServiceSecondVersionResponse, _err error) {
+func (client *Client) OpenArmsServiceSecondVersionWithContext(ctx context.Context, request *OpenArmsServiceSecondVersionRequest, runtime *dara.RuntimeOptions) (_result *OpenArmsServiceSecondVersionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14411,41 +10743,11 @@ func (client *Client) OpenArmsServiceSecondVersionWithOptions(request *OpenArmsS
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenArmsServiceSecondVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Activates a specified pay-as-you-go sub-service of Application Real-Time Monitoring Service (ARMS).
-//
-// Description:
-//
-// The **OpenArmsServiceSecondVersion*	- operation supports the following sub-service editions:
-//
-//   - Application Monitoring: Basic Edition
-//
-//   - Browser Monitoring: Basic Edition
-//
-//   - Synthetic Monitoring: Pro Edition (pay-as-you-go)
-//
-//   - Prometheus Service: Pro Edition
-//
-// @param request - OpenArmsServiceSecondVersionRequest
-//
-// @return OpenArmsServiceSecondVersionResponse
-func (client *Client) OpenArmsServiceSecondVersion(request *OpenArmsServiceSecondVersionRequest) (_result *OpenArmsServiceSecondVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenArmsServiceSecondVersionResponse{}
-	_body, _err := client.OpenArmsServiceSecondVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14460,7 +10762,7 @@ func (client *Client) OpenArmsServiceSecondVersion(request *OpenArmsServiceSecon
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenVClusterResponse
-func (client *Client) OpenVClusterWithOptions(request *OpenVClusterRequest, runtime *dara.RuntimeOptions) (_result *OpenVClusterResponse, _err error) {
+func (client *Client) OpenVClusterWithContext(ctx context.Context, request *OpenVClusterRequest, runtime *dara.RuntimeOptions) (_result *OpenVClusterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14501,32 +10803,11 @@ func (client *Client) OpenVClusterWithOptions(request *OpenVClusterRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenVClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI OpenVCluster is deprecated
-//
-// Summary:
-//
-// Activates a virtual cluster.
-//
-// @param request - OpenVClusterRequest
-//
-// @return OpenVClusterResponse
-// Deprecated
-func (client *Client) OpenVCluster(request *OpenVClusterRequest) (_result *OpenVClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenVClusterResponse{}
-	_body, _err := client.OpenVClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14539,7 +10820,7 @@ func (client *Client) OpenVCluster(request *OpenVClusterRequest) (_result *OpenV
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenXtraceDefaultSLRResponse
-func (client *Client) OpenXtraceDefaultSLRWithOptions(request *OpenXtraceDefaultSLRRequest, runtime *dara.RuntimeOptions) (_result *OpenXtraceDefaultSLRResponse, _err error) {
+func (client *Client) OpenXtraceDefaultSLRWithContext(ctx context.Context, request *OpenXtraceDefaultSLRRequest, runtime *dara.RuntimeOptions) (_result *OpenXtraceDefaultSLRResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14564,29 +10845,11 @@ func (client *Client) OpenXtraceDefaultSLRWithOptions(request *OpenXtraceDefault
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenXtraceDefaultSLRResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Activates the service-linked role AliyunServiceRoleForXtrace for Tracing Analysis.
-//
-// @param request - OpenXtraceDefaultSLRRequest
-//
-// @return OpenXtraceDefaultSLRResponse
-func (client *Client) OpenXtraceDefaultSLR(request *OpenXtraceDefaultSLRRequest) (_result *OpenXtraceDefaultSLRResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenXtraceDefaultSLRResponse{}
-	_body, _err := client.OpenXtraceDefaultSLRWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14599,7 +10862,7 @@ func (client *Client) OpenXtraceDefaultSLR(request *OpenXtraceDefaultSLRRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAppMetadataResponse
-func (client *Client) QueryAppMetadataWithOptions(request *QueryAppMetadataRequest, runtime *dara.RuntimeOptions) (_result *QueryAppMetadataResponse, _err error) {
+func (client *Client) QueryAppMetadataWithContext(ctx context.Context, request *QueryAppMetadataRequest, runtime *dara.RuntimeOptions) (_result *QueryAppMetadataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14620,29 +10883,11 @@ func (client *Client) QueryAppMetadataWithOptions(request *QueryAppMetadataReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAppMetadataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the encoding mapping content based on the metadata IDs and metadata type.
-//
-// @param request - QueryAppMetadataRequest
-//
-// @return QueryAppMetadataResponse
-func (client *Client) QueryAppMetadata(request *QueryAppMetadataRequest) (_result *QueryAppMetadataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAppMetadataResponse{}
-	_body, _err := client.QueryAppMetadataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14655,7 +10900,7 @@ func (client *Client) QueryAppMetadata(request *QueryAppMetadataRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAppTopologyResponse
-func (client *Client) QueryAppTopologyWithOptions(tmpReq *QueryAppTopologyRequest, runtime *dara.RuntimeOptions) (_result *QueryAppTopologyResponse, _err error) {
+func (client *Client) QueryAppTopologyWithContext(ctx context.Context, tmpReq *QueryAppTopologyRequest, runtime *dara.RuntimeOptions) (_result *QueryAppTopologyResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14722,29 +10967,11 @@ func (client *Client) QueryAppTopologyWithOptions(tmpReq *QueryAppTopologyReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAppTopologyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the topology of an application.
-//
-// @param request - QueryAppTopologyRequest
-//
-// @return QueryAppTopologyResponse
-func (client *Client) QueryAppTopology(request *QueryAppTopologyRequest) (_result *QueryAppTopologyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAppTopologyResponse{}
-	_body, _err := client.QueryAppTopologyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14757,7 +10984,7 @@ func (client *Client) QueryAppTopology(request *QueryAppTopologyRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryCommercialUsageResponse
-func (client *Client) QueryCommercialUsageWithOptions(request *QueryCommercialUsageRequest, runtime *dara.RuntimeOptions) (_result *QueryCommercialUsageResponse, _err error) {
+func (client *Client) QueryCommercialUsageWithContext(ctx context.Context, request *QueryCommercialUsageRequest, runtime *dara.RuntimeOptions) (_result *QueryCommercialUsageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14818,29 +11045,11 @@ func (client *Client) QueryCommercialUsageWithOptions(request *QueryCommercialUs
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryCommercialUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the amount of data written to Application Monitoring, Managed Service for OpenTelemetry, Managed Service for Prometheus, and Real User Monitoring (RUM).
-//
-// @param request - QueryCommercialUsageRequest
-//
-// @return QueryCommercialUsageResponse
-func (client *Client) QueryCommercialUsage(request *QueryCommercialUsageRequest) (_result *QueryCommercialUsageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryCommercialUsageResponse{}
-	_body, _err := client.QueryCommercialUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14853,7 +11062,7 @@ func (client *Client) QueryCommercialUsage(request *QueryCommercialUsageRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryMetricByPageResponse
-func (client *Client) QueryMetricByPageWithOptions(request *QueryMetricByPageRequest, runtime *dara.RuntimeOptions) (_result *QueryMetricByPageResponse, _err error) {
+func (client *Client) QueryMetricByPageWithContext(ctx context.Context, request *QueryMetricByPageRequest, runtime *dara.RuntimeOptions) (_result *QueryMetricByPageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14922,29 +11131,11 @@ func (client *Client) QueryMetricByPageWithOptions(request *QueryMetricByPageReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryMetricByPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries an Application Monitoring metric or a Browser Monitoring metric.
-//
-// @param request - QueryMetricByPageRequest
-//
-// @return QueryMetricByPageResponse
-func (client *Client) QueryMetricByPage(request *QueryMetricByPageRequest) (_result *QueryMetricByPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryMetricByPageResponse{}
-	_body, _err := client.QueryMetricByPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14959,7 +11150,7 @@ func (client *Client) QueryMetricByPage(request *QueryMetricByPageRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryPromInstallStatusResponse
-func (client *Client) QueryPromInstallStatusWithOptions(request *QueryPromInstallStatusRequest, runtime *dara.RuntimeOptions) (_result *QueryPromInstallStatusResponse, _err error) {
+func (client *Client) QueryPromInstallStatusWithContext(ctx context.Context, request *QueryPromInstallStatusRequest, runtime *dara.RuntimeOptions) (_result *QueryPromInstallStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14988,32 +11179,11 @@ func (client *Client) QueryPromInstallStatusWithOptions(request *QueryPromInstal
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryPromInstallStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI QueryPromInstallStatus is deprecated
-//
-// Summary:
-//
-// Queries whether the Prometheus agent is installed on a cluster.
-//
-// @param request - QueryPromInstallStatusRequest
-//
-// @return QueryPromInstallStatusResponse
-// Deprecated
-func (client *Client) QueryPromInstallStatus(request *QueryPromInstallStatusRequest) (_result *QueryPromInstallStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryPromInstallStatusResponse{}
-	_body, _err := client.QueryPromInstallStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15026,7 +11196,7 @@ func (client *Client) QueryPromInstallStatus(request *QueryPromInstallStatusRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryReleaseMetricResponse
-func (client *Client) QueryReleaseMetricWithOptions(request *QueryReleaseMetricRequest, runtime *dara.RuntimeOptions) (_result *QueryReleaseMetricResponse, _err error) {
+func (client *Client) QueryReleaseMetricWithContext(ctx context.Context, request *QueryReleaseMetricRequest, runtime *dara.RuntimeOptions) (_result *QueryReleaseMetricResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15079,29 +11249,11 @@ func (client *Client) QueryReleaseMetricWithOptions(request *QueryReleaseMetricR
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryReleaseMetricResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the metrics that are provided for different versions of a specified Enterprise Distributed Application Service (EDAS) or Kubernetes application.
-//
-// @param request - QueryReleaseMetricRequest
-//
-// @return QueryReleaseMetricResponse
-func (client *Client) QueryReleaseMetric(request *QueryReleaseMetricRequest) (_result *QueryReleaseMetricResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryReleaseMetricResponse{}
-	_body, _err := client.QueryReleaseMetricWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15116,7 +11268,7 @@ func (client *Client) QueryReleaseMetric(request *QueryReleaseMetricRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveAliClusterIdsFromPrometheusGlobalViewResponse
-func (client *Client) RemoveAliClusterIdsFromPrometheusGlobalViewWithOptions(request *RemoveAliClusterIdsFromPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *RemoveAliClusterIdsFromPrometheusGlobalViewResponse, _err error) {
+func (client *Client) RemoveAliClusterIdsFromPrometheusGlobalViewWithContext(ctx context.Context, request *RemoveAliClusterIdsFromPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *RemoveAliClusterIdsFromPrometheusGlobalViewResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15153,32 +11305,11 @@ func (client *Client) RemoveAliClusterIdsFromPrometheusGlobalViewWithOptions(req
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveAliClusterIdsFromPrometheusGlobalViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI RemoveAliClusterIdsFromPrometheusGlobalView is deprecated
-//
-// Summary:
-//
-// Removes data sources from a global aggregation instance in Managed Service for Prometheus.
-//
-// @param request - RemoveAliClusterIdsFromPrometheusGlobalViewRequest
-//
-// @return RemoveAliClusterIdsFromPrometheusGlobalViewResponse
-// Deprecated
-func (client *Client) RemoveAliClusterIdsFromPrometheusGlobalView(request *RemoveAliClusterIdsFromPrometheusGlobalViewRequest) (_result *RemoveAliClusterIdsFromPrometheusGlobalViewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveAliClusterIdsFromPrometheusGlobalViewResponse{}
-	_body, _err := client.RemoveAliClusterIdsFromPrometheusGlobalViewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15193,7 +11324,7 @@ func (client *Client) RemoveAliClusterIdsFromPrometheusGlobalView(request *Remov
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveSourcesFromPrometheusGlobalViewResponse
-func (client *Client) RemoveSourcesFromPrometheusGlobalViewWithOptions(request *RemoveSourcesFromPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *RemoveSourcesFromPrometheusGlobalViewResponse, _err error) {
+func (client *Client) RemoveSourcesFromPrometheusGlobalViewWithContext(ctx context.Context, request *RemoveSourcesFromPrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *RemoveSourcesFromPrometheusGlobalViewResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15230,32 +11361,11 @@ func (client *Client) RemoveSourcesFromPrometheusGlobalViewWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveSourcesFromPrometheusGlobalViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI RemoveSourcesFromPrometheusGlobalView is deprecated
-//
-// Summary:
-//
-// Removes data sources from a global aggregation instance in Managed Service for Prometheus. You can delete only data sources that are not from Alibaba Cloud.
-//
-// @param request - RemoveSourcesFromPrometheusGlobalViewRequest
-//
-// @return RemoveSourcesFromPrometheusGlobalViewResponse
-// Deprecated
-func (client *Client) RemoveSourcesFromPrometheusGlobalView(request *RemoveSourcesFromPrometheusGlobalViewRequest) (_result *RemoveSourcesFromPrometheusGlobalViewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveSourcesFromPrometheusGlobalViewResponse{}
-	_body, _err := client.RemoveSourcesFromPrometheusGlobalViewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15268,7 +11378,7 @@ func (client *Client) RemoveSourcesFromPrometheusGlobalView(request *RemoveSourc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RestartEnvironmentFeatureResponse
-func (client *Client) RestartEnvironmentFeatureWithOptions(request *RestartEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *RestartEnvironmentFeatureResponse, _err error) {
+func (client *Client) RestartEnvironmentFeatureWithContext(ctx context.Context, request *RestartEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *RestartEnvironmentFeatureResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15301,29 +11411,11 @@ func (client *Client) RestartEnvironmentFeatureWithOptions(request *RestartEnvir
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartEnvironmentFeatureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Restarts a feature.
-//
-// @param request - RestartEnvironmentFeatureRequest
-//
-// @return RestartEnvironmentFeatureResponse
-func (client *Client) RestartEnvironmentFeature(request *RestartEnvironmentFeatureRequest) (_result *RestartEnvironmentFeatureResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RestartEnvironmentFeatureResponse{}
-	_body, _err := client.RestartEnvironmentFeatureWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15336,7 +11428,7 @@ func (client *Client) RestartEnvironmentFeature(request *RestartEnvironmentFeatu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SaveTraceAppConfigResponse
-func (client *Client) SaveTraceAppConfigWithOptions(request *SaveTraceAppConfigRequest, runtime *dara.RuntimeOptions) (_result *SaveTraceAppConfigResponse, _err error) {
+func (client *Client) SaveTraceAppConfigWithContext(ctx context.Context, request *SaveTraceAppConfigRequest, runtime *dara.RuntimeOptions) (_result *SaveTraceAppConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15365,29 +11457,11 @@ func (client *Client) SaveTraceAppConfigWithOptions(request *SaveTraceAppConfigR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveTraceAppConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the settings of Application Monitoring, such as trace sampling and agent switch settings.
-//
-// @param request - SaveTraceAppConfigRequest
-//
-// @return SaveTraceAppConfigResponse
-func (client *Client) SaveTraceAppConfig(request *SaveTraceAppConfigRequest) (_result *SaveTraceAppConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SaveTraceAppConfigResponse{}
-	_body, _err := client.SaveTraceAppConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15404,7 +11478,7 @@ func (client *Client) SaveTraceAppConfig(request *SaveTraceAppConfigRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchAlertContactResponse
-func (client *Client) SearchAlertContactWithOptions(request *SearchAlertContactRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertContactResponse, _err error) {
+func (client *Client) SearchAlertContactWithContext(ctx context.Context, request *SearchAlertContactRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertContactResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15453,33 +11527,11 @@ func (client *Client) SearchAlertContactWithOptions(request *SearchAlertContactR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchAlertContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries alert contacts.
-//
-// Description:
-//
-// This operation is no longer maintained. To query alert contacts, call the DescribeContacts operation provided by the new version of Alert Management.
-//
-// @param request - SearchAlertContactRequest
-//
-// @return SearchAlertContactResponse
-func (client *Client) SearchAlertContact(request *SearchAlertContactRequest) (_result *SearchAlertContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchAlertContactResponse{}
-	_body, _err := client.SearchAlertContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15496,7 +11548,7 @@ func (client *Client) SearchAlertContact(request *SearchAlertContactRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchAlertContactGroupResponse
-func (client *Client) SearchAlertContactGroupWithOptions(request *SearchAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertContactGroupResponse, _err error) {
+func (client *Client) SearchAlertContactGroupWithContext(ctx context.Context, request *SearchAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertContactGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15541,33 +11593,11 @@ func (client *Client) SearchAlertContactGroupWithOptions(request *SearchAlertCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchAlertContactGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries alert contact groups.
-//
-// Description:
-//
-// The operation is no longer maintained. Call the DescribeContactGroups operation in the alert management module to query alert contact groups.
-//
-// @param request - SearchAlertContactGroupRequest
-//
-// @return SearchAlertContactGroupResponse
-func (client *Client) SearchAlertContactGroup(request *SearchAlertContactGroupRequest) (_result *SearchAlertContactGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchAlertContactGroupResponse{}
-	_body, _err := client.SearchAlertContactGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15584,7 +11614,7 @@ func (client *Client) SearchAlertContactGroup(request *SearchAlertContactGroupRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchAlertHistoriesResponse
-func (client *Client) SearchAlertHistoriesWithOptions(request *SearchAlertHistoriesRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertHistoriesResponse, _err error) {
+func (client *Client) SearchAlertHistoriesWithContext(ctx context.Context, request *SearchAlertHistoriesRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertHistoriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15633,33 +11663,11 @@ func (client *Client) SearchAlertHistoriesWithOptions(request *SearchAlertHistor
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchAlertHistoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the alert records of an alert rule.
-//
-// Description:
-//
-// This operation is no longer maintained. To query alert records, call the ListAlerts operation provided by the new version of Alert Management.
-//
-// @param request - SearchAlertHistoriesRequest
-//
-// @return SearchAlertHistoriesResponse
-func (client *Client) SearchAlertHistories(request *SearchAlertHistoriesRequest) (_result *SearchAlertHistoriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchAlertHistoriesResponse{}
-	_body, _err := client.SearchAlertHistoriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15676,7 +11684,7 @@ func (client *Client) SearchAlertHistories(request *SearchAlertHistoriesRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchAlertRulesResponse
-func (client *Client) SearchAlertRulesWithOptions(request *SearchAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertRulesResponse, _err error) {
+func (client *Client) SearchAlertRulesWithContext(ctx context.Context, request *SearchAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *SearchAlertRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15741,33 +11749,11 @@ func (client *Client) SearchAlertRulesWithOptions(request *SearchAlertRulesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchAlertRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries alert rules.
-//
-// Description:
-//
-// The current operation is no longer maintained. You can call the GetAlertRules operation of Alert Management (New) to query existing alert rules.
-//
-// @param request - SearchAlertRulesRequest
-//
-// @return SearchAlertRulesResponse
-func (client *Client) SearchAlertRules(request *SearchAlertRulesRequest) (_result *SearchAlertRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchAlertRulesResponse{}
-	_body, _err := client.SearchAlertRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15784,7 +11770,7 @@ func (client *Client) SearchAlertRules(request *SearchAlertRulesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchEventsResponse
-func (client *Client) SearchEventsWithOptions(request *SearchEventsRequest, runtime *dara.RuntimeOptions) (_result *SearchEventsResponse, _err error) {
+func (client *Client) SearchEventsWithContext(ctx context.Context, request *SearchEventsRequest, runtime *dara.RuntimeOptions) (_result *SearchEventsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15845,33 +11831,11 @@ func (client *Client) SearchEventsWithOptions(request *SearchEventsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries alert event records.
-//
-// Description:
-//
-// Alert event records are different from alert notification records. Alert events are recorded every minute after an alert rule filters data. Alert events can be classified based on whether they are triggered or not. If a triggered event is not in the silence period, an alert notification is sent.
-//
-// @param request - SearchEventsRequest
-//
-// @return SearchEventsResponse
-func (client *Client) SearchEvents(request *SearchEventsRequest) (_result *SearchEventsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchEventsResponse{}
-	_body, _err := client.SearchEventsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15884,7 +11848,7 @@ func (client *Client) SearchEvents(request *SearchEventsRequest) (_result *Searc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchRetcodeAppByPageResponse
-func (client *Client) SearchRetcodeAppByPageWithOptions(request *SearchRetcodeAppByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchRetcodeAppByPageResponse, _err error) {
+func (client *Client) SearchRetcodeAppByPageWithContext(ctx context.Context, request *SearchRetcodeAppByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchRetcodeAppByPageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15933,29 +11897,11 @@ func (client *Client) SearchRetcodeAppByPageWithOptions(request *SearchRetcodeAp
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchRetcodeAppByPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Browser Monitoring tasks by page.
-//
-// @param request - SearchRetcodeAppByPageRequest
-//
-// @return SearchRetcodeAppByPageResponse
-func (client *Client) SearchRetcodeAppByPage(request *SearchRetcodeAppByPageRequest) (_result *SearchRetcodeAppByPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchRetcodeAppByPageResponse{}
-	_body, _err := client.SearchRetcodeAppByPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15968,7 +11914,7 @@ func (client *Client) SearchRetcodeAppByPage(request *SearchRetcodeAppByPageRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchTraceAppByNameResponse
-func (client *Client) SearchTraceAppByNameWithOptions(request *SearchTraceAppByNameRequest, runtime *dara.RuntimeOptions) (_result *SearchTraceAppByNameResponse, _err error) {
+func (client *Client) SearchTraceAppByNameWithContext(ctx context.Context, request *SearchTraceAppByNameRequest, runtime *dara.RuntimeOptions) (_result *SearchTraceAppByNameResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16001,29 +11947,11 @@ func (client *Client) SearchTraceAppByNameWithOptions(request *SearchTraceAppByN
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchTraceAppByNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Application Monitoring tasks by application name.
-//
-// @param request - SearchTraceAppByNameRequest
-//
-// @return SearchTraceAppByNameResponse
-func (client *Client) SearchTraceAppByName(request *SearchTraceAppByNameRequest) (_result *SearchTraceAppByNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchTraceAppByNameResponse{}
-	_body, _err := client.SearchTraceAppByNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16036,7 +11964,7 @@ func (client *Client) SearchTraceAppByName(request *SearchTraceAppByNameRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchTraceAppByPageResponse
-func (client *Client) SearchTraceAppByPageWithOptions(request *SearchTraceAppByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchTraceAppByPageResponse, _err error) {
+func (client *Client) SearchTraceAppByPageWithContext(ctx context.Context, request *SearchTraceAppByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchTraceAppByPageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16081,29 +12009,11 @@ func (client *Client) SearchTraceAppByPageWithOptions(request *SearchTraceAppByP
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchTraceAppByPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries application monitoring tasks by page.
-//
-// @param request - SearchTraceAppByPageRequest
-//
-// @return SearchTraceAppByPageResponse
-func (client *Client) SearchTraceAppByPage(request *SearchTraceAppByPageRequest) (_result *SearchTraceAppByPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchTraceAppByPageResponse{}
-	_body, _err := client.SearchTraceAppByPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16120,7 +12030,7 @@ func (client *Client) SearchTraceAppByPage(request *SearchTraceAppByPageRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchTracesResponse
-func (client *Client) SearchTracesWithOptions(request *SearchTracesRequest, runtime *dara.RuntimeOptions) (_result *SearchTracesResponse, _err error) {
+func (client *Client) SearchTracesWithContext(ctx context.Context, request *SearchTracesRequest, runtime *dara.RuntimeOptions) (_result *SearchTracesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16185,33 +12095,11 @@ func (client *Client) SearchTracesWithOptions(request *SearchTracesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchTracesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries traces by time, application name, IP address, span name, and tag.
-//
-// Description:
-//
-// > A maximum of 100 data entries can be returned each time this operation is called. If you want to query all existing traces, we recommend that you call the SearchTracesByPage operation. For more information, see [SearchTracesByPage](https://help.aliyun.com/document_detail/175866.html).
-//
-// @param request - SearchTracesRequest
-//
-// @return SearchTracesResponse
-func (client *Client) SearchTraces(request *SearchTracesRequest) (_result *SearchTracesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchTracesResponse{}
-	_body, _err := client.SearchTracesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16224,7 +12112,7 @@ func (client *Client) SearchTraces(request *SearchTracesRequest) (_result *Searc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchTracesByPageResponse
-func (client *Client) SearchTracesByPageWithOptions(request *SearchTracesByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchTracesByPageResponse, _err error) {
+func (client *Client) SearchTracesByPageWithContext(ctx context.Context, request *SearchTracesByPageRequest, runtime *dara.RuntimeOptions) (_result *SearchTracesByPageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16301,29 +12189,11 @@ func (client *Client) SearchTracesByPageWithOptions(request *SearchTracesByPageR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchTracesByPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries traces by page. You can query traces by time range, application name, IP address, span name, or tag.
-//
-// @param request - SearchTracesByPageRequest
-//
-// @return SearchTracesByPageResponse
-func (client *Client) SearchTracesByPage(request *SearchTracesByPageRequest) (_result *SearchTracesByPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchTracesByPageResponse{}
-	_body, _err := client.SearchTracesByPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16340,7 +12210,7 @@ func (client *Client) SearchTracesByPage(request *SearchTracesByPageRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendTTSVerifyLinkResponse
-func (client *Client) SendTTSVerifyLinkWithOptions(request *SendTTSVerifyLinkRequest, runtime *dara.RuntimeOptions) (_result *SendTTSVerifyLinkResponse, _err error) {
+func (client *Client) SendTTSVerifyLinkWithContext(ctx context.Context, request *SendTTSVerifyLinkRequest, runtime *dara.RuntimeOptions) (_result *SendTTSVerifyLinkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16369,33 +12239,11 @@ func (client *Client) SendTTSVerifyLinkWithOptions(request *SendTTSVerifyLinkReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendTTSVerifyLinkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends a text message to an alert contact to verify the mobile number of the alert contact.
-//
-// Description:
-//
-// After you receive the text message, verify the mobile number as prompted. Before you can specify a mobile phone number in a notification policy, you must verify the mobile phone number.
-//
-// @param request - SendTTSVerifyLinkRequest
-//
-// @return SendTTSVerifyLinkResponse
-func (client *Client) SendTTSVerifyLink(request *SendTTSVerifyLinkRequest) (_result *SendTTSVerifyLinkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendTTSVerifyLinkResponse{}
-	_body, _err := client.SendTTSVerifyLinkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16408,7 +12256,7 @@ func (client *Client) SendTTSVerifyLink(request *SendTTSVerifyLinkRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetRetcodeShareStatusResponse
-func (client *Client) SetRetcodeShareStatusWithOptions(request *SetRetcodeShareStatusRequest, runtime *dara.RuntimeOptions) (_result *SetRetcodeShareStatusResponse, _err error) {
+func (client *Client) SetRetcodeShareStatusWithContext(ctx context.Context, request *SetRetcodeShareStatusRequest, runtime *dara.RuntimeOptions) (_result *SetRetcodeShareStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16441,29 +12289,11 @@ func (client *Client) SetRetcodeShareStatusWithOptions(request *SetRetcodeShareS
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetRetcodeShareStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Turns on or turns off logon-free sharing for an application monitored by Browser Monitoring.
-//
-// @param request - SetRetcodeShareStatusRequest
-//
-// @return SetRetcodeShareStatusResponse
-func (client *Client) SetRetcodeShareStatus(request *SetRetcodeShareStatusRequest) (_result *SetRetcodeShareStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetRetcodeShareStatusResponse{}
-	_body, _err := client.SetRetcodeShareStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16472,7 +12302,7 @@ func (client *Client) SetRetcodeShareStatus(request *SetRetcodeShareStatusReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartAlertResponse
-func (client *Client) StartAlertWithOptions(request *StartAlertRequest, runtime *dara.RuntimeOptions) (_result *StartAlertResponse, _err error) {
+func (client *Client) StartAlertWithContext(ctx context.Context, request *StartAlertRequest, runtime *dara.RuntimeOptions) (_result *StartAlertResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16501,25 +12331,11 @@ func (client *Client) StartAlertWithOptions(request *StartAlertRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartAlertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - StartAlertRequest
-//
-// @return StartAlertResponse
-func (client *Client) StartAlert(request *StartAlertRequest) (_result *StartAlertResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartAlertResponse{}
-	_body, _err := client.StartAlertWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16532,7 +12348,7 @@ func (client *Client) StartAlert(request *StartAlertRequest) (_result *StartAler
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartTimingSyntheticTaskResponse
-func (client *Client) StartTimingSyntheticTaskWithOptions(tmpReq *StartTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *StartTimingSyntheticTaskResponse, _err error) {
+func (client *Client) StartTimingSyntheticTaskWithContext(ctx context.Context, tmpReq *StartTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *StartTimingSyntheticTaskResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16567,29 +12383,11 @@ func (client *Client) StartTimingSyntheticTaskWithOptions(tmpReq *StartTimingSyn
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartTimingSyntheticTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts scheduled synthetic monitoring tasks.
-//
-// @param request - StartTimingSyntheticTaskRequest
-//
-// @return StartTimingSyntheticTaskResponse
-func (client *Client) StartTimingSyntheticTask(request *StartTimingSyntheticTaskRequest) (_result *StartTimingSyntheticTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartTimingSyntheticTaskResponse{}
-	_body, _err := client.StartTimingSyntheticTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16602,7 +12400,7 @@ func (client *Client) StartTimingSyntheticTask(request *StartTimingSyntheticTask
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopAlertResponse
-func (client *Client) StopAlertWithOptions(request *StopAlertRequest, runtime *dara.RuntimeOptions) (_result *StopAlertResponse, _err error) {
+func (client *Client) StopAlertWithContext(ctx context.Context, request *StopAlertRequest, runtime *dara.RuntimeOptions) (_result *StopAlertResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16631,29 +12429,11 @@ func (client *Client) StopAlertWithOptions(request *StopAlertRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopAlertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Call StartAlert to stop an alert rule.
-//
-// @param request - StopAlertRequest
-//
-// @return StopAlertResponse
-func (client *Client) StopAlert(request *StopAlertRequest) (_result *StopAlertResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopAlertResponse{}
-	_body, _err := client.StopAlertWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16666,7 +12446,7 @@ func (client *Client) StopAlert(request *StopAlertRequest) (_result *StopAlertRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopTimingSyntheticTaskResponse
-func (client *Client) StopTimingSyntheticTaskWithOptions(tmpReq *StopTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *StopTimingSyntheticTaskResponse, _err error) {
+func (client *Client) StopTimingSyntheticTaskWithContext(ctx context.Context, tmpReq *StopTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *StopTimingSyntheticTaskResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16701,29 +12481,11 @@ func (client *Client) StopTimingSyntheticTaskWithOptions(tmpReq *StopTimingSynth
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopTimingSyntheticTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops scheduled synthetic monitoring tasks.
-//
-// @param request - StopTimingSyntheticTaskRequest
-//
-// @return StopTimingSyntheticTaskResponse
-func (client *Client) StopTimingSyntheticTask(request *StopTimingSyntheticTaskRequest) (_result *StopTimingSyntheticTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopTimingSyntheticTaskResponse{}
-	_body, _err := client.StopTimingSyntheticTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16736,7 +12498,7 @@ func (client *Client) StopTimingSyntheticTask(request *StopTimingSyntheticTaskRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SwitchSyntheticTaskStatusResponse
-func (client *Client) SwitchSyntheticTaskStatusWithOptions(request *SwitchSyntheticTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *SwitchSyntheticTaskStatusResponse, _err error) {
+func (client *Client) SwitchSyntheticTaskStatusWithContext(ctx context.Context, request *SwitchSyntheticTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *SwitchSyntheticTaskStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16765,29 +12527,11 @@ func (client *Client) SwitchSyntheticTaskStatusWithOptions(request *SwitchSynthe
 		BodyType:    dara.String("json"),
 	}
 	_result = &SwitchSyntheticTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts or stops a scheduled synthetic monitoring task.
-//
-// @param request - SwitchSyntheticTaskStatusRequest
-//
-// @return SwitchSyntheticTaskStatusResponse
-func (client *Client) SwitchSyntheticTaskStatus(request *SwitchSyntheticTaskStatusRequest) (_result *SwitchSyntheticTaskStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SwitchSyntheticTaskStatusResponse{}
-	_body, _err := client.SwitchSyntheticTaskStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16802,7 +12546,7 @@ func (client *Client) SwitchSyntheticTaskStatus(request *SwitchSyntheticTaskStat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SyncRecordingRulesResponse
-func (client *Client) SyncRecordingRulesWithOptions(request *SyncRecordingRulesRequest, runtime *dara.RuntimeOptions) (_result *SyncRecordingRulesResponse, _err error) {
+func (client *Client) SyncRecordingRulesWithContext(ctx context.Context, request *SyncRecordingRulesRequest, runtime *dara.RuntimeOptions) (_result *SyncRecordingRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16835,32 +12579,11 @@ func (client *Client) SyncRecordingRulesWithOptions(request *SyncRecordingRulesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SyncRecordingRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI SyncRecordingRules is deprecated
-//
-// Summary:
-//
-// Synchronizes the aggregation rule of a cluster to other clusters in a region.
-//
-// @param request - SyncRecordingRulesRequest
-//
-// @return SyncRecordingRulesResponse
-// Deprecated
-func (client *Client) SyncRecordingRules(request *SyncRecordingRulesRequest) (_result *SyncRecordingRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SyncRecordingRulesResponse{}
-	_body, _err := client.SyncRecordingRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16873,7 +12596,7 @@ func (client *Client) SyncRecordingRules(request *SyncRecordingRulesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16906,29 +12629,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds tags to ARMS resources.
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16947,7 +12652,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UninstallManagedPrometheusResponse
-func (client *Client) UninstallManagedPrometheusWithOptions(request *UninstallManagedPrometheusRequest, runtime *dara.RuntimeOptions) (_result *UninstallManagedPrometheusResponse, _err error) {
+func (client *Client) UninstallManagedPrometheusWithContext(ctx context.Context, request *UninstallManagedPrometheusRequest, runtime *dara.RuntimeOptions) (_result *UninstallManagedPrometheusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16988,36 +12693,11 @@ func (client *Client) UninstallManagedPrometheusWithOptions(request *UninstallMa
 		BodyType:    dara.String("json"),
 	}
 	_result = &UninstallManagedPrometheusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI UninstallManagedPrometheus is deprecated
-//
-// Summary:
-//
-// Uninstalls a managed Prometheus agent for a serverless Kubernetes (ASK) cluster, Distributed Cloud Container Platform for Kubernetes (ACK One) cluster, or Elastic Compute Service (ECS) cluster.
-//
-// Description:
-//
-// This operation is available only for ASK, ECS, and ACK One clusters. Before you call this operation, make sure that a managed Prometheus agent is installed for your cluster.
-//
-// @param request - UninstallManagedPrometheusRequest
-//
-// @return UninstallManagedPrometheusResponse
-// Deprecated
-func (client *Client) UninstallManagedPrometheus(request *UninstallManagedPrometheusRequest) (_result *UninstallManagedPrometheusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UninstallManagedPrometheusResponse{}
-	_body, _err := client.UninstallManagedPrometheusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17030,7 +12710,7 @@ func (client *Client) UninstallManagedPrometheus(request *UninstallManagedPromet
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UninstallPromClusterResponse
-func (client *Client) UninstallPromClusterWithOptions(request *UninstallPromClusterRequest, runtime *dara.RuntimeOptions) (_result *UninstallPromClusterResponse, _err error) {
+func (client *Client) UninstallPromClusterWithContext(ctx context.Context, request *UninstallPromClusterRequest, runtime *dara.RuntimeOptions) (_result *UninstallPromClusterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17063,29 +12743,11 @@ func (client *Client) UninstallPromClusterWithOptions(request *UninstallPromClus
 		BodyType:    dara.String("json"),
 	}
 	_result = &UninstallPromClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases a Prometheus instance.
-//
-// @param request - UninstallPromClusterRequest
-//
-// @return UninstallPromClusterResponse
-func (client *Client) UninstallPromCluster(request *UninstallPromClusterRequest) (_result *UninstallPromClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UninstallPromClusterResponse{}
-	_body, _err := client.UninstallPromClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17098,7 +12760,7 @@ func (client *Client) UninstallPromCluster(request *UninstallPromClusterRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17139,29 +12801,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes tags from ARMS resources.
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17178,7 +12822,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAlertContactResponse
-func (client *Client) UpdateAlertContactWithOptions(request *UpdateAlertContactRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertContactResponse, _err error) {
+func (client *Client) UpdateAlertContactWithContext(ctx context.Context, request *UpdateAlertContactRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertContactResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17227,33 +12871,11 @@ func (client *Client) UpdateAlertContactWithOptions(request *UpdateAlertContactR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAlertContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates an alert contact.
-//
-// Description:
-//
-// This operation is no longer maintained. To create or modify an alert contact, call the CreateOrUpdateContact operation provided by the new version of Alert Management.
-//
-// @param request - UpdateAlertContactRequest
-//
-// @return UpdateAlertContactResponse
-func (client *Client) UpdateAlertContact(request *UpdateAlertContactRequest) (_result *UpdateAlertContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAlertContactResponse{}
-	_body, _err := client.UpdateAlertContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17266,7 +12888,7 @@ func (client *Client) UpdateAlertContact(request *UpdateAlertContactRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAlertContactGroupResponse
-func (client *Client) UpdateAlertContactGroupWithOptions(request *UpdateAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertContactGroupResponse, _err error) {
+func (client *Client) UpdateAlertContactGroupWithContext(ctx context.Context, request *UpdateAlertContactGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertContactGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17303,29 +12925,11 @@ func (client *Client) UpdateAlertContactGroupWithOptions(request *UpdateAlertCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAlertContactGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates UpdateAlertContactGroup alarm contact group.
-//
-// @param request - UpdateAlertContactGroupRequest
-//
-// @return UpdateAlertContactGroupResponse
-func (client *Client) UpdateAlertContactGroup(request *UpdateAlertContactGroupRequest) (_result *UpdateAlertContactGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAlertContactGroupResponse{}
-	_body, _err := client.UpdateAlertContactGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17334,7 +12938,7 @@ func (client *Client) UpdateAlertContactGroup(request *UpdateAlertContactGroupRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAlertRuleResponse
-func (client *Client) UpdateAlertRuleWithOptions(request *UpdateAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertRuleResponse, _err error) {
+func (client *Client) UpdateAlertRuleWithContext(ctx context.Context, request *UpdateAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17375,25 +12979,11 @@ func (client *Client) UpdateAlertRuleWithOptions(request *UpdateAlertRuleRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdateAlertRuleRequest
-//
-// @return UpdateAlertRuleResponse
-func (client *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (_result *UpdateAlertRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAlertRuleResponse{}
-	_body, _err := client.UpdateAlertRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17406,7 +12996,7 @@ func (client *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDispatchRuleResponse
-func (client *Client) UpdateDispatchRuleWithOptions(request *UpdateDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateDispatchRuleResponse, _err error) {
+func (client *Client) UpdateDispatchRuleWithContext(ctx context.Context, request *UpdateDispatchRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateDispatchRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17435,29 +13025,11 @@ func (client *Client) UpdateDispatchRuleWithOptions(request *UpdateDispatchRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDispatchRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a dispatch policy.
-//
-// @param request - UpdateDispatchRuleRequest
-//
-// @return UpdateDispatchRuleResponse
-func (client *Client) UpdateDispatchRule(request *UpdateDispatchRuleRequest) (_result *UpdateDispatchRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateDispatchRuleResponse{}
-	_body, _err := client.UpdateDispatchRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17470,7 +13042,7 @@ func (client *Client) UpdateDispatchRule(request *UpdateDispatchRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateEnvCustomJobResponse
-func (client *Client) UpdateEnvCustomJobWithOptions(request *UpdateEnvCustomJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvCustomJobResponse, _err error) {
+func (client *Client) UpdateEnvCustomJobWithContext(ctx context.Context, request *UpdateEnvCustomJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvCustomJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17517,29 +13089,11 @@ func (client *Client) UpdateEnvCustomJobWithOptions(request *UpdateEnvCustomJobR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateEnvCustomJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a custom job for an environment.
-//
-// @param request - UpdateEnvCustomJobRequest
-//
-// @return UpdateEnvCustomJobResponse
-func (client *Client) UpdateEnvCustomJob(request *UpdateEnvCustomJobRequest) (_result *UpdateEnvCustomJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateEnvCustomJobResponse{}
-	_body, _err := client.UpdateEnvCustomJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17552,7 +13106,7 @@ func (client *Client) UpdateEnvCustomJob(request *UpdateEnvCustomJobRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateEnvDropMetricsRuleResponse
-func (client *Client) UpdateEnvDropMetricsRuleWithOptions(request *UpdateEnvDropMetricsRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvDropMetricsRuleResponse, _err error) {
+func (client *Client) UpdateEnvDropMetricsRuleWithContext(ctx context.Context, request *UpdateEnvDropMetricsRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvDropMetricsRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17591,29 +13145,11 @@ func (client *Client) UpdateEnvDropMetricsRuleWithOptions(request *UpdateEnvDrop
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateEnvDropMetricsRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新环境实例的废弃指标列表
-//
-// @param request - UpdateEnvDropMetricsRuleRequest
-//
-// @return UpdateEnvDropMetricsRuleResponse
-func (client *Client) UpdateEnvDropMetricsRule(request *UpdateEnvDropMetricsRuleRequest) (_result *UpdateEnvDropMetricsRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateEnvDropMetricsRuleResponse{}
-	_body, _err := client.UpdateEnvDropMetricsRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17626,7 +13162,7 @@ func (client *Client) UpdateEnvDropMetricsRule(request *UpdateEnvDropMetricsRule
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateEnvPodMonitorResponse
-func (client *Client) UpdateEnvPodMonitorWithOptions(request *UpdateEnvPodMonitorRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvPodMonitorResponse, _err error) {
+func (client *Client) UpdateEnvPodMonitorWithContext(ctx context.Context, request *UpdateEnvPodMonitorRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvPodMonitorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17677,29 +13213,11 @@ func (client *Client) UpdateEnvPodMonitorWithOptions(request *UpdateEnvPodMonito
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateEnvPodMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the PodMonitor of an environment.
-//
-// @param request - UpdateEnvPodMonitorRequest
-//
-// @return UpdateEnvPodMonitorResponse
-func (client *Client) UpdateEnvPodMonitor(request *UpdateEnvPodMonitorRequest) (_result *UpdateEnvPodMonitorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateEnvPodMonitorResponse{}
-	_body, _err := client.UpdateEnvPodMonitorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17712,7 +13230,7 @@ func (client *Client) UpdateEnvPodMonitor(request *UpdateEnvPodMonitorRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateEnvServiceMonitorResponse
-func (client *Client) UpdateEnvServiceMonitorWithOptions(request *UpdateEnvServiceMonitorRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvServiceMonitorResponse, _err error) {
+func (client *Client) UpdateEnvServiceMonitorWithContext(ctx context.Context, request *UpdateEnvServiceMonitorRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvServiceMonitorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17763,29 +13281,11 @@ func (client *Client) UpdateEnvServiceMonitorWithOptions(request *UpdateEnvServi
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateEnvServiceMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the ServiceMonitor of an environment.
-//
-// @param request - UpdateEnvServiceMonitorRequest
-//
-// @return UpdateEnvServiceMonitorResponse
-func (client *Client) UpdateEnvServiceMonitor(request *UpdateEnvServiceMonitorRequest) (_result *UpdateEnvServiceMonitorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateEnvServiceMonitorResponse{}
-	_body, _err := client.UpdateEnvServiceMonitorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17798,7 +13298,7 @@ func (client *Client) UpdateEnvServiceMonitor(request *UpdateEnvServiceMonitorRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateEnvironmentResponse
-func (client *Client) UpdateEnvironmentWithOptions(request *UpdateEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvironmentResponse, _err error) {
+func (client *Client) UpdateEnvironmentWithContext(ctx context.Context, request *UpdateEnvironmentRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnvironmentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17839,29 +13339,11 @@ func (client *Client) UpdateEnvironmentWithOptions(request *UpdateEnvironmentReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateEnvironmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the configuration of an environment.
-//
-// @param request - UpdateEnvironmentRequest
-//
-// @return UpdateEnvironmentResponse
-func (client *Client) UpdateEnvironment(request *UpdateEnvironmentRequest) (_result *UpdateEnvironmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateEnvironmentResponse{}
-	_body, _err := client.UpdateEnvironmentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17874,7 +13356,7 @@ func (client *Client) UpdateEnvironment(request *UpdateEnvironmentRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateGrafanaWorkspaceResponse
-func (client *Client) UpdateGrafanaWorkspaceWithOptions(request *UpdateGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateGrafanaWorkspaceResponse, _err error) {
+func (client *Client) UpdateGrafanaWorkspaceWithContext(ctx context.Context, request *UpdateGrafanaWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateGrafanaWorkspaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17915,29 +13397,11 @@ func (client *Client) UpdateGrafanaWorkspaceWithOptions(request *UpdateGrafanaWo
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateGrafanaWorkspaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the information about a Grafana workspace.
-//
-// @param request - UpdateGrafanaWorkspaceRequest
-//
-// @return UpdateGrafanaWorkspaceResponse
-func (client *Client) UpdateGrafanaWorkspace(request *UpdateGrafanaWorkspaceRequest) (_result *UpdateGrafanaWorkspaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateGrafanaWorkspaceResponse{}
-	_body, _err := client.UpdateGrafanaWorkspaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17954,7 +13418,7 @@ func (client *Client) UpdateGrafanaWorkspace(request *UpdateGrafanaWorkspaceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateGrafanaWorkspaceVersionResponse
-func (client *Client) UpdateGrafanaWorkspaceVersionWithOptions(request *UpdateGrafanaWorkspaceVersionRequest, runtime *dara.RuntimeOptions) (_result *UpdateGrafanaWorkspaceVersionResponse, _err error) {
+func (client *Client) UpdateGrafanaWorkspaceVersionWithContext(ctx context.Context, request *UpdateGrafanaWorkspaceVersionRequest, runtime *dara.RuntimeOptions) (_result *UpdateGrafanaWorkspaceVersionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17991,33 +13455,11 @@ func (client *Client) UpdateGrafanaWorkspaceVersionWithOptions(request *UpdateGr
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateGrafanaWorkspaceVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the version of a Grafana workspace.
-//
-// Description:
-//
-// Note: The list returned by this operation includes the workspaces of Developer Edition, Expert Edition, and Advanced Edition. The list does not include the workspaces of Shared Edition.
-//
-// @param request - UpdateGrafanaWorkspaceVersionRequest
-//
-// @return UpdateGrafanaWorkspaceVersionResponse
-func (client *Client) UpdateGrafanaWorkspaceVersion(request *UpdateGrafanaWorkspaceVersionRequest) (_result *UpdateGrafanaWorkspaceVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateGrafanaWorkspaceVersionResponse{}
-	_body, _err := client.UpdateGrafanaWorkspaceVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18030,7 +13472,7 @@ func (client *Client) UpdateGrafanaWorkspaceVersion(request *UpdateGrafanaWorksp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateIntegrationResponse
-func (client *Client) UpdateIntegrationWithOptions(request *UpdateIntegrationRequest, runtime *dara.RuntimeOptions) (_result *UpdateIntegrationResponse, _err error) {
+func (client *Client) UpdateIntegrationWithContext(ctx context.Context, request *UpdateIntegrationRequest, runtime *dara.RuntimeOptions) (_result *UpdateIntegrationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18107,29 +13549,11 @@ func (client *Client) UpdateIntegrationWithOptions(request *UpdateIntegrationReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateIntegrationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the information about an integration.
-//
-// @param request - UpdateIntegrationRequest
-//
-// @return UpdateIntegrationResponse
-func (client *Client) UpdateIntegration(request *UpdateIntegrationRequest) (_result *UpdateIntegrationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateIntegrationResponse{}
-	_body, _err := client.UpdateIntegrationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18144,7 +13568,7 @@ func (client *Client) UpdateIntegration(request *UpdateIntegrationRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMetricDropResponse
-func (client *Client) UpdateMetricDropWithOptions(request *UpdateMetricDropRequest, runtime *dara.RuntimeOptions) (_result *UpdateMetricDropResponse, _err error) {
+func (client *Client) UpdateMetricDropWithContext(ctx context.Context, request *UpdateMetricDropRequest, runtime *dara.RuntimeOptions) (_result *UpdateMetricDropResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18177,32 +13601,11 @@ func (client *Client) UpdateMetricDropWithOptions(request *UpdateMetricDropReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMetricDropResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI UpdateMetricDrop is deprecated, please use ARMS::2019-08-08::UpdateEnvDropMetricsRule instead.
-//
-// Summary:
-//
-// Updates the list of discarded metrics.
-//
-// @param request - UpdateMetricDropRequest
-//
-// @return UpdateMetricDropResponse
-// Deprecated
-func (client *Client) UpdateMetricDrop(request *UpdateMetricDropRequest) (_result *UpdateMetricDropResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMetricDropResponse{}
-	_body, _err := client.UpdateMetricDropWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18215,7 +13618,7 @@ func (client *Client) UpdateMetricDrop(request *UpdateMetricDropRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePrometheusAlertRuleResponse
-func (client *Client) UpdatePrometheusAlertRuleWithOptions(request *UpdatePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusAlertRuleResponse, _err error) {
+func (client *Client) UpdatePrometheusAlertRuleWithContext(ctx context.Context, request *UpdatePrometheusAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusAlertRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18288,29 +13691,11 @@ func (client *Client) UpdatePrometheusAlertRuleWithOptions(request *UpdatePromet
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePrometheusAlertRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新Prometheus告警规则
-//
-// @param request - UpdatePrometheusAlertRuleRequest
-//
-// @return UpdatePrometheusAlertRuleResponse
-func (client *Client) UpdatePrometheusAlertRule(request *UpdatePrometheusAlertRuleRequest) (_result *UpdatePrometheusAlertRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePrometheusAlertRuleResponse{}
-	_body, _err := client.UpdatePrometheusAlertRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18325,7 +13710,7 @@ func (client *Client) UpdatePrometheusAlertRule(request *UpdatePrometheusAlertRu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePrometheusGlobalViewResponse
-func (client *Client) UpdatePrometheusGlobalViewWithOptions(request *UpdatePrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusGlobalViewResponse, _err error) {
+func (client *Client) UpdatePrometheusGlobalViewWithContext(ctx context.Context, request *UpdatePrometheusGlobalViewRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusGlobalViewResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18374,32 +13759,11 @@ func (client *Client) UpdatePrometheusGlobalViewWithOptions(request *UpdateProme
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePrometheusGlobalViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI UpdatePrometheusGlobalView is deprecated
-//
-// Summary:
-//
-// Updates the data sources of Prometheus instance for GlobalView.
-//
-// @param request - UpdatePrometheusGlobalViewRequest
-//
-// @return UpdatePrometheusGlobalViewResponse
-// Deprecated
-func (client *Client) UpdatePrometheusGlobalView(request *UpdatePrometheusGlobalViewRequest) (_result *UpdatePrometheusGlobalViewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePrometheusGlobalViewResponse{}
-	_body, _err := client.UpdatePrometheusGlobalViewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18412,7 +13776,7 @@ func (client *Client) UpdatePrometheusGlobalView(request *UpdatePrometheusGlobal
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePrometheusInstanceResponse
-func (client *Client) UpdatePrometheusInstanceWithOptions(request *UpdatePrometheusInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusInstanceResponse, _err error) {
+func (client *Client) UpdatePrometheusInstanceWithContext(ctx context.Context, request *UpdatePrometheusInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18477,29 +13841,11 @@ func (client *Client) UpdatePrometheusInstanceWithOptions(request *UpdatePrometh
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePrometheusInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the information about a Prometheus instance.
-//
-// @param request - UpdatePrometheusInstanceRequest
-//
-// @return UpdatePrometheusInstanceResponse
-func (client *Client) UpdatePrometheusInstance(request *UpdatePrometheusInstanceRequest) (_result *UpdatePrometheusInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePrometheusInstanceResponse{}
-	_body, _err := client.UpdatePrometheusInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18514,7 +13860,7 @@ func (client *Client) UpdatePrometheusInstance(request *UpdatePrometheusInstance
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePrometheusIntegrationResponse
-func (client *Client) UpdatePrometheusIntegrationWithOptions(request *UpdatePrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusIntegrationResponse, _err error) {
+func (client *Client) UpdatePrometheusIntegrationWithContext(ctx context.Context, request *UpdatePrometheusIntegrationRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusIntegrationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18555,32 +13901,11 @@ func (client *Client) UpdatePrometheusIntegrationWithOptions(request *UpdateProm
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePrometheusIntegrationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI UpdatePrometheusIntegration is deprecated
-//
-// Summary:
-//
-// Modifies the configurations of an exporter that is integrated into a Prometheus instance for Container Service or a Prometheus instance for ECS.
-//
-// @param request - UpdatePrometheusIntegrationRequest
-//
-// @return UpdatePrometheusIntegrationResponse
-// Deprecated
-func (client *Client) UpdatePrometheusIntegration(request *UpdatePrometheusIntegrationRequest) (_result *UpdatePrometheusIntegrationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePrometheusIntegrationResponse{}
-	_body, _err := client.UpdatePrometheusIntegrationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18595,7 +13920,7 @@ func (client *Client) UpdatePrometheusIntegration(request *UpdatePrometheusInteg
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePrometheusMonitoringResponse
-func (client *Client) UpdatePrometheusMonitoringWithOptions(request *UpdatePrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusMonitoringResponse, _err error) {
+func (client *Client) UpdatePrometheusMonitoringWithContext(ctx context.Context, request *UpdatePrometheusMonitoringRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusMonitoringResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18638,32 +13963,11 @@ func (client *Client) UpdatePrometheusMonitoringWithOptions(request *UpdateProme
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePrometheusMonitoringResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI UpdatePrometheusMonitoring is deprecated
-//
-// Summary:
-//
-// Updates the monitoring configuration of a Prometheus instance.
-//
-// @param request - UpdatePrometheusMonitoringRequest
-//
-// @return UpdatePrometheusMonitoringResponse
-// Deprecated
-func (client *Client) UpdatePrometheusMonitoring(request *UpdatePrometheusMonitoringRequest) (_result *UpdatePrometheusMonitoringResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePrometheusMonitoringResponse{}
-	_body, _err := client.UpdatePrometheusMonitoringWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18678,7 +13982,7 @@ func (client *Client) UpdatePrometheusMonitoring(request *UpdatePrometheusMonito
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePrometheusMonitoringStatusResponse
-func (client *Client) UpdatePrometheusMonitoringStatusWithOptions(request *UpdatePrometheusMonitoringStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusMonitoringStatusResponse, _err error) {
+func (client *Client) UpdatePrometheusMonitoringStatusWithContext(ctx context.Context, request *UpdatePrometheusMonitoringStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusMonitoringStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18719,32 +14023,11 @@ func (client *Client) UpdatePrometheusMonitoringStatusWithOptions(request *Updat
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePrometheusMonitoringStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI UpdatePrometheusMonitoringStatus is deprecated
-//
-// Summary:
-//
-// Updates the status of the monitoring configuration of a Prometheus instance.
-//
-// @param request - UpdatePrometheusMonitoringStatusRequest
-//
-// @return UpdatePrometheusMonitoringStatusResponse
-// Deprecated
-func (client *Client) UpdatePrometheusMonitoringStatus(request *UpdatePrometheusMonitoringStatusRequest) (_result *UpdatePrometheusMonitoringStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePrometheusMonitoringStatusResponse{}
-	_body, _err := client.UpdatePrometheusMonitoringStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18761,7 +14044,7 @@ func (client *Client) UpdatePrometheusMonitoringStatus(request *UpdatePrometheus
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateRumAppResponse
-func (client *Client) UpdateRumAppWithOptions(request *UpdateRumAppRequest, runtime *dara.RuntimeOptions) (_result *UpdateRumAppResponse, _err error) {
+func (client *Client) UpdateRumAppWithContext(ctx context.Context, request *UpdateRumAppRequest, runtime *dara.RuntimeOptions) (_result *UpdateRumAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18834,33 +14117,11 @@ func (client *Client) UpdateRumAppWithOptions(request *UpdateRumAppRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRumAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a Real User Monitoring (RUM) application.
-//
-// Description:
-//
-// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
-//
-// @param request - UpdateRumAppRequest
-//
-// @return UpdateRumAppResponse
-func (client *Client) UpdateRumApp(request *UpdateRumAppRequest) (_result *UpdateRumAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateRumAppResponse{}
-	_body, _err := client.UpdateRumAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18877,7 +14138,7 @@ func (client *Client) UpdateRumApp(request *UpdateRumAppRequest) (_result *Updat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateRumFileStatusResponse
-func (client *Client) UpdateRumFileStatusWithOptions(request *UpdateRumFileStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateRumFileStatusResponse, _err error) {
+func (client *Client) UpdateRumFileStatusWithContext(ctx context.Context, request *UpdateRumFileStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateRumFileStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18926,33 +14187,11 @@ func (client *Client) UpdateRumFileStatusWithOptions(request *UpdateRumFileStatu
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRumFileStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the status of a Real User Monitoring (RUM) file. You can call this operation after the RUM file is uploaded.
-//
-// Description:
-//
-// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
-//
-// @param request - UpdateRumFileStatusRequest
-//
-// @return UpdateRumFileStatusResponse
-func (client *Client) UpdateRumFileStatus(request *UpdateRumFileStatusRequest) (_result *UpdateRumFileStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateRumFileStatusResponse{}
-	_body, _err := client.UpdateRumFileStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18965,7 +14204,7 @@ func (client *Client) UpdateRumFileStatus(request *UpdateRumFileStatusRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTimingSyntheticTaskResponse
-func (client *Client) UpdateTimingSyntheticTaskWithOptions(tmpReq *UpdateTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateTimingSyntheticTaskResponse, _err error) {
+func (client *Client) UpdateTimingSyntheticTaskWithContext(ctx context.Context, tmpReq *UpdateTimingSyntheticTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateTimingSyntheticTaskResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19056,29 +14295,11 @@ func (client *Client) UpdateTimingSyntheticTaskWithOptions(tmpReq *UpdateTimingS
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTimingSyntheticTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a scheduled synthetic test task.
-//
-// @param request - UpdateTimingSyntheticTaskRequest
-//
-// @return UpdateTimingSyntheticTaskResponse
-func (client *Client) UpdateTimingSyntheticTask(request *UpdateTimingSyntheticTaskRequest) (_result *UpdateTimingSyntheticTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateTimingSyntheticTaskResponse{}
-	_body, _err := client.UpdateTimingSyntheticTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19095,7 +14316,7 @@ func (client *Client) UpdateTimingSyntheticTask(request *UpdateTimingSyntheticTa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateWebhookResponse
-func (client *Client) UpdateWebhookWithOptions(request *UpdateWebhookRequest, runtime *dara.RuntimeOptions) (_result *UpdateWebhookResponse, _err error) {
+func (client *Client) UpdateWebhookWithContext(ctx context.Context, request *UpdateWebhookRequest, runtime *dara.RuntimeOptions) (_result *UpdateWebhookResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19152,33 +14373,11 @@ func (client *Client) UpdateWebhookWithOptions(request *UpdateWebhookRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateWebhookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the information about a webhook alert contact.
-//
-// Description:
-//
-// This operation is no longer maintained. Call the CreateOrUpdateWebhookContact operation in the new alter management module to create or modify a webhook alert contact.
-//
-// @param request - UpdateWebhookRequest
-//
-// @return UpdateWebhookResponse
-func (client *Client) UpdateWebhook(request *UpdateWebhookRequest) (_result *UpdateWebhookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateWebhookResponse{}
-	_body, _err := client.UpdateWebhookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19191,7 +14390,7 @@ func (client *Client) UpdateWebhook(request *UpdateWebhookRequest) (_result *Upd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeAddonReleaseResponse
-func (client *Client) UpgradeAddonReleaseWithOptions(request *UpgradeAddonReleaseRequest, runtime *dara.RuntimeOptions) (_result *UpgradeAddonReleaseResponse, _err error) {
+func (client *Client) UpgradeAddonReleaseWithContext(ctx context.Context, request *UpgradeAddonReleaseRequest, runtime *dara.RuntimeOptions) (_result *UpgradeAddonReleaseResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19236,29 +14435,11 @@ func (client *Client) UpgradeAddonReleaseWithOptions(request *UpgradeAddonReleas
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeAddonReleaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the release information of an add-on.
-//
-// @param request - UpgradeAddonReleaseRequest
-//
-// @return UpgradeAddonReleaseResponse
-func (client *Client) UpgradeAddonRelease(request *UpgradeAddonReleaseRequest) (_result *UpgradeAddonReleaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpgradeAddonReleaseResponse{}
-	_body, _err := client.UpgradeAddonReleaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19271,7 +14452,7 @@ func (client *Client) UpgradeAddonRelease(request *UpgradeAddonReleaseRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeEnvironmentFeatureResponse
-func (client *Client) UpgradeEnvironmentFeatureWithOptions(request *UpgradeEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *UpgradeEnvironmentFeatureResponse, _err error) {
+func (client *Client) UpgradeEnvironmentFeatureWithContext(ctx context.Context, request *UpgradeEnvironmentFeatureRequest, runtime *dara.RuntimeOptions) (_result *UpgradeEnvironmentFeatureResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19316,29 +14497,11 @@ func (client *Client) UpgradeEnvironmentFeatureWithOptions(request *UpgradeEnvir
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeEnvironmentFeatureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the feature information of an environment.
-//
-// @param request - UpgradeEnvironmentFeatureRequest
-//
-// @return UpgradeEnvironmentFeatureResponse
-func (client *Client) UpgradeEnvironmentFeature(request *UpgradeEnvironmentFeatureRequest) (_result *UpgradeEnvironmentFeatureResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpgradeEnvironmentFeatureResponse{}
-	_body, _err := client.UpgradeEnvironmentFeatureWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19351,7 +14514,7 @@ func (client *Client) UpgradeEnvironmentFeature(request *UpgradeEnvironmentFeatu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UploadResponse
-func (client *Client) UploadWithOptions(request *UploadRequest, runtime *dara.RuntimeOptions) (_result *UploadResponse, _err error) {
+func (client *Client) UploadWithContext(ctx context.Context, request *UploadRequest, runtime *dara.RuntimeOptions) (_result *UploadResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19398,28 +14561,10 @@ func (client *Client) UploadWithOptions(request *UploadRequest, runtime *dara.Ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &UploadResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Uploads a SourceMap file to ARMS Browser Monitoring.
-//
-// @param request - UploadRequest
-//
-// @return UploadResponse
-func (client *Client) Upload(request *UploadRequest) (_result *UploadResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UploadResponse{}
-	_body, _err := client.UploadWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }

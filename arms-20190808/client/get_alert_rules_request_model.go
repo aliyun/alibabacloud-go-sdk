@@ -17,6 +17,8 @@ type iGetAlertRulesRequest interface {
 	GetAlertStatus() *string
 	SetAlertType(v string) *GetAlertRulesRequest
 	GetAlertType() *string
+	SetBizRegionId(v string) *GetAlertRulesRequest
+	GetBizRegionId() *string
 	SetClusterId(v string) *GetAlertRulesRequest
 	GetClusterId() *string
 	SetPage(v int64) *GetAlertRulesRequest
@@ -79,7 +81,8 @@ type GetAlertRulesRequest struct {
 	// example:
 	//
 	// APPLICATION_MONITORING_ALERT_RULE
-	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AlertType   *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// The ID of the monitored cluster.
 	//
 	// example:
@@ -144,6 +147,10 @@ func (s *GetAlertRulesRequest) GetAlertType() *string {
 	return s.AlertType
 }
 
+func (s *GetAlertRulesRequest) GetBizRegionId() *string {
+	return s.BizRegionId
+}
+
 func (s *GetAlertRulesRequest) GetClusterId() *string {
 	return s.ClusterId
 }
@@ -185,6 +192,11 @@ func (s *GetAlertRulesRequest) SetAlertStatus(v string) *GetAlertRulesRequest {
 
 func (s *GetAlertRulesRequest) SetAlertType(v string) *GetAlertRulesRequest {
 	s.AlertType = &v
+	return s
+}
+
+func (s *GetAlertRulesRequest) SetBizRegionId(v string) *GetAlertRulesRequest {
+	s.BizRegionId = &v
 	return s
 }
 
