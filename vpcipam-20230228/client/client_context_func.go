@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("vpcipam"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -80,7 +32,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddIpamPoolCidrResponse
-func (client *Client) AddIpamPoolCidrWithOptions(request *AddIpamPoolCidrRequest, runtime *dara.RuntimeOptions) (_result *AddIpamPoolCidrResponse, _err error) {
+func (client *Client) AddIpamPoolCidrWithContext(ctx context.Context, request *AddIpamPoolCidrRequest, runtime *dara.RuntimeOptions) (_result *AddIpamPoolCidrResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -125,45 +77,11 @@ func (client *Client) AddIpamPoolCidrWithOptions(request *AddIpamPoolCidrRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddIpamPoolCidrResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Provisions a CIDR block to an IP Address Manager (IPAM) pool.
-//
-// Description:
-//
-//	  Before you provision a CIDR block, make sure that an IPAM pool is created. You can call the **CreateIpamPool*	- operation to create an IPAM pool.
-//
-//		- If no CIDR block is provisioned to a parent pool, you cannot provision CIDR blocks to its subpools.
-//
-//		- If a CIDR block is provisioned to a parent pool, you can provision CIDR blocks to its subpools and the CIDR blocks must be subsets of the CIDR block provisioned to the parent pool.
-//
-//		- If a CIDR block is provisioned to a parent pool and allocations are created, CIDR blocks provisioned to its subpools cannot overlap with existing allocated CIDR blocks.
-//
-//		- You can provision CIDR blocks to a pool only in the region where the IPAM is hosted.
-//
-//		- CIDR blocks provisioned to an IPAM pool cannot overlap with the CIDR blocks provisioned to other pools in the same scope.
-//
-//		- You can provision at most 50 CIDR blocks to each pool.
-//
-// @param request - AddIpamPoolCidrRequest
-//
-// @return AddIpamPoolCidrResponse
-func (client *Client) AddIpamPoolCidr(request *AddIpamPoolCidrRequest) (_result *AddIpamPoolCidrResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddIpamPoolCidrResponse{}
-	_body, _err := client.AddIpamPoolCidrWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -180,7 +98,7 @@ func (client *Client) AddIpamPoolCidr(request *AddIpamPoolCidrRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateIpamResourceDiscoveryResponse
-func (client *Client) AssociateIpamResourceDiscoveryWithOptions(request *AssociateIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *AssociateIpamResourceDiscoveryResponse, _err error) {
+func (client *Client) AssociateIpamResourceDiscoveryWithContext(ctx context.Context, request *AssociateIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *AssociateIpamResourceDiscoveryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -237,33 +155,11 @@ func (client *Client) AssociateIpamResourceDiscoveryWithOptions(request *Associa
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateIpamResourceDiscoveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates resource discovery with an IPAM instance.
-//
-// Description:
-//
-//	The specified resource discovery instance can only be associated with one IPAM instance and associations cannot be duplicated.
-//
-// @param request - AssociateIpamResourceDiscoveryRequest
-//
-// @return AssociateIpamResourceDiscoveryResponse
-func (client *Client) AssociateIpamResourceDiscovery(request *AssociateIpamResourceDiscoveryRequest) (_result *AssociateIpamResourceDiscoveryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateIpamResourceDiscoveryResponse{}
-	_body, _err := client.AssociateIpamResourceDiscoveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -276,7 +172,7 @@ func (client *Client) AssociateIpamResourceDiscovery(request *AssociateIpamResou
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -329,29 +225,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the resource group of an IPAM resource.
-//
-// @param request - ChangeResourceGroupRequest
-//
-// @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -376,7 +254,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIpamResponse
-func (client *Client) CreateIpamWithOptions(request *CreateIpamRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamResponse, _err error) {
+func (client *Client) CreateIpamWithContext(ctx context.Context, request *CreateIpamRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -445,41 +323,11 @@ func (client *Client) CreateIpamWithOptions(request *CreateIpamRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIpamResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an IP Address Manager (IPAM).
-//
-// Description:
-//
-// - You can create only one IPAM with each Alibaba Cloud account in each region.
-//
-// - Only IPv4 IP addresses can be allocated.
-//
-// - When you create an IPAM instance:
-//
-//   - If there is no custom resource discovery in the region, the system creates a default resource discovery associated with the IPAM instance.
-//
-//   - If there is a custom resource discovery in the region, the system converts it to a default resource discovery and associates it with the IPAM instance.
-//
-// @param request - CreateIpamRequest
-//
-// @return CreateIpamResponse
-func (client *Client) CreateIpam(request *CreateIpamRequest) (_result *CreateIpamResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIpamResponse{}
-	_body, _err := client.CreateIpamWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -492,7 +340,7 @@ func (client *Client) CreateIpam(request *CreateIpamRequest) (_result *CreateIpa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIpamPoolResponse
-func (client *Client) CreateIpamPoolWithOptions(request *CreateIpamPoolRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamPoolResponse, _err error) {
+func (client *Client) CreateIpamPoolWithContext(ctx context.Context, request *CreateIpamPoolRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamPoolResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -593,29 +441,11 @@ func (client *Client) CreateIpamPoolWithOptions(request *CreateIpamPoolRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIpamPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an IP Address Manager (IPAM) pool.
-//
-// @param request - CreateIpamPoolRequest
-//
-// @return CreateIpamPoolResponse
-func (client *Client) CreateIpamPool(request *CreateIpamPoolRequest) (_result *CreateIpamPoolResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIpamPoolResponse{}
-	_body, _err := client.CreateIpamPoolWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -638,7 +468,7 @@ func (client *Client) CreateIpamPool(request *CreateIpamPoolRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIpamPoolAllocationResponse
-func (client *Client) CreateIpamPoolAllocationWithOptions(request *CreateIpamPoolAllocationRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamPoolAllocationResponse, _err error) {
+func (client *Client) CreateIpamPoolAllocationWithContext(ctx context.Context, request *CreateIpamPoolAllocationRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamPoolAllocationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -691,39 +521,11 @@ func (client *Client) CreateIpamPoolAllocationWithOptions(request *CreateIpamPoo
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIpamPoolAllocationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Reserves a custom CIDR block from an IP Address Manager (IPAM) pool.
-//
-// Description:
-//
-//	  Before you reserve a custom CIDR block, make sure that an IPAM pool is created and CIDR blocks are added to the pool. You can call **CreateIpamPool*	- to create an IPAM pool and call **AddIpamPoolCidr*	- to add CIDR blocks to the pool.
-//
-//		- When you specify Cidr or CidrMask to reserve a custom CIDR block, the mask must fall within the range specified by the IPAM pool.
-//
-//		- If the IPAM pool has the region attribute, you must reserve a custom CIDR block in the region to which the IPAM pool belongs.
-//
-//		- The custom CIDR block that you want to reserve cannot overlap with existing CIDR blocks created from the IPAM pool.
-//
-// @param request - CreateIpamPoolAllocationRequest
-//
-// @return CreateIpamPoolAllocationResponse
-func (client *Client) CreateIpamPoolAllocation(request *CreateIpamPoolAllocationRequest) (_result *CreateIpamPoolAllocationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIpamPoolAllocationResponse{}
-	_body, _err := client.CreateIpamPoolAllocationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -742,7 +544,7 @@ func (client *Client) CreateIpamPoolAllocation(request *CreateIpamPoolAllocation
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIpamResourceDiscoveryResponse
-func (client *Client) CreateIpamResourceDiscoveryWithOptions(request *CreateIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamResourceDiscoveryResponse, _err error) {
+func (client *Client) CreateIpamResourceDiscoveryWithContext(ctx context.Context, request *CreateIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamResourceDiscoveryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -811,35 +613,11 @@ func (client *Client) CreateIpamResourceDiscoveryWithOptions(request *CreateIpam
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIpamResourceDiscoveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a custom resource discovery instance.
-//
-// Description:
-//
-//	  Each Alibaba Cloud account can create only one resource discovery instance in each region.
-//
-//		- You can create only custom resource discovery instances.
-//
-// @param request - CreateIpamResourceDiscoveryRequest
-//
-// @return CreateIpamResourceDiscoveryResponse
-func (client *Client) CreateIpamResourceDiscovery(request *CreateIpamResourceDiscoveryRequest) (_result *CreateIpamResourceDiscoveryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIpamResourceDiscoveryResponse{}
-	_body, _err := client.CreateIpamResourceDiscoveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -852,7 +630,7 @@ func (client *Client) CreateIpamResourceDiscovery(request *CreateIpamResourceDis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIpamScopeResponse
-func (client *Client) CreateIpamScopeWithOptions(request *CreateIpamScopeRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamScopeResponse, _err error) {
+func (client *Client) CreateIpamScopeWithContext(ctx context.Context, request *CreateIpamScopeRequest, runtime *dara.RuntimeOptions) (_result *CreateIpamScopeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -925,29 +703,11 @@ func (client *Client) CreateIpamScopeWithOptions(request *CreateIpamScopeRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIpamScopeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a public scope and private scope to respectively manage public and private IP addresses.
-//
-// @param request - CreateIpamScopeRequest
-//
-// @return CreateIpamScopeResponse
-func (client *Client) CreateIpamScope(request *CreateIpamScopeRequest) (_result *CreateIpamScopeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateIpamScopeResponse{}
-	_body, _err := client.CreateIpamScopeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -968,7 +728,7 @@ func (client *Client) CreateIpamScope(request *CreateIpamScopeRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIpamResponse
-func (client *Client) DeleteIpamWithOptions(request *DeleteIpamRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamResponse, _err error) {
+func (client *Client) DeleteIpamWithContext(ctx context.Context, request *DeleteIpamRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1021,37 +781,11 @@ func (client *Client) DeleteIpamWithOptions(request *DeleteIpamRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIpamResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an IP Address Manager (IPAM).
-//
-// Description:
-//
-// ## [](#)Prerequisites
-//
-//   - Before you delete an IPAM, make sure that all IPAM pools of the IPAM are deleted. You can call **DeleteIpamPool*	- to delete IPAM pools.
-//
-//   - Before you delete an IPAM, make sure that all IPAM scopes of the IPAM are deleted. You can call **DeleteIpamScope*	- to delete IPAM scopes.
-//
-// @param request - DeleteIpamRequest
-//
-// @return DeleteIpamResponse
-func (client *Client) DeleteIpam(request *DeleteIpamRequest) (_result *DeleteIpamResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIpamResponse{}
-	_body, _err := client.DeleteIpamWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1074,7 +808,7 @@ func (client *Client) DeleteIpam(request *DeleteIpamRequest) (_result *DeleteIpa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIpamPoolResponse
-func (client *Client) DeleteIpamPoolWithOptions(request *DeleteIpamPoolRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamPoolResponse, _err error) {
+func (client *Client) DeleteIpamPoolWithContext(ctx context.Context, request *DeleteIpamPoolRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamPoolResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1127,39 +861,11 @@ func (client *Client) DeleteIpamPoolWithOptions(request *DeleteIpamPoolRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIpamPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an IP Address Manager (IPAM) scope.
-//
-// Description:
-//
-// ### [](#)Usage notes
-//
-//   - Before you delete a parent pool, make sure that all subpools of the parent pool are deleted.
-//
-//   - If an effective region is specified for a parent pool and IP addresses are allocated from the parent pool, you cannot delete the parent pool.
-//
-//   - If an effective region is specified for a subpool and IP addresses are allocated from the subpool, you cannot delete the subpool.
-//
-// @param request - DeleteIpamPoolRequest
-//
-// @return DeleteIpamPoolResponse
-func (client *Client) DeleteIpamPool(request *DeleteIpamPoolRequest) (_result *DeleteIpamPoolResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIpamPoolResponse{}
-	_body, _err := client.DeleteIpamPoolWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1172,7 +878,7 @@ func (client *Client) DeleteIpamPool(request *DeleteIpamPoolRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIpamPoolAllocationResponse
-func (client *Client) DeleteIpamPoolAllocationWithOptions(request *DeleteIpamPoolAllocationRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamPoolAllocationResponse, _err error) {
+func (client *Client) DeleteIpamPoolAllocationWithContext(ctx context.Context, request *DeleteIpamPoolAllocationRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamPoolAllocationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1209,29 +915,11 @@ func (client *Client) DeleteIpamPoolAllocationWithOptions(request *DeleteIpamPoo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIpamPoolAllocationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a custom reserved CIDR block from an IP Address Manager (IPAM) pool.
-//
-// @param request - DeleteIpamPoolAllocationRequest
-//
-// @return DeleteIpamPoolAllocationResponse
-func (client *Client) DeleteIpamPoolAllocation(request *DeleteIpamPoolAllocationRequest) (_result *DeleteIpamPoolAllocationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIpamPoolAllocationResponse{}
-	_body, _err := client.DeleteIpamPoolAllocationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1254,7 +942,7 @@ func (client *Client) DeleteIpamPoolAllocation(request *DeleteIpamPoolAllocation
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIpamPoolCidrResponse
-func (client *Client) DeleteIpamPoolCidrWithOptions(request *DeleteIpamPoolCidrRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamPoolCidrResponse, _err error) {
+func (client *Client) DeleteIpamPoolCidrWithContext(ctx context.Context, request *DeleteIpamPoolCidrRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamPoolCidrResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1295,39 +983,11 @@ func (client *Client) DeleteIpamPoolCidrWithOptions(request *DeleteIpamPoolCidrR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIpamPoolCidrResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a CIDR block provisioned to an IP Address Manager (IPAM) pool.
-//
-// Description:
-//
-//	  If CIDR blocks are provisioned to a parent pool and its subpools, you must first delete the CIDR blocks provisioned to the subpools before you delete the ones provisioned to the parent pool.
-//
-//		- If CIDR blocks are provisioned only to the parent pool, directly delete them.
-//
-//		- If CIDR blocks are allocated from provisioned ones, you must first delete the allocated CIDR blocks before you delete the provisioned ones.
-//
-//		- You can delete CIDR blocks provisioned to an IPAM pool only in the region where the IPAM is hosted.
-//
-// @param request - DeleteIpamPoolCidrRequest
-//
-// @return DeleteIpamPoolCidrResponse
-func (client *Client) DeleteIpamPoolCidr(request *DeleteIpamPoolCidrRequest) (_result *DeleteIpamPoolCidrResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIpamPoolCidrResponse{}
-	_body, _err := client.DeleteIpamPoolCidrWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1344,7 +1004,7 @@ func (client *Client) DeleteIpamPoolCidr(request *DeleteIpamPoolCidrRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIpamResourceDiscoveryResponse
-func (client *Client) DeleteIpamResourceDiscoveryWithOptions(request *DeleteIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamResourceDiscoveryResponse, _err error) {
+func (client *Client) DeleteIpamResourceDiscoveryWithContext(ctx context.Context, request *DeleteIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamResourceDiscoveryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1397,33 +1057,11 @@ func (client *Client) DeleteIpamResourceDiscoveryWithOptions(request *DeleteIpam
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIpamResourceDiscoveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a custom resource discovery instance.
-//
-// Description:
-//
-//	If a resource discovery instance is shared, it cannot be deleted.
-//
-// @param request - DeleteIpamResourceDiscoveryRequest
-//
-// @return DeleteIpamResourceDiscoveryResponse
-func (client *Client) DeleteIpamResourceDiscovery(request *DeleteIpamResourceDiscoveryRequest) (_result *DeleteIpamResourceDiscoveryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIpamResourceDiscoveryResponse{}
-	_body, _err := client.DeleteIpamResourceDiscoveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1444,7 +1082,7 @@ func (client *Client) DeleteIpamResourceDiscovery(request *DeleteIpamResourceDis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIpamScopeResponse
-func (client *Client) DeleteIpamScopeWithOptions(request *DeleteIpamScopeRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamScopeResponse, _err error) {
+func (client *Client) DeleteIpamScopeWithContext(ctx context.Context, request *DeleteIpamScopeRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpamScopeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1497,37 +1135,11 @@ func (client *Client) DeleteIpamScopeWithOptions(request *DeleteIpamScopeRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIpamScopeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an IP Address Manager (IPAM) scope.
-//
-// Description:
-//
-// ### [](#)Usage notes
-//
-//   - You cannot delete the private scope and public scope created by the system.
-//
-//   - Before you delete an IPAM scope, make sure that all pools within the scope are deleted. You can call **DeleteIpamPool*	- to delete IPAM pools.
-//
-// @param request - DeleteIpamScopeRequest
-//
-// @return DeleteIpamScopeResponse
-func (client *Client) DeleteIpamScope(request *DeleteIpamScopeRequest) (_result *DeleteIpamScopeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIpamScopeResponse{}
-	_body, _err := client.DeleteIpamScopeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1540,7 +1152,7 @@ func (client *Client) DeleteIpamScope(request *DeleteIpamScopeRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DissociateIpamResourceDiscoveryResponse
-func (client *Client) DissociateIpamResourceDiscoveryWithOptions(request *DissociateIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *DissociateIpamResourceDiscoveryResponse, _err error) {
+func (client *Client) DissociateIpamResourceDiscoveryWithContext(ctx context.Context, request *DissociateIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *DissociateIpamResourceDiscoveryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1597,29 +1209,11 @@ func (client *Client) DissociateIpamResourceDiscoveryWithOptions(request *Dissoc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DissociateIpamResourceDiscoveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates resource discovery and IPAM instances.
-//
-// @param request - DissociateIpamResourceDiscoveryRequest
-//
-// @return DissociateIpamResourceDiscoveryResponse
-func (client *Client) DissociateIpamResourceDiscovery(request *DissociateIpamResourceDiscoveryRequest) (_result *DissociateIpamResourceDiscoveryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DissociateIpamResourceDiscoveryResponse{}
-	_body, _err := client.DissociateIpamResourceDiscoveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1632,7 +1226,7 @@ func (client *Client) DissociateIpamResourceDiscovery(request *DissociateIpamRes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetIpamPoolAllocationResponse
-func (client *Client) GetIpamPoolAllocationWithOptions(request *GetIpamPoolAllocationRequest, runtime *dara.RuntimeOptions) (_result *GetIpamPoolAllocationResponse, _err error) {
+func (client *Client) GetIpamPoolAllocationWithContext(ctx context.Context, request *GetIpamPoolAllocationRequest, runtime *dara.RuntimeOptions) (_result *GetIpamPoolAllocationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1653,29 +1247,11 @@ func (client *Client) GetIpamPoolAllocationWithOptions(request *GetIpamPoolAlloc
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetIpamPoolAllocationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
-//
-// @param request - GetIpamPoolAllocationRequest
-//
-// @return GetIpamPoolAllocationResponse
-func (client *Client) GetIpamPoolAllocation(request *GetIpamPoolAllocationRequest) (_result *GetIpamPoolAllocationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetIpamPoolAllocationResponse{}
-	_body, _err := client.GetIpamPoolAllocationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1688,7 +1264,7 @@ func (client *Client) GetIpamPoolAllocation(request *GetIpamPoolAllocationReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetIpamPoolNextAvailableCidrResponse
-func (client *Client) GetIpamPoolNextAvailableCidrWithOptions(request *GetIpamPoolNextAvailableCidrRequest, runtime *dara.RuntimeOptions) (_result *GetIpamPoolNextAvailableCidrResponse, _err error) {
+func (client *Client) GetIpamPoolNextAvailableCidrWithContext(ctx context.Context, request *GetIpamPoolNextAvailableCidrRequest, runtime *dara.RuntimeOptions) (_result *GetIpamPoolNextAvailableCidrResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1709,29 +1285,11 @@ func (client *Client) GetIpamPoolNextAvailableCidrWithOptions(request *GetIpamPo
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetIpamPoolNextAvailableCidrResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Gets the available CIDR blocks of the IPAM pool.
-//
-// @param request - GetIpamPoolNextAvailableCidrRequest
-//
-// @return GetIpamPoolNextAvailableCidrResponse
-func (client *Client) GetIpamPoolNextAvailableCidr(request *GetIpamPoolNextAvailableCidrRequest) (_result *GetIpamPoolNextAvailableCidrResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetIpamPoolNextAvailableCidrResponse{}
-	_body, _err := client.GetIpamPoolNextAvailableCidrWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1744,7 +1302,7 @@ func (client *Client) GetIpamPoolNextAvailableCidr(request *GetIpamPoolNextAvail
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVpcIpamServiceStatusResponse
-func (client *Client) GetVpcIpamServiceStatusWithOptions(request *GetVpcIpamServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetVpcIpamServiceStatusResponse, _err error) {
+func (client *Client) GetVpcIpamServiceStatusWithContext(ctx context.Context, request *GetVpcIpamServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *GetVpcIpamServiceStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1789,29 +1347,11 @@ func (client *Client) GetVpcIpamServiceStatusWithOptions(request *GetVpcIpamServ
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVpcIpamServiceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries whether IP Address Manager (IPAM) is activated.
-//
-// @param request - GetVpcIpamServiceStatusRequest
-//
-// @return GetVpcIpamServiceStatusResponse
-func (client *Client) GetVpcIpamServiceStatus(request *GetVpcIpamServiceStatusRequest) (_result *GetVpcIpamServiceStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVpcIpamServiceStatusResponse{}
-	_body, _err := client.GetVpcIpamServiceStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1824,7 +1364,7 @@ func (client *Client) GetVpcIpamServiceStatus(request *GetVpcIpamServiceStatusRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIpamDiscoveredResourceResponse
-func (client *Client) ListIpamDiscoveredResourceWithOptions(request *ListIpamDiscoveredResourceRequest, runtime *dara.RuntimeOptions) (_result *ListIpamDiscoveredResourceResponse, _err error) {
+func (client *Client) ListIpamDiscoveredResourceWithContext(ctx context.Context, request *ListIpamDiscoveredResourceRequest, runtime *dara.RuntimeOptions) (_result *ListIpamDiscoveredResourceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1869,29 +1409,11 @@ func (client *Client) ListIpamDiscoveredResourceWithOptions(request *ListIpamDis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIpamDiscoveredResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries discovered resources.
-//
-// @param request - ListIpamDiscoveredResourceRequest
-//
-// @return ListIpamDiscoveredResourceResponse
-func (client *Client) ListIpamDiscoveredResource(request *ListIpamDiscoveredResourceRequest) (_result *ListIpamDiscoveredResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListIpamDiscoveredResourceResponse{}
-	_body, _err := client.ListIpamDiscoveredResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1904,7 +1426,7 @@ func (client *Client) ListIpamDiscoveredResource(request *ListIpamDiscoveredReso
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIpamPoolAllocationsResponse
-func (client *Client) ListIpamPoolAllocationsWithOptions(request *ListIpamPoolAllocationsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamPoolAllocationsResponse, _err error) {
+func (client *Client) ListIpamPoolAllocationsWithContext(ctx context.Context, request *ListIpamPoolAllocationsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamPoolAllocationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1953,29 +1475,11 @@ func (client *Client) ListIpamPoolAllocationsWithOptions(request *ListIpamPoolAl
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIpamPoolAllocationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
-//
-// @param request - ListIpamPoolAllocationsRequest
-//
-// @return ListIpamPoolAllocationsResponse
-func (client *Client) ListIpamPoolAllocations(request *ListIpamPoolAllocationsRequest) (_result *ListIpamPoolAllocationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListIpamPoolAllocationsResponse{}
-	_body, _err := client.ListIpamPoolAllocationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1988,7 +1492,7 @@ func (client *Client) ListIpamPoolAllocations(request *ListIpamPoolAllocationsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIpamPoolCidrsResponse
-func (client *Client) ListIpamPoolCidrsWithOptions(request *ListIpamPoolCidrsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamPoolCidrsResponse, _err error) {
+func (client *Client) ListIpamPoolCidrsWithContext(ctx context.Context, request *ListIpamPoolCidrsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamPoolCidrsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2029,29 +1533,11 @@ func (client *Client) ListIpamPoolCidrsWithOptions(request *ListIpamPoolCidrsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIpamPoolCidrsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries CIDR blocks provisioned to an IP Address Manager (IPAM) pool.
-//
-// @param request - ListIpamPoolCidrsRequest
-//
-// @return ListIpamPoolCidrsResponse
-func (client *Client) ListIpamPoolCidrs(request *ListIpamPoolCidrsRequest) (_result *ListIpamPoolCidrsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListIpamPoolCidrsResponse{}
-	_body, _err := client.ListIpamPoolCidrsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2064,7 +1550,7 @@ func (client *Client) ListIpamPoolCidrs(request *ListIpamPoolCidrsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIpamPoolsResponse
-func (client *Client) ListIpamPoolsWithOptions(request *ListIpamPoolsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamPoolsResponse, _err error) {
+func (client *Client) ListIpamPoolsWithContext(ctx context.Context, request *ListIpamPoolsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamPoolsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2153,29 +1639,11 @@ func (client *Client) ListIpamPoolsWithOptions(request *ListIpamPoolsRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIpamPoolsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries IP Address Manager (IPAM) pools.
-//
-// @param request - ListIpamPoolsRequest
-//
-// @return ListIpamPoolsResponse
-func (client *Client) ListIpamPools(request *ListIpamPoolsRequest) (_result *ListIpamPoolsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListIpamPoolsResponse{}
-	_body, _err := client.ListIpamPoolsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2188,7 +1656,7 @@ func (client *Client) ListIpamPools(request *ListIpamPoolsRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIpamResourceCidrsResponse
-func (client *Client) ListIpamResourceCidrsWithOptions(request *ListIpamResourceCidrsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamResourceCidrsResponse, _err error) {
+func (client *Client) ListIpamResourceCidrsWithContext(ctx context.Context, request *ListIpamResourceCidrsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamResourceCidrsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2245,29 +1713,11 @@ func (client *Client) ListIpamResourceCidrsWithOptions(request *ListIpamResource
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIpamResourceCidrsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries resources in an IP Address Manager (IPAM) pool.
-//
-// @param request - ListIpamResourceCidrsRequest
-//
-// @return ListIpamResourceCidrsResponse
-func (client *Client) ListIpamResourceCidrs(request *ListIpamResourceCidrsRequest) (_result *ListIpamResourceCidrsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListIpamResourceCidrsResponse{}
-	_body, _err := client.ListIpamResourceCidrsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2280,7 +1730,7 @@ func (client *Client) ListIpamResourceCidrs(request *ListIpamResourceCidrsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIpamResourceDiscoveriesResponse
-func (client *Client) ListIpamResourceDiscoveriesWithOptions(request *ListIpamResourceDiscoveriesRequest, runtime *dara.RuntimeOptions) (_result *ListIpamResourceDiscoveriesResponse, _err error) {
+func (client *Client) ListIpamResourceDiscoveriesWithContext(ctx context.Context, request *ListIpamResourceDiscoveriesRequest, runtime *dara.RuntimeOptions) (_result *ListIpamResourceDiscoveriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2353,29 +1803,11 @@ func (client *Client) ListIpamResourceDiscoveriesWithOptions(request *ListIpamRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIpamResourceDiscoveriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries IPAM resource discovery instances.
-//
-// @param request - ListIpamResourceDiscoveriesRequest
-//
-// @return ListIpamResourceDiscoveriesResponse
-func (client *Client) ListIpamResourceDiscoveries(request *ListIpamResourceDiscoveriesRequest) (_result *ListIpamResourceDiscoveriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListIpamResourceDiscoveriesResponse{}
-	_body, _err := client.ListIpamResourceDiscoveriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2388,7 +1820,7 @@ func (client *Client) ListIpamResourceDiscoveries(request *ListIpamResourceDisco
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIpamResourceDiscoveryAssociationsResponse
-func (client *Client) ListIpamResourceDiscoveryAssociationsWithOptions(request *ListIpamResourceDiscoveryAssociationsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamResourceDiscoveryAssociationsResponse, _err error) {
+func (client *Client) ListIpamResourceDiscoveryAssociationsWithContext(ctx context.Context, request *ListIpamResourceDiscoveryAssociationsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamResourceDiscoveryAssociationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2445,29 +1877,11 @@ func (client *Client) ListIpamResourceDiscoveryAssociationsWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIpamResourceDiscoveryAssociationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the association between resource discovery and IPAM.
-//
-// @param request - ListIpamResourceDiscoveryAssociationsRequest
-//
-// @return ListIpamResourceDiscoveryAssociationsResponse
-func (client *Client) ListIpamResourceDiscoveryAssociations(request *ListIpamResourceDiscoveryAssociationsRequest) (_result *ListIpamResourceDiscoveryAssociationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListIpamResourceDiscoveryAssociationsResponse{}
-	_body, _err := client.ListIpamResourceDiscoveryAssociationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2480,7 +1894,7 @@ func (client *Client) ListIpamResourceDiscoveryAssociations(request *ListIpamRes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIpamScopesResponse
-func (client *Client) ListIpamScopesWithOptions(request *ListIpamScopesRequest, runtime *dara.RuntimeOptions) (_result *ListIpamScopesResponse, _err error) {
+func (client *Client) ListIpamScopesWithContext(ctx context.Context, request *ListIpamScopesRequest, runtime *dara.RuntimeOptions) (_result *ListIpamScopesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2553,29 +1967,11 @@ func (client *Client) ListIpamScopesWithOptions(request *ListIpamScopesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIpamScopesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries IP Address Manager (IPAM) scopes.
-//
-// @param request - ListIpamScopesRequest
-//
-// @return ListIpamScopesResponse
-func (client *Client) ListIpamScopes(request *ListIpamScopesRequest) (_result *ListIpamScopesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListIpamScopesResponse{}
-	_body, _err := client.ListIpamScopesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2588,7 +1984,7 @@ func (client *Client) ListIpamScopes(request *ListIpamScopesRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIpamsResponse
-func (client *Client) ListIpamsWithOptions(request *ListIpamsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamsResponse, _err error) {
+func (client *Client) ListIpamsWithContext(ctx context.Context, request *ListIpamsRequest, runtime *dara.RuntimeOptions) (_result *ListIpamsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2653,29 +2049,11 @@ func (client *Client) ListIpamsWithOptions(request *ListIpamsRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIpamsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries IP Address Managers (IPAMs).
-//
-// @param request - ListIpamsRequest
-//
-// @return ListIpamsResponse
-func (client *Client) ListIpams(request *ListIpamsRequest) (_result *ListIpamsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListIpamsResponse{}
-	_body, _err := client.ListIpamsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2700,7 +2078,7 @@ func (client *Client) ListIpams(request *ListIpamsRequest) (_result *ListIpamsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2761,41 +2139,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of resource tags.
-//
-// Description:
-//
-// ### [](#)Usage notes
-//
-//   - You must specify **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value*	- in the request to specify the object that you want to query.
-//
-//   - **Tag.N*	- is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
-//
-//   - If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
-//
-//   - If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
-//
-// @param request - ListTagResourcesRequest
-//
-// @return ListTagResourcesResponse
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2808,7 +2156,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenVpcIpamServiceResponse
-func (client *Client) OpenVpcIpamServiceWithOptions(request *OpenVpcIpamServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenVpcIpamServiceResponse, _err error) {
+func (client *Client) OpenVpcIpamServiceWithContext(ctx context.Context, request *OpenVpcIpamServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenVpcIpamServiceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2853,29 +2201,11 @@ func (client *Client) OpenVpcIpamServiceWithOptions(request *OpenVpcIpamServiceR
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenVpcIpamServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Activates IP Address Manager (IPAM).
-//
-// @param request - OpenVpcIpamServiceRequest
-//
-// @return OpenVpcIpamServiceResponse
-func (client *Client) OpenVpcIpamService(request *OpenVpcIpamServiceRequest) (_result *OpenVpcIpamServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenVpcIpamServiceResponse{}
-	_body, _err := client.OpenVpcIpamServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2900,7 +2230,7 @@ func (client *Client) OpenVpcIpamService(request *OpenVpcIpamServiceRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2953,41 +2283,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a tag to a resource.
-//
-// Description:
-//
-// ### [](#)Usage notes
-//
-// Tags are used to classify instances. Each tag consists of a key-value pair. Before you use tags, take note of the following items:
-//
-//   - Each tag key that is added to an instance must be unique.
-//
-//   - You cannot create tags without adding them to instances. All tags must be added to instances.
-//
-//   - You can add at most 20 tags to each instance. Before you add a tag to an instance, the system automatically checks the number of existing tags. An error message is returned if the maximum number of tags is reached.
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3000,7 +2300,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3057,29 +2357,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes a tag from a resource.
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3092,7 +2374,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateIpamResponse
-func (client *Client) UpdateIpamWithOptions(request *UpdateIpamRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamResponse, _err error) {
+func (client *Client) UpdateIpamWithContext(ctx context.Context, request *UpdateIpamRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3161,29 +2443,11 @@ func (client *Client) UpdateIpamWithOptions(request *UpdateIpamRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateIpamResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates an IP Address Manager (IPAM).
-//
-// @param request - UpdateIpamRequest
-//
-// @return UpdateIpamResponse
-func (client *Client) UpdateIpam(request *UpdateIpamRequest) (_result *UpdateIpamResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateIpamResponse{}
-	_body, _err := client.UpdateIpamWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3196,7 +2460,7 @@ func (client *Client) UpdateIpam(request *UpdateIpamRequest) (_result *UpdateIpa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateIpamPoolResponse
-func (client *Client) UpdateIpamPoolWithOptions(request *UpdateIpamPoolRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamPoolResponse, _err error) {
+func (client *Client) UpdateIpamPoolWithContext(ctx context.Context, request *UpdateIpamPoolRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamPoolResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3277,29 +2541,11 @@ func (client *Client) UpdateIpamPoolWithOptions(request *UpdateIpamPoolRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateIpamPoolResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the basic information about an IP Address Manager (IPAM) pool.
-//
-// @param request - UpdateIpamPoolRequest
-//
-// @return UpdateIpamPoolResponse
-func (client *Client) UpdateIpamPool(request *UpdateIpamPoolRequest) (_result *UpdateIpamPoolResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateIpamPoolResponse{}
-	_body, _err := client.UpdateIpamPoolWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3312,7 +2558,7 @@ func (client *Client) UpdateIpamPool(request *UpdateIpamPoolRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateIpamPoolAllocationResponse
-func (client *Client) UpdateIpamPoolAllocationWithOptions(request *UpdateIpamPoolAllocationRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamPoolAllocationResponse, _err error) {
+func (client *Client) UpdateIpamPoolAllocationWithContext(ctx context.Context, request *UpdateIpamPoolAllocationRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamPoolAllocationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3357,29 +2603,11 @@ func (client *Client) UpdateIpamPoolAllocationWithOptions(request *UpdateIpamPoo
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateIpamPoolAllocationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies CIDR block allocations of an IP Address Manager (IPAM) pool.
-//
-// @param request - UpdateIpamPoolAllocationRequest
-//
-// @return UpdateIpamPoolAllocationResponse
-func (client *Client) UpdateIpamPoolAllocation(request *UpdateIpamPoolAllocationRequest) (_result *UpdateIpamPoolAllocationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateIpamPoolAllocationResponse{}
-	_body, _err := client.UpdateIpamPoolAllocationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3398,7 +2626,7 @@ func (client *Client) UpdateIpamPoolAllocation(request *UpdateIpamPoolAllocation
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateIpamResourceDiscoveryResponse
-func (client *Client) UpdateIpamResourceDiscoveryWithOptions(request *UpdateIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamResourceDiscoveryResponse, _err error) {
+func (client *Client) UpdateIpamResourceDiscoveryWithContext(ctx context.Context, request *UpdateIpamResourceDiscoveryRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamResourceDiscoveryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3467,35 +2695,11 @@ func (client *Client) UpdateIpamResourceDiscoveryWithOptions(request *UpdateIpam
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateIpamResourceDiscoveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a resource discovery instance.
-//
-// Description:
-//
-//	  You can add or remove effective regions only for custom resource discovery instances.
-//
-//		- When removing effective regions from a resource discovery instance, the hosted region cannot be included.
-//
-// @param request - UpdateIpamResourceDiscoveryRequest
-//
-// @return UpdateIpamResourceDiscoveryResponse
-func (client *Client) UpdateIpamResourceDiscovery(request *UpdateIpamResourceDiscoveryRequest) (_result *UpdateIpamResourceDiscoveryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateIpamResourceDiscoveryResponse{}
-	_body, _err := client.UpdateIpamResourceDiscoveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3508,7 +2712,7 @@ func (client *Client) UpdateIpamResourceDiscovery(request *UpdateIpamResourceDis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateIpamScopeResponse
-func (client *Client) UpdateIpamScopeWithOptions(request *UpdateIpamScopeRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamScopeResponse, _err error) {
+func (client *Client) UpdateIpamScopeWithContext(ctx context.Context, request *UpdateIpamScopeRequest, runtime *dara.RuntimeOptions) (_result *UpdateIpamScopeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3569,28 +2773,10 @@ func (client *Client) UpdateIpamScopeWithOptions(request *UpdateIpamScopeRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateIpamScopeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the basic information about an IP Address Manager (IPAM) scope.
-//
-// @param request - UpdateIpamScopeRequest
-//
-// @return UpdateIpamScopeResponse
-func (client *Client) UpdateIpamScope(request *UpdateIpamScopeRequest) (_result *UpdateIpamScopeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateIpamScopeResponse{}
-	_body, _err := client.UpdateIpamScopeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
