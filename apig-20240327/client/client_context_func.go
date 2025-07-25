@@ -3012,12 +3012,20 @@ func (client *Client) ListPolicyClassesWithContext(ctx context.Context, request 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AttachResourceId) {
+		query["attachResourceId"] = request.AttachResourceId
+	}
+
 	if !dara.IsNil(request.AttachResourceType) {
 		query["attachResourceType"] = request.AttachResourceType
 	}
 
 	if !dara.IsNil(request.Direction) {
 		query["direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
 	}
 
 	if !dara.IsNil(request.PageNumber) {

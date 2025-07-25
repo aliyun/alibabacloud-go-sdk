@@ -9,10 +9,14 @@ type iListPolicyClassesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAttachResourceId(v string) *ListPolicyClassesRequest
+	GetAttachResourceId() *string
 	SetAttachResourceType(v string) *ListPolicyClassesRequest
 	GetAttachResourceType() *string
 	SetDirection(v string) *ListPolicyClassesRequest
 	GetDirection() *string
+	SetGatewayId(v string) *ListPolicyClassesRequest
+	GetGatewayId() *string
 	SetPageNumber(v int32) *ListPolicyClassesRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListPolicyClassesRequest
@@ -22,6 +26,7 @@ type iListPolicyClassesRequest interface {
 }
 
 type ListPolicyClassesRequest struct {
+	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
 	// Types of attachment points supported by the policy.
 	//
 	// - HttpApi: HttpApi.
@@ -54,6 +59,7 @@ type ListPolicyClassesRequest struct {
 	//
 	// InBound
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 	// Page number, default is 1.
 	//
 	// example:
@@ -82,12 +88,20 @@ func (s ListPolicyClassesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListPolicyClassesRequest) GetAttachResourceId() *string {
+	return s.AttachResourceId
+}
+
 func (s *ListPolicyClassesRequest) GetAttachResourceType() *string {
 	return s.AttachResourceType
 }
 
 func (s *ListPolicyClassesRequest) GetDirection() *string {
 	return s.Direction
+}
+
+func (s *ListPolicyClassesRequest) GetGatewayId() *string {
+	return s.GatewayId
 }
 
 func (s *ListPolicyClassesRequest) GetPageNumber() *int32 {
@@ -102,6 +116,11 @@ func (s *ListPolicyClassesRequest) GetType() *string {
 	return s.Type
 }
 
+func (s *ListPolicyClassesRequest) SetAttachResourceId(v string) *ListPolicyClassesRequest {
+	s.AttachResourceId = &v
+	return s
+}
+
 func (s *ListPolicyClassesRequest) SetAttachResourceType(v string) *ListPolicyClassesRequest {
 	s.AttachResourceType = &v
 	return s
@@ -109,6 +128,11 @@ func (s *ListPolicyClassesRequest) SetAttachResourceType(v string) *ListPolicyCl
 
 func (s *ListPolicyClassesRequest) SetDirection(v string) *ListPolicyClassesRequest {
 	s.Direction = &v
+	return s
+}
+
+func (s *ListPolicyClassesRequest) SetGatewayId(v string) *ListPolicyClassesRequest {
+	s.GatewayId = &v
 	return s
 }
 
