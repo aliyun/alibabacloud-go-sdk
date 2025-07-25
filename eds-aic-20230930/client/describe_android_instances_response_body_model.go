@@ -147,7 +147,8 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// example:
 	//
 	// test
-	BindUserId *string `json:"BindUserId,omitempty" xml:"BindUserId,omitempty"`
+	BindUserId *string                                                     `json:"BindUserId,omitempty" xml:"BindUserId,omitempty"`
+	BizTags    []*DescribeAndroidInstancesResponseBodyInstanceModelBizTags `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
 	// The billing method of the instance.
 	//
 	// example:
@@ -276,6 +277,7 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	//
 	// local
 	RenderingType *string `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
+	ServerType    *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 	// The session status.
 	//
 	// Valid values:
@@ -350,6 +352,10 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetBandwidthPackageT
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetBindUserId() *string {
 	return s.BindUserId
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetBizTags() []*DescribeAndroidInstancesResponseBodyInstanceModelBizTags {
+	return s.BizTags
 }
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetChargeType() *string {
@@ -460,6 +466,10 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetRenderingType() *
 	return s.RenderingType
 }
 
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetServerType() *string {
+	return s.ServerType
+}
+
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetSessionStatus() *string {
 	return s.SessionStatus
 }
@@ -541,6 +551,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetBandwidthPackageT
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetBindUserId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.BindUserId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetBizTags(v []*DescribeAndroidInstancesResponseBodyInstanceModelBizTags) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.BizTags = v
 	return s
 }
 
@@ -679,6 +694,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetRenderingType(v s
 	return s
 }
 
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetServerType(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.ServerType = &v
+	return s
+}
+
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetSessionStatus(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.SessionStatus = &v
 	return s
@@ -745,6 +765,41 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy) SetAp
 }
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAndroidInstancesResponseBodyInstanceModelBizTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeAndroidInstancesResponseBodyInstanceModelBizTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAndroidInstancesResponseBodyInstanceModelBizTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModelBizTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModelBizTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModelBizTags) SetKey(v string) *DescribeAndroidInstancesResponseBodyInstanceModelBizTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModelBizTags) SetValue(v string) *DescribeAndroidInstancesResponseBodyInstanceModelBizTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModelBizTags) Validate() error {
 	return dara.Validate(s)
 }
 

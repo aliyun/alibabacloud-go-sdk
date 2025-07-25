@@ -112,8 +112,9 @@ func (s *DescribeCloudPhoneNodesResponseBody) Validate() error {
 }
 
 type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
-	BandwidthPackageId   *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
+	BandwidthPackageId   *string                                                `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	BandwidthPackageType *string                                                `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
+	BizTags              []*DescribeCloudPhoneNodesResponseBodyNodeModelBizTags `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
 	// The billing method.
 	//
 	// example:
@@ -238,6 +239,10 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetBandwidthPackageType()
 	return s.BandwidthPackageType
 }
 
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetBizTags() []*DescribeCloudPhoneNodesResponseBodyNodeModelBizTags {
+	return s.BizTags
+}
+
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetChargeType() *string {
 	return s.ChargeType
 }
@@ -329,6 +334,11 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetBandwidthPackageId(v s
 
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetBandwidthPackageType(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
 	s.BandwidthPackageType = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetBizTags(v []*DescribeCloudPhoneNodesResponseBodyNodeModelBizTags) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.BizTags = v
 	return s
 }
 
@@ -438,6 +448,41 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetVSwitchId(v string) *D
 }
 
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeCloudPhoneNodesResponseBodyNodeModelBizTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeCloudPhoneNodesResponseBodyNodeModelBizTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeCloudPhoneNodesResponseBodyNodeModelBizTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModelBizTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModelBizTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModelBizTags) SetKey(v string) *DescribeCloudPhoneNodesResponseBodyNodeModelBizTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModelBizTags) SetValue(v string) *DescribeCloudPhoneNodesResponseBodyNodeModelBizTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModelBizTags) Validate() error {
 	return dara.Validate(s)
 }
 

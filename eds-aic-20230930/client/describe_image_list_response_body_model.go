@@ -114,7 +114,8 @@ type DescribeImageListResponseBodyData struct {
 	// example:
 	//
 	// 2024-02-01 10:56:36
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified  *string                                          `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	ImageBizTags []*DescribeImageListResponseBodyDataImageBizTags `json:"ImageBizTags,omitempty" xml:"ImageBizTags,omitempty" type:"Repeated"`
 	// The ID of the image.
 	//
 	// example:
@@ -220,6 +221,10 @@ func (s *DescribeImageListResponseBodyData) GetGmtModified() *string {
 	return s.GmtModified
 }
 
+func (s *DescribeImageListResponseBodyData) GetImageBizTags() []*DescribeImageListResponseBodyDataImageBizTags {
+	return s.ImageBizTags
+}
+
 func (s *DescribeImageListResponseBodyData) GetImageId() *string {
 	return s.ImageId
 }
@@ -284,6 +289,11 @@ func (s *DescribeImageListResponseBodyData) SetGmtModified(v string) *DescribeIm
 	return s
 }
 
+func (s *DescribeImageListResponseBodyData) SetImageBizTags(v []*DescribeImageListResponseBodyDataImageBizTags) *DescribeImageListResponseBodyData {
+	s.ImageBizTags = v
+	return s
+}
+
 func (s *DescribeImageListResponseBodyData) SetImageId(v string) *DescribeImageListResponseBodyData {
 	s.ImageId = &v
 	return s
@@ -340,5 +350,40 @@ func (s *DescribeImageListResponseBodyData) SetSystemType(v string) *DescribeIma
 }
 
 func (s *DescribeImageListResponseBodyData) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeImageListResponseBodyDataImageBizTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeImageListResponseBodyDataImageBizTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeImageListResponseBodyDataImageBizTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageListResponseBodyDataImageBizTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeImageListResponseBodyDataImageBizTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeImageListResponseBodyDataImageBizTags) SetKey(v string) *DescribeImageListResponseBodyDataImageBizTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyDataImageBizTags) SetValue(v string) *DescribeImageListResponseBodyDataImageBizTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyDataImageBizTags) Validate() error {
 	return dara.Validate(s)
 }

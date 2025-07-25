@@ -9,6 +9,8 @@ type iDescribeImageListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetImageBizTags(v []*DescribeImageListRequestImageBizTags) *DescribeImageListRequest
+	GetImageBizTags() []*DescribeImageListRequestImageBizTags
 	SetImageId(v string) *DescribeImageListRequest
 	GetImageId() *string
 	SetImageName(v string) *DescribeImageListRequest
@@ -17,6 +19,8 @@ type iDescribeImageListRequest interface {
 	GetImagePackageType() *string
 	SetImageType(v string) *DescribeImageListRequest
 	GetImageType() *string
+	SetInstanceType(v string) *DescribeImageListRequest
+	GetInstanceType() *string
 	SetMaxResults(v int32) *DescribeImageListRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *DescribeImageListRequest
@@ -26,6 +30,7 @@ type iDescribeImageListRequest interface {
 }
 
 type DescribeImageListRequest struct {
+	ImageBizTags []*DescribeImageListRequestImageBizTags `json:"ImageBizTags,omitempty" xml:"ImageBizTags,omitempty" type:"Repeated"`
 	// The ID of the image.
 	//
 	// example:
@@ -57,7 +62,8 @@ type DescribeImageListRequest struct {
 	// example:
 	//
 	// System
-	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	ImageType    *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
 	//
 	// if can be null:
@@ -101,6 +107,10 @@ func (s DescribeImageListRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeImageListRequest) GetImageBizTags() []*DescribeImageListRequestImageBizTags {
+	return s.ImageBizTags
+}
+
 func (s *DescribeImageListRequest) GetImageId() *string {
 	return s.ImageId
 }
@@ -117,6 +127,10 @@ func (s *DescribeImageListRequest) GetImageType() *string {
 	return s.ImageType
 }
 
+func (s *DescribeImageListRequest) GetInstanceType() *string {
+	return s.InstanceType
+}
+
 func (s *DescribeImageListRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -127,6 +141,11 @@ func (s *DescribeImageListRequest) GetNextToken() *string {
 
 func (s *DescribeImageListRequest) GetStatus() *string {
 	return s.Status
+}
+
+func (s *DescribeImageListRequest) SetImageBizTags(v []*DescribeImageListRequestImageBizTags) *DescribeImageListRequest {
+	s.ImageBizTags = v
+	return s
 }
 
 func (s *DescribeImageListRequest) SetImageId(v string) *DescribeImageListRequest {
@@ -149,6 +168,11 @@ func (s *DescribeImageListRequest) SetImageType(v string) *DescribeImageListRequ
 	return s
 }
 
+func (s *DescribeImageListRequest) SetInstanceType(v string) *DescribeImageListRequest {
+	s.InstanceType = &v
+	return s
+}
+
 func (s *DescribeImageListRequest) SetMaxResults(v int32) *DescribeImageListRequest {
 	s.MaxResults = &v
 	return s
@@ -165,5 +189,40 @@ func (s *DescribeImageListRequest) SetStatus(v string) *DescribeImageListRequest
 }
 
 func (s *DescribeImageListRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeImageListRequestImageBizTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeImageListRequestImageBizTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeImageListRequestImageBizTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageListRequestImageBizTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeImageListRequestImageBizTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeImageListRequestImageBizTags) SetKey(v string) *DescribeImageListRequestImageBizTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeImageListRequestImageBizTags) SetValue(v string) *DescribeImageListRequestImageBizTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeImageListRequestImageBizTags) Validate() error {
 	return dara.Validate(s)
 }

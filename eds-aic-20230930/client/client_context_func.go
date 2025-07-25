@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.SignatureAlgorithm = dara.String("v2")
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("eds-aic"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -71,7 +22,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachKeyPairResponse
-func (client *Client) AttachKeyPairWithOptions(request *AttachKeyPairRequest, runtime *dara.RuntimeOptions) (_result *AttachKeyPairResponse, _err error) {
+func (client *Client) AttachKeyPairWithContext(ctx context.Context, request *AttachKeyPairRequest, runtime *dara.RuntimeOptions) (_result *AttachKeyPairResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -100,35 +51,11 @@ func (client *Client) AttachKeyPairWithOptions(request *AttachKeyPairRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Attaches an Android Debug Bridge (ADB) key pair to one or more cloud phone instances.
-//
-// Description:
-//
-//	  You can attach to an ADB key pair only to cloud phone instances in the Running state.
-//
-//		- After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the ~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
-//
-// @param request - AttachKeyPairRequest
-//
-// @return AttachKeyPairResponse
-func (client *Client) AttachKeyPair(request *AttachKeyPairRequest) (_result *AttachKeyPairResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachKeyPairResponse{}
-	_body, _err := client.AttachKeyPairWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -147,7 +74,7 @@ func (client *Client) AttachKeyPair(request *AttachKeyPairRequest) (_result *Att
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AuthorizeAndroidInstanceResponse
-func (client *Client) AuthorizeAndroidInstanceWithOptions(request *AuthorizeAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeAndroidInstanceResponse, _err error) {
+func (client *Client) AuthorizeAndroidInstanceWithContext(ctx context.Context, request *AuthorizeAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeAndroidInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -180,35 +107,11 @@ func (client *Client) AuthorizeAndroidInstanceWithOptions(request *AuthorizeAndr
 		BodyType:    dara.String("json"),
 	}
 	_result = &AuthorizeAndroidInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Authorize/unauthorize Android instances for users.
-//
-// Description:
-//
-// Instance states that support user assignment: Available, Shutting Down, Stopped, Starting, Backing Up, Restoring, Backup Failed, Restore Failed.
-//
-// Instance states that support unassignment: Available, Shutting Down, Stopped, Starting, Backing Up, Restoring, Backup Failed, Restore Failed, Expired, Overdue, Deleted.
-//
-// @param request - AuthorizeAndroidInstanceRequest
-//
-// @return AuthorizeAndroidInstanceResponse
-func (client *Client) AuthorizeAndroidInstance(request *AuthorizeAndroidInstanceRequest) (_result *AuthorizeAndroidInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AuthorizeAndroidInstanceResponse{}
-	_body, _err := client.AuthorizeAndroidInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -225,7 +128,7 @@ func (client *Client) AuthorizeAndroidInstance(request *AuthorizeAndroidInstance
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BackupFileResponse
-func (client *Client) BackupFileWithOptions(request *BackupFileRequest, runtime *dara.RuntimeOptions) (_result *BackupFileResponse, _err error) {
+func (client *Client) BackupFileWithContext(ctx context.Context, request *BackupFileRequest, runtime *dara.RuntimeOptions) (_result *BackupFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -282,33 +185,11 @@ func (client *Client) BackupFileWithOptions(request *BackupFileRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &BackupFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Generates and uploads backup files.
-//
-// Description:
-//
-// Currently, this operation allows you to upload only backup files generated by cloud phones to Object Storage Service (OSS) buckets.
-//
-// @param request - BackupFileRequest
-//
-// @return BackupFileResponse
-func (client *Client) BackupFile(request *BackupFileRequest) (_result *BackupFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BackupFileResponse{}
-	_body, _err := client.BackupFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -321,7 +202,7 @@ func (client *Client) BackupFile(request *BackupFileRequest) (_result *BackupFil
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchGetAcpConnectionTicketResponse
-func (client *Client) BatchGetAcpConnectionTicketWithOptions(request *BatchGetAcpConnectionTicketRequest, runtime *dara.RuntimeOptions) (_result *BatchGetAcpConnectionTicketResponse, _err error) {
+func (client *Client) BatchGetAcpConnectionTicketWithContext(ctx context.Context, request *BatchGetAcpConnectionTicketRequest, runtime *dara.RuntimeOptions) (_result *BatchGetAcpConnectionTicketResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -358,29 +239,11 @@ func (client *Client) BatchGetAcpConnectionTicketWithOptions(request *BatchGetAc
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchGetAcpConnectionTicketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Retrieves connection tickets in batch.
-//
-// @param request - BatchGetAcpConnectionTicketRequest
-//
-// @return BatchGetAcpConnectionTicketResponse
-func (client *Client) BatchGetAcpConnectionTicket(request *BatchGetAcpConnectionTicketRequest) (_result *BatchGetAcpConnectionTicketResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BatchGetAcpConnectionTicketResponse{}
-	_body, _err := client.BatchGetAcpConnectionTicketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -393,7 +256,7 @@ func (client *Client) BatchGetAcpConnectionTicket(request *BatchGetAcpConnection
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeCloudPhoneNodeResponse
-func (client *Client) ChangeCloudPhoneNodeWithOptions(request *ChangeCloudPhoneNodeRequest, runtime *dara.RuntimeOptions) (_result *ChangeCloudPhoneNodeResponse, _err error) {
+func (client *Client) ChangeCloudPhoneNodeWithContext(ctx context.Context, request *ChangeCloudPhoneNodeRequest, runtime *dara.RuntimeOptions) (_result *ChangeCloudPhoneNodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -426,29 +289,11 @@ func (client *Client) ChangeCloudPhoneNodeWithOptions(request *ChangeCloudPhoneN
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeCloudPhoneNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改云手机矩阵的配置
-//
-// @param request - ChangeCloudPhoneNodeRequest
-//
-// @return ChangeCloudPhoneNodeResponse
-func (client *Client) ChangeCloudPhoneNode(request *ChangeCloudPhoneNodeRequest) (_result *ChangeCloudPhoneNodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeCloudPhoneNodeResponse{}
-	_body, _err := client.ChangeCloudPhoneNodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -461,7 +306,7 @@ func (client *Client) ChangeCloudPhoneNode(request *ChangeCloudPhoneNodeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckResourceStockResponse
-func (client *Client) CheckResourceStockWithOptions(request *CheckResourceStockRequest, runtime *dara.RuntimeOptions) (_result *CheckResourceStockResponse, _err error) {
+func (client *Client) CheckResourceStockWithContext(ctx context.Context, request *CheckResourceStockRequest, runtime *dara.RuntimeOptions) (_result *CheckResourceStockResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -502,29 +347,11 @@ func (client *Client) CheckResourceStockWithOptions(request *CheckResourceStockR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckResourceStockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Check the resource inventory.
-//
-// @param request - CheckResourceStockRequest
-//
-// @return CheckResourceStockResponse
-func (client *Client) CheckResourceStock(request *CheckResourceStockRequest) (_result *CheckResourceStockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckResourceStockResponse{}
-	_body, _err := client.CheckResourceStockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -545,7 +372,7 @@ func (client *Client) CheckResourceStock(request *CheckResourceStockRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAndroidInstanceGroupResponse
-func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAndroidInstanceGroupResponse, _err error) {
+func (client *Client) CreateAndroidInstanceGroupWithContext(ctx context.Context, request *CreateAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAndroidInstanceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -646,37 +473,11 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndro
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAndroidInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates pay-as-you-go or subscription instance groups.
-//
-// Description:
-//
-// Before creating an instance group, ensure you understand the [billing methods](https://help.aliyun.com/document_detail/2807121.html) supported by Cloud Phone.
-//
-//   - If the billing method of an instance group is PrePaid, AutoPay is set to false by default. In this case, you need to go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/order/list) to manually complete the payment.
-//
-//   - You can also set AutoPay to true based on your business requirements.
-//
-// @param request - CreateAndroidInstanceGroupRequest
-//
-// @return CreateAndroidInstanceGroupResponse
-func (client *Client) CreateAndroidInstanceGroup(request *CreateAndroidInstanceGroupRequest) (_result *CreateAndroidInstanceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAndroidInstanceGroupResponse{}
-	_body, _err := client.CreateAndroidInstanceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -713,7 +514,7 @@ func (client *Client) CreateAndroidInstanceGroup(request *CreateAndroidInstanceG
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAppResponse
-func (client *Client) CreateAppWithOptions(tmpReq *CreateAppRequest, runtime *dara.RuntimeOptions) (_result *CreateAppResponse, _err error) {
+func (client *Client) CreateAppWithContext(ctx context.Context, tmpReq *CreateAppRequest, runtime *dara.RuntimeOptions) (_result *CreateAppResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -780,53 +581,11 @@ func (client *Client) CreateAppWithOptions(tmpReq *CreateAppRequest, runtime *da
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an Android application.
-//
-// Description:
-//
-// When creating an app, you can provide app information to the system in one of the following ways:
-//
-//   - Way 1: Apps from the Application Center
-//
-//   - You can use one of the following methods:
-//
-//   - Method 1: Pass in the `FileName` and `FilePath` parameters at the same time.
-//
-//   - Method 2: Pass in the `OssAppUrl` parameter
-//
-//   - Rule: If your app is from the Alibaba Cloud Workspace Application Center, you must use either Method 1 or Method 2. If both are used, Method 1 takes priority.
-//
-//   - Condition: Before you proceed, log on to the [Elastic Desktop Service (EDS) Enterprise console](https://eds.console.aliyun.com/osshelp) and follow the on-screen instructions to upload the app file to the Application Center to obtain the values of the `FileName`, `FilePath`, and `OssAppUrl` parameters.
-//
-//   - Way 2: Custom apps
-//
-//   - Pass in the `CustomAppInfo` parameter.
-//
-//   - Rule: If you pass in the `CustomAppInfo` parameter, all six fields within it are required.
-//
-// >  If Way 1 and Way 2 are adopted simultaneously, the information from Way 2 takes priority.
-//
-// @param request - CreateAppRequest
-//
-// @return CreateAppResponse
-func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAppResponse{}
-	_body, _err := client.CreateAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -839,7 +598,7 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCloudPhoneNodeResponse
-func (client *Client) CreateCloudPhoneNodeWithOptions(tmpReq *CreateCloudPhoneNodeRequest, runtime *dara.RuntimeOptions) (_result *CreateCloudPhoneNodeResponse, _err error) {
+func (client *Client) CreateCloudPhoneNodeWithContext(ctx context.Context, tmpReq *CreateCloudPhoneNodeRequest, runtime *dara.RuntimeOptions) (_result *CreateCloudPhoneNodeResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -980,29 +739,11 @@ func (client *Client) CreateCloudPhoneNodeWithOptions(tmpReq *CreateCloudPhoneNo
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCloudPhoneNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a cloud phone matrix.
-//
-// @param request - CreateCloudPhoneNodeRequest
-//
-// @return CreateCloudPhoneNodeResponse
-func (client *Client) CreateCloudPhoneNode(request *CreateCloudPhoneNodeRequest) (_result *CreateCloudPhoneNodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateCloudPhoneNodeResponse{}
-	_body, _err := client.CreateCloudPhoneNodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1015,7 +756,7 @@ func (client *Client) CreateCloudPhoneNode(request *CreateCloudPhoneNodeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCustomImageResponse
-func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomImageResponse, _err error) {
+func (client *Client) CreateCustomImageWithContext(ctx context.Context, request *CreateCustomImageRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomImageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1052,29 +793,11 @@ func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCustomImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a custom image from a cloud phone instance.
-//
-// @param request - CreateCustomImageRequest
-//
-// @return CreateCustomImageResponse
-func (client *Client) CreateCustomImage(request *CreateCustomImageRequest) (_result *CreateCustomImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateCustomImageResponse{}
-	_body, _err := client.CreateCustomImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1093,7 +816,7 @@ func (client *Client) CreateCustomImage(request *CreateCustomImageRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateKeyPairResponse
-func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, runtime *dara.RuntimeOptions) (_result *CreateKeyPairResponse, _err error) {
+func (client *Client) CreateKeyPairWithContext(ctx context.Context, request *CreateKeyPairRequest, runtime *dara.RuntimeOptions) (_result *CreateKeyPairResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1118,35 +841,11 @@ func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an Android Debug Bridge (ADB) key pair. The system retains the public key and provides a PEM-encoded private key in PKCS#8 format, adhering to the ADB connection specification. You must securely store the private key.
-//
-// Description:
-//
-// In addition to using the CreateKeyPair operation to generate a key pair, you can also create one by using the ADB tool and upload it to the Cloud Phone console. The usage of this key pair is identical to that of a system-generated key pair.
-//
-// Each tenant can create up to 500 key pairs.
-//
-// @param request - CreateKeyPairRequest
-//
-// @return CreateKeyPairResponse
-func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *CreateKeyPairResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateKeyPairResponse{}
-	_body, _err := client.CreateKeyPairWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1159,7 +858,7 @@ func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePolicyGroupResponse
-func (client *Client) CreatePolicyGroupWithOptions(tmpReq *CreatePolicyGroupRequest, runtime *dara.RuntimeOptions) (_result *CreatePolicyGroupResponse, _err error) {
+func (client *Client) CreatePolicyGroupWithContext(ctx context.Context, tmpReq *CreatePolicyGroupRequest, runtime *dara.RuntimeOptions) (_result *CreatePolicyGroupResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1234,29 +933,11 @@ func (client *Client) CreatePolicyGroupWithOptions(tmpReq *CreatePolicyGroupRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePolicyGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a policy.
-//
-// @param request - CreatePolicyGroupRequest
-//
-// @return CreatePolicyGroupResponse
-func (client *Client) CreatePolicyGroup(request *CreatePolicyGroupRequest) (_result *CreatePolicyGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePolicyGroupResponse{}
-	_body, _err := client.CreatePolicyGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1273,7 +954,7 @@ func (client *Client) CreatePolicyGroup(request *CreatePolicyGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateScreenshotResponse
-func (client *Client) CreateScreenshotWithOptions(request *CreateScreenshotRequest, runtime *dara.RuntimeOptions) (_result *CreateScreenshotResponse, _err error) {
+func (client *Client) CreateScreenshotWithContext(ctx context.Context, request *CreateScreenshotRequest, runtime *dara.RuntimeOptions) (_result *CreateScreenshotResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1306,33 +987,11 @@ func (client *Client) CreateScreenshotWithOptions(request *CreateScreenshotReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateScreenshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a screenshot of a cloud phone instance.
-//
-// Description:
-//
-// You can call this operation to create a screenshot of a cloud phone instance and upload it to the default Object Storage Service (OSS) bucket. The operation returns a task ID, which you can use with the DescribeTasks operation to get the download link for the screenshot.
-//
-// @param request - CreateScreenshotRequest
-//
-// @return CreateScreenshotResponse
-func (client *Client) CreateScreenshot(request *CreateScreenshotRequest) (_result *CreateScreenshotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateScreenshotResponse{}
-	_body, _err := client.CreateScreenshotWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1351,7 +1010,7 @@ func (client *Client) CreateScreenshot(request *CreateScreenshotRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAndroidInstanceGroupResponse
-func (client *Client) DeleteAndroidInstanceGroupWithOptions(request *DeleteAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAndroidInstanceGroupResponse, _err error) {
+func (client *Client) DeleteAndroidInstanceGroupWithContext(ctx context.Context, request *DeleteAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAndroidInstanceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1376,35 +1035,11 @@ func (client *Client) DeleteAndroidInstanceGroupWithOptions(request *DeleteAndro
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAndroidInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Delete an instance group.
-//
-// Description:
-//
-// You can delete only pay-as-you-go instance groups.
-//
-// You can delete subscription instance groups only after they expire.
-//
-// @param request - DeleteAndroidInstanceGroupRequest
-//
-// @return DeleteAndroidInstanceGroupResponse
-func (client *Client) DeleteAndroidInstanceGroup(request *DeleteAndroidInstanceGroupRequest) (_result *DeleteAndroidInstanceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAndroidInstanceGroupResponse{}
-	_body, _err := client.DeleteAndroidInstanceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1417,7 +1052,7 @@ func (client *Client) DeleteAndroidInstanceGroup(request *DeleteAndroidInstanceG
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAppsResponse
-func (client *Client) DeleteAppsWithOptions(request *DeleteAppsRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppsResponse, _err error) {
+func (client *Client) DeleteAppsWithContext(ctx context.Context, request *DeleteAppsRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1442,29 +1077,11 @@ func (client *Client) DeleteAppsWithOptions(request *DeleteAppsRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an application. Before you delete an application, make sure that the application is not installed on any instances.
-//
-// @param request - DeleteAppsRequest
-//
-// @return DeleteAppsResponse
-func (client *Client) DeleteApps(request *DeleteAppsRequest) (_result *DeleteAppsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAppsResponse{}
-	_body, _err := client.DeleteAppsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1477,7 +1094,7 @@ func (client *Client) DeleteApps(request *DeleteAppsRequest) (_result *DeleteApp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteBackupFileResponse
-func (client *Client) DeleteBackupFileWithOptions(request *DeleteBackupFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupFileResponse, _err error) {
+func (client *Client) DeleteBackupFileWithContext(ctx context.Context, request *DeleteBackupFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1502,29 +1119,11 @@ func (client *Client) DeleteBackupFileWithOptions(request *DeleteBackupFileReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteBackupFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除备份文件
-//
-// @param request - DeleteBackupFileRequest
-//
-// @return DeleteBackupFileResponse
-func (client *Client) DeleteBackupFile(request *DeleteBackupFileRequest) (_result *DeleteBackupFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteBackupFileResponse{}
-	_body, _err := client.DeleteBackupFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1541,7 +1140,7 @@ func (client *Client) DeleteBackupFile(request *DeleteBackupFileRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCloudPhoneNodesResponse
-func (client *Client) DeleteCloudPhoneNodesWithOptions(request *DeleteCloudPhoneNodesRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudPhoneNodesResponse, _err error) {
+func (client *Client) DeleteCloudPhoneNodesWithContext(ctx context.Context, request *DeleteCloudPhoneNodesRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudPhoneNodesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1566,33 +1165,11 @@ func (client *Client) DeleteCloudPhoneNodesWithOptions(request *DeleteCloudPhone
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCloudPhoneNodesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a cloud phone matrix.
-//
-// Description:
-//
-// Before you proceed, make sure that the cloud phone matrix that you want to delete expired.
-//
-// @param request - DeleteCloudPhoneNodesRequest
-//
-// @return DeleteCloudPhoneNodesResponse
-func (client *Client) DeleteCloudPhoneNodes(request *DeleteCloudPhoneNodesRequest) (_result *DeleteCloudPhoneNodesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCloudPhoneNodesResponse{}
-	_body, _err := client.DeleteCloudPhoneNodesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1609,7 +1186,7 @@ func (client *Client) DeleteCloudPhoneNodes(request *DeleteCloudPhoneNodesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteImagesResponse
-func (client *Client) DeleteImagesWithOptions(tmpReq *DeleteImagesRequest, runtime *dara.RuntimeOptions) (_result *DeleteImagesResponse, _err error) {
+func (client *Client) DeleteImagesWithContext(ctx context.Context, tmpReq *DeleteImagesRequest, runtime *dara.RuntimeOptions) (_result *DeleteImagesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1640,33 +1217,11 @@ func (client *Client) DeleteImagesWithOptions(tmpReq *DeleteImagesRequest, runti
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteImagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a custom image.
-//
-// Description:
-//
-// You cannot delete an image that is currently in use by an instance group.
-//
-// @param request - DeleteImagesRequest
-//
-// @return DeleteImagesResponse
-func (client *Client) DeleteImages(request *DeleteImagesRequest) (_result *DeleteImagesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteImagesResponse{}
-	_body, _err := client.DeleteImagesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1685,7 +1240,7 @@ func (client *Client) DeleteImages(request *DeleteImagesRequest) (_result *Delet
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteKeyPairsResponse
-func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, runtime *dara.RuntimeOptions) (_result *DeleteKeyPairsResponse, _err error) {
+func (client *Client) DeleteKeyPairsWithContext(ctx context.Context, request *DeleteKeyPairsRequest, runtime *dara.RuntimeOptions) (_result *DeleteKeyPairsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1710,35 +1265,11 @@ func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteKeyPairsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes Android Debug Bridge (ADB) key pairs.
-//
-// Description:
-//
-//	  If a cloud phone instance is currently associated with the ADB key pair you intend to delete, the ADB key pair cannot be deleted.
-//
-//		- Once an ADB key pair is deleted, it cannot be retrieved or queried by using the DescribeKeyPairs operation.
-//
-// @param request - DeleteKeyPairsRequest
-//
-// @return DeleteKeyPairsResponse
-func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *DeleteKeyPairsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteKeyPairsResponse{}
-	_body, _err := client.DeleteKeyPairsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1751,7 +1282,7 @@ func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePolicyGroupResponse
-func (client *Client) DeletePolicyGroupWithOptions(request *DeletePolicyGroupRequest, runtime *dara.RuntimeOptions) (_result *DeletePolicyGroupResponse, _err error) {
+func (client *Client) DeletePolicyGroupWithContext(ctx context.Context, request *DeletePolicyGroupRequest, runtime *dara.RuntimeOptions) (_result *DeletePolicyGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1776,29 +1307,11 @@ func (client *Client) DeletePolicyGroupWithOptions(request *DeletePolicyGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePolicyGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a policy.
-//
-// @param request - DeletePolicyGroupRequest
-//
-// @return DeletePolicyGroupResponse
-func (client *Client) DeletePolicyGroup(request *DeletePolicyGroupRequest) (_result *DeletePolicyGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePolicyGroupResponse{}
-	_body, _err := client.DeletePolicyGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1811,7 +1324,7 @@ func (client *Client) DeletePolicyGroup(request *DeletePolicyGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAndroidInstanceGroupsResponse
-func (client *Client) DescribeAndroidInstanceGroupsWithOptions(request *DescribeAndroidInstanceGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAndroidInstanceGroupsResponse, _err error) {
+func (client *Client) DescribeAndroidInstanceGroupsWithContext(ctx context.Context, request *DescribeAndroidInstanceGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAndroidInstanceGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1872,29 +1385,11 @@ func (client *Client) DescribeAndroidInstanceGroupsWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAndroidInstanceGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an instance group.
-//
-// @param request - DescribeAndroidInstanceGroupsRequest
-//
-// @return DescribeAndroidInstanceGroupsResponse
-func (client *Client) DescribeAndroidInstanceGroups(request *DescribeAndroidInstanceGroupsRequest) (_result *DescribeAndroidInstanceGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAndroidInstanceGroupsResponse{}
-	_body, _err := client.DescribeAndroidInstanceGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1907,7 +1402,7 @@ func (client *Client) DescribeAndroidInstanceGroups(request *DescribeAndroidInst
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAndroidInstancesResponse
-func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndroidInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAndroidInstancesResponse, _err error) {
+func (client *Client) DescribeAndroidInstancesWithContext(ctx context.Context, request *DescribeAndroidInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAndroidInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2008,29 +1503,11 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAndroidInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries cloud phone instances.
-//
-// @param request - DescribeAndroidInstancesRequest
-//
-// @return DescribeAndroidInstancesResponse
-func (client *Client) DescribeAndroidInstances(request *DescribeAndroidInstancesRequest) (_result *DescribeAndroidInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAndroidInstancesResponse{}
-	_body, _err := client.DescribeAndroidInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2043,7 +1520,7 @@ func (client *Client) DescribeAndroidInstances(request *DescribeAndroidInstances
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAppsResponse
-func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAppsResponse, _err error) {
+func (client *Client) DescribeAppsWithContext(ctx context.Context, request *DescribeAppsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAppsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2100,29 +1577,11 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries applications.
-//
-// @param request - DescribeAppsRequest
-//
-// @return DescribeAppsResponse
-func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *DescribeAppsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAppsResponse{}
-	_body, _err := client.DescribeAppsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2139,7 +1598,7 @@ func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *Descr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBackupFilesResponse
-func (client *Client) DescribeBackupFilesWithOptions(request *DescribeBackupFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupFilesResponse, _err error) {
+func (client *Client) DescribeBackupFilesWithContext(ctx context.Context, request *DescribeBackupFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupFilesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2212,33 +1671,11 @@ func (client *Client) DescribeBackupFilesWithOptions(request *DescribeBackupFile
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBackupFilesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries backup files.
-//
-// Description:
-//
-// Currently, this operation allows you to query only backup files generated by cloud phones that are stored in Object Storage Service (OSS) buckets.
-//
-// @param request - DescribeBackupFilesRequest
-//
-// @return DescribeBackupFilesResponse
-func (client *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (_result *DescribeBackupFilesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBackupFilesResponse{}
-	_body, _err := client.DescribeBackupFilesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2251,7 +1688,7 @@ func (client *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCloudPhoneNodesResponse
-func (client *Client) DescribeCloudPhoneNodesWithOptions(request *DescribeCloudPhoneNodesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudPhoneNodesResponse, _err error) {
+func (client *Client) DescribeCloudPhoneNodesWithContext(ctx context.Context, request *DescribeCloudPhoneNodesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudPhoneNodesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2308,29 +1745,11 @@ func (client *Client) DescribeCloudPhoneNodesWithOptions(request *DescribeCloudP
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCloudPhoneNodesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a cloud phone matrix.
-//
-// @param request - DescribeCloudPhoneNodesRequest
-//
-// @return DescribeCloudPhoneNodesResponse
-func (client *Client) DescribeCloudPhoneNodes(request *DescribeCloudPhoneNodesRequest) (_result *DescribeCloudPhoneNodesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCloudPhoneNodesResponse{}
-	_body, _err := client.DescribeCloudPhoneNodesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2343,7 +1762,7 @@ func (client *Client) DescribeCloudPhoneNodes(request *DescribeCloudPhoneNodesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDisplayConfigResponse
-func (client *Client) DescribeDisplayConfigWithOptions(request *DescribeDisplayConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDisplayConfigResponse, _err error) {
+func (client *Client) DescribeDisplayConfigWithContext(ctx context.Context, request *DescribeDisplayConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDisplayConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2368,29 +1787,11 @@ func (client *Client) DescribeDisplayConfigWithOptions(request *DescribeDisplayC
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDisplayConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询显示设置
-//
-// @param request - DescribeDisplayConfigRequest
-//
-// @return DescribeDisplayConfigResponse
-func (client *Client) DescribeDisplayConfig(request *DescribeDisplayConfigRequest) (_result *DescribeDisplayConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDisplayConfigResponse{}
-	_body, _err := client.DescribeDisplayConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2403,7 +1804,7 @@ func (client *Client) DescribeDisplayConfig(request *DescribeDisplayConfigReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeImageListResponse
-func (client *Client) DescribeImageListWithOptions(request *DescribeImageListRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageListResponse, _err error) {
+func (client *Client) DescribeImageListWithContext(ctx context.Context, request *DescribeImageListRequest, runtime *dara.RuntimeOptions) (_result *DescribeImageListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2462,29 +1863,11 @@ func (client *Client) DescribeImageListWithOptions(request *DescribeImageListReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeImageListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries images.
-//
-// @param request - DescribeImageListRequest
-//
-// @return DescribeImageListResponse
-func (client *Client) DescribeImageList(request *DescribeImageListRequest) (_result *DescribeImageListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeImageListResponse{}
-	_body, _err := client.DescribeImageListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2497,7 +1880,7 @@ func (client *Client) DescribeImageList(request *DescribeImageListRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInvocationsResponse
-func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvocationsResponse, _err error) {
+func (client *Client) DescribeInvocationsWithContext(ctx context.Context, request *DescribeInvocationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvocationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2526,29 +1909,11 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInvocationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the execution results of commands.
-//
-// @param request - DescribeInvocationsRequest
-//
-// @return DescribeInvocationsResponse
-func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (_result *DescribeInvocationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInvocationsResponse{}
-	_body, _err := client.DescribeInvocationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2561,7 +1926,7 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeKeyPairsResponse
-func (client *Client) DescribeKeyPairsWithOptions(request *DescribeKeyPairsRequest, runtime *dara.RuntimeOptions) (_result *DescribeKeyPairsResponse, _err error) {
+func (client *Client) DescribeKeyPairsWithContext(ctx context.Context, request *DescribeKeyPairsRequest, runtime *dara.RuntimeOptions) (_result *DescribeKeyPairsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2598,29 +1963,11 @@ func (client *Client) DescribeKeyPairsWithOptions(request *DescribeKeyPairsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeKeyPairsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries one or more key pairs.
-//
-// @param request - DescribeKeyPairsRequest
-//
-// @return DescribeKeyPairsResponse
-func (client *Client) DescribeKeyPairs(request *DescribeKeyPairsRequest) (_result *DescribeKeyPairsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeKeyPairsResponse{}
-	_body, _err := client.DescribeKeyPairsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2633,7 +1980,7 @@ func (client *Client) DescribeKeyPairs(request *DescribeKeyPairsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeMetricLastResponse
-func (client *Client) DescribeMetricLastWithOptions(request *DescribeMetricLastRequest, runtime *dara.RuntimeOptions) (_result *DescribeMetricLastResponse, _err error) {
+func (client *Client) DescribeMetricLastWithContext(ctx context.Context, request *DescribeMetricLastRequest, runtime *dara.RuntimeOptions) (_result *DescribeMetricLastResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2682,29 +2029,11 @@ func (client *Client) DescribeMetricLastWithOptions(request *DescribeMetricLastR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeMetricLastResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询指定监控项的最新监控数据
-//
-// @param request - DescribeMetricLastRequest
-//
-// @return DescribeMetricLastResponse
-func (client *Client) DescribeMetricLast(request *DescribeMetricLastRequest) (_result *DescribeMetricLastResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeMetricLastResponse{}
-	_body, _err := client.DescribeMetricLastWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2717,7 +2046,7 @@ func (client *Client) DescribeMetricLast(request *DescribeMetricLastRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2746,29 +2075,11 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query available regions.
-//
-// @param request - DescribeRegionsRequest
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2781,7 +2092,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSpecResponse
-func (client *Client) DescribeSpecWithOptions(request *DescribeSpecRequest, runtime *dara.RuntimeOptions) (_result *DescribeSpecResponse, _err error) {
+func (client *Client) DescribeSpecWithContext(ctx context.Context, request *DescribeSpecRequest, runtime *dara.RuntimeOptions) (_result *DescribeSpecResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2834,29 +2145,11 @@ func (client *Client) DescribeSpecWithOptions(request *DescribeSpecRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query available specifications.
-//
-// @param request - DescribeSpecRequest
-//
-// @return DescribeSpecResponse
-func (client *Client) DescribeSpec(request *DescribeSpecRequest) (_result *DescribeSpecResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSpecResponse{}
-	_body, _err := client.DescribeSpecWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2881,7 +2174,7 @@ func (client *Client) DescribeSpec(request *DescribeSpecRequest) (_result *Descr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTasksResponse
-func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
+func (client *Client) DescribeTasksWithContext(ctx context.Context, request *DescribeTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2958,41 +2251,11 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries tasks created for a cloud phone instance.
-//
-// Description:
-//
-//	  You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
-//
-//		- The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
-//
-//		- You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
-//
-// **Example**
-//
-// Assume you restart two cloud phone instances with the instance IDs acp-25nt4kk9whhok\\*\\*\\*\\	- and acp-j2taq887orj8l\\*\\*\\*\\*, and the returned request ID is B8ED2BA9-0C6A-5643-818F-B5D60A64\\*\\*\\*\\*. If you want to check the operation outcomes of the two cloud phone instances, you can call the DescribeTasks operation. You need to set the InvokeId request parameter to B8ED2BA9-0C6A-5643-818F-B5D60A64\\*\\*\\*\\*. If you only want to check the cloud phone instance with the ID acp-25nt4kk9whhok\\*\\*\\*\\*, you must set the ParentTaskId request parameter to the ID of the batch task and the AndroidInstanceId request parameter to acp-25nt4kk9whhok\\*\\*\\*\\	- when calling the DescribeTasks operation.
-//
-// @param request - DescribeTasksRequest
-//
-// @return DescribeTasksResponse
-func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *DescribeTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTasksResponse{}
-	_body, _err := client.DescribeTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3009,7 +2272,7 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachKeyPairResponse
-func (client *Client) DetachKeyPairWithOptions(request *DetachKeyPairRequest, runtime *dara.RuntimeOptions) (_result *DetachKeyPairResponse, _err error) {
+func (client *Client) DetachKeyPairWithContext(ctx context.Context, request *DetachKeyPairRequest, runtime *dara.RuntimeOptions) (_result *DetachKeyPairResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3038,33 +2301,11 @@ func (client *Client) DetachKeyPairWithOptions(request *DetachKeyPairRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Detaches an Android Debug Bridge (ADB) key pair from one or more cloud phone instances.
-//
-// Description:
-//
-//	After you detach an ADB key pair from a cloud phone instance, the ADB connection will fail. This occurs because the system can no longer authenticate using a valid ADB public key, leading to authentication errors.
-//
-// @param request - DetachKeyPairRequest
-//
-// @return DetachKeyPairResponse
-func (client *Client) DetachKeyPair(request *DetachKeyPairRequest) (_result *DetachKeyPairResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachKeyPairResponse{}
-	_body, _err := client.DetachKeyPairWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3077,7 +2318,7 @@ func (client *Client) DetachKeyPair(request *DetachKeyPairRequest) (_result *Det
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisconnectAndroidInstanceResponse
-func (client *Client) DisconnectAndroidInstanceWithOptions(request *DisconnectAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *DisconnectAndroidInstanceResponse, _err error) {
+func (client *Client) DisconnectAndroidInstanceWithContext(ctx context.Context, request *DisconnectAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *DisconnectAndroidInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3106,29 +2347,11 @@ func (client *Client) DisconnectAndroidInstanceWithOptions(request *DisconnectAn
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisconnectAndroidInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 实例断开连接
-//
-// @param request - DisconnectAndroidInstanceRequest
-//
-// @return DisconnectAndroidInstanceResponse
-func (client *Client) DisconnectAndroidInstance(request *DisconnectAndroidInstanceRequest) (_result *DisconnectAndroidInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisconnectAndroidInstanceResponse{}
-	_body, _err := client.DisconnectAndroidInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3145,7 +2368,7 @@ func (client *Client) DisconnectAndroidInstance(request *DisconnectAndroidInstan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DistributeImageResponse
-func (client *Client) DistributeImageWithOptions(request *DistributeImageRequest, runtime *dara.RuntimeOptions) (_result *DistributeImageResponse, _err error) {
+func (client *Client) DistributeImageWithContext(ctx context.Context, request *DistributeImageRequest, runtime *dara.RuntimeOptions) (_result *DistributeImageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3174,33 +2397,11 @@ func (client *Client) DistributeImageWithOptions(request *DistributeImageRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DistributeImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Distributes an image.
-//
-// Description:
-//
-// After you distribute an image in supported regions, the distribution cannot be canceled.
-//
-// @param request - DistributeImageRequest
-//
-// @return DistributeImageResponse
-func (client *Client) DistributeImage(request *DistributeImageRequest) (_result *DistributeImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DistributeImageResponse{}
-	_body, _err := client.DistributeImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3217,7 +2418,7 @@ func (client *Client) DistributeImage(request *DistributeImageRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DowngradeAndroidInstanceGroupResponse
-func (client *Client) DowngradeAndroidInstanceGroupWithOptions(request *DowngradeAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *DowngradeAndroidInstanceGroupResponse, _err error) {
+func (client *Client) DowngradeAndroidInstanceGroupWithContext(ctx context.Context, request *DowngradeAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *DowngradeAndroidInstanceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3250,33 +2451,11 @@ func (client *Client) DowngradeAndroidInstanceGroupWithOptions(request *Downgrad
 		BodyType:    dara.String("json"),
 	}
 	_result = &DowngradeAndroidInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Downgrades an instance group. Currently, this operation allows you to only delete specific cloud phone instances from an instance group.
-//
-// Description:
-//
-// This operation only allows you to scale down an instance group.
-//
-// @param request - DowngradeAndroidInstanceGroupRequest
-//
-// @return DowngradeAndroidInstanceGroupResponse
-func (client *Client) DowngradeAndroidInstanceGroup(request *DowngradeAndroidInstanceGroupRequest) (_result *DowngradeAndroidInstanceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DowngradeAndroidInstanceGroupResponse{}
-	_body, _err := client.DowngradeAndroidInstanceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3289,7 +2468,7 @@ func (client *Client) DowngradeAndroidInstanceGroup(request *DowngradeAndroidIns
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EndCoordinationResponse
-func (client *Client) EndCoordinationWithOptions(request *EndCoordinationRequest, runtime *dara.RuntimeOptions) (_result *EndCoordinationResponse, _err error) {
+func (client *Client) EndCoordinationWithContext(ctx context.Context, request *EndCoordinationRequest, runtime *dara.RuntimeOptions) (_result *EndCoordinationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3322,29 +2501,11 @@ func (client *Client) EndCoordinationWithOptions(request *EndCoordinationRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &EndCoordinationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 结束协同
-//
-// @param request - EndCoordinationRequest
-//
-// @return EndCoordinationResponse
-func (client *Client) EndCoordination(request *EndCoordinationRequest) (_result *EndCoordinationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EndCoordinationResponse{}
-	_body, _err := client.EndCoordinationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3357,7 +2518,7 @@ func (client *Client) EndCoordination(request *EndCoordinationRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExpandDataVolumeResponse
-func (client *Client) ExpandDataVolumeWithOptions(request *ExpandDataVolumeRequest, runtime *dara.RuntimeOptions) (_result *ExpandDataVolumeResponse, _err error) {
+func (client *Client) ExpandDataVolumeWithContext(ctx context.Context, request *ExpandDataVolumeRequest, runtime *dara.RuntimeOptions) (_result *ExpandDataVolumeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3394,29 +2555,11 @@ func (client *Client) ExpandDataVolumeWithOptions(request *ExpandDataVolumeReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExpandDataVolumeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 存储扩容
-//
-// @param request - ExpandDataVolumeRequest
-//
-// @return ExpandDataVolumeResponse
-func (client *Client) ExpandDataVolume(request *ExpandDataVolumeRequest) (_result *ExpandDataVolumeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ExpandDataVolumeResponse{}
-	_body, _err := client.ExpandDataVolumeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3433,7 +2576,7 @@ func (client *Client) ExpandDataVolume(request *ExpandDataVolumeRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return FetchFileResponse
-func (client *Client) FetchFileWithOptions(request *FetchFileRequest, runtime *dara.RuntimeOptions) (_result *FetchFileResponse, _err error) {
+func (client *Client) FetchFileWithContext(ctx context.Context, request *FetchFileRequest, runtime *dara.RuntimeOptions) (_result *FetchFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3474,33 +2617,11 @@ func (client *Client) FetchFileWithOptions(request *FetchFileRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &FetchFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Pulls a file from a cloud phone instance and stores it in Object Storage Service (OSS).
-//
-// Description:
-//
-// Currently, this operation allows you to retrieve files or folders from cloud phone instances and save them directly to OSS.
-//
-// @param request - FetchFileRequest
-//
-// @return FetchFileResponse
-func (client *Client) FetchFile(request *FetchFileRequest) (_result *FetchFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &FetchFileResponse{}
-	_body, _err := client.FetchFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3517,7 +2638,7 @@ func (client *Client) FetchFile(request *FetchFileRequest) (_result *FetchFileRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GenerateCoordinationCodeResponse
-func (client *Client) GenerateCoordinationCodeWithOptions(request *GenerateCoordinationCodeRequest, runtime *dara.RuntimeOptions) (_result *GenerateCoordinationCodeResponse, _err error) {
+func (client *Client) GenerateCoordinationCodeWithContext(ctx context.Context, request *GenerateCoordinationCodeRequest, runtime *dara.RuntimeOptions) (_result *GenerateCoordinationCodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3546,33 +2667,11 @@ func (client *Client) GenerateCoordinationCodeWithOptions(request *GenerateCoord
 		BodyType:    dara.String("json"),
 	}
 	_result = &GenerateCoordinationCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Generates a collaboration code for the cloud phone being accessed by using the current convenience account, and shares this code with other convenience accounts to allow them to access the same cloud phone.
-//
-// Description:
-//
-// You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client.
-//
-// @param request - GenerateCoordinationCodeRequest
-//
-// @return GenerateCoordinationCodeResponse
-func (client *Client) GenerateCoordinationCode(request *GenerateCoordinationCodeRequest) (_result *GenerateCoordinationCodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GenerateCoordinationCodeResponse{}
-	_body, _err := client.GenerateCoordinationCodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3589,7 +2688,7 @@ func (client *Client) GenerateCoordinationCode(request *GenerateCoordinationCode
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ImportKeyPairResponse
-func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, runtime *dara.RuntimeOptions) (_result *ImportKeyPairResponse, _err error) {
+func (client *Client) ImportKeyPairWithContext(ctx context.Context, request *ImportKeyPairRequest, runtime *dara.RuntimeOptions) (_result *ImportKeyPairResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3618,33 +2717,11 @@ func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ImportKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Imports the public key of an Android Debug Bridge (ADB) key pair.
-//
-// Description:
-//
-// To avoid authorization errors that could cause ADB connection failures, you must import the public key of an ADB key pair.
-//
-// @param request - ImportKeyPairRequest
-//
-// @return ImportKeyPairResponse
-func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *ImportKeyPairResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ImportKeyPairResponse{}
-	_body, _err := client.ImportKeyPairWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3661,7 +2738,7 @@ func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *Imp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InstallAppResponse
-func (client *Client) InstallAppWithOptions(request *InstallAppRequest, runtime *dara.RuntimeOptions) (_result *InstallAppResponse, _err error) {
+func (client *Client) InstallAppWithContext(ctx context.Context, request *InstallAppRequest, runtime *dara.RuntimeOptions) (_result *InstallAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3694,33 +2771,11 @@ func (client *Client) InstallAppWithOptions(request *InstallAppRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &InstallAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Installs an app on multiple cloud phone instances at the same time.
-//
-// Description:
-//
-// This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
-//
-// @param request - InstallAppRequest
-//
-// @return InstallAppResponse
-func (client *Client) InstallApp(request *InstallAppRequest) (_result *InstallAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &InstallAppResponse{}
-	_body, _err := client.InstallAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3733,7 +2788,7 @@ func (client *Client) InstallApp(request *InstallAppRequest) (_result *InstallAp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPolicyGroupsResponse
-func (client *Client) ListPolicyGroupsWithOptions(request *ListPolicyGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListPolicyGroupsResponse, _err error) {
+func (client *Client) ListPolicyGroupsWithContext(ctx context.Context, request *ListPolicyGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListPolicyGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3774,29 +2829,11 @@ func (client *Client) ListPolicyGroupsWithOptions(request *ListPolicyGroupsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPolicyGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries policies.
-//
-// @param request - ListPolicyGroupsRequest
-//
-// @return ListPolicyGroupsResponse
-func (client *Client) ListPolicyGroups(request *ListPolicyGroupsRequest) (_result *ListPolicyGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPolicyGroupsResponse{}
-	_body, _err := client.ListPolicyGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3809,7 +2846,7 @@ func (client *Client) ListPolicyGroups(request *ListPolicyGroupsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAndroidInstanceResponse
-func (client *Client) ModifyAndroidInstanceWithOptions(request *ModifyAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyAndroidInstanceResponse, _err error) {
+func (client *Client) ModifyAndroidInstanceWithContext(ctx context.Context, request *ModifyAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyAndroidInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3850,29 +2887,11 @@ func (client *Client) ModifyAndroidInstanceWithOptions(request *ModifyAndroidIns
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAndroidInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies attributes of a cloud phone instance. Currently, this operation allows you to modify only the name of a cloud phone instance.
-//
-// @param request - ModifyAndroidInstanceRequest
-//
-// @return ModifyAndroidInstanceResponse
-func (client *Client) ModifyAndroidInstance(request *ModifyAndroidInstanceRequest) (_result *ModifyAndroidInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAndroidInstanceResponse{}
-	_body, _err := client.ModifyAndroidInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3885,7 +2904,7 @@ func (client *Client) ModifyAndroidInstance(request *ModifyAndroidInstanceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAndroidInstanceGroupResponse
-func (client *Client) ModifyAndroidInstanceGroupWithOptions(request *ModifyAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyAndroidInstanceGroupResponse, _err error) {
+func (client *Client) ModifyAndroidInstanceGroupWithContext(ctx context.Context, request *ModifyAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyAndroidInstanceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3918,29 +2937,11 @@ func (client *Client) ModifyAndroidInstanceGroupWithOptions(request *ModifyAndro
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAndroidInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies attributes of an instance group.
-//
-// @param request - ModifyAndroidInstanceGroupRequest
-//
-// @return ModifyAndroidInstanceGroupResponse
-func (client *Client) ModifyAndroidInstanceGroup(request *ModifyAndroidInstanceGroupRequest) (_result *ModifyAndroidInstanceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAndroidInstanceGroupResponse{}
-	_body, _err := client.ModifyAndroidInstanceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3953,7 +2954,7 @@ func (client *Client) ModifyAndroidInstanceGroup(request *ModifyAndroidInstanceG
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAppResponse
-func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppResponse, _err error) {
+func (client *Client) ModifyAppWithContext(ctx context.Context, request *ModifyAppRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3990,29 +2991,11 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modify attributes of an application.
-//
-// @param request - ModifyAppRequest
-//
-// @return ModifyAppResponse
-func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAppResponse{}
-	_body, _err := client.ModifyAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4025,7 +3008,7 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCloudPhoneNodeResponse
-func (client *Client) ModifyCloudPhoneNodeWithOptions(request *ModifyCloudPhoneNodeRequest, runtime *dara.RuntimeOptions) (_result *ModifyCloudPhoneNodeResponse, _err error) {
+func (client *Client) ModifyCloudPhoneNodeWithContext(ctx context.Context, request *ModifyCloudPhoneNodeRequest, runtime *dara.RuntimeOptions) (_result *ModifyCloudPhoneNodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4058,29 +3041,11 @@ func (client *Client) ModifyCloudPhoneNodeWithOptions(request *ModifyCloudPhoneN
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCloudPhoneNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a cloud phone matrix. Currently, you can only modify the name of a cloud phone matrix.
-//
-// @param request - ModifyCloudPhoneNodeRequest
-//
-// @return ModifyCloudPhoneNodeResponse
-func (client *Client) ModifyCloudPhoneNode(request *ModifyCloudPhoneNodeRequest) (_result *ModifyCloudPhoneNodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyCloudPhoneNodeResponse{}
-	_body, _err := client.ModifyCloudPhoneNodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4093,7 +3058,7 @@ func (client *Client) ModifyCloudPhoneNode(request *ModifyCloudPhoneNodeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDisplayConfigResponse
-func (client *Client) ModifyDisplayConfigWithOptions(tmpReq *ModifyDisplayConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyDisplayConfigResponse, _err error) {
+func (client *Client) ModifyDisplayConfigWithContext(ctx context.Context, tmpReq *ModifyDisplayConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyDisplayConfigResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4128,29 +3093,11 @@ func (client *Client) ModifyDisplayConfigWithOptions(tmpReq *ModifyDisplayConfig
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDisplayConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改显示设置
-//
-// @param request - ModifyDisplayConfigRequest
-//
-// @return ModifyDisplayConfigResponse
-func (client *Client) ModifyDisplayConfig(request *ModifyDisplayConfigRequest) (_result *ModifyDisplayConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDisplayConfigResponse{}
-	_body, _err := client.ModifyDisplayConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4163,7 +3110,7 @@ func (client *Client) ModifyDisplayConfig(request *ModifyDisplayConfigRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceChargeTypeResponse
-func (client *Client) ModifyInstanceChargeTypeWithOptions(request *ModifyInstanceChargeTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceChargeTypeResponse, _err error) {
+func (client *Client) ModifyInstanceChargeTypeWithContext(ctx context.Context, request *ModifyInstanceChargeTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceChargeTypeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4208,29 +3155,11 @@ func (client *Client) ModifyInstanceChargeTypeWithOptions(request *ModifyInstanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceChargeTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the billing method. Currently, this operation only allows you to change the billing method from pay-as-you-go to subscription.
-//
-// @param request - ModifyInstanceChargeTypeRequest
-//
-// @return ModifyInstanceChargeTypeResponse
-func (client *Client) ModifyInstanceChargeType(request *ModifyInstanceChargeTypeRequest) (_result *ModifyInstanceChargeTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstanceChargeTypeResponse{}
-	_body, _err := client.ModifyInstanceChargeTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4243,7 +3172,7 @@ func (client *Client) ModifyInstanceChargeType(request *ModifyInstanceChargeType
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyKeyPairNameResponse
-func (client *Client) ModifyKeyPairNameWithOptions(request *ModifyKeyPairNameRequest, runtime *dara.RuntimeOptions) (_result *ModifyKeyPairNameResponse, _err error) {
+func (client *Client) ModifyKeyPairNameWithContext(ctx context.Context, request *ModifyKeyPairNameRequest, runtime *dara.RuntimeOptions) (_result *ModifyKeyPairNameResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4272,29 +3201,11 @@ func (client *Client) ModifyKeyPairNameWithOptions(request *ModifyKeyPairNameReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyKeyPairNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies Android Debug Bridge (ADB) key pairs.
-//
-// @param request - ModifyKeyPairNameRequest
-//
-// @return ModifyKeyPairNameResponse
-func (client *Client) ModifyKeyPairName(request *ModifyKeyPairNameRequest) (_result *ModifyKeyPairNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyKeyPairNameResponse{}
-	_body, _err := client.ModifyKeyPairNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4307,7 +3218,7 @@ func (client *Client) ModifyKeyPairName(request *ModifyKeyPairNameRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPolicyGroupResponse
-func (client *Client) ModifyPolicyGroupWithOptions(tmpReq *ModifyPolicyGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyPolicyGroupResponse, _err error) {
+func (client *Client) ModifyPolicyGroupWithContext(ctx context.Context, tmpReq *ModifyPolicyGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyPolicyGroupResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4382,29 +3293,11 @@ func (client *Client) ModifyPolicyGroupWithOptions(tmpReq *ModifyPolicyGroupRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyPolicyGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a policy.
-//
-// @param request - ModifyPolicyGroupRequest
-//
-// @return ModifyPolicyGroupResponse
-func (client *Client) ModifyPolicyGroup(request *ModifyPolicyGroupRequest) (_result *ModifyPolicyGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyPolicyGroupResponse{}
-	_body, _err := client.ModifyPolicyGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4421,7 +3314,7 @@ func (client *Client) ModifyPolicyGroup(request *ModifyPolicyGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OperateAppResponse
-func (client *Client) OperateAppWithOptions(request *OperateAppRequest, runtime *dara.RuntimeOptions) (_result *OperateAppResponse, _err error) {
+func (client *Client) OperateAppWithContext(ctx context.Context, request *OperateAppRequest, runtime *dara.RuntimeOptions) (_result *OperateAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4454,33 +3347,11 @@ func (client *Client) OperateAppWithOptions(request *OperateAppRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &OperateAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Operates apps in a cloud phone, such as opening, closing, and reopening apps.
-//
-// Description:
-//
-// This operation runs asynchronously. To check the operation result, visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
-//
-// @param request - OperateAppRequest
-//
-// @return OperateAppResponse
-func (client *Client) OperateApp(request *OperateAppRequest) (_result *OperateAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OperateAppResponse{}
-	_body, _err := client.OperateAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4497,7 +3368,7 @@ func (client *Client) OperateApp(request *OperateAppRequest) (_result *OperateAp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RebootAndroidInstancesInGroupResponse
-func (client *Client) RebootAndroidInstancesInGroupWithOptions(request *RebootAndroidInstancesInGroupRequest, runtime *dara.RuntimeOptions) (_result *RebootAndroidInstancesInGroupResponse, _err error) {
+func (client *Client) RebootAndroidInstancesInGroupWithContext(ctx context.Context, request *RebootAndroidInstancesInGroupRequest, runtime *dara.RuntimeOptions) (_result *RebootAndroidInstancesInGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4530,33 +3401,11 @@ func (client *Client) RebootAndroidInstancesInGroupWithOptions(request *RebootAn
 		BodyType:    dara.String("json"),
 	}
 	_result = &RebootAndroidInstancesInGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Restarts one or more cloud phone instances.
-//
-// Description:
-//
-// Before you restart a cloud phone instance, make sure it is in one of the following states: **Available, Abnormal, Backup failure, and Restoration failure**.
-//
-// @param request - RebootAndroidInstancesInGroupRequest
-//
-// @return RebootAndroidInstancesInGroupResponse
-func (client *Client) RebootAndroidInstancesInGroup(request *RebootAndroidInstancesInGroupRequest) (_result *RebootAndroidInstancesInGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RebootAndroidInstancesInGroupResponse{}
-	_body, _err := client.RebootAndroidInstancesInGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4573,7 +3422,7 @@ func (client *Client) RebootAndroidInstancesInGroup(request *RebootAndroidInstan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RecoveryFileResponse
-func (client *Client) RecoveryFileWithOptions(request *RecoveryFileRequest, runtime *dara.RuntimeOptions) (_result *RecoveryFileResponse, _err error) {
+func (client *Client) RecoveryFileWithContext(ctx context.Context, request *RecoveryFileRequest, runtime *dara.RuntimeOptions) (_result *RecoveryFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4618,33 +3467,11 @@ func (client *Client) RecoveryFileWithOptions(request *RecoveryFileRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &RecoveryFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Restores backup files.
-//
-// Description:
-//
-// Currently, this operation allows you to restore only backup files generated by cloud phones that are stored in Object Storage Service (OSS) buckets.
-//
-// @param request - RecoveryFileRequest
-//
-// @return RecoveryFileResponse
-func (client *Client) RecoveryFile(request *RecoveryFileRequest) (_result *RecoveryFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RecoveryFileResponse{}
-	_body, _err := client.RecoveryFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4657,7 +3484,7 @@ func (client *Client) RecoveryFile(request *RecoveryFileRequest) (_result *Recov
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenewAndroidInstanceGroupsResponse
-func (client *Client) RenewAndroidInstanceGroupsWithOptions(request *RenewAndroidInstanceGroupsRequest, runtime *dara.RuntimeOptions) (_result *RenewAndroidInstanceGroupsResponse, _err error) {
+func (client *Client) RenewAndroidInstanceGroupsWithContext(ctx context.Context, request *RenewAndroidInstanceGroupsRequest, runtime *dara.RuntimeOptions) (_result *RenewAndroidInstanceGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4694,29 +3521,11 @@ func (client *Client) RenewAndroidInstanceGroupsWithOptions(request *RenewAndroi
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenewAndroidInstanceGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Renews instance groups.
-//
-// @param request - RenewAndroidInstanceGroupsRequest
-//
-// @return RenewAndroidInstanceGroupsResponse
-func (client *Client) RenewAndroidInstanceGroups(request *RenewAndroidInstanceGroupsRequest) (_result *RenewAndroidInstanceGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RenewAndroidInstanceGroupsResponse{}
-	_body, _err := client.RenewAndroidInstanceGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4729,7 +3538,7 @@ func (client *Client) RenewAndroidInstanceGroups(request *RenewAndroidInstanceGr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenewCloudPhoneNodesResponse
-func (client *Client) RenewCloudPhoneNodesWithOptions(request *RenewCloudPhoneNodesRequest, runtime *dara.RuntimeOptions) (_result *RenewCloudPhoneNodesResponse, _err error) {
+func (client *Client) RenewCloudPhoneNodesWithContext(ctx context.Context, request *RenewCloudPhoneNodesRequest, runtime *dara.RuntimeOptions) (_result *RenewCloudPhoneNodesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4772,29 +3581,11 @@ func (client *Client) RenewCloudPhoneNodesWithOptions(request *RenewCloudPhoneNo
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenewCloudPhoneNodesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Renews a cloud mobile matrix.
-//
-// @param request - RenewCloudPhoneNodesRequest
-//
-// @return RenewCloudPhoneNodesResponse
-func (client *Client) RenewCloudPhoneNodes(request *RenewCloudPhoneNodesRequest) (_result *RenewCloudPhoneNodesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RenewCloudPhoneNodesResponse{}
-	_body, _err := client.RenewCloudPhoneNodesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4811,7 +3602,7 @@ func (client *Client) RenewCloudPhoneNodes(request *RenewCloudPhoneNodesRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResetAndroidInstancesInGroupResponse
-func (client *Client) ResetAndroidInstancesInGroupWithOptions(request *ResetAndroidInstancesInGroupRequest, runtime *dara.RuntimeOptions) (_result *ResetAndroidInstancesInGroupResponse, _err error) {
+func (client *Client) ResetAndroidInstancesInGroupWithContext(ctx context.Context, request *ResetAndroidInstancesInGroupRequest, runtime *dara.RuntimeOptions) (_result *ResetAndroidInstancesInGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4844,33 +3635,11 @@ func (client *Client) ResetAndroidInstancesInGroupWithOptions(request *ResetAndr
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetAndroidInstancesInGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Resets one or more cloud phone instances.
-//
-// Description:
-//
-// Before you reset a cloud phone instance, make sure it is in one of the following states: **Available, Stopped, Abnormal, Backup failure, and Restoration failure**.
-//
-// @param request - ResetAndroidInstancesInGroupRequest
-//
-// @return ResetAndroidInstancesInGroupResponse
-func (client *Client) ResetAndroidInstancesInGroup(request *ResetAndroidInstancesInGroupRequest) (_result *ResetAndroidInstancesInGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ResetAndroidInstancesInGroupResponse{}
-	_body, _err := client.ResetAndroidInstancesInGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4883,7 +3652,7 @@ func (client *Client) ResetAndroidInstancesInGroup(request *ResetAndroidInstance
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunCommandResponse
-func (client *Client) RunCommandWithOptions(request *RunCommandRequest, runtime *dara.RuntimeOptions) (_result *RunCommandResponse, _err error) {
+func (client *Client) RunCommandWithContext(ctx context.Context, request *RunCommandRequest, runtime *dara.RuntimeOptions) (_result *RunCommandResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4920,29 +3689,11 @@ func (client *Client) RunCommandWithOptions(request *RunCommandRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunCommandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Executes a command on a cloud phone instance.
-//
-// @param request - RunCommandRequest
-//
-// @return RunCommandResponse
-func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunCommandResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RunCommandResponse{}
-	_body, _err := client.RunCommandWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4959,7 +3710,7 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendFileResponse
-func (client *Client) SendFileWithOptions(request *SendFileRequest, runtime *dara.RuntimeOptions) (_result *SendFileResponse, _err error) {
+func (client *Client) SendFileWithContext(ctx context.Context, request *SendFileRequest, runtime *dara.RuntimeOptions) (_result *SendFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5004,33 +3755,11 @@ func (client *Client) SendFileWithOptions(request *SendFileRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Pushes files from Object Storage Service (OSS) buckets to cloud phone instances.
-//
-// Description:
-//
-// Currently, this operation allows you to only push files or folders from OSS buckets to cloud phone instances.
-//
-// @param request - SendFileRequest
-//
-// @return SendFileResponse
-func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendFileResponse{}
-	_body, _err := client.SendFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5047,7 +3776,7 @@ func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetAdbSecureResponse
-func (client *Client) SetAdbSecureWithOptions(request *SetAdbSecureRequest, runtime *dara.RuntimeOptions) (_result *SetAdbSecureResponse, _err error) {
+func (client *Client) SetAdbSecureWithContext(ctx context.Context, request *SetAdbSecureRequest, runtime *dara.RuntimeOptions) (_result *SetAdbSecureResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5076,33 +3805,11 @@ func (client *Client) SetAdbSecureWithOptions(request *SetAdbSecureRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetAdbSecureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sets the authentication status for cloud phone instances. If you enable Android Debug Bridge (ADB) authentication for cloud phone instances, the system will verify the validity of the ADB key pairs provided by end users when they connect to the instances over ADB. To ensure successful authentication and a proper connection, we recommend that you attach ADB key pairs to cloud phone instances. If you disable ADB authentication for cloud phone instances, the system will no longer verify the validity of any ADB key pairs. As a result, end users can connect to the cloud phone instances over ADB without authentication, provided the network connection is functioning properly.
-//
-// Description:
-//
-// Before you call this operation, make sure that the desired cloud phone instance is in the Running state.
-//
-// @param request - SetAdbSecureRequest
-//
-// @return SetAdbSecureResponse
-func (client *Client) SetAdbSecure(request *SetAdbSecureRequest) (_result *SetAdbSecureResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetAdbSecureResponse{}
-	_body, _err := client.SetAdbSecureWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5119,7 +3826,7 @@ func (client *Client) SetAdbSecure(request *SetAdbSecureRequest) (_result *SetAd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartAndroidInstanceResponse
-func (client *Client) StartAndroidInstanceWithOptions(request *StartAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *StartAndroidInstanceResponse, _err error) {
+func (client *Client) StartAndroidInstanceWithContext(ctx context.Context, request *StartAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *StartAndroidInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5148,33 +3855,11 @@ func (client *Client) StartAndroidInstanceWithOptions(request *StartAndroidInsta
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartAndroidInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Start instances.
-//
-// Description:
-//
-// Only supports starting when the instance is in the **Stopped, Backup Failed, or Recovery Failed*	- state.
-//
-// @param request - StartAndroidInstanceRequest
-//
-// @return StartAndroidInstanceResponse
-func (client *Client) StartAndroidInstance(request *StartAndroidInstanceRequest) (_result *StartAndroidInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartAndroidInstanceResponse{}
-	_body, _err := client.StartAndroidInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5191,7 +3876,7 @@ func (client *Client) StartAndroidInstance(request *StartAndroidInstanceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopAndroidInstanceResponse
-func (client *Client) StopAndroidInstanceWithOptions(request *StopAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopAndroidInstanceResponse, _err error) {
+func (client *Client) StopAndroidInstanceWithContext(ctx context.Context, request *StopAndroidInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopAndroidInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5224,33 +3909,11 @@ func (client *Client) StopAndroidInstanceWithOptions(request *StopAndroidInstanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopAndroidInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops a cloud phone instance.
-//
-// Description:
-//
-// Before you stop a cloud phone instance, make sure it is in one of the following states: **Available, Backup failure, and Restoration failure**.
-//
-// @param request - StopAndroidInstanceRequest
-//
-// @return StopAndroidInstanceResponse
-func (client *Client) StopAndroidInstance(request *StopAndroidInstanceRequest) (_result *StopAndroidInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopAndroidInstanceResponse{}
-	_body, _err := client.StopAndroidInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5267,7 +3930,7 @@ func (client *Client) StopAndroidInstance(request *StopAndroidInstanceRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UninstallAppResponse
-func (client *Client) UninstallAppWithOptions(request *UninstallAppRequest, runtime *dara.RuntimeOptions) (_result *UninstallAppResponse, _err error) {
+func (client *Client) UninstallAppWithContext(ctx context.Context, request *UninstallAppRequest, runtime *dara.RuntimeOptions) (_result *UninstallAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5300,33 +3963,11 @@ func (client *Client) UninstallAppWithOptions(request *UninstallAppRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &UninstallAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Uninstalls an app from multiple cloud phone instances.
-//
-// Description:
-//
-// This operation runs asynchronously. To check the operation result, you can visit the Task Center. To retrieve task details, call the [DescribeTasks](~~DescribeTasks~~) operation.
-//
-// @param request - UninstallAppRequest
-//
-// @return UninstallAppResponse
-func (client *Client) UninstallApp(request *UninstallAppRequest) (_result *UninstallAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UninstallAppResponse{}
-	_body, _err := client.UninstallAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5339,7 +3980,7 @@ func (client *Client) UninstallApp(request *UninstallAppRequest) (_result *Unins
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateCustomImageNameResponse
-func (client *Client) UpdateCustomImageNameWithOptions(request *UpdateCustomImageNameRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomImageNameResponse, _err error) {
+func (client *Client) UpdateCustomImageNameWithContext(ctx context.Context, request *UpdateCustomImageNameRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomImageNameResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5368,29 +4009,11 @@ func (client *Client) UpdateCustomImageNameWithOptions(request *UpdateCustomImag
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCustomImageNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the name of a custom image.
-//
-// @param request - UpdateCustomImageNameRequest
-//
-// @return UpdateCustomImageNameResponse
-func (client *Client) UpdateCustomImageName(request *UpdateCustomImageNameRequest) (_result *UpdateCustomImageNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateCustomImageNameResponse{}
-	_body, _err := client.UpdateCustomImageNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5407,7 +4030,7 @@ func (client *Client) UpdateCustomImageName(request *UpdateCustomImageNameReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateInstanceGroupImageResponse
-func (client *Client) UpdateInstanceGroupImageWithOptions(request *UpdateInstanceGroupImageRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceGroupImageResponse, _err error) {
+func (client *Client) UpdateInstanceGroupImageWithContext(ctx context.Context, request *UpdateInstanceGroupImageRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceGroupImageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5436,33 +4059,11 @@ func (client *Client) UpdateInstanceGroupImageWithOptions(request *UpdateInstanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateInstanceGroupImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the image of an instance group.
-//
-// Description:
-//
-// Before you call this operation, make sure the image is in the Available state and the region of the image is included in the region list of the desired instance group. In addition, the instance group itself is available.
-//
-// @param request - UpdateInstanceGroupImageRequest
-//
-// @return UpdateInstanceGroupImageResponse
-func (client *Client) UpdateInstanceGroupImage(request *UpdateInstanceGroupImageRequest) (_result *UpdateInstanceGroupImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateInstanceGroupImageResponse{}
-	_body, _err := client.UpdateInstanceGroupImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5475,7 +4076,7 @@ func (client *Client) UpdateInstanceGroupImage(request *UpdateInstanceGroupImage
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateInstanceImageResponse
-func (client *Client) UpdateInstanceImageWithOptions(request *UpdateInstanceImageRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceImageResponse, _err error) {
+func (client *Client) UpdateInstanceImageWithContext(ctx context.Context, request *UpdateInstanceImageRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceImageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5504,29 +4105,11 @@ func (client *Client) UpdateInstanceImageWithOptions(request *UpdateInstanceImag
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateInstanceImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新实例镜像
-//
-// @param request - UpdateInstanceImageRequest
-//
-// @return UpdateInstanceImageResponse
-func (client *Client) UpdateInstanceImage(request *UpdateInstanceImageRequest) (_result *UpdateInstanceImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateInstanceImageResponse{}
-	_body, _err := client.UpdateInstanceImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5543,7 +4126,7 @@ func (client *Client) UpdateInstanceImage(request *UpdateInstanceImageRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeAndroidInstanceGroupResponse
-func (client *Client) UpgradeAndroidInstanceGroupWithOptions(request *UpgradeAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *UpgradeAndroidInstanceGroupResponse, _err error) {
+func (client *Client) UpgradeAndroidInstanceGroupWithContext(ctx context.Context, request *UpgradeAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *UpgradeAndroidInstanceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5576,32 +4159,10 @@ func (client *Client) UpgradeAndroidInstanceGroupWithOptions(request *UpgradeAnd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeAndroidInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Upgrades an instance group. Currently, this operation allows you to only increase the number of instances in an instance group.
-//
-// Description:
-//
-// Currently, this operation allows you to only increase the size of an instance group.
-//
-// @param request - UpgradeAndroidInstanceGroupRequest
-//
-// @return UpgradeAndroidInstanceGroupResponse
-func (client *Client) UpgradeAndroidInstanceGroup(request *UpgradeAndroidInstanceGroupRequest) (_result *UpgradeAndroidInstanceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpgradeAndroidInstanceGroupResponse{}
-	_body, _err := client.UpgradeAndroidInstanceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
