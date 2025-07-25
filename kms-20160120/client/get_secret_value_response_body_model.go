@@ -33,8 +33,8 @@ type iGetSecretValueResponseBody interface {
 	GetSecretType() *string
 	SetVersionId(v string) *GetSecretValueResponseBody
 	GetVersionId() *string
-	SetVersionStages(v []*string) *GetSecretValueResponseBody
-	GetVersionStages() []*string
+	SetVersionStages(v *GetSecretValueResponseBodyVersionStages) *GetSecretValueResponseBody
+	GetVersionStages() *GetSecretValueResponseBodyVersionStages
 }
 
 type GetSecretValueResponseBody struct {
@@ -153,7 +153,7 @@ type GetSecretValueResponseBody struct {
 	// 00000000000000000000000000000001
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	// The stage labels that mark the secret versions.
-	VersionStages []*string `json:"VersionStages,omitempty" xml:"VersionStages,omitempty" type:"Repeated"`
+	VersionStages *GetSecretValueResponseBodyVersionStages `json:"VersionStages,omitempty" xml:"VersionStages,omitempty" type:"Struct"`
 }
 
 func (s GetSecretValueResponseBody) String() string {
@@ -212,7 +212,7 @@ func (s *GetSecretValueResponseBody) GetVersionId() *string {
 	return s.VersionId
 }
 
-func (s *GetSecretValueResponseBody) GetVersionStages() []*string {
+func (s *GetSecretValueResponseBody) GetVersionStages() *GetSecretValueResponseBodyVersionStages {
 	return s.VersionStages
 }
 
@@ -276,11 +276,36 @@ func (s *GetSecretValueResponseBody) SetVersionId(v string) *GetSecretValueRespo
 	return s
 }
 
-func (s *GetSecretValueResponseBody) SetVersionStages(v []*string) *GetSecretValueResponseBody {
+func (s *GetSecretValueResponseBody) SetVersionStages(v *GetSecretValueResponseBodyVersionStages) *GetSecretValueResponseBody {
 	s.VersionStages = v
 	return s
 }
 
 func (s *GetSecretValueResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetSecretValueResponseBodyVersionStages struct {
+	VersionStage []*string `json:"VersionStage,omitempty" xml:"VersionStage,omitempty" type:"Repeated"`
+}
+
+func (s GetSecretValueResponseBodyVersionStages) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetSecretValueResponseBodyVersionStages) GoString() string {
+	return s.String()
+}
+
+func (s *GetSecretValueResponseBodyVersionStages) GetVersionStage() []*string {
+	return s.VersionStage
+}
+
+func (s *GetSecretValueResponseBodyVersionStages) SetVersionStage(v []*string) *GetSecretValueResponseBodyVersionStages {
+	s.VersionStage = v
+	return s
+}
+
+func (s *GetSecretValueResponseBodyVersionStages) Validate() error {
 	return dara.Validate(s)
 }
