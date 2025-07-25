@@ -327,6 +327,106 @@ func (client *Client) CreateEssOptJob(request *CreateEssOptJobRequest) (_result 
 
 // Summary:
 //
+// 创建用电负荷预测任务，历史数据来自文件url
+//
+// @param request - CreateLoadForecastByFileUrlJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLoadForecastByFileUrlJobResponse
+func (client *Client) CreateLoadForecastByFileUrlJobWithOptions(request *CreateLoadForecastByFileUrlJobRequest, runtime *dara.RuntimeOptions) (_result *CreateLoadForecastByFileUrlJobResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessKey) {
+		body["BusinessKey"] = request.BusinessKey
+	}
+
+	if !dara.IsNil(request.DeviceType) {
+		body["DeviceType"] = request.DeviceType
+	}
+
+	if !dara.IsNil(request.Duration) {
+		body["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.Freq) {
+		body["Freq"] = request.Freq
+	}
+
+	if !dara.IsNil(request.HistoryUrl) {
+		body["HistoryUrl"] = request.HistoryUrl
+	}
+
+	if !dara.IsNil(request.ModelVersion) {
+		body["ModelVersion"] = request.ModelVersion
+	}
+
+	if !dara.IsNil(request.RunDate) {
+		body["RunDate"] = request.RunDate
+	}
+
+	if !dara.IsNil(request.SystemType) {
+		body["SystemType"] = request.SystemType
+	}
+
+	if !dara.IsNil(request.TimeColumn) {
+		body["TimeColumn"] = request.TimeColumn
+	}
+
+	if !dara.IsNil(request.TimeZone) {
+		body["TimeZone"] = request.TimeZone
+	}
+
+	if !dara.IsNil(request.ValueColumn) {
+		body["ValueColumn"] = request.ValueColumn
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateLoadForecastByFileUrlJob"),
+		Version:     dara.String("2020-09-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateLoadForecastByFileUrlJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建用电负荷预测任务，历史数据来自文件url
+//
+// @param request - CreateLoadForecastByFileUrlJobRequest
+//
+// @return CreateLoadForecastByFileUrlJobResponse
+func (client *Client) CreateLoadForecastByFileUrlJob(request *CreateLoadForecastByFileUrlJobRequest) (_result *CreateLoadForecastByFileUrlJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateLoadForecastByFileUrlJobResponse{}
+	_body, _err := client.CreateLoadForecastByFileUrlJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建用电负荷预测任务
 //
 // @param tmpReq - CreateLoadForecastJobRequest
@@ -416,6 +516,116 @@ func (client *Client) CreateLoadForecastJob(request *CreateLoadForecastJobReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateLoadForecastJobResponse{}
 	_body, _err := client.CreateLoadForecastJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建发电功率预测任务，历史数据来自文件url
+//
+// @param tmpReq - CreatePowerForecastByFileUrlJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePowerForecastByFileUrlJobResponse
+func (client *Client) CreatePowerForecastByFileUrlJobWithOptions(tmpReq *CreatePowerForecastByFileUrlJobRequest, runtime *dara.RuntimeOptions) (_result *CreatePowerForecastByFileUrlJobResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreatePowerForecastByFileUrlJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Location) {
+		request.LocationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Location, dara.String("Location"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessKey) {
+		body["BusinessKey"] = request.BusinessKey
+	}
+
+	if !dara.IsNil(request.DeviceType) {
+		body["DeviceType"] = request.DeviceType
+	}
+
+	if !dara.IsNil(request.Duration) {
+		body["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.Freq) {
+		body["Freq"] = request.Freq
+	}
+
+	if !dara.IsNil(request.HistoryUrl) {
+		body["HistoryUrl"] = request.HistoryUrl
+	}
+
+	if !dara.IsNil(request.LocationShrink) {
+		body["Location"] = request.LocationShrink
+	}
+
+	if !dara.IsNil(request.ModelVersion) {
+		body["ModelVersion"] = request.ModelVersion
+	}
+
+	if !dara.IsNil(request.RunDate) {
+		body["RunDate"] = request.RunDate
+	}
+
+	if !dara.IsNil(request.SystemType) {
+		body["SystemType"] = request.SystemType
+	}
+
+	if !dara.IsNil(request.TimeColumn) {
+		body["TimeColumn"] = request.TimeColumn
+	}
+
+	if !dara.IsNil(request.TimeZone) {
+		body["TimeZone"] = request.TimeZone
+	}
+
+	if !dara.IsNil(request.ValueColumn) {
+		body["ValueColumn"] = request.ValueColumn
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePowerForecastByFileUrlJob"),
+		Version:     dara.String("2020-09-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePowerForecastByFileUrlJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建发电功率预测任务，历史数据来自文件url
+//
+// @param request - CreatePowerForecastByFileUrlJobRequest
+//
+// @return CreatePowerForecastByFileUrlJobResponse
+func (client *Client) CreatePowerForecastByFileUrlJob(request *CreatePowerForecastByFileUrlJobRequest) (_result *CreatePowerForecastByFileUrlJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePowerForecastByFileUrlJobResponse{}
+	_body, _err := client.CreatePowerForecastByFileUrlJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
