@@ -194,6 +194,7 @@ type GetLifecycleResponseBodyLifecycle struct {
 	// 2022-10-21T07:27:44Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtEndTime    *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
+	LifecycleId   *string `json:"LifecycleId,omitempty" xml:"LifecycleId,omitempty"`
 }
 
 func (s GetLifecycleResponseBodyLifecycle) String() string {
@@ -224,6 +225,10 @@ func (s *GetLifecycleResponseBodyLifecycle) GetGmtEndTime() *string {
 	return s.GmtEndTime
 }
 
+func (s *GetLifecycleResponseBodyLifecycle) GetLifecycleId() *string {
+	return s.LifecycleId
+}
+
 func (s *GetLifecycleResponseBodyLifecycle) SetStatus(v string) *GetLifecycleResponseBodyLifecycle {
 	s.Status = &v
 	return s
@@ -246,6 +251,11 @@ func (s *GetLifecycleResponseBodyLifecycle) SetGmtCreateTime(v string) *GetLifec
 
 func (s *GetLifecycleResponseBodyLifecycle) SetGmtEndTime(v string) *GetLifecycleResponseBodyLifecycle {
 	s.GmtEndTime = &v
+	return s
+}
+
+func (s *GetLifecycleResponseBodyLifecycle) SetLifecycleId(v string) *GetLifecycleResponseBodyLifecycle {
+	s.LifecycleId = &v
 	return s
 }
 
