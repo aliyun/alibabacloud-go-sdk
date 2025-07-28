@@ -2971,6 +2971,7 @@ func (s *RunInstancesRequestNetworkInterface) Validate() error {
 }
 
 type RunInstancesRequestNetworkOptions struct {
+	BandwidthWeighting *string `json:"BandwidthWeighting,omitempty" xml:"BandwidthWeighting,omitempty"`
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values:
 	//
 	// 	- false: does not enable the Jumbo Frames feature for the instance. The maximum transmission unit (MTU) value of all ENIs on the instance is set to 1500.
@@ -2996,12 +2997,21 @@ func (s RunInstancesRequestNetworkOptions) GoString() string {
 	return s.String()
 }
 
+func (s *RunInstancesRequestNetworkOptions) GetBandwidthWeighting() *string {
+	return s.BandwidthWeighting
+}
+
 func (s *RunInstancesRequestNetworkOptions) GetEnableJumboFrame() *bool {
 	return s.EnableJumboFrame
 }
 
 func (s *RunInstancesRequestNetworkOptions) GetEnableNetworkEncryption() *bool {
 	return s.EnableNetworkEncryption
+}
+
+func (s *RunInstancesRequestNetworkOptions) SetBandwidthWeighting(v string) *RunInstancesRequestNetworkOptions {
+	s.BandwidthWeighting = &v
+	return s
 }
 
 func (s *RunInstancesRequestNetworkOptions) SetEnableJumboFrame(v bool) *RunInstancesRequestNetworkOptions {

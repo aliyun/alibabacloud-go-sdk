@@ -793,8 +793,9 @@ func (s *DescribeInstanceAttributeResponseBodyInnerIpAddress) Validate() error {
 }
 
 type DescribeInstanceAttributeResponseBodyNetworkOptions struct {
-	EnableJumboFrame        *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
-	EnableNetworkEncryption *bool `json:"EnableNetworkEncryption,omitempty" xml:"EnableNetworkEncryption,omitempty"`
+	BandwidthWeighting      *string `json:"BandwidthWeighting,omitempty" xml:"BandwidthWeighting,omitempty"`
+	EnableJumboFrame        *bool   `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	EnableNetworkEncryption *bool   `json:"EnableNetworkEncryption,omitempty" xml:"EnableNetworkEncryption,omitempty"`
 }
 
 func (s DescribeInstanceAttributeResponseBodyNetworkOptions) String() string {
@@ -805,12 +806,21 @@ func (s DescribeInstanceAttributeResponseBodyNetworkOptions) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceAttributeResponseBodyNetworkOptions) GetBandwidthWeighting() *string {
+	return s.BandwidthWeighting
+}
+
 func (s *DescribeInstanceAttributeResponseBodyNetworkOptions) GetEnableJumboFrame() *bool {
 	return s.EnableJumboFrame
 }
 
 func (s *DescribeInstanceAttributeResponseBodyNetworkOptions) GetEnableNetworkEncryption() *bool {
 	return s.EnableNetworkEncryption
+}
+
+func (s *DescribeInstanceAttributeResponseBodyNetworkOptions) SetBandwidthWeighting(v string) *DescribeInstanceAttributeResponseBodyNetworkOptions {
+	s.BandwidthWeighting = &v
+	return s
 }
 
 func (s *DescribeInstanceAttributeResponseBodyNetworkOptions) SetEnableJumboFrame(v bool) *DescribeInstanceAttributeResponseBodyNetworkOptions {

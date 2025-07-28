@@ -15,6 +15,8 @@ type iCancelAutoSnapshotPolicyRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *CancelAutoSnapshotPolicyRequest
 	GetResourceOwnerId() *int64
+	SetAutoSnapshotPolicyId(v string) *CancelAutoSnapshotPolicyRequest
+	GetAutoSnapshotPolicyId() *string
 	SetDiskIds(v string) *CancelAutoSnapshotPolicyRequest
 	GetDiskIds() *string
 	SetRegionId(v string) *CancelAutoSnapshotPolicyRequest
@@ -39,7 +41,8 @@ type CancelAutoSnapshotPolicyRequest struct {
 	// example:
 	//
 	// 155780923770
-	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	AutoSnapshotPolicyId *string `json:"autoSnapshotPolicyId,omitempty" xml:"autoSnapshotPolicyId,omitempty"`
 	// The IDs of the disks for which you want to disable the automatic snapshot policy. To disable the automatic snapshot policy for multiple disks, you can set this parameter to a JSON array that consists of multiple disk IDs, such as ["dxxxxxxxxx", "dyyyyyyyyy", … "dzzzzzzzzz"]. Separate the disk IDs with commas (,).
 	//
 	// This parameter is required.
@@ -78,6 +81,10 @@ func (s *CancelAutoSnapshotPolicyRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *CancelAutoSnapshotPolicyRequest) GetAutoSnapshotPolicyId() *string {
+	return s.AutoSnapshotPolicyId
+}
+
 func (s *CancelAutoSnapshotPolicyRequest) GetDiskIds() *string {
 	return s.DiskIds
 }
@@ -98,6 +105,11 @@ func (s *CancelAutoSnapshotPolicyRequest) SetResourceOwnerAccount(v string) *Can
 
 func (s *CancelAutoSnapshotPolicyRequest) SetResourceOwnerId(v int64) *CancelAutoSnapshotPolicyRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CancelAutoSnapshotPolicyRequest) SetAutoSnapshotPolicyId(v string) *CancelAutoSnapshotPolicyRequest {
+	s.AutoSnapshotPolicyId = &v
 	return s
 }
 
