@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("central")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("pvtz"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddCustomLineResponse
-func (client *Client) AddCustomLineWithOptions(request *AddCustomLineRequest, runtime *dara.RuntimeOptions) (_result *AddCustomLineResponse, _err error) {
+func (client *Client) AddCustomLineWithContext(ctx context.Context, request *AddCustomLineRequest, runtime *dara.RuntimeOptions) (_result *AddCustomLineResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -105,29 +57,11 @@ func (client *Client) AddCustomLineWithOptions(request *AddCustomLineRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddCustomLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a custom line.
-//
-// @param request - AddCustomLineRequest
-//
-// @return AddCustomLineResponse
-func (client *Client) AddCustomLine(request *AddCustomLineRequest) (_result *AddCustomLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddCustomLineResponse{}
-	_body, _err := client.AddCustomLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -140,7 +74,7 @@ func (client *Client) AddCustomLine(request *AddCustomLineRequest) (_result *Add
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddResolverEndpointResponse
-func (client *Client) AddResolverEndpointWithOptions(request *AddResolverEndpointRequest, runtime *dara.RuntimeOptions) (_result *AddResolverEndpointResponse, _err error) {
+func (client *Client) AddResolverEndpointWithContext(ctx context.Context, request *AddResolverEndpointRequest, runtime *dara.RuntimeOptions) (_result *AddResolverEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -185,29 +119,11 @@ func (client *Client) AddResolverEndpointWithOptions(request *AddResolverEndpoin
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddResolverEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an endpoint.
-//
-// @param request - AddResolverEndpointRequest
-//
-// @return AddResolverEndpointResponse
-func (client *Client) AddResolverEndpoint(request *AddResolverEndpointRequest) (_result *AddResolverEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddResolverEndpointResponse{}
-	_body, _err := client.AddResolverEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -226,7 +142,7 @@ func (client *Client) AddResolverEndpoint(request *AddResolverEndpointRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddResolverRuleResponse
-func (client *Client) AddResolverRuleWithOptions(request *AddResolverRuleRequest, runtime *dara.RuntimeOptions) (_result *AddResolverRuleResponse, _err error) {
+func (client *Client) AddResolverRuleWithContext(ctx context.Context, request *AddResolverRuleRequest, runtime *dara.RuntimeOptions) (_result *AddResolverRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -279,35 +195,11 @@ func (client *Client) AddResolverRuleWithOptions(request *AddResolverRuleRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddResolverRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a forwarding rule.
-//
-// Description:
-//
-// #### [](#)**Precautions**
-//
-// If a virtual private cloud (VPC) serves as both an inbound VPC and an outbound VPC, the IP addresses of external Domain Name System (DNS) servers cannot be the same as the IP addresses of the inbound endpoint in the VPC. The IP addresses of the external DNS servers are specified in the forwarding rule associated with the outbound endpoint in the same VPC. If the IP addresses are the same, the DNS requests sent from the IP addresses of the inbound endpoint are returned to the VPC. This results in resolution failures.
-//
-// @param request - AddResolverRuleRequest
-//
-// @return AddResolverRuleResponse
-func (client *Client) AddResolverRule(request *AddResolverRuleRequest) (_result *AddResolverRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddResolverRuleResponse{}
-	_body, _err := client.AddResolverRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -332,7 +224,7 @@ func (client *Client) AddResolverRule(request *AddResolverRuleRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddUserVpcAuthorizationResponse
-func (client *Client) AddUserVpcAuthorizationWithOptions(request *AddUserVpcAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *AddUserVpcAuthorizationResponse, _err error) {
+func (client *Client) AddUserVpcAuthorizationWithContext(ctx context.Context, request *AddUserVpcAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *AddUserVpcAuthorizationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -369,41 +261,11 @@ func (client *Client) AddUserVpcAuthorizationWithOptions(request *AddUserVpcAuth
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddUserVpcAuthorizationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
-//
-// Description:
-//
-// #### **Limits**
-//
-//   - You can set an effective scope across accounts only by using an Alibaba Cloud account instead of a RAM user. You can set an effective scope across accounts registered on the same site. For example, you can perform the operation across accounts that are both registered on the Alibaba Cloud China site or Alibaba Cloud international site. You cannot set an effective scope across accounts registered on different sites. For example, you cannot perform the operation across accounts that are separately registered on the Alibaba Cloud China site and Alibaba Cloud international site.
-//
-//   - No API operation is provided for sending the verification codes that are required for authorization.
-//
-// #### **Precautions**
-//
-// If you set an effective scope across accounts, bills are settled within the account that is used to perform routine management on built-in authoritative zones.
-//
-// @param request - AddUserVpcAuthorizationRequest
-//
-// @return AddUserVpcAuthorizationResponse
-func (client *Client) AddUserVpcAuthorization(request *AddUserVpcAuthorizationRequest) (_result *AddUserVpcAuthorizationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddUserVpcAuthorizationResponse{}
-	_body, _err := client.AddUserVpcAuthorizationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -416,7 +278,7 @@ func (client *Client) AddUserVpcAuthorization(request *AddUserVpcAuthorizationRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddZoneResponse
-func (client *Client) AddZoneWithOptions(request *AddZoneRequest, runtime *dara.RuntimeOptions) (_result *AddZoneResponse, _err error) {
+func (client *Client) AddZoneWithContext(ctx context.Context, request *AddZoneRequest, runtime *dara.RuntimeOptions) (_result *AddZoneResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -469,29 +331,11 @@ func (client *Client) AddZoneWithOptions(request *AddZoneRequest, runtime *dara.
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddZoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a built-in authoritative zone in the regular module or acceleration module.
-//
-// @param request - AddZoneRequest
-//
-// @return AddZoneResponse
-func (client *Client) AddZone(request *AddZoneRequest) (_result *AddZoneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddZoneResponse{}
-	_body, _err := client.AddZoneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -504,7 +348,7 @@ func (client *Client) AddZone(request *AddZoneRequest) (_result *AddZoneResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddZoneRecordResponse
-func (client *Client) AddZoneRecordWithOptions(request *AddZoneRecordRequest, runtime *dara.RuntimeOptions) (_result *AddZoneRecordResponse, _err error) {
+func (client *Client) AddZoneRecordWithContext(ctx context.Context, request *AddZoneRecordRequest, runtime *dara.RuntimeOptions) (_result *AddZoneRecordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -573,29 +417,11 @@ func (client *Client) AddZoneRecordWithOptions(request *AddZoneRecordRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddZoneRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a Domain Name System (DNS) record for a built-in authoritative zone. Within the effective scope, the intranet DNS records rather than the Internet DNS records take effect for the zone.
-//
-// @param request - AddZoneRecordRequest
-//
-// @return AddZoneRecordResponse
-func (client *Client) AddZoneRecord(request *AddZoneRecordRequest) (_result *AddZoneRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddZoneRecordResponse{}
-	_body, _err := client.AddZoneRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -608,7 +434,7 @@ func (client *Client) AddZoneRecord(request *AddZoneRecordRequest) (_result *Add
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindResolverRuleVpcResponse
-func (client *Client) BindResolverRuleVpcWithOptions(request *BindResolverRuleVpcRequest, runtime *dara.RuntimeOptions) (_result *BindResolverRuleVpcResponse, _err error) {
+func (client *Client) BindResolverRuleVpcWithContext(ctx context.Context, request *BindResolverRuleVpcRequest, runtime *dara.RuntimeOptions) (_result *BindResolverRuleVpcResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -641,29 +467,11 @@ func (client *Client) BindResolverRuleVpcWithOptions(request *BindResolverRuleVp
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindResolverRuleVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates a forwarding rule with virtual private clouds (VPCs).
-//
-// @param request - BindResolverRuleVpcRequest
-//
-// @return BindResolverRuleVpcResponse
-func (client *Client) BindResolverRuleVpc(request *BindResolverRuleVpcRequest) (_result *BindResolverRuleVpcResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindResolverRuleVpcResponse{}
-	_body, _err := client.BindResolverRuleVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -682,7 +490,7 @@ func (client *Client) BindResolverRuleVpc(request *BindResolverRuleVpcRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindZoneVpcResponse
-func (client *Client) BindZoneVpcWithOptions(request *BindZoneVpcRequest, runtime *dara.RuntimeOptions) (_result *BindZoneVpcResponse, _err error) {
+func (client *Client) BindZoneVpcWithContext(ctx context.Context, request *BindZoneVpcRequest, runtime *dara.RuntimeOptions) (_result *BindZoneVpcResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -723,35 +531,11 @@ func (client *Client) BindZoneVpcWithOptions(request *BindZoneVpcRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindZoneVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates or dissociates virtual private clouds (VPCs) from a zone to set the effective scope of the zone.
-//
-// Description:
-//
-// ##### [](#)Precautions:
-//
-// We recommend that you set the effective scope of a zone after you configure all Domain Name System (DNS) records. If you set an effective scope before you configure DNS records, the DNS resolution for the zone within the effective scope will fail unless you enable the recursive resolution proxy for subdomain names.
-//
-// @param request - BindZoneVpcRequest
-//
-// @return BindZoneVpcResponse
-func (client *Client) BindZoneVpc(request *BindZoneVpcRequest) (_result *BindZoneVpcResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindZoneVpcResponse{}
-	_body, _err := client.BindZoneVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -764,7 +548,7 @@ func (client *Client) BindZoneVpc(request *BindZoneVpcRequest) (_result *BindZon
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeZoneDnsGroupResponse
-func (client *Client) ChangeZoneDnsGroupWithOptions(request *ChangeZoneDnsGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeZoneDnsGroupResponse, _err error) {
+func (client *Client) ChangeZoneDnsGroupWithContext(ctx context.Context, request *ChangeZoneDnsGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeZoneDnsGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -797,29 +581,11 @@ func (client *Client) ChangeZoneDnsGroupWithOptions(request *ChangeZoneDnsGroupR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeZoneDnsGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the logical location of a zone.
-//
-// @param request - ChangeZoneDnsGroupRequest
-//
-// @return ChangeZoneDnsGroupResponse
-func (client *Client) ChangeZoneDnsGroup(request *ChangeZoneDnsGroupRequest) (_result *ChangeZoneDnsGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeZoneDnsGroupResponse{}
-	_body, _err := client.ChangeZoneDnsGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -832,7 +598,7 @@ func (client *Client) ChangeZoneDnsGroup(request *ChangeZoneDnsGroupRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckZoneNameResponse
-func (client *Client) CheckZoneNameWithOptions(request *CheckZoneNameRequest, runtime *dara.RuntimeOptions) (_result *CheckZoneNameResponse, _err error) {
+func (client *Client) CheckZoneNameWithContext(ctx context.Context, request *CheckZoneNameRequest, runtime *dara.RuntimeOptions) (_result *CheckZoneNameResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -865,29 +631,11 @@ func (client *Client) CheckZoneNameWithOptions(request *CheckZoneNameRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckZoneNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks whether a zone name can be added based on a rule.
-//
-// @param request - CheckZoneNameRequest
-//
-// @return CheckZoneNameResponse
-func (client *Client) CheckZoneName(request *CheckZoneNameRequest) (_result *CheckZoneNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckZoneNameResponse{}
-	_body, _err := client.CheckZoneNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -900,7 +648,7 @@ func (client *Client) CheckZoneName(request *CheckZoneNameRequest) (_result *Che
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCustomLineResponse
-func (client *Client) DeleteCustomLineWithOptions(request *DeleteCustomLineRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomLineResponse, _err error) {
+func (client *Client) DeleteCustomLineWithContext(ctx context.Context, request *DeleteCustomLineRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomLineResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -929,29 +677,11 @@ func (client *Client) DeleteCustomLineWithOptions(request *DeleteCustomLineReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCustomLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a custom line.
-//
-// @param request - DeleteCustomLineRequest
-//
-// @return DeleteCustomLineResponse
-func (client *Client) DeleteCustomLine(request *DeleteCustomLineRequest) (_result *DeleteCustomLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCustomLineResponse{}
-	_body, _err := client.DeleteCustomLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -964,7 +694,7 @@ func (client *Client) DeleteCustomLine(request *DeleteCustomLineRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteResolverEndpointResponse
-func (client *Client) DeleteResolverEndpointWithOptions(request *DeleteResolverEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeleteResolverEndpointResponse, _err error) {
+func (client *Client) DeleteResolverEndpointWithContext(ctx context.Context, request *DeleteResolverEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeleteResolverEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -993,29 +723,11 @@ func (client *Client) DeleteResolverEndpointWithOptions(request *DeleteResolverE
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteResolverEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an endpoint based on the endpoint ID.
-//
-// @param request - DeleteResolverEndpointRequest
-//
-// @return DeleteResolverEndpointResponse
-func (client *Client) DeleteResolverEndpoint(request *DeleteResolverEndpointRequest) (_result *DeleteResolverEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteResolverEndpointResponse{}
-	_body, _err := client.DeleteResolverEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1028,7 +740,7 @@ func (client *Client) DeleteResolverEndpoint(request *DeleteResolverEndpointRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteResolverRuleResponse
-func (client *Client) DeleteResolverRuleWithOptions(request *DeleteResolverRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteResolverRuleResponse, _err error) {
+func (client *Client) DeleteResolverRuleWithContext(ctx context.Context, request *DeleteResolverRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteResolverRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1057,29 +769,11 @@ func (client *Client) DeleteResolverRuleWithOptions(request *DeleteResolverRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteResolverRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a forwarding rule based on the rule ID.
-//
-// @param request - DeleteResolverRuleRequest
-//
-// @return DeleteResolverRuleResponse
-func (client *Client) DeleteResolverRule(request *DeleteResolverRuleRequest) (_result *DeleteResolverRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteResolverRuleResponse{}
-	_body, _err := client.DeleteResolverRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1092,7 +786,7 @@ func (client *Client) DeleteResolverRule(request *DeleteResolverRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteUserVpcAuthorizationResponse
-func (client *Client) DeleteUserVpcAuthorizationWithOptions(request *DeleteUserVpcAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserVpcAuthorizationResponse, _err error) {
+func (client *Client) DeleteUserVpcAuthorizationWithContext(ctx context.Context, request *DeleteUserVpcAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserVpcAuthorizationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1121,29 +815,11 @@ func (client *Client) DeleteUserVpcAuthorizationWithOptions(request *DeleteUserV
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteUserVpcAuthorizationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes an account from the central management of private Domain Name System (DNS) resolution based on the account ID and authorization type.
-//
-// @param request - DeleteUserVpcAuthorizationRequest
-//
-// @return DeleteUserVpcAuthorizationResponse
-func (client *Client) DeleteUserVpcAuthorization(request *DeleteUserVpcAuthorizationRequest) (_result *DeleteUserVpcAuthorizationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteUserVpcAuthorizationResponse{}
-	_body, _err := client.DeleteUserVpcAuthorizationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1162,7 +838,7 @@ func (client *Client) DeleteUserVpcAuthorization(request *DeleteUserVpcAuthoriza
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteZoneResponse
-func (client *Client) DeleteZoneWithOptions(request *DeleteZoneRequest, runtime *dara.RuntimeOptions) (_result *DeleteZoneResponse, _err error) {
+func (client *Client) DeleteZoneWithContext(ctx context.Context, request *DeleteZoneRequest, runtime *dara.RuntimeOptions) (_result *DeleteZoneResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1199,35 +875,11 @@ func (client *Client) DeleteZoneWithOptions(request *DeleteZoneRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteZoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an idle built-in authoritative zone.
-//
-// Description:
-//
-// #### [](#)Precautions
-//
-// If you want to delete a built-in authoritative zone whose effective scope is configured, you must disassociate the zone from the effective scope first.
-//
-// @param request - DeleteZoneRequest
-//
-// @return DeleteZoneResponse
-func (client *Client) DeleteZone(request *DeleteZoneRequest) (_result *DeleteZoneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteZoneResponse{}
-	_body, _err := client.DeleteZoneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1246,7 +898,7 @@ func (client *Client) DeleteZone(request *DeleteZoneRequest) (_result *DeleteZon
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteZoneRecordResponse
-func (client *Client) DeleteZoneRecordWithOptions(request *DeleteZoneRecordRequest, runtime *dara.RuntimeOptions) (_result *DeleteZoneRecordResponse, _err error) {
+func (client *Client) DeleteZoneRecordWithContext(ctx context.Context, request *DeleteZoneRecordRequest, runtime *dara.RuntimeOptions) (_result *DeleteZoneRecordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1283,35 +935,11 @@ func (client *Client) DeleteZoneRecordWithOptions(request *DeleteZoneRecordReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteZoneRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Domain Name System (DNS) record based on the ID of the DNS record.
-//
-// Description:
-//
-// #### **Precautions**
-//
-// Deleted DNS records cannot be restored. Exercise caution when you perform this operation.
-//
-// @param request - DeleteZoneRecordRequest
-//
-// @return DeleteZoneRecordResponse
-func (client *Client) DeleteZoneRecord(request *DeleteZoneRecordRequest) (_result *DeleteZoneRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteZoneRecordResponse{}
-	_body, _err := client.DeleteZoneRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1330,7 +958,7 @@ func (client *Client) DeleteZoneRecord(request *DeleteZoneRecordRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeChangeLogsResponse
-func (client *Client) DescribeChangeLogsWithOptions(request *DescribeChangeLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeChangeLogsResponse, _err error) {
+func (client *Client) DescribeChangeLogsWithContext(ctx context.Context, request *DescribeChangeLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeChangeLogsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1387,35 +1015,11 @@ func (client *Client) DescribeChangeLogsWithOptions(request *DescribeChangeLogsR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeChangeLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the operation logs of Private DNS. Operation logs record operations in modules such as the built-in authoritative module, cache module, forward module, and service address module and record the queries for Domain Name System (DNS) records. You can query operation logs by operation or operation content.
-//
-// Description:
-//
-// #### **Precautions**
-//
-// You can query the operation logs of Private DNS that are generated within the last six months.
-//
-// @param request - DescribeChangeLogsRequest
-//
-// @return DescribeChangeLogsResponse
-func (client *Client) DescribeChangeLogs(request *DescribeChangeLogsRequest) (_result *DescribeChangeLogsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeChangeLogsResponse{}
-	_body, _err := client.DescribeChangeLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1428,7 +1032,7 @@ func (client *Client) DescribeChangeLogs(request *DescribeChangeLogsRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCustomLineInfoResponse
-func (client *Client) DescribeCustomLineInfoWithOptions(request *DescribeCustomLineInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomLineInfoResponse, _err error) {
+func (client *Client) DescribeCustomLineInfoWithContext(ctx context.Context, request *DescribeCustomLineInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomLineInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1457,29 +1061,11 @@ func (client *Client) DescribeCustomLineInfoWithOptions(request *DescribeCustomL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCustomLineInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a custom line.
-//
-// @param request - DescribeCustomLineInfoRequest
-//
-// @return DescribeCustomLineInfoResponse
-func (client *Client) DescribeCustomLineInfo(request *DescribeCustomLineInfoRequest) (_result *DescribeCustomLineInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCustomLineInfoResponse{}
-	_body, _err := client.DescribeCustomLineInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1492,7 +1078,7 @@ func (client *Client) DescribeCustomLineInfo(request *DescribeCustomLineInfoRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCustomLinesResponse
-func (client *Client) DescribeCustomLinesWithOptions(request *DescribeCustomLinesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomLinesResponse, _err error) {
+func (client *Client) DescribeCustomLinesWithContext(ctx context.Context, request *DescribeCustomLinesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomLinesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1525,29 +1111,11 @@ func (client *Client) DescribeCustomLinesWithOptions(request *DescribeCustomLine
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCustomLinesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of custom lines.
-//
-// @param request - DescribeCustomLinesRequest
-//
-// @return DescribeCustomLinesResponse
-func (client *Client) DescribeCustomLines(request *DescribeCustomLinesRequest) (_result *DescribeCustomLinesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCustomLinesResponse{}
-	_body, _err := client.DescribeCustomLinesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1560,7 +1128,7 @@ func (client *Client) DescribeCustomLines(request *DescribeCustomLinesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1605,29 +1173,11 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of regions for selection based on the scenario and virtual private cloud (VPC) type.
-//
-// @param request - DescribeRegionsRequest
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1640,7 +1190,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRequestGraphResponse
-func (client *Client) DescribeRequestGraphWithOptions(request *DescribeRequestGraphRequest, runtime *dara.RuntimeOptions) (_result *DescribeRequestGraphResponse, _err error) {
+func (client *Client) DescribeRequestGraphWithContext(ctx context.Context, request *DescribeRequestGraphRequest, runtime *dara.RuntimeOptions) (_result *DescribeRequestGraphResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1693,29 +1243,11 @@ func (client *Client) DescribeRequestGraphWithOptions(request *DescribeRequestGr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRequestGraphResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about Domain Name System (DNS) requests based on conditions such as the time range.
-//
-// @param request - DescribeRequestGraphRequest
-//
-// @return DescribeRequestGraphResponse
-func (client *Client) DescribeRequestGraph(request *DescribeRequestGraphRequest) (_result *DescribeRequestGraphResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRequestGraphResponse{}
-	_body, _err := client.DescribeRequestGraphWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1728,7 +1260,7 @@ func (client *Client) DescribeRequestGraph(request *DescribeRequestGraphRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResolverAvailableZonesResponse
-func (client *Client) DescribeResolverAvailableZonesWithOptions(request *DescribeResolverAvailableZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverAvailableZonesResponse, _err error) {
+func (client *Client) DescribeResolverAvailableZonesWithContext(ctx context.Context, request *DescribeResolverAvailableZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverAvailableZonesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1761,29 +1293,11 @@ func (client *Client) DescribeResolverAvailableZonesWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeResolverAvailableZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of available zones.
-//
-// @param request - DescribeResolverAvailableZonesRequest
-//
-// @return DescribeResolverAvailableZonesResponse
-func (client *Client) DescribeResolverAvailableZones(request *DescribeResolverAvailableZonesRequest) (_result *DescribeResolverAvailableZonesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeResolverAvailableZonesResponse{}
-	_body, _err := client.DescribeResolverAvailableZonesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1796,7 +1310,7 @@ func (client *Client) DescribeResolverAvailableZones(request *DescribeResolverAv
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResolverEndpointResponse
-func (client *Client) DescribeResolverEndpointWithOptions(request *DescribeResolverEndpointRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverEndpointResponse, _err error) {
+func (client *Client) DescribeResolverEndpointWithContext(ctx context.Context, request *DescribeResolverEndpointRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1825,29 +1339,11 @@ func (client *Client) DescribeResolverEndpointWithOptions(request *DescribeResol
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeResolverEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about an endpoint based on the endpoint ID.
-//
-// @param request - DescribeResolverEndpointRequest
-//
-// @return DescribeResolverEndpointResponse
-func (client *Client) DescribeResolverEndpoint(request *DescribeResolverEndpointRequest) (_result *DescribeResolverEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeResolverEndpointResponse{}
-	_body, _err := client.DescribeResolverEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1860,7 +1356,7 @@ func (client *Client) DescribeResolverEndpoint(request *DescribeResolverEndpoint
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResolverEndpointsResponse
-func (client *Client) DescribeResolverEndpointsWithOptions(request *DescribeResolverEndpointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverEndpointsResponse, _err error) {
+func (client *Client) DescribeResolverEndpointsWithContext(ctx context.Context, request *DescribeResolverEndpointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverEndpointsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1905,29 +1401,11 @@ func (client *Client) DescribeResolverEndpointsWithOptions(request *DescribeReso
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeResolverEndpointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of endpoints.
-//
-// @param request - DescribeResolverEndpointsRequest
-//
-// @return DescribeResolverEndpointsResponse
-func (client *Client) DescribeResolverEndpoints(request *DescribeResolverEndpointsRequest) (_result *DescribeResolverEndpointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeResolverEndpointsResponse{}
-	_body, _err := client.DescribeResolverEndpointsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1940,7 +1418,7 @@ func (client *Client) DescribeResolverEndpoints(request *DescribeResolverEndpoin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResolverRuleResponse
-func (client *Client) DescribeResolverRuleWithOptions(request *DescribeResolverRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverRuleResponse, _err error) {
+func (client *Client) DescribeResolverRuleWithContext(ctx context.Context, request *DescribeResolverRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1969,29 +1447,11 @@ func (client *Client) DescribeResolverRuleWithOptions(request *DescribeResolverR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeResolverRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a forwarding rule based on the ID of the forwarding rule.
-//
-// @param request - DescribeResolverRuleRequest
-//
-// @return DescribeResolverRuleResponse
-func (client *Client) DescribeResolverRule(request *DescribeResolverRuleRequest) (_result *DescribeResolverRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeResolverRuleResponse{}
-	_body, _err := client.DescribeResolverRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2004,7 +1464,7 @@ func (client *Client) DescribeResolverRule(request *DescribeResolverRuleRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResolverRulesResponse
-func (client *Client) DescribeResolverRulesWithOptions(request *DescribeResolverRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverRulesResponse, _err error) {
+func (client *Client) DescribeResolverRulesWithContext(ctx context.Context, request *DescribeResolverRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeResolverRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2049,29 +1509,11 @@ func (client *Client) DescribeResolverRulesWithOptions(request *DescribeResolver
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeResolverRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of forwarding rules.
-//
-// @param request - DescribeResolverRulesRequest
-//
-// @return DescribeResolverRulesResponse
-func (client *Client) DescribeResolverRules(request *DescribeResolverRulesRequest) (_result *DescribeResolverRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeResolverRulesResponse{}
-	_body, _err := client.DescribeResolverRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2084,7 +1526,7 @@ func (client *Client) DescribeResolverRules(request *DescribeResolverRulesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeStatisticSummaryResponse
-func (client *Client) DescribeStatisticSummaryWithOptions(request *DescribeStatisticSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeStatisticSummaryResponse, _err error) {
+func (client *Client) DescribeStatisticSummaryWithContext(ctx context.Context, request *DescribeStatisticSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeStatisticSummaryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2113,29 +1555,11 @@ func (client *Client) DescribeStatisticSummaryWithOptions(request *DescribeStati
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeStatisticSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the statistics on Domain Name System (DNS) requests received on the previous day, including the top three zones and virtual private clouds (VPCs) with the largest number of DNS requests.
-//
-// @param request - DescribeStatisticSummaryRequest
-//
-// @return DescribeStatisticSummaryResponse
-func (client *Client) DescribeStatisticSummary(request *DescribeStatisticSummaryRequest) (_result *DescribeStatisticSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeStatisticSummaryResponse{}
-	_body, _err := client.DescribeStatisticSummaryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2152,7 +1576,7 @@ func (client *Client) DescribeStatisticSummary(request *DescribeStatisticSummary
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSyncEcsHostTaskResponse
-func (client *Client) DescribeSyncEcsHostTaskWithOptions(request *DescribeSyncEcsHostTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeSyncEcsHostTaskResponse, _err error) {
+func (client *Client) DescribeSyncEcsHostTaskWithContext(ctx context.Context, request *DescribeSyncEcsHostTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeSyncEcsHostTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2181,33 +1605,11 @@ func (client *Client) DescribeSyncEcsHostTaskWithOptions(request *DescribeSyncEc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSyncEcsHostTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a hostname synchronization task based on a zone ID.
-//
-// Description:
-//
-// You can call the DescribeSyncEcsHostTask operation to query the information about a hostname synchronization task based on a zone ID.
-//
-// @param request - DescribeSyncEcsHostTaskRequest
-//
-// @return DescribeSyncEcsHostTaskResponse
-func (client *Client) DescribeSyncEcsHostTask(request *DescribeSyncEcsHostTaskRequest) (_result *DescribeSyncEcsHostTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSyncEcsHostTaskResponse{}
-	_body, _err := client.DescribeSyncEcsHostTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2226,7 +1628,7 @@ func (client *Client) DescribeSyncEcsHostTask(request *DescribeSyncEcsHostTaskRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTagsResponse
-func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
+func (client *Client) DescribeTagsWithContext(ctx context.Context, request *DescribeTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2263,35 +1665,11 @@ func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of tags added to zones.
-//
-// Description:
-//
-// #### **Precautions**
-//
-// You can call this API operation to query the information about tags added only to zones.
-//
-// @param request - DescribeTagsRequest
-//
-// @return DescribeTagsResponse
-func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *DescribeTagsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTagsResponse{}
-	_body, _err := client.DescribeTagsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2304,7 +1682,7 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUserServiceStatusResponse
-func (client *Client) DescribeUserServiceStatusWithOptions(request *DescribeUserServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserServiceStatusResponse, _err error) {
+func (client *Client) DescribeUserServiceStatusWithContext(ctx context.Context, request *DescribeUserServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserServiceStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2329,29 +1707,11 @@ func (client *Client) DescribeUserServiceStatusWithOptions(request *DescribeUser
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUserServiceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the current user\\"s service status, such as whether the service is activated, whether there are any unpaid fees, etc.
-//
-// @param request - DescribeUserServiceStatusRequest
-//
-// @return DescribeUserServiceStatusResponse
-func (client *Client) DescribeUserServiceStatus(request *DescribeUserServiceStatusRequest) (_result *DescribeUserServiceStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeUserServiceStatusResponse{}
-	_body, _err := client.DescribeUserServiceStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2364,7 +1724,7 @@ func (client *Client) DescribeUserServiceStatus(request *DescribeUserServiceStat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUserVpcAuthorizationsResponse
-func (client *Client) DescribeUserVpcAuthorizationsWithOptions(request *DescribeUserVpcAuthorizationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserVpcAuthorizationsResponse, _err error) {
+func (client *Client) DescribeUserVpcAuthorizationsWithContext(ctx context.Context, request *DescribeUserVpcAuthorizationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserVpcAuthorizationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2401,29 +1761,11 @@ func (client *Client) DescribeUserVpcAuthorizationsWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUserVpcAuthorizationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of accounts whose virtual private clouds (VPCs) are associated with a private zone.
-//
-// @param request - DescribeUserVpcAuthorizationsRequest
-//
-// @return DescribeUserVpcAuthorizationsResponse
-func (client *Client) DescribeUserVpcAuthorizations(request *DescribeUserVpcAuthorizationsRequest) (_result *DescribeUserVpcAuthorizationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeUserVpcAuthorizationsResponse{}
-	_body, _err := client.DescribeUserVpcAuthorizationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2436,7 +1778,7 @@ func (client *Client) DescribeUserVpcAuthorizations(request *DescribeUserVpcAuth
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeZoneInfoResponse
-func (client *Client) DescribeZoneInfoWithOptions(request *DescribeZoneInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeZoneInfoResponse, _err error) {
+func (client *Client) DescribeZoneInfoWithContext(ctx context.Context, request *DescribeZoneInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeZoneInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2465,29 +1807,11 @@ func (client *Client) DescribeZoneInfoWithOptions(request *DescribeZoneInfoReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeZoneInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a built-in authoritative zone, such as the virtual private clouds (VPCs) that are associated with the zone.
-//
-// @param request - DescribeZoneInfoRequest
-//
-// @return DescribeZoneInfoResponse
-func (client *Client) DescribeZoneInfo(request *DescribeZoneInfoRequest) (_result *DescribeZoneInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeZoneInfoResponse{}
-	_body, _err := client.DescribeZoneInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2500,7 +1824,7 @@ func (client *Client) DescribeZoneInfo(request *DescribeZoneInfoRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeZoneRecordResponse
-func (client *Client) DescribeZoneRecordWithOptions(request *DescribeZoneRecordRequest, runtime *dara.RuntimeOptions) (_result *DescribeZoneRecordResponse, _err error) {
+func (client *Client) DescribeZoneRecordWithContext(ctx context.Context, request *DescribeZoneRecordRequest, runtime *dara.RuntimeOptions) (_result *DescribeZoneRecordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2525,29 +1849,11 @@ func (client *Client) DescribeZoneRecordWithOptions(request *DescribeZoneRecordR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeZoneRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a Domain Name System (DNS) record.
-//
-// @param request - DescribeZoneRecordRequest
-//
-// @return DescribeZoneRecordResponse
-func (client *Client) DescribeZoneRecord(request *DescribeZoneRecordRequest) (_result *DescribeZoneRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeZoneRecordResponse{}
-	_body, _err := client.DescribeZoneRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2560,7 +1866,7 @@ func (client *Client) DescribeZoneRecord(request *DescribeZoneRecordRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeZoneRecordsResponse
-func (client *Client) DescribeZoneRecordsWithOptions(request *DescribeZoneRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeZoneRecordsResponse, _err error) {
+func (client *Client) DescribeZoneRecordsWithContext(ctx context.Context, request *DescribeZoneRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeZoneRecordsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2613,29 +1919,11 @@ func (client *Client) DescribeZoneRecordsWithOptions(request *DescribeZoneRecord
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeZoneRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of Domain Name System (DNS) records.
-//
-// @param request - DescribeZoneRecordsRequest
-//
-// @return DescribeZoneRecordsResponse
-func (client *Client) DescribeZoneRecords(request *DescribeZoneRecordsRequest) (_result *DescribeZoneRecordsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeZoneRecordsResponse{}
-	_body, _err := client.DescribeZoneRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2652,7 +1940,7 @@ func (client *Client) DescribeZoneRecords(request *DescribeZoneRecordsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeZoneVpcTreeResponse
-func (client *Client) DescribeZoneVpcTreeWithOptions(request *DescribeZoneVpcTreeRequest, runtime *dara.RuntimeOptions) (_result *DescribeZoneVpcTreeResponse, _err error) {
+func (client *Client) DescribeZoneVpcTreeWithContext(ctx context.Context, request *DescribeZoneVpcTreeRequest, runtime *dara.RuntimeOptions) (_result *DescribeZoneVpcTreeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2681,33 +1969,11 @@ func (client *Client) DescribeZoneVpcTreeWithOptions(request *DescribeZoneVpcTre
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeZoneVpcTreeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of zones within the current account and a list of virtual private clouds (VPCs) associated with the zones.
-//
-// Description:
-//
-// We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs with which a zone is associated, you can call the DescribeZoneInfo operation based on the zone ID.
-//
-// @param request - DescribeZoneVpcTreeRequest
-//
-// @return DescribeZoneVpcTreeResponse
-func (client *Client) DescribeZoneVpcTree(request *DescribeZoneVpcTreeRequest) (_result *DescribeZoneVpcTreeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeZoneVpcTreeResponse{}
-	_body, _err := client.DescribeZoneVpcTreeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2720,7 +1986,7 @@ func (client *Client) DescribeZoneVpcTree(request *DescribeZoneVpcTreeRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeZonesResponse
-func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
+func (client *Client) DescribeZonesWithContext(ctx context.Context, request *DescribeZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2785,29 +2051,11 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of zones within the current account.
-//
-// @param request - DescribeZonesRequest
-//
-// @return DescribeZonesResponse
-func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *DescribeZonesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeZonesResponse{}
-	_body, _err := client.DescribeZonesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2826,7 +2074,7 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2871,35 +2119,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of tags added to zones.
-//
-// Description:
-//
-// #### [](#)**Precautions**
-//
-// You can call this API operation to query tags added only to zones.
-//
-// @param request - ListTagResourcesRequest
-//
-// @return ListTagResourcesResponse
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2918,7 +2142,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return MoveResourceGroupResponse
-func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
+func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2955,35 +2179,11 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes a resource group.
-//
-// Description:
-//
-// #### [](#)Precautions
-//
-// You can call this API operation to change a resource group only for a zone.
-//
-// @param request - MoveResourceGroupRequest
-//
-// @return MoveResourceGroupResponse
-func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.MoveResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2996,7 +2196,7 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchCustomLinesResponse
-func (client *Client) SearchCustomLinesWithOptions(request *SearchCustomLinesRequest, runtime *dara.RuntimeOptions) (_result *SearchCustomLinesResponse, _err error) {
+func (client *Client) SearchCustomLinesWithContext(ctx context.Context, request *SearchCustomLinesRequest, runtime *dara.RuntimeOptions) (_result *SearchCustomLinesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3057,29 +2257,11 @@ func (client *Client) SearchCustomLinesWithOptions(request *SearchCustomLinesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchCustomLinesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of custom lines.
-//
-// @param request - SearchCustomLinesRequest
-//
-// @return SearchCustomLinesResponse
-func (client *Client) SearchCustomLines(request *SearchCustomLinesRequest) (_result *SearchCustomLinesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchCustomLinesResponse{}
-	_body, _err := client.SearchCustomLinesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3092,7 +2274,7 @@ func (client *Client) SearchCustomLines(request *SearchCustomLinesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetProxyPatternResponse
-func (client *Client) SetProxyPatternWithOptions(request *SetProxyPatternRequest, runtime *dara.RuntimeOptions) (_result *SetProxyPatternResponse, _err error) {
+func (client *Client) SetProxyPatternWithContext(ctx context.Context, request *SetProxyPatternRequest, runtime *dara.RuntimeOptions) (_result *SetProxyPatternResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3133,29 +2315,11 @@ func (client *Client) SetProxyPatternWithOptions(request *SetProxyPatternRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetProxyPatternResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables the recursive resolution proxy for subdomain names.
-//
-// @param request - SetProxyPatternRequest
-//
-// @return SetProxyPatternResponse
-func (client *Client) SetProxyPattern(request *SetProxyPatternRequest) (_result *SetProxyPatternResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetProxyPatternResponse{}
-	_body, _err := client.SetProxyPatternWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3168,7 +2332,7 @@ func (client *Client) SetProxyPattern(request *SetProxyPatternRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetZoneRecordStatusResponse
-func (client *Client) SetZoneRecordStatusWithOptions(request *SetZoneRecordStatusRequest, runtime *dara.RuntimeOptions) (_result *SetZoneRecordStatusResponse, _err error) {
+func (client *Client) SetZoneRecordStatusWithContext(ctx context.Context, request *SetZoneRecordStatusRequest, runtime *dara.RuntimeOptions) (_result *SetZoneRecordStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3209,29 +2373,11 @@ func (client *Client) SetZoneRecordStatusWithOptions(request *SetZoneRecordStatu
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetZoneRecordStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables or disables a Domain Name System (DNS) record.
-//
-// @param request - SetZoneRecordStatusRequest
-//
-// @return SetZoneRecordStatusResponse
-func (client *Client) SetZoneRecordStatus(request *SetZoneRecordStatusRequest) (_result *SetZoneRecordStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetZoneRecordStatusResponse{}
-	_body, _err := client.SetZoneRecordStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3250,7 +2396,7 @@ func (client *Client) SetZoneRecordStatus(request *SetZoneRecordStatusRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3291,35 +2437,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds or modifies tags for zones.
-//
-// Description:
-//
-// ##### [](#)Precautions
-//
-// You can configure tags only for zones.
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3338,7 +2460,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3379,35 +2501,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes the tags of multiple zones at a time.
-//
-// Description:
-//
-// #### [](#)**Precautions**
-//
-// You can call this API operation to remove tags added only to zones.
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3420,7 +2518,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateCustomLineResponse
-func (client *Client) UpdateCustomLineWithOptions(request *UpdateCustomLineRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomLineResponse, _err error) {
+func (client *Client) UpdateCustomLineWithContext(ctx context.Context, request *UpdateCustomLineRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomLineResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3461,29 +2559,11 @@ func (client *Client) UpdateCustomLineWithOptions(request *UpdateCustomLineReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCustomLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a custom line.
-//
-// @param request - UpdateCustomLineRequest
-//
-// @return UpdateCustomLineResponse
-func (client *Client) UpdateCustomLine(request *UpdateCustomLineRequest) (_result *UpdateCustomLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateCustomLineResponse{}
-	_body, _err := client.UpdateCustomLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3496,7 +2576,7 @@ func (client *Client) UpdateCustomLine(request *UpdateCustomLineRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateRecordRemarkResponse
-func (client *Client) UpdateRecordRemarkWithOptions(request *UpdateRecordRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecordRemarkResponse, _err error) {
+func (client *Client) UpdateRecordRemarkWithContext(ctx context.Context, request *UpdateRecordRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecordRemarkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3533,29 +2613,11 @@ func (client *Client) UpdateRecordRemarkWithOptions(request *UpdateRecordRemarkR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRecordRemarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the description of a Domain Name System (DNS) record based on the record ID.
-//
-// @param request - UpdateRecordRemarkRequest
-//
-// @return UpdateRecordRemarkResponse
-func (client *Client) UpdateRecordRemark(request *UpdateRecordRemarkRequest) (_result *UpdateRecordRemarkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateRecordRemarkResponse{}
-	_body, _err := client.UpdateRecordRemarkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3568,7 +2630,7 @@ func (client *Client) UpdateRecordRemark(request *UpdateRecordRemarkRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateResolverEndpointResponse
-func (client *Client) UpdateResolverEndpointWithOptions(request *UpdateResolverEndpointRequest, runtime *dara.RuntimeOptions) (_result *UpdateResolverEndpointResponse, _err error) {
+func (client *Client) UpdateResolverEndpointWithContext(ctx context.Context, request *UpdateResolverEndpointRequest, runtime *dara.RuntimeOptions) (_result *UpdateResolverEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3605,29 +2667,11 @@ func (client *Client) UpdateResolverEndpointWithOptions(request *UpdateResolverE
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateResolverEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies an endpoint.
-//
-// @param request - UpdateResolverEndpointRequest
-//
-// @return UpdateResolverEndpointResponse
-func (client *Client) UpdateResolverEndpoint(request *UpdateResolverEndpointRequest) (_result *UpdateResolverEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateResolverEndpointResponse{}
-	_body, _err := client.UpdateResolverEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3640,7 +2684,7 @@ func (client *Client) UpdateResolverEndpoint(request *UpdateResolverEndpointRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateResolverRuleResponse
-func (client *Client) UpdateResolverRuleWithOptions(request *UpdateResolverRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateResolverRuleResponse, _err error) {
+func (client *Client) UpdateResolverRuleWithContext(ctx context.Context, request *UpdateResolverRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateResolverRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3681,29 +2725,11 @@ func (client *Client) UpdateResolverRuleWithOptions(request *UpdateResolverRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateResolverRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a forwarding rule.
-//
-// @param request - UpdateResolverRuleRequest
-//
-// @return UpdateResolverRuleResponse
-func (client *Client) UpdateResolverRule(request *UpdateResolverRuleRequest) (_result *UpdateResolverRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateResolverRuleResponse{}
-	_body, _err := client.UpdateResolverRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3716,7 +2742,7 @@ func (client *Client) UpdateResolverRule(request *UpdateResolverRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSyncEcsHostTaskResponse
-func (client *Client) UpdateSyncEcsHostTaskWithOptions(request *UpdateSyncEcsHostTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateSyncEcsHostTaskResponse, _err error) {
+func (client *Client) UpdateSyncEcsHostTaskWithContext(ctx context.Context, request *UpdateSyncEcsHostTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateSyncEcsHostTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3753,29 +2779,11 @@ func (client *Client) UpdateSyncEcsHostTaskWithOptions(request *UpdateSyncEcsHos
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSyncEcsHostTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds or updates a hostname synchronization task.
-//
-// @param request - UpdateSyncEcsHostTaskRequest
-//
-// @return UpdateSyncEcsHostTaskResponse
-func (client *Client) UpdateSyncEcsHostTask(request *UpdateSyncEcsHostTaskRequest) (_result *UpdateSyncEcsHostTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateSyncEcsHostTaskResponse{}
-	_body, _err := client.UpdateSyncEcsHostTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3794,7 +2802,7 @@ func (client *Client) UpdateSyncEcsHostTask(request *UpdateSyncEcsHostTaskReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateZoneRecordResponse
-func (client *Client) UpdateZoneRecordWithOptions(request *UpdateZoneRecordRequest, runtime *dara.RuntimeOptions) (_result *UpdateZoneRecordResponse, _err error) {
+func (client *Client) UpdateZoneRecordWithContext(ctx context.Context, request *UpdateZoneRecordRequest, runtime *dara.RuntimeOptions) (_result *UpdateZoneRecordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3859,35 +2867,11 @@ func (client *Client) UpdateZoneRecordWithOptions(request *UpdateZoneRecordReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateZoneRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a Domain Name System (DNS) record of a zone, including the hostname, record value, and weight value of the DNS record.
-//
-// Description:
-//
-// #### **Precautions**
-//
-// The DNS record modification for a zone in the regular module takes effect only after the time to live (TTL) expires. The DNS record modification for a zone in the acceleration module takes effect immediately.
-//
-// @param request - UpdateZoneRecordRequest
-//
-// @return UpdateZoneRecordResponse
-func (client *Client) UpdateZoneRecord(request *UpdateZoneRecordRequest) (_result *UpdateZoneRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateZoneRecordResponse{}
-	_body, _err := client.UpdateZoneRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3900,7 +2884,7 @@ func (client *Client) UpdateZoneRecord(request *UpdateZoneRecordRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateZoneRemarkResponse
-func (client *Client) UpdateZoneRemarkWithOptions(request *UpdateZoneRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateZoneRemarkResponse, _err error) {
+func (client *Client) UpdateZoneRemarkWithContext(ctx context.Context, request *UpdateZoneRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateZoneRemarkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3941,28 +2925,10 @@ func (client *Client) UpdateZoneRemarkWithOptions(request *UpdateZoneRemarkReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateZoneRemarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the description of a built-in authoritative zone.
-//
-// @param request - UpdateZoneRemarkRequest
-//
-// @return UpdateZoneRemarkResponse
-func (client *Client) UpdateZoneRemark(request *UpdateZoneRemarkRequest) (_result *UpdateZoneRemarkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateZoneRemarkResponse{}
-	_body, _err := client.UpdateZoneRemarkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
