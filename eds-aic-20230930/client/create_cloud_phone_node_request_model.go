@@ -61,6 +61,8 @@ type iCreateCloudPhoneNodeRequest interface {
 	GetTag() []*CreateCloudPhoneNodeRequestTag
 	SetUpBandwidthLimit(v int32) *CreateCloudPhoneNodeRequest
 	GetUpBandwidthLimit() *int32
+	SetUseTemplate(v string) *CreateCloudPhoneNodeRequest
+	GetUseTemplate() *string
 	SetVSwitchId(v string) *CreateCloudPhoneNodeRequest
 	GetVSwitchId() *string
 }
@@ -209,6 +211,7 @@ type CreateCloudPhoneNodeRequest struct {
 	// The resource tags.
 	Tag              []*CreateCloudPhoneNodeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	UpBandwidthLimit *int32                            `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
+	UseTemplate      *string                           `json:"UseTemplate,omitempty" xml:"UseTemplate,omitempty"`
 	// The vSwitch ID.
 	//
 	// example:
@@ -327,6 +330,10 @@ func (s *CreateCloudPhoneNodeRequest) GetTag() []*CreateCloudPhoneNodeRequestTag
 
 func (s *CreateCloudPhoneNodeRequest) GetUpBandwidthLimit() *int32 {
 	return s.UpBandwidthLimit
+}
+
+func (s *CreateCloudPhoneNodeRequest) GetUseTemplate() *string {
+	return s.UseTemplate
 }
 
 func (s *CreateCloudPhoneNodeRequest) GetVSwitchId() *string {
@@ -460,6 +467,11 @@ func (s *CreateCloudPhoneNodeRequest) SetTag(v []*CreateCloudPhoneNodeRequestTag
 
 func (s *CreateCloudPhoneNodeRequest) SetUpBandwidthLimit(v int32) *CreateCloudPhoneNodeRequest {
 	s.UpBandwidthLimit = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetUseTemplate(v string) *CreateCloudPhoneNodeRequest {
+	s.UseTemplate = &v
 	return s
 }
 

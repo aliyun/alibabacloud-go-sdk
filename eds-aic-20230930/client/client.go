@@ -955,6 +955,10 @@ func (client *Client) CreateCloudPhoneNodeWithOptions(tmpReq *CreateCloudPhoneNo
 		query["UpBandwidthLimit"] = request.UpBandwidthLimit
 	}
 
+	if !dara.IsNil(request.UseTemplate) {
+		query["UseTemplate"] = request.UseTemplate
+	}
+
 	if !dara.IsNil(request.VSwitchId) {
 		query["VSwitchId"] = request.VSwitchId
 	}
@@ -1329,6 +1333,84 @@ func (client *Client) CreateScreenshot(request *CreateScreenshotRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateScreenshotResponse{}
 	_body, _err := client.CreateScreenshotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建系统属性模板
+//
+// @param tmpReq - CreateSystemPropertyTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSystemPropertyTemplateResponse
+func (client *Client) CreateSystemPropertyTemplateWithOptions(tmpReq *CreateSystemPropertyTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateSystemPropertyTemplateResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateSystemPropertyTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SystemPropertyInfo) {
+		request.SystemPropertyInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SystemPropertyInfo, dara.String("SystemPropertyInfo"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableAuto) {
+		query["EnableAuto"] = request.EnableAuto
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		query["FilePath"] = request.FilePath
+	}
+
+	if !dara.IsNil(request.SystemPropertyInfoShrink) {
+		query["SystemPropertyInfo"] = request.SystemPropertyInfoShrink
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSystemPropertyTemplate"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSystemPropertyTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建系统属性模板
+//
+// @param request - CreateSystemPropertyTemplateRequest
+//
+// @return CreateSystemPropertyTemplateResponse
+func (client *Client) CreateSystemPropertyTemplate(request *CreateSystemPropertyTemplateRequest) (_result *CreateSystemPropertyTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSystemPropertyTemplateResponse{}
+	_body, _err := client.CreateSystemPropertyTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1795,6 +1877,66 @@ func (client *Client) DeletePolicyGroup(request *DeletePolicyGroupRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeletePolicyGroupResponse{}
 	_body, _err := client.DeletePolicyGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除系统属性模板
+//
+// @param request - DeleteSystemPropertyTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSystemPropertyTemplatesResponse
+func (client *Client) DeleteSystemPropertyTemplatesWithOptions(request *DeleteSystemPropertyTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DeleteSystemPropertyTemplatesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TemplateIds) {
+		query["TemplateIds"] = request.TemplateIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSystemPropertyTemplates"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSystemPropertyTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除系统属性模板
+//
+// @param request - DeleteSystemPropertyTemplatesRequest
+//
+// @return DeleteSystemPropertyTemplatesResponse
+func (client *Client) DeleteSystemPropertyTemplates(request *DeleteSystemPropertyTemplatesRequest) (_result *DeleteSystemPropertyTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSystemPropertyTemplatesResponse{}
+	_body, _err := client.DeleteSystemPropertyTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2862,6 +3004,78 @@ func (client *Client) DescribeSpec(request *DescribeSpecRequest) (_result *Descr
 
 // Summary:
 //
+// 查询系统属性模板
+//
+// @param request - DescribeSystemPropertyTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSystemPropertyTemplatesResponse
+func (client *Client) DescribeSystemPropertyTemplatesWithOptions(request *DescribeSystemPropertyTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSystemPropertyTemplatesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.TemplateIds) {
+		query["TemplateIds"] = request.TemplateIds
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSystemPropertyTemplates"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSystemPropertyTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询系统属性模板
+//
+// @param request - DescribeSystemPropertyTemplatesRequest
+//
+// @return DescribeSystemPropertyTemplatesResponse
+func (client *Client) DescribeSystemPropertyTemplates(request *DescribeSystemPropertyTemplatesRequest) (_result *DescribeSystemPropertyTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSystemPropertyTemplatesResponse{}
+	_body, _err := client.DescribeSystemPropertyTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries tasks created for a cloud phone instance.
 //
 // Description:
@@ -3569,6 +3783,66 @@ func (client *Client) GenerateCoordinationCode(request *GenerateCoordinationCode
 	runtime := &dara.RuntimeOptions{}
 	_result = &GenerateCoordinationCodeResponse{}
 	_body, _err := client.GenerateCoordinationCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取属性模板信息
+//
+// @param request - GetInstancePropertiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstancePropertiesResponse
+func (client *Client) GetInstancePropertiesWithOptions(request *GetInstancePropertiesRequest, runtime *dara.RuntimeOptions) (_result *GetInstancePropertiesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceProperties"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstancePropertiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取属性模板信息
+//
+// @param request - GetInstancePropertiesRequest
+//
+// @return GetInstancePropertiesResponse
+func (client *Client) GetInstanceProperties(request *GetInstancePropertiesRequest) (_result *GetInstancePropertiesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetInstancePropertiesResponse{}
+	_body, _err := client.GetInstancePropertiesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4410,6 +4684,88 @@ func (client *Client) ModifyPolicyGroup(request *ModifyPolicyGroupRequest) (_res
 
 // Summary:
 //
+// 修改属性模板
+//
+// @param tmpReq - ModifySystemPropertyTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySystemPropertyTemplateResponse
+func (client *Client) ModifySystemPropertyTemplateWithOptions(tmpReq *ModifySystemPropertyTemplateRequest, runtime *dara.RuntimeOptions) (_result *ModifySystemPropertyTemplateResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifySystemPropertyTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SystemPropertyInfo) {
+		request.SystemPropertyInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SystemPropertyInfo, dara.String("SystemPropertyInfo"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableAuto) {
+		query["EnableAuto"] = request.EnableAuto
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		query["FilePath"] = request.FilePath
+	}
+
+	if !dara.IsNil(request.SystemPropertyInfoShrink) {
+		query["SystemPropertyInfo"] = request.SystemPropertyInfoShrink
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySystemPropertyTemplate"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySystemPropertyTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改属性模板
+//
+// @param request - ModifySystemPropertyTemplateRequest
+//
+// @return ModifySystemPropertyTemplateResponse
+func (client *Client) ModifySystemPropertyTemplate(request *ModifySystemPropertyTemplateRequest) (_result *ModifySystemPropertyTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifySystemPropertyTemplateResponse{}
+	_body, _err := client.ModifySystemPropertyTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Operates apps in a cloud phone, such as opening, closing, and reopening apps.
 //
 // Description:
@@ -5027,6 +5383,76 @@ func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileRespo
 	runtime := &dara.RuntimeOptions{}
 	_result = &SendFileResponse{}
 	_body, _err := client.SendFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 发送属性模板
+//
+// @param request - SendSystemPropertyTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendSystemPropertyTemplateResponse
+func (client *Client) SendSystemPropertyTemplateWithOptions(request *SendSystemPropertyTemplateRequest, runtime *dara.RuntimeOptions) (_result *SendSystemPropertyTemplateResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TemplateIds) {
+		query["TemplateIds"] = request.TemplateIds
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AndroidInstanceIds) {
+		body["AndroidInstanceIds"] = request.AndroidInstanceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SendSystemPropertyTemplate"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SendSystemPropertyTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发送属性模板
+//
+// @param request - SendSystemPropertyTemplateRequest
+//
+// @return SendSystemPropertyTemplateResponse
+func (client *Client) SendSystemPropertyTemplate(request *SendSystemPropertyTemplateRequest) (_result *SendSystemPropertyTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SendSystemPropertyTemplateResponse{}
+	_body, _err := client.SendSystemPropertyTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
