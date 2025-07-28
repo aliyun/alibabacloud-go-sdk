@@ -41,6 +41,8 @@ type iDescribeDesktopsRequest interface {
 	GetGroupId() *string
 	SetImageId(v []*string) *DescribeDesktopsRequest
 	GetImageId() []*string
+	SetIncludeAutoSnapshotPolicy(v bool) *DescribeDesktopsRequest
+	GetIncludeAutoSnapshotPolicy() *bool
 	SetManagementFlag(v string) *DescribeDesktopsRequest
 	GetManagementFlag() *string
 	SetMaxResults(v int32) *DescribeDesktopsRequest
@@ -203,7 +205,8 @@ type DescribeDesktopsRequest struct {
 	// dg-boyczi8enfyc5****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The IDs of the images.
-	ImageId []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
+	ImageId                   []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
+	IncludeAutoSnapshotPolicy *bool     `json:"IncludeAutoSnapshotPolicy,omitempty" xml:"IncludeAutoSnapshotPolicy,omitempty"`
 	// The flag that is used to manage the cloud desktops.
 	//
 	// example:
@@ -424,6 +427,10 @@ func (s *DescribeDesktopsRequest) GetImageId() []*string {
 	return s.ImageId
 }
 
+func (s *DescribeDesktopsRequest) GetIncludeAutoSnapshotPolicy() *bool {
+	return s.IncludeAutoSnapshotPolicy
+}
+
 func (s *DescribeDesktopsRequest) GetManagementFlag() *string {
 	return s.ManagementFlag
 }
@@ -581,6 +588,11 @@ func (s *DescribeDesktopsRequest) SetGroupId(v string) *DescribeDesktopsRequest 
 
 func (s *DescribeDesktopsRequest) SetImageId(v []*string) *DescribeDesktopsRequest {
 	s.ImageId = v
+	return s
+}
+
+func (s *DescribeDesktopsRequest) SetIncludeAutoSnapshotPolicy(v bool) *DescribeDesktopsRequest {
+	s.IncludeAutoSnapshotPolicy = &v
 	return s
 }
 
