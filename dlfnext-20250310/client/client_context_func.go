@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("dlfnext"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -66,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AlterCatalogResponse
-func (client *Client) AlterCatalogWithOptions(catalog *string, request *AlterCatalogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterCatalogResponse, _err error) {
+func (client *Client) AlterCatalogWithContext(ctx context.Context, catalog *string, request *AlterCatalogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterCatalogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -96,30 +48,11 @@ func (client *Client) AlterCatalogWithOptions(catalog *string, request *AlterCat
 		BodyType:    dara.String("json"),
 	}
 	_result = &AlterCatalogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新数据目录
-//
-// @param request - AlterCatalogRequest
-//
-// @return AlterCatalogResponse
-func (client *Client) AlterCatalog(catalog *string, request *AlterCatalogRequest) (_result *AlterCatalogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AlterCatalogResponse{}
-	_body, _err := client.AlterCatalogWithOptions(catalog, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -134,7 +67,7 @@ func (client *Client) AlterCatalog(catalog *string, request *AlterCatalogRequest
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AlterDatabaseResponse
-func (client *Client) AlterDatabaseWithOptions(catalogId *string, database *string, request *AlterDatabaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterDatabaseResponse, _err error) {
+func (client *Client) AlterDatabaseWithContext(ctx context.Context, catalogId *string, database *string, request *AlterDatabaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterDatabaseResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -164,30 +97,11 @@ func (client *Client) AlterDatabaseWithOptions(catalogId *string, database *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &AlterDatabaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新数据库
-//
-// @param request - AlterDatabaseRequest
-//
-// @return AlterDatabaseResponse
-func (client *Client) AlterDatabase(catalogId *string, database *string, request *AlterDatabaseRequest) (_result *AlterDatabaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AlterDatabaseResponse{}
-	_body, _err := client.AlterDatabaseWithOptions(catalogId, database, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -202,7 +116,7 @@ func (client *Client) AlterDatabase(catalogId *string, database *string, request
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AlterTableResponse
-func (client *Client) AlterTableWithOptions(catalogId *string, database *string, table *string, request *AlterTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterTableResponse, _err error) {
+func (client *Client) AlterTableWithContext(ctx context.Context, catalogId *string, database *string, table *string, request *AlterTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterTableResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -228,30 +142,11 @@ func (client *Client) AlterTableWithOptions(catalogId *string, database *string,
 		BodyType:    dara.String("none"),
 	}
 	_result = &AlterTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更改Table
-//
-// @param request - AlterTableRequest
-//
-// @return AlterTableResponse
-func (client *Client) AlterTable(catalogId *string, database *string, table *string, request *AlterTableRequest) (_result *AlterTableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AlterTableResponse{}
-	_body, _err := client.AlterTableWithOptions(catalogId, database, table, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -266,7 +161,7 @@ func (client *Client) AlterTable(catalogId *string, database *string, table *str
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchGrantPermissionsResponse
-func (client *Client) BatchGrantPermissionsWithOptions(catalogId *string, request *BatchGrantPermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchGrantPermissionsResponse, _err error) {
+func (client *Client) BatchGrantPermissionsWithContext(ctx context.Context, catalogId *string, request *BatchGrantPermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchGrantPermissionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -292,30 +187,11 @@ func (client *Client) BatchGrantPermissionsWithOptions(catalogId *string, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchGrantPermissionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量授权
-//
-// @param request - BatchGrantPermissionsRequest
-//
-// @return BatchGrantPermissionsResponse
-func (client *Client) BatchGrantPermissions(catalogId *string, request *BatchGrantPermissionsRequest) (_result *BatchGrantPermissionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &BatchGrantPermissionsResponse{}
-	_body, _err := client.BatchGrantPermissionsWithOptions(catalogId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -330,7 +206,7 @@ func (client *Client) BatchGrantPermissions(catalogId *string, request *BatchGra
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchRevokePermissionsResponse
-func (client *Client) BatchRevokePermissionsWithOptions(catalogId *string, request *BatchRevokePermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchRevokePermissionsResponse, _err error) {
+func (client *Client) BatchRevokePermissionsWithContext(ctx context.Context, catalogId *string, request *BatchRevokePermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchRevokePermissionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -356,30 +232,11 @@ func (client *Client) BatchRevokePermissionsWithOptions(catalogId *string, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchRevokePermissionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量取消授权
-//
-// @param request - BatchRevokePermissionsRequest
-//
-// @return BatchRevokePermissionsResponse
-func (client *Client) BatchRevokePermissions(catalogId *string, request *BatchRevokePermissionsRequest) (_result *BatchRevokePermissionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &BatchRevokePermissionsResponse{}
-	_body, _err := client.BatchRevokePermissionsWithOptions(catalogId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -394,7 +251,7 @@ func (client *Client) BatchRevokePermissions(catalogId *string, request *BatchRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCatalogResponse
-func (client *Client) CreateCatalogWithOptions(request *CreateCatalogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateCatalogResponse, _err error) {
+func (client *Client) CreateCatalogWithContext(ctx context.Context, request *CreateCatalogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateCatalogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -428,30 +285,11 @@ func (client *Client) CreateCatalogWithOptions(request *CreateCatalogRequest, he
 		BodyType:    dara.String("none"),
 	}
 	_result = &CreateCatalogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建数据目录
-//
-// @param request - CreateCatalogRequest
-//
-// @return CreateCatalogResponse
-func (client *Client) CreateCatalog(request *CreateCatalogRequest) (_result *CreateCatalogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateCatalogResponse{}
-	_body, _err := client.CreateCatalogWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -466,7 +304,7 @@ func (client *Client) CreateCatalog(request *CreateCatalogRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDatabaseResponse
-func (client *Client) CreateDatabaseWithOptions(catalogId *string, request *CreateDatabaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatabaseResponse, _err error) {
+func (client *Client) CreateDatabaseWithContext(ctx context.Context, catalogId *string, request *CreateDatabaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatabaseResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -496,30 +334,11 @@ func (client *Client) CreateDatabaseWithOptions(catalogId *string, request *Crea
 		BodyType:    dara.String("none"),
 	}
 	_result = &CreateDatabaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建数据库
-//
-// @param request - CreateDatabaseRequest
-//
-// @return CreateDatabaseResponse
-func (client *Client) CreateDatabase(catalogId *string, request *CreateDatabaseRequest) (_result *CreateDatabaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateDatabaseResponse{}
-	_body, _err := client.CreateDatabaseWithOptions(catalogId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -534,7 +353,7 @@ func (client *Client) CreateDatabase(catalogId *string, request *CreateDatabaseR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRoleResponse
-func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRoleResponse, _err error) {
+func (client *Client) CreateRoleWithContext(ctx context.Context, request *CreateRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRoleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -568,30 +387,11 @@ func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, headers 
 		BodyType:    dara.String("none"),
 	}
 	_result = &CreateRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建角色
-//
-// @param request - CreateRoleRequest
-//
-// @return CreateRoleResponse
-func (client *Client) CreateRole(request *CreateRoleRequest) (_result *CreateRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateRoleResponse{}
-	_body, _err := client.CreateRoleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -606,7 +406,7 @@ func (client *Client) CreateRole(request *CreateRoleRequest) (_result *CreateRol
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTableResponse
-func (client *Client) CreateTableWithOptions(catalogId *string, database *string, request *CreateTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTableResponse, _err error) {
+func (client *Client) CreateTableWithContext(ctx context.Context, catalogId *string, database *string, request *CreateTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTableResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -636,30 +436,11 @@ func (client *Client) CreateTableWithOptions(catalogId *string, database *string
 		BodyType:    dara.String("none"),
 	}
 	_result = &CreateTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建表
-//
-// @param request - CreateTableRequest
-//
-// @return CreateTableResponse
-func (client *Client) CreateTable(catalogId *string, database *string, request *CreateTableRequest) (_result *CreateTableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateTableResponse{}
-	_body, _err := client.CreateTableWithOptions(catalogId, database, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -674,7 +455,7 @@ func (client *Client) CreateTable(catalogId *string, database *string, request *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRoleResponse
-func (client *Client) DeleteRoleWithOptions(request *DeleteRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRoleResponse, _err error) {
+func (client *Client) DeleteRoleWithContext(ctx context.Context, request *DeleteRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRoleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -700,30 +481,11 @@ func (client *Client) DeleteRoleWithOptions(request *DeleteRoleRequest, headers 
 		BodyType:    dara.String("none"),
 	}
 	_result = &DeleteRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除角色
-//
-// @param request - DeleteRoleRequest
-//
-// @return DeleteRoleResponse
-func (client *Client) DeleteRole(request *DeleteRoleRequest) (_result *DeleteRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteRoleResponse{}
-	_body, _err := client.DeleteRoleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -736,7 +498,7 @@ func (client *Client) DeleteRole(request *DeleteRoleRequest) (_result *DeleteRol
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -752,28 +514,11 @@ func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询 DLF 开通地域
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -786,7 +531,7 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DropCatalogResponse
-func (client *Client) DropCatalogWithOptions(catalog *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DropCatalogResponse, _err error) {
+func (client *Client) DropCatalogWithContext(ctx context.Context, catalog *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DropCatalogResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -802,28 +547,11 @@ func (client *Client) DropCatalogWithOptions(catalog *string, headers map[string
 		BodyType:    dara.String("none"),
 	}
 	_result = &DropCatalogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建数据湖Catalog
-//
-// @return DropCatalogResponse
-func (client *Client) DropCatalog(catalog *string) (_result *DropCatalogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DropCatalogResponse{}
-	_body, _err := client.DropCatalogWithOptions(catalog, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -836,7 +564,7 @@ func (client *Client) DropCatalog(catalog *string) (_result *DropCatalogResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DropDatabaseResponse
-func (client *Client) DropDatabaseWithOptions(catalogId *string, database *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DropDatabaseResponse, _err error) {
+func (client *Client) DropDatabaseWithContext(ctx context.Context, catalogId *string, database *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DropDatabaseResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -852,28 +580,11 @@ func (client *Client) DropDatabaseWithOptions(catalogId *string, database *strin
 		BodyType:    dara.String("none"),
 	}
 	_result = &DropDatabaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除数据库
-//
-// @return DropDatabaseResponse
-func (client *Client) DropDatabase(catalogId *string, database *string) (_result *DropDatabaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DropDatabaseResponse{}
-	_body, _err := client.DropDatabaseWithOptions(catalogId, database, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -886,7 +597,7 @@ func (client *Client) DropDatabase(catalogId *string, database *string) (_result
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DropTableResponse
-func (client *Client) DropTableWithOptions(catalogId *string, database *string, table *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DropTableResponse, _err error) {
+func (client *Client) DropTableWithContext(ctx context.Context, catalogId *string, database *string, table *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DropTableResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -902,28 +613,11 @@ func (client *Client) DropTableWithOptions(catalogId *string, database *string, 
 		BodyType:    dara.String("none"),
 	}
 	_result = &DropTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除表
-//
-// @return DropTableResponse
-func (client *Client) DropTable(catalogId *string, database *string, table *string) (_result *DropTableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DropTableResponse{}
-	_body, _err := client.DropTableWithOptions(catalogId, database, table, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -936,7 +630,7 @@ func (client *Client) DropTable(catalogId *string, database *string, table *stri
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCatalogResponse
-func (client *Client) GetCatalogWithOptions(catalog *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCatalogResponse, _err error) {
+func (client *Client) GetCatalogWithContext(ctx context.Context, catalog *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCatalogResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -952,28 +646,11 @@ func (client *Client) GetCatalogWithOptions(catalog *string, headers map[string]
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCatalogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看数据湖Catalog
-//
-// @return GetCatalogResponse
-func (client *Client) GetCatalog(catalog *string) (_result *GetCatalogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetCatalogResponse{}
-	_body, _err := client.GetCatalogWithOptions(catalog, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -986,7 +663,7 @@ func (client *Client) GetCatalog(catalog *string) (_result *GetCatalogResponse, 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCatalogSummaryResponse
-func (client *Client) GetCatalogSummaryWithOptions(catalogId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCatalogSummaryResponse, _err error) {
+func (client *Client) GetCatalogSummaryWithContext(ctx context.Context, catalogId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCatalogSummaryResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1002,28 +679,11 @@ func (client *Client) GetCatalogSummaryWithOptions(catalogId *string, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCatalogSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看表
-//
-// @return GetCatalogSummaryResponse
-func (client *Client) GetCatalogSummary(catalogId *string) (_result *GetCatalogSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetCatalogSummaryResponse{}
-	_body, _err := client.GetCatalogSummaryWithOptions(catalogId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1038,7 +698,7 @@ func (client *Client) GetCatalogSummary(catalogId *string) (_result *GetCatalogS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCatalogSummaryTrendResponse
-func (client *Client) GetCatalogSummaryTrendWithOptions(catalogId *string, request *GetCatalogSummaryTrendRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCatalogSummaryTrendResponse, _err error) {
+func (client *Client) GetCatalogSummaryTrendWithContext(ctx context.Context, catalogId *string, request *GetCatalogSummaryTrendRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCatalogSummaryTrendResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1068,30 +728,11 @@ func (client *Client) GetCatalogSummaryTrendWithOptions(catalogId *string, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCatalogSummaryTrendResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看表
-//
-// @param request - GetCatalogSummaryTrendRequest
-//
-// @return GetCatalogSummaryTrendResponse
-func (client *Client) GetCatalogSummaryTrend(catalogId *string, request *GetCatalogSummaryTrendRequest) (_result *GetCatalogSummaryTrendResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetCatalogSummaryTrendResponse{}
-	_body, _err := client.GetCatalogSummaryTrendWithOptions(catalogId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1104,7 +745,7 @@ func (client *Client) GetCatalogSummaryTrend(catalogId *string, request *GetCata
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCatalogTokenResponse
-func (client *Client) GetCatalogTokenWithOptions(catalog *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCatalogTokenResponse, _err error) {
+func (client *Client) GetCatalogTokenWithContext(ctx context.Context, catalog *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCatalogTokenResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1120,28 +761,11 @@ func (client *Client) GetCatalogTokenWithOptions(catalog *string, headers map[st
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCatalogTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取数据湖Catalog的临时访问凭证
-//
-// @return GetCatalogTokenResponse
-func (client *Client) GetCatalogToken(catalog *string) (_result *GetCatalogTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetCatalogTokenResponse{}
-	_body, _err := client.GetCatalogTokenWithOptions(catalog, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1154,7 +778,7 @@ func (client *Client) GetCatalogToken(catalog *string) (_result *GetCatalogToken
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDatabaseResponse
-func (client *Client) GetDatabaseWithOptions(catalogId *string, database *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatabaseResponse, _err error) {
+func (client *Client) GetDatabaseWithContext(ctx context.Context, catalogId *string, database *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatabaseResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1170,28 +794,11 @@ func (client *Client) GetDatabaseWithOptions(catalogId *string, database *string
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDatabaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看数据库
-//
-// @return GetDatabaseResponse
-func (client *Client) GetDatabase(catalogId *string, database *string) (_result *GetDatabaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetDatabaseResponse{}
-	_body, _err := client.GetDatabaseWithOptions(catalogId, database, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1204,7 +811,7 @@ func (client *Client) GetDatabase(catalogId *string, database *string) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDatabaseSummaryResponse
-func (client *Client) GetDatabaseSummaryWithOptions(catalogId *string, database *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatabaseSummaryResponse, _err error) {
+func (client *Client) GetDatabaseSummaryWithContext(ctx context.Context, catalogId *string, database *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatabaseSummaryResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1220,28 +827,11 @@ func (client *Client) GetDatabaseSummaryWithOptions(catalogId *string, database 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDatabaseSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看表
-//
-// @return GetDatabaseSummaryResponse
-func (client *Client) GetDatabaseSummary(catalogId *string, database *string) (_result *GetDatabaseSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetDatabaseSummaryResponse{}
-	_body, _err := client.GetDatabaseSummaryWithOptions(catalogId, database, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1254,7 +844,7 @@ func (client *Client) GetDatabaseSummary(catalogId *string, database *string) (_
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRegionStatusResponse
-func (client *Client) GetRegionStatusWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRegionStatusResponse, _err error) {
+func (client *Client) GetRegionStatusWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRegionStatusResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1270,28 +860,11 @@ func (client *Client) GetRegionStatusWithOptions(headers map[string]*string, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRegionStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询 DLF 当前地域开通状态
-//
-// @return GetRegionStatusResponse
-func (client *Client) GetRegionStatus() (_result *GetRegionStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetRegionStatusResponse{}
-	_body, _err := client.GetRegionStatusWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1306,7 +879,7 @@ func (client *Client) GetRegionStatus() (_result *GetRegionStatusResponse, _err 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRoleResponse
-func (client *Client) GetRoleWithOptions(request *GetRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRoleResponse, _err error) {
+func (client *Client) GetRoleWithContext(ctx context.Context, request *GetRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRoleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1332,30 +905,11 @@ func (client *Client) GetRoleWithOptions(request *GetRoleRequest, headers map[st
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取角色
-//
-// @param request - GetRoleRequest
-//
-// @return GetRoleResponse
-func (client *Client) GetRole(request *GetRoleRequest) (_result *GetRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetRoleResponse{}
-	_body, _err := client.GetRoleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1368,7 +922,7 @@ func (client *Client) GetRole(request *GetRoleRequest) (_result *GetRoleResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTableResponse
-func (client *Client) GetTableWithOptions(catalogId *string, database *string, table *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTableResponse, _err error) {
+func (client *Client) GetTableWithContext(ctx context.Context, catalogId *string, database *string, table *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTableResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1384,28 +938,11 @@ func (client *Client) GetTableWithOptions(catalogId *string, database *string, t
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看表
-//
-// @return GetTableResponse
-func (client *Client) GetTable(catalogId *string, database *string, table *string) (_result *GetTableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTableResponse{}
-	_body, _err := client.GetTableWithOptions(catalogId, database, table, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1418,7 +955,7 @@ func (client *Client) GetTable(catalogId *string, database *string, table *strin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTableSummaryResponse
-func (client *Client) GetTableSummaryWithOptions(catalogId *string, database *string, table *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTableSummaryResponse, _err error) {
+func (client *Client) GetTableSummaryWithContext(ctx context.Context, catalogId *string, database *string, table *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTableSummaryResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1434,28 +971,11 @@ func (client *Client) GetTableSummaryWithOptions(catalogId *string, database *st
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTableSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看表
-//
-// @return GetTableSummaryResponse
-func (client *Client) GetTableSummary(catalogId *string, database *string, table *string) (_result *GetTableSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTableSummaryResponse{}
-	_body, _err := client.GetTableSummaryWithOptions(catalogId, database, table, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1470,7 +990,7 @@ func (client *Client) GetTableSummary(catalogId *string, database *string, table
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUserResponse
-func (client *Client) GetUserWithOptions(request *GetUserRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUserResponse, _err error) {
+func (client *Client) GetUserWithContext(ctx context.Context, request *GetUserRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUserResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1496,30 +1016,11 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, headers map[st
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取用户
-//
-// @param request - GetUserRequest
-//
-// @return GetUserResponse
-func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetUserResponse{}
-	_body, _err := client.GetUserWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1534,7 +1035,7 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GrantRoleToUsersResponse
-func (client *Client) GrantRoleToUsersWithOptions(request *GrantRoleToUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GrantRoleToUsersResponse, _err error) {
+func (client *Client) GrantRoleToUsersWithContext(ctx context.Context, request *GrantRoleToUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GrantRoleToUsersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1564,30 +1065,11 @@ func (client *Client) GrantRoleToUsersWithOptions(request *GrantRoleToUsersReque
 		BodyType:    dara.String("none"),
 	}
 	_result = &GrantRoleToUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量授予角色权限给用户
-//
-// @param request - GrantRoleToUsersRequest
-//
-// @return GrantRoleToUsersResponse
-func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_result *GrantRoleToUsersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GrantRoleToUsersResponse{}
-	_body, _err := client.GrantRoleToUsersWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1602,7 +1084,7 @@ func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCatalogsResponse
-func (client *Client) ListCatalogsWithOptions(request *ListCatalogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCatalogsResponse, _err error) {
+func (client *Client) ListCatalogsWithContext(ctx context.Context, request *ListCatalogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCatalogsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1636,30 +1118,11 @@ func (client *Client) ListCatalogsWithOptions(request *ListCatalogsRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCatalogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看数据目录列表
-//
-// @param request - ListCatalogsRequest
-//
-// @return ListCatalogsResponse
-func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListCatalogsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListCatalogsResponse{}
-	_body, _err := client.ListCatalogsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1674,7 +1137,7 @@ func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDatabaseDetailsResponse
-func (client *Client) ListDatabaseDetailsWithOptions(catalogId *string, request *ListDatabaseDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatabaseDetailsResponse, _err error) {
+func (client *Client) ListDatabaseDetailsWithContext(ctx context.Context, catalogId *string, request *ListDatabaseDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatabaseDetailsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1708,30 +1171,11 @@ func (client *Client) ListDatabaseDetailsWithOptions(catalogId *string, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDatabaseDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看数据库列表
-//
-// @param request - ListDatabaseDetailsRequest
-//
-// @return ListDatabaseDetailsResponse
-func (client *Client) ListDatabaseDetails(catalogId *string, request *ListDatabaseDetailsRequest) (_result *ListDatabaseDetailsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListDatabaseDetailsResponse{}
-	_body, _err := client.ListDatabaseDetailsWithOptions(catalogId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1746,7 +1190,7 @@ func (client *Client) ListDatabaseDetails(catalogId *string, request *ListDataba
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDatabasesResponse
-func (client *Client) ListDatabasesWithOptions(catalogId *string, request *ListDatabasesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatabasesResponse, _err error) {
+func (client *Client) ListDatabasesWithContext(ctx context.Context, catalogId *string, request *ListDatabasesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatabasesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1780,30 +1224,11 @@ func (client *Client) ListDatabasesWithOptions(catalogId *string, request *ListD
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDatabasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看数据库列表
-//
-// @param request - ListDatabasesRequest
-//
-// @return ListDatabasesResponse
-func (client *Client) ListDatabases(catalogId *string, request *ListDatabasesRequest) (_result *ListDatabasesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListDatabasesResponse{}
-	_body, _err := client.ListDatabasesWithOptions(catalogId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1818,7 +1243,7 @@ func (client *Client) ListDatabases(catalogId *string, request *ListDatabasesReq
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPartitionSummariesResponse
-func (client *Client) ListPartitionSummariesWithOptions(catalogId *string, database *string, table *string, request *ListPartitionSummariesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPartitionSummariesResponse, _err error) {
+func (client *Client) ListPartitionSummariesWithContext(ctx context.Context, catalogId *string, database *string, table *string, request *ListPartitionSummariesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPartitionSummariesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1852,30 +1277,11 @@ func (client *Client) ListPartitionSummariesWithOptions(catalogId *string, datab
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPartitionSummariesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看表
-//
-// @param request - ListPartitionSummariesRequest
-//
-// @return ListPartitionSummariesResponse
-func (client *Client) ListPartitionSummaries(catalogId *string, database *string, table *string, request *ListPartitionSummariesRequest) (_result *ListPartitionSummariesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListPartitionSummariesResponse{}
-	_body, _err := client.ListPartitionSummariesWithOptions(catalogId, database, table, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1890,7 +1296,7 @@ func (client *Client) ListPartitionSummaries(catalogId *string, database *string
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPermissionsResponse
-func (client *Client) ListPermissionsWithOptions(catalogId *string, request *ListPermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPermissionsResponse, _err error) {
+func (client *Client) ListPermissionsWithContext(ctx context.Context, catalogId *string, request *ListPermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPermissionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1944,30 +1350,11 @@ func (client *Client) ListPermissionsWithOptions(catalogId *string, request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPermissionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取指定资源或指定Principal的权限信息
-//
-// @param request - ListPermissionsRequest
-//
-// @return ListPermissionsResponse
-func (client *Client) ListPermissions(catalogId *string, request *ListPermissionsRequest) (_result *ListPermissionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListPermissionsResponse{}
-	_body, _err := client.ListPermissionsWithOptions(catalogId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1982,7 +1369,7 @@ func (client *Client) ListPermissions(catalogId *string, request *ListPermission
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRoleUsersResponse
-func (client *Client) ListRoleUsersWithOptions(request *ListRoleUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRoleUsersResponse, _err error) {
+func (client *Client) ListRoleUsersWithContext(ctx context.Context, request *ListRoleUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRoleUsersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2016,30 +1403,11 @@ func (client *Client) ListRoleUsersWithOptions(request *ListRoleUsersRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRoleUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取角色用户列表
-//
-// @param request - ListRoleUsersRequest
-//
-// @return ListRoleUsersResponse
-func (client *Client) ListRoleUsers(request *ListRoleUsersRequest) (_result *ListRoleUsersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListRoleUsersResponse{}
-	_body, _err := client.ListRoleUsersWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2054,7 +1422,7 @@ func (client *Client) ListRoleUsers(request *ListRoleUsersRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRolesResponse
-func (client *Client) ListRolesWithOptions(request *ListRolesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRolesResponse, _err error) {
+func (client *Client) ListRolesWithContext(ctx context.Context, request *ListRolesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRolesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2088,30 +1456,11 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRolesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取角色列表
-//
-// @param request - ListRolesRequest
-//
-// @return ListRolesResponse
-func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListRolesResponse{}
-	_body, _err := client.ListRolesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2126,7 +1475,7 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTableDetailsResponse
-func (client *Client) ListTableDetailsWithOptions(catalogId *string, database *string, request *ListTableDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTableDetailsResponse, _err error) {
+func (client *Client) ListTableDetailsWithContext(ctx context.Context, catalogId *string, database *string, request *ListTableDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTableDetailsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2160,30 +1509,11 @@ func (client *Client) ListTableDetailsWithOptions(catalogId *string, database *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTableDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看表详情列表
-//
-// @param request - ListTableDetailsRequest
-//
-// @return ListTableDetailsResponse
-func (client *Client) ListTableDetails(catalogId *string, database *string, request *ListTableDetailsRequest) (_result *ListTableDetailsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListTableDetailsResponse{}
-	_body, _err := client.ListTableDetailsWithOptions(catalogId, database, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2198,7 +1528,7 @@ func (client *Client) ListTableDetails(catalogId *string, database *string, requ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTablesResponse
-func (client *Client) ListTablesWithOptions(catalogId *string, database *string, request *ListTablesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTablesResponse, _err error) {
+func (client *Client) ListTablesWithContext(ctx context.Context, catalogId *string, database *string, request *ListTablesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTablesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2232,30 +1562,11 @@ func (client *Client) ListTablesWithOptions(catalogId *string, database *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTablesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看表详情列表
-//
-// @param request - ListTablesRequest
-//
-// @return ListTablesResponse
-func (client *Client) ListTables(catalogId *string, database *string, request *ListTablesRequest) (_result *ListTablesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListTablesResponse{}
-	_body, _err := client.ListTablesWithOptions(catalogId, database, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2270,7 +1581,7 @@ func (client *Client) ListTables(catalogId *string, database *string, request *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListUserRolesResponse
-func (client *Client) ListUserRolesWithOptions(request *ListUserRolesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListUserRolesResponse, _err error) {
+func (client *Client) ListUserRolesWithContext(ctx context.Context, request *ListUserRolesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListUserRolesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2304,30 +1615,11 @@ func (client *Client) ListUserRolesWithOptions(request *ListUserRolesRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListUserRolesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取用户角色列表
-//
-// @param request - ListUserRolesRequest
-//
-// @return ListUserRolesResponse
-func (client *Client) ListUserRoles(request *ListUserRolesRequest) (_result *ListUserRolesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListUserRolesResponse{}
-	_body, _err := client.ListUserRolesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2342,7 +1634,7 @@ func (client *Client) ListUserRoles(request *ListUserRolesRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListUsersResponse
-func (client *Client) ListUsersWithOptions(request *ListUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListUsersResponse, _err error) {
+func (client *Client) ListUsersWithContext(ctx context.Context, request *ListUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListUsersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2380,30 +1672,11 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取用户列表
-//
-// @param request - ListUsersRequest
-//
-// @return ListUsersResponse
-func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListUsersResponse{}
-	_body, _err := client.ListUsersWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2418,7 +1691,7 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RevokeRoleFromUsersResponse
-func (client *Client) RevokeRoleFromUsersWithOptions(request *RevokeRoleFromUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RevokeRoleFromUsersResponse, _err error) {
+func (client *Client) RevokeRoleFromUsersWithContext(ctx context.Context, request *RevokeRoleFromUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RevokeRoleFromUsersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2448,30 +1721,11 @@ func (client *Client) RevokeRoleFromUsersWithOptions(request *RevokeRoleFromUser
 		BodyType:    dara.String("none"),
 	}
 	_result = &RevokeRoleFromUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量取消授予角色权限给用户
-//
-// @param request - RevokeRoleFromUsersRequest
-//
-// @return RevokeRoleFromUsersResponse
-func (client *Client) RevokeRoleFromUsers(request *RevokeRoleFromUsersRequest) (_result *RevokeRoleFromUsersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RevokeRoleFromUsersResponse{}
-	_body, _err := client.RevokeRoleFromUsersWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2484,7 +1738,7 @@ func (client *Client) RevokeRoleFromUsers(request *RevokeRoleFromUsersRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubscribeResponse
-func (client *Client) SubscribeWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubscribeResponse, _err error) {
+func (client *Client) SubscribeWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubscribeResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2500,28 +1754,11 @@ func (client *Client) SubscribeWithOptions(headers map[string]*string, runtime *
 		BodyType:    dara.String("none"),
 	}
 	_result = &SubscribeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 订阅当前地域的 DLF
-//
-// @return SubscribeResponse
-func (client *Client) Subscribe() (_result *SubscribeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &SubscribeResponse{}
-	_body, _err := client.SubscribeWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2536,7 +1773,7 @@ func (client *Client) Subscribe() (_result *SubscribeResponse, _err error) {
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateRoleResponse
-func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRoleResponse, _err error) {
+func (client *Client) UpdateRoleWithContext(ctx context.Context, request *UpdateRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRoleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2570,30 +1807,11 @@ func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, headers 
 		BodyType:    dara.String("none"),
 	}
 	_result = &UpdateRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新角色
-//
-// @param request - UpdateRoleRequest
-//
-// @return UpdateRoleResponse
-func (client *Client) UpdateRole(request *UpdateRoleRequest) (_result *UpdateRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateRoleResponse{}
-	_body, _err := client.UpdateRoleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2608,7 +1826,7 @@ func (client *Client) UpdateRole(request *UpdateRoleRequest) (_result *UpdateRol
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateRoleUsersResponse
-func (client *Client) UpdateRoleUsersWithOptions(request *UpdateRoleUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRoleUsersResponse, _err error) {
+func (client *Client) UpdateRoleUsersWithContext(ctx context.Context, request *UpdateRoleUsersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRoleUsersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2638,29 +1856,10 @@ func (client *Client) UpdateRoleUsersWithOptions(request *UpdateRoleUsersRequest
 		BodyType:    dara.String("none"),
 	}
 	_result = &UpdateRoleUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新角色用户
-//
-// @param request - UpdateRoleUsersRequest
-//
-// @return UpdateRoleUsersResponse
-func (client *Client) UpdateRoleUsers(request *UpdateRoleUsersRequest) (_result *UpdateRoleUsersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateRoleUsersResponse{}
-	_body, _err := client.UpdateRoleUsersWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }

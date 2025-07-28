@@ -1,3 +1,7 @@
+2025-07-28 Version: v2.3.0
+- Support API ListDatabaseDetails.
+
+
 2025-07-22 Version: v2.2.0
 - Support API ListTableDetails.
 
