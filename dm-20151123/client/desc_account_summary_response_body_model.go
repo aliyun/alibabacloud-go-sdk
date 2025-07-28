@@ -19,6 +19,8 @@ type iDescAccountSummaryResponseBody interface {
 	GetDomains() *int32
 	SetEnableTimes(v int32) *DescAccountSummaryResponseBody
 	GetEnableTimes() *int32
+	SetIpChannelType(v string) *DescAccountSummaryResponseBody
+	GetIpChannelType() *string
 	SetMailAddresses(v int32) *DescAccountSummaryResponseBody
 	GetMailAddresses() *int32
 	SetMaxQuotaLevel(v int32) *DescAccountSummaryResponseBody
@@ -78,6 +80,9 @@ type DescAccountSummaryResponseBody struct {
 	//
 	// 0
 	EnableTimes *int32 `json:"EnableTimes,omitempty" xml:"EnableTimes,omitempty"`
+	// if can be null:
+	// true
+	IpChannelType *string `json:"IpChannelType,omitempty" xml:"IpChannelType,omitempty"`
 	// Number of sending addresses
 	//
 	// example:
@@ -194,6 +199,10 @@ func (s *DescAccountSummaryResponseBody) GetEnableTimes() *int32 {
 	return s.EnableTimes
 }
 
+func (s *DescAccountSummaryResponseBody) GetIpChannelType() *string {
+	return s.IpChannelType
+}
+
 func (s *DescAccountSummaryResponseBody) GetMailAddresses() *int32 {
 	return s.MailAddresses
 }
@@ -268,6 +277,11 @@ func (s *DescAccountSummaryResponseBody) SetDomains(v int32) *DescAccountSummary
 
 func (s *DescAccountSummaryResponseBody) SetEnableTimes(v int32) *DescAccountSummaryResponseBody {
 	s.EnableTimes = &v
+	return s
+}
+
+func (s *DescAccountSummaryResponseBody) SetIpChannelType(v string) *DescAccountSummaryResponseBody {
+	s.IpChannelType = &v
 	return s
 }
 
